@@ -439,7 +439,7 @@ def render_docs(
     use_markdown=False,
     source_is_repo_root=False,
 ):
-    roster = iron_horse.RosterManager().active_roster
+    roster = iron_horse.roster_manager.active_roster
     # expect Exception failures if there is no active roster, don't bother explicitly handling that case
 
     if source_is_repo_root:
@@ -503,7 +503,7 @@ def render_docs_vehicle_details(consist, docs_output_path, consists):
     template = docs_templates["vehicle_details.pt"]
     doc_name = consist.id
 
-    roster = iron_horse.RosterManager().active_roster
+    roster = iron_horse.roster_manager.active_roster
     doc = template(
         roster=roster,
         consist=consist,
@@ -724,7 +724,7 @@ def main():
     # don't init iron_horse on import of this module, do it explicitly inside main()
     iron_horse.main()
 
-    roster = iron_horse.RosterManager().active_roster
+    roster = iron_horse.roster_manager.active_roster
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
     num_pool_workers = command_line_args.num_pool_workers
     if num_pool_workers == 0:

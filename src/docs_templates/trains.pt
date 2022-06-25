@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="span12">
-                <h2>CABBAGE <!--!${len([roster for roster in registered_rosters if not roster.disabled])}--> rosters of trains for OpenTTD</h2>
+                <h2>CABBAGE rosters of trains for OpenTTD</h2>
                 <p>Only one roster is active in any game.  Choose the one you want with the parameter option (newgrf settings) :)</p>
                 <hr />
                 ${roster.str_grf_name}

@@ -27,7 +27,6 @@ from railtypes import lgv
 from railtypes import lgv_electrified
 
 # import rosters
-from rosters import registered_rosters
 from rosters import ibex
 from rosters import moose
 from rosters import pony
@@ -117,7 +116,6 @@ from vehicles import tarpaulin_cars
 from vehicles import torpedo_cars
 from vehicles import vehicle_parts_box_cars
 
-
 def get_active_railtypes():
     # this might want to mimic the RosterManager helper class, but eh, YAGNI?
     active_railtypes = [
@@ -133,13 +131,6 @@ class RosterManager(list):
     Extends default python list, as we also use it when we want a list of active rosters (the instantiated class instance behaves like a list object).
     """
 
-    def __init__(self):
-        #  note that we can't simply reduce the compile to one roster
-        #  we might want to span rosters for various reasons, e.g.
-        # - detecting ID collisions, vehicle name collisions etc
-        for roster in registered_rosters:
-            self.append(roster)
-
     def validate_vehicles(self):
         # has to be explicitly called after all vehicles and vehicle units are registered to the roster
         # actual validation is delegated to vehicles via roster
@@ -153,18 +144,18 @@ class RosterManager(list):
         if command_line_args.grf_name == "id-report-only":
             return None
 
-        for roster in registered_rosters:
+        for roster in self:
             if roster.grf_name == command_line_args.grf_name:
                 return roster
         # roster should always be found by this point, but eh
         raise Exception("RosterManager: no valid roster found for active_roster")
 
     def get_roster_by_id(self, roster_id):
-        for roster in registered_rosters:
+        for roster in self:
             if roster.id == roster_id:
                 return roster
         else:
-            raise Exception("RosterManager: no roster found for ", self.id)
+            raise Exception("RosterManager: no roster found for ", roster_id)
 
 
 
@@ -277,6 +268,7 @@ class RosterManager(list):
             )
         return result
 
+roster_manager = RosterManager()
 
 def main():
     # railtypes - order is significant, as affects order in construction menu (order property not currently set)
@@ -288,9 +280,9 @@ def main():
     # rosters
     # in the rare case that an unfinished roster won't run main() cleanly, comment it out here and possibly also in the import
     # built-in support for disabled rosters was removed during the conversion to multi-grf, it was an unnecessary abstraction when only one roster is used per grf
-    ibex.main()
-    moose.main()
-    pony.main()
+    ibex.main(roster_manager)
+    moose.main(roster_manager)
+    pony.main(roster_manager)
 
     # spritelayer cargos
     intermodal_containers.main()
@@ -383,4 +375,4 @@ def main():
     torpedo_cars.main()
     vehicle_parts_box_cars.main()
 
-    RosterManager().validate_vehicles()
+    roster_manager.validate_vehicles()

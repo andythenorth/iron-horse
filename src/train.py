@@ -545,7 +545,7 @@ class Consist(object):
 
     @property
     def roster(self):
-        return iron_horse.RosterManager().get_roster_by_id(self.roster_id)
+        return iron_horse.roster_manager.get_roster_by_id(self.roster_id)
 
     def get_expression_for_availability(self):
         result = []

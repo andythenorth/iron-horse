@@ -79,7 +79,7 @@ def main():
         # just print, no need for a coloured echo_message
         print("Multiprocessing enabled: (PW=" + str(num_pool_workers) + ")")
 
-    roster = iron_horse.RosterManager().active_roster
+    roster = iron_horse.roster_manager.active_roster
     # expect Exception failures if there is no active roster, don't bother explicitly handling that case
 
     graphics_input_path = os.path.join(currentdir, "src", "graphics")

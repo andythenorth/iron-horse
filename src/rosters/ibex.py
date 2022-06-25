@@ -6,7 +6,7 @@ from vehicles import snowplough_ibex_gen_2
 from vehicles import trient
 
 
-def main():
+def main(roster_manager):
     roster = Roster(
         id="ibex",
         numeric_id=3,
@@ -228,4 +228,4 @@ def main():
             #foo,
         ],
     )
-    roster.register()
+    roster.register(roster_manager)

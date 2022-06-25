@@ -6,7 +6,7 @@ from vehicles import niagra
 from vehicles import snowplough_moose_gen_2
 
 
-def main():
+def main(roster_manager):
     roster = Roster(
         id="moose",
         numeric_id=2,
@@ -228,4 +228,4 @@ def main():
             #foo,
         ],
     )
-    roster.register()
+    roster.register(roster_manager)

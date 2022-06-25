@@ -160,7 +160,7 @@ from vehicles import zipper
 from vehicles import zorro
 
 
-def main():
+def main(roster_manager):
     roster = Roster(
         id="pony",
         numeric_id=1,
@@ -568,4 +568,4 @@ def main():
             zorro,
         ],
     )
-    roster.register()
+    roster.register(roster_manager)

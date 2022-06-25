@@ -63,7 +63,7 @@ def main():
     start = time()
     iron_horse.main()
 
-    roster = iron_horse.RosterManager().active_roster
+    roster = iron_horse.roster_manager.active_roster
     # expect Exception failures if there is no active roster, don't bother explicitly handling that case
 
     # we don't need to user os.path.join here, this is an nml path (and we want the explicit trailing slash also)

@@ -1,4 +1,3 @@
-from rosters import registered_rosters
 import global_constants
 import pickle
 import utils
@@ -163,7 +162,8 @@ class Roster(object):
             elif len(consist.units) == 1:
                 if consist.base_numeric_id <= global_constants.max_articulated_id:
                     #raise BaseException(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
-                    utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
+                    #utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
+                    pass
             elif len(consist.units) > 1:
                 if consist.base_numeric_id > global_constants.max_articulated_id:
                     raise BaseException(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " is an articulated vehicle, and needs a base_numeric_id smaller than 8190")
@@ -179,14 +179,15 @@ class Roster(object):
                         + ") with units in another consist"
                     )
             """
-            print(consist, len(consist.units))
+            #print(consist, len(consist.units))
 
     def register_wagon_consist(self, wagon_consist):
         self.wagon_consists[wagon_consist.base_id].append(wagon_consist)
         wagon_consist.roster_id = self.id
 
-    def register(self):
-        registered_rosters.append(self)
+    def register(self, roster_manager):
+        roster_manager.append(self)
+        print(roster_manager)
         for engine in self.engines:
             consist = engine.main(self.id)
             self.engine_consists.append(consist)
