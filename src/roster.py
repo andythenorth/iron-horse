@@ -2,6 +2,7 @@ import global_constants
 import pickle
 import utils
 
+
 class Roster(object):
     """
     Rosters compose a set of vehicles which is complete for gameplay.
@@ -161,19 +162,29 @@ class Roster(object):
                 raise BaseException("Error: " + consist.id + " has no units defined")
             elif len(consist.units) == 1:
                 if consist.base_numeric_id <= global_constants.max_articulated_id:
-                    #raise BaseException("Error: " + consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
+                    # raise BaseException("Error: " + consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
                     # utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
                     utils.echo_message(str(consist.base_numeric_id))
             elif len(consist.units) > 1:
-                if consist.base_numeric_id > global_constants.max_articulated_id:
-                    raise BaseException("Error: " + consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " is an articulated vehicle, and needs a base_numeric_id smaller than 8190")
+                for unit in consist.units:
+                    if unit.numeric_id > global_constants.max_articulated_id:
+                        raise BaseException(
+                            "Error: "
+                            + unit.id
+                            + " with numeric_id "
+                            + str(unit.numeric_id)
+                            + " is part of an articulated vehicle, and needs a numeric_id smaller than "
+                            + str(global_constants.max_articulated_id)
+                            + " (use a lower consist base_numeric_id)"
+                        )
             for unit in set(consist.units):
                 if unit.numeric_id in numeric_id_defender:
-                    raise BaseException("Error: unit "
-                            + unit.id
-                            + " has a numeric_id that collides ("
-                            + str(unit.numeric_id)
-                            + ") with a numeric_id of unit in another consist"
+                    raise BaseException(
+                        "Error: unit "
+                        + unit.id
+                        + " has a numeric_id that collides ("
+                        + str(unit.numeric_id)
+                        + ") with a numeric_id of unit in another consist"
                     )
                 else:
                     numeric_id_defender.append(unit.numeric_id)
