@@ -1,3 +1,4 @@
+import codecs
 import os.path
 
 currentdir = os.curdir
@@ -144,11 +145,15 @@ class RosterManager(list):
 
     @property
     def active_roster(self):
+        # special case if we only want the id report, which does not require an active roster
+        if command_line_args.grf_name == "id-report-only":
+            return None
+
         for roster in registered_rosters:
             if roster.grf_name == command_line_args.grf_name:
                 return roster
-        # active roster should always be found, but eh
-        raise Exception("RosterManager: no active roster found")
+        # roster should always be found by this point, but eh
+        raise Exception("RosterManager: no valid roster found for active_roster")
 
     def get_roster_by_id(self, roster_id):
         for roster in registered_rosters:
@@ -265,25 +270,6 @@ class RosterManager(list):
                 "action 2 switch is limited to 255 values, livery_2_engine_ids exceeds this - needs split across multiple switches"
             )
         return result
-
-    def vacant_numeric_ids_formatted(self):
-        # when adding vehicles it's useful to know what the next free numeric ID is
-        # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
-        # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
-        max_id = max(numeric_id_defender) - (max(numeric_id_defender) % 10)
-        id_gaps = []
-        for i in range(0, int(max_id / 10)):
-            id = i * 10
-            if id not in numeric_id_defender:
-                id_gaps.append(str(id))
-        return (
-            "Vacant numeric ID slots: "
-            + ", ".join(id_gaps)
-            + (" and from " if len(id_gaps) > 0 else "")
-            + str(max_id + 10)
-            + " onwards"
-        )
-
 
 def main():
     # railtypes - order is significant, as affects order in construction menu (order property not currently set)

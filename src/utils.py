@@ -22,7 +22,7 @@ def get_command_line_args():
         required=True,
         help="The grf to build",
         # manually extend the list if more rosters are added
-        choices=["iron-horse", "iron-moose", "iron-ibex"],
+        choices=["iron-horse", "iron-moose", "iron-ibex", "id-report-only"],
     )
     argparser.add_argument(
         "-sc",

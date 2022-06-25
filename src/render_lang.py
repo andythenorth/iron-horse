@@ -30,6 +30,8 @@ def main():
     iron_horse.main()
 
     roster = iron_horse.RosterManager().active_roster
+    # expect Exception failures if there is no active roster, don't bother explicitly handling that case
+
     lang_src = os.path.join(currentdir, "src", "lang", roster.id)
     lang_dst = os.path.join(
         iron_horse.generated_files_path, "lang", command_line_args.grf_name

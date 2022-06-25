@@ -69,8 +69,8 @@ SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
 BUNDLE_DIR = bundle_dir
 
 # Build rules
-.PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean copy_docs_to_grf_farm release
-default: html_docs grf
+.PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean copy_docs_to_grf_farm release id_report
+default: html_docs grf id_report
 bundle_tar: tar
 bundle_zip: $(ZIP_FILE)
 graphics: $(GRAPHICS_TARGETS)
@@ -149,6 +149,10 @@ bundle_src: $(MD5_FILE)
 	$(SED) -i -e 's/^EXPORTED = no/EXPORTED = yes/' $(BUNDLE_DIR)/src/Makefile
 	$(MK_ARCHIVE) --tar --output=$(SOURCE_NAME).tar --base=$(SOURCE_NAME) \
 		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
+
+# note order-only pre-requisite, which should cause this to run last
+id_report: | $(GRF_FILES)
+	$(_V) $(PYTHON3) src/id_report.py -gn=id-report-only
 
 # this expects to find a '../../grf.farm' path relative to the project, and will fail otherwise
 copy_docs_to_grf_farm: $(HTML_DOCS)

@@ -440,6 +440,7 @@ def render_docs(
     source_is_repo_root=False,
 ):
     roster = iron_horse.RosterManager().active_roster
+    # expect Exception failures if there is no active roster, don't bother explicitly handling that case
 
     if source_is_repo_root:
         doc_path = os.path.join(currentdir)
