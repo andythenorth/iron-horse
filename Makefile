@@ -70,7 +70,7 @@ BUNDLE_DIR = bundle_dir
 
 # Build rules
 .PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean copy_docs_to_grf_farm release id_report
-default: html_docs grf id_report
+default: html_docs grf
 bundle_tar: tar
 bundle_zip: $(ZIP_FILE)
 graphics: $(GRAPHICS_TARGETS)
@@ -79,7 +79,7 @@ nml: $(NML_FILES)
 nfo: $(NFO_FILES)
 grf: $(GRF_FILES)
 tar: $(TAR_FILES)
-html_docs: $(HTML_DOCS)
+html_docs: $(HTML_DOCS) id_report
 
 # default num. pool workers for python compile,
 # default is 0 to disable multiprocessing (also avoids multiprocessing pickle failures masking genuine python errors)
@@ -150,8 +150,7 @@ bundle_src: $(MD5_FILE)
 	$(MK_ARCHIVE) --tar --output=$(SOURCE_NAME).tar --base=$(SOURCE_NAME) \
 		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
 
-# note order-only pre-requisite, which should cause this to run last
-id_report: | $(GRF_FILES)
+id_report: | $(HTML_DOCS)
 	$(_V) $(PYTHON3) src/id_report.py -gn=id-report-only
 
 # this expects to find a '../../grf.farm' path relative to the project, and will fail otherwise
