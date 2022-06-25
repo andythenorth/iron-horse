@@ -11,7 +11,7 @@ def main():
         id = i * 10
         if id not in numeric_id_defender:
             id_gaps.append(str(id))
-    new_report_content = (
+    report_content = (
         "Vacant numeric ID slots: "
         + ", ".join(id_gaps)
         + (" and from " if len(id_gaps) > 0 else "")
@@ -19,7 +19,7 @@ def main():
         + " onwards"
     )
     # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
-    print(new_report_content)
+    print(report_content)
 
 
 if __name__ == "__main__":
