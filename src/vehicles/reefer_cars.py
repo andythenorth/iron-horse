@@ -6,7 +6,11 @@ def main():
     # no gen 1 reefer - straight to gen 2
 
     consist = ReeferCarConsist(
-        roster_id="pony", base_numeric_id=9770, gen=2, subtype="A", sprites_complete=True
+        roster_id="pony",
+        base_numeric_id=9770,
+        gen=2,
+        subtype="A",
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -16,7 +20,11 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="pony", base_numeric_id=9760, gen=3, subtype="A", sprites_complete=True
+        roster_id="pony",
+        base_numeric_id=9760,
+        gen=3,
+        subtype="A",
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -141,7 +149,11 @@ def main():
     # no gen 1 reefer - straight to gen 2
 
     consist = ReeferCarConsist(
-        roster_id="ibex", base_numeric_id=8470, gen=2, subtype="A", sprites_complete=True
+        roster_id="ibex",
+        base_numeric_id=8470,
+        gen=2,
+        subtype="A",
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -151,7 +163,11 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="ibex", base_numeric_id=8480, gen=3, subtype="A", sprites_complete=True
+        roster_id="ibex",
+        base_numeric_id=8480,
+        gen=3,
+        subtype="A",
+        sprites_complete=True,
     )
 
     consist.add_unit(
