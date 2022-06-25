@@ -177,7 +177,12 @@ def main():
             shutil.rmtree(dest_path)
         shutil.copytree(target_path, dest_path)
 
-    print("[RENDER GRAPHICS]", command_line_args.grf_name, "- complete", format((time() - start), ".2f") + "s")
+    print(
+        "[RENDER GRAPHICS]",
+        command_line_args.grf_name,
+        "- complete",
+        format((time() - start), ".2f") + "s",
+    )
 
 
 if __name__ == "__main__":

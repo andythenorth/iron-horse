@@ -71,7 +71,12 @@ def main():
         dst_file.write(lang_content)
         dst_file.close()
 
-    print("[RENDER LANG]", command_line_args.grf_name, "- complete", format((time() - start), ".2f") + "s")
+    print(
+        "[RENDER LANG]",
+        command_line_args.grf_name,
+        "- complete",
+        format((time() - start), ".2f") + "s",
+    )
 
 
 if __name__ == "__main__":
