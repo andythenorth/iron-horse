@@ -143,11 +143,11 @@ class RosterManager(list):
         for roster in registered_rosters:
             self.append(roster)
 
-    def validate_vehicles():
+    def validate_vehicles(self):
         # has to be explicitly called after all vehicles and vehicle units are registered to the roster
         # actual validation is delegated to vehicles via roster
         # this is just a pass through convenience method
-        for roster in registered_rosters:
+        for roster in self:
             roster.validate_vehicles()
 
     @property
@@ -168,6 +168,8 @@ class RosterManager(list):
                 return roster
         else:
             raise Exception("RosterManager: no roster found for ", self.id)
+
+
 
     @property
     def restaurant_car_ids(self):
@@ -384,4 +386,4 @@ def main():
     torpedo_cars.main()
     vehicle_parts_box_cars.main()
 
-    RosterManager.validate_vehicles()
+    RosterManager().validate_vehicles()
