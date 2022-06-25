@@ -848,8 +848,7 @@ class Consist(object):
 
 class EngineConsist(Consist):
     """
-    Intermediate class for engine consists to subclass from, provides some common properties.
-    This class should be sparse - only declare the most limited set of properties common to engine consists.
+    Standard engines (without passenger or cargo capacity).
     """
 
     def __init__(self, **kwargs):
@@ -1622,7 +1621,7 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
 
 class TGVMiddleMailEngineConsist(TGVMiddleEngineConsistMixin, MailEngineConsist):
     """
-    Pax intermediate motor unit for TGV.
+    Mail intermediate motor unit for TGV.
     """
 
     def __init__(self, **kwargs):
@@ -2389,7 +2388,7 @@ class CoveredHopperCarConsistBase(CarConsist):
 
 class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
     """
-    Default covered hopper (but NOT base class).
+    Default covered hopper.
     """
 
     def __init__(self, **kwargs):
@@ -2409,7 +2408,7 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
 
 class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
     """
-    Defaults to salt/potash type cargos.
+    Covered hopper for chemical industry cargos, same refits as standard covered hopper, just a visual variant.
     """
 
     def __init__(self, **kwargs):
@@ -2429,7 +2428,7 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
 
 class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
     """
-    Defaults to ?????
+    Covered hopper for dry powder cargos, same refits as standard covered hopper, just a visual variant.
     """
 
     def __init__(self, **kwargs):
@@ -2448,7 +2447,7 @@ class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
 
 class CoveredHopperCarMineralConsist(CoveredHopperCarConsistBase):
     """
-    Defaults to ?????
+    Covered hopper for mineral industry cargos, same refits as standard covered hopper, just a visual variant.
     """
 
     def __init__(self, **kwargs):
@@ -2468,7 +2467,7 @@ class CoveredHopperCarMineralConsist(CoveredHopperCarConsistBase):
 
 class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
     """
-    Defaults to ?????
+    Covered hopper with a rollover roof, same refits as standard covered hopper, just a visual variant.
     """
 
     def __init__(self, **kwargs):
@@ -2487,7 +2486,7 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
 
 class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
     """
-    Defaults to ?????
+    Covered hopper with a swing roof hatch, same refits as standard covered hopper, just a visual variant.
     """
 
     def __init__(self, **kwargs):
@@ -2612,7 +2611,6 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
     """
     Scrap Metal Car
     Same as standard dump car, but different appearance and default cargos.
-    The classname breaks convention (would usually be ScrapMetalCar), this is to keep all dump car subclasses togther).
     """
 
     def __init__(self, **kwargs):
@@ -2639,7 +2637,7 @@ class BulkCarRandomisedConsist(DumpCarConsistBase):
 class EdiblesTankCarConsist(CarConsist):
     """
     Wine, milk, water etc.
-    No actual cargo aging change - doesn't really work - so trade higher speed against lower capacity instead.
+    No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
     """
 
     def __init__(self, **kwargs):
@@ -3068,7 +3066,7 @@ class HopperCarConsistBase(CarConsist):
 
 class HopperCarConsist(HopperCarConsistBase):
     """
-    Defaults to coal.  Doesn't need a cargo-indicative name.
+    Standard hopper car. Defaults to coal.
     """
 
     def __init__(self, **kwargs):
@@ -3079,7 +3077,7 @@ class HopperCarConsist(HopperCarConsistBase):
 
 class HopperCarMineralConsist(HopperCarConsistBase):
     """
-    Defaults to salt-type cargos.
+    Hopper for mineral industry cargos, same refits as standard hopper, just a visual variant.
     """
 
     def __init__(self, **kwargs):
@@ -3092,8 +3090,7 @@ class HopperCarMineralConsist(HopperCarConsistBase):
 
 class HopperCarMGRConsist(HopperCarConsistBase):
     """
-    Defaults to coal.  UK-specific lolz.
-    The classname breaks convention (would usually be OreHopper), this is to keep all hopper subclasses togther).
+    Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.
     """
 
     def __init__(self, **kwargs):
@@ -3120,7 +3117,7 @@ class HopperCarRandomisedConsist(HopperCarConsistBase):
 
 class HopperCarOreConsist(HopperCarConsistBase):
     """
-    Defaults to iron ore.
+    Hopper for ore cargos, same refits as standard hopper, just a visual variant.
     """
 
     def __init__(self, **kwargs):
@@ -3131,7 +3128,7 @@ class HopperCarOreConsist(HopperCarConsistBase):
 
 class HopperCarRockConsist(HopperCarConsistBase):
     """
-    Defaults to rock/stone-type cargos.
+    Hopper for rock cargos, same refits as standard hopper, just a visual variant.
     """
 
     def __init__(self, **kwargs):
@@ -3299,7 +3296,7 @@ class KaolinHopperCarConsist(CarConsist):
 
 class LivestockCarConsist(CarConsist):
     """
-    Livestock, with improved decay rate
+    Specialist transporter for livestock.
     """
 
     def __init__(self, **kwargs):
@@ -4199,7 +4196,7 @@ class TankCarConsist(TankCarConsistBase):
 
 class TankCarAcidConsist(TankCarConsistBase):
     """
-    Shinier version of the standard tank car, same refits, different defaults
+    Visual variant of the standard tank car, same refits, different default cargos.
     """
 
     def __init__(self, **kwargs):
@@ -4220,7 +4217,7 @@ class TankCarAcidConsist(TankCarConsistBase):
 
 class TankCarProductConsist(TankCarConsistBase):
     """
-    Shinier version of the standard tank car, same refits, different defaults
+    Visual variant of the standard tank car, same refits, different default cargos.
     """
 
     def __init__(self, **kwargs):
