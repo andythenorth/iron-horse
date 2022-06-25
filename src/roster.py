@@ -185,9 +185,8 @@ class Roster(object):
         self.wagon_consists[wagon_consist.base_id].append(wagon_consist)
         wagon_consist.roster_id = self.id
 
-    def register(self, roster_manager):
-        roster_manager.append(self)
-        print(roster_manager)
+    def post_init_actions(self):
+        # init has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
         for engine in self.engines:
             consist = engine.main(self.id)
             self.engine_consists.append(consist)

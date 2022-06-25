@@ -78,7 +78,8 @@ from vehicles import mail_cars
 from vehicles import merchandise_box_cars
 from vehicles import merchandise_open_cars
 from vehicles import mineral_covered_hopper_cars
-#from vehicles import mineral_hopper_cars
+
+# from vehicles import mineral_hopper_cars
 from vehicles import mgr_hopper_cars
 from vehicles import open_cars
 from vehicles import ore_dump_cars
@@ -116,6 +117,7 @@ from vehicles import tarpaulin_cars
 from vehicles import torpedo_cars
 from vehicles import vehicle_parts_box_cars
 
+
 def get_active_railtypes():
     # this might want to mimic the RosterManager helper class, but eh, YAGNI?
     active_railtypes = [
@@ -131,10 +133,16 @@ class RosterManager(list):
     Extends default python list, as we also use it when we want a list of active rosters (the instantiated class instance behaves like a list object).
     """
 
+    def add_roster(self, roster_module):
+        roster = roster_module.main()
+        self.append(roster)
+        # some actions have to be run after the register is added to RosterManager
+        roster.post_init_actions()
+
     def validate_vehicles(self):
-        # has to be explicitly called after all vehicles and vehicle units are registered to the roster
-        # actual validation is delegated to vehicles via roster
-        # this is just a pass through convenience method
+        # has to be explicitly called after all rosters are active, and all vehicles and vehicle units are registered to each roster
+        # actual validation is delegated to the roster
+        # this is just a pass through convenience method to get all rosters at once
         for roster in self:
             roster.validate_vehicles()
 
@@ -156,8 +164,6 @@ class RosterManager(list):
                 return roster
         else:
             raise Exception("RosterManager: no roster found for ", roster_id)
-
-
 
     @property
     def restaurant_car_ids(self):
@@ -268,7 +274,9 @@ class RosterManager(list):
             )
         return result
 
+# declared outside of main, got bored trying to figure out how to otherwise put it in the module scope
 roster_manager = RosterManager()
+
 
 def main():
     # railtypes - order is significant, as affects order in construction menu (order property not currently set)
@@ -280,9 +288,9 @@ def main():
     # rosters
     # in the rare case that an unfinished roster won't run main() cleanly, comment it out here and possibly also in the import
     # built-in support for disabled rosters was removed during the conversion to multi-grf, it was an unnecessary abstraction when only one roster is used per grf
-    ibex.main(roster_manager)
-    moose.main(roster_manager)
-    pony.main(roster_manager)
+    roster_manager.add_roster(ibex)
+    roster_manager.add_roster(moose)
+    roster_manager.add_roster(pony)
 
     # spritelayer cargos
     intermodal_containers.main()

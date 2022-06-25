@@ -1,12 +1,12 @@
 <!--! !! rename this file if made more generic (e.g. motorail, observation cars etc) -->
 
 <!--! some vehicles vary their running costs depending on other vehicles in the consist -->
-<tal:restaurant_car_ids repeat="restaurant_car_id RosterManager().restaurant_car_ids">
-    switch (FEAT_TRAINS, PARENT, switch_is_restaurant_car_in_consist_${len(RosterManager().restaurant_car_ids) - repeat.restaurant_car_id.index - 1}, [count_veh_id(${restaurant_car_id}) > 0]) {
+<tal:restaurant_car_ids repeat="restaurant_car_id roster_manager.restaurant_car_ids">
+    switch (FEAT_TRAINS, PARENT, switch_is_restaurant_car_in_consist_${len(roster_manager.restaurant_car_ids) - repeat.restaurant_car_id.index - 1}, [count_veh_id(${restaurant_car_id}) > 0]) {
             <!--! this doesn't check grfid currently - add later if needed -->
             1: return 1;
         <tal:next_switch condition="not:repeat.restaurant_car_id.start">
-            return switch_is_restaurant_car_in_consist_${len(RosterManager().restaurant_car_ids) - repeat.restaurant_car_id.index};
+            return switch_is_restaurant_car_in_consist_${len(roster_manager.restaurant_car_ids) - repeat.restaurant_car_id.index};
         </tal:next_switch>
         <tal:default condition="repeat.restaurant_car_id.start">
             return 0;

@@ -160,8 +160,8 @@ from vehicles import zipper
 from vehicles import zorro
 
 
-def main(roster_manager):
-    roster = Roster(
+def main():
+    return Roster(
         id="pony",
         numeric_id=1,
         # note that the grf name is Iron Horse, as the pony roster was released for many years under that name, and changing it would needlessly confuse players
@@ -266,10 +266,10 @@ def main(roster_manager):
                     "pony_caboose_car_default_5": ["caboose_5"],
                     "pony_caboose_car_default_6": ["caboose_6"],
                     "pony_gwr_1": ["caboose_1"],
-                    #"pony_gwr_1": ["caboose_1", "gwr_1"],
+                    # "pony_gwr_1": ["caboose_1", "gwr_1"],
                     "pony_railfreight_1": ["railfreight_1", "brown_1"],
                     "pony_railfreight_2": ["caboose_6"],
-                    #"pony_railfreight_2": ["railfreight_2"],
+                    # "pony_railfreight_2": ["railfreight_2"],
                 },
                 "goods_caboose_car": {
                     "pony_goods_caboose_car_default_1": ["caboose_1"],
@@ -568,4 +568,3 @@ def main(roster_manager):
             zorro,
         ],
     )
-    roster.register(roster_manager)

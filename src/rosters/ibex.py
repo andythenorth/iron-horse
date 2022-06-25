@@ -6,8 +6,8 @@ from vehicles import snowplough_ibex_gen_2
 from vehicles import trient
 
 
-def main(roster_manager):
-    roster = Roster(
+def main():
+    return Roster(
         id="ibex",
         numeric_id=3,
         grf_name="iron-ibex",
@@ -110,10 +110,10 @@ def main(roster_manager):
                     "pony_caboose_car_default_5": ["caboose_5"],
                     "pony_caboose_car_default_6": ["caboose_6"],
                     "pony_gwr_1": ["caboose_1"],
-                    #"pony_gwr_1": ["caboose_1", "gwr_1"],
+                    # "pony_gwr_1": ["caboose_1", "gwr_1"],
                     "pony_railfreight_1": ["railfreight_1", "brown_1"],
                     "pony_railfreight_2": ["caboose_6"],
-                    #"pony_railfreight_2": ["railfreight_2"],
+                    # "pony_railfreight_2": ["railfreight_2"],
                 },
                 "goods_caboose_car": {
                     "pony_goods_caboose_car_default_1": ["caboose_1"],
@@ -193,39 +193,38 @@ def main(roster_manager):
         engines=[
             # challenger, # for NA roster
             # branch express
-            #foo,
+            # foo,
             # express (electro-diesels with non-standard position in power/length tree)
-            #foo,
+            # foo,
             # express
-            #foo,
+            # foo,
             # driving cab cars
-            #foo,
+            # foo,
             # branch freight
-            #foo,
+            # foo,
             # freight
             trient,
             # joker engines / snowploughs
             snowplough_ibex_gen_2,
             # cargo sprinter
-            #foo,
+            # foo,
             # auto-coach (only one as autoreplace can't handle mixed cargo articulated consists)
-            #foo,
+            # foo,
             # railbuses
-            #foo,
+            # foo,
             # diesel railcars
-            #foo,
+            # foo,
             # electric railcars
-            #foo,
+            # foo,
             # express electric railcars
-            #foo,
+            # foo,
             # high speed pax
-            #foo,
+            # foo,
             # metro
-            #foo,
+            # foo,
             # ng engines
-            #foo,
+            # foo,
             # ng railcars
-            #foo,
+            # foo,
         ],
     )
-    roster.register(roster_manager)
