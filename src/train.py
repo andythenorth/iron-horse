@@ -23,7 +23,6 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsEngine,
     GestaltGraphicsCaboose,
     GestaltGraphicsSimpleBodyColourRemaps,
-    GestaltGraphicsOnlyAddPantographs,
     GestaltGraphicsRandomisedWagon,
     GestaltGraphicsConsistSpecificLivery,
     GestaltGraphicsIntermodalContainerTransporters,
