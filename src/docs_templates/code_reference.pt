@@ -3,181 +3,184 @@
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
 <div metal:fill-slot='body'>
     <div class="container">
-        <div class="span12">
-            <h2>Code reference</h2>
-            <ul>
-                <li><a href="#source_code">Obtaining source code</a></li>
-                <li><a href="#compiling">Compiling</a></li>
-                <li><a href="#railtypes_and_fallbacks">Railtypes and fallbacks</a></li>
-                <li><a href="#vehicle_properties">Vehicle properties</a></li>
-                <li><a href="#numeric_ids">Numeric IDs in use</a></li>
-            </ul>
-
-            <hr />
-            <br />
-            <section id="source_code">
-                <h3>Obtaining source code</h3>
-                <p>${roster.str_grf_name} source code is found on <a href="${metadata['repo_url']}">GitHub</a>. License is GPL v2.</p>
-            </section>
-            <hr />
-            <br />
-
-            <section id="compiling">
-                <h3>Compiling</h3>
-                <p>
-                   ${roster.str_grf_name} source includes a makefile for convenient building.
-                   This requires '<a href="https://en.wikipedia.org/wiki/Make_(software)">Make</a>',
-                   typically provided by the ports tree on Linux / Unix, <a href="http://www.mingw.org/wiki/msys">MSYS</a>  on Windows
-                   and <a href="https://developer.apple.com/xcode/">Xcode</a> on macOS.
-                </p>
-                <p>Other dependencies include:</p>
-                <ul>
-                    <li><a href="https://www.python.org/">Python 3.8+</a></li>
-                    <li><a href="https://newgrf-specs.tt-wiki.net/wiki/NML:Getting_started">NML 0.6.0 or newer</a> (NewGRF compiler)</li>
-                    <li><a href="http://chameleon.readthedocs.org/en/latest/">Chameleon</a> (Template engine)</li>
-                    <li><a href="https://pypi.python.org/pypi/Markdown">Markdown</a> (Markdown text format parser)</li>
+        <div class="row">
+            <div class="span3">
+                <ul class="nav nav-list well">
+                    <li class="nav-header">Code Reference</li>
+                    <li><a href="#source_code">Obtaining source code</a></li>
+                    <li><a href="#compiling">Compiling</a></li>
+                    <li><a href="#railtypes_and_fallbacks">Railtypes and fallbacks</a></li>
+                    <li><a href="#vehicle_properties">Vehicle properties</a></li>
+                    <li><a href="#numeric_ids">Numeric IDs in use</a></li>
                 </ul>
-            </section>
-            <hr />
-            <br />
+            </div>
+            <div class="span9">
+                <h2>Code reference</h2>
+                <hr />
+                <section id="source_code">
+                    <h3>Obtaining source code</h3>
+                    <p>${roster.str_grf_name} source code is found on <a href="${metadata['repo_url']}">GitHub</a>. License is GPL v2.</p>
+                </section>
+                <hr />
+                <br />
 
-            <section id="railtypes_and_fallbacks">
-                <h3>Railtypes and fallbacks</h3>
-                <p>${roster.str_grf_name} uses a very specific approach to railtypes.</p>
-                <ol>
-                    <li>
-                        The ${roster.str_grf_name} grf includes <em>both</em> vehicles <em>and</em> railtypes. This is unusual; it's more common to split up vehicles and railtypes to separate grfs.
-                        However this puts more work on the player to find an appropriate grf, if they're even aware they need to.
-                        ${roster.str_grf_name} provides <em>batteries-are-included</em> gameplay by including the appropriate railtypes.
-                    </li>
-                    <li>
-                        Players can turn off the included ${roster.str_grf_name} railtypes if they wish to via parameter setting
-                        (does not affect RAIL and ELRL which are provided as default by OpenTTD).
-                    </li>
-                    <li>
-                        ${roster.str_grf_name} uses the Iron Horse schema for vehicle track_type property (which sets the vehicle railtype).
-                        This schema makes it possible for railtype authors to detect different ${roster.str_grf_name} vehicle types and handle them as they see fit.
-                        Meanwhile the vehicles will fall back to more common railtypes if the specific ${roster.str_grf_name} labels are not available.
-                    </li>
-                </ol>
-                <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
-                    <tal:railtype_mapping repeat="railtype_mapping global_constants.base_track_type_to_railtype_mapping.items()">
-                        <!--!
-                            note the remapping of the railtype label to the first value from the list of types, this will match the vehicle which does the same
-                            we discard the base_track_type values which are internal to Iron Horse compile, and instead set track_type and RTT to real labels
-                        -->
-                        <tr>
-                            <th>${railtype_mapping[0]}</th>
-                            <td>${railtype_mapping[1][0]}</td>
-                            <td>${','.join('"' + i + '"' for i in railtype_mapping[1])}</td>
-                        </tr>
-                    </tal:railtype_mapping>
-                </table>
-                <h4>${roster.str_grf_name} railtype scheme details / tips for railtype authors</h4>
-                <p>Railtype labels are 4 chars, composed from the following valid characters: <code>a-z, A-Z, 0-9, _</code>.</p>
-                <p>${roster.str_grf_name} labels, characters 1 and 2 are always <code>IH</code></p>
-                <p>Character 3 represents a general 'class' of vehicle</p>
-                <ul>
-                    <li><code>A</code> vanilla rail vehicle, non-electric, suitable for <code>RAIL</code> and similar railtypes</li>
-                    <li><code>B</code> vanilla rail vehicle, electric, <!--! (no subtype) --> suitable for <code>ELRL</code> and similar railtypes</li>
-                    <li><code>C</code> vanilla metro vehicle, requires dedicated metro lines, suitable for <code>MTRO</code> and similar railtypes, metro is always assumed to be electrified via 3 or 4 rail system</li>
-                    <li><code>D</code> vanilla narrow gauge vehicle, non-electric, suitable for <code>NGRL</code> and similar railtypes</li>
-                    <li><code>E</code> vanilla narrow gauge vehicle, electric, suitable for <code>ELNG</code> and similar railtypes</li>
-                    <!--!
-                        electrification subtypes e.g. AC, DC, would be added as explicit classes in char 3, then appropriate fallbacks to B for games where the subtype is not used
-                        multi-voltage locomotives would be a specific class representing the combined voltages they're capable of,
-                        with the cross-compatibility managed by a hidden railtype
-                    -->
-                    <li>&hellip;more 'classes' added as needed</li>
-                </ul>
-                <p>Character 4 represents modifiers to the class, and is used sparingly. Modifiers cannot be combined, except by adding a new character specifically for the combined properties.</p>
-                <ul>
-                    <li><code>_</code> no modifier used (default)</li>
-                    <li><code>A</code> can be used on high speed lines (LGV), has suitable brakes, signalling equipment etc.</li>
-                    <!--!<li><code>B</code> suitable for light or poorly maintained tracks</li>-->
-                    <!--!<li><code>C</code> requires a route cleared for tall vehicles</li>-->
-                    <li>&hellip;more modifiers added as needed</li>
-                </ul>
-                <p>
-                    The uses of labels specific to ${roster.str_grf_name} means that railtype authors can control precisely how they wish to map ${roster.str_grf_name} vehicles to railtypes in their railtype grf.  This is done using the railtypes property <code>alternative_railtype_list</code>.
-                </p>
-                <p>
-                    For some vehicle types, ${roster.str_grf_name} may also set labels from the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme">Standardised Railtype Scheme</a> <strong>as fallbacks only</strong>.
-                    ${roster.str_grf_name} is only <strong>partially compliant</strong> with the Standardised Railtype Scheme, and uses the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme#.22Innsbruck_2022_Convention.22_for_partial_compliance">"Innsbruck 2022 Convention"</a> where axle load classes are treated as "undefined".
-                </p>
-            </section>
-            <hr />
-            <br />
+                <section id="compiling">
+                    <h3>Compiling</h3>
+                    <p>
+                       ${roster.str_grf_name} source includes a makefile for convenient building.
+                       This requires '<a href="https://en.wikipedia.org/wiki/Make_(software)">Make</a>',
+                       typically provided by the ports tree on Linux / Unix, <a href="http://www.mingw.org/wiki/msys">MSYS</a>  on Windows
+                       and <a href="https://developer.apple.com/xcode/">Xcode</a> on macOS.
+                    </p>
+                    <p>Other dependencies include:</p>
+                    <ul>
+                        <li><a href="https://www.python.org/">Python 3.8+</a></li>
+                        <li><a href="https://newgrf-specs.tt-wiki.net/wiki/NML:Getting_started">NML 0.6.0 or newer</a> (NewGRF compiler)</li>
+                        <li><a href="http://chameleon.readthedocs.org/en/latest/">Chameleon</a> (Template engine)</li>
+                        <li><a href="https://pypi.python.org/pypi/Markdown">Markdown</a> (Markdown text format parser)</li>
+                    </ul>
+                </section>
+                <hr />
+                <br />
 
-            <section id="vehicle_properties">
-                <h3>Vehicle properties for ${len(consists)} trains</h3>
-                <p></p>
-                <tal:subclasses repeat="subclass doc_helper.get_vehicles_by_subclass(consists)">
-                    <tal:props_for_subclass define="props_to_print doc_helper.get_props_to_print_in_code_reference(subclass)">
-                        <h4 id="${subclass['name']}">${subclass['name']} <small>Subclass</small></h4>
-                        <p>${subclass['doc']}</p>
-                        <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
-                            <thead>
-                                <tr>
-                                    <th style="background-color:#eee; vertical-align:top">Sprite</th>
-                                    <tal:props repeat="prop props_to_print[subclass['name']]">
-                                        <th style="background-color:#eee; vertical-align:top">${prop}</th>
-                                    </tal:props>
-                                    <th style="background-color:#eee; vertical-align:top">Sprites Complete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tal:vehicles repeat="consist subclass['vehicles']">
-                                    <tr>
-                                        <td class="vehicle-image"
-                                            style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-                                            <img src="static/img/${consist.id}_red_white.png"
-                                                 width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
-                                                 height="${2 * doc_helper.buy_menu_sprite_height}" />
-                                        </td>
-                                        <tal:props repeat="prop_name props_to_print[subclass['name']]">
-                                            <td>${props_to_print[consist][prop_name]}</td>
-                                        </tal:props>
-                                        <td>
-                                            ${structure: "&amp;#10004;" if consist.sprites_complete else "&lt;span style='color:red;'&gt;Nope&lt;/span&gt;"}
-                                        </td>
-                                    </tr>
-                                </tal:vehicles>
-                            </tbody>
-                        </table>
-                        <br />
-                    </tal:props_for_subclass>
-                </tal:subclasses>
-            </section>
-            <hr />
-            <br />
-
-            <section id="numeric_ids">
-                <h3>Numeric IDs in use</h3>
-                <p class="muted">
-                    Trailing parts of articulated vehicles are not listed here.
-                    All leading vehicle use an ID with a multiple of 10, and articulated trailing vehicles automatically increment in 1 from that ID.
-                    For example, a steam locomotive with ID 10 for the lead part would use ID 11 for the tender.
-                    The maximum number of unique trailing parts is 9.
-                </p>
-                <table class="table table-striped table-condensed table-bordered tablesorter">
-                    <thead>
-                        <th>Numeric ID</th>
-                        <th>ID</th>
-                        <th>Title</th>
-                    </thead>
-                    <tbody>
-                        <tal:consists repeat="consist sorted(consists, key=doc_helper.get_base_numeric_id)">
+                <section id="railtypes_and_fallbacks">
+                    <h3>Railtypes and fallbacks</h3>
+                    <p>${roster.str_grf_name} uses a very specific approach to railtypes.</p>
+                    <ol>
+                        <li>
+                            The ${roster.str_grf_name} grf includes <em>both</em> vehicles <em>and</em> railtypes. This is unusual; it's more common to split up vehicles and railtypes to separate grfs.
+                            However this puts more work on the player to find an appropriate grf, if they're even aware they need to.
+                            ${roster.str_grf_name} provides <em>batteries-are-included</em> gameplay by including the appropriate railtypes.
+                        </li>
+                        <li>
+                            Players can turn off the included ${roster.str_grf_name} railtypes if they wish to via parameter setting
+                            (does not affect RAIL and ELRL which are provided as default by OpenTTD).
+                        </li>
+                        <li>
+                            ${roster.str_grf_name} uses the Iron Horse schema for vehicle track_type property (which sets the vehicle railtype).
+                            This schema makes it possible for railtype authors to detect different ${roster.str_grf_name} vehicle types and handle them as they see fit.
+                            Meanwhile the vehicles will fall back to more common railtypes if the specific ${roster.str_grf_name} labels are not available.
+                        </li>
+                    </ol>
+                    <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
+                        <tal:railtype_mapping repeat="railtype_mapping global_constants.base_track_type_to_railtype_mapping.items()">
+                            <!--!
+                                note the remapping of the railtype label to the first value from the list of types, this will match the vehicle which does the same
+                                we discard the base_track_type values which are internal to Iron Horse compile, and instead set track_type and RTT to real labels
+                            -->
                             <tr>
-                                <td>${consist.base_numeric_id}</td>
-                                <td>${consist.id}</td>
-                                <td>${doc_helper.unpack_name_string(consist)}</td>
+                                <th>${railtype_mapping[0]}</th>
+                                <td>${railtype_mapping[1][0]}</td>
+                                <td>${','.join('"' + i + '"' for i in railtype_mapping[1])}</td>
                             </tr>
-                        </tal:consists>
-                    </tbody>
-                </table>
-            </section>
+                        </tal:railtype_mapping>
+                    </table>
+                    <h4>${roster.str_grf_name} railtype scheme details / tips for railtype authors</h4>
+                    <p>Railtype labels are 4 chars, composed from the following valid characters: <code>a-z, A-Z, 0-9, _</code>.</p>
+                    <p>${roster.str_grf_name} labels, characters 1 and 2 are always <code>IH</code></p>
+                    <p>Character 3 represents a general 'class' of vehicle</p>
+                    <ul>
+                        <li><code>A</code> vanilla rail vehicle, non-electric, suitable for <code>RAIL</code> and similar railtypes</li>
+                        <li><code>B</code> vanilla rail vehicle, electric, <!--! (no subtype) --> suitable for <code>ELRL</code> and similar railtypes</li>
+                        <li><code>C</code> vanilla metro vehicle, requires dedicated metro lines, suitable for <code>MTRO</code> and similar railtypes, metro is always assumed to be electrified via 3 or 4 rail system</li>
+                        <li><code>D</code> vanilla narrow gauge vehicle, non-electric, suitable for <code>NGRL</code> and similar railtypes</li>
+                        <li><code>E</code> vanilla narrow gauge vehicle, electric, suitable for <code>ELNG</code> and similar railtypes</li>
+                        <!--!
+                            electrification subtypes e.g. AC, DC, would be added as explicit classes in char 3, then appropriate fallbacks to B for games where the subtype is not used
+                            multi-voltage locomotives would be a specific class representing the combined voltages they're capable of,
+                            with the cross-compatibility managed by a hidden railtype
+                        -->
+                        <li>&hellip;more 'classes' added as needed</li>
+                    </ul>
+                    <p>Character 4 represents modifiers to the class, and is used sparingly. Modifiers cannot be combined, except by adding a new character specifically for the combined properties.</p>
+                    <ul>
+                        <li><code>_</code> no modifier used (default)</li>
+                        <li><code>A</code> can be used on high speed lines (LGV), has suitable brakes, signalling equipment etc.</li>
+                        <!--!<li><code>B</code> suitable for light or poorly maintained tracks</li>-->
+                        <!--!<li><code>C</code> requires a route cleared for tall vehicles</li>-->
+                        <li>&hellip;more modifiers added as needed</li>
+                    </ul>
+                    <p>
+                        The uses of labels specific to ${roster.str_grf_name} means that railtype authors can control precisely how they wish to map ${roster.str_grf_name} vehicles to railtypes in their railtype grf.  This is done using the railtypes property <code>alternative_railtype_list</code>.
+                    </p>
+                    <p>
+                        For some vehicle types, ${roster.str_grf_name} may also set labels from the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme">Standardised Railtype Scheme</a> <strong>as fallbacks only</strong>.
+                        ${roster.str_grf_name} is only <strong>partially compliant</strong> with the Standardised Railtype Scheme, and uses the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme#.22Innsbruck_2022_Convention.22_for_partial_compliance">"Innsbruck 2022 Convention"</a> where axle load classes are treated as "undefined".
+                    </p>
+                </section>
+                <hr />
+                <br />
 
+                <section id="vehicle_properties">
+                    <h3>Vehicle properties for ${len(consists)} trains</h3>
+                    <p></p>
+                    <tal:subclasses repeat="subclass doc_helper.get_vehicles_by_subclass(consists)">
+                        <tal:props_for_subclass define="props_to_print doc_helper.get_props_to_print_in_code_reference(subclass)">
+                            <h4 id="${subclass['name']}">${subclass['name']} <small>Subclass</small></h4>
+                            <p>${subclass['doc']}</p>
+                            <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
+                                <thead>
+                                    <tr>
+                                        <th style="background-color:#eee; vertical-align:top">Sprite</th>
+                                        <tal:props repeat="prop props_to_print[subclass['name']]">
+                                            <th style="background-color:#eee; vertical-align:top">${prop}</th>
+                                        </tal:props>
+                                        <th style="background-color:#eee; vertical-align:top">Sprites Complete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tal:vehicles repeat="consist subclass['vehicles']">
+                                        <tr>
+                                            <td class="vehicle-image"
+                                                style="min-width:${2 * doc_helper.buy_menu_sprite_max_width}px;">
+                                                <img src="static/img/${consist.id}_red_white.png"
+                                                     width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                            </td>
+                                            <tal:props repeat="prop_name props_to_print[subclass['name']]">
+                                                <td>${props_to_print[consist][prop_name]}</td>
+                                            </tal:props>
+                                            <td>
+                                                ${structure: "&amp;#10004;" if consist.sprites_complete else "&lt;span style='color:red;'&gt;Nope&lt;/span&gt;"}
+                                            </td>
+                                        </tr>
+                                    </tal:vehicles>
+                                </tbody>
+                            </table>
+                            <br />
+                        </tal:props_for_subclass>
+                    </tal:subclasses>
+                </section>
+                <hr />
+                <br />
+
+                <section id="numeric_ids">
+                    <h3>Numeric IDs in use</h3>
+                    <p class="muted">
+                        Trailing parts of articulated vehicles are not listed here.
+                        All leading vehicle use an ID with a multiple of 10, and articulated trailing vehicles automatically increment in 1 from that ID.
+                        For example, a steam locomotive with ID 10 for the lead part would use ID 11 for the tender.
+                        The maximum number of unique trailing parts is 9.
+                    </p>
+                    <table class="table table-striped table-condensed table-bordered tablesorter">
+                        <thead>
+                            <th>Numeric ID</th>
+                            <th>ID</th>
+                            <th>Title</th>
+                        </thead>
+                        <tbody>
+                            <tal:consists repeat="consist sorted(consists, key=doc_helper.get_base_numeric_id)">
+                                <tr>
+                                    <td>${consist.base_numeric_id}</td>
+                                    <td>${consist.id}</td>
+                                    <td>${doc_helper.unpack_name_string(consist)}</td>
+                                </tr>
+                            </tal:consists>
+                        </tbody>
+                    </table>
+                </section>
+
+            </div>
         </div>
     </div>
 </div>
