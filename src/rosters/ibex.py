@@ -2,6 +2,29 @@ import global_constants
 
 from roster import Roster
 
+from vehicles import bls_freight_4b
+from vehicles import emu_ibex_2
+from vehicles import emu_ibex_3
+from vehicles import emu_ibex_4
+from vehicles import emu_ibex_5
+from vehicles import emu_ibex_6
+from vehicles import sbb_freight_2
+from vehicles import sbb_freight_2d
+from vehicles import sbb_freight_3b
+from vehicles import sbb_freight_4
+from vehicles import sbb_freight_5
+from vehicles import sbb_gp_2
+from vehicles import sbb_gp_2b
+from vehicles import sbb_gp_2c
+from vehicles import sbb_gp_3
+from vehicles import sbb_gp_3b
+from vehicles import sbb_gp_3c
+from vehicles import sbb_gp_4
+from vehicles import sbb_gp_5
+from vehicles import sbb_gp_5b
+from vehicles import sbb_gp_5c
+from vehicles import sbb_gp_6
+from vehicles import sbb_gp_6b
 from vehicles import snowplough_ibex_gen_2
 from vehicles import trient
 
@@ -16,7 +39,7 @@ def main():
         # ELRL, ELNG is mapped to RAIL, NG etc
         # default intro dates per generation, can be over-ridden if needed by setting intro_date kw on consist
         intro_dates={
-            "RAIL": [1860, 1900, 1930, 1960, 1990, 2020],
+            "RAIL": [1885, 1912, 1939, 1966, 1993, 2020],
             "METRO": [1900, 1950, 2000],
             "NG": [1860, 1905, 1950, 2000],
         },
@@ -197,13 +220,30 @@ def main():
             # express (electro-diesels with non-standard position in power/length tree)
             # foo,
             # express
-            # foo,
+            sbb_gp_2,
+            sbb_gp_2b,
+            sbb_gp_2c,
+            sbb_gp_3,
+            sbb_gp_3b,
+            sbb_gp_3c,
+            sbb_gp_4,
+            sbb_gp_5,
+            sbb_gp_5b,
+            sbb_gp_5c,
+            sbb_gp_6,
+            sbb_gp_6b,
             # driving cab cars
             # foo,
             # branch freight
             # foo,
             # freight
             trient,
+            sbb_freight_2,
+            sbb_freight_2d,
+            sbb_freight_3b,
+            sbb_freight_4,
+            bls_freight_4b,
+            sbb_freight_5,
             # joker engines / snowploughs
             snowplough_ibex_gen_2,
             # cargo sprinter
@@ -215,7 +255,11 @@ def main():
             # diesel railcars
             # foo,
             # electric railcars
-            # foo,
+            emu_ibex_2,
+            emu_ibex_3,
+            emu_ibex_4,
+            emu_ibex_5,
+            emu_ibex_6,
             # express electric railcars
             # foo,
             # high speed pax
