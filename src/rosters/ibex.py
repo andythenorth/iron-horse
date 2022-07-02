@@ -23,6 +23,7 @@ from vehicles import sbb_gp_4
 from vehicles import sbb_gp_5
 from vehicles import sbb_gp_5b
 from vehicles import sbb_gp_5c
+from vehicles import sbb_gp_5d
 from vehicles import sbb_gp_6
 from vehicles import sbb_gp_6b
 from vehicles import snowplough_ibex_gen_2
@@ -59,14 +60,13 @@ def main():
                 ],
                 # match standard, except gen 6
                 "suburban": [45, 45, 60, 75, 87, 99],
-                # smaller steps in gen 5 and 6, balances against faster HSTs
                 "express": [
-                    60,
+                    55,
                     75,
-                    90,
-                    105,
-                    115,
+                    87,
+                    100,
                     125,
+                    140,
                 ],
                 "hst": [0, 0, 0, 112, 125, 125],
                 "hst_on_lgv": [0, 0, 0, 112, 125, 140],
@@ -230,6 +230,7 @@ def main():
             sbb_gp_5,
             sbb_gp_5b,
             sbb_gp_5c,
+            sbb_gp_5d,
             sbb_gp_6,
             sbb_gp_6b,
             # driving cab cars
