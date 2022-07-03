@@ -3,11 +3,27 @@ import global_constants
 from roster import Roster
 
 from vehicles import bls_freight_4b
+from vehicles import db_103
+from vehicles import db_111
+from vehicles import db_111_upgrade
+from vehicles import db_146
 from vehicles import emu_ibex_2
 from vehicles import emu_ibex_3
 from vehicles import emu_ibex_4
 from vehicles import emu_ibex_5
 from vehicles import emu_ibex_6
+from vehicles import high_power_railcar_2
+from vehicles import high_power_railcar_3
+from vehicles import high_power_railcar_4
+from vehicles import high_power_railcar_5
+from vehicles import obb_1010
+from vehicles import obb_1012
+from vehicles import obb_1042
+from vehicles import obb_1142
+from vehicles import obb_1044
+from vehicles import re_450
+from vehicles import re_460
+from vehicles import re_465
 from vehicles import sbb_freight_2
 from vehicles import sbb_freight_2d
 from vehicles import sbb_freight_3b
@@ -24,8 +40,10 @@ from vehicles import sbb_gp_5
 from vehicles import sbb_gp_5b
 from vehicles import sbb_gp_5c
 from vehicles import sbb_gp_5d
+from vehicles import sbb_gp_5e
 from vehicles import sbb_gp_6
 from vehicles import sbb_gp_6b
+from vehicles import sbb_gp_6c
 from vehicles import snowplough_ibex_gen_2
 from vehicles import trient
 
@@ -226,13 +244,32 @@ def main():
             sbb_gp_3,
             sbb_gp_3b,
             sbb_gp_3c,
+            obb_1010,
             sbb_gp_4,
+            obb_1044,
+            obb_1042,
+            db_103,
             sbb_gp_5,
             sbb_gp_5b,
+            re_450,
+            re_460,
+            db_111,
             sbb_gp_5c,
             sbb_gp_5d,
+            sbb_gp_5e,
+            db_111_upgrade,
+            obb_1142,
+            obb_1012,
             sbb_gp_6,
             sbb_gp_6b,
+            db_146,
+            re_465,
+            sbb_gp_6c,
+            # high powered railcars
+            high_power_railcar_2,
+            high_power_railcar_3,
+            high_power_railcar_4,
+            high_power_railcar_5,
             # driving cab cars
             # foo,
             # branch freight

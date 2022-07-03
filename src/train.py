@@ -483,7 +483,7 @@ class Consist(object):
             return self.get_speed_by_class(self.speed_class)
         elif self.role:
             # first check for express roles, which are determined by multiple role groups
-            for role_group_mapping_key in ["express", "driving_cab", "express_railcar"]:
+            for role_group_mapping_key in ["express", "driving_cab", "express_railcar", "high_power_railcar"]:
                 group_roles = global_constants.role_group_mapping[
                     role_group_mapping_key
                 ]

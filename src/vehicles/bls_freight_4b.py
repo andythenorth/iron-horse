@@ -9,7 +9,7 @@ def main(roster_id):
         name="BLS Ae 8/8",
         role="super_heavy_freight",
         role_child_branch_num=-2,
-        power=3700,
+        power=8700,
         gen=4,
         pantograph_type="diamond-double",
         #intro_date_offset=-13,  # introduce earlier than gen epoch by design

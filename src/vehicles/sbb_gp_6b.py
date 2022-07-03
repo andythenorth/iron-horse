@@ -7,9 +7,9 @@ def main(roster_id):
         roster_id=roster_id,
         id="sbb_gp_6b",
         base_numeric_id=8950,
-        name="Re 475 !! Multi-system",
-        role="super_heavy_express",
-        role_child_branch_num=3,
+        name="BLS Re 475 !! Multi-system",
+        role="super_heavy_freight",
+        role_child_branch_num=-3,
         power=8500,
         random_reverse=True,
         gen=6,
@@ -32,6 +32,6 @@ def main(roster_id):
     consist.description = (
         """ """
     )
-    consist.foamer_facts = """SBB 475"""
+    consist.foamer_facts = """BLS Re 475"""
 
     return consist

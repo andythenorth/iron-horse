@@ -21,6 +21,7 @@
                     <tal:role_group define="intro_dates roster.intro_dates[base_track_type_and_label[0]]"
                                     repeat="role_group tech_tree[base_track_type_and_label]">
                         <tal:descriptions_rail condition="base_track_type_and_label[0]=='RAIL'">
+                        ${role_group}
                             <tal:descriptions switch="role_group">
                                 <div tal:case="'express'">
                                     <h4>General Purpose / Express Engines</h4>
@@ -63,6 +64,13 @@
                                     <ul>
                                         <li>These run at express train speeds, and have more power but lower capacity than standard railcars</li>
                                         <li>Express railcars can be combined as needed</li>
+                                    </ul>
+                                </div>
+                                <div tal:case="'high_power_railcar'">
+                                    <h4>High Power Railcars</h4>
+                                    <ul>
+                                        <li>Single-unit railcars with passenger or mail capacity.</li>
+                                        <li>With power and speed equivalent to medium-power engines, these railcars can haul reasonably-sized trains.</li>
                                     </ul>
                                 </div>
                                 <div tal:case="'hst'">
@@ -193,6 +201,7 @@
                                                                         <small>${consist.speed} mph</small>
 
                                                                         <small>${consist.power_speed_ratio}i</small>
+                                                                        <small>branch: ${consist.role_child_branch_num}</small>
                                                                     </span>
                                                                 </div>
                                                                 <div tal:condition="consist.replacement_consist is not None"

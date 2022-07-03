@@ -157,7 +157,13 @@ class Roster(object):
 
     def validate_vehicles(self, numeric_id_defender):
         # has to be explicitly called after all vehicles and vehicle units are registered to the roster
+
+        # this structure is used to test for duplicate ids
+        consist_ids = [consist.id for consist in self.consists_in_buy_menu_order]
+
         for consist in self.consists_in_buy_menu_order:
+            if consist_ids.count(consist.id) > 1:
+                raise BaseException("Error: vehicle id '" + consist.id + "' is defined more than once - to fix, search src for the duplicate")
             if len(consist.units) == 0:
                 raise BaseException("Error: " + consist.id + " has no units defined")
             elif len(consist.units) == 1:
