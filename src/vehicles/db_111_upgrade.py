@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="db_111_upgrade",
         base_numeric_id=11930,
-        name="DB 111 (upgrade)",
+        name="DB 111 (upgrade) or 143/243",
         role="heavy_express",
         role_child_branch_num=2,
         power=5400,
@@ -31,6 +31,6 @@ def main(roster_id):
     consist.description = (
         """ """
     )
-    consist.foamer_facts = """DB 111 upgrade"""
+    consist.foamer_facts = """DB 111 upgrade - or a 143/243?"""
 
     return consist

@@ -260,6 +260,10 @@ class Consist(object):
         # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
         # JOKERS: note that not all jokers have to be in the jokers group here, they can be in other groups if intro dates need to sync
+        print("intro_date_days_offset - is there a better way?")
+        # !! ^ this is starting to look stupid and be a maintenance headache when adding branches or roles
+        # for starters, all jokers are negative
+        # surely there's a way to define core, and non-core that's simpler?
         role_to_role_groups_mapping = {
             "express_core": {
                 "express": [1],
@@ -270,7 +274,7 @@ class Consist(object):
                 "branch_express": [1, 2, -2],
                 "express": [2],
                 "heavy_express": [2, 3, 4, 5],
-                "super_heavy_express": [2, 3],
+                "super_heavy_express": [2, 3, 4, 5],
                 "express_pax_railcar": [-1],
             },
             "driving_cab": {
@@ -295,7 +299,7 @@ class Consist(object):
                 "branch_express": [-1],
                 "express": [-1],
                 "heavy_express": [-1, -2, -3, -4],
-                "super_heavy_express": [-1, -2, -3],
+                "super_heavy_express": [-1, -2, -3, -4, -5],
                 "freight": [-1, -2],
                 "branch_freight": [-1],
                 "heavy_freight": [-1, -2, -3, -4],
@@ -307,6 +311,7 @@ class Consist(object):
                 "mail_railcar": [1, 2, -1, -2],
                 "pax_railbus": [1, -1],
                 "pax_railcar": [1, 2],
+                "high_power_railcar": [1]
             },
             "very_high_speed": {"very_high_speed": [1, 2, 3]},
             "universal": {"universal": [1, 2]},

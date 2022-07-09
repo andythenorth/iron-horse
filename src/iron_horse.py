@@ -198,6 +198,7 @@ class RosterManager(list):
                 "express",
                 "driving_cab",
                 "express_railcar",
+                "high_power_railcar",
             ]:
                 group_roles = global_constants.role_group_mapping[
                     role_group_mapping_key

@@ -3,27 +3,46 @@ import global_constants
 from roster import Roster
 
 from vehicles import bls_freight_4b
+from vehicles import bls_ae_4_4
 from vehicles import db_103
 from vehicles import db_111
 from vehicles import db_111_upgrade
 from vehicles import db_146
+from vehicles import db_e_410
+from vehicles import dr_e_21_51
+from vehicles import drg_e_16
 from vehicles import emu_ibex_2
 from vehicles import emu_ibex_3
 from vehicles import emu_ibex_4
 from vehicles import emu_ibex_5
 from vehicles import emu_ibex_6
+from vehicles import fs_e412
 from vehicles import high_power_railcar_2
 from vehicles import high_power_railcar_3
 from vehicles import high_power_railcar_4
 from vehicles import high_power_railcar_5
 from vehicles import obb_1010
 from vehicles import obb_1012
+from vehicles import obb_1014
 from vehicles import obb_1042
-from vehicles import obb_1142
+from vehicles import obb_1040
+from vehicles import obb_1041
 from vehicles import obb_1044
+from vehicles import obb_1050
+from vehicles import obb_1141
+from vehicles import obb_1142
+from vehicles import obb_1163
+from vehicles import obb_1170_2
+from vehicles import obb_1570
+from vehicles import obb_e18
+from vehicles import re_420
+from vehicles import re_420_lion
 from vehicles import re_450
 from vehicles import re_460
 from vehicles import re_465
+from vehicles import saas_be_4_4
+from vehicles import sbb_eem_923
+from vehicles import sbb_fb_4_4
 from vehicles import sbb_freight_2
 from vehicles import sbb_freight_2d
 from vehicles import sbb_freight_3b
@@ -32,21 +51,16 @@ from vehicles import sbb_freight_5
 from vehicles import sbb_gp_2
 from vehicles import sbb_gp_2b
 from vehicles import sbb_gp_2c
-from vehicles import sbb_gp_3
-from vehicles import sbb_gp_3b
+from vehicles import sbb_ae_4_6
 from vehicles import sbb_gp_3c
-from vehicles import sbb_gp_4
-from vehicles import sbb_gp_5
-from vehicles import sbb_gp_5b
 from vehicles import sbb_gp_5c
-from vehicles import sbb_gp_5d
 from vehicles import sbb_gp_5e
-from vehicles import sbb_gp_6
 from vehicles import sbb_gp_6b
 from vehicles import sbb_gp_6c
+from vehicles import sbb_re_4_4_ii
 from vehicles import snowplough_ibex_gen_2
 from vehicles import trient
-
+from vehicles import vectron_dual_mode
 
 def main():
     return Roster(
@@ -238,33 +252,46 @@ def main():
             # express (electro-diesels with non-standard position in power/length tree)
             # foo,
             # express
+            sbb_fb_4_4,
+            saas_be_4_4,
+            obb_1040,
+            sbb_eem_923,
             sbb_gp_2,
             sbb_gp_2b,
-            sbb_gp_2c,
-            sbb_gp_3,
-            sbb_gp_3b,
+            obb_1570,
+            obb_1170_2,
+            sbb_ae_4_6,
+            dr_e_21_51,
             sbb_gp_3c,
+            obb_1163,
             obb_1010,
-            sbb_gp_4,
+            obb_1041,
+            obb_1141,
+            vectron_dual_mode,
+            sbb_re_4_4_ii,
             obb_1044,
+            drg_e_16,
+            obb_e18,
             obb_1042,
             db_103,
-            sbb_gp_5,
-            sbb_gp_5b,
+            re_420,
+            obb_1050,
+            db_e_410,
             re_450,
             re_460,
             db_111,
             sbb_gp_5c,
-            sbb_gp_5d,
             sbb_gp_5e,
             db_111_upgrade,
             obb_1142,
             obb_1012,
-            sbb_gp_6,
+            obb_1014,
             sbb_gp_6b,
             db_146,
-            re_465,
+            re_420_lion,
+            fs_e412,
             sbb_gp_6c,
+            re_465,
             # high powered railcars
             high_power_railcar_2,
             high_power_railcar_3,
@@ -273,12 +300,13 @@ def main():
             # driving cab cars
             # foo,
             # branch freight
-            # foo,
+            sbb_gp_2c,
             # freight
             trient,
             sbb_freight_2,
             sbb_freight_2d,
             sbb_freight_3b,
+            bls_ae_4_4,
             sbb_freight_4,
             bls_freight_4b,
             sbb_freight_5,

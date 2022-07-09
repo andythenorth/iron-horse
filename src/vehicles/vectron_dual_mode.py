@@ -1,20 +1,23 @@
-from train import EngineConsist, ElectricEngineUnit
+from train import EngineConsist, ElectroDieselEngineUnit
 
-# multi-system !!
 
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="sbb_gp_6b",
-        base_numeric_id=8950,
-        name="BLS Re 475 !! Multi-system",
-        role="super_heavy_freight",
-        role_child_branch_num=-2,
-        power=8500,
+        id="vectron_dual_mode",
+        base_numeric_id=13120,
+        name="Vectron Dual-Mode",
+        role="express",
+        role_child_branch_num=1,
+        power=2600,
+        power_by_railtype={
+            "RAIL": 2400,
+            "ELRL": 3200,
+        },  # IRL 2600 HP at rail for both modes, but for gameplay what's the point of electric if not more powerful?
         random_reverse=True,
         gen=6,
         pantograph_type="diamond-double",
-        #intro_date_offset=5,  # introduce later than gen epoch by design
+        intro_date_offset=9,  # introduce later than gen epoch by design
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         default_livery_extra_docs_examples=[
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
@@ -26,12 +29,12 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=ElectricEngineUnit, weight=105, vehicle_length=8, spriterow_num=0
+        type=ElectroDieselEngineUnit, weight=105, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = (
         """ """
     )
-    consist.foamer_facts = """BLS Re 475"""
+    consist.foamer_facts = """Siemens Vectron Dual-Mode"""
 
     return consist
