@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=13990,
         name="Zebedee",
         role="super_heavy_express",
-        role_child_branch_num=-1,  # it's a joker, tried it as super heavy express 1, the power progression and dates are all wrong for that
+        role_child_branch_num=-3,  # it's a joker, tried it as super heavy express 1, the power progression and dates are all wrong for that
         power=4000,  # bit unsure about power on this one, a larger electric is wanted, but don't want to power creep gen 4 too much
         random_reverse=True,
         gen=4,

@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=14550,
         name="Hector",  # the name is because BR 86 222 and 86 223 reasons
         role="super_heavy_express",
-        role_child_branch_num=1,
+        role_child_branch_num=3,
         power=4040,  # such realism, per wikipedia-is-definitely-true
         random_reverse=True,
         gen=6,

@@ -132,7 +132,7 @@ role_group_mapping = OrderedDict(
     [
         (
             "express",
-            ["branch_express", "express", "heavy_express", "super_heavy_express"],
+            ["branch_express", "express", "heavy_express", "super_heavy_express", "ultra_heavy_express"],
         ),
         (
             "high_power_railcar",

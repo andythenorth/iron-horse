@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9430,
         name="Hurly Burly",
         role="super_heavy_express",
-        role_child_branch_num=1,
+        role_child_branch_num=3,
         power=1800,
         tractive_effort_coefficient=0.25,
         random_reverse=True,
