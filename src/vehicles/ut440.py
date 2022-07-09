@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9480,
         name="UT440",
         power=900,
-        intro_date=2011,
+        intro_year=2011,
     )
 
     consist.add_unit(

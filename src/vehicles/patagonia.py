@@ -9,7 +9,7 @@ def main(roster_id):
         name="Patagonia",
         base_track_type="NG",
         power=500,
-        intro_date=1960,
+        intro_year=1960,
     )
 
     consist.add_unit(

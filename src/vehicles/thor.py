@@ -13,7 +13,7 @@ def main(roster_id):
         power=600,
         tractive_effort_coefficient=0.3,
         gen=1,
-        intro_date_offset=15,
+        intro_year_offset=15,
         random_reverse=True,
         sprites_complete=True,
     )

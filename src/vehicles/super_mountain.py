@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9550,
         name="4-8-4 Super Mountain",
         power=2100,
-        intro_date=1935,
+        intro_year=1935,
     )
 
     consist.add_unit(

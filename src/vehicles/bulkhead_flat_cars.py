@@ -10,7 +10,7 @@ def main():
         gen=2,
         subtype="U",
         base_track_type="NG",
-        intro_date_offset=20,  # these are pushed right back to line up with standard gauge versions
+        intro_year_offset=20,  # these are pushed right back to line up with standard gauge versions
         sprites_complete=True,
     )
 

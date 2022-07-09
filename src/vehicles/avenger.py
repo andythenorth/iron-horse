@@ -13,7 +13,7 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         pantograph_type="z-shaped-single",
-        intro_date_offset=-2,  # introduce slightly earlier than gen epoch by design
+        intro_year_offset=-2,  # introduce slightly earlier than gen epoch by design
         alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),

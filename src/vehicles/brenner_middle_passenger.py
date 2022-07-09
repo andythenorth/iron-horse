@@ -12,7 +12,7 @@ def main(roster_id):
         pantograph_type="z-shaped-single-with-base",
         power=0,  # set power 0, when attached to correct cab, cab power will be increased
         gen=6,
-        intro_date_offset=-3,  # introduce earlier than gen epoch by design
+        intro_year_offset=-3,  # introduce earlier than gen epoch by design
         sprites_complete=True,
     )
 

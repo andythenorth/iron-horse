@@ -16,7 +16,7 @@ def main(roster_id):
         dual_headed=True,
         power=1650,  # matched to Griffon, Ultra Shoebox
         gen=6,
-        intro_date_offset=-3,  # introduce earlier than gen epoch by design
+        intro_year_offset=-3,  # introduce earlier than gen epoch by design
         sprites_complete=True,
     )
 

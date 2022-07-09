@@ -12,7 +12,7 @@ def main(roster_id):
         power=1950,
         random_reverse=True,
         gen=5,
-        intro_date_offset=6,  # introduce later than gen epoch by design
+        intro_year_offset=6,  # introduce later than gen epoch by design
         sprites_complete=True,
     )
 

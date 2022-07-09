@@ -12,7 +12,7 @@ def main(roster_id):
         power=8700,
         gen=4,
         pantograph_type="diamond-double",
-        #intro_date_offset=-13,  # introduce earlier than gen epoch by design
+        #intro_year_offset=-13,  # introduce earlier than gen epoch by design
         sprites_complete=False,
     )
 

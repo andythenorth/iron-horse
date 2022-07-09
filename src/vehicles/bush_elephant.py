@@ -9,7 +9,7 @@ def main(roster_id):
         name="2-6-6-2 Bush Elephant",
         power=2200,
         base_track_type="NG",
-        intro_date=1915,
+        intro_year=1915,
     )
 
     consist.add_unit(

@@ -9,7 +9,7 @@ def main(roster_id):
         name="GE 289a Boxcab",
         power=1200,
         base_track_type="NG",
-        intro_date=1922,
+        intro_year=1922,
     )
 
     consist.add_unit(

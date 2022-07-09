@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=10530,
         name="Medrano",
         power=1100,
-        intro_date=2000,
+        intro_year=2000,
     )
 
     # should be 4 units, not 2

@@ -12,7 +12,7 @@ def main(roster_id):
         power=180,
         gen=4,
         # introduce early by design
-        intro_date_offset=-4,
+        intro_year_offset=-4,
         sprites_complete=True,
     )
 

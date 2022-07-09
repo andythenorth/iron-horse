@@ -14,7 +14,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.355,
         random_reverse=True,
         gen=6,
-        intro_date_offset=-4,  # let's be a little bit earlier for this one
+        intro_year_offset=-4,  # let's be a little bit earlier for this one
         fixed_run_cost_points=280,  # run cost nerf as light weight throws the cost too cheap
         sprites_complete=True,
     )

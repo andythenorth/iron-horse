@@ -14,7 +14,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.375,
         random_reverse=True,
         gen=5,
-        intro_date_offset=2,  # introduce later than gen epoch by design
+        intro_year_offset=2,  # introduce later than gen epoch by design
         sprites_complete=True,
     )
 

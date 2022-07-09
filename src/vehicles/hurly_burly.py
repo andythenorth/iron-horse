@@ -14,7 +14,7 @@ def main(roster_id):
         random_reverse=True,
         gen=2,
         pantograph_type="diamond-double",
-        intro_date_offset=5,  # introduce later than gen epoch by design
+        intro_year_offset=5,  # introduce later than gen epoch by design
         fixed_run_cost_points=180,  # substantial cost bonus for balance against same-era steam engines
         default_livery_extra_docs_examples=[
             ("COLOUR_PINK", "COLOUR_WHITE"),

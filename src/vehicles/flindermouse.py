@@ -13,7 +13,7 @@ def main(roster_id):
         speed=60,  # continues a long way into gen 3, so go faster
         gen=2,
         pantograph_type="diamond-double",
-        intro_date_offset=7,  # introduce later than gen epoch by design
+        intro_year_offset=7,  # introduce later than gen epoch by design
         sprites_complete=True,
     )
 

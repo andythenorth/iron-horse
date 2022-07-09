@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=10580,
         name="Savannah Slammer",
         power=500,
-        intro_date=1980,
+        intro_year=1980,
     )
 
     consist.add_unit(

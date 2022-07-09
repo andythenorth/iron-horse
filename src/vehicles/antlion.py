@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=10590,
         name="Antlion",
         power=350,
-        intro_date=1950,
+        intro_year=1950,
     )
 
     consist.add_unit(

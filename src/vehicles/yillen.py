@@ -12,7 +12,7 @@ def main(roster_id):
         # no replacement by design - continues to game end as unique 10/8, especially for industrial use etc
         power=2200,
         gen=4,
-        intro_date_offset=-2,  # let's be a little earlier for this one
+        intro_year_offset=-2,  # let's be a little earlier for this one
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_PINK", "COLOUR_WHITE"),

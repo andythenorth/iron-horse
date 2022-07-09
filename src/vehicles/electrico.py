@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9220,
         name="Electrico 2-B+B-2",
         power=2400,
-        intro_date=1920,
+        intro_year=1920,
     )
 
     consist.add_unit(

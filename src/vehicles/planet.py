@@ -9,7 +9,7 @@ def main(roster_id):
         name="Planet",
         base_track_type="NG",
         power=500,
-        intro_date=1950,
+        intro_year=1950,
     )
 
     consist.add_unit(

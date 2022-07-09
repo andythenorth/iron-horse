@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=14430,
         name="Driving Trailer",
         gen=4,
-        intro_date_offset=16,  # a lot later, very short lived, replaced by gen 5 quickly
+        intro_year_offset=16,  # a lot later, very short lived, replaced by gen 5 quickly
         sprites_complete=True,
     )
 

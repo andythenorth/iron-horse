@@ -11,7 +11,7 @@ def main(roster_id):
         role_child_branch_num=-2,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
         power=3300,  # drops a bit on hp/speed from previous gen, but engine weight is lower
         random_reverse=True,
-        intro_date_offset=-2,  # let's be a little bit earlier for this one
+        intro_year_offset=-2,  # let's be a little bit earlier for this one
         gen=5,
         force_caboose_families={
             "caboose_car": "pony_railfreight_1",

@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=10520,
         name="Manzana",
         power=900,
-        intro_date=1950,
+        intro_year=1950,
     )
 
     # should be 4 units not 2

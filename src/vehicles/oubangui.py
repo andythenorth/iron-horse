@@ -9,7 +9,7 @@ def main(roster_id):
         name="2-6-6-2 Oubangui",
         power=1500,
         base_track_type="NG",
-        intro_date=1920,
+        intro_year=1920,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=90, vehicle_length=8, spriterow_num=0)

@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9410,
         name="4-8-2+2-8-4 Potosi",
         power=4500,
-        intro_date=1935,
+        intro_year=1935,
     )
 
     consist.add_unit(

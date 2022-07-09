@@ -9,7 +9,7 @@ def main(roster_id):
         name="2-8-2 Baldwin",
         power=1600,
         base_track_type="NG",
-        intro_date=1920,
+        intro_year=1920,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=70, vehicle_length=7, spriterow_num=0)

@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=10630,
         name="Baby Boat",
         power=1800,
-        intro_date=1978,
+        intro_year=1978,
     )
 
     consist.add_unit(

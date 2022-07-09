@@ -12,7 +12,7 @@ def main(roster_id):
         power=1150,
         tractive_effort_coefficient=0.18,
         gen=2,
-        intro_date_offset=-3,  # introduce earlier than gen epoch by design
+        intro_year_offset=-3,  # introduce earlier than gen epoch by design
         sprites_complete=True,
     )
 

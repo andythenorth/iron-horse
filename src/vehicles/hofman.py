@@ -10,7 +10,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.27,  # dibble for game balance
         power=750,
         base_track_type="NG",
-        intro_date=1940,
+        intro_year=1940,
     )
 
     consist.add_unit(

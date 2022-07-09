@@ -13,7 +13,7 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         fixed_run_cost_points=40,  # give a bonus so this can be a genuine mixed-traffic engine
-        intro_date_offset=6,  # let's be later for this one
+        intro_year_offset=6,  # let's be later for this one
         default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE")],
         force_caboose_families={
             "caboose_car": "pony_railfreight_1",

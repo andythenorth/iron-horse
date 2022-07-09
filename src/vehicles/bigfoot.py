@@ -8,7 +8,7 @@ def main():  # roughly an SAR 91-000 class
         name="Bigfoot",
         power=900,
         base_track_type="NG",
-        intro_date=1970,
+        intro_year=1970,
     )
 
     consist.add_unit(

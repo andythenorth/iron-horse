@@ -3,7 +3,7 @@ from train import EngineConsist, DieselEngineUnit
 
 def main():  # for rest of stats, look up EMD G22CW
     consist = EngineConsist(
-        id="astarsa", base_numeric_id=9090, name="Astarsa", power=1600, intro_date=1969
+        id="astarsa", base_numeric_id=9090, name="Astarsa", power=1600, intro_year=1969
     )
 
     consist.add_unit(

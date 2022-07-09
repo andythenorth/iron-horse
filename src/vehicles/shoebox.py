@@ -14,7 +14,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=4,
-        intro_date_offset=3,  # introduce later than gen epoch by design
+        intro_year_offset=3,  # introduce later than gen epoch by design
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
             ("COLOUR_BLUE", "COLOUR_BLUE"),

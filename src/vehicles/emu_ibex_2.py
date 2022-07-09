@@ -14,7 +14,7 @@ def main(roster_id):
         easter_egg_haulage_speed_bonus=True,
         gen=2,
         sprites_complete=False,
-        #intro_date_offset=-3,
+        #intro_year_offset=-3,
     )
 
     consist.add_unit(

@@ -10,7 +10,7 @@ def main(roster_id):
         power=4500,
         # dibble up TE, modern diesels can cheat adhesion using wheel slip
         tractive_effort_coefficient=0.35,
-        intro_date=1985,
+        intro_year=1985,
     )
 
     consist.add_unit(

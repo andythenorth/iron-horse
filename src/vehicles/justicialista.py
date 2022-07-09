@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9290,
         name="Justicialista",
         power=5880,  # yes, really, it's high powered
-        intro_date=1955,
+        intro_year=1955,
     )
 
     consist.add_unit(

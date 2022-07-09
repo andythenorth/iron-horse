@@ -14,7 +14,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="diamond-single",
         gen=2,
-        intro_date_offset=3,  # introduce later than gen epoch by design
+        intro_year_offset=3,  # introduce later than gen epoch by design
         fixed_run_cost_points=105,  # substantial cost bonus so it can make money
         sprites_complete=True,
     )

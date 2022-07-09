@@ -9,7 +9,7 @@ def main(roster_id):
         name="Oribi",
         power=450,
         base_track_type="NG",
-        intro_date=1960,
+        intro_year=1960,
     )
 
     consist.add_unit(

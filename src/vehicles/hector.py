@@ -13,7 +13,7 @@ def main(roster_id):
         random_reverse=True,
         gen=6,
         pantograph_type="z-shaped-double",
-        intro_date_offset=1,  # introduce later than gen epoch by design
+        intro_year_offset=1,  # introduce later than gen epoch by design
         alternative_cc_livery="FREIGHTLINER_GBRF",
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_PALE_GREEN"),

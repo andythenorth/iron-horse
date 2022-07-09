@@ -111,7 +111,7 @@ class DocHelper(object):
                             # walk the generations, providing default None objects
                             for gen in range(
                                 1,
-                                len(roster.intro_dates[base_track_type_and_label[0]])
+                                len(roster.intro_years[base_track_type_and_label[0]])
                                 + 1,
                             ):
                                 role_child_branches[role_child_branch][gen] = None
@@ -406,7 +406,7 @@ class DocHelper(object):
             result = self.fetch_prop(
                 result, "TE coefficient", vehicle.tractive_effort_coefficient
             )
-            result = self.fetch_prop(result, "Intro Date", vehicle.intro_date)
+            result = self.fetch_prop(result, "Intro Year", vehicle.intro_year)
             result = self.fetch_prop(result, "Vehicle Life", vehicle.vehicle_life)
             result = self.fetch_prop(result, "Buy Cost", vehicle.buy_cost)
             result = self.fetch_prop(result, "Running Cost", vehicle.running_cost)
@@ -760,9 +760,9 @@ def main():
     shutil.copytree(static_dir_src, static_dir_dst)
 
     consists = roster.consists_in_buy_menu_order
-    # default sort for docs is by intro date
-    consists = sorted(consists, key=lambda consist: consist.intro_date)
-    dates = sorted([i.intro_date for i in consists])
+    # default sort for docs is by intro year
+    consists = sorted(consists, key=lambda consist: consist.intro_year)
+    dates = sorted([i.intro_year for i in consists])
     metadata["dates"] = (dates[0], dates[-1])
 
     # render standard docs from a list

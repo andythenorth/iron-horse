@@ -13,7 +13,7 @@ def main(roster_id):
         random_reverse=True,
         base_track_type="NG",
         gen=3,
-        intro_date_offset=15,
+        intro_year_offset=15,
         sprites_complete=True,
     )
 

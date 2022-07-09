@@ -8,7 +8,7 @@ def main():
         base_numeric_id=16170,
         gen=4,
         subtype="U",
-        intro_date_offset=0,  # match to Firebird
+        intro_year_offset=0,  # match to Firebird
         cab_id="firebird",
         sprites_complete=True,
     )
@@ -20,7 +20,7 @@ def main():
         base_numeric_id=16180,
         gen=5,
         subtype="U",
-        intro_date_offset=-10,  # match to Blaze HST
+        intro_year_offset=-10,  # match to Blaze HST
         cab_id="blaze",
         sprites_complete=True,
     )
@@ -32,7 +32,7 @@ def main():
         base_numeric_id=16190,
         gen=6,
         subtype="U",
-        intro_date_offset=-10,  # match to Scorcher HST
+        intro_year_offset=-10,  # match to Scorcher HST
         cab_id="scorcher",
         lgv_capable=True,  # for lolz
         sprites_complete=True,

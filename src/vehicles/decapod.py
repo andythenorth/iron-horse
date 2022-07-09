@@ -12,7 +12,7 @@ def main(roster_id):
         role_child_branch_num=-1,
         power=650,
         gen=2,
-        intro_date_offset=7,  # let's be a little bit later for this one
+        intro_year_offset=7,  # let's be a little bit later for this one
         tractive_effort_coefficient=0.2,
         fixed_run_cost_points=120,  # substantial cost bonus so it can make money
         random_reverse=True,

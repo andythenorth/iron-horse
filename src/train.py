@@ -50,13 +50,13 @@ class Consist(object):
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
         # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
         self.roster_id = kwargs.get("roster_id")  # just fail if there's no roster
-        # either gen xor intro_date is required, don't set both, one will be interpolated from the other
-        self._intro_date = kwargs.get("intro_date", None)
+        # either gen xor intro_year is required, don't set both, one will be interpolated from the other
+        self._intro_year = kwargs.get("intro_year", None)
         self._gen = kwargs.get("gen", None)
-        # if gen is used, the calculated intro date can be adjusted with +ve or -ve offset
-        self.intro_date_offset = kwargs.get("intro_date_offset", None)
+        # if gen is used, the calculated intro year can be adjusted with +ve or -ve offset
+        self.intro_year_offset = kwargs.get("intro_year_offset", None)
         # used for synchronising / desynchronising intro dates for groups vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147
-        self._intro_date_days_offset = (
+        self._intro_year_days_offset = (
             None  # defined in subclasses, no need for instances to define this
         )
         self.vehicle_life = kwargs.get("vehicle_life", 40)
@@ -232,26 +232,26 @@ class Consist(object):
         return 0
 
     @property
-    def intro_date(self):
-        # automatic intro_date, but can over-ride by passing in kwargs for consist
-        if self._intro_date:
+    def intro_year(self):
+        # automatic intro_year, but can over-ride by passing in kwargs for consist
+        if self._intro_year:
             assert self._gen == None, (
-                "%s consist has both gen and intro_date set, which is incorrect"
+                "%s consist has both gen and intro_year set, which is incorrect"
                 % self.id
             )
-            assert self.intro_date_offset == None, (
-                "%s consist has both intro_date and intro_date_offset set, which is incorrect"
+            assert self.intro_year_offset == None, (
+                "%s consist has both intro_year and intro_year_offset set, which is incorrect"
                 % self.id
             )
-            return self._intro_date
+            return self._intro_year
         else:
             assert self._gen != None, (
-                "%s consist has neither gen nor intro_date set, which is incorrect"
+                "%s consist has neither gen nor intro_year set, which is incorrect"
                 % self.id
             )
-            result = self.roster.intro_dates[self.base_track_type][self.gen - 1]
-            if self.intro_date_offset is not None:
-                result = result + self.intro_date_offset
+            result = self.roster.intro_years[self.base_track_type][self.gen - 1]
+            if self.intro_year_offset is not None:
+                result = result + self.intro_year_offset
             return result
 
     @property
@@ -262,9 +262,9 @@ class Consist(object):
             # to ensure a fully playable roster is available for gen 1, force the days offset to 0
             # for explanation see https://www.tt-forums.net/viewtopic.php?f=26&t=68616&start=460#p1224299
             return 0
-        elif self._intro_date_days_offset is not None:
+        elif self._intro_year_days_offset is not None:
             # offset defined in class (probably a wagon)
-            return self._intro_date_days_offset
+            return self._intro_year_days_offset
         else:
             role_group_mappings = {
                 (
@@ -307,30 +307,30 @@ class Consist(object):
                     group_key = group_key + "_core"
                 else:
                     group_key = group_key + "_non_core"
-            result = global_constants.intro_date_offsets_by_role_group[group_key]
+            result = global_constants.intro_month_offsets_by_role_group[group_key]
         return result
 
     @property
     def gen(self):
-        # gen is usually set in the vehicle, but can be left unset if intro_date is set
+        # gen is usually set in the vehicle, but can be left unset if intro_year is set
         if self._gen:
-            assert self._intro_date == None, (
-                "%s consist has both gen and intro_date set, which is incorrect"
+            assert self._intro_year == None, (
+                "%s consist has both gen and intro_year set, which is incorrect"
                 % self.id
             )
             return self._gen
         else:
-            assert self._intro_date != None, (
-                "%s consist has neither gen nor intro_date set, which is incorrect"
+            assert self._intro_year != None, (
+                "%s consist has neither gen nor intro_year set, which is incorrect"
                 % self.id
             )
-            for gen_counter, intro_date in enumerate(
-                self.roster.intro_dates[self.base_track_type]
+            for gen_counter, intro_year in enumerate(
+                self.roster.intro_years[self.base_track_type]
             ):
-                if self.intro_date < intro_date:
+                if self.intro_year < intro_year:
                     return gen_counter
             # if no result is found in list, it's last gen
-            return len(self.roster.intro_dates[self.base_track_type])
+            return len(self.roster.intro_years[self.base_track_type])
 
     @property
     def equivalent_ids_alt_var_41(self):
@@ -365,9 +365,9 @@ class Consist(object):
                 ):
                     similar_consists.append(consist)
             for consist in sorted(
-                similar_consists, key=lambda consist: consist.intro_date
+                similar_consists, key=lambda consist: consist.intro_year
             ):
-                if consist.intro_date > self.intro_date:
+                if consist.intro_year > self.intro_year:
                     replacement_consist = consist
                     break
             return replacement_consist
@@ -406,7 +406,7 @@ class Consist(object):
         if self.replacement_consist is None:
             return "VEHICLE_NEVER_EXPIRES"
         else:
-            return self.replacement_consist.intro_date - self.intro_date
+            return self.replacement_consist.intro_year - self.intro_year
 
     @property
     def retire_early(self):
@@ -1642,8 +1642,8 @@ class CarConsist(Consist):
         self.weight_factor = 0.8 if self.base_track_type == "NG" else 1
         # used to synchronise / desynchronise groups of vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
         # default all to car consists to 'universal' offset, over-ride in subclasses as needed
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["universal"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["universal"]
         )
         # wagons can be candidates for the magic randomised wagons
         self.randomised_candidate_groups = []
@@ -1729,10 +1729,10 @@ class CarConsist(Consist):
         else:
             # this is the last of this subtype, but there are other later generations of other subtypes
             next_gen = tree_permissive[tree_permissive.index(self.gen) + 1]
-        next_gen_intro_date = self.roster.intro_dates[self.base_track_type][
+        next_gen_intro_year = self.roster.intro_years[self.base_track_type][
             next_gen - 1
         ]
-        return next_gen_intro_date - self.intro_date
+        return next_gen_intro_year - self.intro_year
 
     def get_wagon_id(self, id_base, **kwargs):
         # auto id creator, used for wagons not locos
@@ -1828,8 +1828,8 @@ class AutomobileCarConsistBase(CarConsist):
         self.default_cargos = ["VEHI"]
         # special flag to turn on cargo subtypes specific to vehicles, can be made more generic if subtypes need to be extensible in future
         # self.use_cargo_subytpes_VEHI = True
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         # automobile cars can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
@@ -1925,8 +1925,8 @@ class BolsterCarConsist(CarConsist):
             "non_flatbed_freight"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["long_products"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
             "randomised_cold_metal_car",
@@ -1955,8 +1955,8 @@ class BoxCarConsistBase(CarConsist):
         ]
         self.default_cargos = polar_fox.constants.default_cargos["box"]
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -1995,8 +1995,8 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         self.base_id = "curtain_side_box_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_curtain_side"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
             "randomised_box_car",
@@ -2091,8 +2091,8 @@ class BoxCarSlidingWallConsist(BoxCarConsistBase):
         self.base_id = "sliding_wall_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_sliding_wall"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         # type-specific wagon colour randomisation
         self.auto_colour_randomisation_strategy_num = (
@@ -2119,8 +2119,8 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
         self.base_id = "vehicle_parts_box_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_vehicle_parts"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self._joker = True
         # type-specific wagon colour randomisation
@@ -2173,7 +2173,7 @@ class CabooseCarConsistBase(CarConsist):
         # don't use a dict, items can repeat, just nest 2 tuples
         result = []
         for counter, date_range in enumerate(
-            self.roster.intro_date_ranges(self.base_track_type)
+            self.roster.intro_year_ranges(self.base_track_type)
         ):
             caboose_family_name = self.roster.caboose_default_family_by_generation[
                 self.base_track_type
@@ -2219,8 +2219,8 @@ class CarbonBlackHopperCarConsist(CarConsist):
         self.default_cargos = []
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self._joker = True
         # allow flipping, used to flip company colour
@@ -2253,8 +2253,8 @@ class CoilBuggyCarConsist(CarConsist):
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2  # double the default weight
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self._joker = True
         # CC is swapped randomly (player can't choose), player can't flip as vehicle is articulated
@@ -2290,8 +2290,8 @@ class CoilCarConsistBase(CarConsist):
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.1
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = ["randomised_cold_metal_car"]
         # allow flipping, used to flip company colour
@@ -2360,8 +2360,8 @@ class CoveredHopperCarConsistBase(CarConsist):
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -2500,8 +2500,8 @@ class DumpCarConsistBase(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["dump"]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.1
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -2636,8 +2636,8 @@ class EdiblesTankCarConsist(CarConsist):
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["food_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["food_wagons"]
         )
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
@@ -2673,8 +2673,8 @@ class ExpressCarConsist(CarConsist):
         # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = 1.66
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["express_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.allow_flip = True
         # type-specific wagon colour randomisation
@@ -2719,8 +2719,8 @@ class ExpressIntermodalCarConsist(CarConsist):
         self.floating_run_cost_multiplier = (
             1.66  # more than box car, less than mail car
         )
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["express_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self._joker = True
         # intermodal containers can't use random colour swaps on the wagons...
@@ -2757,8 +2757,8 @@ class FarmProductsBoxCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["farm_products_box"]
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -2790,8 +2790,8 @@ class FarmProductsHopperCarConsist(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["farm_products_hopper"]
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -2818,8 +2818,8 @@ class FlatCarConsistBase(CarConsist):
             "non_flatbed_freight"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["flat"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -2834,8 +2834,8 @@ class FlatCarBulkheadConsist(FlatCarConsistBase):
         self.base_id = "bulkhead_flat_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["bulkhead"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
             "randomised_piece_goods_car",
@@ -2871,8 +2871,8 @@ class FlatCarPlateConsist(FlatCarConsistBase):
         self.base_id = "plate_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["plate"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
             "randomised_cold_metal_car",
@@ -2908,8 +2908,8 @@ class FlatCarSlidingRoofConsist(FlatCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["flat_sliding_roof"]
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
             "randomised_piece_goods_car",
@@ -2938,8 +2938,8 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["flat_tarpaulin_roof"]
         self.buy_cost_adjustment_factor = 1.1
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
             "randomised_cold_metal_car",
@@ -2974,8 +2974,8 @@ class GasTankCarConsistBase(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["cryo_gases"]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -3032,8 +3032,8 @@ class HopperCarConsistBase(CarConsist):
         ]
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self.randomised_candidate_groups = [
             "randomised_hopper_car",
@@ -3149,8 +3149,8 @@ class IngotCarConsist(CarConsist):
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2  # double the default weight
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self._joker = True
         # CC is swapped randomly (player can't choose), player can't flip as vehicle is articulated
@@ -3187,8 +3187,8 @@ class IntermodalCarConsistBase(CarConsist):
         ]
         self.default_cargos = polar_fox.constants.default_cargos["box_intermodal"]
         self._loading_speed_multiplier = 2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         # intermodal containers can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
@@ -3255,8 +3255,8 @@ class KaolinHopperCarConsist(CarConsist):
         self.default_cargos = []
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self._joker = True
         # allow flipping, used to flip company colour
@@ -3290,8 +3290,8 @@ class LivestockCarConsist(CarConsist):
         self.default_cargos = ["LVST"]
         self.buy_cost_adjustment_factor = 1.2
         self.floating_run_cost_multiplier = 1.1
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -3320,8 +3320,8 @@ class LogCarConsist(CarConsist):
         self.label_refits_allowed = ["WOOD"]
         self.label_refits_disallowed = []
         self.default_cargos = ["WOOD"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -3349,8 +3349,8 @@ class MailCarConsistBase(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["mail"]
         # specific structure for capacity multiplier and loading speed, over-ride in subclasses as needed
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["express_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.use_colour_randomisation_strategies = False
         self.allow_flip = True
@@ -3379,8 +3379,8 @@ class MailCarConsist(MailCarConsistBase):
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = 3
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["express_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         # mail cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
@@ -3422,8 +3422,8 @@ class MailHSTCarConsist(MailCarConsistBase):
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["hst"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["hst"]
         )
         # non-standard cite
         self._cite = "Dr Constance Speed"
@@ -3469,8 +3469,8 @@ class OpenCarConsistBase(CarConsist):
             "non_freight_special_cases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["open"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self.randomised_candidate_groups = [
             "randomised_open_car",
@@ -3567,8 +3567,8 @@ class PassengerCarConsistBase(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["pax"]
         # specific structure for capacity multiplier and loading speed, over-ride in subclasses as needed
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["express_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.use_colour_randomisation_strategies = False
         self.allow_flip = True
@@ -3638,8 +3638,8 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["express_non_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["express_non_core"]
         )
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
@@ -3707,8 +3707,8 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["hst"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["hst"]
         )
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.8 if self.base_track_type == "NG" else 1.6
@@ -3758,8 +3758,8 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["railcar"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["railcar"]
         )
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
@@ -3818,8 +3818,8 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["railcar"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["railcar"]
         )
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
@@ -3948,8 +3948,8 @@ class PeatCarConsist(CarConsist):
         self.label_refits_allowed = ["PEAT"]
         self.label_refits_disallowed = []
         self.default_cargos = ["PEAT"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -3979,8 +3979,8 @@ class PieceGoodsCarRandomisedConsist(CarConsist):
             "non_flatbed_freight"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["flat_tarpaulin_roof"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = []
         self._joker = True
@@ -4005,8 +4005,8 @@ class ReeferCarConsist(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["reefer"]
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["food_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["food_wagons"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -4048,8 +4048,8 @@ class SiloCarConsistBase(CarConsist):
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -4108,8 +4108,8 @@ class SlagLadleCarConsist(CarConsist):
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2  # double the default weight
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self._joker = True
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
@@ -4149,8 +4149,8 @@ class TankCarConsistBase(CarConsist):
         ]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -4248,8 +4248,8 @@ class TorpedoCarConsist(CarConsist):
         self.buy_cost_adjustment_factor = 1.2
         self.floating_run_cost_multiplier = 1.33
         self.weight_factor = 2  # double the default weight
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self._joker = True
         # articulated so can't flip
@@ -4653,12 +4653,12 @@ class Train(object):
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
         self.assert_random_reverse()
-        # test interpolated gen and intro_date
+        # test interpolated gen and intro_year
         assert self.consist.gen, (
-            "%s consist.gen is None, which is invalid.  Set gen or intro_date" % self.id
+            "%s consist.gen is None, which is invalid.  Set gen or intro_year" % self.id
         )
-        assert self.consist.intro_date, (
-            "%s consist.gen is None, which is invalid.  Set gen or intro_date" % self.id
+        assert self.consist.intro_year, (
+            "%s consist.gen is None, which is invalid.  Set gen or intro_year" % self.id
         )
         # templating
         template_name = self.vehicle_nml_template

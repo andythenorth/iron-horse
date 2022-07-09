@@ -10,7 +10,7 @@ def main(roster_id):
         power=450,
         base_track_type="NG",
         random_reverse=True,
-        intro_date=1860,
+        intro_year=1860,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=25, vehicle_length=5, spriterow_num=0)

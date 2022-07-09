@@ -9,7 +9,7 @@ def main(roster_id):
         name="2-6-0 Pangolin",
         power=1200,
         base_track_type="NG",
-        intro_date=1860,
+        intro_year=1860,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=40, vehicle_length=6, spriterow_num=0)

@@ -9,7 +9,7 @@ def main(roster_id):
         name="Gazelle",
         power=1800,
         base_track_type="NG",
-        intro_date=1975,
+        intro_year=1975,
     )
 
     consist.add_unit(

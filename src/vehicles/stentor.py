@@ -13,7 +13,7 @@ def main(roster_id):
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
         random_reverse=True,
-        intro_date_offset=3,  # let's be a little bit later for this one
+        intro_year_offset=3,  # let's be a little bit later for this one
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         force_caboose_families={"caboose_car": "pony_railfreight_2"},

@@ -12,7 +12,7 @@ def main(roster_id):
         power=3300,
         random_reverse=True,
         gen=5,
-        intro_date_offset=-8,  # let's be really early with this one to give a mail engine matching Blaze HST intro date
+        intro_year_offset=-8,  # let's be really early with this one to give a mail engine matching Blaze HST intro year
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         # alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",  # unfinished

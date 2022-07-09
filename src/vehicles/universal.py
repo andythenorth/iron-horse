@@ -7,7 +7,7 @@ def main():  # for rest of stats, look up GE Export models U5B-U8B
         base_numeric_id=9580,
         name="Universal",
         power=800,
-        intro_date=1958,
+        intro_year=1958,
     )
 
     consist.add_unit(

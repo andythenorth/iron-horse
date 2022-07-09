@@ -10,7 +10,7 @@ def main(roster_id):
         power=1800,
         tractive_effort_coefficient=0.19,
         base_track_type="NG",
-        intro_date=1945,
+        intro_year=1945,
     )
 
     consist.add_unit(

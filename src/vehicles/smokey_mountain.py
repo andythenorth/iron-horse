@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=10650,
         name="Smokey Mountain",
         power=3200,
-        intro_date=1950,
+        intro_year=1950,
     )
 
     consist.add_unit(

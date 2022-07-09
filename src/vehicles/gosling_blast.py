@@ -17,7 +17,7 @@ def main(roster_id):
         random_reverse=True,
         gen=6,
         pantograph_type="z-shaped-double",
-        intro_date_offset=2,  # introduce later than gen epoch by design
+        intro_year_offset=2,  # introduce later than gen epoch by design
         sprites_complete=False,
     )
 

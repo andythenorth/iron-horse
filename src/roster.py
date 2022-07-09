@@ -18,7 +18,7 @@ class Roster(object):
         # engines only used once at __init__ time, it's a list of modules, not the actual consists
         self.engines = kwargs.get("engines")
         self.engine_consists = []
-        self.intro_dates = kwargs.get("intro_dates")
+        self.intro_years = kwargs.get("intro_years")
         self.speeds = kwargs.get("speeds")
         self.freight_car_capacity_per_unit_length = kwargs.get(
             "freight_car_capacity_per_unit_length"
@@ -145,13 +145,13 @@ class Roster(object):
             result.extend(result[: 16 - len(result)])
         return result
 
-    def intro_date_ranges(self, base_track_type):
-        # return a list of date pairs (first year, last year) for generations
+    def intro_year_ranges(self, base_track_type):
+        # return a list of year pairs (first year, last year) for generations
         result = []
         end_date = global_constants.max_game_date
-        for intro_date in reversed(self.intro_dates[base_track_type]):
-            result.append((intro_date, end_date))
-            end_date = intro_date - 1
+        for intro_year in reversed(self.intro_years[base_track_type]):
+            result.append((intro_year, end_date))
+            end_date = intro_year - 1
         result.reverse()
         return result
 

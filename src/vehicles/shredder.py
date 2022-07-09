@@ -14,7 +14,7 @@ def main(roster_id):
         fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=5,
         speed=125,  # Shredder not replaced, but has gen 6 speeds
-        intro_date_offset=7,  # introduce later than gen epoch by design
+        intro_year_offset=7,  # introduce later than gen epoch by design
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         sprites_complete=True,
     )

@@ -13,7 +13,7 @@ def main(roster_id):
         dual_headed=True,
         pantograph_type="z-shaped-single-reversed",
         gen=5,
-        intro_date_offset=-3,  # introduce earlier than gen epoch by design
+        intro_year_offset=-3,  # introduce earlier than gen epoch by design
         sprites_complete=True,
     )
 

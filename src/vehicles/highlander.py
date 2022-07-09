@@ -13,7 +13,7 @@ def main(roster_id):
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
         random_reverse=True,
-        intro_date_offset=-1,  # let's be a little bit earlier for this one
+        intro_year_offset=-1,  # let's be a little bit earlier for this one
         gen=6,
         fixed_run_cost_points=220,  # unrealism: run cost nerf for being so high-powered
         alternative_cc_livery="FREIGHTLINER_GBRF",

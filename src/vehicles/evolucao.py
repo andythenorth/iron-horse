@@ -10,7 +10,7 @@ def main():
         base_numeric_id=9240,
         name="Evolução",
         power=4400,
-        intro_date=1995,
+        intro_year=1995,
     )
 
     consist.add_unit(

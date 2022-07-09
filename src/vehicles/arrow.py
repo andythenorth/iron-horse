@@ -12,7 +12,7 @@ def main(roster_id):
         power=1900,  # slightly higher power, offset by higher weight
         tractive_effort_coefficient=0.18,
         gen=3,
-        intro_date_offset=4,  # introduce later than gen epoch by design
+        intro_year_offset=4,  # introduce later than gen epoch by design
         fixed_run_cost_points=150,  # give a small bonus to bring closer to Strongbow cost
         force_default_pax_mail_livery=1,  # invert the automatic livery 2 choice
         default_livery_extra_docs_examples=[

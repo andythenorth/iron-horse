@@ -10,7 +10,7 @@ def main(roster_id):
         power=1400,
         tractive_effort_coefficient=0.19,
         base_track_type="NG",
-        intro_date=1915,
+        intro_year=1915,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=68, vehicle_length=7, spriterow_num=0)

@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9120,
         name="Breda E32",
         power=900,
-        intro_date=1961,
+        intro_year=1961,
     )
 
     consist.add_unit(

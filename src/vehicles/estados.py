@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9230,
         name="Estados Boxcab",
         power=1450,
-        intro_date=1925,
+        intro_year=1925,
     )
 
     consist.add_unit(

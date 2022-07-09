@@ -13,7 +13,7 @@ def main(roster_id):
         fixed_run_cost_points=116,  # give a small bonus so this can be a genuine mixed-traffic engine
         random_reverse=True,
         gen=4,
-        intro_date_offset=1,  # let's be a littler later for this one
+        intro_year_offset=1,  # let's be a littler later for this one
         default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE")],
         sprites_complete=True,
     )

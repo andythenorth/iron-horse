@@ -14,7 +14,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.375,
         random_reverse=True,
         gen=4,
-        intro_date_offset=-6,
+        intro_year_offset=-6,
         # alternative_cc_livery='RAILFREIGHT_RED_STRIPE', # not now, needs sprites
         sprites_complete=True,
     )

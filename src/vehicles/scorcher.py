@@ -10,7 +10,7 @@ def main(roster_id):
         role="hst",  # quite a specific role, may or may not scale to other rosters
         role_child_branch_num=1,
         power=5850,
-        intro_date_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
+        intro_year_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
         lgv_capable=True,  # for lolz
         sprites_complete=True,

@@ -17,7 +17,7 @@
                 <div class="page-header">
                     <h2>Get started</h2>
                     <ul class="inline">
-                        <li><i class="icon-ok-circle"></i> Intro dates ${metadata['dates'][0]}-${metadata['dates'][1]}</li>
+                        <li><i class="icon-ok-circle"></i> Intro years ${metadata['dates'][0]}-${metadata['dates'][1]}</li>
                         <li><i class="icon-ok-circle"></i> Compatible with all known cargos</li>
                         <li><i class="icon-ok-circle"></i> Supports 2 company colours</li>
                         <li><i class="icon-ok-circle"></i> Autorefit support</li>

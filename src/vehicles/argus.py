@@ -13,7 +13,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="diamond-single",
         gen=3,
-        intro_date_offset=6,  # introduce later than gen epoch by design
+        intro_year_offset=6,  # introduce later than gen epoch by design
         sprites_complete=True,
     )
 

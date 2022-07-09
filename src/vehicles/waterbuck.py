@@ -9,7 +9,7 @@ def main(roster_id):
         name="Waterbuck",
         power=2200,
         base_track_type="NG",
-        intro_date=1990,
+        intro_year=1990,
     )
 
     consist.add_unit(

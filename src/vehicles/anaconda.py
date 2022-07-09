@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9070,
         name="Anaconda",
         power=300,
-        intro_date=1980,
+        intro_year=1980,
     )
 
     consist.add_unit(

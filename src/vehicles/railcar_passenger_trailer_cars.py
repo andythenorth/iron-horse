@@ -18,7 +18,7 @@ def main():
         base_numeric_id=11980,
         gen=4,
         subtype="U",
-        intro_date_offset=-5,  # introduce early by design
+        intro_year_offset=-5,  # introduce early by design
         sprites_complete=True,
     )
 
@@ -33,7 +33,7 @@ def main():
         base_numeric_id=11950,
         gen=5,
         subtype="U",
-        intro_date_offset=-5,  # introduce early by design
+        intro_year_offset=-5,  # introduce early by design
         sprites_complete=True,
     )
 
@@ -48,7 +48,7 @@ def main():
         base_numeric_id=11090,
         gen=6,
         subtype="U",
-        intro_date_offset=-5,  # introduce early by design
+        intro_year_offset=-5,  # introduce early by design
         sprites_complete=True,
     )
 

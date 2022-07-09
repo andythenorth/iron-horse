@@ -9,7 +9,7 @@ def main(roster_id):
         name="Okapi",
         power=1850,
         base_track_type="NG",
-        intro_date=1958,
+        intro_year=1958,
     )
 
     consist.add_unit(

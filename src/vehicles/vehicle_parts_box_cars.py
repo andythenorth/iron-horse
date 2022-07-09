@@ -11,7 +11,7 @@ def main():
         base_numeric_id=13660,
         gen=4,
         subtype="B",
-        intro_date_offset=3,  # let's be a little bit later for this one
+        intro_year_offset=3,  # let's be a little bit later for this one
         sprites_complete=True,
     )
 
@@ -22,7 +22,7 @@ def main():
         base_numeric_id=13670,
         gen=4,
         subtype="C",
-        intro_date_offset=3,  # let's be a little bit later for this one
+        intro_year_offset=3,  # let's be a little bit later for this one
         sprites_complete=True,
     )
 

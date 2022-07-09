@@ -8,7 +8,7 @@ def main():  # GE Shovelnose - meter gauge ish
         name="Cooper",
         power=1000,
         base_track_type="NG",
-        intro_date=1949,
+        intro_year=1949,
     )
 
     consist.add_unit(

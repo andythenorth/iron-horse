@@ -16,7 +16,7 @@ def main(roster_id):
         power_by_railtype={"RAIL": 620, "ELRL": 1240},
         pantograph_type="z-shaped-single-with-base",
         gen=6,
-        intro_date_offset=1,  # introduce later by design
+        intro_year_offset=1,  # introduce later by design
         sprites_complete=True,
     )
 

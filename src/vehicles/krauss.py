@@ -8,7 +8,7 @@ def main():  # for rest of stats, look up Krauss Maffei Brazil
         name="Krauss",
         base_track_type="NG",
         power=3500,
-        intro_date=1963,
+        intro_year=1963,
     )
 
     consist.add_unit(

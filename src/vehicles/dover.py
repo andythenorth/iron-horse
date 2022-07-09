@@ -15,7 +15,7 @@ def main(roster_id):
         use_3_unit_sets=True,
         gen=4,
         sprites_complete=True,
-        intro_date_offset=-3,
+        intro_year_offset=-3,
     )  # introduce early by design
 
     consist.add_unit(

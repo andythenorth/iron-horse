@@ -11,7 +11,7 @@ def main(roster_id):
         role_child_branch_num=2,
         power=4500,
         power_by_railtype={"RAIL": 4500, "ELRL": 8000},
-        intro_date_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
+        intro_year_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
         sprites_complete=False,
     )

@@ -18,7 +18,7 @@
             <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(roster, consists, simplified_gameplay)">
                 <tal:base_track_type_and_label repeat="base_track_type_and_label tech_tree.keys()">
                     <h3>${base_track_type_and_label[1]}</h3>
-                    <tal:role_group define="intro_dates roster.intro_dates[base_track_type_and_label[0]]"
+                    <tal:role_group define="intro_years roster.intro_years[base_track_type_and_label[0]]"
                                     repeat="role_group tech_tree[base_track_type_and_label]">
                         <tal:descriptions_rail condition="base_track_type_and_label[0]=='RAIL'">
                         ${role_group}
@@ -138,8 +138,8 @@
                                tal:condition="len(roles) > 0">
                             <thead>
                                 <tr>
-                                    <th style="text-align:right; padding-right: 20px;">Intro Date:</th>
-                                    <th style="padding-right: 20px;" tal:repeat="intro_date intro_dates">${intro_date}</th>
+                                    <th style="text-align:right; padding-right: 20px;">Intro Year:</th>
+                                    <th style="padding-right: 20px;" tal:repeat="intro_year intro_years">${intro_year}</th>
                                     <td><!--! empty space cell --></td>
                                 </tr>
                             </thead>
@@ -176,7 +176,7 @@
                                                     Joker
                                                 </span>
                                             </th>
-                                            <td tal:repeat="gen range(1, len(intro_dates) + 1)" class="text-center" style="width: 160px;">
+                                            <td tal:repeat="gen range(1, len(intro_years) + 1)" class="text-center" style="width: 160px;">
                                                 <tal:consist define="consist tech_tree[base_track_type_and_label][role_group][role][role_child_branch][gen]">
                                                     <tal:block condition="consist is not None">
                                                         <div id="${consist.id}" class="tech_tree_vehicle_container">

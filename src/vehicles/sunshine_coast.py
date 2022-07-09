@@ -12,7 +12,7 @@ def main(roster_id):
         power=1000,
         pantograph_type="z-shaped-single-with-base",
         gen=4,
-        intro_date_offset=1,  # introduce later by design
+        intro_year_offset=1,  # introduce later by design
         sprites_complete=True,
     )
 

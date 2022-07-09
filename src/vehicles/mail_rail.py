@@ -12,7 +12,7 @@ def main(roster_id):
         power=700,
         gen=6,
         sprites_complete=True,
-        intro_date_offset=-5,
+        intro_year_offset=-5,
     )  # introduce early by design
 
     consist.add_unit(
