@@ -308,6 +308,10 @@ class Consist(object):
                 else:
                     group_key = group_key + "_non_core"
             result = global_constants.intro_month_offsets_by_role_group[group_key]
+            if self.joker:
+                # force jokers away from vehicles in same role group
+                # if further variation is wanted, give the joker a different intro year, automating that isn't wise
+                result = min(result + 6, 11)
         return result
 
     @property
