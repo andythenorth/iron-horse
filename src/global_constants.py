@@ -168,10 +168,6 @@ role_group_mapping = OrderedDict(
         (
             "lolz",
             [
-                "joker_heavy_express",
-                "joker_super_heavy_express",
-                "joker_heavy_freight",
-                "joker_super_heavy_freight",
                 "gronk!",
                 "snoughplough!",
             ],
