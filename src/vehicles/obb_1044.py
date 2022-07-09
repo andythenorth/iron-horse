@@ -7,7 +7,7 @@ def main(roster_id):
         id="obb_1044",
         base_numeric_id=10920,
         name="OBB 1044",
-        role="super_heavy_express",
+        role="ultra_heavy_express",
         role_child_branch_num=4,
         power=6000,
         random_reverse=True,

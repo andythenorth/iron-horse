@@ -8,7 +8,7 @@ def main(roster_id):
         id="sbb_gp_6c",
         base_numeric_id=9270,
         name="OBB ES64U4 !! Multisystem",
-        role="super_heavy_express",
+        role="ultra_heavy_express",
         role_child_branch_num=5,
         power=9300,
         random_reverse=True,

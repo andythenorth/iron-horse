@@ -7,7 +7,7 @@ def main(roster_id):
         id="re_460",
         base_numeric_id=9520,
         name="Re 460",
-        role="super_heavy_express",
+        role="ultra_heavy_express",
         role_child_branch_num=-5,
         power=8400,
         random_reverse=True,

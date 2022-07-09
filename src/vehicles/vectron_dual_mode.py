@@ -7,7 +7,7 @@ def main(roster_id):
         id="vectron_dual_mode",
         base_numeric_id=13120,
         name="Vectron Dual-Mode",
-        role="express",
+        role="heavy_express",
         role_child_branch_num=1,
         power=2600,
         power_by_railtype={

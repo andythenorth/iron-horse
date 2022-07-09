@@ -7,7 +7,7 @@ def main(roster_id):
         id="db_e_410",
         base_numeric_id=14230,
         name="DB E 410 !! Multisystem",
-        role="heavy_express",
+        role="super_heavy_express",
         role_child_branch_num=1,
         power=3800,
         random_reverse=True,

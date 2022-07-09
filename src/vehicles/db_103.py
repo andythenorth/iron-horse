@@ -7,7 +7,7 @@ def main(roster_id):
         id="db_103",
         base_numeric_id=9420,
         name="DB 103",
-        role="super_heavy_express",
+        role="ultra_heavy_express",
         role_child_branch_num=5,
         power=7500,
         random_reverse=True,

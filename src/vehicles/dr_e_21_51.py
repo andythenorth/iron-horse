@@ -7,7 +7,7 @@ def main(roster_id):
         id="dr_e_21_51",
         base_numeric_id=13930,
         name="DR E 21 51",
-        role="super_heavy_express",
+        role="ultra_heavy_express",
         role_child_branch_num=4,
         power=4600,
         random_reverse=True,

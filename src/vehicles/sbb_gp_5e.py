@@ -7,7 +7,7 @@ def main(roster_id):
         id="sbb_gp_5e",
         base_numeric_id=9500,
         name="SOB Re 446",
-        role="super_heavy_express",
+        role="ultra_heavy_express",
         role_child_branch_num=4,
         power=6700,
         random_reverse=True,

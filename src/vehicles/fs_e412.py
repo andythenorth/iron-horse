@@ -7,7 +7,7 @@ def main(roster_id):
         id="fs_e412",
         base_numeric_id=13110,
         name="FS E.412 Brenner !! Multisystem",
-        role="super_heavy_express",
+        role="ultra_heavy_express",
         role_child_branch_num=4,
         power=7400,
         random_reverse=True,

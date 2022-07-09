@@ -7,7 +7,7 @@ def main(roster_id):
         id="sbb_gp_3c",
         base_numeric_id=8990,
         name="Re 4/4i",
-        role="express",
+        role="heavy_express",
         role_child_branch_num=1,
         power=2500,
         random_reverse=True,

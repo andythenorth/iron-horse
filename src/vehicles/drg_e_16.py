@@ -7,7 +7,7 @@ def main(roster_id):
         id="drg_e_16",
         base_numeric_id=13910,
         name="DRG E 16",
-        role="super_heavy_express",
+        role="ultra_heavy_express",
         role_child_branch_num=1,
         power=3600,
         random_reverse=True,
