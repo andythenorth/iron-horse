@@ -4,13 +4,13 @@ from train import EngineConsist, ElectricEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="sbb_freight_4b",
-        base_numeric_id=130,
-        name="BLS Ae 8/8",
-        role="ultra_heavy_freight",
-        role_child_branch_num=-2,
-        power=8700,
-        gen=4,
+        id="krokodil",
+        base_numeric_id=100,
+        name="SBB Ce 6/8 Krokodil",
+        role="super_heavy_freight",
+        role_child_branch_num=2,
+        power=2200,
+        gen=2,
         pantograph_type="diamond-double",
         #intro_year_offset=-13,  # introduce earlier than gen epoch by design
         sprites_complete=False,
@@ -23,6 +23,6 @@ def main(roster_id):
     consist.description = (
         """ """
     )
-    consist.foamer_facts = """BLS Ae 8/8"""
+    consist.foamer_facts = """SBB Ce 6/8 Krokodil"""
 
     return consist

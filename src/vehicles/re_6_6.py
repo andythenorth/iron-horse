@@ -4,7 +4,7 @@ from train import EngineConsist, ElectricEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="sbb_freight_4",
+        id="re_6_6",
         base_numeric_id=40,
         name="SBB Re 6/6",
         role="ultra_heavy_freight",

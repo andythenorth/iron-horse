@@ -1,19 +1,20 @@
 from train import EngineConsist, ElectricEngineUnit
 
+# multi-system !!
 
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="sbb_gp_5e",
-        base_numeric_id=9500,
-        name="SOB Re 446",
-        role="ultra_heavy_express",
-        role_child_branch_num=4,
-        power=6700,
+        id="bls_re_475",
+        base_numeric_id=8950,
+        name="BLS Re 475 !! Multi-system",
+        role="ultra_heavy_freight",
+        role_child_branch_num=-2,
+        power=8500,
         random_reverse=True,
-        gen=5,
+        gen=6,
         pantograph_type="diamond-double",
-        intro_year_offset=10,  # introduce earler than gen epoch by design
+        #intro_year_offset=5,  # introduce later than gen epoch by design
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         default_livery_extra_docs_examples=[
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
@@ -31,6 +32,6 @@ def main(roster_id):
     consist.description = (
         """ """
     )
-    consist.foamer_facts = """SOB Re 446 / SBB Re 4/4<sup>iv</sup>"""
+    consist.foamer_facts = """BLS Re 475"""
 
     return consist

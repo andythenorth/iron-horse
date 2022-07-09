@@ -5,9 +5,9 @@ from train import EngineConsist, ElectricEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="sbb_gp_6c",
+        id="taurus",
         base_numeric_id=9270,
-        name="OBB ES64U4 !! Multisystem",
+        name="Taurus OBB ES64U4 !! Multisystem",
         role="ultra_heavy_express",
         role_child_branch_num=5,
         power=9300,

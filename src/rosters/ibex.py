@@ -5,8 +5,9 @@ from roster import Roster
 from vehicles import ae_3_5
 from vehicles import ae_3_6_1
 from vehicles import ae_4_7
-from vehicles import bls_freight_4b
 from vehicles import bls_ae_4_4
+from vehicles import bls_ae_8_8
+from vehicles import bls_re_475
 from vehicles import db_103
 from vehicles import db_111
 from vehicles import db_111_upgrade
@@ -25,6 +26,7 @@ from vehicles import high_power_railcar_2
 from vehicles import high_power_railcar_3
 from vehicles import high_power_railcar_4
 from vehicles import high_power_railcar_5
+from vehicles import krokodil
 from vehicles import obb_1010
 from vehicles import obb_1012
 from vehicles import obb_1014
@@ -45,20 +47,18 @@ from vehicles import re_420_lion
 from vehicles import re_450
 from vehicles import re_460
 from vehicles import re_465
+from vehicles import re_6_6
+from vehicles import re_6_6_ii
 from vehicles import saas_be_4_4
+from vehicles import sbb_ae_8_14
 from vehicles import sbb_eem_923
 from vehicles import sbb_fb_4_4
-from vehicles import sbb_freight_2
-from vehicles import sbb_freight_3b
-from vehicles import sbb_freight_4
-from vehicles import sbb_freight_5
 from vehicles import sbb_ae_4_6
-from vehicles import sbb_gp_5c
-from vehicles import sbb_gp_5e
-from vehicles import sbb_gp_6b
-from vehicles import sbb_gp_6c
 from vehicles import sbb_re_4_4_ii
+from vehicles import slm_re_456
+from vehicles import sob_re_446
 from vehicles import snowplough_ibex_gen_2
+from vehicles import taurus
 from vehicles import trient
 from vehicles import vectron_dual_mode
 
@@ -281,17 +281,16 @@ def main():
             re_450,
             re_460,
             db_111,
-            sbb_gp_5c,
-            sbb_gp_5e,
+            slm_re_456,
+            sob_re_446,
             db_111_upgrade,
             obb_1142,
             obb_1012,
             obb_1014,
-            sbb_gp_6b,
+            taurus,
             db_146,
             re_420_lion,
             fs_e412,
-            sbb_gp_6c,
             re_465,
             # high powered railcars
             high_power_railcar_2,
@@ -304,12 +303,13 @@ def main():
             de_6_6,
             # freight
             trient,
-            sbb_freight_2,
-            sbb_freight_3b,
+            krokodil,
+            sbb_ae_8_14,
             bls_ae_4_4,
-            sbb_freight_4,
-            bls_freight_4b,
-            sbb_freight_5,
+            re_6_6,
+            bls_ae_8_8,
+            re_6_6_ii,
+            bls_re_475,
             # joker engines / snowploughs
             snowplough_ibex_gen_2,
             # cargo sprinter
