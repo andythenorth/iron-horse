@@ -199,16 +199,18 @@ intro_month_offsets_by_role_group = {
     "universal": 0,
     "express_core": 1,
     "express_non_core": 2,
+    "express_railcar": 2,
+    "high_power_railcar": 2,
     "driving_cab": 2,
     "hst": 3,
     "freight_core": 4,
     "freight_non_core": 5,
-    "railcar": 6,
+    "suburban": 6,
     "metro": 7,
     "very_high_speed": 8,
     "food_wagons": 9,
     "non_core_wagons": 10,
-    "jokers": 11,
+    "lolz": 11,
 }
 
 # custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants

@@ -266,40 +266,10 @@ class Consist(object):
             # offset defined in class (probably a wagon)
             return self._intro_year_days_offset
         else:
-            role_group_mappings = {
-                (
-                    "branch_express",
-                    "express",
-                    "heavy_express",
-                    "super_heavy_express",
-                    "express_pax_railcar",
-                ): "express",
-                (
-                    "branch_freight",
-                    "freight",
-                    "heavy_freight",
-                    "super_heavy_freight",
-                ): "freight",
-                (
-                    "driving_cab_express_pax",
-                    "driving_cab_express_mail",
-                    "driving_cab_express_mixed",
-                ): "driving_cab",
-                ("hst",): "hst",
-                ("universal",): "universal",
-                ("very_high_speed",): "very_high_speed",
-                ("pax_metro", "mail_metro"): "metro",
-                (
-                    "mail_railcar",
-                    "pax_railbus",
-                    "pax_railcar",
-                    "high_power_railcar",
-                ): "railcar",
-                ("gronk!", "snoughplough!"): "jokers",
-            }
-            for roles, role_group in role_group_mappings.items():
+            for role_group, roles in global_constants.role_group_mapping.items():
                 if self.role in roles:
                     group_key = role_group
+                    continue
             if group_key in ["express", "freight"]:
                 # assume that we want child branch 1 to be grouped as 'core' in some cases
                 # !! not convinced this achieves much as of July 2022 but eh
@@ -3763,7 +3733,7 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["railcar"]
+            global_constants.intro_month_offsets_by_role_group["suburban"]
         )
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
@@ -3823,7 +3793,7 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["railcar"]
+            global_constants.intro_month_offsets_by_role_group["suburban"]
         )
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
