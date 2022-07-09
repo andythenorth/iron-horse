@@ -7,8 +7,8 @@ def main(roster_id):
         id="flindermouse",
         base_numeric_id=790,
         name="Flindermouse",
-        role="super_heavy_freight",
-        role_child_branch_num=2,
+        role="ultra_heavy_freight",
+        role_child_branch_num=1,
         power=2500,
         speed=60,  # continues a long way into gen 3, so go faster
         gen=2,

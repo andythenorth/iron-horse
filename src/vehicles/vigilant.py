@@ -7,8 +7,8 @@ def main(roster_id):
         id="vigilant",
         base_numeric_id=4870,
         name="2-8-0 Vigilant",
-        role="heavy_freight",
-        role_child_branch_num=2,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
+        role="super_heavy_freight",
+        role_child_branch_num=1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
         power=1850,
         tractive_effort_coefficient=0.32,
         fixed_run_cost_points=245,  # cost malus, early heavy freight engines are too cheap to run relative to smaller engines

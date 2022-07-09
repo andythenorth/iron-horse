@@ -7,8 +7,8 @@ def main(roster_id):
         id="defiant",
         base_numeric_id=14110,
         name="Defiant",
-        role="heavy_freight",
-        role_child_branch_num=-2,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
+        role="super_heavy_freight",
+        role_child_branch_num=-1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
         power=3650,
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.355,

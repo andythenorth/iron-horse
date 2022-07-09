@@ -150,7 +150,7 @@ role_group_mapping = OrderedDict(
         ),
         (
             "freight",
-            ["branch_freight", "freight", "heavy_freight", "super_heavy_freight"],
+            ["branch_freight", "freight", "heavy_freight", "super_heavy_freight", "ultra_heavy_freight"],
         ),
         (
             "universal",

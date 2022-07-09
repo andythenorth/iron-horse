@@ -7,8 +7,8 @@ def main(roster_id):
         id="bone",
         base_numeric_id=13860,
         name="Bone",
-        role="heavy_freight",
-        role_child_branch_num=-2,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
+        role="super_heavy_freight",
+        role_child_branch_num=-1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
         power=3300,  # drops a bit on hp/speed from previous gen, but engine weight is lower
         random_reverse=True,
         intro_year_offset=-2,  # let's be a little bit earlier for this one

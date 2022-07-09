@@ -7,8 +7,8 @@ def main(roster_id):
         id="chinook",
         base_numeric_id=120,
         name="Chinook",
-        role="heavy_freight",
-        role_child_branch_num=2,
+        role="super_heavy_freight",
+        role_child_branch_num=1,
         power=2900,
         gen=4,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
