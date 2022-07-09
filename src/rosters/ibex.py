@@ -2,6 +2,9 @@ import global_constants
 
 from roster import Roster
 
+from vehicles import ae_3_5
+from vehicles import ae_3_6_1
+from vehicles import ae_4_7
 from vehicles import bls_freight_4b
 from vehicles import bls_ae_4_4
 from vehicles import db_103
@@ -9,6 +12,7 @@ from vehicles import db_111
 from vehicles import db_111_upgrade
 from vehicles import db_146
 from vehicles import db_e_410
+from vehicles import de_6_6
 from vehicles import dr_e_21_51
 from vehicles import drg_e_16
 from vehicles import emu_ibex_2
@@ -35,6 +39,7 @@ from vehicles import obb_1163
 from vehicles import obb_1170_2
 from vehicles import obb_1570
 from vehicles import obb_e18
+from vehicles import re_4_4_i
 from vehicles import re_420
 from vehicles import re_420_lion
 from vehicles import re_450
@@ -44,15 +49,10 @@ from vehicles import saas_be_4_4
 from vehicles import sbb_eem_923
 from vehicles import sbb_fb_4_4
 from vehicles import sbb_freight_2
-from vehicles import sbb_freight_2d
 from vehicles import sbb_freight_3b
 from vehicles import sbb_freight_4
 from vehicles import sbb_freight_5
-from vehicles import sbb_gp_2
-from vehicles import sbb_gp_2b
-from vehicles import sbb_gp_2c
 from vehicles import sbb_ae_4_6
-from vehicles import sbb_gp_3c
 from vehicles import sbb_gp_5c
 from vehicles import sbb_gp_5e
 from vehicles import sbb_gp_6b
@@ -252,17 +252,18 @@ def main():
             # express (electro-diesels with non-standard position in power/length tree)
             # foo,
             # express
+            ae_3_5,
             sbb_fb_4_4,
             saas_be_4_4,
             obb_1040,
             sbb_eem_923,
-            sbb_gp_2,
-            sbb_gp_2b,
+            ae_4_7,
+            ae_3_6_1,
             obb_1570,
             obb_1170_2,
             sbb_ae_4_6,
             dr_e_21_51,
-            sbb_gp_3c,
+            re_4_4_i,
             obb_1163,
             obb_1010,
             obb_1041,
@@ -300,11 +301,10 @@ def main():
             # driving cab cars
             # foo,
             # branch freight
-            sbb_gp_2c,
+            de_6_6,
             # freight
             trient,
             sbb_freight_2,
-            sbb_freight_2d,
             sbb_freight_3b,
             bls_ae_4_4,
             sbb_freight_4,

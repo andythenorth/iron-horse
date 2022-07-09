@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=8980,
         name="BLS Ae 4/4",
         role="super_heavy_freight",
-        role_child_branch_num=1,
+        role_child_branch_num=2,
         power=4200,
         random_reverse=True,
         gen=3,

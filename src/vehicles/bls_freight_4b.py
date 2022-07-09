@@ -7,7 +7,7 @@ def main(roster_id):
         id="sbb_freight_4b",
         base_numeric_id=130,
         name="BLS Ae 8/8",
-        role="super_heavy_freight",
+        role="ultra_heavy_freight",
         role_child_branch_num=-2,
         power=8700,
         gen=4,

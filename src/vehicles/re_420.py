@@ -7,7 +7,7 @@ def main(roster_id):
         id="re_420",
         base_numeric_id=8930,
         name="Re 420 (Re 4/4ii)",
-        role="super_heavy_freight",
+        role="ultra_heavy_freight",
         role_child_branch_num=-1,
         power=6700,
         random_reverse=True,

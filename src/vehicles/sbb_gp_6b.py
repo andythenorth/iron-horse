@@ -8,7 +8,7 @@ def main(roster_id):
         id="sbb_gp_6b",
         base_numeric_id=8950,
         name="BLS Re 475 !! Multi-system",
-        role="super_heavy_freight",
+        role="ultra_heavy_freight",
         role_child_branch_num=-2,
         power=8500,
         random_reverse=True,

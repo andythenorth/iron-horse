@@ -7,7 +7,7 @@ def main(roster_id):
         id="sbb_freight_5",
         base_numeric_id=50,
         name="SBB Re 6/6",
-        role="super_heavy_freight",
+        role="ultra_heavy_freight",
         role_child_branch_num=2,
         power=10700,
         gen=5,

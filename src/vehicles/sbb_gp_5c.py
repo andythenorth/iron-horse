@@ -7,7 +7,7 @@ def main(roster_id):
         id="sbb_gp_5c",
         base_numeric_id=8970,
         name="SLM Re 456",
-        role="heavy_freight",
+        role="super_heavy_freight",
         role_child_branch_num=1,
         power=4200,
         random_reverse=True,

@@ -4,12 +4,12 @@ from train import EngineConsist, ElectricEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="sbb_gp_2b",
-        base_numeric_id=9160,
-        name="Ae 3/6 I",
-        role="heavy_express",
+        id="de_6_6",
+        base_numeric_id=9110,
+        name="De 6/6",
+        role="freight",
         role_child_branch_num=1,
-        power=2400,
+        power=1140,
         random_reverse=True,
         gen=2,
         pantograph_type="diamond-double",
@@ -31,6 +31,6 @@ def main(roster_id):
     consist.description = (
         """ """
     )
-    consist.foamer_facts = """SBB Ae 3/6 I, Ae 3/6 II, Ae 3/6 III"""
+    consist.foamer_facts = """SBB De 6/6"""
 
     return consist

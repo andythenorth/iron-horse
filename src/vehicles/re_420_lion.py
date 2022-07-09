@@ -7,7 +7,7 @@ def main(roster_id):
         id="re_420_lion",
         base_numeric_id=13100,
         name="Re 420 LION",
-        role="super_heavy_freight",
+        role="ultra_heavy_freight",
         role_child_branch_num=-1,
         power=7400,
         random_reverse=True,
