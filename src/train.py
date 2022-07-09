@@ -158,7 +158,7 @@ class Consist(object):
             unit.id = self.id
         else:
             unit.id = self.id + "_" + str(count)
-        unit.numeric_id =  self.base_numeric_id + count
+        unit.numeric_id = self.base_numeric_id + count
         for repeat_num in range(repeat):
             self.units.append(unit)
 
@@ -255,67 +255,9 @@ class Consist(object):
             return result
 
     @property
-    def intro_date_days_offset(self):
+    def intro_date_months_offset(self):
         # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
         # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
-        # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
-        # JOKERS: note that not all jokers have to be in the jokers group here, they can be in other groups if intro dates need to sync
-        print("intro_date_days_offset - is there a better way?")
-        # !! ^ this is starting to look stupid and be a maintenance headache when adding branches or roles
-        # for starters, all jokers are negative
-        # surely there's a way to define core, and non-core that's simpler?
-        role_to_role_groups_mapping = {
-            "express_core": {
-                "express": [1],
-                "heavy_express": [1],
-                "super_heavy_express": [1],
-            },
-            "express_non_core": {
-                "branch_express": [1, 2, -2],
-                "express": [2],
-                "heavy_express": [2, 3, 4, 5],
-                "super_heavy_express": [2, 3, 4, 5],
-                "express_pax_railcar": [-1],
-            },
-            "driving_cab": {
-                "driving_cab_express_pax": [-1],
-                "driving_cab_express_mail": [-1],
-                "driving_cab_express_mixed": [-1],
-            },
-            "freight_core": {
-                "freight": [1],
-                "heavy_freight": [1],
-                "super_heavy_freight": [1],
-            },
-            "freight_non_core": {
-                "branch_freight": [1, 2],
-                "freight": [2],
-                "heavy_freight": [2, 3, 4],
-                "super_heavy_freight": [2],
-            },
-            "hst": {"hst": [1, 2]},
-            "jokers": {
-                "gronk!": [-1, -2],
-                "branch_express": [-1],
-                "express": [-1],
-                "heavy_express": [-1, -2, -3, -4],
-                "super_heavy_express": [-1, -2, -3, -4, -5],
-                "freight": [-1, -2],
-                "branch_freight": [-1],
-                "heavy_freight": [-1, -2, -3, -4],
-                "super_heavy_freight": [-1, -2],
-                "snoughplough!": [-1],
-            },
-            "metro": {"mail_metro": [1], "pax_metro": [1]},
-            "railcar": {
-                "mail_railcar": [1, 2, -1, -2],
-                "pax_railbus": [1, -1],
-                "pax_railcar": [1, 2],
-                "high_power_railcar": [1]
-            },
-            "very_high_speed": {"very_high_speed": [1, 2, 3]},
-            "universal": {"universal": [1, 2]},
-        }
         if self.gen == 1:
             # to ensure a fully playable roster is available for gen 1, force the days offset to 0
             # for explanation see https://www.tt-forums.net/viewtopic.php?f=26&t=68616&start=460#p1224299
@@ -324,19 +266,48 @@ class Consist(object):
             # offset defined in class (probably a wagon)
             return self._intro_date_days_offset
         else:
-            result = None
-            # assume role is defined (_probably_ fine)
-            for group_key, group_role_list in role_to_role_groups_mapping.items():
-                if self.role in group_role_list.keys():
-                    if self.role_child_branch_num in group_role_list[self.role]:
-                        result = global_constants.intro_date_offsets_by_role_group[
-                            group_key
-                        ]
-            # check we actually got a result
-            assert result != None, "no role group found for role %s for consist %s" % (
-                self.role,
-                self.id,
-            )
+            role_group_mappings = {
+                (
+                    "branch_express",
+                    "express",
+                    "heavy_express",
+                    "super_heavy_express",
+                    "express_pax_railcar",
+                ): "express",
+                (
+                    "branch_freight",
+                    "freight",
+                    "heavy_freight",
+                    "super_heavy_freight",
+                ): "freight",
+                (
+                    "driving_cab_express_pax",
+                    "driving_cab_express_mail",
+                    "driving_cab_express_mixed",
+                ): "driving_cab",
+                ("hst",): "hst",
+                ("universal",): "universal",
+                ("very_high_speed",): "very_high_speed",
+                ("pax_metro", "mail_metro"): "metro",
+                (
+                    "mail_railcar",
+                    "pax_railbus",
+                    "pax_railcar",
+                    "high_power_railcar",
+                ): "railcar",
+                ("gronk!", "snoughplough!"): "jokers",
+            }
+            for roles, role_group in role_group_mappings.items():
+                if self.role in roles:
+                    group_key = role_group
+            if group_key in ["express", "freight"]:
+                # assume that we want child branch 1 to be grouped as 'core' in some cases
+                # !! not convinced this achieves much as of July 2022 but eh
+                if self.role_child_branch_num == 1:
+                    group_key = group_key + "_core"
+                else:
+                    group_key = group_key + "_non_core"
+            result = global_constants.intro_date_offsets_by_role_group[group_key]
         return result
 
     @property
@@ -488,7 +459,12 @@ class Consist(object):
             return self.get_speed_by_class(self.speed_class)
         elif self.role:
             # first check for express roles, which are determined by multiple role groups
-            for role_group_mapping_key in ["express", "driving_cab", "express_railcar", "high_power_railcar"]:
+            for role_group_mapping_key in [
+                "express",
+                "driving_cab",
+                "express_railcar",
+                "high_power_railcar",
+            ]:
                 group_roles = global_constants.role_group_mapping[
                     role_group_mapping_key
                 ]
