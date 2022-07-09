@@ -21,7 +21,6 @@
                     <tal:role_group define="intro_years roster.intro_years[base_track_type_and_label[0]]"
                                     repeat="role_group tech_tree[base_track_type_and_label]">
                         <tal:descriptions_rail condition="base_track_type_and_label[0]=='RAIL'">
-                        ${role_group}
                             <tal:descriptions switch="role_group">
                                 <div tal:case="'express'">
                                     <h4>General Purpose / Express Engines</h4>
