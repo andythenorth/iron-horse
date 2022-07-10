@@ -99,12 +99,12 @@ buy_menu_sort_order_wagons = [
 # see https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme#.22Innsbruck_2022_Convention.22_for_partial_compliance
 base_track_type_to_railtype_mapping = {
     "RAIL": ["IHA_", "RAIL"],
-    "RAIL_ELECTRIFIED": ["IHB_", "ELRL"],
+    "RAIL_ELECTRIFIED_AC": ["IHB_", "ELRL"],
     "METRO": ["IHC_", "MTRO"], # no other fallbacks, metro is a segregated network, not just normal 3rd rail trains, and standardised scheme does not appear to support that case
     "NG": ["IHD_", "NGRL", "NAAN"],
-    "NG_ELECTRIFIED": ["IHE_", "ELNG", "NAAE"],
+    "NG_ELECTRIFIED_AC": ["IHE_", "ELNG", "NAAE"],
     "LGV": ["IHAA", "RAIL"],
-    "LGV_ELECTRIFIED": ["IHBA", "ELRL"],
+    "LGV_ELECTRIFIED_AC": ["IHBA", "ELRL"],
 }
 
 # capacity multipliers for user-configurable capacity parameter
