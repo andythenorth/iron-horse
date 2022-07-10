@@ -5,6 +5,7 @@ from roster import Roster
 from vehicles import ae_3_5
 from vehicles import ae_3_6_1
 from vehicles import ae_4_7
+from vehicles import bb_7200
 from vehicles import bls_ae_4_4
 from vehicles import bls_ae_8_8
 from vehicles import bls_re_475
@@ -253,6 +254,7 @@ def main():
             # express (electro-diesels with non-standard position in power/length tree)
             # foo,
             # express
+            ## AC?
             ae_3_5,
             sbb_fb_4_4,
             saas_be_4_4,
@@ -293,6 +295,8 @@ def main():
             re_420_lion,
             fs_e412,
             re_465,
+            ## DC?
+            bb_7200,
             # high powered railcars
             high_power_railcar_2,
             high_power_railcar_3,
