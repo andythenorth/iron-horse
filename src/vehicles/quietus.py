@@ -9,7 +9,7 @@ def main(roster_id):
         name="Quietus",
         role="heavy_freight",
         role_child_branch_num=-1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
-        power=3250,  # HP matched to equivalent gen pure diesels
+        # HP matched to equivalent gen pure diesels
         power_by_railtype={
             "RAIL": 3250,
             "ELRL": 6700,

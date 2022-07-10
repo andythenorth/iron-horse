@@ -419,7 +419,16 @@ class Consist(object):
 
     @property
     def power(self):
-        return self._power
+        if self._power != 0:
+            assert self.power_by_railtype == None, (
+                "%s consist has both power and power_by_railtype set, which is incorrect"
+                % self.id
+            )
+        if self.power_by_railtype != None:
+            # this is to get the default value, used when only one value can be shown
+            return self.power_by_railtype["RAIL"]
+        else:
+            return self._power
 
     def get_speed_by_class(self, speed_class):
         # automatic speed, but can over-ride by passing in kwargs for consist

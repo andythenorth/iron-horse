@@ -12,7 +12,6 @@ def main(roster_id):
         name="Bright Country",
         role="express_pax_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
-        power=620,
         power_by_railtype={"RAIL": 620, "ELRL": 1240},
         pantograph_type="z-shaped-single-with-base",
         gen=6,

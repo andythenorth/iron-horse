@@ -9,7 +9,6 @@ def main(roster_id):
         name="Pylon",
         role="mail_railcar",
         role_child_branch_num=2,
-        power=700,
         power_by_railtype={"RAIL": 700, "ELRL": 820},
         pantograph_type="z-shaped-single-with-base",
         easter_egg_haulage_speed_bonus=True,

@@ -9,7 +9,6 @@ def main(roster_id):
         name="Vectron Dual-Mode",
         role="heavy_express",
         role_child_branch_num=1,
-        power=2600,
         power_by_railtype={
             "RAIL": 2400,
             "ELRL": 3200,

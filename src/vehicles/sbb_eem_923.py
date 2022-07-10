@@ -9,7 +9,6 @@ def main(roster_id):
         name="SBB Eem 923",
         role="branch_express",
         role_child_branch_num=1,
-        power=2000,
         power_by_railtype={
             "RAIL": 750,
             "ELRL": 2000,
