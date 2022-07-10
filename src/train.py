@@ -65,7 +65,7 @@ class Consist(object):
         self._replacement_consist_id = kwargs.get("replacement_consist_id", None)
         # default loading speed multiplier, over-ride in subclasses as needed
         self._loading_speed_multiplier = 1
-        self.power = kwargs.get("power", 0)
+        self._power = kwargs.get("power", 0)
         self.base_track_type = kwargs.get("base_track_type", "RAIL")
         # modify base_track_type for electric engines when writing out the actual rail type
         # without this, RAIL and ELRL have to be specially handled whenever a list of compatible consists is wanted
@@ -416,6 +416,10 @@ class Consist(object):
             modifier = "A"
         result = result[0:3] + modifier
         return result
+
+    @property
+    def power(self):
+        return self._power
 
     def get_speed_by_class(self, speed_class):
         # automatic speed, but can over-ride by passing in kwargs for consist
@@ -953,7 +957,7 @@ class AutoCoachCombineConsist(EngineConsist):
             "autocoach_combine"
         ]
         # confer tiny power value to make this one an engine so it can lead.
-        self.power = 10  # use 10 not 1, because 1 looks weird when added to engine HP
+        self._power = 10  # use 10 not 1, because 1 looks weird when added to engine HP
         # nerf TE down to minimal value
         self.tractive_effort_coefficient = 0
         # ....buy costs adjusted to match equivalent gen 2 + 3 pax / mail cars
@@ -999,7 +1003,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
-        self.power = 300
+        self._power = 300
         # nerf TE down to minimal value
         self.tractive_effort_coefficient = 0.1
         # ....buy costs reduced from base to make it close to mail cars
@@ -1174,7 +1178,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         # special purpose attr for use with alt var 41 and pax_car_ids
         self.treat_as_pax_car_for_var_41 = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
-        self.power = 300
+        self._power = 300
         # nerf TE down to minimal value
         self.tractive_effort_coefficient = 0.1
         # ....buy costs reduced from base to make it close to mail cars
@@ -1442,7 +1446,7 @@ class SnowploughEngineConsist(EngineConsist):
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True
         # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
-        self.power = 100
+        self._power = 100
         self.tractive_effort_coefficient = 0.1
         # give it mail / express capacity so it has some purpose :P
         self.class_refit_groups = ["mail", "express_freight"]
