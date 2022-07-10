@@ -428,7 +428,13 @@ class Consist(object):
         if self.power_by_power_source == None:
             # for convenience we allow electrified vehicles to default to AC, without requiring them to explicitly declare that
             return "AC"
-        raise BaseException("foo")
+        if "AC" in self.power_by_power_source:
+            # default all multi-system and bi-mode engines to AC for now, can revise later if needed
+            return "AC"
+        elif "DC" in self.power_by_power_source:
+            return "DC"
+        else:
+            raise BaseException("no valid electrification type found for " + consist.id)
 
     @property
     def power(self):
@@ -439,7 +445,16 @@ class Consist(object):
             )
         if self.power_by_power_source != None:
             # this is to get the default value, used when only one value can be shown
-            return self.power_by_power_source["DIESEL"]
+            # cascade in controlled order through the available power sources
+            if "DIESEL" in self.power_by_power_source:
+                return self.power_by_power_source["DIESEL"]
+            elif "AC" in self.power_by_power_source:
+                # AC is the default for multi-system AC/DC locos
+                return self.power_by_power_source["AC"]
+            elif "DC" in self.power_by_power_source:
+                return self.power_by_power_source["DC"]
+            else:
+                raise BaseException("no valid power source found when fetching default power for " + consist.id + " - possibly power source check needs extending?")
         else:
             return self._power
 
@@ -555,6 +570,7 @@ class Consist(object):
         # this could also interrogate the vehicle label to find the appropriate types to add
         # but that would need to be cautious about e.g. electro-diesel has tracktype IHA_, but would need IHB_ and ELRL here
         # so perhaps Yet Another Mapping for table lookup
+        # !! this really should be fetching from global_constants.base_track_type_to_railtype_mapping
         railtypes_to_check = ["ELRL", "IHB_"]
         result = []
         for railtype in railtypes_to_check:
@@ -4519,6 +4535,11 @@ class Train(object):
             return None
 
     @property
+    def effects_vary_by_power_source(self):
+        # simple check if more than one type of effect is defined
+        return len(self.effects) > 1
+
+    @property
     def default_effect_offsets(self):
         # over-ride this in subclasses as needed (e.g. to move steam engine smoke to front by default
         # vehicles can also over-ride this on init (stored on each model_variant as _effect_offsets)
@@ -4891,7 +4912,7 @@ class ElectroDieselEngineUnit(Train):
         self.engine_class = "ENGINE_CLASS_DIESEL"
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
-            "ELRL": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
+            "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
         }
         self.consist.str_name_suffix = "STR_NAME_SUFFIX_ELECTRODIESEL"
         # electro-diesels are complex eh?
@@ -4910,7 +4931,7 @@ class ElectroDieselRailcarBaseUnit(Train):
         self.engine_class = "ENGINE_CLASS_DIESEL"
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
-            "ELRL": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
+            "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
         }
         self.consist.str_name_suffix = "STR_NAME_SUFFIX_ELECTRODIESEL"
         # electro-diesels are complex eh?

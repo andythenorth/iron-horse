@@ -85,10 +85,12 @@
                         <li><code>C</code> vanilla metro vehicle, requires dedicated metro lines, suitable for <code>MTRO</code> and similar railtypes, metro is always assumed to be electrified via 3 or 4 rail system</li>
                         <li><code>D</code> vanilla narrow gauge vehicle, non-electric, suitable for <code>NGRL</code> and similar railtypes</li>
                         <li><code>E</code> vanilla narrow gauge vehicle, electric (AC), suitable for <code>ELNG</code> and similar railtypes</li>
+                        <li><code>F</code> vanilla rail vehicle, electric (DC) <!--! (no subtype) --> <!--! no known substitutes --></li>
                         <!--!
-                            electrification subtypes e.g. AC, DC, would be added as explicit classes in char 3, then appropriate fallbacks to B for games where the subtype is not used
-                            multi-voltage locomotives would be a specific class representing the combined voltages they're capable of,
-                            with the cross-compatibility managed by a hidden railtype
+                            electrification subtypes e.g. AC, DC, are added as explicit classes in char 3
+                            multi-voltage locomotives would either
+                            (1) default to AC (preferred), or
+                            (2) and only if unavoidable, be a specific class representing the combined voltages they're capable of with the cross-compatibility managed by a hidden railtype
                         -->
                         <li>&hellip;more 'classes' added as needed</li>
                     </ul>

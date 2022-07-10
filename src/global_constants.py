@@ -100,6 +100,7 @@ buy_menu_sort_order_wagons = [
 base_track_type_to_railtype_mapping = {
     "RAIL": ["IHA_", "RAIL"],
     "RAIL_ELECTRIFIED_AC": ["IHB_", "ELRL"],
+    "RAIL_ELECTRIFIED_DC": ["IHF_"], # no fallback for DC if not present
     "METRO": [
         "IHC_",
         "MTRO",

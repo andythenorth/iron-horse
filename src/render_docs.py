@@ -379,13 +379,13 @@ class DocHelper(object):
 
     def power_formatted_for_docs(self, consist):
         if consist.power_by_power_source is not None:
-            # assumes RAIL / ELRL (DIESEL / AC), deal with that later if it's a problem later
-            return (
-                str(consist.power_by_power_source["DIESEL"])
-                + " hp / "
-                + str(consist.power_by_power_source["AC"])
-                + " hp"
-            )
+            # crude assumption we can just walk over the keys and they'll be in the correct order (oof!)
+            # this is based on py 3.6+ having stable dict key order AND power_by_power_source on vehicle being in correct order
+            result = []
+            for power_source in consist.power_by_power_source.keys():
+                result.append(str(consist.power_by_power_source[power_source]) + " hp")
+
+            return " / ".join(result)
         else:
             return str(consist.power) + " hp"
 

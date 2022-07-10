@@ -1,9 +1,11 @@
 <!--! set spawn model -->
-<!--! assumes RAIL / ELRL, deal with that later if it's a problem later -->
-<tal:spawn_model_varies_by_railtype switch="consist.engine_varies_power_by_railtype(vehicle)">
+<!--! assumes just 2 effects, default and electrified, deal with that later if it's a problem later
+      if necessary, walk over the array of effects and check each track type explicitly (get the labels via base_track_type_to_railtype_mapping)
+-->
+<tal:spawn_model_varies_by_railtype switch="vehicle.effects_vary_by_power_source">
     <tal:check_elrl case="True">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_effect_spawn_model_and_powered, ${consist.get_nml_expression_for_tile_powers_railtype()}) {
-                1: return ${vehicle.effects['ELRL'][0]};
+                1: return ${vehicle.effects['electrified'][0]};
             return ${vehicle.effects['default'][0]};
         }
     </tal:check_elrl>
@@ -26,9 +28,9 @@
     </tal:railtypes>
 
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_check_railtype_${reversed_variant}, ${consist.get_nml_expression_for_tile_powers_railtype()}) {
-        <!--! variable effect assumes RAIL / ELRL, deal with that later if it's a problem later -->
-        <tal:effect_varies_by_railtype condition="consist.engine_varies_power_by_railtype(vehicle)">
-            1: return ${vehicle.id}_switch_create_effect_ELRL_${reversed_variant};
+        <!--! assumes just 2 effects, default and electrified, deal with that later if it's a problem later -->
+        <tal:effect_varies_by_railtype condition="vehicle.effects_vary_by_power_source">
+            1: return ${vehicle.id}_switch_create_effect_electrified_${reversed_variant};
         </tal:effect_varies_by_railtype>
         return ${vehicle.id}_switch_create_effect_default_${reversed_variant};
     }
