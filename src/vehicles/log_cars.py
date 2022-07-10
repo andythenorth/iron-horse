@@ -111,7 +111,11 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
     consist = LogCarConsist(
-        roster_id="pony", base_numeric_id=9970, gen=5, subtype="C", sprites_complete=True
+        roster_id="pony",
+        base_numeric_id=9970,
+        gen=5,
+        subtype="C",
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")

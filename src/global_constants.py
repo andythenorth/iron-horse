@@ -100,7 +100,10 @@ buy_menu_sort_order_wagons = [
 base_track_type_to_railtype_mapping = {
     "RAIL": ["IHA_", "RAIL"],
     "RAIL_ELECTRIFIED_AC": ["IHB_", "ELRL"],
-    "METRO": ["IHC_", "MTRO"], # no other fallbacks, metro is a segregated network, not just normal 3rd rail trains, and standardised scheme does not appear to support that case
+    "METRO": [
+        "IHC_",
+        "MTRO",
+    ],  # no other fallbacks, metro is a segregated network, not just normal 3rd rail trains, and standardised scheme does not appear to support that case
     "NG": ["IHD_", "NGRL", "NAAN"],
     "NG_ELECTRIFIED_AC": ["IHE_", "ELNG", "NAAE"],
     "LGV": ["IHAA", "RAIL"],
@@ -132,7 +135,13 @@ role_group_mapping = OrderedDict(
     [
         (
             "express",
-            ["branch_express", "express", "heavy_express", "super_heavy_express", "ultra_heavy_express"],
+            [
+                "branch_express",
+                "express",
+                "heavy_express",
+                "super_heavy_express",
+                "ultra_heavy_express",
+            ],
         ),
         (
             "high_power_railcar",
@@ -150,7 +159,13 @@ role_group_mapping = OrderedDict(
         ),
         (
             "freight",
-            ["branch_freight", "freight", "heavy_freight", "super_heavy_freight", "ultra_heavy_freight"],
+            [
+                "branch_freight",
+                "freight",
+                "heavy_freight",
+                "super_heavy_freight",
+                "ultra_heavy_freight",
+            ],
         ),
         (
             "universal",
@@ -298,7 +313,7 @@ temp_storage_ids = dict(
     auto_colour_randomisation_strategy_num=21,  # used in procedures_colour_randomisation_strategies
     use_wagon_base_colour_parameter=22,  # used in procedures_colour_randomisation_strategies
     unreversible_spritelayer_cargos=23,  # used to handle esoteric cases where spritelayer cargos need to reverse
-    consist_specific_livery_variant=24, # used to store result of switch_graphics_pax_car_ruleset() and similar
+    consist_specific_livery_variant=24,  # used to store result of switch_graphics_pax_car_ruleset() and similar
 )
 
 # standard offsets for trains

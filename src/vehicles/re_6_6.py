@@ -12,7 +12,7 @@ def main(roster_id):
         power=10700,
         gen=4,
         pantograph_type="diamond-double",
-        #intro_year_offset=-13,  # introduce earlier than gen epoch by design
+        # intro_year_offset=-13,  # introduce earlier than gen epoch by design
         sprites_complete=False,
     )
 
@@ -20,9 +20,7 @@ def main(roster_id):
         type=ElectricEngineUnit, weight=75, vehicle_length=6, spriterow_num=0, repeat=2
     )
 
-    consist.description = (
-        """ """
-    )
+    consist.description = """ """
     consist.foamer_facts = """SBB Re 6/6"""
 
     return consist

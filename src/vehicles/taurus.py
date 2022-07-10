@@ -2,6 +2,7 @@ from train import EngineConsist, ElectricEngineUnit
 
 # multi-system !!
 
+
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
@@ -14,7 +15,7 @@ def main(roster_id):
         random_reverse=True,
         gen=6,
         pantograph_type="diamond-double",
-        #intro_year_offset=5,  # introduce later than gen epoch by design
+        # intro_year_offset=5,  # introduce later than gen epoch by design
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         default_livery_extra_docs_examples=[
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
@@ -29,9 +30,7 @@ def main(roster_id):
         type=ElectricEngineUnit, weight=105, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = (
-        """ """
-    )
+    consist.description = """ """
     consist.foamer_facts = """OBB Siemens ES64U4 Taurus !! Multisystem"""
 
     return consist

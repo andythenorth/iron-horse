@@ -55,13 +55,21 @@ def main():
     # no new type A for gen 2, gen 1 type A continues
 
     consist = BoxCarConsist(
-        roster_id="pony", base_numeric_id=9590, gen=2, subtype="B", sprites_complete=True
+        roster_id="pony",
+        base_numeric_id=9590,
+        gen=2,
+        subtype="B",
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
     consist = BoxCarConsist(
-        roster_id="pony", base_numeric_id=9600, gen=3, subtype="A", sprites_complete=True
+        roster_id="pony",
+        base_numeric_id=9600,
+        gen=3,
+        subtype="A",
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
@@ -77,7 +85,11 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
     consist = BoxCarConsist(
-        roster_id="pony", base_numeric_id=9610, gen=4, subtype="A", sprites_complete=True
+        roster_id="pony",
+        base_numeric_id=9610,
+        gen=4,
+        subtype="A",
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")

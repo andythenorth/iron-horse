@@ -2,6 +2,7 @@ from train import EngineConsist, ElectricEngineUnit
 
 # multi-system !!
 
+
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
@@ -29,9 +30,7 @@ def main(roster_id):
         type=ElectricEngineUnit, weight=105, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = (
-        """ """
-    )
+    consist.description = """ """
     consist.foamer_facts = """OBB 1050"""
 
     return consist

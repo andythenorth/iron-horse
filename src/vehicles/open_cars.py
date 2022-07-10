@@ -43,7 +43,11 @@ def main():
     # only type A for gen 1
 
     consist = OpenCarConsist(
-        roster_id="pony", base_numeric_id=9860, gen=1, subtype="A", sprites_complete=True
+        roster_id="pony",
+        base_numeric_id=9860,
+        gen=1,
+        subtype="A",
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
@@ -51,13 +55,21 @@ def main():
     # no new type A for gen 2, gen 1 type A continues
 
     consist = OpenCarConsist(
-        roster_id="pony", base_numeric_id=9870, gen=2, subtype="B", sprites_complete=True
+        roster_id="pony",
+        base_numeric_id=9870,
+        gen=2,
+        subtype="B",
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
     consist = OpenCarConsist(
-        roster_id="pony", base_numeric_id=9880, gen=3, subtype="A", sprites_complete=True
+        roster_id="pony",
+        base_numeric_id=9880,
+        gen=3,
+        subtype="A",
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")

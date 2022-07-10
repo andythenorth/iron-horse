@@ -31,9 +31,7 @@ def main(roster_id):
         type=ElectroDieselEngineUnit, weight=105, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = (
-        """ """
-    )
+    consist.description = """ """
     consist.foamer_facts = """Siemens Vectron Dual-Mode"""
 
     return consist

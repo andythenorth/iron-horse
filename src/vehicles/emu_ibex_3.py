@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="emu_ibex_3",
         base_numeric_id=8860,
-        name="SBB Ce 2/4", # see also https://de.wikipedia.org/wiki/SOB_CFZe_4/4
+        name="SBB Ce 2/4",  # see also https://de.wikipedia.org/wiki/SOB_CFZe_4/4
         role="pax_railcar",
         role_child_branch_num=2,
         power=320,
@@ -14,7 +14,7 @@ def main(roster_id):
         easter_egg_haulage_speed_bonus=True,
         gen=3,
         sprites_complete=False,
-        #intro_year_offset=-3,
+        # intro_year_offset=-3,
     )
 
     consist.add_unit(

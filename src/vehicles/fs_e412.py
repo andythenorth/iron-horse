@@ -28,9 +28,7 @@ def main(roster_id):
         type=ElectricEngineUnit, weight=105, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = (
-        """ """
-    )
+    consist.description = """ """
     consist.foamer_facts = """FS E.412 <i>Brenner</i>"""
 
     return consist

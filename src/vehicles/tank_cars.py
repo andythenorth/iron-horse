@@ -62,7 +62,11 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
     consist = TankCarConsist(
-        roster_id="pony", base_numeric_id=9670, gen=3, subtype="A", sprites_complete=True
+        roster_id="pony",
+        base_numeric_id=9670,
+        gen=3,
+        subtype="A",
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
@@ -88,13 +92,21 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
 
     consist = TankCarConsist(
-        roster_id="pony", base_numeric_id=9680, gen=4, subtype="A", sprites_complete=True
+        roster_id="pony",
+        base_numeric_id=9680,
+        gen=4,
+        subtype="A",
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
 
     consist = TankCarConsist(
-        roster_id="pony", base_numeric_id=10000, gen=4, subtype="B", sprites_complete=True
+        roster_id="pony",
+        base_numeric_id=10000,
+        gen=4,
+        subtype="B",
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")

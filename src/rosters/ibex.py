@@ -62,6 +62,7 @@ from vehicles import taurus
 from vehicles import trient
 from vehicles import vectron_dual_mode
 
+
 def main():
     return Roster(
         id="ibex",

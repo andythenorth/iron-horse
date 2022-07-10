@@ -399,7 +399,9 @@ class Consist(object):
         if self.requires_electric_rails:
             # for electrified vehicles, translate base_track_type before getting the mapping to labels
             # iff electrification types ever gain subtypes (AC, DC, etc), add further checks here
-            mapping_key = self.base_track_type + "_ELECTRIFIED_" + self.electrification_type
+            mapping_key = (
+                self.base_track_type + "_ELECTRIFIED_" + self.electrification_type
+            )
         else:
             mapping_key = self.base_track_type
         valid_railtype_labels = global_constants.base_track_type_to_railtype_mapping[
