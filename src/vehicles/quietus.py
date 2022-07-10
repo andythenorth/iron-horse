@@ -11,8 +11,8 @@ def main(roster_id):
         role_child_branch_num=-1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
         # HP matched to equivalent gen pure diesels
         power_by_power_source={
-            "RAIL": 3250,
-            "ELRL": 6700,
+            "DIESEL": 3250,
+            "AC": 6700,
         },  # based on the Stadler Eurodual, really quite high values for both diesel and el (also matches Newag Dragon, which the shape is taken from)
         tractive_effort_coefficient=0.375,  # assume slip control magic
         random_reverse=True,

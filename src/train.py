@@ -439,7 +439,7 @@ class Consist(object):
             )
         if self.power_by_power_source != None:
             # this is to get the default value, used when only one value can be shown
-            return self.power_by_power_source["RAIL"]
+            return self.power_by_power_source["DIESEL"]
         else:
             return self._power
 
@@ -883,7 +883,7 @@ class EngineConsist(Consist):
         # this sometimes causes a steep jump from non-electro-diesels in a tech tree (due to power jump), but eh, fine
         elif self.electro_diesel_buy_cost_malus is not None:
             power_factor = (
-                self.electro_diesel_buy_cost_malus * self.power_by_power_source["ELRL"]
+                self.electro_diesel_buy_cost_malus * self.power_by_power_source["AC"] # !! assumption of AC !!
             ) / 750
         # multiplier for non-electric power, max value will be 10
         else:

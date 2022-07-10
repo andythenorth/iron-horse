@@ -379,11 +379,11 @@ class DocHelper(object):
 
     def power_formatted_for_docs(self, consist):
         if consist.power_by_power_source is not None:
-            # assumes RAIL / ELRL, deal with that later if it's a problem later
+            # assumes RAIL / ELRL (DIESEL / AC), deal with that later if it's a problem later
             return (
-                str(consist.power_by_power_source["RAIL"])
+                str(consist.power_by_power_source["DIESEL"])
                 + " hp / "
-                + str(consist.power_by_power_source["ELRL"])
+                + str(consist.power_by_power_source["AC"])
                 + " hp"
             )
         else:

@@ -10,9 +10,9 @@
 
 <tal:railtype_varies_power condition="consist.engine_varies_power_by_railtype(vehicle)">
     // -- power varies by railtype -- //
-    <!--! assumes RAIL / ELRL, deal with that later if it's a problem later -->
+    <!--! assumes RAIL / ELRL (AC), deal with that later if it's a problem later -->
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, ${consist.get_nml_expression_for_tile_powers_railtype()}) {
-        1: return ${consist.power_by_power_source["ELRL"]};
+        1: return ${consist.power_by_power_source["AC"]};
         return ${consist.power};
     }
 </tal:railtype_varies_power>

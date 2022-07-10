@@ -9,7 +9,7 @@ def main(roster_id):
         name="Ultra Shoebox",
         role="express",
         role_child_branch_num=-1,
-        power_by_power_source={"RAIL": 1650, "ELRL": 2800},
+        power_by_power_source={"DIESEL": 1650, "AC": 2800},
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=6,
