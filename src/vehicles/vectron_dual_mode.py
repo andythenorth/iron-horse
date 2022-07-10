@@ -9,7 +9,7 @@ def main(roster_id):
         name="Vectron Dual-Mode",
         role="heavy_express",
         role_child_branch_num=1,
-        power_by_railtype={
+        power_by_power_source={
             "RAIL": 2400,
             "ELRL": 3200,
         },  # IRL 2600 HP at rail for both modes, but for gameplay what's the point of electric if not more powerful?

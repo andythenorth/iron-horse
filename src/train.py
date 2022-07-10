@@ -79,7 +79,7 @@ class Consist(object):
         # private var, can be used to over-rides default (per generation, per class) speed
         self._speed = kwargs.get("speed", None)
         # used by multi-mode engines such as electro-diesel, otherwise ignored
-        self.power_by_railtype = kwargs.get("power_by_railtype", None)
+        self.power_by_power_source = kwargs.get("power_by_power_source", None)
         # some engines require pantograph sprites composited, don't bother setting this unless required
         self.pantograph_type = kwargs.get("pantograph_type", None)
         self.dual_headed = kwargs.get("dual_headed", False)
@@ -207,12 +207,12 @@ class Consist(object):
             return "string(STR_NAME_" + self.id + ")"
 
     def engine_varies_power_by_railtype(self, vehicle):
-        if self.power_by_railtype is not None and vehicle.is_lead_unit_of_consist:
+        if self.power_by_power_source is not None and vehicle.is_lead_unit_of_consist:
             # as of Dec 2018, can't use both variable power and wagon power
             # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
             # would require quite a bit of refactoring though eh
             assert self.wagons_add_power == False, (
-                "%s consist has both engine_varies_power_by_railtype and power_by_railtype, which conflict"
+                "%s consist has both engine_varies_power_by_railtype and power_by_power_source, which conflict"
                 % self.id
             )
             return True
@@ -423,7 +423,7 @@ class Consist(object):
             "%s consist tried to determine electrification_type, but does not have requires_electric_rails set"
             % self.id
         )
-        if self.power_by_railtype == None:
+        if self.power_by_power_source == None:
             # for convenience we allow electrified vehicles to default to AC, without requiring them to explicitly declare that
             return "AC"
         raise BaseException("foo")
@@ -431,13 +431,13 @@ class Consist(object):
     @property
     def power(self):
         if self._power != 0:
-            assert self.power_by_railtype == None, (
-                "%s consist has both power and power_by_railtype set, which is incorrect"
+            assert self.power_by_power_source == None, (
+                "%s consist has both power and power_by_power_source set, which is incorrect"
                 % self.id
             )
-        if self.power_by_railtype != None:
+        if self.power_by_power_source != None:
             # this is to get the default value, used when only one value can be shown
-            return self.power_by_railtype["RAIL"]
+            return self.power_by_power_source["RAIL"]
         else:
             return self._power
 
@@ -652,7 +652,7 @@ class Consist(object):
         result = []
         # optional string if engine varies power by railtype
         if self.engine_varies_power_by_railtype(vehicle):
-            result.append("STR_POWER_BY_RAILTYPE")
+            result.append("STR_POWER_BY_POWER_SOURCE")
         # optional string if consist is lgv-capable
         if self.lgv_capable:
             result.append("STR_SPEED_BY_RAILTYPE_LGV_CAPABLE")
@@ -881,7 +881,7 @@ class EngineConsist(Consist):
         # this sometimes causes a steep jump from non-electro-diesels in a tech tree (due to power jump), but eh, fine
         elif self.electro_diesel_buy_cost_malus is not None:
             power_factor = (
-                self.electro_diesel_buy_cost_malus * self.power_by_railtype["ELRL"]
+                self.electro_diesel_buy_cost_malus * self.power_by_power_source["ELRL"]
             ) / 750
         # multiplier for non-electric power, max value will be 10
         else:

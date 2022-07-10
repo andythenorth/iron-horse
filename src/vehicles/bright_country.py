@@ -12,7 +12,7 @@ def main(roster_id):
         name="Bright Country",
         role="express_pax_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
-        power_by_railtype={"RAIL": 620, "ELRL": 1240},
+        power_by_power_source={"RAIL": 620, "ELRL": 1240},
         pantograph_type="z-shaped-single-with-base",
         gen=6,
         intro_year_offset=1,  # introduce later by design

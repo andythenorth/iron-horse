@@ -9,7 +9,7 @@ def main(roster_id):
         name="SBB Eem 923",
         role="branch_express",
         role_child_branch_num=1,
-        power_by_railtype={
+        power_by_power_source={
             "RAIL": 750,
             "ELRL": 2000,
         },  # IRL 400 HP at rail for diesel modes, but gets a bumo for gameplay

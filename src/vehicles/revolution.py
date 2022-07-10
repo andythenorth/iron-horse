@@ -10,7 +10,7 @@ def main(roster_id):
         role="heavy_express",
         role_child_branch_num=1,  # in the diesel branch, not electric
         # HP capped down, solely for game balance against Resilient
-        power_by_railtype={
+        power_by_power_source={
             "RAIL": 2750,
             "ELRL": 4200,
         },  # compared to IRL, there is more diesel power and less electric, follows Fury line 600hp progresion steps

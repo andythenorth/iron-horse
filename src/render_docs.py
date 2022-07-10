@@ -378,12 +378,12 @@ class DocHelper(object):
                 return self.unpack_name_string(consist)
 
     def power_formatted_for_docs(self, consist):
-        if consist.power_by_railtype is not None:
+        if consist.power_by_power_source is not None:
             # assumes RAIL / ELRL, deal with that later if it's a problem later
             return (
-                str(consist.power_by_railtype["RAIL"])
+                str(consist.power_by_power_source["RAIL"])
                 + " hp / "
-                + str(consist.power_by_railtype["ELRL"])
+                + str(consist.power_by_power_source["ELRL"])
                 + " hp"
             )
         else:

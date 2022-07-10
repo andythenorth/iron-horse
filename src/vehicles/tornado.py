@@ -9,7 +9,7 @@ def main(roster_id):
         name="Tornado",
         role="branch_express",
         role_child_branch_num=-2,
-        power_by_railtype={"RAIL": 750, "ELRL": 1900},
+        power_by_power_source={"RAIL": 750, "ELRL": 1900},
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=5,

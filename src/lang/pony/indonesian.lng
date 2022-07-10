@@ -122,7 +122,7 @@ STR_ROLE_SUBURBAN                                               :Sub Urban
 STR_ROLE_VERY_HIGH_SPEED                                        :Kecepatan Sangat Tinggi
 
 # assumes only diesel and electric currently
-STR_POWER_BY_RAILTYPE                                           :{BLACK}Tenaga Diesel: {GOLD}{POWER} {}{BLACK}Tenaga Listrik: {GOLD}{POWER}
+STR_POWER_BY_POWER_SOURCE                                           :{BLACK}Tenaga Diesel: {GOLD}{POWER} {}{BLACK}Tenaga Listrik: {GOLD}{POWER}
 
 # distributed power (dedicated wagons add power)
 STR_WAGONS_ADD_POWER_CAB                                        :Tenaga (Didistribusikan): {GOLD}{POWER} per {STRING} unit tersambung

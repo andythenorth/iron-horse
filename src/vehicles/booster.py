@@ -9,7 +9,7 @@ def main(roster_id):
         name="Booster",
         role="branch_express",
         role_child_branch_num=-2,
-        power_by_railtype={"RAIL": 600, "ELRL": 1600},
+        power_by_power_source={"RAIL": 600, "ELRL": 1600},
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=4,

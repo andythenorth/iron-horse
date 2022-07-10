@@ -64,7 +64,7 @@ STR_ROLE_VERY_HIGH_SPEED                                        :Zeer hoge snelh
 STR_ROLE_LOLZ                                                   :Lolz
 
 # assumes only diesel and electric currently
-STR_POWER_BY_RAILTYPE                                           :{BLACK}Vermogen met diesel: {GOLD}{POWER}{}{BLACK}Vermogen elektrisch: {GOLD}{POWER}
+STR_POWER_BY_POWER_SOURCE                                           :{BLACK}Vermogen met diesel: {GOLD}{POWER}{}{BLACK}Vermogen elektrisch: {GOLD}{POWER}
 
 # distributed power (dedicated wagons add power)
 STR_WAGONS_ADD_POWER_CAB                                        :Vermogen (verdeeld): {GOLD}{POWER} per aangesloten {STRING} eenheid

@@ -168,7 +168,7 @@ STR_ROLE_SUBURBAN                                               :High Capacity S
 STR_ROLE_VERY_HIGH_SPEED                                        :Very High Speed
 
 # assumes only diesel and electric currently
-STR_POWER_BY_RAILTYPE                                           :{BLACK}Power on Diesel: {GOLD}{POWER} {}{BLACK}Power on Electric: {GOLD}{POWER}
+STR_POWER_BY_POWER_SOURCE                                           :{BLACK}Power on Diesel: {GOLD}{POWER} {}{BLACK}Power on Electric: {GOLD}{POWER}
 
 # assumed to be handling case of lgv_capable (two speeds)
 STR_SPEED_BY_RAILTYPE_LGV_CAPABLE                               :{BLACK}Speed (Dedicated High Speed Rail): {GOLD}{VELOCITY} {}{BLACK}Speed (Normal Rail): {GOLD}{VELOCITY}
