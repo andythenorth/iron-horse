@@ -8,7 +8,7 @@
     <tal:include metal:use-macro="load: buy_menu_text.pynml" />
 </tal:buy_menu_text>
 
-<tal:railtype_varies_power condition="consist.engine_varies_power_by_railtype(vehicle)">
+<tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle)">
     // -- power varies by railtype -- //
     <!--! assumes RAIL / ELRL (AC), deal with that later if it's a problem later -->
     <!--! tile_powers_track_type_name_${consist.base_track_type_name}_ELECTRIFIED_${consist.electrification_type} -->
@@ -144,7 +144,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             cargo_subtype_text: switch_cargo_subtype_text();
         </tal:optional_cargo_subtype>
         <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
-        <tal:variable_power condition="consist.engine_varies_power_by_railtype(vehicle) or consist.wagons_add_power">
+        <tal:variable_power condition="consist.engine_varies_power_by_power_source(vehicle) or consist.wagons_add_power">
             power:                          ${vehicle.id}_switch_power;
             purchase_power:                 ${consist.power};
         </tal:variable_power>

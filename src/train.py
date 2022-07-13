@@ -206,13 +206,13 @@ class Consist(object):
         else:
             return "string(STR_NAME_" + self.id + ")"
 
-    def engine_varies_power_by_railtype(self, vehicle):
+    def engine_varies_power_by_power_source(self, vehicle):
         if self.power_by_power_source is not None and vehicle.is_lead_unit_of_consist:
             # as of Dec 2018, can't use both variable power and wagon power
             # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
             # would require quite a bit of refactoring though eh
             assert self.wagons_add_power == False, (
-                "%s consist has both engine_varies_power_by_railtype and power_by_power_source, which conflict"
+                "%s consist has both engine_varies_power_by_power_source and power_by_power_source, which conflict"
                 % self.id
             )
             return True
@@ -658,8 +658,8 @@ class Consist(object):
 
     def get_buy_menu_format(self, vehicle):
         # keep the template logic simple, present strings for a switch/case tree
-        # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_railtype as of August 2019)
-        if self.engine_varies_power_by_railtype(vehicle):
+        # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
+        if self.engine_varies_power_by_power_source(vehicle):
             return "variable_power"
         elif self.lgv_capable:
             # yeah, simplicity failed when lgv_capable was added, this simple tree needs rethought to allow better composition of arbitrary strings
@@ -677,7 +677,7 @@ class Consist(object):
     def get_buy_menu_string(self, vehicle):
         result = []
         # optional string if engine varies power by railtype
-        if self.engine_varies_power_by_railtype(vehicle):
+        if self.engine_varies_power_by_power_source(vehicle):
             result.append("STR_POWER_BY_POWER_SOURCE")
         # optional string if consist is lgv-capable
         if self.lgv_capable:
