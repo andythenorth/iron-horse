@@ -11,7 +11,7 @@ def main():
         base_numeric_id=13140,
         gen=1,
         subtype="A",
-        base_track_type="NG",
+        base_track_type_name="NG",
         spriterow_labels=spriterow_labels,
         sprites_complete=False,
     )
@@ -23,7 +23,7 @@ def main():
         base_numeric_id=10330,
         gen=1,
         subtype="B",
-        base_track_type="NG",
+        base_track_type_name="NG",
         spriterow_labels=spriterow_labels,
         sprites_complete=False,
     )

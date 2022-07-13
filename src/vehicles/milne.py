@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=11090,
         name="4-8-2 Milne",
         power=600,
-        base_track_type="NG",
+        base_track_type_name="NG",
         random_reverse=True,
         intro_year=1910,
     )

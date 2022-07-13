@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=11110,
         name="4-8-0 Ndemi",
         power=1700,
-        base_track_type="NG",
+        base_track_type_name="NG",
         intro_year=1887,
     )
 

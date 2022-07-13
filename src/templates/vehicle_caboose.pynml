@@ -19,7 +19,7 @@
     }
 </tal:caboose_variants>
 
-<tal:caboose_families repeat="caboose_family consist.roster.caboose_families[consist.base_track_type][consist.base_id].items()">
+<tal:caboose_families repeat="caboose_family consist.roster.caboose_families[consist.base_track_type_name][consist.base_id].items()">
     // ${caboose_family}
     random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_caboose_family_${caboose_family[0]}) {
         <tal:caboose_family_variants repeat="caboose_variant caboose_family[1]">
@@ -31,7 +31,7 @@
 switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type_id) {
 <!--! this doesn't check grfid currently - add later if needed
       this may also exceed the number of permitted ranges as number of engines increases, if that happens, try sharding (probably by roster) -->
-    <tal:engine_consists repeat="engine_consist [engine_consist for engine_consist in consist.roster.engine_consists if engine_consist.base_track_type == consist.base_track_type]">
+    <tal:engine_consists repeat="engine_consist [engine_consist for engine_consist in consist.roster.engine_consists if engine_consist.base_track_type_name == consist.base_track_type_name]">
         ${engine_consist.id}: return ${vehicle.id}_switch_graphics_caboose_family_${engine_consist.caboose_families[consist.base_id]};
     </tal:engine_consists>
     <!--! default just uses first spriterow, this is often not going to be a good result, but JFDI for now  -->

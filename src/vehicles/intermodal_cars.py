@@ -8,7 +8,7 @@ def main():
         base_numeric_id=13000,
         gen=4,
         subtype="U",
-        base_track_type="NG",
+        base_track_type_name="NG",
         sprites_complete=True,
     )
 

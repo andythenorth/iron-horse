@@ -1253,7 +1253,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
     def add_box_car_with_opening_doors_spriterows(self):
         # all wagons using this gestalt repaint the relevant base sprite for the wagon's generation and subtype
         id_base = self.consist.gestalt_graphics.id_base
-        if self.consist.base_track_type == "NG":
+        if self.consist.base_track_type_name == "NG":
             id_base = id_base + "_ng"
         box_car_id = self.consist.get_wagon_id(
             id_base=id_base,

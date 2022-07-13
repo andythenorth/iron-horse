@@ -9,7 +9,7 @@ def main(roster_id):
         name="4-4-2 Albertine",
         power=1200,
         tractive_effort_coefficient=0.19,
-        base_track_type="NG",
+        base_track_type_name="NG",
         intro_year=1885,
     )
 

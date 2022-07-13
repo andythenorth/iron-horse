@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=11050,
         name="2-6-6-2 Oubangui",
         power=1500,
-        base_track_type="NG",
+        base_track_type_name="NG",
         intro_year=1920,
     )
 

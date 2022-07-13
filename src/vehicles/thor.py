@@ -9,7 +9,7 @@ def main(roster_id):
         name="0-4-4-0 Thor",
         role="universal",
         role_child_branch_num=2,
-        base_track_type="NG",
+        base_track_type_name="NG",
         power=600,
         tractive_effort_coefficient=0.3,
         gen=1,

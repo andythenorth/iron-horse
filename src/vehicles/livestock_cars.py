@@ -8,7 +8,7 @@ def main():
         base_numeric_id=10070,
         gen=1,
         subtype="U",
-        base_track_type="NG",
+        base_track_type_name="NG",
         sprites_complete=True,
     )
 
@@ -21,7 +21,7 @@ def main():
         base_numeric_id=9660,
         gen=3,
         subtype="U",
-        base_track_type="NG",
+        base_track_type_name="NG",
         sprites_complete=True,
     )
 
@@ -32,7 +32,7 @@ def main():
         base_numeric_id=9720,
         gen=4,
         subtype="U",
-        base_track_type="NG",
+        base_track_type_name="NG",
         sprites_complete=True,
     )
 

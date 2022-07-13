@@ -1,11 +1,11 @@
 // CABBAGE
 
-<tal:base_track_type repeat="base_track_type global_constants.railtype_labels_by_vehicle_track_type_name">
-    switch (FEAT_TRAINS, SELF, tile_powers_base_track_type_${base_track_type},
+<tal:track_type_name repeat="track_type_name global_constants.railtype_labels_by_vehicle_track_type_name">
+    switch (FEAT_TRAINS, SELF, tile_powers_base_track_type_${track_type_name},
         [
             <!--! note that pipe | has to be escaped for chameleon as it has special meaning in TALES expressions -->
-            ${" \|\| ".join(['tile_powers_railtype("' + railtype + '")' for railtype in global_constants.railtype_labels_by_vehicle_track_type_name[base_track_type]])}
+            ${" \|\| ".join(['tile_powers_railtype("' + railtype + '")' for railtype in global_constants.railtype_labels_by_vehicle_track_type_name[track_type_name]])}
         ]) {
         return;
     }
-</tal:base_track_type>
+</tal:track_type_name>

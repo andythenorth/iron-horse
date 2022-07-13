@@ -9,7 +9,7 @@ def main(roster_id):
         name="Zorro",
         role="mail_railcar",
         role_child_branch_num=1,
-        base_track_type="NG",
+        base_track_type_name="NG",
         power=500,
         gen=4,
         sprites_complete=True,

@@ -9,7 +9,7 @@ def main(roster_id):
         name="4-6-2 Hyena",
         power=1400,
         tractive_effort_coefficient=0.19,
-        base_track_type="NG",
+        base_track_type_name="NG",
         intro_year=1915,
     )
 

@@ -66,8 +66,8 @@ class Consist(object):
         # default loading speed multiplier, over-ride in subclasses as needed
         self._loading_speed_multiplier = 1
         self._power = kwargs.get("power", 0)
-        self.base_track_type = kwargs.get("base_track_type", "RAIL")
-        # modify base_track_type for electric engines when writing out the actual rail type
+        self.base_track_type_name = kwargs.get("base_track_type_name", "RAIL")
+        # modify base_track_type_name for electric engines when writing out the actual rail type
         # without this, RAIL and ELRL have to be specially handled whenever a list of compatible consists is wanted
         # this *does* need a specific flag, can't rely on unit visual effect or unit engine type props - they are used for other things
         self.requires_electric_rails = (
@@ -249,7 +249,7 @@ class Consist(object):
                 "%s consist has neither gen nor intro_year set, which is incorrect"
                 % self.id
             )
-            result = self.roster.intro_years[self.base_track_type][self.gen - 1]
+            result = self.roster.intro_years[self.base_track_type_name][self.gen - 1]
             if self.intro_year_offset is not None:
                 result = result + self.intro_year_offset
             return result
@@ -299,12 +299,12 @@ class Consist(object):
                 % self.id
             )
             for gen_counter, intro_year in enumerate(
-                self.roster.intro_years[self.base_track_type]
+                self.roster.intro_years[self.base_track_type_name]
             ):
                 if self.intro_year < intro_year:
                     return gen_counter
             # if no result is found in list, it's last gen
-            return len(self.roster.intro_years[self.base_track_type])
+            return len(self.roster.intro_years[self.base_track_type_name])
 
     @property
     def equivalent_ids_alt_var_41(self):
@@ -335,7 +335,7 @@ class Consist(object):
                 if (
                     (consist.role == self.role)
                     and (consist.role_child_branch_num == self.role_child_branch_num)
-                    and (consist.base_track_type == self.base_track_type)
+                    and (consist.base_track_type_name == self.base_track_type_name)
                 ):
                     similar_consists.append(consist)
             for consist in sorted(
@@ -363,7 +363,7 @@ class Consist(object):
         result = []
         for consist in self.roster.engine_consists:
             if (
-                (consist.base_track_type == self.base_track_type)
+                (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.gen == self.gen)
                 and (consist != self)
             ):
@@ -391,19 +391,19 @@ class Consist(object):
 
     @property
     def track_type(self):
-        # are you sure you don't want base_track_type instead? (generally you do want base_track_type)
-        # track_type maps base_track_type and modifiers to an actual railtype label
+        # are you sure you don't want base_track_type_name instead? (generally you do want base_track_type_name)
+        # track_type maps base_track_type_name and modifiers to an actual railtype label
         # this is done by looking up a railtype mapping in global constants, via internal labels
-        # e.g. electric engines with "RAIL" as base_track_type will be translated to "ELRL"
+        # e.g. electric engines with "RAIL" as base_track_type_name will be translated to "ELRL"
         # narrow gauge trains will be similarly have "NG" translated to an appropriate NG railytpe label
         if self.requires_electric_rails:
-            # for electrified vehicles, translate base_track_type before getting the mapping to labels
+            # for electrified vehicles, translate base_track_type_name before getting the mapping to labels
             # iff electrification types ever gain subtypes (AC, DC, etc), add further checks here
             mapping_key = (
-                self.base_track_type + "_ELECTRIFIED_" + self.electrification_type
+                self.base_track_type_name + "_ELECTRIFIED_" + self.electrification_type
             )
         else:
-            mapping_key = self.base_track_type
+            mapping_key = self.base_track_type_name
         valid_railtype_labels = global_constants.railtype_labels_by_vehicle_track_type_name[
             mapping_key
         ]
@@ -460,7 +460,7 @@ class Consist(object):
 
     def get_speed_by_class(self, speed_class):
         # automatic speed, but can over-ride by passing in kwargs for consist
-        speeds_by_track_type = self.roster.speeds[self.base_track_type]
+        speeds_by_track_type = self.roster.speeds[self.base_track_type_name]
         return speeds_by_track_type[speed_class][self.gen - 1]
 
     @property
@@ -737,14 +737,14 @@ class Consist(object):
         # this assumes that NG and Metro always return the same, irrespective of consist cite
         # that makes sense for Pony roster, but might not work in other rosters, deal with that if it comes up eh?
         # don't like how much content (text) is in code here, but eh
-        if self.base_track_type == "NG":
+        if self.base_track_type_name == "NG":
             cite_name = "Roberto Flange"
             cite_titles = [
                 "Narrow Gauge Superintendent",
                 "Works Manager (Narrow Gauge)",
                 "Traction Controller, Narrow Gauge Lines",
             ]
-        elif self.base_track_type == "METRO":
+        elif self.base_track_type_name == "METRO":
             cite_name = "JJ Transit"
             cite_titles = [
                 "Superintendent (Metro Division)",
@@ -864,7 +864,7 @@ class EngineConsist(Consist):
         # family name strings are arbitrary and all shame the namespace, how each caboose type uses them is potentially unique
         # we first populate using default from the roster, selected by base track type and vehicle gen
         self.caboose_families = self.roster.caboose_default_family_by_generation[
-            self.base_track_type
+            self.base_track_type_name
         ][self.gen - 1].copy()
         # caboose families can be over-ridden on a per engine, per caboose type basis
         for caboose_type, family_name in kwargs.get(
@@ -920,7 +920,7 @@ class EngineConsist(Consist):
         # algorithmic calculation of engine run costs
         # as of Feb 2019, it's fixed cost (set by subtype) + floating costs (derived from power, speed, weight)
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
-        is_NG = True if self.base_track_type == "NG" else False
+        is_NG = True if self.base_track_type_name == "NG" else False
         # max speed = 200mph by design - see assert_speed() - (NG assumes 100mph max)
         # multiplier for speed, max value will be 12.5
         speed_cost_factor = self.speed / (8 if is_NG else 16)
@@ -1133,7 +1133,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # non-standard cite
-        if self.base_track_type == "NG":
+        if self.base_track_type_name == "NG":
             # give NHGa bonus to align run cost with NG railbus
             self.fixed_run_cost_points = 52
 
@@ -1305,7 +1305,7 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         for consist in self.roster.engine_consists:
             if (
                 (consist.gen == self.gen)
-                and (consist.base_track_type == self.base_track_type)
+                and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["express_pax_railcar"])
             ):
                 result.append(consist.base_numeric_id)
@@ -1313,7 +1313,7 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
             "express_railcar_passenger_trailer_car"
         ]:
             if (consist.gen == self.gen) and (
-                consist.base_track_type == self.base_track_type
+                consist.base_track_type_name == self.base_track_type_name
             ):
                 result.append(consist.base_numeric_id)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
@@ -1394,14 +1394,14 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         for consist in self.roster.engine_consists:
             if (
                 (consist.gen == self.gen)
-                and (consist.base_track_type == self.base_track_type)
+                and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["pax_railbus"])
             ):
                 result.append(consist.base_numeric_id)
         # commented out support for trailers temporarily
         for consist in self.roster.wagon_consists["railbus_passenger_trailer_car"]:
             if (consist.gen == self.gen) and (
-                consist.base_track_type == self.base_track_type
+                consist.base_track_type_name == self.base_track_type_name
             ):
                 result.append(consist.base_numeric_id)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
@@ -1457,13 +1457,13 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         for consist in self.roster.engine_consists:
             if (
                 (consist.gen == self.gen)
-                and (consist.base_track_type == self.base_track_type)
+                and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["pax_railcar"])
             ):
                 result.append(consist.base_numeric_id)
         for consist in self.roster.wagon_consists["railcar_passenger_trailer_car"]:
             if (consist.gen == self.gen) and (
-                consist.base_track_type == self.base_track_type
+                consist.base_track_type_name == self.base_track_type_name
             ):
                 result.append(consist.base_numeric_id)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
@@ -1655,7 +1655,7 @@ class CarConsist(Consist):
         self.subtype = kwargs["subtype"]
         # Weight factor: over-ride in sub-class as needed
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 0.8 if self.base_track_type == "NG" else 1
+        self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1
         # used to synchronise / desynchronise groups of vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
         # default all to car consists to 'universal' offset, over-ride in subclasses as needed
         self._intro_year_days_offset = (
@@ -1706,7 +1706,7 @@ class CarConsist(Consist):
         # (base cost is set deliberately low to allow small increments for fine-grained control)
         run_cost_points = 1.2 * run_cost_points * self.floating_run_cost_multiplier
         # narrow gauge gets a massive bonus - NG wagons are lower cap, so earn relatively much less / length
-        if self.base_track_type == "NG":
+        if self.base_track_type_name == "NG":
             run_cost_points = 0.2 * run_cost_points
         # arbitrary factor for minor cost inflation by generation (above and beyond speed and length increases)
         # small balance against later game trains that are more profitable due increased average network speed resulting in faster transit times (clearing junctions etc faster)
@@ -1726,7 +1726,7 @@ class CarConsist(Consist):
         tree_permissive = []
         tree_strict = []
         for wagon in self.roster.wagon_consists[self.base_id]:
-            if wagon.base_track_type == self.base_track_type:
+            if wagon.base_track_type_name == self.base_track_type_name:
                 tree_permissive.append(wagon.gen)
                 if wagon.subtype == self.subtype:
                     tree_strict.append(wagon.gen)
@@ -1745,7 +1745,7 @@ class CarConsist(Consist):
         else:
             # this is the last of this subtype, but there are other later generations of other subtypes
             next_gen = tree_permissive[tree_permissive.index(self.gen) + 1]
-        next_gen_intro_year = self.roster.intro_years[self.base_track_type][
+        next_gen_intro_year = self.roster.intro_years[self.base_track_type_name][
             next_gen - 1
         ]
         return next_gen_intro_year - self.intro_year
@@ -1755,7 +1755,7 @@ class CarConsist(Consist):
 
         # special case NG - extend this for other track_types as needed
         # 'narmal' rail and 'elrail' doesn't require an id modifier
-        if kwargs.get("base_track_type", None) == "NG":
+        if kwargs.get("base_track_type_name", None) == "NG":
             id_base = id_base + "_ng"
         result = "_".join(
             (
@@ -2189,12 +2189,12 @@ class CabooseCarConsistBase(CarConsist):
         # don't use a dict, items can repeat, just nest 2 tuples
         result = []
         for counter, date_range in enumerate(
-            self.roster.intro_year_ranges(self.base_track_type)
+            self.roster.intro_year_ranges(self.base_track_type_name)
         ):
             caboose_family_name = self.roster.caboose_default_family_by_generation[
-                self.base_track_type
+                self.base_track_type_name
             ][counter][self.base_id]
-            caboose_label = self.roster.caboose_families[self.base_track_type][
+            caboose_label = self.roster.caboose_families[self.base_track_type_name][
                 self.base_id
             ][caboose_family_name][0]
             result.append((caboose_label, date_range))
@@ -3235,7 +3235,7 @@ class IntermodalCarConsist(IntermodalCarConsistBase):
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
     def spritelayer_cargo_layers(self):
         # the 'default' for NG is the same as for low_floor so just re-use that for now
-        if self.base_track_type == "NG":
+        if self.base_track_type_name == "NG":
             return ["low_floor"]
         else:
             return ["default"]
@@ -3620,9 +3620,9 @@ class PassengerCarConsist(PassengerCarConsistBase):
         self.buy_cost_adjustment_factor = 1.4
         self.floating_run_cost_multiplier = 3.33
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 1 if self.base_track_type == "NG" else 2
+        self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        if self.base_track_type == "NG":
+        if self.base_track_type_name == "NG":
             self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE"
         else:
             self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
@@ -3661,7 +3661,7 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 0.66 if self.base_track_type == "NG" else 1.5
+        self.weight_factor = 0.66 if self.base_track_type_name == "NG" else 1.5
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -3694,7 +3694,7 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
         for consist in self.roster.engine_consists:
             if (
                 (consist.gen == self.gen)
-                and (consist.base_track_type == self.base_track_type)
+                and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["express_pax_railcar"])
             ):
                 result.append(consist.base_numeric_id)
@@ -3727,7 +3727,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["hst"]
         )
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 0.8 if self.base_track_type == "NG" else 1.6
+        self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1.6
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
@@ -3781,7 +3781,7 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 1 if self.base_track_type == "NG" else 2
+        self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # Graphics configuration
         self.roof_type = "pax_mail_smooth"
         # 2 liveries, don't need to match anything else, railbus isn't intended to combine well with other vehicle types
@@ -3808,7 +3808,7 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         for consist in self.roster.engine_consists:
             if (
                 (consist.gen == self.gen)
-                and (consist.base_track_type == self.base_track_type)
+                and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["pax_railbus"])
             ):
                 result.append(consist.base_numeric_id)
@@ -3842,7 +3842,7 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self._buy_menu_role_string = "STR_ROLE_SUBURBAN"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for railcar trailers, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
-        self.weight_factor = 0.33 if self.base_track_type == "NG" else 1
+        self.weight_factor = 0.33 if self.base_track_type_name == "NG" else 1
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -3875,7 +3875,7 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         for consist in self.roster.engine_consists:
             if (
                 (consist.gen == self.gen)
-                and (consist.base_track_type == self.base_track_type)
+                and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["pax_railcar"])
             ):
                 result.append(consist.base_numeric_id)
@@ -3898,7 +3898,7 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         # double the luxury pax car amount; balance between the bonus amount (which scales with num. pax coaches) and the run cost of running this booster
         self.floating_run_cost_multiplier = 12
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 1 if self.base_track_type == "NG" else 2
+        self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         self._joker = True
         self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
         self.buy_menu_hint_restaurant_car = True
@@ -3932,7 +3932,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         self.floating_run_cost_multiplier = 4.75
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
-        self.weight_factor = 0.33 if self.base_track_type == "NG" else 1
+        self.weight_factor = 0.33 if self.base_track_type_name == "NG" else 1
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         self._buy_menu_role_string = "STR_ROLE_SUBURBAN"
@@ -4353,7 +4353,7 @@ class Train(object):
     def get_pax_car_capacity(self):
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
+            self.consist.base_track_type_name
         ][self.consist.gen - 1]
         result = int(
             self.vehicle_length
@@ -4505,7 +4505,7 @@ class Train(object):
     def roof(self):
         # fetch spritesheet name to use for roof when generating graphics
         if self.consist.roof_type is not None:
-            if self.consist.base_track_type == "NG":
+            if self.consist.base_track_type_name == "NG":
                 ng_prefix = "ng_"
             else:
                 ng_prefix = ""
@@ -4712,7 +4712,7 @@ class AutoCoachCombineUnitMail(Train):
         ]  # note mail only, no other express cargos
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type
+            self.consist.base_track_type_name
         ][self.consist.gen - 1]
         # also account for some pax capacity 'on' this unit (implemented on adjacent pax unit)
         self.capacity = (
@@ -4750,7 +4750,7 @@ class CabbageDVTUnit(Train):
         self._symmetry_type = "asymmetric"
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type
+            self.consist.base_track_type_name
         ][self.consist.gen - 1]
         self.capacity = (
             self.vehicle_length * base_capacity
@@ -4823,7 +4823,7 @@ class DieselRailcarMailUnit(DieselRailcarBaseUnit):
         super().__init__(**kwargs)
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type
+            self.consist.base_track_type_name
         ][self.consist.gen - 1]
         self.capacity = (
             self.vehicle_length * base_capacity
@@ -4883,7 +4883,7 @@ class ElectricHighSpeedMailUnit(ElectricHighSpeedUnitBase):
         super().__init__(**kwargs)
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type
+            self.consist.base_track_type_name
         ][self.consist.gen - 1]
         self.capacity = (
             self.vehicle_length * base_capacity
@@ -4952,7 +4952,7 @@ class ElectroDieselRailcarMailUnit(ElectroDieselRailcarBaseUnit):
         super().__init__(**kwargs)
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type
+            self.consist.base_track_type_name
         ][self.consist.gen - 1]
         self.capacity = (
             self.vehicle_length * base_capacity
@@ -5007,7 +5007,7 @@ class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
         super().__init__(**kwargs)
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type
+            self.consist.base_track_type_name
         ][self.consist.gen - 1]
         self.capacity = (
             self.vehicle_length * base_capacity
@@ -5042,7 +5042,7 @@ class MetroUnit(Train):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        kwargs["consist"].base_track_type = "METRO"
+        kwargs["consist"].base_track_type_name = "METRO"
         self.engine_class = "ENGINE_CLASS_ELECTRIC"
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
@@ -5068,7 +5068,7 @@ class SnowploughUnit(Train):
         self._symmetry_type = "asymmetric"
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type
+            self.consist.base_track_type_name
         ][self.consist.gen - 1]
         self.capacity = (
             self.vehicle_length * base_capacity
@@ -5163,7 +5163,7 @@ class CabooseCar(TrainCar):
     @property
     def weight(self):
         # special handling of weight
-        weight_factor = 3 if self.consist.base_track_type == "NG" else 5
+        weight_factor = 3 if self.consist.base_track_type_name == "NG" else 5
         return weight_factor * self.vehicle_length
 
 
@@ -5214,7 +5214,7 @@ class ExpressCar(TrainCar):
         super().__init__(**kwargs)
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type
+            self.consist.base_track_type_name
         ][self.consist.gen - 1]
         self.capacity = (
             self.vehicle_length * base_capacity
@@ -5284,7 +5284,7 @@ class FreightCar(TrainCar):
             )
         # magic to set freight car capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type
+            self.consist.base_track_type_name
         ][self.consist.gen - 1]
         self.capacity = self.vehicle_length * base_capacity
 

@@ -50,12 +50,12 @@ class Roster(object):
     def consists_in_buy_menu_order(self):
         result = []
         result.extend(self.engine_consists)
-        for base_track_type in ["RAIL", "NG"]:
+        for base_track_type_name in ["RAIL", "NG"]:
             for base_id in global_constants.buy_menu_sort_order_wagons:
                 wagon_consists = [
                     wagon_consist
                     for wagon_consist in self.wagon_consists[base_id]
-                    if wagon_consist.base_track_type == base_track_type
+                    if wagon_consist.base_track_type_name == base_track_type_name
                 ]
                 result.extend(
                     # note that we want the sort order to be U, A, B, C, D so special handling
@@ -105,8 +105,8 @@ class Roster(object):
                 ):
                     continue
                 if (
-                    randomisation_consist.base_track_type
-                    != wagon_consist.base_track_type
+                    randomisation_consist.base_track_type_name
+                    != wagon_consist.base_track_type_name
                 ):
                     continue
                 if randomisation_consist.gen != wagon_consist.gen:
@@ -145,11 +145,11 @@ class Roster(object):
             result.extend(result[: 16 - len(result)])
         return result
 
-    def intro_year_ranges(self, base_track_type):
+    def intro_year_ranges(self, base_track_type_name):
         # return a list of year pairs (first year, last year) for generations
         result = []
         end_date = global_constants.max_game_date
-        for intro_year in reversed(self.intro_years[base_track_type]):
+        for intro_year in reversed(self.intro_years[base_track_type_name]):
             result.append((intro_year, end_date))
             end_date = intro_year - 1
         result.reverse()

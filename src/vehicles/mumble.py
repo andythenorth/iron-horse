@@ -9,7 +9,7 @@ def main(roster_id):
         name="Mumble",
         role="pax_railbus",
         role_child_branch_num=1,
-        base_track_type="NG",
+        base_track_type_name="NG",
         power=250,
         gen=3,
         sprites_complete=True,

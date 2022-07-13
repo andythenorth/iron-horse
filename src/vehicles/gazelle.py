@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=11070,
         name="Gazelle",
         power=1800,
-        base_track_type="NG",
+        base_track_type_name="NG",
         intro_year=1975,
     )
 

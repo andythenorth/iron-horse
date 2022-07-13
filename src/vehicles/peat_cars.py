@@ -10,7 +10,7 @@ def main():
         base_numeric_id=15170,
         gen=1,
         subtype="U",
-        base_track_type="NG",
+        base_track_type_name="NG",
         speed=35,  # note rare non-standard speed, skips are slow eh?
         sprites_complete=False,
     )

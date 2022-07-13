@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=10500,
         name="GE 289a Boxcab",
         power=1200,
-        base_track_type="NG",
+        base_track_type_name="NG",
         intro_year=1922,
     )
 

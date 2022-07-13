@@ -54,7 +54,7 @@ def report_sprites_complete(consists):
     incomplete_by_track_type = {}
     for consist in consists:
         if not consist.sprites_complete:
-            incomplete_by_track_type.setdefault(consist.base_track_type, []).append(
+            incomplete_by_track_type.setdefault(consist.base_track_type_name, []).append(
                 consist
             )
     for track_type, incomplete_consists in incomplete_by_track_type.items():

@@ -7,7 +7,7 @@ def main(roster_id):
         id="planet",
         base_numeric_id=360,
         name="Planet",
-        base_track_type="NG",
+        base_track_type_name="NG",
         power=500,
         intro_year=1950,
     )

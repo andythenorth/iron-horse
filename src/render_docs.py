@@ -73,24 +73,24 @@ class DocHelper(object):
         ]
         return sorted(result, key=lambda subclass: subclass["name"])
 
-    def get_engines_by_roster_and_base_track_type(self, roster, base_track_type):
+    def get_engines_by_roster_and_base_track_type(self, roster, base_track_type_name):
         result = []
         for consist in roster.engine_consists:
-            if consist.base_track_type == base_track_type:
+            if consist.base_track_type_name == base_track_type_name:
                 result.append(consist)
         return result
 
-    def get_wagons_by_roster_and_base_track_type(self, roster, base_track_type):
+    def get_wagons_by_roster_and_base_track_type(self, roster, base_track_type_name):
         result = []
         for wagon_class in global_constants.buy_menu_sort_order_wagons:
             for consist in roster.wagon_consists[wagon_class]:
-                if consist.base_track_type == base_track_type:
+                if consist.base_track_type_name == base_track_type_name:
                     result.append(consist)
         return result
 
     def engines_as_tech_tree(self, roster, consists, simplified_gameplay):
         # structure
-        # |- base_track_type
+        # |- base_track_type_name
         #    |- role_group
         #       |- role
         #          |- role child_branch
@@ -121,7 +121,7 @@ class DocHelper(object):
                             simplified_gameplay and consist.role_child_branch_num < 0
                         ):
                             if (
-                                consist.base_track_type == base_track_type_and_label[0]
+                                consist.base_track_type_name == base_track_type_and_label[0]
                             ) and (consist.role == role):
                                 role_child_branches[consist.role_child_branch_num][
                                     consist.gen
@@ -264,10 +264,10 @@ class DocHelper(object):
             result.append(colour_name.split("COLOUR_")[1])
         return ("_").join(result).lower()
 
-    def get_role_child_branches(self, consists, base_track_type, role):
+    def get_role_child_branches(self, consists, base_track_type_name, role):
         result = []
         for consist in consists:
-            if consist.base_track_type == base_track_type:
+            if consist.base_track_type_name == base_track_type_name:
                 if consist.role is not None and consist.role == role:
                     result.append(consist.role_child_branch_num)
         return set(result)
@@ -290,9 +290,9 @@ class DocHelper(object):
             "sorted_by_base_track_type_and_vehicle_type": {},
         }
 
-        for base_track_type, base_track_label in self.base_track_types_and_labels:
+        for base_track_type_name, base_track_label in self.base_track_types_and_labels:
             result["sorted_by_base_track_type_and_vehicle_type"][
-                base_track_type
+                base_track_type_name
             ] = defaultdict(list)
 
         # for vehicle_type, vehicle_consists in [engines, wagons]:
@@ -316,20 +316,20 @@ class DocHelper(object):
                 ]
                 result["sorted_by_vehicle_type"][vehicle_type].append(vehicle_data)
                 result["sorted_by_base_track_type_and_vehicle_type"][
-                    consist.base_track_type
+                    consist.base_track_type_name
                 ][vehicle_type].append(vehicle_data)
 
         # guard against providing empty vehicle lists as they would require additional guards in js to prevent js failing
-        for base_track_type, base_track_label in self.base_track_types_and_labels:
+        for base_track_type_name, base_track_label in self.base_track_types_and_labels:
             vehicle_consists = result["sorted_by_base_track_type_and_vehicle_type"][
-                base_track_type
+                base_track_type_name
             ]
             for vehicle_type in ["engines", "wagons"]:
                 if len(vehicle_consists[vehicle_type]) == 0:
                     del vehicle_consists[vehicle_type]
             if len(vehicle_consists.keys()) == 0:
                 del result["sorted_by_base_track_type_and_vehicle_type"][
-                    base_track_type
+                    base_track_type_name
                 ]
 
         return json.dumps(result)

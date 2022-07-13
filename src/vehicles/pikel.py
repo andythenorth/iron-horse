@@ -11,7 +11,7 @@ def main(roster_id):
         role_child_branch_num=1,
         power=500,
         random_reverse=True,
-        base_track_type="NG",
+        base_track_type_name="NG",
         gen=3,
         sprites_complete=True,
     )

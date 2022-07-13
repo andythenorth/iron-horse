@@ -9,7 +9,7 @@ def main():
         base_numeric_id=14160,
         gen=2,
         subtype="U",
-        base_track_type="NG",
+        base_track_type_name="NG",
         intro_year_offset=20,  # these are pushed right back to line up with standard gauge versions
         sprites_complete=True,
     )
@@ -21,7 +21,7 @@ def main():
         base_numeric_id=14170,
         gen=3,
         subtype="U",
-        base_track_type="NG",
+        base_track_type_name="NG",
         sprites_complete=True,
     )
 
@@ -32,7 +32,7 @@ def main():
         base_numeric_id=14180,
         gen=4,
         subtype="U",
-        base_track_type="NG",
+        base_track_type_name="NG",
         sprites_complete=True,
     )
 
