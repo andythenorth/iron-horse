@@ -99,7 +99,7 @@ class DocHelper(object):
         # if there's no engine consist matching a combination of keys in the tree, there will be a None entry for that node in the tree, to ease walking the tree
         result = {}
         # much nested loops
-        for base_track_type_and_label in self.base_track_types_and_labels:
+        for base_track_type_and_label in self.base_track_type_names_and_labels:
             for role_group in global_constants.role_group_mapping:
                 for role in global_constants.role_group_mapping[role_group]:
                     role_child_branches = {}
@@ -290,7 +290,7 @@ class DocHelper(object):
             "sorted_by_base_track_type_and_vehicle_type": {},
         }
 
-        for base_track_type_name, base_track_label in self.base_track_types_and_labels:
+        for base_track_type_name, base_track_label in self.base_track_type_names_and_labels:
             result["sorted_by_base_track_type_and_vehicle_type"][
                 base_track_type_name
             ] = defaultdict(list)
@@ -320,7 +320,7 @@ class DocHelper(object):
                 ][vehicle_type].append(vehicle_data)
 
         # guard against providing empty vehicle lists as they would require additional guards in js to prevent js failing
-        for base_track_type_name, base_track_label in self.base_track_types_and_labels:
+        for base_track_type_name, base_track_label in self.base_track_type_names_and_labels:
             vehicle_consists = result["sorted_by_base_track_type_and_vehicle_type"][
                 base_track_type_name
             ]
@@ -425,7 +425,7 @@ class DocHelper(object):
         return ("", "active")[doc_name == nav_link]
 
     @property
-    def base_track_types_and_labels(self):
+    def base_track_type_names_and_labels(self):
         # list of pairs, need consistent order so can't use dict
         return [("RAIL", "Standard Gauge"), ("NG", "Narrow Gauge"), ("METRO", "Metro")]
 

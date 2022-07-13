@@ -18,33 +18,33 @@
                     trains
                 </p>
                 <ul class="inline">
-                    <tal:base_track_type repeat="base_track_type doc_helper.base_track_types_and_labels">
-                        <tal:not_empty condition="len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type[0])) > 0">
+                    <tal:base_track_type_name repeat="base_track_type_name doc_helper.base_track_type_names_and_labels">
+                        <tal:not_empty condition="len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])) > 0">
                             <li>
-                                <a href="#${base_track_type[0]}-engines">
-                                    ${len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type[0]))}
-                                    ${base_track_type[1].lower()} engines
+                                <a href="#${base_track_type_name[0]}-engines">
+                                    ${len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
+                                    ${base_track_type_name[1].lower()} engines
                                 </a>
                             </li>
                         </tal:not_empty>
-                    </tal:base_track_type>
-                    <tal:base_track_type repeat="base_track_type doc_helper.base_track_types_and_labels">
-                        <tal:not_empty condition="len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type[0])) > 0">
+                    </tal:base_track_type_name>
+                    <tal:base_track_type_name repeat="base_track_type_name doc_helper.base_track_type_names_and_labels">
+                        <tal:not_empty condition="len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])) > 0">
                             <li>
-                                <a href="#${base_track_type[0]}-wagons">
-                                ${len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type[0]))}
-                                ${base_track_type[1].lower()} wagons
+                                <a href="#${base_track_type_name[0]}-wagons">
+                                ${len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
+                                ${base_track_type_name[1].lower()} wagons
                                 </a>
                             </li>
                         </tal:not_empty>
-                    </tal:base_track_type>
+                    </tal:base_track_type_name>
                 </ul>
-                <tal:base_track_type repeat="base_track_type doc_helper.base_track_types_and_labels">
-                    <tal:not_empty condition="len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type[0])) >  0">
+                <tal:base_track_type_name repeat="base_track_type_name doc_helper.base_track_type_names_and_labels">
+                    <tal:not_empty condition="len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])) >  0">
                         <hr />
-                        <h4 id="${base_track_type[0]}-engines">
-                            ${len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type[0]))}
-                            ${base_track_type[1].lower()} engines
+                        <h4 id="${base_track_type_name[0]}-engines">
+                            ${len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
+                            ${base_track_type_name[1].lower()} engines
                         </h4>
                         <table class="table table-striped tablesorter vehicle-table">
                             <thead>
@@ -61,7 +61,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tal:engine_consists repeat="consist doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type[0])">
+                                <tal:engine_consists repeat="consist doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])">
                                     <tr id="${consist.id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
@@ -91,13 +91,13 @@
                             </tbody>
                         </table>
                     </tal:not_empty>
-                </tal:base_track_type>
-                <tal:base_track_type repeat="base_track_type doc_helper.base_track_types_and_labels">
-                    <tal:not_empty condition="len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type[0])) >  0">
+                </tal:base_track_type_name>
+                <tal:base_track_type_name repeat="base_track_type_name doc_helper.base_track_type_names_and_labels">
+                    <tal:not_empty condition="len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])) >  0">
                         <hr />
-                        <h4 id="${base_track_type[0]}-wagons">
-                            ${len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type[0]))}
-                            ${base_track_type[1].lower()} wagons
+                        <h4 id="${base_track_type_name[0]}-wagons">
+                            ${len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
+                            ${base_track_type_name[1].lower()} wagons
                         </h4>
                         <table class="table table-striped tablesorter vehicle-table">
                             <thead>
@@ -113,7 +113,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tal:wagon_consists repeat="consist doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type[0])">
+                                <tal:wagon_consists repeat="consist doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])">
                                     <tr id="${consist.id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
@@ -142,7 +142,7 @@
                             </tbody>
                         </table>
                     </tal:not_empty>
-                </tal:base_track_type>
+                </tal:base_track_type_name>
             </div>
         </div>
     </div>
