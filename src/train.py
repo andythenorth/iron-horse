@@ -392,7 +392,7 @@ class Consist(object):
     @property
     def track_type(self):
         # are you sure you don't want base_track_type instead? (generally you do want base_track_type)
-        # track_type handles converting base_track_type to an actual railtype label
+        # track_type maps base_track_type and modifiers to an actual railtype label
         # this is done by looking up a railtype mapping in global constants, via internal labels
         # e.g. electric engines with "RAIL" as base_track_type will be translated to "ELRL"
         # narrow gauge trains will be similarly have "NG" translated to an appropriate NG railytpe label
@@ -404,7 +404,7 @@ class Consist(object):
             )
         else:
             mapping_key = self.base_track_type
-        valid_railtype_labels = global_constants.base_track_type_to_railtype_mapping[
+        valid_railtype_labels = global_constants.railtype_labels_by_vehicle_track_type_name[
             mapping_key
         ]
         # assume that the label we want for the vehicle is the first in the list of valid types (the rest are fallbacks if the first railtype is missing)
@@ -570,7 +570,7 @@ class Consist(object):
         # this could also interrogate the vehicle label to find the appropriate types to add
         # but that would need to be cautious about e.g. electro-diesel has tracktype IHA_, but would need IHB_ and ELRL here
         # so perhaps Yet Another Mapping for table lookup
-        # !! this really should be fetching from global_constants.base_track_type_to_railtype_mapping
+        # !! this really should be fetching from global_constants.railtype_labels_by_vehicle_track_type_name
         railtypes_to_check = ["ELRL", "IHB_"]
         result = []
         for railtype in railtypes_to_check:

@@ -88,7 +88,7 @@ buy_menu_sort_order_wagons = [
     "goods_caboose_car",
 ]
 
-# mapping of internal base_track_type values to actual railtype labels
+# mapping of railtype labels to the vehicle track type names
 # used when determining track_type property for vehicles
 # the *first item* must be the actual label provided by an appropriate Iron Horse railtype
 # the rest are fallbacks, in order, for use with other railtype grfs
@@ -97,7 +97,7 @@ buy_menu_sort_order_wagons = [
 # Standardised Railtype Scheme (SRS) labels are *only* to be used as *fallbacks*, and only where appropriate
 # Iron Horse only partially complies with the SRS, using the Innsbruck 2022 Convention, where axle load is always set to A, equivalent to 'undefined'
 # see https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme#.22Innsbruck_2022_Convention.22_for_partial_compliance
-base_track_type_to_railtype_mapping = {
+railtype_labels_by_vehicle_track_type_name = {
     "RAIL": ["IHA_", "RAIL"],
     "RAIL_ELECTRIFIED_AC": ["IHB_", "ELRL"],
     "RAIL_ELECTRIFIED_DC": ["IHF_"], # no fallback for DC if not present

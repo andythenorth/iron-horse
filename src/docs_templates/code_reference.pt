@@ -63,7 +63,7 @@
                         </li>
                     </ol>
                     <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
-                        <tal:railtype_mapping repeat="railtype_mapping global_constants.base_track_type_to_railtype_mapping.items()">
+                        <tal:railtype_mapping repeat="railtype_mapping global_constants.railtype_labels_by_vehicle_track_type_name.items()">
                             <!--!
                                 note the remapping of the railtype label to the first value from the list of types, this will match the vehicle which does the same
                                 we discard the base_track_type values which are internal to Iron Horse compile, and instead set track_type and RTT to real labels

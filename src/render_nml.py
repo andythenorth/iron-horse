@@ -98,6 +98,7 @@ def main():
         "procedures_consist_specific_liveries",
         "procedures_haulage_bonus",
         "procedures_opening_doors",
+        "procedures_powered_by_railtype",
         "procedures_restaurant_cars",
         "procedures_rulesets",
         "procedures_visible_cargo",
