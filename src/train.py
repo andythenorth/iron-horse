@@ -390,23 +390,27 @@ class Consist(object):
         return -10
 
     @property
+    def track_type_name(self):
+        if self.requires_electric_rails:
+            result = (
+                self.base_track_type_name + "_ELECTRIFIED_" + self.electrification_type
+            )
+        else:
+            result = self.base_track_type_name
+        return result
+
+    @property
     def track_type(self):
         # are you sure you don't want base_track_type_name instead? (generally you do want base_track_type_name)
         # track_type maps base_track_type_name and modifiers to an actual railtype label
         # this is done by looking up a railtype mapping in global constants, via internal labels
         # e.g. electric engines with "RAIL" as base_track_type_name will be translated to "ELRL"
         # narrow gauge trains will be similarly have "NG" translated to an appropriate NG railytpe label
-        if self.requires_electric_rails:
-            # for electrified vehicles, translate base_track_type_name before getting the mapping to labels
-            # iff electrification types ever gain subtypes (AC, DC, etc), add further checks here
-            mapping_key = (
-                self.base_track_type_name + "_ELECTRIFIED_" + self.electrification_type
-            )
-        else:
-            mapping_key = self.base_track_type_name
-        valid_railtype_labels = global_constants.railtype_labels_by_vehicle_track_type_name[
-            mapping_key
-        ]
+        valid_railtype_labels = (
+            global_constants.railtype_labels_by_vehicle_track_type_name[
+                self.track_type_name
+            ]
+        )
         # assume that the label we want for the vehicle is the first in the list of valid types (the rest are fallbacks if the first railtype is missing)
         result = valid_railtype_labels[0]
         # set modifiers on the label by modifying the last byte
@@ -454,7 +458,11 @@ class Consist(object):
             elif "DC" in self.power_by_power_source:
                 return self.power_by_power_source["DC"]
             else:
-                raise BaseException("no valid power source found when fetching default power for " + consist.id + " - possibly power source check needs extending?")
+                raise BaseException(
+                    "no valid power source found when fetching default power for "
+                    + consist.id
+                    + " - possibly power source check needs extending?"
+                )
         else:
             return self._power
 
@@ -899,7 +907,8 @@ class EngineConsist(Consist):
         # this sometimes causes a steep jump from non-electro-diesels in a tech tree (due to power jump), but eh, fine
         elif self.electro_diesel_buy_cost_malus is not None:
             power_factor = (
-                self.electro_diesel_buy_cost_malus * self.power_by_power_source["AC"] # !! assumption of AC !!
+                self.electro_diesel_buy_cost_malus
+                * self.power_by_power_source["AC"]  # !! assumption of AC !!
             ) / 750
         # multiplier for non-electric power, max value will be 10
         else:
