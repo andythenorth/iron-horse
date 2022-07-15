@@ -48,6 +48,7 @@ STR_NAME_SUFFIX_BATTERY_HYBRID                                  :Battery Hybrid
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
 STR_NAME_SUFFIX_ELECTRIC_AC                                     :Electric - AC
 STR_NAME_SUFFIX_ELECTRIC_DC                                     :Electric - DC
+STR_NAME_SUFFIX_ELECTRIC_AC_DC                                  :Electric - AC/DC
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :Electro-Diesel
 STR_NAME_SUFFIX_METRO                                           :Metro
 STR_NAME_SUFFIX_STEAM                                           :Steam

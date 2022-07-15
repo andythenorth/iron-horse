@@ -6,11 +6,12 @@ def main(roster_id):
         roster_id=roster_id,
         id="fs_e412",
         base_numeric_id=13110,
-        name="FS E.412 Brenner !! Multisystem",
+        name="FS E.412 Brenner",
         role="ultra_heavy_express",
         role_child_branch_num=4,
         power_by_power_source={
             "AC": 7400,
+            "DC": 6000,
         },
         random_reverse=True,
         gen=6,

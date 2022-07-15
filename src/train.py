@@ -208,6 +208,8 @@ class Consist(object):
                 if len(self.power_by_power_source) == 2:
                     if "DIESEL" in self.power_by_power_source and "AC" in self.power_by_power_source:
                         return "STR_NAME_SUFFIX_ELECTRODIESEL"
+                    if "AC" in self.power_by_power_source and "DC" in self.power_by_power_source:
+                        return "STR_NAME_SUFFIX_ELECTRIC_AC_DC"
             return None
 
     @property
