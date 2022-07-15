@@ -118,12 +118,18 @@ from vehicles import torpedo_cars
 from vehicles import vehicle_parts_box_cars
 
 
-def get_active_railtypes():
-    # this might want to mimic the RosterManager helper class, but eh, YAGNI?
-    active_railtypes = [
-        railtype for railtype in registered_railtypes if not railtype.disabled
-    ]  # make sure it's iterable
-    return active_railtypes
+class RailTypeManager(object):
+    """
+    It's convenient to have a structure for working with railtypes.
+    This is a class to manage that, intended for use as a singleton, which can be passed to templates etc.
+    """
+
+    def get_active_railtypes(self):
+        # this might want to mimic the RosterManager helper class, but eh, YAGNI?
+        active_railtypes = [
+            railtype for railtype in registered_railtypes if not railtype.disabled
+        ]  # make sure it's iterable
+        return active_railtypes
 
 
 class RosterManager(list):
@@ -277,6 +283,7 @@ class RosterManager(list):
         return result
 
 # declared outside of main, got bored trying to figure out how to otherwise put it in the module scope
+railtype_manager = RailTypeManager()
 roster_manager = RosterManager()
 
 
