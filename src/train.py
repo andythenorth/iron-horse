@@ -68,10 +68,6 @@ class Consist(object):
         self.base_track_type_name = kwargs.get("base_track_type_name", "RAIL")
         # modify base_track_type_name for electric engines when writing out the actual rail type
         # without this, RAIL and ELRL have to be specially handled whenever a list of compatible consists is wanted
-        # this *does* need a specific flag, can't rely on unit visual effect or unit engine type props - they are used for other things
-        self.requires_electric_rails = (
-            False  # set by unit subclasses as needed, not a kwarg
-        )
         self.tractive_effort_coefficient = kwargs.get(
             "tractive_effort_coefficient", 0.3
         )  # 0.3 is recommended default value
@@ -451,18 +447,24 @@ class Consist(object):
         return result
 
     @property
+    def requires_electric_rails(self):
+        if self.power_by_power_source is None:
+            return False
+        for power_source_name in self.power_by_power_source.keys():
+            if power_source_name not in ["AC", "DC"]:
+                # add any electric types here (not metro though)
+                return False
+        return True
+
+    @property
     def electrification_type(self):
-        assert self.requires_electric_rails, (
-            "%s consist tried to determine electrification_type, but does not have requires_electric_rails set"
-            % self.id
-        )
         if "AC" in self.power_by_power_source:
             # default all multi-system and bi-mode engines to AC for now, can revise later if needed
             return "AC"
         elif "DC" in self.power_by_power_source:
             return "DC"
         else:
-            raise BaseException("no valid electrification type found for " + self.id)
+            raise BaseException("no valid electrification type found for " + self.id + " - is it an electrified vehicle?")
 
     @property
     def power(self):
@@ -4901,7 +4903,6 @@ class ElectricEngineUnit(Train):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.consist.requires_electric_rails = True
         self.engine_class = "ENGINE_CLASS_ELECTRIC"
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
@@ -4918,7 +4919,6 @@ class ElectricHighSpeedUnitBase(Train):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.consist.requires_electric_rails = True
         self.engine_class = "ENGINE_CLASS_ELECTRIC"
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
@@ -5030,7 +5030,6 @@ class ElectricRailcarBaseUnit(Train):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.consist.requires_electric_rails = True
         self.engine_class = "ENGINE_CLASS_ELECTRIC"
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
