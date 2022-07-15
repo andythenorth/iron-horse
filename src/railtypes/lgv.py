@@ -9,6 +9,7 @@ def main(disabled=False):
         id="lgv",
         introduction_date="1989,06,22",
         label="IHAA",
+        rosters=["ibex", "moose", "pony"],
         construction_cost=16,
         maintenance_cost=16,
         railtype_flags=["RAILTYPE_FLAG_HIDDEN", "RAILTYPE_FLAG_NO_LEVEL_CROSSING"],

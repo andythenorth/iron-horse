@@ -5,6 +5,7 @@ def main(disabled=False):
     return Railtype(
         id="narrow_gauge",
         label="IHD_",
+        rosters=["ibex", "moose", "pony"],
         construction_cost=5,
         maintenance_cost=7,
         railtype_flags=[],

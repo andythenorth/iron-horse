@@ -8,6 +8,7 @@ def main(disabled=False):
     return Railtype(
         id="lgv_electrified",
         label="IHBA",
+        rosters=["ibex", "moose", "pony"],
         construction_cost=16,
         maintenance_cost=16,
         railtype_flags=["RAILTYPE_FLAG_CATENARY", "RAILTYPE_FLAG_NO_LEVEL_CROSSING"],

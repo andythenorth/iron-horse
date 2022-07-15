@@ -5,6 +5,7 @@ def main(disabled=False):
     return Railtype(
         id="metro",
         label="IHC_",
+        rosters=["ibex", "moose", "pony"],
         construction_cost=10,
         maintenance_cost=10,
         railtype_flags=["RAILTYPE_FLAG_NO_LEVEL_CROSSING"],
