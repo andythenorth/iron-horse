@@ -303,10 +303,6 @@ def main():
     # railtypes - order is significant, as affects order in construction menu (order property not currently set)
     # in the rare case that an unfinished railtype won't init cleanly, comment it out here and possibly also in the import
     # built-in support for disabled railtypes was removed as overly complex
-    lgv.main(disabled=False)
-    lgv_electrified.main(disabled=False)
-    narrow_gauge.main(disabled=False)
-    metro.main(disabled=False)
     railtype_manager.add_railtype(lgv)
     railtype_manager.add_railtype(lgv_electrified)
     railtype_manager.add_railtype(narrow_gauge)
