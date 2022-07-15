@@ -424,7 +424,8 @@ class Consist(object):
         return result
 
     @property
-    def vehicle_track_type_names_by_power_source(self):
+    def vehicle_power_source_tree(self):
+        # return a structure for easy rendering of the variable power switch chain
         result = []
         if self.power_by_power_source is None:
             return result

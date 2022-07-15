@@ -12,7 +12,7 @@
     // -- power varies by railtype -- //
     <!--! order of power sources is significant here, the switch chain should check highest value first, progressing to lowest
           the python method will return the power sources in the required order -->
-    <tal:power_source repeat="power_source_data consist.vehicle_track_type_names_by_power_source">
+    <tal:power_source repeat="power_source_data consist.vehicle_power_source_tree">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power_${power_source_data[2]}, tile_powers_track_type_name_${power_source_data[1]}()) {
             1: return ${consist.power_by_power_source[power_source_data[0]]};
             <tal:next condition="power_source_data[3] != None">
