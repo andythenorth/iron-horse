@@ -1,6 +1,3 @@
-from railtypes import registered_railtypes
-
-
 class Railtype(object):
     """
     Railtype - self explanatory?
@@ -9,7 +6,7 @@ class Railtype(object):
     def __init__(self, **kwargs):
         self.id = kwargs.get("id")
         self.label = kwargs.get("label")
-        self.introduction_date = kwargs.get("introduction_date", None) # "yyyy,mm,dd"
+        self.introduction_date = kwargs.get("introduction_date", None)  # "yyyy,mm,dd"
         # 0 is no limit
         self.speed_limit = kwargs.get("speed_limit", 0)
         self.curve_speed_multiplier = kwargs.get("curve_speed_multiplier", 1)
@@ -29,7 +26,3 @@ class Railtype(object):
     def make_nml_railtype_list(self, railtype_list):
         result = ",".join(['"' + railtype + '"' for railtype in railtype_list])
         return "[" + result + "]"
-
-    def register(self, disabled=False):
-        registered_railtypes.append(self)
-        self.disabled = disabled

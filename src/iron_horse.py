@@ -20,7 +20,6 @@ from spritelayer_cargos import intermodal_containers
 from spritelayer_cargos import automobiles
 
 # import railtypes
-from railtypes import registered_railtypes
 from railtypes import metro
 from railtypes import narrow_gauge
 from railtypes import lgv
@@ -118,18 +117,16 @@ from vehicles import torpedo_cars
 from vehicles import vehicle_parts_box_cars
 
 
-class RailTypeManager(object):
+class RailTypeManager(list):
     """
     It's convenient to have a structure for working with railtypes.
     This is a class to manage that, intended for use as a singleton, which can be passed to templates etc.
+    Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
     """
 
-    def get_active_railtypes(self):
-        # this might want to mimic the RosterManager helper class, but eh, YAGNI?
-        active_railtypes = [
-            railtype for railtype in registered_railtypes if not railtype.disabled
-        ]  # make sure it's iterable
-        return active_railtypes
+    def add_railtype(self, railtype_module):
+        railtype = railtype_module.main(disabled=False)
+        self.append(railtype)
 
 
 class RosterManager(list):
@@ -282,6 +279,7 @@ class RosterManager(list):
             )
         return result
 
+
 # declared outside of main, got bored trying to figure out how to otherwise put it in the module scope
 railtype_manager = RailTypeManager()
 roster_manager = RosterManager()
@@ -289,13 +287,19 @@ roster_manager = RosterManager()
 
 def main():
     # railtypes - order is significant, as affects order in construction menu (order property not currently set)
+    # in the rare case that an unfinished railtype won't init cleanly, comment it out here and possibly also in the import
+    # built-in support for disabled railtypes was removed as overly complex
     lgv.main(disabled=False)
     lgv_electrified.main(disabled=False)
     narrow_gauge.main(disabled=False)
     metro.main(disabled=False)
+    railtype_manager.add_railtype(lgv)
+    railtype_manager.add_railtype(lgv_electrified)
+    railtype_manager.add_railtype(narrow_gauge)
+    railtype_manager.add_railtype(metro)
 
     # rosters
-    # in the rare case that an unfinished roster won't run main() cleanly, comment it out here and possibly also in the import
+    # in the rare case that an unfinished roster won't init cleanly, comment it out here and possibly also in the import
     # built-in support for disabled rosters was removed during the conversion to multi-grf, it was an unnecessary abstraction when only one roster is used per grf
     roster_manager.add_roster(ibex)
     roster_manager.add_roster(moose)

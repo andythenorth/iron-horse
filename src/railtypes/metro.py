@@ -2,7 +2,7 @@ from railtype import Railtype
 
 
 def main(disabled=False):
-    railtype = Railtype(
+    return Railtype(
         id="metro",
         label="IHC_",
         construction_cost=10,
@@ -21,4 +21,3 @@ def main(disabled=False):
         use_custom_sprites=True,
         use_custom_signals=True,
     )
-    railtype.register(disabled=disabled)

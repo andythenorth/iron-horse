@@ -222,6 +222,6 @@ template template_depots(x, y) {
 }
 
 <!--! there's no specific render action for railtypes, abstraction overkill, just do it via a template loop -->
-<tal:railtypes repeat="railtype registered_railtypes">
+<tal:railtypes repeat="railtype railtype_manager">
     <tal:include metal:use-macro="load: railtype.pynml" />
 </tal:railtypes>

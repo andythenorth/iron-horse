@@ -2,7 +2,7 @@ from railtype import Railtype
 
 
 def main(disabled=False):
-    railtype = Railtype(
+    return Railtype(
         id="narrow_gauge",
         label="IHD_",
         construction_cost=5,
@@ -30,4 +30,3 @@ def main(disabled=False):
         use_custom_sprites=True,
         alternative_railtype_list=["NABN", "NACN", "NADN", "NAEN"],
     )
-    railtype.register(disabled=disabled)

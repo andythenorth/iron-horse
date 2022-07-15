@@ -3,8 +3,9 @@ from railtype import Railtype
 # it's known that diagonal rails are broken for compatible railtypes in OpenTTD - https://github.com/OpenTTD/OpenTTD/issues/9850
 # using this anyway, in the hope that 9850 gets fixed (works fine in JGRPP)
 
+
 def main(disabled=False):
-    railtype = Railtype(
+    return Railtype(
         id="lgv",
         introduction_date="1989,06,22",
         label="IHAA",
@@ -32,4 +33,3 @@ def main(disabled=False):
         use_custom_sprites=False,
         alternative_railtype_list=[],
     )
-    railtype.register(disabled=disabled)

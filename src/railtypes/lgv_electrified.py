@@ -3,8 +3,9 @@ from railtype import Railtype
 # it's known that diagonal rails are broken for compatible railtypes in OpenTTD - https://github.com/OpenTTD/OpenTTD/issues/9850
 # using this anyway, in the hope that 9850 gets fixed (works fine in JGRPP)
 
+
 def main(disabled=False):
-    railtype = Railtype(
+    return Railtype(
         id="lgv_electrified",
         label="IHBA",
         construction_cost=16,
@@ -27,4 +28,3 @@ def main(disabled=False):
         # fallback for unelectrified LGV which is hidden in-game and allows non-electric TGV-style trains onto LGV routes
         alternative_railtype_list=["IHAA"],
     )
-    railtype.register(disabled=disabled)
