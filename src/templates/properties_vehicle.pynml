@@ -10,18 +10,22 @@
 
 <tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle)">
     // -- power varies by railtype -- //
-    <!--! assumes RAIL / ELRL (AC), deal with that later if it's a problem later -->
-    <!--! tile_powers_track_type_name_${consist.base_track_type_name}_ELECTRIFIED_${consist.electrification_type} -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()) {
-        1: return ${consist.power_by_power_source["AC"]};
-        return ${consist.power};
-    }
+    <!--! order of power sources is significant here, the switch chain should check highest value first, progressing to lowest
+          the python method will return the power sources in the required order -->
+    <tal:power_source repeat="power_source_data consist.vehicle_track_type_names_by_power_source">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power_${power_source_data[2]}, tile_powers_track_type_name_${power_source_data[1]}()) {
+            1: return ${consist.power_by_power_source[power_source_data[0]]};
+            <tal:next condition="power_source_data[3] != None">
+                return ${vehicle.id}_switch_power_${power_source_data[3]};
+            </tal:next>
+        }
+    </tal:power_source>
 </tal:railtype_varies_power>
 
 <tal:wagons_add_power condition="consist.wagons_add_power">
     // -- power varies if specific engines are present in the consist -- //
     <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power, [count_veh_id(${consist.cab_id}) > 0]) {
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power_0, [count_veh_id(${consist.cab_id}) > 0]) {
         1: return ${consist.cab_power};
         return 0;
     }
@@ -145,7 +149,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         </tal:optional_cargo_subtype>
         <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
         <tal:variable_power condition="consist.engine_varies_power_by_power_source(vehicle) or consist.wagons_add_power">
-            power:                          ${vehicle.id}_switch_power;
+            power:                          ${vehicle.id}_switch_power_0;
             purchase_power:                 ${consist.power};
         </tal:variable_power>
         <tal:speed_is_optional condition="consist.easter_egg_haulage_speed_bonus or consist.lgv_capable">

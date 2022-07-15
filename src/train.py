@@ -424,6 +424,32 @@ class Consist(object):
         return result
 
     @property
+    def vehicle_track_type_names_by_power_source(self):
+        result = []
+        if self.power_by_power_source is None:
+            return result
+        # extend this as necessary for different power sources, there's no magic pattern, it's manually declared mappings
+        # NOTE that order is explicit - and assumes that power hierarchy is AC > DC > DIESEL
+        # iff that assumption is wrong, result can be lambda sorted by actual vehicle power amounts before returning, but not necessary as of July 2022
+        if "AC" in self.power_by_power_source.keys():
+            result.append(["AC", self.base_track_type_name + "_ELECTRIFIED_AC"])
+        if "DC" in self.power_by_power_source.keys():
+            result.append(["DC", self.base_track_type_name + "_ELECTRIFIED_DC"])
+        if "DIESEL" in self.power_by_power_source.keys():
+            result.append(["DIESEL", self.base_track_type_name])
+        # now append suffixes for switches - self and next, could be done in the template, but it's just neater to do here
+        for counter, value in enumerate(result):
+            value.append(counter)
+            if counter == len(result) - 1:
+                # no suffix for the last one
+                value.append(None)
+            else:
+                value.append(counter + 1)
+        # reverse order as switch chain is actually rendered in the templating as lowest -> highest
+        result.reverse()
+        return result
+
+    @property
     def electrification_type(self):
         assert self.requires_electric_rails, (
             "%s consist tried to determine electrification_type, but does not have requires_electric_rails set"
