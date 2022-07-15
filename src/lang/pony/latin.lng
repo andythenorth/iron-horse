@@ -12,7 +12,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Nimiae
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :(Diseliana)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Electrica)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electrica Diselianaque)
 STR_NAME_SUFFIX_STEAM                                           :(Vaporaria)
 

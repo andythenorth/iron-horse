@@ -189,6 +189,25 @@ class Consist(object):
         return result
 
     @property
+    def str_name_suffix(self):
+        if getattr(self, "_str_name_suffix", None) is not None:
+            return self._str_name_suffix
+        else:
+            if self.power_by_power_source is not None:
+                if len(self.power_by_power_source) == 1:
+                    if "NULL" in self.power_by_power_source:
+                        return None
+                    elif "DIESEL" in self.power_by_power_source:
+                        return "STR_NAME_SUFFIX_DIESEL"
+                    elif "STEAM" in self.power_by_power_source:
+                        return "STR_NAME_SUFFIX_STEAM"
+                    elif "AC" in self.power_by_power_source:
+                        return "STR_NAME_SUFFIX_ELECTRIC_AC"
+                    elif "DC" in self.power_by_power_source:
+                        return "STR_NAME_SUFFIX_ELECTRIC_DC"
+            return None
+
+    @property
     def name(self):
         if self.str_name_suffix is not None:
             return (
@@ -4759,7 +4778,6 @@ class AutoCoachCombineUnitMail(Train):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_STEAM"
         self.effects = {}
-        self.consist.str_name_suffix = None
         self._symmetry_type = "asymmetric"
         # usually refit classes come from consist, but we special case to the unit for this combine coach
         self.articulated_unit_different_class_refit_groups = [
@@ -4784,7 +4802,6 @@ class AutoCoachCombineUnitPax(Train):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"  # !! needs changing??
         self.effects = {}
-        self.consist.str_name_suffix = None
         self._symmetry_type = "asymmetric"
         # usually refit classes come from consist, but we special case to the unit for this combine coach
         self.articulated_unit_different_class_refit_groups = ["pax"]
@@ -4801,7 +4818,6 @@ class CabbageDVTUnit(Train):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"  # probably fine?
         self.effects = {}
-        self.consist.str_name_suffix = None
         self._symmetry_type = "asymmetric"
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
@@ -4821,7 +4837,6 @@ class CabControlPaxCarUnit(Train):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"  # probably fine?
         self.effects = {}
-        self.consist.str_name_suffix = None
         self._symmetry_type = "asymmetric"
         # magic to set capacity subject to length and vehicle capacity type
         self.capacity = self.get_pax_car_capacity()
@@ -4836,7 +4851,7 @@ class BatteryHybridEngineUnit(Train):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
         self.effects = {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]}
-        self.consist.str_name_suffix = "STR_NAME_SUFFIX_BATTERY_HYBRID"
+        self.consist._str_name_suffix = "STR_NAME_SUFFIX_BATTERY_HYBRID"
         # most battery hybrid engines are asymmetric, over-ride per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
@@ -4852,7 +4867,6 @@ class DieselEngineUnit(Train):
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
         }
-        self.consist.str_name_suffix = "STR_NAME_SUFFIX_DIESEL"
         # most diesel engines are asymmetric, over-ride per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
@@ -4907,7 +4921,6 @@ class ElectricEngineUnit(Train):
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
         }
-        self.consist.str_name_suffix = "STR_NAME_SUFFIX_ELECTRIC"
         # almost all electric engines are asymmetric, over-ride per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
@@ -4923,7 +4936,6 @@ class ElectricHighSpeedUnitBase(Train):
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
         }
-        self.consist.str_name_suffix = "STR_NAME_SUFFIX_ELECTRIC"
         self._symmetry_type = "asymmetric"
 
 
@@ -4967,7 +4979,7 @@ class ElectroDieselEngineUnit(Train):
             "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
             "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
         }
-        self.consist.str_name_suffix = "STR_NAME_SUFFIX_ELECTRODIESEL"
+        self.consist._str_name_suffix = "STR_NAME_SUFFIX_ELECTRODIESEL"
         # electro-diesels are complex eh?
         self.consist.electro_diesel_buy_cost_malus = 1  # will get same buy cost factor as electric engine of same gen (blah balancing)
         # almost all electro-diesel engines are asymmetric, over-ride per vehicle as needed
@@ -4986,7 +4998,7 @@ class ElectroDieselRailcarBaseUnit(Train):
             "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
             "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
         }
-        self.consist.str_name_suffix = "STR_NAME_SUFFIX_ELECTRODIESEL"
+        self.consist._str_name_suffix = "STR_NAME_SUFFIX_ELECTRODIESEL"
         # electro-diesels are complex eh?
         self.consist.electro_diesel_buy_cost_malus = 1.15  # will get higher buy cost factor than electric railcar of same gen (blah balancing)
         # offset to second livery, to differentiate from diesel equivalent which will use first
@@ -5034,7 +5046,6 @@ class ElectricRailcarBaseUnit(Train):
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
         }
-        self.consist.str_name_suffix = "STR_NAME_SUFFIX_ELECTRIC"
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = "asymmetric"
 
@@ -5102,7 +5113,6 @@ class MetroUnit(Train):
         self.default_effect_z_offset = (
             1  # optimised for Pony diesel and electric trains
         )
-        self.consist.str_name_suffix = "STR_NAME_SUFFIX_METRO"
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = "asymmetric"
 
@@ -5116,7 +5126,6 @@ class SnowploughUnit(Train):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"  # !! needs changing??
         self.effects = {}
-        self.consist.str_name_suffix = None
         self._symmetry_type = "asymmetric"
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
@@ -5136,7 +5145,6 @@ class SteamEngineUnit(Train):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_STEAM"
         self.effects = {"default": ["EFFECT_SPAWN_MODEL_STEAM", "EFFECT_SPRITE_STEAM"]}
-        self.consist.str_name_suffix = "STR_NAME_SUFFIX_STEAM"
         self.default_effect_z_offset = 13  # optimised for Pony steam trains
         self._symmetry_type = "asymmetric"  # assume all steam engines are asymmetric
 

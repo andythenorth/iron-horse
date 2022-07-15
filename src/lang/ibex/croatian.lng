@@ -12,7 +12,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Prekomjeran
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Dizel
-STR_NAME_SUFFIX_ELECTRIC                                        :Električni
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :Elektro-dizel
 STR_NAME_SUFFIX_METRO                                           :Metro
 STR_NAME_SUFFIX_STEAM                                           :Para

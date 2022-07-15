@@ -10,7 +10,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Kohtuuton
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
-STR_NAME_SUFFIX_ELECTRIC                                        :Sähkö
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :Sähkö-Diesel
 STR_NAME_SUFFIX_METRO                                           :Metro
 STR_NAME_SUFFIX_STEAM                                           :Höyry

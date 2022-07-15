@@ -11,7 +11,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :과대한
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :디젤
-STR_NAME_SUFFIX_ELECTRIC                                        :전기
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :전기-디젤
 STR_NAME_SUFFIX_METRO                                           :도시철도
 STR_NAME_SUFFIX_STEAM                                           :증기

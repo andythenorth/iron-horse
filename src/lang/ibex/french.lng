@@ -40,7 +40,6 @@ STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :Blanc
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
-STR_NAME_SUFFIX_ELECTRIC                                        :Électrique
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :Électro-Diesel
 STR_NAME_SUFFIX_METRO                                           :Métro
 STR_NAME_SUFFIX_STEAM                                           :Vapeur

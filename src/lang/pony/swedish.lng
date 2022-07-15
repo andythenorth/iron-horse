@@ -10,7 +10,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Överdriven
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
-STR_NAME_SUFFIX_ELECTRIC                                        :Elektrisk
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :Elektrodiesel
 STR_NAME_SUFFIX_METRO                                           :Tunnelbana
 STR_NAME_SUFFIX_STEAM                                           :Ånga

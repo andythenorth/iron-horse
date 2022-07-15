@@ -12,7 +12,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Nadměrná
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Dieselová
-STR_NAME_SUFFIX_ELECTRIC                                        :Elektrická
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :Diesel-Elektrická
 STR_NAME_SUFFIX_METRO                                           :Metro vůz
 STR_NAME_SUFFIX_STEAM                                           :Parní

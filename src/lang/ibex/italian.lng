@@ -12,7 +12,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Eccessiva
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
-STR_NAME_SUFFIX_ELECTRIC                                        :Elettrica
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :Diesel-Elettrica
 STR_NAME_SUFFIX_METRO                                           :Metropolitana
 STR_NAME_SUFFIX_STEAM                                           :(A vapore)
