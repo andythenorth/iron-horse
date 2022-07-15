@@ -9,7 +9,9 @@ def main(roster_id):
         name="Onslaught",
         role="super_heavy_express",
         role_child_branch_num=1,
-        power=3300,
+        power_by_power_source={
+            "DIESEL": 3300,
+        },
         random_reverse=True,
         gen=5,
         intro_year_offset=-8,  # let's be really early with this one to give a mail engine matching Blaze HST intro year

@@ -9,7 +9,9 @@ def main(roster_id):
         name="0-10-0 Girt Licker",
         role="super_heavy_freight",
         role_child_branch_num=-1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
-        power=1850,  # match to Vigilant
+        power_by_power_source={
+            "STEAM": 1850,  # match to Vigilant
+        },
         tractive_effort_coefficient=0.33,
         fixed_run_cost_points=250,  # cost malus, early heavy freight engines are too cheap to run relative to smaller engines
         gen=2,

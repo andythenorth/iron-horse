@@ -11,7 +11,9 @@ def main(roster_id):
         name="BLS Re 475 !! Multi-system",
         role="ultra_heavy_freight",
         role_child_branch_num=-2,
-        power=8500,
+        power_by_power_source={
+            "AC": 8500,
+        },
         random_reverse=True,
         gen=6,
         pantograph_type="diamond-double",

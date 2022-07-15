@@ -9,7 +9,9 @@ def main(roster_id):
         name="Unicorn",
         role="heavy_express",
         role_child_branch_num=1,
-        power=3200,
+        power_by_power_source={
+            "DIESEL": 3200,
+        },
         random_reverse=True,
         gen=5,
         intro_year_offset=5,  # introduce later than gen epoch by design

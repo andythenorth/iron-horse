@@ -9,7 +9,9 @@ def main(roster_id):
         name="DB E 410 !! Multisystem",
         role="super_heavy_express",
         role_child_branch_num=1,
-        power=3800,
+        power_by_power_source={
+            "AC": 3800,
+        },
         random_reverse=True,
         gen=4,
         pantograph_type="diamond-double",

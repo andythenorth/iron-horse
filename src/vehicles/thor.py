@@ -10,7 +10,9 @@ def main(roster_id):
         role="universal",
         role_child_branch_num=2,
         base_track_type_name="NG",
-        power=600,
+        power_by_power_source={
+            "STEAM": 600,
+        },
         tractive_effort_coefficient=0.3,
         gen=1,
         intro_year_offset=15,

@@ -9,7 +9,9 @@ def main(roster_id):
         name="Maximillian",
         role="universal",
         role_child_branch_num=2,
-        power=900,
+        power_by_power_source={
+            "DIESEL": 900,
+        },
         random_reverse=True,
         base_track_type_name="NG",
         gen=4,

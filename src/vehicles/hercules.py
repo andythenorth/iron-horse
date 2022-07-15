@@ -9,7 +9,9 @@ def main(roster_id):
         name="0-6-0 Hercules",
         role="freight",
         role_child_branch_num=1,
-        power=1100,
+        power_by_power_source={
+            "STEAM": 1100,
+        },
         tractive_effort_coefficient=0.24,
         gen=1,
         sprites_complete=True,

@@ -9,7 +9,9 @@ def main(roster_id):
         name="Gargouille",
         role="universal",
         role_child_branch_num=2,
-        power=750,
+        power_by_power_source={
+            "DIESEL": 750,
+        },
         random_reverse=True,
         base_track_type_name="NG",
         gen=3,

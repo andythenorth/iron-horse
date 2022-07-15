@@ -9,7 +9,9 @@ def main(roster_id):
         name="Slug",
         role="freight",
         role_child_branch_num=1,
-        power=1950,  # progression calculated to maintain hp/speed ratio from previous gen
+        power_by_power_source={
+            "DIESEL": 1950,  # progression calculated to maintain hp/speed ratio from previous gen
+        },
         random_reverse=True,
         gen=5,
         force_caboose_families={"caboose_car": "pony_railfreight_2"},

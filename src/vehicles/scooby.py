@@ -9,7 +9,9 @@ def main(roster_id):
         name="Scooby",
         role="mail_railcar",
         role_child_branch_num=1,
-        power=420,
+        power_by_power_source={
+            "DIESEL": 420,
+        },
         gen=4,
         sprites_complete=True,
         intro_year_offset=-5,

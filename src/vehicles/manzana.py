@@ -7,7 +7,9 @@ def main(roster_id):
         id="manzana",
         base_numeric_id=10520,
         name="Manzana",
-        power=900,
+        power_by_power_source={
+            "METRO": 900,
+        },
         intro_year=1950,
     )
 

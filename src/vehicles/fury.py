@@ -9,7 +9,9 @@ def main(roster_id):
         name="Fury",
         role="super_heavy_express",
         role_child_branch_num=3,
-        power=3600,
+        power_by_power_source={
+            "AC": 3600,
+        },
         random_reverse=True,
         gen=5,
         pantograph_type="z-shaped-double",

@@ -9,7 +9,9 @@ def main(roster_id):
         name="Flindermouse",
         role="ultra_heavy_freight",
         role_child_branch_num=1,
-        power=2500,
+        power_by_power_source={
+            "AC": 2500,
+        },
         speed=60,  # continues a long way into gen 3, so go faster
         gen=2,
         pantograph_type="diamond-double",

@@ -10,7 +10,9 @@ def main(roster_id):
         role="freight",
         role_child_branch_num=-1,
         replacement_consist_id="growler",  # this Joker ends with Growler
-        power=1500,  # same as Haar
+        power_by_power_source={
+            "STEAM": 1500,  # same as Haar
+        },
         speed=75,  # for lolz
         tractive_effort_coefficient=0.22,
         fixed_run_cost_points=150,  # small cost bonus for balance against same gen Haar

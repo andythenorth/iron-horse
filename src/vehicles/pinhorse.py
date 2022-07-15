@@ -9,7 +9,9 @@ def main(roster_id):
         name="Pinhorse",
         role="branch_express",
         role_child_branch_num=-2,
-        power=900,
+        power_by_power_source={
+            "AC": 900,
+        },
         random_reverse=True,
         pantograph_type="diamond-single",
         gen=2,

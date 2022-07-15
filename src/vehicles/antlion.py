@@ -7,7 +7,9 @@ def main(roster_id):
         id="antlion",
         base_numeric_id=10590,
         name="Antlion",
-        power=350,
+        power_by_power_source={
+            "DIESEL": 350,
+        },
         intro_year=1950,
     )
 

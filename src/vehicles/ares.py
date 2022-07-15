@@ -9,7 +9,9 @@ def main(roster_id):
         name="Ares",
         role="mail_railcar",
         role_child_branch_num=2,
-        power=400,
+        power_by_power_source={
+            "AC": 400,
+        },
         pantograph_type="diamond-single-with-base",
         easter_egg_haulage_speed_bonus=True,
         # use_3_unit_sets=True, # Ares only 2 unit sets, varies from other Pony mail railcars

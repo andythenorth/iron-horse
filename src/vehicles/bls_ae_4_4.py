@@ -9,7 +9,9 @@ def main(roster_id):
         name="BLS Ae 4/4",
         role="super_heavy_freight",
         role_child_branch_num=2,
-        power=4200,
+        power_by_power_source={
+            "AC": 4200,
+        },
         random_reverse=True,
         gen=3,
         pantograph_type="diamond-double",

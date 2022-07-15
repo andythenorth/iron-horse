@@ -9,7 +9,9 @@ def main(roster_id):
         name="Olympic",
         role="express_pax_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
-        power=1120,
+        power_by_power_source={
+            "AC": 1120,
+        },
         pantograph_type="z-shaped-single-with-base",
         gen=5,
         intro_year_offset=1,  # introduce later by design

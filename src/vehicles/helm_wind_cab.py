@@ -9,7 +9,9 @@ def main(roster_id):
         name="Helm Wind",
         role="very_high_speed",
         role_child_branch_num=1,
-        power=1700,
+        power_by_power_source={
+            "AC": 1700,
+        },
         dual_headed=True,
         pantograph_type="z-shaped-single-reversed",
         gen=5,

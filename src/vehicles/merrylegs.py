@@ -9,7 +9,9 @@ def main(roster_id):
         name="2-6-2 Merrylegs",
         role="branch_express",
         role_child_branch_num=1,
-        power=650,
+        power_by_power_source={
+            "STEAM": 650,
+        },
         tractive_effort_coefficient=0.2,
         fixed_run_cost_points=120,  # substantial cost bonus so it can make money
         random_reverse=True,

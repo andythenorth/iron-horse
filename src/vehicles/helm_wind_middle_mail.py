@@ -9,7 +9,7 @@ def main(roster_id):
         name="Helm Wind Mail Van",
         role="very_high_speed",
         role_child_branch_num=3,
-        power=0,  # set power 0, when attached to correct cab, cab power will be increased
+        power_by_power_source={"AC": 0},  # set power 0, when attached to correct cab, cab power will be increased
         # no pantographs for Helm Wind middle cars
         gen=5,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design

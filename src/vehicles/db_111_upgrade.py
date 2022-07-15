@@ -9,7 +9,9 @@ def main(roster_id):
         name="DB 111 (upgrade) or 143/243",
         role="ultra_heavy_express",
         role_child_branch_num=-1,
-        power=5400,
+        power_by_power_source={
+            "AC": 5400,
+        },
         random_reverse=True,
         gen=5,
         pantograph_type="diamond-double",

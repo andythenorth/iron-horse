@@ -9,7 +9,9 @@ def main(roster_id):
         name="Sunshine Coast",
         role="express_pax_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
-        power=1000,
+        power_by_power_source={
+            "AC": 1000,
+        },
         pantograph_type="z-shaped-single-with-base",
         gen=4,
         intro_year_offset=1,  # introduce later by design

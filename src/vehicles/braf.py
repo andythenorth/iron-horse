@@ -9,7 +9,9 @@ def main(roster_id):
         name="2-6-0 Braf",  # Welsh for "fine, nice, pleasant" https://omniglot.com/language/weather/welsh.htm
         role="freight",
         role_child_branch_num=1,
-        power=1250,
+        power_by_power_source={
+            "STEAM": 1250,
+        },
         tractive_effort_coefficient=0.24,
         gen=2,
         sprites_complete=True,

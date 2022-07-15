@@ -7,7 +7,9 @@ def main():  # for rest of stats, look up Krauss Maffei Brazil
         base_numeric_id=9300,
         name="Krauss",
         base_track_type_name="NG",
-        power=3500,
+        power_by_power_source={
+            "DIESEL": 3500,
+        },
         intro_year=1963,
     )
 

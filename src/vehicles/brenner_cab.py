@@ -10,7 +10,9 @@ def main(roster_id):
         role="very_high_speed",
         role_child_branch_num=1,
         dual_headed=True,
-        power=3000,
+        power_by_power_source={
+            "AC": 3000,
+        },
         gen=6,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
         sprites_complete=True,

@@ -9,7 +9,9 @@ def main(roster_id):
         name="Gowsty",
         role="mail_railcar",
         role_child_branch_num=1,
-        power=280,
+        power_by_power_source={
+            "DIESEL": 280,
+        },
         gen=3,
         sprites_complete=True,
         intro_year_offset=-5,

@@ -10,7 +10,9 @@ def main(roster_id):
         name="0-10-0 Decapod",
         role="branch_express",
         role_child_branch_num=-1,
-        power=650,
+        power_by_power_source={
+            "STEAM": 650,
+        },
         gen=2,
         intro_year_offset=7,  # let's be a little bit later for this one
         tractive_effort_coefficient=0.2,

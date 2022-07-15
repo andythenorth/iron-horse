@@ -10,7 +10,9 @@ def main(roster_id):
         name="0-6-4 Stag",
         role="branch_express",
         role_child_branch_num=-1,
-        power=800,
+        power_by_power_source={
+            "STEAM": 800,
+        },
         gen=3,
         tractive_effort_coefficient=0.2,
         fixed_run_cost_points=120,  # substantial cost bonus so it can make money

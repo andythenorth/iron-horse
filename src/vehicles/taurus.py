@@ -11,7 +11,9 @@ def main(roster_id):
         name="Taurus OBB ES64U4 !! Multisystem",
         role="ultra_heavy_express",
         role_child_branch_num=5,
-        power=9300,
+        power_by_power_source={
+            "AC": 9300,
+        },
         random_reverse=True,
         gen=6,
         pantograph_type="diamond-double",

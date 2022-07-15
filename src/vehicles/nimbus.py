@@ -9,7 +9,9 @@ def main(roster_id):
         name="Nimbus",
         role="super_heavy_express",
         role_child_branch_num=-3,
-        power=5400,  # needs a bump from Screamer
+        power_by_power_source={
+            "AC": 5400,  # needs a bump from Screamer
+        },
         random_reverse=True,
         gen=6,
         pantograph_type="z-shaped-double",

@@ -9,7 +9,9 @@ def main(roster_id):
         name="RBDe 4/4",
         role="pax_railcar",
         role_child_branch_num=2,
-        power=320,
+        power_by_power_source={
+            "AC": 320,
+        },
         pantograph_type="diamond-single-with-base",
         easter_egg_haulage_speed_bonus=True,
         gen=5,

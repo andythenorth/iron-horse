@@ -9,7 +9,9 @@ def main(roster_id):
         name="2-6-0+0-6-2 Esk",
         role="super_heavy_freight",
         role_child_branch_num=-1,
-        power=2400,
+        power_by_power_source={
+            "STEAM": 2400,
+        },
         tractive_effort_coefficient=0.4,
         gen=3,
         sprites_complete=True,

@@ -9,7 +9,9 @@ def main(roster_id):
         name="2-8-2 Pegasus",
         role="super_heavy_express",
         role_child_branch_num=1,
-        power=2300,
+        power_by_power_source={
+            "STEAM": 2300,
+        },
         tractive_effort_coefficient=0.25,
         gen=3,
         sprites_complete=True,

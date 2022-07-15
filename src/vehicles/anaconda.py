@@ -7,7 +7,9 @@ def main(roster_id):
         id="anaconda",
         base_numeric_id=9070,
         name="Anaconda",
-        power=300,
+        power_by_power_source={
+            "DIESEL": 300,
+        },
         intro_year=1980,
     )
 

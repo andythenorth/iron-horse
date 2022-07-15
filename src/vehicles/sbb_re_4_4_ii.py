@@ -9,7 +9,9 @@ def main(roster_id):
         name="Re 4/4ii",
         role="ultra_heavy_freight",
         role_child_branch_num=-1,
-        power=6000,
+        power_by_power_source={
+            "AC": 6000,
+        },
         random_reverse=True,
         gen=4,
         pantograph_type="diamond-double",

@@ -9,7 +9,9 @@ def main(roster_id):
         name="Blackthorn",
         role="super_heavy_freight",
         role_child_branch_num=1,
-        power=3650,
+        power_by_power_source={
+            "DIESEL": 3650,
+        },
         random_reverse=True,
         gen=6,
         default_livery_extra_docs_examples=[("COLOUR_MAUVE", "COLOUR_CREAM")],

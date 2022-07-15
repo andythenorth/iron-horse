@@ -9,7 +9,9 @@ def main(roster_id):
         name="Lynx",
         role="branch_express",
         role_child_branch_num=-1,
-        power=1650,
+        power_by_power_source={
+            "DIESEL": 1650,
+        },
         random_reverse=True,
         fixed_run_cost_points=100,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=5,  # not replaced by anything (?)

@@ -9,7 +9,9 @@ def main(roster_id):
         name="DR E 21 51",
         role="ultra_heavy_express",
         role_child_branch_num=4,
-        power=4600,
+        power_by_power_source={
+            "AC": 4600,
+        },
         random_reverse=True,
         gen=2,
         pantograph_type="diamond-double",

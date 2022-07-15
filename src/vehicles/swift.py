@@ -9,7 +9,9 @@ def main(roster_id):
         name="4-4-2 Swift",
         role="heavy_express",
         role_child_branch_num=1,
-        power=1550,
+        power_by_power_source={
+            "STEAM": 1550,
+        },
         tractive_effort_coefficient=0.18,
         gen=2,
         sprites_complete=True,

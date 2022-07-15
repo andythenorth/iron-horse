@@ -9,7 +9,9 @@ def main(roster_id):
         name="Magnum 70",
         role="gronk!",
         role_child_branch_num=-2,
-        power=500,
+        power_by_power_source={
+            "DIESEL": 500,
+        },
         speed=35,
         # dibble TE up for game balance, assume low gearing or something
         tractive_effort_coefficient=0.375,

@@ -9,7 +9,9 @@ def main(roster_id):
         name="OBB 1141",
         role="heavy_express",
         role_child_branch_num=2,
-        power=3300,
+        power_by_power_source={
+            "AC": 3300,
+        },
         random_reverse=True,
         gen=4,
         pantograph_type="diamond-double",

@@ -9,7 +9,9 @@ def main(roster_id):
         name="0-6-0+0-6-0 Xerxes",
         role="heavy_freight",
         role_child_branch_num=1,
-        power=1450,
+        power_by_power_source={
+            "STEAM": 1450,
+        },
         gen=1,
         intro_year_offset=20,  # introduce much later than gen epoch by design
         fixed_run_cost_points=140,  # minor run cost bonus as default algorithm makes run cost too high

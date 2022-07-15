@@ -9,7 +9,9 @@ def main(roster_id):
         name="2-6-2 Arrow",
         role="heavy_express",
         role_child_branch_num=-2,  # -ve because Joker
-        power=1900,  # slightly higher power, offset by higher weight
+        power_by_power_source={
+            "STEAM": 1900, # slightly higher power, offset by higher weight
+        },
         tractive_effort_coefficient=0.18,
         gen=3,
         intro_year_offset=4,  # introduce later than gen epoch by design

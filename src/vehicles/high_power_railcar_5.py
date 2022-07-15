@@ -9,7 +9,9 @@ def main(roster_id):
         name="SBB RBDe 560",
         role="high_power_railcar",
         role_child_branch_num=1,
-        power=3400,
+        power_by_power_source={
+            "AC": 3400,
+        },
         random_reverse=True,
         gen=5,
         pantograph_type="diamond-double",

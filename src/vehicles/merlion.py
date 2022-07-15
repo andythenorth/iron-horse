@@ -9,7 +9,9 @@ def main(roster_id):
         name="Merlion",
         role="freight",
         role_child_branch_num=-1,
-        power=1750,
+        power_by_power_source={
+            "DIESEL": 1750,
+        },
         tractive_effort_coefficient=0.29,
         random_reverse=True,
         gen=4,

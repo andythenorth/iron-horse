@@ -9,7 +9,9 @@ def main(roster_id):
         name="Trient",
         role="super_heavy_freight",
         role_child_branch_num=1,
-        power=4050,  # 750hp steps Vanguard -> Grid -> Cheddar Valley
+        power_by_power_source={
+            "DIESEL": 4050,
+        },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
         random_reverse=True,

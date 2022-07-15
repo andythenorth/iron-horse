@@ -8,6 +8,9 @@ def main(roster_id):
         base_numeric_id=11020,
         name="Oribi",
         power=450,
+        power_by_power_source={
+            "DIESEL": 450,
+        },
         base_track_type_name="NG",
         intro_year=1960,
     )

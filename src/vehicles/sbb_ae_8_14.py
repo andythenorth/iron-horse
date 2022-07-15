@@ -9,7 +9,9 @@ def main(roster_id):
         name="SBB Ae 8/14",
         role="ultra_heavy_freight",
         role_child_branch_num=-2,
-        power=7360,
+        power_by_power_source={
+            "AC": 7360,
+        },
         gen=3,
         pantograph_type="diamond-double",
         # intro_year_offset=-13,  # introduce earlier than gen epoch by design

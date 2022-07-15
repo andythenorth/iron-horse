@@ -10,7 +10,9 @@ def main(roster_id):
         role="super_heavy_express",
         role_child_branch_num=-2,
         replacement_consist_id="onslaught",  # this Joker ends with Onslaught
-        power=2800,
+        power_by_power_source={
+            "DIESEL": 2800,
+        },
         random_reverse=True,
         gen=4,
         intro_year_offset=5,  # introduce later than gen epoch by design

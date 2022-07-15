@@ -9,7 +9,9 @@ def main(roster_id):
         name="Zest",
         role="branch_freight",
         role_child_branch_num=2,
-        power=1600,
+        power_by_power_source={
+            "AC": 1600,
+        },
         random_reverse=True,
         pantograph_type="diamond-single",
         gen=4,

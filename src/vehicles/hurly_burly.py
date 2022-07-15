@@ -9,7 +9,9 @@ def main(roster_id):
         name="Hurly Burly",
         role="super_heavy_express",
         role_child_branch_num=3,
-        power=1800,
+        power_by_power_source={
+            "AC": 1800,
+        },
         tractive_effort_coefficient=0.25,
         random_reverse=True,
         gen=2,

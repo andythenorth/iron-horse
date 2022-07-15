@@ -9,7 +9,9 @@ def main(roster_id):
         name="Geronimo",
         role="pax_railcar",
         role_child_branch_num=2,
-        power=420,  # RL EMU HP is much lower per single car, but eh
+        power_by_power_source={
+            "AC": 420,  # RL EMU HP is much lower per single car, but eh
+        },
         pantograph_type="z-shaped-single-with-base",
         easter_egg_haulage_speed_bonus=True,
         gen=4,

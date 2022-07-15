@@ -6,7 +6,9 @@ def main():  # GE Shovelnose - meter gauge ish
         id="cooper",
         base_numeric_id=10480,
         name="Cooper",
-        power=1000,
+        power_by_power_source={
+            "DIESEL": 1000,
+        },
         base_track_type_name="NG",
         intro_year=1949,
     )

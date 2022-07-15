@@ -9,7 +9,9 @@ def main(roster_id):
         name="Re 460",
         role="ultra_heavy_express",
         role_child_branch_num=-5,
-        power=8400,
+        power_by_power_source={
+            "AC": 8400,
+        },
         random_reverse=True,
         gen=5,
         pantograph_type="diamond-double",

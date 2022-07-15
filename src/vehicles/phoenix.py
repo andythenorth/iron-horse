@@ -9,7 +9,9 @@ def main(roster_id):
         name="Phoenix",
         role="freight",
         role_child_branch_num=1,
-        power=2100,  # really it's just a livery upgrade
+        power_by_power_source={
+            "DIESEL": 2100,  # really it's just a livery upgrade
+        },
         random_reverse=True,
         gen=6,
         sprites_complete=True,

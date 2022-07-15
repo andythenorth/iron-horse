@@ -9,7 +9,9 @@ def main(roster_id):
         name="Mail Rail",
         role="mail_railcar",
         role_child_branch_num=1,
-        power=700,
+        power_by_power_source={
+            "DIESEL": 700,
+        },
         gen=6,
         sprites_complete=True,
         intro_year_offset=-5,

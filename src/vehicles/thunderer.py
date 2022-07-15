@@ -10,7 +10,9 @@ def main(roster_id):
         role="heavy_express",
         role_child_branch_num=-1,
         replacement_consist_id="tenacious",  # this Joker ends with Tenacious, long-lived
-        power=1500,  # slightly less than the Swift (and lighter engine)
+        power_by_power_source={
+            "STEAM": 1500,  # slightly less than the Swift (and lighter engine)
+        },
         tractive_effort_coefficient=0.2,
         fixed_run_cost_points=140,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=2,

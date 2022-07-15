@@ -9,7 +9,9 @@ def main(roster_id):
         name="Wyvern",
         role="heavy_express",
         role_child_branch_num=1,
-        power=2200,  # not an exact linear progression in this tree
+        power_by_power_source={
+            "DIESEL": 2200,  # not an exact linear progression in this tree
+        },
         random_reverse=True,
         gen=4,
         intro_year_offset=-6,  # let's not have everything turn up in 1960

@@ -9,7 +9,9 @@ def main(roster_id):
         name="Resilient",
         role="heavy_express",
         role_child_branch_num=-2,
-        power=2550,
+        power_by_power_source={
+            "DIESEL": 2550,
+        },
         random_reverse=True,
         gen=5,
         intro_year_offset=-4,  # let's not have everything turn up in 1990

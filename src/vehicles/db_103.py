@@ -9,7 +9,9 @@ def main(roster_id):
         name="DB 103",
         role="ultra_heavy_express",
         role_child_branch_num=5,
-        power=7500,
+        power_by_power_source={
+            "AC": 7500,
+        },
         random_reverse=True,
         gen=4,
         pantograph_type="diamond-double",

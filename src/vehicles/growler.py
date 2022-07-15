@@ -9,7 +9,9 @@ def main(roster_id):
         name="Growler",
         role="freight",
         role_child_branch_num=1,
-        power=1750,
+        power_by_power_source={
+            "DIESEL": 1750,
+        },
         random_reverse=True,
         gen=4,
         force_caboose_families={

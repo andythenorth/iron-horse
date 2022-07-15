@@ -9,7 +9,9 @@ def main(roster_id):
         name="High Flyer",
         role="express_pax_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
-        power=840,
+        power_by_power_source={
+            "AC": 840,
+        },
         pantograph_type="diamond-single-with-base",
         gen=3,
         intro_year_offset=2,  # introduce later by design

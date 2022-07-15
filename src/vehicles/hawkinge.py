@@ -9,7 +9,9 @@ def main(roster_id):
         name="4-8-2 Hawkinge",
         role="super_heavy_express",
         role_child_branch_num=-2,
-        power=2350,
+        power_by_power_source={
+            "STEAM": 2350,
+        },
         tractive_effort_coefficient=0.25,
         gen=3,
         intro_year_offset=5,  # introduce later than gen epoch by design

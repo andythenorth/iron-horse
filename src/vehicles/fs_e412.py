@@ -9,7 +9,9 @@ def main(roster_id):
         name="FS E.412 Brenner !! Multisystem",
         role="ultra_heavy_express",
         role_child_branch_num=4,
-        power=7400,
+        power_by_power_source={
+            "AC": 7400,
+        },
         random_reverse=True,
         gen=6,
         pantograph_type="diamond-double",

@@ -9,7 +9,9 @@ def main(roster_id):
         name="Deasil",
         role="pax_railcar",
         role_child_branch_num=1,
-        power=200,
+        power_by_power_source={
+            "DIESEL": 200,
+        },
         gen=3,
         sprites_complete=True,
         intro_year_offset=-5,

@@ -9,7 +9,9 @@ def main(roster_id):
         name="4-8-0 Lemon",
         role="super_heavy_freight",
         role_child_branch_num=1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
-        power=2400,
+        power_by_power_source={
+            "STEAM": 2400,
+        },
         speed=75,  # for lolz
         tractive_effort_coefficient=0.29,
         gen=3,

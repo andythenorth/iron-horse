@@ -9,7 +9,9 @@ def main(roster_id):
         name="Relentless",
         role="super_heavy_express",
         role_child_branch_num=1,
-        power=3950,  # slightly more than standard progression, to enable higher speed to be reach quickly
+        power_by_power_source={
+            "DIESEL": 3950,  # slightly more than standard progression, to enable higher speed to be reach quickly
+        },
         random_reverse=True,
         gen=6,
         intro_year_offset=-7,  # let's be earlier on this to keep the mail up with the HSTs etc

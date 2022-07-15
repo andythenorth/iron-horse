@@ -9,7 +9,9 @@ def main(roster_id):
         name="Captain Steel",
         role="branch_freight",
         role_child_branch_num=-1,
-        power=1150,
+        power_by_power_source={
+            "DIESEL": 1150,
+        },
         # dibble TE up for game balance, assume low gearing or something
         tractive_effort_coefficient=0.375,
         random_reverse=True,

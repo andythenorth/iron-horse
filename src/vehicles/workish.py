@@ -10,7 +10,9 @@ def main(roster_id):
         role="mail_railcar",
         role_child_branch_num=1,
         base_track_type_name="NG",
-        power=360,
+        power_by_power_source={
+            "DIESEL": 360,
+        },
         gen=3,
         sprites_complete=True,
     )

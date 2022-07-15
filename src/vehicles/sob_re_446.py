@@ -9,7 +9,9 @@ def main(roster_id):
         name="SOB Re 446",
         role="ultra_heavy_express",
         role_child_branch_num=4,
-        power=6700,
+        power_by_power_source={
+            "AC": 6700,
+        },
         random_reverse=True,
         gen=5,
         pantograph_type="diamond-double",

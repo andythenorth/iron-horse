@@ -9,7 +9,9 @@ def main(roster_id):
         name="Stoat",
         role="branch_freight",
         role_child_branch_num=2,
-        power=1050,
+        power_by_power_source={
+            "AC": 1050,
+        },
         speed=60,  # continues a long way into gen 3, so go faster
         random_reverse=True,
         pantograph_type="diamond-single",

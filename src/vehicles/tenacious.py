@@ -10,7 +10,9 @@ def main(roster_id):
         role="heavy_express",
         role_child_branch_num=-1,  # -ve because Joker
         replacement_consist_id="resilient",  # this Joker ends with Resilient
-        power=2150,
+        power_by_power_source={
+            "DIESEL": 2150,
+        },
         random_reverse=True,
         gen=4,
         fixed_run_cost_points=150,  # give a small bonus so this can be a genuine mixed-traffic engine

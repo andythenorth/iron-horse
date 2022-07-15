@@ -9,7 +9,9 @@ def main(roster_id):
         name="Daring",
         role="express",
         role_child_branch_num=1,
-        power=1750,
+        power_by_power_source={
+            "DIESEL": 1750,
+        },
         fixed_run_cost_points=116,  # give a small bonus so this can be a genuine mixed-traffic engine
         random_reverse=True,
         gen=4,

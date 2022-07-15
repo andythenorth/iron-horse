@@ -9,7 +9,9 @@ def main(roster_id):
         name="Blaze HST",
         role="hst",  # quite a specific role, may or may not scale to other rosters
         role_child_branch_num=1,
-        power=5000,
+        power_by_power_source={
+            "DIESEL": 5000,
+        },
         intro_year_offset=-10,  # let's be a little bit earlier for this one - keep coaches matched
         gen=5,
         sprites_complete=True,

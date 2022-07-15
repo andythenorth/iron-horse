@@ -7,7 +7,9 @@ def main(roster_id):
         id="peacock",
         base_numeric_id=9380,
         name="2-6-0 Peacock",
-        power=1200,
+        power_by_power_source={
+            "STEAM": 1200,
+        },
         tractive_effort_coefficient=0.32,
         intro_year=1885,
     )

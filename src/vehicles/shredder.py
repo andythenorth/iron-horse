@@ -9,7 +9,9 @@ def main(roster_id):
         name="Shredder",  # Griffon and Shredder names are wrong way round, but seems to suit the shapes so eh, leave it :)
         role="express",
         role_child_branch_num=1,
-        power=2100,  # matched to Phoenix, and intended for short mail / supplies trains
+        power_by_power_source={
+            "DIESEL": 2100,  # matched to Phoenix, and intended for short mail / supplies trains
+        },
         random_reverse=True,
         fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=5,

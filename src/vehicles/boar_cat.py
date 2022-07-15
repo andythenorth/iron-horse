@@ -9,7 +9,9 @@ def main(roster_id):
         name="Boar Cat",
         role="universal",
         role_child_branch_num=1,
-        power=600,
+        power_by_power_source={
+            "DIESEL": 600,
+        },
         random_reverse=True,
         base_track_type_name="NG",
         gen=4,

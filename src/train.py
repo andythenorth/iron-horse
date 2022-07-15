@@ -65,7 +65,6 @@ class Consist(object):
         self._replacement_consist_id = kwargs.get("replacement_consist_id", None)
         # default loading speed multiplier, over-ride in subclasses as needed
         self._loading_speed_multiplier = 1
-        self._power = kwargs.get("power", 0)
         self.base_track_type_name = kwargs.get("base_track_type_name", "RAIL")
         # modify base_track_type_name for electric engines when writing out the actual rail type
         # without this, RAIL and ELRL have to be specially handled whenever a list of compatible consists is wanted
@@ -208,14 +207,15 @@ class Consist(object):
 
     def engine_varies_power_by_power_source(self, vehicle):
         if self.power_by_power_source is not None and vehicle.is_lead_unit_of_consist:
-            # as of Dec 2018, can't use both variable power and wagon power
-            # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
-            # would require quite a bit of refactoring though eh
-            assert self.wagons_add_power == False, (
-                "%s consist has both engine_varies_power_by_power_source and power_by_power_source, which conflict"
-                % self.id
-            )
-            return True
+            if len(self.power_by_power_source) > 1:
+                # as of Dec 2018, can't use both variable power and wagon power
+                # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
+                # would require quite a bit of refactoring though eh
+                assert self.wagons_add_power == False, (
+                    "%s consist has both engine_varies_power_by_power_source and power_by_power_source, which conflict"
+                    % self.id
+                )
+                return True
         else:
             return False
 
@@ -456,29 +456,31 @@ class Consist(object):
             "%s consist tried to determine electrification_type, but does not have requires_electric_rails set"
             % self.id
         )
-        if self.power_by_power_source == None:
-            # for convenience we allow electrified vehicles to default to AC, without requiring them to explicitly declare that
-            return "AC"
         if "AC" in self.power_by_power_source:
             # default all multi-system and bi-mode engines to AC for now, can revise later if needed
             return "AC"
         elif "DC" in self.power_by_power_source:
             return "DC"
         else:
-            raise BaseException("no valid electrification type found for " + consist.id)
+            raise BaseException("no valid electrification type found for " + self.id)
 
     @property
     def power(self):
-        if self._power != 0:
-            assert self.power_by_power_source == None, (
-                "%s consist has both power and power_by_power_source set, which is incorrect"
-                % self.id
-            )
-        if self.power_by_power_source != None:
+        if self.power_by_power_source == None:
+            # probably a wagon eh?
+            return 0
+        else:
             # this is to get the default value, used when only one value can be shown
             # cascade in controlled order through the available power sources
-            if "DIESEL" in self.power_by_power_source:
+            if "NULL" in self.power_by_power_source:
+                # null is used for e.g. snowploughs etc where the power is only to enable the vehicle to lead the train
+                return self.power_by_power_source["NULL"]
+            if "STEAM" in self.power_by_power_source:
+                return self.power_by_power_source["STEAM"]
+            elif "DIESEL" in self.power_by_power_source:
                 return self.power_by_power_source["DIESEL"]
+            elif "METRO" in self.power_by_power_source:
+                return self.power_by_power_source["METRO"]
             elif "AC" in self.power_by_power_source:
                 # AC is the default for multi-system AC/DC locos
                 return self.power_by_power_source["AC"]
@@ -487,11 +489,9 @@ class Consist(object):
             else:
                 raise BaseException(
                     "no valid power source found when fetching default power for "
-                    + consist.id
+                    + self.id
                     + " - possibly power source check needs extending?"
                 )
-        else:
-            return self._power
 
     def get_speed_by_class(self, speed_class):
         # automatic speed, but can over-ride by passing in kwargs for consist
@@ -603,10 +603,22 @@ class Consist(object):
             # multisystem support
             for electrification_type in ["AC", "DC"]:
                 if electrification_type in self.power_by_power_source:
-                    result.append("tile_powers_track_type_name_" + self.base_track_type_name + "_ELECTRIFIED_" + electrification_type + "()")
+                    result.append(
+                        "tile_powers_track_type_name_"
+                        + self.base_track_type_name
+                        + "_ELECTRIFIED_"
+                        + electrification_type
+                        + "()"
+                    )
         else:
             # otherwise use the electrification type already known by the consist
-            result.append("tile_powers_track_type_name_" + self.base_track_type_name + "_ELECTRIFIED_" + self.electrification_type + "()")
+            result.append(
+                "tile_powers_track_type_name_"
+                + self.base_track_type_name
+                + "_ELECTRIFIED_"
+                + self.electrification_type
+                + "()"
+            )
         result = " || ".join(result)
         result = "[" + result + "]"
         return result
@@ -707,7 +719,8 @@ class Consist(object):
             elif len(self.power_by_power_source) == 3:
                 result.append("STR_POWER_BY_POWER_SOURCE_THREE_SOURCES")
             else:
-                raise BaseException("consist " + self.id + " defines unsupported number of power sources")
+                print("CABBAGE", self.id)
+                # raise BaseException("consist " + self.id + " defines unsupported number of power sources")
         # optional string if consist is lgv-capable
         if self.lgv_capable:
             result.append("STR_SPEED_BY_RAILTYPE_LGV_CAPABLE")
@@ -1033,7 +1046,9 @@ class AutoCoachCombineConsist(EngineConsist):
             "autocoach_combine"
         ]
         # confer tiny power value to make this one an engine so it can lead.
-        self._power = 10  # use 10 not 1, because 1 looks weird when added to engine HP
+        self.power_by_power_source = {
+            "NULL": 10
+        }  # use 10 not 1, because 1 looks weird when added to engine HP
         # nerf TE down to minimal value
         self.tractive_effort_coefficient = 0
         # ....buy costs adjusted to match equivalent gen 2 + 3 pax / mail cars
@@ -1079,7 +1094,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
-        self._power = 300
+        self.power_by_power_source = {"NULL": 300}
         # nerf TE down to minimal value
         self.tractive_effort_coefficient = 0.1
         # ....buy costs reduced from base to make it close to mail cars
@@ -1254,7 +1269,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         # special purpose attr for use with alt var 41 and pax_car_ids
         self.treat_as_pax_car_for_var_41 = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
-        self._power = 300
+        self.power_by_power_source = {"NULL": 300}
         # nerf TE down to minimal value
         self.tractive_effort_coefficient = 0.1
         # ....buy costs reduced from base to make it close to mail cars
@@ -1522,7 +1537,7 @@ class SnowploughEngineConsist(EngineConsist):
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True
         # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
-        self._power = 100
+        self.power_by_power_source = {"NULL": 100}
         self.tractive_effort_coefficient = 0.1
         # give it mail / express capacity so it has some purpose :P
         self.class_refit_groups = ["mail", "express_freight"]

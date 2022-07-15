@@ -9,7 +9,9 @@ def main(roster_id):
         name="De 6/6",
         role="freight",
         role_child_branch_num=1,
-        power=1140,
+        power_by_power_source={
+            "AC": 1140,
+        },
         random_reverse=True,
         gen=2,
         pantograph_type="diamond-double",

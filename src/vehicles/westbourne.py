@@ -9,7 +9,9 @@ def main(roster_id):
         name="Westbourne",
         role="pax_metro",
         role_child_branch_num=1,
-        power=900,
+        power_by_power_source={
+            "METRO": 900,
+        },
         gen=2,
         sprites_complete=True,
     )

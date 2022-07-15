@@ -9,7 +9,9 @@ def main(roster_id):
         name="SBB Sb 4/4",
         role="branch_express",
         role_child_branch_num=2,
-        power=1700,
+        power_by_power_source={
+            "AC": 1700,
+        },
         gen=2,
         pantograph_type="diamond-double",
         intro_year_offset=-5,  # introduce earlier than gen epoch by design

@@ -9,7 +9,9 @@ def main(roster_id):
         name="Intrepid",
         role="heavy_express",
         role_child_branch_num=-2,  # -ve because Joker
-        power=2200,
+        power_by_power_source={
+            "DIESEL": 2200,
+        },
         random_reverse=True,
         gen=4,
         fixed_run_cost_points=40,  # give a bonus so this can be a genuine mixed-traffic engine

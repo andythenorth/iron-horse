@@ -9,7 +9,9 @@ def main(roster_id):
         name="Screamer",
         role="super_heavy_express",
         role_child_branch_num=-3,
-        power=4800,
+        power_by_power_source={
+            "AC": 4800,
+        },
         random_reverse=True,
         gen=5,
         pantograph_type="z-shaped-double",

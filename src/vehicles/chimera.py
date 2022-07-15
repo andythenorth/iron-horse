@@ -8,7 +8,9 @@ def main(roster_id):
         base_numeric_id=10030,
         name="Chimera",
         role="heavy_freight_4",
-        power=5200,
+        power_by_power_source={
+            "DIESEL": 5200,
+        },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
         random_reverse=True,

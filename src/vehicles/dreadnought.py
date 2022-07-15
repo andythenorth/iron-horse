@@ -9,7 +9,9 @@ def main(roster_id):
         name="Dreadnought",
         role="super_heavy_express",
         role_child_branch_num=-1,
-        power=3300,
+        power_by_power_source={
+            "DIESEL": 3300,
+        },
         random_reverse=False,  # Dreadnought has asymmetric logo pixels that don't look great when running reversed
         allow_flip=True,  # only set because random_reverse is false, this is unnecessary if random_reverse is true
         gen=5,

@@ -9,7 +9,9 @@ def main(roster_id):
         name="Clipper",
         role="pax_railbus",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
-        power=180,
+        power_by_power_source={
+            "DIESEL": 180,
+        },
         gen=4,
         # introduce early by design
         intro_year_offset=-4,

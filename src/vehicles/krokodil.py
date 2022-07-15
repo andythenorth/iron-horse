@@ -9,7 +9,9 @@ def main(roster_id):
         name="SBB Ce 6/8 Krokodil",
         role="super_heavy_freight",
         role_child_branch_num=2,
-        power=2200,
+        power_by_power_source={
+            "AC": 2200,
+        },
         gen=2,
         pantograph_type="diamond-double",
         # intro_year_offset=-13,  # introduce earlier than gen epoch by design

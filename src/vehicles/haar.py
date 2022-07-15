@@ -9,7 +9,9 @@ def main(roster_id):
         name="0-8-0 Haar",
         role="freight",
         role_child_branch_num=1,
-        power=1500,
+        power_by_power_source={
+            "STEAM": 1500,
+        },
         tractive_effort_coefficient=0.24,
         gen=3,
         sprites_complete=True,

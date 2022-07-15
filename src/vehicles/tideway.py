@@ -9,7 +9,9 @@ def main(roster_id):
         name="Tideway",
         role="mail_metro",
         role_child_branch_num=1,
-        power=1100,
+        power_by_power_source={
+            "METRO": 1100,
+        },
         gen=3,
         default_livery_extra_docs_examples=[("COLOUR_RED", "COLOUR_BLUE")],
         sprites_complete=True,

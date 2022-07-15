@@ -7,6 +7,9 @@ def main():  # for rest of stats, look up GE Export models U5B-U8B
         base_numeric_id=9580,
         name="Universal",
         power=800,
+        power_by_power_source={
+            "DIESEL": 800,
+        },
         intro_year=1958,
     )
 

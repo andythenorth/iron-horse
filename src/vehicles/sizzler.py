@@ -9,7 +9,9 @@ def main(roster_id):
         name="Sizzler",
         role="ultra_heavy_express",
         role_child_branch_num=1,
-        power=6600,  # roughly brackets Quietus
+        power_by_power_source={
+            "AC": 6600,  # roughly brackets Quietus
+        },
         random_reverse=True,
         gen=6,
         pantograph_type="z-shaped-double",

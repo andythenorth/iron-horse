@@ -9,7 +9,9 @@ def main(roster_id):
         name="Peasweep",
         role="ultra_heavy_freight",
         role_child_branch_num=1,
-        power=3700,
+        power_by_power_source={
+            "AC": 3700,
+        },
         gen=4,
         pantograph_type="diamond-double",
         intro_year_offset=-13,  # introduce earlier than gen epoch by design

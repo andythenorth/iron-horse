@@ -9,7 +9,9 @@ def main(roster_id):
         name="Zebedee",
         role="super_heavy_express",
         role_child_branch_num=-3,  # it's a joker, tried it as super heavy express 1, the power progression and dates are all wrong for that
-        power=4000,  # bit unsure about power on this one, a larger electric is wanted, but don't want to power creep gen 4 too much
+        power_by_power_source={
+            "AC": 4000,
+        },
         random_reverse=True,
         gen=4,
         pantograph_type="z-shaped-double",

@@ -9,7 +9,9 @@ def main(roster_id):
         name="Zeus",
         role="pax_railcar",
         role_child_branch_num=2,
-        power=620,
+        power_by_power_source={
+            "AC": 620,
+        },
         pantograph_type="z-shaped-single-with-base",
         easter_egg_haulage_speed_bonus=True,
         gen=6,

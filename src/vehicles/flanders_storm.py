@@ -9,7 +9,9 @@ def main(roster_id):
         name="Flanders Storm",
         role="ultra_heavy_freight",
         role_child_branch_num=1,
-        power=5800,  # big jump from previous, IRL matches class 89 not 92
+        power_by_power_source={
+            "AC": 5800,  # big jump from previous, IRL matches class 89 not 92
+        },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
         random_reverse=True,

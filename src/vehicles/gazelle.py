@@ -7,7 +7,9 @@ def main(roster_id):
         id="gazelle",
         base_numeric_id=11070,
         name="Gazelle",
-        power=1800,
+        power_by_power_source={
+            "DIESEL": 1800,
+        },
         base_track_type_name="NG",
         intro_year=1975,
     )

@@ -9,7 +9,9 @@ def main(roster_id):
         name="SOB BDe 4/4 62",
         role="high_power_railcar",
         role_child_branch_num=1,
-        power=1800,
+        power_by_power_source={
+            "AC": 1800,
+        },
         random_reverse=True,
         gen=3,
         pantograph_type="diamond-double",

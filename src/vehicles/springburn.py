@@ -7,7 +7,9 @@ def main(roster_id):
         id="springburn",
         base_numeric_id=10830,
         name="Springburn",
-        power=1200,
+        power_by_power_source={
+            "DIESEL": 1200,
+        },
         intro_year=1950,
     )
 

@@ -9,7 +9,9 @@ def main(roster_id):
         name="Withershins",
         role="super_heavy_freight",
         role_child_branch_num=-1,
-        power=2900,
+        power_by_power_source={
+            "DIESEL": 2900,
+        },
         random_reverse=True,
         gen=4,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high

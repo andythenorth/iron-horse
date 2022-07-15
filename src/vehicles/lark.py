@@ -9,7 +9,9 @@ def main(roster_id):
         name="4-4-2 Lark",
         role="branch_express",
         role_child_branch_num=1,
-        power=500,
+        power_by_power_source={
+            "STEAM": 500,
+        },
         tractive_effort_coefficient=0.2,
         fixed_run_cost_points=100,  # substantial cost bonus so it can make money
         random_reverse=True,

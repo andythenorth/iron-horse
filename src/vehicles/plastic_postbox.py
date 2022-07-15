@@ -10,7 +10,9 @@ def main(roster_id):
         role="mail_railcar",
         role_child_branch_num=1,
         replacement_consist_id="pylon",  # consolidates to electro-diesel with Pylon
-        power=560,
+        power_by_power_source={
+            "DIESEL": 560,
+        },
         gen=5,
         sprites_complete=True,
         intro_year_offset=-5,

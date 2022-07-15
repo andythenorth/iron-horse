@@ -9,7 +9,9 @@ def main(roster_id):
         name="Vulcan",
         role="super_heavy_express",
         role_child_branch_num=-1,
-        power=2750,
+        power_by_power_source={
+            "DIESEL": 2750,
+        },
         random_reverse=True,
         gen=4,
         intro_year_offset=1,  # introduce later than gen epoch by design

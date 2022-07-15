@@ -9,7 +9,9 @@ def main(roster_id):
         name="Evolution",
         role="heavy_express",
         role_child_branch_num=-2,
-        power=2750,
+        power_by_power_source={
+            "DIESEL": 2750,
+        },
         random_reverse=True,
         gen=6,
         intro_year_offset=-2,  # let's not have everything turn up in 1990

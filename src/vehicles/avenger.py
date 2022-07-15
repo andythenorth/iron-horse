@@ -9,7 +9,9 @@ def main(roster_id):
         name="Avenger",
         role="ultra_heavy_express",
         role_child_branch_num=1,
-        power=5800,
+        power_by_power_source={
+            "AC": 5800,
+        },
         random_reverse=True,
         gen=5,
         pantograph_type="z-shaped-single",

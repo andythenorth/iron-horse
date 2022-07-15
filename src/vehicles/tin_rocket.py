@@ -9,7 +9,9 @@ def main(roster_id):
         name="Tin Rocket",
         role="pax_railcar",
         role_child_branch_num=1,
-        power=400,
+        power_by_power_source={
+            "DIESEL": 400,
+        },
         gen=5,
         sprites_complete=True,
         # introduce early by design
