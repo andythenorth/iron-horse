@@ -205,6 +205,9 @@ class Consist(object):
                         return "STR_NAME_SUFFIX_ELECTRIC_AC"
                     elif "DC" in self.power_by_power_source:
                         return "STR_NAME_SUFFIX_ELECTRIC_DC"
+                if len(self.power_by_power_source) == 2:
+                    if "DIESEL" in self.power_by_power_source and "AC" in self.power_by_power_source:
+                        return "STR_NAME_SUFFIX_ELECTRODIESEL"
             return None
 
     @property
@@ -4979,7 +4982,6 @@ class ElectroDieselEngineUnit(Train):
             "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
             "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
         }
-        self.consist._str_name_suffix = "STR_NAME_SUFFIX_ELECTRODIESEL"
         # electro-diesels are complex eh?
         self.consist.electro_diesel_buy_cost_malus = 1  # will get same buy cost factor as electric engine of same gen (blah balancing)
         # almost all electro-diesel engines are asymmetric, over-ride per vehicle as needed
@@ -4998,7 +5000,6 @@ class ElectroDieselRailcarBaseUnit(Train):
             "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
             "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
         }
-        self.consist._str_name_suffix = "STR_NAME_SUFFIX_ELECTRODIESEL"
         # electro-diesels are complex eh?
         self.consist.electro_diesel_buy_cost_malus = 1.15  # will get higher buy cost factor than electric railcar of same gen (blah balancing)
         # offset to second livery, to differentiate from diesel equivalent which will use first
