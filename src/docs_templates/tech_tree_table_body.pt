@@ -201,7 +201,6 @@
                                                                     <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">
                                                                         <small style="display:block;">
                                                                             ${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None}
-                                                                            ${consist.electrification_type if consist.requires_electric_rails else None}
                                                                         </small>
                                                                         <small>${doc_helper.power_formatted_for_docs(consist)}</small>
                                                                         <br />
