@@ -128,6 +128,20 @@ class RailTypeManager(list):
         railtype = railtype_module.main(disabled=False)
         self.append(railtype)
 
+    @property
+    def railtype_labels_for_railtypetable(self):
+        # the railtypetable needs both lists of fallbacks by track_type_name, and all of the labels from each list so we can refer to them in e.g. tile checks
+        # note that this is using the nml fallbacks for *vehicle* track_type NOT the compatible or powered powered properties for the railtypes
+        # this is strictly not the scope of RailTypeManager, but it's a convenient place to add globally accessible railtype specific methods
+        result = {}
+        for labels in global_constants.railtype_labels_by_vehicle_track_type_name.values():
+            result[labels[0]] = labels
+        for labels in global_constants.railtype_labels_by_vehicle_track_type_name.values():
+            for label in labels:
+                if label not in result.keys():
+                    result[label] = None
+        return result
+
 
 class RosterManager(list):
     """
