@@ -9,7 +9,7 @@ def main(roster_id):
         name="BB 7200",
         role="ultra_heavy_express",
         role_child_branch_num=-3,
-        power_by_power_source = {"DC": 5400},
+        power_by_power_source = {"DC": 5400, "AC": 9999},
         random_reverse=True,
         gen=4,
         pantograph_type="diamond-double",

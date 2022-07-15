@@ -117,7 +117,6 @@ STR_ROLE_METRO                                                  :Urbano de Alta 
 STR_ROLE_VERY_HIGH_SPEED                                        :Muy Alta Velocidad
 
 # assumes only diesel and electric currently
-STR_POWER_BY_POWER_SOURCE                                           :{BLACK}Potencia on Diesel: {GOLD}{POWER} {}{BLACK}Potencia on Eléctrico: {GOLD}{POWER}
 
 # distributed power (dedicated wagons add power)
 STR_WAGONS_ADD_POWER_CAB                                        :Potencia (Distribuída): {GOLD}{POWER} por cada {STRING} unidad adjuntada

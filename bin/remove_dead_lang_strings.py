@@ -10,9 +10,9 @@ sys.path.append(os.path.join('src')) # add to the module search path
 # this script removes dead strings - adjust the 'dead_strings' list to suit
 
 # never leave empty strings or strings with only spaces in this list, that will strip everything from a lang file
-dead_strings = ["STR_PARAM_ROSTER", "STR_PARAM_ROSTER_DESC", "STR_PARAM_ROSTER_OPTION_0"]
+dead_strings = ["STR_POWER_BY_POWER_SOURCE"]
 
-rosters = ["pony", "moose"]
+rosters = ["ibex", "moose", "pony"]
 
 def delete_string(dead_string):
     for roster in rosters:

@@ -296,7 +296,7 @@ def main():
             fs_e412,
             re_465,
             ## DC?
-            #bb_7200,
+            bb_7200,
             # high powered railcars
             high_power_railcar_2,
             high_power_railcar_3,

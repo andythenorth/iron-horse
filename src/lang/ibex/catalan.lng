@@ -117,7 +117,6 @@ STR_ROLE_METRO                                                  :Urbà d'Alta Ca
 STR_ROLE_VERY_HIGH_SPEED                                        :Molt Alta Velocitat
 
 # assumes only diesel and electric currently
-STR_POWER_BY_POWER_SOURCE                                           :{BLACK}Potència en Diesel: {GOLD}{POWER} {}{BLACK}Potència on Elèctric: {GOLD}{POWER}
 
 # distributed power (dedicated wagons add power)
 STR_WAGONS_ADD_POWER_CAB                                        :Potència (Distribuida): {GOLD}{POWER} per cada {STRING} unitat adjuntada

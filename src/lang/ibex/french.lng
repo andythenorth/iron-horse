@@ -134,7 +134,6 @@ STR_ROLE_SUBURBAN                                               :Transport de ba
 STR_ROLE_VERY_HIGH_SPEED                                        :Très grande vitesse
 
 # assumes only diesel and electric currently
-STR_POWER_BY_POWER_SOURCE                                           :{BLACK}Puissance (Diesel){NBSP}: {GOLD}{POWER} {}{BLACK}Puissance (Électrique){NBSP}: {GOLD}{POWER}
 
 # distributed power (dedicated wagons add power)
 STR_WAGONS_ADD_POWER_CAB                                        :Puissance (Distribuée): {GOLD}{POWER} par {STRING} unité attachée

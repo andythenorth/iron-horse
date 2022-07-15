@@ -42,8 +42,7 @@
                     ${vehicle.get_spriteset_template_name('reversed' if flipped == 'flipped' else 'unreversed', flipped, 10 + (variant_num * 60))}
                 }
             </tal:pantographs>
-            <!--! assumes RAIL / ELRL, deal with that later if it's a problem later -->
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${variant_num}_${flipped}, ${consist.get_nml_expression_for_tile_powers_railtype()}) {
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${variant_num}_${flipped}, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
                 1: return ${vehicle.id}_ss_pantographs_up_${variant_num}_${flipped};
                 return ${vehicle.id}_ss_pantographs_down_${variant_num}_${flipped};
             }

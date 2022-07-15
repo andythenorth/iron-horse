@@ -66,7 +66,6 @@ STR_ROLE_VERY_HIGH_SPEED                                        :Velmi vysoká r
 STR_ROLE_LOLZ                                                   :Lolz
 
 # assumes only diesel and electric currently
-STR_POWER_BY_POWER_SOURCE                                           :{BLACK}Výkon na dieselu: {GOLD}{POWER}{}{BLACK}Výkon na elektřině: {GOLD}{POWER}
 
 # distributed power (dedicated wagons add power)
 STR_WAGONS_ADD_POWER_CAB                                        :Výkon (Distribuováno): {GOLD}{POWER} za {STRING} připojený vagon

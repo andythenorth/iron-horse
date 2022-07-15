@@ -597,19 +597,16 @@ class Consist(object):
                 result = 'cargotype_available("' + cargo + '")?' + cargo + ":" + result
             return result
 
-    def get_nml_expression_for_tile_powers_railtype(self):
-        # 1) all railtypes must be known in the railtypetable (by brute force if necessary)
-        # 2) extend this as necessary in future if more fine-grained checks are needed specific to the consist
-        # 3) if procedure support is needed, make that parameterised for the appropriate railtypes to the consist
-        # for example, adding IHE_ for electrified narrow gauge would be relevant
-        # this could also interrogate the vehicle label to find the appropriate types to add
-        # but that would need to be cautious about e.g. electro-diesel has tracktype IHA_, but would need IHB_ and ELRL here
-        # so perhaps Yet Another Mapping for table lookup
-        # !! this really should be fetching from global_constants.railtype_labels_by_vehicle_track_type_name
-        railtypes_to_check = ["ELRL", "IHB_"]
+    def nml_expression_for_vehicle_is_electrically_powered_by_tile(self):
         result = []
-        for railtype in railtypes_to_check:
-            result.append('tile_powers_railtype("' + railtype + '")')
+        if self.power_by_power_source is not None:
+            # multisystem support
+            for electrification_type in ["AC", "DC"]:
+                if electrification_type in self.power_by_power_source:
+                    result.append("tile_powers_track_type_name_" + self.base_track_type_name + "_ELECTRIFIED_" + electrification_type + "()")
+        else:
+            # otherwise use the electrification type already known by the consist
+            result.append("tile_powers_track_type_name_" + self.base_track_type_name + "_ELECTRIFIED_" + self.electrification_type + "()")
         result = " || ".join(result)
         result = "[" + result + "]"
         return result
@@ -705,7 +702,12 @@ class Consist(object):
         result = []
         # optional string if engine varies power by railtype
         if self.engine_varies_power_by_power_source(vehicle):
-            result.append("STR_POWER_BY_POWER_SOURCE")
+            if len(self.power_by_power_source) == 2:
+                result.append("STR_POWER_BY_POWER_SOURCE_TWO_SOURCES")
+            elif len(self.power_by_power_source) == 3:
+                result.append("STR_POWER_BY_POWER_SOURCE_THREE_SOURCES")
+            else:
+                raise BaseException("consist " + self.id + " defines unsupported number of power sources")
         # optional string if consist is lgv-capable
         if self.lgv_capable:
             result.append("STR_SPEED_BY_RAILTYPE_LGV_CAPABLE")
