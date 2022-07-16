@@ -95,6 +95,8 @@ class Consist(object):
         self.buy_menu_hint_driving_cab = False
         # simple buy menu hint flag for restaurant cars
         self.buy_menu_hint_restaurant_car = False
+        # option to force a specific name suffix, if the auto-detected ones aren't appropriate
+        self._str_name_suffix = None
         # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get("random_reverse", False)
