@@ -199,6 +199,8 @@ class Consist(object):
                 if len(self.power_by_power_source) == 1:
                     if "NULL" in self.power_by_power_source:
                         return None
+                    elif "METRO" in self.power_by_power_source:
+                        return "STR_NAME_SUFFIX_METRO"
                     elif "DIESEL" in self.power_by_power_source:
                         return "STR_NAME_SUFFIX_DIESEL"
                     elif "STEAM" in self.power_by_power_source:
