@@ -234,10 +234,10 @@ STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT                       :narrow gauge
 #STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT          :electrified narrow gauge
 
 # rail electrified ac
-STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME                           :AC Electrifed Railway
-STR_RAILTYPE_RAIL_ELECTRIFIED_AC_TOOLBAR_CAPTION                :AC Electrifed Railway Construction
-STR_RAILTYPE_RAIL_ELECTRIFIED_AC_MENU_TEXT                      :AC electrifed railway construction
-STR_RAILTYPE_RAIL_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION           :New AC Electrifed Vehicles
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME                           :AC Electrified Railway
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_TOOLBAR_CAPTION                :AC Electrified Railway Construction
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_MENU_TEXT                      :AC electrified railway construction
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION           :New AC Electrified Vehicles
 STR_RAILTYPE_RAIL_ELECTRIFIED_AC_AUTOREPLACE_TEXT               :AC Electrified Vehicles
-STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT                :AC electrifed
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT                :AC electrified
 

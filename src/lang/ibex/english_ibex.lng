@@ -234,18 +234,18 @@ STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT                       :narrow gauge
 #STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT          :electrified narrow gauge
 
 # rail electrified ac
-STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME                           :AC Electrifed Railway
-STR_RAILTYPE_RAIL_ELECTRIFIED_AC_TOOLBAR_CAPTION                :AC Electrifed Railway Construction
-STR_RAILTYPE_RAIL_ELECTRIFIED_AC_MENU_TEXT                      :AC electrifed railway construction
-STR_RAILTYPE_RAIL_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION           :New AC Electrifed Vehicles
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME                           :AC Electrified Railway
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_TOOLBAR_CAPTION                :AC Electrified Railway Construction
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_MENU_TEXT                      :AC electrified railway construction
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION           :New AC Electrified Vehicles
 STR_RAILTYPE_RAIL_ELECTRIFIED_AC_AUTOREPLACE_TEXT               :AC Electrified Vehicles
-STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT                :AC electrifed
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT                :AC electrified
 
 # rail electrified dc
-STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NAME                           :DC Electrifed Railway
-STR_RAILTYPE_RAIL_ELECTRIFIED_DC_TOOLBAR_CAPTION                :DC Electrifed Railway Construction
-STR_RAILTYPE_RAIL_ELECTRIFIED_DC_MENU_TEXT                      :DC electrifed railway construction
-STR_RAILTYPE_RAIL_ELECTRIFIED_DC_BUILD_WINDOW_CAPTION           :New DC Electrifed Vehicles
+STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NAME                           :DC Electrified Railway
+STR_RAILTYPE_RAIL_ELECTRIFIED_DC_TOOLBAR_CAPTION                :DC Electrified Railway Construction
+STR_RAILTYPE_RAIL_ELECTRIFIED_DC_MENU_TEXT                      :DC electrified railway construction
+STR_RAILTYPE_RAIL_ELECTRIFIED_DC_BUILD_WINDOW_CAPTION           :New DC Electrified Vehicles
 STR_RAILTYPE_RAIL_ELECTRIFIED_DC_AUTOREPLACE_TEXT               :DC Electrified Vehicles
-STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NEW_ENGINE_TEXT                :DC electrifed
+STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NEW_ENGINE_TEXT                :DC electrified
 
