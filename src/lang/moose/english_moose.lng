@@ -46,9 +46,9 @@ STR_ERROR_TERMITE_DEPRECATED                                    :Iron Horse now 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY_HYBRID                                  :Battery Hybrid
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
-STR_NAME_SUFFIX_ELECTRIC_AC                                     :Electric - AC
-STR_NAME_SUFFIX_ELECTRIC_DC                                     :Electric - DC
-STR_NAME_SUFFIX_ELECTRIC_AC_DC                                  :Electric - AC/DC
+STR_NAME_SUFFIX_ELECTRIC_AC                                     :AC Electric
+STR_NAME_SUFFIX_ELECTRIC_DC                                     :DC Electric
+STR_NAME_SUFFIX_ELECTRIC_AC_DC                                  :AC/DC Electric
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :Electro-Diesel
 STR_NAME_SUFFIX_METRO                                           :Metro
 STR_NAME_SUFFIX_STEAM                                           :Steam
@@ -232,3 +232,12 @@ STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT                       :narrow gauge
 #STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_BUILD_WINDOW_CAPTION     :New Electrified Narrow Gauge Vehicles
 #STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_AUTOREPLACE_TEXT         :Electrified Narrow Gauge Vehicles
 #STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT          :electrified narrow gauge
+
+# rail electrified ac
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME                           :AC Electrifed Railway
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_TOOLBAR_CAPTION                :AC Electrifed Railway Construction
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_MENU_TEXT                      :AC electrifed railway construction
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION           :New AC Electrifed Vehicles
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_AUTOREPLACE_TEXT               :AC Electrified Vehicles
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT                :AC electrifed
+
