@@ -23,6 +23,7 @@ from vehicles import emu_ibex_4
 from vehicles import emu_ibex_5
 from vehicles import emu_ibex_6
 from vehicles import fs_e412
+from vehicles import fs_e636
 from vehicles import high_power_railcar_2
 from vehicles import high_power_railcar_3
 from vehicles import high_power_railcar_4
@@ -296,6 +297,7 @@ def main():
             fs_e412,
             re_465,
             ## DC?
+            fs_e636,
             bb_7200,
             # high powered railcars
             high_power_railcar_2,
