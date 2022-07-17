@@ -10,6 +10,7 @@ def main(disabled=False):
         maintenance_cost=7,
         railtype_flags=[],
         map_colour=0x25,
+        sort_order=38,
         # assumes compatible with all axle weights and speeds for narrow gauge rail in standardised scheme
         compatible_railtype_list=[
             "NABN",

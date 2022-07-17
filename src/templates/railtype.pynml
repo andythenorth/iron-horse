@@ -52,6 +52,7 @@ if (param_add_railtypes) {
                 construction_cost:              ${railtype.construction_cost};
                 maintenance_cost:               ${railtype.maintenance_cost};
                 map_colour:                     ${railtype.map_colour};
+                sort_order:                     ${railtype.sort_order};
                 compatible_railtype_list:       ${railtype.make_nml_railtype_list(railtype.compatible_railtype_list)};
                 powered_railtype_list:          ${railtype.make_nml_railtype_list(railtype.powered_railtype_list)};
                 alternative_railtype_list:      ${railtype.make_nml_railtype_list(railtype.alternative_railtype_list)};

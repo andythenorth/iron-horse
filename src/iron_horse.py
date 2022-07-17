@@ -302,15 +302,14 @@ roster_manager = RosterManager()
 
 
 def main():
-    # railtypes - order is significant, as affects order in construction menu (order property not currently set)
     # in the rare case that an unfinished railtype won't init cleanly, comment it out here and possibly also in the import
     # built-in support for disabled railtypes was removed as overly complex
     railtype_manager.add_railtype(rail_electrified_ac)
     railtype_manager.add_railtype(rail_electrified_dc)
     railtype_manager.add_railtype(lgv)
     railtype_manager.add_railtype(lgv_electrified)
-    railtype_manager.add_railtype(narrow_gauge)
     railtype_manager.add_railtype(metro)
+    railtype_manager.add_railtype(narrow_gauge)
 
     # rosters
     # in the rare case that an unfinished roster won't init cleanly, comment it out here and possibly also in the import
