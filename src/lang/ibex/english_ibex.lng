@@ -233,6 +233,14 @@ STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT                       :narrow gauge
 #STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_AUTOREPLACE_TEXT         :Electrified Narrow Gauge Vehicles
 #STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT          :electrified narrow gauge
 
+# rail high clearance
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NAME                           :High Clearance Railway
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_TOOLBAR_CAPTION                :High Clearance Railway Construction
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_MENU_TEXT                      :high clearance railway construction
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_BUILD_WINDOW_CAPTION           :New High Clearance Vehicles
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_AUTOREPLACE_TEXT               :High Clearance Vehicles
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NEW_ENGINE_TEXT                :high clearance
+
 # rail electrified ac
 STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME                           :AC Electrified Railway
 STR_RAILTYPE_RAIL_ELECTRIFIED_AC_TOOLBAR_CAPTION                :AC Electrified Railway Construction

@@ -101,6 +101,7 @@ railtype_labels_by_vehicle_track_type_name = {
     "RAIL": ["IHA_", "RAIL"],
     "RAIL_ELECTRIFIED_AC": ["IHB_", "ELRL"],
     "RAIL_ELECTRIFIED_DC": ["IHF_"], # no fallback for DC if not present
+    "RAIL_HIGH_CLEARANCE": ["IHAB"],
     "METRO": [
         "IHC_",
         "MTRO",

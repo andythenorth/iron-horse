@@ -80,6 +80,7 @@ class Consist(object):
         self.dual_headed = kwargs.get("dual_headed", False)
         self.tilt_bonus = False  # over-ride in subclass as needed
         self.lgv_capable = False  # over-ride in subclass as needed
+        self.requires_high_clearance = kwargs.get("requires_high_clearance", False)
         # solely used for ottd livery (company colour) selection, set in subclass as needed
         self.train_flag_mu = False
         # some wagons will provide power if specific engine IDs are in the consist
@@ -444,6 +445,9 @@ class Consist(object):
         modifier = "_"
         if self.lgv_capable:
             modifier = "A"
+        elif self.requires_high_clearance:
+            print(consist.id, " has requires_high_clearance set - needs cleared")
+            modifier = "B"
         result = result[0:3] + modifier
         return result
 

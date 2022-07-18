@@ -23,6 +23,7 @@ def main(roster_id):
             ("COLOUR_WHITE", "COLOUR_GREEN"),
             ("COLOUR_ORANGE", "COLOUR_RED"),
         ],
+        requires_high_clearance=True,
         sprites_complete=False,
     )
 

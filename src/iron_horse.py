@@ -20,12 +20,13 @@ from spritelayer_cargos import intermodal_containers
 from spritelayer_cargos import automobiles
 
 # import railtypes
-from railtypes import metro
-from railtypes import narrow_gauge
 from railtypes import lgv
 from railtypes import lgv_electrified
+from railtypes import metro
+from railtypes import narrow_gauge
 from railtypes import rail_electrified_ac
 from railtypes import rail_electrified_dc
+from railtypes import rail_high_clearance
 
 # import rosters
 from rosters import ibex
@@ -304,12 +305,13 @@ roster_manager = RosterManager()
 def main():
     # in the rare case that an unfinished railtype won't init cleanly, comment it out here and possibly also in the import
     # built-in support for disabled railtypes was removed as overly complex
-    railtype_manager.add_railtype(rail_electrified_ac)
-    railtype_manager.add_railtype(rail_electrified_dc)
     railtype_manager.add_railtype(lgv)
     railtype_manager.add_railtype(lgv_electrified)
     railtype_manager.add_railtype(metro)
     railtype_manager.add_railtype(narrow_gauge)
+    railtype_manager.add_railtype(rail_electrified_ac)
+    railtype_manager.add_railtype(rail_electrified_dc)
+    railtype_manager.add_railtype(rail_high_clearance)
 
     # rosters
     # in the rare case that an unfinished roster won't init cleanly, comment it out here and possibly also in the import
