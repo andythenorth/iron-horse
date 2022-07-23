@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="sbb_re_4_4_ii",
         base_numeric_id=8920,
-        name="Re 4/4ii",
+        name="SBB Re 4/4ii",
         role="ultra_heavy_freight",
         role_child_branch_num=-1,
         power_by_power_source={

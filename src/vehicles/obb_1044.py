@@ -8,9 +8,9 @@ def main(roster_id):
         base_numeric_id=10920,
         name="OBB 1044",
         role="ultra_heavy_express",
-        role_child_branch_num=2,
+        role_child_branch_num=4,
         power_by_power_source={
-            "AC": 6000,
+            "AC": 7500,
         },
         random_reverse=True,
         gen=4,
