@@ -466,6 +466,8 @@ class Consist(object):
             result.append(["DC", self.base_track_type_name + "_ELECTRIFIED_DC"])
         if "DIESEL" in self.power_by_power_source.keys():
             result.append(["DIESEL", self.base_track_type_name])
+        if "STEAM" in self.power_by_power_source.keys():
+            result.append(["STEAM", self.base_track_type_name])
         # now append suffixes for switches - self and next, could be done in the template, but it's just neater to do here
         for counter, value in enumerate(result):
             value.append(counter)

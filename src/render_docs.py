@@ -380,11 +380,10 @@ class DocHelper(object):
     def power_formatted_for_docs(self, consist):
         if consist.power_by_power_source is not None:
             # crude assumption we can just walk over the keys and they'll be in the correct order (oof!)
-            # this is based on py 3.6+ having stable dict key order AND power_by_power_source on vehicle being in correct order
+            # !! we actually need to control the order somewhere - see vehicle_power_source_tree??
             result = []
-            for power_source in consist.power_by_power_source.keys():
-                result.append(str(consist.power_by_power_source[power_source]) + " hp")
-
+            for power_data in reversed(consist.vehicle_power_source_tree):
+                result.append(power_data[0] + " " + str(consist.power_by_power_source[power_data[0]]) + " hp")
             return " / ".join(result)
         else:
             return str(consist.power) + " hp"
