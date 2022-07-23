@@ -120,6 +120,8 @@ cargo_labels = [
     "STSE",
     "SEED",
     "TATO",
+    "WDCH",
+    "BAKE",
     #
     "NULL",
 ]
@@ -189,6 +191,7 @@ allowed_refits_by_label = {
         "SALT",
         "PLAS",
         "PHOS",
+        "BAKE",
     ],  # not CBLK, gets dedicated vehicles or box
     "cryo_gases": ["CHLO", "O2__", "NH3_"],
     "edible_liquids": ["MILK", "WATR", "BEER", "FOOD", "EOIL"],
@@ -257,6 +260,7 @@ disallowed_refits_by_label = {
         "URAN",
         "CBLK",
         "PLAS",
+        "BAKE",
     ],
     "non_generic_liquids": [
         "MILK",
@@ -309,7 +313,7 @@ default_cargos = {
     "cryo_gases": ["O2__", "CHLO"],
     "dump": ["MNO2", "FECR", "NITR", "PHOS", "SAND", "GRVL"],
     "dump_aggregates": ["LIME", "GRVL", "SAND", "CLAY"],
-    "dump_high_sides": ["COKE", "PEAT", "COAL"],
+    "dump_high_sides": ["COKE", "PEAT", "COAL", "WDCH"],
     "dump_ore": ["IORE", "PHOS", "PORE", "CORE"],
     "dump_scrap": ["SCMT", "COAL"],
     "edibles_tank": ["WATR", "MILK", "BEER"],
@@ -619,6 +623,7 @@ bulk_cargo_recolour_maps_extended = (
     ("SGBT", "1CC", {170: 60, 171: 53, 172: 54, 173: 55, 174: 56, 175: 57, 176: 58}),
     ("SLAG", "1CC", {170: 24, 171: 3, 172: 2, 173: 3, 174: 4, 175: 5, 176: 5}),
     ("SULP", "1CC", {170: 65, 171: 67, 172: 66, 173: 67, 174: 68, 175: 69, 176: 69}),
+    ("WDCH", "2CC", {170: 108, 171: 64, 172: 65, 173: 197, 174: 36, 175: 196, 176: 197}),
 )
 
 bulk_cargo_recolour_maps = [(i[0], i[2]) for i in bulk_cargo_recolour_maps_extended]

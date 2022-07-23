@@ -446,7 +446,7 @@ class Consist(object):
         if self.lgv_capable:
             modifier = "A"
         elif self.requires_high_clearance:
-            print(consist.id, " has requires_high_clearance set - needs cleared")
+            print(self.id, " has requires_high_clearance set - needs cleared")
             modifier = "B"
         result = result[0:3] + modifier
         return result
