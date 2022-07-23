@@ -6,9 +6,13 @@ from vehicles import ae_3_5
 from vehicles import ae_3_6_1
 from vehicles import ae_4_7
 from vehicles import bb_7200
+from vehicles import bb_8500
+from vehicles import bb_22200
+from vehicles import bb_36000
 from vehicles import bls_ae_4_4
 from vehicles import bls_ae_8_8
 from vehicles import bls_re_475
+from vehicles import cc_6500
 from vehicles import de_6_6
 from vehicles import dr_e_21_51
 from vehicles import drg_e_16
@@ -18,6 +22,8 @@ from vehicles import emu_ibex_4
 from vehicles import emu_ibex_5
 from vehicles import emu_ibex_6
 from vehicles import fs_e412
+from vehicles import fs_e464
+from vehicles import fs_e464_upgrade
 from vehicles import fs_e636
 from vehicles import high_power_railcar_2
 from vehicles import high_power_railcar_3
@@ -37,6 +43,7 @@ from vehicles import obb_1163
 from vehicles import obb_1170_2
 from vehicles import obb_1570
 from vehicles import obb_e18
+from vehicles import plm_2cc2_3400
 from vehicles import re_4_4_i
 from vehicles import re_420
 from vehicles import re_420_lion
@@ -286,7 +293,14 @@ def main():
             re_465,
             ## DC?
             fs_e636,
+            bb_8500,
+            fs_e464,
+            fs_e464_upgrade,
+            plm_2cc2_3400,
             bb_7200,
+            bb_22200,
+            bb_36000,
+            cc_6500,
             # high powered railcars
             high_power_railcar_2,
             high_power_railcar_3,
