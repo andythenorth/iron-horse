@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9500,
         name="SOB Re 446",
         role="ultra_heavy_express",
-        role_child_branch_num=4,
+        role_child_branch_num=2,
         power_by_power_source={
             "AC": 6700,
         },

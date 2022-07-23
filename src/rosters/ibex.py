@@ -9,11 +9,6 @@ from vehicles import bb_7200
 from vehicles import bls_ae_4_4
 from vehicles import bls_ae_8_8
 from vehicles import bls_re_475
-from vehicles import db_103
-from vehicles import db_111
-from vehicles import db_111_upgrade
-from vehicles import db_146
-from vehicles import db_e_410
 from vehicles import de_6_6
 from vehicles import dr_e_21_51
 from vehicles import drg_e_16
@@ -30,7 +25,6 @@ from vehicles import high_power_railcar_4
 from vehicles import high_power_railcar_5
 from vehicles import krokodil
 from vehicles import obb_1010
-from vehicles import obb_1012
 from vehicles import obb_1014
 from vehicles import obb_1042
 from vehicles import obb_1040
@@ -278,21 +272,15 @@ def main():
             drg_e_16,
             obb_e18,
             obb_1042,
-            db_103,
             re_420,
             obb_1050,
-            db_e_410,
             re_450,
             re_460,
-            db_111,
             slm_re_456,
             sob_re_446,
-            db_111_upgrade,
             obb_1142,
-            obb_1012,
             obb_1014,
             taurus,
-            db_146,
             re_420_lion,
             fs_e412,
             re_465,

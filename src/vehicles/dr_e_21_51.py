@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=13930,
         name="DR E 21 51",
         role="ultra_heavy_express",
-        role_child_branch_num=4,
+        role_child_branch_num=2,
         power_by_power_source={
             "AC": 4600,
         },
