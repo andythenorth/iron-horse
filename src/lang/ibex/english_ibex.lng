@@ -249,6 +249,14 @@ STR_RAILTYPE_RAIL_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION           :New AC Electrif
 STR_RAILTYPE_RAIL_ELECTRIFIED_AC_AUTOREPLACE_TEXT               :AC Electrified Vehicles
 STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT                :AC electrified
 
+# rail electrified ac dc
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NAME                        :[unused]
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_TOOLBAR_CAPTION             :[unused]
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_MENU_TEXT                   :[unused]
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_BUILD_WINDOW_CAPTION        :New AC / DC Electrified Vehicles
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_AUTOREPLACE_TEXT            :AC / DC Electrified Vehicles
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NEW_ENGINE_TEXT             :AC / DC electrified
+
 # rail electrified dc
 STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NAME                           :DC Electrified Railway
 STR_RAILTYPE_RAIL_ELECTRIFIED_DC_TOOLBAR_CAPTION                :DC Electrified Railway Construction

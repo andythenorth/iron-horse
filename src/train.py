@@ -493,8 +493,11 @@ class Consist(object):
     @property
     def electrification_type(self):
         if "AC" in self.power_by_power_source:
-            # default all multi-system and bi-mode engines to AC for now, can revise later if needed
-            return "AC"
+            # handle multi-system first
+            if "DC" in self.power_by_power_source:
+                return "AC_DC"
+            else:
+                return "AC"
         elif "DC" in self.power_by_power_source:
             return "DC"
         else:

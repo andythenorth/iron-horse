@@ -12,6 +12,7 @@ def main(disabled=False):
         rosters=["ibex", "moose", "pony"],
         construction_cost=16,
         maintenance_cost=16,
+        # this is a hidden railtype for vehicle cross-compatibility
         railtype_flags=["RAILTYPE_FLAG_HIDDEN", "RAILTYPE_FLAG_NO_LEVEL_CROSSING"],
         curve_speed_multiplier=1.66,  # decimal value seems to work?  I expected int would be required, but eh.
         map_colour=0x25,

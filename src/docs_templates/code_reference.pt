@@ -95,6 +95,7 @@
                         <li><code>D</code> vanilla narrow gauge vehicle, non-electric, suitable for <code>NGRL</code> and similar railtypes</li>
                         <li><code>E</code> vanilla narrow gauge vehicle, electric (AC), suitable for <code>ELNG</code> and similar railtypes</li>
                         <li><code>F</code> vanilla rail vehicle, electric (DC) <!--! (no subtype) --> <!--! no known substitutes --></li>
+                        <li><code>G</code> vanilla rail vehicle, electric (AC / DC) <!--! (no subtype) --> <!--! no known substitutes --></li>
                         <!--!
                             electrification subtypes e.g. AC, DC, are added as explicit classes in char 3
                             multi-voltage locomotives would either
