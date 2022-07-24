@@ -7,7 +7,9 @@ from vehicles import ae_3_6_1
 from vehicles import ae_4_7
 from vehicles import bb_7200
 from vehicles import bb_22200
-from vehicles import bb_36000
+from vehicles import bb_22200_upgraded
+from vehicles import bb_26000
+from vehicles import bb_26000_upgraded
 from vehicles import bls_ae_4_4
 from vehicles import bls_ae_8_8
 from vehicles import bls_re_4_4
@@ -30,6 +32,8 @@ from vehicles import fs_e464
 from vehicles import fs_e464_upgrade
 from vehicles import fs_e632
 from vehicles import fs_e636
+from vehicles import fs_e646
+from vehicles import fs_e656
 from vehicles import high_power_railcar_2
 from vehicles import high_power_railcar_3
 from vehicles import high_power_railcar_4
@@ -299,6 +303,8 @@ def main():
             ## DC?
             fs_e330,
             fs_e636,
+            fs_e646,
+            fs_e656,
             fs_e428,
             fs_e444,
             fs_e464,
@@ -309,7 +315,9 @@ def main():
             plm_2cc2_3400,
             bb_7200,
             bb_22200,
-            bb_36000,
+            bb_22200_upgraded,
+            bb_26000,
+            bb_26000_upgraded,
             cc_6500,
             # high powered railcars
             high_power_railcar_2,

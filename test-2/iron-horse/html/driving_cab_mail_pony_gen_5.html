@@ -1,0 +1,585 @@
+
+
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <title >Driving Van Trailer - Iron Horse</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="static/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link type="text/css" href="static/css/style.css" rel="stylesheet">
+
+    <script type="text/javascript" src="static/js/jquery-1.9.1.min.js"></script>
+
+    <script type="text/javascript" src="static/js/jquery.metadata.js"></script>
+    <script type="text/javascript" src="static/js/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript" src="static/js/jquery.tablesorter.widgets.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.tablesorter').tablesorter({
+                textExtraction: function(node){
+                            var cell_value = $(node).text();
+                            var sort_value = $(node).data('value');
+                    return (sort_value != undefined) ? sort_value : cell_value;
+                 },
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-static-top" style="border-bottom:1px solid #000;">
+        <div class="navbar-inner">
+            <div class="container">
+                <ul class="nav pull-left">
+                    <li class="">
+                        <a href="get_started.html">Get started</a>
+                    </li>
+                    <li class="">
+                        <a href="trains.html">Trains</a>
+                    </li>
+                    <li class="">
+                        <a href="tech_tree_table_red.html">Tech tree</a>
+                    </li>
+                    <li class="">
+                        <a href="train_whack.html">Train Whack!</a>
+                    </li>
+                </ul>
+                <ul class="nav pull-right">
+                    
+                    <li class="">
+                        <a href="code_reference.html">Code reference</a>
+                    </li>
+                    <li class="">
+                        <a href="changelog.html">Changelog</a>
+                    </li>
+                    <li>
+                        <a href="https://www.tt-forums.net/viewtopic.php?f=67&amp;t=71219"><i class="icon-comment icon-white"></i> Discuss at TT-Forums.net</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div>
+    <div class="hero-unit subhead" style="padding-top:20px; padding-bottom:20px;">
+        <div class="container text-left">
+            <div class="row">
+                <div class="span10 offset1">
+                    <h1 style="font-size:48px; padding-top:0;">Iron Horse</h1>
+                    <p class="lead">My Lovely <strike>Horse</strike> Train Set</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-left">
+        <div class="row">
+            <div class="span10 offset1">
+                <h2>
+                    Driving Van Trailer
+                    
+                    <small>Vehicle Info</small>
+                </h2>
+                <div style="margin-top:30px; margin-bottom:50px;">
+                    
+                        
+                            <div class="vehicle-image"
+                                style="width:130;
+                                       display:inline-block;">
+                                <img src="static/img/driving_cab_mail_pony_gen_5_blue_blue.png"
+                                     width="66"
+                                     height="32" />
+                            </div>
+                        
+                            <div class="vehicle-image"
+                                style="width:130;
+                                       display:inline-block;">
+                                <img src="static/img/driving_cab_mail_pony_gen_5_red_white.png"
+                                     width="66"
+                                     height="32" />
+                            </div>
+                        
+                    
+                    <br />
+                    
+                        
+                            <div class="vehicle-image"
+                                style="width:260;
+                                       display:inline-block;">
+                                <img src="static/img/driving_cab_mail_pony_gen_5_blue_blue.png"
+                                     width="132"
+                                     height="64" />
+                            </div>
+                        
+                            <div class="vehicle-image"
+                                style="width:260;
+                                       display:inline-block;">
+                                <img src="static/img/driving_cab_mail_pony_gen_5_red_white.png"
+                                     width="132"
+                                     height="64" />
+                            </div>
+                        
+                    
+                </div>
+                <style>
+                    blockquote.vehicle-quote p {
+                        font-size: 24px;
+                        margin-left: 20px;
+                        max-width: 90%;
+                    }
+                    blockquote.vehicle-quote p:before {
+                        content: "\201C";
+                        left: 0;
+                        top: 0;
+                        margin-left: -20px;
+                        font-size: 36px;
+                        line-height: 32px;
+                        font-weight: 400;
+                    }
+                    blockquote.vehicle-quote p:after {
+                        content: "\201D";
+                        right: 0;
+                        bottom: 0;
+                        font-size: 36px;
+                        line-height: 32px;
+                        font-weight: 400;
+                    }
+                    blockquote.vehicle-quote small {
+                        font-size: 16px;
+                        margin-top: 10px;
+                    }
+                </style>
+                <blockquote class="vehicle-quote">
+                    <p>
+                        Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Clever idea we had eh?
+                    </p>
+                    <small>
+                        <cite>
+                            Mr Train, Provisional Chief Engineer
+                        </cite>
+                    </small>
+                </blockquote>
+
+                
+                <style>
+                    table.vehicle-facts {
+                        background: #e0f4fc;
+                        border-radius: 4px;
+                        font-size: 16px;
+                        width: 100%;
+                        margin-bottom: 30px;
+                    }
+                    table.vehicle-facts th {
+                        background: #b4dcec;
+                        color: #18506c;
+                        width: 210px; /* oof exact pixel sizing, regrettable */
+                        padding: 16px;
+                        text-align: right;
+                        border-bottom: solid 1px #b4dcec;
+                    }
+                    table.vehicle-facts tr:first-of-type th {
+                        padding-top: 21px;
+                        border-top-left-radius: 4px;
+                    }
+                    table.vehicle-facts tr:last-of-type th {
+                        padding-bottom: 21px;
+                        border-bottom-left-radius: 4px;
+                        border-bottom: none;
+                    }
+                    table.vehicle-facts td {
+                        margin: 0;
+                        padding: 16px;
+                        border-bottom: solid 1px #b4dcec;
+                    }
+                    table.vehicle-facts tr:last-of-type td {
+                        border-bottom: none;
+                    }
+                </style>
+
+                <table class="vehicle-facts">
+                    <tbody>
+                        <tr>
+                            <th>Role</th>
+                            <td>Driving Cab</td>
+                        </tr>
+                        <tr>
+                            <th>Intro year / Designed</th>
+                            <td>1990</td>
+                        </tr>
+                        <tr>
+                            <th>Max. Speed</th>
+                            <td>115 mph</td>
+                        </tr>
+                        <tr>
+                            <th>Power</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>Weight</th>
+                            <td>32 t</td>
+                        </tr>
+                        <tr>
+                            <th>Track type</th>
+                            <td>IHA_</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 id="appearance">Appearance</h3>
+                <div style="font-size:16px;">
+                    <p>This vehicle can be flipped in depot.</p>
+                    <p>This vehicle has 1 livery.</p>
+                </div>
+
+                
+                <style>
+                    table.livery-table {
+                        width: 100%;
+                        background-color: #eee;
+                        border-color: solid 1px #80c4fc;
+                        border-radius: 4px;
+                        background: #e0f4fc;
+                        color: black;
+                        font-size: 16px;
+                        margin-bottom: 30px;
+                    }
+                    table.livery-table tr {
+                        vertical-align: top;
+                    }
+                    table.livery-table td, table.livery-table th {
+                        padding: 16px;
+                    }
+                    table.livery-table .livery-table-first-col {
+                        min-width: 215px;
+                        width: 215px;
+                        background: #b4dcec;
+                        text-align: right;
+                        background: #b4dcec;
+                        color: #18506c;
+                    }
+                    table.livery-table thead tr:first-of-type th.livery-table-first-col {
+                        border-top-left-radius: 4px;
+                    }
+                    table.livery-table tbody tr:last-of-type th.livery-table-first-col {
+                        border-bottom-left-radius: 4px;
+                    }
+                    table.livery-table td.livery-table-col-with-divider, table.livery-table th.livery-table-col-with-divider {
+                        border-left: solid 1px #b4dcec;
+                    }
+
+                </style>
+
+                <table class="livery-table text-left">
+                    <thead>
+                        <tr>
+                            <th class="livery-table-first-col">Livery</th>
+                            
+                                <th style="padding-bottom:0;
+                                           border-left:solid 1px #b4dcec;
+                                           width:50%;">
+                                    
+                                    Default
+                                </th>
+                            
+                            
+                                <th class="livery-table-col-with-divider"
+                                    style="padding-bottom:0;
+                                           width:50%;">
+                                    <span style="color:#286078; font-weight:normal;">No alternative livery</span>
+                                </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="livery-table-first-col">
+                                Shown
+                            </th>
+                            
+                                <td class="livery-table-col-with-divider">
+                                    
+                                        
+                                            <p>Always</p>
+                                        
+                                    
+                                    
+                                </td>
+                            
+                            
+                                <td class="livery-table-col-with-divider"></td>
+                            
+                        </tr>
+                        <tr>
+                            <th class="livery-table-first-col">
+                                Examples
+                            </th>
+                            
+                                
+                                    <td class="livery-table-col-with-divider">
+                                        
+                                            
+                                            
+                                                <div style="margin-bottom:16px;">
+                                                    <div style="display:inline-block; width:100px;">
+                                                        
+                                                            
+                                                            <span style="background:linear-gradient(-45deg, rgb(24, 120, 220), rgb(188, 224, 252));
+                                                                         display:inline-block;
+                                                                         vertical-align:middle;
+                                                                         border:solid 1px #555;
+                                                                         width:12px;
+                                                                         height:12px;">
+                                                            </span>
+                                                            <span style="vertical-align:middle; font-size:13px;">Blue</span>
+                                                            <br />
+                                                        
+                                                            
+                                                            <span style="background:linear-gradient(-45deg, rgb(24, 120, 220), rgb(188, 224, 252));
+                                                                         display:inline-block;
+                                                                         vertical-align:middle;
+                                                                         border:solid 1px #555;
+                                                                         width:12px;
+                                                                         height:12px;">
+                                                            </span>
+                                                            <span style="vertical-align:middle; font-size:13px;">Blue</span>
+                                                            <br />
+                                                        
+                                                    </div>
+                                                    <div class="vehicle-image"
+                                                        style="width:195; display:inline-block; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
+                                                        <img src="static/img/driving_cab_mail_pony_gen_5_blue_blue.png"
+                                                             width="99"
+                                                             height="48" />
+                                                    </div>
+                                                </div>
+                                            
+                                        
+                                            
+                                            
+                                                <div style="margin-bottom:16px;">
+                                                    <div style="display:inline-block; width:100px;">
+                                                        
+                                                            
+                                                            <span style="background:linear-gradient(-45deg, rgb(196, 0, 0), rgb(252, 144, 124));
+                                                                         display:inline-block;
+                                                                         vertical-align:middle;
+                                                                         border:solid 1px #555;
+                                                                         width:12px;
+                                                                         height:12px;">
+                                                            </span>
+                                                            <span style="vertical-align:middle; font-size:13px;">Red</span>
+                                                            <br />
+                                                        
+                                                            
+                                                            <span style="background:linear-gradient(-45deg, rgb(184, 184, 184), rgb(252, 252, 252));
+                                                                         display:inline-block;
+                                                                         vertical-align:middle;
+                                                                         border:solid 1px #555;
+                                                                         width:12px;
+                                                                         height:12px;">
+                                                            </span>
+                                                            <span style="vertical-align:middle; font-size:13px;">White</span>
+                                                            <br />
+                                                        
+                                                    </div>
+                                                    <div class="vehicle-image"
+                                                        style="width:195; display:inline-block; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
+                                                        <img src="static/img/driving_cab_mail_pony_gen_5_red_white.png"
+                                                             width="99"
+                                                             height="48" />
+                                                    </div>
+                                                </div>
+                                            
+                                        
+                                    </td>
+                                
+                            
+                            
+                                <td class="livery-table-col-with-divider"></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                <h3 id="foamer-facts">Foamer Facts</h3>
+                <p>Inspired by BR MK3 Driving Van Trailer (DVT) with added generator.</p>
+
+                <hr />
+                <h3 id="tech-tree">Tech Tree</h3>
+                <table class="vehicle-facts">
+                    <tbody>
+                        <tr>
+                            <th style="text-align:center;">Previous</th>
+                            <th style="text-align:center;">This Vehicle</th>
+                            <th style="text-align:center;">Replaced by</th>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center; vertical-align:middle;">
+                                
+                                
+                                
+                                    <span class="muted">None</span>
+                                
+                            </td>
+                            
+                            <td style="text-align:center; vertical-align:middle;">
+                                <div class="vehicle-image">
+                                    <img src="static/img/driving_cab_mail_pony_gen_5_red_white.png"
+                                         width="132"
+                                         height="64" />
+                                </div>
+                                Driving Van Trailer
+                                <br />
+                                <a href="tech_tree_table_red.html#driving_cab_mail_pony_gen_5">See in Tech Tree</a>
+                            </td>
+                            
+                            <td style="text-align:center; vertical-align:middle;">
+                                
+                                    <div style="margin:10px;">
+                                        <a href="driving_cab_mail_pony_gen_6.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/driving_cab_mail_pony_gen_6_red_white.png"
+                                                     width="66"
+                                                     height="32" />
+                                            </div>
+                                             Driving Van Trailer
+                                        </a>
+                                    </div>
+                                
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="3" style="text-align:center">Vehicles with Similar Role or Power</th>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align:center">
+                                
+                                    <div style="display:inline-block; margin:10px;">
+                                        <a href="tornado.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/tornado_red_white.png"
+                                                     width="50"
+                                                     height="32" />
+                                            </div>
+                                             Tornado
+                                        </a>
+                                    </div>
+                                
+                                    <div style="display:inline-block; margin:10px;">
+                                        <a href="driving_cab_passenger_pony_gen_5.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/driving_cab_passenger_pony_gen_5_red_white.png"
+                                                     width="66"
+                                                     height="32" />
+                                            </div>
+                                             Driving Trailer
+                                        </a>
+                                    </div>
+                                
+                                    <div style="display:inline-block; margin:10px;">
+                                        <a href="skipper.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/skipper_red_white.png"
+                                                     width="50"
+                                                     height="32" />
+                                            </div>
+                                             Skipper
+                                        </a>
+                                    </div>
+                                
+                                    <div style="display:inline-block; margin:10px;">
+                                        <a href="tin_rocket.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/tin_rocket_red_white.png"
+                                                     width="66"
+                                                     height="32" />
+                                            </div>
+                                             Tin Rocket
+                                        </a>
+                                    </div>
+                                
+                                    <div style="display:inline-block; margin:10px;">
+                                        <a href="plastic_postbox.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/plastic_postbox_red_white.png"
+                                                     width="66"
+                                                     height="32" />
+                                            </div>
+                                             Plastic Postbox
+                                        </a>
+                                    </div>
+                                
+                                    <div style="display:inline-block; margin:10px;">
+                                        <a href="breeze.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/breeze_red_white.png"
+                                                     width="66"
+                                                     height="32" />
+                                            </div>
+                                             Breeze
+                                        </a>
+                                    </div>
+                                
+                                    <div style="display:inline-block; margin:10px;">
+                                        <a href="jupiter.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/jupiter_red_white.png"
+                                                     width="66"
+                                                     height="32" />
+                                            </div>
+                                             Jupiter
+                                        </a>
+                                    </div>
+                                
+                                    <div style="display:inline-block; margin:10px;">
+                                        <a href="helm_wind_middle_passenger.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/helm_wind_middle_passenger_red_white.png"
+                                                     width="130"
+                                                     height="32" />
+                                            </div>
+                                             Helm Wind Passenger Coach
+                                        </a>
+                                    </div>
+                                
+                                    <div style="display:inline-block; margin:10px;">
+                                        <a href="helm_wind_middle_mail.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/helm_wind_middle_mail_red_white.png"
+                                                     width="130"
+                                                     height="32" />
+                                            </div>
+                                             Helm Wind Mail Van
+                                        </a>
+                                    </div>
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    <div style="text-align:center; color:#999; padding:5px; background-color:#eee; border-top:solid 1px #ddd; box-shadow: inset 0px 1px 1px #ddd">
+        Iron Horse, with thanks to all who helped
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

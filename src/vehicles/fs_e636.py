@@ -24,8 +24,10 @@ def main(roster_id):
         sprites_complete=False,
     )
 
+    # !!! these are only 60 foot long IRL so 2x 4/8 units
+
     consist.add_unit(
-        type=ElectricEngineUnit, weight=105, vehicle_length=5, spriterow_num=0, repeat=2
+        type=ElectricEngineUnit, weight=105, vehicle_length=4, spriterow_num=0, repeat=2
     )
 
     consist.description = """ """

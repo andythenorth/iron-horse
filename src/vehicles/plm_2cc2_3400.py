@@ -9,11 +9,11 @@ def main(roster_id):
         name="PLM 2CC2 3400",
         role="ultra_heavy_express",
         role_child_branch_num=-2,
-        power_by_power_source={"DC": 5300},
+        power_by_power_source={"DC": 4600},
         random_reverse=True,
-        gen=3,
+        gen=2,
         pantograph_type="diamond-double",
-        intro_year_offset=-5,  # introduce earlier than gen epoch by design
+        intro_year_offset=10,  # introduce much later than gen epoch by design
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         default_livery_extra_docs_examples=[
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
