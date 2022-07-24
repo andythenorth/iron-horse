@@ -6,11 +6,11 @@ def main(roster_id):
         roster_id=roster_id,
         id="fs_e412",
         base_numeric_id=13110,
-        name="FS E.412 Brenner",
+        name="FS E.412 Brenner / OBB 1822",
         role="ultra_heavy_express",
-        role_child_branch_num=-1,
+        role_child_branch_num=1,
         power_by_power_source={
-            "AC": 7400,
+            "AC": 6000,
             "DC": 6000,
         },
         random_reverse=True,
@@ -32,6 +32,6 @@ def main(roster_id):
     )
 
     consist.description = """ """
-    consist.foamer_facts = """FS E.412 <i>Brenner</i>"""
+    consist.foamer_facts = """FS E.412 <i>Brenner</i> / OBB 1822 Brennerlok"""
 
     return consist

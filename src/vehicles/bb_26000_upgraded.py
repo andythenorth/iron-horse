@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="bb_26000_upgraded",
         base_numeric_id=8960,
-        name="BB 26000 Sybic Upgrade",
+        name="BB 26000 Sybic (upgraded)",
         role="ultra_heavy_express",
         role_child_branch_num=-4,
         power_by_power_source={"AC": 9300, "DC": 9300},

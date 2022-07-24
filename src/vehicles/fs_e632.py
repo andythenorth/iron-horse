@@ -7,10 +7,10 @@ def main(roster_id):
         id="fs_e632",
         base_numeric_id=14800,
         name="FS E.632 Tigre",
-        role="ultra_heavy_express",
-        role_child_branch_num=-1,
+        role="heavy_express",
+        role_child_branch_num=-2,
         power_by_power_source={
-            "DC": 5400,
+            "DC": 10,
         },
         random_reverse=True,
         gen=5,

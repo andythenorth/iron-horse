@@ -34,6 +34,7 @@ from vehicles import fs_e632
 from vehicles import fs_e636
 from vehicles import fs_e646
 from vehicles import fs_e656
+from vehicles import fs_e656_upgraded
 from vehicles import high_power_railcar_2
 from vehicles import high_power_railcar_3
 from vehicles import high_power_railcar_4
@@ -301,24 +302,25 @@ def main():
             fs_e412,
             re_465,
             ## DC?
+            hungarian_2d2_400,
             fs_e330,
-            fs_e636,
-            fs_e646,
-            fs_e656,
             fs_e428,
             fs_e444,
             fs_e464,
             fs_e464_upgrade,
-            hungarian_2d2_400,
-            cc_7100,
             fs_e632,
+            fs_e636,
+            fs_e646,
+            fs_e656,
+            fs_e656_upgraded,
             plm_2cc2_3400,
+            cc_7100,
             bb_7200,
             bb_22200,
             bb_22200_upgraded,
+            cc_6500,
             bb_26000,
             bb_26000_upgraded,
-            cc_6500,
             # high powered railcars
             high_power_railcar_2,
             high_power_railcar_3,
@@ -330,6 +332,7 @@ def main():
             de_6_6,
             # freight
             trient,
+            ## AC?
             krokodil,
             sbb_ae_8_14,
             bls_ae_4_4,
@@ -337,6 +340,7 @@ def main():
             bls_ae_8_8,
             re_6_6_ii,
             bls_re_475,
+            ## DC?
             # joker engines / snowploughs
             snowplough_ibex_gen_2,
             # cargo sprinter
@@ -348,11 +352,13 @@ def main():
             # diesel railcars
             # foo,
             # electric railcars
+            ## AC?
             emu_ibex_2,
             emu_ibex_3,
             emu_ibex_4,
             emu_ibex_5,
             emu_ibex_6,
+            ## DC?
             # express electric railcars
             # foo,
             # high speed pax

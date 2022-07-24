@@ -13,7 +13,7 @@ def main(roster_id):
         role_child_branch_num=2,
         power_by_power_source={
             "AC": 7400,
-            "DC": 6000,
+            "DC": 7400,
         },
         random_reverse=True,
         gen=6,

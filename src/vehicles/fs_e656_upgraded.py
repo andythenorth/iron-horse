@@ -4,12 +4,12 @@ from train import EngineConsist, ElectricEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="bb_22200_upgraded",
-        base_numeric_id=14810,
-        name="BB 22200 (upgraded)",
+        id="fs_e656_upgraded",
+        base_numeric_id=180,
+        name="FS E.656 (upgraded)",
         role="ultra_heavy_express",
-        role_child_branch_num=-2,
-        power_by_power_source={"DC": 7400, "AC": 7400},
+        role_child_branch_num=-1,
+        power_by_power_source={"DC": 6000},
         random_reverse=True,
         gen=6,
         pantograph_type="diamond-double",
@@ -24,11 +24,13 @@ def main(roster_id):
         sprites_complete=False,
     )
 
+    # !!! these are only 60 foot long IRL so 2x 4/8 units
+
     consist.add_unit(
-        type=ElectricEngineUnit, weight=105, vehicle_length=8, spriterow_num=0
+        type=ElectricEngineUnit, weight=105, vehicle_length=4, spriterow_num=0, repeat=2
     )
 
     consist.description = """ """
-    consist.foamer_facts = """SNCF BB 22200 !! multisystem !! upgraded"""
+    consist.foamer_facts = """FS E.656 !! upgraded"""
 
     return consist
