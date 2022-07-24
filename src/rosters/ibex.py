@@ -266,58 +266,62 @@ def main():
             # express (electro-diesels with non-standard position in power/length tree)
             # foo,
             # express
-            ## AC?
+            ## AC
             ae_3_5,
             sbb_fb_4_4,
             saas_be_4_4,
             obb_1040,
             sbb_eem_923,
-            ae_4_7,
             ae_3_6_1,
             obb_1570,
-            obb_1041,
-            obb_1141,
             obb_1170_2,
-            sbb_ae_4_6,
-            dr_e_21_51,
             re_4_4_i,
             obb_1163,
-            obb_1010,
-            bls_re_4_4,
             vectron_dual_mode,
-            sbb_re_4_4_ii,
-            obb_1044,
-            drg_e_16,
-            obb_e18,
-            obb_1042,
-            re_430,
-            re_450,
-            re_460,
             slm_re_456,
-            sob_re_446,
-            obb_1142,
-            obb_1014,
-            taurus,
-            re_430_lion,
-            fs_e412,
-            re_465,
-            ## DC?
+            ## DC
             hungarian_2d2_400,
+            fs_e632,
+            ## AC
+            ae_4_7,
+            obb_1041,
+            obb_1141,
+            re_450,
+            obb_1014,
+            ## DC
             fs_e330,
             fs_e428,
             fs_e444,
             fs_e464,
             fs_e464_upgrade,
-            fs_e632,
+            ## AC
+            drg_e_16,
+            obb_e18,
+            obb_1042,
+            obb_1142,
+            fs_e412,
+            ## DC
             fs_e636,
             fs_e646,
             fs_e656,
             fs_e656_upgraded,
+            ## AC
+            dr_e_21_51,
+            obb_1010,
+            bls_re_4_4,
+            sob_re_446,
+            taurus,
+            ## DC
             plm_2cc2_3400,
             cc_7100,
             bb_7200,
             bb_22200,
             bb_22200_upgraded,
+            ## AC
+            obb_1044,
+            re_460,
+            re_465,
+            ## DC
             cc_6500,
             bb_26000,
             bb_26000_upgraded,
@@ -332,15 +336,22 @@ def main():
             de_6_6,
             # freight
             trient,
-            ## AC?
+            ## AC
             krokodil,
-            sbb_ae_8_14,
             bls_ae_4_4,
-            re_6_6,
+            ## AC
+            sbb_ae_4_6,
+            sbb_re_4_4_ii,
+            re_430,
+            re_430_lion,
+            ## AC
+            sbb_ae_8_14,
             bls_ae_8_8,
-            re_6_6_ii,
             bls_re_475,
-            ## DC?
+            ## AC
+            re_6_6,
+            re_6_6_ii,
+            ## DC
             # joker engines / snowploughs
             snowplough_ibex_gen_2,
             # cargo sprinter
@@ -352,13 +363,13 @@ def main():
             # diesel railcars
             # foo,
             # electric railcars
-            ## AC?
+            ## AC
             emu_ibex_2,
             emu_ibex_3,
             emu_ibex_4,
             emu_ibex_5,
             emu_ibex_6,
-            ## DC?
+            ## DC
             # express electric railcars
             # foo,
             # high speed pax
