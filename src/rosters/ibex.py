@@ -42,7 +42,6 @@ from vehicles import obb_1042
 from vehicles import obb_1040
 from vehicles import obb_1041
 from vehicles import obb_1044
-from vehicles import obb_1050
 from vehicles import obb_1141
 from vehicles import obb_1142
 from vehicles import obb_1163
@@ -287,7 +286,6 @@ def main():
             obb_e18,
             obb_1042,
             re_430,
-            obb_1050,
             re_450,
             re_460,
             slm_re_456,
