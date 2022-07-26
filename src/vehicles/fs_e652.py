@@ -4,19 +4,18 @@ from train import EngineConsist, ElectricEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="obb_1040",
-        base_numeric_id=14190,
-        name="OBB 1040",
-        role="branch_express",
-        role_child_branch_num=1,
+        id="fs_e652",
+        base_numeric_id=9270,
+        name="FS E.652 Tigre 2",
+        role="ultra_heavy_freight",
+        role_child_branch_num=-1,
         power_by_power_source={
-            # "AC": 1700,
-            "AC": 10,
+            "DC": 6700,
         },
         random_reverse=True,
-        gen=4,
+        gen=5,
         pantograph_type="diamond-double",
-        # intro_year_offset=10,  # introduce later than gen epoch by design
+        intro_year_offset=10,  # introduce earler than gen epoch by design
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         default_livery_extra_docs_examples=[
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
@@ -28,10 +27,10 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=ElectricEngineUnit, weight=105, vehicle_length=6, spriterow_num=0
+        type=ElectricEngineUnit, weight=105, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = """ """
-    consist.foamer_facts = """OBB 1040"""
+    consist.foamer_facts = """FS E.652 Bo-Bo-Bo Tigre 2"""
 
     return consist

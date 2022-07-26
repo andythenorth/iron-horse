@@ -8,9 +8,9 @@ def main(roster_id):
         base_numeric_id=10790,
         name="OBB 1010 Co-Co",
         role="ultra_heavy_express",
-        role_child_branch_num=2,
+        role_child_branch_num=1,
         power_by_power_source={
-            "AC": 5300,
+            "AC": 4200,  # nerfed from IRL OBB 1010, to fit into an Austria-leaning tree of 1042, 1142 etc
         },
         random_reverse=True,
         gen=3,

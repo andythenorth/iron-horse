@@ -7,10 +7,10 @@ def main(roster_id):
         id="bls_ae_4_4",
         base_numeric_id=8980,
         name="BLS Ae 4/4",
-        role="super_heavy_freight",
+        role="ultra_heavy_express",
         role_child_branch_num=2,
         power_by_power_source={
-            "AC": 4200,
+            "AC": 5300,  # unrealistically high, to fit to BLS Re 4/4 progression, which leans towards Swiss
         },
         random_reverse=True,
         gen=3,

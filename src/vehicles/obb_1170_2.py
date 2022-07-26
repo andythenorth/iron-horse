@@ -10,7 +10,8 @@ def main(roster_id):
         role="branch_express",
         role_child_branch_num=2,
         power_by_power_source={
-            "AC": 2200,
+            # "AC": 2200,
+            "AC": 10,
         },
         gen=3,
         pantograph_type="diamond-double",

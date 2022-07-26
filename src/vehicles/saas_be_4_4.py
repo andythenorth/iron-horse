@@ -10,7 +10,8 @@ def main(roster_id):
         role="branch_express",
         role_child_branch_num=1,
         power_by_power_source={
-            "AC": 1400,
+            # "AC": 1400,
+            "AC": 10,
         },
         random_reverse=True,
         gen=3,

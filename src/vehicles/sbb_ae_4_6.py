@@ -8,9 +8,9 @@ def main(roster_id):
         base_numeric_id=8910,
         name="Ae 4/6",
         role="ultra_heavy_freight",
-        role_child_branch_num=-1,
+        role_child_branch_num=1,
         power_by_power_source={
-            "AC": 5300,
+            "AC": 4800, # not linear steps in this line
         },
         random_reverse=True,
         gen=3,

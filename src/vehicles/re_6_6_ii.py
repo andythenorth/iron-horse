@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=50,
         name="SBB Re 6/6 ii",
         role="ultra_heavy_freight",
-        role_child_branch_num=2,
+        role_child_branch_num=3,
         power_by_power_source={
             "AC": 10700,
         },
@@ -18,8 +18,9 @@ def main(roster_id):
         sprites_complete=False,
     )
 
+    # !! Re 6/6 is only 63ft IRL, so 8/8, but that's weird because 10k HP in 8/8 is weird, so lengthen and articulate
     consist.add_unit(
-        type=ElectricEngineUnit, weight=75, vehicle_length=6, spriterow_num=0, repeat=2
+        type=ElectricEngineUnit, weight=75, vehicle_length=5, spriterow_num=0, repeat=2
     )
 
     consist.description = """ """

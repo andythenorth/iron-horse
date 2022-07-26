@@ -12,7 +12,7 @@ def main(roster_id):
         power_by_power_source={
             "DIESEL": 750,
             "AC": 2000,
-        },  # IRL 400 HP at rail for diesel modes, but gets a bumo for gameplay
+        },  # IRL 400 HP at rail for diesel modes, but gets a bump for gameplay
         random_reverse=True,
         gen=5,
         pantograph_type="diamond-double",

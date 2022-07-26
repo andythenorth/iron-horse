@@ -7,9 +7,11 @@ def main(roster_id):
         id="hungarian_2d2_400",
         base_numeric_id=14780,
         name="Hungarian 2D2 400",
-        role="heavy_express",
-        role_child_branch_num=-2,
-        power_by_power_source={"DC": 10},
+        role="ultra_heavy_freight",
+        role_child_branch_num=-1,
+        power_by_power_source={
+            "DC": 4800, # not linear steps in this line
+        },
         random_reverse=True,
         gen=3,
         pantograph_type="diamond-double",
@@ -29,6 +31,6 @@ def main(roster_id):
     )
 
     consist.description = """ """
-    consist.foamer_facts = """PO <i>Hungarian</i> 2D2 400"""
+    consist.foamer_facts = """PO <i>Hungarian</i> 2D2 400 (or 2-B-B-2)"""
 
     return consist

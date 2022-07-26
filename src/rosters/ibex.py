@@ -6,18 +6,22 @@ from vehicles import ae_3_5
 from vehicles import ae_3_6_1
 from vehicles import ae_4_7
 from vehicles import bb_7200
+from vehicles import bb_8100_duo
+from vehicles import bb_8500_duo
 from vehicles import bb_22200
 from vehicles import bb_22200_upgraded
+from vehicles import bb_25200
+from vehicles import bb_27000
 from vehicles import bb_26000
 from vehicles import bb_26000_upgraded
 from vehicles import bls_ae_4_4
+from vehicles import bls_ae_6_8
 from vehicles import bls_ae_8_8
 from vehicles import bls_re_4_4
 from vehicles import bls_re_475
 from vehicles import cc_6500
 from vehicles import cc_7100
 from vehicles import de_6_6
-from vehicles import dr_e_21_51
 from vehicles import drg_e_16
 from vehicles import emu_ibex_2
 from vehicles import emu_ibex_3
@@ -30,9 +34,10 @@ from vehicles import fs_e428
 from vehicles import fs_e444
 from vehicles import fs_e464
 from vehicles import fs_e464_upgrade
-from vehicles import fs_e632
+from vehicles import fs_e633
 from vehicles import fs_e636
 from vehicles import fs_e646
+from vehicles import fs_e652
 from vehicles import fs_e656
 from vehicles import fs_e656_upgraded
 from vehicles import high_power_railcar_2
@@ -40,7 +45,9 @@ from vehicles import high_power_railcar_3
 from vehicles import high_power_railcar_4
 from vehicles import high_power_railcar_5
 from vehicles import hungarian_2d2_400
-from vehicles import krokodil
+from vehicles import krokodil_ce_6_8
+from vehicles import krokodil_be_6_8
+from vehicles import mthb_re_486
 from vehicles import obb_1010
 from vehicles import obb_1014
 from vehicles import obb_1042
@@ -52,8 +59,8 @@ from vehicles import obb_1142
 from vehicles import obb_1163
 from vehicles import obb_1170_2
 from vehicles import obb_1570
-from vehicles import obb_e18
 from vehicles import plm_2cc2_3400
+from vehicles import po_2d2_5500
 from vehicles import re_4_4_i
 from vehicles import re_430
 from vehicles import re_430_lion
@@ -63,15 +70,14 @@ from vehicles import re_465
 from vehicles import re_6_6
 from vehicles import re_6_6_ii
 from vehicles import saas_be_4_4
-from vehicles import sbb_ae_8_14
+from vehicles import sbb_ee_6_6_ii
 from vehicles import sbb_eem_923
 from vehicles import sbb_fb_4_4
 from vehicles import sbb_ae_4_6
 from vehicles import sbb_re_4_4_ii
-from vehicles import slm_re_456
 from vehicles import sob_re_446
 from vehicles import snowplough_ibex_gen_2
-from vehicles import taurus
+from vehicles import traxx_e_494
 from vehicles import trient
 from vehicles import vectron_dual_mode
 
@@ -278,10 +284,8 @@ def main():
             re_4_4_i,
             obb_1163,
             vectron_dual_mode,
-            slm_re_456,
             ## DC
             hungarian_2d2_400,
-            fs_e632,
             ## AC
             ae_4_7,
             obb_1041,
@@ -296,7 +300,7 @@ def main():
             fs_e464_upgrade,
             ## AC
             drg_e_16,
-            obb_e18,
+            obb_1010,
             obb_1042,
             obb_1142,
             fs_e412,
@@ -306,11 +310,10 @@ def main():
             fs_e656,
             fs_e656_upgraded,
             ## AC
-            dr_e_21_51,
-            obb_1010,
+            bls_ae_6_8,
+            bls_ae_4_4,
             bls_re_4_4,
             sob_re_446,
-            taurus,
             ## DC
             plm_2cc2_3400,
             cc_7100,
@@ -337,17 +340,29 @@ def main():
             # freight
             trient,
             ## AC
-            krokodil,
-            bls_ae_4_4,
+            krokodil_ce_6_8,
+            krokodil_be_6_8,
+            sbb_ee_6_6_ii,
+            mthb_re_486,
+            ## DC
+            po_2d2_5500,
+            bb_25200,
+            bb_27000,
             ## AC
             sbb_ae_4_6,
             sbb_re_4_4_ii,
             re_430,
             re_430_lion,
+            ## DC
+            fs_e633,
+            fs_e652,
+            traxx_e_494,
             ## AC
-            sbb_ae_8_14,
             bls_ae_8_8,
             bls_re_475,
+            ## DC
+            bb_8100_duo,
+            bb_8500_duo,
             ## AC
             re_6_6,
             re_6_6_ii,
