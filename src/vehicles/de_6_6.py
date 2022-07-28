@@ -6,12 +6,13 @@ def main(roster_id):
         roster_id=roster_id,
         id="de_6_6",
         base_numeric_id=9110,
-        name="De 6/6",
+        name="De 6/6 Seetal Krokodil",
         role="freight",
         role_child_branch_num=1,
         power_by_power_source={
-            "AC": 10,
+            "AC": 1200,
         },
+        speed=60, # spans 2 generations
         random_reverse=True,
         gen=2,
         pantograph_type="diamond-double",
@@ -27,10 +28,10 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=ElectricEngineUnit, weight=105, vehicle_length=8, spriterow_num=0
+        type=ElectricEngineUnit, weight=105, vehicle_length=6, spriterow_num=0
     )
 
     consist.description = """ """
-    consist.foamer_facts = """SBB De 6/6"""
+    consist.foamer_facts = """SBB De 6/6 <i>Seetal Krokodil</i>"""
 
     return consist

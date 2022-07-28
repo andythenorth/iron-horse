@@ -34,6 +34,6 @@ def main(roster_id):
     )
 
     consist.description = """ """
-    consist.foamer_facts = """BLS Re 475"""
+    consist.foamer_facts = """BLS Re 475 (Vectron)"""
 
     return consist
