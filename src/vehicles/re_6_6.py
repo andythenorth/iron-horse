@@ -13,14 +13,17 @@ def main(roster_id):
             "AC": 9900,
         },
         gen=4,
-        pantograph_type="diamond-double",
+        #pantograph_type="diamond-double",
         # intro_year_offset=-13,  # introduce earlier than gen epoch by design
         sprites_complete=False,
     )
 
     # !! Re 6/6 is only 63ft IRL, so 8/8, but that's weird because 10k HP in 8/8 is weird, so lengthen and articulate
     consist.add_unit(
-        type=ElectricEngineUnit, weight=75, vehicle_length=5, spriterow_num=0, repeat=2
+        type=ElectricEngineUnit, weight=75, vehicle_length=5, spriterow_num=0
+    )
+    consist.add_unit(
+        type=ElectricEngineUnit, weight=75, vehicle_length=5, spriterow_num=1
     )
 
     consist.description = """ """

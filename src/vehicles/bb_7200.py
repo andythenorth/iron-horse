@@ -12,7 +12,7 @@ def main(roster_id):
         power_by_power_source={"DC": 6000},
         random_reverse=True,
         gen=4,
-        pantograph_type="diamond-double",
+        #pantograph_type="diamond-double",
         intro_year_offset=10,  # introduce later than gen epoch by design
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         default_livery_extra_docs_examples=[
