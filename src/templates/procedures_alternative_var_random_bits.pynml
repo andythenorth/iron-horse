@@ -13,3 +13,23 @@ switch (FEAT_TRAINS, SELF, switch_alternative_var_random_bits, bits_offset, bits
     return;
 }
 
+<!--! to aid managing which bits are used for what, access to them is wrapped in named pseudo vars
+      these can then be eye-balled for overlaps
+      - note that not all vehicles use all the pseudo vars, and/or not all overlaps are problematic
+      - this could be book-kept by getting the bits via Train() or Consist() but seems like over-engineering as of August 2022
+   -->
+
+<!--! colour set and weathered variant are ok to overlap (probably gets best visual result where vehicles use both together) -->
+switch (FEAT_TRAINS, SELF, random_bits_colour_set, switch_alternative_var_random_bits(0, 1)) {
+    <!--! return with nothing else to yield the computed value  -->
+    return;
+}
+switch (FEAT_TRAINS, SELF, random_bits_weathered_variant, switch_alternative_var_random_bits(0, 1)) {
+    <!--! return with nothing else to yield the computed value  -->
+    return;
+}
+
+switch (FEAT_TRAINS, SELF, random_bits_base_colour, switch_alternative_var_random_bits(1, 1)) {
+    <!--! return with nothing else to yield the computed value  -->
+    return;
+}

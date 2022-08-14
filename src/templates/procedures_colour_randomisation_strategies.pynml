@@ -2,8 +2,7 @@
 
 <!--! * Shared colour sets with variants of CC, may be used by multiple strategies -->
 <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
-<tal:colour_sets define="random_bits 'switch_alternative_var_random_bits(0, 1)';
-                         colour_sets {'dark_blue': ['COLOUR_DARK_BLUE', 'custom_dark_blue'],
+<tal:colour_sets define="colour_sets {'dark_blue': ['COLOUR_DARK_BLUE', 'custom_dark_blue'],
                                       'pale_green': ['COLOUR_PALE_GREEN', 'custom_pale_green'],
                                       'pink': ['COLOUR_PINK', 'custom_dark_pink'],
                                       'yellow': ['COLOUR_YELLOW', 'custom_dark_yellow'],
@@ -22,11 +21,11 @@
                                        }">
     <tal:colour_set repeat="colour_set colour_sets.items()">
         <!--! uses 1 random bit from self, just 2 colour choices, more is overkill and often looks bad -->
-        switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_1cc, ${random_bits}) {
+        switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_1cc, random_bits_colour_set()) {
             1: return ${utils.unpack_colour(colour_set[1][1], 1)};
             return ${utils.unpack_colour(colour_set[1][0], 1)};
         }
-        switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_2cc, ${random_bits}) {
+        switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_2cc, random_bits_colour_set()) {
             1: return ${utils.unpack_colour(colour_set[1][1], 2)};
             return ${utils.unpack_colour(colour_set[1][0], 2)};
         }
@@ -74,11 +73,11 @@
 
 <tal:strategy_randomise_base_colour repeat="cc [['1cc', '2cc'], ['2cc', '1cc']]">
     <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
-    switch (FEAT_TRAINS, SELF, switch_strategy_randomise_base_colour_${cc[0]}_unflipped, switch_alternative_var_random_bits(1, 1)) {
+    switch (FEAT_TRAINS, SELF, switch_strategy_randomise_base_colour_${cc[0]}_unflipped, random_bits_base_colour()) {
         1: switch_by_company_colour_${cc[0]}_to_${cc[1]};
         switch_by_company_colour_${cc[0]}_to_${cc[0]};
     }
-    switch (FEAT_TRAINS, SELF, switch_strategy_randomise_base_colour_${cc[0]}_flipped, switch_alternative_var_random_bits(1, 1)) {
+    switch (FEAT_TRAINS, SELF, switch_strategy_randomise_base_colour_${cc[0]}_flipped, random_bits_base_colour()) {
         1: switch_by_company_colour_${cc[0]}_to_${cc[0]};
         switch_by_company_colour_${cc[0]}_to_${cc[1]};
     }

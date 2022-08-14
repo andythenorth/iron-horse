@@ -56,7 +56,7 @@
 </tal:random_reverse_variants>
 
 <!--! as of Dec 2019 articulated vehicles don't provide random variants, as they can't be flipped, and no other random variations exist
-      that means random_switch and SELF can be checked without worrying about random bits from lead unit of articulated vehicle
+      that means random switch can use SELF without worrying about random bits from lead unit of articulated vehicle
       however if articulated vehicle support is need this switch will need to use switch_alternative_var_random_bits,
       and also build the switch containing the number of variants and pick the appropriate number of bits
       HOWEVER note also that the units of some articulated consists *will* randomly reverse on build
