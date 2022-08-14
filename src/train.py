@@ -683,6 +683,7 @@ class Consist(object):
     @property
     def buy_menu_width(self):
         # max sensible width in buy menu is 64px
+        # the +1 for buffers etc is added in the template
         calculated_buy_menu_width = 4 * self.length + self.gestalt_graphics.buy_menu_width_addition
         if calculated_buy_menu_width < 64:
             return calculated_buy_menu_width

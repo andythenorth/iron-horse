@@ -43,7 +43,8 @@ class DocHelper(object):
 
     def buy_menu_sprite_width(self, consist):
         if not consist.dual_headed:
-            return min((4 * consist.length) + 1, self.buy_menu_sprite_max_width)
+            # +1 for the buffers etc
+            return min((consist.buy_menu_width + 1), self.buy_menu_sprite_max_width)
         # openttd automatically handles dual head, but we need to calculate double width explicitly for docs
         if consist.dual_headed:
             return min((2 * 4 * consist.length) + 1, self.buy_menu_sprite_max_width)
