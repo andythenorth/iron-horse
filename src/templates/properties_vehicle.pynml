@@ -79,19 +79,27 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
         name:                           ${consist.name};
         climates_available:             NO_CLIMATE; // nml constant
-        engine_class:                   ${vehicle.engine_class};
-        introduction_date:              date(${consist.intro_year}, ${1 + consist.intro_date_months_offset}, 1);
-        cargo_capacity:                 ${vehicle.default_cargo_capacity};
-        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
-        power:                          ${consist.power}hp;
+        <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
+            <!--! some properties should not be set for trailing parts of articulated consists
+                  unclear if these should be explicitly set to 0 or not, if necessary that can be done later -->
+            engine_class:                   ${vehicle.engine_class};
+            introduction_date:              date(${consist.intro_year}, ${1 + consist.intro_date_months_offset}, 1);
+            weight:                         ${consist.weight}ton;
+            power:                          ${consist.power}hp;
+            tractive_effort_coefficient:    ${consist.tractive_effort_coefficient};
+            cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+            running_cost_base:              ${vehicle.running_cost_base};
+            running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+            model_life:                     ${consist.model_life};
+            retire_early:                   ${consist.retire_early};
+            reliability_decay:              20; // default value
+            vehicle_life:                   ${consist.vehicle_life};
+        </tal:lead_unit_of_consist_only>
         <tal:speed_is_optional condition="consist.speed is not None">
             speed:                          ${consist.speed}mph;
         </tal:speed_is_optional>
-        weight:                         ${consist.weight}ton;
-        tractive_effort_coefficient:    ${consist.tractive_effort_coefficient};
-        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
-        running_cost_base:              ${vehicle.running_cost_base};
-        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        cargo_capacity:                 ${vehicle.default_cargo_capacity};
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
         refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
         refittable_cargo_classes:       bitmask(${vehicle.refittable_classes});
         non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
@@ -104,10 +112,6 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         <tal:dual_headed condition="consist.dual_headed">
             dual_headed:                    ${1 if consist.dual_headed else 0};
         </tal:dual_headed>
-        model_life:                     ${consist.model_life};
-        retire_early:                   ${consist.retire_early};
-        reliability_decay:              20; // default value
-        vehicle_life:                   ${consist.vehicle_life};
         length:                         ${vehicle.vehicle_length};
         track_type:                     ${consist.track_type};
         effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
