@@ -13,6 +13,7 @@ def main(roster_id):
         power_by_power_source={
             "DIESEL": 2200,
         },
+        random_reverse=True,
         gen=4,
         intro_year_offset=-2,  # let's be a little earlier for this one
         default_livery_extra_docs_examples=[
