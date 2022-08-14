@@ -8,7 +8,7 @@
     <tal:include metal:use-macro="load: buy_menu_text.pynml" />
 </tal:buy_menu_text>
 
-<tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle)">
+<tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle) and vehicle.is_lead_unit_of_consist">
     // -- power varies by railtype -- //
     <!--! order of power sources is significant here, the switch chain should check highest value first, progressing to lowest
           the python method will return the power sources in the required order -->
@@ -22,7 +22,7 @@
     </tal:power_source>
 </tal:railtype_varies_power>
 
-<tal:wagons_add_power condition="consist.wagons_add_power">
+<tal:wagons_add_power condition="consist.wagons_add_power and vehicle.is_lead_unit_of_consist">
     // -- power varies if specific engines are present in the consist -- //
     <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power_0, [count_veh_id(${consist.cab_id}) > 0]) {
@@ -34,7 +34,7 @@
 <!--! some vehicles vary their speed depending on lead engine,
       this should be limited use, it's a *very* silly easter egg
       *cannot* be combined with any other variable speed effects  -->
-<tal:easter_egg_haulage_speed_bonus condition="consist.easter_egg_haulage_speed_bonus">
+<tal:easter_egg_haulage_speed_bonus condition="consist.easter_egg_haulage_speed_bonus and vehicle.is_lead_unit_of_consist">
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed, haulage_bonus_switch_speed_0()) {
         1: return ${int(1.60934 * consist.get_speed_by_class('express'))};
         0: return ${int(1.60934 * consist.speed)};
@@ -43,7 +43,7 @@
 
 <!--! some vehicles are equipped to travel faster on dedicated lgv railtype (high speed line)
       *cannot* be combined with any other variable speed effects  -->
-<tal:lgv_capable_speed_bonus condition="consist.lgv_capable">
+<tal:lgv_capable_speed_bonus condition="consist.lgv_capable and vehicle.is_lead_unit_of_consist">
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed_by_tile_railtype, [tile_is_railtype("IHAA") || tile_is_railtype("IHBA")]) {
         1: return ${int(1.60934 * consist.speed_on_lgv)};
         return ${int(1.60934 * consist.speed)};
@@ -119,12 +119,27 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     graphics {
         default:                        ${vehicle.id}_switch_graphics;
         purchase:                       ${vehicle.id}_switch_graphics_purchase;
-        <tal:costs condition="vehicle.is_lead_unit_of_consist">
-            <!--! costs should not be handled for trailing parts of articulated consists -->
+        <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
+            <!--! certain callbacks should not be handled for trailing parts of articulated consists -->
             cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
             running_cost_factor:            ${vehicle.id}_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
             purchase_running_cost_factor:   ${consist.running_cost}; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
-        </tal:costs>
+            <tal:variable_power condition="consist.engine_varies_power_by_power_source(vehicle) or consist.wagons_add_power">
+                power:                          ${vehicle.id}_switch_power_0;
+                purchase_power:                 ${consist.power};
+            </tal:variable_power>
+            <tal:speed_is_optional condition="consist.easter_egg_haulage_speed_bonus or consist.lgv_capable">
+                speed:                          ${vehicle.id}_switch_speed;
+                purchase_speed:                 ${int(1.60934 * consist.speed)};
+            </tal:speed_is_optional>
+            <tal:add_articulated_parts condition="len(consist.units) > 1">
+                articulated_part: ${consist.id}_articulated_cb_switch;
+            </tal:add_articulated_parts>
+            <!--! setting buy menu text for engines and some wagons with role set currently - this is starting to look jank AF eh-->
+            <tal:buy_menu_text condition="(consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None">
+                additional_text:                ${vehicle.id}_switch_buy_menu_text;
+            </tal:buy_menu_text>
+        </tal:lead_unit_of_consist_only>
         <tal:conditional_random_trigger condition="vehicle.random_trigger_switch is not None">
             <!--! NOTE that dual headed units should avoid random triggers as of Dec 2020 - there is an undiagnosed with bug rear unit running unwanted triggers and re-randomising in depots etc -->
             random_trigger:                 ${vehicle.id + vehicle.random_trigger_switch};
@@ -154,27 +169,11 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         <tal:optional_cargo_subtype condition="getattr(consist, 'use_cargo_subytpes_VEHI', False)">
             cargo_subtype_text: switch_cargo_subtype_text();
         </tal:optional_cargo_subtype>
-        <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
-        <tal:variable_power condition="consist.engine_varies_power_by_power_source(vehicle) or consist.wagons_add_power">
-            power:                          ${vehicle.id}_switch_power_0;
-            purchase_power:                 ${consist.power};
-        </tal:variable_power>
-        <tal:speed_is_optional condition="consist.easter_egg_haulage_speed_bonus or consist.lgv_capable">
-            speed:                          ${vehicle.id}_switch_speed;
-            purchase_speed:                 ${int(1.60934 * consist.speed)};
-        </tal:speed_is_optional>
         <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
         <tal:create_effect condition="len(vehicle.effects) > 0">
             effect_spawn_model_and_powered: ${vehicle.id}_switch_effect_spawn_model_and_powered;
             create_effect:      ${vehicle.switch_id_for_create_effect};
         </tal:create_effect>
-        <tal:add_articulated_parts condition="vehicle.is_lead_unit_of_consist and len(consist.units) > 1">
-            articulated_part: ${consist.id}_articulated_cb_switch;
-        </tal:add_articulated_parts>
-        <!--! setting buy menu text for engines and some wagons with role set currently - this is starting to look jank AF eh-->
-        <tal:buy_menu_text condition="vehicle.is_lead_unit_of_consist and (consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None">
-            additional_text:                ${vehicle.id}_switch_buy_menu_text;
-        </tal:buy_menu_text>
     }
 }
 
