@@ -56,9 +56,9 @@
 </tal:random_reverse_variants>
 
 <!--! as of Dec 2019 articulated vehicles don't provide random variants, as they can't be flipped, and no other random variations exist
-      that means SELF can be checked without worrying about random bits from lead unit of articulated vehicle
-      however if articulated vehicle support is need this switch will need to also checking FORWARD_SELF(n)
-      location_of_random_bits_for_random_variant can be used for that -->
+      that means random_switch and SELF can be checked without worrying about random bits from lead unit of articulated vehicle
+      however if articulated vehicle support is need this switch will need to use switch_alternative_var_random_bits,
+      and also build the switch containing the number of variants and pick the appropriate number of bits -->
 random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle) {
     <tal:random_graphics_variations repeat="reversed_variant consist.reversed_variants">
         1: return ${vehicle.id}_switch_graphics_${reversed_variant};
