@@ -29,6 +29,8 @@ spritesheet_top_margin = 10
 # wider than sprites, allows room for custom buy menu sprites, also to print cargo labels to aid drawing / debugging generated cargos
 spritesheet_width = 425
 
+# overlay items for randomised wagons
+dice_image_width = 14
 
 # --- Body Recolour Maps --- #
 

@@ -24,6 +24,7 @@ class GestaltGraphics(object):
         # default value for optional mask layer, this is JFDI for 2022, may need converting a more generic spritelayers structure in future
         # set directly by the consist self.gestalt_graphics.add_masked_overlay = True, or by kwargs on a specific gestalt subclass
         self.add_masked_overlay = False
+        self.buy_menu_width_addition = 0
 
     @property
     def nml_template(self):
@@ -127,6 +128,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             ]
         )
         self.dice_colour = kwargs["dice_colour"]
+        self.buy_menu_width_addition = graphics_constants.dice_image_width + 1
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
         self.processing_priority = 2
 
