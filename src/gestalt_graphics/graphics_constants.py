@@ -31,6 +31,7 @@ spritesheet_width = 425
 
 # overlay items for randomised wagons
 dice_image_width = 14
+randomised_wagon_extra_unit_width = 4
 
 # --- Body Recolour Maps --- #
 

@@ -497,12 +497,23 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
                 + self.consist.id
             )
         unit_length_in_pixels = 4 * self.consist.units[0].vehicle_length
-        unit_slice_length_in_pixels = int(unit_length_in_pixels / 2)
+        unit_slice_length_in_pixels = int(unit_length_in_pixels / 2) + graphics_constants.randomised_wagon_extra_unit_width
         dice_image_width = graphics_constants.dice_image_width
         dice_image_height = 16
         fade_image_width = 2
         fade_image_height = 16
 
+        # I tried doing fancy generic counter maths for offsets etc, but it got stupid, just hard-code everything, there are only 2 wagon parts to draw
+        slice_configuration = [
+            dict(
+                x_offset_src=0,
+                x_offset_dst=unit_slice_length_in_pixels + dice_image_width + 1,
+            ),
+            dict(
+                x_offset_src=int(unit_length_in_pixels - unit_slice_length_in_pixels),
+                x_offset_dst=0,
+            ),
+        ]
         for counter, source_wagon in enumerate(source_wagons):
             # note that we want the *generated* source wagon spritesheet
             source_wagon_input_path = os.path.join(
@@ -513,22 +524,20 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
             if self.consist.id == "randomised_box_car_pony_gen_1A":
                 # source_wagon_image.show()
                 pass
-            x_offset_src = unit_slice_length_in_pixels + (-1 * counter * unit_slice_length_in_pixels)
-            x_offset_dst = counter * (unit_slice_length_in_pixels + dice_image_width + 1)
             crop_box_src = (
-                224 + x_offset_src,
+                224 + slice_configuration[counter]["x_offset_src"],
                 10,
                 224
-                + x_offset_src
+                + slice_configuration[counter]["x_offset_src"]
                 + unit_slice_length_in_pixels
                 + 1,  # allow for 1px coupler / corrider overhang
                 26,
             )
             crop_box_dest = (
-                360 + x_offset_dst,
+                360 + slice_configuration[counter]["x_offset_dst"],
                 10,
                 360
-                + x_offset_dst
+                + slice_configuration[counter]["x_offset_dst"]
                 + unit_slice_length_in_pixels
                 + 1,  # allow for 1px coupler / corrider overhang
                 26,
@@ -568,9 +577,11 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
         ).crop((10, 30, 10 + fade_image_width, 30 + fade_image_height))
         # create a mask so that we paste only the overlay pixels (no blue pixels)
         fade_image_mask = fade_image.copy()
-        fade_image_mask = fade_image_mask.point(lambda i: 0 if i == 226 else 255).convert("1")
+        fade_image_mask = fade_image_mask.point(
+            lambda i: 0 if i == 226 else 255
+        ).convert("1")
         for counter in range(2):
-            x_offset = counter * (unit_length_in_pixels + dice_image_width)
+            x_offset = counter * ((2 * unit_slice_length_in_pixels) + dice_image_width)
             crop_box_dest = (
                 360 + x_offset,
                 10,
