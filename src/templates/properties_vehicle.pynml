@@ -57,7 +57,7 @@
 
 <!--! some vehicles vary running cost if restaurant car is in consist
       this will need generalised if other similar vehicles are added, e.g. motorail, observation car etc -->
-<tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">
+<tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False) and vehicle.is_lead_unit_of_consist">
     <tal:block case="True">
         switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_running_cost_factor, switch_is_restaurant_car_in_consist_0()) {
             <!--! eliminate run costs if 1 restaurant car is present (more than 1 has no additional effect)
@@ -119,9 +119,12 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     graphics {
         default:                        ${vehicle.id}_switch_graphics;
         purchase:                       ${vehicle.id}_switch_graphics_purchase;
-        cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
-        running_cost_factor:            ${vehicle.id}_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
-        purchase_running_cost_factor:   ${consist.running_cost}; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+        <tal:costs condition="vehicle.is_lead_unit_of_consist">
+            <!--! costs should not be handled for trailing parts of articulated consists -->
+            cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
+            running_cost_factor:            ${vehicle.id}_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+            purchase_running_cost_factor:   ${consist.running_cost}; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+        </tal:costs>
         <tal:conditional_random_trigger condition="vehicle.random_trigger_switch is not None">
             <!--! NOTE that dual headed units should avoid random triggers as of Dec 2020 - there is an undiagnosed with bug rear unit running unwanted triggers and re-randomising in depots etc -->
             random_trigger:                 ${vehicle.id + vehicle.random_trigger_switch};
