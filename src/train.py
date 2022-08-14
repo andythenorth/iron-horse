@@ -4577,23 +4577,6 @@ class Train(object):
         return "vehicle_default.pynml"
 
     @property
-    def location_of_random_bits_for_random_variant(self):
-        # articulated vehicles should get random bits from first unit, so that all units randomise consistently
-        # IMPORTANT: cannot rely on returning FORWARD_SELF(0), it causes register 0x100 to be read and cleared, where 0x100 is needed for graphics layers
-        # https://newgrf-specs.tt-wiki.net/wiki/NML:Random_switch#cite_note-expression-1
-        if (
-            len(self.consist.units) > 1
-            and self.numeric_id != self.consist.base_numeric_id
-        ):
-            return (
-                "FORWARD_SELF("
-                + str(self.numeric_id - self.consist.base_numeric_id)
-                + ")"
-            )
-        else:
-            return "SELF"
-
-    @property
     def roof(self):
         # fetch spritesheet name to use for roof when generating graphics
         if self.consist.roof_type is not None:

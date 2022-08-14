@@ -17,7 +17,7 @@ switch (FEAT_TRAINS, SELF, switch_alternative_var_random_bits, bits_offset, bits
       these can then be eye-balled for overlaps
       - note that not all vehicles use all the pseudo vars, and/or not all overlaps are problematic
       - this could be book-kept by getting the bits via Train() or Consist() but seems like over-engineering as of August 2022
-   -->
+-->
 
 <!--! colour set and weathered variant are ok to overlap (probably gets best visual result where vehicles use both together) -->
 switch (FEAT_TRAINS, SELF, random_bits_colour_set, switch_alternative_var_random_bits(0, 1)) {
@@ -35,16 +35,28 @@ switch (FEAT_TRAINS, SELF, random_bits_base_colour, switch_alternative_var_rando
 }
 
 <!--! randomised wagons (those with 'RandomisedConsist' in their classnames) have specific requirements for random bits
-      these tend not to overlap with 'normal' wagons, engines etc -->
+      these tend not to overlap with 'normal' wagons, engines etc
+-->
 switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_check_neighbour_or_self, switch_alternative_var_random_bits(2, 1)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
 <!--! the picking from bit 3 onwards is just a wild guess to try and make this independent from colour and weathering choices etc
-      bits_counts varies, but is limited upstream by get_wagon_randomisation_candidates() (limited to 4 as of August 2022) -->
+      bits_counts varies, but is limited upstream by get_wagon_randomisation_candidates() (limited to 4 as of August 2022)
+-->
 switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_choose_wagon, bits_count, switch_alternative_var_random_bits(3, bits_count)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
 
+<!--! special case -->
+
+<!--! NOTE the units of some articulated consists *will* randomly reverse on build
+      in that case it's *correct* for each unit to pick from SELF as the choice is on a per-unit basis, not per consist - don't break that behaviour
+      choice of bit overlaps with bits used in randomised wagons, but engines aren't wagons, so should be fine
+-->
+switch (FEAT_TRAINS, SELF, random_bits_reversed_engine, getbits(random_bits, 2, 1)) {
+    <!--! return with nothing else to yield the computed value  -->
+    return;
+}
 

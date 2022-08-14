@@ -44,10 +44,9 @@
 </tal:random_reverse_variants>
 
 <tal:optional_random_reverse_variants condition="len(consist.reversed_variants) > 1">
-    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_create_effect_reversed_variants) {
-        dependent: ${vehicle.id}_switch_graphics_vehicle;
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_reversed_variants, random_bits_reversed_engine()) {
         <tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
-            1: ${vehicle.id}_switch_create_effect_check_railtype_${reversed_variant};
+            ${repeat.reversed_variant.index}: return ${vehicle.id}_switch_create_effect_check_railtype_${reversed_variant};
         </tal:reversible_variants>
     }
 </tal:optional_random_reverse_variants>
