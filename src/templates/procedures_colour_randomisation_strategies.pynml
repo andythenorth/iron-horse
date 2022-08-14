@@ -40,9 +40,8 @@
     3. magic may or may not get added for engine-specific or cargo-specific colours
 -->
 
-<!--! as of Dec 2019 this is not used with articulated vehicles,
-      however if articulated vehicle support is need it will need alternatives checking FORWARD_SELF(n)
-      these will have to be duplicates of these switches on a repeat, with named entry points -->
+<!--! as of Dec 2019 this was not used with articulated vehicles,
+      ¿ however as of August 2022 type D (articulated) wagons appear to use this so eh, maybe it got extended? -->
 
 <tal:switch_by_company_colour repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">
     switch (FEAT_TRAINS, SELF, switch_by_company_colour_${cc[0]}_to_${cc[1]},
