@@ -19,6 +19,7 @@
             return ss_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index}_unflipped;
         }
     </tal:variants>
+    <!--! if bits are ever needed for other random features, it's probably possible to only re-randomise specific bits on new load -->
     random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.id}_random_${cargo_set.subtype}_${cargo_set.subtype_suffix}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
         <tal:cargo_set_variants repeat="variant cargo_set.variants">
                 1: return switch_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index};
