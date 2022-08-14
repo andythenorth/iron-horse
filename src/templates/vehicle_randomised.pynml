@@ -3,11 +3,10 @@
       don't conflate them :) -->
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_random_self,
-                            <!--! the picking from bit 3 onwards is just a wild guess to try and make this independent from colour and weathering choices -->
-                            switch_alternative_var_random_bits(
-                                3,
+                            random_bits_randomised_wagon_choose_wagon(
                                 ${len(consist.roster.get_wagon_randomisation_candidates(consist)).bit_length() - 1}
-    )) {
+                            )
+    ) {
     <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
         ${repeat.randomisation_candidate.index}: ${randomisation_candidate.id}_switch_graphics_vehicle;
     </tal:randomisation_candidates>
@@ -52,9 +51,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_neighbour
     1: ${vehicle.id}_switch_graphics_vehicle_random_neighbour_plus_one;
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
-                            switch_alternative_var_random_bits(2, 1)
-    ) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, random_bits_randomised_wagon_check_neighbour_or_self()) {
     0: ${vehicle.id}_switch_graphics_vehicle_random_self;
     1: ${vehicle.id}_switch_graphics_vehicle_check_neighbour;
 }
