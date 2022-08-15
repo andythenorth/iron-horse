@@ -142,9 +142,22 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         return "vehicle_randomised.pynml"
 
     def buy_menu_sprite_sources(self, consist):
+        # vehicle id, y offset to buy menu row
+        # note that for randomised wagons, the list of candidates is compile time non-deterministic
+        # so the resulting sprites may vary between compiles - this is accepted as of August 2022
         result = [
-            list(set(consist.frozen_roster_items["wagon_randomisation_candidates"]))[0],
-            list(set(consist.frozen_roster_items["wagon_randomisation_candidates"]))[1],
+            (
+                list(
+                    set(consist.frozen_roster_items["wagon_randomisation_candidates"])
+                )[0],
+                0,
+            ),
+            (
+                list(
+                    set(consist.frozen_roster_items["wagon_randomisation_candidates"])
+                )[1],
+                0,
+            ),
         ]
         return result
 

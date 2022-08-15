@@ -509,17 +509,17 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
                 x_offset_dst=0,
             ),
         ]
-        for counter, source_wagon in enumerate(
+        for counter, (source_vehicle, y_offset) in enumerate(
             self.consist.gestalt_graphics.buy_menu_sprite_sources(self.consist)
         ):
             # note that we want the *generated* source wagon spritesheet
-            source_wagon_input_path = os.path.join(
+            source_vehicle_input_path = os.path.join(
                 self.graphics_output_path,
-                source_wagon.id + ".png",
+                source_vehicle.id + ".png",
             )
-            source_wagon_image = Image.open(source_wagon_input_path)
+            source_vehicle_image = Image.open(source_vehicle_input_path)
             if self.consist.id == "randomised_box_car_pony_gen_1A":
-                # source_wagon_image.show()
+                # source_vehicle_image.show()
                 pass
             crop_box_src = (
                 224 + slice_configuration[counter]["x_offset_src"],
@@ -539,7 +539,7 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
                 + 1,  # allow for 1px coupler / corrider overhang
                 26,
             )
-            custom_buy_menu_sprite = source_wagon_image.crop(crop_box_src)
+            custom_buy_menu_sprite = source_vehicle_image.crop(crop_box_src)
             spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
 
         dice_image = Image.open(
