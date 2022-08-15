@@ -86,7 +86,7 @@ def main():
             "cc_open_2_3",
         ],
         "default_6": ["cc_enclosed_6", "cc_open_2_3"],
-        "gwr_1": ["cc_enclosed_1"],
+        "gwr_1": ["gwr_1"],
         "railfreight_1": [
             "railfreight_enclosed_1",
             "railfreight_open_1",

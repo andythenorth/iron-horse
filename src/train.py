@@ -2280,7 +2280,6 @@ class CabooseCarConsist(CarConsist):
         self.buy_cost_adjustment_factor = (
             0.75  # chop down caboose costs, they're just eye candy eh
         )
-        # liveries swap CC on user-flip, so no swapping CC randomly
         self.use_colour_randomisation_strategies = True
         self.allow_flip = True
         # Graphics configuration
@@ -5207,6 +5206,8 @@ class CabooseCar(TrainCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # caboose cars may be asymmetric, they are also user-flippable as of August 2022 (flip also toggles CC)
+        self._symmetry_type = "asymmetric"
 
     @property
     def weight(self):
