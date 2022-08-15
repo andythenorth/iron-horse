@@ -81,8 +81,6 @@ class Consist(object):
         self.tilt_bonus = False  # over-ride in subclass as needed
         self.lgv_capable = False  # over-ride in subclass as needed
         self.requires_high_clearance = kwargs.get("requires_high_clearance", False)
-        # not a common case, but we sometimes want to prevent a vehicle showing in buy menu - set this prop True in subclass as needed
-        self.hide_in_game = False
         # solely used for ottd livery (company colour) selection, set in subclass as needed
         self.train_flag_mu = False
         # some wagons will provide power if specific engine IDs are in the consist
@@ -2320,7 +2318,6 @@ class CabooseCarConsist(CabooseCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "caboose_car"
         super().__init__(**kwargs)
-        self.hide_in_game = True
 
 
 class GoodsCabooseCarConsist(CabooseCarConsistBase):
@@ -2331,7 +2328,6 @@ class GoodsCabooseCarConsist(CabooseCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "goods_caboose_car"
         super().__init__(**kwargs)
-        self.hide_in_game = True
 
 
 class CabooseCarRandomisedConsist(CabooseCarConsistBase):
