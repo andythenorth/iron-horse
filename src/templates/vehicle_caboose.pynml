@@ -28,6 +28,13 @@
     }
 </tal:caboose_families>
 
+switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_default_fallback, current_year) {
+    <tal:caboose_variants repeat="variant_date_range consist.buy_menu_variants_by_date">
+        ${variant_date_range[1][0]}..${variant_date_range[1][1]}: return ${vehicle.id}_switch_graphics_caboose_family_default_${variant_date_range[0] + 1};
+    </tal:caboose_variants>
+
+}
+
 switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type_id) {
 <!--! this doesn't check grfid currently - add later if needed
       this may also exceed the number of permitted ranges as number of engines increases, if that happens, try sharding (probably by roster)
@@ -35,8 +42,7 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type
     <tal:engine_consists repeat="engine_consist [engine_consist for engine_consist in consist.roster.engine_consists if engine_consist.base_track_type_name == consist.base_track_type_name]">
         ${engine_consist.id}: return ${vehicle.id}_switch_graphics_caboose_family_${engine_consist.caboose_family};
     </tal:engine_consists>
-    <!--! default just uses first spriterow, this is often not going to be a good result, but JFDI for now  -->
-    return ${vehicle.id}_switch_graphics_variant_${consist.gestalt_graphics.spriterow_labels[0]};
+    return ${vehicle.id}_switch_graphics_default_fallback;
 }
 
 
@@ -48,8 +54,8 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type
     }
 </tal:caboose_variants>
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, current_year) {
-    <tal:caboose_variants repeat="variant_name_and_date_range consist.buy_menu_variants_by_date">
-        ${variant_name_and_date_range[1][0]}..${variant_name_and_date_range[1][1]}: return ${vehicle.id}_ss_purchase_${variant_name_and_date_range[0]};
+    <tal:caboose_variants repeat="variant_date_range consist.buy_menu_variants_by_date">
+        ${variant_date_range[1][0]}..${variant_date_range[1][1]}: return ${vehicle.id}_ss_purchase_${variant_date_range[0]};
     </tal:caboose_variants>
 }
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
