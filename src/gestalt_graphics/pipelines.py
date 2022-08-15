@@ -483,21 +483,16 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
         # take the first and last candidates;
         # note that we have to call set here, due to the way random candidates are padded out to make power of 2 list lengths for random bits
         # we have to use frozen_roster_items as the roster object won't pickle for multiprocessing use (never figured out why)
-        source_wagons = [
-            list(
-                set(self.consist.frozen_roster_items["wagon_randomisation_candidates"])
-            )[0],
-            list(
-                set(self.consist.frozen_roster_items["wagon_randomisation_candidates"])
-            )[1],
-        ]
         if len(self.consist.units) > 1:
             raise BaseException(
                 "GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline won't work with articulated consists - called by "
                 + self.consist.id
             )
         unit_length_in_pixels = 4 * self.consist.units[0].vehicle_length
-        unit_slice_length_in_pixels = int(unit_length_in_pixels / 2) + graphics_constants.randomised_wagon_extra_unit_width
+        unit_slice_length_in_pixels = (
+            int(unit_length_in_pixels / 2)
+            + graphics_constants.randomised_wagon_extra_unit_width
+        )
         dice_image_width = graphics_constants.dice_image_width
         dice_image_height = 16
         fade_image_width = 2
@@ -514,7 +509,9 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
                 x_offset_dst=0,
             ),
         ]
-        for counter, source_wagon in enumerate(source_wagons):
+        for counter, source_wagon in enumerate(
+            self.consist.gestalt_graphics.buy_menu_sprite_sources(self.consist)
+        ):
             # note that we want the *generated* source wagon spritesheet
             source_wagon_input_path = os.path.join(
                 self.graphics_output_path,
@@ -594,7 +591,7 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
             fade_image_mask = ImageOps.mirror(fade_image_mask)
 
         if self.consist.id == "randomised_box_car_pony_gen_5B":
-            #spritesheet.sprites.show()
+            # spritesheet.sprites.show()
             pass
 
         return spritesheet

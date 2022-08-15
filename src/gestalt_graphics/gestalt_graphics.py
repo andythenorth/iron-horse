@@ -4,6 +4,7 @@ from gestalt_graphics import pipelines
 import utils
 import global_constants
 
+
 class GestaltGraphics(object):
     """
     Simple class, which is extended in sub-classes to configure:
@@ -128,13 +129,24 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             ]
         )
         self.dice_colour = kwargs["dice_colour"]
-        self.buy_menu_width_addition = graphics_constants.dice_image_width + 1 + (2 * graphics_constants.randomised_wagon_extra_unit_width)
+        self.buy_menu_width_addition = (
+            graphics_constants.dice_image_width
+            + 1
+            + (2 * graphics_constants.randomised_wagon_extra_unit_width)
+        )
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
         self.processing_priority = 2
 
     @property
     def nml_template(self):
         return "vehicle_randomised.pynml"
+
+    def buy_menu_sprite_sources(self, consist):
+        result = [
+            list(set(consist.frozen_roster_items["wagon_randomisation_candidates"]))[0],
+            list(set(consist.frozen_roster_items["wagon_randomisation_candidates"]))[1],
+        ]
+        return result
 
 
 class GestaltGraphicsVisibleCargo(GestaltGraphics):
@@ -559,7 +571,10 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
                 "empty",
             ]
         else:
-            raise BaseException(consist_ruleset + " not matched in GestaltGraphicsAutomobilesTransporter get_output_row_types()")
+            raise BaseException(
+                consist_ruleset
+                + " not matched in GestaltGraphicsAutomobilesTransporter get_output_row_types()"
+            )
         if self.add_masked_overlay:
             temp_result = []
             for row_type in result:
@@ -616,7 +631,11 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
             for variant in self.position_variants:
                 for vehicle_spritelayer_name in self.vehicle_spritelayer_names:
                     result.append(
-                        [vehicle_spritelayer_name + "_" + variant, flipped, start_y_cumulative]
+                        [
+                            vehicle_spritelayer_name + "_" + variant,
+                            flipped,
+                            start_y_cumulative,
+                        ]
                     )
                     start_y_cumulative += row_height
         return result
