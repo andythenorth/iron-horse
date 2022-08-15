@@ -51,7 +51,7 @@ def main():
         gen=1,
         subtype="A",
         spriterow_labels=spriterow_labels,
-        docs_image_spriterow=3,
+        docs_image_spriterow=0, # !! support for forcing docs image, may not be needed with randomised buy menu sprite ??
         sprites_complete=False,
     )
 
@@ -63,7 +63,7 @@ def main():
         gen=1,
         subtype="B",
         spriterow_labels=spriterow_labels,
-        docs_image_spriterow=3,
+        docs_image_spriterow=0, # !! support for forcing docs image, may not be needed with randomised buy menu sprite ??
         sprites_complete=False,
     )
 
