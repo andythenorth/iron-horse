@@ -2287,6 +2287,7 @@ class CabooseCarConsistBase(CarConsist):
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
             spriterow_labels=kwargs.get("spriterow_labels"),
             caboose_families=kwargs.get("caboose_families"),
+            buy_menu_sprite_pairs=kwargs.get("buy_menu_sprite_pairs"),
         )
 
     """

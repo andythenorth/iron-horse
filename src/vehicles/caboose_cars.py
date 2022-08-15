@@ -14,6 +14,13 @@ def main():
         "default_3": ["ng_enclosed_3"],
         "default_4": ["ng_enclosed_3"],
     }
+    # these should match the number of default families, in order
+    buy_menu_sprite_pairs = [
+        ("ng_enclosed_1", "ng_enclosed_1"),
+        ("ng_enclosed_2", "ng_enclosed_2"),
+        ("ng_enclosed_3", "ng_enclosed_3"),
+        ("ng_enclosed_3", "ng_enclosed_3"),
+    ]
 
     consist = CabooseCarConsist(
         roster_id="pony",
@@ -23,6 +30,7 @@ def main():
         base_track_type_name="NG",
         spriterow_labels=spriterow_labels,
         caboose_families=caboose_families,
+        buy_menu_sprite_pairs=buy_menu_sprite_pairs,
         sprites_complete=False,
     )
 
@@ -36,6 +44,7 @@ def main():
         base_track_type_name="NG",
         spriterow_labels=spriterow_labels,
         caboose_families=caboose_families,
+        buy_menu_sprite_pairs=buy_menu_sprite_pairs,
         sprites_complete=False,
     )
 
@@ -59,14 +68,24 @@ def main():
         "railfreight_open_1",
         # "railfreight_2",
     ]
+    # note that probability of a specific type within a family can be increased by repeating it in the list for that family
     caboose_families = {
-        # note that probability of a specific type within a family can be increased by repeating it in the list for that family
         "default_1": ["cc_enclosed_1"],
         "default_2": ["cc_enclosed_2_3", "cc_enclosed_2_3", "cc_open_2_3"],
         "default_3": ["cc_enclosed_2_3", "cc_open_2_3", "cc_open_2_3"],
-        "default_4": ["cc_enclosed_4", "brown_enclosed_1", "brown_open_1", "cc_open_2_3"],
-        "default_5": ["cc_enclosed_5", "brown_enclosed_1", "brown_open_1", "cc_open_2_3"],
-        "default_6": ["cc_enclosed_6"],
+        "default_4": [
+            "cc_enclosed_4",
+            "brown_enclosed_1",
+            "brown_open_1",
+            "cc_open_2_3",
+        ],
+        "default_5": [
+            "cc_enclosed_5",
+            "brown_enclosed_1",
+            "brown_open_1",
+            "cc_open_2_3",
+        ],
+        "default_6": ["cc_enclosed_6", "cc_open_2_3"],
         "gwr_1": ["cc_enclosed_1"],
         "railfreight_1": [
             "railfreight_enclosed_1",
@@ -78,6 +97,15 @@ def main():
         ],
         "railfreight_2": ["cc_enclosed_6"],
     }
+    # these should match the number of default families, in order
+    buy_menu_sprite_pairs = [
+        ("cc_enclosed_1", "cc_enclosed_1"),
+        ("cc_enclosed_2_3", "cc_open_2_3"),
+        ("cc_enclosed_2_3", "cc_open_2_3"),
+        ("cc_enclosed_4", "cc_open_2_3"),
+        ("cc_enclosed_5", "cc_open_2_3"),
+        ("cc_enclosed_6", "cc_open_2_3"),
+    ]
 
     consist = CabooseCarConsist(
         roster_id="pony",
@@ -86,6 +114,7 @@ def main():
         subtype="A",
         spriterow_labels=spriterow_labels,
         caboose_families=caboose_families,
+        buy_menu_sprite_pairs=buy_menu_sprite_pairs,
         docs_image_spriterow=0,  # !! support for forcing docs image, may not be needed with randomised buy menu sprite ??
         sprites_complete=False,
     )
@@ -99,6 +128,7 @@ def main():
         subtype="B",
         spriterow_labels=spriterow_labels,
         caboose_families=caboose_families,
+        buy_menu_sprite_pairs=buy_menu_sprite_pairs,
         docs_image_spriterow=0,  # !! support for forcing docs image, may not be needed with randomised buy menu sprite ??
         sprites_complete=False,
     )

@@ -531,94 +531,105 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         slice_configuration = [
             dict(
                 x_offset_src=0,
-                x_offset_dst=unit_slice_length_in_pixels + dice_image_width + 1,
+                x_offset_dest=unit_slice_length_in_pixels + dice_image_width + 1,
             ),
             dict(
                 x_offset_src=int(unit_length_in_pixels - unit_slice_length_in_pixels),
-                x_offset_dst=0,
+                x_offset_dest=0,
             ),
         ]
-        for counter, (source_vehicle, spriterow_num) in enumerate(
-            self.consist.gestalt_graphics.buy_menu_sprite_sources(self.consist)
-        ):
-            # note that we want the *generated* source wagon spritesheet
-            source_vehicle_input_path = os.path.join(
-                self.graphics_output_path,
-                source_vehicle.id + ".png",
-            )
-            source_vehicle_image = Image.open(source_vehicle_input_path)
-            if self.consist.id == "randomised_box_car_pony_gen_1A":
-                # source_vehicle_image.show()
-                pass
-            y_offset = spriterow_num * graphics_constants.spriterow_height
-            crop_box_src = (
-                224 + slice_configuration[counter]["x_offset_src"],
-                10 + y_offset,
-                224
-                + slice_configuration[counter]["x_offset_src"]
-                + unit_slice_length_in_pixels
-                + 1,  # allow for 1px coupler / corrider overhang
-                26 + y_offset,
-            )
-            crop_box_dest = (
-                360 + slice_configuration[counter]["x_offset_dst"],
-                10,
-                360
-                + slice_configuration[counter]["x_offset_dst"]
-                + unit_slice_length_in_pixels
-                + 1,  # allow for 1px coupler / corrider overhang
-                26,
-            )
-            custom_buy_menu_sprite = source_vehicle_image.crop(crop_box_src)
-            spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
+        for (
+            spriterow_num_dest,
+            source_data,
+        ) in self.consist.gestalt_graphics.buy_menu_sprite_variants(
+            self.consist
+        ).items():
+            for counter, (source_vehicle, spriterow_num_src) in enumerate(source_data):
+                # note that we want the *generated* source wagon spritesheet
+                source_vehicle_input_path = os.path.join(
+                    self.graphics_output_path,
+                    source_vehicle.id + ".png",
+                )
+                source_vehicle_image = Image.open(source_vehicle_input_path)
+                if self.consist.id == "randomised_box_car_pony_gen_1A":
+                    # source_vehicle_image.show()
+                    pass
+                y_offset_src = spriterow_num_src * graphics_constants.spriterow_height
+                y_offset_dest = spriterow_num_dest * graphics_constants.spriterow_height
+                crop_box_src = (
+                    224 + slice_configuration[counter]["x_offset_src"],
+                    10 + y_offset_src,
+                    224
+                    + slice_configuration[counter]["x_offset_src"]
+                    + unit_slice_length_in_pixels
+                    + 1,  # allow for 1px coupler / corrider overhang
+                    26 + y_offset_src,
+                )
+                crop_box_dest = (
+                    360 + slice_configuration[counter]["x_offset_dest"],
+                    10 + y_offset_dest,
+                    360
+                    + slice_configuration[counter]["x_offset_dest"]
+                    + unit_slice_length_in_pixels
+                    + 1,  # allow for 1px coupler / corrider overhang
+                    26 + y_offset_dest,
+                )
+                custom_buy_menu_sprite = source_vehicle_image.crop(crop_box_src)
+                spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
 
-        dice_image = Image.open(
-            os.path.join(currentdir, "src", "graphics", "randomised_wagon_overlay.png")
-        ).crop((10, 10, 10 + dice_image_width, 10 + dice_image_height))
-        dice_recolour_maps = {
-            1: {188: 9, 51: 12, 69: 15},
-            2: {188: 188, 51: 51, 69: 69},
-            3: {188: 45, 51: 47, 69: 49},
-        }
-        dice_recolour_map = dice_recolour_maps[
-            self.consist.gestalt_graphics.dice_colour
-        ]
-        dice_image = dice_image.point(
-            lambda i: dice_recolour_map[i] if i in dice_recolour_map.keys() else i
-        )
-        # now magically replace pink to another colour (dark grey maybe best?)
-        dice_image = dice_image.point(
-            lambda i: dice_recolour_map[188] if i == 226 else i
-        )
-        x_offset = unit_slice_length_in_pixels + 1
-        crop_box_dest = (
-            360 + x_offset,
-            10,
-            360 + x_offset + dice_image_width,
-            10 + dice_image_height,
-        )
-        spritesheet.sprites.paste(dice_image, crop_box_dest)
-
-        fade_image = Image.open(
-            os.path.join(currentdir, "src", "graphics", "randomised_wagon_overlay.png")
-        ).crop((10, 30, 10 + fade_image_width, 30 + fade_image_height))
-        # create a mask so that we paste only the overlay pixels (no blue pixels)
-        fade_image_mask = fade_image.copy()
-        fade_image_mask = fade_image_mask.point(
-            lambda i: 0 if i == 226 else 255
-        ).convert("1")
-        for counter in range(2):
-            x_offset = counter * ((2 * unit_slice_length_in_pixels) + dice_image_width)
-            crop_box_dest = (
-                360 + x_offset,
-                10,
-                360 + x_offset + fade_image_width,
-                10 + dice_image_height,
+            dice_image = Image.open(
+                os.path.join(
+                    currentdir, "src", "graphics", "randomised_wagon_overlay.png"
+                )
+            ).crop((10, 10, 10 + dice_image_width, 10 + dice_image_height))
+            dice_recolour_maps = {
+                1: {188: 9, 51: 12, 69: 15},
+                2: {188: 188, 51: 51, 69: 69},
+                3: {188: 45, 51: 47, 69: 49},
+            }
+            dice_recolour_map = dice_recolour_maps[
+                self.consist.gestalt_graphics.dice_colour
+            ]
+            dice_image = dice_image.point(
+                lambda i: dice_recolour_map[i] if i in dice_recolour_map.keys() else i
             )
-            spritesheet.sprites.paste(fade_image, crop_box_dest, fade_image_mask)
-            # flip the image for the next time we paste it (this creates a better symmetry at each side of the image)
-            fade_image = ImageOps.mirror(fade_image)
-            fade_image_mask = ImageOps.mirror(fade_image_mask)
+            # now magically replace pink to another colour (dark grey maybe best?)
+            dice_image = dice_image.point(
+                lambda i: dice_recolour_map[188] if i == 226 else i
+            )
+            x_offset_dest = unit_slice_length_in_pixels + 1
+            crop_box_dest = (
+                360 + x_offset_dest,
+                10 + y_offset_dest,
+                360 + x_offset_dest + dice_image_width,
+                10 + y_offset_dest + dice_image_height,
+            )
+            spritesheet.sprites.paste(dice_image, crop_box_dest)
+
+            fade_image = Image.open(
+                os.path.join(
+                    currentdir, "src", "graphics", "randomised_wagon_overlay.png"
+                )
+            ).crop((10, 30, 10 + fade_image_width, 30 + fade_image_height))
+            # create a mask so that we paste only the overlay pixels (no blue pixels)
+            fade_image_mask = fade_image.copy()
+            fade_image_mask = fade_image_mask.point(
+                lambda i: 0 if i == 226 else 255
+            ).convert("1")
+            for counter in range(2):
+                x_offset_dest = counter * (
+                    (2 * unit_slice_length_in_pixels) + dice_image_width
+                )
+                crop_box_dest = (
+                    360 + x_offset_dest,
+                    10 + y_offset_dest,
+                    360 + x_offset_dest + fade_image_width,
+                    10 + y_offset_dest + dice_image_height,
+                )
+                spritesheet.sprites.paste(fade_image, crop_box_dest, fade_image_mask)
+                # flip the image for the next time we paste it (this creates a better symmetry at each side of the image)
+                fade_image = ImageOps.mirror(fade_image)
+                fade_image_mask = ImageOps.mirror(fade_image_mask)
 
         if self.consist.id == "randomised_box_car_pony_gen_5B":
             # spritesheet.sprites.show()

@@ -142,11 +142,11 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
     def nml_template(self):
         return "vehicle_randomised.pynml"
 
-    def buy_menu_sprite_sources(self, consist):
+    def buy_menu_sprite_variants(self, consist):
         # vehicle id, y offset to buy menu row
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022
-        result = [
+        source_data = [
             (
                 list(
                     set(consist.frozen_roster_items["wagon_randomisation_candidates"])
@@ -160,7 +160,9 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
                 0,
             ),
         ]
-        return result
+        # buy menu sprite generation supports providing multiple variants (used for cabooses)
+        # but here we only need one, in the default buy menu position
+        return {0: source_data}
 
 
 class GestaltGraphicsVisibleCargo(GestaltGraphics):
@@ -380,7 +382,14 @@ class GestaltGraphicsCaboose(GestaltGraphics):
     - specific livery variants (pixels, not just colour remap) for specific engine IDs
     """
 
-    def __init__(self, recolour_map, spriterow_labels, caboose_families, **kwargs):
+    def __init__(
+        self,
+        recolour_map,
+        spriterow_labels,
+        caboose_families,
+        buy_menu_sprite_pairs,
+        **kwargs
+    ):
         super().__init__()
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
         self.pipelines = pipelines.get_pipelines(
@@ -391,6 +400,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         )
         self.spriterow_labels = spriterow_labels
         self.caboose_families = caboose_families
+        self.buy_menu_sprite_pairs = buy_menu_sprite_pairs
         self.num_variations = len(self.spriterow_labels)
         self.recolour_map = recolour_map
         self.dice_colour = 1
@@ -421,20 +431,25 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         )
         return None
 
-    def buy_menu_sprite_sources(self, consist):
+    def buy_menu_sprite_variants(self, consist):
         # vehicle id, y offset to buy menu row
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022
-        result = [
-            (
-                consist,
-                0,
-            ),
-            (
-                consist,
-                1,
-            ),
-        ]
+        result = {}
+        for counter, buy_menu_sprite_pair in enumerate(self.buy_menu_sprite_pairs):
+            source_data = [
+                (
+                    consist,
+                    self.spriterow_labels.index(buy_menu_sprite_pair[0]),
+                ),
+                (
+                    consist,
+                    self.spriterow_labels.index(buy_menu_sprite_pair[1]),
+                ),
+            ]
+
+            result[counter] = source_data
+        print(result)
         return result
 
 
