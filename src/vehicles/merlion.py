@@ -16,10 +16,7 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         intro_year_offset=-2,  # let's be a littler earlier for this one
-        force_caboose_families={
-            "caboose_car": "pony_railfreight_1",
-            #"goods_caboose_car": "pony_railfreight_1",
-        },
+        caboose_family="pony_railfreight_1",
         alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
         sprites_complete=True,
     )

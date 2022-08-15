@@ -13,7 +13,7 @@ def main(roster_id):
             "AC": 10700,
         },
         gen=5,
-        #pantograph_type="diamond-double",
+        # pantograph_type="diamond-double",
         # intro_year_offset=-13,  # introduce earlier than gen epoch by design
         sprites_complete=False,
     )

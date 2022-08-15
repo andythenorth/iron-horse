@@ -380,7 +380,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
     - specific livery variants (pixels, not just colour remap) for specific engine IDs
     """
 
-    def __init__(self, num_variations, recolour_map, **kwargs):
+    def __init__(self, recolour_map, spriterow_labels, caboose_families, **kwargs):
         super().__init__()
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
         self.pipelines = pipelines.get_pipelines(
@@ -389,15 +389,16 @@ class GestaltGraphicsCaboose(GestaltGraphics):
                 "generate_buy_menu_sprite_from_randomisation_candidates",
             ]
         )
+        self.spriterow_labels = spriterow_labels
+        self.caboose_families = caboose_families
+        self.num_variations = len(self.spriterow_labels)
+        self.recolour_map = recolour_map
         self.dice_colour = 1
         self.buy_menu_width_addition = (
             graphics_constants.dice_image_width
             + 1
             + (2 * graphics_constants.randomised_wagon_extra_unit_width)
         )
-        self.num_variations = num_variations
-        # but one livery remap is supported for this gestalt
-        self.recolour_map = recolour_map
 
     @property
     def generic_rows(self):

@@ -12,7 +12,7 @@ def main(roster_id):
         power_by_power_source={
             "AC": 1200,
         },
-        speed=60, # spans 2 generations
+        speed=60,  # spans 2 generations
         random_reverse=True,
         gen=2,
         pantograph_type="diamond-double",

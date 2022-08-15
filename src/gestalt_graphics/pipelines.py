@@ -140,7 +140,7 @@ class Pipeline(object):
         output_path_tmp = os.path.join(
             self.graphics_output_path,
             "tmp",
-            output_base_name + output_suffix + "." + self.__class__.__name__+ ".png",
+            output_base_name + output_suffix + "." + self.__class__.__name__ + ".png",
         )
         spritesheet = pixa.make_spritesheet_from_image(input_image, DOS_PALETTE)
 

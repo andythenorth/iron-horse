@@ -17,10 +17,7 @@ def main(roster_id):
         fixed_run_cost_points=40,  # give a bonus so this can be a genuine mixed-traffic engine
         intro_year_offset=6,  # let's be later for this one
         default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE")],
-        force_caboose_families={
-            "caboose_car": "pony_railfreight_1",
-            #"goods_caboose_car": "pony_railfreight_1",
-        },
+        caboose_family="pony_railfreight_1",
         alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
         sprites_complete=True,
     )

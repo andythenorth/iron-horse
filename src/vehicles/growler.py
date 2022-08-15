@@ -14,10 +14,7 @@ def main(roster_id):
         },
         random_reverse=True,
         gen=4,
-        force_caboose_families={
-            "caboose_car": "pony_railfreight_1",
-            #"goods_caboose_car": "pony_railfreight_1",
-        },
+        caboose_family="pony_railfreight_1",
         alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),

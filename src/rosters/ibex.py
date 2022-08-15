@@ -173,63 +173,6 @@ def main():
         },
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
-        # caboose families (family names and caboose names are arbitrary strings)
-        # caboose names map to labelled spriterows, as defined in the vehicle files
-        caboose_families={
-            "RAIL": {
-                "caboose_car": {
-                    "pony_caboose_car_default_1": ["caboose_1"],
-                    "pony_caboose_car_default_2": ["caboose_2"],
-                    "pony_caboose_car_default_3": ["caboose_3"],
-                    "pony_caboose_car_default_4": ["caboose_4"],
-                    "pony_caboose_car_default_5": ["caboose_5"],
-                    "pony_caboose_car_default_6": ["caboose_6"],
-                    "pony_gwr_1": ["caboose_1"],
-                    # "pony_gwr_1": ["caboose_1", "gwr_1"],
-                    "pony_railfreight_1": ["railfreight_1", "brown_1"],
-                    "pony_railfreight_2": ["caboose_6"],
-                    # "pony_railfreight_2": ["railfreight_2"],
-                },
-            },
-            "NG": {
-                "caboose_car": {
-                    "pony_ng_caboose_car_1": ["ng_caboose_1"],
-                    "pony_ng_caboose_car_2": ["ng_caboose_2"],
-                    "pony_ng_caboose_car_3": ["ng_caboose_3"],
-                },
-            },
-        },
-        # lists of one default family name per generation, ascending
-        caboose_default_family_by_generation={
-            "RAIL": [
-                {
-                    "caboose_car": "pony_caboose_car_default_1",
-                    # "goods_caboose_car": "pony_goods_caboose_car_default_1",
-                },
-                {
-                    "caboose_car": "pony_caboose_car_default_2",
-                },
-                {
-                    "caboose_car": "pony_caboose_car_default_3",
-                },
-                {
-                    "caboose_car": "pony_caboose_car_default_4",
-                },
-                {
-                    "caboose_car": "pony_caboose_car_default_5",
-                },
-                {
-                    "caboose_car": "pony_caboose_car_default_6",
-                },
-            ],
-            "NG": [
-                # ng caboose don't have much variation
-                {"caboose_car": "pony_ng_caboose_car_1"},
-                {"caboose_car": "pony_ng_caboose_car_1"},
-                {"caboose_car": "pony_ng_caboose_car_2"},
-                {"caboose_car": "pony_ng_caboose_car_3"},
-            ],
-        },
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
         livery_presets={
             "FOO": {
