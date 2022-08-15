@@ -123,6 +123,7 @@ STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Railbus Trailer
 STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Railcar Trailer
 STR_NAME_SUFFIX_RANDOMISED_BOX_CAR                              :Van - Randomised
 STR_NAME_SUFFIX_RANDOMISED_BULK_CAR                             :Bulk Wagon - Randomised
+STR_NAME_SUFFIX_RANDOMISED_CABOOSE_CAR                          :Brake Van - Randomised
 STR_NAME_SUFFIX_RANDOMISED_COLD_METAL_CAR                       :Cold Metal Wagon - Randomised
 STR_NAME_SUFFIX_RANDOMISED_DUMP_CAR                             :Mineral Wagon - Randomised
 STR_NAME_SUFFIX_RANDOMISED_FLAT_CAR                             :Flatbed Cargo Wagon - Randomised

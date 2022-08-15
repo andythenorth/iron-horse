@@ -81,6 +81,8 @@ class Consist(object):
         self.tilt_bonus = False  # over-ride in subclass as needed
         self.lgv_capable = False  # over-ride in subclass as needed
         self.requires_high_clearance = kwargs.get("requires_high_clearance", False)
+        # not a common case, but we sometimes want to prevent a vehicle showing in buy menu - set this prop True in subclass as needed
+        self.hide_in_game = False
         # solely used for ottd livery (company colour) selection, set in subclass as needed
         self.train_flag_mu = False
         # some wagons will provide power if specific engine IDs are in the consist
@@ -211,9 +213,15 @@ class Consist(object):
                     elif "DC" in self.power_by_power_source:
                         return "STR_NAME_SUFFIX_ELECTRIC_DC"
                 if len(self.power_by_power_source) == 2:
-                    if "DIESEL" in self.power_by_power_source and "AC" in self.power_by_power_source:
+                    if (
+                        "DIESEL" in self.power_by_power_source
+                        and "AC" in self.power_by_power_source
+                    ):
                         return "STR_NAME_SUFFIX_ELECTRODIESEL"
-                    if "AC" in self.power_by_power_source and "DC" in self.power_by_power_source:
+                    if (
+                        "AC" in self.power_by_power_source
+                        and "DC" in self.power_by_power_source
+                    ):
                         return "STR_NAME_SUFFIX_ELECTRIC_AC_DC"
             return None
 
@@ -501,7 +509,11 @@ class Consist(object):
         elif "DC" in self.power_by_power_source:
             return "DC"
         else:
-            raise BaseException("no valid electrification type found for " + self.id + " - is it an electrified vehicle?")
+            raise BaseException(
+                "no valid electrification type found for "
+                + self.id
+                + " - is it an electrified vehicle?"
+            )
 
     @property
     def power(self):
@@ -684,7 +696,9 @@ class Consist(object):
     def buy_menu_width(self):
         # max sensible width in buy menu is 64px
         # the +1 for buffers etc is added in the template
-        calculated_buy_menu_width = 4 * self.length + self.gestalt_graphics.buy_menu_width_addition
+        calculated_buy_menu_width = (
+            4 * self.length + self.gestalt_graphics.buy_menu_width_addition
+        )
         if calculated_buy_menu_width < 64:
             return calculated_buy_menu_width
         else:
@@ -2255,6 +2269,9 @@ class CabooseCarConsistBase(CarConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.randomised_candidate_groups = [
+            "randomised_caboose_car",
+        ]
         self.speed_class = None  # no speed limit
         # refit nothing, don't mess with this, it breaks auto-replace
         self.class_refit_groups = []
@@ -2303,16 +2320,32 @@ class CabooseCarConsist(CabooseCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "caboose_car"
         super().__init__(**kwargs)
+        self.hide_in_game = True
 
 
 class GoodsCabooseCarConsist(CabooseCarConsistBase):
     """
-    Alternative coloured caboose, brake van etc - no gameplay purpose, just eye candy.
+    Alternative shaped caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
     def __init__(self, **kwargs):
         self.base_id = "goods_caboose_car"
         super().__init__(**kwargs)
+        self.hide_in_game = True
+
+
+class CabooseCarRandomisedConsist(CabooseCarConsistBase):
+    """
+    Random choice of caboose car sprite, from available caboose cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_caboose_car"
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(dice_colour=1)
 
 
 class CarbonBlackHopperCarConsist(CarConsist):

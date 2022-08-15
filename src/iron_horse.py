@@ -96,13 +96,14 @@ from vehicles import railbus_passenger_trailer_cars
 from vehicles import railcar_passenger_trailer_cars
 from vehicles import randomised_box_cars
 from vehicles import randomised_bulk_cars
+from vehicles import randomised_caboose_cars
+from vehicles import randomised_chemicals_tank_cars
 from vehicles import randomised_cold_metal_cars
 from vehicles import randomised_dump_cars
 from vehicles import randomised_flat_cars
 from vehicles import randomised_hopper_cars
 from vehicles import randomised_open_cars
 from vehicles import randomised_piece_goods_cars
-from vehicles import randomised_chemicals_tank_cars
 from vehicles import reefer_cars
 from vehicles import restaurant_cars
 from vehicles import rock_hopper_cars
@@ -391,13 +392,14 @@ def main():
     railcar_passenger_trailer_cars.main()
     randomised_box_cars.main()
     randomised_bulk_cars.main()
+    randomised_caboose_cars.main()
+    randomised_chemicals_tank_cars.main()
     randomised_cold_metal_cars.main()
     randomised_dump_cars.main()
     randomised_flat_cars.main()
     randomised_hopper_cars.main()
     randomised_open_cars.main()
     randomised_piece_goods_cars.main()
-    randomised_chemicals_tank_cars.main()
     rock_hopper_cars.main()
     roller_roof_hopper_cars.main()
     silo_cars.main()
