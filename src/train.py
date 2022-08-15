@@ -2318,16 +2318,6 @@ class CabooseCarConsist(CabooseCarConsistBase):
         super().__init__(**kwargs)
 
 
-class GoodsCabooseCarConsist(CabooseCarConsistBase):
-    """
-    Alternative shaped caboose, brake van etc - no gameplay purpose, just eye candy.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "goods_caboose_car"
-        super().__init__(**kwargs)
-
-
 class CarbonBlackHopperCarConsist(CarConsist):
     """
     Dedicated covered hopper car for carbon black.  No other cargos.

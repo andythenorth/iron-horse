@@ -271,15 +271,15 @@ def main():
                     "pony_railfreight_2": ["caboose_6"],
                     # "pony_railfreight_2": ["railfreight_2"],
                 },
-                "goods_caboose_car": {
-                    "pony_goods_caboose_car_default_1": ["caboose_1"],
-                    "pony_goods_caboose_car_default_2": ["caboose_2"],
-                    "pony_goods_caboose_car_default_3": ["caboose_3"],
-                    "pony_goods_caboose_car_default_4": ["caboose_4"],
-                    "pony_goods_caboose_car_default_5": ["caboose_5"],
-                    "pony_goods_caboose_car_default_6": ["caboose_6"],
-                    "pony_railfreight_1": ["railfreight_1", "brown_1"],
-                },
+                # "goods_caboose_car": {
+                # "pony_goods_caboose_car_default_1": ["caboose_1"],
+                # "pony_goods_caboose_car_default_2": ["caboose_2"],
+                # "pony_goods_caboose_car_default_3": ["caboose_3"],
+                # "pony_goods_caboose_car_default_4": ["caboose_4"],
+                # "pony_goods_caboose_car_default_5": ["caboose_5"],
+                # "pony_goods_caboose_car_default_6": ["caboose_6"],
+                # "pony_railfreight_1": ["railfreight_1", "brown_1"],
+                # },
             },
             "NG": {
                 "caboose_car": {
@@ -294,27 +294,22 @@ def main():
             "RAIL": [
                 {
                     "caboose_car": "pony_caboose_car_default_1",
-                    "goods_caboose_car": "pony_goods_caboose_car_default_1",
+                    # "goods_caboose_car": "pony_goods_caboose_car_default_1",
                 },
                 {
                     "caboose_car": "pony_caboose_car_default_2",
-                    "goods_caboose_car": "pony_goods_caboose_car_default_2",
                 },
                 {
                     "caboose_car": "pony_caboose_car_default_3",
-                    "goods_caboose_car": "pony_goods_caboose_car_default_3",
                 },
                 {
                     "caboose_car": "pony_caboose_car_default_4",
-                    "goods_caboose_car": "pony_goods_caboose_car_default_4",
                 },
                 {
                     "caboose_car": "pony_caboose_car_default_5",
-                    "goods_caboose_car": "pony_goods_caboose_car_default_5",
                 },
                 {
                     "caboose_car": "pony_caboose_car_default_6",
-                    "goods_caboose_car": "pony_goods_caboose_car_default_6",
                 },
             ],
             "NG": [

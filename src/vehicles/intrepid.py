@@ -19,7 +19,7 @@ def main(roster_id):
         default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE")],
         force_caboose_families={
             "caboose_car": "pony_railfreight_1",
-            "goods_caboose_car": "pony_railfreight_1",
+            #"goods_caboose_car": "pony_railfreight_1",
         },
         alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
         sprites_complete=True,

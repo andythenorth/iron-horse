@@ -16,7 +16,7 @@ def main(roster_id):
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
         force_caboose_families={
             "caboose_car": "pony_railfreight_1",
-            "goods_caboose_car": "pony_railfreight_1",
+            #"goods_caboose_car": "pony_railfreight_1",
         },
         alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
         default_livery_extra_docs_examples=[
