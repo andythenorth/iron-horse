@@ -86,7 +86,6 @@ buy_menu_sort_order_wagons = [
     "randomised_cold_metal_car",
     "caboose_car",
     "goods_caboose_car",
-    "randomised_caboose_car",
 ]
 
 # mapping of railtype labels to the vehicle track type names

@@ -2268,9 +2268,6 @@ class CabooseCarConsistBase(CarConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "randomised_caboose_car",
-        ]
         self.speed_class = None  # no speed limit
         # refit nothing, don't mess with this, it breaks auto-replace
         self.class_refit_groups = []
@@ -2329,20 +2326,6 @@ class GoodsCabooseCarConsist(CabooseCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "goods_caboose_car"
         super().__init__(**kwargs)
-
-
-class CabooseCarRandomisedConsist(CabooseCarConsistBase):
-    """
-    Random choice of caboose car sprite, from available caboose cars.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "randomised_caboose_car"
-        super().__init__(**kwargs)
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(dice_colour=1)
 
 
 class CarbonBlackHopperCarConsist(CarConsist):
