@@ -134,10 +134,13 @@ class Pipeline(object):
             self.graphics_output_path,
             output_base_name + output_suffix + ".png",
         )
+        # we put the class name into the tmp output to
+        # (1) avoid clashes where file already exists with > 1 pipelines
+        # (2) aids debugging - can see explicit output from each pipeline
         output_path_tmp = os.path.join(
             self.graphics_output_path,
             "tmp",
-            output_base_name + output_suffix + ".new.png",
+            output_base_name + output_suffix + "." + self.__class__.__name__+ ".png",
         )
         spritesheet = pixa.make_spritesheet_from_image(input_image, DOS_PALETTE)
 
