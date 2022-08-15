@@ -2290,25 +2290,15 @@ class CabooseCarConsistBase(CarConsist):
             buy_menu_sprite_pairs=kwargs.get("buy_menu_sprite_pairs"),
         )
 
-    """
-    # nerfed for DEBUG
     @property
     def buy_menu_variants_by_date(self):
-        # map default caboose variants and date ranges to show them for
-        # don't use a dict, items can repeat, just nest 2 tuples
+        # map buy menu variants and date ranges to show them for
         result = []
         for counter, date_range in enumerate(
             self.roster.intro_year_ranges(self.base_track_type_name)
         ):
-            caboose_family_name = self.roster.caboose_default_family_by_generation[
-                self.base_track_type_name
-            ][counter][self.base_id]
-            caboose_label = self.roster.caboose_families[self.base_track_type_name][
-                self.base_id
-            ][caboose_family_name][0]
-            result.append((caboose_label, date_range))
+            result.append((counter, date_range))
         return result
-    """
 
 
 class CabooseCarConsist(CabooseCarConsistBase):

@@ -143,10 +143,10 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         return "vehicle_randomised.pynml"
 
     def buy_menu_sprite_variants(self, consist):
-        # vehicle id, y offset to buy menu row
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022
         source_data = [
+            # vehicle id, y offset to buy menu row
             (
                 list(
                     set(consist.frozen_roster_items["wagon_randomisation_candidates"])
@@ -432,11 +432,9 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         return None
 
     def buy_menu_sprite_variants(self, consist):
-        # vehicle id, y offset to buy menu row
-        # note that for randomised wagons, the list of candidates is compile time non-deterministic
-        # so the resulting sprites may vary between compiles - this is accepted as of August 2022
         result = {}
         for counter, buy_menu_sprite_pair in enumerate(self.buy_menu_sprite_pairs):
+            # vehicle id, y offset to buy menu row
             source_data = [
                 (
                     consist,
@@ -449,7 +447,6 @@ class GestaltGraphicsCaboose(GestaltGraphics):
             ]
 
             result[counter] = source_data
-        print(result)
         return result
 
 
