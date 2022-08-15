@@ -161,7 +161,7 @@ class Pipeline(object):
             # save tmp file
             spritesheet.save(output_path_tmp)
             if not filecmp.cmp(output_path, output_path_tmp):
-                print("replacing", output_path)
+                # print("replacing", output_path) # comment this in / out as needed, generally it's a bit noisy to leave in
                 spritesheet.save(output_path)
             # we don't remove the tmp output files here, they don't do any harm, and the entire dir is removed by render_graphics when appropriate
         else:
