@@ -115,7 +115,7 @@ def main():
         spriterow_labels=spriterow_labels,
         caboose_families=caboose_families,
         buy_menu_sprite_pairs=buy_menu_sprite_pairs,
-        docs_image_spriterow=0,  # !! support for forcing docs image, may not be needed with randomised buy menu sprite ??
+        docs_image_spriterow=3,
         sprites_complete=False,
     )
 
@@ -129,7 +129,7 @@ def main():
         spriterow_labels=spriterow_labels,
         caboose_families=caboose_families,
         buy_menu_sprite_pairs=buy_menu_sprite_pairs,
-        docs_image_spriterow=0,  # !! support for forcing docs image, may not be needed with randomised buy menu sprite ??
+        docs_image_spriterow=3,
         sprites_complete=False,
     )
 
