@@ -22,6 +22,7 @@ def main(roster_id):
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
             ("COLOUR_CREAM", "COLOUR_YELLOW"),
         ],
+        caboose_family="gwr_1",
         sprites_complete=True,
     )
 

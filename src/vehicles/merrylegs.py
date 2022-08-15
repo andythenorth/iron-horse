@@ -16,6 +16,7 @@ def main(roster_id):
         fixed_run_cost_points=120,  # substantial cost bonus so it can make money
         random_reverse=True,
         gen=2,
+        caboose_family="gwr_1",
         sprites_complete=True,
     )
 
