@@ -2262,12 +2262,13 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
         )
 
 
-class CabooseCarConsistBase(CarConsist):
+class CabooseCarConsist(CarConsist):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
     def __init__(self, **kwargs):
+        self.base_id = "caboose_car"
         super().__init__(**kwargs)
         self.speed_class = None  # no speed limit
         # refit nothing, don't mess with this, it breaks auto-replace
@@ -2299,16 +2300,6 @@ class CabooseCarConsistBase(CarConsist):
         ):
             result.append((counter, date_range))
         return result
-
-
-class CabooseCarConsist(CabooseCarConsistBase):
-    """
-    Default caboose, brake van etc - no gameplay purpose, just eye candy.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "caboose_car"
-        super().__init__(**kwargs)
 
 
 class CarbonBlackHopperCarConsist(CarConsist):
