@@ -15,7 +15,7 @@ def main(roster_id):
         random_reverse=True,
         intro_year_offset=-10,  # let's be a little bit earlier for this one
         gen=5,
-        caboose_family="pony_railfreight_1",
+        caboose_family="railfreight_1",
         alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
         sprites_complete=True,
     )

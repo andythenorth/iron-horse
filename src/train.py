@@ -988,7 +988,7 @@ class EngineConsist(Consist):
         if self._caboose_family is not None:
             return self._caboose_family
         else:
-            return "default"
+            return "default_" + str(self.gen)
 
     @property
     def buy_cost(self):

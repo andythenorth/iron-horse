@@ -18,7 +18,7 @@ def main(roster_id):
         gen=2,
         intro_year_offset=10,  # introduce later than gen epoch by design
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
-        caboose_family="pony_gwr_1",
+        caboose_family="gwr_1",
         sprites_complete=True,
     )
 

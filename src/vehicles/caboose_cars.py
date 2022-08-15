@@ -2,78 +2,18 @@ from train import CabooseCarConsist, CabooseCar
 
 
 def main():
-    """
-    # caboose families (family names and caboose names are arbitrary strings)
-    # caboose names map to labelled spriterows, as defined in the vehicle files
-    caboose_families={
-        "RAIL": {
-            "caboose_car": {
-                "pony_caboose_car_default_1": ["caboose_1"],
-                "pony_caboose_car_default_2": ["caboose_2"],
-                "pony_caboose_car_default_3": ["caboose_3"],
-                "pony_caboose_car_default_4": ["caboose_4"],
-                "pony_caboose_car_default_5": ["caboose_5"],
-                "pony_caboose_car_default_6": ["caboose_6"],
-                "pony_gwr_1": ["caboose_1"],
-                # "pony_gwr_1": ["caboose_1", "gwr_1"],
-                "pony_railfreight_1": ["railfreight_1", "brown_1"],
-                "pony_railfreight_2": ["caboose_6"],
-                # "pony_railfreight_2": ["railfreight_2"],
-            },
-            # "goods_caboose_car": {
-            # "pony_goods_caboose_car_default_1": ["caboose_1"],
-            # "pony_goods_caboose_car_default_2": ["caboose_2"],
-            # "pony_goods_caboose_car_default_3": ["caboose_3"],
-            # "pony_goods_caboose_car_default_4": ["caboose_4"],
-            # "pony_goods_caboose_car_default_5": ["caboose_5"],
-            # "pony_goods_caboose_car_default_6": ["caboose_6"],
-            # "pony_railfreight_1": ["railfreight_1", "brown_1"],
-            # },
-        },
-        "NG": {
-            "caboose_car": {
-                "pony_ng_caboose_car_1": ["ng_caboose_1"],
-                "pony_ng_caboose_car_2": ["ng_caboose_2"],
-                "pony_ng_caboose_car_3": ["ng_caboose_3"],
-            },
-        },
-    },
-    # lists of one default family name per generation, ascending
-    caboose_default_family_by_generation={
-        "RAIL": [
-            {
-                "caboose_car": "pony_caboose_car_default_1",
-                # "goods_caboose_car": "pony_goods_caboose_car_default_1",
-            },
-            {
-                "caboose_car": "pony_caboose_car_default_2",
-            },
-            {
-                "caboose_car": "pony_caboose_car_default_3",
-            },
-            {
-                "caboose_car": "pony_caboose_car_default_4",
-            },
-            {
-                "caboose_car": "pony_caboose_car_default_5",
-            },
-            {
-                "caboose_car": "pony_caboose_car_default_6",
-            },
-        ],
-        "NG": [
-            # ng caboose don't have much variation
-            {"caboose_car": "pony_ng_caboose_car_1"},
-            {"caboose_car": "pony_ng_caboose_car_1"},
-            {"caboose_car": "pony_ng_caboose_car_2"},
-            {"caboose_car": "pony_ng_caboose_car_3"},
-        ],
-    },
-    """
     # --------------- pony NG ----------------------------------------------------------------------
-    # note that spriterow mapping will get redefined for different rosters and base track types
-    spriterow_labels = ["ng_caboose_1", "ng_caboose_2", "ng_caboose_3"]
-    caboose_families = {}
+    # caboose names map to labelled spriterows, as defined in the vehicle files
+    # note that spriterow mapping will need redefined for each roster and base track type
+    # names are arbitrary strings, except for 'default_1', 'default_2', etc which must match the number of generations for this base track type in the roster
+    spriterow_labels = ["ng_enclosed_1", "ng_enclosed_2", "ng_enclosed_3"]
+    # note that probability of a specific type within a family can be increased by repeating it in the list for that family
+    caboose_families = {
+        "default_1": ["ng_enclosed_1"],
+        "default_2": ["ng_enclosed_2"],
+        "default_3": ["ng_enclosed_3"],
+        "default_4": ["ng_enclosed_3"],
+    }
 
     consist = CabooseCarConsist(
         roster_id="pony",
@@ -102,20 +42,42 @@ def main():
     consist.add_unit(type=CabooseCar, chassis="4_axle_ng_16px")
 
     # --------------- pony ----------------------------------------------------------------------
-    # note that spriterow mapping will get redefined for different rosters and base track types
+    # caboose names map to labelled spriterows, as defined in the vehicle files
+    # note that spriterow mapping will need redefined for each roster and base track type
+    # names are arbitrary strings, except for 'default_1', 'default_2', etc which must match the number of generations for this base track type in the roster
     spriterow_labels = [
-        "caboose_1",
-        "caboose_2",
-        "caboose_3",
-        "caboose_4",
-        "caboose_5",
-        "caboose_6",
+        "cc_enclosed_1",
+        "cc_enclosed_2_3",
+        "cc_open_2_3",
+        "cc_enclosed_4",
+        "cc_enclosed_5",
+        "cc_enclosed_6",
         "gwr_1",
-        "brown_1",
-        "railfreight_1",
+        "brown_enclosed_1",
+        "brown_open_1",
+        "railfreight_enclosed_1",
+        "railfreight_open_1",
         # "railfreight_2",
     ]
-    caboose_families = {}
+    caboose_families = {
+        # note that probability of a specific type within a family can be increased by repeating it in the list for that family
+        "default_1": ["cc_enclosed_1"],
+        "default_2": ["cc_enclosed_2_3", "cc_enclosed_2_3", "cc_open_2_3"],
+        "default_3": ["cc_enclosed_2_3", "cc_open_2_3", "cc_open_2_3"],
+        "default_4": ["cc_enclosed_4", "brown_enclosed_1", "brown_open_1", "cc_open_2_3"],
+        "default_5": ["cc_enclosed_5", "brown_enclosed_1", "brown_open_1", "cc_open_2_3"],
+        "default_6": ["cc_enclosed_6"],
+        "gwr_1": ["cc_enclosed_1"],
+        "railfreight_1": [
+            "railfreight_enclosed_1",
+            "railfreight_open_1",
+            "railfreight_open_1",
+            "brown_enclosed_1",
+            "brown_open_1",
+            "brown_open_1",
+        ],
+        "railfreight_2": ["cc_enclosed_6"],
+    }
 
     consist = CabooseCarConsist(
         roster_id="pony",
