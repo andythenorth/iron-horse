@@ -125,7 +125,8 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(
             [
-                "generate_buy_menu_spritesheet_from_randomisation_candidates",
+                "generate_empty_spritesheet",
+                "generate_buy_menu_sprite_from_randomisation_candidates",
             ]
         )
         self.dice_colour = kwargs["dice_colour"]
@@ -383,7 +384,16 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         super().__init__()
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
         self.pipelines = pipelines.get_pipelines(
-            ["extend_spriterows_for_composited_sprites_pipeline"]
+            [
+                "extend_spriterows_for_composited_sprites_pipeline",
+                "generate_buy_menu_sprite_from_randomisation_candidates",
+            ]
+        )
+        self.dice_colour = 1
+        self.buy_menu_width_addition = (
+            graphics_constants.dice_image_width
+            + 1
+            + (2 * graphics_constants.randomised_wagon_extra_unit_width)
         )
         self.num_variations = num_variations
         # but one livery remap is supported for this gestalt
@@ -409,6 +419,22 @@ class GestaltGraphicsCaboose(GestaltGraphics):
             "cargo_row_map not implemented in GestaltGraphicsCaboose (by design)"
         )
         return None
+
+    def buy_menu_sprite_sources(self, consist):
+        # vehicle id, y offset to buy menu row
+        # note that for randomised wagons, the list of candidates is compile time non-deterministic
+        # so the resulting sprites may vary between compiles - this is accepted as of August 2022
+        result = [
+            (
+                consist,
+                0,
+            ),
+            (
+                consist,
+                1,
+            ),
+        ]
+        return result
 
 
 class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):

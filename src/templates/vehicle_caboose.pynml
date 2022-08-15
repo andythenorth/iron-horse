@@ -40,6 +40,7 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type
 
 
 // buy menu graphics chain
+/* NERFED FOR DEBUG
 <tal:caboose_variants repeat="spriterow_label consist.spriterow_labels">
     spriteset(${vehicle.id}_ss_purchase_${spriterow_label}, "${graphics_path}${consist.id}.png") {
         ${consist.get_nml_for_spriteset_template(y_offset=repeat.spriterow_label.index * 30)}
@@ -53,7 +54,13 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, current_year)
         ${variant_name_and_date_range[1][0]}..${variant_name_and_date_range[1][1]}: return ${vehicle.id}_ss_purchase_${variant_name_and_date_range[0]};
     </tal:caboose_variants>
 }
-
+*/
+spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
+    ${consist.get_nml_for_spriteset_template(y_offset=0)}
+}
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
+    ${vehicle.id}_ss_purchase;
+}
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
 <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">

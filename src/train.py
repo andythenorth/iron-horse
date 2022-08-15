@@ -681,6 +681,7 @@ class Consist(object):
             return 360
         elif (
             self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon"
+            or self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsCaboose"
         ):
             # possibly fragile class name check, but eh
             return 360

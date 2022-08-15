@@ -468,9 +468,35 @@ class CheckBuyMenuOnlyPipeline(Pipeline):
         input_image.close()
 
 
-class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
+class GenerateEmptySpritesheet(Pipeline):
+    """
+    Trivial generation of an empty spritesheet (with bounding boxes), which will then be used in following pipelines.
+    """
+
+    def __init__(self):
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        super().__init__()
+
+    def render(self, consist, global_constants, graphics_output_path):
+        self.units = []
+        self.consist = consist
+        self.graphics_output_path = graphics_output_path
+
+        empty_spriterow_image = Image.open(
+            os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
+        )
+
+        self.render_common(empty_spriterow_image, self.units)
+        empty_spriterow_image.close()
+
+
+class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
     """
     Creates a custom buy menu composed from the randomisation candidates for this wagon, then saves with no other changes.
+    Possibly this could have been a unit not a pipeline, but eh.
+    This way was marginally easier to integrate.
+    Also keeps a clean separation between the generation of the vehicle sprites and the fancy buy menu sprite.
+    Potato / potato.
     """
 
     def __init__(self):
@@ -485,7 +511,7 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
         # we have to use frozen_roster_items as the roster object won't pickle for multiprocessing use (never figured out why)
         if len(self.consist.units) > 1:
             raise BaseException(
-                "GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline won't work with articulated consists - called by "
+                "GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline won't work with articulated consists - called by "
                 + self.consist.id
             )
         unit_length_in_pixels = 4 * self.consist.units[0].vehicle_length
@@ -509,7 +535,7 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
                 x_offset_dst=0,
             ),
         ]
-        for counter, (source_vehicle, y_offset) in enumerate(
+        for counter, (source_vehicle, spriterow_num) in enumerate(
             self.consist.gestalt_graphics.buy_menu_sprite_sources(self.consist)
         ):
             # note that we want the *generated* source wagon spritesheet
@@ -521,14 +547,15 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
             if self.consist.id == "randomised_box_car_pony_gen_1A":
                 # source_vehicle_image.show()
                 pass
+            y_offset = spriterow_num * graphics_constants.spriterow_height
             crop_box_src = (
                 224 + slice_configuration[counter]["x_offset_src"],
-                10,
+                10 + y_offset,
                 224
                 + slice_configuration[counter]["x_offset_src"]
                 + unit_slice_length_in_pixels
                 + 1,  # allow for 1px coupler / corrider overhang
-                26,
+                26 + y_offset,
             )
             crop_box_dest = (
                 360 + slice_configuration[counter]["x_offset_dst"],
@@ -605,14 +632,13 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
             AddBuyMenuSprite(self.process_buy_menu_sprite_from_randomisation_candidates)
         )
 
-        empty_spriterow_image = Image.open(
-            os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
+        # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
+        spritesheet_image = Image.open(
+            os.path.join(self.graphics_output_path, self.consist.id + ".png")
         )
 
-        # if self.consist.id == "randomised_box_car_pony_gen_1A":
-        # empty_spriterow_image.show()
-        self.render_common(empty_spriterow_image, self.units)
-        empty_spriterow_image.close()
+        self.render_common(spritesheet_image, self.units)
+        spritesheet_image.close()
 
 
 class GeneratePantographsSpritesheetPipeline(Pipeline):
@@ -1796,7 +1822,8 @@ def get_pipelines(pipeline_names):
     pipelines = {
         "pass_through_pipeline": PassThroughPipeline,
         "check_buy_menu_only": CheckBuyMenuOnlyPipeline,
-        "generate_buy_menu_spritesheet_from_randomisation_candidates": GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline,
+        "generate_buy_menu_sprite_from_randomisation_candidates": GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline,
+        "generate_empty_spritesheet": GenerateEmptySpritesheet,
         "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
         "generate_pantographs_up_spritesheet": GeneratePantographsUpSpritesheetPipeline,
         "generate_pantographs_down_spritesheet": GeneratePantographsDownSpritesheetPipeline,
