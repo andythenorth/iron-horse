@@ -389,6 +389,12 @@ class DocHelper(object):
         else:
             return str(consist.power) + " hp"
 
+    def speed_formatted_for_docs(self, consist):
+        result = [str(consist.speed) + "mph"]
+        if consist.lgv_capable:
+            result.append(str(consist.speed_on_lgv) + " mph (LGV)")
+        return " / ".join(result)
+
     def get_props_to_print_in_code_reference(self, subclass):
         props_to_print = {}
         for vehicle in subclass["vehicles"]:

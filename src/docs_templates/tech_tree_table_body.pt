@@ -204,7 +204,7 @@
                                                                         </small>
                                                                         <small>${doc_helper.power_formatted_for_docs(consist)}</small>
                                                                         <br />
-                                                                        <small>${consist.speed} mph</small>
+                                                                        <small>${doc_helper.speed_formatted_for_docs(consist)} mph</small>
 
                                                                         <small>${consist.power_speed_ratio}i</small>
                                                                         <tal:branch condition="consist.roster.id != 'pony'">

@@ -133,7 +133,7 @@
                         </tr>
                         <tr>
                             <th>Max. Speed</th>
-                            <td>${consist.speed} mph</td>
+                            <td>${doc_helper.speed_formatted_for_docs(consist)}</td>
                         </tr>
                         <tr>
                             <th>Power</th>
