@@ -2769,7 +2769,8 @@ class ExpressCarConsist(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["express"]
         # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
-        self.floating_run_cost_multiplier = 1.66
+        # keep matched to MailCarConsist
+        self.floating_run_cost_multiplier = 2.33
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
@@ -2813,9 +2814,8 @@ class ExpressIntermodalCarConsist(CarConsist):
         self._loading_speed_multiplier = 2
         # adjust weight factor because express intermodal car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
-        self.floating_run_cost_multiplier = (
-            1.66  # more than box car, less than mail car
-        )
+        # keep matched to MailCarConsist
+        self.floating_run_cost_multiplier = 2.33
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
@@ -3446,6 +3446,8 @@ class MailCarConsistBase(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["mail"]
         # specific structure for capacity multiplier and loading speed, over-ride in subclasses as needed
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
+        # keep matched to ExpressCarConsist
+        self.floating_run_cost_multiplier = 2.33
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
@@ -3475,7 +3477,6 @@ class MailCarConsist(MailCarConsistBase):
         self.speed_class = "express"
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
-        self.floating_run_cost_multiplier = 3
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
@@ -3517,8 +3518,6 @@ class MailHSTCarConsist(MailCarConsistBase):
         ]  # cab_id must be passed, do not mask errors with .get()
         self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.66
-        # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
-        self.floating_run_cost_multiplier = 3.33
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["hst"]
         )
