@@ -60,3 +60,11 @@ switch (FEAT_TRAINS, SELF, random_bits_reversed_engine, getbits(random_bits, 2, 
     return;
 }
 
+<!--! caboose uses random_switch for liveries as of August 2022, so this might collide, but probably fine
+      note that this does not use articulated offset - articulated caboose not supported
+-->
+switch (FEAT_TRAINS, SELF, random_bits_reversed_caboose, getbits(random_bits, 0, 1)) {
+    <!--! return with nothing else to yield the computed value  -->
+    return;
+}
+

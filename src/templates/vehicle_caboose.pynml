@@ -1,50 +1,56 @@
 <!--! this is the template for caboose cars -->
 
-<!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
-      'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
+<!--! 'reversed' is random reversal on construction, depending on vehicle random bits
+      'flipped' is user flipping vehicle in depot
       don't conflate them :) -->
-// default graphics chain
-<tal:caboose_variants repeat="caboose_variant consist.gestalt_graphics.spriterow_labels">
-    spriteset(${vehicle.id}_ss_${caboose_variant}_unflipped, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10 + (repeat.caboose_variant.index * 30))}
-    }
-    spriteset(${vehicle.id}_ss_${caboose_variant}_flipped, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', 'flipped', 10 + (repeat.caboose_variant.index * 30))}
-    }
+// CABBAGE ${consist.reversed_variants}
+<tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
+    <tal:caboose_variants repeat="caboose_variant consist.gestalt_graphics.spriterow_labels">
+        spriteset(${vehicle.id}_ss_${reversed_variant}_unflipped_${caboose_variant}, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name(reversed_variant, 'unflipped', 10 + (repeat.caboose_variant.index * 30))}
+        }
+        spriteset(${vehicle.id}_ss_${reversed_variant}_flipped_${caboose_variant}, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name(reversed_variant, 'flipped', 10 + (repeat.caboose_variant.index * 30))}
+        }
 
-    <!--! handle user flipped state -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_variant_${caboose_variant}, vehicle_is_flipped) {
-        1: return ${vehicle.id}_ss_${caboose_variant}_flipped;
-        return ${vehicle.id}_ss_${caboose_variant}_unflipped;
-    }
-</tal:caboose_variants>
-
-<tal:caboose_families repeat="caboose_family consist.gestalt_graphics.caboose_families.items()">
-    // ${caboose_family}
-    random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_caboose_family_${caboose_family[0]}) {
-        <tal:caboose_family_variants repeat="caboose_variant caboose_family[1]">
-            1: return ${vehicle.id}_switch_graphics_variant_${caboose_variant};
-        </tal:caboose_family_variants>
-    }
-</tal:caboose_families>
-
-switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_default_fallback, current_year) {
-    <tal:caboose_variants repeat="variant_date_range consist.buy_menu_variants_by_date">
-        ${variant_date_range[1][0]}..${variant_date_range[1][1]}: return ${vehicle.id}_switch_graphics_caboose_family_default_${variant_date_range[0] + 1};
+        <!--! handle user flipped state -->
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}_variant_${caboose_variant}, vehicle_is_flipped) {
+            1: return ${vehicle.id}_ss_${reversed_variant}_flipped_${caboose_variant};
+            return ${vehicle.id}_ss_${reversed_variant}_unflipped_${caboose_variant};
+        }
     </tal:caboose_variants>
 
-}
+    <tal:caboose_families repeat="caboose_family consist.gestalt_graphics.caboose_families.items()">
+        // ${caboose_family}
+        random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}_caboose_family_${caboose_family[0]}) {
+            <tal:caboose_family_variants repeat="caboose_variant caboose_family[1]">
+                1: return ${vehicle.id}_switch_graphics_${reversed_variant}_variant_${caboose_variant};
+            </tal:caboose_family_variants>
+        }
+    </tal:caboose_families>
 
-switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type_id) {
-<!--! this doesn't check grfid currently - add later if needed
-      this may also exceed the number of permitted ranges as number of engines increases, if that happens, try sharding (probably by roster)
-      or repeat over families, and provide the engine IDs matching each family -->
-    <tal:engine_consists repeat="engine_consist [engine_consist for engine_consist in consist.roster.engine_consists if engine_consist.base_track_type_name == consist.base_track_type_name]">
-        ${engine_consist.id}: return ${vehicle.id}_switch_graphics_caboose_family_${engine_consist.caboose_family};
-    </tal:engine_consists>
-    return ${vehicle.id}_switch_graphics_default_fallback;
-}
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_${reversed_variant}_default_fallback, current_year) {
+        <tal:caboose_variants repeat="variant_date_range consist.buy_menu_variants_by_date">
+            ${variant_date_range[1][0]}..${variant_date_range[1][1]}: return ${vehicle.id}_switch_graphics_${reversed_variant}_caboose_family_default_${variant_date_range[0] + 1};
+        </tal:caboose_variants>
 
+    }
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_${reversed_variant}_check_engine, vehicle_type_id) {
+    <!--! this doesn't check grfid currently - add later if needed
+          this may also exceed the number of permitted ranges as number of engines increases, if that happens, try sharding (probably by roster)
+          or repeat over families, and provide the engine IDs matching each family -->
+        <tal:engine_consists repeat="engine_consist [engine_consist for engine_consist in consist.roster.engine_consists if engine_consist.base_track_type_name == consist.base_track_type_name]">
+            ${engine_consist.id}: return ${vehicle.id}_switch_graphics_${reversed_variant}_caboose_family_${engine_consist.caboose_family};
+        </tal:engine_consists>
+        return ${vehicle.id}_switch_graphics_${reversed_variant}_default_fallback;
+    }
+</tal:random_reverse_variants>
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, random_bits_reversed_caboose()) {
+    <tal:random_graphics_variations repeat="reversed_variant consist.reversed_variants">
+        ${repeat.reversed_variant.index}: return ${vehicle.id}_switch_graphics_${reversed_variant}_check_engine;
+    </tal:random_graphics_variations>
+}
 
 // buy menu graphics chain
 <!--! this uses buy_menu_sprite_pairs *only* to get the count of buy menu sprites, the actual data from buy_menu_sprite_pairs isn't used -->

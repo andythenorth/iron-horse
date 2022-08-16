@@ -2282,6 +2282,7 @@ class CabooseCarConsist(CarConsist):
         )
         self.use_colour_randomisation_strategies = True
         self.allow_flip = True
+        self.random_reverse = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
@@ -4712,7 +4713,6 @@ class Train(object):
                 for nml_template in [
                     "vehicle_with_visible_cargo.pynml",
                     "vehicle_box_car_with_opening_doors.pynml",
-                    "vehicle_caboose.pynml",
                     "vehicle_with_cargo_specific_liveries.pynml",
                     "vehicle_with_consist_specific_liveries.pynml",
                 ]:
