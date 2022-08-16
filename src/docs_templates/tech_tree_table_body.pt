@@ -207,7 +207,9 @@
                                                                         <small>${consist.speed} mph</small>
 
                                                                         <small>${consist.power_speed_ratio}i</small>
-                                                                        <small>branch: ${consist.role_child_branch_num}</small>
+                                                                        <tal:branch condition="consist.roster.id != 'pony'">
+                                                                            <small>branch: ${consist.role_child_branch_num}</small>
+                                                                        </tal:branch>
                                                                     </span>
                                                                 </div>
                                                                 <div tal:condition="consist.replacement_consist is not None"
