@@ -10,16 +10,22 @@ def main():
         "cc_enclosed_1",
         "cc_enclosed_2",
         "cc_enclosed_3",
+        "cc_asymmetric_1",
+        "cc_asymmetric_2",
+        "cc_asymmetric_3",
         "brown_enclosed_1",
         "brown_enclosed_2",
         "brown_enclosed_3",
+        "brown_asymmetric_1",
+        "brown_asymmetric_2",
+        "brown_asymmetric_3",
     ]
     # note that probability of a specific type within a family can be increased by repeating it in the list for that family
     caboose_families = {
-        "default_1": ["cc_enclosed_1", "brown_enclosed_1"],
-        "default_2": ["cc_enclosed_2", "brown_enclosed_2"],
-        "default_3": ["cc_enclosed_3", "brown_enclosed_3"],
-        "default_4": ["cc_enclosed_3", "brown_enclosed_3"],
+        "default_1": ["cc_enclosed_1", "brown_enclosed_1", "cc_asymmetric_1", "brown_asymmetric_1"],
+        "default_2": ["cc_enclosed_2", "brown_enclosed_2", "cc_asymmetric_2", "brown_asymmetric_2"],
+        "default_3": ["cc_enclosed_3", "brown_enclosed_3", "cc_asymmetric_3", "brown_asymmetric_3"],
+        "default_4": ["cc_enclosed_3", "brown_enclosed_3", "cc_asymmetric_3", "brown_asymmetric_3"],
     }
     # these should match the number of default families, in order
     buy_menu_sprite_pairs = [
@@ -38,7 +44,7 @@ def main():
         spriterow_labels=spriterow_labels,
         caboose_families=caboose_families,
         buy_menu_sprite_pairs=buy_menu_sprite_pairs,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=CabooseCar, chassis="2_axle_ng_8px")
@@ -52,7 +58,7 @@ def main():
         spriterow_labels=spriterow_labels,
         caboose_families=caboose_families,
         buy_menu_sprite_pairs=buy_menu_sprite_pairs,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=CabooseCar, chassis="4_axle_ng_16px")
