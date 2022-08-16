@@ -57,12 +57,14 @@ def main():
     spriterow_labels = [
         "cc_enclosed_1",
         "cc_enclosed_2_3",
-        "cc_open_2_3",
         "cc_enclosed_4",
         "cc_enclosed_5",
         "cc_enclosed_6",
+        "cc_open_1",
         "gwr_1",
         "brown_enclosed_1",
+        "brown_enclosed_2_3",
+        "brown_enclosed_4",
         "brown_open_1",
         "railfreight_enclosed_1",
         "railfreight_open_1",
@@ -70,28 +72,28 @@ def main():
     ]
     # note that probability of a specific type within a family can be increased by repeating it in the list for that family
     caboose_families = {
-        "default_1": ["cc_enclosed_1"],
-        "default_2": ["cc_enclosed_2_3", "cc_enclosed_2_3", "cc_open_2_3"],
-        "default_3": ["cc_enclosed_2_3", "cc_open_2_3", "cc_open_2_3"],
+        "default_1": ["cc_enclosed_1", "brown_enclosed_1", "brown_enclosed_1", "cc_open_1", "brown_open_1"],
+        "default_2": ["cc_enclosed_2_3", "brown_enclosed_2_3", "cc_open_1", "brown_open_1"],
+        "default_3": ["cc_enclosed_2_3", "brown_enclosed_2_3", "cc_open_1", "cc_open_1", "brown_open_1"],
         "default_4": [
             "cc_enclosed_4",
-            "brown_enclosed_1",
+            "brown_enclosed_4",
             "brown_open_1",
-            "cc_open_2_3",
+            "cc_open_1",
         ],
         "default_5": [
             "cc_enclosed_5",
             "brown_enclosed_1",
             "brown_open_1",
-            "cc_open_2_3",
+            "cc_open_1",
         ],
-        "default_6": ["cc_enclosed_6", "cc_open_2_3"],
-        "gwr_1": ["gwr_1", "gwr_1", "brown_enclosed_1"],
+        "default_6": ["cc_enclosed_6", "cc_open_1"],
+        "gwr_1": ["gwr_1", "gwr_1", "brown_enclosed_2_3"],
         "railfreight_1": [
             "railfreight_enclosed_1",
             "railfreight_open_1",
             "railfreight_open_1",
-            "brown_enclosed_1",
+            "brown_enclosed_4",
             "brown_open_1",
             "brown_open_1",
         ],
@@ -99,12 +101,12 @@ def main():
     }
     # these should match the number of default families, in order
     buy_menu_sprite_pairs = [
-        ("cc_enclosed_1", "cc_enclosed_1"),
-        ("cc_enclosed_2_3", "cc_open_2_3"),
-        ("cc_enclosed_2_3", "cc_open_2_3"),
-        ("cc_enclosed_4", "cc_open_2_3"),
-        ("cc_enclosed_5", "cc_open_2_3"),
-        ("cc_enclosed_6", "cc_open_2_3"),
+        ("cc_enclosed_1", "brown_open_1"),
+        ("cc_enclosed_2_3", "brown_enclosed_2_3"),
+        ("cc_enclosed_2_3", "brown_open_1"),
+        ("cc_enclosed_4", "cc_open_1"),
+        ("cc_enclosed_5", "cc_open_1"),
+        ("cc_enclosed_6", "cc_open_1"),
     ]
 
     consist = CabooseCarConsist(
