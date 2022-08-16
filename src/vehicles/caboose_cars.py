@@ -94,6 +94,8 @@ def main():
         "cc_enclosed_5",
         "cc_enclosed_6",
         "cc_open_1",
+        "cc_open_2",
+        "cc_open_3",
         "cc_gwr_1",
         "brown_enclosed_1",
         "brown_enclosed_2_3",
@@ -140,16 +142,21 @@ def main():
         "default_4": [
             "cc_enclosed_4",
             "brown_enclosed_4",
+            "brown_enclosed_4",
+            "brown_open_1",
             "brown_open_1",
             "cc_open_1",
+            "cc_open_2",
         ],
         "default_5": [
             "cc_enclosed_5",
-            "brown_enclosed_1",
             "brown_open_1",
             "cc_open_1",
+            "cc_open_2",
+            "cc_open_2",
+            "cc_open_3",
         ],
-        "default_6": ["cc_enclosed_6", "cc_open_1"],
+        "default_6": ["cc_enclosed_6", "cc_enclosed_5", "cc_open_2", "cc_open_3", "cc_open_3"],
         "gwr_1": [
             "cc_gwr_1",
             "cc_gwr_1",
@@ -192,7 +199,7 @@ def main():
         caboose_families=caboose_families,
         buy_menu_sprite_pairs=buy_menu_sprite_pairs,
         docs_image_spriterow=3,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=CabooseCar, chassis="2_axle_caboose_16px")
@@ -206,7 +213,7 @@ def main():
         caboose_families=caboose_families,
         buy_menu_sprite_pairs=buy_menu_sprite_pairs,
         docs_image_spriterow=3,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=CabooseCar, chassis="4_axle_caboose_24px")
