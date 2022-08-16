@@ -278,7 +278,8 @@ class DocHelper(object):
         for wagon_consist in wagon_consists:
             # extensible excludes as needed
             if wagon_consist.gestalt_graphics.__class__.__name__ not in [
-                "GestaltGraphicsRandomisedWagon"
+                "GestaltGraphicsRandomisedWagon",
+                "GestaltGraphicsCaboose"
             ]:
                 result.append(wagon_consist)
         return result
