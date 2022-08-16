@@ -379,7 +379,9 @@ class DocHelper(object):
                 return self.unpack_name_string(consist)
 
     def power_formatted_for_docs(self, consist):
-        if consist.power_by_power_source is not None:
+        if consist.wagons_add_power:
+            return str(consist.cab_power) + " hp"
+        elif consist.power_by_power_source is not None:
             # crude assumption we can just walk over the keys and they'll be in the correct order (oof!)
             # !! we actually need to control the order somewhere - see vehicle_power_source_tree??
             result = []
