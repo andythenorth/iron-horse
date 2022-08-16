@@ -3,6 +3,57 @@ Changelog
 
 
 -------------
+2.50.0 Release
+-------------
+
+Not savegame compatible with Iron Horse releases before 2.50.0.
+
+*Changes*
+
+- reworked Brake Vans
+    - removed Goods Brake Van
+    - increased randomisation of Brake Vans
+    - will now show different body types (symmetric, asymmetric, enclosed porch, open porch etc)
+    - additional liveries
+    - some variants are dedicated to specific engines
+    - improved buy menu sprites to indicate random behaviour
+    - a randomised, date appropriate sprite now shown when in depot and not attached to an engine (previously showed 1860 sprite)
+- improved buy menu sprites for randomised wagons
+- for Xerxes and Yillen engines, each unit will now randomly reverse when built
+- set running cost same for Mail Vans, Express Vans and Express Container Cars
+- added support for woodchip and flour cargos (2TallTyler)
+- label ELRL railtype explicitly as 'AC Electric', as Iron Ibex is likely to add 'DC Electric' in future, and the two railtypes need distinct names
+- improved railtype sort order in construction menu
+- removed 'roster' parameter - rosters will be provided as separate grfs
+
+
+*Docs*
+
+- show both speeds for vehicles that travel faster on Dedicated High Speed Railway (Brenner and similar)
+- show power for trailer cars of trains that provide distributed power (Brenner and similar)
+- show both power values for electro-diesels
+- add 'Ultra Heavy Freight' and 'Ultra Heavy Express' role groups
+- improved Code Reference page
+- note that Python 3.10 is recommended (version of argparse used requires a specific 3.9 rev or newer, so easier to recommend 3.10)
+
+
+*Codechanges*
+
+- refactored many vehicle numeric IDs
+    - max ID for articulated vehicles is ~8192
+    - IDs have been freed below 8192 by moving non-articulated vehicles to IDs above 8192
+    - compile-time guards are provided to enforce articulated vehicles below 8192 and non-articulated above 8192
+- reworked Makefile and compile
+    - added support for compiling multiple grfs (Horse, Ibex, Moose), simultaneously or individually
+    - improved some aspects of prerequisite detection and general flow of make steps
+    - updated the approach to providing args to python entry points, using argparse to manage and validate parameters
+    - fix some irksome failures with graphics generation '.new.png' handling
+- added railtype and roster managers to Iron Horse, simplifying global / cross-roster lookups
+- refactored approach to vehicles with multiple power sources, adding support for an arbitrary number of power sources
+- refactored approach to managing vehicle intro date synchronisation / de-synchronisation (includes minor visible differences in gameplay)
+
+
+-------------
 2.49.1 Release
 -------------
 
