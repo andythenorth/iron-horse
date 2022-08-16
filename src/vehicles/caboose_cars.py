@@ -22,10 +22,30 @@ def main():
     ]
     # note that probability of a specific type within a family can be increased by repeating it in the list for that family
     caboose_families = {
-        "default_1": ["cc_enclosed_1", "brown_enclosed_1", "cc_asymmetric_1", "brown_asymmetric_1"],
-        "default_2": ["cc_enclosed_2", "brown_enclosed_2", "cc_asymmetric_2", "brown_asymmetric_2"],
-        "default_3": ["cc_enclosed_3", "brown_enclosed_3", "cc_asymmetric_3", "brown_asymmetric_3"],
-        "default_4": ["cc_enclosed_3", "brown_enclosed_3", "cc_asymmetric_3", "brown_asymmetric_3"],
+        "default_1": [
+            "cc_enclosed_1",
+            "brown_enclosed_1",
+            "cc_asymmetric_1",
+            "brown_asymmetric_1",
+        ],
+        "default_2": [
+            "cc_enclosed_2",
+            "brown_enclosed_2",
+            "cc_asymmetric_2",
+            "brown_asymmetric_2",
+        ],
+        "default_3": [
+            "cc_enclosed_3",
+            "brown_enclosed_3",
+            "cc_asymmetric_3",
+            "brown_asymmetric_3",
+        ],
+        "default_4": [
+            "cc_enclosed_3",
+            "brown_enclosed_3",
+            "cc_asymmetric_3",
+            "brown_asymmetric_3",
+        ],
     }
     # these should match the number of default families, in order
     buy_menu_sprite_pairs = [
@@ -86,7 +106,8 @@ def main():
         "grey_gwr_1",
         "railfreight_enclosed_1",
         "railfreight_open_1",
-        # "railfreight_2",
+        "railfreight_enclosed_2",
+        "railfreight_open_2",
     ]
     # note that probability of a specific type within a family can be increased by repeating it in the list for that family
     caboose_families = {
@@ -129,7 +150,13 @@ def main():
             "cc_open_1",
         ],
         "default_6": ["cc_enclosed_6", "cc_open_1"],
-        "gwr_1": ["cc_gwr_1", "cc_gwr_1", "brown_gwr_1", "grey_gwr_1", "grey_enclosed_2_3"],
+        "gwr_1": [
+            "cc_gwr_1",
+            "cc_gwr_1",
+            "brown_gwr_1",
+            "grey_gwr_1",
+            "grey_enclosed_2_3",
+        ],
         "railfreight_1": [
             "railfreight_enclosed_1",
             "railfreight_open_1",
@@ -138,7 +165,13 @@ def main():
             "brown_open_1",
             "brown_open_1",
         ],
-        "railfreight_2": ["cc_enclosed_6"],
+        "railfreight_2": [
+            "railfreight_enclosed_2",
+            "railfreight_open_2",
+            "cc_enclosed_6",
+            "cc_open_1",
+            "brown_open_1",
+        ],
     }
     # these should match the number of default families, in order
     buy_menu_sprite_pairs = [
