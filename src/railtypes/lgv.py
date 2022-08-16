@@ -15,7 +15,6 @@ def main(disabled=False):
         # this is a hidden railtype for vehicle cross-compatibility
         railtype_flags=["RAILTYPE_FLAG_HIDDEN", "RAILTYPE_FLAG_NO_LEVEL_CROSSING"],
         curve_speed_multiplier=1.66,  # decimal value seems to work?  I expected int would be required, but eh.
-        map_colour=0x25,
         sort_order=25,
         # TGVs can go on ELRL etc, but this won't allow RAIL / ELRL onto the TGV tracks
         # !! might wanna automate extending these with compatible types, via resolving the global constants table or something for all compatibility?

@@ -11,7 +11,6 @@ def main(disabled=False):
         construction_cost=10,
         maintenance_cost=10,
         railtype_flags=[],
-        map_colour=0x25,
         sort_order=8,
         compatible_railtype_list=[
         ],

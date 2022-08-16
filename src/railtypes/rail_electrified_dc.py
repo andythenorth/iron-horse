@@ -11,7 +11,6 @@ def main(disabled=False):
         construction_cost=12,
         maintenance_cost=12,
         railtype_flags=["RAILTYPE_FLAG_CATENARY"],
-        map_colour=0x25,
         sort_order=19,
         compatible_railtype_list=[
             "IHA_",

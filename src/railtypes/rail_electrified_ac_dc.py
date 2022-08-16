@@ -12,7 +12,6 @@ def main(disabled=False):
         maintenance_cost=12,
         # this is a hidden railtype for vehicle cross-compatibility
         railtype_flags=["RAILTYPE_FLAG_HIDDEN"],
-        map_colour=0x25,
         sort_order=19,
         compatible_railtype_list=[
             "IHA_",
