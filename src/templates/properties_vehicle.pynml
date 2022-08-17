@@ -117,9 +117,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             default_cargo_type:             ${consist.get_nml_expression_for_default_cargos()};
         </tal:default_cargo>
         misc_flags:                     bitmask(${vehicle.special_flags}); // nml constants
-        <tal:dual_headed condition="consist.dual_headed">
-            dual_headed:                    ${1 if consist.dual_headed else 0};
-        </tal:dual_headed>
+        dual_headed:                    ${1 if consist.dual_headed else 0};
         length:                         ${vehicle.vehicle_length};
         track_type:                     ${consist.track_type};
         effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
