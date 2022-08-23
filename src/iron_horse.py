@@ -27,6 +27,7 @@ from railtypes import narrow_gauge
 from railtypes import rail_electrified_ac
 from railtypes import rail_electrified_ac_dc
 from railtypes import rail_electrified_dc
+from railtypes import rail_electrified_stabiliser_rail
 from railtypes import rail_high_clearance
 
 # import rosters
@@ -312,6 +313,7 @@ def main():
     railtype_manager.add_railtype(rail_electrified_ac)
     railtype_manager.add_railtype(rail_electrified_ac_dc)
     railtype_manager.add_railtype(rail_electrified_dc)
+    railtype_manager.add_railtype(rail_electrified_stabiliser_rail)
     railtype_manager.add_railtype(rail_high_clearance)
 
     # rosters
