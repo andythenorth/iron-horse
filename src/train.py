@@ -622,6 +622,10 @@ class Consist(object):
         return self._loading_speed_multiplier
 
     @property
+    def is_randomised_wagon(self):
+        return self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon"
+
+    @property
     def roster(self):
         return iron_horse.roster_manager.get_roster_by_id(self.roster_id)
 
@@ -680,7 +684,7 @@ class Consist(object):
             # custom buy menu sprite for articulated vehicles
             return 360
         elif (
-            self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon"
+            self.is_randomised_wagon
             or self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsCaboose"
         ):
             # possibly fragile class name check, but eh
@@ -890,7 +894,7 @@ class Consist(object):
         # graphics processing can't depend on roster object reliably, as it blows up multiprocessing (can't pickle roster), for reasons I never figured out
         # this freezes any necessary roster items in place
         self.frozen_roster_items = {}
-        if self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon":
+        if self.is_randomised_wagon:
             self.frozen_roster_items[
                 "wagon_randomisation_candidates"
             ] = self.roster.get_wagon_randomisation_candidates(self)
