@@ -623,7 +623,15 @@ class Consist(object):
 
     @property
     def is_randomised_wagon(self):
-        return self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon"
+        # this shorthand to avoid looking up the classname directly for a couple of special cases
+        return (
+            self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon"
+        )
+
+    @property
+    def is_caboose(self):
+        # this shorthand to avoid looking up the classname directly for a couple of special cases
+        return self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsCaboose"
 
     @property
     def roster(self):
@@ -683,10 +691,7 @@ class Consist(object):
         if len(self.units) > 1:
             # custom buy menu sprite for articulated vehicles
             return 360
-        elif (
-            self.is_randomised_wagon
-            or self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsCaboose"
-        ):
+        elif self.is_randomised_wagon or self.is_caboose:
             # possibly fragile class name check, but eh
             return 360
         else:
@@ -1895,20 +1900,20 @@ class CarConsist(Consist):
 
     @property
     def name(self):
+        if self.is_randomised_wagon or self.is_caboose:
+            optional_randomised_suffix = "STR_NAME_SUFFIX_RANDOMISED_WAGON"
+        else:
+            optional_randomised_suffix = "STR_EMPTY"
         if self.subtype == "U":
-            # subtype U is a hack to indicate there is only one subtype for this wagon, so no suffix needed
-            return (
-                "string(STR_NAME_CONSIST_PLAIN, string("
-                + self.get_wagon_title_class_str()
-                + "))"
+            # subtype U is a hack to indicate there is only one subtype for this wagon, so no size suffix needed
+            return "string(STR_NAME_CONSIST_PLAIN, string({a}), string({b}))".format(
+                a=self.get_wagon_title_class_str(), b=optional_randomised_suffix
             )
         else:
-            return (
-                "string(STR_NAME_CONSIST_PARENTHESES, string("
-                + self.get_wagon_title_class_str()
-                + "), string("
-                + self.get_wagon_title_subtype_str()
-                + "))"
+            return "string(STR_NAME_CONSIST_PARENTHESES, string({a}), string({b}), string({c}))".format(
+                a=self.get_wagon_title_class_str(),
+                b=self.get_wagon_title_subtype_str(),
+                c=optional_randomised_suffix,
             )
 
     @property
