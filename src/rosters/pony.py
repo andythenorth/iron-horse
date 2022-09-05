@@ -39,6 +39,7 @@ from vehicles import deasil
 from vehicles import decapod
 from vehicles import defiant
 from vehicles import diablo
+from vehicles import doubletide
 from vehicles import dover
 from vehicles import dragon
 from vehicles import dreadnought
@@ -410,6 +411,7 @@ def main():
             blind_smuir,
             mainstay,
             yillen,
+            doubletide,
             girt_licker,
             lemon,
             esk,

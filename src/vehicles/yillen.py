@@ -9,7 +9,6 @@ def main(roster_id):
         name="Yillen",
         role="heavy_freight",
         role_child_branch_num=1,
-        # no replacement by design - continues to game end as unique 10/8, especially for industrial use etc
         power_by_power_source={
             "DIESEL": 2200,
         },
