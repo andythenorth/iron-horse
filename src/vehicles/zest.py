@@ -12,6 +12,7 @@ def main(roster_id):
         power_by_power_source={
             "AC": 1600,
         },
+        speed=87,  # continues past gen 5, so go faster
         random_reverse=True,
         pantograph_type="diamond-single",
         gen=4,
@@ -26,6 +27,6 @@ def main(roster_id):
     )
 
     consist.description = """Solid unit."""
-    consist.foamer_facts = """NER ES1, Metropolitan Railway camel-back and box-cab locomotives, Westoe Colliery electrics, generic steeple-cab locomotives"""
+    consist.foamer_facts = """Modernised NER ES1, Metropolitan Railway camel-back and box-cab locomotives, Westoe Colliery electrics, generic steeple-cab locomotives"""
 
     return consist
