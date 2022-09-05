@@ -59,7 +59,7 @@ class Consist(object):
         self._intro_year_days_offset = (
             None  # defined in subclasses, no need for instances to define this
         )
-        self.vehicle_life = kwargs.get("vehicle_life", 40)
+        self._vehicle_life = kwargs.get("vehicle_life", None)
         #  most consists are automatically replaced by the next consist in the role tree
         # ocasionally we need to merge two branches of the role, in this case set replacement consist id
         self._replacement_consist_id = kwargs.get("replacement_consist_id", None)
@@ -405,6 +405,22 @@ class Consist(object):
                 ):
                     result.append(consist)
         return result
+
+    @property
+    def vehicle_life(self):
+        if self._vehicle_life is not None:
+            # allow vehicles to provide a vehicle life if they want
+            return self._vehicle_life
+        elif self.replacement_consist is not None:
+            time_to_replacement = self.replacement_consist.intro_year - self.intro_year
+            if time_to_replacement > 40:
+                # round to nearest 10, then add some padding
+                return time_to_replacement - (time_to_replacement % 10) + 10
+            else:
+                return 40
+        else:
+            # pick a sensible value for vehicles that don't otherwise get replaced
+            return 40
 
     @property
     def model_life(self):
