@@ -20,7 +20,7 @@ def main(roster_id):
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_PINK", "COLOUR_WHITE"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -31,7 +31,8 @@ def main(roster_id):
         type=DieselEngineUnit, weight=68, vehicle_length=5, spriterow_num=1
     )
 
-    consist.description = """"""
-    consist.foamer_facts = """"""
+    #  guess the quote?
+    consist.description = """And ruined love when it is built anew grows fairer than at first, more strong, far greater."""
+    consist.foamer_facts = """Re-engineered BR Class 15, BR Class 16"""
 
     return consist
