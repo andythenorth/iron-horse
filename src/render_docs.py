@@ -381,19 +381,21 @@ class DocHelper(object):
 
     def power_formatted_for_docs(self, consist):
         if consist.wagons_add_power:
-            return str(consist.cab_power) + " hp"
+            return [str(consist.cab_power) + " hp"]
         elif consist.power_by_power_source is not None:
             # crude assumption we can just walk over the keys and they'll be in the correct order (oof!)
             # !! we actually need to control the order somewhere - see vehicle_power_source_tree??
             result = []
-            for power_data in reversed(consist.vehicle_power_source_tree):
-                result.append(power_data[0] + " " + str(consist.power_by_power_source[power_data[0]]) + " hp")
-            return " / ".join(result)
+            for power_data in consist.vehicle_power_source_tree:
+                power_source_name = base_lang_strings["STR_POWER_SOURCE_" + power_data[0]]
+                power_value = str(consist.power_by_power_source[power_data[0]]) + " hp"
+                result.append(power_source_name + " " + power_value)
+            return result
         else:
-            return str(consist.power) + " hp"
+            return [str(consist.power) + " hp"]
 
     def speed_formatted_for_docs(self, consist):
-        result = [str(consist.speed) + "mph"]
+        result = [str(consist.speed) + " mph"]
         if consist.lgv_capable:
             result.append(str(consist.speed_on_lgv) + " mph (LGV)")
         return " / ".join(result)

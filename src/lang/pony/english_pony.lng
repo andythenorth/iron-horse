@@ -174,9 +174,11 @@ STR_ROLE_VERY_HIGH_SPEED                                        :Very High Speed
 # assumes only diesel and electric currently
 STR_POWER_BY_POWER_SOURCE_TWO_SOURCES                           :{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER}
 STR_POWER_BY_POWER_SOURCE_THREE_SOURCES                         :{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER}
-STR_POWER_SOURCE_DIESEL                                         :Diesel
 STR_POWER_SOURCE_AC                                             :Electric (AC)
+STR_POWER_SOURCE_BATTERY_HYBRID                                 :Battery Hybrid
 STR_POWER_SOURCE_DC                                             :Electric (DC)
+STR_POWER_SOURCE_DIESEL                                         :Diesel
+STR_POWER_SOURCE_STEAM                                          :Steam
 
 # assumed to be handling case of lgv_capable (two speeds)
 STR_SPEED_BY_RAILTYPE_LGV_CAPABLE                               :{BLACK}Speed (Dedicated High Speed Rail): {GOLD}{VELOCITY} {}{BLACK}Speed (Normal Rail): {GOLD}{VELOCITY}
