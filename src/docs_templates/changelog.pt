@@ -12,7 +12,7 @@ Changelog
 - added Doubletide freight engine as later-game upgrade for Yillen, 2500 hp, available around 1999
 - increased Zest speed to 87 mph to match later-game wagon speeds
 - added large gen 4 randomised chemicals tanker
-- extend individual vehicle life of certain vehicle models which are available to buy for a long time
+- extended individual vehicle life of certain vehicle models which are available to buy for a long time
 - improved display of randomised vehicle names in buy menu:
     -  now shows the wagon size before '- Randomised' suffix, not after, as that's more useful to see
 - improved appearance of multiple brake vans
@@ -50,9 +50,9 @@ Not savegame compatible with Iron Horse releases before 2.50.0.
 - show both speeds for vehicles that travel faster on Dedicated High Speed Railway (Brenner and similar)
 - show power for trailer cars of trains that provide distributed power (Brenner and similar)
 - show both power values for electro-diesels
-- add 'Ultra Heavy Freight' and 'Ultra Heavy Express' role groups
+- added 'Ultra Heavy Freight' and 'Ultra Heavy Express' role groups
 - improved Code Reference page
-- note that Python 3.10 is recommended (version of argparse used requires a specific 3.9 rev or newer, so easier to recommend 3.10)
+- noted that Python 3.10 is recommended (version of argparse used requires a specific 3.9 rev or newer, so easier to recommend 3.10)
 
 
 *Codechanges*
@@ -65,7 +65,7 @@ Not savegame compatible with Iron Horse releases before 2.50.0.
     - added support for compiling multiple grfs (Horse, Ibex, Moose), simultaneously or individually
     - improved some aspects of prerequisite detection and general flow of make steps
     - updated the approach to providing args to python entry points, using argparse to manage and validate parameters
-    - fix some irksome failures with graphics generation '.new.png' handling
+    - fixed some irksome failures with graphics generation '.new.png' handling
 - added railtype and roster managers to Iron Horse, simplifying global / cross-roster lookups
 - refactored approach to vehicles with multiple power sources, adding support for an arbitrary number of power sources
 - refactored approach to managing vehicle intro date synchronisation / de-synchronisation (includes minor visible differences in gameplay)
