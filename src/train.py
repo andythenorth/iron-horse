@@ -347,9 +347,6 @@ class Consist(object):
     @property
     def replacement_consist(self):
         # option exists to force a replacement consist, this is used to merge tech tree branches
-        if self.role_child_branch_num == 0:
-            print("OOF", self.id, self.role_child_branch_num)
-
         if self._replacement_consist_id is not None:
             for consist in self.roster.engine_consists:
                 if consist.id == self._replacement_consist_id:
