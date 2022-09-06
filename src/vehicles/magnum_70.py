@@ -10,7 +10,7 @@ def main(roster_id):
         role="gronk!",
         role_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 500,
+            "BATTERY_HYBRID": 500,
         },
         speed=35,
         # dibble TE up for game balance, assume low gearing or something
