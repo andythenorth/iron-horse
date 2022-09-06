@@ -3,6 +3,22 @@ Changelog
 
 
 -------------
+2.51.0 Release
+-------------
+
+
+*Changes*
+
+- added Doubletide freight engine as later-game upgrade for Yillen, 2500 hp, available around 1999
+- increased Zest speed to 87 mph to match later-game wagon speeds
+- added large gen 4 randomised chemicals tanker
+- extend individual vehicle life of certain vehicle models which are available to buy for a long time
+- improved display of randomised vehicle names in buy menu:
+    -  now shows the wagon size before '- Randomised' suffix, not after, as that's more useful to see
+- improved appearance of multiple brake vans
+
+
+-------------
 2.50.0 Release
 -------------
 
