@@ -656,6 +656,8 @@ class Consist(object):
 
     def get_expression_for_availability(self):
         result = []
+        if self.power != 0:
+            return "0"
         if self.joker:
             result.append("param_simplified_gameplay==0")
         # a hack to make this check work now that roster is removed, for the non-joker case, where no condition to match
