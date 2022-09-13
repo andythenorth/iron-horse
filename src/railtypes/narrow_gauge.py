@@ -12,6 +12,7 @@ def main(disabled=False):
         sort_order=38,
         # assumes compatible with all axle weights and speeds for narrow gauge rail in standardised scheme
         compatible_railtype_list=[
+            "NAAN",
             "NABN",
             "NACN",
             "NADN",
@@ -23,11 +24,12 @@ def main(disabled=False):
             "NAEE",
         ],
         powered_railtype_list=[
+            "NAAN",
             "NABN",
             "NACN",
             "NADN",
             "NAEN",
         ],
         use_custom_sprites=True,
-        alternative_railtype_list=["NABN", "NACN", "NADN", "NAEN"],
+        alternative_railtype_list=["NAAN", "NABN", "NACN", "NADN", "NAEN"],
     )
