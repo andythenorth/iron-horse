@@ -3,6 +3,19 @@ Changelog
 
 
 -------------
+2.60.0 Release
+-------------
+
+
+*Changes*
+
+- added 'Wagons-only mode' setting, which hides all engines, snowploughs etc.
+    - can also be used with 'Simplified gameplay' to reduce the range of wagons if desired
+    - note that this option only makes sense if at least one other grf with engines is used in the game
+    - wagons will not appear in the game if there are no engines matching their railtype
+
+
+-------------
 2.52.0 Release
 -------------
 
