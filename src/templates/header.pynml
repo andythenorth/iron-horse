@@ -91,6 +91,15 @@ grf {
             }
         </tal:num_options>
 	}
+	param 7 {
+		param_wagons_only_mode {
+			name: string(STR_PARAM_WAGONS_ONLY_MODE);
+			desc: string(STR_PARAM_WAGONS_ONLY_MODE_DESC);
+			type: bool;
+			def_value: 0;
+			bit: 1;
+		}
+	}
 }
 
 // error if inflation is on for the game, as it leads to unplayable outcomes for players

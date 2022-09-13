@@ -639,6 +639,17 @@ class Consist(object):
         return self._loading_speed_multiplier
 
     @property
+    def hide_in_wagons_only_mode(self):
+        # wagons-only mode excludes all engines, and selected other vehicles
+        # all engines have power, all true wagons don't
+        if self.power > 0:
+            return True
+        elif self.wagons_add_power:
+            return True
+        else:
+            return False
+
+    @property
     def is_randomised_wagon(self):
         # this shorthand to avoid looking up the classname directly for a couple of special cases
         return (
@@ -656,11 +667,11 @@ class Consist(object):
 
     def get_expression_for_availability(self):
         result = []
-        if self.power != 0:
-            return "0"
         if self.joker:
             result.append("param_simplified_gameplay==0")
-        # a hack to make this check work now that roster is removed, for the non-joker case, where no condition to match
+        if self.hide_in_wagons_only_mode:
+            result.append("param_wagons_only_mode==0")
+        # a hack to make this check work now that roster is removed, for the non-joker case, with no other condition to match
         result.append("1")
         return " && ".join(result)
 
@@ -3811,6 +3822,10 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
             result.append(-1)
         return result
 
+    @property
+    def hide_in_wagons_only_mode(self):
+        return True
+
 
 class PassengerHSTCarConsist(PassengerCarConsistBase):
     """
@@ -3991,6 +4006,10 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         for i in range(len(result), 16):
             result.append(-1)
         return result
+
+    @property
+    def hide_in_wagons_only_mode(self):
+        return True
 
 
 class PassengerRestaurantCarConsist(PassengerCarConsistBase):
