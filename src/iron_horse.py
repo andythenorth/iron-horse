@@ -332,7 +332,7 @@ def main():
     # only comment in if needed for debugging
     alignment_cars.main()
     """
-    #automobile_cars.main()
+    automobile_cars.main()
     bolster_cars.main()
     box_cars.main()
     bulkhead_flat_cars.main()
@@ -346,7 +346,7 @@ def main():
     covered_hopper_cars.main()
     cryo_tank_cars.main()
     curtain_side_box_cars.main()
-    #double_deck_automobile_cars.main()
+    double_deck_automobile_cars.main()
     dry_powder_hopper_cars.main()
     dump_cars.main()
     dump_cars_high_side.main()
@@ -367,7 +367,7 @@ def main():
     kaolin_hopper_cars.main()
     livestock_cars.main()
     log_cars.main()
-    #low_floor_automobile_cars.main()
+    low_floor_automobile_cars.main()
     low_floor_intermodal_cars.main()
     mail_cars.main()
     merchandise_box_cars.main()
