@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=16510,
         name="Dreadnought",
         role="super_heavy_express",
-        role_child_branch_num=-1,
+        role_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 3300,
         },

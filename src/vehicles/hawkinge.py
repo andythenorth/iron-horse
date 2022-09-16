@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=6410,
         name="4-8-2 Hawkinge",
         role="super_heavy_express",
-        role_child_branch_num=-2,
+        role_child_branch_num=-1,
         power_by_power_source={
             "STEAM": 2350,
         },

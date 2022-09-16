@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=15470,
         name="Falcon",
         role="super_heavy_express",
-        role_child_branch_num=-2,
+        role_child_branch_num=-1,
         replacement_consist_id="onslaught",  # this Joker ends with Onslaught
         power_by_power_source={
             "DIESEL": 2800,
