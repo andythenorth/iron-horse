@@ -14,6 +14,7 @@ def main(roster_id):
         },
         random_reverse=True,
         gen=5,
+        speed=125,  # Shredder not replaced, but has gen 6 speeds
         pantograph_type="z-shaped-single",
         intro_year_offset=-2,  # introduce slightly earlier than gen epoch by design
         alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
