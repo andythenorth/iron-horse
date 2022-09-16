@@ -14,7 +14,6 @@ def main(roster_id):
         },
         random_reverse=True,
         gen=6,
-        intro_year_offset=-7,  # let's be earlier on this to keep the mail up with the HSTs etc
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         sprites_complete=True,
