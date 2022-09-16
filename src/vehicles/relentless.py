@@ -10,7 +10,7 @@ def main(roster_id):
         role="super_heavy_express",
         role_child_branch_num=1,
         power_by_power_source={
-            "DIESEL": 3950,  # slightly more than standard progression, to enable higher speed to be reach quickly
+            "DIESEL": 4250,  # slightly more than standard progression, to enable higher speed to be reach quickly
         },
         random_reverse=True,
         gen=6,
