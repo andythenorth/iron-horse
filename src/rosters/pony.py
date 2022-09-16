@@ -132,6 +132,7 @@ from vehicles import streamer
 from vehicles import strongbow
 from vehicles import sunshine_coast
 from vehicles import super_shoebox
+from vehicles import super_stentor
 from vehicles import swift
 from vehicles import tenacious
 from vehicles import tencendur
@@ -425,6 +426,7 @@ def main():
             cheddar_valley,
             stentor,
             highlander,
+            super_stentor,
             toaster,
             flindermouse,
             peasweep,
