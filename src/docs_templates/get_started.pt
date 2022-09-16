@@ -57,6 +57,7 @@
                         <li>Simplified gameplay with fewer trains</li>
                         <li>Turn off ${roster.str_grf_name} extra railtypes</li>
                         <li>Advanced control over freight wagon colour choices and colour randomisation</li>
+                        <li>Turn on wagons-only mode, for use with other grfs that are short on wagons</li>
                     </ul>
                 </div>
                 <br />
