@@ -715,7 +715,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
                     4 * processed_vehicle_image.size[0],
                     4 * doc_helper.buy_menu_sprite_height,
                 ),
-                resample=Image.NEAREST,
+                resample=Image.Resampling.NEAREST,
             )
             output_path = os.path.join(
                 static_dir_dst,
