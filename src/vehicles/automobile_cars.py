@@ -1,4 +1,4 @@
-from train import AutomobileCarConsist, AutomobileCar
+from train import AutomobileCarConsist, AutomobileCarSymmetric
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCar, chassis="3_axle_solid_express_24px")
+    consist.add_unit(type=AutomobileCarSymmetric, chassis="3_axle_solid_express_24px")
 
     consist = AutomobileCarConsist(
         roster_id="pony",
@@ -22,7 +22,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_solid_express_32px")
 
     consist = AutomobileCarConsist(
         roster_id="pony",
@@ -32,7 +32,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_solid_express_24px")
 
     consist = AutomobileCarConsist(
         roster_id="pony",
@@ -42,7 +42,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_solid_express_32px")
     consist = AutomobileCarConsist(
         roster_id="pony",
         base_numeric_id=14750,
@@ -51,7 +51,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCar, chassis="4_axle_filled_greebled_24px")
+    consist.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_filled_greebled_24px")
 
     consist = AutomobileCarConsist(
         roster_id="pony",
@@ -61,7 +61,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCar, chassis="4_axle_filled_greebled_32px")
+    consist.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_filled_greebled_32px")
 
     consist = AutomobileCarConsist(
         roster_id="pony",
@@ -71,7 +71,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCar, chassis="4_axle_filled_greebled_24px")
+    consist.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_filled_greebled_24px")
 
     consist = AutomobileCarConsist(
         roster_id="pony",
@@ -81,4 +81,4 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCar, chassis="4_axle_filled_greebled_32px")
+    consist.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_filled_greebled_32px")

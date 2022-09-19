@@ -1997,7 +1997,7 @@ class AutomobileCarConsistBase(CarConsist):
         self.speed_class = "express"
         self.class_refit_groups = []  # no classes, use explicit labels
         # self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
-        self.label_refits_allowed = ["VEHI"]
+        self.label_refits_allowed = ["PASS", "VEHI"]
         self.label_refits_disallowed = []
         self.default_cargos = ["VEHI"]
         # special flag to turn on cargo subtypes specific to vehicles, can be made more generic if subtypes need to be extensible in future
@@ -5387,7 +5387,7 @@ class ExpressMailCar(ExpressCar):
         self._symmetry_type = "asymmetric"
 
 
-class AutomobileCar(ExpressCar):
+class AutomobileCarAsymmetric(ExpressCar):
     """
     Automobile (cars, trucks, tractors) transporter car, subclassed from express car.
     This subclass exists to symmetry_type and random trigger.
@@ -5395,10 +5395,30 @@ class AutomobileCar(ExpressCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # vehicle transporter cars are asymmetric
+        # some vehicle transporter cars are asymmetric
         self._symmetry_type = "asymmetric"
         utils.echo_message(
-            "AutomobileCar random_trigger_switch is using _switch_graphics_spritelayer_cargos "
+            "AutomobileCarAsymmetric random_trigger_switch is using _switch_graphics_spritelayer_cargos "
+            + self.consist.id
+        )
+        self.random_trigger_switch = (
+            "_switch_graphics_spritelayer_cargos_"
+            + self.consist.spritelayer_cargo_layers[0]
+        )
+
+
+class AutomobileCarSymmetric(ExpressCar):
+    """
+    Automobile (cars, trucks, tractors) transporter car, subclassed from express car.
+    This subclass exists to symmetry_type and random trigger.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # some vehicle transporter cars are symmetric
+        self._symmetry_type = "symmetric"
+        utils.echo_message(
+            "AutomobileCarAsymmetric random_trigger_switch is using _switch_graphics_spritelayer_cargos "
             + self.consist.id
         )
         self.random_trigger_switch = (
