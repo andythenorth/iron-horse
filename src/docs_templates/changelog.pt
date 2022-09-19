@@ -3,6 +3,35 @@ Changelog
 
 
 -------------
+2.61.0 Release
+-------------
+
+
+*Changes*
+
+- added Super Stentor, 4550 hp, available around 2022
+- tweaked Relentless
+    - increased power to 4250 hp
+    - improved appearance
+- adjusted Onslaught
+    - now continues indefinitely, not replaced by Relentless
+    - speed increased to 125 mph
+- adjusted Avenger
+    - now continues indefinitely, not replaced by Sizzler
+    - speed increased to 125 mph
+
+
+*Docs*
+
+- note the 'Wagons only mode' parameter in Get Started page
+
+
+*Translations*
+
+- deleted outdated and very incomplete US-English translation
+
+
+-------------
 2.60.0 Release
 -------------
 
@@ -13,6 +42,9 @@ Changelog
     - can also be used with 'Simplified gameplay' to reduce the range of wagons if desired
     - note that this option only makes sense if at least one other grf with engines is used in the game
     - wagons will not appear in the game if there are no engines matching their railtype
+
+
+Observant readers will notice that versions 2.53 through 2.59 are missing. "Certain mistakes were made."
 
 
 -------------
