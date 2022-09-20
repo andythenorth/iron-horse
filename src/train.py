@@ -1112,7 +1112,9 @@ class EngineConsist(Consist):
             "freight",
         ]:  # bigger bonus for other freight
             run_cost = 0.8 * run_cost
-        # massive bonus for NG
+        # massive bonuses for NG and Gronks
+        elif self.role == "gronk!":
+            run_cost = 0.66 * run_cost
         if is_NG:
             run_cost = 0.33 * run_cost
         # cap to int for nml
