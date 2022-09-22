@@ -701,6 +701,14 @@ class Consist(object):
                         + electrification_type
                         + "()"
                     )
+                    # note that this is JFDI and expects the base_track_type_name to NOT be LGV, refactor approach if that's a problem
+                    if self.lgv_capable:
+                        result.append(
+                            "tile_powers_track_type_name_"
+                            + "LGV_ELECTRIFIED_"
+                            + electrification_type
+                            + "()"
+                        )
         else:
             # otherwise use the electrification type already known by the consist
             result.append(
