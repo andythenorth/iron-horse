@@ -3,6 +3,22 @@ Changelog
 
 
 -------------
+2.61.1 Release
+-------------
+
+
+*Fixes*
+
+- Very High Speed trains were not showing raised pantographs whilst running on dedicated high speed railway
+- running costs were too high for all 'gronk!' engine types, including:
+    - Grub
+    - Lamia
+    - Gronk
+    - Chuggypig
+    - Magnum 70
+
+
+-------------
 2.61.0 Release
 -------------
 
