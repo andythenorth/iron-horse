@@ -2102,7 +2102,7 @@ class BolsterCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_cold_metal_car",
+            "randomised_metal_coil_car",
             "randomised_flat_car",
         ]
         self._joker = True
@@ -2392,7 +2392,7 @@ class CoilBuggyCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = []  # none needed
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "cold_metal"
+            "metal_coil"
         ]
         self.label_refits_disallowed = []  # none needed
         self.default_cargos = polar_fox.constants.default_cargos["coil"]
@@ -2431,7 +2431,7 @@ class CoilCarConsistBase(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = []
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "cold_metal"
+            "metal_coil"
         ]
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 1.5
@@ -2439,7 +2439,7 @@ class CoilCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
+        self.randomised_candidate_groups = ["randomised_metal_coil_car"]
         # allow flipping, used to flip company colour
         self.allow_flip = True
 
@@ -2484,7 +2484,7 @@ class ColdMetalCarRandomisedConsist(CoilCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_cold_metal_car"
+        self.base_id = "randomised_metal_coil_car"
         super().__init__(**kwargs)
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
@@ -2985,7 +2985,7 @@ class FlatCarBulkheadConsist(FlatCarConsistBase):
         )
         self.randomised_candidate_groups = [
             "randomised_piece_goods_car",
-            "randomised_cold_metal_car",
+            "randomised_metal_coil_car",
             "randomised_flat_car",
         ]
         self._joker = True
@@ -3021,7 +3021,7 @@ class FlatCarPlateConsist(FlatCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_cold_metal_car",
+            "randomised_metal_coil_car",
             "randomised_piece_goods_car",
             "randomised_flat_car",
         ]
@@ -3088,7 +3088,7 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_cold_metal_car",
+            "randomised_metal_coil_car",
             "randomised_piece_goods_car",
             "randomised_flat_car",
         ]

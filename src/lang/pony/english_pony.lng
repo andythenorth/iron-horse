@@ -127,13 +127,13 @@ STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Railbus Trailer
 STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Railcar Trailer
 STR_NAME_SUFFIX_RANDOMISED_BOX_CAR                              :Van
 STR_NAME_SUFFIX_RANDOMISED_BULK_CAR                             :Bulk Wagon
-STR_NAME_SUFFIX_RANDOMISED_COLD_METAL_CAR                       :Cold Metal Wagon
+STR_NAME_SUFFIX_RANDOMISED_CHEMICALS_TANK_CAR                   :Chemicals Tanker
 STR_NAME_SUFFIX_RANDOMISED_DUMP_CAR                             :Mineral Wagon
 STR_NAME_SUFFIX_RANDOMISED_FLAT_CAR                             :Flatbed Cargo Wagon
 STR_NAME_SUFFIX_RANDOMISED_HOPPER_CAR                           :Hopper
+STR_NAME_SUFFIX_RANDOMISED_METAL_COIL_CAR                       :Coil Wagon - Randomised
 STR_NAME_SUFFIX_RANDOMISED_OPEN_CAR                             :Open Wagon
 STR_NAME_SUFFIX_RANDOMISED_PIECE_GOODS_CAR                      :Piece Goods Wagon
-STR_NAME_SUFFIX_RANDOMISED_CHEMICALS_TANK_CAR                   :Chemicals Tanker
 STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Van
 STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Restaurant Car
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Rock Hopper
