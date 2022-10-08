@@ -2,20 +2,54 @@ from train import CoveredHopperCarRandomisedConsist, FreightCar
 
 
 def main():
+    # --------------- pony NG ----------------------------------------------------------------------
+
+    consist = CoveredHopperCarRandomisedConsist(
+        roster_id="pony",
+        base_numeric_id=16620,
+        gen=2,
+        subtype="U",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = CoveredHopperCarRandomisedConsist(
+        roster_id="pony",
+        base_numeric_id=16630,
+        gen=3,
+        subtype="U",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = CoveredHopperCarRandomisedConsist(
+        roster_id="pony",
+        base_numeric_id=17280,
+        gen=4,
+        subtype="U",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
     # --------------- pony ----------------------------------------------------------------------
 
-    """
+    # gen 2 start
+
     consist = CoveredHopperCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=17240,
-        gen=1,
+        gen=2,
         subtype="A",
         sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
-    """
-    # no new type A for gen 2, gen 1 type A continues
 
     consist = CoveredHopperCarRandomisedConsist(
         roster_id="pony",
@@ -46,18 +80,6 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
-
-    """
-    consist = CoveredHopperCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=15850,
-        gen=5,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
-    """
 
     consist = CoveredHopperCarRandomisedConsist(
         roster_id="pony",

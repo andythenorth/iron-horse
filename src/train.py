@@ -2510,6 +2510,7 @@ class CoveredHopperCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
+        self.randomised_candidate_groups = ["randomised_covered_hopper_car"]
         # allow flipping, used to flip company colour
         self.allow_flip = True
 
@@ -2524,7 +2525,6 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
         self._joker = True
-        self.randomised_candidate_groups = ["randomised_covered_hopper_car"]
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.pellet_hopper_car_livery_recolour_maps,
@@ -2565,7 +2565,6 @@ class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
         self._joker = True
-        self.randomised_candidate_groups = ["randomised_covered_hopper_car"]
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_maps
