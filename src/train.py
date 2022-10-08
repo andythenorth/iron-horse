@@ -2523,6 +2523,7 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
         self._joker = True
+        self.randomised_candidate_groups = ["randomised_covered_hopper_car"]
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.pellet_hopper_car_livery_recolour_maps,
@@ -2563,6 +2564,7 @@ class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
         self._joker = True
+        self.randomised_candidate_groups = ["randomised_covered_hopper_car"]
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_maps
@@ -2590,6 +2592,20 @@ class CoveredHopperCarMineralConsist(CoveredHopperCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants
         )
+
+
+class CoveredHopperCarRandomisedConsist(CoveredHopperCarConsistBase):
+    """
+    Random choice of covered hopper car sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_covered_hopper_car"
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(dice_colour=1)
 
 
 class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
@@ -3289,7 +3305,7 @@ class IngotCarConsist(CarConsist):
         self.base_id = "ingot_car"
         super().__init__(**kwargs)
         self.class_refit_groups = []  # none needed
-        self.label_refits_allowed = ["IRON", "CSTI", "STCB", "STAL", "STST"]
+        self.label_refits_allowed = ["IRON", "CSTI", "STCB"]
         self.label_refits_disallowed = []  # none needed
         self.default_cargos = ["IRON"]
         self._loading_speed_multiplier = 1.5
