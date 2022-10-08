@@ -583,19 +583,25 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                 )
             ).crop((10, 10, 10 + dice_image_width, 10 + dice_image_height))
             dice_recolour_maps = {
-                1: {188: 9, 51: 12, 69: 15},
-                2: {188: 188, 51: 51, 69: 69},
-                3: {188: 45, 51: 47, 69: 49},
+                1: [
+                    {170: 1, 171: 2, 188: 9, 51: 12, 69: 15, 226: 9},
+                    {170: 181, 171: 182, 188: 9, 51: 12, 69: 15, 226: 9},
+                ],
+                2: [
+                    {170: 1, 171: 2, 188: 188, 51: 51, 69: 69, 226: 188},
+                    {170: 14, 171: 15, 188: 64, 51: 65, 69: 189, 226: 188},
+                ],
+                3: [
+                    {170: 1, 171: 2, 188: 45, 51: 47, 69: 49, 226: 45},
+                    {170: 14, 171: 15, 188: 182, 51: 164, 69: 165, 226: 45},
+                ],
             }
+            # the consist gen % 2 is to alternate the overlay colour between generations, to aid distinguising them when replacing vehicles
             dice_recolour_map = dice_recolour_maps[
                 self.consist.gestalt_graphics.dice_colour
-            ]
+            ][self.consist.gen % 2]
             dice_image = dice_image.point(
                 lambda i: dice_recolour_map[i] if i in dice_recolour_map.keys() else i
-            )
-            # now magically replace pink to another colour (dark grey maybe best?)
-            dice_image = dice_image.point(
-                lambda i: dice_recolour_map[188] if i == 226 else i
             )
             x_offset_dest = unit_slice_length_in_pixels + 1
             crop_box_dest = (
