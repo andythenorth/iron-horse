@@ -86,6 +86,9 @@ class Consist(object):
         # some wagons will provide power if specific engine IDs are in the consist
         self.wagons_add_power = False
         self.buy_menu_hint_wagons_add_power = False
+        # wagons can be candidates for the magic randomised wagons
+        # this is on Consist not CarConsist as we need to check it when determining order for all consists
+        self.randomised_candidate_groups = []
         # some vehicles will get a higher speed if hauled by an express engine (use rarely)
         self.easter_egg_haulage_speed_bonus = kwargs.get(
             "easter_egg_haulage_speed_bonus", False
@@ -1818,8 +1821,6 @@ class CarConsist(Consist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["universal"]
         )
-        # wagons can be candidates for the magic randomised wagons
-        self.randomised_candidate_groups = []
         # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.use_colour_randomisation_strategies = True
         # set to 2 in subclass if 2cc should be randomised - can't randomise both, too fiddly

@@ -91,6 +91,66 @@ class Roster(object):
             )
         return result
 
+    @property
+    def consists_in_order_optimised_for_action_2_ids(self):
+        # the base sort order for consists is for the buy menu, but this isn't effective for order in nml output
+        # because randomised wagons need action 2 IDs spanning multiple other vehicles, and this can cause problems allocating enough action 2 IDs
+        # therefore we re-order, to group (as far as we can) vehicles where IDs need to span
+        # this isn't infallible, but reduces the extent to which the randomised wagons consume action 2 IDs
+        consists = self.consists_in_buy_menu_order
+        result = []
+        all_randomised_candidate_groups = []
+        randomised_wagons_by_track_type_name_and_gen = {}
+        # we need to place wagons that are in randomisation groups together, then place the randomised wagon immediately after them
+        # first find which wagons belong together, by consolidating their groups
+        for consist in consists:
+            if (
+                len(consist.randomised_candidate_groups) > 0
+                and consist.randomised_candidate_groups not in all_randomised_candidate_groups
+            ):
+                all_randomised_candidate_groups.append(consist.randomised_candidate_groups)
+            if consist.is_randomised_wagon:
+                if consist.base_track_type_name not in randomised_wagons_by_track_type_name_and_gen:
+                   randomised_wagons_by_track_type_name_and_gen[consist.base_track_type_name] = {}
+                if consist.gen not in randomised_wagons_by_track_type_name_and_gen[consist.base_track_type_name]:
+                    randomised_wagons_by_track_type_name_and_gen[consist.base_track_type_name][consist.gen] = []
+                randomised_wagons_by_track_type_name_and_gen[consist.base_track_type_name][consist.gen].append(consist)
+        super_groups = []
+        for group in all_randomised_candidate_groups:
+            seen = False
+            for group_id in sorted(group):
+                for super_group in super_groups:
+                    if group_id in super_group:
+                        super_group.extend(group)
+                        seen = True
+            if not seen:
+                super_groups.append(group)
+        # super_groups will contain the same id multiple times, so consolidate to uniques
+        super_groups = [list(set(super_group)) for super_group in super_groups]
+        for super_group in super_groups:
+            for base_track_type_name, generations in randomised_wagons_by_track_type_name_and_gen.items():
+                for gen, randomised_wagons_consists in generations.items():
+                    # first find all the randomisation candidate wagons to place together
+                    # we need them by base track type and gen, then if they match this super_group
+                    for consist in consists:
+                        if consist.base_track_type_name == base_track_type_name and consist.gen == gen:
+                            for group_id in consist.randomised_candidate_groups:
+                                if group_id in super_group:
+                                    result.append(consist)
+                                    break
+                    # now find the actual randomised wagons that match this super group
+                    # append those after their candidate wagons
+                    for group_id in super_group:
+                        for consist in randomised_wagons_consists:
+                            if getattr(consist, "base_id", None) == group_id:
+                                result.append(consist)
+                                break
+        # now append all the remaining consists that don't need special treatment
+        for consist in consists:
+            if consist not in result:
+                result.append(consist)
+        return result
+
     def get_wagon_randomisation_candidates(self, randomisation_consist):
         result = []
         for base_id, wagons in self.wagon_consists.items():
@@ -168,9 +228,15 @@ class Roster(object):
                 raise BaseException("Error: " + consist.id + " has no units defined")
             elif len(consist.units) == 1:
                 if consist.base_numeric_id <= global_constants.max_articulated_id:
-                    raise BaseException("Error: " + consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
-                    #utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
-                    #utils.echo_message(str(consist.base_numeric_id))
+                    raise BaseException(
+                        "Error: "
+                        + consist.id
+                        + " with base_numeric_id "
+                        + str(consist.base_numeric_id)
+                        + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles"
+                    )
+                    # utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
+                    # utils.echo_message(str(consist.base_numeric_id))
             elif len(consist.units) > 1:
                 for unit in consist.units:
                     if unit.numeric_id > global_constants.max_articulated_id:
