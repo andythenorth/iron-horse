@@ -4243,6 +4243,24 @@ class SiloCarConsist(SiloCarConsistBase):
         )
 
 
+class SiloCarChemicalConsist(SiloCarConsistBase):
+    """
+    Chemical-coloured silo car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "chemical_silo_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.chemical_silo_car_livery_recolour_maps
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants
+        )
+
+
 class SiloCarCementConsist(SiloCarConsistBase):
     """
     Cement-coloured silo car.
