@@ -4213,6 +4213,7 @@ class SiloCarConsistBase(CarConsist):
             "CMNT",
             "CBLK",
             "SAND",
+            "SOAP",
         ]  # move to Polar Fox (maybe??)
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 1.5
