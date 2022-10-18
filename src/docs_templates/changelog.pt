@@ -3,6 +3,23 @@ Changelog
 
 
 -------------
+2.62.0 Release
+-------------
+
+
+*Changes*
+
+- added Chemical Silo Wagons, as a visual variation to standard Silo Wagons
+- added Randomised Covered Hoppers
+- added narrow gauge Randomised Piece Goods Wagons
+- added cleaning agents to refits for Silo Wagons and similar wagon types
+- added alloy steel and stainless steel to refits for Ingot Carriers
+- added steel pipe cargo support
+- renamed "Cold Metal Wagon - Randomised" to more accurate name "Coil Wagon - Randomised"
+- improved appearance of dice sprites used in buy menu to indicate randomised wagons
+
+
+-------------
 2.61.1 Release
 -------------
 
@@ -165,7 +182,7 @@ Not savegame compatible with Iron Horse releases before 2.49.0.
 
 *Changes*
 
-- added gen 5A scrap wagon
+- added gen 5 small Scrap Wagon
 - adjusted alternative engine liveries to only trigger on choice of second company colour, instead of combo of both company colours
 - updated which colours trigger each alternative livery
 - replaced randomised wagon buy menu icons with dice icons in varying colours, instead of '?' icons
