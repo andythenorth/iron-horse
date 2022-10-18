@@ -346,6 +346,21 @@ chemical_silo_car_livery_recolour_maps = (
         },
     ),
 )
+chemical_silo_car_livery_recolour_maps_weathered = (
+    (
+        "DFLT",
+        {
+            136: 88,
+            137: 97,
+            138: 156,
+            139: 157,
+            140: 158,
+            141: 101,
+            142: 102,
+            143: 103,
+        },
+    ),
+)
 
 covered_hopper_car_livery_recolour_maps = (
     (

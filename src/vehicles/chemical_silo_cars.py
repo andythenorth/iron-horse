@@ -76,7 +76,7 @@ def main():
 
     consist = SiloCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=14890,
+        base_numeric_id=17300,
         gen=6,
         subtype="B",
         sprites_complete=False,
@@ -86,7 +86,7 @@ def main():
 
     consist = SiloCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=14900,
+        base_numeric_id=17310,
         gen=6,
         subtype="C",
         sprites_complete=False,
