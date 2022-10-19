@@ -8,9 +8,9 @@ def main(roster_id):
         base_numeric_id=13980,
         name="Resilient",
         role="heavy_express",
-        role_child_branch_num=-2,
+        role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 2550,
+            "DIESEL": 2750, # significant jump from previous gen
         },
         random_reverse=True,
         gen=5,

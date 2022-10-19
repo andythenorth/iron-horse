@@ -8,15 +8,15 @@ def main(roster_id):
         base_numeric_id=14010,
         name="Evolution",
         role="heavy_express",
-        role_child_branch_num=-2,
+        role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 2750,
+            "DIESEL": 2950,
         },
         random_reverse=True,
         gen=6,
-        intro_year_offset=-2,  # let's not have everything turn up in 1990
+        intro_year_offset=-2,
         fixed_run_cost_points=70,  # give a bonus so this can be a genuine mixed-traffic engine
-        alternative_cc_livery="FREIGHTLINER_GBRF",  # tried liveries for RES, etc, not convinced
+        alternative_cc_livery="FREIGHTLINER_GBRF",
         default_livery_extra_docs_examples=[("COLOUR_BLUE", "COLOUR_WHITE")],
         sprites_complete=True,
     )
