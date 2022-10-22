@@ -3,6 +3,20 @@ Changelog
 
 
 -------------
+2.63.0 Release
+-------------
+
+
+*Changes*
+
+- adjusted power and tech tree positions for Evolution, Resilient, Revolution, Shredder, Vanguard locomotives
+- added basic set of wagons for transporting vehicles cargo
+    - Vehicle Transporters (single deck wagons)
+    - Car Transporters (double-deck wagons)
+    - refits for vehicles (car sprites), and also for passengers (motorail)
+
+
+-------------
 2.62.0 Release
 -------------
 
