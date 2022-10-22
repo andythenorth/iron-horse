@@ -75,7 +75,7 @@ from vehicles import intermodal_cars
 from vehicles import kaolin_hopper_cars
 from vehicles import livestock_cars
 from vehicles import log_cars
-from vehicles import low_floor_automobile_cars
+#from vehicles import low_floor_automobile_cars
 from vehicles import low_floor_intermodal_cars
 from vehicles import mail_cars
 from vehicles import merchandise_box_cars
@@ -370,7 +370,7 @@ def main():
     kaolin_hopper_cars.main()
     livestock_cars.main()
     log_cars.main()
-    low_floor_automobile_cars.main()
+    #low_floor_automobile_cars.main()
     low_floor_intermodal_cars.main()
     mail_cars.main()
     merchandise_box_cars.main()
