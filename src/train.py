@@ -5395,10 +5395,8 @@ class AutomobileCar(ExpressCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # vehicle transporter cars may be asymmetric, there is magic in the graphics processing to make this work
-        # self._symmetry_type = "asymmetric"
-        # !! temp to make it work
-        self._symmetry_type = "symmetric"
+        # vehicle transporter cars are asymmetric
+        self._symmetry_type = "asymmetric"
         utils.echo_message(
             "AutomobileCar random_trigger_switch is using _switch_graphics_spritelayer_cargos "
             + self.consist.id

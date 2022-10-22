@@ -1099,17 +1099,16 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                     variant["mask_row_offset_count"]
                     * graphics_constants.spriterow_height
                 )
-                # crop boxes may not work with asymmetric sprites?
                 crop_box_mask_source = (
-                    self.second_col_start_x,
+                    0,
                     mask_rows_offset,
-                    self.second_col_start_x + self.col_image_width,
+                    self.sprites_max_x_extent,
                     mask_rows_offset + graphics_constants.spriterow_height,
                 )
                 crop_box_mask_dest = (
-                    self.second_col_start_x,
                     0,
-                    self.second_col_start_x + self.col_image_width,
+                    0,
+                    self.sprites_max_x_extent,
                     graphics_constants.spriterow_height,
                 )
                 mask_source = (
