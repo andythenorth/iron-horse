@@ -96,7 +96,9 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         </tal:lead_unit_of_consist_only>
         <tal:trailing_parts_of_consist_only condition="not vehicle.is_lead_unit_of_consist">
             <!--! some properties must be explicitly set to 0 for trailing parts -->
-            power:                          0;
+            <!--! note that power cannot be 0 for engines, even this violates spec as of Nov 2022
+                  - for details see https://github.com/OpenTTD/OpenTTD/issues/10146 -->
+            power:                          ${1 if consist.power is not 0 else 0};
             weight:                         0;
             tractive_effort_coefficient:    0;
             cost_factor:                    0;
