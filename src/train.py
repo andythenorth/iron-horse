@@ -231,12 +231,10 @@ class Consist(object):
     @property
     def name(self):
         if self.str_name_suffix is not None:
-            return (
-                "string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_"
-                + self.id
-                + "), string("
-                + self.str_name_suffix
-                + "))"
+            return "string(STR_NAME_CONSIST_PARENTHESES, string({a}), string({b}), string({c}))".format(
+                a="STR_NAME_" + self.id,
+                b=self.str_name_suffix,
+                c="STR_EMPTY",
             )
         else:
             return "string(STR_NAME_" + self.id + ")"
