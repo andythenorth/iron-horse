@@ -64,7 +64,7 @@ class Pipeline(object):
 
         # hard-coded positions for buy menu sprite (if used - it's optional)
         x_offset = 0
-        for unit_counter, unit in enumerate(self.consist.units):
+        for unit_counter, unit in enumerate(self.consist.default_buyable_variant.units):
             # !! currently no cap on purchase menu sprite width
             # !! consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap)
             unit_length_in_pixels = 4 * unit.vehicle_length
@@ -83,10 +83,8 @@ class Pipeline(object):
                 # offset for 2nd unit to skip mask
                 if unit_counter == 1:
                     ruleset_offset_num_rows_jank = 1
-            if (
-                self.consist.gestalt_graphics.alternative_liveries is not None
-            ):  # alternative_liveries jank for engines eh
-                print("CABBAGE process_buy_menu_sprite")
+            # alternative_liveries jank for engines eh
+            if len(self.consist.gestalt_graphics.alternative_liveries) > 0:
                 ruleset_offset_num_rows_jank = unit_counter
             unit_spriterow_offset = (
                 unit.spriterow_num + ruleset_offset_num_rows_jank
@@ -513,12 +511,12 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         # take the first and last candidates;
         # note that we have to call set here, due to the way random candidates are padded out to make power of 2 list lengths for random bits
         # we have to use frozen_roster_items as the roster object won't pickle for multiprocessing use (never figured out why)
-        if len(self.consist.units) > 1:
+        if len(self.consist.default_buyable_variant.units) > 1:
             raise BaseException(
                 "GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline won't work with articulated consists - called by "
                 + self.consist.id
             )
-        unit_length_in_pixels = 4 * self.consist.units[0].vehicle_length
+        unit_length_in_pixels = 4 * self.consist.default_buyable_variant.units[0].vehicle_length
         unit_slice_length_in_pixels = (
             int(unit_length_in_pixels / 2)
             + graphics_constants.randomised_wagon_extra_unit_width

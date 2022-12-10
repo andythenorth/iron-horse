@@ -224,9 +224,9 @@ class Roster(object):
                     + consist.id
                     + "' is defined more than once - to fix, search src for the duplicate"
                 )
-            if len(consist.units) == 0:
+            if len(consist.default_buyable_variant.units) == 0:
                 raise BaseException("Error: " + consist.id + " has no units defined")
-            elif len(consist.units) == 1:
+            elif len(consist.default_buyable_variant.units) == 1:
                 if consist.base_numeric_id <= global_constants.max_articulated_id:
                     raise BaseException(
                         "Error: "
@@ -237,8 +237,8 @@ class Roster(object):
                     )
                     # utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
                     # utils.echo_message(str(consist.base_numeric_id))
-            elif len(consist.units) > 1:
-                for unit in consist.units:
+            elif len(consist.default_buyable_variant.units) > 1:
+                for unit in consist.default_buyable_variant.units:
                     if unit.numeric_id > global_constants.max_articulated_id:
                         raise BaseException(
                             "Error: "
@@ -249,7 +249,7 @@ class Roster(object):
                             + str(global_constants.max_articulated_id)
                             + " (use a lower consist base_numeric_id)"
                         )
-            for unit in set(consist.units):
+            for unit in set(consist.default_buyable_variant.units):
                 if unit.numeric_id in numeric_id_defender:
                     raise BaseException(
                         "Error: unit "

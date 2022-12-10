@@ -120,8 +120,9 @@ class Consist(object):
         self.floating_run_cost_multiplier = 1
         # fixed (baseline) run costs on this subtype, 100 points
         self.fixed_run_cost_points = 30  # default, over-ride in subclass as needed
-        # create structure to hold the units
-        self.units = []
+        self.alternative_liveries = []
+        for alternative_livery_name in kwargs.get("alternative_liveries", []):
+             self.alternative_liveries.append(self.roster.livery_presets[alternative_livery_name])
         # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
         self.default_cargos = []
         self.class_refit_groups = []
@@ -151,6 +152,20 @@ class Consist(object):
         )  # 0 indexed spriterows, position in generated spritesheet
         # aids 'project management'
         self.sprites_complete = kwargs.get("sprites_complete", False)
+        # create structure to hold the buyable variants, done last as may depend on other attrs of self
+        self.buyable_variants = self.resolve_buyable_variants()
+
+    def resolve_buyable_variants(self):
+        result = []
+        result.append(BuyableVariant())
+        for alternative_livery in self.alternative_liveries:
+            result.append(BuyableVariant())
+        return result
+
+    @property
+    def default_buyable_variant(self):
+        # convenience method
+        return self.buyable_variants[0]
 
     def add_unit(self, type, repeat=1, **kwargs):
         unit = type(consist=self, **kwargs)
@@ -162,14 +177,15 @@ class Consist(object):
             unit.id = self.id + "_" + str(count)
         unit.numeric_id = self.base_numeric_id + count
         for repeat_num in range(repeat):
-            self.units.append(unit)
+            for buyable_variant in self.buyable_variants:
+                buyable_variant.units.append(unit)
 
     @property
     def unique_units(self):
         # units may be repeated in the consist, sometimes we need an ordered list of unique units
         # set() doesn't preserve list order, which matters, so do it the hard way
         unique_units = []
-        for unit in self.units:
+        for unit in self.default_buyable_variant.units:
             if unit not in unique_units:
                 unique_units.append(unit)
         return unique_units
@@ -178,7 +194,7 @@ class Consist(object):
     def unique_spriterow_nums(self):
         # find the unique spriterow numbers, used in graphics generation
         result = []
-        for unit in set([unit.spriterow_num for unit in self.units]):
+        for unit in set([unit.spriterow_num for unit in self.default_buyable_variant.units]):
             result.append(unit)
             # extend with alternative cc livery if present, spritesheet format assumes unit_1_default, unit_1_alternative_liveries, unit_2_default, unit_2_alternative_liveries if present
             if self.gestalt_graphics.alternative_liveries is not None:
@@ -629,12 +645,12 @@ class Consist(object):
 
     @property
     def weight(self):
-        return sum([getattr(unit, "weight", 0) for unit in self.units])
+        return sum([getattr(unit, "weight", 0) for unit in self.default_buyable_variant.units])
 
     @property
     def length(self):
         # total length of the consist
-        return sum([unit.vehicle_length for unit in self.units])
+        return sum([unit.vehicle_length for unit in self.default_buyable_variant.units])
 
     @property
     def loading_speed_multiplier(self):
@@ -729,7 +745,7 @@ class Consist(object):
     def buy_menu_x_loc(self):
         # automatic buy menu sprite if single-unit consist
         # extend this to check an auto_buy_menu_sprite property if manual over-rides are needed in future
-        if len(self.units) > 1:
+        if len(self.default_buyable_variant.units) > 1:
             # custom buy menu sprite for articulated vehicles
             return 360
         elif self.is_randomised_wagon or self.is_caboose:
@@ -929,7 +945,7 @@ class Consist(object):
         return cite_name + ", " + random.choice(cite_titles)
 
     def render_articulated_switch(self, templates):
-        if len(self.units) > 1:
+        if len(self.default_buyable_variant.units) > 1:
             template = templates["articulated_parts.pynml"]
             nml_result = template(consist=self, global_constants=global_constants)
             return nml_result
@@ -990,7 +1006,7 @@ class Consist(object):
         self.assert_power()
         # templating
         nml_result = ""
-        if len(self.units) > 1:
+        if len(self.default_buyable_variant.units) > 1:
             nml_result = nml_result + self.render_articulated_switch(templates)
         for unit in self.unique_units:
             nml_result = nml_result + unit.render(templates, graphics_path)
@@ -1017,14 +1033,11 @@ class EngineConsist(Consist):
         # optionally force a specific caboose family to be used
         self._caboose_family = kwargs.get("caboose_family", None)
         # Graphics configuration only as required
-        alternative_liveries = []
-        for alternative_livery_name in kwargs.get("alternative_liveries", []):
-             alternative_liveries.append(self.roster.livery_presets[alternative_livery_name])
         # (pantographs can also be generated by other gestalts as needed, this isn't the exclusive gestalt for it)
         # note that this Gestalt might get replaced by subclasses as needed
         self.gestalt_graphics = GestaltGraphicsEngine(
             pantograph_type=self.pantograph_type,
-            alternative_liveries=alternative_liveries,
+            alternative_liveries=self.alternative_liveries,
             default_livery_extra_docs_examples=kwargs.get(
                 "default_livery_extra_docs_examples", []
             ),
@@ -4447,6 +4460,16 @@ class TorpedoCarConsist(CarConsist):
         # Graphics configuration
         # custom gestalt with dedicated template as these wagons are articulated which standard wagon templates don't support
         self.gestalt_graphics = GestaltGraphicsCustom("vehicle_torpedo_car.pynml")
+
+
+class BuyableVariant(object):
+    """
+    Class holding units, corresponding to buyable variants.
+    Each consist has a default variant, and optional alternative variants.
+    """
+
+    def __init__(self, **kwargs):
+        self.units = []
 
 
 class Train(object):

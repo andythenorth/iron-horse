@@ -143,7 +143,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
                 speed:                          ${vehicle.id}_switch_speed;
                 purchase_speed:                 ${int(1.60934 * consist.speed)};
             </tal:speed_is_optional>
-            <tal:add_articulated_parts condition="len(consist.units) > 1">
+            <tal:add_articulated_parts condition="len(consist.default_buyable_variant.units) > 1">
                 articulated_part: ${consist.id}_articulated_cb_switch;
             </tal:add_articulated_parts>
             <!--! setting buy menu text for engines and some wagons with role set currently - this is starting to look jank AF eh-->

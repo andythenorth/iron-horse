@@ -391,7 +391,7 @@ class DocHelper(object):
             result = self.fetch_prop(result, "Buy Cost", vehicle.buy_cost)
             result = self.fetch_prop(result, "Running Cost", vehicle.running_cost)
             result = self.fetch_prop(
-                result, "Loading Speed", [unit.loading_speed for unit in vehicle.units]
+                result, "Loading Speed", [unit.loading_speed for unit in vehicle.default_buyable_variant.units]
             )
 
             props_to_print[vehicle] = result["vehicle"]
