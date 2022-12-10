@@ -157,27 +157,31 @@ class Consist(object):
 
     def resolve_buyable_variants(self):
         result = []
-        result.append(BuyableVariant())
+        # add a default buyable variant for every vehicle
+        result.append(BuyableVariant(consist=self))
+        # buyable variants for alternative liveries
         for alternative_livery in self.alternative_liveries:
-            result.append(BuyableVariant())
+            result.append(BuyableVariant(consist=self))
+        # extend any further buyable variant types here as needed
         return result
 
     @property
     def default_buyable_variant(self):
-        # convenience method
+        # convenience method for e.g. docs etc.
         return self.buyable_variants[0]
 
     def add_unit(self, type, repeat=1, **kwargs):
-        unit = type(consist=self, **kwargs)
-        count = len(self.unique_units)
-        if count == 0:
-            # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc
-            unit.id = self.id
-        else:
-            unit.id = self.id + "_" + str(count)
-        unit.numeric_id = self.base_numeric_id + count
-        for repeat_num in range(repeat):
-            for buyable_variant in self.buyable_variants:
+        for buyable_variant in self.buyable_variants:
+            unit = type(consist=self, **kwargs)
+            count = len(self.unique_units)
+            if count == 0 and buyable_variant.buyable_variant_num == 0:
+                # first vehicle of first buyable variant gets no numeric id suffix - for compatibility with buy menu list ids, docs links etc
+                unit.id = self.id
+            else:
+                unit.id = self.id + "_variant_" + str(buyable_variant.buyable_variant_num) + "_unit_" + str(count)
+            unit.numeric_id = self.base_numeric_id + count
+            for repeat_num in range(repeat):
+                #print(buyable_variant.buyable_variant_num)
                 buyable_variant.units.append(unit)
 
     @property
@@ -1004,6 +1008,12 @@ class Consist(object):
     def render(self, templates, graphics_path):
         self.assert_speed()
         self.assert_power()
+        # temp
+        if self.id in ["resilient", "chinook"]:
+            print(self.id)
+            for buyable_variant in self.buyable_variants:
+                print(buyable_variant.buyable_variant_num)
+                print([(unit.id, unit.numeric_id) for unit in buyable_variant.units])
         # templating
         nml_result = ""
         if len(self.default_buyable_variant.units) > 1:
@@ -4468,9 +4478,13 @@ class BuyableVariant(object):
     Each consist has a default variant, and optional alternative variants.
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, consist, **kwargs):
         self.units = []
+        self.consist = consist
 
+    @property
+    def buyable_variant_num(self):
+        return self.consist.buyable_variants.index(self)
 
 class Train(object):
     """
