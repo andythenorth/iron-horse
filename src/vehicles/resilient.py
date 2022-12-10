@@ -16,7 +16,7 @@ def main(roster_id):
         gen=5,
         intro_year_offset=-4,  # let's not have everything turn up in 1990
         fixed_run_cost_points=65,  # give a bonus so this can be a genuine mixed-traffic engine
-        alternative_liveries=["FREIGHTLINER_GBRF"],  # tried liveries for RES, etc, not convinced
+        alternative_liveries=["FREIGHTLINER_GBRF", "RAILFREIGHT_TRIPLE_GREY"],  # tried liveries for RES, etc, not convinced
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
             ("COLOUR_GREY", "COLOUR_GREY"),
