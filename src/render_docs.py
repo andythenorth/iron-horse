@@ -210,23 +210,22 @@ class DocHelper(object):
             result[livery_name]["docs_image_input_cc"] = cc_remap_pair
         variants_config.append(result)
 
-        if alternative_liveries is not None:
-            for alternative_livery in alternative_liveries:
-                result = {}
-                for cc_remap_pair in alternative_livery["docs_image_input_cc"]:
-                    livery_name = self.get_livery_file_substr(cc_remap_pair)
-                    result[livery_name] = {}
-                    CC1_remap = (
-                        alternative_livery["remap_to_cc"]
-                        if alternative_livery["remap_to_cc"] is not None
-                        else cc_remap_pair[0]
-                    )  # handle possible remap of CC1
-                    CC2_remap = cc_remap_pair[
-                        1
-                    ]  # no forced remap to another cc for second colour, take it as is
-                    result[livery_name]["cc_remaps"] = {"CC1": CC1_remap, "CC2": CC2_remap}
-                    result[livery_name]["docs_image_input_cc"] = cc_remap_pair
-                variants_config.append(result)
+        for alternative_livery in alternative_liveries:
+            result = {}
+            for cc_remap_pair in alternative_livery["docs_image_input_cc"]:
+                livery_name = self.get_livery_file_substr(cc_remap_pair)
+                result[livery_name] = {}
+                CC1_remap = (
+                    alternative_livery["remap_to_cc"]
+                    if alternative_livery["remap_to_cc"] is not None
+                    else cc_remap_pair[0]
+                )  # handle possible remap of CC1
+                CC2_remap = cc_remap_pair[
+                    1
+                ]  # no forced remap to another cc for second colour, take it as is
+                result[livery_name]["cc_remaps"] = {"CC1": CC1_remap, "CC2": CC2_remap}
+                result[livery_name]["docs_image_input_cc"] = cc_remap_pair
+            variants_config.append(result)
         return variants_config
 
     def get_livery_file_substr(self, cc_pair):

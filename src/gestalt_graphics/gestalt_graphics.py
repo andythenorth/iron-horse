@@ -17,9 +17,8 @@ class GestaltGraphics(object):
     def __init__(self):
         # by default, pipelines are empty
         self.pipelines = pipelines.get_pipelines([])
-        # specific alt livery for specific company colour choices
-        # this is only used by engines as of July 2020, but we provide a default value here to avoid requiring getattr() in many places, which was masking errors
-        self.alternative_liveries = None  # over-ride as needed in subclasses
+        # this is only used by engines as of Dec 2022, but we provide a default value here to avoid requiring getattr() in many places, which was masking errors
+        self.alternative_liveries = []  # over-ride as needed in subclasses
         # sometimes processing may depend on another generated vehicle spritesheet, so there are multiple processing priorities, 1 = highest
         self.processing_priority = 1
         # default value for optional mask layer, this is JFDI for 2022, may need converting a more generic spritelayers structure in future
@@ -48,6 +47,16 @@ class GestaltGraphics(object):
         # stub, for compatibility reasons
         return ["single_row"]
 
+    @property
+    def all_liveries(self):
+        # a convenience property to insert a default_livery for ease of constructing template repeats
+        # note that default_livery is not guaranteed to contain all the key/value pairs that alternative_liveries has
+        result = []
+        default_livery = {}
+        result.append(default_livery)
+        result.extend(self.alternative_liveries)
+        return result
+
 
 class GestaltGraphicsEngine(GestaltGraphics):
     """
@@ -59,7 +68,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(["check_buy_menu_only"])
         self.colour_mapping_switch = "_switch_colour_mapping"
-        self.alternative_liveries = kwargs.get("alternative_liveries", None)
+        self.alternative_liveries = kwargs["alternative_liveries"]
         self.default_livery_extra_docs_examples = kwargs.get(
             "default_livery_extra_docs_examples", []
         )
@@ -78,17 +87,6 @@ class GestaltGraphicsEngine(GestaltGraphics):
         return "vehicle_engine.pynml"
 
     # get_output_row_types not re-implemented here as of July 2020, as no actual pixa processing is used for the engine sprites, add it if processing is needed in future
-
-    @property
-    def all_liveries(self):
-        # a convenience property to insert a default_livery for ease of constructing template repeats
-        # note that default_livery is not guaranteed to contain all the key/value pairs that alternative_liveries has
-        result = []
-        default_livery = {}
-        result.append(default_livery)
-        result.extend(self.alternative_liveries)
-        return result
-
 
 class GestaltGraphicsOnlyAddPantographs(GestaltGraphics):
     """

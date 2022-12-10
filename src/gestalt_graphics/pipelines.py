@@ -86,6 +86,7 @@ class Pipeline(object):
             if (
                 self.consist.gestalt_graphics.alternative_liveries is not None
             ):  # alternative_liveries jank for engines eh
+                print("CABBAGE process_buy_menu_sprite")
                 ruleset_offset_num_rows_jank = unit_counter
             unit_spriterow_offset = (
                 unit.spriterow_num + ruleset_offset_num_rows_jank
