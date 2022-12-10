@@ -950,10 +950,10 @@ class Consist(object):
                 ]
         return cite_name + ", " + random.choice(cite_titles)
 
-    def render_articulated_switch(self, templates):
-        if len(self.default_buyable_variant.units) > 1:
+    def render_articulated_switch(self, buyable_variant, templates):
+        if len(buyable_variant.units) > 1:
             template = templates["articulated_parts.pynml"]
-            nml_result = template(consist=self, global_constants=global_constants)
+            nml_result = template(consist=self, buyable_variant=buyable_variant, global_constants=global_constants)
             return nml_result
         else:
             return ""
@@ -1018,8 +1018,9 @@ class Consist(object):
                 print([(unit.id, unit.numeric_id) for unit in buyable_variant.units])
         # templating
         nml_result = ""
-        if len(self.default_buyable_variant.units) > 1:
-            nml_result = nml_result + self.render_articulated_switch(templates)
+        for buyable_variant in self.buyable_variants:
+            if len(buyable_variant.units) > 1:
+                nml_result = nml_result + self.render_articulated_switch(buyable_variant, templates)
         for unit in self.consist_unique_units:
             nml_result = nml_result + unit.render(templates, graphics_path)
         return nml_result

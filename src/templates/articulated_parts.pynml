@@ -1,6 +1,6 @@
 // add the units to articulated consist
-switch (FEAT_TRAINS, SELF, ${consist.id}_articulated_cb_switch, extra_callback_info1) {
-    <tal:trailing_units repeat="unit consist.default_buyable_variant.units">
+switch (FEAT_TRAINS, SELF, ${consist.id}_variant_${buyable_variant.buyable_variant_num}_articulated_cb_switch, extra_callback_info1) {
+    <tal:trailing_units repeat="unit buyable_variant.units">
         ${repeat.unit.index}: return ${unit.id};
     </tal:trailing_units>
   return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
