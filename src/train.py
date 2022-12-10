@@ -47,7 +47,6 @@ class Consist(object):
         # private var, used to store a name substr for engines, composed into name with other strings as needed
         self._name = kwargs.get("name", None)
         self.base_numeric_id = kwargs.get("base_numeric_id", None)
-        self.variant_group = kwargs.get("variant_group", None)
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
         # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
         self.roster_id = kwargs.get("roster_id")  # just fail if there's no roster
@@ -163,6 +162,9 @@ class Consist(object):
         for alternative_livery in self.alternative_liveries:
             result.append(BuyableVariant(consist=self))
         # extend any further buyable variant types here as needed
+        # post-process to set the numeric_id base of all variants
+        for counter, buyable_variant in enumerate(result):
+            buyable_variant.base_numeric_id = self.base_numeric_id + counter
         return result
 
     @property
@@ -172,27 +174,27 @@ class Consist(object):
 
     def add_unit(self, type, repeat=1, **kwargs):
         for buyable_variant in self.buyable_variants:
-            unit = type(consist=self, **kwargs)
-            count = len(self.unique_units)
+            unit = type(consist=self, buyable_variant=buyable_variant, **kwargs)
+            count = len(buyable_variant.unique_units)
             if count == 0 and buyable_variant.buyable_variant_num == 0:
                 # first vehicle of first buyable variant gets no numeric id suffix - for compatibility with buy menu list ids, docs links etc
                 unit.id = self.id
             else:
                 unit.id = self.id + "_variant_" + str(buyable_variant.buyable_variant_num) + "_unit_" + str(count)
-            unit.numeric_id = self.base_numeric_id + count
+            unit.numeric_id = buyable_variant.base_numeric_id + (len(self.buyable_variants) * len(buyable_variant.unique_units))
             for repeat_num in range(repeat):
-                #print(buyable_variant.buyable_variant_num)
                 buyable_variant.units.append(unit)
 
     @property
-    def unique_units(self):
+    def consist_unique_units(self):
         # units may be repeated in the consist, sometimes we need an ordered list of unique units
         # set() doesn't preserve list order, which matters, so do it the hard way
-        unique_units = []
-        for unit in self.default_buyable_variant.units:
-            if unit not in unique_units:
-                unique_units.append(unit)
-        return unique_units
+        consist_unique_units = []
+        for buyable_variant in self.buyable_variants:
+            for unit in buyable_variant.unique_units:
+                if unit not in consist_unique_units:
+                    consist_unique_units.append(unit)
+        return consist_unique_units
 
     @property
     def unique_spriterow_nums(self):
@@ -262,7 +264,7 @@ class Consist(object):
             return "string(STR_NAME_" + self.id + ")"
 
     def engine_varies_power_by_power_source(self, vehicle):
-        if self.power_by_power_source is not None and vehicle.is_lead_unit_of_consist:
+        if self.power_by_power_source is not None and vehicle.is_lead_unit_of_buyable_variant:
             if len(self.power_by_power_source) > 1:
                 # as of Dec 2018, can't use both variable power and wagon power
                 # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
@@ -1018,7 +1020,7 @@ class Consist(object):
         nml_result = ""
         if len(self.default_buyable_variant.units) > 1:
             nml_result = nml_result + self.render_articulated_switch(templates)
-        for unit in self.unique_units:
+        for unit in self.consist_unique_units:
             nml_result = nml_result + unit.render(templates, graphics_path)
         return nml_result
 
@@ -4483,6 +4485,16 @@ class BuyableVariant(object):
         self.consist = consist
 
     @property
+    def unique_units(self):
+        # units may be repeated in the buyable variant, sometimes we need an ordered list of unique units
+        # set() doesn't preserve list order, which matters, so do it the hard way
+        unique_units = []
+        for unit in self.units:
+            if unit not in unique_units:
+                unique_units.append(unit)
+        return unique_units
+
+    @property
     def buyable_variant_num(self):
         return self.consist.buyable_variants.index(self)
 
@@ -4493,6 +4505,7 @@ class Train(object):
 
     def __init__(self, **kwargs):
         self.consist = kwargs.get("consist")
+        self.buyable_variant = kwargs.get("buyable_variant")
 
         # setup properties for this train
         self.numeric_id = kwargs.get("numeric_id", None)
@@ -4604,18 +4617,24 @@ class Train(object):
     @property
     def availability(self):
         # only show vehicle in buy menu if it is first vehicle in consist
-        if self.is_lead_unit_of_consist:
+        if self.is_lead_unit_of_buyable_variant:
             return "ALL_CLIMATES"
         else:
             return "NO_CLIMATE"
 
     @property
-    def is_lead_unit_of_consist(self):
-        # first unit in the complete multi-unit consist
-        if self.numeric_id == self.consist.base_numeric_id:
+    def is_lead_unit_of_buyable_variant(self):
+        if self.numeric_id in [buyable_variant.base_numeric_id for buyable_variant in self.consist.buyable_variants]:
             return True
         else:
             return False
+
+    @property
+    def buyable_variant_group_id(self):
+        if self.is_lead_unit_of_buyable_variant and (self.numeric_id != self.consist.default_buyable_variant.base_numeric_id):
+            return self.consist.default_buyable_variant.base_numeric_id
+        else:
+            return None
 
     @property
     def symmetry_type(self):

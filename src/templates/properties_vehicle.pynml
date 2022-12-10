@@ -4,11 +4,11 @@
     <tal:include metal:use-macro="load: create_effect.pynml" />
 </tal:create_effect>
 
-<tal:buy_menu_text condition="vehicle.is_lead_unit_of_consist and (consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None or consist.lgv_capable">
+<tal:buy_menu_text condition="vehicle.is_lead_unit_of_buyable_variant and (consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None or consist.lgv_capable">
     <tal:include metal:use-macro="load: buy_menu_text.pynml" />
 </tal:buy_menu_text>
 
-<tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle) and vehicle.is_lead_unit_of_consist">
+<tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle) and vehicle.is_lead_unit_of_buyable_variant">
     // -- power varies by railtype -- //
     <!--! order of power sources is significant here, the switch chain should check highest value first, progressing to lowest
           the python method will return the power sources in the required order -->
@@ -22,7 +22,7 @@
     </tal:power_source>
 </tal:railtype_varies_power>
 
-<tal:wagons_add_power condition="consist.wagons_add_power and vehicle.is_lead_unit_of_consist">
+<tal:wagons_add_power condition="consist.wagons_add_power and vehicle.is_lead_unit_of_buyable_variant">
     // -- power varies if specific engines are present in the consist -- //
     <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power_0, [count_veh_id(${consist.cab_id}) > 0]) {
@@ -34,7 +34,7 @@
 <!--! some vehicles vary their speed depending on lead engine,
       this should be limited use, it's a *very* silly easter egg
       *cannot* be combined with any other variable speed effects  -->
-<tal:easter_egg_haulage_speed_bonus condition="consist.easter_egg_haulage_speed_bonus and vehicle.is_lead_unit_of_consist">
+<tal:easter_egg_haulage_speed_bonus condition="consist.easter_egg_haulage_speed_bonus and vehicle.is_lead_unit_of_buyable_variant">
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed, haulage_bonus_switch_speed_0()) {
         1: return ${int(1.60934 * consist.get_speed_by_class('express'))};
         0: return ${int(1.60934 * consist.speed)};
@@ -43,7 +43,7 @@
 
 <!--! some vehicles are equipped to travel faster on dedicated lgv railtype (high speed line)
       *cannot* be combined with any other variable speed effects  -->
-<tal:lgv_capable_speed_bonus condition="consist.lgv_capable and vehicle.is_lead_unit_of_consist">
+<tal:lgv_capable_speed_bonus condition="consist.lgv_capable and vehicle.is_lead_unit_of_buyable_variant">
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed_by_tile_railtype, [tile_is_railtype("IHAA") || tile_is_railtype("IHBA")]) {
         1: return ${int(1.60934 * consist.speed_on_lgv)};
         return ${int(1.60934 * consist.speed)};
@@ -57,7 +57,7 @@
 
 <!--! some vehicles vary running cost if restaurant car is in consist
       this will need generalised if other similar vehicles are added, e.g. motorail, observation car etc -->
-<tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False) and vehicle.is_lead_unit_of_consist">
+<tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False) and vehicle.is_lead_unit_of_buyable_variant">
     <tal:block case="True">
         switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_running_cost_factor, switch_is_restaurant_car_in_consist_0()) {
             <!--! eliminate run costs if 1 restaurant car is present (more than 1 has no additional effect)
@@ -79,10 +79,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
         name:                           ${consist.name};
         climates_available:             NO_CLIMATE; // nml constant
-        <tal:variant_group condition="consist.variant_group is not None">
-            variant_group:                  ${consist.variant_group};
-        </tal:variant_group>
-        <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
+        <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_buyable_variant">
             <!--! some properties should not be set for trailing parts of articulated consists -->
             engine_class:                   ${vehicle.engine_class};
             introduction_date:              date(${consist.intro_year}, ${1 + consist.intro_date_months_offset}, 1);
@@ -97,7 +94,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             reliability_decay:              20; // default value
             vehicle_life:                   ${consist.vehicle_life};
         </tal:lead_unit_of_consist_only>
-        <tal:trailing_parts_of_consist_only condition="not vehicle.is_lead_unit_of_consist">
+        <tal:trailing_parts_of_consist_only condition="not vehicle.is_lead_unit_of_buyable_variant">
             <!--! some properties must be explicitly set to 0 for trailing parts -->
             <!--! note that power cannot be 0 for engines, even this violates spec as of Nov 2022
                   - for details see https://github.com/OpenTTD/OpenTTD/issues/10146 -->
@@ -130,7 +127,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     graphics {
         default:                        ${vehicle.id}_switch_graphics;
         purchase:                       ${vehicle.id}_switch_graphics_purchase;
-        <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
+        <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_buyable_variant">
             <!--! certain callbacks should not be handled for trailing parts of articulated consists -->
             cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
             running_cost_factor:            ${vehicle.id}_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
@@ -188,10 +185,13 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     }
 }
 
-<tal:rosters condition="vehicle.is_lead_unit_of_consist">
+<tal:rosters condition="vehicle.is_lead_unit_of_buyable_variant">
     if (${consist.get_expression_for_availability()}) {
         item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             property {
+                <tal:variant_group condition="vehicle.buyable_variant_group_id is not None">
+                    variant_group:                  ${vehicle.buyable_variant_group_id};
+                </tal:variant_group>
                 climates_available:             ALL_CLIMATES;
             }
         }

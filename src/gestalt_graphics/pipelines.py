@@ -973,7 +973,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # builds a map of spriterows for the entire consist by walking gestalt graphics for each unique unit
         # might be that this should be handled via the gestalt graphics class, but potato / potato here I think
         result = []
-        for unit in self.consist.unique_units:
+        for unit in self.consist.consist_unique_units:
             unit_rows = []
             # assumes gestalt_graphics is used to handle all row types, no other cases at time of writing, could be changed eh?
             unit_rows.extend(self.consist.gestalt_graphics.get_output_row_types())
@@ -1768,7 +1768,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.get_spriterow_types_for_consist()
         ):
             # 'vehicle_unit' not 'unit' to avoid conflating with graphics processor 'unit'
-            self.vehicle_unit = self.consist.unique_units[
+            self.vehicle_unit = self.consist.consist_unique_units[
                 vehicle_counter
             ]  # !!  this is ugly hax, I didn't want to refactor the iterator above to contain the vehicle
             self.cur_vehicle_empty_row_yoffs = (
