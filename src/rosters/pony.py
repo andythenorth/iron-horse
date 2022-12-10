@@ -109,9 +109,6 @@ from vehicles import quietus
 from vehicles import relentless
 from vehicles import reliance
 from vehicles import resilient
-from vehicles import resilient_2
-from vehicles import resilient_3
-from vehicles import resilient_4
 from vehicles import revolution
 from vehicles import roarer
 from vehicles import saxon
@@ -302,6 +299,19 @@ def main():
                     ("COLOUR_ORANGE", "COLOUR_WHITE"),
                 ],
             },
+            "CABBAGE_1": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_GREY", "COLOUR_YELLOW"),
+                ],
+            },
+            "CABBAGE_2": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
+                ],
+            },
         },
         # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
         engines=[
@@ -340,9 +350,6 @@ def main():
             intrepid,
             vanguard,
             resilient,
-            resilient_2,
-            resilient_3,
-            resilient_4,
             evolution,  # out of normal order so that the names read 'Evolution', 'Revolution' (usually jokers come after the tech tree version not before)
             revolution,
             pegasus,
