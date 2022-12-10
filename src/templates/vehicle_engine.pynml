@@ -1,7 +1,9 @@
 <!--! this is the default template for trains that don't supply their own template -->
 
 <!--! convenience declaration of a global for shorthand (oof) -->
-<tal:global_alternative_liveries define="global alternative_liveries consist.gestalt_graphics.alternative_liveries" />
+<!--!<tal:global_alternative_liveries define="global alternative_liveries consist.gestalt_graphics.alternative_liveries[0]" />-->
+<!--! temp kludge -->
+<tal:global_alternative_liveries define="global alternative_liveries None" />
 
 <!--! 'reversed' is random reversal on construction, depending on vehicle random bits
       'flipped' is user flipping vehicle in depot
@@ -17,11 +19,14 @@
 
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${reversed_variant}_${flipped}, company_colour2) {
             <!--! assumes there's only 1 alternative livery currently -->
+            // CABBAGE - DELETE
+            <!--!
             <tal:alt_livery condition="alternative_liveries is not None">
                 <tal:livery_cc2_mapping repeat="cc2_livery_mapping alternative_liveries['cc2']">
                     ${cc2_livery_mapping}: return ${vehicle.id}_ss_${reversed_variant}_${flipped}_1;
                 </tal:livery_cc2_mapping>
             </tal:alt_livery>
+            -->
             return ${vehicle.id}_ss_${reversed_variant}_${flipped}_0;
         }
 

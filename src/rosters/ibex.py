@@ -176,13 +176,6 @@ def main():
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
         livery_presets={
             "FOO": {
-                "cc2": [
-                    "COLOUR_PALE_GREEN",
-                    "COLOUR_GREEN",
-                    "COLOUR_DARK_GREEN",
-                    # includes GBRF
-                    "COLOUR_MAUVE",
-                ],
                 # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
                 "remap_to_cc": "COLOUR_YELLOW",
                 "docs_image_input_cc": [

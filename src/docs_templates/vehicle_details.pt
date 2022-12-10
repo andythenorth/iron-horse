@@ -153,7 +153,7 @@
                 <h3 id="appearance">Appearance</h3>
                 <div style="font-size:16px;">
                     <p>This vehicle ${'can' if consist.allow_flip else 'cannot'} be flipped in depot.</p>
-                    <p>This vehicle has ${'2 livery options' if consist.gestalt_graphics.alternative_liveries is not None else '1 livery'}.</p>
+                    <p>This vehicle has ${1 + len(consist.gestalt_graphics.alternative_liveries) if consist.gestalt_graphics.alternative_liveries is not None else 0} liveries.</p>
                 </div>
 
                 <!--! ugh I hate styles like this, either inline them on the tags, or move them to styles.css eh? -->
@@ -231,7 +231,8 @@
                                         <tal:selectable_cc_livery_metadata define="selectable_cc_livery_metadata consist.gestalt_graphics.all_liveries[repeat.livery_variant.index]">
                                             <p>When <strong>second</strong> company colour is set to:<p>
                                             <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:305px;">
-                                                <li style="line-height:1; display:inline-block; width:110px; margin-bottom:7px;"
+                                                CABBAGE
+                                                <!--!<li style="line-height:1; display:inline-block; width:110px; margin-bottom:7px;"
                                                     tal:repeat="cc2 selectable_cc_livery_metadata['cc2']">
                                                     <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(cc2, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(cc2, offset=7)});
                                                                  display:inline-block;
@@ -241,7 +242,7 @@
                                                                  height:16px;">
                                                     </span>
                                                     <span style="vertical-align:middle;">${doc_helper.company_colour_names[cc2]}</span>
-                                                </li>
+                                                </li>-->
                                             </ul>
                                         </tal:selectable_cc_livery_metadata>
                                     </tal:block>

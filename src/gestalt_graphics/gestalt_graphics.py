@@ -82,18 +82,11 @@ class GestaltGraphicsEngine(GestaltGraphics):
     @property
     def all_liveries(self):
         # a convenience property to insert a default_livery for ease of constructing template repeats
-        # we also insert to default_livery the set of 2cc options that don't trigger the alternative, this is just for convenience of showing in docs
         # note that default_livery is not guaranteed to contain all the key/value pairs that alternative_liveries has
         result = []
-        default_livery = {"cc2": []}
-        if self.alternative_liveries is None:
-            result.append(default_livery)
-        else:
-            for company_colour_name in global_constants.company_colour_maps.keys():
-                if company_colour_name not in self.alternative_liveries["cc2"]:
-                    default_livery["cc2"].append(company_colour_name)
-            result.append(default_livery)
-            result.append(self.alternative_liveries)
+        default_livery = {}
+        result.append(default_livery)
+        result.extend(self.alternative_liveries)
         return result
 
 

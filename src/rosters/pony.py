@@ -262,7 +262,6 @@ def main():
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
         livery_presets={
             "FREIGHTLINER_GBRF": {
-                "cc2": [],
                 # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
                 "remap_to_cc": "COLOUR_YELLOW",
                 "docs_image_input_cc": [
@@ -275,7 +274,6 @@ def main():
             "RAILFREIGHT_RED_STRIPE": {
                 # don't match the stripe options to triple grey, it was tried and the blue just doesn't look good
                 # green and purple were allowed as they're vivid and it's by player request
-                "cc2": [],
                 "remap_to_cc": "COLOUR_GREY",
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_RED"),
@@ -285,9 +283,6 @@ def main():
                 ],
             },
             "RAILFREIGHT_TRIPLE_GREY": {
-                # green and purple were allowed as they're vivid and it's by player request
-                # also used for Freightliner-style triple grey
-                "cc2": [],
                 # note the remap to white, to provide lightest of the triple greys as cc1
                 "remap_to_cc": "COLOUR_WHITE",
                 "docs_image_input_cc": [
@@ -299,7 +294,6 @@ def main():
                 ],
             },
             "YEOMAN": {
-                "cc2": [],
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_GREY"),

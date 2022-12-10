@@ -185,26 +185,6 @@ class DocHelper(object):
             "COLOUR_WHITE": "White",
         }
 
-    """
-    @property
-    def all_liveries(self):
-        # a convenience property to insert a 'default' for ease of constructing a repeat
-        # we also calculate the 2cc values that 'enable' the default, this is so we can show them in the docs
-        # note that the 'default' isn't guaranteed complete compared to the alternative_liveries
-        result = []
-        if self.alternative_liveries is None:
-            default_livery = {"cc2": global_constants.company_colour_maps.keys()}
-            result.append(default_livery)
-        else:
-            default_livery = {"cc2": []}
-            for company_colour in global_constants.company_colour_maps.keys():
-                if company_colour not in self.alternative_liveries["cc2"]:
-                    default_livery["cc2"].append(company_colour)
-            result.append(default_livery)
-            result.append(self.alternative_liveries)
-        return result
-    """
-
     def get_docs_livery_variants(self, consist):
         # dark blue / dark blue and red / white are defaults
         variants_config = []
@@ -228,35 +208,25 @@ class DocHelper(object):
                 "CC2": cc_remap_pair[1],
             }
             result[livery_name]["docs_image_input_cc"] = cc_remap_pair
-            # now we need to check if the default docs row needs forced
-            # this is for the case where any of the docs default_livery_examples match the alternative_liveries triggers
-            if alternative_liveries is not None:
-                # we're matching only on 2nd company colour
-                for company_colour_name in alternative_liveries["cc2"]:
-                    if company_colour_name == cc_remap_pair[1]:
-                        result[livery_name]["use_alternative_livery_spriterow"] = True
-                        if alternative_liveries["remap_to_cc"] is not None:
-                            result[livery_name]["cc_remaps"][
-                                "CC1"
-                            ] = alternative_liveries["remap_to_cc"]
         variants_config.append(result)
 
         if alternative_liveries is not None:
-            result = {}
-            for cc_remap_pair in alternative_liveries["docs_image_input_cc"]:
-                livery_name = self.get_livery_file_substr(cc_remap_pair)
-                result[livery_name] = {}
-                CC1_remap = (
-                    alternative_liveries["remap_to_cc"]
-                    if alternative_liveries["remap_to_cc"] is not None
-                    else cc_remap_pair[0]
-                )  # handle possible remap of CC1
-                CC2_remap = cc_remap_pair[
-                    1
-                ]  # no forced remap to another cc for second colour, take it as is
-                result[livery_name]["cc_remaps"] = {"CC1": CC1_remap, "CC2": CC2_remap}
-                result[livery_name]["docs_image_input_cc"] = cc_remap_pair
-            variants_config.append(result)
+            for alternative_livery in alternative_liveries:
+                result = {}
+                for cc_remap_pair in alternative_livery["docs_image_input_cc"]:
+                    livery_name = self.get_livery_file_substr(cc_remap_pair)
+                    result[livery_name] = {}
+                    CC1_remap = (
+                        alternative_livery["remap_to_cc"]
+                        if alternative_livery["remap_to_cc"] is not None
+                        else cc_remap_pair[0]
+                    )  # handle possible remap of CC1
+                    CC2_remap = cc_remap_pair[
+                        1
+                    ]  # no forced remap to another cc for second colour, take it as is
+                    result[livery_name]["cc_remaps"] = {"CC1": CC1_remap, "CC2": CC2_remap}
+                    result[livery_name]["docs_image_input_cc"] = cc_remap_pair
+                variants_config.append(result)
         return variants_config
 
     def get_livery_file_substr(self, cc_pair):
