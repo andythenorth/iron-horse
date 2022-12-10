@@ -190,18 +190,18 @@ class DocHelper(object):
     def all_liveries(self):
         # a convenience property to insert a 'default' for ease of constructing a repeat
         # we also calculate the 2cc values that 'enable' the default, this is so we can show them in the docs
-        # note that the 'default' isn't guaranteed complete compared to the alternative_cc_livery
+        # note that the 'default' isn't guaranteed complete compared to the alternative_liveries
         result = []
-        if self.alternative_cc_livery is None:
+        if self.alternative_liveries is None:
             default_livery = {"cc2": global_constants.company_colour_maps.keys()}
             result.append(default_livery)
         else:
             default_livery = {"cc2": []}
             for company_colour in global_constants.company_colour_maps.keys():
-                if company_colour not in self.alternative_cc_livery["cc2"]:
+                if company_colour not in self.alternative_liveries["cc2"]:
                     default_livery["cc2"].append(company_colour)
             result.append(default_livery)
-            result.append(self.alternative_cc_livery)
+            result.append(self.alternative_liveries)
         return result
     """
 
@@ -217,7 +217,7 @@ class DocHelper(object):
             getattr(consist.gestalt_graphics, "default_livery_extra_docs_examples", [])
         )
 
-        alternative_cc_livery = consist.gestalt_graphics.alternative_cc_livery
+        alternative_liveries = consist.gestalt_graphics.alternative_liveries
 
         result = {}
         for cc_remap_pair in default_livery_examples:
@@ -229,26 +229,26 @@ class DocHelper(object):
             }
             result[livery_name]["docs_image_input_cc"] = cc_remap_pair
             # now we need to check if the default docs row needs forced
-            # this is for the case where any of the docs default_livery_examples match the alternative_cc_livery triggers
-            if alternative_cc_livery is not None:
+            # this is for the case where any of the docs default_livery_examples match the alternative_liveries triggers
+            if alternative_liveries is not None:
                 # we're matching only on 2nd company colour
-                for company_colour_name in alternative_cc_livery["cc2"]:
+                for company_colour_name in alternative_liveries["cc2"]:
                     if company_colour_name == cc_remap_pair[1]:
                         result[livery_name]["use_alternative_livery_spriterow"] = True
-                        if alternative_cc_livery["remap_to_cc"] is not None:
+                        if alternative_liveries["remap_to_cc"] is not None:
                             result[livery_name]["cc_remaps"][
                                 "CC1"
-                            ] = alternative_cc_livery["remap_to_cc"]
+                            ] = alternative_liveries["remap_to_cc"]
         variants_config.append(result)
 
-        if alternative_cc_livery is not None:
+        if alternative_liveries is not None:
             result = {}
-            for cc_remap_pair in alternative_cc_livery["docs_image_input_cc"]:
+            for cc_remap_pair in alternative_liveries["docs_image_input_cc"]:
                 livery_name = self.get_livery_file_substr(cc_remap_pair)
                 result[livery_name] = {}
                 CC1_remap = (
-                    alternative_cc_livery["remap_to_cc"]
-                    if alternative_cc_livery["remap_to_cc"] is not None
+                    alternative_liveries["remap_to_cc"]
+                    if alternative_liveries["remap_to_cc"] is not None
                     else cc_remap_pair[0]
                 )  # handle possible remap of CC1
                 CC2_remap = cc_remap_pair[
@@ -563,7 +563,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
     ):
 
         if not consist.dual_headed:
-            # relies on alternative_cc_livery being in predictable row offsets (should be true as of July 2020)
+            # relies on alternative_liveries being in predictable row offsets (should be true as of July 2020)
             y_offset = (consist.docs_image_spriterow + livery_counter) * 30
             source_vehicle_image_tmp = vehicle_spritesheet.crop(
                 box=(
@@ -576,7 +576,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
         if consist.dual_headed:
             # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
             # !! hard-coded values might fail in future, sort that out then if needed, they can be looked up in global constants
-            # !! this also won't work with engine alternative_cc_livery currently
+            # !! this also won't work with engine alternative_liveries currently
             source_vehicle_image_1 = vehicle_spritesheet.copy().crop(
                 box=(
                     224,

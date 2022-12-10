@@ -19,7 +19,7 @@ class GestaltGraphics(object):
         self.pipelines = pipelines.get_pipelines([])
         # specific alt livery for specific company colour choices
         # this is only used by engines as of July 2020, but we provide a default value here to avoid requiring getattr() in many places, which was masking errors
-        self.alternative_cc_livery = None  # over-ride as needed in subclasses
+        self.alternative_liveries = None  # over-ride as needed in subclasses
         # sometimes processing may depend on another generated vehicle spritesheet, so there are multiple processing priorities, 1 = highest
         self.processing_priority = 1
         # default value for optional mask layer, this is JFDI for 2022, may need converting a more generic spritelayers structure in future
@@ -59,7 +59,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(["check_buy_menu_only"])
         self.colour_mapping_switch = "_switch_colour_mapping"
-        self.alternative_cc_livery = kwargs.get("alternative_cc_livery", None)
+        self.alternative_liveries = kwargs.get("alternative_liveries", None)
         self.default_livery_extra_docs_examples = kwargs.get(
             "default_livery_extra_docs_examples", []
         )
@@ -83,17 +83,17 @@ class GestaltGraphicsEngine(GestaltGraphics):
     def all_liveries(self):
         # a convenience property to insert a default_livery for ease of constructing template repeats
         # we also insert to default_livery the set of 2cc options that don't trigger the alternative, this is just for convenience of showing in docs
-        # note that default_livery is not guaranteed to contain all the key/value pairs that alternative_cc_livery has
+        # note that default_livery is not guaranteed to contain all the key/value pairs that alternative_liveries has
         result = []
         default_livery = {"cc2": []}
-        if self.alternative_cc_livery is None:
+        if self.alternative_liveries is None:
             result.append(default_livery)
         else:
             for company_colour_name in global_constants.company_colour_maps.keys():
-                if company_colour_name not in self.alternative_cc_livery["cc2"]:
+                if company_colour_name not in self.alternative_liveries["cc2"]:
                     default_livery["cc2"].append(company_colour_name)
             result.append(default_livery)
-            result.append(self.alternative_cc_livery)
+            result.append(self.alternative_liveries)
         return result
 
 

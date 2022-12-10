@@ -153,7 +153,7 @@
                 <h3 id="appearance">Appearance</h3>
                 <div style="font-size:16px;">
                     <p>This vehicle ${'can' if consist.allow_flip else 'cannot'} be flipped in depot.</p>
-                    <p>This vehicle has ${'2 livery options' if consist.gestalt_graphics.alternative_cc_livery is not None else '1 livery'}.</p>
+                    <p>This vehicle has ${'2 livery options' if consist.gestalt_graphics.alternative_liveries is not None else '1 livery'}.</p>
                 </div>
 
                 <!--! ugh I hate styles like this, either inline them on the tags, or move them to styles.css eh? -->

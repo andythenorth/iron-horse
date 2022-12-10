@@ -17,7 +17,7 @@ def main(roster_id):
         speed=125,  # Shredder not replaced, but has gen 6 speeds
         pantograph_type="z-shaped-single",
         intro_year_offset=-2,  # introduce slightly earlier than gen epoch by design
-        alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
+        alternative_liveries=["RAILFREIGHT_TRIPLE_GREY"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
             ("COLOUR_ORANGE", "COLOUR_WHITE"),

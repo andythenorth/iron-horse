@@ -1,14 +1,14 @@
 <!--! this is the default template for trains that don't supply their own template -->
 
 <!--! convenience declaration of a global for shorthand (oof) -->
-<tal:global_alternative_cc_livery define="global alternative_cc_livery consist.gestalt_graphics.alternative_cc_livery" />
+<tal:global_alternative_liveries define="global alternative_liveries consist.gestalt_graphics.alternative_liveries" />
 
 <!--! 'reversed' is random reversal on construction, depending on vehicle random bits
       'flipped' is user flipping vehicle in depot
       don't conflate them :) -->
 <tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
-        <!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
+        <!--! all_liveries inserts 'default' livery, before any alternative_liveries so we can just do one repeat over all needed spritesets -->
         <tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
             spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped}_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
                 ${vehicle.get_spriteset_template_name(reversed_variant, flipped, 10 + (repeat.livery.index * 30) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 30))}
@@ -17,8 +17,8 @@
 
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${reversed_variant}_${flipped}, company_colour2) {
             <!--! assumes there's only 1 alternative livery currently -->
-            <tal:alt_livery condition="alternative_cc_livery is not None">
-                <tal:livery_cc2_mapping repeat="cc2_livery_mapping alternative_cc_livery['cc2']">
+            <tal:alt_livery condition="alternative_liveries is not None">
+                <tal:livery_cc2_mapping repeat="cc2_livery_mapping alternative_liveries['cc2']">
                     ${cc2_livery_mapping}: return ${vehicle.id}_ss_${reversed_variant}_${flipped}_1;
                 </tal:livery_cc2_mapping>
             </tal:alt_livery>
@@ -72,7 +72,7 @@
 
 
 // buy menu graphics chain
-<!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
+<!--! all_liveries inserts 'default' livery, before any alternative_liveries so we can just do one repeat over all needed spritesets -->
 <tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
 spriteset(${vehicle.id}_ss_vehicle_purchase_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
     ${consist.get_nml_for_spriteset_template(y_offset=repeat.livery.index * 30)}
@@ -80,8 +80,8 @@ spriteset(${vehicle.id}_ss_vehicle_purchase_${repeat.livery.index}, "${graphics_
 </tal:liveries>
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_livery, company_colour2) {
-    <tal:alt_livery condition="alternative_cc_livery is not None">
-        <tal:livery_cc2_mapping repeat="cc2_livery_mapping alternative_cc_livery['cc2']">
+    <tal:alt_livery condition="alternative_liveries is not None">
+        <tal:livery_cc2_mapping repeat="cc2_livery_mapping alternative_liveries['cc2']">
             ${cc2_livery_mapping}: return ${vehicle.id}_ss_vehicle_purchase_1;
         </tal:livery_cc2_mapping>
     </tal:alt_livery>
@@ -117,9 +117,9 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_livery, compan
 
 <!--! dedicated colour remapping with rules against specific cc2 colours-->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, company_colour2) {
-    <tal:alt_livery condition="alternative_cc_livery is not None">
-        <tal:livery_cc2_mapping repeat="cc2_livery_mapping alternative_cc_livery['cc2']">
-            ${cc2_livery_mapping}: palette_2cc(${alternative_cc_livery['remap_to_cc'] if alternative_cc_livery['remap_to_cc'] is not None else 'company_colour1'}, company_colour2);
+    <tal:alt_livery condition="alternative_liveries is not None">
+        <tal:livery_cc2_mapping repeat="cc2_livery_mapping alternative_liveries['cc2']">
+            ${cc2_livery_mapping}: palette_2cc(${alternative_liveries['remap_to_cc'] if alternative_liveries['remap_to_cc'] is not None else 'company_colour1'}, company_colour2);
         </tal:livery_cc2_mapping>
     </tal:alt_livery>
     return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->

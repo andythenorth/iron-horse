@@ -19,7 +19,7 @@ def main(roster_id):
         pantograph_type="z-shaped-double",
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
         caboose_family="railfreight_2",
-        alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
+        alternative_liveries=["RAILFREIGHT_TRIPLE_GREY"],
         sprites_complete=True,
     )
 

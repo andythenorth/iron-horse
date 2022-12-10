@@ -18,7 +18,7 @@ def main(roster_id):
         intro_year_offset=3,  # let's be a little bit later for this one
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
-        alternative_cc_livery="YEOMAN",
+        alternative_liveries=["YEOMAN"],
         default_livery_extra_docs_examples=[
             ("COLOUR_WHITE", "COLOUR_GREEN"),
             ("COLOUR_ORANGE", "COLOUR_RED"),

@@ -19,7 +19,7 @@ def main(roster_id):
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         caboose_family="railfreight_2",
-        alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
+        alternative_liveries=["RAILFREIGHT_TRIPLE_GREY"],
         sprites_complete=True,
     )
 

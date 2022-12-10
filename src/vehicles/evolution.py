@@ -16,7 +16,7 @@ def main(roster_id):
         gen=6,
         intro_year_offset=-2,
         fixed_run_cost_points=70,  # give a bonus so this can be a genuine mixed-traffic engine
-        alternative_cc_livery="FREIGHTLINER_GBRF",
+        alternative_liveries=["FREIGHTLINER_GBRF"],
         default_livery_extra_docs_examples=[("COLOUR_BLUE", "COLOUR_WHITE")],
         sprites_complete=True,
     )
