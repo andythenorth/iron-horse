@@ -93,6 +93,9 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             retire_early:                   ${consist.retire_early};
             reliability_decay:              20; // default value
             vehicle_life:                   ${consist.vehicle_life};
+            <tal:variant_group condition="vehicle.buyable_variant_group_id is not None">
+                variant_group:                  ${vehicle.buyable_variant_group_id};
+            </tal:variant_group>
         </tal:lead_unit_of_consist_only>
         <tal:trailing_parts_of_consist_only condition="not vehicle.is_lead_unit_of_buyable_variant">
             <!--! some properties must be explicitly set to 0 for trailing parts -->
@@ -189,9 +192,6 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     if (${consist.get_expression_for_availability()}) {
         item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             property {
-                <tal:variant_group condition="vehicle.buyable_variant_group_id is not None">
-                    variant_group:                  ${vehicle.buyable_variant_group_id};
-                </tal:variant_group>
                 climates_available:             ALL_CLIMATES;
             }
         }
