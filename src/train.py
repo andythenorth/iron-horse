@@ -186,15 +186,13 @@ class Consist(object):
                 buyable_variant.units.append(unit)
 
     @property
-    def consist_unique_units(self):
-        # units may be repeated in the consist, sometimes we need an ordered list of unique units
-        # set() doesn't preserve list order, which matters, so do it the hard way
-        consist_unique_units = []
+    def all_units_all_variants(self):
+        # convenience method to avoid walking buyable_variants in other contexts
+        result = []
         for buyable_variant in self.buyable_variants:
-            for unit in buyable_variant.unique_units:
-                if unit not in consist_unique_units:
-                    consist_unique_units.append(unit)
-        return consist_unique_units
+            # can rely on unit IDs not clashing across buyable_variants, enforced by add_unit
+            result.extend(buyable_variant.unique_units)
+        return result
 
     @property
     def unique_spriterow_nums(self):
@@ -1015,8 +1013,8 @@ class Consist(object):
         for buyable_variant in self.buyable_variants:
             if len(buyable_variant.units) > 1:
                 nml_result = nml_result + self.render_articulated_switch(buyable_variant, templates)
-        for unit in self.consist_unique_units:
-            nml_result = nml_result + unit.render(templates, graphics_path)
+            for unit in buyable_variant.unique_units:
+                nml_result = nml_result + unit.render(templates, graphics_path)
         return nml_result
 
 
