@@ -1010,12 +1010,6 @@ class Consist(object):
     def render(self, templates, graphics_path):
         self.assert_speed()
         self.assert_power()
-        # temp
-        if self.id in ["resilient", "chinook"]:
-            print(self.id)
-            for buyable_variant in self.buyable_variants:
-                print(buyable_variant.buyable_variant_num)
-                print([(unit.id, unit.numeric_id) for unit in buyable_variant.units])
         # templating
         nml_result = ""
         for buyable_variant in self.buyable_variants:
@@ -4650,6 +4644,7 @@ class Train(object):
 
     @property
     def misc_flags(self):
+        # note that there are both misc_flags and extra_flags, for grf_spec reasons
         misc_flags = ["TRAIN_FLAG_2CC", "TRAIN_FLAG_SPRITE_STACK"]
         if self.consist.allow_flip:
             misc_flags.append("TRAIN_FLAG_FLIP")
@@ -4660,6 +4655,15 @@ class Train(object):
         if self.consist.train_flag_mu:
             misc_flags.append("TRAIN_FLAG_MU")
         return ",".join(misc_flags)
+
+    @property
+    def extra_flags(self):
+        extra_flags = []
+        if self.buyable_variant_group_id is not None:
+            extra_flags.append("VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE")
+            extra_flags.append("VEHICLE_FLAG_SYNCHRONISE_VARIANT_EXCLUSIVE_PREVIEW")
+            extra_flags.append("VEHICLE_FLAG_SYNCHRONISE_VARIANT_RELIABILITY")
+        return ",".join(extra_flags)
 
     @property
     def refittable_classes(self):
