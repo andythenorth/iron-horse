@@ -121,7 +121,8 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         <tal:default_cargo condition="len(consist.default_cargos) > 0">
             default_cargo_type:             ${consist.get_nml_expression_for_default_cargos()};
         </tal:default_cargo>
-        misc_flags:                     bitmask(${vehicle.misc_flags}); // nml constants
+        misc_flags:                     bitmask(${vehicle.misc_flags});
+        extra_flags:                    bitmask(${vehicle.extra_flags});
         dual_headed:                    ${1 if consist.dual_headed else 0};
         length:                         ${vehicle.vehicle_length};
         track_type:                     ${consist.track_type};
