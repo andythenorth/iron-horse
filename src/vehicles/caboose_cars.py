@@ -156,7 +156,13 @@ def main():
             "cc_open_2",
             "cc_open_3",
         ],
-        "default_6": ["cc_enclosed_6", "cc_enclosed_5", "cc_open_2", "cc_open_3", "cc_open_3"],
+        "default_6": [
+            "cc_enclosed_6",
+            "cc_enclosed_5",
+            "cc_open_2",
+            "cc_open_3",
+            "cc_open_3",
+        ],
         "gwr_1": [
             "cc_gwr_1",
             "cc_gwr_1",

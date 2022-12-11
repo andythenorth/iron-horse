@@ -121,7 +121,9 @@ class Consist(object):
         self.fixed_run_cost_points = 30  # default, over-ride in subclass as needed
         self.alternative_liveries = []
         for alternative_livery_name in kwargs.get("alternative_liveries", []):
-             self.alternative_liveries.append(self.roster.livery_presets[alternative_livery_name])
+            self.alternative_liveries.append(
+                self.roster.livery_presets[alternative_livery_name]
+            )
         # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
         self.default_cargos = []
         self.class_refit_groups = []
@@ -180,8 +182,16 @@ class Consist(object):
                 # first vehicle of first buyable variant gets no numeric id suffix - for compatibility with buy menu list ids, docs links etc
                 unit.id = self.id
             else:
-                unit.id = self.id + "_variant_" + str(buyable_variant.buyable_variant_num) + "_unit_" + str(count)
-            unit.numeric_id = buyable_variant.base_numeric_id + (len(self.buyable_variants) * len(buyable_variant.unique_units))
+                unit.id = (
+                    self.id
+                    + "_variant_"
+                    + str(buyable_variant.buyable_variant_num)
+                    + "_unit_"
+                    + str(count)
+                )
+            unit.numeric_id = buyable_variant.base_numeric_id + (
+                len(self.buyable_variants) * len(buyable_variant.unique_units)
+            )
             for repeat_num in range(repeat):
                 buyable_variant.units.append(unit)
 
@@ -198,7 +208,9 @@ class Consist(object):
     def unique_spriterow_nums(self):
         # find the unique spriterow numbers, used in graphics generation
         result = []
-        for unit in set([unit.spriterow_num for unit in self.default_buyable_variant.units]):
+        for unit in set(
+            [unit.spriterow_num for unit in self.default_buyable_variant.units]
+        ):
             result.append(unit)
             # extend with alternative cc livery if present, spritesheet format assumes unit_1_default, unit_1_alternative_liveries, unit_2_default, unit_2_alternative_liveries if present
             if self.gestalt_graphics.alternative_liveries is not None:
@@ -262,7 +274,10 @@ class Consist(object):
             return "string(STR_NAME_" + self.id + ")"
 
     def engine_varies_power_by_power_source(self, vehicle):
-        if self.power_by_power_source is not None and vehicle.is_lead_unit_of_buyable_variant:
+        if (
+            self.power_by_power_source is not None
+            and vehicle.is_lead_unit_of_buyable_variant
+        ):
             if len(self.power_by_power_source) > 1:
                 # as of Dec 2018, can't use both variable power and wagon power
                 # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
@@ -649,7 +664,9 @@ class Consist(object):
 
     @property
     def weight(self):
-        return sum([getattr(unit, "weight", 0) for unit in self.default_buyable_variant.units])
+        return sum(
+            [getattr(unit, "weight", 0) for unit in self.default_buyable_variant.units]
+        )
 
     @property
     def length(self):
@@ -951,7 +968,11 @@ class Consist(object):
     def render_articulated_switch(self, buyable_variant, templates):
         if len(buyable_variant.units) > 1:
             template = templates["articulated_parts.pynml"]
-            nml_result = template(consist=self, buyable_variant=buyable_variant, global_constants=global_constants)
+            nml_result = template(
+                consist=self,
+                buyable_variant=buyable_variant,
+                global_constants=global_constants,
+            )
             return nml_result
         else:
             return ""
@@ -1012,7 +1033,9 @@ class Consist(object):
         nml_result = ""
         for buyable_variant in self.buyable_variants:
             if len(buyable_variant.units) > 1:
-                nml_result = nml_result + self.render_articulated_switch(buyable_variant, templates)
+                nml_result = nml_result + self.render_articulated_switch(
+                    buyable_variant, templates
+                )
             for unit in buyable_variant.unique_units:
                 nml_result = nml_result + unit.render(templates, graphics_path)
         return nml_result
@@ -4491,6 +4514,7 @@ class BuyableVariant(object):
     def buyable_variant_num(self):
         return self.consist.buyable_variants.index(self)
 
+
 class Train(object):
     """
     Base class for all types of trains
@@ -4617,14 +4641,19 @@ class Train(object):
 
     @property
     def is_lead_unit_of_buyable_variant(self):
-        if self.numeric_id in [buyable_variant.base_numeric_id for buyable_variant in self.consist.buyable_variants]:
+        if self.numeric_id in [
+            buyable_variant.base_numeric_id
+            for buyable_variant in self.consist.buyable_variants
+        ]:
             return True
         else:
             return False
 
     @property
     def buyable_variant_group_id(self):
-        if self.is_lead_unit_of_buyable_variant and (self.numeric_id != self.consist.default_buyable_variant.base_numeric_id):
+        if self.is_lead_unit_of_buyable_variant and (
+            self.numeric_id != self.consist.default_buyable_variant.base_numeric_id
+        ):
             return self.consist.default_buyable_variant.base_numeric_id
         else:
             return None

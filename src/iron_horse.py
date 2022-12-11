@@ -75,7 +75,8 @@ from vehicles import intermodal_cars
 from vehicles import kaolin_hopper_cars
 from vehicles import livestock_cars
 from vehicles import log_cars
-#from vehicles import low_floor_automobile_cars
+
+# from vehicles import low_floor_automobile_cars
 from vehicles import low_floor_intermodal_cars
 from vehicles import mail_cars
 from vehicles import merchandise_box_cars
@@ -139,9 +140,13 @@ class RailTypeManager(list):
         # note that this is using the nml fallbacks for *vehicle* track_type NOT the compatible or powered powered properties for the railtypes
         # this is strictly not the scope of RailTypeManager, but it's a convenient place to add globally accessible railtype specific methods
         result = {}
-        for labels in global_constants.railtype_labels_by_vehicle_track_type_name.values():
+        for (
+            labels
+        ) in global_constants.railtype_labels_by_vehicle_track_type_name.values():
             result[labels[0]] = labels
-        for labels in global_constants.railtype_labels_by_vehicle_track_type_name.values():
+        for (
+            labels
+        ) in global_constants.railtype_labels_by_vehicle_track_type_name.values():
             for label in labels:
                 if label not in result.keys():
                     result[label] = None
@@ -370,7 +375,7 @@ def main():
     kaolin_hopper_cars.main()
     livestock_cars.main()
     log_cars.main()
-    #low_floor_automobile_cars.main()
+    # low_floor_automobile_cars.main()
     low_floor_intermodal_cars.main()
     mail_cars.main()
     merchandise_box_cars.main()

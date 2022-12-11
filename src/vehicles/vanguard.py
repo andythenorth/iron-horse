@@ -10,7 +10,7 @@ def main(roster_id):
         role="heavy_express",
         role_child_branch_num=1,
         power_by_power_source={
-            "DIESEL": 2750, # significant jump from previous gen
+            "DIESEL": 2750,  # significant jump from previous gen
         },
         # dibble, assume super-slip control, intent is to give higher TE as a non-significant variation from Resilient
         tractive_effort_coefficient=0.4,

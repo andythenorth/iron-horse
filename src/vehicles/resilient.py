@@ -10,7 +10,7 @@ def main(roster_id):
         role="heavy_express",
         role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 2750, # significant jump from previous gen
+            "DIESEL": 2750,  # significant jump from previous gen
         },
         random_reverse=True,
         gen=5,

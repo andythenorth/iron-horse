@@ -106,15 +106,32 @@ class Roster(object):
         for consist in consists:
             if (
                 len(consist.randomised_candidate_groups) > 0
-                and consist.randomised_candidate_groups not in all_randomised_candidate_groups
+                and consist.randomised_candidate_groups
+                not in all_randomised_candidate_groups
             ):
-                all_randomised_candidate_groups.append(consist.randomised_candidate_groups)
+                all_randomised_candidate_groups.append(
+                    consist.randomised_candidate_groups
+                )
             if consist.is_randomised_wagon:
-                if consist.base_track_type_name not in randomised_wagons_by_track_type_name_and_gen:
-                   randomised_wagons_by_track_type_name_and_gen[consist.base_track_type_name] = {}
-                if consist.gen not in randomised_wagons_by_track_type_name_and_gen[consist.base_track_type_name]:
-                    randomised_wagons_by_track_type_name_and_gen[consist.base_track_type_name][consist.gen] = []
-                randomised_wagons_by_track_type_name_and_gen[consist.base_track_type_name][consist.gen].append(consist)
+                if (
+                    consist.base_track_type_name
+                    not in randomised_wagons_by_track_type_name_and_gen
+                ):
+                    randomised_wagons_by_track_type_name_and_gen[
+                        consist.base_track_type_name
+                    ] = {}
+                if (
+                    consist.gen
+                    not in randomised_wagons_by_track_type_name_and_gen[
+                        consist.base_track_type_name
+                    ]
+                ):
+                    randomised_wagons_by_track_type_name_and_gen[
+                        consist.base_track_type_name
+                    ][consist.gen] = []
+                randomised_wagons_by_track_type_name_and_gen[
+                    consist.base_track_type_name
+                ][consist.gen].append(consist)
         super_groups = []
         for group in all_randomised_candidate_groups:
             seen = False
@@ -128,12 +145,18 @@ class Roster(object):
         # super_groups will contain the same id multiple times, so consolidate to uniques
         super_groups = [list(set(super_group)) for super_group in super_groups]
         for super_group in super_groups:
-            for base_track_type_name, generations in randomised_wagons_by_track_type_name_and_gen.items():
+            for (
+                base_track_type_name,
+                generations,
+            ) in randomised_wagons_by_track_type_name_and_gen.items():
                 for gen, randomised_wagons_consists in generations.items():
                     # first find all the randomisation candidate wagons to place together
                     # we need them by base track type and gen, then if they match this super_group
                     for consist in consists:
-                        if consist.base_track_type_name == base_track_type_name and consist.gen == gen:
+                        if (
+                            consist.base_track_type_name == base_track_type_name
+                            and consist.gen == gen
+                        ):
                             for group_id in consist.randomised_candidate_groups:
                                 if group_id in super_group:
                                     result.append(consist)
