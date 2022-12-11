@@ -4649,17 +4649,17 @@ class Train(object):
         return self._symmetry_type
 
     @property
-    def special_flags(self):
-        special_flags = ["TRAIN_FLAG_2CC", "TRAIN_FLAG_SPRITE_STACK"]
+    def misc_flags(self):
+        misc_flags = ["TRAIN_FLAG_2CC", "TRAIN_FLAG_SPRITE_STACK"]
         if self.consist.allow_flip:
-            special_flags.append("TRAIN_FLAG_FLIP")
+            misc_flags.append("TRAIN_FLAG_FLIP")
         if self.autorefit:
-            special_flags.append("TRAIN_FLAG_AUTOREFIT")
+            misc_flags.append("TRAIN_FLAG_AUTOREFIT")
         if self.consist.tilt_bonus:
-            special_flags.append("TRAIN_FLAG_TILT")
+            misc_flags.append("TRAIN_FLAG_TILT")
         if self.consist.train_flag_mu:
-            special_flags.append("TRAIN_FLAG_MU")
-        return ",".join(special_flags)
+            misc_flags.append("TRAIN_FLAG_MU")
+        return ",".join(misc_flags)
 
     @property
     def refittable_classes(self):
