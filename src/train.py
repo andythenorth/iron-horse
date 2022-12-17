@@ -169,6 +169,12 @@ class Consist(object):
             buyable_variant.base_numeric_id = self.base_numeric_id + counter
         return result
 
+    def post_init_actions(self):
+        # some actions have to be run after the consist is registered
+
+        # spurious return as this is currently just a stub
+        return True
+
     @property
     def default_buyable_variant(self):
         # convenience method for e.g. docs etc.

@@ -288,11 +288,13 @@ class Roster(object):
     def register_wagon_consist(self, wagon_consist):
         self.wagon_consists[wagon_consist.base_id].append(wagon_consist)
         wagon_consist.roster_id = self.id
+        wagon_consist.post_init_actions()
 
     def post_init_actions(self):
         # init has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
         for engine in self.engines:
             consist = engine.main(self.id)
+            consist.post_init_actions()
             self.engine_consists.append(consist)
         self.wagon_consists = dict(
             [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons]
