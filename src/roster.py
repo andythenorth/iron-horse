@@ -224,6 +224,9 @@ class Roster(object):
             result.extend(result[: 16 - len(result)])
         return result
 
+    def get_liveries_by_name(self, alternative_livery_names):
+        return [self.livery_presets[alternative_livery_name] for alternative_livery_name in alternative_livery_names]
+
     def intro_year_ranges(self, base_track_type_name):
         # return a list of year pairs (first year, last year) for generations
         result = []
@@ -247,9 +250,9 @@ class Roster(object):
                     + consist.id
                     + "' is defined more than once - to fix, search src for the duplicate"
                 )
-            if len(consist.default_buyable_variant.units) == 0:
+            if len(consist.units) == 0:
                 raise BaseException("Error: " + consist.id + " has no units defined")
-            elif len(consist.default_buyable_variant.units) == 1:
+            elif len(consist.units) == 1:
                 if consist.base_numeric_id <= global_constants.max_articulated_id:
                     raise BaseException(
                         "Error: "
@@ -260,41 +263,39 @@ class Roster(object):
                     )
                     # utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
                     # utils.echo_message(str(consist.base_numeric_id))
-            elif len(consist.default_buyable_variant.units) > 1:
-                for unit in consist.default_buyable_variant.units:
-                    if unit.numeric_id > global_constants.max_articulated_id:
+            elif len(consist.units) > 1:
+                for numeric_id in consist.unique_numeric_ids:
+                    if numeric_id > global_constants.max_articulated_id:
                         raise BaseException(
                             "Error: "
-                            + unit.id
-                            + " with numeric_id "
-                            + str(unit.numeric_id)
-                            + " is part of an articulated vehicle, and needs a numeric_id smaller than "
+                            + consist.id
+                            + " has a unit variant with numeric_id "
+                            + str(numeric_id)
+                            + " which is part of an articulated vehicle, and needs a numeric_id smaller than "
                             + str(global_constants.max_articulated_id)
                             + " (use a lower consist base_numeric_id)"
                         )
-            for unit in set(consist.default_buyable_variant.units):
-                if unit.numeric_id in numeric_id_defender:
+            for numeric_id in consist.unique_numeric_ids:
+                if numeric_id in numeric_id_defender:
                     raise BaseException(
-                        "Error: unit "
-                        + unit.id
-                        + " has a numeric_id that collides ("
-                        + str(unit.numeric_id)
-                        + ") with a numeric_id of unit in another consist"
+                        "Error: consist "
+                        + consist.id
+                        + " has a unit variant with numeric_id that collides ("
+                        + str(numeric_id)
+                        + ") with a numeric_id of a unit variant in another consist"
                     )
                 else:
-                    numeric_id_defender.append(unit.numeric_id)
+                    numeric_id_defender.append(numeric_id)
         # no return value needed
 
     def register_wagon_consist(self, wagon_consist):
         self.wagon_consists[wagon_consist.base_id].append(wagon_consist)
         wagon_consist.roster_id = self.id
-        wagon_consist.post_init_actions()
 
     def post_init_actions(self):
         # init has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
         for engine in self.engines:
             consist = engine.main(self.id)
-            consist.post_init_actions()
             self.engine_consists.append(consist)
         self.wagon_consists = dict(
             [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons]

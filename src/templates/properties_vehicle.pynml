@@ -4,11 +4,11 @@
     <tal:include metal:use-macro="load: create_effect.pynml" />
 </tal:create_effect>
 
-<tal:buy_menu_text condition="vehicle.is_lead_unit_of_buyable_variant and (consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None or consist.lgv_capable">
+<tal:buy_menu_text condition="vehicle.is_lead_unit_of_consist and (consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None or consist.lgv_capable">
     <tal:include metal:use-macro="load: buy_menu_text.pynml" />
 </tal:buy_menu_text>
 
-<tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle) and vehicle.is_lead_unit_of_buyable_variant">
+<tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle) and vehicle.is_lead_unit_of_consist">
     // -- power varies by railtype -- //
     <!--! order of power sources is significant here, the switch chain should check highest value first, progressing to lowest
           the python method will return the power sources in the required order -->
@@ -22,7 +22,7 @@
     </tal:power_source>
 </tal:railtype_varies_power>
 
-<tal:wagons_add_power condition="consist.wagons_add_power and vehicle.is_lead_unit_of_buyable_variant">
+<tal:wagons_add_power condition="consist.wagons_add_power and vehicle.is_lead_unit_of_consist">
     // -- power varies if specific engines are present in the consist -- //
     <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power_0, [count_veh_id(${consist.cab_id}) > 0]) {
@@ -34,7 +34,7 @@
 <!--! some vehicles vary their speed depending on lead engine,
       this should be limited use, it's a *very* silly easter egg
       *cannot* be combined with any other variable speed effects  -->
-<tal:easter_egg_haulage_speed_bonus condition="consist.easter_egg_haulage_speed_bonus and vehicle.is_lead_unit_of_buyable_variant">
+<tal:easter_egg_haulage_speed_bonus condition="consist.easter_egg_haulage_speed_bonus and vehicle.is_lead_unit_of_consist">
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed, haulage_bonus_switch_speed_0()) {
         1: return ${int(1.60934 * consist.get_speed_by_class('express'))};
         0: return ${int(1.60934 * consist.speed)};
@@ -43,7 +43,7 @@
 
 <!--! some vehicles are equipped to travel faster on dedicated lgv railtype (high speed line)
       *cannot* be combined with any other variable speed effects  -->
-<tal:lgv_capable_speed_bonus condition="consist.lgv_capable and vehicle.is_lead_unit_of_buyable_variant">
+<tal:lgv_capable_speed_bonus condition="consist.lgv_capable and vehicle.is_lead_unit_of_consist">
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed_by_tile_railtype, [tile_is_railtype("IHAA") || tile_is_railtype("IHBA")]) {
         1: return ${int(1.60934 * consist.speed_on_lgv)};
         return ${int(1.60934 * consist.speed)};
@@ -57,7 +57,7 @@
 
 <!--! some vehicles vary running cost if restaurant car is in consist
       this will need generalised if other similar vehicles are added, e.g. motorail, observation car etc -->
-<tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False) and vehicle.is_lead_unit_of_buyable_variant">
+<tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False) and vehicle.is_lead_unit_of_consist">
     <tal:block case="True">
         switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_running_cost_factor, switch_is_restaurant_car_in_consist_0()) {
             <!--! eliminate run costs if 1 restaurant car is present (more than 1 has no additional effect)
@@ -75,127 +75,128 @@
     </tal:block>
 </tal:running_cost_factor>
 
-item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
-    property {
-        name:                           ${consist.name};
-        climates_available:             NO_CLIMATE; // nml constant
-        <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_buyable_variant">
-            <!--! some properties should not be set for trailing parts of articulated consists -->
-            engine_class:                   ${vehicle.engine_class};
-            introduction_date:              date(${consist.intro_year}, ${1 + consist.intro_date_months_offset}, 1);
-            power:                          ${consist.power}hp;
-            weight:                         ${consist.weight}ton;
-            tractive_effort_coefficient:    ${consist.tractive_effort_coefficient};
-            cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
-            running_cost_base:              ${vehicle.running_cost_base};
-            running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
-            model_life:                     ${consist.model_life};
-            retire_early:                   ${consist.retire_early};
-            reliability_decay:              20; // default value
-            vehicle_life:                   ${consist.vehicle_life};
-            <tal:variant_group condition="vehicle.buyable_variant_group_id is not None">
-                variant_group:                  ${vehicle.buyable_variant_group_id};
-            </tal:variant_group>
-        </tal:lead_unit_of_consist_only>
-        <tal:trailing_parts_of_consist_only condition="not vehicle.is_lead_unit_of_buyable_variant">
-            <!--! some properties must be explicitly set to 0 for trailing parts -->
-            <!--! note that power cannot be 0 for engines, even this violates spec as of Nov 2022
-                  - for details see https://github.com/OpenTTD/OpenTTD/issues/10146 -->
-            power:                          ${1 if consist.power != 0 else 0};
-            weight:                         0;
-            tractive_effort_coefficient:    0;
-            cost_factor:                    0;
-            running_cost_base:              RUNNING_COST_NONE;
-            running_cost_factor:            0;
-        </tal:trailing_parts_of_consist_only>
-        <tal:speed_is_optional condition="consist.speed is not None">
-            speed:                          ${consist.speed}mph;
-        </tal:speed_is_optional>
-        cargo_capacity:                 ${vehicle.default_cargo_capacity};
-        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
-        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
-        refittable_cargo_classes:       bitmask(${vehicle.refittable_classes});
-        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
-        cargo_allow_refit:              [${vehicle.get_label_refits_allowed()}];
-        cargo_disallow_refit:           [${vehicle.get_label_refits_disallowed()}];
-        <tal:default_cargo condition="len(consist.default_cargos) > 0">
-            default_cargo_type:             ${consist.get_nml_expression_for_default_cargos()};
-        </tal:default_cargo>
-        misc_flags:                     bitmask(${vehicle.misc_flags});
-        extra_flags:                    bitmask(${vehicle.extra_flags});
-        dual_headed:                    ${1 if consist.dual_headed else 0};
-        length:                         ${vehicle.vehicle_length};
-        track_type:                     ${consist.track_type};
-        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
-    }
-    graphics {
-        default:                        ${vehicle.id}_switch_graphics;
-        purchase:                       ${vehicle.id}_switch_graphics_purchase;
-        <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_buyable_variant">
-            <!--! certain callbacks should not be handled for trailing parts of articulated consists -->
-            cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
-            running_cost_factor:            ${vehicle.id}_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
-            purchase_running_cost_factor:   ${consist.running_cost}; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
-            <tal:variable_power condition="consist.engine_varies_power_by_power_source(vehicle) or consist.wagons_add_power">
-                power:                          ${vehicle.id}_switch_power_0;
-                purchase_power:                 ${consist.power};
-            </tal:variable_power>
-            <tal:speed_is_optional condition="consist.easter_egg_haulage_speed_bonus or consist.lgv_capable">
-                speed:                          ${vehicle.id}_switch_speed;
-                purchase_speed:                 ${int(1.60934 * consist.speed)};
+<tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+    item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
+        property {
+            name:                           ${consist.name};
+            climates_available:             NO_CLIMATE; // nml constant
+            <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
+                <!--! some properties should not be set for trailing parts of articulated consists -->
+                engine_class:                   ${vehicle.engine_class};
+                introduction_date:              date(${consist.intro_year}, ${1 + consist.intro_date_months_offset}, 1);
+                power:                          ${consist.power}hp;
+                weight:                         ${consist.weight}ton;
+                tractive_effort_coefficient:    ${consist.tractive_effort_coefficient};
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              ${vehicle.running_cost_base};
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     ${consist.model_life};
+                retire_early:                   ${consist.retire_early};
+                reliability_decay:              20; // default value
+                vehicle_life:                   ${consist.vehicle_life};
+                <tal:variant_group condition="unit_variant.buyable_variant_group_id is not None">
+                    variant_group:                  ${unit_variant.buyable_variant_group_id};
+                </tal:variant_group>
+            </tal:lead_unit_of_consist_only>
+            <tal:trailing_parts_of_consist_only condition="not vehicle.is_lead_unit_of_consist">
+                <!--! some properties must be explicitly set to 0 for trailing parts -->
+                <!--! note that power cannot be 0 for engines, even this violates spec as of Nov 2022
+                      - for details see https://github.com/OpenTTD/OpenTTD/issues/10146 -->
+                power:                          ${1 if consist.power != 0 else 0};
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+            </tal:trailing_parts_of_consist_only>
+            <tal:speed_is_optional condition="consist.speed is not None">
+                speed:                          ${consist.speed}mph;
             </tal:speed_is_optional>
-            <tal:add_articulated_parts condition="len(consist.default_buyable_variant.units) > 1">
-                articulated_part: ${consist.id}_variant_${vehicle.buyable_variant.buyable_variant_num}_articulated_cb_switch;
-            </tal:add_articulated_parts>
-            <!--! setting buy menu text for engines and some wagons with role set currently - this is starting to look jank AF eh-->
-            <tal:buy_menu_text condition="(consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None">
-                additional_text:                ${vehicle.id}_switch_buy_menu_text;
-            </tal:buy_menu_text>
-        </tal:lead_unit_of_consist_only>
-        <tal:conditional_random_trigger condition="vehicle.random_trigger_switch is not None">
-            <!--! NOTE that dual headed units should avoid random triggers as of Dec 2020 - there is an undiagnosed with bug rear unit running unwanted triggers and re-randomising in depots etc -->
-            random_trigger:                 ${vehicle.id + vehicle.random_trigger_switch};
-        </tal:conditional_random_trigger>
-        <tal:colour_mapping_cb switch="vehicle.requires_colour_mapping_cb">
-            <tal:use_colour_randomisation_strategies case="'use_colour_randomisation_strategies'">
-                colour_mapping:                 switch_colour_mapping(${consist.cc_num_to_randomise}, ${consist.auto_colour_randomisation_strategy_num}, ${int(consist.use_wagon_base_colour_parameter)});
-                purchase_colour_mapping:        switch_colour_mapping_purchase(${consist.cc_num_to_randomise}, ${consist.auto_colour_randomisation_strategy_num}, ${int(consist.use_wagon_base_colour_parameter)});
-            </tal:use_colour_randomisation_strategies>
-            <tal:colour_mapping_switch_without_purchase case="'colour_mapping_switch_without_purchase'">
-                colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
-                <!--! in the case of flippable vehicles, don't check colour mapping in purchase list as vehicle_is_flipped is invalid for purchase list and will return 1 as undefined behaviour -->
-                purchase_colour_mapping:        return base_sprite_2cc + 16 * company_colour2 + company_colour1;
-            </tal:colour_mapping_switch_without_purchase
-            <tal:colour_mapping_switch_with_purchase case="'colour_mapping_switch_with_purchase'">
-                colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
-                purchase_colour_mapping:        ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
-            </tal:colour_mapping_switch_with_purchase
-        </tal:colour_mapping_cb>
-        <!--! only use the capacity switches if vehicle carries cargo, makes faster compile (saved about 20% of time) -->
-        <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
-            cargo_capacity:                 ${vehicle.id + '_switch_cargo_capacity'};
-            purchase_cargo_capacity:        ${vehicle.id + '_switch_cargo_capacity'};
-            loading_speed:                  ${vehicle.loading_speed};
-        </tal:optional_capacity_switches>
-        <!--! as of May 2021 cargo subtype use is specific to vehicles transporters, extend in future if needed -->
-        <tal:optional_cargo_subtype condition="getattr(consist, 'use_cargo_subytpes_VEHI', False)">
-            cargo_subtype_text: switch_cargo_subtype_text();
-        </tal:optional_cargo_subtype>
-        <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
-        <tal:create_effect condition="len(vehicle.effects) > 0">
-            effect_spawn_model_and_powered: ${vehicle.id}_switch_effect_spawn_model_and_powered;
-            create_effect:      ${vehicle.switch_id_for_create_effect};
-        </tal:create_effect>
-    }
-}
-
-<tal:rosters condition="vehicle.is_lead_unit_of_buyable_variant">
-    if (${consist.get_expression_for_availability()}) {
-        item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
-            property {
-                climates_available:             ALL_CLIMATES;
-            }
+            cargo_capacity:                 ${vehicle.default_cargo_capacity};
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(${vehicle.refittable_classes});
+            non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+            cargo_allow_refit:              [${vehicle.get_label_refits_allowed()}];
+            cargo_disallow_refit:           [${vehicle.get_label_refits_disallowed()}];
+            <tal:default_cargo condition="len(consist.default_cargos) > 0">
+                default_cargo_type:             ${consist.get_nml_expression_for_default_cargos()};
+            </tal:default_cargo>
+            misc_flags:                     bitmask(${vehicle.misc_flags});
+            extra_flags:                    bitmask(${vehicle.get_extra_flags(unit_variant)});
+            dual_headed:                    ${1 if consist.dual_headed else 0};
+            length:                         ${vehicle.vehicle_length};
+            track_type:                     ${consist.track_type};
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        ${vehicle.id}_switch_graphics;
+            purchase:                       ${vehicle.id}_switch_graphics_purchase;
+            <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
+                <!--! certain callbacks should not be handled for trailing parts of articulated consists -->
+                cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
+                running_cost_factor:            ${vehicle.id}_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                purchase_running_cost_factor:   ${consist.running_cost}; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                <tal:variable_power condition="consist.engine_varies_power_by_power_source(vehicle) or consist.wagons_add_power">
+                    power:                          ${vehicle.id}_switch_power_0;
+                    purchase_power:                 ${consist.power};
+                </tal:variable_power>
+                <tal:speed_is_optional condition="consist.easter_egg_haulage_speed_bonus or consist.lgv_capable">
+                    speed:                          ${vehicle.id}_switch_speed;
+                    purchase_speed:                 ${int(1.60934 * consist.speed)};
+                </tal:speed_is_optional>
+                <tal:add_articulated_parts condition="len(consist.units) > 1">
+                    articulated_part: ${consist.id}_variant_${unit_variant.buyable_variant.buyable_variant_num}_articulated_cb_switch;
+                </tal:add_articulated_parts>
+                <!--! setting buy menu text for engines and some wagons with role set currently - this is starting to look jank AF eh-->
+                <tal:buy_menu_text condition="(consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None">
+                    additional_text:                ${vehicle.id}_switch_buy_menu_text;
+                </tal:buy_menu_text>
+            </tal:lead_unit_of_consist_only>
+            <tal:conditional_random_trigger condition="vehicle.random_trigger_switch is not None">
+                <!--! NOTE that dual headed units should avoid random triggers as of Dec 2020 - there is an undiagnosed with bug rear unit running unwanted triggers and re-randomising in depots etc -->
+                random_trigger:                 ${vehicle.id + vehicle.random_trigger_switch};
+            </tal:conditional_random_trigger>
+            <tal:colour_mapping_cb switch="vehicle.requires_colour_mapping_cb">
+                <tal:use_colour_randomisation_strategies case="'use_colour_randomisation_strategies'">
+                    colour_mapping:                 switch_colour_mapping(${consist.cc_num_to_randomise}, ${consist.auto_colour_randomisation_strategy_num}, ${int(consist.use_wagon_base_colour_parameter)});
+                    purchase_colour_mapping:        switch_colour_mapping_purchase(${consist.cc_num_to_randomise}, ${consist.auto_colour_randomisation_strategy_num}, ${int(consist.use_wagon_base_colour_parameter)});
+                </tal:use_colour_randomisation_strategies>
+                <tal:colour_mapping_switch_without_purchase case="'colour_mapping_switch_without_purchase'">
+                    colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
+                    <!--! in the case of flippable vehicles, don't check colour mapping in purchase list as vehicle_is_flipped is invalid for purchase list and will return 1 as undefined behaviour -->
+                    purchase_colour_mapping:        return base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                </tal:colour_mapping_switch_without_purchase
+                <tal:colour_mapping_switch_with_purchase case="'colour_mapping_switch_with_purchase'">
+                    colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
+                    purchase_colour_mapping:        ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
+                </tal:colour_mapping_switch_with_purchase
+            </tal:colour_mapping_cb>
+            <!--! only use the capacity switches if vehicle carries cargo, makes faster compile (saved about 20% of time) -->
+            <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
+                cargo_capacity:                 ${vehicle.id + '_switch_cargo_capacity'};
+                purchase_cargo_capacity:        ${vehicle.id + '_switch_cargo_capacity'};
+                loading_speed:                  ${vehicle.loading_speed};
+            </tal:optional_capacity_switches>
+            <!--! as of May 2021 cargo subtype use is specific to vehicles transporters, extend in future if needed -->
+            <tal:optional_cargo_subtype condition="getattr(consist, 'use_cargo_subytpes_VEHI', False)">
+                cargo_subtype_text: switch_cargo_subtype_text();
+            </tal:optional_cargo_subtype>
+            <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
+            <tal:create_effect condition="len(vehicle.effects) > 0">
+                effect_spawn_model_and_powered: ${vehicle.id}_switch_effect_spawn_model_and_powered;
+                create_effect:      ${vehicle.switch_id_for_create_effect};
+            </tal:create_effect>
         }
     }
-</tal:rosters>
 
+    <tal:rosters condition="vehicle.is_lead_unit_of_consist">
+        if (${consist.get_expression_for_availability()}) {
+            item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
+                property {
+                    climates_available:             ALL_CLIMATES;
+                }
+            }
+        }
+    </tal:rosters>
+</tal:unit_variants>

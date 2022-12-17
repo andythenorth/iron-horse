@@ -64,7 +64,7 @@ class Pipeline(object):
 
         # hard-coded positions for buy menu sprite (if used - it's optional)
         x_offset = 0
-        for unit_counter, unit in enumerate(self.consist.default_buyable_variant.units):
+        for unit_counter, unit in enumerate(self.consist.units):
             # !! currently no cap on purchase menu sprite width
             # !! consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap)
             unit_length_in_pixels = 4 * unit.vehicle_length
@@ -511,12 +511,12 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         # take the first and last candidates;
         # note that we have to call set here, due to the way random candidates are padded out to make power of 2 list lengths for random bits
         # we have to use frozen_roster_items as the roster object won't pickle for multiprocessing use (never figured out why)
-        if len(self.consist.default_buyable_variant.units) > 1:
+        if len(self.consist.units) > 1:
             raise BaseException(
                 "GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline won't work with articulated consists - called by "
                 + self.consist.id
             )
-        unit_length_in_pixels = 4 * self.consist.default_buyable_variant.units[0].vehicle_length
+        unit_length_in_pixels = 4 * self.consist.units[0].vehicle_length
         unit_slice_length_in_pixels = (
             int(unit_length_in_pixels / 2)
             + graphics_constants.randomised_wagon_extra_unit_width
@@ -973,7 +973,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # builds a map of spriterows for the entire consist by walking gestalt graphics for each unique unit
         # might be that this should be handled via the gestalt graphics class, but potato / potato here I think
         result = []
-        for unit in self.consist.all_units_all_variants:
+        for unit in self.consist.unique_units:
             unit_rows = []
             # assumes gestalt_graphics is used to handle all row types, no other cases at time of writing, could be changed eh?
             unit_rows.extend(self.consist.gestalt_graphics.get_output_row_types())
@@ -1768,7 +1768,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.get_spriterow_types_for_consist()
         ):
             # 'vehicle_unit' not 'unit' to avoid conflating with graphics processor 'unit'
-            self.vehicle_unit = self.consist.all_units_all_variants[
+            self.vehicle_unit = self.consist.unique_units[
                 vehicle_counter
             ]  # !!  this is ugly hax, I didn't want to refactor the iterator above to contain the vehicle
             self.cur_vehicle_empty_row_yoffs = (
