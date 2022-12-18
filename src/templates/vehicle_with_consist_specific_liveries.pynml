@@ -195,12 +195,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
 // buy menu graphics chain
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
     spriteset(${vehicle.id}_ss_vehicle_purchase_${unit_variant.buyable_variant.buyable_variant_num}, "${graphics_path}${consist.id}.png") {
-        <tal:automagic_default_variant condition="unit_variant.buyable_variant.buyable_variant_num == 0">
-            ${consist.get_nml_for_spriteset_template(y_offset=vehicle.buy_menu_spriterow_num * 30)}
-        </tal:automagic_default_variant>
-        <tal:other_variants condition="unit_variant.buyable_variant.buyable_variant_num != 0">
-            ${consist.get_nml_for_spriteset_template(y_offset=(unit_variant.buyable_variant.buyable_variant_num - 1) * 60)}
-        </tal:other_variants>
+        ${consist.get_nml_for_spriteset_template(y_offset=unit_variant.buyable_variant.buyable_variant_num * 60)}
     }
 </tal:unit_variants>
 

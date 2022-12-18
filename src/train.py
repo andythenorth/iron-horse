@@ -3570,7 +3570,6 @@ class MailCarConsistBase(CarConsist):
             BuyableVariant(self),
             BuyableVariant(self),
             BuyableVariant(self),
-            BuyableVariant(self),
         ]
         return result
 
@@ -3780,8 +3779,6 @@ class PassengerCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.use_colour_randomisation_strategies = False
-        # !!! temp kludge
-        self.auto_magic_magic = 1
         self.allow_flip = True
         # roof configuration
         if self.gen in [1]:
@@ -3793,7 +3790,7 @@ class PassengerCarConsistBase(CarConsist):
 
     def resolve_buyable_variants(self, **kwargs):
         # !! temp - two liveries
-        result = [BuyableVariant(self), BuyableVariant(self), BuyableVariant(self)]
+        result = [BuyableVariant(self), BuyableVariant(self)]
         return result
 
     @property
