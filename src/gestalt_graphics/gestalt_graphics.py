@@ -827,6 +827,7 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # spriterow numbers are zero-indexed *relative* to the start of the consist-cargo block, to reduce shuffling them all if new rows are inserted in future
         # *all* of the values in consist_positions_ordered must be provided in the mapping, set them to 0 if unused
         self.spriterow_group_mappings = spriterow_group_mappings
+        self.colour_mapping_switch = "_switch_colour_mapping"
         # rulesets are used to define for different types of vehicle how sprites change depending on consist position
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         # it's nice to use a dict for the consist position->row mapping, but order matters for the spritesheet, so have an ordered set of keys
