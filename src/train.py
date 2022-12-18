@@ -152,6 +152,8 @@ class Consist(object):
         )  # 0 indexed spriterows, position in generated spritesheet
         # aids 'project management'
         self.sprites_complete = kwargs.get("sprites_complete", False)
+        # !! temp kludge
+        self.auto_magic_magic = 0
 
     def resolve_buyable_variants(self, **kwargs):
         # this method can be over-ridden per consist subclass as needed
@@ -1352,7 +1354,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
         # this is intended for pax railcars, but mail railcars share templating in some cases, so stub in this result to prevent unwanted behaviour
         # mail railcars generally do not combine with anything other than their own ID, this is just a compatibility stub
         result = []
-        result.append(self.base_numeric_id)
+        result.extend(self.lead_unit_variants_numeric_ids)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range(len(result), 16):
             result.append(-1)
@@ -3778,6 +3780,8 @@ class PassengerCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.use_colour_randomisation_strategies = False
+        # !!! temp kludge
+        self.auto_magic_magic = 1
         self.allow_flip = True
         # roof configuration
         if self.gen in [1]:
@@ -3886,7 +3890,7 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
         # this redefinition specific to pax railcar trailers and will be fragile if railcars or trailers are changed/extended
         # also relies on same ruleset being used for all of pax_railcar and pax railcar trailers
         result = []
-        result.append(self.base_numeric_id)
+        result.extend(self.lead_unit_variants_numeric_ids)
         for consist in self.roster.engine_consists:
             if (
                 (consist.gen == self.gen)
@@ -4004,7 +4008,7 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
         # this redefinition specific to pax railbus trailers and will be fragile if railbus or trailers are changed/extended
         result = []
-        result.append(self.base_numeric_id)
+        result.extend(self.lead_unit_variants_numeric_ids)
         for consist in self.roster.engine_consists:
             if (
                 (consist.gen == self.gen)
@@ -4071,7 +4075,7 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         # this redefinition specific to pax railcar trailers and will be fragile if railcars or trailers are changed/extended
         # also relies on same ruleset being used for all of pax_railcar and pax railcar trailers
         result = []
-        result.append(self.base_numeric_id)
+        result.extend(self.lead_unit_variants_numeric_ids)
         for consist in self.roster.engine_consists:
             if (
                 (consist.gen == self.gen)
@@ -4615,8 +4619,6 @@ class Train(object):
         self._symmetry_type = kwargs.get("symmetry_type", "symmetric")
         # optional - a switch name to trigger re-randomising vehicle random bits - over-ride as need in subclasses
         self.random_trigger_switch = None
-        # !!! temp kludge
-        self.auto_magic_magic = 0
 
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter
