@@ -68,6 +68,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(["check_buy_menu_only"])
         self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_with_purchase = True
         self.alternative_liveries = kwargs["alternative_liveries"]
         self.default_livery_extra_docs_examples = kwargs.get(
             "default_livery_extra_docs_examples", []
@@ -460,6 +461,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
             ["generate_spritelayer_cargo_sets"]
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_with_purchase = False
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         # add layers for container sprites
         # !! this might need extended for double stacks in future - see automobile gestalt for examples of deriving this from number of cargo sprite layers
@@ -595,6 +597,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
             ["generate_spritelayer_cargo_sets"]
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_with_purchase = False
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         self.cargo_sprites_are_asymmetric = True
         # derive number of layers for cargo sprites
@@ -828,6 +831,7 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # *all* of the values in consist_positions_ordered must be provided in the mapping, set them to 0 if unused
         self.spriterow_group_mappings = spriterow_group_mappings
         self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_with_purchase = False
         # rulesets are used to define for different types of vehicle how sprites change depending on consist position
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         # it's nice to use a dict for the consist position->row mapping, but order matters for the spritesheet, so have an ordered set of keys
