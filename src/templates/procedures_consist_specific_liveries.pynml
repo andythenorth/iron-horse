@@ -1,11 +1,11 @@
 <!--! stupid integer stuffing pattern, where livery is 1xx or 2xx, and flip is x0x or x1x -->
 <!--! handle user flipped state -->
 switch (FEAT_TRAINS, SELF, switch_graphics_consist_specific_livery_1, vehicle_is_flipped) {
-    1: 210; <!--! livery 1 flipped => livery 2 -->
+    1: 110;
     return 100;
 }
 switch (FEAT_TRAINS, SELF, switch_graphics_consist_specific_livery_2, vehicle_is_flipped) {
-    1: 110; <!--! livery 2 flipped => livery 1 -->
+    1: 210;
     return 200;
 }
 <!--! check parent engine ID to see which livery it wants -->
