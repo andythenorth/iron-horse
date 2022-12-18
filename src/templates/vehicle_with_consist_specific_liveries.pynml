@@ -62,7 +62,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_local_procedure_get_livery_index
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_engine_and_doors,
         [
             STORE_TEMP(${vehicle.id}_switch_local_procedure_get_livery_index_from_engine_id(), ${temp_storage_ids.buyable_variant_num}),
-            switch_graphics_consist_specific_livery_check_variant_id()
+            switch_graphics_consist_specific_livery_check_variant_id(${vehicle.auto_magic_magic})
             + switch_graphics_opening_doors()
             + (1000 * LOAD_TEMP(${temp_storage_ids.consist_specific_livery_variant}))
         ]

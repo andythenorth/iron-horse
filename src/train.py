@@ -191,6 +191,12 @@ class Consist(object):
         return result
 
     @property
+    def lead_unit_variants_numeric_ids(self):
+        # convenience function
+        result = [unit_variant.numeric_id for unit_variant in self.units[0].unit_variants]
+        return result
+
+    @property
     def unique_spriterow_nums(self):
         # find the unique spriterow numbers, used in graphics generation
         result = []
@@ -1036,7 +1042,9 @@ class EngineConsist(Consist):
         # note that this Gestalt might get replaced by subclasses as needed
         self.gestalt_graphics = GestaltGraphicsEngine(
             pantograph_type=self.pantograph_type,
-            alternative_liveries=self.roster.get_liveries_by_name(kwargs.get('alternative_liveries', [])),
+            alternative_liveries=self.roster.get_liveries_by_name(
+                kwargs.get("alternative_liveries", [])
+            ),
             default_livery_extra_docs_examples=kwargs.get(
                 "default_livery_extra_docs_examples", []
             ),
@@ -1466,6 +1474,11 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
             pantograph_type=self.pantograph_type,
         )
 
+    def resolve_buyable_variants(self, **kwargs):
+        # !! temp - two liveries
+        result = [BuyableVariant(self), BuyableVariant(self)]
+        return result
+
     @property
     def equivalent_ids_alt_var_41(self):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
@@ -1480,14 +1493,14 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
                 and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["express_pax_railcar"])
             ):
-                result.append(consist.base_numeric_id)
+                result.extend(consist.lead_unit_variants_numeric_ids)
         for consist in self.roster.wagon_consists[
             "express_railcar_passenger_trailer_car"
         ]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
-                result.append(consist.base_numeric_id)
+                result.extend(consist.lead_unit_variants_numeric_ids)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range(len(result), 16):
             result.append(-1)
@@ -1556,6 +1569,11 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
             pantograph_type=self.pantograph_type,
         )
 
+    def resolve_buyable_variants(self, **kwargs):
+        # !! temp - two liveries
+        result = [BuyableVariant(self), BuyableVariant(self)]
+        return result
+
     @property
     def equivalent_ids_alt_var_41(self):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
@@ -1569,13 +1587,13 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
                 and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["pax_railbus"])
             ):
-                result.append(consist.base_numeric_id)
+                result.extend(consist.lead_unit_variants_numeric_ids)
         # commented out support for trailers temporarily
         for consist in self.roster.wagon_consists["railbus_passenger_trailer_car"]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
-                result.append(consist.base_numeric_id)
+                result.extend(consist.lead_unit_variants_numeric_ids)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range(len(result), 16):
             result.append(-1)
@@ -1616,6 +1634,11 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
             pantograph_type=self.pantograph_type,
         )
 
+    def resolve_buyable_variants(self, **kwargs):
+        # !! temp - two liveries
+        result = [BuyableVariant(self), BuyableVariant(self)]
+        return result
+
     @property
     def equivalent_ids_alt_var_41(self):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
@@ -1632,12 +1655,12 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
                 and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["pax_railcar"])
             ):
-                result.append(consist.base_numeric_id)
+                result.extend(consist.lead_unit_variants_numeric_ids)
         for consist in self.roster.wagon_consists["railcar_passenger_trailer_car"]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
-                result.append(consist.base_numeric_id)
+                result.extend(consist.lead_unit_variants_numeric_ids)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range(len(result), 16):
             result.append(-1)
@@ -3540,7 +3563,13 @@ class MailCarConsistBase(CarConsist):
 
     def resolve_buyable_variants(self, **kwargs):
         # !! temp - two liveries
-        result = [BuyableVariant(self), BuyableVariant(self), BuyableVariant(self), BuyableVariant(self), BuyableVariant(self)]
+        result = [
+            BuyableVariant(self),
+            BuyableVariant(self),
+            BuyableVariant(self),
+            BuyableVariant(self),
+            BuyableVariant(self),
+        ]
         return result
 
     @property
@@ -3864,7 +3893,7 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
                 and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["express_pax_railcar"])
             ):
-                result.append(consist.base_numeric_id)
+                result.extend(consist.lead_unit_variants_numeric_ids)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range(len(result), 16):
             result.append(-1)
@@ -3982,7 +4011,7 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
                 and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["pax_railbus"])
             ):
-                result.append(consist.base_numeric_id)
+                result.extend(consist.lead_unit_variants_numeric_ids)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range(len(result), 16):
             result.append(-1)
@@ -4049,7 +4078,7 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
                 and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["pax_railcar"])
             ):
-                result.append(consist.base_numeric_id)
+                result.extend(consist.lead_unit_variants_numeric_ids)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range(len(result), 16):
             result.append(-1)
@@ -4586,6 +4615,8 @@ class Train(object):
         self._symmetry_type = kwargs.get("symmetry_type", "symmetric")
         # optional - a switch name to trigger re-randomising vehicle random bits - over-ride as need in subclasses
         self.random_trigger_switch = None
+        # !!! temp kludge
+        self.auto_magic_magic = 0
 
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter

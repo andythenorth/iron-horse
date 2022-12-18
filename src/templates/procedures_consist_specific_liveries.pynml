@@ -18,10 +18,22 @@ switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_check_engin
 }
 
 <!--! check variant num to see if livery should be swapped automatically or fixed to variant -->
-switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_check_variant_id, LOAD_TEMP(${temp_storage_ids.buyable_variant_num})) {
-    0: return switch_graphics_consist_specific_livery_check_engine_id;
+switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_id_livery_mapping, LOAD_TEMP(${temp_storage_ids.buyable_variant_num})) {
+    0: return switch_graphics_consist_specific_livery_1;
+    1: return switch_graphics_consist_specific_livery_2;
+}
+
+<!--! check variant num to see if livery should be swapped automatically or fixed to variant -->
+switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_check_auto_magic_magic, LOAD_TEMP(${temp_storage_ids.buyable_variant_num})) {
+    0: switch_graphics_consist_specific_livery_check_engine_id;
     1: return switch_graphics_consist_specific_livery_1;
     2: return switch_graphics_consist_specific_livery_2;
+}
+
+<!--! check if this vehicle has auto-magic magic magic -->
+switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_check_variant_id, auto_magic_magic, auto_magic_magic) {
+    1: switch_graphics_consist_specific_livery_check_auto_magic_magic;
+    switch_graphics_consist_specific_livery_id_livery_mapping;
 }
 
 
