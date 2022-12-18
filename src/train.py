@@ -3538,6 +3538,11 @@ class MailCarConsistBase(CarConsist):
         else:
             self.roof_type = "pax_mail_smooth"
 
+    def resolve_buyable_variants(self, **kwargs):
+        # !! temp - two liveries
+        result = [BuyableVariant(self), BuyableVariant(self), BuyableVariant(self), BuyableVariant(self), BuyableVariant(self)]
+        return result
+
     @property
     def loading_speed_multiplier(self):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
@@ -3752,6 +3757,11 @@ class PassengerCarConsistBase(CarConsist):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
+
+    def resolve_buyable_variants(self, **kwargs):
+        # !! temp - two liveries
+        result = [BuyableVariant(self), BuyableVariant(self), BuyableVariant(self)]
+        return result
 
     @property
     def loading_speed_multiplier(self):

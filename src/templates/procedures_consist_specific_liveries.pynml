@@ -8,7 +8,7 @@ switch (FEAT_TRAINS, SELF, switch_graphics_consist_specific_livery_2, vehicle_is
     1: 110; <!--! livery 2 flipped => livery 1 -->
     return 200;
 }
-<!--! check parent engine ID to see if livery should be swapped automatically -->
+<!--! check parent engine ID to see which livery it wants -->
 switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_check_engine_id, vehicle_type_id) {
     <!--! this doesn't check grfid currently - add later if needed -->
     <tal:livery_2_engine_ids repeat="engine_id roster_manager.livery_2_engine_ids">
@@ -16,3 +16,13 @@ switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_check_engin
     </tal:livery_2_engine_ids>
     return switch_graphics_consist_specific_livery_1;
 }
+
+<!--! check variant num to see if livery should be swapped automatically or fixed to variant -->
+switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_check_variant_id, LOAD_TEMP(${temp_storage_ids.buyable_variant_num})) {
+    0: return switch_graphics_consist_specific_livery_check_engine_id;
+    1: return switch_graphics_consist_specific_livery_1;
+    2: return switch_graphics_consist_specific_livery_2;
+}
+
+
+

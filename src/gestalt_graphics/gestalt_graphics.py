@@ -862,7 +862,7 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
     def get_output_row_types(self):
         return ["pax_mail_cars_with_doors"]
 
-    def get_variants_with_position_keys(self, cargo_row_map):
+    def get_position_variants_with_keys(self, cargo_row_map):
         # just formatting for human-readable access to positions in templates where mapping[0][n] was fiddly
         # the cargo_row_map structure can't use a dict for compatibility reasons, so handle it here
         result = {}
