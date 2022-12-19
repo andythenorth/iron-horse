@@ -1758,7 +1758,7 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
-            liveries=[{}],
+            liveries=[{}, {}],
             pantograph_type=self.pantograph_type,
         )
 
