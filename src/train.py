@@ -1243,7 +1243,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="driving_cab_cars",
-            liveries=[{}, {}],
+            liveries=self.roster.default_mail_liveries,
         )
 
 
@@ -1299,7 +1299,6 @@ class MailEngineMetroConsist(MailEngineConsist):
             consist_ruleset="metro",
             liveries=[{}],
         )
-        print(self.gestalt_graphics.asymmetric_row_map)
 
     @property
     def loading_speed_multiplier(self):
@@ -1354,7 +1353,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset=consist_ruleset,
-            liveries=[{}, {}],
+            liveries=self.roster.default_mail_liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -1425,7 +1424,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="driving_cab_cars",
-            liveries=[{}, {}],
+            liveries=self.roster.default_pax_liveries,
         )
 
 
@@ -1480,7 +1479,7 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_4_unit_sets",
-            liveries=[{}, {}],
+            liveries=self.roster.default_pax_liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -1569,7 +1568,7 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_2_unit_sets",
-            liveries=[{}, {}],
+            liveries=self.roster.default_pax_liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -1627,7 +1626,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_3_unit_sets",
-            liveries=[{}, {}],
+            liveries=self.roster.default_pax_liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -3813,7 +3812,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
-            liveries=[{}, {}],
+            liveries=self.roster.default_pax_liveries,
         )
 
 
@@ -3854,7 +3853,7 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_4_unit_sets",
-            liveries=[{}, {}],
+            liveries=self.roster.default_pax_liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -3972,7 +3971,7 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_2_unit_sets",
-            liveries=[{}, {}],
+            liveries=self.roster.default_pax_liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -4042,7 +4041,7 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_3_unit_sets",
-            liveries=[{}, {}],
+            liveries=self.roster.default_pax_liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -4094,7 +4093,7 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
-            liveries=[{}, {}],
+            liveries=self.roster.default_pax_liveries,
         )
 
 
@@ -4133,7 +4132,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
-            liveries=[{}, {}],
+            liveries=self.roster.default_pax_liveries,
         )
 
 

@@ -29,6 +29,8 @@ class Roster(object):
         self.pax_car_capacity_types = kwargs.get("pax_car_capacity_types")
         self.train_car_weight_factors = kwargs.get("train_car_weight_factors")
         self.livery_presets = kwargs.get("livery_presets", [])
+        self.default_pax_liveries = kwargs.get("default_pax_liveries", [])
+        self.default_mail_liveries = kwargs.get("default_mail_liveries", [])
 
     @property
     def buy_menu_sort_order(self):
