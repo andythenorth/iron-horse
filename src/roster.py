@@ -224,8 +224,8 @@ class Roster(object):
             result.extend(result[: 16 - len(result)])
         return result
 
-    def get_liveries_by_name(self, alternative_livery_names):
-        return [self.livery_presets[alternative_livery_name] for alternative_livery_name in alternative_livery_names]
+    def get_liveries_by_name(self, additional_livery_names):
+        return [self.livery_presets[additional_livery_name] for additional_livery_name in additional_livery_names]
 
     def intro_year_ranges(self, base_track_type_name):
         # return a list of year pairs (first year, last year) for generations

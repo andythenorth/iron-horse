@@ -17,7 +17,7 @@ def main(roster_id):
         gen=4,
         intro_year_offset=-2,  # let's be a littler earlier for this one
         caboose_family="railfreight_1",
-        alternative_liveries=["RAILFREIGHT_RED_STRIPE"],
+        additional_liveries=["RAILFREIGHT_RED_STRIPE"],
         sprites_complete=True,
     )
 

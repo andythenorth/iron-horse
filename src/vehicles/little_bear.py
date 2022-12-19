@@ -17,7 +17,7 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         intro_year_offset=-6,
-        # alternative_liveries='RAILFREIGHT_RED_STRIPE', # not now, needs sprites
+        # additional_liveries='RAILFREIGHT_RED_STRIPE', # not now, needs sprites
         sprites_complete=True,
     )
 

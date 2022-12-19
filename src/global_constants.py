@@ -317,8 +317,7 @@ temp_storage_ids = dict(
     auto_colour_randomisation_strategy_num=21,  # used in procedures_colour_randomisation_strategies
     use_wagon_base_colour_parameter=22,  # used in procedures_colour_randomisation_strategies
     unreversible_spritelayer_cargos=23,  # used to handle esoteric cases where spritelayer cargos need to reverse
-    consist_specific_livery_variant=24,  # used to store result of switch_graphics_pax_car_ruleset() and similar
-    buyable_variant_num=25,  # used to store buyable_variant_num of current unit variant
+    consist_specific_position_variant_num=24,  # used to store result of switch_graphics_pax_car_ruleset() and similar
 )
 
 # standard offsets for trains

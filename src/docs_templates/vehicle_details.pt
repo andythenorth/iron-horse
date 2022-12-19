@@ -206,8 +206,8 @@
                             <th class="livery-table-first-col"><div style="margin-top:12px;">Livery ${repeat.livery_variant.number} examples</div></th>
                             <td class="livery-table-col-with-divider">
                                 <tal:livery_example repeat="livery_name livery_variant.keys()">
-                                    <!--! assume use_alternative_livery_spriterow is an indicator for an example colour combo triggering alternative livery -->
-                                    <tal:block condition="'use_alternative_livery_spriterow' not in livery_variant[livery_name]">
+                                    <!--! assume use_additional_livery_spriterow is an indicator for an example colour combo triggering alternative livery -->
+                                    <tal:block condition="'use_additional_livery_spriterow' not in livery_variant[livery_name]">
                                         <div class="livery-example-container">
                                             <div class="vehicle-image"
                                                 style="width:${3 * doc_helper.buy_menu_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">

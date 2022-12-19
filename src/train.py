@@ -24,7 +24,7 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsCaboose,
     GestaltGraphicsSimpleBodyColourRemaps,
     GestaltGraphicsRandomisedWagon,
-    GestaltGraphicsConsistSpecificLivery,
+    GestaltGraphicsConsistPositionDependent,
     GestaltGraphicsIntermodalContainerTransporters,
     GestaltGraphicsAutomobilesTransporter,
     GestaltGraphicsCustom,
@@ -51,7 +51,9 @@ class Consist(object):
         # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
         self.roster_id = kwargs.get("roster_id")  # just fail if there's no roster
         # create a structure to hold buyable variants - the method can be over-ridden in consist subclasses to provide specific rules for buyable variants
-        self.buyable_variants = self.resolve_buyable_variants(**kwargs)
+        # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
+        # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem
+        self.buyable_variants = []
         # create a structure to hold the units
         self.units = []
         # either gen xor intro_year is required, don't set both, one will be interpolated from the other
@@ -152,20 +154,19 @@ class Consist(object):
         )  # 0 indexed spriterows, position in generated spritesheet
         # aids 'project management'
         self.sprites_complete = kwargs.get("sprites_complete", False)
-        # !! temp kludge
-        self.auto_magic_magic = 0
 
-    def resolve_buyable_variants(self, **kwargs):
+    def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed
-        # always insert a default buyable variant
-        result = [BuyableVariant(self)]
-        # the basic form of buyable variants is driven by alternative liveries
-        for livery in kwargs.get("alternative_liveries", []):
+        # the basic form of buyable variants is driven by liveries
+        for livery in self.gestalt_graphics.all_liveries:
             # we don't need to know the actual livery here, we rely on matching them up later by indexes, which is fine
-            result.append(BuyableVariant(self))
-        return result
+            self.buyable_variants.append(BuyableVariant(self))
 
     def add_unit(self, type, repeat=1, **kwargs):
+        # we have add_unit create the variants when needed, which means we avoid sequencing problems with gestalt_graphics initialisation
+        if len(self.buyable_variants) == 0:
+            self.resolve_buyable_variants()
+        # now add the units
         unit = type(consist=self, **kwargs)
         for repeat_num in range(repeat):
             self.units.append(unit)
@@ -195,7 +196,9 @@ class Consist(object):
     @property
     def lead_unit_variants_numeric_ids(self):
         # convenience function
-        result = [unit_variant.numeric_id for unit_variant in self.units[0].unit_variants]
+        result = [
+            unit_variant.numeric_id for unit_variant in self.units[0].unit_variants
+        ]
         return result
 
     @property
@@ -204,8 +207,8 @@ class Consist(object):
         result = []
         for unit in set([unit.spriterow_num for unit in self.units]):
             result.append(unit)
-            # extend with alternative cc livery if present, spritesheet format assumes unit_1_default, unit_1_alternative_liveries, unit_2_default, unit_2_alternative_liveries if present
-            if self.gestalt_graphics.alternative_liveries is not None:
+            # extend with alternative cc livery if present, spritesheet format assumes unit_1_default, unit_1_additional_liveries, unit_2_default, unit_2_additional_liveries if present
+            if self.gestalt_graphics.additional_liveries is not None:
                 result.append(unit + 1)
         return result
 
@@ -1044,8 +1047,8 @@ class EngineConsist(Consist):
         # note that this Gestalt might get replaced by subclasses as needed
         self.gestalt_graphics = GestaltGraphicsEngine(
             pantograph_type=self.pantograph_type,
-            alternative_liveries=self.roster.get_liveries_by_name(
-                kwargs.get("alternative_liveries", [])
+            additional_liveries=self.roster.get_liveries_by_name(
+                kwargs.get("additional_liveries", [])
             ),
             default_livery_extra_docs_examples=kwargs.get(
                 "default_livery_extra_docs_examples", []
@@ -1236,12 +1239,11 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # position based variants
-        spriterow_group_mappings = {
-            "mail": {"default": 0, "first": 0, "last": 1, "special": 0},
-            "pax": {"default": 0, "first": 0, "last": 1, "special": 0},
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
-            spriterow_group_mappings, consist_ruleset="driving_cab_cars"
+        spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="driving_cab_cars",
+            liveries=[{}, {}],
         )
 
 
@@ -1287,16 +1289,17 @@ class MailEngineMetroConsist(MailEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # Graphics configuration
-        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
+        # 1 livery as can't be flipped
         # position variants
         # * unit with driving cab front end
         # * unit with driving cab rear end
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 0, "last": 1, "special": 0}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
-            spriterow_group_mappings, consist_ruleset="metro"
+        spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="metro",
+            liveries=[{}],
         )
+        print(self.gestalt_graphics.asymmetric_row_map)
 
     @property
     def loading_speed_multiplier(self):
@@ -1335,16 +1338,23 @@ class MailEngineRailcarConsist(MailEngineConsist):
         if kwargs.get("use_3_unit_sets", False):
             consist_ruleset = "railcars_3_unit_sets"
             spriterow_group_mappings = {
-                "mail": {"default": 0, "first": 1, "last": 2, "special": 3}
+                "default": 0,
+                "first": 1,
+                "last": 2,
+                "special": 3,
             }
         else:
             consist_ruleset = "railcars_2_unit_sets"
             spriterow_group_mappings = {
-                "mail": {"default": 0, "first": 1, "last": 2, "special": 0}
+                "default": 0,
+                "first": 1,
+                "last": 2,
+                "special": 0,
             }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset=consist_ruleset,
+            liveries=[{}, {}],
             pantograph_type=self.pantograph_type,
         )
 
@@ -1411,12 +1421,11 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # position based variants
-        spriterow_group_mappings = {
-            "mail": {"default": 0, "first": 0, "last": 1, "special": 0},
-            "pax": {"default": 0, "first": 0, "last": 1, "special": 0},
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
-            spriterow_group_mappings, consist_ruleset="driving_cab_cars"
+        spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="driving_cab_cars",
+            liveries=[{}, {}],
         )
 
 
@@ -1467,19 +1476,13 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         # * unit with no cabs (center car)
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 1, "last": 2, "special": 3}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_4_unit_sets",
+            liveries=[{}, {}],
             pantograph_type=self.pantograph_type,
         )
-
-    def resolve_buyable_variants(self, **kwargs):
-        # !! temp - two liveries
-        result = [BuyableVariant(self), BuyableVariant(self)]
-        return result
 
     @property
     def equivalent_ids_alt_var_41(self):
@@ -1524,15 +1527,15 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # Graphics configuration
-        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
+        # 1 livery as can't be flipped
         # position variants
         # * unit with driving cab front end
         # * unit with driving cab rear end
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 0, "last": 1, "special": 0}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
-            spriterow_group_mappings, consist_ruleset="metro"
+        spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="metro",
+            liveries=[{}],
         )
 
     @property
@@ -1562,19 +1565,13 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         # ruleset will combine these to make multiple-units 1, 2 vehicles long, then repeating the pattern
-        spriterow_group_mappings = {
-            "mail": {"default": 0, "first": 1, "last": 2, "special": 0}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_2_unit_sets",
+            liveries=[{}, {}],
             pantograph_type=self.pantograph_type,
         )
-
-    def resolve_buyable_variants(self, **kwargs):
-        # !! temp - two liveries
-        result = [BuyableVariant(self), BuyableVariant(self)]
-        return result
 
     @property
     def equivalent_ids_alt_var_41(self):
@@ -1627,19 +1624,13 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         # * unit with no cabs (center car)
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 1, "last": 2, "special": 3}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_3_unit_sets",
+            liveries=[{}, {}],
             pantograph_type=self.pantograph_type,
         )
-
-    def resolve_buyable_variants(self, **kwargs):
-        # !! temp - two liveries
-        result = [BuyableVariant(self), BuyableVariant(self)]
-        return result
 
     @property
     def equivalent_ids_alt_var_41(self):
@@ -1758,18 +1749,17 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         self._cite = "Dr Constance Speed"
         # Graphics configuration
         self.roof_type = "pax_mail_smooth"
-        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
+        # 1 livery as can't be flipped
         # position variants
         # * default unit
         # * unit with pantograph - leading end
         # * unit with pantograph -  rear end
         # * buffet unit
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 1, "last": 2, "special": 3}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
+            liveries=[{}],
             pantograph_type=self.pantograph_type,
         )
 
@@ -3563,16 +3553,6 @@ class MailCarConsistBase(CarConsist):
         else:
             self.roof_type = "pax_mail_smooth"
 
-    def resolve_buyable_variants(self, **kwargs):
-        # !! temp - two liveries
-        result = [
-            BuyableVariant(self),
-            BuyableVariant(self),
-            BuyableVariant(self),
-            BuyableVariant(self),
-        ]
-        return result
-
     @property
     def loading_speed_multiplier(self):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
@@ -3602,16 +3582,21 @@ class MailCarConsist(MailCarConsistBase):
         brake_car_sprites = 1 if self.subtype in ["B", "C"] else 0
         bonus_sprites = 2 if self.subtype in ["C"] else 0
         spriterow_group_mappings = {
-            "mail": {
-                "default": 0,
-                "first": brake_car_sprites,
-                "last": brake_car_sprites,
-                "special": bonus_sprites,
-            },
-            "pax": {"default": 0, "first": 0, "last": 0, "special": 0},
+            "default": 0,
+            "first": brake_car_sprites,
+            "last": brake_car_sprites,
+            "special": bonus_sprites,
         }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
-            spriterow_group_mappings, consist_ruleset="mail_cars"
+        # temp kludge
+        if self.id == "mail_car_pony_gen_4C":
+            liveries = [{}, {}, {}, {}]
+        else:
+            liveries = [{}, {}]
+
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="mail_cars",
+            liveries=liveries,
         )
 
 
@@ -3644,11 +3629,11 @@ class MailHSTCarConsist(MailCarConsistBase):
         #   * brake coach front
         #   * brake coach rear
         #   * special (buffet) coach
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 1, "last": 2, "special": 0}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
-            spriterow_group_mappings, consist_ruleset="mail_cars"
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="mail_cars",
+            liveries=[{}],
         )
 
     @property
@@ -3788,11 +3773,6 @@ class PassengerCarConsistBase(CarConsist):
         else:
             self.roof_type = "pax_mail_smooth"
 
-    def resolve_buyable_variants(self, **kwargs):
-        # !! temp - two liveries
-        result = [BuyableVariant(self), BuyableVariant(self)]
-        return result
-
     @property
     def loading_speed_multiplier(self):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
@@ -3830,11 +3810,11 @@ class PassengerCarConsist(PassengerCarConsistBase):
         #   * brake coach front
         #   * brake coach rear
         #   * I removed special coaches from PassengerLuxuryCarConsist Feb 2021, as Restaurant cars were added
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 1, "last": 2, "special": 0}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
-            spriterow_group_mappings, consist_ruleset="pax_cars"
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="pax_cars",
+            liveries=[{}, {}],
         )
 
 
@@ -3871,12 +3851,11 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
         # * unit with no cabs (center car)
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 1, "last": 2, "special": 3}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_4_unit_sets",
+            liveries=[{}, {}],
             pantograph_type=self.pantograph_type,
         )
 
@@ -3940,11 +3919,11 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         #   * brake coach front
         #   * brake coach rear
         #   * special (buffet) coach
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 1, "last": 2, "special": 3}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
-            spriterow_group_mappings, consist_ruleset="pax_cars"
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="pax_cars",
+            liveries=[{}],
         )
 
     @property
@@ -3990,12 +3969,11 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         # ruleset will combine these to make multiple-units 1, 2 vehicles long, then repeating the pattern
-        spriterow_group_mappings = {
-            "mail": {"default": 0, "first": 1, "last": 2, "special": 0}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_2_unit_sets",
+            liveries=[{}, {}],
             pantograph_type=self.pantograph_type,
         )
 
@@ -4056,12 +4034,11 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         # * unit with no cabs (center car)
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 1, "last": 2, "special": 3}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_3_unit_sets",
+            liveries=[{}, {}],
             pantograph_type=self.pantograph_type,
         )
 
@@ -4109,11 +4086,11 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         self.buy_menu_hint_restaurant_car = True
         # Graphics configuration
         # position based variants are not used for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 0, "last": 0, "special": 0}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
-            spriterow_group_mappings, consist_ruleset="pax_cars"
+        spriterow_group_mappings = {"default": 0, "first": 0, "last": 0, "special": 0}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="pax_cars",
+            liveries=[{}, {}],
         )
 
 
@@ -4148,11 +4125,11 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         #   * brake coach front
         #   * brake coach rear
         #   * I removed special coaches from PassengerCarConsistBase Dec 2018, overkill
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 1, "last": 2, "special": 0}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
-            spriterow_group_mappings, consist_ruleset="pax_cars"
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="pax_cars",
+            liveries=[{}, {}],
         )
 
 
@@ -4931,7 +4908,7 @@ class Train(object):
                     "vehicle_with_visible_cargo.pynml",
                     "vehicle_box_car_with_opening_doors.pynml",
                     "vehicle_with_cargo_specific_liveries.pynml",
-                    "vehicle_with_consist_specific_liveries.pynml",
+                    "vehicle_consist_position_dependent.pynml",
                 ]:
                     assert self.consist.gestalt_graphics.nml_template != nml_template, (
                         "%s has 'random_reverse set True, which isn't supported by nml_template %s"

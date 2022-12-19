@@ -75,7 +75,7 @@ class Pipeline(object):
                 "metro"
             ]:
                 if unit_counter % 2 != 0:
-                    ruleset_offset_num_rows_jank = 4  # hard-coded to metro currently
+                    ruleset_offset_num_rows_jank = 2  # hard-coded to metro currently
             if getattr(self.consist.gestalt_graphics, "consist_ruleset", None) in [
                 "articulated_permanent_twin_sets"
             ]:
@@ -83,8 +83,8 @@ class Pipeline(object):
                 # offset for 2nd unit to skip mask
                 if unit_counter == 1:
                     ruleset_offset_num_rows_jank = 1
-            # alternative_liveries jank for engines eh
-            if len(self.consist.gestalt_graphics.alternative_liveries) > 0:
+            # additional_liveries jank for engines eh
+            if len(self.consist.gestalt_graphics.additional_liveries) > 0:
                 ruleset_offset_num_rows_jank = unit_counter
             unit_spriterow_offset = (
                 unit.spriterow_num + ruleset_offset_num_rows_jank
@@ -1796,9 +1796,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                     input_spriterow_count = self.consist.gestalt_graphics.num_variations
                     self.add_caboose_spriterows(input_spriterow_count)
                 elif spriterow_type == "pax_mail_cars_with_doors":
-                    # 2 liveries with 2 rows each: empty & loaded (doors closed), loading (doors open)
                     input_spriterow_count = (
-                        4 * self.consist.gestalt_graphics.num_cargo_sprite_variants
+                        self.consist.gestalt_graphics.total_spriterow_count
                     )
                     self.add_pax_mail_car_with_opening_doors_spriterows(
                         input_spriterow_count

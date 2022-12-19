@@ -16,7 +16,7 @@ def main(roster_id):
         gen=6,
         pantograph_type="z-shaped-double",
         intro_year_offset=1,  # introduce later than gen epoch by design
-        alternative_liveries=["FREIGHTLINER_GBRF"],
+        additional_liveries=["FREIGHTLINER_GBRF"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_PALE_GREEN"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),

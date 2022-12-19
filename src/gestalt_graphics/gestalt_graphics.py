@@ -18,7 +18,7 @@ class GestaltGraphics(object):
         # by default, pipelines are empty
         self.pipelines = pipelines.get_pipelines([])
         # this is only used by engines as of Dec 2022, but we provide a default value here to avoid requiring getattr() in many places, which was masking errors
-        self.alternative_liveries = []  # over-ride as needed in subclasses
+        self.additional_liveries = []  # over-ride as needed in subclasses
         # sometimes processing may depend on another generated vehicle spritesheet, so there are multiple processing priorities, 1 = highest
         self.processing_priority = 1
         # default value for optional mask layer, this is JFDI for 2022, may need converting a more generic spritelayers structure in future
@@ -32,29 +32,19 @@ class GestaltGraphics(object):
         # return a pnml file name, e.g. `return 'vehicle_default.pynml'`
         return None
 
-    @property
-    def num_cargo_sprite_variants(self):
-        # this tends to be common across multiple templates, so provide it in the base class
-        # rows can be reused across multiple cargo labels, so find uniques (assumes row nums are identical when reused across labels)
-        # !! fails if the subclass doesn't have cargo_row_map
-        row_nums_seen = []
-        for row_nums in self.cargo_row_map.values():
-            for row_num in row_nums:
-                row_nums_seen.append(row_num)
-        return len(set(row_nums_seen))
-
     def get_output_row_types(self):
         # stub, for compatibility reasons
         return ["single_row"]
 
     @property
     def all_liveries(self):
-        # a convenience property to insert a default_livery for ease of constructing template repeats
-        # note that default_livery is not guaranteed to contain all the key/value pairs that alternative_liveries has
+        # over-ride in subclasses as needed
+        # for the general case, this is a convenience approach to insert a default_livery for ease of constructing template repeats
+        # note that default_livery is not guaranteed to contain all the key/value pairs that additional_liveries has
         result = []
         default_livery = {}
         result.append(default_livery)
-        result.extend(self.alternative_liveries)
+        result.extend(self.additional_liveries)
         return result
 
 
@@ -69,7 +59,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(["check_buy_menu_only"])
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
-        self.alternative_liveries = kwargs["alternative_liveries"]
+        self.additional_liveries = kwargs["additional_liveries"]
         self.default_livery_extra_docs_examples = kwargs.get(
             "default_livery_extra_docs_examples", []
         )
@@ -88,6 +78,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         return "vehicle_engine.pynml"
 
     # get_output_row_types not re-implemented here as of July 2020, as no actual pixa processing is used for the engine sprites, add it if processing is needed in future
+
 
 class GestaltGraphicsOnlyAddPantographs(GestaltGraphics):
     """
@@ -786,6 +777,15 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
         return ["livery_spriterows"]
 
     @property
+    def num_cargo_sprite_variants(self):
+        # rows can be reused across multiple cargo labels, so find uniques (assumes row nums are identical when reused across labels)
+        row_nums_seen = []
+        for row_nums in self.cargo_row_map.values():
+            for row_num in row_nums:
+                row_nums_seen.append(row_num)
+        return len(set(row_nums_seen))
+
+    @property
     def cargo_row_map(self):
         result = {}
         counter = 0
@@ -798,18 +798,12 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
         return result
 
 
-class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
+class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
     """
-     Used when the vehicle changes livery to match
-     - the engine (based on engine 'role')
-     - major cargo refit in the consist (mail vs. freight)
-     - position in consist (pax restaurant cars etc)
+     Used when the vehicle changes appearance depending on position in the consist
      Intended for pax and mail cars
-      - multiple engine roles might map to one livery
-      - livery shown is specific to the engine role and/or the major cargo in the consist
-      - player can toggle engine-livery or solid CC by flipping vehicle
       - intended for closed vehicles with doors, 'loaded' sprites are same as 'empty'
-      - option to show cargo loading sprites (open doors) via 1 or 2 'loading' rows
+      - option to show loading sprites (open doors) via 1 or 2 'loading' rows
     - vehicles can be configured to optionally show 1 of 4 different sprites depending on position in consist
          - 'default'
          - 'first'
@@ -822,26 +816,34 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
     """
 
     def __init__(self, spriterow_group_mappings, **kwargs):
-        # no graphics processing for this gestalt
         super().__init__()
         # spriterow_group_mappings provided by subclass calling gestalt_graphics:
-        # (1) consist-cargo types for which specific liveries are provided
-        # (2) spriterow numbers for named positions in consist
-        # spriterow numbers are zero-indexed *relative* to the start of the consist-cargo block, to reduce shuffling them all if new rows are inserted in future
-        # *all* of the values in consist_positions_ordered must be provided in the mapping, set them to 0 if unused
+        # - spriterow numbers for named positions in consist
+        # - spriterow numbers are zero-indexed *relative* to the start of the consist-cargo block, to reduce shuffling them all if new rows are inserted in future
+        # - *all* of the keys must be provided in the mapping, set values to 0 if unused
         self.spriterow_group_mappings = spriterow_group_mappings
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = False
         # rulesets are used to define for different types of vehicle how sprites change depending on consist position
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
-        # it's nice to use a dict for the consist position->row mapping, but order matters for the spritesheet, so have an ordered set of keys
-        # also, although rulesets allow fine-grained control, there are deliberately only 4 configuration options
-        # this stops rules getting out of control and simplifies other methods
-        self.consist_positions_ordered = ["default", "first", "last", "special"]
-
+        # liveries provided by subclass calling gestalt_graphics
+        self.liveries = kwargs.get("liveries", [])
+        # verify that the spriterow_group_mappings keys are in the expected order
+        if list(self.spriterow_group_mappings.keys()) != [
+            "default",
+            "first",
+            "last",
+            "special",
+        ]:
+            raise BaseException(
+                "Keys aren't correct for spriterow_group_mappings: "
+                + str(spriterow_group_mappings)
+            )
+        # configure pipelines
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
+        # add pantographs as necessary
         if kwargs.get("pantograph_type", None) is not None:
             self.pipelines.extend(
                 pipelines.get_pipelines(
@@ -853,60 +855,33 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
             )
             # this relies on DFLT mapping being safe to take
             # *and* assumes no gaps in the spriterows, so take the max spriterow num
-            # *and* assumes 2 liveries are in use
             # note the +1 because livery rows are zero indexed
-            self.num_pantograph_rows = 2 * (
-                max([int(i) + 1 for i in self.cargo_row_map["DFLT"]])
+            self.num_pantograph_rows = len(self.liveries) * (
+                1 + max(self.spriterow_group_mappings.values())
             )
 
     @property
     def nml_template(self):
         # over-ride in sub-classes as needed
-        return "vehicle_with_consist_specific_liveries.pynml"
+        return "vehicle_consist_position_dependent.pynml"
 
     def get_output_row_types(self):
         return ["pax_mail_cars_with_doors"]
 
-    def get_position_variants_with_keys(self, cargo_row_map):
-        # just formatting for human-readable access to positions in templates where mapping[0][n] was fiddly
-        # the cargo_row_map structure can't use a dict for compatibility reasons, so handle it here
-        result = {}
-        for i, name in enumerate(self.consist_positions_ordered):
-            result[name] = cargo_row_map[1][i]
-        return result
+    @property
+    def all_liveries(self):
+        # stub to map this gestalt's liveries to the wider all_liveries structure
+        return self.liveries
 
     @property
-    def cargo_row_map(self):
-        # This is tied completely to the spritesheet format, which as of April 2018 was:
-        # - pax consist liveries (n vehicle variants x 2 liveries x 2 rows: empty & loaded, loading)
-        # - mail consist liveries (n vehicle variants x 2 liveries x 2 rows: empty & loaded, loading)
-        # these are mapped by the subclass using spriterow_group_mappings to consist positions that
-        #   the template expects for e.g. restaurant cars, brake coaches etc
-        result = {}
-        counter = 0
-        # this doesn't account for cargos like TOUR, but could be extended so cargo labels are a list, TMWFTLB as of April 2018 though
-        # not a dict because order matters
-        for livery_type, cargo_label in (("pax", "PASS"), ("mail", "MAIL")):
-            if livery_type in self.spriterow_group_mappings:
-                # we have to rebuild the row_nums in a predictable order (they're stored in a dict for convenience when configuring)
-                relative_row_nums = [
-                    self.spriterow_group_mappings[livery_type][position]
-                    for position in self.consist_positions_ordered
-                ]
-                result[cargo_label] = [
-                    counter + row_num for row_num in relative_row_nums
-                ]  # we make relative row_nums absolute here
-                counter += len(set(relative_row_nums))
-        # we rely on DFLT here to explicitly catch the case for 'freight' (which has no label we can check)
-        if "DFLT" not in result.keys():
-            # this will error if neither pax nor mail are defined
-            # default to mail if available (to handle mail cars in freight consists)
-            if "MAIL" in result.keys():
-                result["DFLT"] = result["MAIL"]
-            else:
-                # fallback to pax if nothing else
-                result["DFLT"] = result["PASS"]
-        return result
+    def total_spriterow_count(self):
+        # n liveries * 2 states for doors open/closed * number of position variants defined
+        return len(self.liveries) * 2 * self.total_position_variants
+
+    @property
+    def total_position_variants(self):
+        # rows can be reused across multiple position variant labels, so find uniques
+        return len(set(list(self.spriterow_group_mappings.values())))
 
     @property
     def asymmetric_row_map(self):
@@ -914,28 +889,21 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # pax / mail cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         result = {}
         base_row_num = 0
-        # This is tied completely to the spritesheet format, which as of April 2018 was:
-        # - pax consist liveries (n vehicle variants x 2 liveries x 2 rows: empty & loaded, loading)
-        # - mail consist liveries (n vehicle variants x 2 liveries x 2 rows: empty & loaded, loading)
-        # see also cargo_row_map()
-        for livery_type, cargo_label in (("pax", "PASS"), ("mail", "MAIL")):
-            if livery_type in self.spriterow_group_mappings:
-                spriterow_group_mapping = self.spriterow_group_mappings[livery_type]
-                num_rows = len(set(spriterow_group_mapping.values()))
-
-                for variant_num in range(num_rows):
-                    if variant_num == spriterow_group_mapping["first"]:
-                        source_row_num = spriterow_group_mapping["last"]
-                    elif variant_num == spriterow_group_mapping["last"]:
-                        source_row_num = spriterow_group_mapping["first"]
-                    else:
-                        source_row_num = variant_num
-                    # group of 4 rows - two liveries * two loaded/loading states (opening doors)
-                    for i in range(1, 5):
-                        result[base_row_num + (4 * variant_num) + i] = (
-                            base_row_num + (4 * source_row_num) + i
-                        )
-                base_row_num += 4 * num_rows
+        # This is tied completely to the spritesheet format:
+        # [1..4] vehicle variants x n liveries x 2 rows (empty & loaded, loading)
+        for position_variant_num in range(self.total_position_variants):
+            if position_variant_num == self.spriterow_group_mappings["first"]:
+                source_row_num = self.spriterow_group_mappings["last"]
+            elif position_variant_num == self.spriterow_group_mappings["last"]:
+                source_row_num = self.spriterow_group_mappings["first"]
+            else:
+                source_row_num = position_variant_num
+            # group of n rows - n liveries * two loaded/loading states (opening doors)
+            row_group_size = 2 * len(self.liveries)
+            for i in range(1, 1 + row_group_size):
+                result[base_row_num + (row_group_size * position_variant_num) + i] = (
+                    base_row_num + (row_group_size * source_row_num) + i
+                )
         return result
 
 

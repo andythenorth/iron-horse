@@ -197,7 +197,7 @@ class DocHelper(object):
             getattr(consist.gestalt_graphics, "default_livery_extra_docs_examples", [])
         )
 
-        alternative_liveries = consist.gestalt_graphics.alternative_liveries
+        additional_liveries = consist.gestalt_graphics.additional_liveries
 
         result = {}
         for cc_remap_pair in default_livery_examples:
@@ -210,14 +210,14 @@ class DocHelper(object):
             result[livery_name]["docs_image_input_cc"] = cc_remap_pair
         variants_config.append(result)
 
-        for alternative_livery in alternative_liveries:
+        for additional_livery in additional_liveries:
             result = {}
-            for cc_remap_pair in alternative_livery["docs_image_input_cc"]:
+            for cc_remap_pair in additional_livery["docs_image_input_cc"]:
                 livery_name = self.get_livery_file_substr(cc_remap_pair)
                 result[livery_name] = {}
                 CC1_remap = (
-                    alternative_livery["remap_to_cc"]
-                    if alternative_livery["remap_to_cc"] is not None
+                    additional_livery["remap_to_cc"]
+                    if additional_livery["remap_to_cc"] is not None
                     else cc_remap_pair[0]
                 )  # handle possible remap of CC1
                 CC2_remap = cc_remap_pair[
@@ -532,7 +532,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
     ):
 
         if not consist.dual_headed:
-            # relies on alternative_liveries being in predictable row offsets (should be true as of July 2020)
+            # relies on additional_liveries being in predictable row offsets (should be true as of July 2020)
             y_offset = (consist.docs_image_spriterow + livery_counter) * 30
             source_vehicle_image_tmp = vehicle_spritesheet.crop(
                 box=(
@@ -545,7 +545,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
         if consist.dual_headed:
             # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
             # !! hard-coded values might fail in future, sort that out then if needed, they can be looked up in global constants
-            # !! this also won't work with engine alternative_liveries currently
+            # !! this also won't work with engine additional_liveries currently
             source_vehicle_image_1 = vehicle_spritesheet.copy().crop(
                 box=(
                     224,
@@ -665,7 +665,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
             )
             # probably fragile workaround to use the alternative livery spriterow
             # for the edge case that a docs default livery 2nd company colour matches the alternative livery triggers
-            if "use_alternative_livery_spriterow" in livery_metadata.keys():
+            if "use_additional_livery_spriterow" in livery_metadata.keys():
                 # this makes assumptions about there being a 2nd docs_image_variant with an appropriate spriterow
                 processed_vehicle_image = docs_image_variants[1]["source_vehicle_image"]
             else:

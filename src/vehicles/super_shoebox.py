@@ -14,7 +14,7 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         gen=5,
         sprites_complete=True,
-        # alternative_liveries=["RAILFREIGHT_TRIPLE_GREY"], # unfinished alt liveries, could be triple grey, or block colour?
+        # additional_liveries=["RAILFREIGHT_TRIPLE_GREY"], # unfinished alt liveries, could be triple grey, or block colour?
         default_livery_extra_docs_examples=[
             ("COLOUR_PINK", "COLOUR_WHITE"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),

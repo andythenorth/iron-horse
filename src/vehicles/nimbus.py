@@ -17,7 +17,7 @@ def main(roster_id):
         pantograph_type="z-shaped-double",
         intro_year_offset=3,  # introduce later than gen epoch by design
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
-        alternative_liveries=["FREIGHTLINER_GBRF"],
+        additional_liveries=["FREIGHTLINER_GBRF"],
         default_livery_extra_docs_examples=[
             ("COLOUR_WHITE", "COLOUR_BLUE"),
             ("COLOUR_BLUE", "COLOUR_WHITE"),

@@ -18,7 +18,7 @@ def main(roster_id):
         intro_year_offset=-1,  # let's be a little bit earlier for this one
         gen=6,
         fixed_run_cost_points=220,  # unrealism: run cost nerf for being so high-powered
-        alternative_liveries=["FREIGHTLINER_GBRF"],
+        additional_liveries=["FREIGHTLINER_GBRF"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
             ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),

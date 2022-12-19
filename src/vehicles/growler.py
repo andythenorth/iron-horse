@@ -15,7 +15,7 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         caboose_family="railfreight_1",
-        alternative_liveries=["RAILFREIGHT_RED_STRIPE"],
+        additional_liveries=["RAILFREIGHT_RED_STRIPE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_PINK", "COLOUR_WHITE"),
