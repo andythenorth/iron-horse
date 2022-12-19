@@ -403,21 +403,45 @@
 </tal:ruleset>
 
 <tal:ruleset define="default 0; first 1; last 2;">
-    // railcar 2 unit position switches
-    <!--! if 1st unit in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_2_unit_sets_position_in_consist_check_1st, position_in_vehid_chain_from_end) {
+    // railcar 3 unit position switches
+    <!--! if 1 unit in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_consist_1, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) % 4) {
         0: return ${default};
-        return ${first};
     }
 
-    <!--! if 2nd unit in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_2_unit_sets_position_in_consist_check_2nd, 0) {
+    <!--! if 2 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_consist_2, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) % 4) {
+        0: return ${first};
         return ${last};
     }
 
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_2_unit_sets, position_in_vehid_chain % 2) {
-        0: return switch_graphics_railcar_ruleset_2_unit_sets_position_in_consist_check_1st;
-        return switch_graphics_railcar_ruleset_2_unit_sets_position_in_consist_check_2nd;
+    <!--! if 3 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_consist_3, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) % 4) {
+        0: return ${first};
+        1: return ${last};
+        return ${default};
+    }
+
+    <!--! if 4 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_consist_4, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) % 4) {
+        0: return ${first};
+        1: return ${last};
+        2: return ${first};
+        return ${last};
+    }
+
+    <!--! this is a remainder block, how many units are in it? -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_2_unit_sets_less_than_4_remaining, LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) % 4) {
+        1: return switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_consist_1;
+        2: return switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_consist_2;
+        3: return switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_consist_3;
+        return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_4;
+    }
+
+    <!--! given the consist, how many blocks of 4 units are there?  Is the unit within a block of 4, or a remainder block? -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_2_unit_sets, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) >= (LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) - (LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) % 4))) {
+        1: return switch_graphics_railcar_ruleset_2_unit_sets_less_than_4_remaining;
+        return switch_graphics_railcar_ruleset_2_unit_sets_modulo_num_units_in_consist_4;
     }
 </tal:ruleset>
 

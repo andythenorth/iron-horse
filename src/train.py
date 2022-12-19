@@ -1319,7 +1319,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
         self.train_flag_mu = True
         # non-standard cite
         if self.base_track_type_name == "NG":
-            # give NHGa bonus to align run cost with NG railbus
+            # give NG a bonus to align run cost with NG railbus
             self.fixed_run_cost_points = 52
 
         self._cite = "Arabella Unit"
@@ -1587,7 +1587,6 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
                 and (consist.role in ["pax_railbus"])
             ):
                 result.extend(consist.lead_unit_variants_numeric_ids)
-        # commented out support for trailers temporarily
         for consist in self.roster.wagon_consists["railbus_passenger_trailer_car"]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
@@ -3981,14 +3980,19 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
     def equivalent_ids_alt_var_41(self):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
         # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
-        # this redefinition specific to pax railbus trailers and will be fragile if railbus or trailers are changed/extended
+        # this redefinition specific to railbus and will be fragile if railbus or trailers are changed/extended
         result = []
-        result.extend(self.lead_unit_variants_numeric_ids)
+        # this will catch self also
         for consist in self.roster.engine_consists:
             if (
                 (consist.gen == self.gen)
                 and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["pax_railbus"])
+            ):
+                result.extend(consist.lead_unit_variants_numeric_ids)
+        for consist in self.roster.wagon_consists["railbus_passenger_trailer_car"]:
+            if (consist.gen == self.gen) and (
+                consist.base_track_type_name == self.base_track_type_name
             ):
                 result.extend(consist.lead_unit_variants_numeric_ids)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
