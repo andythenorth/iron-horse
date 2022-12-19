@@ -16,7 +16,7 @@ def main(roster_id):
         easter_egg_haulage_speed_bonus=True,
         use_3_unit_sets=True,
         gen=4,
-        sprites_complete=True,
+        sprites_complete=False,
         intro_year_offset=-3,
     )  # introduce early by design
 

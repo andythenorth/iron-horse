@@ -1243,7 +1243,9 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="driving_cab_cars",
-            liveries=self.roster.default_mail_liveries,
+            liveries=[{},{}],
+            # temp commented out until spritesheets revised
+            #liveries=self.roster.default_mail_liveries,
         )
 
 
@@ -1353,7 +1355,9 @@ class MailEngineRailcarConsist(MailEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset=consist_ruleset,
-            liveries=self.roster.default_mail_liveries,
+            liveries=[{}, {}],
+            # temp commented out until spritesheets revised
+            #liveries=self.roster.default_mail_liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -3585,16 +3589,11 @@ class MailCarConsist(MailCarConsistBase):
             "last": brake_car_sprites,
             "special": bonus_sprites,
         }
-        # temp kludge
-        if self.id == "mail_car_pony_gen_4C":
-            liveries = [{}, {}, {}, {}]
-        else:
-            liveries = [{}, {}]
 
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="mail_cars",
-            liveries=liveries,
+            liveries=self.roster.default_mail_liveries,
         )
 
 

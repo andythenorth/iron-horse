@@ -13,7 +13,7 @@ def main(roster_id):
             "DIESEL": 280,
         },
         gen=3,
-        sprites_complete=True,
+        sprites_complete=False,
         intro_year_offset=-5,
     )  # introduce early by design
 
