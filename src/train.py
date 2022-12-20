@@ -1352,16 +1352,10 @@ class MailEngineRailcarConsist(MailEngineConsist):
                 "last": 2,
                 "special": 0,
             }
-        # temp kludge
-        if self.id in ["scooby", "dover", "workish", "zorro"]:
-            liveries=self.roster.default_mail_liveries
-        else:
-            liveries=[{}, {}]
-
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset=consist_ruleset,
-            liveries=liveries,
+            liveries=self.roster.default_mail_liveries,
             # temp commented out until spritesheets revised
             #liveries=self.roster.default_mail_liveries,
             pantograph_type=self.pantograph_type,
