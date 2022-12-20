@@ -55,7 +55,7 @@ def main():
         base_numeric_id=11260,
         gen=1,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
@@ -75,7 +75,7 @@ def main():
         base_numeric_id=9960,
         gen=2,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
@@ -95,7 +95,7 @@ def main():
         base_numeric_id=11340,
         gen=3,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
@@ -105,7 +105,7 @@ def main():
         base_numeric_id=9980,
         gen=3,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
@@ -115,7 +115,7 @@ def main():
         base_numeric_id=10470,
         gen=4,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="2_axle_solid_express_16px")
@@ -125,7 +125,7 @@ def main():
         base_numeric_id=12200,
         gen=4,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
