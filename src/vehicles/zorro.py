@@ -14,7 +14,7 @@ def main(roster_id):
             "DIESEL": 500,
         },
         gen=4,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(

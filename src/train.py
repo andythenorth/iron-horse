@@ -1353,8 +1353,8 @@ class MailEngineRailcarConsist(MailEngineConsist):
                 "special": 0,
             }
         # temp kludge
-        if self.id in ["scooby", "dover"]:
-            liveries=[{}, {}, {}, {}]
+        if self.id in ["scooby", "dover", "workish", "zorro"]:
+            liveries=self.roster.default_mail_liveries
         else:
             liveries=[{}, {}]
 
