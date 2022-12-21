@@ -4533,6 +4533,10 @@ class UnitVariant(object):
             )
 
     @property
+    def livery_num(self):
+        return self.buyable_variant.buyable_variant_num
+
+    @property
     def buyable_variant_group_id(self):
         if self.buyable_variant.is_default_buyable_variant:
             return None
