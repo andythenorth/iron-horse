@@ -256,7 +256,7 @@
                                         <div style="margin:10px;">
                                             <a href="${replaced_consist.id}.html">
                                                 <div class="vehicle-image">
-                                                    <img src="static/img/${replaced_consist.id}_red_white.png"
+                                                    <img src="static/img/${replaced_consist.id}_livery_0_red_white.png"
                                                          width="${2 * doc_helper.buy_menu_sprite_width(replaced_consist)}"
                                                          height="${2 * doc_helper.buy_menu_sprite_height}" />
                                                 </div>
@@ -272,7 +272,7 @@
                             <!--! this vehicle -->
                             <td style="text-align:center; vertical-align:middle;">
                                 <div class="vehicle-image">
-                                    <img src="static/img/${consist.id}_red_white.png"
+                                    <img src="static/img/${consist.id}_livery_0_red_white.png"
                                          width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
                                          height="${4 * doc_helper.buy_menu_sprite_height}" />
                                 </div>
@@ -286,7 +286,7 @@
                                     <div style="margin:10px;">
                                         <a href="${consist.replacement_consist.id}.html">
                                             <div class="vehicle-image">
-                                                <img src="static/img/${consist.replacement_consist.id}_red_white.png"
+                                                <img src="static/img/${consist.replacement_consist.id}_livery_0_red_white.png"
                                                      width="${2* doc_helper.buy_menu_sprite_width(consist.replacement_consist)}"
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
                                             </div>
@@ -308,7 +308,7 @@
                                     <div style="display:inline-block; margin:10px;">
                                         <a href="${similar_consist.id}.html">
                                             <div class="vehicle-image">
-                                                <img src="static/img/${similar_consist.id}_red_white.png"
+                                                <img src="static/img/${similar_consist.id}_livery_0_red_white.png"
                                                      width="${2* doc_helper.buy_menu_sprite_width(similar_consist)}"
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
                                             </div>

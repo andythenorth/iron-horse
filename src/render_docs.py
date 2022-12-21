@@ -196,28 +196,26 @@ class DocHelper(object):
         default_livery_examples.extend(
             getattr(consist.gestalt_graphics, "default_livery_extra_docs_examples", [])
         )
-
-        additional_liveries = consist.gestalt_graphics.additional_liveries
-
         result = {}
         for cc_remap_pair in default_livery_examples:
-            livery_name = self.get_livery_file_substr(cc_remap_pair)
+            livery_name = "livery_" + str(0) + "_" + self.get_livery_file_substr(cc_remap_pair)
             result[livery_name] = {}
             result[livery_name]["cc_remaps"] = {
                 "CC1": cc_remap_pair[0],
                 "CC2": cc_remap_pair[1],
             }
             result[livery_name]["docs_image_input_cc"] = cc_remap_pair
+            result[livery_name]["livery_num"] = 0
         variants_config.append(result)
 
-        for additional_livery in additional_liveries:
+        for livery_counter, livery in enumerate(consist.gestalt_graphics.all_liveries):
             result = {}
-            for cc_remap_pair in additional_livery["docs_image_input_cc"]:
-                livery_name = self.get_livery_file_substr(cc_remap_pair)
+            for cc_remap_pair in livery.get("docs_image_input_cc", []):
+                livery_name = "livery_" + str(livery_counter) + "_" + self.get_livery_file_substr(cc_remap_pair)
                 result[livery_name] = {}
                 CC1_remap = (
-                    additional_livery["remap_to_cc"]
-                    if additional_livery["remap_to_cc"] is not None
+                    livery["remap_to_cc"]
+                    if livery["remap_to_cc"] is not None
                     else cc_remap_pair[0]
                 )  # handle possible remap of CC1
                 CC2_remap = cc_remap_pair[
@@ -225,6 +223,7 @@ class DocHelper(object):
                 ]  # no forced remap to another cc for second colour, take it as is
                 result[livery_name]["cc_remaps"] = {"CC1": CC1_remap, "CC2": CC2_remap}
                 result[livery_name]["docs_image_input_cc"] = cc_remap_pair
+                result[livery_name]["livery_num"] = livery_counter
             variants_config.append(result)
         return variants_config
 
@@ -659,7 +658,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
         )
 
     for variant in docs_image_variants:
-        for colour_name, livery_metadata in variant["livery_metadata"].items():
+        for livery_name, livery_metadata in variant["livery_metadata"].items():
             cc_remap_indexes = doc_helper.remap_company_colours(
                 livery_metadata["cc_remaps"]
             )
@@ -689,7 +688,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
             output_path = os.path.join(
                 static_dir_dst,
                 "img",
-                consist.id + "_" + colour_name + ".png",
+                consist.id + "_" + livery_name + ".png",
             )
             processed_vehicle_image.save(output_path, optimize=True, transparency=0)
     source_vehicle_image.close()

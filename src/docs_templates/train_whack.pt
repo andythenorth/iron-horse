@@ -108,7 +108,7 @@
                     // image
                     var sprite_size_factor = get_query_param('sprite_size_factor') ? get_query_param('sprite_size_factor') : 3;
                     return '<a href="trains.html#' + random_image[0] + '" style="display:inline-block; margin-top:' + 5 * sprite_size_factor + 'px; margin-bottom:' + 5 * sprite_size_factor + 'px; margin-right:-' + sprite_size_factor + 'px;"> \
-                                <img src="static/img/'+ random_image[0] + '_red_white.png" \
+                                <img src="static/img/'+ random_image[0] + '_livery_0_red_white.png" \
                                      style="width:' + sprite_size_factor * random_image[1] + 'px; height:' + sprite_size_factor * ${doc_helper.buy_menu_sprite_height} + 'px; margin:0;"> \
                            </a>'; // -ve margin right used to overlap buffers etc
                 }
