@@ -42,7 +42,13 @@ class GestaltGraphics(object):
         # for the general case, this is a convenience approach to insert a default_livery for ease of constructing template repeats
         # note that default_livery is not guaranteed to contain all the key/value pairs that additional_liveries has
         result = []
-        default_livery = {}
+        default_livery = {
+            "remap_to_cc": None,
+            "docs_image_input_cc": [
+                ("COLOUR_BLUE", "COLOUR_BLUE"),
+                ("COLOUR_RED", "COLOUR_WHITE"),
+            ],
+        }
         result.append(default_livery)
         result.extend(self.additional_liveries)
         return result

@@ -193,37 +193,43 @@ class DocHelper(object):
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ]
-        default_livery_examples.extend(
-            getattr(consist.gestalt_graphics, "default_livery_extra_docs_examples", [])
-        )
-        result = {}
-        for cc_remap_pair in default_livery_examples:
-            livery_name = "livery_" + str(0) + "_" + self.get_livery_file_substr(cc_remap_pair)
-            result[livery_name] = {}
-            result[livery_name]["cc_remaps"] = {
-                "CC1": cc_remap_pair[0],
-                "CC2": cc_remap_pair[1],
-            }
-            result[livery_name]["docs_image_input_cc"] = cc_remap_pair
-            result[livery_name]["livery_num"] = 0
-        variants_config.append(result)
 
-        for livery_counter, livery in enumerate(consist.gestalt_graphics.all_liveries):
+        print("===========")
+        print(consist.id)
+
+        for counter, buyable_variant in enumerate(consist.buyable_variants):
             result = {}
-            for cc_remap_pair in livery.get("docs_image_input_cc", []):
-                livery_name = "livery_" + str(livery_counter) + "_" + self.get_livery_file_substr(cc_remap_pair)
-                result[livery_name] = {}
-                CC1_remap = (
-                    livery["remap_to_cc"]
-                    if livery["remap_to_cc"] is not None
-                    else cc_remap_pair[0]
-                )  # handle possible remap of CC1
-                CC2_remap = cc_remap_pair[
-                    1
-                ]  # no forced remap to another cc for second colour, take it as is
-                result[livery_name]["cc_remaps"] = {"CC1": CC1_remap, "CC2": CC2_remap}
-                result[livery_name]["docs_image_input_cc"] = cc_remap_pair
-                result[livery_name]["livery_num"] = livery_counter
+            livery = consist.gestalt_graphics.all_liveries[buyable_variant.livery_num]
+            if livery.get("docs_image_input_cc", None) is not None:
+                docs_image_input_cc = livery["docs_image_input_cc"]
+                if buyable_variant.livery_num == 0:
+                    docs_image_input_cc.extend(
+                        getattr(consist.gestalt_graphics, "default_livery_extra_docs_examples", [])
+                    )
+                for cc_remap_pair in docs_image_input_cc:
+                    livery_name = "livery_" + str(counter) + "_" + self.get_livery_file_substr(cc_remap_pair)
+                    result[livery_name] = {}
+                    CC1_remap = (
+                        livery["remap_to_cc"]
+                        if livery["remap_to_cc"] is not None
+                        else cc_remap_pair[0]
+                    )  # handle possible remap of CC1
+                    CC2_remap = cc_remap_pair[
+                        1
+                    ]  # no forced remap to another cc for second colour, take it as is
+                    result[livery_name]["cc_remaps"] = {"CC1": CC1_remap, "CC2": CC2_remap}
+                    result[livery_name]["docs_image_input_cc"] = cc_remap_pair
+            else:
+                print("CABBAGE")
+                for cc_remap_pair in default_livery_examples:
+                    livery_name = "livery_" + str(counter) + "_" + self.get_livery_file_substr(cc_remap_pair)
+                    result[livery_name] = {}
+                    result[livery_name]["cc_remaps"] = {
+                        "CC1": cc_remap_pair[0],
+                        "CC2": cc_remap_pair[1],
+                    }
+                    result[livery_name]["docs_image_input_cc"] = cc_remap_pair
+            result[livery_name]["livery_num"] = buyable_variant.livery_num
             variants_config.append(result)
         return variants_config
 
@@ -532,7 +538,12 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
 
         if not consist.dual_headed:
             # relies on additional_liveries being in predictable row offsets (should be true as of July 2020)
-            y_offset = (consist.docs_image_spriterow + livery_counter) * 30
+            # hax
+            if consist.gestalt_graphics.__class__.__name__ == "GestaltGraphicsConsistPositionDependent":
+                livery_rows_height = 60
+            else:
+                livery_rows_height = 30
+            y_offset = consist.docs_image_spriterow + (livery_counter * livery_rows_height)
             source_vehicle_image_tmp = vehicle_spritesheet.crop(
                 box=(
                     consist.buy_menu_x_loc,

@@ -269,8 +269,6 @@ def main():
                 ],
             },
             "RAILFREIGHT_RED_STRIPE": {
-                # don't match the stripe options to triple grey, it was tried and the blue just doesn't look good
-                # green and purple were allowed as they're vivid and it's by player request
                 "remap_to_cc": "COLOUR_GREY",
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_RED"),
