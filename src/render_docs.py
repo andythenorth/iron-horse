@@ -195,7 +195,7 @@ class DocHelper(object):
             # docs_image_input_cc is mandatory for each livery, fail if it's not present
             if "docs_image_input_cc" not in livery.keys():
                 raise BaseException(consist + livery)
-            docs_image_input_cc = livery["docs_image_input_cc"]
+            docs_image_input_cc = livery["docs_image_input_cc"].copy()
             # as of Dec 2022 only the default livery has per-vehicle extendable colour combos
             # all other liveries have the examples baked into the livery
             if buyable_variant.livery_num == 0:

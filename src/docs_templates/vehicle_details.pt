@@ -22,32 +22,25 @@
                     <small>Vehicle Info</small>
                 </h2>
                 <div style="margin-top:30px; margin-bottom:50px;">
-                    <!--!
                     <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
-                        <tal:block repeat="livery_name livery_variant.keys()">
-                            <div class="vehicle-image"
-                                style="width:${2 * doc_helper.buy_menu_sprite_max_width};
-                                       display:inline-block;">
-                                <img src="static/img/${consist.id}_${livery_name}.png"
-                                     width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
-                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
-                            </div>
-                        </tal:block>
+                        <div class="vehicle-image"
+                            style="width:${2 * doc_helper.buy_menu_sprite_max_width};
+                                   display:inline-block;">
+                            <img src="static/img/${consist.id}_${livery_variant['livery_name']}.png"
+                                 width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                                 height="${2 * doc_helper.buy_menu_sprite_height}" />
+                        </div>
                     </tal:livery>
                     <br />
                     <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
-                        <tal:block repeat="livery_name livery_variant.keys()">
-                            <div class="vehicle-image"
-                                style="width:${4 * doc_helper.buy_menu_sprite_max_width};
-                                       display:inline-block;">
-                                <img src="static/img/${consist.id}_${livery_name}.png"
-                                     width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
-                                     height="${4 * doc_helper.buy_menu_sprite_height}" />
-                            </div>
-                        </tal:block>
+                        <div class="vehicle-image"
+                            style="width:${4 * doc_helper.buy_menu_sprite_max_width};
+                                   display:inline-block;">
+                            <img src="static/img/${consist.id}_${livery_variant['livery_name']}.png"
+                                 width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
+                                 height="${4 * doc_helper.buy_menu_sprite_height}" />
+                        </div>
                     </tal:livery>
-                    -->
-                    CABBAGE
                 </div>
                 <style>
                     blockquote.vehicle-quote p {
