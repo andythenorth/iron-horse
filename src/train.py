@@ -148,9 +148,8 @@ class Consist(object):
         self._cite = ""  # optional, set per subclass as needed
         # for 'inspired by' stuff
         self.foamer_facts = """"""  # to be set per vehicle, multi-line supported
-        # occasionally we want to force a specific spriterow for docs, not needed often, set in kwargs as needed, see also buy_menu_spriterow_num
-        self.docs_image_spriterow = kwargs.get(
-            "docs_image_spriterow", 0
+        self._docs_image_spriterow = kwargs.get(
+            "docs_image_spriterow", None
         )  # 0 indexed spriterows, position in generated spritesheet
         # aids 'project management'
         self.sprites_complete = kwargs.get("sprites_complete", False)
@@ -780,6 +779,17 @@ class Consist(object):
             return 64
 
     @property
+    def docs_image_spriterow(self):
+        # somewhat JFDI hax
+        if self._docs_image_spriterow is not None:
+            return self._docs_image_spriterow
+        else:
+            result = self.units[0].unit_variants[0].livery_num
+            if self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsConsistPositionDependent":
+                result = result * 2 # account for multiple rows for loaded/loading state - extend this to other types as needed
+            return result
+
+    @property
     def num_sprite_layers(self):
         # always at least one layer
         result = 1
@@ -1329,7 +1339,6 @@ class MailEngineRailcarConsist(MailEngineConsist):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
-        # by design, mail railcars don't change livery in a pax consist, but do have 2 liveries, matching mail cars for this generation
         # position variants
         # * unit with driving cabs both ends
         # * unit with driving cab front end
@@ -1352,12 +1361,14 @@ class MailEngineRailcarConsist(MailEngineConsist):
                 "last": 2,
                 "special": 0,
             }
+        if self.role_child_branch_num in [2]:
+            liveries=self.roster.electric_railcar_mail_liveries
+        else:
+            liveries=self.roster.diesel_railcar_mail_liveries
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset=consist_ruleset,
-            liveries=self.roster.default_mail_liveries,
-            # temp commented out until spritesheets revised
-            #liveries=self.roster.default_mail_liveries,
+            liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -1472,7 +1483,6 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
-        # 2 liveries, should match local and express liveries of pax cars for this generation
         # position variants
         # * unit with driving cab front end
         # * unit with driving cab rear end
@@ -1563,7 +1573,6 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         self._cite = "Arabella Unit"
         # Graphics configuration
         self.roof_type = "pax_mail_smooth"
-        # 2 liveries, don't need to match anything else, railbus isn't intended to combine well with other vehicle types
         # position variants
         # * unit with driving cab front end
         # * unit with driving cab rear end
@@ -1619,7 +1628,6 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
-        # 2 liveries, should match local and express liveries of pax cars for this generation
         # position variants
         # * unit with driving cab front end
         # * unit with driving cab rear end
@@ -1627,10 +1635,14 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        if self.role_child_branch_num in [2]:
+            liveries=self.roster.suburban_pax_liveries
+        else:
+            liveries=self.roster.default_pax_liveries
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_3_unit_sets",
-            liveries=self.roster.default_pax_liveries,
+            liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -3589,11 +3601,11 @@ class MailCarConsist(MailCarConsistBase):
             "last": brake_car_sprites,
             "special": bonus_sprites,
         }
-
+        liveries = self.roster.default_mail_liveries
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="mail_cars",
-            liveries=self.roster.default_mail_liveries,
+            liveries=liveries,
         )
 
 
@@ -3841,7 +3853,6 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
-        # 2 liveries, should match local and express liveries of pax cars for this generation
         # position variants
         # * unit with driving cab front end
         # * unit with driving cab rear end
@@ -3849,10 +3860,11 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        liveries = self.roster.default_pax_liveries
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_4_unit_sets",
-            liveries=self.roster.default_pax_liveries,
+            liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -3961,7 +3973,6 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # Graphics configuration
         self.roof_type = "pax_mail_smooth"
-        # 2 liveries, don't need to match anything else, railbus isn't intended to combine well with other vehicle types
         # position variants
         # * unit with driving cab front end
         # * unit with driving cab rear end
@@ -4029,7 +4040,6 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
-        # 2 liveries, should match liveries of railcars for this generation
         # position variants
         # * unit with driving cab front end
         # * unit with driving cab rear end
@@ -4128,10 +4138,11 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         #   * brake coach rear
         #   * I removed special coaches from PassengerCarConsistBase Dec 2018, overkill
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
+        liveries = self.roster.suburban_pax_liveries
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
-            liveries=self.roster.default_pax_liveries,
+            liveries=liveries,
         )
 
 
@@ -4487,7 +4498,7 @@ class BuyableVariant(object):
 
     def __init__(self, consist, livery):
         self.consist = consist
-        self._livery_num = livery.get("livery_num", None)
+        self.forced_livery_num = livery.get("forced_livery_num", None)
 
     @property
     def buyable_variant_num(self):
@@ -4536,10 +4547,13 @@ class UnitVariant(object):
 
     @property
     def livery_num(self):
-        if self.buyable_variant._livery_num != None:
-            return self.buyable_variant._livery_num
-        else:
+        # livery numbers either
+        # (1) match to variant number (index in variants array), in which case the order in the spritesheet must match what is expected
+        # (2) or can be forced manually to allow the spritesheet to be out of order (for convenience, or legacy support or any other reason)
+        if self.buyable_variant.forced_livery_num == None:
             return self.buyable_variant.buyable_variant_num
+        else:
+            return self.buyable_variant.forced_livery_num
 
     @property
     def buyable_variant_group_id(self):
@@ -4570,10 +4584,6 @@ class Train(object):
         self.capacity = kwargs.get("capacity", 0)
         # spriterow_num allows assigning sprites for multi-part vehicles, and is not supported in all vehicle templates (by design - TMWFTLB to support)
         self.spriterow_num = kwargs.get("spriterow_num", 0)  # first row = 0;
-        # sometimes we want to offset the buy menu spriterow (!! this is incomplete hax, not supported by generated buy menu sprites etc)
-        self.buy_menu_spriterow_num = (
-            0  # set in the subclass as needed, (or extend to kwargs in future)
-        )
         # !! the need to copy cargo refits from the consist is legacy from the default multi-unit articulated consists in Iron Horse 1
         # !! could likely be refactored !!
         self.label_refits_allowed = self.consist.label_refits_allowed
@@ -5192,9 +5202,6 @@ class ElectroDieselRailcarBaseUnit(Train):
         }
         # electro-diesels are complex eh?
         self.consist.electro_diesel_buy_cost_malus = 1.15  # will get higher buy cost factor than electric railcar of same gen (blah balancing)
-        # offset to second livery, to differentiate from diesel equivalent which will use first
-        self.buy_menu_spriterow_num = 2  # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
-        self.consist.docs_image_spriterow = 2  # frankly hax at this point :|
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = "asymmetric"
 
@@ -5266,11 +5273,6 @@ class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
         self.capacity = (
             self.vehicle_length * base_capacity
         ) / polar_fox.constants.mail_multiplier
-        # offset to second livery, to differentiate from diesel equivalent which will use first
-        self.buy_menu_spriterow_num = 2  # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
-        self.consist.docs_image_spriterow = (
-            self.buy_menu_spriterow_num
-        )  # frankly hax at this point :|
 
 
 class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
@@ -5282,11 +5284,6 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
         super().__init__(**kwargs)
         # magic to set capacity subject to length and vehicle capacity type
         self.capacity = self.get_pax_car_capacity()
-        # offset to second livery, to differentiate from diesel equivalent which will use first
-        self.buy_menu_spriterow_num = 2  # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
-        self.consist.docs_image_spriterow = (
-            self.buy_menu_spriterow_num
-        )  # frankly hax at this point :|
 
 
 class MetroUnit(Train):

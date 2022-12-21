@@ -315,7 +315,10 @@ def main():
         },
         # empty dicts currently, but could hold remaps, docs image colours etc if needed
         default_pax_liveries = [{}, {}],
-        default_mail_liveries = [{"livery_num":3}, {"livery_num":2}, {"livery_num":1}, {"livery_num":0}],
+        suburban_pax_liveries = [{"forced_livery_num":1}, {"forced_livery_num":0}],
+        default_mail_liveries = [{"forced_livery_num":3}, {"forced_livery_num":0}, {"forced_livery_num":1}, {"forced_livery_num":2}],
+        diesel_railcar_mail_liveries = [{"forced_livery_num":2}, {"forced_livery_num":0}, {"forced_livery_num":1}, {"forced_livery_num":3}],
+        electric_railcar_mail_liveries = [{"forced_livery_num":3}, {"forced_livery_num":0}, {"forced_livery_num":1}, {"forced_livery_num":2}],
         # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
         engines=[
             # challenger, # for NA roster
