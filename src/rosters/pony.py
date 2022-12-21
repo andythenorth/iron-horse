@@ -312,11 +312,123 @@ def main():
             },
         },
         # empty dicts currently, but could hold remaps, docs image colours etc if needed
-        default_pax_liveries = [{}, {}],
-        suburban_pax_liveries = [{"forced_livery_num":1}, {"forced_livery_num":0}],
-        default_mail_liveries = [{"forced_livery_num":3}, {"forced_livery_num":0}, {"forced_livery_num":1}, {"forced_livery_num":2}],
-        diesel_railcar_mail_liveries = [{"forced_livery_num":2}, {"forced_livery_num":0}, {"forced_livery_num":1}, {"forced_livery_num":3}],
-        electric_railcar_mail_liveries = [{"forced_livery_num":3}, {"forced_livery_num":0}, {"forced_livery_num":1}, {"forced_livery_num":2}],
+        default_pax_liveries=[
+            {
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+        ],
+        suburban_pax_liveries=[
+            {
+                "forced_livery_num": 1,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "forced_livery_num": 0,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+        ],
+        default_mail_liveries=[
+            {
+                "forced_livery_num": 3,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "forced_livery_num": 0,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "forced_livery_num": 1,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "forced_livery_num": 2,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+        ],
+        diesel_railcar_mail_liveries=[
+            {
+                "forced_livery_num": 2,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "forced_livery_num": 0,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "forced_livery_num": 1,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "forced_livery_num": 3,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+        ],
+        electric_railcar_mail_liveries=[
+            {
+                "forced_livery_num": 3,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "forced_livery_num": 0,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "forced_livery_num": 1,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "forced_livery_num": 2,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+        ],
+        default_metro_liveries=[
+            {
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+        ],
         # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
         engines=[
             # challenger, # for NA roster

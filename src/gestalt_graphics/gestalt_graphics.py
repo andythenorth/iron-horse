@@ -14,11 +14,9 @@ class GestaltGraphics(object):
      - other processing as required
     """
 
-    def __init__(self):
+    def __init__(self, **kwargs):
         # by default, pipelines are empty
         self.pipelines = pipelines.get_pipelines([])
-        # this is only used by engines as of Dec 2022, but we provide a default value here to avoid requiring getattr() in many places, which was masking errors
-        self.additional_liveries = []  # over-ride as needed in subclasses
         # sometimes processing may depend on another generated vehicle spritesheet, so there are multiple processing priorities, 1 = highest
         self.processing_priority = 1
         # default value for optional mask layer, this is JFDI for 2022, may need converting a more generic spritelayers structure in future
@@ -38,20 +36,11 @@ class GestaltGraphics(object):
 
     @property
     def all_liveries(self):
-        # over-ride in subclasses as needed
-        # for the general case, this is a convenience approach to insert a default_livery for ease of constructing template repeats
-        # note that default_livery is not guaranteed to contain all the key/value pairs that additional_liveries has
-        result = []
-        default_livery = {
-            "remap_to_cc": None,
-            "docs_image_input_cc": [
-                ("COLOUR_BLUE", "COLOUR_BLUE"),
-                ("COLOUR_RED", "COLOUR_WHITE"),
-            ],
-        }
-        result.append(default_livery)
-        result.extend(self.additional_liveries)
-        return result
+        # stub to map this gestalt's liveries to the wider all_liveries structure
+        # this can be over-ridden as needed by gestalts
+        # note that self.liveries must be initialised by passing a keyword (as the default livery comes from the roster which is not in scope here)
+        # if self.liveries is undefined, that's an error
+        return self.liveries
 
 
 class GestaltGraphicsEngine(GestaltGraphics):
@@ -65,7 +54,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(["check_buy_menu_only"])
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
-        self.additional_liveries = kwargs["additional_liveries"]
+        self.liveries = kwargs["liveries"]
         self.default_livery_extra_docs_examples = kwargs.get(
             "default_livery_extra_docs_examples", []
         )
@@ -118,6 +107,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
                 "generate_buy_menu_sprite_from_randomisation_candidates",
             ]
         )
+        self.liveries = kwargs["liveries"]
         self.dice_colour = kwargs["dice_colour"]
         self.buy_menu_width_addition = (
             graphics_constants.dice_image_width
@@ -172,6 +162,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         self.weathered_variants = kwargs.get(
             "weathered_variants", {"unweathered": graphics_constants.body_recolour_CC1}
         )
+        self.liveries = kwargs["liveries"]
         # possibly regrettable detection that weathered variants should be implemented as a masked overlay sprite, in a spritelayer
         # this optimised file size and compile time, as don't have to repeat all cargo spriterows for the weathered variant
         if "weathered" in self.weathered_variants.keys():
@@ -341,6 +332,7 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         # there is no support here for weathered variants that depend on hand-drawn pixels, it's all recolour maps as of March 2022 - could change if needed
         # note also that box cars have only one recolour map for *cargo*, which should be on 'DFLT',
         self.weathered_variants = weathered_variants
+        self.liveries = kwargs["liveries"]
 
     @property
     def generic_rows(self):
@@ -392,6 +384,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         self.buy_menu_sprite_pairs = buy_menu_sprite_pairs
         self.num_variations = len(self.spriterow_labels)
         self.recolour_map = recolour_map
+        self.liveries = kwargs["liveries"]
         self.dice_colour = 1
         self.buy_menu_width_addition = (
             graphics_constants.dice_image_width
@@ -460,6 +453,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = False
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
+        self.liveries = kwargs["liveries"]
         # add layers for container sprites
         # !! this might need extended for double stacks in future - see automobile gestalt for examples of deriving this from number of cargo sprite layers
         self.num_extra_layers_for_spritelayer_cargos = 1
@@ -597,6 +591,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         self.colour_mapping_with_purchase = False
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         self.cargo_sprites_are_asymmetric = True
+        self.liveries = kwargs["liveries"]
         # derive number of layers for cargo sprites
         self.num_extra_layers_for_spritelayer_cargos = len(spritelayer_cargo_layers)
 
@@ -767,6 +762,7 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
         # this is separate and complementary to the minor variations to vehicle company colours using in-game recolour sprites
         # there is no support here for weathered variants that depend on hand-drawn pixels, it's all recolour maps as of March 2022 - could change if needed
         self.weathered_variants = weathered_variants
+        self.liveries = kwargs["liveries"]
 
     @property
     def generic_rows(self):
@@ -875,11 +871,6 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
         return ["pax_mail_cars_with_doors"]
 
     @property
-    def all_liveries(self):
-        # stub to map this gestalt's liveries to the wider all_liveries structure
-        return self.liveries
-
-    @property
     def total_spriterow_count(self):
         # n liveries * 2 states for doors open/closed * number of position variants defined
         return len(self.liveries) * 2 * self.total_position_variants
@@ -931,6 +922,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
         cargo_label_mapping=None,
         weathered_variants=None,
         num_extra_layers_for_spritelayer_cargos=None,
+        **kwargs
     ):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(["pass_through_pipeline"])
@@ -940,6 +932,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
         self._unique_spritesets = unique_spritesets
         self._cargo_label_mapping = cargo_label_mapping
         self._weathered_variants = weathered_variants
+        self.liveries = kwargs["liveries"]
         if num_extra_layers_for_spritelayer_cargos is not None:
             self.num_extra_layers_for_spritelayer_cargos = (
                 num_extra_layers_for_spritelayer_cargos

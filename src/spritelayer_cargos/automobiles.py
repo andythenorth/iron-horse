@@ -11,7 +11,7 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.base_id = "automobiles"
-        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter()
+        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(liveries=None)
 
     @property
     def all_platform_types_with_floor_heights(self):
@@ -288,7 +288,7 @@ def main():
     # then register automobiles with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
-        GestaltGraphicsAutomobilesTransporter().cargo_label_mapping.values()
+        GestaltGraphicsAutomobilesTransporter(liveries=None).cargo_label_mapping.values()
     ):
         # exclude DFLT, handled explicitly elsewhere
         if subtype_suffix != "DFLT":

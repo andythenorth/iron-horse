@@ -84,7 +84,7 @@ class Pipeline(object):
                 if unit_counter == 1:
                     ruleset_offset_num_rows_jank = 1
             # additional_liveries jank for engines eh
-            if len(self.consist.gestalt_graphics.additional_liveries) > 0:
+            if len(self.consist.gestalt_graphics.all_liveries) > 1:
                 ruleset_offset_num_rows_jank = unit_counter
             unit_spriterow_offset = (
                 unit.spriterow_num + ruleset_offset_num_rows_jank

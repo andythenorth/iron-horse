@@ -34,6 +34,7 @@ class Roster(object):
         self.default_mail_liveries = kwargs.get("default_mail_liveries", [])
         self.electric_railcar_mail_liveries = kwargs.get("electric_railcar_mail_liveries", [])
         self.diesel_railcar_mail_liveries = kwargs.get("diesel_railcar_mail_liveries", [])
+        self.default_metro_liveries = kwargs.get("default_metro_liveries", [])
 
     @property
     def buy_menu_sort_order(self):
@@ -229,8 +230,23 @@ class Roster(object):
             result.extend(result[: 16 - len(result)])
         return result
 
+    @property
+    def default_livery(self):
+        # the default livery if no livery is explicitly specified by name
+        return {
+            "remap_to_cc": None,
+            "docs_image_input_cc": [
+                ("COLOUR_BLUE", "COLOUR_BLUE"),
+                ("COLOUR_RED", "COLOUR_WHITE"),
+            ],
+        }
+
     def get_liveries_by_name(self, additional_livery_names):
-        return [self.livery_presets[additional_livery_name] for additional_livery_name in additional_livery_names]
+        # for the general case, this is a convenience approach to insert a default_livery for ease of constructing template repeats
+        # note that default_livery is not guaranteed to contain all the key/value pairs that additional_liveries has
+        result = [self.default_livery]
+        result.extend([self.livery_presets[additional_livery_name] for additional_livery_name in additional_livery_names])
+        return result
 
     def intro_year_ranges(self, base_track_type_name):
         # return a list of year pairs (first year, last year) for generations
