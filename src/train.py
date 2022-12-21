@@ -4506,6 +4506,16 @@ class BuyableVariant(object):
         return self.consist.buyable_variants.index(self)
 
     @property
+    def livery_num(self):
+        # livery numbers either
+        # (1) match to variant number (index in variants array), in which case the order in the spritesheet must match what is expected
+        # (2) or can be forced manually to allow the spritesheet to be out of order (for convenience, or legacy support or any other reason)
+        if self.forced_livery_num == None:
+            return self.buyable_variant_num
+        else:
+            return self.forced_livery_num
+
+    @property
     def is_default_buyable_variant(self):
         # convenience method
         if self.buyable_variant_num == 0:
@@ -4547,13 +4557,8 @@ class UnitVariant(object):
 
     @property
     def livery_num(self):
-        # livery numbers either
-        # (1) match to variant number (index in variants array), in which case the order in the spritesheet must match what is expected
-        # (2) or can be forced manually to allow the spritesheet to be out of order (for convenience, or legacy support or any other reason)
-        if self.buyable_variant.forced_livery_num == None:
-            return self.buyable_variant.buyable_variant_num
-        else:
-            return self.buyable_variant.forced_livery_num
+        # convenience method
+        return self.buyable_variant.livery_num
 
     @property
     def buyable_variant_group_id(self):
