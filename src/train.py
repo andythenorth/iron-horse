@@ -148,9 +148,10 @@ class Consist(object):
         self._cite = ""  # optional, set per subclass as needed
         # for 'inspired by' stuff
         self.foamer_facts = """"""  # to be set per vehicle, multi-line supported
+        # 0 indexed spriterows, position in generated spritesheet, used by brake vans to get a docs image for 4th gen, not 1st
         self.docs_image_spriterow = kwargs.get(
             "docs_image_spriterow", None
-        )  # 0 indexed spriterows, position in generated spritesheet
+        )
         # aids 'project management'
         self.sprites_complete = kwargs.get("sprites_complete", False)
 
