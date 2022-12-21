@@ -160,7 +160,7 @@ class Consist(object):
         # the basic form of buyable variants is driven by liveries
         for livery in self.gestalt_graphics.all_liveries:
             # we don't need to know the actual livery here, we rely on matching them up later by indexes, which is fine
-            self.buyable_variants.append(BuyableVariant(self))
+            self.buyable_variants.append(BuyableVariant(self, livery=livery))
 
     def add_unit(self, type, repeat=1, **kwargs):
         # we have add_unit create the variants when needed, which means we avoid sequencing problems with gestalt_graphics initialisation
@@ -4485,8 +4485,9 @@ class BuyableVariant(object):
     Simple class to hold buyable variants of the consist.
     """
 
-    def __init__(self, consist):
+    def __init__(self, consist, livery):
         self.consist = consist
+        self._livery_num = livery.get("livery_num", None)
 
     @property
     def buyable_variant_num(self):
@@ -4511,6 +4512,7 @@ class UnitVariant(object):
     def __init__(self, unit, buyable_variant, **kwargs):
         self.unit = unit
         self.buyable_variant = buyable_variant
+
         # numeric ids are just assigned sequentially when adding variants
         if len(self.unit.consist.unique_numeric_ids) == 0:
             self.numeric_id = self.unit.consist.base_numeric_id
@@ -4534,7 +4536,10 @@ class UnitVariant(object):
 
     @property
     def livery_num(self):
-        return self.buyable_variant.buyable_variant_num
+        if self.buyable_variant._livery_num != None:
+            return self.buyable_variant._livery_num
+        else:
+            return self.buyable_variant.buyable_variant_num
 
     @property
     def buyable_variant_group_id(self):

@@ -315,7 +315,7 @@ def main():
         },
         # empty dicts currently, but could hold remaps, docs image colours etc if needed
         default_pax_liveries = [{}, {}],
-        default_mail_liveries = [{}, {}, {}, {}],
+        default_mail_liveries = [{"livery_num":3}, {"livery_num":2}, {"livery_num":1}, {"livery_num":0}],
         # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
         engines=[
             # challenger, # for NA roster
