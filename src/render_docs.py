@@ -190,8 +190,7 @@ class DocHelper(object):
         # dark blue / dark blue and red / white are defaults
         variants_config = []
 
-        for counter, buyable_variant in enumerate(consist.buyable_variants):
-            result = {}
+        for buyable_variant in consist.buyable_variants:
             livery = consist.gestalt_graphics.all_liveries[buyable_variant.livery_num]
             # docs_image_input_cc is mandatory for each livery, fail if it's not present
             if "docs_image_input_cc" not in livery.keys():
@@ -208,13 +207,14 @@ class DocHelper(object):
                     )
                 )
             for cc_remap_pair in docs_image_input_cc:
+                result = {}
                 livery_name = (
                     "livery_"
-                    + str(counter)
+                    + str(buyable_variant.livery_num)
                     + "_"
                     + self.get_livery_file_substr(cc_remap_pair)
                 )
-                result[livery_name] = {}
+                result['livery_name'] = livery_name
                 # handle possible remap of CC1
                 if livery.get("remap_to_cc", None) is not None:
                     CC1_remap = livery["remap_to_cc"]
@@ -222,10 +222,11 @@ class DocHelper(object):
                     CC1_remap = cc_remap_pair[0]
                 # no forced remap to another cc for second colour, take it as is
                 CC2_remap = cc_remap_pair[1]
-                result[livery_name]["cc_remaps"] = {"CC1": CC1_remap, "CC2": CC2_remap}
-                result[livery_name]["docs_image_input_cc"] = cc_remap_pair
-            result[livery_name]["livery_num"] = buyable_variant.livery_num
-            variants_config.append(result)
+                result["cc_remaps"] = {"CC1": CC1_remap, "CC2": CC2_remap}
+                result["docs_image_input_cc"] = cc_remap_pair
+                # note that livery num is the index into the livery in the spritesheet
+                result["livery_num"] = buyable_variant.livery_num
+                variants_config.append(result)
         return variants_config
 
     def get_livery_file_substr(self, cc_pair):
@@ -535,23 +536,21 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
 
     docs_image_variants = []
 
-    for livery_counter, variant in enumerate(
-        doc_helper.get_docs_livery_variants(consist)
-    ):
-
+    for variant in doc_helper.get_docs_livery_variants(consist):
         if not consist.dual_headed:
             # relies on additional_liveries being in predictable row offsets (should be true as of July 2020)
-            # hax
+
+            # !! massive JFDI hax to make this work - really the gestalt should know how many rows are consumed per livery
             if (
                 consist.gestalt_graphics.__class__.__name__
                 == "GestaltGraphicsConsistPositionDependent"
             ):
-                livery_rows_height = 60
+                y_offset = 60 * variant["livery_num"]
             else:
-                livery_rows_height = 30
-            y_offset = consist.docs_image_spriterow + (
-                livery_counter * livery_rows_height
-            )
+                if consist.docs_image_spriterow is not None:
+                    y_offset = 30 * consist.docs_image_spriterow
+                else:
+                    y_offset = 30 * variant["livery_num"]
             source_vehicle_image_tmp = vehicle_spritesheet.crop(
                 box=(
                     consist.buy_menu_x_loc,
@@ -670,46 +669,40 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
                 )
                 pantographs_spritesheet.close()
         docs_image_variants.append(
-            {
-                "source_vehicle_image": source_vehicle_image.copy(),
-                "livery_metadata": variant,
-            }
+            [
+                source_vehicle_image.copy(),
+                variant,
+            ]
         )
 
-    for variant in docs_image_variants:
-        for livery_name, livery_metadata in variant["livery_metadata"].items():
-            cc_remap_indexes = doc_helper.remap_company_colours(
-                livery_metadata["cc_remaps"]
-            )
-            # probably fragile workaround to use the alternative livery spriterow
-            # for the edge case that a docs default livery 2nd company colour matches the alternative livery triggers
-            if "use_additional_livery_spriterow" in livery_metadata.keys():
-                # this makes assumptions about there being a 2nd docs_image_variant with an appropriate spriterow
-                processed_vehicle_image = docs_image_variants[1]["source_vehicle_image"]
-            else:
-                processed_vehicle_image = variant["source_vehicle_image"]
-                cc_remap_indexes = doc_helper.remap_company_colours(
-                    livery_metadata["cc_remaps"]
-                )
+    for processed_vehicle_image, variant in docs_image_variants:
+        cc_remap_indexes = doc_helper.remap_company_colours(
+            variant["cc_remaps"]
+        )
+        # probably fragile workaround to use the alternative livery spriterow
+        # for the edge case that a docs default livery 2nd company colour matches the alternative livery triggers
+        cc_remap_indexes = doc_helper.remap_company_colours(
+            variant["cc_remaps"]
+        )
 
-            processed_vehicle_image = processed_vehicle_image.copy().point(
-                lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i
-            )
+        processed_vehicle_image = processed_vehicle_image.copy().point(
+            lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i
+        )
 
-            # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
-            processed_vehicle_image = processed_vehicle_image.resize(
-                (
-                    4 * processed_vehicle_image.size[0],
-                    4 * doc_helper.buy_menu_sprite_height,
-                ),
-                resample=Image.Resampling.NEAREST,
-            )
-            output_path = os.path.join(
-                static_dir_dst,
-                "img",
-                consist.id + "_" + livery_name + ".png",
-            )
-            processed_vehicle_image.save(output_path, optimize=True, transparency=0)
+        # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
+        processed_vehicle_image = processed_vehicle_image.resize(
+            (
+                4 * processed_vehicle_image.size[0],
+                4 * doc_helper.buy_menu_sprite_height,
+            ),
+            resample=Image.Resampling.NEAREST,
+        )
+        output_path = os.path.join(
+            static_dir_dst,
+            "img",
+            consist.id + "_" + variant["livery_name"] + ".png",
+        )
+        processed_vehicle_image.save(output_path, optimize=True, transparency=0)
     source_vehicle_image.close()
 
 

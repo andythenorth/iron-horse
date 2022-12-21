@@ -148,7 +148,7 @@ class Consist(object):
         self._cite = ""  # optional, set per subclass as needed
         # for 'inspired by' stuff
         self.foamer_facts = """"""  # to be set per vehicle, multi-line supported
-        self._docs_image_spriterow = kwargs.get(
+        self.docs_image_spriterow = kwargs.get(
             "docs_image_spriterow", None
         )  # 0 indexed spriterows, position in generated spritesheet
         # aids 'project management'
@@ -778,22 +778,6 @@ class Consist(object):
             return calculated_buy_menu_width
         else:
             return 64
-
-    @property
-    def docs_image_spriterow(self):
-        # somewhat JFDI hax
-        if self._docs_image_spriterow is not None:
-            return self._docs_image_spriterow
-        else:
-            result = self.units[0].unit_variants[0].livery_num
-            if (
-                self.gestalt_graphics.__class__.__name__
-                == "GestaltGraphicsConsistPositionDependent"
-            ):
-                result = (
-                    result * 2
-                )  # account for multiple rows for loaded/loading state - extend this to other types as needed
-            return result
 
     @property
     def num_sprite_layers(self):

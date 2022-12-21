@@ -22,6 +22,7 @@
                     <small>Vehicle Info</small>
                 </h2>
                 <div style="margin-top:30px; margin-bottom:50px;">
+                    <!--!
                     <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
                         <tal:block repeat="livery_name livery_variant.keys()">
                             <div class="vehicle-image"
@@ -45,6 +46,8 @@
                             </div>
                         </tal:block>
                     </tal:livery>
+                    -->
+                    CABBAGE
                 </div>
                 <style>
                     blockquote.vehicle-quote p {
@@ -201,40 +204,37 @@
                 </style>
 
                 <table class="livery-table text-left">
-                    <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                    <tal:buyable_variants repeat="buyable_variant consist.buyable_variants">
                         <tr>
-                            <th class="livery-table-first-col"><div style="margin-top:12px;">Livery ${repeat.livery_variant.number} examples</div></th>
+                            <th class="livery-table-first-col"><div style="margin-top:12px;">Livery ${repeat.buyable_variant.number} examples</div></th>
                             <td class="livery-table-col-with-divider">
-                                <tal:livery_example repeat="livery_name livery_variant.keys()">
-                                    <!--! assume use_additional_livery_spriterow is an indicator for an example colour combo triggering alternative livery -->
-                                    <tal:block condition="'use_additional_livery_spriterow' not in livery_variant[livery_name]">
-                                        <div class="livery-example-container">
-                                            <div class="vehicle-image"
-                                                style="width:${3 * doc_helper.buy_menu_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
-                                                <img src="static/img/${consist.id}_${livery_name}.png"
-                                                     width="${3 * doc_helper.buy_menu_sprite_width(consist)}"
-                                                     height="${3 * doc_helper.buy_menu_sprite_height}" />
-                                            </div>
-                                            <div style="display:block;">
-                                                <tal:colours repeat="company_colour livery_variant[livery_name]['docs_image_input_cc']">
-                                                    <!--! !! probably should be a caption for a figure ?? -->
-                                                    <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=7)});
-                                                                 display:inline-block;
-                                                                 vertical-align:middle;
-                                                                 border:solid 1px #555;
-                                                                 width:12px;
-                                                                 height:12px;">
-                                                    </span>
-                                                    <span style="vertical-align:middle; font-size:13px;">${doc_helper.company_colour_names[company_colour]}</span>
-                                                    <br />
-                                                </tal:colours>
-                                            </div>
+                                <tal:livery_examples repeat="livery_variant [livery_variant for livery_variant in doc_helper.get_docs_livery_variants(consist) if livery_variant['livery_num'] == buyable_variant.livery_num]">
+                                    <div class="livery-example-container">
+                                        <div class="vehicle-image"
+                                            style="width:${3 * doc_helper.buy_menu_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
+                                            <img src="static/img/${consist.id}_${livery_variant['livery_name']}.png"
+                                                 width="${3 * doc_helper.buy_menu_sprite_width(consist)}"
+                                                 height="${3 * doc_helper.buy_menu_sprite_height}" />
                                         </div>
-                                    </tal:block>
-                                </tal:livery_example>
+                                        <div style="display:block;">
+                                            <tal:colours repeat="company_colour livery_variant['docs_image_input_cc']">
+                                                <!--! !! probably should be a caption for a figure ?? -->
+                                                <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=7)});
+                                                             display:inline-block;
+                                                             vertical-align:middle;
+                                                             border:solid 1px #555;
+                                                             width:12px;
+                                                             height:12px;">
+                                                </span>
+                                                <span style="vertical-align:middle; font-size:13px;">${doc_helper.company_colour_names[company_colour]}</span>
+                                                <br />
+                                            </tal:colours>
+                                        </div>
+                                    </div>
+                                </tal:livery_examples>
                             </td>
                         </tr>
-                    </tal:liveries>
+                    </tal:buyable_variants>
                 </table>
                 <h3 id="foamer-facts">Foamer Facts</h3>
                 <p>Inspired by ${structure: consist.foamer_facts}.</p>
