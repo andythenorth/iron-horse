@@ -1248,10 +1248,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="driving_cab_cars",
-            # HAX
-            liveries=self.roster.default_pax_liveries,
-            # temp commented out until spritesheets revised
-            # liveries=self.roster.default_mail_liveries,
+            liveries=self.roster.dvt_mail_liveries,
         )
 
 
