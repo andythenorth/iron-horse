@@ -209,8 +209,8 @@ class DocHelper(object):
             for cc_remap_pair in docs_image_input_cc:
                 result = {}
                 livery_name = (
-                    "livery_"
-                    + str(buyable_variant.livery_num)
+                    "variant_"
+                    + str(buyable_variant.buyable_variant_num)
                     + "_"
                     + self.get_livery_file_substr(cc_remap_pair)
                 )
@@ -224,8 +224,7 @@ class DocHelper(object):
                 CC2_remap = cc_remap_pair[1]
                 result["cc_remaps"] = {"CC1": CC1_remap, "CC2": CC2_remap}
                 result["docs_image_input_cc"] = cc_remap_pair
-                # note that livery num is the index into the livery in the spritesheet
-                result["livery_num"] = buyable_variant.livery_num
+                result["buyable_variant"] = buyable_variant
                 variants_config.append(result)
         return variants_config
 
@@ -545,12 +544,12 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
                 consist.gestalt_graphics.__class__.__name__
                 == "GestaltGraphicsConsistPositionDependent"
             ):
-                y_offset = 60 * variant["livery_num"]
+                y_offset = 60 * variant["buyable_variant"].livery_num
             else:
                 if consist.docs_image_spriterow is not None:
                     y_offset = 30 * consist.docs_image_spriterow
                 else:
-                    y_offset = 30 * variant["livery_num"]
+                    y_offset = 30 * variant["buyable_variant"].livery_num
             source_vehicle_image_tmp = vehicle_spritesheet.crop(
                 box=(
                     consist.buy_menu_x_loc,

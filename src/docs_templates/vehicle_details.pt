@@ -201,7 +201,7 @@
                         <tr>
                             <th class="livery-table-first-col"><div style="margin-top:12px;">Livery ${repeat.buyable_variant.number} examples</div></th>
                             <td class="livery-table-col-with-divider">
-                                <tal:livery_examples repeat="livery_variant [livery_variant for livery_variant in doc_helper.get_docs_livery_variants(consist) if livery_variant['livery_num'] == buyable_variant.livery_num]">
+                                <tal:livery_examples repeat="livery_variant [livery_variant for livery_variant in doc_helper.get_docs_livery_variants(consist) if livery_variant['buyable_variant'] == buyable_variant]">
                                     <div class="livery-example-container">
                                         <div class="vehicle-image"
                                             style="width:${3 * doc_helper.buy_menu_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
@@ -249,7 +249,7 @@
                                         <div style="margin:10px;">
                                             <a href="${replaced_consist.id}.html">
                                                 <div class="vehicle-image">
-                                                    <img src="static/img/${replaced_consist.id}_livery_0_red_white.png"
+                                                    <img src="static/img/${replaced_consist.id}_variant_0_red_white.png"
                                                          width="${2 * doc_helper.buy_menu_sprite_width(replaced_consist)}"
                                                          height="${2 * doc_helper.buy_menu_sprite_height}" />
                                                 </div>
@@ -265,7 +265,7 @@
                             <!--! this vehicle -->
                             <td style="text-align:center; vertical-align:middle;">
                                 <div class="vehicle-image">
-                                    <img src="static/img/${consist.id}_livery_0_red_white.png"
+                                    <img src="static/img/${consist.id}_variant_0_red_white.png"
                                          width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
                                          height="${4 * doc_helper.buy_menu_sprite_height}" />
                                 </div>
@@ -279,7 +279,7 @@
                                     <div style="margin:10px;">
                                         <a href="${consist.replacement_consist.id}.html">
                                             <div class="vehicle-image">
-                                                <img src="static/img/${consist.replacement_consist.id}_livery_0_red_white.png"
+                                                <img src="static/img/${consist.replacement_consist.id}_variant_0_red_white.png"
                                                      width="${2* doc_helper.buy_menu_sprite_width(consist.replacement_consist)}"
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
                                             </div>
@@ -301,7 +301,7 @@
                                     <div style="display:inline-block; margin:10px;">
                                         <a href="${similar_consist.id}.html">
                                             <div class="vehicle-image">
-                                                <img src="static/img/${similar_consist.id}_livery_0_red_white.png"
+                                                <img src="static/img/${similar_consist.id}_variant_0_red_white.png"
                                                      width="${2* doc_helper.buy_menu_sprite_width(similar_consist)}"
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
                                             </div>

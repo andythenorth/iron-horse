@@ -344,13 +344,13 @@ def main():
             {
                 "forced_livery_num": 3,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
                 "forced_livery_num": 0,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -377,13 +377,13 @@ def main():
             {
                 "forced_livery_num": 0,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
                 "forced_livery_num": 1,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -404,7 +404,6 @@ def main():
             {
                 "forced_livery_num": 0,
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -416,6 +415,30 @@ def main():
             },
             {
                 "forced_livery_num": 2,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+        ],
+        dvt_mail_liveries=[
+            {
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],

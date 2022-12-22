@@ -145,7 +145,7 @@
                                         <tr>
                                             <td class="vehicle-image"
                                                 style="min-width:${2 * doc_helper.buy_menu_sprite_max_width}px;">
-                                                <img src="static/img/${consist.id}_livery_0_red_white.png"
+                                                <img src="static/img/${consist.id}_variant_0_red_white.png"
                                                      width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
                                             </td>

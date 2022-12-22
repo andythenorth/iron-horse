@@ -78,7 +78,7 @@
                         var index = Math.floor(Math.random()*images.length);
                         var random_image = images.splice(index, 1)[0]; // splice returns an array, and we need the nested array inside it
                         document.write('<a href="trains.html#' + random_image[0] + '" style="display:inline; margin-bottom: 20px;"> \
-                                            <img src="static/img/'+ random_image[0] + '_livery_0_red_white.png" \
+                                            <img src="static/img/'+ random_image[0] + '_variant_0_red_white.png" \
                                                  width="' + 4 * random_image[1] + '" \
                                                  height="${4 * doc_helper.buy_menu_sprite_height}"> \
                                         </a>')

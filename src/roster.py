@@ -35,6 +35,7 @@ class Roster(object):
         self.electric_railcar_mail_liveries = kwargs.get("electric_railcar_mail_liveries", [])
         self.diesel_railcar_mail_liveries = kwargs.get("diesel_railcar_mail_liveries", [])
         self.default_metro_liveries = kwargs.get("default_metro_liveries", [])
+        self.dvt_mail_liveries = kwargs.get("dvt_mail_liveries", [])
 
     @property
     def buy_menu_sort_order(self):
