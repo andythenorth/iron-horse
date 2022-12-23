@@ -1189,8 +1189,6 @@ class AutoCoachCombineConsist(EngineConsist):
         self.fixed_buy_cost_points = 6  # to reduce it from engine factor
         # ....run costs nerfed down to match equivalent gen 2 + 3 pax / mail cars
         self.fixed_run_cost_points = 43
-        # no flip as articulated innit (even needed?)
-        self.allow_flip = False
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_autocoach.pynml",
@@ -1229,7 +1227,6 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         self.role = "driving_cab_express_mail"
         self.role_child_branch_num = -1  # driving cab cars are probably jokers?
         self.buy_menu_hint_driving_cab = True
-        self.allow_flip = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
         self.power_by_power_source = {"NULL": 300}
         # nerf TE down to minimal value
@@ -1318,7 +1315,6 @@ class MailEngineRailcarConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.allow_flip = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # non-standard cite
@@ -1411,7 +1407,6 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         self.role = "driving_cab_express_pax"
         self.role_child_branch_num = -1  # driving cab cars are probably jokers?
         self.buy_menu_hint_driving_cab = True
-        self.allow_flip = True
         # special purpose attr for use with alt var 41 and pax_car_ids
         self.treat_as_pax_car_for_var_41 = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
@@ -1463,7 +1458,6 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.allow_flip = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 0.85
@@ -1556,7 +1550,6 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.allow_flip = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # big cost bonus for railbus
@@ -1614,7 +1607,6 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         # non-standard cite
         self._cite = "Arabella Unit"
-        self.allow_flip = True
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -1676,7 +1668,6 @@ class SnowploughEngineConsist(EngineConsist):
         self.role = "snoughplough!"  # blame Pikka eh?
         self.role_child_branch_num = -1
         self.buy_menu_hint_driving_cab = True
-        self.allow_flip = True
         # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
         self.power_by_power_source = {"NULL": 100}
         self.tractive_effort_coefficient = 0.1
@@ -2018,7 +2009,6 @@ class AlignmentCarConsist(CarConsist):
         self.buy_cost_adjustment_factor = 0  # free
         # no random CC, no flip
         self.use_colour_randomisation_strategies = False
-        self.allow_flip = False
 
 
 class AutomobileCarConsistBase(CarConsist):
@@ -2044,7 +2034,6 @@ class AutomobileCarConsistBase(CarConsist):
         # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
         # player can still flip to the second livery
         self.use_colour_randomisation_strategies = False
-        self.allow_flip = True
         if self.subtype == "D":
             consist_ruleset = "articulated_permanent_twin_sets"
         else:
@@ -2143,8 +2132,6 @@ class BolsterCarConsist(CarConsist):
             "randomised_flat_car",
         ]
         self._joker = True
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
@@ -2171,8 +2158,6 @@ class BoxCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
 
 
 class BoxCarConsist(BoxCarConsistBase):
@@ -2379,7 +2364,6 @@ class CabooseCarConsist(CarConsist):
             0.75  # chop down caboose costs, they're just eye candy eh
         )
         self.use_colour_randomisation_strategies = True
-        self.allow_flip = True
         self.random_reverse = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(
@@ -2419,8 +2403,6 @@ class CarbonBlackHopperCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self._joker = True
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.carbon_black_hopper_car_livery_recolour_maps,
@@ -2454,8 +2436,6 @@ class CoilBuggyCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self._joker = True
-        # CC is swapped randomly (player can't choose), player can't flip as vehicle is articulated
-        self.allow_flip = False
         # Graphics configuration
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
         self.gestalt_graphics = GestaltGraphicsCustom(
@@ -2489,8 +2469,6 @@ class CoilCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = ["randomised_metal_coil_car"]
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
 
 
 class CoilCarCoveredConsist(CoilCarConsistBase):
@@ -2566,8 +2544,6 @@ class CoveredHopperCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self.randomised_candidate_groups = ["randomised_covered_hopper_car"]
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
 
 
 class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
@@ -2729,8 +2705,6 @@ class DumpCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
@@ -2875,7 +2849,6 @@ class EdiblesTankCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["food_wagons"]
         )
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
-        self.allow_flip = True
         # type-specific wagon colour randomisation
         self.auto_colour_randomisation_strategy_num = (
             1  # single base colour unless flipped
@@ -2913,7 +2886,6 @@ class ExpressCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
-        self.allow_flip = True
         # type-specific wagon colour randomisation
         self.auto_colour_randomisation_strategy_num = (
             1  # single base colour unless flipped
@@ -2964,7 +2936,6 @@ class ExpressIntermodalCarConsist(CarConsist):
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         # player can still flip to the second livery
         self.use_colour_randomisation_strategies = False
-        self.allow_flip = True
         # Graphics configuration
         # !! note to future, if e.g. NA Horse needs longer express intermodal sets, set the consist_ruleset conditionally by checking roster
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
@@ -2998,8 +2969,6 @@ class FarmProductsBoxCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -3032,8 +3001,6 @@ class FarmProductsHopperCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.farm_products_hopper_car_livery_recolour_maps,
@@ -3061,8 +3028,6 @@ class FlatCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
 
 
 class FlatCarBulkheadConsist(FlatCarConsistBase):
@@ -3231,8 +3196,6 @@ class GasTankCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
         # type-specific wagon colour randomisation
         self.auto_colour_randomisation_strategy_num = (
             1  # single base colour unless flipped
@@ -3294,8 +3257,6 @@ class HopperCarConsistBase(CarConsist):
             "randomised_hopper_car",
             "randomised_bulk_car",
         ]
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
@@ -3414,8 +3375,6 @@ class IngotCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self._joker = True
-        # CC is swapped randomly (player can't choose), player can't flip as vehicle is articulated
-        self.allow_flip = False
         self.suppress_animated_pixel_warnings = True
         # Graphics configuration
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
@@ -3453,7 +3412,6 @@ class IntermodalCarConsistBase(CarConsist):
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         # player can still flip to the second livery
         self.use_colour_randomisation_strategies = False
-        self.allow_flip = True
         # Graphics configuration
         # various rulesets are supported, per consist, (or could be extended to checks per roster)
         if kwargs.get("consist_ruleset", None) is not None:
@@ -3519,8 +3477,6 @@ class KaolinHopperCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self._joker = True
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
         # type-specific wagon colour randomisation
         self.auto_colour_randomisation_strategy_num = (
             1  # single base colour unless flipped
@@ -3554,8 +3510,6 @@ class LivestockCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
         self.cc_num_to_randomise = 2
         # Graphics configuration
         self.roof_type = "freight"
@@ -3585,8 +3539,6 @@ class LogCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
         self.cc_num_to_randomise = 2
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
@@ -3620,7 +3572,6 @@ class MailCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.use_colour_randomisation_strategies = False
-        self.allow_flip = True
         # roof configuration
         if self.gen in [1]:
             self.roof_type = "pax_mail_clerestory"
@@ -3741,8 +3692,6 @@ class OpenCarConsistBase(CarConsist):
             "randomised_open_car",
             "randomised_piece_goods_car",
         ]
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
 
 
 class OpenCarConsist(OpenCarConsistBase):
@@ -3847,7 +3796,6 @@ class PassengerCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.use_colour_randomisation_strategies = False
-        self.allow_flip = True
         # roof configuration
         if self.gen in [1]:
             self.roof_type = "pax_mail_clerestory"
@@ -4237,8 +4185,6 @@ class PeatCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
         self.cc_num_to_randomise = 2
         # Graphics configuration
         # self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="tree_length_logs")
@@ -4272,7 +4218,6 @@ class PieceGoodsCarRandomisedConsist(CarConsist):
         self.randomised_candidate_groups = []
         self._joker = True
         # Graphics configuration
-        self.allow_flip = True
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=3,
             liveries=[self.roster.default_livery],
@@ -4298,8 +4243,6 @@ class ReeferCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["food_wagons"]
         )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
         # type-specific wagon colour randomisation
         self.auto_colour_randomisation_strategy_num = (
             1  # single base colour unless flipped
@@ -4343,8 +4286,6 @@ class SiloCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
 
 
 class SiloCarConsist(SiloCarConsistBase):
@@ -4427,7 +4368,6 @@ class SlagLadleCarConsist(CarConsist):
         )
         self._joker = True
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
-        self.allow_flip = True
         self.suppress_animated_pixel_warnings = True
         # Graphics configuration
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
@@ -4464,8 +4404,6 @@ class TankCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
 
 
 class TankCarConsist(TankCarConsistBase):
@@ -4570,8 +4508,6 @@ class TorpedoCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self._joker = True
-        # articulated so can't flip
-        self.allow_flip = False
         self.suppress_animated_pixel_warnings = True
         # Graphics configuration
         # custom gestalt with dedicated template as these wagons are articulated which standard wagon templates don't support
@@ -4804,8 +4740,6 @@ class Train(object):
     def misc_flags(self):
         # note that there are both misc_flags and extra_flags, for grf_spec reasons
         misc_flags = ["TRAIN_FLAG_2CC", "TRAIN_FLAG_SPRITE_STACK"]
-        if self.consist.allow_flip:
-            misc_flags.append("TRAIN_FLAG_FLIP")
         if self.autorefit:
             misc_flags.append("TRAIN_FLAG_AUTOREFIT")
         if self.consist.tilt_bonus:

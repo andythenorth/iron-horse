@@ -13,7 +13,6 @@ def main(roster_id):
             "DIESEL": 3300,
         },
         random_reverse=False,  # Dreadnought has asymmetric logo pixels that don't look great when running reversed
-        allow_flip=True,  # only set because random_reverse is false, this is unnecessary if random_reverse is true
         gen=5,
         speed=125,  # Dreadnought not replaced, but has gen 6 speeds
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
