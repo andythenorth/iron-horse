@@ -2467,12 +2467,9 @@ class CoilBuggyCarConsist(CarConsist):
             cargo_row_map={},  # leave blank, all default to same
             generic_rows=[0],
             unique_spritesets=[
-                ["empty_unweathered", "flipped", 10],
-                ["loading_0", "flipped", 40],
-                ["loaded_0", "flipped", 40],
-                ["empty_unweathered", "unflipped", 10],
-                ["loading_0", "unflipped", 40],
-                ["loaded_0", "unflipped", 40],
+                ["empty_unweathered", 10],
+                ["loading_0", 40],
+                ["loaded_0", 40],
             ],
         )
 
@@ -3431,12 +3428,9 @@ class IngotCarConsist(CarConsist):
             cargo_row_map={},  # leave blank, all default to same
             generic_rows=[0],
             unique_spritesets=[
-                ["empty_unweathered", "flipped", 10],
-                ["loading_0", "flipped", 40],
-                ["loaded_0", "flipped", 70],
-                ["empty_unweathered", "unflipped", 10],
-                ["loading_0", "unflipped", 40],
-                ["loaded_0", "unflipped", 70],
+                ["empty_unweathered", 10],
+                ["loading_0", 40],
+                ["loaded_0", 70],
             ],
         )
 
@@ -4446,12 +4440,9 @@ class SlagLadleCarConsist(CarConsist):
             cargo_row_map={"SLAG": [0]},
             generic_rows=[0],
             unique_spritesets=[
-                ["empty_unweathered", "flipped", 10],
-                ["loading_0", "flipped", 40],
-                ["loaded_0", "flipped", 70],
-                ["empty_unweathered", "unflipped", 10],
-                ["loading_0", "unflipped", 40],
-                ["loaded_0", "unflipped", 70],
+                ["empty_unweathered", 10],
+                ["loading_0", 40],
+                ["loaded_0", 70],
             ],
         )
 
@@ -5009,6 +5000,23 @@ class Train(object):
                 str(self.vehicle_length),
                 "8",
                 flipped,
+            ]
+        )
+        anim_flag = (
+            "ANIM" if self.consist.suppress_animated_pixel_warnings else "NOANIM"
+        )
+        args = ",".join([str(y), anim_flag])
+        return template_name + "(" + args + ")"
+
+    def get_spriteset_template_name_2(self, reversed, y):
+        template_name = "_".join(
+            [
+                "spriteset_template",
+                self.symmetry_type,
+                reversed,
+                str(self.vehicle_length),
+                "8",
+                'unflipped',
             ]
         )
         anim_flag = (

@@ -1,38 +1,24 @@
 <!--! common procedures for vehicle_with_visible_cargo and similar templates -->
 
 <!--! no cover variant, sprite states are empty, loading 0-99%, loaded -->
-<tal:flipped repeat="flipped ['unflipped', 'flipped']">
-    <!--! return silly integer stuffing for flip + load state -->
-    <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_visible_cargo_no_cover_percent_loaded_${flipped}, (cargo_count*100)/cargo_capacity) {
-            0: return ${0 if flipped == 'unflipped' else 3};
-            1..99: return ${1 if flipped == 'unflipped' else 4};
-        return ${2 if flipped == 'unflipped' else 5};
-    }
-</tal:flipped>
-<!--! handle user flipped state -->
-switch (FEAT_TRAINS, SELF, switch_graphics_visible_cargo_no_cover_flip_and_load, vehicle_is_flipped) {
-    1: switch_graphics_visible_cargo_no_cover_percent_loaded_flipped;
-    switch_graphics_visible_cargo_no_cover_percent_loaded_unflipped;
+<!--! return silly integer stuffing for flip + load state -->
+<!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
+switch (FEAT_TRAINS, SELF, switch_graphics_visible_cargo_no_cover_percent_loaded, (cargo_count*100)/cargo_capacity) {
+        0: return 0;
+        1..99: return 1;
+    return 2;
 }
 
 <!--! has cover variant, sprite states are empty, cover shown, loading 0-66%, loading 66-99% -->
-<tal:flipped repeat="flipped ['unflipped', 'flipped']">
-    <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_visible_cargo_has_cover_percent_loaded_${flipped}, (cargo_count*100)/cargo_capacity) {
-            0: return ${1 if flipped == 'unflipped' else 5};
-            1..66: return ${2 if flipped == 'unflipped' else 6};
-            67..99: return ${3 if flipped == 'unflipped' else 7};
-        return ${0 if flipped == 'unflipped' else 4};
-    }
-    <!--! checks 80+ var 0A bit 3, (loading / unloading) which is equivalent to the check the built-in spritegroups do -->
-    switch (FEAT_TRAINS, PARENT, switch_graphics_visible_cargo_has_cover_is_loading_${flipped}, var[0x8A, 0, 0xF]) {
-            3: return switch_graphics_visible_cargo_has_cover_percent_loaded_${flipped};
-        return ${0 if flipped == 'unflipped' else 4}; <!--! not in a load / unload state, show cover -->
-    }
-</tal:flipped>
-<!--! handle user flipped state -->
-switch (FEAT_TRAINS, SELF, switch_graphics_visible_cargo_has_cover, vehicle_is_flipped) {
-    1: switch_graphics_visible_cargo_has_cover_is_loading_flipped;
-    switch_graphics_visible_cargo_has_cover_is_loading_unflipped;
+<!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
+switch (FEAT_TRAINS, SELF, switch_graphics_visible_cargo_has_cover_percent_loaded, (cargo_count*100)/cargo_capacity) {
+        0: return 1;
+        1..66: return 2;
+        67..99: return 3;
+    return 0;
+}
+<!--! checks 80+ var 0A bit 3, (loading / unloading) which is equivalent to the check the built-in spritegroups do -->
+switch (FEAT_TRAINS, PARENT, switch_graphics_visible_cargo_has_cover, var[0x8A, 0, 0xF]) {
+        3: return switch_graphics_visible_cargo_has_cover_percent_loaded;
+    return 0; <!--! not in a load / unload state, show cover -->
 }

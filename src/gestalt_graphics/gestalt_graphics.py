@@ -272,41 +272,38 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
 
         row_height = graphics_constants.spriterow_height
 
-        for flipped in ["unflipped", "flipped"]:
-            start_y_cumulative = graphics_constants.spritesheet_top_margin
+        start_y_cumulative = graphics_constants.spritesheet_top_margin
 
-            if self.has_cover:
-                # add rows for covered sprite
-                for weathered_variant in self.weathered_variants.keys():
-                    result.append(
-                        ["has_cover_" + weathered_variant, flipped, start_y_cumulative]
-                    )
-                    start_y_cumulative += row_height
-
-            # add rows for empty sprite
+        if self.has_cover:
+            # add rows for covered sprite
             for weathered_variant in self.weathered_variants.keys():
                 result.append(
-                    ["empty_" + weathered_variant, flipped, start_y_cumulative]
+                    ["has_cover_" + weathered_variant, start_y_cumulative]
                 )
                 start_y_cumulative += row_height
 
-            # !! not sure unique_cargo_rows order will always reliably match to what's needed, but if it doesn't, explicitly sort it eh
-            for row_num in unique_cargo_rows:
-                result.append(
-                    [
-                        "loading_" + str(row_num),
-                        flipped,
-                        start_y_cumulative,
-                    ]
-                )
-                result.append(
-                    [
-                        "loaded_" + str(row_num),
-                        flipped,
-                        start_y_cumulative + 30,
-                    ]
-                )
-                start_y_cumulative += 2 * row_height
+        # add rows for empty sprite
+        for weathered_variant in self.weathered_variants.keys():
+            result.append(
+                ["empty_" + weathered_variant, start_y_cumulative]
+            )
+            start_y_cumulative += row_height
+
+        # !! not sure unique_cargo_rows order will always reliably match to what's needed, but if it doesn't, explicitly sort it eh
+        for row_num in unique_cargo_rows:
+            result.append(
+                [
+                    "loading_" + str(row_num),
+                    start_y_cumulative,
+                ]
+            )
+            result.append(
+                [
+                    "loaded_" + str(row_num),
+                    start_y_cumulative + 30,
+                ]
+            )
+            start_y_cumulative += 2 * row_height
         return result
 
 
