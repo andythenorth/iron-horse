@@ -1,6 +1,4 @@
-<!--! 'random_reverse' property is not supported in this template, vehicles using this template are almost all symmetrical, reversing would do nothing
-      'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
-      don't conflate them :) -->
+<!--! 'random_reverse' property is not supported in this template, vehicles using this template are almost all symmetrical, reversing would do nothing -->
 
 <tal:spritesets repeat="spriteset_data consist.gestalt_graphics.unique_spritesets">
     <!--! spriteset loops got too complex in the templates, with livery, empty state, cargo loading, cargo loaded, and random variants

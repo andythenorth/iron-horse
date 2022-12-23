@@ -1295,7 +1295,6 @@ class MailEngineMetroConsist(MailEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # Graphics configuration
-        # 1 livery as can't be flipped
         # position variants
         # * unit with driving cab front end
         # * unit with driving cab rear end
@@ -1534,7 +1533,6 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # Graphics configuration
-        # 1 livery as can't be flipped
         # position variants
         # * unit with driving cab front end
         # * unit with driving cab rear end
@@ -1760,7 +1758,6 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         self._cite = "Dr Constance Speed"
         # Graphics configuration
         self.roof_type = "pax_mail_smooth"
-        # 1 livery as can't be flipped
         # position variants
         # * default unit
         # * unit with pantograph - leading end

@@ -1,7 +1,3 @@
-<!--! 'random_reverse' property is not supported in this template, vehicles using this template are almost all symmetrical, reversing would do nothing
-      'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
-      don't conflate them :) -->
-
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_random_self,
                             random_bits_randomised_wagon_choose_wagon(
                                 ${len(consist.roster.get_wagon_randomisation_candidates(consist)).bit_length() - 1}
