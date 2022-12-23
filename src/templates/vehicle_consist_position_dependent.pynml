@@ -1,44 +1,35 @@
 <!--! Appearance that changes depending on position in consist.
       Intended for pax and mail cars, possibly limited other types.
       - loaded and empty state are same, but loading state is provided (for opening doors at stations)
-            - open doors are comped in by the graphics processor
-      - flipping vehicle swaps company colour
-          - N.B. asymmetric sprites won't reverse when flipped, they maintain same orientation and change livery
-          - most sprites are symmetric, except, e.g. brake coaches
+      - open doors are comped in by the graphics processor
+      - most sprites are symmetric, except, e.g. brake coaches; if vehicle is flipped, any asymmetric sprite will be flipped
  -->
 
-<!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
-      'flipped' is user flipping vehicle in depot and *is* supported here (used for company colour reversal)
-      don't conflate them :) -->
+<!--! 'random_reverse' property is not supported in this template
+      'flipped' is user flipping vehicle in depot and *is* supported here, don't conflate them :) -->
 // default graphics chain
 <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
-
-    <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
-        <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-            <tal:spritesets define="reversed 'reversed' if flipped == 'flipped' else 'unreversed'">
-                spriteset(${vehicle.id}_ss_doors_closed_unit_variant_${unit_variant.livery_num}_${position_variant_num}_${flipped}, "${graphics_path}${consist.id}.png") {
-                    ${vehicle.get_spriteset_template_name(reversed, flipped, 10 + (position_variant_num * len(vehicle.unit_variants) * 60) + (unit_variant.livery_num * 60))}
-                }
-                spriteset(${vehicle.id}_ss_doors_open_unit_variant_${unit_variant.livery_num}_${position_variant_num}_${flipped}, "${graphics_path}${consist.id}.png") {
-                    ${vehicle.get_spriteset_template_name(reversed, flipped, 10 + (position_variant_num * len(vehicle.unit_variants) * 60) + (unit_variant.livery_num * 60) + 30)}
-                }
-            </tal:spritesets>
-        </tal:unit_variants>
-        <!--! in case there wasn't enough complexity here, let's do pantographs too, in a separate layer -->
-        <tal:pantographs condition="consist.pantograph_type is not None">
-            <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
-            <tal:pantographs repeat="pantograph_state ['down', 'up']">
-                spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${position_variant_num}_${flipped}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
-                    ${vehicle.get_spriteset_template_name('reversed' if flipped == 'flipped' else 'unreversed', flipped, 10 + (position_variant_num * 60))}
-                }
-            </tal:pantographs>
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${position_variant_num}_${flipped}, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
-                1: return ${vehicle.id}_ss_pantographs_up_${position_variant_num}_${flipped};
-                return ${vehicle.id}_ss_pantographs_down_${position_variant_num}_${flipped};
+    <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+        spriteset(${vehicle.id}_ss_doors_closed_unit_variant_${unit_variant.livery_num}_${position_variant_num}, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (position_variant_num * len(vehicle.unit_variants) * 60) + (unit_variant.livery_num * 60))}
+        }
+        spriteset(${vehicle.id}_ss_doors_open_unit_variant_${unit_variant.livery_num}_${position_variant_num}, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (position_variant_num * len(vehicle.unit_variants) * 60) + (unit_variant.livery_num * 60) + 30)}
+        }
+    </tal:unit_variants>
+    <!--! in case there wasn't enough complexity here, let's do pantographs too, in a separate layer -->
+    <tal:pantographs condition="consist.pantograph_type is not None">
+        <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
+        <tal:pantographs repeat="pantograph_state ['down', 'up']">
+            spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${position_variant_num}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
+                ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (position_variant_num * 60))}
             }
         </tal:pantographs>
-
-    </tal:user_flipped>
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${position_variant_num}, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
+            1: return ${vehicle.id}_ss_pantographs_up_${position_variant_num};
+            return ${vehicle.id}_ss_pantographs_down_${position_variant_num};
+        }
+    </tal:pantographs>
 </tal:consist_position_variants>
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_local_procedure_get_unit_variant_num, vehicle_type_id) {
@@ -51,32 +42,22 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_local_procedure_get_unit_variant
 <!--! stupid integer stuffing scheme to detect livery / flip / doors states, see the procedures for the schema -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_engine_and_doors,
         [
-            (1000 * LOAD_TEMP(${temp_storage_ids.consist_specific_position_variant_num}))
+            (100 * LOAD_TEMP(${temp_storage_ids.consist_specific_position_variant_num}))
             +
-            (100 * ${vehicle.id}_switch_local_procedure_get_unit_variant_num())
+            (10 * ${vehicle.id}_switch_local_procedure_get_unit_variant_num())
             +
-            (10 * vehicle_is_flipped)
-            +
-            switch_graphics_opening_doors()
+            (1 * switch_graphics_opening_doors())
         ]
     ) {
     <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
         <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-            ${position_variant_num}${unit_variant.livery_num}00: return ${vehicle.id}_ss_doors_closed_unit_variant_${unit_variant.livery_num}_${position_variant_num}_unflipped;
-            ${position_variant_num}${unit_variant.livery_num}01: return ${vehicle.id}_ss_doors_open_unit_variant_${unit_variant.livery_num}_${position_variant_num}_unflipped;
-            ${position_variant_num}${unit_variant.livery_num}10: return ${vehicle.id}_ss_doors_closed_unit_variant_${unit_variant.livery_num}_${position_variant_num}_flipped;
-            ${position_variant_num}${unit_variant.livery_num}11: return ${vehicle.id}_ss_doors_open_unit_variant_${unit_variant.livery_num}_${position_variant_num}_flipped;
+            ${position_variant_num}${unit_variant.livery_num}0: return ${vehicle.id}_ss_doors_closed_unit_variant_${unit_variant.livery_num}_${position_variant_num};
+            ${position_variant_num}${unit_variant.livery_num}1: return ${vehicle.id}_ss_doors_open_unit_variant_${unit_variant.livery_num}_${position_variant_num};
         </tal:unit_variants>
     </tal:consist_position_variants>
 }
 
 <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
-    <tal:conditional_pantograph condition="consist.pantograph_type is not None">
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${position_variant_num}, vehicle_is_flipped) {
-            1: return ${vehicle.id}_switch_graphics_pantographs_${position_variant_num}_flipped;
-            return ${vehicle.id}_switch_graphics_pantographs_${position_variant_num}_unflipped;
-        }
-    </tal:conditional_pantograph>
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_layers_${position_variant_num},
             [
                 STORE_TEMP(${position_variant_num}, ${temp_storage_ids.consist_specific_position_variant_num}),
@@ -208,15 +189,6 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase, vehic
         }
     </tal:no_pantographs>
 </tal:conditional_pantographs>
-
-<!--!
-    dedicated colour remapping for CC, with user flip support but, no randomisation
-    note that this will return incorrect results if used in purchase list, make sure it's not called by handling purchase_colour_mapping explicitly
--->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_is_flipped) {
-    1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
-    return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
-}
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
