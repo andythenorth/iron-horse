@@ -14,7 +14,8 @@ def main(roster_id):
         },
         intro_year_offset=-10,  # let's be a little bit earlier for this one - keep coaches matched
         gen=5,
-        sprites_complete=True,
+        additional_liveries=["BLUE_GREY"],
+        sprites_complete=False,
     )
 
     consist.add_unit(

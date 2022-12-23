@@ -10,7 +10,7 @@ def main():
         subtype="U",
         intro_year_offset=0,  # match to Firebird
         cab_id="firebird",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
@@ -35,7 +35,7 @@ def main():
         intro_year_offset=-10,  # match to Scorcher HST
         cab_id="scorcher",
         lgv_capable=True,  # for lolz
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")

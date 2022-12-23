@@ -15,7 +15,7 @@ def main(roster_id):
         intro_year_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
         lgv_capable=True,  # for lolz
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(

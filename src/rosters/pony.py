@@ -297,11 +297,17 @@ def main():
                     ("COLOUR_ORANGE", "COLOUR_WHITE"),
                 ],
             },
-            "CABBAGE_1": {
+            "BLUE_GREY": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_GREY", "COLOUR_YELLOW"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                ],
+            },
+            "CABBAGE_1": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
                 ],
             },
             "CABBAGE_2": {

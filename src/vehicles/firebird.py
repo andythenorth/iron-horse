@@ -13,7 +13,7 @@ def main(roster_id):
             "DIESEL": 3300,  # it's the Deltic that never was!  It's OP, but eh, it's just cartoon trains.
         },
         gen=4,
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
