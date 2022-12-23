@@ -5,35 +5,24 @@
       don't conflate them :) -->
 // default graphics chain
 spriteset(${vehicle.id}_ss_unflipped_unreversed, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10)}
+    ${vehicle.get_spriteset_template_name_2('unreversed', 10)}
 }
 spriteset(${vehicle.id}_ss_flipped_unreversed, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('unreversed', 'flipped', 10)}
+    ${vehicle.get_spriteset_template_name_2('unreversed', 10)}
 }
 spriteset(${vehicle.id}_ss_unflipped_reversed, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('reversed', 'unflipped', 10)}
+    ${vehicle.get_spriteset_template_name_2('reversed', 10)}
 }
 spriteset(${vehicle.id}_ss_flipped_reversed, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('reversed', 'flipped', 10)}
-}
-
-<!--! handle user flipped state -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_last, vehicle_is_flipped) {
-    1: return ${vehicle.id}_ss_flipped_reversed;
-    return ${vehicle.id}_ss_unflipped_reversed;
-}
-<!--! handle user flipped state -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_default, vehicle_is_flipped) {
-    1: return ${vehicle.id}_ss_flipped_unreversed;
-    return ${vehicle.id}_ss_unflipped_unreversed;
+    ${vehicle.get_spriteset_template_name_2('reversed', 10)}
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_last, position_in_consist_from_end) {
-    0: ${vehicle.id}_switch_graphics_vehicle_last;
-    return ${vehicle.id}_switch_graphics_vehicle_default;
+    0: ${vehicle.id}_ss_unflipped_reversed;
+    return ${vehicle.id}_ss_unflipped_unreversed;
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, num_vehs_in_consist) {
-    1: ${vehicle.id}_switch_graphics_vehicle_default;
+    1: ${vehicle.id}_ss_unflipped_unreversed;
     return ${vehicle.id}_switch_graphics_check_last;
 }
 

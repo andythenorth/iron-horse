@@ -1,22 +1,12 @@
 <!--! this is the template for caboose cars -->
 
 <!--! 'reversed' is random reversal on construction, depending on vehicle random bits
-      'flipped' is user flipping vehicle in depot
       don't conflate them :) -->
 
 <tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
     <tal:caboose_variants repeat="caboose_variant consist.gestalt_graphics.spriterow_labels">
         spriteset(${vehicle.id}_ss_${reversed_variant}_unflipped_${caboose_variant}, "${graphics_path}${consist.id}.png") {
-            ${vehicle.get_spriteset_template_name(reversed_variant, 'unflipped', 10 + (repeat.caboose_variant.index * 30))}
-        }
-        spriteset(${vehicle.id}_ss_${reversed_variant}_flipped_${caboose_variant}, "${graphics_path}${consist.id}.png") {
-            ${vehicle.get_spriteset_template_name(reversed_variant, 'flipped', 10 + (repeat.caboose_variant.index * 30))}
-        }
-
-        <!--! handle user flipped state -->
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}_variant_${caboose_variant}, vehicle_is_flipped) {
-            1: return ${vehicle.id}_ss_${reversed_variant}_flipped_${caboose_variant};
-            return ${vehicle.id}_ss_${reversed_variant}_unflipped_${caboose_variant};
+            ${vehicle.get_spriteset_template_name_2(reversed_variant, 10 + (repeat.caboose_variant.index * 30))}
         }
     </tal:caboose_variants>
 
@@ -24,7 +14,7 @@
         // ${caboose_family}
         random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}_caboose_family_${caboose_family[0]}) {
             <tal:caboose_family_variants repeat="caboose_variant caboose_family[1]">
-                1: return ${vehicle.id}_switch_graphics_${reversed_variant}_variant_${caboose_variant};
+                1: return ${vehicle.id}_ss_${reversed_variant}_unflipped_${caboose_variant};
             </tal:caboose_family_variants>
         }
     </tal:caboose_families>

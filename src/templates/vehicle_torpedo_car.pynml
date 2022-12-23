@@ -17,20 +17,20 @@
 
 <!--! spriteset first -->
 spriteset(${vehicle.id}_ss_first_unit, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10)}
+    ${vehicle.get_spriteset_template_name_2('unreversed', 10)}
 }
 <!--! spriteset last - uses first row, reversed -->
 spriteset(${vehicle.id}_ss_last_unit, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('reversed', 'unflipped', 10)}
+    ${vehicle.get_spriteset_template_name_2('reversed', 10)}
 }
 spriteset(${vehicle.id}_ss_middle_unit_empty, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 40)}
+    ${vehicle.get_spriteset_template_name_2('unreversed', 40)}
 }
 spriteset(${vehicle.id}_ss_middle_unit_loading, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 70)}
+    ${vehicle.get_spriteset_template_name_2('unreversed', 70)}
 }
 spriteset(${vehicle.id}_ss_middle_unit_loaded, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 100)}
+    ${vehicle.get_spriteset_template_name_2('unreversed', 100)}
 }
 
 
