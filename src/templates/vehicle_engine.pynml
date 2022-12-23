@@ -4,48 +4,40 @@
       'flipped' is user flipping vehicle in depot
       don't conflate them :) -->
 <tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
-    <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
-        <!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
-        <tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
-            spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped}_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
-                ${vehicle.get_spriteset_template_name(reversed_variant, flipped, 10 + (repeat.livery.index * 30) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 30))}
-            }
-        </tal:liveries>
-
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${reversed_variant}_${flipped}, vehicle_type_id) {
-            <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-                ${unit_variant.numeric_id}: return ${vehicle.id}_ss_${reversed_variant}_${flipped}_${unit_variant.livery_num};
-            </tal:unit_variants>
-            <!--! no default, by design all variants should be explicitly found -->
+    <!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
+    <tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
+        spriteset(${vehicle.id}_ss_${reversed_variant}_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name_2(reversed_variant, 10 + (repeat.livery.index * 30) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 30))}
         }
+    </tal:liveries>
 
-        <tal:pantographs condition="consist.pantograph_type is not None">
-            <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
-            <tal:pantographs repeat="pantograph_state ['down', 'up']">
-                spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${reversed_variant}_${flipped}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
-                    ${vehicle.get_spriteset_template_name(reversed_variant, flipped, 10 + (vehicle.spriterow_num * 30))}
-                }
-            </tal:pantographs>
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${reversed_variant}_${flipped}, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
-                1: return ${vehicle.id}_ss_pantographs_up_${reversed_variant}_${flipped};
-                return ${vehicle.id}_ss_pantographs_down_${reversed_variant}_${flipped};
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${reversed_variant}, vehicle_type_id) {
+        <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+            ${unit_variant.numeric_id}: return ${vehicle.id}_ss_${reversed_variant}_${unit_variant.livery_num};
+        </tal:unit_variants>
+        <!--! no default, by design all variants should be explicitly found -->
+    }
+
+    <tal:pantographs condition="consist.pantograph_type is not None">
+        <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
+        <tal:pantographs repeat="pantograph_state ['down', 'up']">
+            spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${reversed_variant}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
+                ${vehicle.get_spriteset_template_name_2(reversed_variant, 10 + (vehicle.spriterow_num * 30))}
             }
         </tal:pantographs>
-
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_layers_${reversed_variant}_${flipped}, getbits(extra_callback_info1, 8, 8)) {
-            <tal:conditional_pantograph condition="consist.pantograph_type is not None">
-                <!--! if there are pantographs to draw we will handle that later in the graphics chain,
-                      but we need to reserve layer 1 for the pantographs -->
-                1: return ${vehicle.id}_switch_graphics_pantographs_${reversed_variant}_${flipped};
-            </tal:conditional_pantograph>
-            return ${vehicle.id}_switch_graphics_livery_${reversed_variant}_${flipped};
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${reversed_variant}, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
+            1: return ${vehicle.id}_ss_pantographs_up_${reversed_variant};
+            return ${vehicle.id}_ss_pantographs_down_${reversed_variant};
         }
-    </tal:user_flipped>
+    </tal:pantographs>
 
-    <!--! handle user flipped state -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}, vehicle_is_flipped) {
-        1: return ${vehicle.id}_switch_graphics_vehicle_layers_${reversed_variant}_flipped;
-        return ${vehicle.id}_switch_graphics_vehicle_layers_${reversed_variant}_unflipped;
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}, getbits(extra_callback_info1, 8, 8)) {
+        <tal:conditional_pantograph condition="consist.pantograph_type is not None">
+            <!--! if there are pantographs to draw we will handle that later in the graphics chain,
+                  but we need to reserve layer 1 for the pantographs -->
+            1: return ${vehicle.id}_switch_graphics_pantographs_${reversed_variant};
+        </tal:conditional_pantograph>
+        return ${vehicle.id}_switch_graphics_livery_${reversed_variant};
     }
 </tal:random_reverse_variants>
 
