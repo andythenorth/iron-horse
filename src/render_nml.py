@@ -91,7 +91,6 @@ def main():
         "recolour_sprites",
         "procedures_alternative_var_41",
         "procedures_alternative_var_random_bits",
-        "procedures_box_car_with_opening_doors",
         "procedures_capacity",
         "procedures_cargo_subtypes",
         "procedures_colour_randomisation_strategies",
