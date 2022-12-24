@@ -15,6 +15,7 @@ def main(roster_id):
         },
         gen=6,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
+        additional_liveries=["SWOOSH"],
         sprites_complete=True,
     )
 

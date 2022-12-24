@@ -304,6 +304,27 @@ def main():
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                 ],
             },
+            "GNER": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                ],
+            },
+            "SWOOSH": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
+                ],
+            },
+            "BLUE_PULLMAN": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
+                ],
+            },
             "CABBAGE_1": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
