@@ -344,6 +344,7 @@ def main():
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_GREY", "COLOUR_YELLOW"),
+                    ("COLOUR_GREY", "COLOUR_GREY"),
                 ],
             },
             "FINSBURY_CABS": {
