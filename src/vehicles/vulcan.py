@@ -17,6 +17,7 @@ def main(roster_id):
         intro_year_offset=1,  # introduce later than gen epoch by design
         fixed_run_cost_points=240,  # give a serious malus to this one (balancing eh?)
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
+        additional_liveries=["FINSBURY_CABS"],
         default_livery_extra_docs_examples=[
             ("COLOUR_DARK_GREEN", "COLOUR_ORANGE"),
             ("COLOUR_BLUE", "COLOUR_BLUE"),

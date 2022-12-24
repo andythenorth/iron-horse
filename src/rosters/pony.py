@@ -304,6 +304,13 @@ def main():
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                 ],
             },
+            "LARGE_LOGO": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                ],
+            },
             "GNER": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -337,6 +344,13 @@ def main():
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_GREY", "COLOUR_YELLOW"),
+                ],
+            },
+            "FINSBURY_CABS": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_GREEN", "COLOUR_WHITE"),
                 ],
             },
             "RES": {
