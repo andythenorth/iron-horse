@@ -332,7 +332,7 @@ def main():
                     ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
                 ],
             },
-            "CABBAGE_1": {
+            "DUTCH": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
