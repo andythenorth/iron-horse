@@ -16,13 +16,11 @@ def main(roster_id):
         gen=5,
         intro_year_offset=-4,  # let's not have everything turn up in 1990
         fixed_run_cost_points=65,  # give a bonus so this can be a genuine mixed-traffic engine
-        additional_liveries=["FREIGHTLINER_GBRF", "CABBAGE_1", "CABBAGE_2"],
+        additional_liveries=["RES", "FREIGHTLINER_GBRF", "CABBAGE_1"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
-            ("COLOUR_GREY", "COLOUR_GREY"),
-            ("COLOUR_RED", "COLOUR_RED"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(

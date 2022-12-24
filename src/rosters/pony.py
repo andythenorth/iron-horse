@@ -335,10 +335,11 @@ def main():
             "CABBAGE_1": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_GREY", "COLOUR_YELLOW"),
                 ],
             },
-            "CABBAGE_2": {
+            "RES": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
