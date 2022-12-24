@@ -14,7 +14,7 @@ def main(roster_id):
         },
         gen=4,
         additional_liveries=["BLUE_PULLMAN"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
