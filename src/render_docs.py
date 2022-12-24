@@ -536,20 +536,19 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
     docs_image_variants = []
 
     for variant in doc_helper.get_docs_livery_variants(consist):
+        # !! massive JFDI hax to make this work - really the gestalt should know how many rows are consumed per livery
+        if (
+            consist.gestalt_graphics.__class__.__name__
+            == "GestaltGraphicsConsistPositionDependent"
+        ):
+            y_offset = 60 * variant["buyable_variant"].livery_num
+        else:
+            if consist.docs_image_spriterow is not None:
+                y_offset = 30 * consist.docs_image_spriterow
+            else:
+                y_offset = 30 * variant["buyable_variant"].livery_num
         if not consist.dual_headed:
             # relies on additional_liveries being in predictable row offsets (should be true as of July 2020)
-
-            # !! massive JFDI hax to make this work - really the gestalt should know how many rows are consumed per livery
-            if (
-                consist.gestalt_graphics.__class__.__name__
-                == "GestaltGraphicsConsistPositionDependent"
-            ):
-                y_offset = 60 * variant["buyable_variant"].livery_num
-            else:
-                if consist.docs_image_spriterow is not None:
-                    y_offset = 30 * consist.docs_image_spriterow
-                else:
-                    y_offset = 30 * variant["buyable_variant"].livery_num
             source_vehicle_image_tmp = vehicle_spritesheet.crop(
                 box=(
                     consist.buy_menu_x_loc,
@@ -565,17 +564,17 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
             source_vehicle_image_1 = vehicle_spritesheet.copy().crop(
                 box=(
                     224,
-                    10,
+                    10 + y_offset,
                     224 + (4 * consist.length) + 1,
-                    10 + doc_helper.buy_menu_sprite_height,
+                    10 + y_offset + doc_helper.buy_menu_sprite_height,
                 )
             )
             source_vehicle_image_2 = vehicle_spritesheet.copy().crop(
                 box=(
                     104,
-                    10,
+                    10 + y_offset,
                     104 + (4 * consist.length) + 1,
-                    10 + doc_helper.buy_menu_sprite_height,
+                    10 + y_offset + doc_helper.buy_menu_sprite_height,
                 )
             )
             source_vehicle_image_tmp = source_vehicle_image.copy()
