@@ -64,12 +64,15 @@ class Pipeline(object):
 
         # hard-coded positions for buy menu sprite (if used - it's optional)
         x_offset = 0
-        if len(self.consist.buyable_variants) > 1:
-            print(self.consist.buyable_variants)
-            print(self.consist.id)
-            print("=========")
+        # !! this appears to work, but the implementation is stupidly broken
+        # it has legacy handling relating to company colour based liveries
+        # it has handling for buyable variants
+        # it has handling for repeating units
+        # it has handling for non-reperating units
+        # it has handling for special cases by gestalt
+        # !! it appears to sometimes generate twice the amount of buy menu sprite as required (see Peasweep) - this relates to repeating over the units and unit_variants
         for unit_counter, unit in enumerate(self.consist.units):
-            for unit_variant in unit.unit_variants:
+            for unit_variant_counter, unit_variant in enumerate(unit.unit_variants):
                 # !! currently no cap on purchase menu sprite width
                 # !! consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap)
                 unit_length_in_pixels = 4 * unit.vehicle_length
@@ -89,9 +92,17 @@ class Pipeline(object):
                     if unit_counter == 1:
                         ruleset_offset_num_rows_jank = 1
                 # additional_liveries jank for engines eh
+                spriterows_per_livery = 0 # this is so broken, and is needed to make certain consists work
                 if len(self.consist.gestalt_graphics.all_liveries) > 1:
-                    print(self.consist.gestalt_graphics.all_liveries)
-                    ruleset_offset_num_rows_jank = unit_counter
+                    # !! massive JFDI hax to make this work - really the gestalt should know how many rows are consumed per livery
+                    if (
+                        self.consist.gestalt_graphics.__class__.__name__
+                        == "GestaltGraphicsConsistPositionDependent"
+                    ):
+                        spriterows_per_livery = 2
+                    else:
+                        spriterows_per_livery = 1
+                ruleset_offset_num_rows_jank = unit_counter * spriterows_per_livery
                 unit_spriterow_offset = (
                     unit.spriterow_num + ruleset_offset_num_rows_jank
                 ) * graphics_constants.spriterow_height
@@ -100,20 +111,20 @@ class Pipeline(object):
                 ):
                     crop_box_src = (
                         224,
-                        10 + unit_spriterow_offset + (cc_livery_counter * 30),
+                        10 + unit_spriterow_offset + (cc_livery_counter * 30 * spriterows_per_livery),
                         224
                         + unit_length_in_pixels
                         + 1,  # allow for 1px coupler / corrider overhang
-                        26 + unit_spriterow_offset + (cc_livery_counter * 30),
+                        26 + unit_spriterow_offset + (cc_livery_counter * 30 * spriterows_per_livery),
                     )
                     crop_box_dest = (
                         360 + x_offset,
-                        10 + (cc_livery_counter * 30),
+                        10 + (cc_livery_counter * 30 * spriterows_per_livery),
                         360
                         + x_offset
                         + unit_length_in_pixels
                         + 1,  # allow for 1px coupler / corrider overhang
-                        26 + (cc_livery_counter * 30),
+                        26 + (cc_livery_counter * 30 * spriterows_per_livery),
                     )
                     custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_src)
                     spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
