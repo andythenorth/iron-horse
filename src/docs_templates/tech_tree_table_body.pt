@@ -195,7 +195,7 @@
                                                                         <!--! this is using a private var, but I am not going to lose sleep over it -->
                                                                         ${consist._name}
                                                                     </span>
-                                                                    <img src="static/img/${consist.id}_livery_0_${vehicle_cc}.png"
+                                                                    <img src="static/img/${consist.id}_variant_0_${vehicle_cc}.png"
                                                                          width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                                          height="${2 * doc_helper.buy_menu_sprite_height}" />
                                                                     <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">
