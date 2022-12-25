@@ -297,6 +297,19 @@ def main():
                     ("COLOUR_ORANGE", "COLOUR_WHITE"),
                 ],
             },
+            "BANGER_BLUE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                ],
+            },
+            "DBSCHENKER": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "BLUE_GREY": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
