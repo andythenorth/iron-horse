@@ -12,11 +12,11 @@ def main(roster_id):
         power_by_power_source={
             "AC": 4800,
         },
-        random_reverse=True,
+        random_reverse=False,
         gen=5,
         pantograph_type="z-shaped-double",
         intro_year_offset=2,  # introduce later than gen epoch by design
-        additional_liveries=["FREIGHTLINER_GBRF"],
+        additional_liveries=["FREIGHTLINER_GBRF", "RES"],
         default_livery_extra_docs_examples=[
             ("COLOUR_WHITE", "COLOUR_BLUE"),
             ("COLOUR_BLUE", "COLOUR_WHITE"),
