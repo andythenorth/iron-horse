@@ -850,8 +850,7 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
                     ]
                 )
             )
-            # this relies on DFLT mapping being safe to take
-            # *and* assumes no gaps in the spriterows, so take the max spriterow num
+            # this assumes no gaps in the spriterows, so take the max spriterow num
             # note the +1 because livery rows are zero indexed
             self.num_pantograph_rows = len(self.liveries) * (
                 1 + max(self.spriterow_group_mappings.values())
