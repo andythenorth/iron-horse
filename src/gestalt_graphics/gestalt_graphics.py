@@ -67,6 +67,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
                     ]
                 )
             )
+        self.num_pantograph_rows = len(self.liveries)
 
     @property
     def nml_template(self):

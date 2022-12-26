@@ -693,14 +693,6 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, using the same pattern as the vehicle Spritesheet
         # !! the spriteset templates should then match the main vehicle, just changing path
 
-        # the gestalt can optionally tell us how many spriterows are needed, but if it doesn't, fallback to the unique spriterows
-        # we do it this way because the gestalt doesn't have easy access to the consist, so easier to do the fallback here
-        num_pantograph_rows = getattr(
-            self.consist.gestalt_graphics,
-            "num_pantograph_rows",
-            len(self.consist.unique_spriterow_nums),
-        )
-
         pantograph_input_images = {
             "diamond-single": "diamond.png",
             "diamond-double": "diamond.png",
@@ -802,7 +794,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         loc_points = [
             (
                 pixel[0],
-                pixel[1] - (num_pantograph_rows * graphics_constants.spriterow_height),
+                pixel[1] - (self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height),
                 pixel[2],
             )
             for pixel in loc_points
@@ -828,12 +820,12 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             "P",
             (
                 graphics_constants.spritesheet_width,
-                (2 * num_pantograph_rows * graphics_constants.spriterow_height) + 10,
+                (2 * self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height) + 10,
             ),
             255,
         )
         pantograph_output_image.putpalette(DOS_PALETTE)
-        for i in range(num_pantograph_rows + 1):
+        for i in range(self.consist.gestalt_graphics.num_pantograph_rows + 1):
             pantograph_output_image.paste(
                 empty_spriterow_image,
                 (0, 10 + (i * graphics_constants.spriterow_height)),
@@ -888,7 +880,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         )
         pantograph_output_image.paste(
             vehicle_debug_image,
-            (0, 10 + (num_pantograph_rows * graphics_constants.spriterow_height)),
+            (0, 10 + (self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height)),
         )
         pantograph_debug_image = pantograph_output_image.copy().crop(
             (
@@ -906,7 +898,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         )  # the inversion here of blue and white looks a bit odd, but potato / potato
         pantograph_output_image.paste(
             pantograph_debug_image,
-            (0, 10 + (num_pantograph_rows * graphics_constants.spriterow_height)),
+            (0, 10 + (self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height)),
             pantograph_debug_mask,
         )
 
@@ -918,7 +910,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             0,
             10,
             self.global_constants.sprites_max_x_extent,
-            10 + (2 * num_pantograph_rows * graphics_constants.spriterow_height),
+            10 + (2 * self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height),
         )
         self.units.append(AppendToSpritesheet(pantograph_spritesheet, crop_box_dest))
         pantograph_input_image.close()
