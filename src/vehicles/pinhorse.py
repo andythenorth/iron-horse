@@ -10,7 +10,7 @@ def main(roster_id):
         role="branch_express",
         role_child_branch_num=-2,
         power_by_power_source={
-            "AC": 900,
+            "AC": 1050, # matched to Stoat
         },
         random_reverse=True,
         pantograph_type="diamond-single",
