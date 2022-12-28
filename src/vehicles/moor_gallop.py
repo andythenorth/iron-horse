@@ -18,6 +18,7 @@ def main(roster_id):
         pantograph_type="diamond-double",
         intro_year_offset=5,  # introduce later than gen epoch by design
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
+        additional_liveries=["BANGER_BLUE", "DUTCH"],
         default_livery_extra_docs_examples=[
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
