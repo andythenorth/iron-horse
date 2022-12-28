@@ -16,12 +16,13 @@ def main(roster_id):
         gen=3,
         intro_year_offset=4,  # introduce later than gen epoch by design
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
+        additional_liveries=["BANGER_BLUE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_DARK_GREEN", "COLOUR_DARK_GREEN"),
             ("COLOUR_GREY", "COLOUR_WHITE"),
             ("COLOUR_WHITE", "COLOUR_BLUE"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
