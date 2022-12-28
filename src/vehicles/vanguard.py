@@ -20,7 +20,7 @@ def main(roster_id):
         fixed_run_cost_points=55,  # give a bonus so this can be a genuine mixed-traffic engine
         caboose_family="railfreight_2",
         additional_liveries=["RAILFREIGHT_TRIPLE_GREY"],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
