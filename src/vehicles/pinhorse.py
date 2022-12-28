@@ -16,6 +16,7 @@ def main(roster_id):
         pantograph_type="diamond-single",
         gen=2,
         intro_year_offset=3,  # introduce later than gen epoch by design
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
     )
 
