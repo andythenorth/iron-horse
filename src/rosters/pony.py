@@ -304,6 +304,13 @@ def main():
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                 ],
             },
+            "INDUSTRIAL": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                ],
+            },
             "BANGER_BLUE": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [

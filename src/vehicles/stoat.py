@@ -18,8 +18,8 @@ def main(roster_id):
         gen=2,
         intro_year_offset=3,  # introduce later than gen epoch by design
         fixed_run_cost_points=105,  # substantial cost bonus so it can make money
-        additional_liveries=["FREIGHT_BLACK"],
-        sprites_complete=False,
+        additional_liveries=["INDUSTRIAL"],
+        sprites_complete=True,
     )
 
     consist.add_unit(
