@@ -17,7 +17,7 @@ def main(roster_id):
         gen=2,
         intro_year_offset=6,  # introduce a bit later
         additional_liveries=["FREIGHT_BLACK"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
