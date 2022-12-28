@@ -61,74 +61,45 @@ class Pipeline(object):
         # this function is passed (uncalled) into the pipeline, and then called at render time
         # this is so that it has the processed spritesheet available, which is essential for creating buy menu sprites
         # n.b if buy menu sprite processing has conditions by vehicle type, could pass a dedicated function for each type of processing
-
-        # hard-coded positions for buy menu sprite (if used - it's optional)
-        x_offset = 0
-        # !! this appears to work, but the implementation is stupidly broken
-        # it has legacy handling relating to company colour based liveries
-        # it has handling for buyable variants
-        # it has handling for repeating units
-        # it has handling for non-reperating units
-        # it has handling for special cases by gestalt
-        # !! it appears to sometimes generate twice the amount of buy menu sprite as required (see Peasweep) - this relates to repeating over the units and unit_variants
-        for unit_counter, unit in enumerate(self.consist.units):
-            for unit_variant_counter, unit_variant in enumerate(unit.unit_variants):
-                # !! currently no cap on purchase menu sprite width
-                # !! consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap)
+        buy_menu_buyable_variant_unit_row_maps = []
+        # !! this won't account for e.g. opening doors, and might need extending to get actual number of rows from gestalt_graphics (which doesn't provide that attribute as of Dec 2022)
+        rows_per_livery = len(self.consist.buyable_variants)
+        # organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
+        for buyable_variant in self.consist.buyable_variants:
+            result = []
+            for unit in self.consist.units:
+                unit_variant_row_num = (unit.spriterow_num * rows_per_livery) + unit.unit_variants[buyable_variant.buyable_variant_num].livery_num
+                result.append([unit, unit_variant_row_num])
+            buy_menu_buyable_variant_unit_row_maps.append(result)
+        # now walk the pre-organised structure, placing unit sprites
+        for buyable_variant_counter, buy_menu_buyable_variant_unit_row_map in enumerate(buy_menu_buyable_variant_unit_row_maps):
+            x_offset = 0
+            for unit_row_map in buy_menu_buyable_variant_unit_row_map:
+                unit = unit_row_map[0]
+                # currently no cap on purchase menu sprite width
+                # consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh
                 unit_length_in_pixels = 4 * unit.vehicle_length
-                # this is jank because some articulated consists with fancy rulesets need to flip some vehicles
-                # this is probably pretty fragile, but eh, JFDI
-                ruleset_offset_num_rows_jank = 0
-                if getattr(self.consist.gestalt_graphics, "consist_ruleset", None) in [
-                    "metro"
-                ]:
-                    if unit_counter % 2 != 0:
-                        ruleset_offset_num_rows_jank = 2  # hard-coded to metro currently
-                if getattr(self.consist.gestalt_graphics, "consist_ruleset", None) in [
-                    "articulated_permanent_twin_sets"
-                ]:
-                    # hard-coded to twin articulated automobile carriers currently
-                    # offset for 2nd unit to skip mask
-                    if unit_counter == 1:
-                        ruleset_offset_num_rows_jank = 1
-                # additional_liveries jank for engines eh
-                spriterows_per_livery = 0 # this is so broken, and is needed to make certain consists work
-                if len(self.consist.gestalt_graphics.all_liveries) > 1:
-                    # !! massive JFDI hax to make this work - really the gestalt should know how many rows are consumed per livery
-                    if (
-                        self.consist.gestalt_graphics.__class__.__name__
-                        == "GestaltGraphicsConsistPositionDependent"
-                    ):
-                        spriterows_per_livery = 2
-                    else:
-                        spriterows_per_livery = 1
-                ruleset_offset_num_rows_jank = unit_counter * spriterows_per_livery
-                unit_spriterow_offset = (
-                    unit.spriterow_num + ruleset_offset_num_rows_jank
-                ) * graphics_constants.spriterow_height
-                for cc_livery_counter, cc_livery in enumerate(
-                    getattr(self.consist.gestalt_graphics, "all_liveries", ["default"])
-                ):
-                    crop_box_src = (
-                        224,
-                        10 + unit_spriterow_offset + (cc_livery_counter * 30 * spriterows_per_livery),
-                        224
-                        + unit_length_in_pixels
-                        + 1,  # allow for 1px coupler / corrider overhang
-                        26 + unit_spriterow_offset + (cc_livery_counter * 30 * spriterows_per_livery),
-                    )
-                    crop_box_dest = (
-                        360 + x_offset,
-                        10 + (cc_livery_counter * 30 * spriterows_per_livery),
-                        360
-                        + x_offset
-                        + unit_length_in_pixels
-                        + 1,  # allow for 1px coupler / corrider overhang
-                        26 + (cc_livery_counter * 30 * spriterows_per_livery),
-                    )
-                    custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_src)
-                    spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
-                    # increment x offset for pasting in next vehicle
+                unit_spriterow_offset = unit_row_map[1] * graphics_constants.spriterow_height
+                crop_box_src = (
+                    224,
+                    10 + unit_spriterow_offset,
+                    224
+                    + unit_length_in_pixels
+                    + 1,  # allow for 1px coupler / corrider overhang
+                    26 + unit_spriterow_offset,
+                )
+                crop_box_dest = (
+                    360 + x_offset,
+                    10 + buyable_variant_counter * graphics_constants.spriterow_height,
+                    360
+                    + x_offset
+                    + unit_length_in_pixels
+                    + 1,  # allow for 1px coupler / corrider overhang
+                    26 + buyable_variant_counter * graphics_constants.spriterow_height,
+                )
+                custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_src)
+                spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
+                # increment x offset for pasting in next vehicle
                 x_offset += unit_length_in_pixels
         return spritesheet
 
