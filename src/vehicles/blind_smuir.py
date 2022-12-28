@@ -18,6 +18,7 @@ def main(roster_id):
         fixed_run_cost_points=150,  # small cost bonus for balance against same gen larger engines
         gen=3,
         intro_year_offset=2,  # let's be a little bit later for this one
+        additional_liveries=["FREIGHT_BLACK"],
         sprites_complete=True,
     )
 

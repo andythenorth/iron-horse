@@ -15,6 +15,7 @@ def main(roster_id):
         speed=75,  # for lolz
         tractive_effort_coefficient=0.29,
         gen=3,
+        additional_liveries=["FREIGHT_BLACK"],
         sprites_complete=True,
     )
 
