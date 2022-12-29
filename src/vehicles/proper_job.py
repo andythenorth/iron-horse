@@ -18,7 +18,8 @@ def main(roster_id):
         random_reverse=True,
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         caboose_family="gwr_1",
-        sprites_complete=True,
+        additional_liveries=["BANGER_BLUE", "INDUSTRIAL"],
+        sprites_complete=False,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=57, vehicle_length=6, spriterow_num=0)

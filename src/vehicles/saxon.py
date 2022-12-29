@@ -17,7 +17,8 @@ def main(roster_id):
         random_reverse=True,
         gen=3,
         intro_year_offset=-8,  # introduce earlier than gen epoch by design
-        sprites_complete=True,
+        additional_liveries=["FREIGHT_BLACK"],
+        sprites_complete=False,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=65, vehicle_length=6, spriterow_num=0)
