@@ -15,7 +15,7 @@ def main(roster_id):
         gen=4,
         pantograph_type="diamond-double",
         intro_year_offset=-13,  # introduce earlier than gen epoch by design
-        additional_liveries=["FREIGHT_BLACK", "RAILFREIGHT_RED_STRIPE"],
+        additional_liveries=["FREIGHT_BLACK", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
         sprites_complete=True,
     )
 
