@@ -4594,7 +4594,11 @@ class UnitVariant(object):
     def intro_year(self):
         # stupid abstraction to allow certain date-limited liveries
         if self.buyable_variant.forced_intro_year is not None:
-            return self.buyable_variant.forced_intro_year
+            # don't accidentally introduce engines early due to the livery...
+            if self.buyable_variant.forced_intro_year > self.unit.consist.intro_year:
+                return self.buyable_variant.forced_intro_year
+            else:
+                return self.unit.consist.intro_year
         else:
             return self.unit.consist.intro_year
 
