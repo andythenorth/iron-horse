@@ -4525,7 +4525,10 @@ class BuyableVariant(object):
 
     def __init__(self, consist, livery):
         self.consist = consist
+        # option to reorder livery numbers to suit specific spritesheet order, this is just for convenience if spritesheets are a chore to change
         self.forced_livery_num = livery.get("forced_livery_num", None)
+        # option to date limit introduction certain liveries
+        self.forced_intro_year = livery.get("forced_intro_year", None)
 
     @property
     def buyable_variant_num(self):
@@ -4586,6 +4589,14 @@ class UnitVariant(object):
     def livery_num(self):
         # convenience method
         return self.buyable_variant.livery_num
+
+    @property
+    def intro_year(self):
+        # stupid abstraction to allow certain date-limited liveries
+        if self.buyable_variant.forced_intro_year is not None:
+            return self.buyable_variant.forced_intro_year
+        else:
+            return self.unit.consist.intro_year
 
     @property
     def buyable_variant_group_id(self):

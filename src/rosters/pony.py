@@ -270,6 +270,7 @@ def main():
             },
             "RAILFREIGHT_RED_STRIPE": {
                 "remap_to_cc": "COLOUR_GREY",
+                "forced_intro_year": 1975,
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_RED"),
                     ("COLOUR_YELLOW", "COLOUR_PINK"),

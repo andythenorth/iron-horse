@@ -83,7 +83,7 @@
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
                 <!--! some properties should not be set for trailing parts of articulated consists -->
                 engine_class:                   ${vehicle.engine_class};
-                introduction_date:              date(${consist.intro_year}, ${1 + consist.intro_date_months_offset}, 1);
+                introduction_date:              date(${unit_variant.intro_year}, ${1 + consist.intro_date_months_offset}, 1);
                 power:                          ${consist.power}hp;
                 weight:                         ${consist.weight}ton;
                 tractive_effort_coefficient:    ${consist.tractive_effort_coefficient};
