@@ -35,6 +35,8 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
+    print("BEFORE RELEASE - PRODUCT TANK CAR 3C IS DISABLED")
+    """
     consist = TankCarProductConsist(
         roster_id="pony",
         base_numeric_id=12500,
@@ -44,7 +46,7 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
-
+    """
     consist = TankCarProductConsist(
         roster_id="pony",
         base_numeric_id=12420,

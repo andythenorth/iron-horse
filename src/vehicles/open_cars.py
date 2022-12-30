@@ -106,6 +106,16 @@ def main():
 
     consist = OpenCarConsist(
         roster_id="pony",
+        base_numeric_id=14940,
+        gen=5,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+
+    consist = OpenCarConsist(
+        roster_id="pony",
         base_numeric_id=11500,
         gen=5,
         subtype="B",

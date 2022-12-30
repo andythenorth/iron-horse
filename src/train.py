@@ -54,6 +54,7 @@ class Consist(object):
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
         # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem
         self.buyable_variants = []
+        self._variant_group = kwargs.get("variant_group", None)
         # create a structure to hold the units
         self.units = []
         # either gen xor intro_year is required, don't set both, one will be interpolated from the other
@@ -2202,6 +2203,9 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
             "randomised_box_car",
             "randomised_piece_goods_car",
         ]
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("box_car", **kwargs)
         self._joker = True
         # Graphics configuration
         self.roof_type = "freight"
@@ -2251,6 +2255,11 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
             "randomised_box_car",
             "randomised_piece_goods_car",
         ]
+        # graphics derived from shared template
+        parent_id_base="box_car"
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id(parent_id_base, **kwargs)
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -2265,7 +2274,7 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
             ),
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="box_car",
+            id_base=parent_id_base,
             weathered_variants=weathered_variants,
             liveries=[self.roster.default_livery],
         )
@@ -2330,6 +2339,9 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self._joker = True
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("sliding_wall_car", **kwargs)
         # type-specific wagon colour randomisation
         self.auto_colour_randomisation_strategy_num = (
             1  # single base colour unless flipped
@@ -2403,6 +2415,9 @@ class CarbonBlackHopperCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("chemical_covered_hopper_car", **kwargs)
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -2482,6 +2497,9 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
         self.cc_num_to_randomise = 2
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("coil_car_uncovered", **kwargs)
         self._joker = True
         # Graphics configuration
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC2}
@@ -2556,6 +2574,9 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         self.base_id = "covered_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("dry_powder_hopper_car", **kwargs)
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -2741,6 +2762,9 @@ class DumpCarAggregateConsist(DumpCarConsistBase):
             "randomised_dump_car",
             "randomised_bulk_car",
         ]
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("dump_car", **kwargs)
         self._joker = True
 
 
@@ -2758,6 +2782,9 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
             "randomised_dump_car",
             "randomised_bulk_car",
         ]
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("dump_car", **kwargs)
         self._joker = True
 
 
@@ -2805,6 +2832,9 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
         self.base_id = "scrap_metal_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_scrap"]
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("dump_car", **kwargs)
 
 
 # not in alphabetical order as it depends on subclassing DumpCarConsistBase
@@ -3165,6 +3195,9 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
             "randomised_piece_goods_car",
             "randomised_flat_car",
         ]
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("sliding_roof_car", **kwargs)
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -3234,6 +3267,9 @@ class GasTankCarCryoConsist(GasTankCarConsistBase):
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         self.base_id = "cryo_tank_car"
         super().__init__(**kwargs)
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("pressure_tank_car", **kwargs)
 
 
 class HopperCarConsistBase(CarConsist):
@@ -3477,6 +3513,9 @@ class KaolinHopperCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("swing_roof_hopper_car", **kwargs)
         self._joker = True
         # type-specific wagon colour randomisation
         self.auto_colour_randomisation_strategy_num = (
@@ -3722,6 +3761,9 @@ class OpenCarHoodConsist(OpenCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = ["KAOL"]
         self.default_cargos.extend(polar_fox.constants.default_cargos["open"])
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("open_car", **kwargs)
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.hood_open_car_body_recolour_map,
@@ -3745,6 +3787,9 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
         self.base_id = "merchandise_open_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["open"]
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("open_car", **kwargs)
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.merchandise_car_body_recolour_map,
@@ -4317,6 +4362,9 @@ class SiloCarChemicalConsist(SiloCarConsistBase):
         self.base_id = "chemical_silo_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("silo_car", **kwargs)
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.chemical_silo_car_livery_recolour_maps,
@@ -4337,6 +4385,9 @@ class SiloCarCementConsist(SiloCarConsistBase):
         self.base_id = "cement_silo_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("silo_car", **kwargs)
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4459,6 +4510,9 @@ class TankCarProductConsist(TankCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
         self.randomised_candidate_groups = ["randomised_chemicals_tank_car"]
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("acid_tank_car", **kwargs)
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4604,6 +4658,8 @@ class UnitVariant(object):
 
     @property
     def buyable_variant_group_id(self):
+        if self.unit.consist._variant_group is not None:
+            return self.unit.consist._variant_group
         if self.buyable_variant.is_default_buyable_variant:
             return None
         else:

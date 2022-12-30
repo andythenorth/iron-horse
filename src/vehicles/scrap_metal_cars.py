@@ -7,7 +7,7 @@ def main():
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
         base_numeric_id=14130,
-        gen=2,
+        gen=1,
         subtype="U",
         base_track_type_name="NG",
         sprites_complete=True,
