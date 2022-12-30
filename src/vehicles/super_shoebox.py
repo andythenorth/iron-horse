@@ -13,14 +13,14 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=5,
-        sprites_complete=True,
-        # additional_liveries=["RAILFREIGHT_TRIPLE_GREY"], # unfinished alt liveries, could be triple grey, or block colour?
+        additional_liveries=[],
         default_livery_extra_docs_examples=[
             ("COLOUR_PINK", "COLOUR_WHITE"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
             ("COLOUR_CREAM", "COLOUR_GREY"),
             ("COLOUR_ORANGE", "COLOUR_BROWN"),
         ],
+        sprites_complete=False,
     )
 
     consist.add_unit(

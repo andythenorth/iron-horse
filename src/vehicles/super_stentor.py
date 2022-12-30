@@ -18,7 +18,9 @@ def main(roster_id):
         intro_year_offset=2,  # let's be a little bit later for this one
         gen=6,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
-        sprites_complete=True,
+        # schenker?
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

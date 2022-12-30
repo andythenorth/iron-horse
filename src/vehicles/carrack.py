@@ -15,7 +15,8 @@ def main(roster_id):
         tractive_effort_coefficient=0.18,
         gen=2,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=60, vehicle_length=5, spriterow_num=0)

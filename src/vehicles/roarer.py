@@ -17,12 +17,13 @@ def main(roster_id):
         pantograph_type="z-shaped-double",
         intro_year_offset=3,  # introduce later than gen epoch by design
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
+        # banger blue
         additional_liveries=["RAILFREIGHT_RED_STRIPE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
         ],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(

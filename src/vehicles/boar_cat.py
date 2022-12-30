@@ -15,7 +15,9 @@ def main(roster_id):
         random_reverse=True,
         base_track_type_name="NG",
         gen=4,
-        sprites_complete=True,
+        # banger blue?
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

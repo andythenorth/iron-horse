@@ -15,7 +15,8 @@ def main(roster_id):
         random_reverse=True,
         gen=6,
         default_livery_extra_docs_examples=[("COLOUR_MAUVE", "COLOUR_CREAM")],
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

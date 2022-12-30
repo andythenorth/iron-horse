@@ -16,7 +16,9 @@ def main(roster_id):
         tractive_effort_coefficient=0.2,
         gen=2,
         random_reverse=True,
-        sprites_complete=True,
+        # banger blue?
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

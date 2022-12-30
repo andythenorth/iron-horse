@@ -16,7 +16,9 @@ def main(roster_id):
         gen=6,
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
-        sprites_complete=True,
+        # banger blue?
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

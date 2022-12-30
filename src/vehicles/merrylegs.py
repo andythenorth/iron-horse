@@ -17,7 +17,8 @@ def main(roster_id):
         random_reverse=True,
         gen=2,
         caboose_family="gwr_1",
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=49, vehicle_length=6, spriterow_num=0)

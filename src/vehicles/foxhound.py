@@ -17,7 +17,8 @@ def main(roster_id):
         intro_year_offset=-2,  # let's not have everything turn up in 1960
         gen=4,
         # additional_liveries=["RAILFREIGHT_RED_STRIPE"],
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

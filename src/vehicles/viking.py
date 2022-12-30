@@ -15,7 +15,8 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         intro_year_offset=6,  # introduce later than gen epoch by design
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

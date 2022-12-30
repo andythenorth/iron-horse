@@ -18,8 +18,9 @@ def main(roster_id):
         intro_year_offset=6,  # let's be later for this one
         default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE")],
         caboose_family="railfreight_1",
+        # add triple grey railfreight
         additional_liveries=["LARGE_LOGO", "RAILFREIGHT_RED_STRIPE"],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(

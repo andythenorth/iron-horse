@@ -14,7 +14,8 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         gen=5,
         intro_year_offset=12,  # introduce later than gen epoch by design
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

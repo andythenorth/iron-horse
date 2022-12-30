@@ -13,6 +13,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=6,
+        additional_liveries=[],
         default_livery_extra_docs_examples=[
             ("COLOUR_RED", "COLOUR_RED"),
             ("COLOUR_PINK", "COLOUR_WHITE"),
@@ -22,7 +23,7 @@ def main(roster_id):
             ("COLOUR_DARK_BLUE", "COLOUR_BLUE"),
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
         ],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(

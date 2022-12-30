@@ -16,7 +16,8 @@ def main(roster_id):
         fixed_run_cost_points=160,  # minor cost bonus so it can make money
         gen=1,
         force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=48, vehicle_length=5, spriterow_num=0)

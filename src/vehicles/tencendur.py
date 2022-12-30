@@ -14,7 +14,8 @@ def main(roster_id):
         },
         tractive_effort_coefficient=0.18,
         gen=3,
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=70, vehicle_length=5, spriterow_num=0)

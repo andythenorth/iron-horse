@@ -16,7 +16,8 @@ def main(roster_id):
         tractive_effort_coefficient=0.12,
         fixed_run_cost_points=140,  # minor cost bonus so it can make money
         gen=1,
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=56, vehicle_length=5, spriterow_num=0)

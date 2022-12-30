@@ -18,7 +18,8 @@ def main(roster_id):
         intro_year_offset=1,  # let's be a littler later for this one
         default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE")],
         caboose_family="gwr_1",
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

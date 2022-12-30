@@ -16,6 +16,7 @@ def main(roster_id):
         intro_year_offset=-2,  # let's be a little bit earlier for this one
         gen=5,
         caboose_family="railfreight_1",
+        # add triple grey
         additional_liveries=["RAILFREIGHT_RED_STRIPE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
@@ -23,7 +24,7 @@ def main(roster_id):
             ("COLOUR_PALE_GREEN", "COLOUR_CREAM"),
             ("COLOUR_WHITE", "COLOUR_RED"),
         ],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(

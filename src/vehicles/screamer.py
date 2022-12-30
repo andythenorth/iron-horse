@@ -16,6 +16,7 @@ def main(roster_id):
         gen=5,
         pantograph_type="z-shaped-double",
         intro_year_offset=2,  # introduce later than gen epoch by design
+        # railfreight grey, intercity, GNER?
         additional_liveries=["FREIGHTLINER_GBRF", "RES"],
         default_livery_extra_docs_examples=[
             ("COLOUR_WHITE", "COLOUR_BLUE"),
@@ -23,7 +24,7 @@ def main(roster_id):
             ("COLOUR_PINK", "COLOUR_DARK_BLUE"),
             ("COLOUR_WHITE", "COLOUR_RED"),
         ],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(

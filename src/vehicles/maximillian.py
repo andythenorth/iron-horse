@@ -16,7 +16,9 @@ def main(roster_id):
         base_track_type_name="NG",
         gen=4,
         intro_year_offset=10,
-        sprites_complete=True,
+        # banger blue?
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

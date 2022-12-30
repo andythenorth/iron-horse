@@ -19,7 +19,9 @@ def main(roster_id):
         random_reverse=True,
         gen=1,
         vehicle_life=60,  # extended vehicle life for all gronks eh
-        sprites_complete=True,
+        # brown?
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=36, vehicle_length=4, spriterow_num=0)

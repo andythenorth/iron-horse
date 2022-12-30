@@ -18,7 +18,8 @@ def main(roster_id):
         gen=6,
         fixed_run_cost_points=280,  # run cost nerf for bi-mode flexibility + high el-power
         intro_year_offset=-2,  # introduce earlier than gen epoch by design
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

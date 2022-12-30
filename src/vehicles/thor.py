@@ -17,7 +17,9 @@ def main(roster_id):
         gen=1,
         intro_year_offset=15,
         random_reverse=True,
-        sprites_complete=True,
+        # banger blue?  black?
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

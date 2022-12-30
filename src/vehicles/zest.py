@@ -19,7 +19,8 @@ def main(roster_id):
         intro_year_offset=6,  # introduce later than gen epoch by design
         vehicle_life=70,  # extended vehicle life to match Stoat
         fixed_run_cost_points=105,  # substantial cost bonus so it can make money
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(

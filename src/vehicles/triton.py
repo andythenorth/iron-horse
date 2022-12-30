@@ -18,7 +18,9 @@ def main(roster_id):
         gen=6,
         pantograph_type="z-shaped-double",
         intro_year_offset=4,  # introduce later than gen epoch by design
-        sprites_complete=True,
+        # banger blue?
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(
