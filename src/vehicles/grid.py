@@ -16,8 +16,8 @@ def main(roster_id):
         intro_year_offset=-10,  # let's be a little bit earlier for this one
         gen=5,
         caboose_family="railfreight_1",
-        additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
-        sprites_complete=False,
+        additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE", "RAILFREIGHT_TRIPLE_GREY"],
+        sprites_complete=True,
     )
 
     consist.add_unit(
