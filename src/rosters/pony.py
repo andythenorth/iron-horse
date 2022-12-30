@@ -281,6 +281,7 @@ def main():
             "RAILFREIGHT_TRIPLE_GREY": {
                 # note the remap to white, to provide lightest of the triple greys as cc1
                 "remap_to_cc": "COLOUR_WHITE",
+                "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_RED"),
                     ("COLOUR_YELLOW", "COLOUR_BLUE"),
@@ -339,6 +340,13 @@ def main():
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                 ],
             },
+            "WHITE_STRIPE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                ],
+            },
             "GNER": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -368,6 +376,15 @@ def main():
                 ],
             },
             "DUTCH": {
+                "remap_to_cc": None,
+                "forced_intro_year": 1986,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_GREY", "COLOUR_YELLOW"),
+                    ("COLOUR_GREY", "COLOUR_GREY"),
+                ],
+            },
+            "DUTCH_UNLIMITED": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
