@@ -68,8 +68,10 @@ STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Randomised
 # as of Jan 2019 these are switched from en-us to en-gb
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
-STR_NAME_SUFFIX_ACID_TANK_CAR                                   :Acid Tanker
-STR_NAME_SUFFIX_AGGREGATE_CAR                                   :Aggregate Wagon
+#STR_NAME_SUFFIX_ACID_TANK_CAR                                   :Acid Tanker
+STR_NAME_SUFFIX_ACID_TANK_CAR                                   :Chemicals Tanker
+#STR_NAME_SUFFIX_AGGREGATE_CAR                                   :Aggregate Wagon
+STR_NAME_SUFFIX_AGGREGATE_CAR                                   :Mineral Wagon
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Alignment Van
 STR_NAME_SUFFIX_AUTOMOBILE_CAR                                  :Vehicle Transporter
 STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
@@ -89,7 +91,8 @@ STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Curtain Side Va
 STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR                      :Car Transporter
 STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR                           :Dry Powder Hopper
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineral Wagon
-STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :High Side Mineral Wagon
+#STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :High Side Mineral Wagon
+STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :Mineral Wagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tanker
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Express Van
 STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Express Container Wagon
@@ -123,7 +126,8 @@ STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Coach
 STR_NAME_SUFFIX_PEAT_CAR                                        :Peat Wagons
 STR_NAME_SUFFIX_PLATE_CAR                                       :Plate Wagon
 STR_NAME_SUFFIX_PRESSURE_TANK_CAR                               :Pressure Tanker
-STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Product Tanker
+#STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Product Tanker
+STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Chemicals Tanker
 STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Railbus Trailer
 STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Railcar Trailer
 STR_NAME_SUFFIX_RANDOMISED_BOX_CAR                              :Van

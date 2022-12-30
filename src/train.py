@@ -2290,6 +2290,9 @@ class BoxCarRandomisedConsist(BoxCarConsistBase):
         super().__init__(**kwargs)
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id('box_car', **kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -2815,6 +2818,9 @@ class DumpCarRandomisedConsist(DumpCarConsistBase):
         super().__init__(**kwargs)
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("dump_car", **kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -2832,9 +2838,6 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
         self.base_id = "scrap_metal_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_scrap"]
-        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
-        # variant groups are created post-hoc, using otherwise completely independent vehicles
-        self._variant_group = self.get_wagon_id("dump_car", **kwargs)
 
 
 # not in alphabetical order as it depends on subclassing DumpCarConsistBase
@@ -3032,6 +3035,9 @@ class FarmProductsHopperCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("farm_products_box_car", **kwargs)
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.farm_products_hopper_car_livery_recolour_maps,
@@ -3336,6 +3342,9 @@ class HopperCarMGRConsist(HopperCarConsistBase):
         # don't include MGR hoppers in randomised lists, they don't look good
         self.randomised_candidate_groups = []
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id("hopper_car", **kwargs)
 
 
 class HopperCarRandomisedConsist(HopperCarConsistBase):
@@ -3813,6 +3822,9 @@ class OpenCarRandomisedConsist(OpenCarConsistBase):
         super().__init__(**kwargs)
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id('open_car', **kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
@@ -4535,6 +4547,9 @@ class TankCarChemicalsRandomisedConsist(TankCarConsistBase):
         super().__init__(**kwargs)
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
+        # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
+        # variant groups are created post-hoc, using otherwise completely independent vehicles
+        self._variant_group = self.get_wagon_id('acid_tank_car', **kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=3,
