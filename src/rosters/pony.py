@@ -399,6 +399,13 @@ def main():
                     ("COLOUR_DARK_GREEN", "COLOUR_WHITE"),
                 ],
             },
+            "FANCY_BLUE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "RES": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
