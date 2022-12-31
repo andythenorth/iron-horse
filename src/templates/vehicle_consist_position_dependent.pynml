@@ -192,6 +192,16 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase, vehic
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
+
+<!--!
+    dedicated colour remapping for CC, with user flip support but, no randomisation
+    note that this will return incorrect results if used in purchase list, make sure it's not called by handling purchase_colour_mapping explicitly
+-->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_is_flipped) {
+    1: return base_sprite_2cc + 16 * COLOUR_YELLOW + COLOUR_RED;
+    return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+}
+
 <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
     <tal:include metal:use-macro="load: capacity_switches.pynml" />
 </tal:optional_capacity_switches>

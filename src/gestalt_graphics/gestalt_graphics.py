@@ -826,6 +826,9 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         # liveries provided by subclass calling gestalt_graphics
         self.liveries = kwargs.get("liveries", [])
+        # colour mapping stuff...
+        self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_with_purchase = False
         # verify that the spriterow_group_mappings keys are in the expected order
         if list(self.spriterow_group_mappings.keys()) != [
             "default",
