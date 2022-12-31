@@ -191,14 +191,14 @@ class DocHelper(object):
         variants_config = []
 
         for buyable_variant in consist.buyable_variants:
-            livery = consist.gestalt_graphics.all_liveries[buyable_variant.livery_num]
+            livery = consist.gestalt_graphics.all_liveries[buyable_variant.buyable_variant_num]
             # docs_image_input_cc is mandatory for each livery, fail if it's not present
             if "docs_image_input_cc" not in livery.keys():
                 raise BaseException(consist + livery)
             docs_image_input_cc = livery["docs_image_input_cc"].copy()
             # as of Dec 2022 only the default livery has per-vehicle extendable colour combos
             # all other liveries have the examples baked into the livery
-            if buyable_variant.livery_num == 0:
+            if buyable_variant.buyable_variant_num == 0:
                 docs_image_input_cc.extend(
                     getattr(
                         consist.gestalt_graphics,
@@ -541,12 +541,12 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
             consist.gestalt_graphics.__class__.__name__
             == "GestaltGraphicsConsistPositionDependent"
         ):
-            y_offset = 60 * variant["buyable_variant"].livery_num
+            y_offset = 60 * variant["buyable_variant"].relative_spriterow_num
         else:
             if consist.docs_image_spriterow is not None:
                 y_offset = 30 * consist.docs_image_spriterow
             else:
-                y_offset = 30 * variant["buyable_variant"].livery_num
+                y_offset = 30 * variant["buyable_variant"].relative_spriterow_num
         if not consist.dual_headed:
             # relies on additional_liveries being in predictable row offsets (should be true as of July 2020)
             source_vehicle_image_tmp = vehicle_spritesheet.crop(

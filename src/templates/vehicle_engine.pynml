@@ -11,7 +11,7 @@
 
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${reversed_variant}, vehicle_type_id) {
         <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-            ${unit_variant.numeric_id}: return ${vehicle.id}_ss_${reversed_variant}_${unit_variant.livery_num};
+            ${unit_variant.numeric_id}: return ${vehicle.id}_ss_${reversed_variant}_${unit_variant.buyable_variant.buyable_variant_num};
         </tal:unit_variants>
         <!--! no default, by design all variants should be explicitly found -->
     }
@@ -65,7 +65,7 @@ spriteset(${vehicle.id}_ss_vehicle_purchase_${repeat.livery.index}, "${graphics_
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase, vehicle_type_id) {
     <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-        ${unit_variant.numeric_id}: return ${vehicle.id}_ss_vehicle_purchase_${unit_variant.livery_num};
+        ${unit_variant.numeric_id}: return ${vehicle.id}_ss_vehicle_purchase_${unit_variant.buyable_variant.buyable_variant_num};
     </tal:unit_variants>
     <!--! no default, by design all variants should be explicitly found -->
 }

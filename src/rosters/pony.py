@@ -437,13 +437,13 @@ def main():
         ],
         suburban_pax_liveries=[
             {
-                "forced_livery_num": 1,
+                "relative_spriterow_num": 1,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
-                "forced_livery_num": 0,
+                "relative_spriterow_num": 0,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -452,26 +452,26 @@ def main():
         ],
         default_mail_liveries=[
             {
-                "forced_livery_num": 3,
+                "relative_spriterow_num": 3,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
-                "forced_livery_num": 0,
+                "relative_spriterow_num": 0,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
-                "forced_livery_num": 1,
+                "relative_spriterow_num": 1,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
-                "forced_livery_num": 2,
+                "relative_spriterow_num": 2,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
@@ -479,26 +479,26 @@ def main():
         ],
         diesel_railcar_mail_liveries=[
             {
-                "forced_livery_num": 2,
+                "relative_spriterow_num": 2,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
-                "forced_livery_num": 0,
+                "relative_spriterow_num": 0,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
-                "forced_livery_num": 1,
+                "relative_spriterow_num": 1,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
-                "forced_livery_num": 3,
+                "relative_spriterow_num": 3,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
@@ -506,25 +506,25 @@ def main():
         ],
         electric_railcar_mail_liveries=[
             {
-                "forced_livery_num": 3,
+                "relative_spriterow_num": 3,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
-                "forced_livery_num": 0,
+                "relative_spriterow_num": 0,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
-                "forced_livery_num": 1,
+                "relative_spriterow_num": 1,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
-                "forced_livery_num": 2,
+                "relative_spriterow_num": 2,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),

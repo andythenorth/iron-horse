@@ -68,7 +68,7 @@ class Pipeline(object):
         for buyable_variant in self.consist.buyable_variants:
             result = []
             for unit in self.consist.units:
-                unit_variant_row_num = (unit.spriterow_num * rows_per_livery) + unit.unit_variants[buyable_variant.buyable_variant_num].livery_num
+                unit_variant_row_num = (unit.spriterow_num * rows_per_livery) + buyable_variant.relative_spriterow_num
                 result.append([unit, unit_variant_row_num])
             buy_menu_buyable_variant_unit_row_maps.append(result)
         # now walk the pre-organised structure, placing unit sprites

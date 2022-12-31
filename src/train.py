@@ -4594,8 +4594,9 @@ class BuyableVariant(object):
 
     def __init__(self, consist, livery):
         self.consist = consist
-        # option to reorder livery numbers to suit specific spritesheet order, this is just for convenience if spritesheets are a chore to change
-        self.forced_livery_num = livery.get("forced_livery_num", None)
+        # option to point this livery to a specific row in the spritesheet, relative to the block of livery spriterows for the specific unit or similar
+        # this is just for convenience if spritesheets are a chore to re-order
+        self._relative_spriterow_num = livery.get("relative_spriterow_num", None)
         # option to date limit introduction certain liveries
         self.forced_intro_year = livery.get("forced_intro_year", None)
 
@@ -4605,14 +4606,14 @@ class BuyableVariant(object):
         return self.consist.buyable_variants.index(self)
 
     @property
-    def livery_num(self):
-        # livery numbers either
+    def relative_spriterow_num(self):
+        # either
         # (1) match to variant number (index in variants array), in which case the order in the spritesheet must match what is expected
         # (2) or can be forced manually to allow the spritesheet to be out of order (for convenience, or legacy support or any other reason)
-        if self.forced_livery_num == None:
+        if self._relative_spriterow_num == None:
             return self.buyable_variant_num
         else:
-            return self.forced_livery_num
+            return self._relative_spriterow_num
 
     @property
     def is_default_buyable_variant(self):
@@ -4653,11 +4654,6 @@ class UnitVariant(object):
                 + "_variant_"
                 + str(self.buyable_variant.buyable_variant_num)
             )
-
-    @property
-    def livery_num(self):
-        # convenience method
-        return self.buyable_variant.livery_num
 
     @property
     def intro_year(self):
