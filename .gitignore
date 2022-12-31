@@ -5,6 +5,7 @@ tmp/
 .chameleon_cache/
 *.bak
 *.nfo
+*.new
 dups.txt
 
 # The local makefile should be ignored:
