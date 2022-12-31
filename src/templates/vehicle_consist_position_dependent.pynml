@@ -9,14 +9,15 @@
       'flipped' is user flipping vehicle in depot and *is* supported here, don't conflate them :) -->
 // default graphics chain
 <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
-    <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-        spriteset(${vehicle.id}_ss_doors_closed_unit_variant_${unit_variant.buyable_variant.buyable_variant_num}_${position_variant_num}, "${graphics_path}${consist.id}.png") {
-            ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (position_variant_num * len(vehicle.unit_variants) * 60) + (unit_variant.buyable_variant.relative_spriterow_num * 60))}
+    <tal:base_liveries repeat="base_livery_num range(consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant)">
+        // cabbage ${consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant}
+        spriteset(${vehicle.id}_ss_doors_closed_position_variant_${position_variant_num}_base_livery_${base_livery_num}, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (base_livery_num * 60))}
         }
-        spriteset(${vehicle.id}_ss_doors_open_unit_variant_${unit_variant.buyable_variant.buyable_variant_num}_${position_variant_num}, "${graphics_path}${consist.id}.png") {
-            ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (position_variant_num * len(vehicle.unit_variants) * 60) + (unit_variant.buyable_variant.relative_spriterow_num * 60) + 30)}
+        spriteset(${vehicle.id}_ss_doors_open_position_variant_${position_variant_num}_base_livery_${base_livery_num}, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (base_livery_num * 60) + 30)}
         }
-    </tal:unit_variants>
+    </tal:base_liveries>
     <!--! in case there wasn't enough complexity here, let's do pantographs too, in a separate layer -->
     <tal:pantographs condition="consist.pantograph_type is not None">
         <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
@@ -51,8 +52,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_engine_an
     ) {
     <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
         <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-            ${position_variant_num}${unit_variant.buyable_variant.buyable_variant_num}0: return ${vehicle.id}_ss_doors_closed_unit_variant_${unit_variant.buyable_variant.buyable_variant_num}_${position_variant_num};
-            ${position_variant_num}${unit_variant.buyable_variant.buyable_variant_num}1: return ${vehicle.id}_ss_doors_open_unit_variant_${unit_variant.buyable_variant.buyable_variant_num}_${position_variant_num};
+            ${position_variant_num}${unit_variant.buyable_variant.buyable_variant_num}0: return ${vehicle.id}_ss_doors_closed_position_variant_${position_variant_num}_base_livery_${unit_variant.buyable_variant.relative_spriterow_num};
+            ${position_variant_num}${unit_variant.buyable_variant.buyable_variant_num}1: return ${vehicle.id}_ss_doors_open_position_variant_${position_variant_num}_base_livery_${unit_variant.buyable_variant.relative_spriterow_num};
         </tal:unit_variants>
     </tal:consist_position_variants>
 }

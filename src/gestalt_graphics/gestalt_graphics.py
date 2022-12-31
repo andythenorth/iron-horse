@@ -869,9 +869,22 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
         return ["pax_mail_cars_with_doors"]
 
     @property
+    def num_spritesheet_liveries_per_position_variant(self):
+        # this counts liveries in the spritesheet, the actual number of liveries may be higher due to sprite reuse with recolouring
+        # there is some risk of divergence here from buyable variants, as those aren't passed to gestalt graphics currently
+        # buyable variants _could_ be passed, it's just work to get that param added to all the classes using this gestalt
+        spriterow_nums_seen = []
+        for livery_counter, livery in enumerate(self.liveries):
+            if livery.get('relative_spriterow_num', None) is None:
+                spriterow_nums_seen.append(livery_counter)
+            else:
+                spriterow_nums_seen.append(livery['relative_spriterow_num'])
+        return len(set(spriterow_nums_seen))
+
+    @property
     def total_spriterow_count(self):
-        # n liveries * 2 states for doors open/closed * number of position variants defined
-        return len(self.liveries) * 2 * self.total_position_variants
+        # n unique liveries * 2 states for doors open/closed * number of position variants defined
+        return self.num_spritesheet_liveries_per_position_variant * 2 * self.total_position_variants
 
     @property
     def total_position_variants(self):
