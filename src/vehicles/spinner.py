@@ -15,7 +15,6 @@ def main(roster_id):
         tractive_effort_coefficient=0.12,
         fixed_run_cost_points=160,  # minor cost bonus so it can make money
         gen=1,
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         additional_liveries=[],
         sprites_complete=False,
     )

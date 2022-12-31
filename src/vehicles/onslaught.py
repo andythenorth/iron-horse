@@ -17,7 +17,6 @@ def main(roster_id):
         speed=125,  # Onslaught not replaced, but has gen 6 speeds
         intro_year_offset=-8,  # let's be really early with this one to give a mail engine matching Blaze HST intro year
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         additional_liveries=["BANGER_BLUE", "LARGE_LOGO", "FANCY_BLUE", "INTERCITY_RASPBERRY_RIPPLE", "RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
         sprites_complete=False,
     )

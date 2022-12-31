@@ -277,32 +277,6 @@ class RosterManager(list):
             )
         return result
 
-    @property
-    def livery_2_engine_ids(self):
-        # for vehicles with consist-specific liveries
-        # will switch vehicle to livery 2 for specific roles of lead engine
-        result = []
-        print(
-            "livery_2_engine_ids only uses active roster?  Are we allowing cross-grf livery_2_engine_ids? - might be funny?"
-        )
-        for consist in self.active_roster.engine_consists:
-            if consist.force_default_pax_mail_livery == 1:
-                continue
-            if consist.force_default_pax_mail_livery == 2:
-                result.append(consist.id)
-                continue
-            # generally it's better to force the livery per engine as wanted, but some railcars automatically switch by role
-            if (consist.role, consist.role_child_branch_num) in [
-                ("pax_railcar", 2),
-                ("mail_railcar", 2),
-            ]:
-                result.append(consist.id)
-        if len(result) > 255:
-            utils.echo_message(
-                "action 2 switch is limited to 255 values, livery_2_engine_ids exceeds this - needs split across multiple switches"
-            )
-        return result
-
 
 # declared outside of main, got bored trying to figure out how to otherwise put it in the module scope
 railtype_manager = RailTypeManager()

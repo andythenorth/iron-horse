@@ -14,7 +14,6 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         gen=4,
         intro_year_offset=9,  # introduce later than gen epoch by design
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         additional_liveries=[],
         sprites_complete=False,
     )

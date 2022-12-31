@@ -16,7 +16,6 @@ def main(roster_id):
         tractive_effort_coefficient=0.2,
         fixed_run_cost_points=120,  # substantial cost bonus so it can make money
         random_reverse=True,
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         caboose_family="gwr_1",
         additional_liveries=["BANGER_BLUE", "INDUSTRIAL"],
         sprites_complete=False,

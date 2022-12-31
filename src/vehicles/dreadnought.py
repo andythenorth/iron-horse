@@ -16,7 +16,6 @@ def main(roster_id):
         gen=5,
         speed=125,  # Dreadnought not replaced, but has gen 6 speeds
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         additional_liveries=[],
         default_livery_extra_docs_examples=[
             ("COLOUR_PURPLE", "COLOUR_WHITE"),

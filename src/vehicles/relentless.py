@@ -15,7 +15,6 @@ def main(roster_id):
         random_reverse=True,
         gen=6,
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         # banger blue?
         additional_liveries=[],
         sprites_complete=False,
