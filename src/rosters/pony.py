@@ -347,6 +347,14 @@ def main():
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                 ],
             },
+            "INTERCITY_RASPBERRY_RIPPLE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PINK", "COLOUR_WHITE"),
+                    ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
+                ],
+            },
             "GNER": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
