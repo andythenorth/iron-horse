@@ -18,8 +18,8 @@ def main(roster_id):
         fixed_run_cost_points=110,  # substantial cost bonus so it can make money
         random_reverse=True,
         gen=1,
-        additional_liveries=[],
-        sprites_complete=False,
+        additional_liveries=["FREIGHT_BLACK"],
+        sprites_complete=True,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=46, vehicle_length=6, spriterow_num=0)
