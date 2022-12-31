@@ -384,7 +384,7 @@ def main():
                 ],
             },
             "DUTCH": {
-                "remap_to_cc": None,
+                "remap_to_cc": "COLOUR_GREY",
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -393,7 +393,7 @@ def main():
                 ],
             },
             "DUTCH_UNLIMITED": {
-                "remap_to_cc": None,
+                "remap_to_cc": "COLOUR_GREY",
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_GREY", "COLOUR_YELLOW"),
