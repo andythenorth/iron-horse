@@ -13,7 +13,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=5,
-        additional_liveries=[],
+        additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PINK", "COLOUR_WHITE"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
