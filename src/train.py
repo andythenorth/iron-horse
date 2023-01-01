@@ -4597,6 +4597,8 @@ class BuyableVariant(object):
         self._relative_spriterow_num = livery.get("relative_spriterow_num", None)
         # option to date limit introduction certain liveries
         self.forced_intro_year = livery.get("forced_intro_year", None)
+        # option to remap CC1 and CC2
+        self.remap_to_cc_cabbage = livery.get("remap_to_cc_cabbage", None)
 
     @property
     def buyable_variant_num(self):
