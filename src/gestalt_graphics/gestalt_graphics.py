@@ -115,6 +115,8 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             + 1
             + (2 * graphics_constants.randomised_wagon_extra_unit_width)
         )
+        self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_with_purchase = False
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
         self.processing_priority = 2
 
@@ -123,20 +125,25 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         return "vehicle_randomised.pynml"
 
     def buy_menu_sprite_variants(self, consist):
+        # for practicality we only want the default variant where variants exist,
+        # e.g. no cc recoloured variants etc as it's seriously not worth handling those here
+        candidate_consists = []
+        for unit_variant in consist.frozen_roster_items[
+            "wagon_randomisation_candidates"
+        ]:
+            if unit_variant.unit.consist not in candidate_consists:
+                candidate_consists.append(unit_variant.unit.consist)
+        # this appears to just slice out the first two items of the list to make a pair of buy menu sprites
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022
         source_data = [
             # vehicle id, y offset to buy menu row
             (
-                list(
-                    set(consist.frozen_roster_items["wagon_randomisation_candidates"])
-                )[0],
+                list(candidate_consists)[0],
                 0,
             ),
             (
-                list(
-                    set(consist.frozen_roster_items["wagon_randomisation_candidates"])
-                )[1],
+                list(candidate_consists)[1],
                 0,
             ),
         ]
@@ -278,16 +285,12 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         if self.has_cover:
             # add rows for covered sprite
             for weathered_variant in self.weathered_variants.keys():
-                result.append(
-                    ["has_cover_" + weathered_variant, start_y_cumulative]
-                )
+                result.append(["has_cover_" + weathered_variant, start_y_cumulative])
                 start_y_cumulative += row_height
 
         # add rows for empty sprite
         for weathered_variant in self.weathered_variants.keys():
-            result.append(
-                ["empty_" + weathered_variant, start_y_cumulative]
-            )
+            result.append(["empty_" + weathered_variant, start_y_cumulative])
             start_y_cumulative += row_height
 
         # !! not sure unique_cargo_rows order will always reliably match to what's needed, but if it doesn't, explicitly sort it eh
@@ -875,16 +878,20 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
         # buyable variants _could_ be passed, it's just work to get that param added to all the classes using this gestalt
         spriterow_nums_seen = []
         for livery_counter, livery in enumerate(self.liveries):
-            if livery.get('relative_spriterow_num', None) is None:
+            if livery.get("relative_spriterow_num", None) is None:
                 spriterow_nums_seen.append(livery_counter)
             else:
-                spriterow_nums_seen.append(livery['relative_spriterow_num'])
+                spriterow_nums_seen.append(livery["relative_spriterow_num"])
         return len(set(spriterow_nums_seen))
 
     @property
     def total_spriterow_count(self):
         # n unique liveries * 2 states for doors open/closed * number of position variants defined
-        return self.num_spritesheet_liveries_per_position_variant * 2 * self.total_position_variants
+        return (
+            self.num_spritesheet_liveries_per_position_variant
+            * 2
+            * self.total_position_variants
+        )
 
     @property
     def total_position_variants(self):

@@ -199,7 +199,8 @@ class Roster(object):
                     continue
                 if randomisation_consist.subtype != wagon_consist.subtype:
                     continue
-                result.append(wagon_consist)
+                for unit_variant in wagon_consist.units[0].unit_variants:
+                    result.append(unit_variant)
         if len(result) == 0:
             raise BaseException(
                 randomisation_consist.id

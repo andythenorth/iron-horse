@@ -4,7 +4,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_random_self,
                             )
     ) {
     <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
-        ${repeat.randomisation_candidate.index}: ${randomisation_candidate.id}_switch_graphics_vehicle;
+        ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
     </tal:randomisation_candidates>
 }
 
@@ -19,7 +19,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_random_neighbou
                                    )]
     ) {
     <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
-        ${repeat.randomisation_candidate.index}: ${randomisation_candidate.id}_switch_graphics_vehicle;
+        ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
     </tal:randomisation_candidates>
 }
 
@@ -34,7 +34,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_random_neighbou
                                    )]
     ) {
     <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
-        ${repeat.randomisation_candidate.index}: ${randomisation_candidate.id}_switch_graphics_vehicle;
+        ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
     </tal:randomisation_candidates>
 }
 
@@ -47,9 +47,16 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_neighbour
     1: ${vehicle.id}_switch_graphics_vehicle_random_neighbour_plus_one;
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, random_bits_randomised_wagon_check_neighbour_or_self()) {
+<!--! note that the random chain is used by both graphics and colour mapping chains -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_choose_randomised_wagon, random_bits_randomised_wagon_check_neighbour_or_self()) {
     0: ${vehicle.id}_switch_graphics_vehicle_random_self;
     1: ${vehicle.id}_switch_graphics_vehicle_check_neighbour;
+}
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, ${vehicle.id}_switch_graphics_vehicle_choose_randomised_wagon()) {
+    <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
+        ${repeat.randomisation_candidate.index}: ${randomisation_candidate.unit.id}_switch_graphics_vehicle;
+    </tal:randomisation_candidates>
 }
 
 // buy menu graphics chain
@@ -60,6 +67,14 @@ spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
       when there is nothing specific, then this is just a null switch -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
     return ${vehicle.id}_ss_purchase;
+}
+
+<!--! handle colour mapping which can vary per buyable variant
+      note that we have to make the same random choice here as the graphics chain, so we delegate to a shared procedure -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, ${vehicle.id}_switch_graphics_vehicle_choose_randomised_wagon()) {
+    <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
+        ${repeat.randomisation_candidate.index}:return switch_colour_mapping(${randomisation_candidate.unit.consist.cc_num_to_randomise}, ${randomisation_candidate.unit.consist.auto_colour_randomisation_strategy_num}, ${int(randomisation_candidate.use_wagon_base_colour_parameter_cabbage)});
+    </tal:randomisation_candidates>
 }
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />

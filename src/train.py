@@ -1993,6 +1993,18 @@ class CarConsist(Consist):
             return False
 
 
+class RandomisedConsistMixin(object):
+    """
+    Mixin to set certain common attributes for randomised consists.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # need to turn off colour randomisation on the random consist, it's handled explicitly by the template
+        self.use_colour_randomisation_strategies = False
+
+
 class AlignmentCarConsist(CarConsist):
     """
     For checking sprite alignment
@@ -2135,7 +2147,7 @@ class BolsterCarConsist(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -2180,7 +2192,7 @@ class BoxCarConsist(BoxCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="box_car",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -2278,7 +2290,7 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
         )
 
 
-class BoxCarRandomisedConsist(BoxCarConsistBase):
+class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
     """
     Random choice of box car sprite, from available box cars.
     """
@@ -2286,8 +2298,6 @@ class BoxCarRandomisedConsist(BoxCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "randomised_box_car"
         super().__init__(**kwargs)
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
         self._variant_group = self.get_wagon_id('box_car', **kwargs)
@@ -2506,7 +2516,7 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC2}
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
             piece="coil",
             has_cover=True,
         )
@@ -2525,11 +2535,11 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="coil",
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
-class ColdMetalCarRandomisedConsist(CoilCarConsistBase):
+class ColdMetalCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBase):
     """
     Random choice of cold metal car sprite, from available coil cars, bolster cars etc.
     """
@@ -2537,8 +2547,6 @@ class ColdMetalCarRandomisedConsist(CoilCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "randomised_metal_coil_car"
         super().__init__(**kwargs)
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -2627,7 +2635,7 @@ class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -2652,7 +2660,7 @@ class CoveredHopperCarMineralConsist(CoveredHopperCarConsistBase):
         )
 
 
-class CoveredHopperCarRandomisedConsist(CoveredHopperCarConsistBase):
+class CoveredHopperCarRandomisedConsist(RandomisedConsistMixin, CoveredHopperCarConsistBase):
     """
     Random choice of covered hopper car sprite.
     """
@@ -2660,8 +2668,6 @@ class CoveredHopperCarRandomisedConsist(CoveredHopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "randomised_covered_hopper_car"
         super().__init__(**kwargs)
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
@@ -2685,7 +2691,7 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -2705,7 +2711,7 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -2806,7 +2812,7 @@ class DumpCarOreConsist(DumpCarConsistBase):
         )
 
 
-class DumpCarRandomisedConsist(DumpCarConsistBase):
+class DumpCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
     """
     Random choice of dump car sprite.
     """
@@ -2814,8 +2820,6 @@ class DumpCarRandomisedConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "randomised_dump_car"
         super().__init__(**kwargs)
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
         self._variant_group = self.get_wagon_id("dump_car", **kwargs)
@@ -2839,7 +2843,7 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
 
 
 # not in alphabetical order as it depends on subclassing DumpCarConsistBase
-class BulkCarRandomisedConsist(DumpCarConsistBase):
+class BulkCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
     """
     Random choice of bulk car sprite, from available dump / hopper cars.
     """
@@ -2847,8 +2851,6 @@ class BulkCarRandomisedConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "randomised_bulk_car"
         super().__init__(**kwargs)
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
@@ -3086,7 +3088,7 @@ class FlatCarBulkheadConsist(FlatCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -3104,7 +3106,7 @@ class FlatCarConsist(FlatCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -3129,11 +3131,11 @@ class FlatCarPlateConsist(FlatCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
-class FlatCarRandomisedConsist(FlatCarConsistBase):
+class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
     """
     Random choice of flat car sprite, from available coil cars, bolster cars etc.
     """
@@ -3141,8 +3143,6 @@ class FlatCarRandomisedConsist(FlatCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "randomised_flat_car"
         super().__init__(**kwargs)
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -3209,7 +3209,7 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
             piece="flat",
             has_cover=True,
         )
@@ -3345,7 +3345,7 @@ class HopperCarMGRConsist(HopperCarConsistBase):
         self._variant_group = self.get_wagon_id("hopper_car", **kwargs)
 
 
-class HopperCarRandomisedConsist(HopperCarConsistBase):
+class HopperCarRandomisedConsist(RandomisedConsistMixin, HopperCarConsistBase):
     """
     Random choice of hopper car sprite.
     """
@@ -3353,8 +3353,6 @@ class HopperCarRandomisedConsist(HopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "randomised_hopper_car"
         super().__init__(**kwargs)
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
@@ -3566,7 +3564,7 @@ class LivestockCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="livestock_car",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -3590,7 +3588,7 @@ class LogCarConsist(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="tree_length_logs",
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -3754,7 +3752,7 @@ class OpenCarConsist(OpenCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             piece="open",
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -3810,7 +3808,7 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
         )
 
 
-class OpenCarRandomisedConsist(OpenCarConsistBase):
+class OpenCarRandomisedConsist(RandomisedConsistMixin, OpenCarConsistBase):
     """
     Random choice of open car sprite, from available open cars.
     """
@@ -3818,8 +3816,6 @@ class OpenCarRandomisedConsist(OpenCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "randomised_open_car"
         super().__init__(**kwargs)
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
         self._variant_group = self.get_wagon_id('open_car', **kwargs)
@@ -4254,7 +4250,7 @@ class PeatCarConsist(CarConsist):
         )
 
 
-class PieceGoodsCarRandomisedConsist(CarConsist):
+class PieceGoodsCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
     """
     Randomised general freight wagon - with refits matching flat / plate / tarpaulin cars - this might be a bad idea
     """
@@ -4271,7 +4267,6 @@ class PieceGoodsCarRandomisedConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = []
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -4359,7 +4354,7 @@ class SiloCarConsist(SiloCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -4506,7 +4501,7 @@ class TankCarAcidConsist(TankCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -4535,7 +4530,7 @@ class TankCarProductConsist(TankCarConsistBase):
         )
 
 
-class TankCarChemicalsRandomisedConsist(TankCarConsistBase):
+class TankCarChemicalsRandomisedConsist(RandomisedConsistMixin, TankCarConsistBase):
     """
     Random choice of tank car sprite, from available acid / chemicals tank cars.
     """
@@ -4543,8 +4538,6 @@ class TankCarChemicalsRandomisedConsist(TankCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "randomised_chemicals_tank_car"
         super().__init__(**kwargs)
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
         self._variant_group = self.get_wagon_id('acid_tank_car', **kwargs)
@@ -4676,6 +4669,19 @@ class UnitVariant(object):
         else:
             return self.unit.consist.base_numeric_id
 
+    @property
+    def use_wagon_base_colour_parameter_cabbage(self):
+        # !!! this may well be flawed, probably we need an explicit check of the actual livery for a specific 'alt colour from parameters' property
+        # just check caboose to reduce shell spam - but note this applies to all wagon types
+        if 'caboose' in self.unit.consist.id:
+            print("BEFORE RELEASE use_wagon_base_colour_parameter_cabbage needs an actual livery check for wagon base colour")
+        if len(self.unit.consist.gestalt_graphics.all_liveries) > 1:
+            if self.buyable_variant.is_default_buyable_variant:
+                return False
+            else:
+                return True
+        else:
+            return self.unit.consist.use_wagon_base_colour_parameter
 
 class Train(object):
     """
