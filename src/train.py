@@ -111,8 +111,6 @@ class Consist(object):
         # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get("random_reverse", False)
-        # random_reverse vehicles can always be flipped, but flip can also be set in other cases (by subclass, or directly by consist)
-        self.allow_flip = kwargs.get("allow_flip", self.random_reverse)
         # just a simple buy cost tweak, only use when needed
         self.electro_diesel_buy_cost_malus = None
         # arbitrary multiplier to the calculated buy cost, e.g. 1.1, 0.9 etc

@@ -147,7 +147,6 @@
 
                 <h3 id="appearance">Appearance</h3>
                 <div style="font-size:16px;">
-                    <p>This vehicle ${'can' if consist.allow_flip else 'cannot'} be flipped in depot.</p>
                     <p>This vehicle has ${len(consist.gestalt_graphics.all_liveries)} ${"livery" if len(consist.gestalt_graphics.all_liveries) == 1 else "liveries"}.</p>
                 </div>
 
