@@ -1937,19 +1937,19 @@ class CarConsist(Consist):
 
     def get_wagon_id(self, id_base, **kwargs):
         # auto id creator, used for wagons not locos
-
+        substrings = []
+        # prepend cab_id if present, used for e.g. railcar trailers, HST coaches etc where the wagon matches a specific 'cab' engine
+        if kwargs.get("cab_id", None) is not None:
+            substrings.append(kwargs["cab_id"])
         # special case NG - extend this for other track_types as needed
-        # 'narmal' rail and 'elrail' doesn't require an id modifier
+        # 'normal' rail and 'elrail' doesn't require an id modifier
         if kwargs.get("base_track_type_name", None) == "NG":
             id_base = id_base + "_ng"
-        result = "_".join(
-            (
-                id_base,
-                kwargs["roster_id"],
-                "gen",
-                str(kwargs["gen"]) + str(kwargs["subtype"]),
-            )
-        )
+        substrings.append(id_base)
+        substrings.append(kwargs["roster_id"])
+        substrings.append("gen")
+        substrings.append(str(kwargs["gen"]) + str(kwargs["subtype"]))
+        result = "_".join(substrings)
         return result
 
     def get_wagon_title_class_str(self):
@@ -3886,7 +3886,6 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         # !! this doesn't work in the docs,
         # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
         # !! buy menu text kinda does that, but would need to convert all names to do this
-        print(self.id)
         return "string(STR_NAME_CONSIST_PARENTHESES, string({a}), string({b}), string({c}))".format(
             a="STR_NAME_" + self.cab_id,
             b=self._str_name_suffix,
