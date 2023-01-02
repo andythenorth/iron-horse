@@ -4710,11 +4710,8 @@ class UnitVariant(object):
         # just check caboose to reduce shell spam - but note this applies to all wagon types
         if 'caboose' in self.unit.consist.id:
             print("BEFORE RELEASE use_wagon_base_colour_parameter_cabbage needs an actual livery check for wagon base colour")
-        if len(self.unit.consist.gestalt_graphics.all_liveries) > 1:
-            if self.buyable_variant.is_default_buyable_variant:
-                return False
-            else:
-                return True
+        if self.buyable_variant.is_default_buyable_variant:
+            return False
         else:
             return self.unit.consist.use_wagon_base_colour_parameter
 
