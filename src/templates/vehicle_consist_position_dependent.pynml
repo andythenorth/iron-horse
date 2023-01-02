@@ -156,7 +156,9 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
 // buy menu graphics chain
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
     spriteset(${vehicle.id}_ss_vehicle_purchase_${unit_variant.buyable_variant.buyable_variant_num}, "${graphics_path}${consist.id}.png") {
-        ${consist.get_nml_for_spriteset_template(y_offset=unit_variant.buyable_variant.relative_spriterow_num * 60)}
+        <!--! note the weird jank to handle articulated the y position of buy menu sprites
+              it's easier for the buy menu sprite generator to place them where it places them, then deal with it here -->
+        ${consist.get_nml_for_spriteset_template(y_offset=unit_variant.buyable_variant.relative_spriterow_num * (30 if consist.buy_menu_x_loc == 360 else 60))}
     }
 </tal:unit_variants>
 

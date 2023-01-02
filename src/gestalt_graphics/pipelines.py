@@ -62,24 +62,22 @@ class Pipeline(object):
         # this is so that it has the processed spritesheet available, which is essential for creating buy menu sprites
         # n.b if buy menu sprite processing has conditions by vehicle type, could pass a dedicated function for each type of processing
         buy_menu_buyable_variant_unit_row_maps = []
-        # !! this won't account for e.g. opening doors, and might need extending to get actual number of rows from gestalt_graphics (which doesn't provide that attribute as of Dec 2022)
-        rows_per_livery = len(self.consist.buyable_variants)
+        num_livery_rows_per_unit = len(self.consist.buyable_variants)
         # organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
         for buyable_variant in self.consist.buyable_variants:
             result = []
             for unit in self.consist.units:
-                unit_variant_row_num = (unit.spriterow_num * rows_per_livery) + buyable_variant.relative_spriterow_num
+                unit_variant_row_num = (unit.spriterow_num * num_livery_rows_per_unit) + (buyable_variant.relative_spriterow_num * self.consist.gestalt_graphics.num_load_state_or_similar_spriterows)
                 result.append([unit, unit_variant_row_num])
             buy_menu_buyable_variant_unit_row_maps.append(result)
         # now walk the pre-organised structure, placing unit sprites
         for buyable_variant_counter, buy_menu_buyable_variant_unit_row_map in enumerate(buy_menu_buyable_variant_unit_row_maps):
             x_offset = 0
-            for unit_row_map in buy_menu_buyable_variant_unit_row_map:
-                unit = unit_row_map[0]
+            for unit, unit_variant_row_num in buy_menu_buyable_variant_unit_row_map:
                 # currently no cap on purchase menu sprite width
                 # consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh
                 unit_length_in_pixels = 4 * unit.vehicle_length
-                unit_spriterow_offset = unit_row_map[1] * graphics_constants.spriterow_height
+                unit_spriterow_offset = unit_variant_row_num * graphics_constants.spriterow_height
                 crop_box_src = (
                     224,
                     10 + unit_spriterow_offset,

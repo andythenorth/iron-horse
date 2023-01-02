@@ -23,6 +23,8 @@ class GestaltGraphics(object):
         # set directly by the consist self.gestalt_graphics.add_masked_overlay = True, or by kwargs on a specific gestalt subclass
         self.add_masked_overlay = False
         self.buy_menu_width_addition = 0
+        # over-ride this in subclasses as needed
+        self.num_load_state_or_similar_spriterows = 1
 
     @property
     def nml_template(self):
@@ -829,6 +831,8 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         # liveries provided by subclass calling gestalt_graphics
         self.liveries = kwargs.get("liveries", [])
+        # we'll generate spriterows for doors closed and doors open
+        self.num_load_state_or_similar_spriterows = 2
         # colour mapping stuff...
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
@@ -889,7 +893,7 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
         # n unique liveries * 2 states for doors open/closed * number of position variants defined
         return (
             self.num_spritesheet_liveries_per_position_variant
-            * 2
+            * self.num_load_state_or_similar_spriterows
             * self.total_position_variants
         )
 
@@ -914,7 +918,7 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
             else:
                 source_row_num = position_variant_num
             # group of n rows - n liveries * two loaded/loading states (opening doors)
-            row_group_size = 2 * len(self.liveries)
+            row_group_size = self.num_load_state_or_similar_spriterows * len(self.liveries)
             for i in range(1, 1 + row_group_size):
                 result[base_row_num + (row_group_size * position_variant_num) + i] = (
                     base_row_num + (row_group_size * source_row_num) + i
