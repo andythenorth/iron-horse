@@ -766,7 +766,6 @@ class Consist(object):
             # custom buy menu sprite for articulated vehicles
             return 360
         elif self.is_randomised_wagon or self.is_caboose:
-            # possibly fragile class name check, but eh
             return 360
         else:
             # default to just using 6th angle of vehicle
