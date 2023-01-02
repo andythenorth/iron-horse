@@ -330,7 +330,8 @@ class DocHelper(object):
             getattr(consist, "subtype", None) == "U"
             and getattr(consist, "str_name_suffix", None) != None
         ):
-            suffix = base_lang_strings[substrings[3][0:-2]]
+            suffix_substr = substrings[3].translate({ord(c): "" for c in "), "})
+            suffix = base_lang_strings[suffix_substr]
             return name + " (" + suffix + ")"
         else:
             return name

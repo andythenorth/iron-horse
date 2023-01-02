@@ -10,6 +10,7 @@ def main():
         gen=3,
         subtype="U",
         intro_year_offset=2,  # introduce later by design
+        cab_id="high_flyer",
         sprites_complete=True,
     )
 
@@ -25,6 +26,7 @@ def main():
         gen=4,
         subtype="U",
         intro_year_offset=1,  # introduce later by design
+        cab_id="sunshine_coast",
         sprites_complete=True,
     )
 
@@ -40,6 +42,7 @@ def main():
         gen=5,
         subtype="U",
         intro_year_offset=1,  # introduce later by design
+        cab_id="olympic",
         sprites_complete=True,
     )
 
@@ -55,6 +58,7 @@ def main():
         gen=6,
         subtype="U",
         intro_year_offset=1,  # introduce later by design
+        cab_id="bright_country",
         sprites_complete=True,
     )
 

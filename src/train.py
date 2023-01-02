@@ -1734,6 +1734,7 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cab_id = self.id.split("_middle")[0] + "_cab"
+        self._variant_group = self.cab_id
         self.wagons_add_power = True
         self.buy_menu_hint_wagons_add_power = True
         self.tilt_bonus = True
@@ -3680,6 +3681,7 @@ class MailHSTCarConsist(MailCarConsistBase):
         self.cab_id = kwargs[
             "cab_id"
         ]  # cab_id must be passed, do not mask errors with .get()
+        self._variant_group = self.cab_id
         self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.66
         self._intro_year_days_offset = (
@@ -3861,6 +3863,37 @@ class PassengerCarConsistBase(CarConsist):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
+class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
+    """
+    Common base class for railcar trailer cars.
+    """
+
+    def __init__(self, **kwargs):
+        # don't set base_id here, let subclasses do it
+        super().__init__(**kwargs)
+        self.cab_id = kwargs[
+            "cab_id"
+        ]  # cab_id must be passed, do not mask errors with .get()
+        self._variant_group = self.cab_id
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
+        self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
+        self._joker = True
+
+    @property
+    def name(self):
+        # special name handling to use the cab name
+        # !! this doesn't work in the docs,
+        # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
+        # !! buy menu text kinda does that, but would need to convert all names to do this
+        print(self.id)
+        return "string(STR_NAME_CONSIST_PARENTHESES, string({a}), string({b}), string({c}))".format(
+            a="STR_NAME_" + self.cab_id,
+            b=self._str_name_suffix,
+            c="STR_EMPTY",
+        )
+
+
 class PassengerCarConsist(PassengerCarConsistBase):
     """
     Standard passenger car.
@@ -3901,7 +3934,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         )
 
 
-class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
+class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
     """
     Unpowered passenger trailer car for express railcars.
     Position-dependent sprites for cabs etc.
@@ -3910,8 +3943,6 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "express_railcar_passenger_trailer_car"
         super().__init__(**kwargs)
-        # train_flag_mu solely used for ottd livery (company colour) selection
-        self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         self._intro_year_days_offset = (
@@ -3982,6 +4013,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.cab_id = kwargs[
             "cab_id"
         ]  # cab_id must be passed, do not mask errors with .get()
+        self._variant_group = self.cab_id
         self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
@@ -4104,7 +4136,6 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["suburban"]
         )
-        self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         self._buy_menu_role_string = "STR_ROLE_SUBURBAN"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
