@@ -3966,11 +3966,10 @@ class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistB
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        liveries = self.roster.default_pax_liveries
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_4_unit_sets",
-            liveries=liveries,
+            liveries=self.cab_consist.gestalt_graphics.liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -4086,7 +4085,7 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_2_unit_sets",
-            liveries=self.roster.default_pax_liveries,
+            liveries=self.cab_consist.gestalt_graphics.liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -4152,7 +4151,7 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_3_unit_sets",
-            liveries=self.roster.default_pax_liveries,
+            liveries=self.cab_consist.gestalt_graphics.liveries,
             pantograph_type=self.pantograph_type,
         )
 
