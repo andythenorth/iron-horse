@@ -44,14 +44,10 @@
 
 <tal:switch_by_company_colour repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">
     switch (FEAT_TRAINS, SELF, switch_by_company_colour_${cc[0]}_to_${cc[1]},
-                        <!--! faffy stacked ternary, checks:
-                             if wagon use_wagon_base_colour_parameter is true, then
-                             if grf parameter is 'use company colour' or supplies a specifc base colour to use -->
+                        <!--!  if wagon use_wagon_base_colour_parameter is true, then use colour from parameter param_wagon_base_colour_[n] -->
                         LOAD_TEMP(${temp_storage_ids.use_wagon_base_colour_parameter}) == 0
                             ? company_colour${cc[1][0]}
-                            : (param_wagon_base_colour_${cc[1][0]} == 0
-                                ? company_colour${cc[1][0]}
-                                : param_wagon_base_colour_${cc[1][0]} - 1)) {
+                            : param_wagon_base_colour_${cc[1][0]}) {
         COLOUR_DARK_BLUE: switch_colour_set_dark_blue_${cc[0]};
         COLOUR_PALE_GREEN: switch_colour_set_pale_green_${cc[0]};
         COLOUR_PINK: switch_colour_set_pink_${cc[0]};
@@ -85,14 +81,10 @@
 
 <tal:switch_by_company_colour_no_randomisation repeat="cc ['1cc', '2cc']">
     switch (FEAT_TRAINS, SELF, switch_by_company_colour_no_randomisation_${cc},
-                        <!--! faffy stacked ternary, checks:
-                             if wagon use_wagon_base_colour_parameter is true, then
-                             if grf parameter is 'use company colour' or supplies a specifc base colour to use -->
+                        <!--!  if wagon use_wagon_base_colour_parameter is true, then use colour from parameter param_wagon_base_colour_[n] -->
                         LOAD_TEMP(${temp_storage_ids.use_wagon_base_colour_parameter}) == 0
                             ? company_colour${cc[0]}
-                            : (param_wagon_base_colour_${cc[0]} == 0
-                                ? company_colour${cc[0]}
-                                : param_wagon_base_colour_${cc[0]} - 1)) {
+                            : param_wagon_base_colour_${cc[0]} - 1) {
         <!--! !! Note that whilst the switch checks the correct 1cc / 2cc vars, the returned palette forces both 1cc and 2cc indiscriminately
                  This could be done with more complex templating, but eh -->
         COLOUR_DARK_BLUE: return palette_2cc(COLOUR_DARK_BLUE, COLOUR_DARK_BLUE);
