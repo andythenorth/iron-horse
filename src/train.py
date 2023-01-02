@@ -1765,8 +1765,8 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
-            # this won't work for TGV mail cars if future liveries are added in future, but eh, only 2 liveries as of Dec 2022
-            liveries=self.roster.default_pax_liveries,
+            # this won't work for TGV mail cars if mail-specific liveries (TGV La Poste etc) are added in future, but eh, only 2 liveries as of Dec 2022
+            liveries=self.cab_consist.gestalt_graphics.liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -3702,8 +3702,7 @@ class MailHSTCarConsist(MailCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="mail_cars",
-            # only 2 liveries as of Dec 2022 so we abuse the pax liveries here
-            liveries=self.roster.default_pax_liveries,
+            liveries=self.cab_consist.gestalt_graphics.liveries
         )
 
     @property
@@ -4038,8 +4037,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
-            # !! should only be one, but hax to make compile work
-            liveries=self.roster.default_pax_liveries,
+            liveries=self.cab_consist.gestalt_graphics.liveries
         )
 
     @property
