@@ -18,7 +18,6 @@ def main():
         base_numeric_id=11980,
         gen=4,
         subtype="U",
-        intro_year_offset=-5,  # introduce early by design
         sprites_complete=True,
         cab_id="slammer",
     )
@@ -34,7 +33,6 @@ def main():
         base_numeric_id=14930,
         gen=4,
         subtype="U",
-        intro_year_offset=-3,  # introduce early by design
         sprites_complete=False,
         cab_id="geronimo",
     )
@@ -50,7 +48,6 @@ def main():
         base_numeric_id=11950,
         gen=5,
         subtype="U",
-        intro_year_offset=-5,  # introduce early by design
         sprites_complete=True,
         cab_id="tin_rocket",
     )
@@ -66,7 +63,6 @@ def main():
         base_numeric_id=14910,
         gen=5,
         subtype="U",
-        intro_year_offset=-3,  # introduce early by design
         sprites_complete=False,
         cab_id="breeze",
     )
@@ -82,7 +78,6 @@ def main():
         base_numeric_id=11090,
         gen=6,
         subtype="U",
-        intro_year_offset=-5,  # introduce early by design
         cab_id="happy_train",
         sprites_complete=True,
     )
@@ -98,7 +93,6 @@ def main():
         base_numeric_id=14920,
         gen=6,
         subtype="U",
-        intro_year_offset=-3,  # introduce early by design
         cab_id="zeus",
         sprites_complete=False,
     )

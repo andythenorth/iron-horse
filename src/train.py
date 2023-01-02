@@ -435,6 +435,13 @@ class Consist(object):
         return result
 
     @property
+    def cab_consist(self):
+        # fetch the consist for the cab engine
+        for engine_consist in self.roster.engine_consists:
+            if engine_consist.id == self.cab_id:
+                return engine_consist
+
+    @property
     def vehicle_life(self):
         if self._vehicle_life is not None:
             # allow vehicles to provide a vehicle life if they want
@@ -1762,13 +1769,6 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
             liveries=self.roster.default_pax_liveries,
             pantograph_type=self.pantograph_type,
         )
-
-    @property
-    def cab_consist(self):
-        # fetch the consist for the cab engine
-        for engine_consist in self.roster.engine_consists:
-            if engine_consist.id == self.cab_id:
-                return engine_consist
 
     @property
     def cab_power(self):
@@ -3875,6 +3875,8 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
             "cab_id"
         ]  # cab_id must be passed, do not mask errors with .get()
         self._variant_group = self.cab_id
+        # get the intro year offset from the cab, to ensure they're in sync
+        self.intro_year_offset = self.cab_consist.intro_year_offset
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
