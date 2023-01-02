@@ -20,6 +20,23 @@ def main():
         subtype="U",
         intro_year_offset=-5,  # introduce early by design
         sprites_complete=True,
+        cab_id="slammer",
+    )
+
+    consist.add_unit(
+        type=PaxRailcarTrailerCar,
+        chassis="4_axle_solid_express_32px",
+        tail_light="railcar_32px_2",
+    )
+
+    consist = PassengerRailcarTrailerCarConsist(
+        roster_id="pony",
+        base_numeric_id=14930,
+        gen=4,
+        subtype="U",
+        intro_year_offset=-3,  # introduce early by design
+        sprites_complete=False,
+        cab_id="geronimo",
     )
 
     consist.add_unit(
@@ -35,6 +52,23 @@ def main():
         subtype="U",
         intro_year_offset=-5,  # introduce early by design
         sprites_complete=True,
+        cab_id="tin_rocket",
+    )
+
+    consist.add_unit(
+        type=PaxRailcarTrailerCar,
+        chassis="4_axle_solid_express_32px",
+        tail_light="railcar_32px_3",
+    )
+
+    consist = PassengerRailcarTrailerCarConsist(
+        roster_id="pony",
+        base_numeric_id=14910,
+        gen=5,
+        subtype="U",
+        intro_year_offset=-3,  # introduce early by design
+        sprites_complete=False,
+        cab_id="breeze",
     )
 
     consist.add_unit(
@@ -49,7 +83,24 @@ def main():
         gen=6,
         subtype="U",
         intro_year_offset=-5,  # introduce early by design
+        cab_id="happy_train",
         sprites_complete=True,
+    )
+
+    consist.add_unit(
+        type=PaxRailcarTrailerCar,
+        chassis="4_axle_solid_express_32px",
+        tail_light="railcar_32px_2",
+    )
+
+    consist = PassengerRailcarTrailerCarConsist(
+        roster_id="pony",
+        base_numeric_id=14920,
+        gen=6,
+        subtype="U",
+        intro_year_offset=-3,  # introduce early by design
+        cab_id="zeus",
+        sprites_complete=False,
     )
 
     consist.add_unit(

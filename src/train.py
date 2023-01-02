@@ -4054,7 +4054,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         )
 
 
-class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
+class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
     """
     Unpowered passenger trailer car for railbus (not railcar).
     Position-dependent sprites for cabs etc.
@@ -4065,14 +4065,11 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         # PassengerCarConsistBase sets 'express' speed, but railbus trailers should over-ride this
         self.speed_class = "standard"
-        # train_flag_mu solely used for ottd livery (company colour) selection
-        self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["suburban"]
         )
-        self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
@@ -4116,7 +4113,7 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         return result
 
 
-class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
+class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
     """
     Unpowered high-capacity passenger trailer car for railcars (not railbus).
     Position-dependent sprites for cabs etc.
@@ -4127,8 +4124,6 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         # PassengerCarConsistBase sets 'express' speed, but railcar trailers should over-ride this
         self.speed_class = "suburban"
-        # train_flag_mu solely used for ottd livery (company colour) selection
-        self.train_flag_mu = True
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
