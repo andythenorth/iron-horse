@@ -60,6 +60,8 @@ class Consist(object):
         # either gen xor intro_year is required, don't set both, one will be interpolated from the other
         self._intro_year = kwargs.get("intro_year", None)
         self._gen = kwargs.get("gen", None)
+        # over-ride this in subclasses if needed, there's no case currently for setting it via keyword
+        self._model_life = None
         # if gen is used, the calculated intro year can be adjusted with +ve or -ve offset
         self.intro_year_offset = kwargs.get("intro_year_offset", None)
         # used for synchronising / desynchronising intro dates for groups vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147
@@ -1751,6 +1753,10 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         # prop left in place in case that ever gets changed :P
         # !! commented out as of July 2019 because the middle engines won't pick this up, which causes inconsistency in the buy menu
         # self.train_flag_mu = True
+        # get the intro year offset and life props from the cab, to ensure they're in sync
+        self.intro_year_offset = self.cab_consist.intro_year_offset
+        self._model_life = self.cab_consist.model_life
+        self._vehicle_life = self.cab_consist.vehicle_life
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # Graphics configuration
@@ -1900,13 +1906,15 @@ class CarConsist(Consist):
 
     @property
     def model_life(self):
+        # allow this to be delegated to the consist if necessary
+        if self._model_life is not None:
+            return self._model_life
         # automatically span wagon model life across gap to next generation
         # FYI next generation might be +n, not +1
         # this has to handle the cases of
         # - subtype that is the end of the tree for that type and should always be available
         # - subtype that ends but *should* be replaced by another subtype that continues the tree
         # - subtype where there is a generation gap in the tree, but the subtype continues across the gap
-
         tree_permissive = []
         tree_strict = []
         for wagon in self.roster.wagon_consists[self.base_id]:
@@ -3683,9 +3691,10 @@ class MailHSTCarConsist(MailCarConsistBase):
         self._variant_group = self.cab_id
         self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.66
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["hst"]
-        )
+        # get the intro year offset and life props from the cab, to ensure they're in sync
+        self.intro_year_offset = self.cab_consist.intro_year_offset
+        self._model_life = self.cab_consist.model_life
+        self._vehicle_life = self.cab_consist.vehicle_life
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
@@ -3873,8 +3882,10 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
             "cab_id"
         ]  # cab_id must be passed, do not mask errors with .get()
         self._variant_group = self.cab_id
-        # get the intro year offset from the cab, to ensure they're in sync
+        # get the intro year offset and life props from the cab, to ensure they're in sync
         self.intro_year_offset = self.cab_consist.intro_year_offset
+        self._model_life = self.cab_consist.model_life
+        self._vehicle_life = self.cab_consist.vehicle_life
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
@@ -4016,9 +4027,10 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["hst"]
-        )
+        # get the intro year offset and life props from the cab, to ensure they're in sync
+        self.intro_year_offset = self.cab_consist.intro_year_offset
+        self._model_life = self.cab_consist.model_life
+        self._vehicle_life = self.cab_consist.vehicle_life
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1.6
         # non-standard cite
