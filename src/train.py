@@ -3351,6 +3351,8 @@ class HopperCarMGRConsist(HopperCarConsistBase):
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
         self._variant_group = self.get_wagon_id("hopper_car", **kwargs)
+        # adjust default liveries set by the base class
+        self.gestalt_graphics.liveries=[self.roster.default_livery, self.roster.default_livery]
 
 
 class HopperCarRandomisedConsist(RandomisedConsistMixin, HopperCarConsistBase):
@@ -3886,6 +3888,9 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         self.intro_year_offset = self.cab_consist.intro_year_offset
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
+        # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
+        self.power_by_power_source = {key: 0 for key in self.cab_consist.power_by_power_source.keys()}
+        self.pantograph_type = self.cab_consist.pantograph_type
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
