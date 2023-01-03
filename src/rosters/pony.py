@@ -431,6 +431,7 @@ def main():
             },
             {
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -439,6 +440,7 @@ def main():
             {
                 "relative_spriterow_num": 1,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -461,18 +463,21 @@ def main():
             {
                 "relative_spriterow_num": 0,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
                 "relative_spriterow_num": 1,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
                 "relative_spriterow_num": 2,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -480,6 +485,7 @@ def main():
                 "relative_spriterow_num": 4,
                 "remap_to_cc_cabbage": ["COLOUR_RED", "COLOUR_YELLOW"],
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -488,12 +494,14 @@ def main():
             {
                 "relative_spriterow_num": 2,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
                 "relative_spriterow_num": 0,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -507,6 +515,7 @@ def main():
             {
                 "relative_spriterow_num": 3,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -515,18 +524,21 @@ def main():
             {
                 "relative_spriterow_num": 3,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
                 "relative_spriterow_num": 0,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
                 "relative_spriterow_num": 1,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
@@ -547,16 +559,19 @@ def main():
             },
             {
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             {
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
