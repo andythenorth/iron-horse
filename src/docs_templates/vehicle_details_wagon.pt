@@ -1,0 +1,315 @@
+<tal:title define="global title python: doc_helper.unpack_name_string(consist) + ' - ' + roster.str_grf_name" />
+<tal:suppress_hero_unit define="global suppress_hero_unit True" />
+
+<tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
+<div metal:fill-slot='body'>
+    <div class="hero-unit subhead" style="padding-top:20px; padding-bottom:20px;" tal:replace="nothing">
+        <div class="container text-left">
+            <div class="row">
+                <div class="span10 offset1">
+                    <h1 style="font-size:48px; padding-top:0;">${roster.str_grf_name}</h1>
+                    <p class="lead">My Lovely <strike>Horse</strike> Train Set</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-left">
+        <div class="row">
+            <div class="span10 offset1">
+                <h2>
+                    ${doc_helper.unpack_name_string(consist)}
+                    ${'(' + base_lang_strings[consist.str_name_suffix] + ')' if consist.str_name_suffix is not None else None}
+                    <small>Vehicle Info</small>
+                </h2>
+                <div style="margin-top:30px; margin-bottom:50px;">
+                    <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                        <div class="vehicle-image"
+                            style="width:${2 * doc_helper.buy_menu_sprite_max_width};
+                                   display:inline-block;">
+                            <img src="static/img/${consist.id}_${livery_variant['livery_name']}.png"
+                                 width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                                 height="${2 * doc_helper.buy_menu_sprite_height}" />
+                        </div>
+                    </tal:livery>
+                    <br />
+                    <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                        <div class="vehicle-image"
+                            style="width:${4 * doc_helper.buy_menu_sprite_max_width};
+                                   display:inline-block;">
+                            <img src="static/img/${consist.id}_${livery_variant['livery_name']}.png"
+                                 width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
+                                 height="${4 * doc_helper.buy_menu_sprite_height}" />
+                        </div>
+                    </tal:livery>
+                </div>
+                <style>
+                    blockquote.vehicle-quote p {
+                        font-size: 24px;
+                        margin-left: 20px;
+                        max-width: 90%;
+                    }
+                    blockquote.vehicle-quote p:before {
+                        content: "\201C";
+                        left: 0;
+                        top: 0;
+                        margin-left: -20px;
+                        font-size: 36px;
+                        line-height: 32px;
+                        font-weight: 400;
+                    }
+                    blockquote.vehicle-quote p:after {
+                        content: "\201D";
+                        right: 0;
+                        bottom: 0;
+                        font-size: 36px;
+                        line-height: 32px;
+                        font-weight: 400;
+                    }
+                    blockquote.vehicle-quote small {
+                        font-size: 16px;
+                        margin-top: 10px;
+                    }
+                </style>
+                <blockquote class="vehicle-quote">
+                    <p>
+                        ${structure: consist.description}
+                    </p>
+                    <small>
+                        <cite>
+                            ${structure: consist.cite}
+                        </cite>
+                    </small>
+                </blockquote>
+
+                <style>
+                    table.vehicle-facts {
+                        background: #e0f4fc;
+                        border-radius: 4px;
+                        font-size: 16px;
+                        width: 100%;
+                        margin-bottom: 30px;
+                    }
+                    table.vehicle-facts th {
+                        background: #b4dcec;
+                        color: #18506c;
+                        width: 210px; /* oof exact pixel sizing, regrettable */
+                        padding: 16px;
+                        text-align: right;
+                        border-bottom: solid 1px #b4dcec;
+                    }
+                    table.vehicle-facts tr:first-of-type th {
+                        padding-top: 21px;
+                        border-top-left-radius: 4px;
+                    }
+                    table.vehicle-facts tr:last-of-type th {
+                        padding-bottom: 21px;
+                        border-bottom-left-radius: 4px;
+                        border-bottom: none;
+                    }
+                    table.vehicle-facts td {
+                        margin: 0;
+                        padding: 16px;
+                        border-bottom: solid 1px #b4dcec;
+                    }
+                    table.vehicle-facts tr:last-of-type td {
+                        border-bottom: none;
+                    }
+                </style>
+
+                <table class="vehicle-facts">
+                    <tbody>
+                        <tr>
+                            <th>Intro year / Designed</th>
+                            <td>${consist.intro_year}</td>
+                        </tr>
+                        <tr>
+                            <th>Max. Speed</th>
+                            <td>${doc_helper.speed_formatted_for_docs(consist)}</td>
+                        </tr>
+                        <tr>
+                            <th>Power</th>
+                            <td>${" / ".join(doc_helper.power_formatted_for_docs(consist))}</td>
+                        </tr>
+                        <tr>
+                            <th>Weight</th>
+                            <td>${consist.weight} t</td>
+                        </tr>
+                        <tr>
+                            <th>Track type</th>
+                            <td>${consist.track_type}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 id="appearance">Appearance</h3>
+                <div style="font-size:16px;">
+                    <p>This vehicle has ${len(consist.gestalt_graphics.all_liveries)} ${"livery" if len(consist.gestalt_graphics.all_liveries) == 1 else "liveries"}.</p>
+                </div>
+
+                <style>
+                    table.livery-table {
+                        width: 100%;
+                        background-color: #eee;
+                        border-color: solid 1px #80c4fc;
+                        border-radius: 4px;
+                        background: #e0f4fc;
+                        color: black;
+                        font-size: 16px;
+                        margin-bottom: 30px;
+                    }
+                    table.livery-table tr {
+                        vertical-align: top;
+                    }
+                    table.livery-table td, table.livery-table th {
+                        margin: 0;
+                        padding: 16px;
+                        border-bottom: solid 1px #b4dcec;
+                    }
+                    table.livery-table tr:last-of-type td, table.livery-table tr:last-of-type th {
+                        border-bottom: none;
+                    }
+                    table.livery-table .livery-table-first-col {
+                        min-width: 215px;
+                        width: 215px;
+                        background: #b4dcec;
+                        text-align: right;
+                        background: #b4dcec;
+                        color: #18506c;
+                    }
+                    table.livery-table thead tr:first-of-type th.livery-table-first-col {
+                        border-top-left-radius: 4px;
+                    }
+                    table.livery-table tbody tr:last-of-type th.livery-table-first-col {
+                        border-bottom-left-radius: 4px;
+                    }
+                    table.livery-table td.livery-table-col-with-divider, table.livery-table th.livery-table-col-with-divider {
+                        border-left: solid 1px #b4dcec;
+                    }
+                    table.livery-table .livery-example-container {
+                        display: inline-block;
+                         width: 128px;
+                    }
+                </style>
+
+                <table class="livery-table text-left">
+                    <tal:buyable_variants repeat="buyable_variant consist.buyable_variants">
+                        <tr>
+                            <th class="livery-table-first-col"><div style="margin-top:12px;">Livery ${repeat.buyable_variant.number} examples</div></th>
+                            <td class="livery-table-col-with-divider">
+                                <tal:livery_examples repeat="livery_variant [livery_variant for livery_variant in doc_helper.get_docs_livery_variants(consist) if livery_variant['buyable_variant'] == buyable_variant]">
+                                    <div class="livery-example-container">
+                                        <div class="vehicle-image"
+                                            style="width:${3 * doc_helper.buy_menu_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
+                                            <img src="static/img/${consist.id}_${livery_variant['livery_name']}.png"
+                                                 width="${3 * doc_helper.buy_menu_sprite_width(consist)}"
+                                                 height="${3 * doc_helper.buy_menu_sprite_height}" />
+                                        </div>
+                                        <div style="display:block;">
+                                            <tal:colours repeat="company_colour livery_variant['docs_image_input_cc']">
+                                                <!--! !! probably should be a caption for a figure ?? -->
+                                                <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=7)});
+                                                             display:inline-block;
+                                                             vertical-align:middle;
+                                                             border:solid 1px #555;
+                                                             width:12px;
+                                                             height:12px;">
+                                                </span>
+                                                <span style="vertical-align:middle; font-size:13px;">${doc_helper.company_colour_names[company_colour]}</span>
+                                                <br />
+                                            </tal:colours>
+                                        </div>
+                                    </div>
+                                </tal:livery_examples>
+                            </td>
+                        </tr>
+                    </tal:buyable_variants>
+                </table>
+                <h3 id="foamer-facts">Foamer Facts</h3>
+                <p>Inspired by ${structure: consist.foamer_facts}.</p>
+
+                <hr />
+                <h3 id="tech-tree">Tech Tree</h3>
+                <table class="vehicle-facts">
+                    <tbody>
+                        <tr>
+                            <th style="text-align:center;">Previous</th>
+                            <th style="text-align:center;">This Vehicle</th>
+                            <th style="text-align:center;">Replaced by</th>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center; vertical-align:middle;">
+                                <!--! replaces -->
+                                <tal:replaces condition="len(consist.replaces_consists) > 0">
+                                    <tal:replaced_consist repeat="replaced_consist consist.replaces_consists">
+                                        <div style="margin:10px;">
+                                            <a href="${replaced_consist.id}.html">
+                                                <div class="vehicle-image">
+                                                    <img src="static/img/${replaced_consist.id}_variant_0_red_white.png"
+                                                         width="${2 * doc_helper.buy_menu_sprite_width(replaced_consist)}"
+                                                         height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                                </div>
+                                                 ${doc_helper.get_replaced_by_name(replaced_consist.id, consists)}
+                                            </a>
+                                        </div>
+                                     </tal:replaced_consist>
+                                </tal:replaces>
+                                <tal:replaces_none condition="len(consist.replaces_consists) == 0">
+                                    <span class="muted">None</span>
+                                </tal:replaces_none>
+                            </td>
+                            <!--! this vehicle -->
+                            <td style="text-align:center; vertical-align:middle;">
+                                <div class="vehicle-image">
+                                    <img src="static/img/${consist.id}_variant_0_red_white.png"
+                                         width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
+                                         height="${4 * doc_helper.buy_menu_sprite_height}" />
+                                </div>
+                                ${doc_helper.unpack_name_string(consist)}
+                                <br />
+                                <a href="tech_tree_table_red.html#${consist.id}">See in Tech Tree</a>
+                            </td>
+                            <!--! replaced by -->
+                            <td style="text-align:center; vertical-align:middle;">
+                                <tal:replacement condition="consist.replacement_consist is not None">
+                                    <div style="margin:10px;">
+                                        <a href="${consist.replacement_consist.id}.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/${consist.replacement_consist.id}_variant_0_red_white.png"
+                                                     width="${2* doc_helper.buy_menu_sprite_width(consist.replacement_consist)}"
+                                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                            </div>
+                                             ${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}
+                                        </a>
+                                    </div>
+                                </tal:replacement>
+                                <tal:replacement_is_none condition="consist.replacement_consist is None">
+                                    <span class="muted">None</span>
+                                </tal:replacement_is_none>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="3" style="text-align:center">Vehicles with Similar Role or Power</th>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align:center">
+                                <tal:similar_consists repeat="similar_consist consist.similar_consists">
+                                    <div style="display:inline-block; margin:10px;">
+                                        <a href="${similar_consist.id}.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/${similar_consist.id}_variant_0_red_white.png"
+                                                     width="${2* doc_helper.buy_menu_sprite_width(similar_consist)}"
+                                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                            </div>
+                                             ${doc_helper.get_replaced_by_name(similar_consist.id, consists)}
+                                        </a>
+                                    </div>
+                                </tal:similar_consists>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</tal:main_template>

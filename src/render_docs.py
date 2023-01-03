@@ -483,13 +483,13 @@ def render_docs(
         doc_file.close()
 
 
-def render_docs_vehicle_details(consist, docs_output_path, consists):
+def render_docs_vehicle_details(consist, template_name, docs_output_path, consists):
     # imports inside functions are generally avoided
     # but PageTemplateLoader is expensive to import and causes unnecessary overhead for Pool mapping when processing docs graphics
     from chameleon import PageTemplateLoader
 
     docs_templates = PageTemplateLoader(docs_src, format="text")
-    template = docs_templates["vehicle_details.pt"]
+    template = docs_templates[template_name + ".pt"]
     doc_name = consist.id
 
     roster = iron_horse.roster_manager.active_roster
@@ -799,7 +799,11 @@ def main():
     render_vehicle_details_start = time()
     for consist in roster.engine_consists:
         consist.assert_description_foamer_facts()
-        render_docs_vehicle_details(consist, html_docs_output_path, consists)
+        render_docs_vehicle_details(consist, "vehicle_details_engine", html_docs_output_path, consists)
+    for wagon_class in global_constants.buy_menu_sort_order_wagons:
+        for consist in roster.wagon_consists[wagon_class]:
+            render_docs_vehicle_details(consist, "vehicle_details_wagon", html_docs_output_path, consists)
+
     print("render_docs_vehicle_details", time() - render_vehicle_details_start)
 
     # process images for use in docs
