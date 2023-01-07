@@ -16,6 +16,8 @@
     <div class="container text-left">
         <div class="row">
             <div class="span10 offset1">
+                <!--!${consist.replaces_consist}-->
+                ${consist.replacement_consist}
                 <h2>
                     ${doc_helper.unpack_name_string(consist)}
                     ${'(' + base_lang_strings[consist.str_name_suffix] + ')' if consist.str_name_suffix is not None else None}
