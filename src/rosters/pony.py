@@ -27,6 +27,7 @@ from vehicles import buffalo
 from vehicles import captain_steel
 from vehicles import cargo_sprinter
 from vehicles import carrack
+from vehicles import centaur
 
 # from vehicles import challenger # for NA roster
 from vehicles import cheddar_valley
@@ -661,6 +662,7 @@ def main():
             growler,
             merlion,
             slug,
+            centaur,
             viking,
             xerxes,
             vigilant,

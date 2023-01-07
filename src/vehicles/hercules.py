@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=380,
         name="0-6-0 Hercules",
         role="freight",
-        role_child_branch_num=1,
+        role_child_branch_num=2,
         power_by_power_source={
             "STEAM": 1100,
         },
