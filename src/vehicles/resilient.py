@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=13980,
         name="Resilient",
         role="heavy_express",
-        role_child_branch_num=-2,
+        role_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 2800,  # significant jump from previous gen
         },
@@ -17,7 +17,7 @@ def main(roster_id):
         intro_year_offset=4,  # let's not have everything turn up in 1990
         fixed_run_cost_points=65,  # give a bonus so this can be a genuine mixed-traffic engine
         # add RfD Euro style triple grey?
-        additional_liveries=["RES", "FREIGHTLINER_GBRF", "DUTCH", "SWOOSH"],
+        additional_liveries=["INTERCITY_RASPBERRY_RIPPLE", "RES", "FREIGHTLINER_GBRF", "DUTCH"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
         ],
