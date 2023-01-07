@@ -9,7 +9,6 @@ def main(roster_id):
         name="Tenacious",
         role="heavy_express",
         role_child_branch_num=-2,  # -ve because Joker
-        replacement_consist_id="resilient",  # this Joker ends with Resilient
         power_by_power_source={
             "DIESEL": 2150,
         },
