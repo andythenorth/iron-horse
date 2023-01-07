@@ -105,6 +105,7 @@ from vehicles import plastic_postbox
 from vehicles import proper_job
 from vehicles import pylon
 from vehicles import quietus
+from vehicles import rapid
 from vehicles import relentless
 from vehicles import reliance
 from vehicles import resilient
@@ -144,7 +145,6 @@ from vehicles import tornado
 from vehicles import triton
 from vehicles import tyburn
 from vehicles import ultra_shoebox
-from vehicles import vanguard
 from vehicles import vigilant
 from vehicles import viking
 from vehicles import vulcan
@@ -618,7 +618,7 @@ def main():
             wyvern,
             tenacious,
             intrepid,
-            vanguard,
+            rapid,
             resilient,
             revolution,
             pegasus,
@@ -661,9 +661,9 @@ def main():
             haar,
             growler,
             merlion,
+            viking,
             slug,
             centaur,
-            viking,
             xerxes,
             vigilant,
             blind_smuir,
