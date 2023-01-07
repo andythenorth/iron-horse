@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=12130,
         name="Rapid",
         role="heavy_express",
-        role_child_branch_num=1,
+        role_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 2800,  # significant jump from previous gen
         },
@@ -17,9 +17,9 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         intro_year_offset=2,  # let's not have everything turn up in 1990
+        speed=125,  # Rapid not replaced, but has gen 6 speeds
         fixed_run_cost_points=55,  # give a bonus so this can be a genuine mixed-traffic engine
-        caboose_family="railfreight_2",
-        additional_liveries=["RAILFREIGHT_TRIPLE_GREY"],
+        additional_liveries=["RES"],
         sprites_complete=False,
     )
 
@@ -28,6 +28,6 @@ def main(roster_id):
     )
 
     consist.description = """They said they wanted these for a freight engine.  No I said.  We need a general purpose engine I said.  We talked about it for twenty minutes then we decided I was right."""
-    consist.foamer_facts = """proposed BR Class 41/48"""
+    consist.foamer_facts = """proposed BR Class 41/48, NIR 201 Class"""
 
     return consist
