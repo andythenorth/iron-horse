@@ -49,7 +49,6 @@ from vehicles import driving_cab_passenger_pony_gen_4
 from vehicles import driving_cab_passenger_pony_gen_5
 from vehicles import driving_cab_passenger_pony_gen_6
 from vehicles import esk
-from vehicles import evolution
 from vehicles import falcon
 from vehicles import firebird
 from vehicles import fleet
@@ -620,7 +619,6 @@ def main():
             intrepid,
             vanguard,
             resilient,
-            evolution,  # out of normal order so that the names read 'Evolution', 'Revolution' (usually jokers come after the tech tree version not before)
             revolution,
             pegasus,
             streamer,

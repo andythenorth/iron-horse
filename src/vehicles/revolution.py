@@ -10,7 +10,7 @@ def main(roster_id):
         role="heavy_express",
         role_child_branch_num=1,  # in the diesel branch, not electric
         power_by_power_source={
-            "DIESEL": 2950,
+            "DIESEL": 2800,
             "AC": 4200,
         },  # compared to IRL, there is more diesel power and less electric, follows Fury line 600hp progresion steps
         random_reverse=True,

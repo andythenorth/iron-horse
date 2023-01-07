@@ -10,14 +10,14 @@ def main(roster_id):
         role="heavy_express",
         role_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 2750,  # significant jump from previous gen
+            "DIESEL": 2800,  # significant jump from previous gen
         },
         random_reverse=True,
         gen=5,
-        intro_year_offset=-4,  # let's not have everything turn up in 1990
+        intro_year_offset=4,  # let's not have everything turn up in 1990
         fixed_run_cost_points=65,  # give a bonus so this can be a genuine mixed-traffic engine
         # add RfD Euro style triple grey?
-        additional_liveries=["RES", "FREIGHTLINER_GBRF", "DUTCH"],
+        additional_liveries=["RES", "FREIGHTLINER_GBRF", "DUTCH", "SWOOSH"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
         ],
