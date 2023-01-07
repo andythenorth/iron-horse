@@ -800,10 +800,11 @@ def main():
     for consist in roster.engine_consists:
         consist.assert_description_foamer_facts()
         render_docs_vehicle_details(consist, "vehicle_details_engine", html_docs_output_path, consists)
+    """
     for wagon_class in global_constants.buy_menu_sort_order_wagons:
         for consist in roster.wagon_consists[wagon_class]:
             render_docs_vehicle_details(consist, "vehicle_details_wagon", html_docs_output_path, consists)
-
+    """
     print("render_docs_vehicle_details", time() - render_vehicle_details_start)
 
     # process images for use in docs
