@@ -10,12 +10,14 @@ def main(roster_id):
         role="super_heavy_freight",
         role_child_branch_num=-3,  # Joker eh
         power_by_power_source={
-            "DIESEL": 4550,  # 900hp steps Revolution -> Blackthorn -> Toaster
+            "DIESEL": 4100,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
         random_reverse=True,
-        gen=6,
+        gen=5,
+        # introduce late by design
+        intro_year_offset=15,
         fixed_run_cost_points=220,  # unrealism: run cost nerf for being so high-powered
         default_livery_extra_docs_examples=[
             ("COLOUR_GREEN", "COLOUR_YELLOW"),
