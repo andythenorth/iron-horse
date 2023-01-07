@@ -33,6 +33,6 @@ def main(roster_id):
     )
 
     consist.description = """"""
-    consist.foamer_facts = """"""
+    consist.foamer_facts = """proposed BR Class 38, precursor to Class 60"""
 
     return consist
