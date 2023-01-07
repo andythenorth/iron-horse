@@ -99,7 +99,6 @@ from vehicles import olympic
 from vehicles import onslaught
 from vehicles import peasweep
 from vehicles import pegasus
-from vehicles import phoenix
 from vehicles import pikel
 from vehicles import pinhorse
 from vehicles import plastic_postbox
@@ -665,7 +664,6 @@ def main():
             merlion,
             slug,
             viking,
-            phoenix,
             xerxes,
             vigilant,
             blind_smuir,
