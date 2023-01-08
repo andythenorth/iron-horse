@@ -5,23 +5,20 @@
     <div class="container">
         <div class="row">
             <div class="span12">
-                <h2>CABBAGE rosters of trains for OpenTTD</h2>
-                <p>Only one roster is active in any game.  Choose the one you want with the parameter option (newgrf settings) :)</p>
-                <hr />
-                ${roster.str_grf_name}
-                <p>
+                <h2>
                     ${len(roster.engine_consists)} engines and
                     ${sum([len(roster.wagon_consists[wagon_class]) for wagon_class in roster.wagon_consists])} wagons
                     inspired by
                     <span tal:condition="roster.id == 'zebra'">Southern and Western Africa</span>
                     <span tal:condition="roster.id == 'pony'">UK</span>
                     trains
-                </p>
+                </h2>
                 <ul class="inline">
                     <tal:base_track_type_name repeat="base_track_type_name doc_helper.base_track_type_names_and_labels">
                         <tal:not_empty condition="len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])) > 0">
                             <li>
                                 <a href="#${base_track_type_name[0]}-engines">
+                                    <i class="icon-circle-arrow-right"></i>
                                     ${len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
                                     ${base_track_type_name[1].lower()} engines
                                 </a>
@@ -32,8 +29,9 @@
                         <tal:not_empty condition="len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])) > 0">
                             <li>
                                 <a href="#${base_track_type_name[0]}-wagons">
-                                ${len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
-                                ${base_track_type_name[1].lower()} wagons
+                                    <i class="icon-circle-arrow-right"></i>
+                                    ${len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
+                                    ${base_track_type_name[1].lower()} wagons
                                 </a>
                             </li>
                         </tal:not_empty>
