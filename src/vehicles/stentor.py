@@ -10,7 +10,7 @@ def main(roster_id):
         role="super_heavy_freight",
         role_child_branch_num=-2,  # Joker eh
         power_by_power_source={
-            "DIESEL": 4050,  # 750hp steps Vanguard -> Grid -> Cheddar Valley
+            "DIESEL": 4300,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,

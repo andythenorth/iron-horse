@@ -10,7 +10,7 @@ def main(roster_id):
         role="super_heavy_freight",
         role_child_branch_num=-3,  # Joker eh
         power_by_power_source={
-            "DIESEL": 4100,
+            "DIESEL": 4250,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,

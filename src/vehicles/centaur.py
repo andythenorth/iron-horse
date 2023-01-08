@@ -29,7 +29,7 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=DieselEngineUnit, weight=110, vehicle_length=8, spriterow_num=0
+        type=DieselEngineUnit, weight=115, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = """"""
