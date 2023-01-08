@@ -32,6 +32,6 @@ def main(roster_id):
     )
 
     consist.description = """Make Stentor great again."""
-    consist.foamer_facts = """Re-engineered and uprated class 60."""
+    consist.foamer_facts = """Re-engineered and uprated class 60"""
 
     return consist
