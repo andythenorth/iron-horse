@@ -86,22 +86,3 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_32px")
 
-    consist = OpenCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=17060,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
-
-    consist = OpenCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=17070,
-        gen=6,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_32px")

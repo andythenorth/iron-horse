@@ -85,23 +85,3 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="empty_32px")
-
-    consist = HopperCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=16950,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
-
-    consist = HopperCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=16960,
-        gen=6,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_32px")

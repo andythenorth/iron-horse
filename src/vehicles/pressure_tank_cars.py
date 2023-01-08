@@ -127,33 +127,3 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_32px")
-
-    consist = GasTankCarPressureConsist(
-        roster_id="pony",
-        base_numeric_id=15330,
-        gen=6,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_alt_16px")
-
-    consist = GasTankCarPressureConsist(
-        roster_id="pony",
-        base_numeric_id=15280,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_24px")
-
-    consist = GasTankCarPressureConsist(
-        roster_id="pony",
-        base_numeric_id=15290,
-        gen=6,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_32px")

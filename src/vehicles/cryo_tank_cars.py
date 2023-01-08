@@ -62,33 +62,3 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_32px")
-
-    consist = GasTankCarCryoConsist(
-        roster_id="pony",
-        base_numeric_id=15300,
-        gen=6,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="2_axle_sparse_greebled_16px")
-
-    consist = GasTankCarCryoConsist(
-        roster_id="pony",
-        base_numeric_id=9230,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_24px")
-
-    consist = GasTankCarCryoConsist(
-        roster_id="pony",
-        base_numeric_id=9240,
-        gen=6,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_32px")

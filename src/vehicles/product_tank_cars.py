@@ -107,35 +107,3 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
 
-    # gen 6A not included - could add?
-
-    """
-    consist = TankCarProductConsist(roster_id='pony',
-                             base_numeric_id=9220,
-                             gen=6,
-                             subtype='A',
-                             sprites_complete=False)
-
-    consist.add_unit(type=FreightCar,
-                     chassis='2_axle_sparse_16px')
-    """
-
-    consist = TankCarProductConsist(
-        roster_id="pony",
-        base_numeric_id=12480,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
-
-    consist = TankCarProductConsist(
-        roster_id="pony",
-        base_numeric_id=12490,
-        gen=6,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
