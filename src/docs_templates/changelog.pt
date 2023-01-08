@@ -3,6 +3,23 @@ Changelog
 
 
 -------------
+2.64.0 Release
+-------------
+
+
+*Changes*
+
+- added stainless steel and alloy steel to Ingot Carrier cargo refits
+- added food to farm products cargo refits
+- adjusted power of Pinhorse and Argus engines to match Stoat
+
+
+*Docs*
+
+- remove unwanted 'CABBAGE' placeholder text from train list page
+
+
+-------------
 2.63.1 Release
 -------------
 
