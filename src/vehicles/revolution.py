@@ -7,12 +7,12 @@ def main(roster_id):
         id="revolution",
         base_numeric_id=12540,
         name="Revolution",
-        role="ultra_heavy_express",
+        role="heavy_express", # in the diesel line as it makes a simpler tech tree view in 'simplified gameplay'
         role_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 2800,
-            "AC": 4300,
-        },  # compared to IRL, there is more diesel power and less electric, follows Fury line 600hp progresion steps
+            "AC": 4200,
+        },  # compared to IRL, there is more diesel power and less electric, this is to keep a ~4000 HP electric engine available
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=6,

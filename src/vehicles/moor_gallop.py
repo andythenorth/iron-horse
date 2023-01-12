@@ -7,8 +7,8 @@ def main(roster_id):
         id="moor_gallop",
         base_numeric_id=9210,
         name="Moor Gallop",
-        role="super_heavy_express",
-        role_child_branch_num=3,
+        role="ultra_heavy_express",
+        role_child_branch_num=1,
         power_by_power_source={
             "AC": 2500,
         },

@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=13900,
         name="Avenger",
         role="ultra_heavy_express",
-        role_child_branch_num=2,
+        role_child_branch_num=-2,
         power_by_power_source={
             "AC": 5800,
         },

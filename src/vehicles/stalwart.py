@@ -8,14 +8,14 @@ def main(roster_id):
         base_numeric_id=11440,
         name="Stalwart",
         role="ultra_heavy_express",
-        role_child_branch_num=-1,
+        role_child_branch_num=1,
         power_by_power_source={
-            "AC": 4000,
+            "AC": 3700,
         },
         random_reverse=True,
         gen=4,
         pantograph_type="z-shaped-double",
-        intro_year_offset=6,  # introduce later than gen epoch by design
+        intro_year_offset=-1,  # introduce earlier than gen epoch by design
         # banger blue
         additional_liveries=["RAILFREIGHT_RED_STRIPE"],
         default_livery_extra_docs_examples=[
