@@ -7,13 +7,14 @@ def main(roster_id):
         id="zebedee",
         base_numeric_id=13990,
         name="Zebedee",
-        role="super_heavy_express",
-        role_child_branch_num=-3,  # it's a joker, tried it as super heavy express 1, the power progression and dates are all wrong for that
+        role="ultra_heavy_express",
+        role_child_branch_num=1,
         power_by_power_source={
-            "AC": 4000,
+            "AC": 4040, # silly IRL class 86 power value
         },
         random_reverse=True,
         gen=4,
+        speed=115,
         pantograph_type="z-shaped-double",
         intro_year_offset=9,  # introduce much later than gen epoch by design
         additional_liveries=[],
@@ -26,6 +27,6 @@ def main(roster_id):
     )
 
     consist.description = """These were heavy on the track, but we had em back and fitted extra springs."""
-    consist.foamer_facts = """BR Class 87, Class 86"""
+    consist.foamer_facts = """BR Class 86"""
 
     return consist

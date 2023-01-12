@@ -95,7 +95,6 @@ from vehicles import merlion
 from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
-from vehicles import nimbus
 from vehicles import olympic
 from vehicles import onslaught
 from vehicles import peasweep
@@ -129,6 +128,7 @@ from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
 from vehicles import stag
+from vehicles import stalwart
 from vehicles import stentor
 from vehicles import stoat
 from vehicles import streamer
@@ -636,9 +636,9 @@ def main():
             moor_gallop,
             roarer,
             fury,
+            stalwart,
             zebedee,
             screamer,
-            nimbus,
             avenger,
             sizzler,
             # driving cab cars

@@ -7,13 +7,14 @@ def main(roster_id):
         id="screamer",
         base_numeric_id=9490,
         name="Screamer",
-        role="super_heavy_express",
-        role_child_branch_num=-3,
+        role="ultra_heavy_express",
+        role_child_branch_num=-1,
         power_by_power_source={
-            "AC": 4800,
+            "AC": 5000,
         },
         random_reverse=False,
         gen=5,
+        speed=125,
         pantograph_type="z-shaped-double",
         intro_year_offset=2,  # introduce later than gen epoch by design
         # railfreight grey, intercity, GNER?
