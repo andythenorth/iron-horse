@@ -4,23 +4,22 @@ from train import EngineConsist, ElectricEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="flanders_storm",
-        base_numeric_id=10780,
-        name="Flanders Storm",
+        id="resistance",
+        base_numeric_id=8850,
+        name="Resistance",
         role="ultra_heavy_freight",
-        role_child_branch_num=-2,
+        role_child_branch_num=1,
         power_by_power_source={
-            "AC": 6700,
+            "AC": 4300,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
         random_reverse=True,
         gen=5,
         pantograph_type="z-shaped-double",
-        intro_year_offset=5,  # introduce later than gen epoch by design
         caboose_family="railfreight_2",
-        additional_liveries=["RAILFREIGHT_TRIPLE_GREY"],
-        sprites_complete=True,
+        additional_liveries=[],
+        sprites_complete=False,
     )
 
     consist.add_unit(
@@ -28,8 +27,8 @@ def main(roster_id):
     )
 
     consist.description = (
-        """This is a right proper engine.  Does work enough for two."""
+        """"""
     )
-    consist.foamer_facts = """BR Class 92"""
+    consist.foamer_facts = """Proposed BR Class 88, derived from class 58 design"""
 
     return consist

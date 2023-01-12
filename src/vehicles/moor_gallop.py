@@ -10,7 +10,7 @@ def main(roster_id):
         role="super_heavy_express",
         role_child_branch_num=3,
         power_by_power_source={
-            "AC": 2400,
+            "AC": 2500,
         },
         tractive_effort_coefficient=0.25,
         random_reverse=True,

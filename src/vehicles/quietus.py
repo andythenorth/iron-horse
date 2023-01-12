@@ -7,8 +7,8 @@ def main(roster_id):
         id="quietus",
         base_numeric_id=14410,
         name="Quietus",
-        role="heavy_freight",
-        role_child_branch_num=-1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
+        role="ultra_heavy_freight",
+        role_child_branch_num=-3,
         # HP matched to equivalent gen pure diesels
         power_by_power_source={
             "DIESEL": 3250,
@@ -19,7 +19,7 @@ def main(roster_id):
         pantograph_type="z-shaped-double",
         gen=6,
         fixed_run_cost_points=500,  # run cost nerf for high power + dual mode
-        intro_year_offset=8,  # introduce later than gen epoch by design
+        intro_year_offset=2,  # introduce later than gen epoch by design
         sprites_complete=True,
     )
 

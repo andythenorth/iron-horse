@@ -2,6 +2,7 @@ import global_constants
 
 from roster import Roster
 
+#from vehicles import anchor
 from vehicles import ares
 from vehicles import athena
 
@@ -70,7 +71,6 @@ from vehicles import grub
 from vehicles import haar
 from vehicles import happy_train
 from vehicles import hawkinge
-from vehicles import hector
 from vehicles import helm_wind_cab
 from vehicles import helm_wind_middle_mail
 from vehicles import helm_wind_middle_passenger
@@ -101,6 +101,7 @@ from vehicles import pegasus
 from vehicles import pikel
 from vehicles import pinhorse
 from vehicles import plastic_postbox
+from vehicles import polo
 from vehicles import proper_job
 from vehicles import pylon
 from vehicles import quietus
@@ -108,6 +109,7 @@ from vehicles import rapid
 from vehicles import relentless
 from vehicles import reliance
 from vehicles import resilient
+from vehicles import resistance
 from vehicles import revolution
 from vehicles import roarer
 from vehicles import saxon
@@ -134,13 +136,14 @@ from vehicles import super_shoebox
 from vehicles import swift
 from vehicles import tenacious
 from vehicles import tencendur
+from vehicles import thing
 from vehicles import thor
 from vehicles import thunderer
 from vehicles import tideway
 from vehicles import tin_rocket
+from vehicles import tincans
 from vehicles import toaster
 from vehicles import tornado
-from vehicles import triton
 from vehicles import tyburn
 from vehicles import ultra_shoebox
 from vehicles import vigilant
@@ -598,18 +601,14 @@ def main():
             argus,
             booster,
             tornado,
-            # express (electro-diesels with non-standard position in power/length tree)
-            shoebox,
-            super_shoebox,
-            ultra_shoebox,
             # express
             reliance,
             spinner,
             carrack,
             tencendur,
+            thunderer,
             daring,
             shredder,
-            thunderer,
             swift,
             strongbow,
             arrow,
@@ -628,11 +627,14 @@ def main():
             onslaught,
             dreadnought,
             relentless,
+            polo,
+            shoebox,
+            super_shoebox,
+            ultra_shoebox,
             hurly_burly,
             moor_gallop,
             roarer,
             fury,
-            hector,
             zebedee,
             screamer,
             nimbus,
@@ -657,6 +659,7 @@ def main():
             braf,
             diablo,
             haar,
+            #anchor,
             growler,
             merlion,
             viking,
@@ -682,10 +685,12 @@ def main():
             stentor,
             toaster,
             flindermouse,
+            thing,
             peasweep,
+            resistance,
+            tincans,
             flanders_storm,
-            triton,
-            # joker engines / snowploughs
+            # gronks / snowploughs
             grub,
             lamia,
             gronk,

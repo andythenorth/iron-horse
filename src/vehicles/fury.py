@@ -10,14 +10,15 @@ def main(roster_id):
         role="super_heavy_express",
         role_child_branch_num=3,
         power_by_power_source={
-            "AC": 3600,
+            "AC": 3300, # smaller step than previous gen, this needs to remain mid-powered
         },
         random_reverse=True,
         gen=5,
+        speed=125, # Fury not replaced, but has gen 6 speeds
         pantograph_type="z-shaped-double",
         intro_year_offset=1,  # introduce later than gen epoch by design
         # intercity, railfreight?
-        additional_liveries=["FREIGHTLINER_GBRF", "RES"],
+        additional_liveries=["SWOOSH", "FREIGHTLINER_GBRF", "RES"],
         default_livery_extra_docs_examples=[
             ("COLOUR_GREEN", "COLOUR_YELLOW"),
             ("COLOUR_PALE_GREEN", "COLOUR_PALE_GREEN"),
@@ -34,6 +35,6 @@ def main(roster_id):
     consist.description = (
         """Rebuilt the Roarers. Very sound these are, last a long time they will."""
     )
-    consist.foamer_facts = """BR Class 86"""
+    consist.foamer_facts = """rebuilt BR 'AL' Classes 81-85, Polish PKP EP07 (derived from class 83 design)"""
 
     return consist
