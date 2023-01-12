@@ -26,6 +26,7 @@ from vehicles import brenner_middle_passenger
 from vehicles import bright_country
 from vehicles import buffalo
 from vehicles import captain_steel
+from vehicles import captain_steelier
 from vehicles import cargo_sprinter
 from vehicles import carrack
 from vehicles import centaur
@@ -652,6 +653,7 @@ def main():
             little_bear,
             captain_steel,
             goliath,
+            captain_steelier,
             stoat,
             zest,
             # freight
