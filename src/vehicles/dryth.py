@@ -3,23 +3,23 @@ from train import EngineConsist, ElectricEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="thing",
+        id="dryth",
         base_numeric_id=4880,
-        name="Thing",
+        name="Dryth",
         role="ultra_heavy_freight",
         role_child_branch_num=-1,
         power_by_power_source={
             "AC": 2900,
         },
         gen=3,
-        pantograph_type="diamond-double",
-        intro_year_offset=9,  # introduce later than gen epoch by design
-        additional_liveries=[],
+        pantograph_type="diamond-single",
+        intro_year_offset=8,  # introduce later than gen epoch by design
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=False,
     )
 
     consist.add_unit(
-        type=ElectricEngineUnit, weight=75, vehicle_length=6, spriterow_num=0, repeat=2
+        type=ElectricEngineUnit, weight=70, vehicle_length=6, spriterow_num=0, repeat=2
     )
 
     consist.description = (

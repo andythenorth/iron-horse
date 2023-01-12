@@ -24,7 +24,7 @@ def main(roster_id):
         type=ElectricEngineUnit, weight=60, vehicle_length=6, spriterow_num=0
     )
 
-    consist.description = """Mr. Bulleid and Mr. Raworth drew these up for me. For small jobs, you won't go far wrong with em."""
-    consist.foamer_facts = """Metropolitan Railway electric locos, SR CC1/CC2"""
+    consist.description = """Mr. Raworth drew these up for me. For small jobs, you won't go far wrong with em."""
+    consist.foamer_facts = """Metropolitan Railway electric locos"""
 
     return consist

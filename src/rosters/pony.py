@@ -50,6 +50,7 @@ from vehicles import driving_cab_mail_pony_gen_6
 from vehicles import driving_cab_passenger_pony_gen_4
 from vehicles import driving_cab_passenger_pony_gen_5
 from vehicles import driving_cab_passenger_pony_gen_6
+from vehicles import dryth
 from vehicles import esk
 from vehicles import falcon
 from vehicles import firebird
@@ -136,7 +137,6 @@ from vehicles import super_shoebox
 from vehicles import swift
 from vehicles import tenacious
 from vehicles import tencendur
-from vehicles import thing
 from vehicles import thor
 from vehicles import thunderer
 from vehicles import tideway
@@ -685,7 +685,7 @@ def main():
             stentor,
             toaster,
             flindermouse,
-            thing,
+            dryth,
             peasweep,
             resistance,
             tincans,

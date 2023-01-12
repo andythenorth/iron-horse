@@ -16,6 +16,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.4,
         random_reverse=True,
         gen=5,
+        intro_year_offset=-4, # earlier than the IRL introduction of this never-built train...
         pantograph_type="z-shaped-double",
         caboose_family="railfreight_2",
         additional_liveries=[],
