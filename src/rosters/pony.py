@@ -2,7 +2,7 @@ import global_constants
 
 from roster import Roster
 
-#from vehicles import anchor
+from vehicles import anchor
 from vehicles import ares
 from vehicles import athena
 
@@ -659,7 +659,7 @@ def main():
             braf,
             diablo,
             haar,
-            #anchor,
+            anchor,
             growler,
             merlion,
             viking,
