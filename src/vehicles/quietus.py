@@ -9,10 +9,9 @@ def main(roster_id):
         name="Quietus",
         role="ultra_heavy_freight",
         role_child_branch_num=-3,
-        # HP matched to equivalent gen pure diesels
         power_by_power_source={
-            "DIESEL": 3250,
-            "AC": 6700,
+            "DIESEL": 3250, # it's enough
+            "AC": 7200, # yolo, class 99 with a bit of a nerf
         },  # based on the Stadler Eurodual, really quite high values for both diesel and el (also matches Newag Dragon, which the shape is taken from)
         tractive_effort_coefficient=0.375,  # assume slip control magic
         random_reverse=True,
@@ -28,6 +27,6 @@ def main(roster_id):
     )
 
     consist.description = """It'll get there and back again, in any weather."""
-    consist.foamer_facts = """Stadler Eurodual, Newag Dragon, CAF Bitrac"""
+    consist.foamer_facts = """GBRF Class99, Stadler Eurodual, Newag Dragon, CAF Bitrac"""
 
     return consist

@@ -10,7 +10,7 @@ def main(roster_id):
         role="ultra_heavy_express",
         role_child_branch_num=2,
         power_by_power_source={
-            "AC": 4600, # silly IRL class 87/1 power value
+            "AC": 4850, # silly IRL class 87/1 power value
         },
         random_reverse=True,
         gen=4,
