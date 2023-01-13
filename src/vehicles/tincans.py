@@ -28,6 +28,6 @@ def main(roster_id):
     consist.description = (
         """"""
     )
-    consist.foamer_facts = """"""
+    consist.foamer_facts = """Polish PKP EU07 (derived from UK class 83 design)"""
 
     return consist

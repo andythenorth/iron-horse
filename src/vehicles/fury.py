@@ -35,6 +35,6 @@ def main(roster_id):
     consist.description = (
         """Rebuilt the Roarers. Very sound these are, last a long time they will."""
     )
-    consist.foamer_facts = """rebuilt BR 'AL' Classes 81-85, Polish PKP EP07 (derived from class 83 design)"""
+    consist.foamer_facts = """rebuilt BR 'AL' Classes 81-85"""
 
     return consist
