@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <title >${title | roster.str_grf_name}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
+    <meta http-equiv="Content-Type" content="text/html" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" href="static/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="static/css/bootstrap-responsive.min.css" rel="stylesheet">
