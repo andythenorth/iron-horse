@@ -17,7 +17,7 @@ def main(roster_id):
         gen=4,
         intro_year_offset=-2,  # let's not have everything turn up in 1960
         additional_liveries=["BANGER_BLUE"],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(

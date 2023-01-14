@@ -17,7 +17,7 @@ def main(roster_id):
         gen=2,
         intro_year_offset=10,  # introduce later than gen epoch by design
         caboose_family="gwr_1",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=82, vehicle_length=6, spriterow_num=0)
