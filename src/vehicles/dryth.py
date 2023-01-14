@@ -11,6 +11,7 @@ def main(roster_id):
         power_by_power_source={
             "AC": 2900,
         },
+        speed=75,  # continues a long way into gen 4, so go faster
         gen=3,
         pantograph_type="diamond-single",
         intro_year_offset=8,  # introduce later than gen epoch by design
