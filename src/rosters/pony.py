@@ -160,6 +160,7 @@ from vehicles import withershins
 from vehicles import workish
 from vehicles import wyvern
 from vehicles import xerxes
+from vehicles import yak
 from vehicles import yillen
 from vehicles import zebedee
 from vehicles import zest
@@ -655,6 +656,7 @@ def main():
             # branch freight
             buffalo,
             saxon,
+            yak,
             little_bear,
             captain_steel,
             goliath,
