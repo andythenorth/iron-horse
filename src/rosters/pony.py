@@ -176,7 +176,7 @@ def main():
         # note that the grf name is Iron Horse, as the pony roster was released for many years under that name, and changing it would needlessly confuse players
         # but to avoid overloading the word 'horse', which is widely used in src, we continue using 'pony' as the roster id
         grf_name="iron-horse",
-        grfid=r"CA\12\1F",
+        grfid=r"CA\12\22",
         str_grf_name="Iron Horse",
         # ELRL, ELNG is mapped to RAIL, NG etc
         # default intro dates per generation, can be over-ridden if needed by setting intro_year kw on consist
