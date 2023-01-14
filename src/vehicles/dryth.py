@@ -24,8 +24,8 @@ def main(roster_id):
     )
 
     consist.description = (
-        """"""
+        """He paws fiercely, rejoicing in his strength, and charges into the fray."""
     )
-    consist.foamer_facts = """"""
+    consist.foamer_facts = """SR CC1/CC2 locomotives, English Electric export boxcab locomotives"""
 
     return consist

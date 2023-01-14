@@ -27,7 +27,7 @@ def main(roster_id):
         repeat=2,
     )
 
-    consist.description = """"""
+    consist.description = """Gallop apace, you fiery-footed steeds."""
     consist.foamer_facts = """"""
 
     return consist

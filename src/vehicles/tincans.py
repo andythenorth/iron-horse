@@ -26,7 +26,7 @@ def main(roster_id):
     )
 
     consist.description = (
-        """"""
+        """“I would not wish any companion in the world but you.”"""
     )
     consist.foamer_facts = """Polish PKP EU07 (derived from UK class 83 design)"""
 

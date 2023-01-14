@@ -24,7 +24,7 @@ def main(roster_id):
         type=DieselEngineUnit, weight=115, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """"""
+    consist.description = """Not enough people see it as a healthy horse, pulling a sturdy wagon."""
     consist.foamer_facts = """BR Class 41"""
 
     return consist

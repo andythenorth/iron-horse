@@ -26,7 +26,7 @@ def main(roster_id):
         type=SteamEngineTenderUnit, weight=30, vehicle_length=4, spriterow_num=1
     )
 
-    consist.description = """"""
+    consist.description = """If we do each thing calmly and carefully we will get it done quicker and with much less fuss."""
     consist.foamer_facts = """"""
 
     return consist

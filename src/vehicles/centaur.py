@@ -34,7 +34,7 @@ def main(roster_id):
         type=DieselEngineUnit, weight=100, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """"""
+    consist.description = """Technically, we're all half centaur."""
     consist.foamer_facts = """proposed BR Class 38, precursor to Class 60"""
 
     return consist

@@ -30,8 +30,8 @@ def main(roster_id):
     )
 
     consist.description = (
-        """"""
+        """They really pushed the boat out for this one."""
     )
-    consist.foamer_facts = """"""
+    consist.foamer_facts = """Metropolitan-Vickers 46 Class exported from UK to New South Wales"""
 
     return consist

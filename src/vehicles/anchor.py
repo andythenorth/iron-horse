@@ -26,7 +26,7 @@ def main(roster_id):
         type=DieselEngineUnit, weight=95, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """"""
+    consist.description = """Steel yourself, this one's on the move."""
     consist.foamer_facts = """Hunslet bo-bo locomotives for BSC Scunthorpe works"""
 
     return consist

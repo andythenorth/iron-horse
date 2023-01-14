@@ -24,7 +24,7 @@ def main(roster_id):
         type=DieselEngineUnit, weight=70, vehicle_length=6, spriterow_num=0
     )
 
-    consist.description = """"""
+    consist.description = """I can make a General in five minutes, but a good horse is hard to replace."""
     consist.foamer_facts = """Upgraded Alco S1, EMD switchers, Brush Bagnall steelworks locos"""
 
     return consist

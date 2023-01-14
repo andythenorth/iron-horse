@@ -27,7 +27,7 @@ def main(roster_id):
         type=DieselEngineUnit, weight=60, vehicle_length=5, repeat=2
     )
 
-    consist.description = """"""
+    consist.description = """Good horses make short miles."""
     consist.foamer_facts = """Irish Railways 181 Class"""
 
     return consist
