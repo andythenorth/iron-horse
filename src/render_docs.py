@@ -140,6 +140,19 @@ class DocHelper(object):
                         ] = role_child_branches
         return result
 
+    def not_really_engine_consists(self, roster):
+        # some engines aren't really engines
+        # - snowploughs
+        # - cab cars
+        # - powered wagons for TGVs
+        # - powered cabooses for propelling
+        result = []
+        for consist in roster.engine_consists:
+            # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
+            if consist.buy_menu_hint_driving_cab or consist.wagons_add_power:
+                result.append(consist)
+        return result
+
     def get_role_child_branches_in_order(self, role_child_branches):
         # adjust the sort so that it's +ve, -ve for each value, e.g. [1, -1, 2, -2, 3, -3, 4, 5] etc
         # this gives the nicest order of related rows in tech tree, assuming that similar engines are in child_branch 1 and child_branch -1
