@@ -10,7 +10,7 @@ def main(roster_id):
         role="freight",
         role_child_branch_num=2,
         power_by_power_source={
-            "DIESEL": 1950,  # progression calculated to maintain hp/speed ratio from previous gen
+            "DIESEL": 1950,
         },
         random_reverse=True,
         gen=5,

@@ -10,7 +10,7 @@ def main(roster_id):
         role="freight",
         role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 1750,
+            "DIESEL": 1700,
         },
         random_reverse=True,
         gen=4,
@@ -19,7 +19,7 @@ def main(roster_id):
         default_livery_extra_docs_examples=[
             ("COLOUR_YELLOW", "COLOUR_GREY"),
         ],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(

@@ -37,11 +37,14 @@ from vehicles import cheese_bug
 from vehicles import chinook
 from vehicles import chuggypig
 from vehicles import clipper
+from vehicles import cupla
 from vehicles import daring
 from vehicles import deasil
 from vehicles import decapod
 from vehicles import defiant
 from vehicles import diablo
+from vehicles import doineann
+from vehicles import doister
 from vehicles import doubletide
 from vehicles import dover
 from vehicles import dragon
@@ -93,6 +96,7 @@ from vehicles import maximillian
 from vehicles import magnum_70
 from vehicles import merlion
 from vehicles import merrylegs
+from vehicles import mizzle
 from vehicles import moor_gallop
 from vehicles import mumble
 from vehicles import olympic
@@ -136,6 +140,7 @@ from vehicles import strongbow
 from vehicles import sunshine_coast
 from vehicles import super_shoebox
 from vehicles import swift
+from vehicles import teem
 from vehicles import tenacious
 from vehicles import tencendur
 from vehicles import thor
@@ -668,11 +673,16 @@ def main():
             slug,
             centaur,
             xerxes,
+            teem,
             vigilant,
+            doister,
             blind_smuir,
             mainstay,
             yillen,
+            mizzle,
+            cupla,
             doubletide,
+            doineann,
             girt_licker,
             lemon,
             esk,

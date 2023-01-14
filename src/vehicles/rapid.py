@@ -10,7 +10,7 @@ def main(roster_id):
         role="heavy_express",
         role_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 2800,  # significant jump from previous gen
+            "DIESEL": 2850,  # significant jump from previous gen
         },
         # dibble, assume super-slip control, intent is to give higher TE as a non-significant variation from Resilient
         tractive_effort_coefficient=0.4,
@@ -18,7 +18,7 @@ def main(roster_id):
         gen=5,
         intro_year_offset=2,  # let's not have everything turn up in 1990
         speed=125,  # Rapid not replaced, but has gen 6 speeds
-        fixed_run_cost_points=55,  # give a bonus so this can be a genuine mixed-traffic engine
+        fixed_run_cost_points=45,  # give a bonus so this can be a genuine mixed-traffic engine
         additional_liveries=["RES"],
         sprites_complete=False,
     )

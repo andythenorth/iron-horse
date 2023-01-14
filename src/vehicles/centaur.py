@@ -10,8 +10,10 @@ def main(roster_id):
         role="freight",
         role_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 1950,  # progression calculated to maintain hp/speed ratio from previous gen
+            "DIESEL": 2000, # tried it as 2500 hp, doesn't work
         },
+        # dibble for game balance, assume super-slip control
+        tractive_effort_coefficient=0.4,
         random_reverse=True,
         gen=5,
         # red stripe? Teeside steelmaster?
@@ -29,7 +31,7 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=DieselEngineUnit, weight=115, vehicle_length=8, spriterow_num=0
+        type=DieselEngineUnit, weight=100, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = """"""

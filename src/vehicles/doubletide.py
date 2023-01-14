@@ -11,7 +11,7 @@ def main(roster_id):
         role_child_branch_num=1,
         # no replacement by design - continues to game end as unique 10/8, especially for industrial use etc
         power_by_power_source={
-            "DIESEL": 2500,
+            "DIESEL": 2650, # sits midway between Slug and Grid, ignore existence of e.g. Resilient and Shredder which only add confusion
         },
         random_reverse=True,
         gen=5,

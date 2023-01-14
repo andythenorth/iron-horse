@@ -8,8 +8,7 @@ def main(roster_id):
         base_numeric_id=4850,
         name="4-6-0 Blind Smuir",
         role="heavy_freight",
-        role_child_branch_num=-1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
-        replacement_consist_id="intrepid",  # this Joker ends with Intrepid
+        role_child_branch_num=-1,
         power_by_power_source={
             "STEAM": 1850,  # slightly less than the Strongbow eh
         },
