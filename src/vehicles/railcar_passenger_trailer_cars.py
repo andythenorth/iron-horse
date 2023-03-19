@@ -33,7 +33,7 @@ def main():
         base_numeric_id=14930,
         gen=4,
         subtype="U",
-        sprites_complete=False,
+        sprites_complete=True,
         cab_id="geronimo",
     )
 
@@ -63,7 +63,7 @@ def main():
         base_numeric_id=14910,
         gen=5,
         subtype="U",
-        sprites_complete=False,
+        sprites_complete=True,
         cab_id="breeze",
     )
 
@@ -94,7 +94,7 @@ def main():
         gen=6,
         subtype="U",
         cab_id="zeus",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
