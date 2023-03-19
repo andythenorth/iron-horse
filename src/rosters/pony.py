@@ -84,6 +84,7 @@ from vehicles import high_flyer
 from vehicles import hurly_burly
 from vehicles import intrepid
 from vehicles import jupiter
+from vehicles import keen
 from vehicles import kelpie
 from vehicles import lamia
 from vehicles import lark
@@ -140,7 +141,6 @@ from vehicles import strongbow
 from vehicles import sunshine_coast
 from vehicles import super_shoebox
 from vehicles import swift
-from vehicles import teem
 from vehicles import tenacious
 from vehicles import tencendur
 from vehicles import thor
@@ -676,7 +676,7 @@ def main():
             slug,
             centaur,
             xerxes,
-            teem,
+            keen,
             vigilant,
             doister,
             blind_smuir,

@@ -21,6 +21,7 @@ def main(roster_id):
         caboose_family="railfreight_2",
         additional_liveries=["RAILFREIGHT_TRIPLE_GREY"],
         sprites_complete=True,
+        sprites_additional_liveries_needed=True, # copy livery from Super Stentor?
     )
 
     consist.add_unit(

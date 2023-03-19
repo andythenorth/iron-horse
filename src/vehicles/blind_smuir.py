@@ -18,7 +18,8 @@ def main(roster_id):
         gen=3,
         intro_year_offset=2,  # let's be a little bit later for this one
         additional_liveries=["FREIGHT_BLACK"],
-        sprites_complete=True,
+        sprites_complete=False, # !! move sprite to be variant of Strongbow, make this something else (GWR 2-8-0)?
+        sprites_additional_liveries_needed=True, # banger blue?
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=96, vehicle_length=6, spriterow_num=0)
@@ -27,6 +28,10 @@ def main(roster_id):
         type=SteamEngineTenderUnit, weight=40, vehicle_length=4, spriterow_num=1
     )
 
+    # !! swap to https://en.wikipedia.org/wiki/GWR_2884_Class ?
+    # https://www.lner.info/locos/O/o1thompson.php
+    # https://www.lner.info/locos/B/b7.php
+    # switch to 2-8-0?
     consist.description = """Mr. Stanier helped me out with these.  You'll probably want hundreds of em."""
     consist.foamer_facts = """LMS Class 5 <i>Black Five</i>, BR Standard 5 Class"""
 

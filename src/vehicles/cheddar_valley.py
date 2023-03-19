@@ -24,6 +24,7 @@ def main(roster_id):
             ("COLOUR_ORANGE", "COLOUR_RED"),
         ],
         sprites_complete=True,
+        sprites_additional_liveries_needed=True, # copy liveries from Highlander?
     )
 
     consist.add_unit(

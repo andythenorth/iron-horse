@@ -4,9 +4,9 @@ from train import EngineConsist, SteamEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="teem",
+        id="keen",
         base_numeric_id=470,
-        name="0-6-0+0-6-0 Teem",
+        name="0-6-0+0-6-0 Keen",
         role="heavy_freight",
         role_child_branch_num=1,
         power_by_power_source={
@@ -30,6 +30,11 @@ def main(roster_id):
     )
 
     # !! what are these supposed to be?
+    # some 0-6-0t thing?  Classic jinty? Pannier?
+    # maybe Austerity J94 is simplest?
+    # 1937 18in Hunslet https://www.irsociety.co.uk/Archives/23/18in_Hunslets.htm
+    # https://preservedbritishsteamlocomotives.com/hunslet-works-no-1440-airdale-no-3-0-6-0st/
+    # or the chunky bagnalls? https://www.flickr.com/photos/60956647@N02/15691831650
     consist.description = """Gallop apace, you fiery-footed steeds."""
     consist.foamer_facts = """"""
 
