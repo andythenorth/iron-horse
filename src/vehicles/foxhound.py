@@ -18,7 +18,8 @@ def main(roster_id):
         gen=4,
         # additional_liveries=["RAILFREIGHT_RED_STRIPE"],
         additional_liveries=[],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue?
     )
 
     consist.add_unit(

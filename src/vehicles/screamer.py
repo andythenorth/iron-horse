@@ -25,7 +25,8 @@ def main(roster_id):
             ("COLOUR_PINK", "COLOUR_DARK_BLUE"),
             ("COLOUR_WHITE", "COLOUR_RED"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue, railfreight grey, intercity, GNER?
     )
 
     consist.add_unit(

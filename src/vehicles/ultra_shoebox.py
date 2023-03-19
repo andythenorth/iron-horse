@@ -23,7 +23,8 @@ def main(roster_id):
             ("COLOUR_DARK_BLUE", "COLOUR_BLUE"),
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue, yellow?
     )
 
     consist.add_unit(

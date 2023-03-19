@@ -17,7 +17,8 @@ def main(roster_id):
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
         # banger blue?
         additional_liveries=[],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue?
     )
 
     consist.add_unit(

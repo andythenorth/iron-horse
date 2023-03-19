@@ -19,7 +19,8 @@ def main(roster_id):
         intro_year_offset=2,  # introduce later than gen epoch by design
         caboose_family="railfreight_2",
         additional_liveries=[],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue, industrial yellow?
     )
 
     consist.add_unit(

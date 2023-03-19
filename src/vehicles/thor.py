@@ -19,7 +19,8 @@ def main(roster_id):
         random_reverse=True,
         # banger blue?  black?
         additional_liveries=[],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue, black?
     )
 
     consist.add_unit(

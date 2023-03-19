@@ -19,7 +19,8 @@ def main(roster_id):
         intro_year_offset=-6,
         # additional_liveries='RAILFREIGHT_RED_STRIPE', # not now, needs sprites
         additional_liveries=[],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # railfreight?
     )
 
     consist.add_unit(

@@ -20,7 +20,8 @@ def main(roster_id):
         caboose_family="railfreight_1",
         # add triple grey railfreight
         additional_liveries=["LARGE_LOGO", "RAILFREIGHT_RED_STRIPE"],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue, triple grey railfreight?
     )
 
     consist.add_unit(

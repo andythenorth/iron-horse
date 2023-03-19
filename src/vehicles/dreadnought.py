@@ -21,7 +21,8 @@ def main(roster_id):
             ("COLOUR_PURPLE", "COLOUR_WHITE"),
             ("COLOUR_GREEN", "COLOUR_ORANGE"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # something modern?
     )
 
     consist.add_unit(

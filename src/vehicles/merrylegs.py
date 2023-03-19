@@ -18,7 +18,8 @@ def main(roster_id):
         gen=2,
         caboose_family="gwr_1",
         additional_liveries=[],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue?
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=49, vehicle_length=6, spriterow_num=0)

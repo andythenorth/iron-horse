@@ -16,7 +16,8 @@ def main(roster_id):
         gen=3,
         fixed_run_cost_points=140,  # give a bonus so this can be a genuine mixed-traffic engine
         additional_liveries=[],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue?
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=96, vehicle_length=6, spriterow_num=0)

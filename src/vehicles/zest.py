@@ -20,7 +20,8 @@ def main(roster_id):
         vehicle_life=70,  # extended vehicle life to match Stoat
         fixed_run_cost_points=105,  # substantial cost bonus so it can make money
         additional_liveries=[],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue?
     )
 
     consist.add_unit(

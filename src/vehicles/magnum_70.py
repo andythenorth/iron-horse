@@ -22,7 +22,8 @@ def main(roster_id):
         vehicle_life=60,  # extended vehicle life for all gronks eh
         # banger blue?  some kind of industrial 'extra 'yellow'?
         additional_liveries=[],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue, yellow?
     )
 
     consist.add_unit(

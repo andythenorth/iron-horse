@@ -15,7 +15,8 @@ def main(roster_id):
         tractive_effort_coefficient=0.4,
         random_reverse=True,
         gen=6,
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # GBRF?  Schenker?
     )
 
     consist.add_unit(

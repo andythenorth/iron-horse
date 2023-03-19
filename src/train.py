@@ -153,6 +153,7 @@ class Consist(object):
         self.docs_image_spriterow = kwargs.get("docs_image_spriterow", None)
         # aids 'project management'
         self.sprites_complete = kwargs.get("sprites_complete", False)
+        self.sprites_additional_liveries_needed = kwargs.get("sprites_additional_liveries_needed", False)
 
     def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed

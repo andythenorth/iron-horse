@@ -21,7 +21,8 @@ def main(roster_id):
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # add RfD Euro style triple grey?
     )
 
     consist.add_unit(

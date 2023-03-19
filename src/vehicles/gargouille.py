@@ -18,7 +18,8 @@ def main(roster_id):
         intro_year_offset=15,
         # banger blue?
         additional_liveries=[],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue?
     )
 
     consist.add_unit(
