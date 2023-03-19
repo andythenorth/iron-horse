@@ -44,7 +44,6 @@ from vehicles import decapod
 from vehicles import defiant
 from vehicles import diablo
 from vehicles import doineann
-from vehicles import doister
 from vehicles import doubletide
 from vehicles import dover
 from vehicles import dragon
@@ -678,7 +677,6 @@ def main():
             xerxes,
             keen,
             vigilant,
-            doister,
             blind_smuir,
             mainstay,
             yillen,
