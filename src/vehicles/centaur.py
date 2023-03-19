@@ -27,7 +27,7 @@ def main(roster_id):
             ("COLOUR_YELLOW", "COLOUR_YELLOW"),
         ],
         caboose_family="railfreight_2",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
