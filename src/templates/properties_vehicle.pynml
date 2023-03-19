@@ -139,7 +139,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_inf
             effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
         }
         graphics {
-            name:                           ${vehicle.id}_switch_name;
+            <!--! CABBAGE NAME name:                           ${vehicle.id}_switch_name; -->
             default:                        ${vehicle.id}_switch_graphics;
             purchase:                       ${vehicle.id}_switch_graphics_purchase;
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
