@@ -16,7 +16,9 @@ def main(roster_id):
         gen=3,
         intro_year_offset=-13,  # introduce much earlier than gen epoch by design
         fixed_run_cost_points=140,  # minor run cost bonus as default algorithm makes run cost too high
+        additional_liveries=[],
         sprites_complete=False,
+        sprites_additional_liveries_needed=True, # nightshade / nighthawk?
     )
 
     consist.add_unit(
@@ -27,6 +29,7 @@ def main(roster_id):
         repeat=2,
     )
 
+    # !! what are these supposed to be?
     consist.description = """Gallop apace, you fiery-footed steeds."""
     consist.foamer_facts = """"""
 
