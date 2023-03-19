@@ -75,6 +75,7 @@
     </tal:block>
 </tal:running_cost_factor>
 
+/*
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name_purchase, getbits(extra_callback_info1, 8, 8)) {
     1: return string(STR_CABBAGE);
     return CB_RESULT_NO_TEXT; <!--! will use property instead -->
@@ -83,6 +84,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_inf
     0x20: ${vehicle.id}_switch_name_purchase;
     return CB_RESULT_NO_TEXT; <!--! will use property instead -->
 }
+*/
 
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
     item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
