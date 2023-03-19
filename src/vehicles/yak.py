@@ -23,6 +23,7 @@ def main(roster_id):
 
     consist.add_unit(type=SteamEngineUnit, weight=65, vehicle_length=6, spriterow_num=0)
 
+    # !! tank engine rebuild of the Doister? https://www.lner.info/locos/Q/q1thompson.php
     consist.description = """We ought to do good to others as simply as a horse runs."""
     consist.foamer_facts = """"""
 
