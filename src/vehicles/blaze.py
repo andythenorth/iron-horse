@@ -16,7 +16,8 @@ def main(roster_id):
         gen=5,
         # GNER
         additional_liveries=["BLUE_GREY"],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # GNER?
     )
 
     consist.add_unit(
