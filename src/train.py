@@ -4879,8 +4879,8 @@ class Train(object):
         if unit_variant.buyable_variant_group_id is not None:
             extra_flags.append("VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE")
             extra_flags.append("VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW")
-            extra_flags.append("VEHICLE_FLAG_SYNCHRONISE_VARIANT_EXCLUSIVE_PREVIEW")
-            extra_flags.append("VEHICLE_FLAG_SYNCHRONISE_VARIANT_RELIABILITY")
+            extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW")
+            extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY")
         return ",".join(extra_flags)
 
     @property
