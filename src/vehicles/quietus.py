@@ -27,6 +27,6 @@ def main(roster_id):
     )
 
     consist.description = """It'll get there and back again, in any weather."""
-    consist.foamer_facts = """GBRF Class99, Stadler Eurodual, Newag Dragon, CAF Bitrac"""
+    consist.foamer_facts = """GBRF Class 99, Stadler Eurodual, Newag Dragon, CAF Bitrac"""
 
     return consist
