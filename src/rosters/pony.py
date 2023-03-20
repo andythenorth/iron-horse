@@ -26,7 +26,6 @@ from vehicles import brenner_middle_passenger
 from vehicles import bright_country
 from vehicles import buffalo
 from vehicles import captain_steel
-from vehicles import captain_steelier
 from vehicles import cargo_sprinter
 from vehicles import carrack
 from vehicles import centaur
@@ -64,6 +63,7 @@ from vehicles import flindermouse
 from vehicles import foxhound
 from vehicles import fury
 from vehicles import gargouille
+from vehicles import general_endeavour
 from vehicles import geronimo
 from vehicles import girt_licker
 from vehicles import goliath
@@ -661,7 +661,7 @@ def main():
             little_bear,
             captain_steel,
             goliath,
-            captain_steelier,
+            general_endeavour,
             stoat,
             zest,
             # freight
