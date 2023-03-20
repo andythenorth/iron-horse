@@ -54,6 +54,7 @@ from vehicles import driving_cab_passenger_pony_gen_4
 from vehicles import driving_cab_passenger_pony_gen_5
 from vehicles import driving_cab_passenger_pony_gen_6
 from vehicles import dryth
+from vehicles import eastern
 from vehicles import esk
 from vehicles import falcon
 from vehicles import firebird
@@ -666,6 +667,7 @@ def main():
             # freight
             hercules,
             braf,
+            eastern,
             diablo,
             haar,
             anchor,

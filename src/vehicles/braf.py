@@ -14,14 +14,15 @@ def main(roster_id):
         },
         tractive_effort_coefficient=0.24,
         gen=2,
+        intro_year_offset=5,  # introduce later than gen epoch by design
         additional_liveries=["FREIGHT_BLACK"],
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SteamEngineUnit, weight=68, vehicle_length=5, spriterow_num=0)
+    consist.add_unit(type=SteamEngineUnit, weight=65, vehicle_length=5, spriterow_num=0)
 
     consist.add_unit(
-        type=SteamEngineTenderUnit, weight=30, vehicle_length=3, spriterow_num=1
+        type=SteamEngineTenderUnit, weight=29, vehicle_length=3, spriterow_num=1
     )
 
     consist.description = """Solid little number these. No bother."""
