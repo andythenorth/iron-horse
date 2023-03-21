@@ -21,6 +21,7 @@ def main(roster_id):
             ("COLOUR_PINK", "COLOUR_WHITE"),
         ],
         decor_spriterow_num=4,
+        show_decor_in_purchase_for_variants=[2],
         sprites_complete=True,
     )
 

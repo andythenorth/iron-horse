@@ -88,6 +88,8 @@ class Consist(object):
         self.pantograph_type = kwargs.get("pantograph_type", None)
         # some engines have an optional decor layer, which is a manual spriterow num (as decor might not be widely used?)
         self.decor_spriterow_num = kwargs.get("decor_spriterow_num", None)
+        # stupid extra-detail, control which variants show decor in purchase menu
+        self.show_decor_in_purchase_for_variants = kwargs.get("show_decor_in_purchase_for_variants", [])
         self.dual_headed = kwargs.get("dual_headed", False)
         self.tilt_bonus = False  # over-ride in subclass as needed
         self.lgv_capable = False  # over-ride in subclass as needed
@@ -789,9 +791,11 @@ class Consist(object):
             return 64
 
     @property
-    def engine_extra_sprite_layers_with_layer_names(self):
+    def engine_sprite_layers_with_layer_names(self):
         result = []
         counter = 0
+        # always append the base engine layer
+        result.append((counter, 'base'))
         # add a layer for decor as needed, note this is not done in the gestalt as it's more convenient to treat separarely
         if self.decor_spriterow_num is not None:
             counter = counter + 1

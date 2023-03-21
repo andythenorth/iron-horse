@@ -41,7 +41,7 @@
     </tal:pantographs>
 
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}, getbits(extra_callback_info1, 8, 8)) {
-        <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_extra_sprite_layers_with_layer_names">
+        <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names[1:]">
             ${extra_sprite_layer[0]}: return ${vehicle.id}_switch_graphics_${extra_sprite_layer[1]}_${reversed_variant};
         </tal:extra_sprite_layers>
         return ${vehicle.id}_switch_graphics_livery_${reversed_variant};
@@ -72,37 +72,70 @@ spriteset(${vehicle.id}_ss_vehicle_purchase_${repeat.livery.index}, "${graphics_
 }
 </tal:liveries>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase, vehicle_type_id) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase_livery, vehicle_type_id) {
     <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
         ${unit_variant.numeric_id}: return ${vehicle.id}_ss_vehicle_purchase_${unit_variant.buyable_variant.buyable_variant_num};
     </tal:unit_variants>
     <!--! no default, by design all variants should be explicitly found -->
 }
 
-<tal:conditional_pantographs switch="consist.pantograph_type is not None">
-    <tal:has_pantographs case="True">
-        <!--! purchase sprites for case where pantograph layer is needed -->
-        spriteset(${vehicle.id}_ss_pantograph_purchase, "${graphics_path}${consist.id}_pantographs_down.png") {
-            ${consist.get_nml_for_spriteset_template(y_offset=0)}
-        }
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
-            return ${vehicle.id}_switch_graphics_vehicle_purchase;
-        }
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
-            <!--! if there are pantographs to draw we will handle that later in the graphics chain,
-                  but we need to reserve layer 1 for the pantographs as well as layer 0 for the vehicle  -->
-            1: return ${vehicle.id}_ss_pantograph_purchase;
-            0: return ${vehicle.id}_switch_set_layers_register_more_sprites_purchase;
-        }
-    </tal:has_pantographs>
-    <tal:no_pantographs case="False">
-        <!--! purchase sprites always go through a switch in case the template does anything specific for purchase graphics
-              when there is nothing specific, then this is just a null switch -->
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
-            return ${vehicle.id}_switch_graphics_vehicle_purchase;
-        }
-    </tal:no_pantographs>
+<tal:conditional_pantographs condition="consist.pantograph_type is not None">
+    <!--! purchase sprites for case where pantograph layer is needed -->
+    spriteset(${vehicle.id}_ss_pantographs_purchase, "${graphics_path}${consist.id}_pantographs_down.png") {
+        ${consist.get_nml_for_spriteset_template(y_offset=0)}
+    }
 </tal:conditional_pantographs>
+
+<tal:conditional_decor condition="consist.decor_spriterow_num is not None">
+    <!--! purchase sprites for case where decor layer is needed -->
+    spriteset(${vehicle.id}_ss_decor_purchase, "${graphics_path}${consist.id}.png") {
+        ${consist.get_nml_for_spriteset_template(y_offset=30 * consist.decor_spriterow_num)}
+    }
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase_decor, vehicle_type_id) {
+        <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+            <tal:show_decor_in_purchase_menu switch="repeat.unit_variant.index in consist.show_decor_in_purchase_for_variants">
+                <tal:block case="True">
+                    ${unit_variant.numeric_id}: return ${vehicle.id}_ss_decor_purchase;
+                </tal:block>
+                <tal:block case="False">
+                    ${unit_variant.numeric_id}: return ss_global_empty;
+                </tal:block>
+            </tal:show_decor_in_purchase_menu>
+        </tal:unit_variants>
+        <!--! no default, by design all variants should be explicitly found -->
+    }
+</tal:conditional_decor>
+
+<tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names">
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_${extra_sprite_layer[1]},
+        STORE_TEMP(
+            <tal:more_sprites condition="not: repeat.extra_sprite_layer.end">
+                CB_FLAG_MORE_SPRITES |
+            </tal:more_sprites>
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+        <tal:result switch="extra_sprite_layer[1]">
+            <tal:block case="'base'">
+                return ${vehicle.id}_switch_graphics_vehicle_purchase_livery;
+            </tal:block>
+            <tal:block case="'pantographs'">
+                return ${vehicle.id}_ss_${extra_sprite_layer[1]}_purchase;
+            </tal:block>
+            <tal:block case="'decor'">
+                return ${vehicle.id}_switch_graphics_vehicle_purchase_decor;
+            </tal:block>
+        </tal:result>
+    }
+</tal:extra_sprite_layers>
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+    <!--! chaining these switches to ensure that layers continue is slight faff, as we have to know which is the last -->
+    <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names">
+        ${extra_sprite_layer[0]}: return ${vehicle.id}_switch_graphics_purchase_${extra_sprite_layer[1]};
+    </tal:extra_sprite_layers>
+}
+
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
