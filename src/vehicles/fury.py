@@ -20,12 +20,10 @@ def main(roster_id):
         # intercity, railfreight?
         additional_liveries=["SWOOSH", "FREIGHTLINER_GBRF", "RES"],
         default_livery_extra_docs_examples=[
-            ("COLOUR_GREEN", "COLOUR_YELLOW"),
-            ("COLOUR_PALE_GREEN", "COLOUR_PALE_GREEN"),
-            ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
+            ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
