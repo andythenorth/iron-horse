@@ -25,6 +25,7 @@ def main(roster_id):
             ("COLOUR_YELLOW", "COLOUR_YELLOW"),
         ],
         caboose_family="railfreight_2",
+        decor_spriterow_num=3,
         sprites_complete=True,
         sprites_additional_liveries_needed=True, # banger blue? red stripe? Teeside steelmaster?
     )

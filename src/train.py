@@ -789,6 +789,20 @@ class Consist(object):
             return 64
 
     @property
+    def engine_extra_sprite_layers_with_layer_names(self):
+        result = []
+        counter = 0
+        # add a layer for decor as needed, note this is not done in the gestalt as it's more convenient to treat separarely
+        if self.decor_spriterow_num is not None:
+            counter = counter + 1
+            result.append((counter, 'decor'))
+        # add a layer for pantographs as needed, note this is not done in the gestalt as it's more convenient to treat separarely
+        if self.pantograph_type is not None:
+            counter = counter + 1
+            result.append((counter, 'pantographs'))
+        return result
+
+    @property
     def num_sprite_layers(self):
         # always at least one layer
         result = 1

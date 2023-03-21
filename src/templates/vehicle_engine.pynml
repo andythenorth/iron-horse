@@ -41,23 +41,9 @@
     </tal:pantographs>
 
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}, getbits(extra_callback_info1, 8, 8)) {
-        <!--! these conditions could be consolidated to a method on the consist, but this is actually easier to read for now -->
-        <tal:conditional_pantograph condition="consist.pantograph_type is not None and consist.decor_spriterow_num is None">
-            <!--! if there are pantographs to draw we will handle that later in the graphics chain,
-                  but we need to reserve layer 1 for the pantographs -->
-            1: return ${vehicle.id}_switch_graphics_pantographs_${reversed_variant};
-        </tal:conditional_pantograph>
-        <tal:conditional_decor condition="consist.decor_spriterow_num is not None and consist.pantograph_type is None">
-            <!--! if there are decor to draw we will handle that later in the graphics chain,
-                  but we need to reserve layer 1 for the decor -->
-            1: return ${vehicle.id}_switch_graphics_decor_${reversed_variant};
-        </tal:conditional_decor>
-        <tal:conditional_decor_and_pans condition="consist.decor_spriterow_num is not None and consist.pantograph_type is not None">
-            <!--! if there are decor and pans to draw we will handle that later in the graphics chain,
-                  but we need to reserve layer 1 for the decor and layer 2 for the pans -->
-            1: return ${vehicle.id}_switch_graphics_decor_${reversed_variant};
-            2: return ${vehicle.id}_switch_graphics_pantographs_${reversed_variant};
-        </tal:conditional_decor_and_pans>
+        <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_extra_sprite_layers_with_layer_names">
+            ${extra_sprite_layer[0]}: return ${vehicle.id}_switch_graphics_${extra_sprite_layer[1]}_${reversed_variant};
+        </tal:extra_sprite_layers>
         return ${vehicle.id}_switch_graphics_livery_${reversed_variant};
     }
 </tal:random_reverse_variants>
