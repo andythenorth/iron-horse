@@ -23,7 +23,7 @@
         }
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_decor_${reversed_variant}, random_bits_engine_show_decor()) {
             1: return ${vehicle.id}_ss_decor_${reversed_variant};
-            return ss_spritelayer_cargo_empty;
+            return ss_global_empty;
         }
     </tal:conditional_decor>
 
@@ -91,8 +91,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase, vehic
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
             <!--! if there are pantographs to draw we will handle that later in the graphics chain,
                   but we need to reserve layer 1 for the pantographs as well as layer 0 for the vehicle  -->
-            0: return ${vehicle.id}_switch_set_layers_register_more_sprites_purchase;
             1: return ${vehicle.id}_ss_pantograph_purchase;
+            0: return ${vehicle.id}_switch_set_layers_register_more_sprites_purchase;
         }
     </tal:has_pantographs>
     <tal:no_pantographs case="False">
