@@ -23,6 +23,8 @@ def main(roster_id):
             ("COLOUR_GREY", "COLOUR_GREY"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
         ],
+        decor_spriterow_num=2,
+        show_decor_in_purchase_for_variants=[0, 1],
         sprites_complete=True,
     )
 

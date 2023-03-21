@@ -18,6 +18,8 @@ def main(roster_id):
         gen=4,
         caboose_family="railfreight_1",
         additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
+        decor_spriterow_num=3,
+        show_decor_in_purchase_for_variants=[2],
         sprites_complete=True,
     )
 

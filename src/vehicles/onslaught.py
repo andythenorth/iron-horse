@@ -19,6 +19,7 @@ def main(roster_id):
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
         #additional_liveries=["BANGER_BLUE", "LARGE_LOGO", "FANCY_BLUE", "INTERCITY_RASPBERRY_RIPPLE", "RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
         additional_liveries=["BANGER_BLUE"],
+        decor_spriterow_num=7,
         sprites_complete=False,
         sprites_additional_liveries_needed=True, # more?
     )
