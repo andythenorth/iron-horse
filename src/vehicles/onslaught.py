@@ -20,7 +20,7 @@ def main(roster_id):
         #additional_liveries=["BANGER_BLUE", "LARGE_LOGO", "FANCY_BLUE", "INTERCITY_RASPBERRY_RIPPLE", "RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
         additional_liveries=["BANGER_BLUE"],
         decor_spriterow_num=7,
-        sprites_complete=False,
+        sprites_complete=True,
         sprites_additional_liveries_needed=True, # more?
     )
 

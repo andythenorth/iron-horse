@@ -19,8 +19,8 @@ def main(roster_id):
         intro_year_offset=-4, # earlier than the IRL introduction of this never-built train...
         pantograph_type="z-shaped-double",
         caboose_family="railfreight_2",
-        additional_liveries=[],
-        sprites_complete=False,
+        additional_liveries=["RAILFREIGHT_RED_STRIPE"],
+        sprites_complete=True,
     )
 
     consist.add_unit(

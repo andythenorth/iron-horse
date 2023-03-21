@@ -27,7 +27,7 @@ def main(roster_id):
             ("COLOUR_YELLOW", "COLOUR_YELLOW"),
         ],
         caboose_family="railfreight_2",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -35,6 +35,6 @@ def main(roster_id):
     )
 
     consist.description = """Technically, we're all half centaur."""
-    consist.foamer_facts = """proposed BR Class 38, precursor to Class 60"""
+    consist.foamer_facts = """proposed BR Class 38, intended to replace class 37"""
 
     return consist
