@@ -1,4 +1,4 @@
-<!--! this is the default template for trains that don't supply their own template -->
+ <!--! this is the default template for trains that don't supply their own template -->
 
 <!--! 'reversed' is random reversal on construction, depending on vehicle random bits -->
 <tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
@@ -16,6 +16,17 @@
         <!--! no default, by design all variants should be explicitly found -->
     }
 
+    <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
+        <!--! optional decor sprites - as of Mar 2023 this is only intended for snowploughs on single units, and won't handle articulated consists  -->
+        spriteset(${vehicle.id}_ss_decor_${reversed_variant}, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name_2(reversed_variant, 10 + (consist.decor_spriterow_num * 30))}
+        }
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_decor_${reversed_variant}, random_bits_engine_show_decor()) {
+            1: return ${vehicle.id}_ss_decor_${reversed_variant};
+            return ss_spritelayer_cargo_empty;
+        }
+    </tal:conditional_decor>
+
     <tal:pantographs condition="consist.pantograph_type is not None">
         <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
         <tal:pantographs repeat="pantograph_state ['down', 'up']">
@@ -30,11 +41,23 @@
     </tal:pantographs>
 
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}, getbits(extra_callback_info1, 8, 8)) {
-        <tal:conditional_pantograph condition="consist.pantograph_type is not None">
+        <!--! these conditions could be consolidated to a method on the consist, but this is actually easier to read for now -->
+        <tal:conditional_pantograph condition="consist.pantograph_type is not None and consist.decor_spriterow_num is None">
             <!--! if there are pantographs to draw we will handle that later in the graphics chain,
                   but we need to reserve layer 1 for the pantographs -->
             1: return ${vehicle.id}_switch_graphics_pantographs_${reversed_variant};
         </tal:conditional_pantograph>
+        <tal:conditional_decor condition="consist.decor_spriterow_num is not None and consist.pantograph_type is None">
+            <!--! if there are decor to draw we will handle that later in the graphics chain,
+                  but we need to reserve layer 1 for the decor -->
+            1: return ${vehicle.id}_switch_graphics_decor_${reversed_variant};
+        </tal:conditional_decor>
+        <tal:conditional_decor_and_pans condition="consist.decor_spriterow_num is not None and consist.pantograph_type is not None">
+            <!--! if there are decor and pans to draw we will handle that later in the graphics chain,
+                  but we need to reserve layer 1 for the decor and layer 2 for the pans -->
+            1: return ${vehicle.id}_switch_graphics_decor_${reversed_variant};
+            2: return ${vehicle.id}_switch_graphics_pantographs_${reversed_variant};
+        </tal:conditional_decor_and_pans>
         return ${vehicle.id}_switch_graphics_livery_${reversed_variant};
     }
 </tal:random_reverse_variants>

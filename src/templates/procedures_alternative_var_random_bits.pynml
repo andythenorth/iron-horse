@@ -49,6 +49,14 @@ switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_choose_wagon, bits_count
     return;
 }
 
+<!--! randomised decor (on / off)
+      - this needs to be independent from random reverse
+-->
+switch (FEAT_TRAINS, SELF, random_bits_engine_show_decor, switch_alternative_var_random_bits(3, 1)) {
+    <!--! return with nothing else to yield the computed value  -->
+    return;
+}
+
 <!--! special case -->
 
 <!--! NOTE the units of some articulated consists *will* randomly reverse on build

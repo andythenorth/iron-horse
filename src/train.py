@@ -86,6 +86,8 @@ class Consist(object):
         self.power_by_power_source = kwargs.get("power_by_power_source", None)
         # some engines require pantograph sprites composited, don't bother setting this unless required
         self.pantograph_type = kwargs.get("pantograph_type", None)
+        # some engines have an optional decor layer, which is a manual spriterow num (as decor might not be widely used?)
+        self.decor_spriterow_num = kwargs.get("decor_spriterow_num", None)
         self.dual_headed = kwargs.get("dual_headed", False)
         self.tilt_bonus = False  # over-ride in subclass as needed
         self.lgv_capable = False  # over-ride in subclass as needed
@@ -804,6 +806,9 @@ class Consist(object):
             )
         # add a layer for a masked overlay as needed (usually applied over cargo sprites)
         if self.gestalt_graphics.add_masked_overlay:
+            result = result + 1
+        # add a layer for decor as needed, note this is not done in the gestalt as it's more convenient to treat separarely
+        if self.decor_spriterow_num is not None:
             result = result + 1
         # add a layer for pantographs as needed, note this is not done in the gestalt as it's more convenient to treat separarely
         if self.pantograph_type is not None:
