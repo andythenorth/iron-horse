@@ -18,7 +18,8 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         intro_year_offset=-13,  # introduce earlier than gen epoch by design
         additional_liveries=[],
-        sprites_complete=False,
+        sprites_complete=True,
+        sprites_additional_liveries_needed=True, # railfreight?
     )
 
     consist.add_unit(
