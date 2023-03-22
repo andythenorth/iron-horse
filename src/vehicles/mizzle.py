@@ -16,7 +16,7 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         intro_year_offset=-2,  # let's not have everything turn up in 1960
-        additional_liveries=["BANGER_BLUE"],
+        additional_liveries=["BANGER_BLUE", "SWOOSH"],
         sprites_complete=False,
     )
 

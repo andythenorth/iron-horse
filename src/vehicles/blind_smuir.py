@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=4850,
         name="4-6-0 Blind Smuir",
         role="heavy_freight",
-        role_child_branch_num=-1,
+        role_child_branch_num=-2,
         power_by_power_source={
             "STEAM": 1850,  # slightly less than the Strongbow eh
         },

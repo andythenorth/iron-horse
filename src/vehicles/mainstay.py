@@ -8,8 +8,7 @@ def main(roster_id):
         base_numeric_id=6360,
         name="2-8-0 Mainstay",
         role="heavy_freight",
-        role_child_branch_num=-2,
-        replacement_consist_id="mizzle",
+        role_child_branch_num=-1,
         power_by_power_source={
             "STEAM": 1850,
         },
