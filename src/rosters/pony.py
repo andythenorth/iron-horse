@@ -53,6 +53,7 @@ from vehicles import driving_cab_passenger_pony_gen_4
 from vehicles import driving_cab_passenger_pony_gen_5
 from vehicles import driving_cab_passenger_pony_gen_6
 from vehicles import dryth
+from vehicles import dynamo
 from vehicles import eastern
 from vehicles import esk
 from vehicles import falcon
@@ -107,7 +108,6 @@ from vehicles import pegasus
 from vehicles import pikel
 from vehicles import pinhorse
 from vehicles import plastic_postbox
-from vehicles import polo
 from vehicles import proper_job
 from vehicles import pylon
 from vehicles import quietus
@@ -634,7 +634,7 @@ def main():
             onslaught,
             dreadnought,
             relentless,
-            polo,
+            dynamo,
             shoebox,
             super_shoebox,
             ultra_shoebox,
