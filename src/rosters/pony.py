@@ -93,12 +93,12 @@ from vehicles import lemon
 from vehicles import little_bear
 from vehicles import longwater
 from vehicles import lynx
+from vehicles import maelstrom
 from vehicles import mainstay
 from vehicles import maximillian
 from vehicles import magnum_70
 from vehicles import merlion
 from vehicles import merrylegs
-from vehicles import mizzle
 from vehicles import moor_gallop
 from vehicles import mumble
 from vehicles import olympic
@@ -427,6 +427,12 @@ def main():
                     ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
                 ],
             },
+            "2CC": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
         },
         # empty dicts currently, but could hold remaps, docs image colours etc if needed
         default_pax_liveries=[
@@ -682,7 +688,7 @@ def main():
             blind_smuir,
             mainstay,
             yillen,
-            mizzle,
+            maelstrom,
             # CABBAGE_3 cupla,
             doubletide,
             # CABBAGE_3 doineann,

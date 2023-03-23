@@ -16,8 +16,8 @@ def main(roster_id):
         tractive_effort_coefficient=0.375,
         random_reverse=True,
         gen=5,
-        additional_liveries=[],
-        sprites_complete=False,
+        additional_liveries=["2CC", "SWOOSH"],
+        sprites_complete=True,
     )
 
     consist.add_unit(
