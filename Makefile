@@ -24,7 +24,7 @@ ifeq ($(strip $(EXPORTED)),no)
   # Not exported source, therefore regular checkout
   REPO_INFO = $(shell $(GIT_INFO))
   REPO_REVISION = $(word 1,$(REPO_INFO))
-  REPO_VERSION = $(word 2,$(REPO_INFO))
+  REPO_VERSION = $(word 4,$(REPO_INFO))
 else
   # Exported version, lines below should get modified in 'bundle_src' target
   REPO_REVISION = ${exported_revision}
