@@ -2,10 +2,48 @@ Changelog
 =========
 
 
--------------
-3.0.0 Release
--------------
+---------------
+3.0.0 Preview 1
+---------------
 
+- !! GRFID bumped
+
+- !! Remove 2CC livery magic
+- !! Remove engine-sensitive livery magic
+- !! Remove flipping pax / mail cars to reverse livery
+
+- !! Liveries via variants for many engines
+- !! Random decor also
+- !! Use variants to group together trailer coaches with power cars / cabs
+    - !! railcars
+    - !! HSTs
+    - !! TGVs
+- !! additional mail van liveries
+
+- !! Added Engines
+- !! Dynamo
+- !! General Endeavour
+- !! Centaur
+- !! Maelstrom
+- !! Dryth
+- !! Tincans
+- !! Resistance
+
+- !! Permanently Removed Engines (most of these only existed to provide additional liveries over time)
+- !! Super Stentor
+- !! Highlander
+- !! Phoenix
+- !! Hector
+- !! Nimbus
+- !! Evolution
+- !! Vanguard
+
+- !! Temporarily Removed Engines
+- !! Pinhorse
+
+- !! Rebalanced stats for multiple engines
+
+- !! Reworked docs
 
 
 -------------
