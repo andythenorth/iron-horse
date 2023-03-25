@@ -27,7 +27,7 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=ElectricEngineUnit, weight=90, vehicle_length=8, spriterow_num=0
+        type=ElectricEngineUnit, weight=92, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = (
