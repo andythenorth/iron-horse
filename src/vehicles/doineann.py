@@ -8,6 +8,7 @@ def main(roster_id):
         base_numeric_id=10500,
         name="Doineann",
         # Marauder??
+        # Prevails??
         role="heavy_freight",
         role_child_branch_num=-1,
         power_by_power_source={
