@@ -203,6 +203,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_inf
     }
 
     <tal:rosters condition="vehicle.is_lead_unit_of_consist">
+        <!--! CABBAGE HIDE LIVERY 5 FOR MAILCARS - UNFINISHED -->
+        <tal:hide_mail_livery_5 condition="not: consist.__class__.__name__ == 'MailCarConsist' and repeat.unit_variant.index == 4">
         if (${consist.get_expression_for_availability()}) {
             item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
                 property {
@@ -210,5 +212,6 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_inf
                 }
             }
         }
+        </tal:hide_mail_livery_5>
     </tal:rosters>
 </tal:unit_variants>
