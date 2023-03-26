@@ -20,7 +20,7 @@ def main(roster_id):
         speed=125,  # Rapid not replaced, but has gen 6 speeds
         fixed_run_cost_points=45,  # give a bonus so this can be a genuine mixed-traffic engine
         additional_liveries=["RES"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
