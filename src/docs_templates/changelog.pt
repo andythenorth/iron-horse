@@ -8,46 +8,38 @@ Changelog
 
 "A horse is worth more than riches" — Spanish proverb
 
-Time for Iron Horse 3.  It's the one after Iron Horse 2.
+Time for Iron Horse 3.  It's the one right after Iron Horse 2.
 
 **"Pitch me"**
 
-*All new ways to choose vehicle liveries*
+*New ways to choose vehicle liveries*
 
-- many more liveries
-- much, much simpler to choose liveries
+- more liveries to choose from
+- easier to select liveries
 
 
-*Revised tech tree*
+*Revamped tech tree*
 
 - better progression
-- less repetition of models that are 'upgraded' only by paint and minor stats bumps
+- fewer repeating models that only differ in paint and stats
 - multiple new engines, super for gameplay
 
 
 *Full use of 'vehicle variants' feature in OpenTTD 13*
 
-- OpenTTD 13 or newer is required for Iron Horse 3
-- Iron Horse 3 is not compatible with any previous versions of Iron Horse
-- a new GRFID is used for Iron Horse 3
-- Iron Horse 1 and 2 remain available as separate grfs for anyone who needs them
+- Iron Horse 3 requires OpenTTD 13 or newer
+- not compatible with previous Iron Horse versions
+- uses a new GRFID
+- Iron Horse 1 and 2 still available as separate grfs
 
 
 *Changes*
 
-- many additional vehicle liveries have been added
-- engine liveries
-    - where an engine has multiple liveries available, each livery will be a vehicle variant in the buy menu
-    - engine liveries no longer use the complicated approach of triggering different sprites if a specific company colour combination is set
-- liveries for railcars, passenger coaches, mail vans, and similar
-    - each livery will be a vehicle variant in the buy menu
-    - additionally, where powered vehicles have dedicated trailer cars, they will be grouped together as variants in the buy menu
-        - for example, Blaze HST coaches and mail vans will be grouped as variants with the Blaze HST power cars
-    - passenger and mail vehicle liveries no longer use the complicated approach of triggering different sprites by flipping the vehicle in depot
-- wagon liveries
-    - these *do not* use variants for Iron Horse 3.0.0, but wagon variants will be added in future
-    - many wagons will continue to swap company colour if flipped
-- a small number of engines will now show randomised miniature snowploughs when built
+- liveries are now individual vehicle variants in the buy menu
+- many new liveries added for engines, passenger vehicles and mail vehicles
+- powered vehicles with dedicated trailer cars are grouped together in the buy menu
+    - for example, Blaze HST coaches and mail vans will be grouped as variants with the Blaze HST power cars
+- freight wagons *do not* have livery variants for Iron Horse 3.0.0, but freight wagon livery variants will be added in future
 - rebalanced tech tree
     - adjusted progression of some lines, especially electric engines
     - added engines
@@ -58,7 +50,7 @@ Time for Iron Horse 3.  It's the one after Iron Horse 2.
         - Dryth, 2900 hp, available around 1938
         - Tincans, 5200 hp, available around 1977
         - Resistance, 5800 hp, available around 1986
-        - a further 8 engines are planned for the 3.0.0 release, but are not in Preview 1 as they are unfinished
+        - a further 8 engines are planned for the 3.0.0 release, but are not in 3.0 Preview 1 as they are unfinished
     - removed some engines that repeated a previous model, 'upgraded' by a new livery and minor stats bump
         - Evolution
         - Hector
@@ -67,16 +59,20 @@ Time for Iron Horse 3.  It's the one after Iron Horse 2.
         - Phoenix
         - Super Stentor
     - removed Vanguard, will be replaced later by a new engine
+- some engines now randomly show miniature snowploughs when built
+    - includes Kelpie, Griffon, Growler, Slug and Onslaught
 
 
 *Docs*
 
-- engine details pages now show liveries available as variants
+- show variants on engine details pages
 
 
 *Codechanges*
 
 - reduce template complexity and eliminate a large number of duplicate realsprites, as OpenTTD now correctly handles offsets for flipped vehicles that are < 8/8 long
+- engine liveries no longer use the complicated approach of triggering different sprites if a specific company colour combination is set
+- passenger and mail vehicle liveries no longer use the complicated approach of triggering different sprites by flipping the vehicle in depot
 
 
 -------------
