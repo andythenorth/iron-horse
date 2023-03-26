@@ -610,7 +610,7 @@ def main():
             foxhound,
             griffon,
             lynx,
-            # CABBAGE_3 pinhorse,
+            pinhorse,
             argus,
             booster,
             tornado,
