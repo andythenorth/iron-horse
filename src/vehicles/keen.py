@@ -10,7 +10,7 @@ def main(roster_id):
         role="heavy_freight",
         role_child_branch_num=1,
         power_by_power_source={
-            "STEAM": 1750,
+            "STEAM": 1800,
         },
         random_reverse=True,
         gen=3,
