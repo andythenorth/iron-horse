@@ -8,13 +8,15 @@ def main(roster_id):
         base_numeric_id=13440,
         name="Relentless",
         role="super_heavy_express",
-        role_child_branch_num=-1,
+        role_child_branch_num=3,
         power_by_power_source={
-            "DIESEL": 4250,  # slightly more than standard progression, to enable higher speed to be reach quickly
+            "DIESEL": 3800,
         },
+        # dibble for game balance, assume super-slip control
+        tractive_effort_coefficient=0.355,
         random_reverse=True,
         gen=6,
-        fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
+        fixed_run_cost_points=290,  # run cost nerf as light weight throws the cost too cheap
         # banger blue?
         additional_liveries=[],
         sprites_complete=True,
@@ -22,7 +24,7 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=DieselEngineUnit, weight=95, vehicle_length=8, spriterow_num=0
+        type=DieselEngineUnit, weight=112, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = """Solid piece of kit these."""

@@ -17,7 +17,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-double",
         gen=6,
-        fixed_run_cost_points=500,  # run cost nerf for high power + dual mode
+        fixed_run_cost_points=640,  # run cost nerf for high power + dual mode
         intro_year_offset=2,  # introduce later than gen epoch by design
         sprites_complete=True,
     )
