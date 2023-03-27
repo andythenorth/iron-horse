@@ -7,12 +7,12 @@ def main(roster_id):
         id="revolution",
         base_numeric_id=12540,
         name="Revolution",
-        role="heavy_express", # in the diesel line as it makes a simpler tech tree view in 'simplified gameplay'
-        role_child_branch_num=1,
+        role="ultra_heavy_express",
+        role_child_branch_num=-1, # in its own line as it's no neat fit to either diesel or electric progression
         power_by_power_source={
-            "DIESEL": 2950,
-            "AC": 4200,
-        },  # compared to IRL, there is more diesel power and less electric, this is to keep a ~4000 HP electric engine available
+            "DIESEL": 2250, # lol, same as Shredder eh?
+            "AC": 5000,
+        },  # compared to IRL, there is more diesel power and less electric, but eh, gameplay
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=6,
