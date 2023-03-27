@@ -8,8 +8,8 @@ def main(roster_id):
         base_numeric_id=220,
         name="Doubletide",
         role="heavy_freight",
-        role_child_branch_num=1,
-        # no replacement by design - continues to game end as unique 10/8, especially for industrial use etc
+        role_child_branch_num=2,
+        # no replacement by design - continues to game end as 10/8, especially for industrial use etc
         power_by_power_source={
             "DIESEL": 2750, # within range of Resilient
         },
