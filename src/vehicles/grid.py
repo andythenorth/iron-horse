@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=12390,
         name="Grid",
         role="super_heavy_freight",
-        role_child_branch_num=1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
+        role_child_branch_num=-1, # Grid has to be joker as replaced by Blackthorn, which is not available in simplified gameplay
         replacement_consist_id="blackthorn", # rebuild eh
         power_by_power_source={
             "DIESEL": 3300,  # drops a bit on hp/speed from previous gen, but engine weight is lower
