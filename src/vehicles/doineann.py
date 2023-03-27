@@ -12,7 +12,7 @@ def main(roster_id):
         role="heavy_freight",
         role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 2650, # sits midway between Slug and Grid, ignore existence of e.g. Resilient and Shredder which only add confusion
+            "DIESEL": 2750, # within range of Resilient
         },
         random_reverse=True,
         gen=5,
