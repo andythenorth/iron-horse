@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=12540,
         name="Revolution",
         role="ultra_heavy_express",
-        role_child_branch_num=-1, # in its own line as it's no neat fit to either diesel or electric progression
+        role_child_branch_num=2,
         power_by_power_source={
             "DIESEL": 2250, # lol, same as Shredder eh?
             "AC": 5000,

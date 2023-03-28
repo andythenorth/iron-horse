@@ -8,9 +8,9 @@ def main(roster_id):
         base_numeric_id=12190,
         name="Sizzler",
         role="ultra_heavy_express",
-        role_child_branch_num=2,
+        role_child_branch_num=3,
         power_by_power_source={
-            "AC": 6800,  # roughly brackets Flanders Storm
+            "AC": 7200,
         },
         random_reverse=True,
         gen=6,
