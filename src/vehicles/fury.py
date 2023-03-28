@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=11220,
         name="Fury",
         role="super_heavy_express",
-        role_child_branch_num=-3,
+        role_child_branch_num=-4,
         power_by_power_source={
             "AC": 3600, # supposed to be mid-powered, but maintains same hp/speed ratio of previous gen, or it will be too nerfed for 125mph
         },

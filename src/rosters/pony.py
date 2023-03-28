@@ -14,7 +14,6 @@ from vehicles import avenger
 from vehicles import bean_feast
 from vehicles import blackthorn
 from vehicles import blaze
-from vehicles import blind_smuir
 from vehicles import boar_cat
 from vehicles import bone
 from vehicles import booster
@@ -36,7 +35,6 @@ from vehicles import cheese_bug
 from vehicles import chinook
 from vehicles import chuggypig
 from vehicles import clipper
-from vehicles import cupla
 from vehicles import daring
 from vehicles import deasil
 from vehicles import decapod
@@ -82,6 +80,7 @@ from vehicles import helm_wind_middle_mail
 from vehicles import helm_wind_middle_passenger
 from vehicles import hercules
 from vehicles import high_flyer
+from vehicles import highlander
 from vehicles import hurly_burly
 from vehicles import intrepid
 from vehicles import jupiter
@@ -140,6 +139,7 @@ from vehicles import streamer
 from vehicles import strongbow
 from vehicles import sunshine_coast
 from vehicles import super_shoebox
+from vehicles import super_stentor
 from vehicles import swift
 from vehicles import tenacious
 from vehicles import tencendur
@@ -685,11 +685,9 @@ def main():
             xerxes,
             keen,
             vigilant,
-            blind_smuir,
             mainstay,
             yillen,
             maelstrom,
-            cupla,
             doineann,
             doubletide,
             blackthorn,
@@ -702,7 +700,9 @@ def main():
             bone,
             toaster,
             cheddar_valley,
+            highlander,
             stentor,
+            super_stentor,
             flindermouse,
             dryth,
             peasweep,

@@ -8,8 +8,7 @@ def main(roster_id):
         base_numeric_id=12390,
         name="Grid",
         role="super_heavy_freight",
-        role_child_branch_num=-1,
-        replacement_consist_id="blackthorn", # rebuild eh
+        role_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 3300,  # drops a bit on hp/speed from previous gen, but engine weight is lower
         },
