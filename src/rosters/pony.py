@@ -35,6 +35,7 @@ from vehicles import cheese_bug
 from vehicles import chinook
 from vehicles import chuggypig
 from vehicles import clipper
+from vehicles import cupla
 from vehicles import daring
 from vehicles import deasil
 from vehicles import decapod
@@ -152,6 +153,7 @@ from vehicles import toaster
 from vehicles import tornado
 from vehicles import tyburn
 from vehicles import ultra_shoebox
+from vehicles import vectron
 from vehicles import vigilant
 from vehicles import viking
 from vehicles import vulcan
@@ -630,6 +632,7 @@ def main():
             intrepid,
             resilient,
             rapid,
+            vectron,
             pegasus,
             streamer,
             hawkinge,
@@ -649,9 +652,9 @@ def main():
             roarer,
             fury,
             stalwart,
-            revolution,
             zebedee,
             screamer,
+            revolution,
             avenger,
             sizzler,
             # driving cab cars
@@ -698,6 +701,7 @@ def main():
             withershins,
             grid,
             bone,
+            cupla,
             toaster,
             cheddar_valley,
             highlander,
@@ -706,8 +710,8 @@ def main():
             flindermouse,
             dryth,
             peasweep,
-            tincans,
             resistance,
+            tincans,
             flanders_storm,
             quietus,
             # gronks / snowploughs

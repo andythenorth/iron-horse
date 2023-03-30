@@ -8,9 +8,9 @@ def main(roster_id):
         base_numeric_id=10780,
         name="Flanders Storm",
         role="ultra_heavy_freight",
-        role_child_branch_num=-2,
+        role_child_branch_num=2,
         power_by_power_source={
-            "AC": 6700,
+            "AC": 6200,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,

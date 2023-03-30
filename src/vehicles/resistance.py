@@ -8,9 +8,9 @@ def main(roster_id):
         base_numeric_id=8850,
         name="Resistance",
         role="ultra_heavy_freight",
-        role_child_branch_num=2,
+        role_child_branch_num=-1,
         power_by_power_source={
-            "AC": 5800,
+            "AC": 5200,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,

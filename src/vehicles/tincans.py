@@ -8,9 +8,9 @@ def main(roster_id):
         base_numeric_id=370,
         name="Tincans",
         role="ultra_heavy_freight",
-        role_child_branch_num=-1,
+        role_child_branch_num=-2,
         power_by_power_source={
-            "AC": 5200,
+            "AC": 6200, # match to Resistance
         },
         # dibble for game balance, assume some slip control
         tractive_effort_coefficient=0.34,

@@ -11,8 +11,8 @@ def main(roster_id):
         role_child_branch_num=2,
         power_by_power_source={
             "DIESEL": 2250, # lol, same as Shredder eh?
-            "AC": 5000,
-        },  # compared to IRL, there is more diesel power and less electric, but eh, gameplay
+            "AC": 5400, # higher HP than Screamer, but heavier so similar HP / ton
+        },
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=6,
@@ -30,6 +30,6 @@ def main(roster_id):
     consist.description = (
         """Bobby-dazzlers these are. How they fit it all in amazes me."""
     )
-    consist.foamer_facts = """Vossloh Euro Dual (DRS Class 88, ROG Class 93)"""
+    consist.foamer_facts = """Vossloh Euro Dual (ROG Class 93)"""
 
     return consist

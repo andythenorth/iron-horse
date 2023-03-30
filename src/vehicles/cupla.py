@@ -7,14 +7,14 @@ def main(roster_id):
         id="cupla",
         base_numeric_id=6750,
         name="Cúpla",
-        role="super_heavy_freight",
-        role_child_branch_num=-2,
+        role="super_heavy_express",
+        role_child_branch_num=-3,
         power_by_power_source={
-            "DIESEL": 3300,
+            "DIESEL": 3200,
         },
         random_reverse=True,
-        gen=5,
-        intro_year_offset=-12,  # let's be much earlier for this one
+        gen=4,
+        intro_year_offset=12,  # let's be later for this one
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_PINK", "COLOUR_WHITE"),
