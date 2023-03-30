@@ -14,6 +14,7 @@ def main(roster_id):
         },
         random_reverse=False,  # Dreadnought has asymmetric logo pixels that don't look great when running reversed
         gen=5,
+        replacement_consist_id="defiant",
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
         additional_liveries=[],
         default_livery_extra_docs_examples=[
