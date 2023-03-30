@@ -13,7 +13,7 @@ def main(roster_id):
             "DIESEL": 3300,  # drops a bit on hp/speed from previous gen, but engine weight is lower
         },
         random_reverse=True,
-        intro_year_offset=-2,  # let's be a little bit earlier for this one
+        intro_year_offset=-6,  # let's be a little bit earlier for this one
         gen=5,
         caboose_family="railfreight_1",
         # add triple grey

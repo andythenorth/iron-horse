@@ -17,7 +17,7 @@ def main(roster_id):
         random_reverse=True,
         gen=6,
         # introduce early by design
-        intro_year_offset=-12,
+        intro_year_offset=-6,
         fixed_run_cost_points=220,  # unrealism: run cost nerf for being so high-powered
         default_livery_extra_docs_examples=[
             ("COLOUR_GREEN", "COLOUR_YELLOW"),
