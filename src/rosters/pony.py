@@ -36,7 +36,6 @@ from vehicles import chinook
 from vehicles import chuggypig
 from vehicles import clipper
 from vehicles import constance
-from vehicles import cupla
 from vehicles import daring
 from vehicles import deasil
 from vehicles import decapod
@@ -101,6 +100,7 @@ from vehicles import merlion
 from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
+from vehicles import nemesis
 from vehicles import olympic
 from vehicles import onslaught
 from vehicles import peasweep
@@ -635,7 +635,7 @@ def main():
             hawkinge,
             dragon,
             vulcan,
-            cupla,
+            nemesis,
             constance,
             onslaught,
             dreadnought,
