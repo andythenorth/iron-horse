@@ -14,7 +14,7 @@ def main(roster_id):
         },
         tractive_effort_coefficient=0.27,
         gen=2,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=70, vehicle_length=5, spriterow_num=0)
@@ -24,10 +24,6 @@ def main(roster_id):
     )
 
     consist.description = """If we do each thing calmly and carefully we will get it done quicker and with much less fuss."""
-    # https://www.lner.info/locos/Q/q1q2q3.php
-    # https://www.lner.info/locos/Q/q5.php
-    # https://www.lner.info/locos/Q/q6.php
-    # https://www.lner.info/locos/Q/q10.php
-    consist.foamer_facts = """"""
+    consist.foamer_facts = """LNER Q1, Q2, Q3"""
 
     return consist
