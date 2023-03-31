@@ -8,9 +8,9 @@ def main(roster_id):
         base_numeric_id=16510,
         name="Dreadnought",
         role="super_heavy_express",
-        role_child_branch_num=-2,
+        role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 3300,
+            "DIESEL": 3450,
         },
         random_reverse=False,  # Dreadnought has asymmetric logo pixels that don't look great when running reversed
         gen=5,

@@ -10,8 +10,8 @@ def main(roster_id):
         role="heavy_express",
         role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 3300,
-        },  # compared to IRL, there is more diesel power and less electric, but eh, gameplay
+            "DIESEL": 3400,
+        },
         random_reverse=True,
         gen=6,
         intro_year_offset=-2,  # introduce earlier than gen epoch by design

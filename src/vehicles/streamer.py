@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=4840,
         name="4-6-4 Streamer",
         role="super_heavy_express",
-        role_child_branch_num=-2,  # -ve because Joker
+        role_child_branch_num=-1,  # -ve because Joker
         power_by_power_source={
             "STEAM": 2300,
         },

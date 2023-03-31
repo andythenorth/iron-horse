@@ -81,7 +81,6 @@ from vehicles import helm_wind_middle_mail
 from vehicles import helm_wind_middle_passenger
 from vehicles import hercules
 from vehicles import high_flyer
-from vehicles import highlander
 from vehicles import hurly_burly
 from vehicles import intrepid
 from vehicles import jupiter
@@ -140,7 +139,6 @@ from vehicles import streamer
 from vehicles import strongbow
 from vehicles import sunshine_coast
 from vehicles import super_shoebox
-from vehicles import super_stentor
 from vehicles import swift
 from vehicles import tenacious
 from vehicles import tencendur
@@ -632,13 +630,13 @@ def main():
             intrepid,
             resilient,
             rapid,
-            vectron,
             pegasus,
             streamer,
             hawkinge,
             dragon,
             vulcan,
-            falcon,
+            cupla,
+            vectron,
             onslaught,
             dreadnought,
             defiant,
@@ -699,14 +697,12 @@ def main():
             esk,
             chinook,
             withershins,
+            falcon,
             grid,
             bone,
-            cupla,
             toaster,
             cheddar_valley,
-            highlander,
             stentor,
-            super_stentor,
             flindermouse,
             dryth,
             peasweep,

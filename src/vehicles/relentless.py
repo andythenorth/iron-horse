@@ -8,9 +8,9 @@ def main(roster_id):
         base_numeric_id=13440,
         name="Relentless",
         role="super_heavy_express",
-        role_child_branch_num=-3,
+        role_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 4350,
+            "DIESEL": 4200,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.355,

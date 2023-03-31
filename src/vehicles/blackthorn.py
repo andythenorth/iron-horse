@@ -7,10 +7,10 @@ def main(roster_id):
         id="blackthorn",
         base_numeric_id=12510,
         name="Blackthorn",
-        role="super_heavy_freight",
-        role_child_branch_num=1,
+        role="heavy_freight",
+        role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 3750,
+            "DIESEL": 3400,
         },
         random_reverse=True,
         gen=6,
@@ -25,7 +25,7 @@ def main(roster_id):
     )
 
     consist.description = (
-        """I've fitted a bigger engine into the Grid.  Still not bad at all."""
+        """I've refitted the Grid for a longer life.  Still not bad at all."""
     )
     consist.foamer_facts = """GBRF Class 69 (re-engineered BR Class 56)"""
 

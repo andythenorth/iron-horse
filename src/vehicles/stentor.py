@@ -8,14 +8,14 @@ def main(roster_id):
         base_numeric_id=14420,
         name="Stentor",
         role="super_heavy_freight",
-        role_child_branch_num=-3,  # Joker eh
+        role_child_branch_num=-2,  # Joker eh
         power_by_power_source={
-            "DIESEL": 3800,
+            "DIESEL": 4200,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
         random_reverse=True,
-        intro_year_offset=3,  # let's be a little bit later for this one
+        intro_year_offset=-2,  # let's be a little bit earlier for this one
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         caboose_family="railfreight_2",

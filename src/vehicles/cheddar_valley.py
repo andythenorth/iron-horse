@@ -10,7 +10,7 @@ def main(roster_id):
         role="super_heavy_freight",
         role_child_branch_num=3,
         power_by_power_source={
-            "DIESEL": 3800,
+            "DIESEL": 4200,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,

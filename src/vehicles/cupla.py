@@ -8,13 +8,13 @@ def main(roster_id):
         base_numeric_id=6750,
         name="Cúpla",
         role="super_heavy_express",
-        role_child_branch_num=-3,
+        role_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 3200,
+            "DIESEL": 2900,
         },
         random_reverse=True,
         gen=4,
-        intro_year_offset=12,  # let's be later for this one
+        intro_year_offset=10,  # let's be later for this one
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_PINK", "COLOUR_WHITE"),

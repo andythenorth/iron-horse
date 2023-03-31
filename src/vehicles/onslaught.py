@@ -10,7 +10,7 @@ def main(roster_id):
         role="super_heavy_express",
         role_child_branch_num=1,
         power_by_power_source={
-            "DIESEL": 3300,
+            "DIESEL": 3450,
         },
         random_reverse=True,
         gen=5,

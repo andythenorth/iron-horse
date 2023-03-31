@@ -10,10 +10,10 @@ def main(roster_id):
         role="super_heavy_freight",
         role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 3300,  # drops a bit on hp/speed from previous gen, but engine weight is lower
+            "DIESEL": 3450,
         },
         random_reverse=True,
-        intro_year_offset=-6,  # let's be a little bit earlier for this one
+        intro_year_offset=-2,  # let's be a little bit earlier for this one
         gen=5,
         caboose_family="railfreight_1",
         # add triple grey
