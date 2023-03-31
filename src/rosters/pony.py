@@ -35,6 +35,7 @@ from vehicles import cheese_bug
 from vehicles import chinook
 from vehicles import chuggypig
 from vehicles import clipper
+from vehicles import constance
 from vehicles import cupla
 from vehicles import daring
 from vehicles import deasil
@@ -151,7 +152,6 @@ from vehicles import toaster
 from vehicles import tornado
 from vehicles import tyburn
 from vehicles import ultra_shoebox
-from vehicles import vectron
 from vehicles import vigilant
 from vehicles import viking
 from vehicles import vulcan
@@ -636,7 +636,7 @@ def main():
             dragon,
             vulcan,
             cupla,
-            vectron,
+            constance,
             onslaught,
             dreadnought,
             defiant,

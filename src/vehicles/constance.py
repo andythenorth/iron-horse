@@ -4,9 +4,9 @@ from train import EngineConsist, DieselEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="vectron",
+        id="constance",
         base_numeric_id=8220,
-        name="Vectron",
+        name="Constance",
         role="heavy_express",
         role_child_branch_num=-1,
         power_by_power_source={
@@ -25,8 +25,8 @@ def main(roster_id):
     )
 
     consist.description = (
-        """"""
+        """Runs like a Swiss watch."""
     )
-    consist.foamer_facts = """"""
+    consist.foamer_facts = """Siemens Vectron (diesel version)"""
 
     return consist
