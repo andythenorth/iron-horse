@@ -1,4 +1,4 @@
-from train import EngineConsist, DieselEngineUnit
+from train import EngineConsist, ElectroDieselEngineUnit
 
 
 def main(roster_id):
@@ -10,7 +10,8 @@ def main(roster_id):
         role="heavy_express",
         role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 3450,
+            "DIESEL": 3600,
+            "AC": 3600, # yes it's the same on both, just the effect changes; this is a cheat to get an extra option at 3.5k for both dieeel and electric
         },
         random_reverse=True,
         gen=6,
@@ -21,12 +22,12 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=DieselEngineUnit, weight=95, vehicle_length=8, spriterow_num=0
+        type=ElectroDieselEngineUnit, weight=95, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = (
         """Runs like a Swiss watch."""
     )
-    consist.foamer_facts = """Siemens Vectron (diesel version)"""
+    consist.foamer_facts = """Siemens Vectron Dual Mode"""
 
     return consist
