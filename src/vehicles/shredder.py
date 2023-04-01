@@ -17,6 +17,7 @@ def main(roster_id):
         gen=5,
         speed=125,  # Shredder not replaced, but has gen 6 speeds
         intro_year_offset=7,  # introduce later than gen epoch by design
+        #additional_liveries=["DBSCHENKER"],
         sprites_complete=True,
     )
 
