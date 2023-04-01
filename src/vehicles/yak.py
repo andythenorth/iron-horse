@@ -18,7 +18,7 @@ def main(roster_id):
         gen=3,
         intro_year_offset=0,
         additional_liveries=["FREIGHT_BLACK"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=70, vehicle_length=6, spriterow_num=0)
