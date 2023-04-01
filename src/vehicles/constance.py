@@ -17,7 +17,7 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         gen=6,
         intro_year_offset=-2,  # introduce earlier than gen epoch by design
-        additional_liveries=[],
+        additional_liveries=["SWOOSH_LESS", "SWOOSH", "FREIGHTLINER_GBRF"],
         sprites_complete=False,
         sprites_additional_liveries_needed=True, # banger blue?
     )
