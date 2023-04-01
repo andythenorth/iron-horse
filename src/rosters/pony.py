@@ -275,6 +275,15 @@ def main():
                     ("COLOUR_CREAM", "COLOUR_MAUVE"),
                 ],
             },
+            "FREIGHTLINER_2": {
+                # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
+                "remap_to_cc": "COLOUR_YELLOW",
+                "docs_image_input_cc": [
+                    ("COLOUR_YELLOW", "COLOUR_PALE_GREEN"),
+                    ("COLOUR_ORANGE", "COLOUR_DARK_GREEN"),
+                    ("COLOUR_ORANGE", "COLOUR_GREEN"),
+                ],
+            },
             "RAILFREIGHT_RED_STRIPE": {
                 "remap_to_cc": "COLOUR_GREY",
                 "forced_intro_year": 1975,
