@@ -14,6 +14,7 @@ def main(roster_id):
             "AC": 3600, # yes it's the same on both, just the effect changes; this is a cheat to get an extra option at 3.5k for both dieeel and electric
         },
         random_reverse=True,
+        pantograph_type="z-shaped-single",
         gen=6,
         intro_year_offset=-2,  # introduce earlier than gen epoch by design
         additional_liveries=[],
