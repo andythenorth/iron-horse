@@ -14,8 +14,8 @@ def main(roster_id):
         },
         tractive_effort_coefficient=0.18,
         gen=3,
-        fixed_run_cost_points=140,  # give a bonus so this can be a genuine mixed-traffic engine
-        additional_liveries=[],
+        fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine
+        additional_liveries=["SWOOSH", "FREIGHT_BLACK"],
         sprites_complete=True,
         sprites_additional_liveries_needed=True, # banger blue?
     )
