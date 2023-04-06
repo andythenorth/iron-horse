@@ -42,19 +42,10 @@ def get_tag_exact_match():
     return exe_cmd(["git", "describe", "--tags", "--exact-match"])[0]
 
 
-def monorepo():
-    # for case of foo/x.y.z
-    # !! does this need to do anything with the first part of the tag
-    tag = get_tag_exact_match()
-    if tag != "undefined":
-        return tag.split("/")[1]
-    else:
-        return "undefined"
-
 def run():
     # for the default case we just print the results, this is used by e.g. Makefiles
     # for python cases, use the get_foo methods directly
-    print(get_revision(), get_version(), get_tag_exact_match(), monorepo())
+    print(get_revision(), get_version(), get_tag_exact_match())
 
 
 if __name__ == "__main__":

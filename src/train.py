@@ -3458,7 +3458,7 @@ class IngotCarConsist(CarConsist):
         self.base_id = "ingot_car"
         super().__init__(**kwargs)
         self.class_refit_groups = []  # none needed
-        self.label_refits_allowed = ["IRON", "CSTI", "STCB", "STST", "STAL"]
+        self.label_refits_allowed = ["STIG", "IRON", "CSTI", "STCB", "STST", "STAL"]
         self.label_refits_disallowed = []  # none needed
         self.default_cargos = ["IRON"]
         self._loading_speed_multiplier = 1.5
