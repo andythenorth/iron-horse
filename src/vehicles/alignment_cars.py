@@ -8,7 +8,7 @@ def main():
         base_numeric_id=9060,
         gen=1,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -20,7 +20,7 @@ def main():
         base_numeric_id=9070,
         gen=1,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -32,7 +32,7 @@ def main():
         base_numeric_id=9080,
         gen=1,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
