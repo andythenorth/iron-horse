@@ -235,7 +235,7 @@ def main():
         },
         # capacity factor per generation, will be multiplied by vehicle length
         freight_car_capacity_per_unit_length={
-            "RAIL": [4, 4, 5, 5.5, 6.25, 6.25],
+            "RAIL": [4, 4, 5, 5.5, 6, 6],
             "NG": [3, 3, 4, 4],
         },
         pax_car_capacity_per_unit_length={
