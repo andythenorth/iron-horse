@@ -89,6 +89,7 @@ from vehicles import kelpie
 from vehicles import lamia
 from vehicles import lark
 from vehicles import lemon
+from vehicles import lion
 from vehicles import little_bear
 from vehicles import longwater
 from vehicles import lynx
@@ -100,7 +101,6 @@ from vehicles import merlion
 from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
-from vehicles import nemesis
 from vehicles import olympic
 from vehicles import onslaught
 from vehicles import peasweep
@@ -706,7 +706,7 @@ def main():
             esk,
             chinook,
             withershins,
-            nemesis,
+            lion,
             grid,
             bone,
             toaster,
