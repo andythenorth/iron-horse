@@ -17,11 +17,12 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         intro_year_offset=-4,  # let's be a little earlier for this one
+        additional_liveries=["BANGER_BLUE", "SWOOSH_LESS", "SWOOSH"],
         default_livery_extra_docs_examples=[
-            ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
+            ("COLOUR_ORANGE", "COLOUR_WHITE"),
             ("COLOUR_PINK", "COLOUR_WHITE"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
