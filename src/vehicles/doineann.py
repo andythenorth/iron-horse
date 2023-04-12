@@ -26,7 +26,7 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=DieselEngineUnit, weight=105, vehicle_length=8,
+        type=DieselEngineUnit, weight=110, vehicle_length=8,
     )
 
     consist.description = """Let there be some more test made of my metal."""

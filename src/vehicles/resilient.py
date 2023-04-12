@@ -27,7 +27,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=DieselEngineUnit,
-        weight=112,
+        weight=103,
         vehicle_length=8,
         effect_offsets=[(2, 0)],
         spriterow_num=0,

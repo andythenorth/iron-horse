@@ -26,7 +26,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=DieselEngineUnit,
-        weight=115,  # bonus over Wyvern
+        weight=100,  # bonus over Wyvern, less than IRL as HP is nerfed
         vehicle_length=8,
         spriterow_num=0,
     )
