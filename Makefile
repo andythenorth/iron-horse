@@ -24,6 +24,7 @@ ifeq ($(strip $(EXPORTED)),no)
   # Not exported source, therefore regular checkout
   REPO_INFO = $(shell $(GIT_INFO))
   REPO_REVISION = $(word 1,$(REPO_INFO))
+  # we pick the 5th item from git info for Horse, as Horse uses a monorepo strategy and tags/versions need special handling
   REPO_TAG_OR_VERSION = $(word 5,$(REPO_INFO))
 else
   # Exported version, lines below should get modified in 'bundle_src' target
