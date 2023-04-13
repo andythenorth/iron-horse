@@ -24,6 +24,6 @@ def main(roster_id):
     )
 
     consist.description = """If we do each thing calmly and carefully we will get it done quicker and with much less fuss."""
-    consist.foamer_facts = """LNER Q1, Q2, Q3"""
+    consist.foamer_facts = """LNER Q2 Class"""
 
     return consist
