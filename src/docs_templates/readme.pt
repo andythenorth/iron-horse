@@ -1,5 +1,5 @@
 ==================================
-${roster.str_grf_name} ${git_info.get_version()}
+${roster.str_grf_name} ${git_info.get_monorepo_tag_parts()[1]}
 ==================================
 Trains, for OpenTTD
 

@@ -52,7 +52,7 @@ def get_docs_url():
     # not convinced it's big enough to bother centralising TBH, too much close coupling has costs
     result = [global_constants.metadata["docs_url"]]
     if git_info.get_tag_exact_match() != "undefined":
-        result.append(git_info.get_tag_exact_match())
+        result.append(git_info.get_monorepo_tag_parts()[1])
     result.append("index.html")
     return "/".join(result)
 
