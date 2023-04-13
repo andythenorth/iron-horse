@@ -3,7 +3,7 @@ Changelog
 
 
 ------------
-3.0 Preview 1
+3.0 Preview 2
 ------------
 
 "A horse is worth more than riches" — Spanish proverb
@@ -39,28 +39,43 @@ Time for Iron Horse 3.  It's the one right after Iron Horse 2.
 - many new liveries added for engines, passenger vehicles and mail vehicles
 - powered vehicles with dedicated trailer cars are grouped together in the buy menu
     - for example, Blaze HST coaches and mail vans will be grouped as variants with the Blaze HST power cars
-- freight wagons *do not* have livery variants for Iron Horse 3.0.0, but freight wagon livery variants will be added in future
+- freight wagons *do not* have livery variants for Iron Horse 3.0.0, but freight wagon livery variants may be added in future
 - rebalanced tech tree
-    - adjusted progression of some lines, especially electric engines
+    - now exactly 150 engines
+        - (161 including snowploughs, cab cars, auto-trailers and similar)
+    - adjusted progression of some lines, especially electric engines and high-horsepower diesels
     - added engines
-        - Dynamo, 1800 hp, available around 1935
-        - General Endeavour, 1300 hp, available around 1990
-        - Centaur, 2000 hp, available around 1990
-        - Maelstrom, 2200 hp, available around 1958
-        - Dryth, 2900 hp, available around 1938
-        - Tincans, 5200 hp, available around 1977
-        - Resistance, 5800 hp, available around 1986
-        - a further 8 engines are planned for the 3.0.0 release, but are not in 3.0 Preview 1 as they are unfinished
+        - Eastern, steam freight engine, 1250 hp, available around 1900
+        - Keen, steam freight engine, 1800 hp, available around 1917
+        - Yak, steam freight engine, 1000 hp, available around 1930
+        - Dynamo, electric general purpose engine, 1800 hp, available around 1935
+        - Dryth, electric freight engine, 2900 hp, available around 1938
+        - Maelstrom, diesel freight engine, 2200 hp, available around 1958
+        - Trojan, diesel freight engine, 1700 hp, available around 1966
+        - Lion, diesel freight engine, 2950 hp, available around 1970
+        - Tincans, electric freight engine, 5200 hp, available around 1977
+        - Doineann, diesel freight engine, 2750 hp, available around 1986
+        - Resistance, electric freight engine, 5800 hp, available around 1986
+        - Centaur, diesel freight engine, 2000 hp, available around 1990
+        - General Endeavour, diesel freight engine, 1300 hp, available around 1990
+        - Constance, electro-diesel general purpose engine, 3600 hp / 3600 hp, available around 2018
     - removed some engines that repeated a previous model, 'upgraded' by a new livery and minor stats bump
+        - Blind Smuir
         - Evolution
         - Hector
         - Highlander
         - Nimbus
         - Phoenix
         - Super Stentor
-    - removed Vanguard, will be replaced later by a new engine
+        - Triton
+    - removed Vanguard, replaced by Rapid
+    - Defiant is now a general purpose engine, with 4150 hp
+- changed appearance of Pinhorse
 - some engines now randomly show miniature snowploughs when built
     - includes Kelpie, Griffon, Growler, Slug and Onslaught
+- reduced capacity of generation 5 (1990s) freight wagons
+    - no longer such a large jump up from generation 4, and now linear with all other generation increases
+    - this removes the effect where upgraded trains had less hp per tonne than previous generation, due to freight wagon capacity spiking up sharply
 
 
 *Docs*
