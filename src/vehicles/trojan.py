@@ -4,9 +4,9 @@ from train import EngineConsist, DieselEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="anchor",
+        id="trojan",
         base_numeric_id=12010,
-        name="Anchor",
+        name="Trojan",
         role="freight",
         role_child_branch_num=-1,
         power_by_power_source={
@@ -17,9 +17,9 @@ def main(roster_id):
         intro_year_offset=6,  # introduce later than gen epoch by design
         additional_liveries=[],
         default_livery_extra_docs_examples=[
-            ("COLOUR_YELLOW", "COLOUR_GREY"),
+            ("COLOUR_YELLOW", "COLOUR_WHITE"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -27,6 +27,6 @@ def main(roster_id):
     )
 
     consist.description = """Steel yourself, this one's on the move."""
-    consist.foamer_facts = """Hunslet bo-bo locomotives for BSC Scunthorpe works"""
+    consist.foamer_facts = """GEC Stephenson steel mill locomotives, Alco RSD-1 export switcher"""
 
     return consist

@@ -19,6 +19,9 @@ def main(roster_id):
         intro_year_offset=-6,
         # additional_liveries='RAILFREIGHT_RED_STRIPE', # not now, needs sprites
         additional_liveries=[],
+        default_livery_extra_docs_examples=[
+            ("COLOUR_YELLOW", "COLOUR_WHITE"),
+        ],
         sprites_complete=True,
         sprites_additional_liveries_needed=True, # railfreight?
     )

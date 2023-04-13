@@ -2,7 +2,6 @@ import global_constants
 
 from roster import Roster
 
-from vehicles import anchor
 from vehicles import ares
 from vehicles import athena
 
@@ -150,6 +149,7 @@ from vehicles import tin_rocket
 from vehicles import tincans
 from vehicles import toaster
 from vehicles import tornado
+from vehicles import trojan
 from vehicles import tyburn
 from vehicles import ultra_shoebox
 from vehicles import vigilant
@@ -686,7 +686,7 @@ def main():
             eastern,
             diablo,
             haar,
-            anchor,
+            trojan,
             growler,
             merlion,
             viking,
