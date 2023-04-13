@@ -27,6 +27,6 @@ def main(roster_id):
     )
 
     consist.description = """Good horses make short miles."""
-    consist.foamer_facts = """BRCW / BR D0260 Falcon prototype."""
+    consist.foamer_facts = """BRCW / BR D0260 Falcon prototype"""
 
     return consist
