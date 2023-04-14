@@ -306,6 +306,14 @@ def main():
                     ("COLOUR_WHITE", "COLOUR_GREEN"),
                 ],
             },
+            "RAILFREIGHT_TRIPLE_GREY_COAL": {
+                # note the remap to white, to provide lightest of the triple greys as cc1
+                "remap_to_cc": "COLOUR_WHITE",
+                "forced_intro_year": 1986,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "YEOMAN": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -428,6 +436,14 @@ def main():
                 "docs_image_input_cc": [
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "LOADHAUL": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_ORANGE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
                 ],
             },
             "RES": {

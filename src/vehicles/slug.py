@@ -15,7 +15,7 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         # red stripe? Teeside steelmaster?
-        additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "DBSCHENKER", "LARGE_LOGO"],
+        additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "DBSCHENKER", "LARGE_LOGO", "LOADHAUL", "SWOOSH_LESS"],
         default_livery_extra_docs_examples=[
             ("COLOUR_GREY", "COLOUR_YELLOW"),
             ("COLOUR_WHITE", "COLOUR_GREY"),
@@ -25,10 +25,9 @@ def main(roster_id):
             ("COLOUR_YELLOW", "COLOUR_YELLOW"),
         ],
         caboose_family="railfreight_2",
-        decor_spriterow_num=4,
+        decor_spriterow_num=7,
         show_decor_in_purchase_for_variants=[2, 3],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue? red stripe? Teeside steelmaster?
     )
 
     consist.add_unit(
