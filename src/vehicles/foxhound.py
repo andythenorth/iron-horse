@@ -16,10 +16,8 @@ def main(roster_id):
         fixed_run_cost_points=140,  # substantial cost bonus as a mixed traffic engine
         intro_year_offset=-2,  # let's not have everything turn up in 1960
         gen=4,
-        # additional_liveries=["RAILFREIGHT_RED_STRIPE"],
-        additional_liveries=[],
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue?
     )
 
     consist.add_unit(
