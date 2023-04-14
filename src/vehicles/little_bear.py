@@ -23,7 +23,6 @@ def main(roster_id):
             ("COLOUR_YELLOW", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # railfreight?
     )
 
     consist.add_unit(
