@@ -17,10 +17,8 @@ def main(roster_id):
         random_reverse=True,
         gen=6,
         fixed_run_cost_points=290,  # run cost nerf as light weight throws the cost too cheap
-        # banger blue?
-        additional_liveries=[],
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue?  something swooshy?
     )
 
     consist.add_unit(
