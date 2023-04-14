@@ -20,9 +20,7 @@ def main(roster_id):
             ("COLOUR_PINK", "COLOUR_WHITE"),
         ],
         caboose_family="gwr_1",
-        additional_liveries=[],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # full-yellow ends?  Fictitious intercity or railfreight?
     )
 
     consist.add_unit(
