@@ -19,10 +19,8 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         vehicle_life=60,  # extended vehicle life for all gronks eh
-        # banger blue?  some kind of industrial 'extra 'yellow'?
-        additional_liveries=[],
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue?
     )
 
     consist.add_unit(
