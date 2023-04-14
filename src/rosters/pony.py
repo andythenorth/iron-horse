@@ -290,8 +290,6 @@ def main():
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_RED"),
                     ("COLOUR_YELLOW", "COLOUR_PINK"),
-                    ("COLOUR_GREY", "COLOUR_PURPLE"),
-                    ("COLOUR_WHITE", "COLOUR_GREEN"),
                 ],
             },
             "RAILFREIGHT_TRIPLE_GREY": {
