@@ -20,10 +20,8 @@ def main(roster_id):
         gen=6,
         intro_year_offset=-6,  # introduce earlier than gen epoch by design
         vehicle_life=60,  # extended vehicle life for all gronks eh
-        # banger blue?  some kind of industrial 'extra 'yellow'?
-        additional_liveries=[],
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue, yellow?
     )
 
     consist.add_unit(
