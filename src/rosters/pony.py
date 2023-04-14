@@ -302,8 +302,7 @@ def main():
                     ("COLOUR_GREY", "COLOUR_RED"),
                     ("COLOUR_YELLOW", "COLOUR_BLUE"),
                     ("COLOUR_BROWN", "COLOUR_DARK_BLUE"),
-                    ("COLOUR_GREY", "COLOUR_PURPLE"),
-                    ("COLOUR_WHITE", "COLOUR_GREEN"),
+                    ("COLOUR_GREY", "COLOUR_PINK"),
                 ],
             },
             "RAILFREIGHT_TRIPLE_GREY_COAL": {
