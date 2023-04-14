@@ -89,7 +89,9 @@ class Consist(object):
         # some engines have an optional decor layer, which is a manual spriterow num (as decor might not be widely used?)
         self.decor_spriterow_num = kwargs.get("decor_spriterow_num", None)
         # stupid extra-detail, control which variants show decor in purchase menu
-        self.show_decor_in_purchase_for_variants = kwargs.get("show_decor_in_purchase_for_variants", [])
+        self.show_decor_in_purchase_for_variants = kwargs.get(
+            "show_decor_in_purchase_for_variants", []
+        )
         self.dual_headed = kwargs.get("dual_headed", False)
         self.tilt_bonus = False  # over-ride in subclass as needed
         self.lgv_capable = False  # over-ride in subclass as needed
@@ -157,7 +159,9 @@ class Consist(object):
         self.docs_image_spriterow = kwargs.get("docs_image_spriterow", None)
         # aids 'project management'
         self.sprites_complete = kwargs.get("sprites_complete", False)
-        self.sprites_additional_liveries_needed = kwargs.get("sprites_additional_liveries_needed", False)
+        self.sprites_additional_liveries_needed = kwargs.get(
+            "sprites_additional_liveries_needed", False
+        )
 
     def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed
@@ -795,15 +799,26 @@ class Consist(object):
         result = []
         counter = 0
         # always append the base engine layer
-        result.append((counter, 'base'))
+        result.append((counter, "base"))
         # add a layer for decor as needed, note this is not done in the gestalt as it's more convenient to treat separarely
         if self.decor_spriterow_num is not None:
+            # guard against the decor spriterow not being updated when liveries are added
+            if self.decor_spriterow_num <= len(self.gestalt_graphics.liveries) - 1:
+                raise BaseException(
+                    self.id
+                    + " has decor_spriterow_num "
+                    + str(self.decor_spriterow_num)
+                    + " and also "
+                    + str(len(self.gestalt_graphics.liveries) - 1)
+                    + " additional liveries defined. This will cause vehicle sprites to be incorrectly shown as decor."
+                )
+            # if guard passes...
             counter = counter + 1
-            result.append((counter, 'decor'))
+            result.append((counter, "decor"))
         # add a layer for pantographs as needed, note this is not done in the gestalt as it's more convenient to treat separarely
         if self.pantograph_type is not None:
             counter = counter + 1
-            result.append((counter, 'pantographs'))
+            result.append((counter, "pantographs"))
         return result
 
     @property
