@@ -19,14 +19,13 @@ def main(roster_id):
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_BLUE", "COLOUR_GREY"),
         ],
-        # banger blue
-        additional_liveries=[],
+        additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
+        decor_spriterow_num=3,
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue?
     )
 
     consist.add_unit(
-        type=DieselEngineUnit, weight=82, vehicle_length=6, spriterow_num=0, repeat=2
+        type=DieselEngineUnit, weight=82, vehicle_length=6, repeat=2
     )
 
     consist.description = """It's a rat pack. What more do you want?"""
