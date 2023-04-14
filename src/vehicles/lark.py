@@ -16,9 +16,8 @@ def main(roster_id):
         fixed_run_cost_points=100,  # substantial cost bonus so it can make money
         random_reverse=True,
         gen=1,
-        additional_liveries=[],
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue?
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=35, vehicle_length=6, spriterow_num=0)
