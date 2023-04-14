@@ -17,7 +17,7 @@ def main(roster_id):
         default_livery_extra_docs_examples=[("COLOUR_MAUVE", "COLOUR_CREAM")],
         additional_liveries=[],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # ??
+        sprites_additional_liveries_needed=True, # Floyd black, shenker?
     )
 
     consist.add_unit(

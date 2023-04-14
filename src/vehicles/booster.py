@@ -16,7 +16,6 @@ def main(roster_id):
         intro_year_offset=9,  # introduce later than gen epoch by design
         additional_liveries=[],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # electric lower stripe?
     )
 
     consist.add_unit(

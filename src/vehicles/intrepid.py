@@ -21,7 +21,7 @@ def main(roster_id):
         # add triple grey railfreight
         additional_liveries=["LARGE_LOGO", "RAILFREIGHT_RED_STRIPE"],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue, triple grey railfreight?
+        sprites_additional_liveries_needed=True, # triple grey railfreight?
     )
 
     consist.add_unit(

@@ -21,7 +21,7 @@ def main(roster_id):
         additional_liveries=["WHITE_STRIPE", "RAILFREIGHT_RED_STRIPE", "DUTCH"],
         decor_spriterow_num=4,
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # freight grey?
+        sprites_additional_liveries_needed=True, # black 'cerebrus' / fragonset also
     )
 
     consist.add_unit(

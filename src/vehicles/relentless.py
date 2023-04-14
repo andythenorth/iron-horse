@@ -20,7 +20,7 @@ def main(roster_id):
         # banger blue?
         additional_liveries=[],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue?
+        sprites_additional_liveries_needed=True, # banger blue?  something swooshy?
     )
 
     consist.add_unit(

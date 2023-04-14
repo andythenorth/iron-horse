@@ -19,9 +19,9 @@ def main(roster_id):
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         caboose_family="railfreight_2",
+        # more liveries ought to be possible, but I couldn't make them work so eh.  EWS?
         additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "SWOOSH"],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True,
     )
 
     consist.add_unit(

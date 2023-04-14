@@ -18,7 +18,7 @@ def main(roster_id):
         gen=1,
         additional_liveries=[],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue?
+        sprites_additional_liveries_needed=True, # banger blue? freight red / grey?
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=56, vehicle_length=5, spriterow_num=0)

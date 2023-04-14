@@ -18,7 +18,7 @@ def main(roster_id):
         gen=4,
         additional_liveries=[],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue?
+        sprites_additional_liveries_needed=True, # banger blue?  industrial yellow?
     )
 
     consist.add_unit(
