@@ -14,10 +14,8 @@ def main(roster_id):
         },
         intro_year_offset=-10,  # let's be a little bit earlier for this one - keep coaches matched
         gen=5,
-        # GNER
-        additional_liveries=["BLUE_GREY"],
+        additional_liveries=["BLUE_GREY", "GNER"],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # GNER?
     )
 
     consist.add_unit(
