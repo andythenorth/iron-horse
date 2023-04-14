@@ -320,6 +320,12 @@ def main():
                     ("COLOUR_ORANGE", "COLOUR_WHITE"),
                 ],
             },
+            "EWS": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_PINK", "COLOUR_YELLOW"),
+                ],
+            },
             "FREIGHT_BLACK": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
