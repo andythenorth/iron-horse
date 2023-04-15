@@ -200,9 +200,9 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase, vehic
 -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id) {
     <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-        <tal:forced_remap switch="unit_variant.buyable_variant.remap_to_cc_cabbage is not None">
+        <tal:forced_remap switch="unit_variant.buyable_variant.livery.get('remap_to_cc', None) is not None">
             <tal:remap case="True">
-                ${unit_variant.numeric_id}: return base_sprite_2cc + 16 * ${unit_variant.buyable_variant.remap_to_cc_cabbage[1]} + ${unit_variant.buyable_variant.remap_to_cc_cabbage[0]};
+                ${unit_variant.numeric_id}: return base_sprite_2cc + 16 * ${unit_variant.buyable_variant.livery.remap_to_cc['company_colour2']} + ${unit_variant.buyable_variant.livery.remap_to_cc['company_colour1']};
             </tal:remap>
             <tal:no_remap case="False">
                 ${unit_variant.numeric_id}:return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->

@@ -539,9 +539,9 @@ def main():
             },
             {
                 "relative_spriterow_num": 4,
-                "remap_to_cc_cabbage": ["COLOUR_RED", "COLOUR_YELLOW"],
+                "remap_to_cc": {"company_colour1": "COLOUR_RED", "company_colour2": "company_colour2"},
                 "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_RED"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },

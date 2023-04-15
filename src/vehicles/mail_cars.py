@@ -10,7 +10,6 @@ def main():
         subtype="U",
         base_track_type_name="NG",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_ng_16px")
@@ -24,7 +23,6 @@ def main():
         subtype="U",
         base_track_type_name="NG",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_ng_16px")
@@ -36,7 +34,6 @@ def main():
         subtype="U",
         base_track_type_name="NG",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_ng_16px")
@@ -49,7 +46,6 @@ def main():
         gen=1,
         subtype="A",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="3_axle_solid_express_16px")
@@ -60,7 +56,6 @@ def main():
         gen=1,
         subtype="B",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
@@ -71,7 +66,6 @@ def main():
         gen=2,
         subtype="A",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="3_axle_solid_express_16px")
@@ -82,7 +76,6 @@ def main():
         gen=2,
         subtype="B",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
@@ -93,7 +86,6 @@ def main():
         gen=3,
         subtype="A",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="3_axle_solid_express_16px")
@@ -104,7 +96,6 @@ def main():
         gen=3,
         subtype="B",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
@@ -115,7 +106,6 @@ def main():
         gen=3,
         subtype="C",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
@@ -126,7 +116,6 @@ def main():
         gen=4,
         subtype="A",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="2_axle_solid_express_16px")
@@ -137,7 +126,6 @@ def main():
         gen=4,
         subtype="B",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
@@ -148,7 +136,6 @@ def main():
         gen=4,
         subtype="C",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
@@ -159,7 +146,6 @@ def main():
         gen=5,
         subtype="A",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="2_axle_solid_express_16px")
@@ -170,7 +156,6 @@ def main():
         gen=5,
         subtype="B",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
@@ -181,7 +166,6 @@ def main():
         gen=5,
         subtype="C",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
@@ -194,7 +178,6 @@ def main():
         gen=6,
         subtype="A",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="2_axle_solid_express_16px")
@@ -205,7 +188,6 @@ def main():
         gen=6,
         subtype="B",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
@@ -216,7 +198,6 @@ def main():
         gen=6,
         subtype="C",
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # royal mail?
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
