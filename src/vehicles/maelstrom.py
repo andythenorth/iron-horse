@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9440,
         name="Maelstrom",
         role="heavy_freight",
-        role_child_branch_num=-1,
+        role_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 2200,  # keep in line with equivalent gen general purpose engines
         },
