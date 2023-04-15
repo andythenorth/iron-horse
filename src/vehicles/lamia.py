@@ -21,6 +21,7 @@ def main(roster_id):
         gen=1,
         intro_year_offset=2,  # introduce later than gen epoch by design
         vehicle_life=60,  # extended vehicle life for all gronks eh
+        additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

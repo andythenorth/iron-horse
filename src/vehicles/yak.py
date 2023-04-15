@@ -17,7 +17,7 @@ def main(roster_id):
         random_reverse=True,
         gen=3,
         intro_year_offset=0,
-        additional_liveries=["FREIGHT_BLACK"],
+        additional_liveries=["FREIGHT_BLACK", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

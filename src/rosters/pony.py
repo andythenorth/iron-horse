@@ -455,6 +455,12 @@ def main():
                     ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
                 ],
             },
+            "INDUSTRIAL_BROWN": {
+                "remap_to_cc": {"company_colour1": "COLOUR_BROWN", "company_colour2": "company_colour2"},
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "INDUSTRIAL_YELLOW": {
                 "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour2"},
                 "docs_image_input_cc": [

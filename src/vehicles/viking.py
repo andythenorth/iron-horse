@@ -15,9 +15,8 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         intro_year_offset=6,  # introduce later than gen epoch by design
-        additional_liveries=[],
+        additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue, industrial?
     )
 
     consist.add_unit(

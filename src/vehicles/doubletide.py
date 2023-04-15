@@ -16,6 +16,7 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         intro_year_offset=9,  # let's be quite a bit later for this one, Yillen is long-lived
+        additional_liveries=["INDUSTRIAL_YELLOW"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_PINK", "COLOUR_WHITE"),

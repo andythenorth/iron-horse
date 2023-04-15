@@ -16,7 +16,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.375,
         random_reverse=True,
         gen=5,
-        additional_liveries=["2CC", "SWOOSH"],
+        additional_liveries=["2CC", "SWOOSH", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

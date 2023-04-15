@@ -17,10 +17,8 @@ def main(roster_id):
         random_reverse=True,
         gen=3,
         intro_year_offset=-8,  # introduce earlier than gen epoch by design
-        additional_liveries=[],
-        #additional_liveries=["FREIGHT_BLACK"],
+        additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # nightshade / nighthawk?
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=65, vehicle_length=6, spriterow_num=0)

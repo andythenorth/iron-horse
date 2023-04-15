@@ -19,6 +19,7 @@ def main(roster_id):
         random_reverse=True,
         gen=1,
         vehicle_life=60,  # extended vehicle life for all gronks eh
+        additional_liveries=["INDUSTRIAL_BROWN"],
         sprites_complete=True,
     )
 

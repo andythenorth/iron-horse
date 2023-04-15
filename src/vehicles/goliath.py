@@ -18,7 +18,7 @@ def main(roster_id):
         gen=5,
         intro_year_offset=2,  # introduce later than gen epoch by design
         caboose_family="railfreight_2",
-        additional_liveries=[],
+        additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

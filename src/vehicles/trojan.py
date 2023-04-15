@@ -15,10 +15,7 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         intro_year_offset=6,  # introduce later than gen epoch by design
-        additional_liveries=[],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_YELLOW", "COLOUR_WHITE"),
-        ],
+        additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 
