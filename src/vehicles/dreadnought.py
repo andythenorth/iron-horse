@@ -16,13 +16,12 @@ def main(roster_id):
         gen=5,
         replacement_consist_id="defiant",
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
-        additional_liveries=[],
+        additional_liveries=["BANGER_BLUE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PURPLE", "COLOUR_WHITE"),
             ("COLOUR_GREEN", "COLOUR_ORANGE"),
         ],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # something modern?
     )
 
     consist.add_unit(
