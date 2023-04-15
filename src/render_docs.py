@@ -230,11 +230,19 @@ class DocHelper(object):
                 result['livery_name'] = livery_name
                 # handle possible remap of CC1
                 if livery.get("remap_to_cc", None) is not None:
-                    CC1_remap = livery["remap_to_cc"]
+                    CC1_remap = livery["remap_to_cc"]["company_colour1"]
+                    CC2_remap = livery["remap_to_cc"]["company_colour2"]
+                    if CC1_remap == 'company_colour1':
+                        CC1_remap = cc_remap_pair[0]
+                    if CC1_remap == 'company_colour2':
+                        CC1_remap = cc_remap_pair[1]
+                    if CC2_remap == 'company_colour1':
+                        CC2_remap = cc_remap_pair[0]
+                    if CC2_remap == 'company_colour2':
+                        CC2_remap = cc_remap_pair[1]
                 else:
                     CC1_remap = cc_remap_pair[0]
-                # no forced remap to another cc for second colour, take it as is
-                CC2_remap = cc_remap_pair[1]
+                    CC2_remap = cc_remap_pair[1]
                 result["cc_remaps"] = {"CC1": CC1_remap, "CC2": CC2_remap}
                 result["docs_image_input_cc"] = cc_remap_pair
                 result["buyable_variant"] = buyable_variant

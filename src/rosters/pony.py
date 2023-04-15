@@ -267,7 +267,7 @@ def main():
         livery_presets={
             "FREIGHTLINER_GBRF": {
                 # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
-                "remap_to_cc": "COLOUR_YELLOW",
+                "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour1"},
                 "docs_image_input_cc": [
                     ("COLOUR_YELLOW", "COLOUR_PALE_GREEN"),
                     ("COLOUR_ORANGE", "COLOUR_DARK_GREEN"),
@@ -277,7 +277,7 @@ def main():
             },
             "FREIGHTLINER_2": {
                 # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
-                "remap_to_cc": "COLOUR_YELLOW",
+                "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour1"},
                 "docs_image_input_cc": [
                     ("COLOUR_YELLOW", "COLOUR_PALE_GREEN"),
                     ("COLOUR_ORANGE", "COLOUR_DARK_GREEN"),
@@ -285,7 +285,7 @@ def main():
                 ],
             },
             "RAILFREIGHT_RED_STRIPE": {
-                "remap_to_cc": "COLOUR_GREY",
+                "remap_to_cc": {"company_colour1": "COLOUR_GREY", "company_colour2": "company_colour1"},
                 "forced_intro_year": 1975,
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_RED"),
@@ -294,7 +294,7 @@ def main():
             },
             "RAILFREIGHT_TRIPLE_GREY": {
                 # note the remap to white, to provide lightest of the triple greys as cc1
-                "remap_to_cc": "COLOUR_WHITE",
+                "remap_to_cc": {"company_colour1": "COLOUR_WHITE", "company_colour2": "company_colour1"},
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_RED"),
@@ -305,7 +305,7 @@ def main():
             },
             "RAILFREIGHT_TRIPLE_GREY_COAL": {
                 # note the remap to white, to provide lightest of the triple greys as cc1
-                "remap_to_cc": "COLOUR_WHITE",
+                "remap_to_cc": {"company_colour1": "COLOUR_WHITE", "company_colour2": "company_colour1"},
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -411,7 +411,7 @@ def main():
                 ],
             },
             "DUTCH": {
-                "remap_to_cc": "COLOUR_GREY",
+                "remap_to_cc": {"company_colour1": "COLOUR_GREY", "company_colour2": "company_colour1"},
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -420,7 +420,7 @@ def main():
                 ],
             },
             "DUTCH_UNLIMITED": {
-                "remap_to_cc": "COLOUR_GREY",
+                "remap_to_cc": {"company_colour1": "COLOUR_GREY", "company_colour2": "company_colour1"},
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_GREY", "COLOUR_YELLOW"),
@@ -453,6 +453,12 @@ def main():
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
+                ],
+            },
+            "INDUSTRIAL_YELLOW": {
+                "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour2"},
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             "2CC": {
