@@ -16,7 +16,7 @@ def main(roster_id):
         base_track_type_name="NG",
         gen=4,
         intro_year_offset=10,
-        additional_liveries=[],
+        additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 
