@@ -17,10 +17,9 @@ def main(roster_id):
         speed=115,
         pantograph_type="z-shaped-double",
         intro_year_offset=12,  # introduce much later than gen epoch by design
-        additional_liveries=["GNER", "LOADHAUL"],
+        additional_liveries=["GNER", "RES", "RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "LOADHAUL"],
         default_livery_extra_docs_examples=[("COLOUR_BLUE", "COLOUR_WHITE")],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue, others?
     )
 
     consist.add_unit(

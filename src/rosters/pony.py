@@ -288,8 +288,8 @@ def main():
                 "remap_to_cc": {"company_colour1": "COLOUR_GREY", "company_colour2": "company_colour1"},
                 "forced_intro_year": 1975,
                 "docs_image_input_cc": [
-                    ("COLOUR_GREY", "COLOUR_RED"),
-                    ("COLOUR_YELLOW", "COLOUR_PINK"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PINK", "COLOUR_WHITE"),
                 ],
             },
             "RAILFREIGHT_TRIPLE_GREY": {
@@ -297,10 +297,10 @@ def main():
                 "remap_to_cc": {"company_colour1": "COLOUR_WHITE", "company_colour2": "company_colour1"},
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
-                    ("COLOUR_GREY", "COLOUR_RED"),
-                    ("COLOUR_YELLOW", "COLOUR_BLUE"),
-                    ("COLOUR_BROWN", "COLOUR_DARK_BLUE"),
-                    ("COLOUR_GREY", "COLOUR_PINK"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PINK", "COLOUR_WHITE"),
                 ],
             },
             "RAILFREIGHT_TRIPLE_GREY_COAL": {
@@ -309,6 +309,9 @@ def main():
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_PINK", "COLOUR_WHITE"),
                 ],
             },
             "YEOMAN": {
