@@ -19,7 +19,7 @@ def main(roster_id):
         intro_year_offset=-4, # earlier than the IRL introduction of this never-built train...
         pantograph_type="z-shaped-double",
         caboose_family="railfreight_2",
-        additional_liveries=["RAILFREIGHT_RED_STRIPE"],
+        additional_liveries=["RAILFREIGHT_RED_STRIPE", "RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "DBSCHENKER", "EWS"],
         sprites_complete=True,
     )
 
