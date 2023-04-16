@@ -575,6 +575,14 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
+            {
+                "relative_spriterow_num": 4,
+                "remap_to_cc": {"company_colour1": "COLOUR_RED", "company_colour2": "company_colour2"},
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_RED"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
         ],
         electric_railcar_mail_liveries=[
             {
@@ -602,6 +610,14 @@ def main():
                 "relative_spriterow_num": 2,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "relative_spriterow_num": 4,
+                "remap_to_cc": {"company_colour1": "COLOUR_RED", "company_colour2": "company_colour2"},
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_RED"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
