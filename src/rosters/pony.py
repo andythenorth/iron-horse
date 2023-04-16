@@ -269,19 +269,19 @@ def main():
                 # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
                 "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour1"},
                 "docs_image_input_cc": [
-                    ("COLOUR_YELLOW", "COLOUR_PALE_GREEN"),
-                    ("COLOUR_ORANGE", "COLOUR_DARK_GREEN"),
-                    ("COLOUR_ORANGE", "COLOUR_GREEN"),
-                    ("COLOUR_CREAM", "COLOUR_MAUVE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
+                    ("COLOUR_DARK_GREEN", "COLOUR_YELLOW"),
+                    ("COLOUR_GREEN", "COLOUR_YELLOW"),
+                    ("COLOUR_MAUVE", "COLOUR_YELLOW"),
                 ],
             },
             "FREIGHTLINER_2": {
                 # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
                 "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour1"},
                 "docs_image_input_cc": [
-                    ("COLOUR_YELLOW", "COLOUR_PALE_GREEN"),
-                    ("COLOUR_ORANGE", "COLOUR_DARK_GREEN"),
-                    ("COLOUR_ORANGE", "COLOUR_GREEN"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
+                    ("COLOUR_DARK_GREEN", "COLOUR_YELLOW"),
+                    ("COLOUR_GREEN", "COLOUR_YELLOW"),
                 ],
             },
             "RAILFREIGHT_RED_STRIPE": {
