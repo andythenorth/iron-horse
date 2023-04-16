@@ -5741,7 +5741,7 @@ class ExpressMailCar(ExpressCar):
 class AutomobileCarAsymmetric(ExpressCar):
     """
     Automobile (cars, trucks, tractors) transporter car, subclassed from express car.
-    This subclass exists to symmetry_type and random trigger.
+    This subclass exists to set symmetry_type and random trigger.
     """
 
     def __init__(self, **kwargs):
@@ -5761,7 +5761,7 @@ class AutomobileCarAsymmetric(ExpressCar):
 class AutomobileCarSymmetric(ExpressCar):
     """
     Automobile (cars, trucks, tractors) transporter car, subclassed from express car.
-    This subclass exists to symmetry_type and random trigger.
+    This subclass exists to set symmetry_type and random trigger.
     """
 
     def __init__(self, **kwargs):
@@ -5769,7 +5769,7 @@ class AutomobileCarSymmetric(ExpressCar):
         # some vehicle transporter cars are symmetric
         self._symmetry_type = "symmetric"
         utils.echo_message(
-            "AutomobileCarAsymmetric random_trigger_switch is using _switch_graphics_spritelayer_cargos "
+            "AutomobileCarSymmetric random_trigger_switch is using _switch_graphics_spritelayer_cargos "
             + self.consist.id
         )
         self.random_trigger_switch = (
