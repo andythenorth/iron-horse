@@ -20,7 +20,7 @@ def main(roster_id):
         intro_year_offset=-2,  # introduce earlier than gen epoch by design
         additional_liveries=[],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # banger blue?
+        sprites_additional_liveries_potential=True, # banger blue?
     )
 
     consist.add_unit(

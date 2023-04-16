@@ -60,12 +60,12 @@ def report_sprites_complete(consists):
     for track_type, incomplete_consists in incomplete_by_track_type.items():
         print("  *", track_type, len(incomplete_consists))
     # also track vehicles where additional liveries are intended, but not defined and drawn
-    additional_liveries_needed = len(
-        [consist.sprites_additional_liveries_needed for consist in consists if consist.sprites_additional_liveries_needed]
+    sprites_additional_liveries_potential_total = len(
+        [consist.sprites_additional_liveries_potential for consist in consists if consist.sprites_additional_liveries_potential]
     )
     print(
-        "Additional liveries needed for",
-        additional_liveries_needed,
+        "Additional livery ideas exist for",
+        sprites_additional_liveries_potential_total,
         "consists"
     )
 

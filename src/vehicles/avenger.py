@@ -24,7 +24,7 @@ def main(roster_id):
             ("COLOUR_ORANGE", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # GNER?
+        sprites_additional_liveries_potential=True, # GNER?
     )
 
     consist.add_unit(

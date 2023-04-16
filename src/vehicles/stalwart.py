@@ -23,7 +23,7 @@ def main(roster_id):
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # unfinished livery with yellow stripe
+        sprites_additional_liveries_potential=True, # unfinished livery with yellow stripe
     )
 
     consist.add_unit(
