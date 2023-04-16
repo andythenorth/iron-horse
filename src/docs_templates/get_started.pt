@@ -84,16 +84,6 @@
                         <li>
                             Most wagons will switch between 1st and 2nd company colours if flipped in depot (use ctrl-click on the wagon).  Most wagons will also select random colour variations when built.
                         </li>
-                        <li>
-                            Passenger coaches, mail vans and railcars often switch to a 2nd alternative colour scheme if flipped in depot (use ctrl-click on the vehicle).
-                        </li>
-                        <li>
-                            Some vehicles will adapt their colour scheme to the engine, or to suit the cargo they're refitted to.
-                        </li>
-                        <li>
-                            Some engines have alternative colour scheme which can be selected by changing company colours.
-                            The settings for engines that support this can be found on the details page for each engine.  For example, <a href="bone.html">Bone details page</a>.
-                        </li>
                     </ul>
                     <h3>Cargo support</h3>
                     <p>${roster.str_grf_name} provides vehicles for a wide range of cargos, and should be compatible with all industry and cargo grfs.</p>
