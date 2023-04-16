@@ -196,16 +196,13 @@ class RosterManager(list):
     @property
     def restaurant_car_ids(self):
         result = []
-        print(
-            "restaurant_car_ids may need to use only active roster?  Or are we allowing cross-grf restaurant cars?"
-        )
-        for roster in self:
-            # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
-            # could also have been done by having restaurant cars register themselves directly into a list on roster but eh, that's a book-keeping headache
-            for consists in roster.wagon_consists.values():
-                for consist in consists:
-                    if consist.__class__.__name__ == "PassengerRestaurantCarConsist":
-                        result.append(consist.base_numeric_id)
+        # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
+        # could also have been done by having restaurant cars register themselves directly into a list on roster but eh, that's a book-keeping headache
+        # if we wanted cross-grf restaurant cars then this would need extending beyond active_roster; but we don't as of April 2023, so eh
+        for consists in self.active_roster.wagon_consists.values():
+            for consist in consists:
+                if consist.__class__.__name__ == "PassengerRestaurantCarConsist":
+                    result.append(consist.base_numeric_id)
         if len(result) > 255:
             utils.echo_message(
                 "action 2 switch is limited to 255 values, restaurant_car_ids exceeds this - needs split across multiple switches"
@@ -216,9 +213,7 @@ class RosterManager(list):
     def haulage_bonus_engine_id_tree(self):
         # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
         express_engine_ids = []
-        print(
-            "haulage_bonus_engine_id_tree only uses active roster?  Are we allowing cross-grf haulage bonus?"
-        )
+        # if we wanted cross-grf haulage bonus then this would need extending beyond active_roster; but we don't as of April 2023, so eh
         for consist in self.active_roster.engine_consists:
             # check for express-type roles, which are determined by multiple role groups
             for role_group_mapping_key in [
@@ -239,9 +234,7 @@ class RosterManager(list):
         # find cargo_sprinters
         # used to switch wagon company colours
         result = []
-        print(
-            "cargo_sprinter_ids only uses active roster?  Are we allowing cross-grf cargo sprinters?"
-        )
+        # if we wanted cross-grf cargo sprinters then this would need extending beyond active_roster; but we don't as of April 2023, so eh
         for consist in self.active_roster.engine_consists:
             # abuse the spritelayer_cargo_layers property here, we're just looking for a string, this might be fragile, but eh
             if "cargo_sprinter" in getattr(consist, "spritelayer_cargo_layers", []):
@@ -257,9 +250,7 @@ class RosterManager(list):
         # for pax cars with consist-specific liveries
         # will check for other neighbouring pax cars before showing brake car
         result = []
-        print(
-            "pax_car_ids only uses active roster?  Are we allowing cross-grf pax_car_ids?"
-        )
+        # if we wanted cross-grf pax cars then this would need extending beyond active_roster; but we don't as of April 2023, so eh
         for consists in self.active_roster.wagon_consists.values():
             for consist in consists:
                 if getattr(
