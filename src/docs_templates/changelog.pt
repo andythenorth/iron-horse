@@ -78,6 +78,11 @@ Time for Iron Horse 3.  It's the one right after Iron Horse 2.
     - this removes the effect where upgraded trains had less hp per tonne than previous generation, due to freight wagon capacity spiking up sharply
 
 
+*Fixes*
+
+- Magnum 70 did not display power correctly in some circumstances
+
+
 *Docs*
 
 - show variants on engine details pages

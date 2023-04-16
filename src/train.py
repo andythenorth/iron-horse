@@ -530,6 +530,8 @@ class Consist(object):
             result.append(["AC", self.base_track_type_name + "_ELECTRIFIED_AC"])
         if "DC" in self.power_by_power_source.keys():
             result.append(["DC", self.base_track_type_name + "_ELECTRIFIED_DC"])
+        if "BATTERY_HYBRID" in self.power_by_power_source.keys():
+            result.append(["BATTERY_HYBRID", self.base_track_type_name])
         if "DIESEL" in self.power_by_power_source.keys():
             result.append(["DIESEL", self.base_track_type_name])
         if "STEAM" in self.power_by_power_source.keys():
