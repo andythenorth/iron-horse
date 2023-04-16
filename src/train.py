@@ -896,8 +896,7 @@ class Consist(object):
             elif len(self.power_by_power_source) == 3:
                 result.append("STR_POWER_BY_POWER_SOURCE_THREE_SOURCES")
             else:
-                print("CABBAGE", self.id)
-                # raise BaseException("consist " + self.id + " defines unsupported number of power sources")
+                raise BaseException("consist " + self.id + " defines unsupported number of power sources")
         # optional string if consist is lgv-capable
         if self.lgv_capable:
             result.append("STR_SPEED_BY_RAILTYPE_LGV_CAPABLE")
