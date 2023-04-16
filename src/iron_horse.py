@@ -75,7 +75,8 @@ from vehicles import intermodal_cars
 from vehicles import kaolin_hopper_cars
 from vehicles import livestock_cars
 from vehicles import log_cars
-#from vehicles import low_floor_automobile_cars
+
+# from vehicles import low_floor_automobile_cars
 from vehicles import low_floor_intermodal_cars
 from vehicles import mail_cars
 from vehicles import merchandise_box_cars
@@ -139,9 +140,13 @@ class RailTypeManager(list):
         # note that this is using the nml fallbacks for *vehicle* track_type NOT the compatible or powered powered properties for the railtypes
         # this is strictly not the scope of RailTypeManager, but it's a convenient place to add globally accessible railtype specific methods
         result = {}
-        for labels in global_constants.railtype_labels_by_vehicle_track_type_name.values():
+        for (
+            labels
+        ) in global_constants.railtype_labels_by_vehicle_track_type_name.values():
             result[labels[0]] = labels
-        for labels in global_constants.railtype_labels_by_vehicle_track_type_name.values():
+        for (
+            labels
+        ) in global_constants.railtype_labels_by_vehicle_track_type_name.values():
             for label in labels:
                 if label not in result.keys():
                     result[label] = None
@@ -272,32 +277,6 @@ class RosterManager(list):
             )
         return result
 
-    @property
-    def livery_2_engine_ids(self):
-        # for vehicles with consist-specific liveries
-        # will switch vehicle to livery 2 for specific roles of lead engine
-        result = []
-        print(
-            "livery_2_engine_ids only uses active roster?  Are we allowing cross-grf livery_2_engine_ids? - might be funny?"
-        )
-        for consist in self.active_roster.engine_consists:
-            if consist.force_default_pax_mail_livery == 1:
-                continue
-            if consist.force_default_pax_mail_livery == 2:
-                result.append(consist.id)
-                continue
-            # generally it's better to force the livery per engine as wanted, but some railcars automatically switch by role
-            if (consist.role, consist.role_child_branch_num) in [
-                ("pax_railcar", 2),
-                ("mail_railcar", 2),
-            ]:
-                result.append(consist.id)
-        if len(result) > 255:
-            utils.echo_message(
-                "action 2 switch is limited to 255 values, livery_2_engine_ids exceeds this - needs split across multiple switches"
-            )
-        return result
-
 
 # declared outside of main, got bored trying to figure out how to otherwise put it in the module scope
 railtype_manager = RailTypeManager()
@@ -370,7 +349,7 @@ def main():
     kaolin_hopper_cars.main()
     livestock_cars.main()
     log_cars.main()
-    #low_floor_automobile_cars.main()
+    # low_floor_automobile_cars.main()
     low_floor_intermodal_cars.main()
     mail_cars.main()
     merchandise_box_cars.main()

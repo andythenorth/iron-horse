@@ -8,16 +8,15 @@ def main(roster_id):
         base_numeric_id=16510,
         name="Dreadnought",
         role="super_heavy_express",
-        role_child_branch_num=-2,
+        role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 3300,
+            "DIESEL": 3450,
         },
         random_reverse=False,  # Dreadnought has asymmetric logo pixels that don't look great when running reversed
-        allow_flip=True,  # only set because random_reverse is false, this is unnecessary if random_reverse is true
         gen=5,
-        speed=125,  # Dreadnought not replaced, but has gen 6 speeds
+        replacement_consist_id="defiant",
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
+        additional_liveries=["BANGER_BLUE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PURPLE", "COLOUR_WHITE"),
             ("COLOUR_GREEN", "COLOUR_ORANGE"),

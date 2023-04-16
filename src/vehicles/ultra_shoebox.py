@@ -13,6 +13,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=6,
+        additional_liveries=[],
         default_livery_extra_docs_examples=[
             ("COLOUR_RED", "COLOUR_RED"),
             ("COLOUR_PINK", "COLOUR_WHITE"),
@@ -23,6 +24,7 @@ def main(roster_id):
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue, yellow?
     )
 
     consist.add_unit(

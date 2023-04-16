@@ -16,13 +16,15 @@ def main(roster_id):
         fixed_run_cost_points=100,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=5,  # not replaced by anything (?)
         caboose_family="railfreight_2",
-        alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
+        additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL"],
         default_livery_extra_docs_examples=[
             ("COLOUR_GREY", "COLOUR_YELLOW"),
             ("COLOUR_WHITE", "COLOUR_GREY"),
             ("COLOUR_GREY", "COLOUR_GREY"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
         ],
+        decor_spriterow_num=3,
+        show_decor_in_purchase_for_variants=[0, 1, 2],
         sprites_complete=True,
     )
 

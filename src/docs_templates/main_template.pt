@@ -4,8 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <title >${title | roster.str_grf_name}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-
+    <meta http-equiv="Content-Type" content="text/html" />
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" href="static/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="static/css/bootstrap-responsive.min.css" rel="stylesheet">
@@ -78,7 +78,7 @@
                         var index = Math.floor(Math.random()*images.length);
                         var random_image = images.splice(index, 1)[0]; // splice returns an array, and we need the nested array inside it
                         document.write('<a href="trains.html#' + random_image[0] + '" style="display:inline; margin-bottom: 20px;"> \
-                                            <img src="static/img/'+ random_image[0] + '_red_white.png" \
+                                            <img src="static/img/'+ random_image[0] + '_variant_0_red_white.png" \
                                                  width="' + 4 * random_image[1] + '" \
                                                  height="${4 * doc_helper.buy_menu_sprite_height}"> \
                                         </a>')

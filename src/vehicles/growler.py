@@ -8,18 +8,20 @@ def main(roster_id):
         base_numeric_id=11280,
         name="Growler",
         role="freight",
-        role_child_branch_num=1,
+        role_child_branch_num=2,
         power_by_power_source={
             "DIESEL": 1750,
         },
         random_reverse=True,
         gen=4,
         caboose_family="railfreight_1",
-        alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
+        additional_liveries=["BANGER_BLUE", "LARGE_LOGO", "RAILFREIGHT_RED_STRIPE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_PINK", "COLOUR_WHITE"),
         ],
+        decor_spriterow_num=4,
+        show_decor_in_purchase_for_variants=[2],
         sprites_complete=True,
     )
 

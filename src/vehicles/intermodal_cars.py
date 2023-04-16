@@ -75,32 +75,3 @@ def main():
 
     consist.add_unit(type=IntermodalCar, chassis="4_axle_1cc_filled_32px")
 
-    consist = IntermodalCarConsist(
-        roster_id="pony",
-        base_numeric_id=14120,
-        gen=6,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=IntermodalCar, chassis="2_axle_1cc_filled_16px")
-
-    consist = IntermodalCarConsist(
-        roster_id="pony",
-        base_numeric_id=12790,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=IntermodalCar, chassis="4_axle_1cc_filled_24px")
-
-    consist = IntermodalCarConsist(
-        roster_id="pony",
-        base_numeric_id=12800,
-        gen=6,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=IntermodalCar, chassis="4_axle_1cc_filled_32px")

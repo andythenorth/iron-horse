@@ -16,7 +16,6 @@ def main(roster_id):
         gen=3,
         intro_year_offset=4,  # introduce later than gen epoch by design
         fixed_run_cost_points=150,  # give a small bonus to bring closer to Strongbow cost
-        force_default_pax_mail_livery=1,  # invert the automatic livery 2 choice
         default_livery_extra_docs_examples=[
             ("COLOUR_DARK_GREEN", "COLOUR_DARK_GREEN"),
             ("COLOUR_GREY", "COLOUR_WHITE"),

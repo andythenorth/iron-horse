@@ -8,12 +8,13 @@ def main(roster_id):
         base_numeric_id=1880,
         name="0-8-0 Haar",
         role="freight",
-        role_child_branch_num=1,
+        role_child_branch_num=-2,
         power_by_power_source={
             "STEAM": 1500,
         },
         tractive_effort_coefficient=0.24,
         gen=3,
+        additional_liveries=["FREIGHT_BLACK"],
         sprites_complete=True,
     )
 

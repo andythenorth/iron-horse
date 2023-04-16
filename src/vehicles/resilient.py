@@ -8,26 +8,26 @@ def main(roster_id):
         base_numeric_id=13980,
         name="Resilient",
         role="heavy_express",
-        role_child_branch_num=-1,
+        role_child_branch_num=1,
         power_by_power_source={
-            "DIESEL": 2750, # significant jump from previous gen
+            "DIESEL": 2750,
         },
         random_reverse=True,
         gen=5,
-        intro_year_offset=-4,  # let's not have everything turn up in 1990
+        intro_year_offset=4,  # let's not have everything turn up in 1990
         fixed_run_cost_points=65,  # give a bonus so this can be a genuine mixed-traffic engine
-        alternative_cc_livery="FREIGHTLINER_GBRF",  # tried liveries for RES, etc, not convinced
+        # add RfD Euro style triple grey?
+        additional_liveries=["INTERCITY_RASPBERRY_RIPPLE", "RES", "FREIGHTLINER_GBRF", "DUTCH"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
-            ("COLOUR_GREY", "COLOUR_GREY"),
-            ("COLOUR_RED", "COLOUR_RED"),
         ],
         sprites_complete=True,
+        sprites_additional_liveries_needed=True, # add RfD Euro style triple grey?, Banger blue, but with black windows
     )
 
     consist.add_unit(
         type=DieselEngineUnit,
-        weight=112,
+        weight=103,
         vehicle_length=8,
         effect_offsets=[(2, 0)],
         spriterow_num=0,

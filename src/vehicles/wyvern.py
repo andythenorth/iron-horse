@@ -16,6 +16,7 @@ def main(roster_id):
         gen=4,
         intro_year_offset=-6,  # let's not have everything turn up in 1960
         fixed_run_cost_points=30,  # give a bonus so this can be a genuine mixed-traffic engine
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
     )
 

@@ -8,21 +8,23 @@ def main(roster_id):
         base_numeric_id=13900,
         name="Avenger",
         role="ultra_heavy_express",
-        role_child_branch_num=1,
+        role_child_branch_num=3,
         power_by_power_source={
-            "AC": 5800,
+            "AC": 6200,
         },
         random_reverse=True,
         gen=5,
-        speed=125,  # Shredder not replaced, but has gen 6 speeds
+        speed=125,  # Avenger not replaced, but has gen 6 speeds
         pantograph_type="z-shaped-single",
         intro_year_offset=-2,  # introduce slightly earlier than gen epoch by design
-        alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
+        #additional_liveries=["GNER", "RAILFREIGHT_TRIPLE_GREY"],
+        additional_liveries=["RAILFREIGHT_TRIPLE_GREY"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
             ("COLOUR_ORANGE", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
+        sprites_additional_liveries_needed=True, # GNER?
     )
 
     consist.add_unit(

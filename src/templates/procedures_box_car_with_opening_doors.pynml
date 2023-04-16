@@ -1,6 +1,0 @@
-<!--! stupid integer stuffing pattern, where livery is 1xx or 2xx, and flip is x0x or x1x -->
-<!--! handle user flipped state -->
-switch (FEAT_TRAINS, SELF, switch_graphics_box_car_with_opening_doors_check_flip, vehicle_is_flipped) {
-    1: 10;
-    return 0;
-}

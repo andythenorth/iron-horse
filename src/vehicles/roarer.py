@@ -8,16 +8,15 @@ def main(roster_id):
         base_numeric_id=11270,
         name="Roarer",
         role="super_heavy_express",
-        role_child_branch_num=3,
+        role_child_branch_num=-4,
         power_by_power_source={
             "AC": 3000,
         },
         random_reverse=True,
         gen=4,
         pantograph_type="z-shaped-double",
-        intro_year_offset=3,  # introduce later than gen epoch by design
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
-        alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
+        intro_year_offset=2,  # introduce later than gen epoch by design
+        additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),

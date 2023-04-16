@@ -8,13 +8,14 @@ def main(roster_id):
         base_numeric_id=10040,
         name="Slug",
         role="freight",
-        role_child_branch_num=1,
+        role_child_branch_num=2,
         power_by_power_source={
-            "DIESEL": 1950,  # progression calculated to maintain hp/speed ratio from previous gen
+            "DIESEL": 1950,
         },
         random_reverse=True,
         gen=5,
-        alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
+        # red stripe? Teeside steelmaster?
+        additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "DBSCHENKER", "LARGE_LOGO", "LOADHAUL", "SWOOSH_LESS"],
         default_livery_extra_docs_examples=[
             ("COLOUR_GREY", "COLOUR_YELLOW"),
             ("COLOUR_WHITE", "COLOUR_GREY"),
@@ -24,6 +25,8 @@ def main(roster_id):
             ("COLOUR_YELLOW", "COLOUR_YELLOW"),
         ],
         caboose_family="railfreight_2",
+        decor_spriterow_num=7,
+        show_decor_in_purchase_for_variants=[2, 3],
         sprites_complete=True,
     )
 

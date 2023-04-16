@@ -8,13 +8,14 @@ def main(roster_id):
         base_numeric_id=9820,
         name="Viking",
         role="freight",
-        role_child_branch_num=-1,  # does not directly follow from Merlion
+        role_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 1950,
         },
         random_reverse=True,
         gen=5,
         intro_year_offset=6,  # introduce later than gen epoch by design
+        additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

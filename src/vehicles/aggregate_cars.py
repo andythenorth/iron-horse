@@ -84,23 +84,3 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_32px")
-
-    consist = DumpCarAggregateConsist(
-        roster_id="pony",
-        base_numeric_id=11440,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_24px")
-
-    consist = DumpCarAggregateConsist(
-        roster_id="pony",
-        base_numeric_id=11430,
-        gen=6,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_32px")

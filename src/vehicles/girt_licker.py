@@ -16,6 +16,7 @@ def main(roster_id):
         fixed_run_cost_points=250,  # cost malus, early heavy freight engines are too cheap to run relative to smaller engines
         gen=2,
         intro_year_offset=6,  # introduce a bit later
+        additional_liveries=["FREIGHT_BLACK"],
         sprites_complete=True,
     )
 

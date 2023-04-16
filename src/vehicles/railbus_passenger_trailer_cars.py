@@ -13,6 +13,7 @@ def main():
         gen=3,
         subtype="U",
         base_track_type_name="NG",
+        cab_id="mumble",
         sprites_complete=True,
     )
 
@@ -26,6 +27,7 @@ def main():
         gen=4,
         subtype="U",
         base_track_type_name="NG",
+        cab_id="snapper",
         sprites_complete=True,
     )
 

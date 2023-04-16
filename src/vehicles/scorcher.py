@@ -15,6 +15,7 @@ def main(roster_id):
         intro_year_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
         lgv_capable=True,  # for lolz
+        additional_liveries=["SWOOSH_LESS"],
         sprites_complete=True,
     )
 

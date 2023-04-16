@@ -99,23 +99,3 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="empty_32px")
-
-    consist = ColdMetalCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=16840,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
-
-    consist = ColdMetalCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=16850,
-        gen=6,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_32px")

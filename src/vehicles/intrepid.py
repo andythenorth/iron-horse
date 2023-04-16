@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=13850,
         name="Intrepid",
         role="heavy_express",
-        role_child_branch_num=-2,  # -ve because Joker
+        role_child_branch_num=-1,  # -ve because Joker
         power_by_power_source={
             "DIESEL": 2200,
         },
@@ -18,13 +18,15 @@ def main(roster_id):
         intro_year_offset=6,  # let's be later for this one
         default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE")],
         caboose_family="railfreight_1",
-        alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
+        # add triple grey railfreight
+        additional_liveries=["LARGE_LOGO", "RAILFREIGHT_RED_STRIPE"],
         sprites_complete=True,
+        sprites_additional_liveries_needed=True, # triple grey railfreight?
     )
 
     consist.add_unit(
         type=DieselEngineUnit,
-        weight=115,  # bonus over Wyvern
+        weight=100,  # bonus over Wyvern, less than IRL as HP is nerfed
         vehicle_length=8,
         spriterow_num=0,
     )

@@ -8,9 +8,9 @@ def main(roster_id):
         base_numeric_id=9260,
         name="Cheddar Valley",
         role="super_heavy_freight",
-        role_child_branch_num=2,
+        role_child_branch_num=-3,
         power_by_power_source={
-            "DIESEL": 4050,  # 750hp steps Vanguard -> Grid -> Cheddar Valley
+            "DIESEL": 4200,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
@@ -18,7 +18,8 @@ def main(roster_id):
         intro_year_offset=3,  # let's be a little bit later for this one
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
-        alternative_cc_livery="YEOMAN",
+        # unfinished EWS livery exists, but eh
+        additional_liveries=["YEOMAN", "DBSCHENKER", "FREIGHTLINER_GBRF"],
         default_livery_extra_docs_examples=[
             ("COLOUR_WHITE", "COLOUR_GREEN"),
             ("COLOUR_ORANGE", "COLOUR_RED"),

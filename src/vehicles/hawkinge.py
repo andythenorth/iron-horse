@@ -8,13 +8,14 @@ def main(roster_id):
         base_numeric_id=6410,
         name="4-8-2 Hawkinge",
         role="super_heavy_express",
-        role_child_branch_num=-1,
+        role_child_branch_num=-2,
         power_by_power_source={
             "STEAM": 2350,
         },
         tractive_effort_coefficient=0.25,
         gen=3,
         intro_year_offset=5,  # introduce later than gen epoch by design
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
     )
 

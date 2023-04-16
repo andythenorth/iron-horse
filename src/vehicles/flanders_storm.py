@@ -8,18 +8,18 @@ def main(roster_id):
         base_numeric_id=10780,
         name="Flanders Storm",
         role="ultra_heavy_freight",
-        role_child_branch_num=1,
+        role_child_branch_num=2,
         power_by_power_source={
-            "AC": 5800,  # big jump from previous, IRL matches class 89 not 92
+            "AC": 6200,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
         random_reverse=True,
         gen=5,
         pantograph_type="z-shaped-double",
-        intro_year_offset=-3,  # introduce earlier than gen epoch by design
+        intro_year_offset=5,  # introduce later than gen epoch by design
         caboose_family="railfreight_2",
-        alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
+        additional_liveries=["RAILFREIGHT_TRIPLE_GREY"],
         sprites_complete=True,
     )
 

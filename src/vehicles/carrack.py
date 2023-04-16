@@ -15,6 +15,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.18,
         gen=2,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
     )
 

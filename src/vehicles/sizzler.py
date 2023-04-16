@@ -8,14 +8,15 @@ def main(roster_id):
         base_numeric_id=12190,
         name="Sizzler",
         role="ultra_heavy_express",
-        role_child_branch_num=2,
+        role_child_branch_num=4,
         power_by_power_source={
-            "AC": 6800,  # roughly brackets Quietus
+            "AC": 7200,
         },
         random_reverse=True,
         gen=6,
         pantograph_type="z-shaped-double",
         intro_year_offset=2,  # introduce later than gen epoch by design
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
     )
 

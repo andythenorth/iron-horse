@@ -17,7 +17,9 @@ def main(roster_id):
         intro_year_offset=-2,  # let's not have everything turn up in 1960
         gen=4,
         caboose_family="railfreight_1",
-        alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
+        additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
+        decor_spriterow_num=3,
+        show_decor_in_purchase_for_variants=[2],
         sprites_complete=True,
     )
 

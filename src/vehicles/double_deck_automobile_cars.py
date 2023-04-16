@@ -23,7 +23,9 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px")
+    consist.add_unit(
+        type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px"
+    )
     """
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
@@ -43,7 +45,9 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px")
+    consist.add_unit(
+        type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px"
+    )
     """
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
@@ -63,7 +67,9 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px")
+    consist.add_unit(
+        type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px"
+    )
     """
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",

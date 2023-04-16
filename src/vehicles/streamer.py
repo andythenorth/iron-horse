@@ -8,14 +8,14 @@ def main(roster_id):
         base_numeric_id=4840,
         name="4-6-4 Streamer",
         role="super_heavy_express",
-        role_child_branch_num=-2,  # -ve because Joker
+        role_child_branch_num=-1,  # -ve because Joker
         power_by_power_source={
             "STEAM": 2300,
         },
         tractive_effort_coefficient=0.18,
         gen=3,
         intro_year_offset=4,  # introduce later than gen epoch by design
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
+        additional_liveries=["BANGER_BLUE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_DARK_GREEN", "COLOUR_DARK_GREEN"),
             ("COLOUR_GREY", "COLOUR_WHITE"),

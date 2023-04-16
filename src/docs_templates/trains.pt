@@ -6,12 +6,14 @@
         <div class="row">
             <div class="span12">
                 <h2>
-                    ${len(roster.engine_consists)} engines and
-                    ${sum([len(roster.wagon_consists[wagon_class]) for wagon_class in roster.wagon_consists])} wagons
-                    inspired by
+                    <!--! for set design numerology purposes it's possible to hover over this for a more detailed breakdown-->
+                    <span title="${len(roster.engine_consists) - len(doc_helper.not_really_engine_consists(roster))} engines and ${len(doc_helper.not_really_engine_consists(roster))} snowploughs, cab cars and similar.">
+                        ${len(roster.engine_consists)} engines
+                    </span>
+                    and ${sum([len(roster.wagon_consists[wagon_class]) for wagon_class in roster.wagon_consists])} wagons
+                    inspired by trains from
                     <span tal:condition="roster.id == 'zebra'">Southern and Western Africa</span>
-                    <span tal:condition="roster.id == 'pony'">UK</span>
-                    trains
+                    <span tal:condition="roster.id == 'pony'">the UK (mostly)</span>
                 </h2>
                 <ul class="inline">
                     <tal:base_track_type_name repeat="base_track_type_name doc_helper.base_track_type_names_and_labels">
@@ -63,13 +65,13 @@
                                     <tr id="${consist.id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-                                            <img src="static/img/${consist.id}_blue_blue.png"
+                                            <img src="static/img/${consist.id}_variant_0_blue_blue.png"
                                                  width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                  height="${2 * doc_helper.buy_menu_sprite_height}" />
                                         </td>
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-                                            <img src="static/img/${consist.id}_red_white.png"
+                                            <img src="static/img/${consist.id}_variant_0_red_white.png"
                                                  width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                  height="${2 * doc_helper.buy_menu_sprite_height}" />
                                         </td>
@@ -119,18 +121,18 @@
                                     <tr id="${consist.id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-                                            <img src="static/img/${consist.id}_blue_blue.png"
+                                            <img src="static/img/${consist.id}_variant_0_blue_blue.png"
                                                  width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                  height="${2 * doc_helper.buy_menu_sprite_height}" />
                                         </td>
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-                                            <img src="static/img/${consist.id}_red_white.png"
+                                            <img src="static/img/${consist.id}_variant_0_red_white.png"
                                                  width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                  height="${2 * doc_helper.buy_menu_sprite_height}" />
                                         </td>
                                         <td>
-                                            ${doc_helper.unpack_name_string(consist)}
+                                            <a class="table-link-dark" href="${consist.id}.html">${doc_helper.unpack_name_string(consist)}</a>
                                         </td>
                                         <td class="date">${consist.intro_year}</td>
                                         <td class="number">${sum([unit.default_cargo_capacity for unit in consist.units])} t</td>

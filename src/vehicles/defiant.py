@@ -7,23 +7,23 @@ def main(roster_id):
         id="defiant",
         base_numeric_id=14110,
         name="Defiant",
-        role="super_heavy_freight",
-        role_child_branch_num=-1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
+        role="super_heavy_express",
+        role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 3650,
+            "DIESEL": 4150,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.355,
         random_reverse=True,
         gen=6,
         intro_year_offset=-4,  # let's be a little bit earlier for this one
-        fixed_run_cost_points=280,  # run cost nerf as light weight throws the cost too cheap
+        fixed_run_cost_points=300,  # run cost nerf as light weight throws the cost too cheap
         sprites_complete=True,
     )
 
     consist.add_unit(
         type=DieselEngineUnit,
-        weight=100,  # notably low weight
+        weight=95,  # notably low weight
         vehicle_length=8,
         spriterow_num=0,
     )

@@ -8,20 +8,18 @@ def main(roster_id):
         base_numeric_id=13860,
         name="Bone",
         role="super_heavy_freight",
-        role_child_branch_num=-1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
+        role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 3300,  # drops a bit on hp/speed from previous gen, but engine weight is lower
+            "DIESEL": 3450,
         },
         random_reverse=True,
         intro_year_offset=-2,  # let's be a little bit earlier for this one
         gen=5,
         caboose_family="railfreight_1",
-        alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
+        additional_liveries=["RAILFREIGHT_RED_STRIPE", "RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "DBSCHENKER", "EWS"],
         default_livery_extra_docs_examples=[
-            ("COLOUR_BLUE", "COLOUR_WHITE"),
-            ("COLOUR_PINK", "COLOUR_YELLOW"),
+            ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
             ("COLOUR_PALE_GREEN", "COLOUR_CREAM"),
-            ("COLOUR_WHITE", "COLOUR_RED"),
         ],
         sprites_complete=True,
     )

@@ -14,6 +14,7 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         gen=4,
         intro_year_offset=3,  # introduce later than gen epoch by design
+        additional_liveries=["BANGER_BLUE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
             ("COLOUR_BLUE", "COLOUR_BLUE"),

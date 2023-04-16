@@ -10,16 +10,17 @@ def main(roster_id):
         role="super_heavy_freight",
         role_child_branch_num=-2,  # Joker eh
         power_by_power_source={
-            "DIESEL": 4050,  # 750hp steps Vanguard -> Grid -> Cheddar Valley
+            "DIESEL": 4200,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
         random_reverse=True,
-        intro_year_offset=3,  # let's be a little bit later for this one
+        intro_year_offset=-2,  # let's be a little bit earlier for this one
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         caboose_family="railfreight_2",
-        alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
+        # more liveries ought to be possible, but I couldn't make them work so eh.  EWS?
+        additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "SWOOSH"],
         sprites_complete=True,
     )
 

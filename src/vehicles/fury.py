@@ -8,20 +8,19 @@ def main(roster_id):
         base_numeric_id=11220,
         name="Fury",
         role="super_heavy_express",
-        role_child_branch_num=3,
+        role_child_branch_num=-4,
         power_by_power_source={
-            "AC": 3600,
+            "AC": 3600, # supposed to be mid-powered, but maintains same hp/speed ratio of previous gen, or it will be too nerfed for 125mph
         },
         random_reverse=True,
         gen=5,
+        speed=125, # Fury not replaced, but has gen 6 speeds
         pantograph_type="z-shaped-double",
         intro_year_offset=1,  # introduce later than gen epoch by design
-        alternative_cc_livery="FREIGHTLINER_GBRF",
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
+        # intercity, railfreight?
+        additional_liveries=["SWOOSH", "FREIGHTLINER_GBRF", "RES"],
         default_livery_extra_docs_examples=[
-            ("COLOUR_GREEN", "COLOUR_YELLOW"),
-            ("COLOUR_PALE_GREEN", "COLOUR_PALE_GREEN"),
-            ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
+            ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
@@ -34,6 +33,6 @@ def main(roster_id):
     consist.description = (
         """Rebuilt the Roarers. Very sound these are, last a long time they will."""
     )
-    consist.foamer_facts = """BR Class 86"""
+    consist.foamer_facts = """rebuilt BR 'AL' Classes 81-85"""
 
     return consist

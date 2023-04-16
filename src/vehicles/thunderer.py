@@ -9,7 +9,7 @@ def main(roster_id):
         name="4-6-0 Thunderer",  # shorter 2-6-0 version was tried, but doesn't fit a power band gap in the mixed traffic roster
         role="heavy_express",
         role_child_branch_num=-1,
-        replacement_consist_id="tenacious",  # this Joker ends with Tenacious, long-lived
+        replacement_consist_id="intrepid",  # this Joker ends with Intrepid, long-lived
         power_by_power_source={
             "STEAM": 1500,  # slightly less than the Swift (and lighter engine)
         },
@@ -17,7 +17,6 @@ def main(roster_id):
         fixed_run_cost_points=140,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=2,
         intro_year_offset=10,  # introduce later than gen epoch by design
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         caboose_family="gwr_1",
         sprites_complete=True,
     )

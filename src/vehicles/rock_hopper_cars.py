@@ -93,23 +93,3 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hoppers_32px")
-
-    consist = HopperCarRockConsist(
-        roster_id="pony",
-        base_numeric_id=11060,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hopppers_24px")
-
-    consist = HopperCarRockConsist(
-        roster_id="pony",
-        base_numeric_id=11030,
-        gen=6,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hoppers_32px")

@@ -130,23 +130,3 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="empty_32px")
-
-    consist = PieceGoodsCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=17160,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
-
-    consist = PieceGoodsCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=17170,
-        gen=6,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_32px")

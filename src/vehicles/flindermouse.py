@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=790,
         name="Flindermouse",
         role="ultra_heavy_freight",
-        role_child_branch_num=1,
+        role_child_branch_num=2,
         power_by_power_source={
             "AC": 2500,
         },
@@ -16,7 +16,10 @@ def main(roster_id):
         gen=2,
         pantograph_type="diamond-double",
         intro_year_offset=7,  # introduce later than gen epoch by design
+        #additional_liveries=["FREIGHT_BLACK", "BANGER_BLUE"],
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
+        sprites_additional_liveries_needed=True, # nightshade / nighthawk?
     )
 
     consist.add_unit(

@@ -5,7 +5,7 @@ grf {
 	desc: string(STR_GRF_DESCRIPTION);
 	url: string(STR_GRF_DOCS_URL);
 	version: ${git_info.get_revision()};
-	min_compatible_version: 5991;
+	min_compatible_version: 6384;
 	<!--! note that params are in the order they appear in the OpenTTD UI, *not* the param number -->
 	param 2 {
 		param_simplified_gameplay {
@@ -42,7 +42,7 @@ grf {
             };
         }
     }
-    <tal:num_options define="num_options 17">
+    <tal:num_options define="num_options 16">
         param 3 {
             param_wagon_base_colour_1 {
                 name: string(STR_PARAM_WAGON_BASE_COLOUR_1);
@@ -50,10 +50,11 @@ grf {
                 type: int;
                 min_value: 0;
                 max_value: ${num_options - 1};
-                def_value: 0;
+                def_value: 13; <!--! default to CC brown -->
                 names: {
                     <tal:options repeat="option_num range(num_options)">
-                        ${option_num}: string(STR_PARAM_WAGON_BASE_COLOUR_OPTION_${option_num});
+                        <!--! there is an additiona of 1 here as a value was removed, but I didn't want to adjust all the lang translations -->
+                        ${option_num}: string(STR_PARAM_WAGON_BASE_COLOUR_OPTION_${option_num + 1});
                     </tal:options>
                 };
             }
@@ -65,10 +66,11 @@ grf {
                 type: int;
                 min_value: 0;
                 max_value: ${num_options - 1};
-                def_value: 0;
+                def_value: 14; <!--! default to CC grey -->
                 names: {
                     <tal:options repeat="option_num range(num_options)">
-                        ${option_num}: string(STR_PARAM_WAGON_BASE_COLOUR_OPTION_${option_num});
+                        <!--! there is an additiona of 1 here as a value was removed, but I didn't want to adjust all the lang translations -->
+                        ${option_num}: string(STR_PARAM_WAGON_BASE_COLOUR_OPTION_${option_num + 1});
                     </tal:options>
                 };
             }
@@ -120,7 +122,11 @@ basecost {
 disable_item(FEAT_TRAINS, 00, 115);
 
 // sort order
-sort(FEAT_TRAINS, ${[consist.base_numeric_id for consist in consists]});
+sort(FEAT_TRAINS, [
+<tal:foo repeat="consist consists">
+    ${','.join([str(unit_variant.numeric_id) for unit_variant in consist.units[0].unit_variants])},
+</tal:foo>
+]);
 
 // fix depot view for trains
 traininfo_y_offset = 2;

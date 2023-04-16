@@ -17,6 +17,7 @@ def main(roster_id):
         random_reverse=True,
         gen=2,
         caboose_family="gwr_1",
+        additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
     )
 

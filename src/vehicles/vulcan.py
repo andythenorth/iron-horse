@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=13970,
         name="Vulcan",
         role="super_heavy_express",
-        role_child_branch_num=-2,
+        role_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 2750,
         },
@@ -16,7 +16,7 @@ def main(roster_id):
         gen=4,
         intro_year_offset=1,  # introduce later than gen epoch by design
         fixed_run_cost_points=240,  # give a serious malus to this one (balancing eh?)
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
+        additional_liveries=["FINSBURY_CABS"],
         default_livery_extra_docs_examples=[
             ("COLOUR_DARK_GREEN", "COLOUR_ORANGE"),
             ("COLOUR_BLUE", "COLOUR_BLUE"),

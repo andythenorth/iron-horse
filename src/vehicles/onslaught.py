@@ -10,16 +10,18 @@ def main(roster_id):
         role="super_heavy_express",
         role_child_branch_num=1,
         power_by_power_source={
-            "DIESEL": 3300,
+            "DIESEL": 3450,
         },
         random_reverse=True,
         gen=5,
         speed=125,  # Onslaught not replaced, but has gen 6 speeds
         intro_year_offset=-8,  # let's be really early with this one to give a mail engine matching Blaze HST intro year
         fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
-        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
-        # alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",  # unfinished
+        #additional_liveries=["BANGER_BLUE", "LARGE_LOGO", "FANCY_BLUE", "INTERCITY_RASPBERRY_RIPPLE", "RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
+        additional_liveries=["BANGER_BLUE"],
+        decor_spriterow_num=7,
         sprites_complete=True,
+        sprites_additional_liveries_needed=True, # more?
     )
 
     consist.add_unit(

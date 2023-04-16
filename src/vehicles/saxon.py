@@ -17,6 +17,7 @@ def main(roster_id):
         random_reverse=True,
         gen=3,
         intro_year_offset=-8,  # introduce earlier than gen epoch by design
+        additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

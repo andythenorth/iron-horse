@@ -10,7 +10,7 @@ sys.path.append(os.path.join('src')) # add to the module search path
 # this script removes dead strings - adjust the 'dead_strings' list to suit
 
 # never leave empty strings or strings with only spaces in this list, that will strip everything from a lang file
-dead_strings = ["STR_NAME_SUFFIX_ELECTRIC"]
+dead_strings = ["STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR"]
 
 rosters = ["ibex", "moose", "pony"]
 

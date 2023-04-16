@@ -17,7 +17,10 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         intro_year_offset=-6,
-        # alternative_cc_livery='RAILFREIGHT_RED_STRIPE', # not now, needs sprites
+        additional_liveries=["INDUSTRIAL_YELLOW"],
+        default_livery_extra_docs_examples=[
+            ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
+        ],
         sprites_complete=True,
     )
 

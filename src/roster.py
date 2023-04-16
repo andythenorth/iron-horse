@@ -29,6 +29,13 @@ class Roster(object):
         self.pax_car_capacity_types = kwargs.get("pax_car_capacity_types")
         self.train_car_weight_factors = kwargs.get("train_car_weight_factors")
         self.livery_presets = kwargs.get("livery_presets", [])
+        self.default_pax_liveries = kwargs.get("default_pax_liveries", [])
+        self.suburban_pax_liveries = kwargs.get("suburban_pax_liveries", [])
+        self.default_mail_liveries = kwargs.get("default_mail_liveries", [])
+        self.electric_railcar_mail_liveries = kwargs.get("electric_railcar_mail_liveries", [])
+        self.diesel_railcar_mail_liveries = kwargs.get("diesel_railcar_mail_liveries", [])
+        self.default_metro_liveries = kwargs.get("default_metro_liveries", [])
+        self.dvt_mail_liveries = kwargs.get("dvt_mail_liveries", [])
 
     @property
     def buy_menu_sort_order(self):
@@ -106,15 +113,32 @@ class Roster(object):
         for consist in consists:
             if (
                 len(consist.randomised_candidate_groups) > 0
-                and consist.randomised_candidate_groups not in all_randomised_candidate_groups
+                and consist.randomised_candidate_groups
+                not in all_randomised_candidate_groups
             ):
-                all_randomised_candidate_groups.append(consist.randomised_candidate_groups)
+                all_randomised_candidate_groups.append(
+                    consist.randomised_candidate_groups
+                )
             if consist.is_randomised_wagon:
-                if consist.base_track_type_name not in randomised_wagons_by_track_type_name_and_gen:
-                   randomised_wagons_by_track_type_name_and_gen[consist.base_track_type_name] = {}
-                if consist.gen not in randomised_wagons_by_track_type_name_and_gen[consist.base_track_type_name]:
-                    randomised_wagons_by_track_type_name_and_gen[consist.base_track_type_name][consist.gen] = []
-                randomised_wagons_by_track_type_name_and_gen[consist.base_track_type_name][consist.gen].append(consist)
+                if (
+                    consist.base_track_type_name
+                    not in randomised_wagons_by_track_type_name_and_gen
+                ):
+                    randomised_wagons_by_track_type_name_and_gen[
+                        consist.base_track_type_name
+                    ] = {}
+                if (
+                    consist.gen
+                    not in randomised_wagons_by_track_type_name_and_gen[
+                        consist.base_track_type_name
+                    ]
+                ):
+                    randomised_wagons_by_track_type_name_and_gen[
+                        consist.base_track_type_name
+                    ][consist.gen] = []
+                randomised_wagons_by_track_type_name_and_gen[
+                    consist.base_track_type_name
+                ][consist.gen].append(consist)
         super_groups = []
         for group in all_randomised_candidate_groups:
             seen = False
@@ -128,12 +152,18 @@ class Roster(object):
         # super_groups will contain the same id multiple times, so consolidate to uniques
         super_groups = [list(set(super_group)) for super_group in super_groups]
         for super_group in super_groups:
-            for base_track_type_name, generations in randomised_wagons_by_track_type_name_and_gen.items():
+            for (
+                base_track_type_name,
+                generations,
+            ) in randomised_wagons_by_track_type_name_and_gen.items():
                 for gen, randomised_wagons_consists in generations.items():
                     # first find all the randomisation candidate wagons to place together
                     # we need them by base track type and gen, then if they match this super_group
                     for consist in consists:
-                        if consist.base_track_type_name == base_track_type_name and consist.gen == gen:
+                        if (
+                            consist.base_track_type_name == base_track_type_name
+                            and consist.gen == gen
+                        ):
                             for group_id in consist.randomised_candidate_groups:
                                 if group_id in super_group:
                                     result.append(consist)
@@ -169,7 +199,8 @@ class Roster(object):
                     continue
                 if randomisation_consist.subtype != wagon_consist.subtype:
                     continue
-                result.append(wagon_consist)
+                for unit_variant in wagon_consist.units[0].unit_variants:
+                    result.append(unit_variant)
         if len(result) == 0:
             raise BaseException(
                 randomisation_consist.id
@@ -199,6 +230,24 @@ class Roster(object):
             result.extend(result[: 8 - len(result)])
         if len(result) >= 9:
             result.extend(result[: 16 - len(result)])
+        return result
+
+    @property
+    def default_livery(self):
+        # the default livery if no livery is explicitly specified by name
+        return {
+            "remap_to_cc": None,
+            "docs_image_input_cc": [
+                ("COLOUR_BLUE", "COLOUR_BLUE"),
+                ("COLOUR_RED", "COLOUR_WHITE"),
+            ],
+        }
+
+    def get_liveries_by_name(self, additional_livery_names):
+        # for the general case, this is a convenience approach to insert a default_livery for ease of constructing template repeats
+        # note that default_livery is not guaranteed to contain all the key/value pairs that additional_liveries has
+        result = [self.default_livery]
+        result.extend([self.livery_presets[additional_livery_name] for additional_livery_name in additional_livery_names])
         return result
 
     def intro_year_ranges(self, base_track_type_name):
@@ -238,28 +287,28 @@ class Roster(object):
                     # utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
                     # utils.echo_message(str(consist.base_numeric_id))
             elif len(consist.units) > 1:
-                for unit in consist.units:
-                    if unit.numeric_id > global_constants.max_articulated_id:
+                for numeric_id in consist.unique_numeric_ids:
+                    if numeric_id > global_constants.max_articulated_id:
                         raise BaseException(
                             "Error: "
-                            + unit.id
-                            + " with numeric_id "
-                            + str(unit.numeric_id)
-                            + " is part of an articulated vehicle, and needs a numeric_id smaller than "
+                            + consist.id
+                            + " has a unit variant with numeric_id "
+                            + str(numeric_id)
+                            + " which is part of an articulated vehicle, and needs a numeric_id smaller than "
                             + str(global_constants.max_articulated_id)
                             + " (use a lower consist base_numeric_id)"
                         )
-            for unit in set(consist.units):
-                if unit.numeric_id in numeric_id_defender:
+            for numeric_id in consist.unique_numeric_ids:
+                if numeric_id in numeric_id_defender:
                     raise BaseException(
-                        "Error: unit "
-                        + unit.id
-                        + " has a numeric_id that collides ("
-                        + str(unit.numeric_id)
-                        + ") with a numeric_id of unit in another consist"
+                        "Error: consist "
+                        + consist.id
+                        + " has a unit variant with numeric_id that collides ("
+                        + str(numeric_id)
+                        + ") with a numeric_id of a unit variant in another consist"
                     )
                 else:
-                    numeric_id_defender.append(unit.numeric_id)
+                    numeric_id_defender.append(numeric_id)
         # no return value needed
 
     def register_wagon_consist(self, wagon_consist):

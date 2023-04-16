@@ -24,14 +24,15 @@ ifeq ($(strip $(EXPORTED)),no)
   # Not exported source, therefore regular checkout
   REPO_INFO = $(shell $(GIT_INFO))
   REPO_REVISION = $(word 1,$(REPO_INFO))
-  REPO_VERSION = $(word 2,$(REPO_INFO))
+  # we pick the 5th item from git info for Horse, as Horse uses a monorepo strategy and tags/versions need special handling
+  REPO_TAG_OR_VERSION = $(word 5,$(REPO_INFO))
 else
   # Exported version, lines below should get modified in 'bundle_src' target
   REPO_REVISION = ${exported_revision}
-  REPO_VERSION = ${exported_version}
+  REPO_TAG_OR_VERSION = ${exported_version}
 endif
 
-REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
+REPO_TITLE = "$(PROJECT_NAME) $(REPO_TAG_OR_VERSION)"
 PROJECT_VERSIONED_NAME = $(PROJECT_NAME)
 # optional make args that will be passed through to python
 ifdef GRF
@@ -57,7 +58,7 @@ GRF_FILES = $(GRF_NAMES:%=generated/%.grf)
 NFO_FILES = $(GRF_FILES:.grf=.nfo)
 NML_FILES = $(GRF_FILES:.grf=.nml)
 LANG_FILES = $(GRF_NAMES:%=generated/lang/%/english.lng)
-TAR_FILES = $(GRF_NAMES:%=%-$(REPO_VERSION).tar)
+TAR_FILES = $(GRF_NAMES:%=%-$(REPO_TAG_OR_VERSION).tar)
 ZIP_FILE = $(PROJECT_VERSIONED_NAME).zip
 MD5_FILE = $(PROJECT_NAME).check.md5
 HTML_DOCS = $(GRF_NAMES:%=docs/%/index.html)
@@ -147,7 +148,7 @@ bundle_src: $(MD5_FILE)
 	$(FILL_TEMPLATE) --template=Makefile \
 		--output=$(BUNDLE_DIR)/src/Makefile \
 		"exported_revision=$(REPO_REVISION)" \
-		"exported_version=$(REPO_VERSION)"
+		"exported_version=$(REPO_TAG_OR_VERSION)"
 	$(SED) -i -e 's/^EXPORTED = no/EXPORTED = yes/' $(BUNDLE_DIR)/src/Makefile
 	$(MK_ARCHIVE) --tar --output=$(SOURCE_NAME).tar --base=$(SOURCE_NAME) \
 		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)

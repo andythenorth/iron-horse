@@ -5,23 +5,19 @@
       don't conflate them :) -->
 
 <tal:weathered_variants repeat="weathered_variant consist.gestalt_graphics.weathered_variants">
-    <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
-        // default graphics chain
-        spriteset(${vehicle.id}_ss_${weathered_variant}_doors_closed_${flipped}, "${graphics_path}${consist.id}.png") {
-            ${vehicle.get_spriteset_template_name('unreversed', flipped, 10 + (vehicle.spriterow_num * 30) + (repeat.weathered_variant.index * 60))}
-        }
-        spriteset(${vehicle.id}_ss_${weathered_variant}_doors_open_${flipped}, "${graphics_path}${consist.id}.png") {
-            ${vehicle.get_spriteset_template_name('unreversed', flipped, 10 + (vehicle.spriterow_num * 30) + (repeat.weathered_variant.index * 60) + 30)}
-        }
-    </tal:user_flipped>
+    // default graphics chain
+    spriteset(${vehicle.id}_ss_${weathered_variant}_doors_closed, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (vehicle.spriterow_num * 30) + (repeat.weathered_variant.index * 60))}
+    }
+    spriteset(${vehicle.id}_ss_${weathered_variant}_doors_open, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (vehicle.spriterow_num * 30) + (repeat.weathered_variant.index * 60) + 30)}
+    }
 
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_${weathered_variant},
-            [switch_graphics_box_car_with_opening_doors_check_flip() + switch_graphics_opening_doors()]) {
+            [switch_graphics_opening_doors()]) {
         <!--! stupid integer stuffing scheme to detect flip / doors states, see the procedures for the schema -->
-        0: return ${vehicle.id}_ss_${weathered_variant}_doors_closed_unflipped;
-        1: return ${vehicle.id}_ss_${weathered_variant}_doors_open_unflipped;
-        10: return ${vehicle.id}_ss_${weathered_variant}_doors_closed_flipped;
-        11: return ${vehicle.id}_ss_${weathered_variant}_doors_open_flipped;
+        0: return ${vehicle.id}_ss_${weathered_variant}_doors_closed;
+        1: return ${vehicle.id}_ss_${weathered_variant}_doors_open;
     }
 </tal:weathered_variants>
 

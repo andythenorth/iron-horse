@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=15420,
         name="Merlion",
         role="freight",
-        role_child_branch_num=-1,
+        role_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 1750,
         },
@@ -17,7 +17,9 @@ def main(roster_id):
         gen=4,
         intro_year_offset=-2,  # let's be a littler earlier for this one
         caboose_family="railfreight_1",
-        alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
+        # add railfreight triple grey
+        additional_liveries=["WHITE_STRIPE", "RAILFREIGHT_RED_STRIPE", "DUTCH"],
+        decor_spriterow_num=4,
         sprites_complete=True,
     )
 

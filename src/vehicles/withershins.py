@@ -15,16 +15,17 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
-        # alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_BLUE", "COLOUR_GREY"),
         ],
+        additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
+        decor_spriterow_num=3,
         sprites_complete=True,
     )
 
     consist.add_unit(
-        type=DieselEngineUnit, weight=82, vehicle_length=6, spriterow_num=0, repeat=2
+        type=DieselEngineUnit, weight=82, vehicle_length=6, repeat=2
     )
 
     consist.description = """It's a rat pack. What more do you want?"""

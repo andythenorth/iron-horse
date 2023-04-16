@@ -18,6 +18,7 @@ def main(roster_id):
         gen=5,
         intro_year_offset=2,  # introduce later than gen epoch by design
         caboose_family="railfreight_2",
+        additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 
@@ -27,7 +28,7 @@ def main(roster_id):
 
     consist.description = """It gets the job done either way."""
     consist.foamer_facts = (
-        """YEC <i>Janus</i>, Corus <i>Trojan</i>, Corus Hunslet Bo-bo"""
+        """YEC <i>Janus</i>, Corus <i>Trojan</i>"""
     )
 
     return consist

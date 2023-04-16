@@ -7,18 +7,20 @@ def main(roster_id):
         id="revolution",
         base_numeric_id=12540,
         name="Revolution",
-        role="heavy_express",
-        role_child_branch_num=1,  # in the diesel branch, not electric
+        role="ultra_heavy_express",
+        role_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 2950,
-            "AC": 4200,
-        },  # compared to IRL, there is more diesel power and less electric, follows Fury line 600hp progresion steps
+            "DIESEL": 2250, # lol, same as Shredder eh?
+            "AC": 5400, # higher HP than Screamer, but heavier so similar HP / ton
+        },
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=6,
-        fixed_run_cost_points=280,  # run cost nerf for bi-mode flexibility + high el-power
+        fixed_run_cost_points=470,  # run cost nerf for bi-mode flexibility + high el-power
         intro_year_offset=-2,  # introduce earlier than gen epoch by design
+        additional_liveries=[],
         sprites_complete=True,
+        sprites_additional_liveries_needed=True, # banger blue?
     )
 
     consist.add_unit(
@@ -28,6 +30,6 @@ def main(roster_id):
     consist.description = (
         """Bobby-dazzlers these are. How they fit it all in amazes me."""
     )
-    consist.foamer_facts = """Vossloh Euro Dual (DRS Class 88, ROG Class 93)"""
+    consist.foamer_facts = """Vossloh Euro Dual (ROG Class 93)"""
 
     return consist

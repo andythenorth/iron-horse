@@ -8,14 +8,15 @@ def main(roster_id):
         base_numeric_id=220,
         name="Doubletide",
         role="heavy_freight",
-        role_child_branch_num=1,
-        # no replacement by design - continues to game end as unique 10/8, especially for industrial use etc
+        role_child_branch_num=-1,
+        # no replacement by design - continues to game end as 10/8, especially for industrial use etc
         power_by_power_source={
-            "DIESEL": 2500,
+            "DIESEL": 2750, # within range of Resilient
         },
         random_reverse=True,
         gen=5,
         intro_year_offset=9,  # let's be quite a bit later for this one, Yillen is long-lived
+        additional_liveries=["INDUSTRIAL_YELLOW"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_PINK", "COLOUR_WHITE"),

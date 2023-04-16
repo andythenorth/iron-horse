@@ -61,59 +61,44 @@ class Pipeline(object):
         # this function is passed (uncalled) into the pipeline, and then called at render time
         # this is so that it has the processed spritesheet available, which is essential for creating buy menu sprites
         # n.b if buy menu sprite processing has conditions by vehicle type, could pass a dedicated function for each type of processing
-
-        # hard-coded positions for buy menu sprite (if used - it's optional)
-        x_offset = 0
-        for unit_counter, unit in enumerate(self.consist.units):
-            # !! currently no cap on purchase menu sprite width
-            # !! consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap)
-            unit_length_in_pixels = 4 * unit.vehicle_length
-            # this is jank because some articulated consists with fancy rulesets need to flip some vehicles
-            # this is probably pretty fragile, but eh, JFDI
-            ruleset_offset_num_rows_jank = 0
-            if getattr(self.consist.gestalt_graphics, "consist_ruleset", None) in [
-                "metro"
-            ]:
-                if unit_counter % 2 != 0:
-                    ruleset_offset_num_rows_jank = 4  # hard-coded to metro currently
-            if getattr(self.consist.gestalt_graphics, "consist_ruleset", None) in [
-                "articulated_permanent_twin_sets"
-            ]:
-                # hard-coded to twin articulated automobile carriers currently
-                # offset for 2nd unit to skip mask
-                if unit_counter == 1:
-                    ruleset_offset_num_rows_jank = 1
-            if (
-                self.consist.gestalt_graphics.alternative_cc_livery is not None
-            ):  # alternative_cc_livery jank for engines eh
-                ruleset_offset_num_rows_jank = unit_counter
-            unit_spriterow_offset = (
-                unit.spriterow_num + ruleset_offset_num_rows_jank
-            ) * graphics_constants.spriterow_height
-            for cc_livery_counter, cc_livery in enumerate(
-                getattr(self.consist.gestalt_graphics, "all_liveries", ["default"])
-            ):
+        buy_menu_buyable_variant_unit_row_maps = []
+        num_livery_rows_per_unit = len(self.consist.buyable_variants)
+        # organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
+        for buyable_variant in self.consist.buyable_variants:
+            result = []
+            for unit in self.consist.units:
+                unit_variant_row_num = (unit.spriterow_num * num_livery_rows_per_unit) + (buyable_variant.relative_spriterow_num * self.consist.gestalt_graphics.num_load_state_or_similar_spriterows)
+                result.append([unit, unit_variant_row_num])
+            buy_menu_buyable_variant_unit_row_maps.append(result)
+        # now walk the pre-organised structure, placing unit sprites
+        for buyable_variant_counter, buy_menu_buyable_variant_unit_row_map in enumerate(buy_menu_buyable_variant_unit_row_maps):
+            x_offset = 0
+            for unit, unit_variant_row_num in buy_menu_buyable_variant_unit_row_map:
+                # currently no cap on purchase menu sprite width
+                # consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh
+                unit_length_in_pixels = 4 * unit.vehicle_length
+                unit_spriterow_offset = unit_variant_row_num * graphics_constants.spriterow_height
                 crop_box_src = (
                     224,
-                    10 + unit_spriterow_offset + (cc_livery_counter * 30),
+                    10 + unit_spriterow_offset,
                     224
                     + unit_length_in_pixels
                     + 1,  # allow for 1px coupler / corrider overhang
-                    26 + unit_spriterow_offset + (cc_livery_counter * 30),
+                    26 + unit_spriterow_offset,
                 )
                 crop_box_dest = (
                     360 + x_offset,
-                    10 + (cc_livery_counter * 30),
+                    10 + buyable_variant_counter * graphics_constants.spriterow_height,
                     360
                     + x_offset
                     + unit_length_in_pixels
                     + 1,  # allow for 1px coupler / corrider overhang
-                    26 + (cc_livery_counter * 30),
+                    26 + buyable_variant_counter * graphics_constants.spriterow_height,
                 )
                 custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_src)
                 spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
                 # increment x offset for pasting in next vehicle
-            x_offset += unit_length_in_pixels
+                x_offset += unit_length_in_pixels
         return spritesheet
 
     def render_common(
@@ -677,14 +662,6 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, using the same pattern as the vehicle Spritesheet
         # !! the spriteset templates should then match the main vehicle, just changing path
 
-        # the gestalt can optionally tell us how many spriterows are needed, but if it doesn't, fallback to the unique spriterows
-        # we do it this way because the gestalt doesn't have easy access to the consist, so easier to do the fallback here
-        num_pantograph_rows = getattr(
-            self.consist.gestalt_graphics,
-            "num_pantograph_rows",
-            len(self.consist.unique_spriterow_nums),
-        )
-
         pantograph_input_images = {
             "diamond-single": "diamond.png",
             "diamond-double": "diamond.png",
@@ -786,7 +763,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         loc_points = [
             (
                 pixel[0],
-                pixel[1] - (num_pantograph_rows * graphics_constants.spriterow_height),
+                pixel[1] - (self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height),
                 pixel[2],
             )
             for pixel in loc_points
@@ -812,12 +789,12 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             "P",
             (
                 graphics_constants.spritesheet_width,
-                (2 * num_pantograph_rows * graphics_constants.spriterow_height) + 10,
+                (2 * self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height) + 10,
             ),
             255,
         )
         pantograph_output_image.putpalette(DOS_PALETTE)
-        for i in range(num_pantograph_rows + 1):
+        for i in range(self.consist.gestalt_graphics.num_pantograph_rows + 1):
             pantograph_output_image.paste(
                 empty_spriterow_image,
                 (0, 10 + (i * graphics_constants.spriterow_height)),
@@ -872,7 +849,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         )
         pantograph_output_image.paste(
             vehicle_debug_image,
-            (0, 10 + (num_pantograph_rows * graphics_constants.spriterow_height)),
+            (0, 10 + (self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height)),
         )
         pantograph_debug_image = pantograph_output_image.copy().crop(
             (
@@ -890,7 +867,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         )  # the inversion here of blue and white looks a bit odd, but potato / potato
         pantograph_output_image.paste(
             pantograph_debug_image,
-            (0, 10 + (num_pantograph_rows * graphics_constants.spriterow_height)),
+            (0, 10 + (self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height)),
             pantograph_debug_mask,
         )
 
@@ -902,7 +879,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             0,
             10,
             self.global_constants.sprites_max_x_extent,
-            10 + (2 * num_pantograph_rows * graphics_constants.spriterow_height),
+            10 + (2 * self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height),
         )
         self.units.append(AppendToSpritesheet(pantograph_spritesheet, crop_box_dest))
         pantograph_input_image.close()
@@ -1797,9 +1774,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                     input_spriterow_count = self.consist.gestalt_graphics.num_variations
                     self.add_caboose_spriterows(input_spriterow_count)
                 elif spriterow_type == "pax_mail_cars_with_doors":
-                    # 2 liveries with 2 rows each: empty & loaded (doors closed), loading (doors open)
                     input_spriterow_count = (
-                        4 * self.consist.gestalt_graphics.num_cargo_sprite_variants
+                        self.consist.gestalt_graphics.total_spriterow_count
                     )
                     self.add_pax_mail_car_with_opening_doors_spriterows(
                         input_spriterow_count

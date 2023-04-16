@@ -108,32 +108,12 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_24px")
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=13810,
         gen=5,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
-
-    consist = FlatCarBulkheadConsist(
-        roster_id="pony",
-        base_numeric_id=13820,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_24px")
-
-    consist = FlatCarBulkheadConsist(
-        roster_id="pony",
-        base_numeric_id=13830,
-        gen=6,
         subtype="C",
         sprites_complete=True,
     )

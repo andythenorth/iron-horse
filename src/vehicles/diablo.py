@@ -8,8 +8,7 @@ def main(roster_id):
         base_numeric_id=4910,
         name="2-6-0 Diablo",
         role="freight",
-        role_child_branch_num=-1,
-        replacement_consist_id="growler",  # this Joker ends with Growler
+        role_child_branch_num=2,
         power_by_power_source={
             "STEAM": 1500,  # same as Haar
         },
@@ -18,6 +17,7 @@ def main(roster_id):
         fixed_run_cost_points=150,  # small cost bonus for balance against same gen Haar
         gen=3,
         intro_year_offset=4,  # introduce a bit later
+        additional_liveries=["FREIGHT_BLACK"],
         sprites_complete=True,
     )
 

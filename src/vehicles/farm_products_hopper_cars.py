@@ -51,32 +51,12 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_24px")
 
     consist = FarmProductsHopperCarConsist(
         roster_id="pony",
         base_numeric_id=11730,
         gen=5,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_32px")
-
-    consist = FarmProductsHopperCarConsist(
-        roster_id="pony",
-        base_numeric_id=11850,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_24px")
-
-    consist = FarmProductsHopperCarConsist(
-        roster_id="pony",
-        base_numeric_id=11860,
-        gen=6,
         subtype="C",
         sprites_complete=True,
     )
