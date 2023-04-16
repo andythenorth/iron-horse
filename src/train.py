@@ -2196,8 +2196,7 @@ class BolsterCarConsist(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -2242,8 +2241,7 @@ class BoxCarConsist(BoxCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="box_car",
             weathered_variants=weathered_variants,
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -2266,7 +2264,7 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         ]
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("box_car", **kwargs)
+        self._variant_group = self.get_wagon_id("box_car", **kwargs)
         self._joker = True
         # Graphics configuration
         self.roof_type = "freight"
@@ -2320,7 +2318,7 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
         parent_id_base = "box_car"
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id(parent_id_base, **kwargs)
+        self._variant_group = self.get_wagon_id(parent_id_base, **kwargs)
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -2351,7 +2349,7 @@ class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
         super().__init__(**kwargs)
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id('box_car', **kwargs)
+        self._variant_group = self.get_wagon_id('box_car', **kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -2403,7 +2401,7 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
         self._joker = True
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("sliding_wall_car", **kwargs)
+        self._variant_group = self.get_wagon_id("sliding_wall_car", **kwargs)
         # type-specific wagon colour randomisation
         self.auto_colour_randomisation_strategy_num = (
             1  # single base colour unless flipped
@@ -2479,7 +2477,7 @@ class CarbonBlackHopperCarConsist(CarConsist):
         )
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("chemical_covered_hopper_car", **kwargs)
+        self._variant_group = self.get_wagon_id("chemical_covered_hopper_car", **kwargs)
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -2561,14 +2559,13 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         self.cc_num_to_randomise = 2
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("coil_car_uncovered", **kwargs)
+        self._variant_group = self.get_wagon_id("coil_car_uncovered", **kwargs)
         self._joker = True
         # Graphics configuration
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC2}
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
             piece="coil",
             has_cover=True,
         )
@@ -2587,8 +2584,7 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="coil",
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -2638,7 +2634,7 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("dry_powder_hopper_car", **kwargs)
+        self._variant_group = self.get_wagon_id("dry_powder_hopper_car", **kwargs)
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -2688,8 +2684,7 @@ class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -2747,8 +2742,7 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -2768,8 +2762,7 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -2829,7 +2822,7 @@ class DumpCarAggregateConsist(DumpCarConsistBase):
         ]
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("dump_car", **kwargs)
+        self._variant_group = self.get_wagon_id("dump_car", **kwargs)
         self._joker = True
 
 
@@ -2849,7 +2842,7 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
         ]
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("dump_car", **kwargs)
+        self._variant_group = self.get_wagon_id("dump_car", **kwargs)
         self._joker = True
 
 
@@ -2880,7 +2873,7 @@ class DumpCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
         super().__init__(**kwargs)
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("dump_car", **kwargs)
+        self._variant_group = self.get_wagon_id("dump_car", **kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -3095,7 +3088,7 @@ class FarmProductsHopperCarConsist(CarConsist):
         )
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("farm_products_box_car", **kwargs)
+        self._variant_group = self.get_wagon_id("farm_products_box_car", **kwargs)
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.farm_products_hopper_car_livery_recolour_maps,
@@ -3146,8 +3139,7 @@ class FlatCarBulkheadConsist(FlatCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -3165,8 +3157,7 @@ class FlatCarConsist(FlatCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -3191,8 +3182,7 @@ class FlatCarPlateConsist(FlatCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -3262,7 +3252,7 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
         ]
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("sliding_roof_car", **kwargs)
+        self._variant_group = self.get_wagon_id("sliding_roof_car", **kwargs)
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -3270,8 +3260,7 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
             piece="flat",
             has_cover=True,
         )
@@ -3335,7 +3324,7 @@ class GasTankCarCryoConsist(GasTankCarConsistBase):
         super().__init__(**kwargs)
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("pressure_tank_car", **kwargs)
+        self._variant_group = self.get_wagon_id("pressure_tank_car", **kwargs)
 
 
 class HopperCarConsistBase(CarConsist):
@@ -3404,7 +3393,7 @@ class HopperCarMGRConsist(HopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("hopper_car", **kwargs)
+        self._variant_group = self.get_wagon_id("hopper_car", **kwargs)
         # adjust default liveries set by the base class
         self.gestalt_graphics.liveries = [
             self.roster.default_livery,
@@ -3587,7 +3576,7 @@ class KaolinHopperCarConsist(CarConsist):
         )
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("swing_roof_hopper_car", **kwargs)
+        self._variant_group = self.get_wagon_id("swing_roof_hopper_car", **kwargs)
         self._joker = True
         # type-specific wagon colour randomisation
         self.auto_colour_randomisation_strategy_num = (
@@ -3631,8 +3620,7 @@ class LivestockCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="livestock_car",
             weathered_variants=weathered_variants,
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -3656,8 +3644,7 @@ class LogCarConsist(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="tree_length_logs",
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -3822,8 +3809,7 @@ class OpenCarConsist(OpenCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             piece="open",
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -3839,7 +3825,7 @@ class OpenCarHoodConsist(OpenCarConsistBase):
         self.default_cargos.extend(polar_fox.constants.default_cargos["open"])
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("open_car", **kwargs)
+        self._variant_group = self.get_wagon_id("open_car", **kwargs)
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.hood_open_car_body_recolour_map,
@@ -3865,7 +3851,7 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("open_car", **kwargs)
+        self._variant_group = self.get_wagon_id("open_car", **kwargs)
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.merchandise_car_body_recolour_map,
@@ -3889,7 +3875,7 @@ class OpenCarRandomisedConsist(RandomisedConsistMixin, OpenCarConsistBase):
         super().__init__(**kwargs)
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id('open_car', **kwargs)
+        self._variant_group = self.get_wagon_id('open_car', **kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
@@ -4456,8 +4442,7 @@ class SiloCarConsist(SiloCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -4472,7 +4457,7 @@ class SiloCarChemicalConsist(SiloCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("silo_car", **kwargs)
+        self._variant_group = self.get_wagon_id("silo_car", **kwargs)
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.chemical_silo_car_livery_recolour_maps,
@@ -4495,7 +4480,7 @@ class SiloCarCementConsist(SiloCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("silo_car", **kwargs)
+        self._variant_group = self.get_wagon_id("silo_car", **kwargs)
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4604,8 +4589,7 @@ class TankCarAcidConsist(TankCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            # CABBAGE VIA RECOLOUR liveries=[self.roster.default_livery, self.roster.default_livery],
-            liveries=[self.roster.default_livery],
+            liveries=[self.roster.default_livery, self.roster.default_livery],
         )
 
 
@@ -4621,7 +4605,7 @@ class TankCarProductConsist(TankCarConsistBase):
         self.randomised_candidate_groups = ["randomised_chemicals_tank_car"]
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id("acid_tank_car", **kwargs)
+        self._variant_group = self.get_wagon_id("acid_tank_car", **kwargs)
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4644,7 +4628,7 @@ class TankCarChemicalsRandomisedConsist(RandomisedConsistMixin, TankCarConsistBa
         super().__init__(**kwargs)
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        # CABBAGE self._variant_group = self.get_wagon_id('acid_tank_car', **kwargs)
+        self._variant_group = self.get_wagon_id('acid_tank_car', **kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=3,
