@@ -54,7 +54,9 @@ class Consist(object):
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
         # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem
         self.buyable_variants = []
+        # !! possibly don't need both of these here !!
         self._variant_group = kwargs.get("variant_group", None)
+        self.buyable_variant_group = None  # !! assignments of this managed by roster as it has view across all consists
         # create a structure to hold the units
         self.units = []
         # either gen xor intro_year is required, don't set both, one will be interpolated from the other
@@ -3825,7 +3827,7 @@ class OpenCarHoodConsist(OpenCarConsistBase):
         self.default_cargos.extend(polar_fox.constants.default_cargos["open"])
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        self._variant_group = self.get_wagon_id("open_car", **kwargs)
+        self.variant_group_id = "open_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.hood_open_car_body_recolour_map,
@@ -3851,7 +3853,7 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        self._variant_group = self.get_wagon_id("open_car", **kwargs)
+        self.variant_group_id = "open_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.merchandise_car_body_recolour_map,
@@ -4755,7 +4757,10 @@ class UnitVariant(object):
         if self.buyable_variant.is_default_buyable_variant:
             return None
         else:
-            return self.unit.consist.base_numeric_id
+            if self.unit.consist.buyable_variant_group is None:
+                print("buyable_variant_group undefined for consist", self.unit.consist.id)
+            else:
+                return self.unit.consist.buyable_variant_group.parent_vehicle.base_numeric_id
 
     @property
     def use_wagon_base_colour_parameter_cabbage(self):

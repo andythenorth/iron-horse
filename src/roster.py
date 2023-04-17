@@ -18,6 +18,9 @@ class Roster(object):
         # engines only used once at __init__ time, it's a list of modules, not the actual consists
         self.engines = kwargs.get("engines")
         self.engine_consists = []
+        # create a structure to hold (buyable) variant groups - populated later on post_init_actions()
+        self.buyable_variant_groups = []
+        self.wagon_buyable_variant_group_ids = kwargs.get("wagon_buyable_variant_group_ids", [])
         self.intro_years = kwargs.get("intro_years")
         self.speeds = kwargs.get("speeds")
         self.freight_car_capacity_per_unit_length = kwargs.get(
@@ -316,10 +319,42 @@ class Roster(object):
         wagon_consist.roster_id = self.id
 
     def post_init_actions(self):
-        # init has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
+        # init of consists has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
         for engine in self.engines:
             consist = engine.main(self.id)
             self.engine_consists.append(consist)
         self.wagon_consists = dict(
             [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons]
         )
+        # !! creating groups has to happen after all consists are inited
+        # !! there is too much train logic here, it needs to just be a call to consist.resolve_buyable_group or something
+        # !! with a simple check to see if the group exists or not (move groups to a dict to simplify looking up by group id?
+        for consist in self.engine_consists:
+            if len(consist.buyable_variants) > 1:
+                # all engines with variants define their own buyable variant group, composed of all livery variants for the engine
+                # any additional vehicles for the engine group (e.g. dedicated trailer cars) will be added explicitly later
+                consist.buyable_variant_group = BuyableVariantGroup(parent_vehicle=consist)
+                self.buyable_variant_groups.append(consist.buyable_variant_group)
+        # !! there is too much train logic here, it needs to just be a call to consist.resolve_buyable_group or something
+        for wagon_buyable_variant_group_id in self.wagon_buyable_variant_group_ids:
+            print(wagon_buyable_variant_group_id)
+            buyable_variant_group = BuyableVariantGroup(parent_vehicle=None)
+            self.buyable_variant_groups.append(buyable_variant_group)
+            for base_id, wagons in self.wagon_consists.items():
+                for wagon_consist in wagons:
+                    if wagon_consist.variant_group_id == buyable_variant_group_id:
+                        if buyable_variant_group.id == None:
+                             buyable_variant_group.id = wagon_consist.base_numeric_id
+                        wagon_consist.buyable_variant_group = buyable_variant_group
+
+
+class BuyableVariantGroup(object):
+    """
+    Simple class to hold groups of buyable variants.
+    These provide the variant_group in nml.
+    A group may comprise the buyable variants for a single consist, or it may be composed of all the buyable variants from multiple consists.
+    """
+
+    def __init__(self, parent_vehicle):
+        # the numeric ID
+        self.parent_vehicle = parent_vehicle
