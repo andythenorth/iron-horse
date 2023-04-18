@@ -174,6 +174,11 @@ class RosterManager(list):
         for roster in self:
             roster.validate_vehicles(self.numeric_id_defender)
 
+    def add_buyable_variant_groups(self):
+        # has to be explicitly called after all vehicles and vehicle units are registered to each roster
+        for roster in self:
+            roster.add_buyable_variant_groups()
+
     @property
     def active_roster(self):
         # special case if we only want the id report, which does not require an active roster
@@ -386,3 +391,4 @@ def main():
     vehicle_parts_box_cars.main()
 
     roster_manager.validate_vehicles()
+    roster_manager.add_buyable_variant_groups()

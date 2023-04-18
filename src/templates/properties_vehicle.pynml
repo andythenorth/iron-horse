@@ -78,7 +78,7 @@
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
     <!--! !! if we explicitly handle indent level 0 for the group name,
              then we can safely rely on the default in contexts like the autoreplace UI -->
-    <tal:wagon condition="(consist.power == 0) and (consist._variant_group is not None)">
+    <tal:wagon condition="(consist.power == 0) and (consist.buyable_variant_group is not None)">
         0: return string(STR_CABBAGE);
     </tal:wagon>
     return CB_RESULT_NO_TEXT; <!--! will use property instead -->
@@ -107,8 +107,10 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_inf
                 retire_early:                   ${consist.retire_early};
                 reliability_decay:              20; // default value
                 vehicle_life:                   ${consist.vehicle_life};
-                <tal:variant_group condition="unit_variant.buyable_variant_group_id is not None">
-                    variant_group:                  ${unit_variant.buyable_variant_group_id};
+                <tal:variant_group condition="consist.buyable_variant_group is not None">
+                    <tal:not_parent condition="unit_variant.id != consist.buyable_variant_group.parent_vehicle.id">
+                        variant_group:                  ${consist.buyable_variant_group.parent_vehicle.id};
+                    </tal:not_parent>
                 </tal:variant_group>
             </tal:lead_unit_of_consist_only>
             <tal:trailing_parts_of_consist_only condition="not vehicle.is_lead_unit_of_consist">

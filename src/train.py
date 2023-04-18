@@ -54,9 +54,12 @@ class Consist(object):
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
         # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem
         self.buyable_variants = []
-        # !! possibly don't need both of these here !!
-        self._variant_group = kwargs.get("variant_group", None)
-        self.buyable_variant_group = None  # !! assignments of this managed by roster as it has view across all consists
+        # variant group id options are set in subclasses; supported methods are cascading:
+        # set explicitly to a named group matching a consist id
+        # set explicitly to a base id, for e.g. wagon groups defined on the roster, which will then compose a group name using e.g. consist track type, gen etc
+        # or implicitly inferred later from rules for e.g. livery variants
+        self.buyable_variant_group_id = None
+        self.buyable_variant_group_base_id = None
         # create a structure to hold the units
         self.units = []
         # either gen xor intro_year is required, don't set both, one will be interpolated from the other
@@ -210,6 +213,22 @@ class Consist(object):
             unit_variant.numeric_id for unit_variant in self.units[0].unit_variants
         ]
         return result
+
+    @property
+    def buyable_variant_group(self):
+        # wagons also have an equivalent method, if updating one, check the other
+        self.assert_buyable_variant_groups()
+        if self.buyable_variant_group_id is not None:
+            return self.roster.buyable_variant_groups[self.buyable_variant_group_id]
+        elif self.buyable_variant_group_base_id is not None:
+            # assumes wagons, but that could be handled differently if needed
+            return self.roster.buyable_variant_groups[
+                self.roster.get_wagon_buyable_variant_group_id_for_consist(
+                    self.buyable_variant_group_base_id, self
+                )
+            ]
+        else:
+            return self.roster.buyable_variant_groups[self.id]
 
     @property
     def unique_spriterow_nums(self):
@@ -898,7 +917,11 @@ class Consist(object):
             elif len(self.power_by_power_source) == 3:
                 result.append("STR_POWER_BY_POWER_SOURCE_THREE_SOURCES")
             else:
-                raise BaseException("consist " + self.id + " defines unsupported number of power sources")
+                raise BaseException(
+                    "consist "
+                    + self.id
+                    + " defines unsupported number of power sources"
+                )
         # optional string if consist is lgv-capable
         if self.lgv_capable:
             result.append("STR_SPEED_BY_RAILTYPE_LGV_CAPABLE")
@@ -1019,6 +1042,15 @@ class Consist(object):
                 "wagon_randomisation_candidates"
             ] = self.roster.get_wagon_randomisation_candidates(self)
         # no return
+
+    def assert_buyable_variant_groups(self):
+        # can't use buyable variant groups until they've been inited, which depends on consists being inited prior, so guard for that case
+        if self.roster.buyable_variant_groups is None:
+            raise BaseException(
+                "buyable_variant_groups undefined for roster "
+                + self.roster.id
+                + " - probably consist.buyable_variant_group called before variant groups inited"
+            )
 
     def assert_speed(self):
         # speed is assumed to be limited to 200mph
@@ -1784,7 +1816,7 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cab_id = self.id.split("_middle")[0] + "_cab"
-        self._variant_group = self.cab_id
+        self.buyable_variant_group_id = self.cab_id
         self.wagons_add_power = True
         self.buy_menu_hint_wagons_add_power = True
         self.tilt_bonus = True
@@ -2351,7 +2383,7 @@ class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
         super().__init__(**kwargs)
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        self._variant_group = self.get_wagon_id('box_car', **kwargs)
+        self._variant_group = self.get_wagon_id("box_car", **kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -3735,10 +3767,11 @@ class MailHSTCarConsist(MailCarConsistBase):
         super().__init__(**kwargs)
         self.speed_class = "hst"
         # used to get insert the name of the parent into vehicle name
+        # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs[
             "cab_id"
-        ]  # cab_id must be passed, do not mask errors with .get()
-        self._variant_group = self.cab_id
+        ]
+        self.buyable_variant_group_id = self.cab_id
         self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.66
         # get the intro year offset and life props from the cab, to ensure they're in sync
@@ -3827,7 +3860,7 @@ class OpenCarHoodConsist(OpenCarConsistBase):
         self.default_cargos.extend(polar_fox.constants.default_cargos["open"])
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        self.variant_group_id = "open_cars"
+        self.buyable_variant_group_base_id = "open_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.hood_open_car_body_recolour_map,
@@ -3853,7 +3886,7 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        self.variant_group_id = "open_cars"
+        self.buyable_variant_group_base_id = "open_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.merchandise_car_body_recolour_map,
@@ -3877,7 +3910,7 @@ class OpenCarRandomisedConsist(RandomisedConsistMixin, OpenCarConsistBase):
         super().__init__(**kwargs)
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        self._variant_group = self.get_wagon_id('open_car', **kwargs)
+        self._variant_group = self.get_wagon_id("open_car", **kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
@@ -3928,10 +3961,11 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         # don't set base_id here, let subclasses do it
         super().__init__(**kwargs)
+         # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs[
             "cab_id"
-        ]  # cab_id must be passed, do not mask errors with .get()
-        self._variant_group = self.cab_id
+        ]
+        self.buyable_variant_group_id = self.cab_id
         # get the intro year offset and life props from the cab, to ensure they're in sync
         self.intro_year_offset = self.cab_consist.intro_year_offset
         self._model_life = self.cab_consist.model_life
@@ -4074,10 +4108,11 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         self.speed_class = "hst"
         # used to get insert the name of the parent into vehicle name
+        # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs[
             "cab_id"
-        ]  # cab_id must be passed, do not mask errors with .get()
-        self._variant_group = self.cab_id
+        ]
+        self.buyable_variant_group_id = self.cab_id
         self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
@@ -4630,7 +4665,7 @@ class TankCarChemicalsRandomisedConsist(RandomisedConsistMixin, TankCarConsistBa
         super().__init__(**kwargs)
         # as of Dec 2022, to avoid rewriting complicated templating and graphics generation
         # variant groups are created post-hoc, using otherwise completely independent vehicles
-        self._variant_group = self.get_wagon_id('acid_tank_car', **kwargs)
+        self._variant_group = self.get_wagon_id("acid_tank_car", **kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=3,
@@ -4749,18 +4784,6 @@ class UnitVariant(object):
                 return self.unit.consist.intro_year
         else:
             return self.unit.consist.intro_year
-
-    @property
-    def buyable_variant_group_id(self):
-        if self.unit.consist._variant_group is not None:
-            return self.unit.consist._variant_group
-        if self.buyable_variant.is_default_buyable_variant:
-            return None
-        else:
-            if self.unit.consist.buyable_variant_group is None:
-                print("buyable_variant_group undefined for consist", self.unit.consist.id)
-            else:
-                return self.unit.consist.buyable_variant_group.parent_vehicle.base_numeric_id
 
     @property
     def use_wagon_base_colour_parameter_cabbage(self):
@@ -4932,12 +4955,16 @@ class Train(object):
 
     def get_extra_flags(self, unit_variant):
         extra_flags = []
-        if unit_variant.buyable_variant_group_id is not None:
+        print("!! get_extra_flags needs to check for consist not unit_variant")
+        # !! but will need to handle that flags _should_ be set if the consist is a group parent, which can be detected by checking against parent vehicle of group
+        """
+        if unit_variant.buyable_variant_group is not None:
             extra_flags.append("VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE")
             extra_flags.append("VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW")
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW")
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY")
         return ",".join(extra_flags)
+        """
 
     @property
     def refittable_classes(self):

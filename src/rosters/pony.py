@@ -837,7 +837,8 @@ def main():
             workish,
             zorro,
         ],
-        wagon_buyable_variant_group_ids=[
-            "open_cars",
-        ]
+        wagon_buyable_variant_group_base_ids={
+            "open_cars": "open_car",
+            "box_cars": "box_car",
+        }
     )
