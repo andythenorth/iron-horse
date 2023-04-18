@@ -3,9 +3,9 @@ STR_GRF_DOCS_URL                                                :${utils.get_doc
 <!--! empty string is not translated :) -->
 STR_EMPTY                                                       :
 
-STR_NAME_CONSIST_PLAIN                                          :{STRING} {STRING}
-STR_NAME_CONSIST_COMPOUND                                       :{STRING} {STRING}
-STR_NAME_CONSIST_PARENTHESES                                    :{STRING} ({STRING}) {STRING}
+STR_PARENTHESES                                                 :({STRING})
+STR_NAME_CONSIST_COMPOUND_TWO                                   :{STRING} {STRING}
+STR_NAME_CONSIST_COMPOUND_THREE                                 :{STRING} {STRING} {STRING}
 
 <!--! consist names (engines) -->
 <tal:consist_names repeat="consist consists">

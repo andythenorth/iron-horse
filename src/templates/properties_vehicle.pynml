@@ -79,7 +79,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name_purchase_extra_bits, getbit
     <!--! !! if we explicitly handle indent level 0 for the group name,
              then we can safely rely on the default in contexts like the autoreplace UI -->
     <tal:wagon condition="(consist.power == 0) and (consist.buyable_variant_group is not None)">
-        0: return string(STR_CABBAGE);
+        0: return ${consist.buyable_variant_group.name};
     </tal:wagon>
     return CB_RESULT_NO_TEXT; <!--! will use property instead -->
 }

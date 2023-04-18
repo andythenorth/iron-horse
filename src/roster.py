@@ -21,8 +21,8 @@ class Roster(object):
         # create a structure to hold (buyable) variant groups
         # deliberately instantiated as none - cannot be populated as a structure until later, after all consists are inited
         self.buyable_variant_groups = None
-        self.wagon_buyable_variant_group_base_ids = kwargs.get(
-            "wagon_buyable_variant_group_base_ids", {}
+        self.buyable_variant_group_base_ids = kwargs.get(
+            "buyable_variant_group_base_ids", {}
         )
         self.intro_years = kwargs.get("intro_years")
         self.speeds = kwargs.get("speeds")
@@ -357,7 +357,10 @@ class Roster(object):
 
         # create the structure to hold the groups, this is set to None when the roster is inited, and should be None when this method is called
         if self.buyable_variant_groups is not None:
-            raise BaseException("add_buyable_variant_groups() called more than once for roster " + self.id)
+            raise BaseException(
+                "add_buyable_variant_groups() called more than once for roster "
+                + self.id
+            )
         self.buyable_variant_groups = {}
 
         # first create an implicit group for every consist, as any consist can in theory be the parent of a group, with e.g.
@@ -369,19 +372,20 @@ class Roster(object):
         # not all groups will be used, but they're low cost to over-provision
         for consist in self.consists_in_buy_menu_order:
             self.buyable_variant_groups[consist.id] = BuyableVariantGroup(
-                parent_vehicle=consist
+                id=consist.id, parent_vehicle=consist
             )
         # now create explicit groups, as defined per roster, for wagons (or other cases that might need to be handled)
         for (
             group_base_id,
             parent_vehicle_base_id,
-        ) in self.wagon_buyable_variant_group_base_ids.items():
+        ) in self.buyable_variant_group_base_ids.items():
             for wagon_consist in self.wagon_consists[parent_vehicle_base_id]:
-                self.buyable_variant_groups[
-                    self.get_wagon_buyable_variant_group_id_for_consist(
-                        group_base_id, wagon_consist
-                    )
-                ] = BuyableVariantGroup(parent_vehicle=wagon_consist)
+                id = self.get_wagon_buyable_variant_group_id_for_consist(
+                    group_base_id, wagon_consist
+                )
+                self.buyable_variant_groups[id] = BuyableVariantGroup(
+                    id=id, parent_vehicle=wagon_consist, group_base_id=group_base_id
+                )
 
 
 class BuyableVariantGroup(object):
@@ -391,6 +395,24 @@ class BuyableVariantGroup(object):
     A group may comprise the buyable variants for a single consist, or it may be composed of all the buyable variants from multiple consists.
     """
 
-    def __init__(self, parent_vehicle):
-        # the numeric ID
+    def __init__(self, id, parent_vehicle, group_base_id=None):
+        # parent_vehicle should be a consist
+        self.id = id
         self.parent_vehicle = parent_vehicle
+        self.group_base_id = group_base_id
+
+    @property
+    def name(self):
+        # assumes wagon groups as of April 2023, change if needed
+        # !! might want to handle case of group_base_id = None?
+        if self.group_base_id != None:
+            try:
+                return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string({b}))".format(
+                    a="STR_" + self.group_base_id.upper(),
+                    b=self.parent_vehicle.wagon_title_subtype_str,
+                )
+
+            except:
+                raise BaseException(self.parent_vehicle.id)
+        else:
+            return self.parent_vehicle.name
