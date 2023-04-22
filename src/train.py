@@ -5057,16 +5057,13 @@ class Train(object):
 
     def get_extra_flags(self, unit_variant):
         extra_flags = []
-        print("!! get_extra_flags needs to check for consist not unit_variant")
-        # !! but will need to handle that flags _should_ be set if the consist is a group parent, which can be detected by checking against parent vehicle of group
-        """
         if unit_variant.buyable_variant_group is not None:
+            # some of these aren't needed for wagons or articulated trailing parts, but eh, probably fine?
             extra_flags.append("VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE")
             extra_flags.append("VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW")
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW")
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY")
         return ",".join(extra_flags)
-        """
 
     @property
     def refittable_classes(self):
