@@ -108,8 +108,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_inf
                 reliability_decay:              20; // default value
                 vehicle_life:                   ${consist.vehicle_life};
                 <tal:variant_group condition="consist.buyable_variant_group is not None">
-                    <tal:not_parent condition="unit_variant.id != consist.buyable_variant_group.parent_vehicle.id">
-                        variant_group:                  ${consist.buyable_variant_group.parent_vehicle.id};
+                    <tal:not_parent condition="unit_variant.id != consist.buyable_variant_group.parent_consist.id">
+                        variant_group:                  ${consist.buyable_variant_group.parent_consist.id};
                     </tal:not_parent>
                 </tal:variant_group>
             </tal:lead_unit_of_consist_only>

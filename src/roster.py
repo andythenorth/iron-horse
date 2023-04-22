@@ -339,18 +339,14 @@ class Roster(object):
             [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons]
         )
 
-    def get_wagon_buyable_variant_group_id_for_consist(
-        self, buyable_variant_group_base_id, consist
-    ):
-        wagon_buyable_variant_group_id = "_".join(
-            [
-                buyable_variant_group_base_id,
-                consist.base_track_type_name.lower(),
-                "gen",
-                str(consist.gen) + consist.subtype,
-            ]
+    def get_variant_group_id_from_named_group(self, group_name, consist):
+        # composes a group id from a group name, and some properties from the consist
+        return "{a}_{b}_gen_{c}{d}".format(
+            a=group_name,
+            b=consist.base_track_type_name.lower(),
+            c=consist.gen,
+            d=consist.subtype,
         )
-        return wagon_buyable_variant_group_id
 
     def add_buyable_variant_groups(self):
         # creating groups has to happen after *all* consists are inited
@@ -361,31 +357,23 @@ class Roster(object):
                 "add_buyable_variant_groups() called more than once for roster "
                 + self.id
             )
+
         self.buyable_variant_groups = {}
 
-        # first create an implicit group for every consist, as any consist can in theory be the parent of a group, with e.g.
-        # - livery variants
-        # - dedicated trailer cars for engines
-        # - grouped wagons
-        # - sub-variants (Horse doesn't use these as of April 2023, but they are possible)
-        # note that this *doesn't* create a group for every *buyable variant* of every consist, just the base consist
-        # not all groups will be used, but they're low cost to over-provision
+        # for every consist
+        # - add a group if it doesn't already exist
+        # - add the consist as a member of the group
         for consist in self.consists_in_buy_menu_order:
-            self.buyable_variant_groups[consist.id] = BuyableVariantGroup(
-                id=consist.id, parent_vehicle=consist
+            if not consist.buyable_variant_group_id in self.buyable_variant_groups:
+                self.buyable_variant_groups[
+                    consist.buyable_variant_group_id
+                ] = BuyableVariantGroup(
+                    id=consist.buyable_variant_group_id,
+                    named_group=consist.use_named_buyable_variant_group,
+                )
+            self.buyable_variant_groups[consist.buyable_variant_group_id].add_consist(
+                consist
             )
-        # now create explicit groups, as defined per roster, for wagons (or other cases that might need to be handled)
-        for (
-            group_base_id,
-            parent_vehicle_base_id,
-        ) in self.buyable_variant_group_base_ids.items():
-            for wagon_consist in self.wagon_consists[parent_vehicle_base_id]:
-                id = self.get_wagon_buyable_variant_group_id_for_consist(
-                    group_base_id, wagon_consist
-                )
-                self.buyable_variant_groups[id] = BuyableVariantGroup(
-                    id=id, parent_vehicle=wagon_consist, group_base_id=group_base_id
-                )
 
 
 class BuyableVariantGroup(object):
@@ -395,24 +383,49 @@ class BuyableVariantGroup(object):
     A group may comprise the buyable variants for a single consist, or it may be composed of all the buyable variants from multiple consists.
     """
 
-    def __init__(self, id, parent_vehicle, group_base_id=None):
-        # parent_vehicle should be a consist
+    def __init__(self, id, named_group):
         self.id = id
-        self.parent_vehicle = parent_vehicle
-        self.group_base_id = group_base_id
+        self.named_group = named_group
+        self.consists = []
+
+    def add_consist(self, consist):
+        self.consists.append(consist)
+
+    @property
+    def parent_consist(self):
+        # first check if the consist has a named group, if it does then that will specify a consist base_id to match
+        if self.named_group is not None:
+            base_id = global_constants.buyable_variant_group_consist_base_ids_by_group_name[self.named_group]
+            for consist in self.consists:
+                if consist.base_id == base_id:
+                    return consist
+        # otherwise fall through to the first consist in the list
+        # !! this may not give the intended result at all currently
+        # !! - non-named groups, this might not be the parent vehicle at all
+        # !! - named groups, we might want to control this by buy menu order (might already be so though)
+        return self.consists[0]
+
+    @property
+    def total_number_of_buyable_consists(self):
+        # the total number of buyable consists is the sum of buyable variants for all the consists in the group
+        result = 0
+        for consist in self.consists:
+            for buyable_variant in consist.buyable_variants:
+                result += 1
+        return result
 
     @property
     def name(self):
         # assumes wagon groups as of April 2023, change if needed
         # !! might want to handle case of group_base_id = None?
-        if self.group_base_id != None:
+        if self.named_group != None and self.total_number_of_buyable_consists > 1:
             try:
                 return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string({b}))".format(
-                    a="STR_" + self.group_base_id.upper(),
-                    b=self.parent_vehicle.wagon_title_subtype_str,
+                    a="STR_" + self.named_group.upper(),
+                    b=self.parent_consist.wagon_title_subtype_str,
                 )
 
             except:
-                raise BaseException(self.parent_vehicle.id)
+                raise BaseException(self.parent_consist.id)
         else:
-            return self.parent_vehicle.name
+            return self.parent_consist.name

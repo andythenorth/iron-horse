@@ -232,6 +232,31 @@ intro_month_offsets_by_role_group = {
     "lolz": 11,
 }
 
+# shared across all rosters, keep alphabetised, order not significant
+buyable_variant_group_consist_base_ids_by_group_name = {
+    "wagon_group_automobile_cars": "automobile_car",
+    "wagon_group_box_cars": "box_car",
+    "wagon_group_bulk_open_cars": "dump_car",
+    "wagon_group_chemicals_tank_cars": "product_tank_car",
+    "wagon_group_coil_cars": "coil_car",
+    "wagon_group_covered_hopper_cars": "covered_hopper_car",
+    "wagon_group_covered_flat_cars": "sliding_roof_car",
+    "wagon_group_farm_product_cars": "farm_products_hopper_car",
+    "wagon_group_flat_cars": "flat_car",
+    "wagon_group_hopper_cars": "hopper_car",
+    "wagon_group_intermodal_cars": "intermodal_car",
+    "wagon_group_mail_cars": "mail_car",
+    "wagon_group_mineral_covered_hopper_cars": "mineral_covered_hopper_car",
+    "wagon_group_open_cars": "open_car",
+    "wagon_group_passenger_cars": "passenger_car",
+    "wagon_group_pressure_tank_cars": "pressure_tank_car",
+    "wagon_group_restaurant_cars": "wagon_group_restaurant_cars",
+    "wagon_group_silo_cars": "silo_car",
+    "wagon_group_sliding_wall_cars": "sliding_wall_car",
+    "wagon_group_suburban_passenger_cars": "suburban_passenger_car",
+    "wagon_group_tank_cars": "tank_car",
+}
+
 # custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants
 # post python 3.7, we rely on dict order being stable here, so we can get keys by position when we need to
 custom_wagon_recolour_sprite_maps = {
