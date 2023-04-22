@@ -4866,6 +4866,16 @@ class UnitVariant(object):
             )
 
     @property
+    def buyable_variant_group(self):
+        self.unit.consist.assert_buyable_variant_groups()
+        # group is defined by consist
+        # but we chain via the unit variant, so that we can check if this variant is the default or not
+        if self.id == self.unit.consist.buyable_variant_group.parent_consist.id:
+            return None
+        else:
+            return self.unit.consist.roster.buyable_variant_groups[self.unit.consist.buyable_variant_group_id]
+
+    @property
     def intro_year(self):
         # stupid abstraction to allow certain date-limited liveries
         if self.buyable_variant.forced_intro_year is not None:
