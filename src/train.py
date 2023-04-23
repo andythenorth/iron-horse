@@ -2850,7 +2850,7 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["CC_BLUE"],
             ],
         )
 
