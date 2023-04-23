@@ -314,8 +314,8 @@ custom_wagon_recolour_sprite_maps = {
     "custom_pale_green": (97, 98, 99, 100, 101, 102, 103, 14),
     "custom_dark_green": (89, 90, 91, 92, 93, 94, 95, 31),
     # tried darker bauxite colours, doesn't work well
-    "custom_bauxite": (71, 73, 74, 125, 76, 77, 78, 79),
-    "custom_dark_bauxite": (70, 72, 73, 124, 75, 76, 77, 78),
+    "custom_bauxite": (71, 122, 74, 125, 76, 127, 78, 79),
+    "custom_dark_bauxite": (70, 71, 122, 124, 75, 126, 77, 78),
     "custom_nightshade": (1, 104, 2, 16, 17, 18, 19, 20),
     "custom_light_nightshade": (1, 2, 106, 17, 18, 7, 20, 10),
 }
