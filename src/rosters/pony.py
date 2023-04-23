@@ -494,8 +494,24 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
-            "BAUXITE": {
+            "FREIGHT_BAUXITE": {
                 "base_colour_sets": ["freight_bauxite"],
+                "use_weathering": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "FREIGHT_GREY": {
+                "base_colour_sets": ["freight_grey"],
+                "use_weathering": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "FREIGHT_NIGHTSHADE": {
+                "base_colour_sets": ["freight_nightshade"],
                 "use_weathering": True,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),

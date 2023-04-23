@@ -2249,7 +2249,7 @@ class BolsterCarConsist(CarConsist):
             piece="flat",
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -2300,7 +2300,7 @@ class BoxCarConsist(BoxCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -2639,7 +2639,7 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
             piece="coil",
             has_cover=True,
@@ -2664,7 +2664,7 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
             piece="coil",
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -2776,7 +2776,7 @@ class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -2873,7 +2873,7 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -2921,6 +2921,13 @@ class DumpCarConsist(DumpCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_bulk_open_cars"
+        # Graphics configuration
+        self.gestalt_graphics.liveries=[
+            self.roster.wagon_liveries["DEFAULT"],
+            self.roster.wagon_liveries["FREIGHT_BAUXITE"],
+            self.roster.wagon_liveries["FREIGHT_GREY"],
+            self.roster.wagon_liveries["FREIGHT_NIGHTSHADE"],
+        ]
 
 
 class DumpCarAggregateConsist(DumpCarConsistBase):
@@ -2934,7 +2941,6 @@ class DumpCarAggregateConsist(DumpCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
         self.randomised_candidate_groups = [
-            "randomised_dump_car",
             "randomised_bulk_car",
         ]
         self._joker = True
@@ -2958,6 +2964,13 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_bulk_open_cars"
         self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics.liveries=[
+            self.roster.wagon_liveries["DEFAULT"],
+            self.roster.wagon_liveries["FREIGHT_BAUXITE"],
+            self.roster.wagon_liveries["FREIGHT_GREY"],
+            self.roster.wagon_liveries["FREIGHT_NIGHTSHADE"],
+        ]
 
 
 class DumpCarOreConsist(DumpCarConsistBase):
@@ -3266,7 +3279,7 @@ class FlatCarBulkheadConsist(FlatCarConsistBase):
             piece="flat",
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -3290,7 +3303,7 @@ class FlatCarConsist(FlatCarConsistBase):
             piece="flat",
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -3321,7 +3334,7 @@ class FlatCarPlateConsist(FlatCarConsistBase):
             piece="flat",
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -3409,7 +3422,7 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
             piece="flat",
             has_cover=True,
@@ -3554,7 +3567,7 @@ class HopperCarMGRConsist(HopperCarConsistBase):
         # adjust default liveries set by the base class
         self.gestalt_graphics.liveries = [
             self.roster.wagon_liveries["DEFAULT"],
-            self.roster.wagon_liveries["BAUXITE"],
+            self.roster.wagon_liveries["FREIGHT_BAUXITE"],
         ]
 
 
@@ -3796,7 +3809,7 @@ class LivestockCarConsist(CarConsist):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -3823,7 +3836,7 @@ class LogCarConsist(CarConsist):
             piece="tree_length_logs",
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -4649,7 +4662,7 @@ class SiloCarConsist(SiloCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -4807,7 +4820,7 @@ class TankCarAcidConsist(TankCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 

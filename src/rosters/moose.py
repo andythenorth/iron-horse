@@ -128,7 +128,7 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
-            "BAUXITE": {
+            "FREIGHT_BAUXITE": {
                 "base_colour_sets": ["freight_bauxite"],
                 "use_weathering": True,
                 "docs_image_input_cc": [

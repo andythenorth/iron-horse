@@ -316,6 +316,8 @@ custom_wagon_recolour_sprite_maps = {
     # tried darker bauxite colours, doesn't work well
     "custom_bauxite": (71, 73, 74, 125, 76, 77, 78, 79),
     "custom_dark_bauxite": (70, 72, 73, 124, 75, 76, 77, 78),
+    "custom_nightshade": (1, 104, 2, 16, 17, 18, 19, 20),
+    "custom_light_nightshade": (1, 2, 106, 17, 18, 7, 20, 10),
 }
 
 # shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
@@ -338,6 +340,8 @@ colour_sets = {
     "grey": ["COLOUR_GREY", "custom_dark_grey"],
     "white": ["COLOUR_WHITE", "custom_dark_white"],
     "freight_bauxite": ["custom_bauxite", "custom_dark_bauxite"],
+    "freight_grey": ["custom_dark_grey", "COLOUR_GREY"],
+    "freight_nightshade": ["custom_nightshade", "custom_light_nightshade"],
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
