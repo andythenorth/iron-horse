@@ -4997,19 +4997,19 @@ class UnitVariant(object):
         # -2 = use player cc2
         # -3 = use parameter
         if (
-            "company_colour1" in livery["base_coloursets"]
-            and "company_colour2" in livery["base_coloursets"]
+            "company_colour1" in livery["base_colour_sets"]
+            and "company_colour2" in livery["base_colour_sets"]
         ):
             return 0
-        elif "company_colour1" in livery["base_coloursets"]:
+        elif "company_colour1" in livery["base_colour_sets"]:
             return -1
-        elif "company_colour2" in livery["base_coloursets"]:
+        elif "company_colour2" in livery["base_colour_sets"]:
             return -2
-        elif "player_choice" in livery["base_coloursets"]:
+        elif "player_choice" in livery["base_colour_sets"]:
             return -3
         else:
-            # temp hard-coded
-            return 16
+            # pick the index of the first colour set, as of April 2023 only one colour set is supported here, but eh, should be fine
+            return list(global_constants.colour_sets.keys()).index(livery["base_colour_sets"][0])
 
     def get_wagon_recolour_strategy_params(self):
         livery = self.unit.consist.gestalt_graphics.liveries[

@@ -188,7 +188,7 @@ def main():
         },
         wagon_liveries={
             "DEFAULT": {
-                "base_coloursets": ["company_colour1", "company_colour2"],
+                "base_colour_sets": ["company_colour1", "company_colour2"],
                 "use_weathering": True,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -196,7 +196,7 @@ def main():
                 ],
             },
             "PLAYER_CHOICE": {
-                "base_coloursets": ["player_choice"],
+                "base_colour_sets": ["player_choice"],
                 "use_weathering": True,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -204,7 +204,7 @@ def main():
                 ],
             },
             "BAUXITE": {
-                "base_coloursets": ["custom_bauxite"],
+                "base_colour_sets": ["freight_bauxite"],
                 "use_weathering": True,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -212,7 +212,7 @@ def main():
                 ],
             },
             "BUILD_CC1_ONLY_USE_WEATHERING": {
-                "base_coloursets": ["company_colour1"],
+                "base_colour_sets": ["company_colour1"],
                 "use_weathering": True,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),

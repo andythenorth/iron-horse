@@ -1,45 +1,24 @@
 <!--! ** Various strategies for random recolouring of vehicles / intermodal containers ** -->
 
-<!--! * Shared colour sets with variants of CC, may be used by multiple strategies -->
-<!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
-<tal:colour_sets define="colour_sets {'dark_blue': ['COLOUR_DARK_BLUE', 'custom_dark_blue'],
-                                      'pale_green': ['COLOUR_PALE_GREEN', 'custom_pale_green'],
-                                      'pink': ['COLOUR_PINK', 'custom_dark_pink'],
-                                      'yellow': ['COLOUR_YELLOW', 'custom_dark_yellow'],
-                                      'red': ['COLOUR_RED', 'custom_dark_red'],
-                                      'light_blue': ['COLOUR_LIGHT_BLUE', 'custom_light_blue'],
-                                      'green': ['COLOUR_GREEN', 'custom_green'],
-                                      'dark_green': ['COLOUR_DARK_GREEN', 'custom_dark_green'],
-                                      'blue': ['COLOUR_BLUE', 'custom_blue'],
-                                      'cream': ['COLOUR_CREAM', 'custom_dark_cream'],
-                                      'mauve': ['COLOUR_MAUVE', 'custom_light_mauve'],
-                                      'purple': ['COLOUR_PURPLE', 'custom_light_purple'],
-                                      'orange': ['COLOUR_ORANGE', 'custom_dark_orange'],
-                                      'brown': ['COLOUR_BROWN', 'custom_dark_brown'],
-                                      'grey': ['COLOUR_GREY', 'custom_dark_grey'],
-                                      'white': ['COLOUR_WHITE', 'custom_dark_white'],
-                                      'custom_bauxite': ['custom_bauxite', 'custom_dark_bauxite'],
-                                       }">
-
-    <tal:colour_set repeat="colour_set colour_sets.items()">
-        <!--! uses 1 random bit from self, just 2 colour choices, more is overkill and often looks bad -->
-        switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_1cc,
-                    <!--! check if randomisation is enabled (player parameter) -->
-                    param_wagon_colour_randomisation
-                    ? random_bits_colour_set()
-                    : 0) {
-            1: return ${utils.unpack_colour(colour_set[1][1], 1)};
-            return ${utils.unpack_colour(colour_set[1][0], 1)};
-        }
-        switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_2cc,
-                    <!--! check if randomisation is enabled (player parameter) -->
-                    param_wagon_colour_randomisation
-                    ? random_bits_colour_set()
-                    : 0) {
-            1: return ${utils.unpack_colour(colour_set[1][1], 2)};
-            return ${utils.unpack_colour(colour_set[1][0], 2)};
-        }
-    </tal:colour_set>
+<tal:colour_sets repeat="colour_set global_constants.colour_sets.items()">
+    <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
+    <!--! uses 1 random bit from self, just 2 colour choices, more is overkill and often looks bad -->
+    switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_1cc,
+                <!--! check if randomisation is enabled (player parameter) -->
+                param_wagon_colour_randomisation
+                ? random_bits_colour_set()
+                : 0) {
+        1: return ${utils.unpack_colour(colour_set[1][1], 1)};
+        return ${utils.unpack_colour(colour_set[1][0], 1)};
+    }
+    switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_2cc,
+                <!--! check if randomisation is enabled (player parameter) -->
+                param_wagon_colour_randomisation
+                ? random_bits_colour_set()
+                : 0) {
+        1: return ${utils.unpack_colour(colour_set[1][1], 2)};
+        return ${utils.unpack_colour(colour_set[1][0], 2)};
+    }
 </tal:colour_sets>
 
 <!--! convenience switch to define how to pick a colour -->
@@ -66,23 +45,13 @@ switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_compa
                             company_colour${cc[1][0]}
                         )
                     ) {
-        COLOUR_DARK_BLUE: switch_colour_set_dark_blue_${cc[0]};
-        COLOUR_PALE_GREEN: switch_colour_set_pale_green_${cc[0]};
-        COLOUR_PINK: switch_colour_set_pink_${cc[0]};
-        COLOUR_YELLOW: switch_colour_set_yellow_${cc[0]};
-        COLOUR_RED: switch_colour_set_red_${cc[0]};
-        COLOUR_LIGHT_BLUE: switch_colour_set_light_blue_${cc[0]};
-        COLOUR_GREEN: switch_colour_set_green_${cc[0]};
-        COLOUR_DARK_GREEN: switch_colour_set_dark_green_${cc[0]};
-        COLOUR_BLUE: switch_colour_set_blue_${cc[0]};
-        COLOUR_CREAM: switch_colour_set_cream_${cc[0]};
-        COLOUR_MAUVE: switch_colour_set_mauve_${cc[0]};
-        COLOUR_PURPLE: switch_colour_set_purple_${cc[0]};
-        COLOUR_ORANGE: switch_colour_set_orange_${cc[0]};
-        COLOUR_BROWN: switch_colour_set_brown_${cc[0]};
-        COLOUR_GREY: switch_colour_set_grey_${cc[0]};
-        COLOUR_WHITE: switch_colour_set_white_${cc[0]};
-        16: switch_colour_set_custom_bauxite_${cc[0]};
+        <tal:colour_sets repeat="colour_set global_constants.colour_sets.items()">
+            <!--! this relies on order matching the order of company colours per nml / openttd constants;
+                  e.g. COLOUR_DARK_BLUE = 0, COLOUR_WHITE= 15
+                  we then extend our own custom colour sets after the default colours -->
+            <!--! // debug: ${colour_set[1][0]}, ${colour_set[1][1]} -->
+            ${repeat.colour_set.index}: switch_colour_set_${colour_set[0]}_${cc[0]};
+        </tal:colour_sets>
     }
 </tal:switch_colour_set_use_weathering>
 
@@ -110,7 +79,7 @@ switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_compa
         COLOUR_BROWN: return palette_2cc(COLOUR_BROWN, COLOUR_BROWN);
         COLOUR_GREY: return palette_2cc(COLOUR_GREY, COLOUR_GREY);
         COLOUR_WHITE: return palette_2cc(COLOUR_WHITE, COLOUR_WHITE);
-        16: switch_colour_set_custom_bauxite_${cc[0]}cc;
+        16: switch_colour_set_freight_bauxite_${cc[0]}cc;
     }
 </tal:switch_colour_set_no_weathering>
 

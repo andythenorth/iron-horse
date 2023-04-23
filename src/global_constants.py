@@ -102,7 +102,7 @@ railtype_labels_by_vehicle_track_type_name = {
     "RAIL": ["IHA_", "RAIL"],
     "RAIL_ELECTRIFIED_AC": ["IHB_", "ELRL"],
     "RAIL_ELECTRIFIED_AC_DC": ["IHG_", "ELRL"],
-    "RAIL_ELECTRIFIED_DC": ["IHF_"], # no fallback for DC if not present
+    "RAIL_ELECTRIFIED_DC": ["IHF_"],  # no fallback for DC if not present
     "RAIL_HIGH_CLEARANCE": ["IHAB"],
     "METRO": [
         "IHC_",
@@ -261,8 +261,6 @@ buyable_variant_group_consist_base_ids_by_group_name = {
 # post python 3.7, we rely on dict order being stable here, so we can get keys by position when we need to
 custom_wagon_recolour_sprite_maps = {
     "custom_dark_brown": (105, 106, 33, 34, 35, 36, 37, 38),
-    "custom_bauxite": (72, 73, 74, 125, 76, 77, 78, 79),
-    "custom_dark_bauxite": (71, 72, 73, 124, 75, 76, 77, 78),
     "custom_dark_pink": (40, 41, 42, 43, 44, 45, 46, 47),
     "custom_light_pink": (43, 44, 45, 46, 47, 166, 167, 168),
     "custom_dark_grey": (3, 16, 17, 18, 19, 20, 21, 22),
@@ -315,6 +313,31 @@ custom_wagon_recolour_sprite_maps = {
     "custom_dark_red": (180, 181, 182, 183, 164, 165, 166, 167),
     "custom_pale_green": (97, 98, 99, 100, 101, 102, 103, 14),
     "custom_dark_green": (89, 90, 91, 92, 93, 94, 95, 31),
+    # tried darker bauxite colours, doesn't work well
+    "custom_bauxite": (71, 73, 74, 125, 76, 77, 78, 79),
+    "custom_dark_bauxite": (70, 72, 73, 124, 75, 76, 77, 78),
+}
+
+# shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
+# post python 3.7, we rely on dict order being stable here, so we can get keys by position when we need to
+colour_sets = {
+    "dark_blue": ["COLOUR_DARK_BLUE", "custom_dark_blue"],
+    "pale_green": ["COLOUR_PALE_GREEN", "custom_pale_green"],
+    "pink": ["COLOUR_PINK", "custom_dark_pink"],
+    "yellow": ["COLOUR_YELLOW", "custom_dark_yellow"],
+    "red": ["COLOUR_RED", "custom_dark_red"],
+    "light_blue": ["COLOUR_LIGHT_BLUE", "custom_light_blue"],
+    "green": ["COLOUR_GREEN", "custom_green"],
+    "dark_green": ["COLOUR_DARK_GREEN", "custom_dark_green"],
+    "blue": ["COLOUR_BLUE", "custom_blue"],
+    "cream": ["COLOUR_CREAM", "custom_dark_cream"],
+    "mauve": ["COLOUR_MAUVE", "custom_light_mauve"],
+    "purple": ["COLOUR_PURPLE", "custom_light_purple"],
+    "orange": ["COLOUR_ORANGE", "custom_dark_orange"],
+    "brown": ["COLOUR_BROWN", "custom_dark_brown"],
+    "grey": ["COLOUR_GREY", "custom_dark_grey"],
+    "white": ["COLOUR_WHITE", "custom_dark_white"],
+    "freight_bauxite": ["custom_bauxite", "custom_dark_bauxite"],
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
@@ -343,8 +366,8 @@ temp_storage_ids = dict(
     wagon_recolour_strategy_num=21,  # used in procedures_wagon_recolour_strategies
     unreversible_spritelayer_cargos=22,  # used to handle esoteric cases where spritelayer cargos need to reverse
     consist_specific_position_variant_num=23,  # used to store result of switch_graphics_pax_car_ruleset() and similar
-    vehicle_is_flipped_purchase_safe=24, # we can't check vehicle flip state safely in purchase list, use this to avoid fragmenting switches just to check purchase list
-    flag_use_weathering=25, # used in procedures_wagon_recolour_strategies
+    vehicle_is_flipped_purchase_safe=24,  # we can't check vehicle flip state safely in purchase list, use this to avoid fragmenting switches just to check purchase list
+    flag_use_weathering=25,  # used in procedures_wagon_recolour_strategies
 )
 
 # standard offsets for trains
