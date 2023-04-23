@@ -2250,7 +2250,7 @@ class BolsterCarConsist(CarConsist):
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
                 self.roster.wagon_liveries["FREIGHT_BAUXITE"],
-                self.roster.wagon_liveries["PLAYER_CHOICE"],
+                self.roster.wagon_liveries["FREIGHT_GREY"],
             ],
         )
 
@@ -2302,6 +2302,7 @@ class BoxCarConsist(BoxCarConsistBase):
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
                 self.roster.wagon_liveries["FREIGHT_BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_GREY"],
             ],
         )
 
@@ -2337,6 +2338,8 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["FREIGHT_GREY"],
+                # tried PLAYER_CHOICE, adds nothing here
             ],
         )
 
@@ -2453,6 +2456,8 @@ class BoxCarSlidingWallConsist(BoxCarConsistBase):
             liveries=[
                 # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
                 self.roster.wagon_liveries["BUILD_CC1_ONLY_USE_WEATHERING"],
+                self.roster.wagon_liveries["FREIGHT_GREY"],
+                self.roster.wagon_liveries["PLAYER_CHOICE"],
             ],
         )
 
@@ -2484,6 +2489,8 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
             liveries=[
                 # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
                 self.roster.wagon_liveries["BUILD_CC1_ONLY_USE_WEATHERING"],
+                self.roster.wagon_liveries["FREIGHT_GREY"],
+                self.roster.wagon_liveries["PLAYER_CHOICE"],
             ],
         )
 
@@ -2778,6 +2785,8 @@ class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
                 self.roster.wagon_liveries["FREIGHT_BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_GREY"],
+                self.roster.wagon_liveries["PLAYER_CHOICE"],
             ],
         )
 
@@ -2851,7 +2860,7 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["CC_BLUE"],
+                self.roster.wagon_liveries["PLAYER_CHOICE"],
             ],
         )
 
@@ -2875,6 +2884,9 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
                 self.roster.wagon_liveries["FREIGHT_BAUXITE"],
+                self.roster.wagon_liveries["FREIGHT_GREY"],
+                self.roster.wagon_liveries["FREIGHT_NIGHTSHADE"],
+                # tried PLAYER_CHOICE, adds nothing here
             ],
         )
 
@@ -3066,7 +3078,6 @@ class EdiblesTankCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["food_wagons"]
         )
-        self.wagon_recolour_strategy_num = -1
         # Graphics configuration
         # only one livery, but recolour gestalt used to automate adding chassis
         weathered_variants = {
@@ -3387,6 +3398,7 @@ class FlatCarSlidingRoofConsist(FlatCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["PLAYER_CHOICE"],
             ],
             piece="flat",
             has_cover=True,
@@ -3423,9 +3435,9 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
-                self.roster.wagon_liveries["PLAYER_CHOICE"],
+                self.roster.wagon_liveries["FREIGHT_GREY"],
                 self.roster.wagon_liveries["FREIGHT_NIGHTSHADE"],
+                # tried PLAYER_CHOICE, adds nothing here
             ],
             piece="flat",
             has_cover=True,
@@ -4012,7 +4024,7 @@ class OpenCarConsist(OpenCarConsistBase):
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
                 self.roster.wagon_liveries["FREIGHT_BAUXITE"],
-                self.roster.wagon_liveries["PLAYER_CHOICE"],
+                self.roster.wagon_liveries["FREIGHT_GREY"],
             ],
         )
 
@@ -4041,6 +4053,7 @@ class OpenCarHoodConsist(OpenCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["PLAYER_CHOICE"],
             ],
             has_cover=True,
         )
@@ -4666,6 +4679,7 @@ class SiloCarConsist(SiloCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["FREIGHT_GREY"],
                 self.roster.wagon_liveries["PLAYER_CHOICE"],
             ],
         )
@@ -4824,7 +4838,8 @@ class TankCarAcidConsist(TankCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
+                self.roster.wagon_liveries["CC_DARK_BLUE"],
+                self.roster.wagon_liveries["FREIGHT_NIGHTSHADE"],
             ],
         )
 
@@ -4852,6 +4867,8 @@ class TankCarProductConsist(TankCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["CC_DARK_BLUE"],
+                self.roster.wagon_liveries["FREIGHT_NIGHTSHADE"],
             ],
         )
 
@@ -5008,22 +5025,21 @@ class UnitVariant(object):
             self.buyable_variant.buyable_variant_num
         ]
         # base colourset:
-        # 1..99 = forced from colourset number (look up by name)
-        # 0 = randomise from player cc1 and cc2
-        # -1 = use player cc1
+        # -4 = use parameter
+        # -3 = randomise from player cc1 and cc2
         # -2 = use player cc2
-        # -3 = use parameter
-        if (
-            "company_colour1" in livery["base_colour_sets"]
+        # -1 = use player cc1
+        # 0..99 = forced from colourset number (look up by name)
+        if "player_choice" in livery["base_colour_sets"]:
+            return -4
+        elif ("company_colour1" in livery["base_colour_sets"]
             and "company_colour2" in livery["base_colour_sets"]
         ):
-            return 0
-        elif "company_colour1" in livery["base_colour_sets"]:
-            return -1
+            return -3
         elif "company_colour2" in livery["base_colour_sets"]:
             return -2
-        elif "player_choice" in livery["base_colour_sets"]:
-            return -3
+        elif "company_colour1" in livery["base_colour_sets"]:
+            return -1
         else:
             # pick the index of the first colour set, as of April 2023 only one colour set is supported here, but eh, should be fine
             return list(global_constants.colour_sets.keys()).index(

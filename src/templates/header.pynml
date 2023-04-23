@@ -49,7 +49,7 @@ grf {
             type: int;
             min_value: 0;
             max_value: ${len(global_constants.colour_sets) - 1};
-            def_value: ${list(global_constants.colour_sets.keys()).index('freight_grey')};
+            def_value: ${list(global_constants.colour_sets.keys()).index('freight_blue')};
             names: {
                 <tal:options repeat="colour_set global_constants.colour_sets">
                     <!--! there is an additiona of 1 here as a value was removed, but I didn't want to adjust all the lang translations -->

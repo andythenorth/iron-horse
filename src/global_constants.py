@@ -270,6 +270,7 @@ custom_wagon_recolour_sprite_maps = {
     "custom_light_mauve": (129, 130, 131, 132, 133, 134, 135, 14),
     "custom_dark_orange": (62, 63, 64, 193, 194, 195, 196, 197),
     "custom_dark_cream": (112, 113, 114, 116, 117, 118, 119, 120),
+    # can't name it dark_green cos that conflates with DARK_GREEN
     "custom_green": (
         80,
         82,
@@ -279,7 +280,8 @@ custom_wagon_recolour_sprite_maps = {
         86,
         207,
         209,
-    ),  # can't name it dark_green cos that conflates with DARK_GREEN
+    ),
+    # can't name it dark_blue cos that conflates with DARK_BLUE
     "custom_blue": (
         147,
         148,
@@ -289,7 +291,8 @@ custom_wagon_recolour_sprite_maps = {
         152,
         153,
         210,
-    ),  # can't name it dark_blue cos that conflates with DARK_BLUE
+    ),
+    # can't name it dark_light_blue cos that would be silly
     "custom_light_blue": (
         155,
         156,
@@ -299,7 +302,8 @@ custom_wagon_recolour_sprite_maps = {
         160,
         161,
         210,
-    ),  # can't name it dark_light_blue cos that would be silly
+    ),
+    # can't name it light_dark_blue cos that would be silly
     "custom_dark_blue": (
         199,
         200,
@@ -309,7 +313,7 @@ custom_wagon_recolour_sprite_maps = {
         204,
         205,
         152,
-    ),  # can't name it light_dark_blue cos that would be silly
+    ),
     "custom_dark_red": (180, 181, 182, 183, 164, 165, 166, 167),
     "custom_pale_green": (97, 98, 99, 100, 101, 102, 103, 14),
     "custom_dark_green": (89, 90, 91, 92, 93, 94, 95, 31),
@@ -340,6 +344,7 @@ colour_sets = {
     "grey": ["COLOUR_GREY", "custom_dark_grey"],
     "white": ["COLOUR_WHITE", "custom_dark_white"],
     "freight_bauxite": ["custom_bauxite", "custom_light_bauxite"],
+    "freight_blue": ["custom_blue", "COLOUR_BLUE"],
     "freight_grey": ["custom_dark_grey", "COLOUR_GREY"],
     "freight_nightshade": ["custom_nightshade", "custom_light_nightshade"],
 }

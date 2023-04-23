@@ -38,8 +38,9 @@ STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :Brown
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :Grey
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :White
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_17                           :Freight Bauxite
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_18                           :Freight Grey
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_19                           :Freight Nightshade
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_18                           :Freight Blue
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_19                           :Freight Grey
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_20                           :Freight Nightshade
 
 STR_ERROR_INFLATION_INCOMPATIBLE                                :Iron Horse is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings.
 STR_ERROR_TERMITE_DEPRECATED                                    :Iron Horse now includes the railtypes from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks.

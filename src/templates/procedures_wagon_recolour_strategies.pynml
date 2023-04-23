@@ -23,10 +23,10 @@
 
 <!--! convenience switch to define how to pick a colour -->
 switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_company_colour, LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num})) {
-    -3: return param_wagon_base_colour; <!--! blah blah this might not actualy be the correct CC but eh -->
+    -4: return param_wagon_base_colour; <!--! blah blah this might not actualy be the correct CC but eh -->
+    -3: return context_company_colour; <!--! blah blah this might not actualy be the correct CC but eh -->
     -2: return context_company_colour; <!--! blah blah this might not actualy be the correct CC but eh -->
     -1: return context_company_colour; <!--! blah blah this might not actualy be the correct CC but eh -->
-    0: return context_company_colour; <!--! blah blah this might not actualy be the correct CC but eh -->
     return; <!--! just return the recolour strategy number -->
 }
 

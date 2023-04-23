@@ -510,6 +510,14 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
+            "FREIGHT_BLUE": {
+                "base_colour_sets": ["freight_blue"],
+                "use_weathering": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "FREIGHT_BAUXITE_NO_WEATHERING": {
                 "base_colour_sets": ["freight_bauxite"],
                 "use_weathering": False,
@@ -536,6 +544,14 @@ def main():
             },
             "CC_BLUE": {
                 "base_colour_sets": ["blue"],
+                "use_weathering": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "CC_DARK_BLUE": {
+                "base_colour_sets": ["dark_blue"],
                 "use_weathering": True,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),

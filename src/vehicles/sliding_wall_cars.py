@@ -116,6 +116,8 @@ def main():
         chassis="4_axle_1cc_filled_32px",
     )
 
+    print("Type D sliding wall cars broken with more than one livery")
+    # ^ see note in procedures_wagon_recolour_strategies.pynml
     consist = BoxCarSlidingWallConsist(
         roster_id="ibex",
         base_numeric_id=10,
