@@ -494,9 +494,25 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
+            "PLAYER_CHOICE_NO_WEATHERING": {
+                "base_colour_sets": ["player_choice"],
+                "use_weathering": False,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "FREIGHT_BAUXITE": {
                 "base_colour_sets": ["freight_bauxite"],
                 "use_weathering": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "FREIGHT_BAUXITE_NO_WEATHERING": {
+                "base_colour_sets": ["freight_bauxite"],
+                "use_weathering": False,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),

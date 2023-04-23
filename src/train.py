@@ -2131,10 +2131,6 @@ class AutomobileCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        # automobile cars can't use random colour swaps on the wagons...
-        # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
-        # player can still flip to the second livery
-        self.use_colour_randomisation_strategies = False
         if self.subtype == "D":
             consist_ruleset = "articulated_permanent_twin_sets"
         else:
@@ -2143,7 +2139,11 @@ class AutomobileCarConsistBase(CarConsist):
             self.spritelayer_cargo_layers,
             consist_ruleset=consist_ruleset,
             liveries=[
-                self.roster.wagon_liveries["DEFAULT"],
+                # automobile cars can't use random colour swaps on the wagons...
+                # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
+                # player can still flip to the second livery
+                self.roster.wagon_liveries["BUILD_CC1_ONLY_NO_WEATHERING"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE_NO_WEATHERING"],
             ],
         )
 
