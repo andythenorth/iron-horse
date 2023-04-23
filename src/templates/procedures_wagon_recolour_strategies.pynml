@@ -24,17 +24,23 @@
         <!--! uses 1 random bit from self, just 2 colour choices, more is overkill and often looks bad -->
         switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_1cc,
                     <!--! check if randomisation is enabled (player parameter) -->
+                    <!--!
                     param_wagon_colour_randomisation
                     ? random_bits_colour_set()
                     : 0) {
+                    -->
+                    0) {
             1: return ${utils.unpack_colour(colour_set[1][1], 1)};
             return ${utils.unpack_colour(colour_set[1][0], 1)};
         }
         switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_2cc,
                     <!--! check if randomisation is enabled (player parameter) -->
+                    <!--!
                     param_wagon_colour_randomisation
                     ? random_bits_colour_set()
                     : 0) {
+                    -->
+                    0) {
             1: return ${utils.unpack_colour(colour_set[1][1], 2)};
             return ${utils.unpack_colour(colour_set[1][0], 2)};
         }
@@ -113,18 +119,24 @@
         switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]}_unflipped,
                     <!--! check if randomisation is enabled (player parameter) -->
                     <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
+                    <!--!
                     param_wagon_colour_randomisation
                     ? random_bits_base_colour()
                     : 0) {
+                    -->
+                    0) {
             1: switch_colour_set_use_weathering_${cc[0]}_to_${cc[1]};
             switch_colour_set_use_weathering_${cc[0]}_to_${cc[0]};
         }
         switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]}_flipped,
                     <!--! check if randomisation is enabled (player parameter) -->
                     <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
+                    <!--!
                     param_wagon_colour_randomisation
                     ? random_bits_base_colour()
                     : 0) {
+                    -->
+                    0) {
             1: switch_colour_set_use_weathering_${cc[0]}_to_${cc[0]};
             switch_colour_set_use_weathering_${cc[0]}_to_${cc[1]};
         }
@@ -140,18 +152,24 @@
         switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]}_unflipped,
                     <!--! check if randomisation is enabled (player parameter) -->
                     <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
+                    <!--!
                     param_wagon_colour_randomisation
                     ? random_bits_base_colour()
                     : 0) {
+                    -->
+                    0) {
             1: switch_colour_set_no_weathering_${cc[1]};
             switch_colour_set_no_weathering_${cc[0]};
         }
         switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]}_flipped,
                     <!--! check if randomisation is enabled (player parameter) -->
                     <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
+                    <!--!
                     param_wagon_colour_randomisation
                     ? random_bits_base_colour()
                     : 0) {
+                    -->
+                    0) {
             1: switch_colour_set_no_weathering_${cc[0]};
             switch_colour_set_no_weathering_${cc[1]};
         }
@@ -161,9 +179,7 @@
         }
     </tal:strategy_randomise_from_2_bases_no_weathering>
 
-    <!--! !!!!! need to check flip status also -->
     switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_${cc[0]}, LOAD_TEMP(${temp_storage_ids.flag_use_weathering})) {
-        <!--! !!!!! need to check flip status also -->
         1: switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]};
         switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]};
     }
