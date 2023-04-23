@@ -73,6 +73,7 @@
         COLOUR_BROWN: switch_colour_set_brown_${cc[0]};
         COLOUR_GREY: switch_colour_set_grey_${cc[0]};
         COLOUR_WHITE: switch_colour_set_white_${cc[0]};
+        16: switch_colour_set_custom_bauxite_${cc[0]};
     }
 </tal:switch_colour_set_use_weathering>
 
@@ -100,6 +101,7 @@
         COLOUR_BROWN: return palette_2cc(COLOUR_BROWN, COLOUR_BROWN);
         COLOUR_GREY: return palette_2cc(COLOUR_GREY, COLOUR_GREY);
         COLOUR_WHITE: return palette_2cc(COLOUR_WHITE, COLOUR_WHITE);
+        16: switch_colour_set_custom_bauxite_${cc[0]}cc;
     }
 </tal:switch_colour_set_no_weathering>
 

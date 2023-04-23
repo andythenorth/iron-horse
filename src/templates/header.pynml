@@ -49,13 +49,14 @@ grf {
                 desc: string(STR_PARAM_WAGON_BASE_COLOUR_DESC);
                 type: int;
                 min_value: 0;
-                max_value: ${num_options - 1};
+                max_value: ${num_options - 1 + 1}; <!--! + 1 because custom -->
                 def_value: 13; <!--! default to CC brown -->
                 names: {
                     <tal:options repeat="option_num range(num_options)">
                         <!--! there is an additiona of 1 here as a value was removed, but I didn't want to adjust all the lang translations -->
                         ${option_num}: string(STR_PARAM_WAGON_BASE_COLOUR_OPTION_${option_num + 1});
                     </tal:options>
+                    16: string(STR_PARAM_WAGON_BASE_COLOUR_OPTION_17);
                 };
             }
         }
