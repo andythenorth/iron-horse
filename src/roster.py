@@ -223,15 +223,15 @@ class Roster(object):
                 + " has only one choice for randomisation_candidates, this is pointless nonsense, consider removing "
                 + randomisation_consist.id
             )
-        if len(result) > 16:
+        if len(result) > 32:
             # we have a limited number of random bits, and we need to use them independently of company colour choices
-            # so guard against consuming too many, 16 variants is 4 bits, and that's quite enough
+            # so guard against consuming too many, 32 variants is 5 bits, and that's all we have spare
             print(result)
             raise BaseException(
                 randomisation_consist.id
-                + " has more than 16 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates"
+                + " has more than 32 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates"
             )
-        # length of results needs to be power of 2 as random choice can only be picked from powers of 2s (1 bit = 2 options, 2 bits = 4 options, 3 bits = 8 options, 4 bits = 16 options)
+        # length of results needs to be power of 2 as random choice can only be picked from powers of 2s (1 bit = 2 options, 2 bits = 4 options, 3 bits = 8 options, 4 bits = 16 options, 5 bits = 32 options)
         # so just do a clunky manual append here, JFDI, not figuring out a power of 2 detector at this time of night :P
         # this will cause uneven probabilities, but eh, life is not perfect
         if len(result) == 3:
@@ -239,8 +239,10 @@ class Roster(object):
         # this relies on recursing a bit to get to 8 as needed
         if len(result) >= 5 and len(result) < 9:
             result.extend(result[: 8 - len(result)])
-        if len(result) >= 9:
+        if len(result) >= 9 and len(result) < 17:
             result.extend(result[: 16 - len(result)])
+        if len(result) >= 17:
+            result.extend(result[: 32 - len(result)])
         return result
 
     @property

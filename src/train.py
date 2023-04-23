@@ -4008,6 +4008,7 @@ class OpenCarConsist(OpenCarConsistBase):
             piece="open",
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
                 self.roster.wagon_liveries["PLAYER_CHOICE"],
             ],
         )
