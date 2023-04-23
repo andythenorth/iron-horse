@@ -511,7 +511,7 @@ def main():
                 ],
             },
             "BUILD_CC1_ONLY_NO_WEATHERING": {
-                "base_colour_sets": ["company_colour1", "company_colour2"],
+                "base_colour_sets": ["company_colour1"],
                 "use_weathering": False,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
