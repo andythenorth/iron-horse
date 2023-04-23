@@ -5,7 +5,7 @@
     <!--! uses 1 random bit from self, just 2 colour choices, more is overkill and often looks bad -->
     switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_1cc,
                 <!--! check if randomisation is enabled (player parameter) -->
-                param_wagon_colour_randomisation
+                param_wagon_colour_randomisation && LOAD_TEMP(${temp_storage_ids.flag_use_weathering})
                 ? random_bits_colour_set()
                 : 0) {
         1: return ${utils.unpack_colour(colour_set[1][1], 1)};
@@ -13,7 +13,7 @@
     }
     switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_2cc,
                 <!--! check if randomisation is enabled (player parameter) -->
-                param_wagon_colour_randomisation
+                param_wagon_colour_randomisation && LOAD_TEMP(${temp_storage_ids.flag_use_weathering})
                 ? random_bits_colour_set()
                 : 0) {
         1: return ${utils.unpack_colour(colour_set[1][1], 2)};
@@ -88,7 +88,7 @@ switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_compa
 <tal:strategy_randomise_from_2_bases repeat="cc [['1cc', '2cc'], ['2cc', '1cc']]">
     <!--! Colour is randomised on build, from 1CC/2CC (or other rules?), and will be inverted if player flips vehicle -->
     <tal:strategy_randomise_from_2_bases_use_weathering>
-        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]}_unflipped,
+        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_${cc[0]}_unflipped,
                     <!--! check if randomisation is enabled (player parameter) -->
                     <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
                     param_wagon_colour_randomisation
@@ -97,7 +97,7 @@ switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_compa
             1: switch_colour_set_use_weathering_${cc[0]}_to_${cc[1]};
             switch_colour_set_use_weathering_${cc[0]}_to_${cc[0]};
         }
-        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]}_flipped,
+        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_${cc[0]}_flipped,
                     <!--! check if randomisation is enabled (player parameter) -->
                     <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
                     param_wagon_colour_randomisation
@@ -106,43 +106,10 @@ switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_compa
             1: switch_colour_set_use_weathering_${cc[0]}_to_${cc[0]};
             switch_colour_set_use_weathering_${cc[0]}_to_${cc[1]};
         }
-        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]}, LOAD_TEMP(${temp_storage_ids.vehicle_is_flipped_purchase_safe})) {
-            1: switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]}_flipped;
-            switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]}_unflipped;
+        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_${cc[0]}, LOAD_TEMP(${temp_storage_ids.vehicle_is_flipped_purchase_safe})) {
+            1: switch_strategy_randomise_from_2_bases_${cc[0]}_flipped;
+            switch_strategy_randomise_from_2_bases_${cc[0]}_unflipped;
         }
-
-    </tal:strategy_randomise_from_2_bases_use_weathering>
-
-    <tal:strategy_randomise_from_2_bases_no_weathering>
-        <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
-        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]}_unflipped,
-                    <!--! check if randomisation is enabled (player parameter) -->
-                    <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
-                    param_wagon_colour_randomisation
-                    ? random_bits_base_colour()
-                    : 0) {
-            1: switch_colour_set_no_weathering_${cc[1]};
-            switch_colour_set_no_weathering_${cc[0]};
-        }
-        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]}_flipped,
-                    <!--! check if randomisation is enabled (player parameter) -->
-                    <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
-                    param_wagon_colour_randomisation
-                    ? random_bits_base_colour()
-                    : 0) {
-            1: switch_colour_set_no_weathering_${cc[0]};
-            switch_colour_set_no_weathering_${cc[1]};
-        }
-        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]}, LOAD_TEMP(${temp_storage_ids.vehicle_is_flipped_purchase_safe})) {
-            1: switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]}_flipped;
-            switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]}_unflipped;
-        }
-    </tal:strategy_randomise_from_2_bases_no_weathering>
-
-    switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_${cc[0]}, LOAD_TEMP(${temp_storage_ids.flag_use_weathering})) {
-        1: switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]};
-        switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]};
-    }
 </tal:strategy_randomise_from_2_bases>
 
 <tal:strategy_invert_cc_on_flip repeat="cc [['1cc', '2cc'], ['2cc', '1cc']]">
