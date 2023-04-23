@@ -211,6 +211,14 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
+            "BUILD_CC1_ONLY_USE_WEATHERING": {
+                "base_coloursets": ["company_colour1"],
+                "use_weathering": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
         },
         # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
         engines=[

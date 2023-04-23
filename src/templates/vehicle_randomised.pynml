@@ -74,7 +74,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, ${vehicle.id}_switch_graphics_vehicle_choose_randomised_wagon()) {
     <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
         ${repeat.randomisation_candidate.index}:return switch_colour_mapping(
-            ${randomisation_candidate.get_wagon_recolour_strategy_params(purchase=False)},
+            ${randomisation_candidate.get_wagon_recolour_strategy_params()},
         );
     </tal:randomisation_candidates>
 }

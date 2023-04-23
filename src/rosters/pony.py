@@ -502,7 +502,15 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
-            "CC_NO_WEATHERING": {
+            "BUILD_CC1_ONLY_USE_WEATHERING": {
+                "base_coloursets": ["company_colour1"],
+                "use_weathering": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "BUILD_CC1_ONLY_NO_WEATHERING": {
                 "base_coloursets": ["company_colour1", "company_colour2"],
                 "use_weathering": False,
                 "docs_image_input_cc": [
