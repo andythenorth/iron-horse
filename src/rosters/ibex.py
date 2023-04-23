@@ -211,6 +211,14 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
+            "FREIGHT_NIGHTSHADE": {
+                "base_colour_sets": ["freight_nightshade"],
+                "use_weathering": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "BUILD_CC1_ONLY_USE_WEATHERING": {
                 "base_colour_sets": ["company_colour1"],
                 "use_weathering": True,

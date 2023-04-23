@@ -2250,6 +2250,7 @@ class BolsterCarConsist(CarConsist):
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
                 self.roster.wagon_liveries["FREIGHT_BAUXITE"],
+                self.roster.wagon_liveries["PLAYER_CHOICE"],
             ],
         )
 
@@ -2922,7 +2923,7 @@ class DumpCarConsist(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_bulk_open_cars"
         # Graphics configuration
-        self.gestalt_graphics.liveries=[
+        self.gestalt_graphics.liveries = [
             self.roster.wagon_liveries["DEFAULT"],
             self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             self.roster.wagon_liveries["FREIGHT_GREY"],
@@ -2965,7 +2966,7 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_bulk_open_cars"
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics.liveries=[
+        self.gestalt_graphics.liveries = [
             self.roster.wagon_liveries["DEFAULT"],
             self.roster.wagon_liveries["FREIGHT_BAUXITE"],
             self.roster.wagon_liveries["FREIGHT_GREY"],
@@ -3423,6 +3424,8 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
                 self.roster.wagon_liveries["FREIGHT_BAUXITE"],
+                self.roster.wagon_liveries["PLAYER_CHOICE"],
+                self.roster.wagon_liveries["FREIGHT_NIGHTSHADE"],
             ],
             piece="flat",
             has_cover=True,
@@ -4663,7 +4666,7 @@ class SiloCarConsist(SiloCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 self.roster.wagon_liveries["DEFAULT"],
-                self.roster.wagon_liveries["FREIGHT_BAUXITE"],
+                self.roster.wagon_liveries["PLAYER_CHOICE"],
             ],
         )
 
@@ -5023,7 +5026,9 @@ class UnitVariant(object):
             return -3
         else:
             # pick the index of the first colour set, as of April 2023 only one colour set is supported here, but eh, should be fine
-            return list(global_constants.colour_sets.keys()).index(livery["base_colour_sets"][0])
+            return list(global_constants.colour_sets.keys()).index(
+                livery["base_colour_sets"][0]
+            )
 
     def get_wagon_recolour_strategy_params(self):
         livery = self.unit.consist.gestalt_graphics.liveries[
