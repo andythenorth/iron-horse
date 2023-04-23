@@ -1275,7 +1275,9 @@ class AutoCoachCombineConsist(EngineConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_autocoach.pynml",
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
     @property
@@ -1353,7 +1355,9 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
                 liveries=None
             ).cargo_label_mapping,
             num_extra_layers_for_spritelayer_cargos=2,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
     @property
@@ -1769,7 +1773,9 @@ class SnowploughEngineConsist(EngineConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_snowplough.pynml",
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -1934,11 +1940,9 @@ class CarConsist(Consist):
         # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.use_colour_randomisation_strategies = True
         # set to 2 in subclass if 2cc should be randomised - can't randomise both, too fiddly
-        self.cc_num_to_randomise = 1
+        self.cc_num_to_recolour = 1
         # over-ride in subclasses to select specific randomisation strategy for vehicle type
-        self.auto_colour_randomisation_strategy_num = 0  # 0 is default
-        # over-ride in subclasses to suppress base colour parameter (and always use company colours)
-        self.use_wagon_base_colour_parameter = True
+        self.wagon_recolour_strategy_num = 0  # 0 is default
 
     @property
     def buy_cost(self):
@@ -2140,7 +2144,9 @@ class AutomobileCarConsistBase(CarConsist):
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
             consist_ruleset=consist_ruleset,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2239,14 +2245,14 @@ class BolsterCarConsist(CarConsist):
             "randomised_metal_coil_car",
             "randomised_flat_car",
         ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_flat_cars"
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -2286,6 +2292,7 @@ class BoxCarConsist(BoxCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_box_cars"
+        print("cabbage BoxCarConsist wagon_recolour_strategy_num")
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -2294,7 +2301,10 @@ class BoxCarConsist(BoxCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="box_car",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -2327,7 +2337,9 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="curtain_side_box_car",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2351,7 +2363,9 @@ class BoxCarGoodsConsist(BoxCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="goods_box_car",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2388,7 +2402,9 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base=parent_id_base,
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2406,7 +2422,9 @@ class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2426,9 +2444,8 @@ class BoxCarSlidingWallConsist(BoxCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_sliding_wall_cars"
         # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = (
-            1  # single base colour unless flipped
-        )
+        # single base colour unless flipped
+        self.wagon_recolour_strategy_num = -1
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -2438,7 +2455,9 @@ class BoxCarSlidingWallConsist(BoxCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="sliding_wall_car",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2459,9 +2478,8 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_sliding_wall_cars"
         # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = (
-            1  # single base colour unless flipped
-        )
+        # single base colour unless flipped
+        self.wagon_recolour_strategy_num = -1
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -2470,7 +2488,9 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="vehicle_parts_box_car",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2497,7 +2517,9 @@ class CabooseCarConsist(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
             spriterow_labels=kwargs.get("spriterow_labels"),
             caboose_families=kwargs.get("caboose_families"),
             buy_menu_sprite_pairs=kwargs.get("buy_menu_sprite_pairs"),
@@ -2539,7 +2561,9 @@ class CarbonBlackHopperCarConsist(CarConsist):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2569,7 +2593,9 @@ class CoilBuggyCarConsist(CarConsist):
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
             cargo_row_map={},  # leave blank, all default to same
             generic_rows=[0],
             unique_spritesets=[
@@ -2609,7 +2635,7 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         self.base_id = "coil_car_covered"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
-        self.cc_num_to_randomise = 2
+        self.cc_num_to_recolour = 2
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_coil_cars"
@@ -2618,7 +2644,10 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC2}
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
             piece="coil",
             has_cover=True,
         )
@@ -2640,7 +2669,10 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="coil",
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -2655,7 +2687,9 @@ class ColdMetalCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2699,7 +2733,9 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2712,9 +2748,6 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         self.base_id = "chemical_covered_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -2723,7 +2756,9 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2746,7 +2781,10 @@ class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -2770,7 +2808,9 @@ class CoveredHopperCarMineralConsist(CoveredHopperCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2790,7 +2830,9 @@ class CoveredHopperCarRandomisedConsist(
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2813,7 +2855,10 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -2827,16 +2872,16 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
         super().__init__(**kwargs)
         self._joker = True
         self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_maps
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -2862,7 +2907,9 @@ class DumpCarConsistBase(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2897,9 +2944,6 @@ class DumpCarAggregateConsist(DumpCarConsistBase):
             "randomised_dump_car",
             "randomised_bulk_car",
         ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_bulk_open_cars"
         self._joker = True
 
 
@@ -2935,9 +2979,11 @@ class DumpCarOreConsist(DumpCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_ore"]
         # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = (
-            2  # no randomisation, but reverse on flip
-        )
+        # no randomisation, but swap 1cc / 2cc on flip
+        self.wagon_recolour_strategy_num = -1
+        self.gestalt_graphics.liveries=[
+            self.roster.wagon_liveries["CC_NO_WEATHERING"],
+        ]
 
 
 class DumpCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
@@ -2954,7 +3000,9 @@ class DumpCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -2982,7 +3030,9 @@ class BulkCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -3012,9 +3062,8 @@ class EdiblesTankCarConsist(CarConsist):
         )
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = (
-            1  # single base colour unless flipped
-        )
+        # single base colour unless flipped
+        self.wagon_recolour_strategy_num = -1
         # Graphics configuration
         # only one livery, but recolour gestalt used to automate adding chassis
         weathered_variants = {
@@ -3022,7 +3071,9 @@ class EdiblesTankCarConsist(CarConsist):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -3049,10 +3100,8 @@ class ExpressCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = (
-            1  # single base colour unless flipped
-        )
-        self.use_wagon_base_colour_parameter = False
+        # single base colour unless flipped
+        self.wagon_recolour_strategy_num = -1
         # Graphics configuration
         if self.gen in [1]:
             self.roof_type = "pax_mail_clerestory"
@@ -3066,7 +3115,9 @@ class ExpressCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="express_car",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -3102,7 +3153,9 @@ class ExpressIntermodalCarConsist(CarConsist):
         # !! note to future, if e.g. NA Horse needs longer express intermodal sets, set the consist_ruleset conditionally by checking roster
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             consist_ruleset="2_unit_sets",
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
     @property
@@ -3143,7 +3196,9 @@ class FarmProductsBoxCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="farm_products_box_car",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -3176,7 +3231,9 @@ class FarmProductsHopperCarConsist(CarConsist):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -3215,14 +3272,14 @@ class FlatCarBulkheadConsist(FlatCarConsistBase):
             "randomised_metal_coil_car",
             "randomised_flat_car",
         ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_flat_cars"
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -3243,7 +3300,10 @@ class FlatCarConsist(FlatCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -3271,7 +3331,10 @@ class FlatCarPlateConsist(FlatCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -3286,7 +3349,9 @@ class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -3318,7 +3383,9 @@ class FlatCarSlidingRoofConsist(FlatCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
             piece="flat",
             has_cover=True,
         )
@@ -3352,7 +3419,10 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
             piece="flat",
             has_cover=True,
         )
@@ -3378,9 +3448,8 @@ class GasTankCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = (
-            1  # single base colour unless flipped
-        )
+        # single base colour unless flipped
+        self.wagon_recolour_strategy_num = -1
         # Graphics configuration
         weathered_variants = {
             "unweathered": polar_fox.constants.cryo_tanker_livery_recolour_maps,
@@ -3388,7 +3457,9 @@ class GasTankCarConsistBase(CarConsist):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -3447,7 +3518,9 @@ class HopperCarConsistBase(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -3492,13 +3565,10 @@ class HopperCarMGRConsist(HopperCarConsistBase):
         # don't include MGR hoppers in randomised lists, they don't look good
         self.randomised_candidate_groups = []
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_hopper_cars"
         # adjust default liveries set by the base class
         self.gestalt_graphics.liveries = [
-            self.roster.default_livery,
-            # CABBAGE  VIA RECOLOUR self.roster.default_livery
+            self.roster.wagon_liveries["DEFAULT"],
+            self.roster.wagon_liveries["BAUXITE"],
         ]
 
 
@@ -3516,7 +3586,9 @@ class HopperCarRandomisedConsist(RandomisedConsistMixin, HopperCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -3588,7 +3660,9 @@ class IngotCarConsist(CarConsist):
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
             cargo_row_map={},  # leave blank, all default to same
             generic_rows=[0],
             unique_spritesets=[
@@ -3628,7 +3702,9 @@ class IntermodalCarConsistBase(CarConsist):
             consist_ruleset = "4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             consist_ruleset=consist_ruleset,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -3692,9 +3768,8 @@ class KaolinHopperCarConsist(CarConsist):
         )
         self._joker = True
         # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = (
-            1  # single base colour unless flipped
-        )
+        # single base colour unless flipped
+        self.wagon_recolour_strategy_num = -1
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.kaolin_hopper_car_livery_recolour_maps,
@@ -3702,7 +3777,9 @@ class KaolinHopperCarConsist(CarConsist):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -3724,7 +3801,7 @@ class LivestockCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
-        self.cc_num_to_randomise = 2
+        self.cc_num_to_recolour = 2
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -3733,7 +3810,10 @@ class LivestockCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="livestock_car",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -3753,11 +3833,14 @@ class LogCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        self.cc_num_to_randomise = 2
+        self.cc_num_to_recolour = 2
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="tree_length_logs",
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -3926,7 +4009,10 @@ class OpenCarConsist(OpenCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             piece="open",
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -3952,7 +4038,9 @@ class OpenCarHoodConsist(OpenCarConsistBase):
             bulk=True,
             piece="open",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
             has_cover=True,
         )
 
@@ -3978,7 +4066,9 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
             bulk=True,
             piece="open",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -3996,7 +4086,9 @@ class OpenCarRandomisedConsist(RandomisedConsistMixin, OpenCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -4448,7 +4540,7 @@ class PeatCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        self.cc_num_to_randomise = 2
+        self.cc_num_to_recolour = 2
         # Graphics configuration
         # self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="tree_length_logs")
         utils.echo_message("Peat car using potash hopper body colour remaps")
@@ -4457,7 +4549,9 @@ class PeatCarConsist(CarConsist):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -4482,7 +4576,9 @@ class PieceGoodsCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=3,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -4506,9 +4602,8 @@ class ReeferCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["food_wagons"]
         )
         # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = (
-            1  # single base colour unless flipped
-        )
+        # single base colour unless flipped
+        self.wagon_recolour_strategy_num = -1
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -4518,7 +4613,9 @@ class ReeferCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="reefer_car",
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -4568,7 +4665,10 @@ class SiloCarConsist(SiloCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -4581,9 +4681,6 @@ class SiloCarChemicalConsist(SiloCarConsistBase):
         self.base_id = "chemical_silo_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_silo_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.chemical_silo_car_livery_recolour_maps,
@@ -4591,7 +4688,9 @@ class SiloCarChemicalConsist(SiloCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -4615,7 +4714,9 @@ class SiloCarCementConsist(SiloCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -4644,7 +4745,9 @@ class SlagLadleCarConsist(CarConsist):
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
             cargo_row_map={"SLAG": [0]},
             generic_rows=[0],
             unique_spritesets=[
@@ -4693,7 +4796,9 @@ class TankCarConsist(TankCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -4718,7 +4823,10 @@ class TankCarAcidConsist(TankCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery, self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BAUXITE"],
+            ],
         )
 
 
@@ -4743,7 +4851,9 @@ class TankCarProductConsist(TankCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -4761,7 +4871,9 @@ class TankCarChemicalsRandomisedConsist(RandomisedConsistMixin, TankCarConsistBa
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=3,
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -4791,7 +4903,9 @@ class TorpedoCarConsist(CarConsist):
         # custom gestalt with dedicated template as these wagons are articulated which standard wagon templates don't support
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_torpedo_car.pynml",
-            liveries=[self.roster.default_livery],
+            liveries=[
+                self.roster.wagon_liveries["DEFAULT"],
+            ],
         )
 
 
@@ -4837,7 +4951,7 @@ class BuyableVariant(object):
 class UnitVariant(object):
     """
     Simple class for unit variants.
-    These are used to create variants of units.
+    Consists have buyable_variants, and each unit of the consist needs a corresponding unit_variant.
     """
 
     def __init__(self, unit, buyable_variant, **kwargs):
@@ -4873,7 +4987,9 @@ class UnitVariant(object):
         if self.id == self.unit.consist.buyable_variant_group.parent_consist.id:
             return None
         else:
-            return self.unit.consist.roster.buyable_variant_groups[self.unit.consist.buyable_variant_group_id]
+            return self.unit.consist.roster.buyable_variant_groups[
+                self.unit.consist.buyable_variant_group_id
+            ]
 
     @property
     def intro_year(self):
@@ -4888,17 +5004,46 @@ class UnitVariant(object):
             return self.unit.consist.intro_year
 
     @property
-    def use_wagon_base_colour_parameter_cabbage(self):
+    def wagon_recolour_strategy_num(self):
+        # !! this is temp to support providing buyable wagons that will take the custom parameters
+        # !! is this desired?  Or do we only support forced_custom_colour_remap (no player choice)
         # !!! this may well be flawed, probably we need an explicit check of the actual livery for a specific 'alt colour from parameters' property
         # just check caboose to reduce shell spam - but note this applies to all wagon types
         if "caboose" in self.unit.consist.id:
             print(
-                "BEFORE RELEASE use_wagon_base_colour_parameter_cabbage needs an actual livery check for wagon base colour"
+                "BEFORE RELEASE wagon_recolour_strategy_num_cabbage needs an actual livery check for wagon base colour"
             )
-        if self.buyable_variant.is_default_buyable_variant:
-            return False
+        if self.buyable_variant.is_default_buyable_variant and self.unit.consist.wagon_recolour_strategy_num == 0:
+            return -3
         else:
-            return self.unit.consist.use_wagon_base_colour_parameter
+            return self.unit.consist.wagon_recolour_strategy_num
+
+    def get_wagon_recolour_strategy_params(self, purchase):
+        livery = self.unit.consist.gestalt_graphics.liveries[
+            self.buyable_variant.buyable_variant_num
+        ]
+        if "box_car" in self.unit.consist.id:
+            print("BOX_CAR_LIVERY", self.unit.consist.id, livery)
+        cc_num_to_recolour = self.unit.consist.cc_num_to_recolour
+        # base colourset:
+        # -3 = use parameter
+        # -2 = use player cc2
+        # -1 = use player cc1
+        # 0 = randomise from player cc1 and cc2
+        # 1..99 = forced from colourset number (look up by name)
+        wagon_recolour_strategy_num = self.wagon_recolour_strategy_num
+        # weathered, bool
+        flag_use_weathering = livery.get("use_weathering", False)
+        # we can't safely check vehicle_is_flipped in purchase menu, so we have to tell the procedure if we are in purchase or not
+        check_flip_purchase_safe = not purchase
+        result = [
+            cc_num_to_recolour,
+            wagon_recolour_strategy_num,
+            flag_use_weathering,
+            check_flip_purchase_safe,
+        ]
+        # int used to convert False|True bools to 0|1 values for nml
+        return ", ".join(str(int(i)) for i in result)
 
 
 class Train(object):

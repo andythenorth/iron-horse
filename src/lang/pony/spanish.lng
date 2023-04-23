@@ -11,13 +11,7 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesiva
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Desmesurado
 STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Juego simplificado
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Jugar con un conjunto simplificado de trenes. Habrá menos tipos de trenes y vagones disponibles.  Trenes atractivos como quitanieves, cabinas de conducción y locomotoras muy lentas no están disponibles.
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Selección de color de vagón aleatorio
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Colores aleatorios en vagones de carga aportan variedad a los trenes.{}{}Hay dos colores base para vagones de carga, según los colores de la compañía, or según parámetros de Iron Horse.  Iron Horse escogerá no más de dos texturas aleatorias de cada color base, dependiendo de la configuración.{}{}Intercambiar vagones en el depósito (usando ctrl-click) para cambiar el color base.{}{}Algunos tipos de vagón tienen sus propias normas y sus colores no pueden asignarse aleatoriamente; por ejemplo, vagones de frenado, vagones express, o vagones de pasajeros.
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Texturas de dos colores base (por defecto)
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Texturas de un solo color base
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :Sin selección aleatoria
-STR_PARAM_WAGON_BASE_COLOUR_1                                   :Color 1 de vagón base
-STR_PARAM_WAGON_BASE_COLOUR_2                                   :Color 2 de vagón base
+STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Selección de color de vagón aleatorio
 STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Poder elegir esquemas de color para grupos de vehículos es una característica genial de OpenTTD.{}{}Sin embargo, grupos de vehículos no pueden determinar el color de los vagones y las locomotoras por separado.{}{}Este parámetro puede opcionalmente establecer colores específicos para vagones de carga, en lugar de los colores de la compañía.{}{}Esta configuración se aplicará a {WHITE}todos {BLACK}los trenes agrupados o no.{BLACK}{}{}Esta configuración no se aplica a algunos tipos de vagones, por ejemplo vagones de frenado, de correo o de pasajeros.
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Utilizar los colores de la compañía (default)
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Azul oscuro

@@ -173,14 +173,18 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_inf
             </tal:conditional_random_trigger>
             <tal:colour_mapping_cb switch="vehicle.requires_colour_mapping_cb">
                 <tal:use_colour_randomisation_strategies case="'use_colour_randomisation_strategies'">
-                    colour_mapping:                 switch_colour_mapping(${consist.cc_num_to_randomise}, ${consist.auto_colour_randomisation_strategy_num}, ${int(unit_variant.use_wagon_base_colour_parameter_cabbage)});
-                    purchase_colour_mapping:        switch_colour_mapping_purchase(${consist.cc_num_to_randomise}, ${consist.auto_colour_randomisation_strategy_num}, ${int(unit_variant.use_wagon_base_colour_parameter_cabbage)});
+                    colour_mapping:                 switch_colour_mapping(
+                                                        ${unit_variant.get_wagon_recolour_strategy_params(purchase=False)},
+                                                    );
+                    purchase_colour_mapping:        switch_colour_mapping(
+                                                        ${unit_variant.get_wagon_recolour_strategy_params(purchase=True)},
+                                                    );
                 </tal:use_colour_randomisation_strategies>
                 <tal:colour_mapping_switch_without_purchase case="'colour_mapping_switch_without_purchase'">
                     colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
                     <!--! in the case of flippable vehicles, don't check colour mapping in purchase list as vehicle_is_flipped is invalid for purchase list and will return 1 as undefined behaviour -->
                     purchase_colour_mapping:        return base_sprite_2cc + 16 * company_colour2 + company_colour1;
-                </tal:colour_mapping_switch_without_purchase
+                </tal:colour_mapping_switch_without_purchase>
                 <tal:colour_mapping_switch_with_purchase case="'colour_mapping_switch_with_purchase'">
                     colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
                     purchase_colour_mapping:        ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};

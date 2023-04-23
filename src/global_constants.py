@@ -261,7 +261,8 @@ buyable_variant_group_consist_base_ids_by_group_name = {
 # post python 3.7, we rely on dict order being stable here, so we can get keys by position when we need to
 custom_wagon_recolour_sprite_maps = {
     "custom_dark_brown": (105, 106, 33, 34, 35, 36, 37, 38),
-    "custom_bauxite": (60, 61, 73, 62, 75, 76, 77, 78),
+    "custom_bauxite": (72, 73, 74, 125, 76, 77, 78, 79),
+    "custom_dark_bauxite": (71, 72, 73, 124, 75, 76, 77, 78),
     "custom_dark_pink": (40, 41, 42, 43, 44, 45, 46, 47),
     "custom_light_pink": (43, 44, 45, 46, 47, 166, 167, 168),
     "custom_dark_grey": (3, 16, 17, 18, 19, 20, 21, 22),
@@ -338,11 +339,12 @@ temp_storage_ids = dict(
     num_vehs_in_vehid_chain_multiple_ids=17,  # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
     position_in_vehid_chain_multiple_ids=18,  # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
     position_in_vehid_chain_from_end_multiple_ids=19,  # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
-    cc_num_to_randomise=20,  # used in procedures_colour_randomisation_strategies
-    auto_colour_randomisation_strategy_num=21,  # used in procedures_colour_randomisation_strategies
-    use_wagon_base_colour_parameter=22,  # used in procedures_colour_randomisation_strategies
-    unreversible_spritelayer_cargos=23,  # used to handle esoteric cases where spritelayer cargos need to reverse
-    consist_specific_position_variant_num=24,  # used to store result of switch_graphics_pax_car_ruleset() and similar
+    cc_num_to_recolour=20,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_strategy_num=21,  # used in procedures_wagon_recolour_strategies
+    unreversible_spritelayer_cargos=22,  # used to handle esoteric cases where spritelayer cargos need to reverse
+    consist_specific_position_variant_num=23,  # used to store result of switch_graphics_pax_car_ruleset() and similar
+    vehicle_is_flipped_purchase_safe=24, # we can't check vehicle flip state safely in purchase list, use this to avoid fragmenting switches just to check purchase list
+    flag_use_weathering=25, # used in procedures_wagon_recolour_strategies
 )
 
 # standard offsets for trains

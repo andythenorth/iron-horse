@@ -13,13 +13,7 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Outrageous
 STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Gameplay Simple
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Bermain Dengan Opsi Kereta Lebih Simple. Ini Akan Mengurangi Jumlah Kereta. Kereta Eye-candy Seperti snowploughs(Pembersih Salju), driving cab cars (Gerbong Dengan Kabin Kemudi) Dan Lokomotiv yang sangat lamban tidak akan tersedia.
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Warna Gerbong Acak
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Warna Acak Untuk Gerbong Barang.{}{}Ada Dua Opsi, Salah Satunya Warna Perusahaan Openttd, Atau parameter Iron Horse.  Iron Horse akan Mengacak 2 nuansa, Tergantung Pengaturan parameter.{}{}Ganti Warna Gerbong di Depo (Menggunakan ctrl-click) untuk Mengurangi warna dasar.{}{}Beberapa Gerbong Memiliki Warna Sendiri yang tidak bisa di acak; Seperti, brake vans(Gerbong rem), Gerbong Express Dan Gerbong Penumpang.
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :2 nuansa akan terpilih (default)
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :1 nuansa akan terpilih
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :tidak di acak!
-STR_PARAM_WAGON_BASE_COLOUR_1                                   :Warna Dasar Gerbong 1
-STR_PARAM_WAGON_BASE_COLOUR_2                                   :Warna Dasar Gerbong 2
+STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Warna Gerbong Acak
 STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Skema warna khusus untuk kelompok kendaraan adalah fitur hebat dalam OpenTTD. {}{}Namun, kelompok kendaraan tidak dapat menyetel warna gerbong secara terpisah ke mesin.{}{}Parameter ini secara opsional dapat mengatur warna tertentu untuk gerbong barang, bukan warna perusahaan.{}{}Pengaturan ini akan diterapkan ke {WHITE}Semua {BLACK}kereta yang dikelompokkan dan tidak dikelompokkan, itu {WHITE}tidak dapat disetel per grup.{BLACK}{}{}Pengaturan ini tidak berlaku untuk beberapa jenis gerbong, misalnya van rem, van surat dan gerbong penumpang
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Menggunakan warna Perusahaan (default)
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Biru Tua

@@ -11,13 +11,7 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessiva
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Desmesurada
 STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Joc simplificat
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Jugar amb un conjunt simplificat de trens. Hi Haurà menys tipus de trens i vagons disponibles.  Trens macos como el llevaneus, cambres de conducció i locomotores molt lentes no estan disponibles.
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Selecció de color de cotxe aleatori
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Colors aleatoris en cotxes de càrrega aporten varietat als trens.{}{}Hi ha dos colors base per vagons de càrrega, segons els colors de la companyia, o segons els paràmetres d'Iron Horse.  Iron Horse escollirà no més de dues textures aleatòries de cada color base, depenent de la configuració.{}{}Intercanviar vagons en el depòsit (utilitzant ctrl-click) per a canviar el color base.{}{}Alguns tipus de vagó tenen les seves pròpies normes i els seus colors no poden assignar-se aleatoriament; com els vagons de frenada, express, o de passatgers.
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Textures de dos colors base (per defecte)
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Textures d'un sol color base
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :Sense selecció aleatòria
-STR_PARAM_WAGON_BASE_COLOUR_1                                   :Color 1 de cotxe base
-STR_PARAM_WAGON_BASE_COLOUR_2                                   :Color 2 de cotxe base
+STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Selecció de color de cotxe aleatori
 STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Poder escollir esquemes de color per a groups de vehicles és una característica genial d'OpenTTD.{}{}Grups de vehicles no poden determinar el color dels vagons i les locomotores per separat.{}{}Aquest paràmetre pot establir opcionalment colors específics per vagons de càrrega en comptes dels colors de la companyia.{}{}Aquesta configuració s'aplicarà a {WHITE}tots {BLACK}els trens agrupats o no.{BLACK}{}{}Aquesta configuració no s'aplica a certs vagons, com els de frenada, correu o passatgers.
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Utilitzar els colors de la companyias (per defecte)
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Blau marí

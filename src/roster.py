@@ -34,7 +34,8 @@ class Roster(object):
         )
         self.pax_car_capacity_types = kwargs.get("pax_car_capacity_types")
         self.train_car_weight_factors = kwargs.get("train_car_weight_factors")
-        self.livery_presets = kwargs.get("livery_presets", [])
+        self.engine_liveries = kwargs.get("engine_liveries", [])
+        self.wagon_liveries = kwargs.get("wagon_liveries", {})
         self.default_pax_liveries = kwargs.get("default_pax_liveries", [])
         self.suburban_pax_liveries = kwargs.get("suburban_pax_liveries", [])
         self.default_mail_liveries = kwargs.get("default_mail_liveries", [])
@@ -259,7 +260,7 @@ class Roster(object):
         result = [self.default_livery]
         result.extend(
             [
-                self.livery_presets[additional_livery_name]
+                self.engine_liveries[additional_livery_name]
                 for additional_livery_name in additional_livery_names
             ]
         )

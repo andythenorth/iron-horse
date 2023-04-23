@@ -264,7 +264,7 @@ def main():
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
-        livery_presets={
+        engine_liveries={
             "FREIGHTLINER_GBRF": {
                 # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
                 "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour1"},
@@ -477,7 +477,41 @@ def main():
                 ],
             },
         },
-        # empty dicts currently, but could hold remaps, docs image colours etc if needed
+        wagon_liveries={
+            "DEFAULT": {
+                "base_coloursets": ["company_colour1", "company_colour2"],
+                "use_weathering": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "PLAYER_CHOICE": {
+                "base_coloursets": ["player_choice"],
+                "use_weathering": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "BAUXITE": {
+                "base_coloursets": ["custom_bauxite"],
+                "use_weathering": True,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "CC_NO_WEATHERING": {
+                "base_coloursets": ["company_colour1", "company_colour2"],
+                "use_weathering": False,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+        },
+        # remaps, docs image colours etc as needed
         default_pax_liveries=[
             {
                 "docs_image_input_cc": [

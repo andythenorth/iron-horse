@@ -18,14 +18,23 @@
                                       'brown': ['COLOUR_BROWN', 'custom_dark_brown'],
                                       'grey': ['COLOUR_GREY', 'custom_dark_grey'],
                                       'white': ['COLOUR_WHITE', 'custom_dark_white'],
+                                      'custom_bauxite': ['custom_bauxite', 'custom_dark_bauxite'],
                                        }">
     <tal:colour_set repeat="colour_set colour_sets.items()">
         <!--! uses 1 random bit from self, just 2 colour choices, more is overkill and often looks bad -->
-        switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_1cc, random_bits_colour_set()) {
+        switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_1cc,
+                    <!--! check if randomisation is enabled (player parameter) -->
+                    param_wagon_colour_randomisation
+                    ? random_bits_colour_set()
+                    : 0) {
             1: return ${utils.unpack_colour(colour_set[1][1], 1)};
             return ${utils.unpack_colour(colour_set[1][0], 1)};
         }
-        switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_2cc, random_bits_colour_set()) {
+        switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_2cc,
+                    <!--! check if randomisation is enabled (player parameter) -->
+                    param_wagon_colour_randomisation
+                    ? random_bits_colour_set()
+                    : 0) {
             1: return ${utils.unpack_colour(colour_set[1][1], 2)};
             return ${utils.unpack_colour(colour_set[1][0], 2)};
         }
@@ -42,12 +51,12 @@
 <!--! as of Dec 2019 this was not used with articulated vehicles,
       ¿ however as of August 2022 type D (articulated) wagons appear to use this so eh, maybe it got extended? -->
 
-<tal:switch_by_company_colour repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">
-    switch (FEAT_TRAINS, SELF, switch_by_company_colour_${cc[0]}_to_${cc[1]},
-                        <!--!  if wagon use_wagon_base_colour_parameter is true, then use colour from parameter param_wagon_base_colour_[n] -->
-                        LOAD_TEMP(${temp_storage_ids.use_wagon_base_colour_parameter}) == 0
-                            ? company_colour${cc[1][0]}
-                            : param_wagon_base_colour_${cc[1][0]}) {
+<tal:switch_colour_set_use_weathering repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">
+    switch (FEAT_TRAINS, SELF, switch_colour_set_use_weathering_${cc[0]}_to_${cc[1]},
+                        <!--!  if wagon use base colour parameter, then use colour from parameter param_wagon_base_colour_[n] -->
+                        LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num}) == -3
+                            ? param_wagon_base_colour
+                            : company_colour${cc[1][0]}) {
         COLOUR_DARK_BLUE: switch_colour_set_dark_blue_${cc[0]};
         COLOUR_PALE_GREEN: switch_colour_set_pale_green_${cc[0]};
         COLOUR_PINK: switch_colour_set_pink_${cc[0]};
@@ -65,26 +74,14 @@
         COLOUR_GREY: switch_colour_set_grey_${cc[0]};
         COLOUR_WHITE: switch_colour_set_white_${cc[0]};
     }
-</tal:switch_by_company_colour>
+</tal:switch_colour_set_use_weathering>
 
-<tal:strategy_randomise_base_colour repeat="cc [['1cc', '2cc'], ['2cc', '1cc']]">
-    <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
-    switch (FEAT_TRAINS, SELF, switch_strategy_randomise_base_colour_${cc[0]}_unflipped, random_bits_base_colour()) {
-        1: switch_by_company_colour_${cc[0]}_to_${cc[1]};
-        switch_by_company_colour_${cc[0]}_to_${cc[0]};
-    }
-    switch (FEAT_TRAINS, SELF, switch_strategy_randomise_base_colour_${cc[0]}_flipped, random_bits_base_colour()) {
-        1: switch_by_company_colour_${cc[0]}_to_${cc[0]};
-        switch_by_company_colour_${cc[0]}_to_${cc[1]};
-    }
-</tal:strategy_randomise_base_colour>
-
-<tal:switch_by_company_colour_no_randomisation repeat="cc ['1cc', '2cc']">
-    switch (FEAT_TRAINS, SELF, switch_by_company_colour_no_randomisation_${cc},
-                        <!--!  if wagon use_wagon_base_colour_parameter is true, then use colour from parameter param_wagon_base_colour_[n] -->
-                        LOAD_TEMP(${temp_storage_ids.use_wagon_base_colour_parameter}) == 0
-                            ? company_colour${cc[0]}
-                            : param_wagon_base_colour_${cc[0]} - 1) {
+<tal:switch_colour_set_no_weathering repeat="cc ['1cc', '2cc']">
+    switch (FEAT_TRAINS, SELF, switch_colour_set_no_weathering_${cc},
+                        <!--!  if wagon use base colour parameter, then use colour from parameter param_wagon_base_colour_[n] -->
+                        LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num}) == -3
+                            ? param_wagon_base_colour
+                            : company_colour${cc[0]}) {
         <!--! !! Note that whilst the switch checks the correct 1cc / 2cc vars, the returned palette forces both 1cc and 2cc indiscriminately
                  This could be done with more complex templating, but eh -->
         COLOUR_DARK_BLUE: return palette_2cc(COLOUR_DARK_BLUE, COLOUR_DARK_BLUE);
@@ -104,64 +101,122 @@
         COLOUR_GREY: return palette_2cc(COLOUR_GREY, COLOUR_GREY);
         COLOUR_WHITE: return palette_2cc(COLOUR_WHITE, COLOUR_WHITE);
     }
-</tal:switch_by_company_colour_no_randomisation>
+</tal:switch_colour_set_no_weathering>
 
-<tal:strategy_no_randomisation>
-    switch (FEAT_TRAINS, SELF, switch_strategy_no_randomisation_1cc_unflipped, 0) {
-        switch_by_company_colour_no_randomisation_1cc;
-    }
-    switch (FEAT_TRAINS, SELF, switch_strategy_no_randomisation_1cc_flipped, 0) {
-        switch_by_company_colour_no_randomisation_2cc;
-    }
-    switch (FEAT_TRAINS, SELF, switch_strategy_no_randomisation_2cc_unflipped, 0) {
-        switch_by_company_colour_no_randomisation_2cc;
-    }
-    switch (FEAT_TRAINS, SELF, switch_strategy_no_randomisation_2cc_flipped, 0) {
-        switch_by_company_colour_no_randomisation_1cc;
-    }
-</tal:strategy_no_randomisation>
+<!--! STRATEGIES - Note that not every combination is currently provided -->
 
-<tal:select_strategy_from_param repeat="cc [['1cc', 'unflipped', '1cc'], ['1cc', 'flipped', '2cc'], ['2cc', 'unflipped', '2cc'], ['2cc', 'flipped', '1cc']]">
-    switch (FEAT_TRAINS, SELF, switch_select_randomisation_strategy_${cc[0]}_${cc[1]},
-                <!--! fiddly ternary check if the wagon type forces a strategy that over-rides the parameter option
-                      wagon types can only be 'less random' than the parameter option, never 'more random'
-                      ternary assumes that the strategy number decreases in line with degree of randomness, with 0 as 'fully random' -->
-                LOAD_TEMP(${temp_storage_ids.auto_colour_randomisation_strategy_num}) <= param_wagon_colour_randomisation_strategy
-                    ? param_wagon_colour_randomisation_strategy
-                    : LOAD_TEMP(${temp_storage_ids.auto_colour_randomisation_strategy_num})) {
-        1: switch_by_company_colour_${cc[0]}_to_${cc[2]};
-        2: switch_strategy_no_randomisation_${cc[0]}_${cc[1]};
-        switch_strategy_randomise_base_colour_${cc[0]}_${cc[1]};
+<tal:strategy_randomise_from_2_bases repeat="cc [['1cc', '2cc'], ['2cc', '1cc']]">
+    <!--! Colour is randomised on build, from 1CC/2CC (or other rules?), and will be inverted if player flips vehicle -->
+    <tal:strategy_randomise_from_2_bases_use_weathering>
+        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]}_unflipped,
+                    <!--! check if randomisation is enabled (player parameter) -->
+                    <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
+                    param_wagon_colour_randomisation
+                    ? random_bits_base_colour()
+                    : 0) {
+            1: switch_colour_set_use_weathering_${cc[0]}_to_${cc[1]};
+            switch_colour_set_use_weathering_${cc[0]}_to_${cc[0]};
+        }
+        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]}_flipped,
+                    <!--! check if randomisation is enabled (player parameter) -->
+                    <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
+                    param_wagon_colour_randomisation
+                    ? random_bits_base_colour()
+                    : 0) {
+            1: switch_colour_set_use_weathering_${cc[0]}_to_${cc[0]};
+            switch_colour_set_use_weathering_${cc[0]}_to_${cc[1]};
+        }
+        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]}, LOAD_TEMP(${temp_storage_ids.vehicle_is_flipped_purchase_safe})) {
+            1: switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]}_flipped;
+            switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]}_unflipped;
+        }
+
+    </tal:strategy_randomise_from_2_bases_use_weathering>
+
+    <tal:strategy_randomise_from_2_bases_no_weathering>
+        <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
+        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]}_unflipped,
+                    <!--! check if randomisation is enabled (player parameter) -->
+                    <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
+                    param_wagon_colour_randomisation
+                    ? random_bits_base_colour()
+                    : 0) {
+            1: switch_colour_set_no_weathering_${cc[1]};
+            switch_colour_set_no_weathering_${cc[0]};
+        }
+        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]}_flipped,
+                    <!--! check if randomisation is enabled (player parameter) -->
+                    <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
+                    param_wagon_colour_randomisation
+                    ? random_bits_base_colour()
+                    : 0) {
+            1: switch_colour_set_no_weathering_${cc[0]};
+            switch_colour_set_no_weathering_${cc[1]};
+        }
+        switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]}, LOAD_TEMP(${temp_storage_ids.vehicle_is_flipped_purchase_safe})) {
+            1: switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]}_flipped;
+            switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]}_unflipped;
+        }
+    </tal:strategy_randomise_from_2_bases_no_weathering>
+
+    <!--! !!!!! need to check flip status also -->
+    switch (FEAT_TRAINS, SELF, switch_strategy_randomise_from_2_bases_${cc[0]}, LOAD_TEMP(${temp_storage_ids.flag_use_weathering})) {
+        <!--! !!!!! need to check flip status also -->
+        1: switch_strategy_randomise_from_2_bases_use_weathering_${cc[0]};
+        switch_strategy_randomise_from_2_bases_no_weathering_${cc[0]};
+    }
+</tal:strategy_randomise_from_2_bases>
+
+<tal:strategy_invert_cc_on_flip repeat="cc [['1cc', '2cc'], ['2cc', '1cc']]">
+    <!--! CC is not randomised 1CC / 2CC on build, but will be inverted if player flips vehicle -->
+    <tal:strategy_invert_cc_on_flip_use_weathering>
+        switch (FEAT_TRAINS, SELF, switch_strategy_invert_cc_on_flip_use_weathering_${cc[0]}, LOAD_TEMP(${temp_storage_ids.vehicle_is_flipped_purchase_safe})) {
+            1: switch_colour_set_use_weathering_${cc[0]}_to_${cc[1]};
+            switch_colour_set_use_weathering_${cc[0]}_to_${cc[0]};
+        }
+    </tal:strategy_invert_cc_on_flip_use_weathering>
+
+    <tal:strategy_invert_cc_on_flip_no_weathering>
+        switch (FEAT_TRAINS, SELF, switch_strategy_invert_cc_on_flip_no_weathering_${cc[0]}, LOAD_TEMP(${temp_storage_ids.vehicle_is_flipped_purchase_safe})) {
+            1: switch_colour_set_no_weathering_${cc[1]};
+            switch_colour_set_no_weathering_${cc[0]};
+        }
+    </tal:strategy_invert_cc_on_flip_no_weathering>
+
+    switch (FEAT_TRAINS, SELF, switch_strategy_invert_cc_on_flip_${cc[0]}, LOAD_TEMP(${temp_storage_ids.flag_use_weathering})) {
+        1: switch_strategy_invert_cc_on_flip_use_weathering_${cc[0]};
+        switch_strategy_invert_cc_on_flip_no_weathering_${cc[0]};
+    }
+
+</tal:strategy_invert_cc_on_flip>
+
+<tal:select_strategy_from_param repeat="cc ['1cc', '2cc']">
+    switch (FEAT_TRAINS, SELF, switch_select_randomisation_strategy_${cc}, LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num})) {
+        0: switch_strategy_randomise_from_2_bases_${cc};
+        -2..-1: switch_strategy_invert_cc_on_flip_${cc};
+        <!--! !!! default is unfinished -->
+        switch_strategy_randomise_from_2_bases_${cc};
     }
 </tal:select_strategy_from_param>
 
-switch (FEAT_TRAINS, SELF, switch_cc_num_to_randomise, LOAD_TEMP(${temp_storage_ids.cc_num_to_randomise})) {
-    1: switch_select_randomisation_strategy_1cc_unflipped;
-    2: switch_select_randomisation_strategy_2cc_unflipped;
-}
-<!--! invert cc1 / cc2 choice if flipped -->
-switch (FEAT_TRAINS, SELF, switch_cc_num_to_randomise_flipped, LOAD_TEMP(${temp_storage_ids.cc_num_to_randomise})) {
-    1: switch_select_randomisation_strategy_1cc_flipped;
-    2: switch_select_randomisation_strategy_2cc_flipped;
+switch (FEAT_TRAINS, SELF, switch_cc_num_to_recolour, LOAD_TEMP(${temp_storage_ids.cc_num_to_recolour})) {
+    1: switch_select_randomisation_strategy_1cc;
+    2: switch_select_randomisation_strategy_2cc;
 }
 
-switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_randomise, auto_colour_randomisation_strategy_num, use_wagon_base_colour_parameter,
-                                                    [STORE_TEMP(cc_num_to_randomise, ${temp_storage_ids.cc_num_to_randomise}),
-                                                     STORE_TEMP(auto_colour_randomisation_strategy_num, ${temp_storage_ids.auto_colour_randomisation_strategy_num}),
-                                                     STORE_TEMP(use_wagon_base_colour_parameter, ${temp_storage_ids.use_wagon_base_colour_parameter}),
-                                                     vehicle_is_flipped]) {
-    1: switch_cc_num_to_randomise_flipped;
-    switch_cc_num_to_randomise;
+switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_recolour, wagon_recolour_strategy_num, flag_use_weathering, check_flip_purchase_safe,
+                [
+                 STORE_TEMP(cc_num_to_recolour, ${temp_storage_ids.cc_num_to_recolour}),
+                 STORE_TEMP(wagon_recolour_strategy_num, ${temp_storage_ids.wagon_recolour_strategy_num}),
+                 STORE_TEMP(flag_use_weathering, ${temp_storage_ids.flag_use_weathering}),
+                <!--! purchase cb doesn't appear to support checking flipped var (didn't test this thoroughly, might be wrong), so set a param appropriately -->
+                 STORE_TEMP(
+                    check_flip_purchase_safe ? vehicle_is_flipped: 0,
+                    ${temp_storage_ids.vehicle_is_flipped_purchase_safe}
+                ),
+                ]) {
+    switch_cc_num_to_recolour;
 }
-
-<!--! purchase cb doesn't appear to support checking flipped var (didn't test this thoroughly, might be wrong), so provide dedicated purchase entry point switch -->
-switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, auto_colour_randomisation_strategy_num, use_wagon_base_colour_parameter,
-                                                    [STORE_TEMP(cc_num_to_randomise, ${temp_storage_ids.cc_num_to_randomise}),
-                                                     STORE_TEMP(auto_colour_randomisation_strategy_num, ${temp_storage_ids.auto_colour_randomisation_strategy_num}),
-                                                     STORE_TEMP(use_wagon_base_colour_parameter, ${temp_storage_ids.use_wagon_base_colour_parameter})]) {
-    return switch_cc_num_to_randomise;
-}
-
 
 <!--! * Strategies for random recolouring of intermodal containers * -->
 

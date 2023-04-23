@@ -16,14 +16,10 @@ STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Simplified game
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Play with a simplified set of trains. There will be fewer types of engines and wagons available.  Eye-candy trains like snowploughs, driving cab cars and very slow locomotives will not be available.
 STR_PARAM_WAGONS_ONLY_MODE                                      :Wagons-only mode
 STR_PARAM_WAGONS_ONLY_MODE_DESC                                 :Play with only wagons. All engines, snowploughs etc will be hidden.{}{}Can also be used with 'Simplified gameplay' to reduce the range of wagons if desired.{}{}Note that this option only makes sense if at least one other grf with engines is used in the game.{}{}Wagons will not appear in the game if there are no engines matching their railtype.
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Wagon colour randomisation
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Random freight wagon colours add variety to trains.{}{}There are two base colours for freight wagons, which are set by OpenTTD company colours, or by Iron Horse parameters.  Iron Horse will randomise up to two shades of each base colour, depending on the parameter settings.{}{}Flip wagons in depot (using ctrl-click) to toggle the base colour used.{}{}Some wagon types have their own colour rules and will not use the randomisation setting; for example, brake vans, express-type wagons and passenger coaches.
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Random choice using base colour 1 or 2 (default)
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Random choice using base colour 1 only
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :No randomisation
-STR_PARAM_WAGON_BASE_COLOUR_1                                   :Wagon base colour 1
-STR_PARAM_WAGON_BASE_COLOUR_2                                   :Wagon base colour 2
-STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Specific colour schemes for vehicle groups are a great feature in OpenTTD.{}{}However, vehicle groups can't set the colour of wagons separately to engines.{}{}This parameter can optionally set specific colours for freight wagons, instead of company colour.{}{}This setting will apply to {WHITE}all {BLACK}grouped and ungrouped trains, it {WHITE}cannot be set per-group.{BLACK}{}{}This setting does not apply to some wagon-types, for example, brake vans, mail vans and passenger coaches.
+STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Wagon colour randomisation
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Random freight wagon colours add variety to trains.{}{}Some wagon types have their own colour rules and will not use the randomisation setting; for example, brake vans, express-type wagons and passenger coaches.
+STR_PARAM_WAGON_BASE_COLOUR                                     :Custom wagon base colour
+STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Some wagons use a custom base colour, which can be changed with this setting.
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Use company colour settings (default)
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Dark Blue
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_2                            :Pale Green
