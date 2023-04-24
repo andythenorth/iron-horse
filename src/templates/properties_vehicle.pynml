@@ -81,6 +81,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name_purchase_extra_bits, getbit
     <tal:wagon condition="(consist.power == 0) and (consist.buyable_variant_group is not None)">
         0: return ${consist.buyable_variant_group.name};
     </tal:wagon>
+        1: return ${consist.get_name(context='purchase_level_1')};
     return CB_RESULT_NO_TEXT; <!--! will use property instead -->
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_info1, 0, 8)) {
@@ -91,7 +92,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_inf
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
     item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
         property {
-            name:                           ${consist.name};
+            name:                           ${consist.get_name()};
             climates_available:             NO_CLIMATE; // nml constant
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
                 <!--! some properties should not be set for trailing parts of articulated consists -->

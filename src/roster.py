@@ -431,4 +431,4 @@ class BuyableVariantGroup(object):
             except:
                 raise BaseException(self.parent_consist.id)
         else:
-            return self.parent_consist.name
+            return self.parent_consist.get_name()

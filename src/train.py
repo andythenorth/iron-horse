@@ -290,16 +290,18 @@ class Consist(object):
                         return "STR_NAME_SUFFIX_ELECTRIC_AC_DC"
             return None
 
-    @property
-    def name(self):
-        if self.str_name_suffix is not None:
-            return "string(STR_NAME_CONSIST_COMPOUND_THREE, string({a}), string(STR_PARENTHESES, string({b})), string({c}))".format(
-                a="STR_NAME_" + self.id,
-                b=self.str_name_suffix,
-                c="STR_EMPTY",
-            )
+    def get_name(self, context=None):
+        default_name = "string(STR_NAME_" + self.id + ")"
+        if context == "purchase_level_1":
+            return default_name
         else:
-            return "string(STR_NAME_" + self.id + ")"
+            if self.str_name_suffix is not None:
+                return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string(STR_PARENTHESES, string({b})))".format(
+                    a="STR_NAME_" + self.id,
+                    b=self.str_name_suffix,
+                )
+            else:
+                return default_name
 
     def engine_varies_power_by_power_source(self, vehicle):
         if self.power_by_power_source is not None and vehicle.is_lead_unit_of_consist:
@@ -2059,17 +2061,23 @@ class CarConsist(Consist):
                 subtype_str = "STR_NAME_SUFFIX_TWIN"
             return "STR_PARENTHESES, string(" + subtype_str + ")"
 
-    @property
-    def name(self):
+    def get_name(self, context=None):
         if self.is_randomised_wagon or self.is_caboose:
             optional_randomised_suffix = "STR_NAME_SUFFIX_RANDOMISED_WAGON"
         else:
             optional_randomised_suffix = "STR_EMPTY"
-        return "string(STR_NAME_CONSIST_COMPOUND_THREE, string({a}), string({b}), string({c}))".format(
-            a=self.wagon_title_class_str,
-            b=self.wagon_title_subtype_str,
-            c=optional_randomised_suffix,
-        )
+
+        if context == "purchase_level_1":
+            return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string({b}))".format(
+                a=self.wagon_title_class_str,
+                b=optional_randomised_suffix,
+            )
+        else:
+            return "string(STR_NAME_CONSIST_COMPOUND_THREE, string({a}), string({b}), string({c}))".format(
+                a=self.wagon_title_class_str,
+                b=self.wagon_title_subtype_str,
+                c=optional_randomised_suffix,
+            )
 
     @property
     def joker(self):
@@ -2441,6 +2449,9 @@ class BoxCarSlidingWallConsist(BoxCarConsistBase):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
+        self.randomised_candidate_groups = [
+            "randomised_piece_goods_car",
+        ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_sliding_wall_cars"
@@ -2475,6 +2486,9 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self._joker = True
+        self.randomised_candidate_groups = [
+            "randomised_piece_goods_car",
+        ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_sliding_wall_cars"
@@ -3972,8 +3986,7 @@ class MailHSTCarConsist(MailCarConsistBase):
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
 
-    @property
-    def name(self):
+    def get_name(self, context=None):
         # special name handling to use the cab name
         # !! this doesn't work in the docs,
         # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
@@ -4167,16 +4180,15 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
 
-    @property
-    def name(self):
+    def get_name(self, context=None):
         # special name handling to use the cab name
         # !! this doesn't work in the docs,
         # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
         # !! buy menu text kinda does that, but would need to convert all names to do this
-        return "string(STR_NAME_CONSIST_COMPOUND_THREE, string({a}), string({b}), string({c}))".format(
+        # no need to handle purchase list variant context for these
+        return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string({b}))".format(
             a="STR_NAME_" + self.cab_id,
             b=self._str_name_suffix,
-            c="STR_EMPTY",
         )
 
 
@@ -4329,12 +4341,12 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
 
-    @property
-    def name(self):
+    def get_name(self, context=None):
         # special name handling to use the cab name
         # !! this doesn't work in the docs,
         # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
         # !! buy menu text kinda does that, but would need to convert all names to do this
+        # no need to handle purchase list variant context here
         return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string({b}))".format(
             a="STR_NAME_" + self.cab_id,
             b="STR_NAME_SUFFIX_HST_PASSENGER_CAR",
@@ -5033,7 +5045,8 @@ class UnitVariant(object):
         # 0..99 = forced from colourset number (look up by name)
         if "player_choice" in livery["base_colour_sets"]:
             return -4
-        elif ("company_colour1" in livery["base_colour_sets"]
+        elif (
+            "company_colour1" in livery["base_colour_sets"]
             and "company_colour2" in livery["base_colour_sets"]
         ):
             return -3

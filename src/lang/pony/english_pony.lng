@@ -63,7 +63,7 @@ STR_NAME_SUFFIX_LARGE                                           :Large
 STR_NAME_SUFFIX_TWIN                                            :Twin
 
 # special feature suffixes
-STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Randomised
+STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Mixed
 
 # names for buyable variant groups
 STR_CABBAGE                                                     :{TRAIN}{TRAIN}{TRAIN}{TRAIN}{TRAIN}{TRAIN}
@@ -113,7 +113,7 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Curtain Side Van
 STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR                      :Car Transporter
-STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR                           :Dry Powder Hopper
+STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR                           :Covered Hopper
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineral Wagon
 STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :High Side Mineral Wagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tanker
@@ -136,8 +136,8 @@ STR_NAME_SUFFIX_LOG_CAR                                         :Log Carrier
 STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                        :Low-floor Vehicle Transporter
 STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Low-floor Container Wagon
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
-STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR                             :Merchandise Van
-STR_NAME_SUFFIX_MERCHANDISE_OPEN_CAR                            :Merchandise Open Wagon
+STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR                             :Box Van
+STR_NAME_SUFFIX_MERCHANDISE_OPEN_CAR                            :Open Wagon
 STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR                      :Mineral Covered Hopper
 STR_NAME_SUFFIX_MINERAL_HOPPER_CAR                              :Mineral Hopper
 STR_NAME_SUFFIX_MGR_HOPPER_CAR                                  :MGR Hopper
@@ -151,7 +151,7 @@ STR_NAME_SUFFIX_PRESSURE_TANK_CAR                               :Pressure Tanker
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Product Tanker
 STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Railbus Trailer
 STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Railcar Trailer
-STR_NAME_SUFFIX_RANDOMISED_BOX_CAR                              :Van
+STR_NAME_SUFFIX_RANDOMISED_BOX_CAR                              :Box Van
 STR_NAME_SUFFIX_RANDOMISED_BULK_CAR                             :Bulk Wagon
 STR_NAME_SUFFIX_RANDOMISED_CHEMICALS_TANK_CAR                   :Chemicals Tanker
 STR_NAME_SUFFIX_RANDOMISED_COVERED_HOPPER_CAR                   :Covered Hopper
@@ -176,7 +176,7 @@ STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR                           :Swing Roof Hopp
 STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Tarpaulin Wagon
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedo Wagon
-STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Vehicle Parts Van
+STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Sliding Wall Van
 
 # cargo subtypes
 # only used for automobile cars (specifically vehicles cargo) as of May 2021
