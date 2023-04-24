@@ -2786,7 +2786,7 @@ class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
                 self.roster.wagon_liveries["DEFAULT"],
                 self.roster.wagon_liveries["FREIGHT_BAUXITE"],
                 self.roster.wagon_liveries["FREIGHT_GREY"],
-                self.roster.wagon_liveries["PLAYER_CHOICE"],
+                # tried PLAYER_CHOICE, adds nothing here
             ],
         )
 
@@ -3434,7 +3434,7 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
             liveries=[
-                self.roster.wagon_liveries["DEFAULT"],
+                self.roster.wagon_liveries["BUILD_CC1_ONLY_USE_WEATHERING"],
                 self.roster.wagon_liveries["FREIGHT_GREY"],
                 self.roster.wagon_liveries["FREIGHT_NIGHTSHADE"],
                 # tried PLAYER_CHOICE, adds nothing here
@@ -3791,6 +3791,7 @@ class KaolinHopperCarConsist(CarConsist):
             liveries=[
                 # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
                 self.roster.wagon_liveries["BUILD_CC1_ONLY_USE_WEATHERING"],
+                self.roster.wagon_liveries["PLAYER_CHOICE"],
             ],
         )
 
