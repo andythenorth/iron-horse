@@ -30,6 +30,6 @@ def main(roster_id):
     consist.description = (
         """Bobby-dazzlers these are. How they fit it all in amazes me."""
     )
-    consist.foamer_facts = """Vossloh Euro Dual (ROG Class 93)"""
+    consist.foamer_facts = """Vossloh Euro Dual (DRS Class 88, ROG Class 93)"""
 
     return consist
