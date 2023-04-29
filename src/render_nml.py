@@ -93,13 +93,13 @@ def main():
         "procedures_alternative_var_random_bits",
         "procedures_capacity",
         "procedures_cargo_subtypes",
-        "procedures_wagon_recolour_strategies",
         "procedures_haulage_bonus",
         "procedures_opening_doors",
         "procedures_powered_by_railtype",
         "procedures_restaurant_cars",
         "procedures_rulesets",
         "procedures_visible_cargo",
+        "procedures_wagon_recolour_strategies",
     ]
     for header_item in header_items:
         grf_nml.write(

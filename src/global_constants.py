@@ -349,6 +349,145 @@ colour_sets = {
     "freight_nightshade": ["custom_nightshade", "custom_light_nightshade"],
 }
 
+# select a colour that matches the current company colour
+# current company colour: complementary colour
+complements_to_company_colours = {
+    "COLOUR_DARK_BLUE": "COLOUR_BLUE",
+    "COLOUR_PALE_GREEN": "COLOUR_GREEN",
+    "COLOUR_PINK": "COLOUR_RED",
+    "COLOUR_YELLOW": "COLOUR_ORANGE",
+    "COLOUR_RED": "COLOUR_PINK",
+    "COLOUR_LIGHT_BLUE": "COLOUR_BLUE",
+    "COLOUR_GREEN": "COLOUR_DARK_GREEN",
+    "COLOUR_DARK_GREEN": "COLOUR_GREEN",
+    "COLOUR_BLUE": "COLOUR_DARK_BLUE",
+    "COLOUR_CREAM": "COLOUR_BROWN",
+    "COLOUR_MAUVE": "COLOUR_PURPLE",
+    "COLOUR_PURPLE": "COLOUR_MAUVE",
+    "COLOUR_ORANGE": "COLOUR_YELLOW",
+    "COLOUR_BROWN": "COLOUR_CREAM",
+    "COLOUR_GREY": "COLOUR_BROWN", # more likely we want to complement grey with brown than white
+    "COLOUR_WHITE": "COLOUR_GREY",
+}
+
+# wagon liveries overlap between rosters so are in global constants (engine liveries are per-roster)
+# custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants
+wagon_liveries={
+    # _DEFAULT only used for cases where the livery isn't actually meaningful, e.g. randomised consists
+    "_DEFAULT": {
+        "colour_set": "company_colour",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "COMPANY_COLOUR_USE_WEATHERING": {
+        "colour_set": "company_colour",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "COMPANY_COLOUR_NO_WEATHERING": {
+        "colour_set": "company_colour",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING": {
+        "colour_set": "complement_company_colour",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING": {
+        "colour_set": "complement_company_colour",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "PLAYER_CHOICE": {
+        "colour_set": "player_choice",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "PLAYER_CHOICE_NO_WEATHERING": {
+        "colour_set": "player_choice",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_BAUXITE": {
+        "colour_set": "freight_bauxite",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_BLUE": {
+        "colour_set": "freight_blue",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_BAUXITE_NO_WEATHERING": {
+        "colour_set": "freight_bauxite",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_GREY": {
+        "colour_set": "freight_grey",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_NIGHTSHADE": {
+        "colour_set": "freight_nightshade",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "CC_BLUE": {
+        "colour_set": "blue",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "CC_DARK_BLUE": {
+        "colour_set": "dark_blue",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+}
+
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
 temp_storage_ids = dict(
     id_of_neighbouring_vehicle=0,  # used to avoid expensively reading var 61 multiple times, used in re-implementation of var 41 to check multiple IDs not a single ID
@@ -375,8 +514,7 @@ temp_storage_ids = dict(
     wagon_recolour_strategy_num=21,  # used in procedures_wagon_recolour_strategies
     unreversible_spritelayer_cargos=22,  # used to handle esoteric cases where spritelayer cargos need to reverse
     consist_specific_position_variant_num=23,  # used to store result of switch_graphics_pax_car_ruleset() and similar
-    vehicle_is_flipped_purchase_safe=24,  # we can't check vehicle flip state safely in purchase list, use this to avoid fragmenting switches just to check purchase list
-    flag_use_weathering=25,  # used in procedures_wagon_recolour_strategies
+    flag_use_weathering=24,  # used in procedures_wagon_recolour_strategies
 )
 
 # standard offsets for trains

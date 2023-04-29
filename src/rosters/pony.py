@@ -265,6 +265,13 @@ def main():
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
         engine_liveries={
+            "_DEFAULT": {
+                # this is just a fallback for some special cases, such as snowploughs
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "FREIGHTLINER_GBRF": {
                 # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
                 "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour1"},
@@ -473,104 +480,6 @@ def main():
             "2CC": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-        },
-        wagon_liveries={
-            "DEFAULT": {
-                "base_colour_sets": ["company_colour1", "company_colour2"],
-                "use_weathering": True,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "PLAYER_CHOICE": {
-                "base_colour_sets": ["player_choice"],
-                "use_weathering": True,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "PLAYER_CHOICE_NO_WEATHERING": {
-                "base_colour_sets": ["player_choice"],
-                "use_weathering": False,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "FREIGHT_BAUXITE": {
-                "base_colour_sets": ["freight_bauxite"],
-                "use_weathering": True,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "FREIGHT_BLUE": {
-                "base_colour_sets": ["freight_blue"],
-                "use_weathering": True,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "FREIGHT_BAUXITE_NO_WEATHERING": {
-                "base_colour_sets": ["freight_bauxite"],
-                "use_weathering": False,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "FREIGHT_GREY": {
-                "base_colour_sets": ["freight_grey"],
-                "use_weathering": True,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "FREIGHT_NIGHTSHADE": {
-                "base_colour_sets": ["freight_nightshade"],
-                "use_weathering": True,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "CC_BLUE": {
-                "base_colour_sets": ["blue"],
-                "use_weathering": True,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "CC_DARK_BLUE": {
-                "base_colour_sets": ["dark_blue"],
-                "use_weathering": True,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "BUILD_CC1_ONLY_USE_WEATHERING": {
-                "base_colour_sets": ["company_colour1"],
-                "use_weathering": True,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "BUILD_CC1_ONLY_NO_WEATHERING": {
-                "base_colour_sets": ["company_colour1"],
-                "use_weathering": False,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },

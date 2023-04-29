@@ -29,11 +29,6 @@ switch (FEAT_TRAINS, SELF, random_bits_weathered_variant, switch_alternative_var
     return;
 }
 
-switch (FEAT_TRAINS, SELF, random_bits_base_colour, switch_alternative_var_random_bits(1, 1)) {
-    <!--! return with nothing else to yield the computed value  -->
-    return;
-}
-
 <!--! randomised wagons (those with 'RandomisedConsist' in their classnames) have specific requirements for random bits
       these tend not to overlap with 'normal' wagons, engines etc
 -->
@@ -41,10 +36,10 @@ switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_check_neighbour_or_self,
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
-<!--! the picking from bit 3 onwards is just a wild guess to try and make this independent from colour and weathering choices etc
-      bits_counts varies, but is limited upstream by get_wagon_randomisation_candidates() (limited to 5 as of April 2023)
+<!--! the picking from bit 2 onwards is just a wild guess to try and make this independent from colour and weathering choices etc
+      bits_counts varies, but is limited upstream by get_wagon_randomisation_candidates() (limited to 6 as of April 2023)
 -->
-switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_choose_wagon, bits_count, switch_alternative_var_random_bits(3, bits_count)) {
+switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_choose_wagon, bits_count, switch_alternative_var_random_bits(2, bits_count)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }

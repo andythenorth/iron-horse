@@ -177,10 +177,6 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_inf
                     colour_mapping:                 switch_colour_mapping(
                                                         ${unit_variant.get_wagon_recolour_strategy_params()},
                                                     );
-                    <!--! special case handling because vehicle_is_flipped is invalid for purchase list and will return 1 as undefined behaviour -->
-                    purchase_colour_mapping:        switch_colour_mapping_purchase(
-                                                        ${unit_variant.get_wagon_recolour_strategy_params()},
-                                                    );
                 </tal:use_colour_randomisation_strategies>
                 <tal:colour_mapping_switch_without_purchase case="'colour_mapping_switch_without_purchase'">
                     colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
