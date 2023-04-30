@@ -33,13 +33,19 @@ switch(FEAT_TRAINS, SELF, switch_get_complement_to_company_colour, context_compa
     </tal:complements_to_company_colours>
 }
 
-
+switch(FEAT_TRAINS, SELF, switch_foo, switch_alternative_var_random_bits(0, 4)) {
+    <tal:foo repeat="foo range(16)">
+        ${foo}: return ${foo};
+    </tal:foo>
+}
 <!--! convenience switch to define how to pick a colour -->
 switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_company_colour, LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num})) {
+    return switch_foo;
+    <!--!
     -3: return param_wagon_base_colour;
     -2: return switch_get_complement_to_company_colour(context_company_colour);
     -1: return context_company_colour;
-    return; <!--! just return the recolour strategy number -->
+    return; --> <!--! just return the recolour strategy number -->
 }
 
 <!--! * Strategies for random recolouring of wagons *

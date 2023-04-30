@@ -236,7 +236,6 @@ class Roster(object):
         # this will cause uneven probabilities, but eh, life is not perfect
         if len(result) == 3:
             result.append(result[0])
-        # this relies on recursing a bit to get to 8 as needed
         if len(result) >= 5 and len(result) < 9:
             result.extend(result[: 8 - len(result)])
         if len(result) >= 9 and len(result) < 17:

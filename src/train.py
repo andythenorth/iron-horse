@@ -4084,6 +4084,7 @@ class OpenCarHoodConsist(OpenCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+                global_constants.wagon_liveries["COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries["PLAYER_CHOICE"],
             ],
             has_cover=True,
