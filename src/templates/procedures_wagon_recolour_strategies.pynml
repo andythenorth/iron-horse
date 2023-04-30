@@ -33,19 +33,13 @@ switch(FEAT_TRAINS, SELF, switch_get_complement_to_company_colour, context_compa
     </tal:complements_to_company_colours>
 }
 
-switch(FEAT_TRAINS, SELF, switch_foo, switch_alternative_var_random_bits(0, 4)) {
-    <tal:foo repeat="foo range(16)">
-        ${foo}: return ${foo};
-    </tal:foo>
-}
 <!--! convenience switch to define how to pick a colour -->
 switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_company_colour, LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num})) {
-    return switch_foo;
-    <!--!
-    -3: return param_wagon_base_colour;
-    -2: return switch_get_complement_to_company_colour(context_company_colour);
-    -1: return context_company_colour;
-    return; --> <!--! just return the recolour strategy number -->
+    <!--! 103 is for random strategy and not handled here, handled by vehicle at start of switch chain -->
+    102: return param_wagon_base_colour;
+    101: return switch_get_complement_to_company_colour(context_company_colour);
+    100: return context_company_colour;
+    return; <!--! just return the recolour strategy number -->
 }
 
 <!--! * Strategies for random recolouring of wagons *
@@ -78,11 +72,11 @@ switch (FEAT_TRAINS, SELF, switch_cc_num_to_recolour, LOAD_TEMP(${temp_storage_i
     2: switch_colour_set_use_weathering_2cc_to_2cc;
 }
 
-switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_recolour, wagon_recolour_strategy_num, flag_use_weathering,
+switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_recolour, flag_use_weathering, wagon_recolour_strategy_num,
                 [
                  STORE_TEMP(cc_num_to_recolour, ${temp_storage_ids.cc_num_to_recolour}),
-                 STORE_TEMP(wagon_recolour_strategy_num, ${temp_storage_ids.wagon_recolour_strategy_num}),
                  STORE_TEMP(flag_use_weathering, ${temp_storage_ids.flag_use_weathering}),
+                 STORE_TEMP(wagon_recolour_strategy_num, ${temp_storage_ids.wagon_recolour_strategy_num}),
                 ]) {
     switch_cc_num_to_recolour;
 }

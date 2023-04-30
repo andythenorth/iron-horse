@@ -896,6 +896,38 @@ class Consist(object):
             + ")"
         )
 
+    def get_wagon_recolour_strategy_num(self, livery):
+        # 103 = strategy num will be randomised to one of the other strategy nums
+        # 102 = use colour set from player parameter
+        # 101 = use colour set complementary to player company colour
+        # 100 = use colour set from player company colour
+        # 0..99 = use colour set number directly (look up by name)
+        if "random_from_consist_liveries" in livery["colour_set"]:
+            return 103
+        elif "player_choice" in livery["colour_set"]:
+            return 102
+        elif (
+            "complement_company_colour" in livery["colour_set"]
+        ):
+            return 101
+        elif "company_colour" in livery["colour_set"]:
+            return 100
+        else:
+            return list(global_constants.colour_sets.keys()).index(
+                livery["colour_set"]
+            )
+
+    @property
+    def livery_cabbage(self):
+        # this will only work with wagon liveries as of April 2023, and is intended to get remaps only
+        result = []
+        for livery in self.gestalt_graphics.all_liveries:
+            strategy_num = self.get_wagon_recolour_strategy_num(livery)
+            if strategy_num != 103:
+                result.append(strategy_num)
+        # length of results needs to be power of 2 as random choice can only be picked from powers of 2s, so use utils.extend_list_to_power_of_2_length
+        return utils.extend_list_to_power_of_2_length(list(set(result)))
+
     def get_buy_menu_format(self, vehicle):
         # keep the template logic simple, present strings for a switch/case tree
         # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
@@ -2907,7 +2939,8 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
-                # tried PLAYER_CHOICE, adds nothing here
+                global_constants.wagon_liveries["PLAYER_CHOICE"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -4056,6 +4089,7 @@ class OpenCarConsist(OpenCarConsistBase):
                 global_constants.wagon_liveries["COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -5055,44 +5089,24 @@ class UnitVariant(object):
         else:
             return self.unit.consist.intro_year
 
-    @property
-    def wagon_recolour_strategy_num(self):
-        livery = self.unit.consist.gestalt_graphics.liveries[
-            self.buyable_variant.buyable_variant_num
-        ]
-        # -3 = use colour set from player parameter
-        # -2 = use colour set complementary to player company colour
-        # -1 = use colour set from player company colour
-        # 0..99 = use colour set number directly (look up by name)
-        if "player_choice" in livery["colour_set"]:
-            return -3
-        elif (
-            "complement_company_colour" in livery["colour_set"]
-        ):
-            return -2
-        elif "company_colour" in livery["colour_set"]:
-            return -1
-        else:
-            return list(global_constants.colour_sets.keys()).index(
-                livery["colour_set"]
-            )
-
     def get_wagon_recolour_strategy_params(self):
         livery = self.unit.consist.gestalt_graphics.liveries[
             self.buyable_variant.buyable_variant_num
         ]
 
         cc_num_to_recolour = self.unit.consist.cc_num_to_recolour
-        wagon_recolour_strategy_num = self.wagon_recolour_strategy_num
         flag_use_weathering = livery.get("use_weathering", False)
-
-        result = [
+        params_numeric = [
             cc_num_to_recolour,
-            wagon_recolour_strategy_num,
             flag_use_weathering,
         ]
         # int used to convert False|True bools to 0|1 values for nml
-        return ", ".join(str(int(i)) for i in result)
+        result = ", ".join(str(int(i)) for i in params_numeric)
+        if livery["colour_set"] == "random_from_consist_liveries":
+            result = result + ", " + self.id + "_switch_colour_mapping_cabbage_foo()"
+        else:
+            result = result + ", " + str(self.unit.consist.get_wagon_recolour_strategy_num(livery))
+        return result
 
 
 class Train(object):
