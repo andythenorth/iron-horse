@@ -130,7 +130,7 @@ class Roster(object):
                 all_randomised_candidate_groups.append(
                     consist.randomised_candidate_groups
                 )
-            if consist.is_randomised_wagon:
+            if consist.is_randomised_wagon_type:
                 if (
                     consist.base_track_type_name
                     not in randomised_wagons_by_track_type_name_and_gen

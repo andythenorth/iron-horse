@@ -28,23 +28,6 @@
     <tal:include metal:use-macro="load: cost.pynml" />
 </tal:running_cost_factor>
 
-<!--! !!! this could be moved to a dedicated .pynml file, but as of April 2023 I'm not 100% convinced it's done -->
-<tal:variant_name condition="consist.buyable_variant_group is not None">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
-        <!--! !! if we explicitly handle indent level 0 for the group name,
-                 then we can safely rely on the default in contexts like the autoreplace UI -->
-        <tal:wagon condition="(consist.power == 0) and (consist.buyable_variant_group is not None)">
-            0: return ${consist.buyable_variant_group.name};
-        </tal:wagon>
-            1: return ${consist.get_name(context='purchase_level_1')};
-        return CB_RESULT_NO_TEXT; <!--! will use property instead -->
-    }
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_info1, 0, 8)) {
-        0x20: ${vehicle.id}_switch_name_purchase_extra_bits;
-        return CB_RESULT_NO_TEXT; <!--! will use property instead -->
-    }
-</tal:variant_name>
-
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
 
     <tal:colour_mapping_cb switch="vehicle.requires_colour_mapping_cb">
@@ -72,10 +55,27 @@
             }
         </tal:use_colour_randomisation_strategies>
     </tal:colour_mapping_cb>
+    <!--! !!! this could be moved to a dedicated .pynml file, but as of April 2023 I'm not 100% convinced it's done -->
+    <tal:variant_name condition="consist.buyable_variant_group is not None">
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+            <!--! !! if we explicitly handle indent level 0 for the group name,
+                     then we can safely rely on the default in contexts like the autoreplace UI -->
+            <tal:wagon condition="(consist.power == 0) and (consist.buyable_variant_group is not None)">
+                0: return ${consist.buyable_variant_group.name};
+            </tal:wagon>
+                1: return ${consist.get_name(context='purchase_level_1', unit_variant=unit_variant)};
+            return CB_RESULT_NO_TEXT; <!--! will use property instead -->
+        }
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, getbits(extra_callback_info1, 0, 8)) {
+            0x20: ${unit_variant.id}_switch_name_purchase_extra_bits;
+            return CB_RESULT_NO_TEXT; <!--! will use property instead -->
+        }
+    </tal:variant_name>
+
 
     item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
         property {
-            name:                           ${consist.get_name()};
+            name:                           ${consist.get_name(unit_variant=unit_variant)};
             climates_available:             NO_CLIMATE; // nml constant
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
                 <!--! some properties should not be set for trailing parts of articulated consists -->
@@ -128,7 +128,7 @@
         }
         graphics {
             <tal:variant_name condition="consist.buyable_variant_group is not None">
-                name:                           ${vehicle.id}_switch_name;
+                name:                           ${unit_variant.id}_switch_name;
             </tal:variant_name>
             default:                        ${vehicle.id}_switch_graphics;
             purchase:                       ${vehicle.id}_switch_graphics_purchase;
