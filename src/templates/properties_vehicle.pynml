@@ -75,6 +75,7 @@
     </tal:block>
 </tal:running_cost_factor>
 
+<!--! variants -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
     <!--! !! if we explicitly handle indent level 0 for the group name,
              then we can safely rely on the default in contexts like the autoreplace UI -->
