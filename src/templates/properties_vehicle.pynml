@@ -8,6 +8,27 @@
     <tal:include metal:use-macro="load: buy_menu_text.pynml" />
 </tal:buy_menu_text>
 
+<tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle) and vehicle.is_lead_unit_of_consist">
+    <tal:include metal:use-macro="load: power.pynml" />
+</tal:railtype_varies_power>
+
+<tal:wagons_add_power condition="consist.wagons_add_power and vehicle.is_lead_unit_of_consist">
+    <tal:include metal:use-macro="load: power.pynml" />
+</tal:wagons_add_power>
+
+<tal:easter_egg_haulage_speed_bonus condition="consist.easter_egg_haulage_speed_bonus and vehicle.is_lead_unit_of_consist">
+    <tal:include metal:use-macro="load: speed.pynml" />
+</tal:easter_egg_haulage_speed_bonus>
+
+<tal:lgv_capable_speed_bonus condition="consist.lgv_capable and vehicle.is_lead_unit_of_consist">
+    <tal:include metal:use-macro="load: speed.pynml" />
+</tal:lgv_capable_speed_bonus>
+
+<tal:running_cost_factor condition="getattr(consist, 'affected_by_restaurant_car_in_consist', False) and vehicle.is_lead_unit_of_consist">
+    <tal:include metal:use-macro="load: cost.pynml" />
+</tal:running_cost_factor>
+
+<!--! !!! this could be moved to a dedicated .pynml file, but as of April 2023 I'm not 100% convinced it's done -->
 <tal:variant_name condition="consist.buyable_variant_group is not None">
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
         <!--! !! if we explicitly handle indent level 0 for the group name,
@@ -24,65 +45,6 @@
     }
 </tal:variant_name>
 
-<tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle) and vehicle.is_lead_unit_of_consist">
-    // -- power varies by railtype -- //
-    <!--! order of power sources is significant here, the switch chain should check highest value first, progressing to lowest
-          the python method will return the power sources in the required order -->
-    <tal:power_source repeat="power_source_data consist.vehicle_power_source_tree">
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power_${power_source_data[2]}, tile_powers_track_type_name_${power_source_data[1]}()) {
-            1: return ${consist.power_by_power_source[power_source_data[0]]};
-            <tal:next condition="power_source_data[3] != None">
-                return ${vehicle.id}_switch_power_${power_source_data[3]};
-            </tal:next>
-        }
-    </tal:power_source>
-</tal:railtype_varies_power>
-
-<tal:wagons_add_power condition="consist.wagons_add_power and vehicle.is_lead_unit_of_consist">
-    // -- power varies if specific engines are present in the consist -- //
-    <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power_0, [count_veh_id(${consist.cab_id}) > 0]) {
-        1: return ${consist.cab_power};
-        return 0;
-    }
-</tal:wagons_add_power>
-
-<!--! some vehicles vary their speed depending on lead engine,
-      this should be limited use, it's a *very* silly easter egg
-      *cannot* be combined with any other variable speed effects  -->
-<tal:easter_egg_haulage_speed_bonus condition="consist.easter_egg_haulage_speed_bonus and vehicle.is_lead_unit_of_consist">
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed, haulage_bonus_switch_speed_0()) {
-        1: return ${int(1.60934 * consist.get_speed_by_class('express'))};
-        0: return ${int(1.60934 * consist.speed)};
-    }
-</tal:easter_egg_haulage_speed_bonus>
-
-<!--! some vehicles are equipped to travel faster on dedicated lgv railtype (high speed line)
-      *cannot* be combined with any other variable speed effects  -->
-<tal:lgv_capable_speed_bonus condition="consist.lgv_capable and vehicle.is_lead_unit_of_consist">
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed_by_tile_railtype, [tile_is_railtype("IHAA") || tile_is_railtype("IHBA")]) {
-        1: return ${int(1.60934 * consist.speed_on_lgv)};
-        return ${int(1.60934 * consist.speed)};
-    }
-    <!--! there is a hard-coded assumption here that lgv and lgv_electrified must always both be available for this check to proceed, what could go wrong eh? -->
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed, [railtype_available("IHAA") && railtype_available("IHBA")]) {
-        1: return ${vehicle.id}_switch_speed_by_tile_railtype;
-        return ${int(1.60934 * consist.speed_on_lgv)};
-    }
-</tal:lgv_capable_speed_bonus>
-
-<!--! some vehicles vary running cost if restaurant car is in consist
-      this will need generalised if other similar vehicles are added, e.g. motorail, observation car etc -->
-<tal:running_cost_factor condition="getattr(consist, 'affected_by_restaurant_car_in_consist', False) and vehicle.is_lead_unit_of_consist">
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_running_cost_factor, switch_is_restaurant_car_in_consist_0()) {
-        <!--! eliminate run costs if 1 restaurant car is present (more than 1 has no additional effect)
-            not particularly tested for balance as of April 2021, 'rough is good enough'
-             value of restaurant car varies by number of pax cars in consist and train speed, but is generally net positive above about 4 coaches or so
-        -->
-        1: return 0;
-        0: return ${consist.running_cost};
-    }
-</tal:running_cost_factor>
 
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
     item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
