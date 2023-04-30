@@ -34,7 +34,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_2cc_filled_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_24px")
 
     consist = CoilCarCoveredConsist(
         roster_id="pony",
@@ -44,4 +44,4 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_2cc_filled_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")

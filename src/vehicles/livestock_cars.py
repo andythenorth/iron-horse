@@ -79,7 +79,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_2cc_filled_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
 
     consist = LivestockCarConsist(
         roster_id="pony",

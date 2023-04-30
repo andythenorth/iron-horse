@@ -2285,13 +2285,13 @@ class BolsterCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -2341,13 +2341,13 @@ class BoxCarConsist(BoxCarConsistBase):
             id_base="box_car",
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -2382,13 +2382,13 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
             id_base="curtain_side_box_car",
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
+                global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
-                global_constants.wagon_liveries["PLAYER_CHOICE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -2454,10 +2454,7 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-                global_constants.wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                # don't need more, doesn't add anything
             ],
         )
 
@@ -2470,9 +2467,6 @@ class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "randomised_box_car"
         super().__init__(**kwargs)
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_box_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -2510,12 +2504,12 @@ class BoxCarSlidingWallConsist(BoxCarConsistBase):
             id_base="sliding_wall_car",
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["PLAYER_CHOICE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                # player choice tried, not needed
             ],
         )
 
@@ -2548,13 +2542,13 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
             id_base="vehicle_parts_box_car",
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
-                global_constants.wagon_liveries["PLAYER_CHOICE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                # player choice tried, not needed
             ],
         )
 
@@ -2659,11 +2653,11 @@ class CoilBuggyCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
             cargo_row_map={},  # leave blank, all default to same
             generic_rows=[0],
@@ -2704,22 +2698,23 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         self.base_id = "coil_car_covered"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
-        self.cc_num_to_recolour = 2
+        self.cc_num_to_recolour = 1
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_coil_cars"
         self._joker = True
         # Graphics configuration
-        weathered_variants = {"unweathered": graphics_constants.body_recolour_CC2}
+        weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                global_constants.wagon_liveries["FREIGHT_GREY"],
             ],
             piece="coil",
             has_cover=True,
@@ -2743,12 +2738,13 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="coil",
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                global_constants.wagon_liveries["FREIGHT_GREY"],
             ],
         )
 
@@ -2811,11 +2807,11 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -2863,13 +2859,13 @@ class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -2936,13 +2932,13 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.wagon_liveries["PLAYER_CHOICE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                # player choice tried, not needed
             ],
         )
 
@@ -2964,6 +2960,7 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -2971,8 +2968,7 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.wagon_liveries["PLAYER_CHOICE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                # player choice tried, not needed
             ],
         )
 
@@ -3173,11 +3169,11 @@ class EdiblesTankCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -3218,11 +3214,11 @@ class ExpressCarConsist(CarConsist):
             id_base="express_car",
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -3386,12 +3382,14 @@ class FlatCarBulkheadConsist(FlatCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                global_constants.wagon_liveries["FREIGHT_GREY"],
+                # player choice tried, not needed
             ],
         )
 
@@ -3411,12 +3409,13 @@ class FlatCarConsist(FlatCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                global_constants.wagon_liveries["FREIGHT_GREY"],
             ],
         )
 
@@ -3443,12 +3442,13 @@ class FlatCarPlateConsist(FlatCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                global_constants.wagon_liveries["FREIGHT_GREY"],
             ],
         )
 
@@ -3487,9 +3487,6 @@ class FlatCarSlidingRoofConsist(FlatCarConsistBase):
             "randomised_piece_goods_car",
             "randomised_flat_car",
         ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_covered_flat_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -3500,11 +3497,7 @@ class FlatCarSlidingRoofConsist(FlatCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-                global_constants.wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.wagon_liveries["PLAYER_CHOICE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                # tried more, doesn't add anything
             ],
             piece="flat",
             has_cover=True,
@@ -3529,9 +3522,6 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
             "randomised_piece_goods_car",
             "randomised_flat_car",
         ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_covered_flat_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -3540,6 +3530,7 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -3547,7 +3538,6 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
                 global_constants.wagon_liveries["FREIGHT_GREY"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
                 # tried PLAYER_CHOICE, adds nothing here
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
             piece="flat",
             has_cover=True,
@@ -3642,11 +3632,11 @@ class HopperCarConsistBase(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -3694,10 +3684,13 @@ class HopperCarMGRConsist(HopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
         # adjust default liveries set by the base class
         self.gestalt_graphics.liveries = [
-            global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-            global_constants.wagon_liveries["FREIGHT_BAUXITE"],
-            global_constants.wagon_liveries["PLAYER_CHOICE"],
             global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+            global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            global_constants.wagon_liveries[
+                "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+            ],
+            global_constants.wagon_liveries["FREIGHT_BAUXITE"],
+            # player choice tried, not needed
         ]
 
 
@@ -3787,11 +3780,11 @@ class IngotCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
             cargo_row_map={},  # leave blank, all default to same
             generic_rows=[0],
@@ -3908,11 +3901,7 @@ class KaolinHopperCarConsist(CarConsist):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-                global_constants.wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.wagon_liveries["PLAYER_CHOICE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                # tried more, doesn't add anything
             ],
         )
 
@@ -3935,7 +3924,7 @@ class LivestockCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
-        self.cc_num_to_recolour = 2
+        self.cc_num_to_recolour = 1
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -3945,12 +3934,12 @@ class LivestockCarConsist(CarConsist):
             id_base="livestock_car",
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -3976,12 +3965,12 @@ class LogCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="tree_length_logs",
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -4151,13 +4140,13 @@ class OpenCarConsist(OpenCarConsistBase):
             bulk=True,
             piece="open",
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -4185,12 +4174,12 @@ class OpenCarHoodConsist(OpenCarConsistBase):
             piece="open",
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["PLAYER_CHOICE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                # player choice tried, not needed
             ],
             has_cover=True,
         )
@@ -4219,10 +4208,7 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-                global_constants.wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                # don't need more, doesn't add anything
             ],
         )
 
@@ -4704,11 +4690,11 @@ class PeatCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -4821,13 +4807,13 @@ class SiloCarConsist(SiloCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
-                global_constants.wagon_liveries["PLAYER_CHOICE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
+                # player choice tried, not needed
             ],
         )
 
@@ -4905,11 +4891,11 @@ class SlagLadleCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
             cargo_row_map={"SLAG": [0]},
             generic_rows=[0],
@@ -4987,13 +4973,13 @@ class TankCarAcidConsist(TankCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["CC_DARK_BLUE"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -5020,13 +5006,13 @@ class TankCarProductConsist(TankCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["CC_DARK_BLUE"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 
@@ -5078,11 +5064,11 @@ class TorpedoCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_torpedo_car.pynml",
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES"],
             ],
         )
 

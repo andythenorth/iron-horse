@@ -506,7 +506,7 @@ kaolin_hopper_car_livery_recolour_maps_weathered = (
     ),
 )
 
-livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
+livestock_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
 mineral_covered_hopper_car_livery_recolour_maps = (
     (

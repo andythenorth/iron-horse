@@ -66,21 +66,16 @@ STR_NAME_SUFFIX_TWIN                                            :Twin
 STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Mixed
 
 # names for buyable variant groups
-STR_CABBAGE                                                     :{TRAIN}{TRAIN}{TRAIN}{TRAIN}{TRAIN}{TRAIN}
-STR_CABBAGE_2                                                   :{TRAIN} I am AutoreplaceVehicleInUse
 STR_WAGON_GROUP_AUTOMOBILE_CARS                                 :Vehicle Transporters
 STR_WAGON_GROUP_BOX_CARS                                        :Box Vans
 STR_WAGON_GROUP_CHEMICALS_TANK_CARS                             :Chemical Tankers
 STR_WAGON_GROUP_BULK_OPEN_CARS                                  :Bulk Open Wagons
 STR_WAGON_GROUP_COIL_CARS                                       :Coil Carriers
-STR_WAGON_GROUP_COVERED_FLAT_CARS                               :Covered Flat Wagons
 STR_WAGON_GROUP_COVERED_HOPPER_CARS                             :Covered Hoppers
 STR_WAGON_GROUP_FARM_PRODUCT_CARS                               :Farm Product Wagons
-STR_WAGON_GROUP_FLAT_CARS                                       :Flat Wagons
 STR_WAGON_GROUP_HOPPER_CARS                                     :Hoppers
 STR_WAGON_GROUP_INTERMODAL_CARS                                 :Container Wagons
 STR_WAGON_GROUP_MAIL_CARS                                       :Mail Vans
-STR_WAGON_GROUP_MINERAL_COVERED_HOPPER_CARS                     :Mineral Covered Hoppers
 STR_WAGON_GROUP_OPEN_CARS                                       :Open Wagons
 STR_WAGON_GROUP_PASSENGER_CARS                                  :Passenger Coaches
 STR_WAGON_GROUP_PRESSURE_TANK_CARS                              :Pressurised Tankers
