@@ -531,6 +531,14 @@ temp_storage_ids = dict(
     unreversible_spritelayer_cargos=22,  # used to handle esoteric cases where spritelayer cargos need to reverse
     consist_specific_position_variant_num=23,  # used to store result of switch_graphics_pax_car_ruleset() and similar
     flag_use_weathering=24,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_0=25,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_1=26,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_2=27,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_3=28,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_4=29,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_5=30,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_6=31,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_7=32,  # used in procedures_wagon_recolour_strategies
 )
 
 # standard offsets for trains

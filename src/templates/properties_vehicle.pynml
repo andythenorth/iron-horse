@@ -37,17 +37,6 @@
             This will reduce the sense that there are 2 colour mapping schemes existing in parallel, one using the gestalt, and one independent of it
         -->
         <tal:use_colour_randomisation_strategies case="'use_colour_randomisation_strategies'">
-            switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_cabbage_foo,
-                        switch_alternative_var_random_bits(
-                            0,
-                            ${len(consist.livery_cabbage).bit_length() - 1}
-                        )
-                    ) {
-                <!--! this needs to walk over the available liveries for the consist, and find all the available strategies -->
-                <tal:available_randomisation_strategies repeat="strategy_num consist.livery_cabbage">
-                    ${repeat.strategy_num.index}: return ${strategy_num};
-                </tal:available_randomisation_strategies>
-            }
             switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_cabbage, 1) {
                 return switch_colour_mapping(
                     ${unit_variant.get_wagon_recolour_strategy_params()},

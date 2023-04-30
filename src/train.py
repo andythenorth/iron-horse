@@ -921,8 +921,15 @@ class Consist(object):
             strategy_num = self.get_wagon_recolour_strategy_num(livery)
             if strategy_num != 103:
                 result.append(strategy_num)
-        # length of results needs to be power of 2 as random choice can only be picked from powers of 2s, so use utils.extend_list_to_power_of_2_length
-        return utils.extend_list_to_power_of_2_length(list(set(result)))
+        # length of result *must* be 8, as we have up to 8 liveries per buyable wagon variant, and we must provide values for 8 registers
+        # this just crudely extends the list, repeating values as needed
+        extension = result[0:8 - len(result)]
+        while len(result) < 8:
+            result.extend(extension)
+        # yes, I'm sure we could avoid over-extending and then slicing the list, but eh, life is short
+        if (len(result)) > 8:
+            result = result[0:8]
+        return result
 
     def get_buy_menu_format(self, vehicle):
         # keep the template logic simple, present strings for a switch/case tree
@@ -5196,28 +5203,28 @@ class UnitVariant(object):
             == "random_from_consist_liveries"
         )
 
-    def get_wagon_recolour_strategy_params(self):
+    def get_wagon_recolour_strategy_params(self, force_random=False):
         livery = self.unit.consist.gestalt_graphics.liveries[
             self.buyable_variant.buyable_variant_num
         ]
 
+        if force_random == False:
+            wagon_recolour_strategy_num = self.unit.consist.get_wagon_recolour_strategy_num(livery)
+        else:
+            wagon_recolour_strategy_num = 103
         cc_num_to_recolour = self.unit.consist.cc_num_to_recolour
         flag_use_weathering = livery.get("use_weathering", False)
+
         params_numeric = [
             cc_num_to_recolour,
             flag_use_weathering,
+            wagon_recolour_strategy_num,
         ]
+
+        params_numeric.extend(self.unit.consist.livery_cabbage)
+
         # int used to convert False|True bools to 0|1 values for nml
-        result = ", ".join(str(int(i)) for i in params_numeric)
-        if livery["colour_set"] == "random_from_consist_liveries":
-            result = result + ", " + self.id + "_switch_colour_mapping_cabbage_foo()"
-        else:
-            result = (
-                result
-                + ", "
-                + str(self.unit.consist.get_wagon_recolour_strategy_num(livery))
-            )
-        return result
+        return ", ".join(str(int(i)) for i in params_numeric)
 
 
 class Train(object):

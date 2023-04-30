@@ -210,8 +210,17 @@ class Roster(object):
                     continue
                 if randomisation_consist.subtype != wagon_consist.subtype:
                     continue
-                for unit_variant in wagon_consist.units[0].unit_variants:
-                    result.append(unit_variant)
+                # if there are buyable variants that have random livery
+                # then we want to only append those as it's more direct and leads to shorter candidate lists
+                # otherwise append all the variants
+                unit_variants = wagon_consist.units[0].unit_variants
+                unit_variants_with_random_livery = [unit_variant for unit_variant in unit_variants if unit_variant.uses_random_livery]
+                if len(unit_variants_with_random_livery) > 0:
+                    for unit_variant in unit_variants_with_random_livery:
+                        result.append(unit_variant)
+                else:
+                    for unit_variant in unit_variants:
+                        result.append(unit_variant)
         if len(result) == 0:
             raise BaseException(
                 randomisation_consist.id
@@ -226,7 +235,6 @@ class Roster(object):
         if len(result) > 64:
             # we have a limited number of random bits, and we need to use them independently of company colour choices
             # so guard against consuming too many, 64 variants is 6 bits, and that's all we have spare
-            print(result)
             raise BaseException(
                 randomisation_consist.id
                 + " has more than 64 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates"

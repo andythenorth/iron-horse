@@ -29,6 +29,14 @@ switch (FEAT_TRAINS, SELF, random_bits_weathered_variant, switch_alternative_var
     return;
 }
 
+<!--! up to 8 random liveries for wagon recolour/remaps
+      these may overlap random wagon choices due to shortage of bits, but eh, JFDI
+-->
+switch (FEAT_TRAINS, SELF, random_bits_wagon_random_remap_livery, switch_alternative_var_random_bits(1, 3)) {
+    <!--! return with nothing else to yield the computed value  -->
+    return;
+}
+
 <!--! randomised wagons (those with 'RandomisedConsist' in their classnames) have specific requirements for random bits
       these tend not to overlap with 'normal' wagons, engines etc
 -->

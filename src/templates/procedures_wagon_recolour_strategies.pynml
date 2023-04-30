@@ -33,9 +33,20 @@ switch(FEAT_TRAINS, SELF, switch_get_complement_to_company_colour, context_compa
     </tal:complements_to_company_colours>
 }
 
+<!--! up to 8 random liveries (all 8 must be passed as params when initing the wagon chain -->
+switch(FEAT_TRAINS, SELF, switch_get_random_from_available_liveries, random_bits_wagon_random_remap_livery()) {
+     <tal:available_liveries repeat="livery_num range(8)">
+         ${livery_num}: return LOAD_TEMP(${temp_storage_ids.get("wagon_recolour_livery_num_" + str(livery_num))});
+     </tal:available_liveries>
+}
+
 <!--! convenience switch to define how to pick a colour -->
-switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_company_colour, LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num})) {
-    <!--! 103 is for random strategy and not handled here, handled by vehicle at start of switch chain -->
+switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_company_colour, [
+            LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num}) == 103
+            ? switch_get_random_from_available_liveries()
+            : LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num})
+            ]
+        ) {
     102: return param_wagon_base_colour;
     101: return switch_get_complement_to_company_colour(context_company_colour);
     100: return context_company_colour;
@@ -73,10 +84,16 @@ switch (FEAT_TRAINS, SELF, switch_cc_num_to_recolour, LOAD_TEMP(${temp_storage_i
 }
 
 switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_recolour, flag_use_weathering, wagon_recolour_strategy_num,
+     <tal:available_liveries repeat="livery_num range(8)">
+         wagon_recolour_livery_num_${livery_num},
+     </tal:available_liveries>
                 [
                  STORE_TEMP(cc_num_to_recolour, ${temp_storage_ids.cc_num_to_recolour}),
                  STORE_TEMP(flag_use_weathering, ${temp_storage_ids.flag_use_weathering}),
                  STORE_TEMP(wagon_recolour_strategy_num, ${temp_storage_ids.wagon_recolour_strategy_num}),
+                 <tal:available_liveries repeat="livery_num range(8)">
+                     STORE_TEMP(wagon_recolour_livery_num_${livery_num}, ${temp_storage_ids.get("wagon_recolour_livery_num_" + str(livery_num))}),
+                 </tal:available_liveries>
                 ]) {
     switch_cc_num_to_recolour;
 }
