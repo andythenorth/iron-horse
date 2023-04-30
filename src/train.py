@@ -2883,9 +2883,6 @@ class CoveredHopperCarMineralConsist(CoveredHopperCarConsistBase):
         self.base_id = "mineral_covered_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_mineral_covered_hopper_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -2932,9 +2929,6 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
         super().__init__(**kwargs)
         self._joker = True
         self.default_cargos = polar_fox.constants.default_cargos["covered_roller_roof"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_mineral_covered_hopper_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.pellet_hopper_car_livery_recolour_maps
@@ -3413,9 +3407,6 @@ class FlatCarConsist(FlatCarConsistBase):
         self.randomised_candidate_groups = [
             "randomised_flat_car",
         ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_flat_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
@@ -3447,9 +3438,6 @@ class FlatCarPlateConsist(FlatCarConsistBase):
             "randomised_piece_goods_car",
             "randomised_flat_car",
         ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_flat_cars"
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
@@ -3756,9 +3744,6 @@ class HopperCarRockConsist(HopperCarConsistBase):
         self.base_id = "rock_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_hopper_cars"
         self._joker = True
 
 
