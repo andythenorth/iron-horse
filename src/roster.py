@@ -387,7 +387,11 @@ class BuyableVariantGroup(object):
     def parent_consist(self):
         # first check if the consist has a named group, if it does then that will specify a consist base_id to match
         if self.named_group is not None:
-            base_id = global_constants.buyable_variant_group_consist_base_ids_by_group_name[self.named_group]
+            base_id = (
+                global_constants.buyable_variant_group_consist_base_ids_by_group_name[
+                    self.named_group
+                ]
+            )
             for consist in self.consists:
                 if consist.base_id == base_id:
                     return consist

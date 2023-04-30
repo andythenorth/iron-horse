@@ -16,10 +16,10 @@ def main(roster_id):
         gen=2,
         pantograph_type="diamond-double",
         intro_year_offset=7,  # introduce later than gen epoch by design
-        #additional_liveries=["FREIGHT_BLACK", "BANGER_BLUE"],
+        # additional_liveries=["FREIGHT_BLACK", "BANGER_BLUE"],
         additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
-        sprites_additional_liveries_potential=True, # nightshade / nighthawk?
+        sprites_additional_liveries_potential=True,  # nightshade / nighthawk?
     )
 
     consist.add_unit(

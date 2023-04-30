@@ -35,7 +35,9 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    print("gen 3C TankCarProductConsist commented out as it relies on non-existent variant group")
+    print(
+        "gen 3C TankCarProductConsist commented out as it relies on non-existent variant group"
+    )
     """
     # commented as the acid tank car uses it for variant group
     consist = TankCarProductConsist(
@@ -107,4 +109,3 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
-

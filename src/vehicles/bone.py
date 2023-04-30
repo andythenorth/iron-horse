@@ -16,7 +16,13 @@ def main(roster_id):
         intro_year_offset=-2,  # let's be a little bit earlier for this one
         gen=5,
         caboose_family="railfreight_1",
-        additional_liveries=["RAILFREIGHT_RED_STRIPE", "RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "DBSCHENKER", "EWS"],
+        additional_liveries=[
+            "RAILFREIGHT_RED_STRIPE",
+            "RAILFREIGHT_TRIPLE_GREY",
+            "RAILFREIGHT_TRIPLE_GREY_COAL",
+            "DBSCHENKER",
+            "EWS",
+        ],
         default_livery_extra_docs_examples=[
             ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
             ("COLOUR_PALE_GREEN", "COLOUR_CREAM"),

@@ -17,12 +17,17 @@ def main(roster_id):
         intro_year_offset=4,  # let's not have everything turn up in 1990
         fixed_run_cost_points=65,  # give a bonus so this can be a genuine mixed-traffic engine
         # add RfD Euro style triple grey?
-        additional_liveries=["INTERCITY_RASPBERRY_RIPPLE", "RES", "FREIGHTLINER_GBRF", "DUTCH"],
+        additional_liveries=[
+            "INTERCITY_RASPBERRY_RIPPLE",
+            "RES",
+            "FREIGHTLINER_GBRF",
+            "DUTCH",
+        ],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
-        sprites_additional_liveries_potential=True, # add RfD Euro style triple grey?, Banger blue, but with black windows
+        sprites_additional_liveries_potential=True,  # add RfD Euro style triple grey?, Banger blue, but with black windows
     )
 
     consist.add_unit(
