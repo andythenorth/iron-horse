@@ -64,11 +64,11 @@ STR_NAME_SUFFIX_TWIN                                            :Twin
 
 # special feature suffixes
 STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Mixed
+STR_NAME_SUFFIX_MIXED_COLOURS                                   : - Mixed Colours
 
 # names for buyable variant groups
 STR_WAGON_GROUP_AUTOMOBILE_CARS                                 :Vehicle Transporters
 STR_WAGON_GROUP_BOX_CARS                                        :Box Vans
-STR_WAGON_GROUP_CHEMICALS_TANK_CARS                             :Chemical Tankers
 STR_WAGON_GROUP_BULK_OPEN_CARS                                  :Bulk Open Wagons
 STR_WAGON_GROUP_COIL_CARS                                       :Coil Carriers
 STR_WAGON_GROUP_COVERED_HOPPER_CARS                             :Covered Hoppers
