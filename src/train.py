@@ -1149,11 +1149,6 @@ class EngineConsist(Consist):
         self.floating_run_cost_multiplier = 8.5
         # fixed (baseline) run costs on this subtype, or more rarely instances can over-ride this
         self.fixed_run_cost_points = kwargs.get("fixed_run_cost_points", 180)
-        # pax/mail cars will default to the alternative 2nd livery automatically using role and branch, or it can be forced here (set in engines as needed)
-        # (player can always invert the choice by flipping vehicles)
-        self.force_default_pax_mail_livery = kwargs.get(
-            "force_default_pax_mail_livery", None
-        )
         # optionally force a specific caboose family to be used
         self._caboose_family = kwargs.get("caboose_family", None)
         # Graphics configuration only as required
@@ -2177,7 +2172,6 @@ class AutomobileCarConsistBase(CarConsist):
             liveries=[
                 # automobile cars can't use random colour swaps on the wagons...
                 # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
-                # player can still flip to the second livery
                 global_constants.wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE_NO_WEATHERING"],
             ],
@@ -3092,8 +3086,6 @@ class DumpCarOreConsist(DumpCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_ore"]
         self.gestalt_graphics.liveries = [
-            # type-specific wagon colour randomisation
-            # no randomisation, but swap 1cc / 2cc on flip
             global_constants.wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"],
         ]
 

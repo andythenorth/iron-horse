@@ -37,7 +37,7 @@ switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_check_neighbour_or_self,
     return;
 }
 <!--! the picking from bit 2 onwards is just a wild guess to try and make this independent from colour and weathering choices etc
-      bits_counts varies, but is limited upstream by get_wagon_randomisation_candidates() (limited to 6 as of April 2023)
+      bits_counts varies, but is limited upstream by get_wagon_randomisation_candidates()
 -->
 switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_choose_wagon, bits_count, switch_alternative_var_random_bits(2, bits_count)) {
     <!--! return with nothing else to yield the computed value  -->
