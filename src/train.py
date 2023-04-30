@@ -5341,18 +5341,6 @@ class Train(object):
         # wagons will use RUNNING_COST_DIESEL - set in wagon subclass
         return "RUNNING_COST_STEAM"
 
-    def get_offsets(self, flipped=False):
-        # offsets can also be over-ridden on a per-model basis by providing this property in the model class
-        base_offsets = global_constants.default_spritesheet_offsets[
-            str(self.vehicle_length)
-        ]
-        if flipped:
-            flipped_offsets = list(base_offsets[4:8])
-            flipped_offsets.extend(base_offsets[0:4])
-            return flipped_offsets
-        else:
-            return base_offsets
-
     @property
     def vehicle_nml_template(self):
         # optionally drop the cargos in the compile, can save substantial compile time
