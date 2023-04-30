@@ -18,16 +18,6 @@ def main():
 
     consist = OpenCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=16980,
-        gen=2,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
-
-    consist = OpenCarRandomisedConsist(
-        roster_id="pony",
         base_numeric_id=16990,
         gen=3,
         subtype="A",
