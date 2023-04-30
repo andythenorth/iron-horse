@@ -8,6 +8,22 @@
     <tal:include metal:use-macro="load: buy_menu_text.pynml" />
 </tal:buy_menu_text>
 
+<tal:variant_name condition="consist.buyable_variant_group is not None">
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+        <!--! !! if we explicitly handle indent level 0 for the group name,
+                 then we can safely rely on the default in contexts like the autoreplace UI -->
+        <tal:wagon condition="(consist.power == 0) and (consist.buyable_variant_group is not None)">
+            0: return ${consist.buyable_variant_group.name};
+        </tal:wagon>
+            1: return ${consist.get_name(context='purchase_level_1')};
+        return CB_RESULT_NO_TEXT; <!--! will use property instead -->
+    }
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_info1, 0, 8)) {
+        0x20: ${vehicle.id}_switch_name_purchase_extra_bits;
+        return CB_RESULT_NO_TEXT; <!--! will use property instead -->
+    }
+</tal:variant_name>
+
 <tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle) and vehicle.is_lead_unit_of_consist">
     // -- power varies by railtype -- //
     <!--! order of power sources is significant here, the switch chain should check highest value first, progressing to lowest
@@ -68,21 +84,6 @@
     }
 </tal:running_cost_factor>
 
-<!--! variants name handling -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
-    <!--! !! if we explicitly handle indent level 0 for the group name,
-             then we can safely rely on the default in contexts like the autoreplace UI -->
-    <tal:wagon condition="(consist.power == 0) and (consist.buyable_variant_group is not None)">
-        0: return ${consist.buyable_variant_group.name};
-    </tal:wagon>
-        1: return ${consist.get_name(context='purchase_level_1')};
-    return CB_RESULT_NO_TEXT; <!--! will use property instead -->
-}
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_info1, 0, 8)) {
-    0x20: ${vehicle.id}_switch_name_purchase_extra_bits;
-    return CB_RESULT_NO_TEXT; <!--! will use property instead -->
-}
-
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
     item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
         property {
@@ -138,7 +139,9 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_name, getbits(extra_callback_inf
             effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
         }
         graphics {
-            name:                           ${vehicle.id}_switch_name;
+            <tal:variant_name condition="consist.buyable_variant_group is not None">
+                name:                           ${vehicle.id}_switch_name;
+            </tal:variant_name>
             default:                        ${vehicle.id}_switch_graphics;
             purchase:                       ${vehicle.id}_switch_graphics_purchase;
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
