@@ -64,6 +64,7 @@
     </tal:has_cover>
 </tal:masked_overlay_graphics>
 
+<tal:weathered_variant condition="len(consist.gestalt_graphics.weathered_variants) > 1">
 <!--! ! note that support here is for either ['unweathered'] or ['unweathered', 'weathered'] as only 1 random bit is picked, use more bits if that needs extended in future -->
 <!--! this could be parameterised procedure, as it's used for other gestalts also -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
@@ -78,6 +79,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_randomisation_str
     0: ${vehicle.id}_switch_graphics_vehicle_check_state_unweathered; <!--! no randomisation -->
     ${vehicle.id}_switch_graphics_vehicle_choose_weathered_variant;
 }
+</tal:weathered_variant>
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     <!--! masked overlay is JFDI hard-coded for now -->
