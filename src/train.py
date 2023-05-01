@@ -2108,6 +2108,12 @@ class CarConsist(Consist):
                 a=self.wagon_title_class_str,
                 b=optional_randomised_suffix,
             )
+        elif context == "group_parent":
+            return "string(STR_NAME_CONSIST_COMPOUND_THREE, string({a}), string({b}), string({c}))".format(
+                a="STR_WAGON_GROUP_" + self.base_id.upper() + "S",
+                b=self.wagon_title_subtype_str,
+                c=optional_randomised_suffix,
+            )
         else:
             return "string(STR_NAME_CONSIST_COMPOUND_THREE, string({a}), string({b}), string({c}))".format(
                 a=self.wagon_title_class_str,
@@ -3052,7 +3058,7 @@ class DumpCarConsist(DumpCarConsistBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_bulk_open_cars"
+        self.use_named_buyable_variant_group = "wagon_group_dump_cars"
         # Graphics configuration
         self.gestalt_graphics.liveries = [
             global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
@@ -3098,7 +3104,7 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_bulk_open_cars"
+        self.use_named_buyable_variant_group = "wagon_group_dump_cars"
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
@@ -3139,7 +3145,7 @@ class DumpCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_bulk_open_cars"
+        self.use_named_buyable_variant_group = "wagon_group_dump_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -4098,9 +4104,6 @@ class MailCarConsist(MailCarConsistBase):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_mail_cars"
         # mail cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
@@ -4409,9 +4412,6 @@ class PassengerCarConsist(PassengerCarConsistBase):
             self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE"
         else:
             self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_passenger_cars"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -4684,9 +4684,6 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         self.floating_run_cost_multiplier = 12
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_restaurant_cars"
         self._joker = True
         self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
         self.buy_menu_hint_restaurant_car = True
@@ -4721,9 +4718,6 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
         self.weight_factor = 0.33 if self.base_track_type_name == "NG" else 1
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_suburban_passenger_cars"
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         self._buy_menu_role_string = "STR_ROLE_SUBURBAN"

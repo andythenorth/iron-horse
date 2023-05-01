@@ -55,6 +55,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(["check_buy_menu_only"])
         self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_switch_purchase = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
         self.liveries = kwargs["liveries"]
         self.default_livery_extra_docs_examples = kwargs.get(
@@ -118,7 +119,8 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             + (2 * graphics_constants.randomised_wagon_extra_unit_width)
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
-        self.colour_mapping_with_purchase = False
+        self.colour_mapping_switch_purchase = "_switch_colour_mapping_purchase"
+        self.colour_mapping_with_purchase = True
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
         self.processing_priority = 2
 
@@ -836,6 +838,7 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
         self.num_load_state_or_similar_spriterows = 2
         # colour mapping stuff...
         self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_switch_purchase = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
         # verify that the spriterow_group_mappings keys are in the expected order
         if list(self.spriterow_group_mappings.keys()) != [

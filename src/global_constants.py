@@ -52,8 +52,8 @@ buy_menu_sort_order_wagons = [
     "scrap_metal_car",
     "skip_car",
     "tank_car",
-    "product_tank_car",
     "acid_tank_car",
+    "product_tank_car",
     "pressure_tank_car",
     "cryo_tank_car",
     "covered_hopper_car",
@@ -233,24 +233,20 @@ intro_month_offsets_by_role_group = {
 }
 
 # shared across all rosters, keep alphabetised, order not significant
+# only needed for groups composing more than one type of consist
 buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_automobile_cars": "automobile_car",
     "wagon_group_box_cars": "box_car",
-    "wagon_group_bulk_open_cars": "dump_car",
     "wagon_group_coil_cars": "coil_car_uncovered",
     "wagon_group_covered_hopper_cars": "covered_hopper_car",
+    "wagon_group_dump_cars": "dump_car",
     "wagon_group_farm_product_cars": "farm_products_hopper_car",
     "wagon_group_hopper_cars": "hopper_car",
     "wagon_group_intermodal_cars": "intermodal_car",
-    "wagon_group_mail_cars": "mail_car",
     "wagon_group_open_cars": "open_car",
-    "wagon_group_passenger_cars": "passenger_car",
     "wagon_group_pressure_tank_cars": "pressure_tank_car",
-    "wagon_group_restaurant_cars": "restaurant_car",
     "wagon_group_silo_cars": "silo_car",
     "wagon_group_sliding_wall_cars": "sliding_wall_car",
-    "wagon_group_suburban_passenger_cars": "suburban_passenger_car",
-    "wagon_group_tank_cars": "tank_car",
 }
 
 # custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants

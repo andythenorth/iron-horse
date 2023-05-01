@@ -63,28 +63,58 @@ STR_NAME_SUFFIX_LARGE                                           :Large
 STR_NAME_SUFFIX_TWIN                                            :Twin
 
 # special feature suffixes
-STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Random
-STR_NAME_SUFFIX_MIXED_COLOURS                                   : - Mixed Colours
+STR_NAME_SUFFIX_RANDOMISED_WAGON                                :{RED} - Random
+STR_NAME_SUFFIX_MIXED_COLOURS                                   : - {RED}M{ORANGE}i{YELLOW}x{GREEN}e{BLUE}d {PURPLE}C{RED}o{ORANGE}l{YELLOW}o{GREEN}u{BLUE}r{PURPLE}s
 
 STR_CABBAGE                                                     :CABBAGE
 # names for buyable variant groups
 STR_WAGON_GROUP_AUTOMOBILE_CARS                                 :Vehicle Transporters
+STR_WAGON_GROUP_ACID_TANK_CARS                                  :Acid Tankers
+STR_WAGON_GROUP_BOLSTER_CARS                                    :Bolster Wagons
 STR_WAGON_GROUP_BOX_CARS                                        :Box Vans
-STR_WAGON_GROUP_BULK_OPEN_CARS                                  :Bulk Open Wagons
+STR_WAGON_GROUP_BULKHEAD_FLAT_CARS                              :Bulkhead Flat Wagons
+STR_WAGON_GROUP_COIL_BUGGY_CARS                                 :Coil Buggies
 STR_WAGON_GROUP_COIL_CARS                                       :Coil Carriers
 STR_WAGON_GROUP_COVERED_HOPPER_CARS                             :Covered Hoppers
+STR_WAGON_GROUP_DUMP_CARS                                       :Mineral Wagons
+STR_WAGON_GROUP_EDIBLES_TANK_CARS                               :Edibles Tankers
+STR_WAGON_GROUP_EXPRESS_CARS                                    :Express Vans
 STR_WAGON_GROUP_FARM_PRODUCT_CARS                               :Farm Product Wagons
+STR_WAGON_GROUP_FLAT_CARS                                       :Flat Wagons
 STR_WAGON_GROUP_HOPPER_CARS                                     :Hoppers
+STR_WAGON_GROUP_INGOT_CARS                                      :Ingot Carriers
 STR_WAGON_GROUP_INTERMODAL_CARS                                 :Container Wagons
+STR_WAGON_GROUP_LIVESTOCK_CARS                                  :Livestock Wagons
+STR_WAGON_GROUP_LOG_CARS                                        :Log Carriers
 STR_WAGON_GROUP_MAIL_CARS                                       :Mail Vans
+STR_WAGON_GROUP_MGR_HOPPER_CARS                                 :MGR Hoppers
 STR_WAGON_GROUP_OPEN_CARS                                       :Open Wagons
 STR_WAGON_GROUP_PASSENGER_CARS                                  :Passenger Coaches
+STR_WAGON_GROUP_PLATE_CARS                                      :Plate Wagons
 STR_WAGON_GROUP_PRESSURE_TANK_CARS                              :Pressurised Tankers
+STR_WAGON_GROUP_PRODUCT_TANK_CARS                               :Product Tankers
+STR_WAGON_GROUP_RANDOMISED_BOX_CARS                             :Box Vans
+STR_WAGON_GROUP_RANDOMISED_BULK_CARS                            :Bulk Wagons
+STR_WAGON_GROUP_RANDOMISED_CHEMICALS_TANK_CARS                  :Chemicals Tankesr
+STR_WAGON_GROUP_RANDOMISED_COVERED_HOPPER_CARS                  :Covered Hoppers
+STR_WAGON_GROUP_RANDOMISED_DUMP_CARS                            :Mineral Wagons
+STR_WAGON_GROUP_RANDOMISED_FLAT_CARS                            :Flatbed Cargo Wagons
+STR_WAGON_GROUP_RANDOMISED_HOPPER_CARS                          :Hoppers
+STR_WAGON_GROUP_RANDOMISED_METAL_COIL_CARS                      :Coil Wagons
+STR_WAGON_GROUP_RANDOMISED_OPEN_CARS                            :Open Wagons
+STR_WAGON_GROUP_RANDOMISED_PIECE_GOODS_CARS                     :Piece Goods Wagons
 STR_WAGON_GROUP_RESTAURANT_CARS                                 :Restaurant Cars
+STR_WAGON_GROUP_ROCK_HOPPER_CARS                                :Rock Hoppers
+STR_WAGON_GROUP_ROLLER_ROOF_HOPPER_CARS                         :Roller Roof Hoppers
 STR_WAGON_GROUP_SILO_CARS                                       :Silo Wagons
+STR_WAGON_GROUP_SKIP_CARS                                       :Skips
+STR_WAGON_GROUP_SLAG_LADLE_CARS                                 :Slag Ladle Wagon
 STR_WAGON_GROUP_SLIDING_WALL_CARS                               :Sliding Wall Vans
 STR_WAGON_GROUP_SUBURBAN_PASSENGER_CARS                         :Suburban Coaches
+STR_WAGON_GROUP_SWING_ROOF_HOPPER_CARS                          :Swing Roof Hoppers
 STR_WAGON_GROUP_TANK_CARS                                       :Tankers
+STR_WAGON_GROUP_TARPAULIN_CARS                                  :Tarpaulin Wagons
+STR_WAGON_GROUP_TORPEDO_CARS                                    :Torpedo Wagons
 
 # wagon class suffixes
 # as of Jan 2019 these are switched from en-us to en-gb

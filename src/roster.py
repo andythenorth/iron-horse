@@ -423,18 +423,11 @@ class BuyableVariantGroup(object):
         return self.parent_vehicle.unit.consist
 
     @property
-    def total_number_of_buyable_variants(self):
-        # the total number of buyable consists is the sum of buyable variants for all the consists in the group
-        result = 0
-        for buyable_variant in self.buyable_variants:
-            result += 1
-        return result
-
-    @property
     def name(self):
         # assumes wagon groups as of April 2023, change if needed
         # !! might want to handle case of group_base_id = None?
-        if self.parent_consist.use_named_buyable_variant_group != None and self.total_number_of_buyable_variants > 1:
+        # !! might throw a plural name for groups where there's only one member?
+        if self.parent_consist.use_named_buyable_variant_group != None:
             try:
                 return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string({b}))".format(
                     a="STR_" + self.parent_consist.use_named_buyable_variant_group.upper(),
@@ -444,4 +437,7 @@ class BuyableVariantGroup(object):
             except:
                 raise BaseException(self.parent_vehicle.id)
         else:
-            return self.parent_consist.get_name()
+            if len(self.buyable_variants) > 1:
+                return self.parent_consist.get_name(context="group_parent")
+            else:
+                return self.parent_consist.get_name()

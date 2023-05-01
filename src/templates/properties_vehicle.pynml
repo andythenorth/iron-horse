@@ -171,7 +171,7 @@
                 </tal:colour_mapping_switch_without_purchase>
                 <tal:colour_mapping_switch_with_purchase case="'colour_mapping_switch_with_purchase'">
                     colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
-                    purchase_colour_mapping:        ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
+                    purchase_colour_mapping:        ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch_purchase};
                 </tal:colour_mapping_switch_with_purchase
             </tal:colour_mapping_cb>
             <!--! only use the capacity switches if vehicle carries cargo, makes faster compile (saved about 20% of time) -->
