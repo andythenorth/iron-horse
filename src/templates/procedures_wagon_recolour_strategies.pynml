@@ -42,7 +42,7 @@ switch(FEAT_TRAINS, SELF, switch_get_random_from_available_liveries, random_bits
 
 <!--! convenience switch to define how to pick a colour -->
 switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_company_colour, [
-            LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num}) == 103
+            LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num}) >= 103
             ? switch_get_random_from_available_liveries()
             : LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num})
             ]

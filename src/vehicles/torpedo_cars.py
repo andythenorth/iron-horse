@@ -6,7 +6,7 @@ def main():
 
     consist = TorpedoCarConsist(
         roster_id="pony",
-        base_numeric_id=4060,
+        base_numeric_id=4140,
         gen=2,
         subtype="U",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main():
 
     consist = TorpedoCarConsist(
         roster_id="pony",
-        base_numeric_id=4070,
+        base_numeric_id=4060,
         gen=3,
         subtype="U",
         sprites_complete=True,
@@ -34,7 +34,7 @@ def main():
 
     consist = TorpedoCarConsist(
         roster_id="pony",
-        base_numeric_id=4080,
+        base_numeric_id=4170,
         gen=4,
         subtype="U",
         sprites_complete=True,
@@ -66,7 +66,7 @@ def main():
 
     consist = TorpedoCarConsist(
         roster_id="ibex",
-        base_numeric_id=30,
+        base_numeric_id=390,
         gen=2,
         subtype="U",
         sprites_complete=True,
@@ -80,7 +80,7 @@ def main():
 
     consist = TorpedoCarConsist(
         roster_id="ibex",
-        base_numeric_id=60,
+        base_numeric_id=490,
         gen=3,
         subtype="U",
         sprites_complete=True,
@@ -108,7 +108,7 @@ def main():
 
     consist = TorpedoCarConsist(
         roster_id="ibex",
-        base_numeric_id=80,
+        base_numeric_id=310,
         gen=5,
         subtype="U",
         sprites_complete=True,

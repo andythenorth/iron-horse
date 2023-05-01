@@ -4,6 +4,10 @@ from train import BulkCarRandomisedConsist, FreightCar
 def main():
     # --------------- pony NG ----------------------------------------------------------------------
 
+    print("CABBAGE 4400, all ng randomised bulk cars nerfed off as they need variants reworked (so ore brown is a remap variant, not drawn etc)")
+
+    """
+
     consist = BulkCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=8340,
@@ -36,7 +40,7 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
-
+    """
     # --------------- pony ----------------------------------------------------------------------
 
     consist = BulkCarRandomisedConsist(

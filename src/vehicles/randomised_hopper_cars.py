@@ -4,6 +4,9 @@ from train import HopperCarRandomisedConsist, FreightCar
 def main():
     # --------------- pony ----------------------------------------------------------------------
 
+    print("CABBAGE 4000, all randomised hopper cars nerfed off as they need variants reworked (so ore brown is a remap variant, not drawn etc)")
+
+    """
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=16860,
@@ -85,3 +88,4 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="empty_32px")
+    """

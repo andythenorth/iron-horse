@@ -132,7 +132,8 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         candidate_consists = []
         for unit_variant in consist.frozen_roster_items[
             "wagon_randomisation_candidates"
-        ]:
+        ][0]:
+            # ^^^ !! picking the first item off is hax
             if unit_variant.unit.consist not in candidate_consists:
                 candidate_consists.append(unit_variant.unit.consist)
         # this appears to just slice out the first two items of the list to make a pair of buy menu sprites

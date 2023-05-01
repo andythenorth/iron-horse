@@ -192,8 +192,11 @@ class Roster(object):
                 result.append(consist)
         return result
 
-    def get_wagon_randomisation_candidates(self, randomisation_consist):
+    def get_wagon_randomisation_candidates(self, buyable_variant):
+        randomisation_consist = buyable_variant.consist
         result = []
+        print("CABBAGE 2000", randomisation_consist.id, "variant", buyable_variant.buyable_variant_num)
+        print("target:", buyable_variant.livery["colour_set"])
         for base_id, wagons in self.wagon_consists.items():
             for wagon_consist in wagons:
                 if (
@@ -214,13 +217,18 @@ class Roster(object):
                 # then we want to only append those as it's more direct and leads to shorter candidate lists
                 # otherwise append all the variants
                 unit_variants = wagon_consist.units[0].unit_variants
-                unit_variants_with_random_livery = [unit_variant for unit_variant in unit_variants if unit_variant.uses_random_livery]
-                if len(unit_variants_with_random_livery) > 0:
-                    for unit_variant in unit_variants_with_random_livery:
-                        result.append(unit_variant)
-                else:
+                matched_results = []
+                print("unit_variants", unit_variants)
+                for unit_variant in unit_variants:
+                    print("potential candidate:", unit_variant.id, "|", unit_variant.buyable_variant.livery["colour_set"])
+                    if unit_variant.buyable_variant.livery["colour_set"] == buyable_variant.livery["colour_set"]:
+                        matched_results.append(unit_variant)
+                if len(matched_results) == 0:
                     for unit_variant in unit_variants:
-                        result.append(unit_variant)
+                        if unit_variant.buyable_variant.livery["colour_set"] in global_constants.wagon_livery_mixes[buyable_variant.livery["colour_set"]]:
+                            matched_results.append(unit_variant)
+                result.extend(matched_results)
+        print("RESULT:", result)
         if len(result) == 0:
             raise BaseException(
                 randomisation_consist.id
