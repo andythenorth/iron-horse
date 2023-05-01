@@ -215,26 +215,6 @@ class Consist(object):
         return result
 
     @property
-    def buyable_variant_group_id(self):
-        if self._buyable_variant_group_id is not None:
-            # explicitly defined group id
-            id = self._buyable_variant_group_id
-        elif self.use_named_buyable_variant_group is not None:
-            # case of wagons or similar which use groups defined by the roster
-            id = self.roster.get_variant_group_id_from_named_group(
-                self.use_named_buyable_variant_group, self
-            )
-        else:
-            # assume group is composed from self (for simple case of variant liveries etc)
-            id = self.id
-        return id
-
-    @property
-    def buyable_variant_group(self):
-        self.assert_buyable_variant_groups()
-        return self.roster.buyable_variant_groups[self.buyable_variant_group_id]
-
-    @property
     def unique_spriterow_nums(self):
         # find the unique spriterow numbers, used in graphics generation
         result = []
@@ -1099,7 +1079,7 @@ class Consist(object):
             raise BaseException(
                 "buyable_variant_groups undefined for roster "
                 + self.roster.id
-                + " - probably consist.buyable_variant_group called before variant groups inited"
+                + " - probably buyable_variant.buyable_variant called before variant groups inited"
             )
 
     def assert_speed(self):
@@ -2484,6 +2464,9 @@ class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "randomised_box_car"
         super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_box_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -5194,12 +5177,40 @@ class BuyableVariant(object):
             return self._relative_spriterow_num
 
     @property
+    def uses_random_livery(self):
+        colour_set = self.livery.get("colour_set", None)
+        if colour_set is not None:
+            return colour_set.find("random_from_consist_liveries") != -1
+        # fall through to default
+        return False
+
+    @property
     def is_default_buyable_variant(self):
         # convenience method
         if self.buyable_variant_num == 0:
             return True
         else:
             return False
+
+    @property
+    def buyable_variant_group(self):
+        self.consist.assert_buyable_variant_groups()
+        return self.consist.roster.buyable_variant_groups[self.buyable_variant_group_id]
+
+    @property
+    def buyable_variant_group_id(self):
+        if self.consist._buyable_variant_group_id is not None:
+            # explicitly defined group id
+            id = self.consist._buyable_variant_group_id
+        elif self.consist.use_named_buyable_variant_group is not None:
+            # case of wagons or similar which use groups defined by the roster
+            id = self.consist.roster.get_variant_group_id_from_named_group(
+                self.consist.use_named_buyable_variant_group, self.consist
+            )
+        else:
+            # assume group is composed from self (for simple case of variant liveries etc)
+            id = self.consist.id
+        return id
 
 
 class UnitVariant(object):
@@ -5238,11 +5249,11 @@ class UnitVariant(object):
         self.unit.consist.assert_buyable_variant_groups()
         # group is defined by consist
         # but we chain via the unit variant, so that we can check if this variant is the default or not
-        if self.id == self.unit.consist.buyable_variant_group.parent_consist.id:
+        if self.id == self.buyable_variant.buyable_variant_group.parent_consist.id:
             return None
         else:
             return self.unit.consist.roster.buyable_variant_groups[
-                self.unit.consist.buyable_variant_group_id
+                self.buyable_variant.buyable_variant_group_id
             ]
 
     @property
@@ -5259,9 +5270,7 @@ class UnitVariant(object):
 
     @property
     def uses_random_livery(self):
-        return (
-            self.buyable_variant.livery.get("colour_set", None).find("random_from_consist_liveries") != -1
-        )
+        return self.buyable_variant.uses_random_livery
 
     def get_wagon_recolour_strategy_params(self):
         livery = self.unit.consist.gestalt_graphics.liveries[

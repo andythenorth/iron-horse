@@ -195,8 +195,6 @@ class Roster(object):
     def get_wagon_randomisation_candidates(self, buyable_variant):
         randomisation_consist = buyable_variant.consist
         result = []
-        print("CABBAGE 2000", randomisation_consist.id, "variant", buyable_variant.buyable_variant_num)
-        print("target:", buyable_variant.livery["colour_set"])
         for base_id, wagons in self.wagon_consists.items():
             for wagon_consist in wagons:
                 if (
@@ -218,9 +216,7 @@ class Roster(object):
                 # otherwise append all the variants
                 unit_variants = wagon_consist.units[0].unit_variants
                 matched_results = []
-                print("unit_variants", unit_variants)
                 for unit_variant in unit_variants:
-                    print("potential candidate:", unit_variant.id, "|", unit_variant.buyable_variant.livery["colour_set"])
                     if unit_variant.buyable_variant.livery["colour_set"] == buyable_variant.livery["colour_set"]:
                         matched_results.append(unit_variant)
                 if len(matched_results) == 0:
@@ -228,7 +224,6 @@ class Roster(object):
                         if unit_variant.buyable_variant.livery["colour_set"] in global_constants.wagon_livery_mixes[buyable_variant.livery["colour_set"]]:
                             matched_results.append(unit_variant)
                 result.extend(matched_results)
-        print("RESULT:", result)
         if len(result) == 0:
             raise BaseException(
                 randomisation_consist.id
@@ -372,17 +367,17 @@ class Roster(object):
         # - add a group if it doesn't already exist
         # - add the consist as a member of the group
         for consist in self.consists_in_buy_menu_order:
-            if not consist.buyable_variant_group_id in self.buyable_variant_groups:
-                self.buyable_variant_groups[
-                    consist.buyable_variant_group_id
-                ] = BuyableVariantGroup(
-                    id=consist.buyable_variant_group_id,
-                    named_group=consist.use_named_buyable_variant_group,
+            for buyable_variant in consist.buyable_variants:
+                if not buyable_variant.buyable_variant_group_id in self.buyable_variant_groups:
+                    self.buyable_variant_groups[
+                        buyable_variant.buyable_variant_group_id
+                    ] = BuyableVariantGroup(
+                        id=buyable_variant.buyable_variant_group_id,
+                        named_group=consist.use_named_buyable_variant_group,
+                    )
+                self.buyable_variant_groups[buyable_variant.buyable_variant_group_id].add_consist(
+                    consist
                 )
-            self.buyable_variant_groups[consist.buyable_variant_group_id].add_consist(
-                consist
-            )
-
 
 class BuyableVariantGroup(object):
     """

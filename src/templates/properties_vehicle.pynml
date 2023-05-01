@@ -45,12 +45,12 @@
         </tal:use_colour_randomisation_strategies>
     </tal:colour_mapping_cb>
     <!--! !!! this could be moved to a dedicated .pynml file, but as of April 2023 I'm not 100% convinced it's done -->
-    <tal:variant_name condition="consist.buyable_variant_group is not None">
+    <tal:variant_name condition="unit_variant.buyable_variant.buyable_variant_group is not None">
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
             <!--! !! if we explicitly handle indent level 0 for the group name,
                      then we can safely rely on the default in contexts like the autoreplace UI -->
-            <tal:wagon condition="(consist.power == 0) and (consist.buyable_variant_group is not None)">
-                0: return ${consist.buyable_variant_group.name};
+            <tal:wagon condition="(consist.power == 0) and (unit_variant.buyable_variant.buyable_variant_group is not None)">
+                0: return ${unit_variant.buyable_variant.buyable_variant_group.name};
             </tal:wagon>
                 1: return ${consist.get_name(context='purchase_level_1', unit_variant=unit_variant)};
             return CB_RESULT_NO_TEXT; <!--! will use property instead -->
@@ -116,7 +116,7 @@
             effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
         }
         graphics {
-            <tal:variant_name condition="consist.buyable_variant_group is not None">
+            <tal:variant_name condition="unit_variant.buyable_variant.buyable_variant_group is not None">
                 name:                           ${unit_variant.id}_switch_name;
             </tal:variant_name>
             default:                        ${vehicle.id}_switch_graphics;
