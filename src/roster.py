@@ -374,26 +374,19 @@ class Roster(object):
             # we're only interested in nesting wagons as of May 2023
             parent_consist = buyable_variant_group.parent_consist
             if parent_consist.group_as_wagon:
-                print("==========")
-                print(parent_consist.id, ": it's a wagon, consider nesting")
                 if parent_consist.use_named_buyable_variant_group is not None:
-                    print("nest to named group")
-                    print(parent_consist.use_named_buyable_variant_group)
                     base_id_for_target_parent_consist = global_constants.buyable_variant_group_consist_base_ids_by_group_name[
                         parent_consist.use_named_buyable_variant_group
                     ]
-                    print("base_id_for_target_parent_consist", base_id_for_target_parent_consist)
                     candidate_parent_group = None
                     for consist in self.wagon_consists[base_id_for_target_parent_consist]:
                         if consist.base_id == base_id_for_target_parent_consist:
-                            print("possibly found", consist.id, consist.base_track_type_name, consist.gen, consist.subtype)
                             match_failed = False
                             if consist.gen != parent_consist.gen:
                                 match_failed = True
                             if consist.subtype != parent_consist.subtype:
                                 match_failed = True
                             if not match_failed:
-                                print("found", consist.id)
                                 candidate_parent_group = consist.buyable_variants[0].buyable_variant_group
                                 break
                 else:
@@ -402,12 +395,6 @@ class Roster(object):
                 # we can't assign parent group to current group, that would be silly / recursive
                 if candidate_parent_group != buyable_variant_group:
                     buyable_variant_group.parent_group = candidate_parent_group
-
-                if buyable_variant_group.parent_group is None:
-                    print("No parent")
-                else:
-                    print("parent_group", buyable_variant_group.parent_group.id)
-                print("**********")
 
 
 class BuyableVariantGroup(object):

@@ -876,26 +876,30 @@ class Consist(object):
             + ")"
         )
 
-    def get_wagon_recolour_strategy_num(self, livery):
+    def get_wagon_recolour_strategy_num(self, livery, context=None):
         # > 103 = strategy num will be randomised to one of the other strategy nums
         # 102 = use colour set from player parameter
         # 101 = use colour set complementary to player company colour
         # 100 = use colour set from player company colour
         # 0..99 = use colour set number directly (look up by name)
-        if "random_from_consist_liveries_3" in livery["colour_set"]:
+        if context == "purchase":
+            colour_set = livery["purchase"]
+        else:
+            colour_set = livery["colour_set"]
+        if "random_from_consist_liveries_3" in colour_set:
             return 105
-        elif "random_from_consist_liveries_2" in livery["colour_set"]:
+        elif "random_from_consist_liveries_2" in colour_set:
             return 104
-        elif "random_from_consist_liveries_1" in livery["colour_set"]:
+        elif "random_from_consist_liveries_1" in colour_set:
             return 103
-        elif "player_choice" in livery["colour_set"]:
+        elif "player_choice" in colour_set:
             return 102
-        elif "complement_company_colour" in livery["colour_set"]:
+        elif "complement_company_colour" in colour_set:
             return 101
-        elif "company_colour" in livery["colour_set"]:
+        elif "company_colour" in colour_set:
             return 100
         else:
-            return list(global_constants.colour_sets.keys()).index(livery["colour_set"])
+            return list(global_constants.colour_sets.keys()).index(colour_set)
 
     def get_candidate_liveries_for_randomised_strategy(self, livery):
         # this will only work with wagon liveries as of April 2023, and is intended to get remaps only
@@ -5223,7 +5227,10 @@ class BuyableVariant(object):
         # we can't set variant group for a vehicle that is intended to be the ultimate parent of a group tree
         # this function is just a wrapper to handle returning that to nml templates
         # we still want to be able to get the variant group when needed without this check so this is handled separately
-        if self.buyable_variant_group.parent_vehicle.id == self.lead_unit_variant_matching_buyable_variant.id:
+        if (
+            self.buyable_variant_group.parent_vehicle.id
+            == self.lead_unit_variant_matching_buyable_variant.id
+        ):
             # handle nested group case, which is only used on first unit
             if self.buyable_variant_group.parent_group is None:
                 return None
@@ -5324,7 +5331,7 @@ class UnitVariant(object):
     def uses_random_livery(self):
         return self.buyable_variant.uses_random_livery
 
-    def get_wagon_recolour_strategy_params(self):
+    def get_wagon_recolour_strategy_params(self, context=None):
         livery = self.unit.consist.gestalt_graphics.liveries[
             self.buyable_variant.buyable_variant_num
         ]
@@ -5333,20 +5340,34 @@ class UnitVariant(object):
             livery
         )
 
-        if not self.uses_random_livery:
-            # we have to provide 8 options for nml params, but in this case they are all unused, so just pass them as 0
-            available_liveries = [0, 0, 0, 0, 0, 0, 0, 0]
-        else:
+        if self.uses_random_livery:
             available_liveries = (
                 self.unit.consist.get_candidate_liveries_for_randomised_strategy(livery)
             )
+            if livery.get("purchase", None) is not None:
+                wagon_recolour_strategy_num_purchase = (
+                    self.unit.consist.get_wagon_recolour_strategy_num(
+                        livery, context="purchase"
+                    )
+                )
+            else:
+                wagon_recolour_strategy_num_purchase = available_liveries[0]
+        else:
+            # we have to provide 8 options for nml params, but in this case they are all unused, so just pass them as 0
+            available_liveries = [0, 0, 0, 0, 0, 0, 0, 0]
+            # purchase strategy will be same as non-purchase
+            wagon_recolour_strategy_num_purchase = wagon_recolour_strategy_num
+
         cc_num_to_recolour = self.unit.consist.cc_num_to_recolour
         flag_use_weathering = livery.get("use_weathering", False)
+        flag_context_is_purchase = True if context == "purchase" else False
 
         params_numeric = [
             cc_num_to_recolour,
             flag_use_weathering,
+            flag_context_is_purchase,
             wagon_recolour_strategy_num,
+            wagon_recolour_strategy_num_purchase,
         ]
 
         params_numeric.extend(available_liveries)

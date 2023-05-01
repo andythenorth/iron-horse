@@ -428,6 +428,7 @@ wagon_liveries = {
     },
     "RANDOM_FROM_CONSIST_LIVERIES_1": {
         "colour_set": "random_from_consist_liveries_1",
+        "purchase": "company_colour",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -436,6 +437,7 @@ wagon_liveries = {
     },
     "RANDOM_FROM_CONSIST_LIVERIES_NO_WEATHERING_1": {
         "colour_set": "random_from_consist_liveries_1",
+        "purchase": "company_colour",
         "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -444,6 +446,7 @@ wagon_liveries = {
     },
     "RANDOM_FROM_CONSIST_LIVERIES_2": {
         "colour_set": "random_from_consist_liveries_2",
+        "purchase": "complement_company_colour",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -452,6 +455,7 @@ wagon_liveries = {
     },
     "RANDOM_FROM_CONSIST_LIVERIES_NO_WEATHERING_2": {
         "colour_set": "random_from_consist_liveries_2",
+        "purchase": "complement_company_colour",
         "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -537,7 +541,7 @@ wagon_livery_mixes = {
     # most everything (but explicit add, so not *everything*)
     "random_from_consist_liveries_1": ["company_colour", "complement_company_colour", "freight_bauxite", "freight_grey", "freight_nightshade"],
     # company colour + 1
-    "random_from_consist_liveries_2": ["company_colour", "complement_company_colour"],
+    "random_from_consist_liveries_2": ["complement_company_colour", "company_colour"],
     # rust belt
     "random_from_consist_liveries_3": ["freight_bauxite", "freight_grey", "freight_nightshade"],
 }
@@ -577,6 +581,8 @@ temp_storage_ids = dict(
     wagon_recolour_livery_num_5=30,  # used in procedures_wagon_recolour_strategies
     wagon_recolour_livery_num_6=31,  # used in procedures_wagon_recolour_strategies
     wagon_recolour_livery_num_7=32,  # used in procedures_wagon_recolour_strategies
+    flag_context_is_purchase=33,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_strategy_num_purchase=34,  # used in procedures_wagon_recolour_strategies
 )
 
 # standard offsets for trains

@@ -42,9 +42,14 @@ switch(FEAT_TRAINS, SELF, switch_get_random_from_available_liveries, random_bits
 
 <!--! convenience switch to define how to pick a colour -->
 switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_company_colour, [
-            LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num}) >= 103
-            ? switch_get_random_from_available_liveries()
-            : LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num})
+            <!--! stacked ternary to (1) check if in purchase and force the result if so (2) switch to random livery or fixed, per strategy -->
+            LOAD_TEMP(${temp_storage_ids.flag_context_is_purchase}) == 1
+                ? LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num_purchase})
+                : (
+                    LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num}) >= 103
+                    ? switch_get_random_from_available_liveries()
+                    : LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num})
+                )
             ]
         ) {
     102: return param_wagon_base_colour;
@@ -83,14 +88,21 @@ switch (FEAT_TRAINS, SELF, switch_cc_num_to_recolour, LOAD_TEMP(${temp_storage_i
     2: switch_colour_set_use_weathering_2cc_to_2cc;
 }
 
-switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_recolour, flag_use_weathering, wagon_recolour_strategy_num,
-     <tal:available_liveries repeat="livery_num range(8)">
-         wagon_recolour_livery_num_${livery_num},
-     </tal:available_liveries>
+switch (FEAT_TRAINS, SELF, switch_colour_mapping,
+        cc_num_to_recolour,
+        flag_use_weathering,
+        flag_context_is_purchase,
+        wagon_recolour_strategy_num,
+        wagon_recolour_strategy_num_purchase,
+        <tal:available_liveries repeat="livery_num range(8)">
+            wagon_recolour_livery_num_${livery_num},
+        </tal:available_liveries>
                 [
                  STORE_TEMP(cc_num_to_recolour, ${temp_storage_ids.cc_num_to_recolour}),
                  STORE_TEMP(flag_use_weathering, ${temp_storage_ids.flag_use_weathering}),
+                 STORE_TEMP(flag_context_is_purchase, ${temp_storage_ids.flag_context_is_purchase}),
                  STORE_TEMP(wagon_recolour_strategy_num, ${temp_storage_ids.wagon_recolour_strategy_num}),
+                 STORE_TEMP(wagon_recolour_strategy_num_purchase, ${temp_storage_ids.wagon_recolour_strategy_num_purchase}),
                  <tal:available_liveries repeat="livery_num range(8)">
                      STORE_TEMP(wagon_recolour_livery_num_${livery_num}, ${temp_storage_ids.get("wagon_recolour_livery_num_" + str(livery_num))}),
                  </tal:available_liveries>
