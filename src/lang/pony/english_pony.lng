@@ -66,6 +66,7 @@ STR_NAME_SUFFIX_TWIN                                            :Twin
 STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Mixed
 STR_NAME_SUFFIX_MIXED_COLOURS                                   : - Mixed Colours
 
+STR_CABBAGE                                                     :CABBAGE
 # names for buyable variant groups
 STR_WAGON_GROUP_AUTOMOBILE_CARS                                 :Vehicle Transporters
 STR_WAGON_GROUP_BOX_CARS                                        :Box Vans
