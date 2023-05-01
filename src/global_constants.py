@@ -20,14 +20,14 @@ buy_menu_sort_order_wagons = [
     "express_intermodal_car",
     "intermodal_car",
     "low_floor_intermodal_car",
-    "randomised_open_car",
     "open_car",
     "merchandise_open_car",
     "hood_open_car",
-    "randomised_box_car",
+    "randomised_open_car",
     "box_car",
     "merchandise_box_car",
     "curtain_side_box_car",
+    "randomised_box_car",
     "sliding_wall_car",
     "vehicle_parts_box_car",
     "goods_box_car",
@@ -46,6 +46,7 @@ buy_menu_sort_order_wagons = [
     "ore_hopper_car",
     "dump_car",
     "dump_car_high_side",
+    "randomised_dump_car",
     "aggregate_car",
     "ore_dump_car",
     "scrap_metal_car",
@@ -82,7 +83,6 @@ buy_menu_sort_order_wagons = [
     "randomised_flat_car",
     "randomised_metal_coil_car",
     "randomised_hopper_car",
-    "randomised_dump_car",
     "randomised_bulk_car",
     "randomised_chemicals_tank_car",
     "randomised_covered_hopper_car",
@@ -235,7 +235,7 @@ intro_month_offsets_by_role_group = {
 # shared across all rosters, keep alphabetised, order not significant
 buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_automobile_cars": "automobile_car",
-    "wagon_group_box_cars": "randomised_box_car",
+    "wagon_group_box_cars": "box_car",
     "wagon_group_bulk_open_cars": "dump_car",
     "wagon_group_coil_cars": "coil_car_uncovered",
     "wagon_group_covered_hopper_cars": "covered_hopper_car",
@@ -243,7 +243,7 @@ buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_hopper_cars": "hopper_car",
     "wagon_group_intermodal_cars": "intermodal_car",
     "wagon_group_mail_cars": "mail_car",
-    "wagon_group_open_cars": "randomised_open_car",
+    "wagon_group_open_cars": "open_car",
     "wagon_group_passenger_cars": "passenger_car",
     "wagon_group_pressure_tank_cars": "pressure_tank_car",
     "wagon_group_restaurant_cars": "restaurant_car",
@@ -534,12 +534,12 @@ wagon_liveries = {
 
 # for wagons with mixed livery, the permitted liveries for that specific mix type
 wagon_livery_mixes = {
-    # company colour + 1
-    "random_from_consist_liveries_1": ["company_colour", "complement_company_colour"],
-    # rust belt
-    "random_from_consist_liveries_2": ["freight_bauxite", "freight_grey", "freight_nightshade"],
     # most everything (but explicit add, so not *everything*)
-    "random_from_consist_liveries_3": ["company_colour", "complement_company_colour", "freight_bauxite", "freight_grey", "freight_nightshade"],
+    "random_from_consist_liveries_1": ["company_colour", "complement_company_colour", "freight_bauxite", "freight_grey", "freight_nightshade"],
+    # company colour + 1
+    "random_from_consist_liveries_2": ["company_colour", "complement_company_colour"],
+    # rust belt
+    "random_from_consist_liveries_3": ["freight_bauxite", "freight_grey", "freight_nightshade"],
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions

@@ -369,9 +369,10 @@ class Roster(object):
                     buyable_variant
                 )
         # now deal with nested groups
+        # we do this after creating all the groups, as some groups need to reference other groups
         for buyable_variant_group_id, buyable_variant_group in self.buyable_variant_groups.items():
             # we're only interested in nesting wagons as of May 2023
-            parent_consist = buyable_variant_group.parent_vehicle.unit.consist
+            parent_consist = buyable_variant_group.parent_consist
             if parent_consist.group_as_wagon:
                 print("==========")
                 print(parent_consist.id, ": it's a wagon, consider nesting")
@@ -407,23 +408,6 @@ class Roster(object):
                 else:
                     print("parent_group", buyable_variant_group.parent_group.id)
                 print("**********")
-        """
-        # first check if the consist has a named group, if it does then that will specify a consist base_id to match
-        if self.named_group is not None:
-            base_id = (
-                global_constants.buyable_variant_group_consist_base_ids_by_group_name[
-                    self.named_group
-                ]
-            )
-            for buyable_variant in self.buyable_variants:
-                if buyable_variant.consist.base_id == base_id:
-                    return buyable_variant.lead_unit_matching_buyable_variant
-        # otherwise fall through to the first consist in the list
-        # !! this may not give the intended result at all currently
-        # !! - non-named groups, this might not be the parent vehicle at all
-        # !! - named groups, we might want to control this by buy menu order (might already be so though)
-        return self.buyable_variants[0].lead_unit_variant_matching_buyable_variant
-        """
 
 
 class BuyableVariantGroup(object):
@@ -436,7 +420,6 @@ class BuyableVariantGroup(object):
     def __init__(self, id):
         self.id = id
         self.buyable_variants = []
-        self.named_group = None
         self.parent_group = None
 
     def add_buyable_variant(self, buyable_variant):
@@ -444,7 +427,13 @@ class BuyableVariantGroup(object):
 
     @property
     def parent_vehicle(self):
+        # actually returns a unit_variant, but eh, equivalent to 'vehicle' in the nml templating
         return self.buyable_variants[0].lead_unit_variant_matching_buyable_variant
+
+    @property
+    def parent_consist(self):
+        # convenience function, note also parent_vehicle, which is often what we want
+        return self.parent_vehicle.unit.consist
 
     @property
     def total_number_of_buyable_variants(self):
@@ -458,18 +447,14 @@ class BuyableVariantGroup(object):
     def name(self):
         # assumes wagon groups as of April 2023, change if needed
         # !! might want to handle case of group_base_id = None?
-        return self.parent_vehicle.unit.consist.get_name()
-        # return self.parent_vehicle.unit.consist.get_name()
-        """
-        if self.named_group != None and self.total_number_of_buyable_variants > 1:
+        if self.parent_consist.use_named_buyable_variant_group != None and self.total_number_of_buyable_variants > 1:
             try:
                 return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string({b}))".format(
-                    a="STR_" + self.named_group.upper(),
-                    b=self.parent_vehicle.consist.wagon_title_subtype_str,
+                    a="STR_" + self.parent_consist.use_named_buyable_variant_group.upper(),
+                    b=self.parent_consist.wagon_title_subtype_str,
                 )
 
             except:
                 raise BaseException(self.parent_vehicle.id)
         else:
-            return self.parent_vehicle.consist.get_name()
-        """
+            return self.parent_consist.get_name()

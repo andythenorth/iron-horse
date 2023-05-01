@@ -63,7 +63,7 @@ STR_NAME_SUFFIX_LARGE                                           :Large
 STR_NAME_SUFFIX_TWIN                                            :Twin
 
 # special feature suffixes
-STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Mixed
+STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Random
 STR_NAME_SUFFIX_MIXED_COLOURS                                   : - Mixed Colours
 
 STR_CABBAGE                                                     :CABBAGE

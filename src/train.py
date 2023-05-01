@@ -3219,6 +3219,7 @@ class EdiblesTankCarConsist(CarConsist):
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
+                global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
             ],
         )
 
