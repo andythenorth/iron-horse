@@ -5257,13 +5257,19 @@ class BuyableVariant(object):
             # explicitly defined group id
             id = self.consist._buyable_variant_group_id
         elif self.consist.group_as_wagon:
-            if self.uses_random_livery:
-                fixed_mixed_suffix = "mixed"
-            else:
+            if not self.uses_random_livery:
+                # we nest buyable variants with fixed colours into sub-groups
+                group_id_base = self.consist.id
                 fixed_mixed_suffix = "fixed"
-            # case of wagons or similar which use groups defined by the roster
+            else:
+                # everything else goes into one group, either on the consist group, or a named parent group which composes multiple consists
+                fixed_mixed_suffix = None
+                if self.consist.use_named_buyable_variant_group is not None:
+                    group_id_base = self.consist.use_named_buyable_variant_group
+                else:
+                    group_id_base = self.consist.id
             id = self.compose_variant_group_id(
-                self.consist.id, self.consist, fixed_mixed_suffix
+                group_id_base, self.consist, fixed_mixed_suffix
             )
         else:
             # assume group is composed from self (for simple case of variant liveries etc)
