@@ -3816,6 +3816,17 @@ class HopperCarRockConsist(HopperCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
         self._joker = True
+        # adjust default liveries set by the base class
+        self.gestalt_graphics.liveries = [
+            global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
+            global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+            global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+            global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            global_constants.wagon_liveries["COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"],
+            global_constants.wagon_liveries["FREIGHT_BAUXITE"],
+            global_constants.wagon_liveries["FREIGHT_GREY"],
+            # player choice, various others tried, not needed
+        ]
 
 
 class HopperCarSkipConsist(HopperCarConsistBase):
