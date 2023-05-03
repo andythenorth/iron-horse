@@ -29,26 +29,6 @@
 </tal:running_cost_factor>
 
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-
-    <tal:colour_mapping_cb switch="vehicle.requires_colour_mapping_cb">
-        <!--! this is temporary hax,
-            1. move the switch to a dedicated .pynml, and include as needed in each vehicle_foo.pynml
-            2. get the switch name from the gestalt, per consist.requires_colour_mapping_cb
-            This will reduce the sense that there are 2 colour mapping schemes existing in parallel, one using the gestalt, and one independent of it
-        -->
-        <tal:use_colour_randomisation_strategies case="'use_colour_randomisation_strategies'">
-            switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_cabbage, 1) {
-                return switch_colour_mapping(
-                    ${unit_variant.get_wagon_recolour_strategy_params()},
-                );
-            }
-            switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_cabbage_purchase, 1) {
-                return switch_colour_mapping(
-                    ${unit_variant.get_wagon_recolour_strategy_params(context="purchase")},
-                );
-            }
-        </tal:use_colour_randomisation_strategies>
-    </tal:colour_mapping_cb>
     <!--! !!! this could be moved to a dedicated .pynml file, but as of April 2023 I'm not 100% convinced it's done -->
     <tal:variant_name condition="unit_variant.buyable_variant.buyable_variant_group is not None">
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
@@ -161,8 +141,8 @@
             </tal:conditional_random_trigger>
             <tal:colour_mapping_cb switch="vehicle.requires_colour_mapping_cb">
                 <tal:use_colour_randomisation_strategies case="'use_colour_randomisation_strategies'">
-                    colour_mapping:                 ${unit_variant.id}_switch_colour_mapping_cabbage;
-                    purchase_colour_mapping:        ${unit_variant.id}_switch_colour_mapping_cabbage_purchase;
+                    colour_mapping:                 switch_colour_mapping(${unit_variant.get_wagon_recolour_strategy_params()});
+                    purchase_colour_mapping:        switch_colour_mapping(${unit_variant.get_wagon_recolour_strategy_params(context="purchase")});
                 </tal:use_colour_randomisation_strategies>
                 <tal:colour_mapping_switch_without_purchase case="'colour_mapping_switch_without_purchase'">
                     colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
