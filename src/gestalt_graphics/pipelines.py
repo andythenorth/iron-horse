@@ -564,7 +564,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
 
             dice_image = Image.open(
                 os.path.join(
-                    currentdir, "src", "graphics", "randomised_wagon_overlay.png"
+                    currentdir, "src", "graphics", "randomisation_icons", "dice.png"
                 )
             ).crop((10, 10, 10 + dice_image_width, 10 + dice_image_height))
             dice_recolour_maps = {
@@ -599,7 +599,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
 
             fade_image = Image.open(
                 os.path.join(
-                    currentdir, "src", "graphics", "randomised_wagon_overlay.png"
+                    currentdir, "src", "graphics", "randomisation_icons", "dice.png"
                 )
             ).crop((10, 30, 10 + fade_image_width, 30 + fade_image_height))
             # create a mask so that we paste only the overlay pixels (no blue pixels)
