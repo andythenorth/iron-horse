@@ -63,10 +63,14 @@ STR_NAME_SUFFIX_LARGE                                           :Large
 STR_NAME_SUFFIX_TWIN                                            :Twin
 
 # special feature suffixes
-STR_NAME_SUFFIX_RANDOMISED_WAGON                                :{RED} - Random
+STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Random
 STR_NAME_SUFFIX_MIXED_COLOURS                                   : - {RED}M{ORANGE}i{YELLOW}x{GREEN}e{BLUE}d {PURPLE}C{RED}o{ORANGE}l{YELLOW}o{GREEN}u{BLUE}r{PURPLE}s
 
-STR_CABBAGE                                                     :CABBAGE
+# livery name suffixes
+STR_LIVERY_CABBAGE_1                                           :- Maximum Mix
+STR_LIVERY_CABBAGE_2                                           :- Company Colour-ish
+STR_LIVERY_CABBAGE_3                                           :- Rustbelt Mix
+
 # names for buyable variant groups
 STR_WAGON_GROUP_AUTOMOBILE_CARS                                 :Vehicle Transporters
 STR_WAGON_GROUP_ACID_TANK_CARS                                  :Acid Tankers
@@ -95,7 +99,7 @@ STR_WAGON_GROUP_PRESSURE_TANK_CARS                              :Pressurised Tan
 STR_WAGON_GROUP_PRODUCT_TANK_CARS                               :Product Tankers
 STR_WAGON_GROUP_RANDOMISED_BOX_CARS                             :Box Vans
 STR_WAGON_GROUP_RANDOMISED_BULK_CARS                            :Bulk Wagons
-STR_WAGON_GROUP_RANDOMISED_CHEMICALS_TANK_CARS                  :Chemicals Tankesr
+STR_WAGON_GROUP_RANDOMISED_CHEMICALS_TANK_CARS                  :Chemical Tankers
 STR_WAGON_GROUP_RANDOMISED_COVERED_HOPPER_CARS                  :Covered Hoppers
 STR_WAGON_GROUP_RANDOMISED_DUMP_CARS                            :Mineral Wagons
 STR_WAGON_GROUP_RANDOMISED_FLAT_CARS                            :Flatbed Cargo Wagons
@@ -137,7 +141,7 @@ STR_NAME_SUFFIX_COIL_CAR_COVERED                                :Covered Coil Ca
 STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                              :Coil Carrier
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
-STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Curtain Side Van
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Curtain Side Box Van
 STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR                      :Car Transporter
 STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR                           :Covered Hopper
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineral Wagon
@@ -162,7 +166,7 @@ STR_NAME_SUFFIX_LOG_CAR                                         :Log Carrier
 STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                        :Low-floor Vehicle Transporter
 STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Low-floor Container Wagon
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
-STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR                             :Merchandise Van
+STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR                             :Merchandise Box Van
 STR_NAME_SUFFIX_MERCHANDISE_OPEN_CAR                            :Merchandise Open
 STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR                      :Mineral Covered Hopper
 STR_NAME_SUFFIX_MINERAL_HOPPER_CAR                              :Mineral Hopper

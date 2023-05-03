@@ -2098,15 +2098,24 @@ class CarConsist(Consist):
     def get_name(self, context=None, unit_variant=None):
         if self.is_randomised_wagon_type or self.is_caboose:
             optional_randomised_suffix = "STR_NAME_SUFFIX_RANDOMISED_WAGON"
-        elif getattr(unit_variant, "uses_random_livery", False):
-            optional_randomised_suffix = "STR_NAME_SUFFIX_MIXED_COLOURS"
         else:
             optional_randomised_suffix = "STR_EMPTY"
+        if getattr(unit_variant, "uses_random_livery", False):
+            try:
+                # this is just JFDI, and needs to be driven by a better mapping of livery colours to livery name
+                random_livery_num = unit_variant.buyable_variant.livery["colour_set"][-1]
+                optional_livery_suffix = "STR_LIVERY_CABBAGE_" + str(random_livery_num)
+            except:
+                raise BaseException(self.id)
+            #optional_randomised_suffix = "STR_NAME_SUFFIX_MIXED_COLOURS"
+        else:
+            optional_livery_suffix = "STR_EMPTY"
 
         if context == "purchase_level_1":
-            return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string({b}))".format(
+            return "string(STR_NAME_CONSIST_COMPOUND_THREE, string({a}), string({b}), string({c}))".format(
                 a=self.wagon_title_class_str,
                 b=optional_randomised_suffix,
+                c=optional_livery_suffix,
             )
         elif context == "group_parent":
             return "string(STR_NAME_CONSIST_COMPOUND_THREE, string({a}), string({b}), string({c}))".format(

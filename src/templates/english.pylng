@@ -2,6 +2,7 @@ STR_GRF_NAME_VERSIONED                                          :${roster.str_gr
 STR_GRF_DOCS_URL                                                :${utils.get_docs_url()}
 <!--! empty string is not translated :) -->
 STR_EMPTY                                                       :
+STR_CABBAGE                                                     :CABBAGE
 
 STR_PARENTHESES                                                 :({STRING})
 STR_NAME_CONSIST_COMPOUND_TWO                                   :{STRING} {STRING}
