@@ -20,7 +20,7 @@ def main(roster_id):
         additional_liveries=[],
         #additional_liveries=["SWOOSH_LESS", "SWOOSH", "FREIGHTLINER_GBRF"],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True,
+        sprites_additional_liveries_potential=True,
     )
 
     consist.add_unit(

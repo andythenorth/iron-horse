@@ -22,7 +22,7 @@ def main(roster_id):
             ("COLOUR_BLUE", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # add RfD Euro style triple grey?, Banger blue, but with black windows
+        sprites_additional_liveries_potential=True, # add RfD Euro style triple grey?, Banger blue, but with black windows
     )
 
     consist.add_unit(

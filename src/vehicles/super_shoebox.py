@@ -22,7 +22,7 @@ def main(roster_id):
             ("COLOUR_ORANGE", "COLOUR_BROWN"),
         ],
         sprites_complete=True,
-        sprites_additional_liveries_needed=True, # railfreight, dutch?
+        sprites_additional_liveries_potential=True, # railfreight, dutch, DB Schenker?
     )
 
     consist.add_unit(

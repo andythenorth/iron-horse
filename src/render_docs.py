@@ -376,6 +376,16 @@ class DocHelper(object):
             if consist.id == replacement_consist_id:
                 return self.unpack_name_string(consist)
 
+    def consist_has_direct_replacment(self, consist):
+        if consist.replacement_consist.role != consist.role:
+            return False
+        elif consist.replacement_consist.role_child_branch_num != consist.role_child_branch_num:
+            return False
+        elif consist.replacement_consist.gen != consist.gen + 1:
+            return False
+        else:
+            return True
+
     def power_formatted_for_docs(self, consist):
         if consist.wagons_add_power:
             return [str(consist.cab_power) + " hp"]

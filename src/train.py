@@ -159,8 +159,8 @@ class Consist(object):
         self.docs_image_spriterow = kwargs.get("docs_image_spriterow", None)
         # aids 'project management'
         self.sprites_complete = kwargs.get("sprites_complete", False)
-        self.sprites_additional_liveries_needed = kwargs.get(
-            "sprites_additional_liveries_needed", False
+        self.sprites_additional_liveries_potential = kwargs.get(
+            "sprites_additional_liveries_potential", False
         )
 
     def resolve_buyable_variants(self):
@@ -530,6 +530,8 @@ class Consist(object):
             result.append(["AC", self.base_track_type_name + "_ELECTRIFIED_AC"])
         if "DC" in self.power_by_power_source.keys():
             result.append(["DC", self.base_track_type_name + "_ELECTRIFIED_DC"])
+        if "BATTERY_HYBRID" in self.power_by_power_source.keys():
+            result.append(["BATTERY_HYBRID", self.base_track_type_name])
         if "DIESEL" in self.power_by_power_source.keys():
             result.append(["DIESEL", self.base_track_type_name])
         if "STEAM" in self.power_by_power_source.keys():
@@ -894,8 +896,7 @@ class Consist(object):
             elif len(self.power_by_power_source) == 3:
                 result.append("STR_POWER_BY_POWER_SOURCE_THREE_SOURCES")
             else:
-                print("CABBAGE", self.id)
-                # raise BaseException("consist " + self.id + " defines unsupported number of power sources")
+                raise BaseException("consist " + self.id + " defines unsupported number of power sources")
         # optional string if consist is lgv-capable
         if self.lgv_capable:
             result.append("STR_SPEED_BY_RAILTYPE_LGV_CAPABLE")
@@ -5739,7 +5740,7 @@ class ExpressMailCar(ExpressCar):
 class AutomobileCarAsymmetric(ExpressCar):
     """
     Automobile (cars, trucks, tractors) transporter car, subclassed from express car.
-    This subclass exists to symmetry_type and random trigger.
+    This subclass exists to set symmetry_type and random trigger.
     """
 
     def __init__(self, **kwargs):
@@ -5759,7 +5760,7 @@ class AutomobileCarAsymmetric(ExpressCar):
 class AutomobileCarSymmetric(ExpressCar):
     """
     Automobile (cars, trucks, tractors) transporter car, subclassed from express car.
-    This subclass exists to symmetry_type and random trigger.
+    This subclass exists to set symmetry_type and random trigger.
     """
 
     def __init__(self, **kwargs):
@@ -5767,7 +5768,7 @@ class AutomobileCarSymmetric(ExpressCar):
         # some vehicle transporter cars are symmetric
         self._symmetry_type = "symmetric"
         utils.echo_message(
-            "AutomobileCarAsymmetric random_trigger_switch is using _switch_graphics_spritelayer_cargos "
+            "AutomobileCarSymmetric random_trigger_switch is using _switch_graphics_spritelayer_cargos "
             + self.consist.id
         )
         self.random_trigger_switch = (

@@ -221,13 +221,14 @@
                                                                 </div>
                                                                 <div tal:condition="consist.replacement_consist is not None"
                                                                      style="float:left; margin-left: 173px; margin-top: 30px;">
-                                                                    <!--! this anchor overlaps the main consist anchor, but seems to work -->
-                                                                    <a href="${consist.replacement_consist.id}.html">
-                                                                        <div class="muted"
-                                                                             style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
-                                                                            Replaced by ${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}
-                                                                        </div>
-                                                                    </a>
+                                                                     <div style="${'visibility:hidden;' if doc_helper.consist_has_direct_replacment(consist) else nothing}">
+                                                                        <a href="${consist.replacement_consist.id}.html">
+                                                                            <div class="muted"
+                                                                                 style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
+                                                                                Replaced by ${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}
+                                                                            </div>
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
                                                             </a>
                                                         </div>
