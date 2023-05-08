@@ -14,24 +14,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Outrageous
 STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Gameplay Simple
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Bermain Dengan Opsi Kereta Lebih Simple. Ini Akan Mengurangi Jumlah Kereta. Kereta Eye-candy Seperti snowploughs(Pembersih Salju), driving cab cars (Gerbong Dengan Kabin Kemudi) Dan Lokomotiv yang sangat lamban tidak akan tersedia.
 STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Warna Gerbong Acak
-STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Skema warna khusus untuk kelompok kendaraan adalah fitur hebat dalam OpenTTD. {}{}Namun, kelompok kendaraan tidak dapat menyetel warna gerbong secara terpisah ke mesin.{}{}Parameter ini secara opsional dapat mengatur warna tertentu untuk gerbong barang, bukan warna perusahaan.{}{}Pengaturan ini akan diterapkan ke {WHITE}Semua {BLACK}kereta yang dikelompokkan dan tidak dikelompokkan, itu {WHITE}tidak dapat disetel per grup.{BLACK}{}{}Pengaturan ini tidak berlaku untuk beberapa jenis gerbong, misalnya van rem, van surat dan gerbong penumpang
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Menggunakan warna Perusahaan (default)
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Biru Tua
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_2                            :Hijau muda
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_3                            :Pink
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_4                            :Kuning
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_5                            :Merah
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_6                            :Biru Muda
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_7                            :Hijau
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_8                            :Hijau Tua
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_9                            :Biru
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_10                           :Krim
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_11                           :Mauve
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_12                           :Ungu
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_13                           :Oranye
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :Coklat
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :Abu-abu
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :Putih
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
@@ -98,8 +80,8 @@ STR_NAME_SUFFIX_TORPEDO_CAR                                     :Gerbong Torpedo
 STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Gerbong Suku Cadang
 
 # buy menu wrappers
-STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
-STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}(){STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}(){STRING}
 
 # role information for buy menu
 STR_ROLE                                                        :{BLACK}Role: {GOLD}{STRING}
@@ -120,8 +102,8 @@ STR_WAGONS_ADD_POWER_CAB                                        :Tenaga (Didistr
 STR_WAGONS_ADD_POWER_MIDDLE                                     :Tenaga (Didistribusikan): {GOLD}{POWER} Ketika Di Sambung Dengan {STRING}
 
 # other buy menu hints
-STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Pasang Di Depan Atau Di Belakang Dari Kereta, Dengan Setidaknya satu lomomotiv Lainya
-STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus: {GOLD}Meningkatkan biaya operasional dan tarif pembayaran untuk {WHITE}Gerbong Penumpang {GOLD}Dan {WHITE}Gerbong Penumpang Mewah {}{}{BLACK}Bonua Ini Akan Berdampak satu kali per satu kereta
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB                   :{BLACK}Pasang Di Depan Atau Di Belakang Dari Kereta, Dengan Setidaknya satu lomomotiv Lainya
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR                :{}{BLACK}Bonus: {GOLD}Meningkatkan biaya operasional dan tarif pembayaran untuk {WHITE}Gerbong Penumpang {GOLD}Dan {WHITE}Gerbong Penumpang Mewah {}{}{BLACK}Bonua Ini Akan Berdampak satu kali per satu kereta
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprite Terselesaikan: {GOLD}Ya

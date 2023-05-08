@@ -13,24 +13,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Scandaleuse
 STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Gameplay simplifié
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Jouer avec une liste de locomotives et de wagons réduite à l'essentiel. Certains véhicules (comme le chasse-neige, les voitures-pilotes et les locomotives très lentes) ne seront pas disponibles.
 STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Randomisation de la couleur des wagons
-STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Le réglage des livrées par groupes est une grande avancée d'OpenTTD.{}{}Cependant, les couleurs du groupe s'appliquent aux locomotives comme aux wagons.{}{}Ce paramètre permet de fixer des couleurs spécifiques pour les wagons de marchandises, au lieu de la couleur de compagnie..{}{}Ce réglage est valable pour {WHITE}tous {BLACK}les trains, groupés ou non, et {WHITE}ne peut pas être défini pour un groupe en particulier.{BLACK}{}{}Ce paramètre ne s'applique pas à certains types de wagons, comme les fourgons freins, les fourgons postaux et les voitures passagers.
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Utiliser la couleur de compagnie (par défaut)
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Bleu foncé
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_2                            :Vert pâle
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_3                            :Rose
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_4                            :Jaune
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_5                            :Rouge
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_6                            :Blue clair
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_7                            :Vert
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_8                            :Vert foncé
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_9                            :Bleu
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_10                           :Crème
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_11                           :Mauve
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_12                           :Violet
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_13                           :Orange
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :Marron
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :Gris
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :Blanc
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
@@ -110,8 +92,8 @@ STR_CARGO_SUBTYPE_VEHI_0                                        : (Voitures)
 STR_CARGO_SUBTYPE_VEHI_1                                        : (Camions)
 
 # buy menu wrappers
-STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
-STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
 
 # role information for buy menu
 STR_ROLE                                                        :{BLACK}Rôle: {GOLD}{STRING}
@@ -132,8 +114,8 @@ STR_WAGONS_ADD_POWER_CAB                                        :Puissance (Dist
 STR_WAGONS_ADD_POWER_MIDDLE                                     :Puissance (Distribuée): {GOLD}{POWER} attaché à une unité {STRING}
 
 # other buy menu hints
-STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Placer à l'avant ou à l'arrière du train, avec au moins une locomotive à l'autre extrémité
-STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus{NBSP}: {GOLD}Élimine les coûts d'entretien pour toutes les voitures passagers du train
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB                   :{BLACK}Placer à l'avant ou à l'arrière du train, avec au moins une locomotive à l'autre extrémité
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR                :{}{BLACK}Bonus{NBSP}: {GOLD}Élimine les coûts d'entretien pour toutes les voitures passagers du train
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites terminés: {GOLD}Ouaip

@@ -12,24 +12,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Desmesurado
 STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Juego simplificado
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Jugar con un conjunto simplificado de trenes. Habrá menos tipos de trenes y vagones disponibles.  Trenes atractivos como quitanieves, cabinas de conducción y locomotoras muy lentas no están disponibles.
 STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Selección de color de vagón aleatorio
-STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Poder elegir esquemas de color para grupos de vehículos es una característica genial de OpenTTD.{}{}Sin embargo, grupos de vehículos no pueden determinar el color de los vagones y las locomotoras por separado.{}{}Este parámetro puede opcionalmente establecer colores específicos para vagones de carga, en lugar de los colores de la compañía.{}{}Esta configuración se aplicará a {WHITE}todos {BLACK}los trenes agrupados o no.{BLACK}{}{}Esta configuración no se aplica a algunos tipos de vagones, por ejemplo vagones de frenado, de correo o de pasajeros.
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Utilizar los colores de la compañía (default)
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Azul oscuro
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_2                            :Verde claro
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_3                            :Rosa
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_4                            :Amarillo
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_5                            :Rojo
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_6                            :Azul claro
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_7                            :Verde
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_8                            :Verde oscuro
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_9                            :Azul
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_10                           :Crema
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_11                           :Malva
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_12                           :Púrpura
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_13                           :Naranja
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :Marrón
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :Gris
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :Blanco
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diésel
@@ -94,8 +76,8 @@ STR_NAME_SUFFIX_TORPEDO_CAR                                     :Vagón torpedo
 STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Vagón transportador de piezas
 
 # buy menu wrappers
-STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
-STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
 
 # role information for buy menu
 STR_ROLE                                                        :{BLACK}Rol: {GOLD}{STRING}
@@ -115,8 +97,8 @@ STR_WAGONS_ADD_POWER_CAB                                        :Potencia (Distr
 STR_WAGONS_ADD_POWER_MIDDLE                                     :Potencia (Distribuída): {GOLD}{POWER} al adjuntar {STRING} unidad
 
 # other buy menu hints
-STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Attach to front or rear of train, with at least one other engine
-STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus: {GOLD}Improves running costs and payment rates for {WHITE}Passenger Coaches {GOLD}and {WHITE}Luxury Passenger Coaches {}{}{BLACK}This bonus applies only once per train
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB                   :{BLACK}Attach to front or rear of train, with at least one other engine
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR                :{}{BLACK}Bonus: {GOLD}Improves running costs and payment rates for {WHITE}Passenger Coaches {GOLD}and {WHITE}Luxury Passenger Coaches {}{}{BLACK}This bonus applies only once per train
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Completados: {GOLD}Sip
