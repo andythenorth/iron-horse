@@ -429,7 +429,7 @@ class BuyableVariantGroup(object):
         # !! might throw a plural name for groups where there's only one member?
         if self.parent_consist.use_named_buyable_variant_group != None:
             try:
-                return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string({b}))".format(
+                return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
                     a="STR_" + self.parent_consist.use_named_buyable_variant_group.upper(),
                     b=self.parent_consist.wagon_title_subtype_str,
                 )

@@ -93,22 +93,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_
 spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
     ${consist.get_nml_for_spriteset_template(y_offset=0)}
 }
-spriteset(${vehicle.id}_ss_test_dice, "generated/graphics/iron-horse/randomisation_icons/dice.png") {
-    spriteset_template_purchase_default(10,10,14,-31,NOANIM)
-}
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_layers_register_more_sprites_purchase_dice, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 1) {
     return ${vehicle.id}_ss_purchase;
-}
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_dice, getbits(extra_callback_info1, 8, 8)) {
-    1: return ${vehicle.id}_ss_test_dice;
-    return ${vehicle.id}_switch_layers_register_more_sprites_purchase_dice;
-}
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, vehicle_type_id) {
-    <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-        ${unit_variant.numeric_id}: ${vehicle.id}_${'switch_graphics_purchase_dice' if unit_variant.uses_random_livery else 'ss_purchase'};
-    </tal:unit_variants>
-    <!--! no default, by design all variants should be explicitly found -->
 }
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />

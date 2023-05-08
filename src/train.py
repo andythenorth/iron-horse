@@ -105,7 +105,7 @@ class Consist(object):
         self.train_flag_mu = False
         # some wagons will provide power if specific engine IDs are in the consist
         self.wagons_add_power = False
-        self.buy_menu_hint_wagons_add_power = False
+        self.buy_menu_additional_text_hint_wagons_add_power = False
         # wagons can be candidates for the magic randomised wagons
         # this is on Consist not CarConsist as we need to check it when determining order for all consists
         self.randomised_candidate_groups = []
@@ -113,12 +113,12 @@ class Consist(object):
         self.easter_egg_haulage_speed_bonus = kwargs.get(
             "easter_egg_haulage_speed_bonus", False
         )
-        # engines will automatically detemine role string, but to force it on certain coach/wagon types use _buy_menu_role_string
-        self._buy_menu_role_string = None
+        # engines will automatically detemine role string, but to force it on certain coach/wagon types use _buy_menu_additional_text_role_string
+        self._buy_menu_additional_text_role_string = None
         # simple buy menu hint flag for driving cabs
-        self.buy_menu_hint_driving_cab = False
+        self.buy_menu_additional_text_hint_driving_cab = False
         # simple buy menu hint flag for restaurant cars
-        self.buy_menu_hint_restaurant_car = False
+        self.buy_menu_additional_text_hint_restaurant_car = False
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
         self._str_name_suffix = None
         # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
@@ -276,7 +276,7 @@ class Consist(object):
             return default_name
         else:
             if self.str_name_suffix is not None:
-                return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string(STR_PARENTHESES, string({b})))".format(
+                return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string(STR_PARENTHESES, string({b})))".format(
                     a="STR_NAME_" + self.id,
                     b=self.str_name_suffix,
                 )
@@ -878,7 +878,6 @@ class Consist(object):
 
     def get_wagon_recolour_strategy_num(self, livery, context=None):
         # > 103 = strategy num will be randomised to one of the other strategy nums
-        # 102 = use colour set from player parameter
         # 101 = use colour set complementary to player company colour
         # 100 = use colour set from player company colour
         # 0..99 = use colour set number directly (look up by name)
@@ -892,8 +891,7 @@ class Consist(object):
             return 104
         elif "random_from_consist_liveries_1" in colour_set:
             return 103
-        elif "player_choice" in colour_set:
-            return 102
+        # 102 left empty for legacy reasons as of May 2023, should be refactored really
         elif "complement_company_colour" in colour_set:
             return 101
         elif "company_colour" in colour_set:
@@ -930,25 +928,7 @@ class Consist(object):
             result = result[0:8]
         return result
 
-    def get_buy_menu_format(self, vehicle):
-        # keep the template logic simple, present strings for a switch/case tree
-        # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
-        if self.engine_varies_power_by_power_source(vehicle):
-            return "variable_power"
-        elif self.lgv_capable:
-            # yeah, simplicity failed when lgv_capable was added, this simple tree needs rethought to allow better composition of arbitrary strings
-            if self.buy_menu_hint_wagons_add_power:
-                return "lgv_capable_and_wagons_add_power"
-            else:
-                return "lgv_capable"
-        elif self.buy_menu_hint_driving_cab:
-            return "driving_cab"
-        elif self.buy_menu_hint_restaurant_car:
-            return "restaurant_car"
-        else:
-            return "default"
-
-    def get_buy_menu_string(self, vehicle):
+    def get_buy_menu_additional_text(self, vehicle, unit_variant=None):
         result = []
         # optional string if engine varies power by railtype
         if self.engine_varies_power_by_power_source(vehicle):
@@ -966,34 +946,40 @@ class Consist(object):
         if self.lgv_capable:
             result.append("STR_SPEED_BY_RAILTYPE_LGV_CAPABLE")
         # optional string if dedicated wagons add power
-        if self.buy_menu_hint_wagons_add_power:
-            result.append(self.buy_menu_distributed_power_substring)
+        if self.buy_menu_additional_text_hint_wagons_add_power:
+            result.append(self.buy_menu_additional_text_distributed_power_substring)
 
         # engines will always show a role string
         # !! this try/except is all wrong, I just want to JFDI to add buy menu strings to wagons which previously didn't support them, and can do regret later
-        # !! this may not be used / or required as of April 2021 - _buy_menu_role_string is available instead
+        # !! this may not be used / or required as of April 2021 - _buy_menu_additional_text_role_string is available instead
         try:
-            result.append(self.buy_menu_role_string)
+            result.append(self.buy_menu_additional_text_role_string)
         except:
             pass
 
         # some wagons (mostly railcar trailers and pax coaches) might want to show an optional role string
-        if self._buy_menu_role_string is not None:
-            result.append("STR_ROLE, string(" + self._buy_menu_role_string + ")")
+        if self._buy_menu_additional_text_role_string is not None:
+            result.append("STR_ROLE, string(" + self._buy_menu_additional_text_role_string + ")")
 
         # driving cab hint comes after role string
-        if self.buy_menu_hint_driving_cab:
-            result.append("STR_BUY_MENU_HINT_DRIVING_CAB")
+        if self.buy_menu_additional_text_hint_driving_cab:
+            result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB")
 
         # driving cab hint comes after role string
-        if self.buy_menu_hint_restaurant_car:
-            result.append("STR_BUY_MENU_HINT_RESTAURANT_CAR")
+        if self.buy_menu_additional_text_hint_restaurant_car:
+            result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR")
+
+        # livery variants comes after role string
+        if unit_variant is not None:
+            # as of May 2023 get_buy_menu_additional_text is never called with a variant in scope unless the variant requires this string
+            # so no conditional checks needed - this may change
+            result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS")
 
         if len(result) == 1:
-            return "STR_BUY_MENU_WRAPPER_ONE_SUBSTR, string(" + result[0] + ")"
+            return "STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(" + result[0] + ")"
         if len(result) == 2:
             return (
-                "STR_BUY_MENU_WRAPPER_TWO_SUBSTR, string("
+                "STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR, string("
                 + result[0]
                 + "), string("
                 + result[1]
@@ -1001,7 +987,7 @@ class Consist(object):
             )
         if len(result) == 3:
             return (
-                "STR_BUY_MENU_WRAPPER_THREE_SUBSTR, string("
+                "STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_THREE_SUBSTR, string("
                 + result[0]
                 + "), string("
                 + result[1]
@@ -1010,10 +996,15 @@ class Consist(object):
                 + ")"
             )
         # should never be reached, extend this if we do
-        raise Exception("Unsupported number of buy menu strings for ", self.id)
+        raise Exception(
+            "Unsupported number of buy menu strings for "
+            + self.id
+            + ": "
+            + str(len(result))
+        )
 
     @property
-    def buy_menu_role_string(self):
+    def buy_menu_additional_text_role_string(self):
         for role_group, roles in global_constants.role_group_mapping.items():
             if self.role in roles:
                 return (
@@ -1296,7 +1287,7 @@ class AutoCoachCombineConsist(EngineConsist):
         super().__init__(**kwargs)
         self.role = "driving_cab_express_mixed"
         self.role_child_branch_num = -1  # driving cab cars are probably jokers?
-        self.buy_menu_hint_driving_cab = True
+        self.buy_menu_additional_text_hint_driving_cab = True
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
             "autocoach_combine"
         ]
@@ -1347,7 +1338,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         super().__init__(**kwargs)
         self.role = "driving_cab_express_mail"
         self.role_child_branch_num = -1  # driving cab cars are probably jokers?
-        self.buy_menu_hint_driving_cab = True
+        self.buy_menu_additional_text_hint_driving_cab = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
         self.power_by_power_source = {"NULL": 300}
         # nerf TE down to minimal value
@@ -1531,7 +1522,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         self.role = "driving_cab_express_pax"
         self.role_child_branch_num = -1  # driving cab cars are probably jokers?
-        self.buy_menu_hint_driving_cab = True
+        self.buy_menu_additional_text_hint_driving_cab = True
         # special purpose attr for use with alt var 41 and pax_car_ids
         self.treat_as_pax_car_for_var_41 = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
@@ -1792,7 +1783,7 @@ class SnowploughEngineConsist(EngineConsist):
         super().__init__(**kwargs)
         self.role = "snoughplough!"  # blame Pikka eh?
         self.role_child_branch_num = -1
-        self.buy_menu_hint_driving_cab = True
+        self.buy_menu_additional_text_hint_driving_cab = True
         # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
         self.power_by_power_source = {"NULL": 100}
         self.tractive_effort_coefficient = 0.1
@@ -1823,7 +1814,7 @@ class TGVCabEngineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.buy_menu_hint_wagons_add_power = True
+        self.buy_menu_additional_text_hint_wagons_add_power = True
         self.tilt_bonus = True
         self.lgv_capable = True
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
@@ -1838,7 +1829,7 @@ class TGVCabEngineConsist(EngineConsist):
         self._cite = "Dr Constance Speed"
 
     @property
-    def buy_menu_distributed_power_substring(self):
+    def buy_menu_additional_text_distributed_power_substring(self):
         return "STR_WAGONS_ADD_POWER_CAB"
 
     @property
@@ -1862,7 +1853,7 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         self.cab_id = self.id.split("_middle")[0] + "_cab"
         self._buyable_variant_group_id = self.cab_id
         self.wagons_add_power = True
-        self.buy_menu_hint_wagons_add_power = True
+        self.buy_menu_additional_text_hint_wagons_add_power = True
         self.tilt_bonus = True
         self.lgv_capable = True
         # train_flag_mu solely used for ottd livery (company colour) selection
@@ -1914,7 +1905,7 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         return int(0.49 * self.cab_consist.running_cost)
 
     @property
-    def buy_menu_distributed_power_substring(self):
+    def buy_menu_additional_text_distributed_power_substring(self):
         return "STR_WAGONS_ADD_POWER_MIDDLE"
 
     @property
@@ -2099,35 +2090,77 @@ class CarConsist(Consist):
         if self.is_randomised_wagon_type or self.is_caboose:
             optional_randomised_suffix = "STR_NAME_SUFFIX_RANDOMISED_WAGON"
         else:
-            optional_randomised_suffix = "STR_EMPTY"
+            optional_randomised_suffix = None
+
         if getattr(unit_variant, "uses_random_livery", False):
             try:
-                # this is just JFDI, and needs to be driven by a better mapping of livery colours to livery name
-                random_livery_num = unit_variant.buyable_variant.livery["colour_set"][-1]
-                optional_livery_suffix = "STR_LIVERY_CABBAGE_" + str(random_livery_num)
+                random_livery_num = unit_variant.buyable_variant.livery["colour_set"][
+                    -1
+                ]
+                if unit_variant.buyable_variant.livery["colour_set"] == "random_from_consist_liveries_1":
+                    optional_livery_suffix = "STR_NAME_SUFFIX_LIVERY_MIX_1"
+                elif unit_variant.buyable_variant.livery["colour_set"] == "random_from_consist_liveries_3":
+                    optional_livery_suffix = "STR_NAME_SUFFIX_LIVERY_MIX_3"
+                else:
+                    optional_livery_suffix = "STR_NAME_SUFFIX_LIVERY_MIX_2"
             except:
                 raise BaseException(self.id)
-            #optional_randomised_suffix = "STR_NAME_SUFFIX_MIXED_COLOURS"
         else:
             optional_livery_suffix = "STR_EMPTY"
 
-        if context == "purchase_level_1":
-            return "string(STR_NAME_CONSIST_COMPOUND_THREE, string({a}), string({b}), string({c}))".format(
-                a=self.wagon_title_class_str,
-                b=optional_randomised_suffix,
-                c=optional_livery_suffix,
-            )
+        if context == "purchase_level_1" or context == "autoreplace_lhs":
+            result = [
+                self.wagon_title_class_str,
+                optional_livery_suffix
+            ]
+        #elif context == "autoreplace_lhs":
+            #result = [
+                #self.wagon_title_class_str,
+                #self.wagon_title_subtype_str,
+                #optional_livery_suffix,
+            #]
         elif context == "group_parent":
-            return "string(STR_NAME_CONSIST_COMPOUND_THREE, string({a}), string({b}), string({c}))".format(
-                a="STR_WAGON_GROUP_" + self.base_id.upper() + "S",
-                b=self.wagon_title_subtype_str,
-                c=optional_randomised_suffix,
-            )
+            if optional_randomised_suffix is not None:
+                result = [
+                    "STR_WAGON_GROUP_" + self.base_id.upper() + "S",
+                    self.wagon_title_subtype_str,
+                    optional_randomised_suffix,
+                ]
+            else:
+                result = [
+                    "STR_WAGON_GROUP_" + self.base_id.upper() + "S",
+                    self.wagon_title_subtype_str,
+                ]
         else:
-            return "string(STR_NAME_CONSIST_COMPOUND_THREE, string({a}), string({b}), string({c}))".format(
-                a=self.wagon_title_class_str,
-                b=self.wagon_title_subtype_str,
-                c=optional_randomised_suffix,
+            if optional_randomised_suffix is not None:
+                result = [
+                    self.wagon_title_class_str,
+                    self.wagon_title_subtype_str,
+                    optional_randomised_suffix,
+                ]
+            else:
+                result = [
+                    self.wagon_title_class_str,
+                    self.wagon_title_subtype_str,
+                ]
+        #return ["string(STR_NAME_CONSIST_COMPOUND_1)"]
+        if len(result) == 2:
+            return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
+                a=result[0],
+                b=result[1],
+            )
+        if len(result) == 3:
+            return "string(STR_NAME_CONSIST_COMPOUND_3, string({a}), string({b}), string({c}))".format(
+                a=result[0],
+                b=result[1],
+                c=result[2],
+            )
+        if len(result) == 4:
+            return "string(STR_NAME_CONSIST_COMPOUND_4, string({a}), string({b}), string({c}), string({d}))".format(
+                a=result[0],
+                b=result[1],
+                c=result[2],
+                d=result[3],
             )
 
     @property
@@ -3612,7 +3645,6 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
                 ],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
-                # tried PLAYER_CHOICE, adds nothing here
             ],
             piece="flat",
             has_cover=True,
@@ -4169,7 +4201,7 @@ class MailHSTCarConsist(MailCarConsistBase):
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_role_string = "STR_ROLE_HST"
+        self._buy_menu_additional_text_role_string = "STR_ROLE_HST"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -4189,7 +4221,7 @@ class MailHSTCarConsist(MailCarConsistBase):
         # !! this doesn't work in the docs,
         # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
         # !! buy menu text kinda does that, but would need to convert all names to do this
-        return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string({b}))".format(
+        return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
             a="STR_NAME_" + self.cab_id,
             b="STR_NAME_SUFFIX_HST_MAIL_CAR",
         )
@@ -4401,7 +4433,7 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
         # !! buy menu text kinda does that, but would need to convert all names to do this
         # no need to handle purchase list variant context for these
-        return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string({b}))".format(
+        return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
             a="STR_NAME_" + self.cab_id,
             b=self._str_name_suffix,
         )
@@ -4429,9 +4461,9 @@ class PassengerCarConsist(PassengerCarConsistBase):
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         if self.base_track_type_name == "NG":
-            self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE"
+            self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE"
         else:
-            self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+            self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -4463,7 +4495,7 @@ class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistB
         )
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+        self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.66 if self.base_track_type_name == "NG" else 1.5
         # Graphics configuration
@@ -4538,7 +4570,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_role_string = "STR_ROLE_HST"
+        self._buy_menu_additional_text_role_string = "STR_ROLE_HST"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -4559,7 +4591,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
         # !! buy menu text kinda does that, but would need to convert all names to do this
         # no need to handle purchase list variant context here
-        return "string(STR_NAME_CONSIST_COMPOUND_TWO, string({a}), string({b}))".format(
+        return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
             a="STR_NAME_" + self.cab_id,
             b="STR_NAME_SUFFIX_HST_PASSENGER_CAR",
         )
@@ -4582,7 +4614,7 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["suburban"]
         )
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE"
+        self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # Graphics configuration
@@ -4642,7 +4674,7 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["suburban"]
         )
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_role_string = "STR_ROLE_SUBURBAN"
+        self._buy_menu_additional_text_role_string = "STR_ROLE_SUBURBAN"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for railcar trailers, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
         self.weight_factor = 0.33 if self.base_track_type_name == "NG" else 1
@@ -4705,8 +4737,8 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         self._joker = True
-        self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
-        self.buy_menu_hint_restaurant_car = True
+        self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+        self.buy_menu_additional_text_hint_restaurant_car = True
         # Graphics configuration
         # position based variants are not used for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 0, "special": 0}
@@ -4740,7 +4772,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         self.weight_factor = 0.33 if self.base_track_type_name == "NG" else 1
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_role_string = "STR_ROLE_SUBURBAN"
+        self._buy_menu_additional_text_role_string = "STR_ROLE_SUBURBAN"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -5079,6 +5111,7 @@ class TankCarAcidConsist(TankCarConsistBase):
                 ],
                 global_constants.wagon_liveries["CC_DARK_BLUE"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.wagon_liveries["FREIGHT_GREY"],
             ],
         )
 
@@ -5111,6 +5144,7 @@ class TankCarProductConsist(TankCarConsistBase):
                 ],
                 global_constants.wagon_liveries["CC_DARK_BLUE"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.wagon_liveries["FREIGHT_GREY"],
             ],
         )
 
@@ -5345,23 +5379,150 @@ class UnitVariant(object):
     def uses_random_livery(self):
         return self.buyable_variant.uses_random_livery
 
-    def get_wagon_recolour_strategy_params(self, context=None):
-        livery = self.unit.consist.gestalt_graphics.liveries[
-            self.buyable_variant.buyable_variant_num
-        ]
+    @property
+    def uses_buy_menu_additional_text(self):
+        if self.unit.consist.power > 0:
+            return True
+        if self.unit.consist.buy_menu_additional_text_hint_wagons_add_power:
+            return True
+        if self.unit.consist._buy_menu_additional_text_role_string is not None:
+            return True
+        if self.uses_random_livery:
+            return True
+        return False
 
+    def get_buy_menu_format(self, vehicle):
+        # keep the template logic simple, present strings for a switch/case tree
+        # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
+        if self.unit.consist.engine_varies_power_by_power_source(vehicle):
+            return "variable_power"
+        elif self.unit.consist.lgv_capable:
+            # yeah, simplicity failed when lgv_capable was added, this simple tree needs rethought to allow better composition of arbitrary strings
+            if self.unit.consist.buy_menu_additional_text_hint_wagons_add_power:
+                return "lgv_capable_and_wagons_add_power"
+            else:
+                return "lgv_capable"
+        elif self.unit.consist.buy_menu_additional_text_hint_driving_cab:
+            return "driving_cab"
+        elif self.unit.consist.buy_menu_additional_text_hint_restaurant_car:
+            return "restaurant_car"
+        elif self.uses_random_livery:
+            return "livery_variants"
+        else:
+            return "default"
+
+    @property
+    def all_candidate_livery_colour_sets_for_variant(self):
+        # this may be a real variant, or a randomised variant, which delegates out to a set of real variants
+        # therefore we need to get the possible liveries across all possible variants
+        unit_variants = []
+        if self.unit.consist.is_randomised_wagon_type:
+            for (
+                unit_variant
+            ) in self.unit.consist.roster.get_wagon_randomisation_candidates(
+                self.buyable_variant
+            ):
+                unit_variants.append(unit_variant)
+        else:
+            # we will just use one variant in this case, but we put it in a list so we can iterate later to get liveries
+            unit_variants.append(self)
+
+        eligible_colours = global_constants.wagon_livery_mixes[
+            self.buyable_variant.livery["colour_set"]
+        ]
+        variant_colour_set = []
+        for unit_variant in unit_variants:
+            for (
+                candidate_livery
+            ) in unit_variant.unit.consist.gestalt_graphics.all_liveries:
+                if candidate_livery["colour_set"] not in variant_colour_set:
+                    if candidate_livery["colour_set"] in eligible_colours:
+                        variant_colour_set.append(candidate_livery["colour_set"])
+
+        if len(variant_colour_set) == 0:
+            raise BaseException(
+                self.id
+                + " has variant_colour_set length 0, which won't work - check what livery colour_set it's using"
+            )
+
+        return variant_colour_set
+
+    def get_buy_menu_hint_livery_variant_text_stack(self):
+        variant_colour_set = self.all_candidate_livery_colour_sets_for_variant
+
+        stack_values = []
+        stack_values.append(
+            "string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_"
+            + str(len(variant_colour_set))
+            + ")"
+        )
+
+        # note the OR with 0xD000 to get correct string range
+        for colour_name in variant_colour_set:
+            if colour_name == "company_colour":
+                stack_values.append("switch_get_colour_name(company_colour1) | 0xD000")
+            elif colour_name == "complement_company_colour":
+                stack_values.append(
+                    "switch_get_colour_name_complement_company_colour(company_colour1) | 0xD000"
+                )
+            else:
+                stack_values.append(
+                    "switch_get_colour_name("
+                    + str(list(global_constants.colour_sets.keys()).index(colour_name))
+                    + ") | 0xD000"
+                )
+        # parse the flat list [a, b, c] into a list of 2 tuples [(a, b), (c, 0)] as we need to push 2 WORD values into each DWORD register
+        value_pairs = [
+            (
+                stack_values[i],
+                stack_values[i + 1] if i + 1 < len(stack_values) else "0",
+            )
+            for i in range(0, len(stack_values), 2)
+        ]
+        return value_pairs
+
+    def get_name_text_stack(self):
+        # get a pair of colours to put on the text stack to use in name suffix string if required
+        result = []
+        if self.uses_random_livery:
+            if self.buyable_variant.livery["colour_set"] != "random_from_consist_liveries_1":
+                for colour_name in self.all_candidate_livery_colour_sets_for_variant[0:2]:
+                    if colour_name == "company_colour":
+                        result.append("switch_get_colour_name(company_colour1)")
+                    elif colour_name == "complement_company_colour":
+                        result.append(
+                            "switch_get_colour_name_complement_company_colour(company_colour1)"
+                        )
+                    else:
+                        result.append(
+                            "switch_get_colour_name("
+                            + str(
+                                list(global_constants.colour_sets.keys()).index(colour_name)
+                            )
+                            + ")"
+                        )
+                if len(result) < 2:
+                    raise BaseException(
+                        self.id
+                        + " has get_name_text_stack length < 2, which won't work - check what livery colour_set it's using"
+                    )
+        return result
+
+    def get_wagon_recolour_strategy_params(self, context=None):
         wagon_recolour_strategy_num = self.unit.consist.get_wagon_recolour_strategy_num(
-            livery
+            self.buyable_variant.livery
         )
 
         if self.uses_random_livery:
             available_liveries = (
-                self.unit.consist.get_candidate_liveries_for_randomised_strategy(livery)
+                self.unit.consist.get_candidate_liveries_for_randomised_strategy(
+                    self.buyable_variant.livery
+                )
             )
-            if livery.get("purchase", None) is not None:
+            if self.buyable_variant.livery.get("purchase", None) is not None:
                 wagon_recolour_strategy_num_purchase = (
                     self.unit.consist.get_wagon_recolour_strategy_num(
-                        livery, context="purchase"
+                        self.buyable_variant.livery, context="purchase"
                     )
                 )
             else:
@@ -5373,7 +5534,7 @@ class UnitVariant(object):
             wagon_recolour_strategy_num_purchase = wagon_recolour_strategy_num
 
         cc_num_to_recolour = self.unit.consist.cc_num_to_recolour
-        flag_use_weathering = livery.get("use_weathering", False)
+        flag_use_weathering = self.buyable_variant.livery.get("use_weathering", False)
         flag_context_is_purchase = True if context == "purchase" else False
 
         params_numeric = [

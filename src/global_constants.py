@@ -406,22 +406,6 @@ wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "PLAYER_CHOICE": {
-        "colour_set": "player_choice",
-        "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "PLAYER_CHOICE_NO_WEATHERING": {
-        "colour_set": "player_choice",
-        "use_weathering": False,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "RANDOM_FROM_CONSIST_LIVERIES_1": {
         "colour_set": "random_from_consist_liveries_1",
         "purchase": "company_colour",

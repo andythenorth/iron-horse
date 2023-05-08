@@ -5,8 +5,21 @@ STR_EMPTY                                                       :
 STR_CABBAGE                                                     :CABBAGE
 
 STR_PARENTHESES                                                 :({STRING})
-STR_NAME_CONSIST_COMPOUND_TWO                                   :{STRING} {STRING}
-STR_NAME_CONSIST_COMPOUND_THREE                                 :{STRING} {STRING} {STRING}
+STR_NAME_CONSIST_COMPOUND_1                                     :{STRING}
+STR_NAME_CONSIST_COMPOUND_2                                     :{STRING} {STRING}
+STR_NAME_CONSIST_COMPOUND_3                                     :{STRING} {STRING} {STRING}
+STR_NAME_CONSIST_COMPOUND_4                                     :{STRING} {STRING} {STRING} {STRING}
+
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_1      :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2      :{STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_3      :{STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_4      :{STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_5      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+
+# buy menu wrappers
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_THREE_SUBSTR               :{STRING}{}{STRING}{}{STRING}
 
 <!--! consist names (engines) -->
 <tal:consist_names repeat="consist consists">

@@ -18,29 +18,29 @@ STR_PARAM_WAGONS_ONLY_MODE                                      :Wagons-only mod
 STR_PARAM_WAGONS_ONLY_MODE_DESC                                 :Play with only wagons. All engines, snowploughs etc will be hidden.{}{}Can also be used with 'Simplified gameplay' to reduce the range of wagons if desired.{}{}Note that this option only makes sense if at least one other grf with engines is used in the game.{}{}Wagons will not appear in the game if there are no engines matching their railtype.
 STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Wagon colour randomisation
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Random freight wagon colours add variety to trains.{}{}Some wagon types have their own colour rules and will not use the randomisation setting; for example, brake vans, express-type wagons and passenger coaches.
-STR_PARAM_WAGON_BASE_COLOUR                                     :Custom wagon base colour
-STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Some wagons use a custom base colour, which can be changed with this setting.
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Use company colour settings (default)
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Dark Blue
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_2                            :Pale Green
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_3                            :Pink
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_4                            :Yellow
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_5                            :Red
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_6                            :Light Blue
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_7                            :Green
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_8                            :Dark Green
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_9                            :Blue
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_10                           :Cream
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_11                           :Mauve
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_12                           :Purple
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_13                           :Orange
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :Brown
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :Grey
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :White
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_17                           :Freight Bauxite
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_18                           :Freight Blue
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_19                           :Freight Grey
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_20                           :Freight Nightshade
+
+# reuses the constants for the company colour names, so "COLOUR_" is repeated again in the trailing part of some string names
+STR_COLOUR_NAME_COLOUR_DARK_BLUE                                :Dark Blue
+STR_COLOUR_NAME_COLOUR_PALE_GREEN                               :Pale Green
+STR_COLOUR_NAME_COLOUR_PINK                                     :Pink
+STR_COLOUR_NAME_COLOUR_YELLOW                                   :Yellow
+STR_COLOUR_NAME_COLOUR_RED                                      :Red
+STR_COLOUR_NAME_COLOUR_LIGHT_BLUE                               :Light Blue
+STR_COLOUR_NAME_COLOUR_GREEN                                    :Green
+STR_COLOUR_NAME_COLOUR_DARK_GREEN                               :Dark Green
+STR_COLOUR_NAME_COLOUR_BLUE                                     :Blue
+STR_COLOUR_NAME_COLOUR_CREAM                                    :Cream
+STR_COLOUR_NAME_COLOUR_MAUVE                                    :Mauve
+STR_COLOUR_NAME_COLOUR_PURPLE                                   :Purple
+STR_COLOUR_NAME_COLOUR_ORANGE                                   :Orange
+STR_COLOUR_NAME_COLOUR_BROWN                                    :Brown
+STR_COLOUR_NAME_COLOUR_GREY                                     :Grey
+STR_COLOUR_NAME_COLOUR_WHITE                                    :White
+# avoid fancy names, they confuse people
+STR_COLOUR_NAME_CUSTOM_BAUXITE                                  :Brown
+STR_COLOUR_NAME_CUSTOM_BLUE                                     :Blue
+STR_COLOUR_NAME_CUSTOM_DARK_GREY                                :Grey
+STR_COLOUR_NAME_CUSTOM_NIGHTSHADE                               :Black
 
 STR_ERROR_INFLATION_INCOMPATIBLE                                :Iron Horse is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings.
 STR_ERROR_TERMITE_DEPRECATED                                    :Iron Horse now includes the railtypes from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks.
@@ -67,9 +67,9 @@ STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Random
 STR_NAME_SUFFIX_MIXED_COLOURS                                   : - {RED}M{ORANGE}i{YELLOW}x{GREEN}e{BLUE}d {PURPLE}C{RED}o{ORANGE}l{YELLOW}o{GREEN}u{BLUE}r{PURPLE}s
 
 # livery name suffixes
-STR_LIVERY_CABBAGE_1                                           :- Maximum Mix
-STR_LIVERY_CABBAGE_2                                           :- Company Colour-ish
-STR_LIVERY_CABBAGE_3                                           :- Rustbelt Mix
+STR_NAME_SUFFIX_LIVERY_MIX_1                                    :- Variety
+STR_NAME_SUFFIX_LIVERY_MIX_2                                    :- {STRING}/{STRING}
+STR_NAME_SUFFIX_LIVERY_MIX_3                                    :- Rust/Shale
 
 # names for buyable variant groups
 STR_WAGON_GROUP_AUTOMOBILE_CARS                                 :Vehicle Transporters
@@ -213,11 +213,6 @@ STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Sliding Wall Va
 STR_CARGO_SUBTYPE_VEHI_0                                        : (Cars)
 STR_CARGO_SUBTYPE_VEHI_1                                        : (Trucks)
 
-# buy menu wrappers
-STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
-STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
-STR_BUY_MENU_WRAPPER_THREE_SUBSTR                               :{STRING}{}{STRING}{}{STRING}
-
 # role information for buy menu
 STR_ROLE                                                        :{BLACK}Role: {GOLD}{STRING}
 STR_ROLE_DRIVING_CAB                                            :Driving Cab
@@ -247,9 +242,10 @@ STR_WAGONS_ADD_POWER_CAB                                        :{BLACK}Power (D
 STR_WAGONS_ADD_POWER_MIDDLE                                     :{BLACK}Power (Distributed): {GOLD}{POWER} when attached to {STRING} engine
 
 # other buy menu hints
-STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Attach to front or rear of train, with at least one other engine
-STR_BUY_MENU_HINT_LGV_CAPABLE                                   :{BLACK}Requires dedicated high speed rails to reach maximum speed
-STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus: {GOLD}Eliminates running costs for all Passenger Coaches in the train
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB                   :{BLACK}Attach to front or rear of train, with at least one other engine
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LGV_CAPABLE                   :{BLACK}Requires dedicated high speed rails to reach maximum speed
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR                :{}{BLACK}Bonus: {GOLD}Eliminates running costs for all Passenger Coaches in the train
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS               :{}{BLACK}Colour mix: {GOLD}{STRING}
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup

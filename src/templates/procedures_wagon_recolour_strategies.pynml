@@ -52,7 +52,6 @@ switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_compa
                 )
             ]
         ) {
-    102: return param_wagon_base_colour;
     101: return switch_get_complement_to_company_colour(context_company_colour);
     100: return context_company_colour;
     return; <!--! just return the recolour strategy number -->

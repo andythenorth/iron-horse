@@ -149,7 +149,7 @@ class DocHelper(object):
         result = []
         for consist in roster.engine_consists:
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
-            if consist.buy_menu_hint_driving_cab or consist.wagons_add_power:
+            if consist.buy_menu_additional_text_hint_driving_cab or consist.wagons_add_power:
                 result.append(consist)
         return result
 
@@ -359,7 +359,7 @@ class DocHelper(object):
 
     def unpack_role_string_for_consist(self, consist):
         # strip off some nml boilerplate
-        role_key = consist.buy_menu_role_string.replace("STR_ROLE, string(", "")
+        role_key = consist.buy_menu_additional_text_role_string.replace("STR_ROLE, string(", "")
         role_key = role_key.replace(")", "")
         return base_lang_strings[role_key]
 

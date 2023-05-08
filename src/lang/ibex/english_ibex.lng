@@ -19,24 +19,6 @@ STR_PARAM_WAGONS_ONLY_MODE_DESC                                 :Play with only 
 STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Wagon colour randomisation
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Random freight wagon colours add variety to trains.{}{}Some wagon types have their own colour rules and will not use the randomisation setting; for example, brake vans, express-type wagons and passenger coaches.
 STR_PARAM_WAGON_BASE_COLOUR                                     :Custom wagon base colour
-STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Some wagons use a custom base colour, which can be changed with this setting.
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Use company colour settings (default)
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Dark Blue
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_2                            :Pale Green
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_3                            :Pink
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_4                            :Yellow
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_5                            :Red
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_6                            :Light Blue
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_7                            :Green
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_8                            :Dark Green
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_9                            :Blue
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_10                           :Cream
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_11                           :Mauve
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_12                           :Purple
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_13                           :Orange
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :Brown
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :Grey
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :White
 
 STR_ERROR_INFLATION_INCOMPATIBLE                                :Iron Horse is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings.
 STR_ERROR_TERMITE_DEPRECATED                                    :Iron Horse now includes the railtypes from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks.
@@ -149,9 +131,9 @@ STR_CARGO_SUBTYPE_VEHI_0                                        : (Cars)
 STR_CARGO_SUBTYPE_VEHI_1                                        : (Trucks)
 
 # buy menu wrappers
-STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
-STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
-STR_BUY_MENU_WRAPPER_THREE_SUBSTR                               :{STRING}{}{STRING}{}{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_THREE_SUBSTR               :{STRING}{}{STRING}{}{STRING}
 
 # role information for buy menu
 STR_ROLE                                                        :{BLACK}Role: {GOLD}{STRING}
@@ -182,9 +164,9 @@ STR_WAGONS_ADD_POWER_CAB                                        :{BLACK}Power (D
 STR_WAGONS_ADD_POWER_MIDDLE                                     :{BLACK}Power (Distributed): {GOLD}{POWER} when attached to {STRING} engine
 
 # other buy menu hints
-STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Attach to front or rear of train, with at least one other engine
-STR_BUY_MENU_HINT_LGV_CAPABLE                                   :{BLACK}Requires dedicated high speed rails to reach maximum speed
-STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus: {GOLD}Eliminates running costs for all Passenger Coaches in the train
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB                   :{BLACK}Attach to front or rear of train, with at least one other engine
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LGV_CAPABLE                   :{BLACK}Requires dedicated high speed rails to reach maximum speed
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR                :{}{BLACK}Bonus: {GOLD}Eliminates running costs for all Passenger Coaches in the train
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup

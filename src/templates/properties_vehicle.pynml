@@ -4,10 +4,6 @@
     <tal:include metal:use-macro="load: create_effect.pynml" />
 </tal:create_effect>
 
-<tal:buy_menu_text condition="vehicle.is_lead_unit_of_consist and (consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None or consist.lgv_capable">
-    <tal:include metal:use-macro="load: buy_menu_text.pynml" />
-</tal:buy_menu_text>
-
 <tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle) and vehicle.is_lead_unit_of_consist">
     <tal:include metal:use-macro="load: power.pynml" />
 </tal:railtype_varies_power>
@@ -29,6 +25,10 @@
 </tal:running_cost_factor>
 
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+    <tal:buy_menu_additional_text condition="vehicle.is_lead_unit_of_consist and unit_variant.uses_buy_menu_additional_text">
+        <tal:include metal:use-macro="load: buy_menu_additional_text.pynml" />
+    </tal:buy_menu_additional_text>
+
     <!--! !!! this could be moved to a dedicated .pynml file, but as of April 2023 I'm not 100% convinced it's done -->
     <tal:variant_name condition="unit_variant.buyable_variant.buyable_variant_group is not None">
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
@@ -40,8 +40,22 @@
                 1..99: return ${consist.get_name(context='purchase_level_1', unit_variant=unit_variant)};
             return CB_RESULT_NO_TEXT; <!--! will use property instead -->
         }
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, getbits(extra_callback_info1, 0, 8)) {
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, [
+                <tal:optional_text_stack condition="len(unit_variant.get_name_text_stack()) > 0">
+                    <!--! put 2 colours on the text stack if required, for use in name suffixes -->
+                    <tal:text_stack define="colour_procedure_calls unit_variant.get_name_text_stack()">
+                        STORE_TEMP(
+                            (${colour_procedure_calls[0]} | 0xD000) <!--! OR with 0xD000 to get the correct string range -->
+                            | (${colour_procedure_calls[1]} | 0xD000) << 16,
+                            0x100
+                        ),
+                    </tal:text_stack>
+                </tal:optional_text_stack>
+                <!--! get the context the name callback is called in -->
+                getbits(extra_callback_info1, 0, 8)
+            ]) {
             0x20: ${unit_variant.id}_switch_name_purchase_extra_bits;
+            0x22: return ${consist.get_name(context='autoreplace_lhs', unit_variant=unit_variant)};
             return CB_RESULT_NO_TEXT; <!--! will use property instead -->
         }
     </tal:variant_name>
@@ -131,9 +145,9 @@
                     articulated_part: ${consist.id}_variant_${unit_variant.buyable_variant.buyable_variant_num}_articulated_cb_switch;
                 </tal:add_articulated_parts>
                 <!--! setting buy menu text for engines and some wagons with role set currently - this is starting to look jank AF eh-->
-                <tal:buy_menu_text condition="(consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None">
-                    additional_text:                ${vehicle.id}_switch_buy_menu_text;
-                </tal:buy_menu_text>
+                <tal:buy_menu_additional_text condition="unit_variant.uses_buy_menu_additional_text">
+                    additional_text:                ${unit_variant.id}_switch_buy_menu_additional_text;
+                </tal:buy_menu_additional_text>
             </tal:lead_unit_of_consist_only>
             <tal:conditional_random_trigger condition="vehicle.random_trigger_switch is not None">
                 <!--! NOTE that dual headed units should avoid random triggers as of Dec 2020 - there is an undiagnosed with bug rear unit running unwanted triggers and re-randomising in depots etc -->
