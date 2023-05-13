@@ -217,11 +217,19 @@ class Roster(object):
                 unit_variants = wagon_consist.units[0].unit_variants
                 matched_results = []
                 for unit_variant in unit_variants:
-                    if unit_variant.buyable_variant.livery["colour_set"] == buyable_variant.livery["colour_set"]:
+                    if (
+                        unit_variant.buyable_variant.livery["colour_set"]
+                        == buyable_variant.livery["colour_set"]
+                    ):
                         matched_results.append(unit_variant)
                 if len(matched_results) == 0:
                     for unit_variant in unit_variants:
-                        if unit_variant.buyable_variant.livery["colour_set"] in global_constants.wagon_livery_mixes[buyable_variant.livery["colour_set"]]:
+                        if (
+                            unit_variant.buyable_variant.livery["colour_set"]
+                            in global_constants.wagon_livery_mixes[
+                                buyable_variant.livery["colour_set"]
+                            ]
+                        ):
                             matched_results.append(unit_variant)
                 result.extend(matched_results)
         if len(result) == 0:
@@ -359,18 +367,24 @@ class Roster(object):
         # - add the buyable variant as a member of the group
         for consist in self.consists_in_buy_menu_order:
             for buyable_variant in consist.buyable_variants:
-                if not buyable_variant.buyable_variant_group_id in self.buyable_variant_groups:
+                if (
+                    not buyable_variant.buyable_variant_group_id
+                    in self.buyable_variant_groups
+                ):
                     self.buyable_variant_groups[
                         buyable_variant.buyable_variant_group_id
                     ] = BuyableVariantGroup(
                         id=buyable_variant.buyable_variant_group_id,
                     )
-                self.buyable_variant_groups[buyable_variant.buyable_variant_group_id].add_buyable_variant(
-                    buyable_variant
-                )
+                self.buyable_variant_groups[
+                    buyable_variant.buyable_variant_group_id
+                ].add_buyable_variant(buyable_variant)
         # now deal with nested groups
         # we do this after creating all the groups, as some groups need to reference other groups
-        for buyable_variant_group_id, buyable_variant_group in self.buyable_variant_groups.items():
+        for (
+            buyable_variant_group_id,
+            buyable_variant_group,
+        ) in self.buyable_variant_groups.items():
             # we're only interested in nesting wagons as of May 2023
             parent_consist = buyable_variant_group.parent_consist
             if parent_consist.group_as_wagon:
@@ -379,7 +393,9 @@ class Roster(object):
                         parent_consist.use_named_buyable_variant_group
                     ]
                     candidate_parent_group = None
-                    for consist in self.wagon_consists[base_id_for_target_parent_consist]:
+                    for consist in self.wagon_consists[
+                        base_id_for_target_parent_consist
+                    ]:
                         if consist.base_id == base_id_for_target_parent_consist:
                             match_failed = False
                             if consist.gen != parent_consist.gen:
@@ -387,14 +403,30 @@ class Roster(object):
                             if consist.subtype != parent_consist.subtype:
                                 match_failed = True
                             if not match_failed:
-                                candidate_parent_group = consist.buyable_variants[0].buyable_variant_group
+                                candidate_parent_group = consist.buyable_variants[
+                                    0
+                                ].buyable_variant_group
                                 break
                 else:
-                    candidate_parent_group = parent_consist.buyable_variants[0].buyable_variant_group
+                    candidate_parent_group = parent_consist.buyable_variants[
+                        0
+                    ].buyable_variant_group
 
                 # we can't assign parent group to current group, that would be silly / recursive
                 if candidate_parent_group != buyable_variant_group:
                     buyable_variant_group.parent_group = candidate_parent_group
+
+    def get_buyable_variants_in_buy_menu_order(self):
+        # relies on the buyable variant group order already being sorted when it's consrtructed from consists_in_buy_menu_order
+        # as a convenience, this flattens that order to a list that's easy to iterate over in template
+        result = []
+        for (
+            buyable_variant_group_id,
+            buyable_variant_group,
+        ) in self.buyable_variant_groups.items():
+            for buyable_variant in buyable_variant_group.buyable_variants:
+                result.append(buyable_variant)
+        return result
 
 
 class BuyableVariantGroup(object):
@@ -430,7 +462,8 @@ class BuyableVariantGroup(object):
         if self.parent_consist.use_named_buyable_variant_group != None:
             try:
                 return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
-                    a="STR_" + self.parent_consist.use_named_buyable_variant_group.upper(),
+                    a="STR_"
+                    + self.parent_consist.use_named_buyable_variant_group.upper(),
                     b=self.parent_consist.wagon_title_subtype_str,
                 )
 

@@ -84,9 +84,7 @@ disable_item(FEAT_TRAINS, 00, 115);
 
 // sort order
 sort(FEAT_TRAINS, [
-<tal:foo repeat="consist consists">
-    ${','.join([str(unit_variant.numeric_id) for unit_variant in consist.units[0].unit_variants])},
-</tal:foo>
+    ${','.join([str(buyable_variant.lead_unit_variant_matching_buyable_variant.numeric_id) for buyable_variant in roster.get_buyable_variants_in_buy_menu_order()])},
 ]);
 
 // fix depot view for trains
