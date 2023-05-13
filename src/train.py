@@ -2514,8 +2514,11 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
             id_base=parent_id_base,
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-                # don't need more, doesn't add anything
+                global_constants.wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
             ],
         )
 
@@ -4339,8 +4342,11 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
             piece="open",
             weathered_variants=weathered_variants,
             liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-                # don't need more, doesn't add anything
+                global_constants.wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
             ],
         )
 
@@ -5314,17 +5320,16 @@ class BuyableVariant(object):
             # explicitly defined group id
             id = self.consist._buyable_variant_group_id
         elif self.consist.group_as_wagon:
+            if self.consist.use_named_buyable_variant_group is not None:
+                group_id_base = self.consist.use_named_buyable_variant_group
+            else:
+                group_id_base = self.consist.id
             if not self.uses_random_livery:
                 # we nest buyable variants with fixed colours into sub-groups
-                group_id_base = self.consist.id
                 fixed_mixed_suffix = "fixed"
             else:
                 # everything else goes into one group, either on the consist group, or a named parent group which composes multiple consists
                 fixed_mixed_suffix = None
-                if self.consist.use_named_buyable_variant_group is not None:
-                    group_id_base = self.consist.use_named_buyable_variant_group
-                else:
-                    group_id_base = self.consist.id
             id = self.compose_variant_group_id(
                 group_id_base, self.consist, fixed_mixed_suffix
             )
