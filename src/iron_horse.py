@@ -82,8 +82,6 @@ from vehicles import mail_cars
 from vehicles import merchandise_box_cars
 from vehicles import merchandise_open_cars
 from vehicles import mineral_covered_hopper_cars
-
-# from vehicles import mineral_hopper_cars
 from vehicles import mgr_hopper_cars
 from vehicles import open_cars
 from vehicles import ore_dump_cars
@@ -351,7 +349,6 @@ def main():
     merchandise_box_cars.main()
     merchandise_open_cars.main()
     mineral_covered_hopper_cars.main()
-    # mineral_hopper_cars.main()
     mgr_hopper_cars.main()
     ore_dump_cars.main()
     ore_hopper_cars.main()

@@ -3844,22 +3844,6 @@ class HopperCarConsist(HopperCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_hopper_cars"
 
 
-class HopperCarMineralConsist(HopperCarConsistBase):
-    """
-    Hopper for mineral industry cargos, same refits as standard hopper, just a visual variant.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "mineral_hopper_car"
-        super().__init__(**kwargs)
-        print("mineral hoppers need default refits set")
-        self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_hopper_cars"
-        self._joker = True
-
-
 class HopperCarMGRConsist(HopperCarConsistBase):
     """
     Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.

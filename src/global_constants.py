@@ -42,7 +42,6 @@ buy_menu_sort_order_wagons = [
     "hopper_car",
     "mgr_hopper_car",
     "rock_hopper_car",
-    "mineral_hopper_car",
     "ore_hopper_car",
     "dump_car",
     "dump_car_high_side",
