@@ -63,7 +63,7 @@ buy_menu_sort_order_wagons = [
     "swing_roof_hopper_car",
     "chemical_covered_hopper_car",
     "silo_car",
-    "chemical_silo_car",
+    "v_barrel_silo_car",
     "cement_silo_car",
     "livestock_car",
     "edibles_tank_car",

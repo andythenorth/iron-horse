@@ -141,7 +141,6 @@ STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
 STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Carbon Black Hopper
 STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Cement Wagon
 STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR                     :Chemical Covered Hopper
-STR_NAME_SUFFIX_CHEMICAL_SILO_CAR                               :Chemical Silo Wagon
 STR_NAME_SUFFIX_COIL_CAR_COVERED                                :Covered Coil Carrier
 STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                              :Coil Carrier
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
@@ -211,6 +210,7 @@ STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR                           :Swing Roof Hopp
 STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Tarpaulin Wagon
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedo Wagon
+STR_NAME_SUFFIX_V_BARREL_SILO_CAR                               :Silo Wagon
 STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Sliding Wall Van
 
 # cargo subtypes
