@@ -314,6 +314,19 @@ custom_wagon_recolour_sprite_maps = {
     "custom_light_bauxite": (71, 122, 74, 125, 76, 127, 78, 79),
     "custom_nightshade": (104, 2, 25, 17, 18, 19, 20, 10),
     "custom_light_nightshade": (1, 2, 106, 17, 18, 7, 20, 10),
+    "custom_teal": (88, 97, 98, 157, 158, 159, 160, 103),
+    "custom_dark_teal": (88, 97, 156, 157, 158, 101, 102, 103),
+    "custom_violet": (136, 170, 171, 172, 173, 174, 175, 176),  # WIP, may need improved
+    "custom_dark_violet": (
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        14,
+    ),  # WIP, may need improved
 }
 
 # shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
@@ -339,6 +352,8 @@ colour_sets = {
     "freight_blue": ["custom_blue", "COLOUR_BLUE"],
     "freight_grey": ["custom_dark_grey", "COLOUR_GREY"],
     "freight_nightshade": ["custom_nightshade", "custom_light_nightshade"],
+    "freight_teal": ["custom_teal", "custom_dark_teal"],
+    "freight_violet": ["custom_violet", "custom_dark_violet"],
 }
 
 # select a colour that matches the current company colour
@@ -458,6 +473,14 @@ wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "RANDOM_FROM_CONSIST_LIVERIES_4": {
+        "colour_set": "random_from_consist_liveries_4",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "FREIGHT_BAUXITE": {
         "colour_set": "freight_bauxite",
         "use_weathering": True,
@@ -514,6 +537,22 @@ wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "FREIGHT_TEAL": {
+        "colour_set": "freight_teal",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_VIOLET": {
+        "colour_set": "freight_violet",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "CC_BLUE": {
         "colour_set": "blue",
         "use_weathering": True,
@@ -535,11 +574,25 @@ wagon_liveries = {
 # for wagons with mixed livery, the permitted liveries for that specific mix type
 wagon_livery_mixes = {
     # most everything (but explicit add, so not *everything*)
-    "random_from_consist_liveries_1": ["company_colour", "complement_company_colour", "freight_bauxite", "freight_grey", "freight_nightshade"],
+    "random_from_consist_liveries_1": [
+        "company_colour",
+        "complement_company_colour",
+        "freight_bauxite",
+        "freight_grey",
+        "freight_nightshade",
+        "freight_teal",
+        "freight_violet",
+    ],
     # company colour + 1
     "random_from_consist_liveries_2": ["complement_company_colour", "company_colour"],
     # rust belt
-    "random_from_consist_liveries_3": ["freight_bauxite", "freight_grey", "freight_nightshade"],
+    "random_from_consist_liveries_3": [
+        "freight_bauxite",
+        "freight_grey",
+        "freight_nightshade",
+    ],
+    # chemicals
+    "random_from_consist_liveries_4": ["freight_teal", "freight_violet"],
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions

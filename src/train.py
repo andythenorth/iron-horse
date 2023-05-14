@@ -911,7 +911,9 @@ class Consist(object):
             colour_set = livery["purchase"]
         else:
             colour_set = livery["colour_set"]
-        if "random_from_consist_liveries_3" in colour_set:
+        if "random_from_consist_liveries_4" in colour_set:
+            return 106
+        elif "random_from_consist_liveries_3" in colour_set:
             return 105
         elif "random_from_consist_liveries_2" in colour_set:
             return 104
@@ -2121,21 +2123,7 @@ class CarConsist(Consist):
     def get_wagon_title_optional_livery_suffix_stack(self, unit_variant):
         if getattr(unit_variant, "uses_random_livery", False):
             try:
-                random_livery_num = unit_variant.buyable_variant.livery["colour_set"][
-                    -1
-                ]
-                if (
-                    unit_variant.buyable_variant.livery["colour_set"]
-                    == "random_from_consist_liveries_1"
-                ):
-                    optional_livery_suffix = "STR_NAME_SUFFIX_LIVERY_MIX_1"
-                elif (
-                    unit_variant.buyable_variant.livery["colour_set"]
-                    == "random_from_consist_liveries_3"
-                ):
-                    optional_livery_suffix = "STR_NAME_SUFFIX_LIVERY_MIX_3"
-                else:
-                    optional_livery_suffix = "STR_NAME_SUFFIX_LIVERY_MIX_2"
+                optional_livery_suffix = "STR_NAME_SUFFIX_LIVERY_MIX_" + unit_variant.buyable_variant.livery["colour_set"][-1]
             except:
                 raise BaseException(self.id)
         else:
@@ -5202,13 +5190,15 @@ class TankCarAcidConsist(TankCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_4"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["CC_DARK_BLUE"],
+                global_constants.wagon_liveries["FREIGHT_TEAL"],
+                global_constants.wagon_liveries["FREIGHT_VIOLET"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
@@ -5236,13 +5226,15 @@ class TankCarProductConsist(TankCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
-                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_4"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                global_constants.wagon_liveries["CC_DARK_BLUE"],
+                global_constants.wagon_liveries["FREIGHT_TEAL"],
+                global_constants.wagon_liveries["FREIGHT_VIOLET"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],

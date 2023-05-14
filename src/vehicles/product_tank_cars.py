@@ -6,7 +6,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=11900,
+        base_numeric_id=8860,
         gen=2,
         subtype="A",
         intro_year_offset=-10,  # let's be earlier for this one
@@ -27,7 +27,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=12410,
+        base_numeric_id=10930,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=12430,
+        base_numeric_id=17370,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -82,7 +82,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=12450,
+        base_numeric_id=16950,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -92,7 +92,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=12460,
+        base_numeric_id=17060,
         gen=5,
         subtype="B",
         sprites_complete=True,
