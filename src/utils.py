@@ -130,3 +130,15 @@ def extend_list_to_power_of_2_length(list_to_extend):
     if len(list_to_extend) >= 33:
         list_to_extend.extend(list_to_extend[: 64 - len(list_to_extend)])
     return list_to_extend
+
+def convert_flat_list_to_pairs_of_tuples(flat_list):
+    # used to create a list suitable for iterating over and pushing values to the text stack
+    # parse a flat list [a, b, c] into a list of 2 tuples [(a, b), (c, 0)] as we need to push 2 WORD values into each DWORD text stack register
+    pairs = [
+        (
+            flat_list[i],
+            flat_list[i + 1] if i + 1 < len(flat_list) else "0",
+        )
+        for i in range(0, len(flat_list), 2)
+    ]
+    return pairs

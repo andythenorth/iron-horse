@@ -338,14 +338,19 @@ class DocHelper(object):
         return result
 
     def unpack_name_string(self, consist):
-        substrings = consist.get_name(context="docs")[0].split("string(")
+        substrings = consist.get_name(context="docs", unit_variant=None)
         # engines have an untranslated name defined via _name, wagons use a translated string
         if consist._name is not None:
             name = consist._name
         else:
-            # strip out spaces and some nml boilerplate to get the string name in isolation
-            name_substr = substrings[2].translate({ord(c): "" for c in "), "})
-            name = base_lang_strings[name_substr]
+            try:
+                # strip out spaces and some nml boilerplate to get the string name in isolation
+                name_substr = substrings[1].translate({ord(c): "" for c in "), "})
+                name = base_lang_strings[name_substr]
+            except:
+                print("======")
+                print("Failed docs name string:", consist.id, substrings)
+                return "CABBAGE_555"
         # !! this would be better generalised to 'consist.has_suffix', currently docs rendering is knowing too much about the internals of trains
         if (
             getattr(consist, "subtype", None) == "U"

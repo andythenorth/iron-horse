@@ -5,10 +5,10 @@ STR_EMPTY                                                       :
 STR_CABBAGE                                                     :CABBAGE
 
 STR_PARENTHESES                                                 :({STRING})
-STR_NAME_CONSIST_COMPOUND_1                                     :{STRING}
-STR_NAME_CONSIST_COMPOUND_2                                     :{STRING} {STRING}
-STR_NAME_CONSIST_COMPOUND_3                                     :{STRING} {STRING} {STRING}
-STR_NAME_CONSIST_COMPOUND_4                                     :{STRING} {STRING} {STRING} {STRING}
+STR_NAME_CONTAINER_1                                            :{STRING}
+STR_NAME_CONTAINER_2                                            :{STRING} {STRING}
+STR_NAME_CONTAINER_3                                            :{STRING} {STRING} {STRING}
+STR_NAME_CONTAINER_4                                            :{STRING} {STRING} {STRING} {STRING}
 
 STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_1      :{STRING}
 STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2      :{STRING}, {STRING}

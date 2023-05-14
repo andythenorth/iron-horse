@@ -29,47 +29,13 @@
         <tal:include metal:use-macro="load: buy_menu_additional_text.pynml" />
     </tal:buy_menu_additional_text>
 
-    <!--! !!! this could be moved to a dedicated .pynml file, but as of April 2023 I'm not 100% convinced it's done -->
-    <tal:variant_name condition="unit_variant.buyable_variant.buyable_variant_group is not None and vehicle.is_lead_unit_of_consist">
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_0, [1]) {
-            ${consist.get_name(context='purchase_level_0', unit_variant=unit_variant)[0]};
-        }
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_1, [1]) {
-            return ${consist.get_name(context='purchase_level_1', unit_variant=unit_variant)[0]};
-        }
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_autoreplace_lhs, [1]) {
-            return ${consist.get_name(context='autoreplace_lhs', unit_variant=unit_variant)[0]};
-        }
-
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
-            0: ${unit_variant.id}_switch_name_purchase_level_0;
-            1: ${unit_variant.id}_switch_name_purchase_level_1;
-            return CB_RESULT_NO_TEXT; <!--! will use property instead -->
-        }
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, [
-                <tal:optional_text_stack condition="len(unit_variant.get_name_text_stack()) > 0">
-                    <!--! put 2 colours on the text stack if required, for use in name suffixes -->
-                    <tal:text_stack define="colour_procedure_calls unit_variant.get_name_text_stack()">
-                        STORE_TEMP(
-                            (${colour_procedure_calls[0]} | 0xD000) <!--! OR with 0xD000 to get the correct string range -->
-                            | (${colour_procedure_calls[1]} | 0xD000) << 16,
-                            0x100
-                        ),
-                    </tal:text_stack>
-                </tal:optional_text_stack>
-                <!--! get the context the name callback is called in -->
-                getbits(extra_callback_info1, 0, 8)
-            ]) {
-            0x20: ${unit_variant.id}_switch_name_purchase_extra_bits;
-            0x22: ${unit_variant.id}_switch_name_autoreplace_lhs;
-            return CB_RESULT_NO_TEXT; <!--! will use property instead -->
-        }
-    </tal:variant_name>
-
+    <tal:name condition="vehicle.is_lead_unit_of_consist">
+        <tal:include metal:use-macro="load: name.pynml" />
+    </tal:name>
 
     item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
         property {
-            name:                           ${consist.get_name(context="static_property", unit_variant=unit_variant)[0]};
+            name:                           string(STR_CABBAGE); <!--! name static prop not used, use callback instead -->
             climates_available:             NO_CLIMATE; // nml constant
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
                 <!--! some properties should not be set for trailing parts of articulated consists -->
@@ -124,9 +90,7 @@
             default:                        ${vehicle.id}_switch_graphics;
             purchase:                       ${vehicle.id}_switch_graphics_purchase;
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
-                <tal:variant_name condition="unit_variant.buyable_variant.buyable_variant_group is not None">
-                    name:                           ${unit_variant.id}_switch_name;
-                </tal:variant_name>
+                name:                           ${unit_variant.id}_switch_name;
                 <!--! certain callbacks should not be handled for trailing parts of articulated consists -->
                 cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
                 <tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">

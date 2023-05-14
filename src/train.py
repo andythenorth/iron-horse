@@ -270,18 +270,45 @@ class Consist(object):
                         return "STR_NAME_SUFFIX_ELECTRIC_AC_DC"
             return None
 
-    def get_name(self, context=None, unit_variant=None):
-        default_name = "string(STR_NAME_" + self.id + ")"
+    def get_name(self, context, unit_variant):
+        default_name = "STR_NAME_" + self.id
         if context == "purchase_level_1":
-            return [default_name]
+            result = [default_name]
+        elif context == "default_name":
+            # CABBAGE 899
+            result = ["STR_CABBAGE"]
         else:
             if self.str_name_suffix is not None:
-                return ["string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string(STR_PARENTHESES, string({b})))".format(
-                    a="STR_NAME_" + self.id,
-                    b=self.str_name_suffix,
-                )]
+                result = [
+                    "STR_NAME_" + self.id,
+                    "STR_PARENTHESES",
+                    self.str_name_suffix,
+                ]
             else:
-                return [default_name]
+                result = [default_name]
+        return result
+
+    def get_name_text_stack(self, context, unit_variant):
+        stack_items = self.get_name(context=context, unit_variant=unit_variant)
+
+        # we need to know how many strings we have to handle, so that we can provide a container string with correct number of {STRING} entries
+        # this is non-trivial as we might have non-string items for the stack (e.g. number or procedure results), used by a preceding substring
+        string_counter = 0
+        for stack_item in stack_items:
+            if stack_item[0:4] == "STR_":
+                string_counter += 1
+        if string_counter > 1:
+            stack_items.insert(0, "STR_NAME_CONTAINER_" + str(string_counter))
+
+        result = []
+        for stack_item in stack_items:
+            if stack_item[0:4] == "STR_":
+                # possibly fragile wrapping of string() around strings, to avoid having to always specify them that way
+                result.append("string(" + stack_item + ")")
+            else:
+                # otherwise pass through as is
+                result.append(stack_item)
+        return utils.convert_flat_list_to_pairs_of_tuples(result)
 
     def engine_varies_power_by_power_source(self, vehicle):
         if self.power_by_power_source is not None and vehicle.is_lead_unit_of_consist:
@@ -2092,7 +2119,7 @@ class CarConsist(Consist):
                 subtype_str = "STR_NAME_SUFFIX_TWIN"
             return "STR_PARENTHESES, string(" + subtype_str + ")"
 
-    def get_wagon_title_optional_livery_suffix_str(self, unit_variant):
+    def get_wagon_title_optional_livery_suffix_stack(self, unit_variant):
         if getattr(unit_variant, "uses_random_livery", False):
             try:
                 random_livery_num = unit_variant.buyable_variant.livery["colour_set"][
@@ -2114,7 +2141,11 @@ class CarConsist(Consist):
                 raise BaseException(self.id)
         else:
             optional_livery_suffix = "STR_EMPTY"
-        return optional_livery_suffix
+        result = [optional_livery_suffix]
+        # we _may_ need to put colours on the stack for the string
+        if optional_livery_suffix == "STR_NAME_SUFFIX_LIVERY_MIX_2":
+            result.extend(unit_variant.get_name_text_stack_colour_suffixes())
+        return result
 
     @property
     def wagon_title_optional_randomised_suffix_str(self):
@@ -2123,27 +2154,7 @@ class CarConsist(Consist):
         else:
             return None
 
-    def get_name_group_cabbage(self, context=None, unit_variant=None):
-        # assumes wagon groups as of April 2023, change if needed
-        # !! might want to handle case of group_base_id = None?
-        # !! might throw a plural name for groups where there's only one member?
-        group = unit_variant.buyable_variant.buyable_variant_group
-        if group.parent_consist.use_named_buyable_variant_group != None:
-            try:
-                return ["string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
-                    a="STR_"
-                    + group.parent_consist.use_named_buyable_variant_group.upper(),
-                    b=group.parent_consist.wagon_title_subtype_str,
-                )]
-            except:
-                raise BaseException(group.parent_vehicle.id)
-        else:
-            if len(group.buyable_variants) > 1:
-                return group.parent_consist.get_name(context="group_parent")
-            else:
-                return group.parent_consist.get_name(context)
-
-    def get_name(self, context=None, unit_variant=None):
+    def get_name(self, context, unit_variant):
         if self.wagon_title_optional_randomised_suffix_str is not None:
             default_result = [
                 self.wagon_title_class_str,
@@ -2156,39 +2167,55 @@ class CarConsist(Consist):
                 self.wagon_title_subtype_str,
             ]
 
-        if context in ["docs", "static_property"]:
-            result = default_result
+        if context == "docs":
             # CABBAGE 599
-            return ["string(STR_NAME_CONSIST_COMPOUND_2, string(STR_CABBAGE), string(STR_PARENTHESES, string(STR_NAME_SUFFIX_SMALL)))"]
-        elif context == "purchase_level_0":
+            result = [
+                "STR_CABBAGE",
+                "STR_PARENTHESES",
+                "STR_NAME_SUFFIX_SMALL",
+            ]
+        elif context == "default_name":
             result = default_result
-            # over-ride result for special case
-            # !! but for wagons, why would unit_variant ever be None here?
-            # !! looks like this is just covering cases where params aren't being correctly passed??
-            if unit_variant is not None:
-                if unit_variant.buyable_variant.buyable_variant_group is not None:
-                    return self.get_name_group_cabbage(context=context, unit_variant=unit_variant)
+        elif context == "purchase_level_0":
+            group = unit_variant.buyable_variant.buyable_variant_group
+            if group.parent_consist.use_named_buyable_variant_group != None:
+                try:
+                    result = [
+                        "STR_"
+                        + group.parent_consist.use_named_buyable_variant_group.upper(),
+                        group.parent_consist.wagon_title_subtype_str,
+                    ]
+                except:
+                    raise BaseException(group.parent_vehicle.id)
+            else:
+                result = default_result
         elif context == "purchase_level_1":
+            # if a level 1 group has a parent, then it is also the parent of a group of level 2 vehicles
+            if (
+                unit_variant.buyable_variant.buyable_variant_group.parent_group
+                is not None
+            ):
+                # assume all level 1 groups have this fixed string as of May 2023
+                result = ["STR_WAGON_GROUP_MORE"]
+            else:
+                result = [
+                    self.wagon_title_class_str,
+                ]
+                result.extend(
+                    self.get_wagon_title_optional_livery_suffix_stack(unit_variant)
+                )
+        elif context == "purchase_level_2":
             result = [
                 self.wagon_title_class_str,
-                self.get_wagon_title_optional_livery_suffix_str(unit_variant),
             ]
-            # over-ride result for special case
-            if unit_variant.buyable_variant.buyable_variant_group is not None:
-                if "fixed" in unit_variant.buyable_variant.buyable_variant_group_id:
-                    result = ["string(STR_WAGON_GROUP_MORE)"]
-        # elif context == "autoreplace_lhs":
-        # result = [
-        # self.wagon_title_class_str,
-        # self.wagon_title_subtype_str,
-        # optional_livery_suffix,
-        # ]
         elif context == "autoreplace_lhs":
-            # !! same as purchase level 1, until text stack handling is sorted
             result = [
                 self.wagon_title_class_str,
-                self.get_wagon_title_optional_livery_suffix_str(unit_variant),
+                self.wagon_title_subtype_str,
             ]
+            result.extend(
+                self.get_wagon_title_optional_livery_suffix_stack(unit_variant)
+            )
         elif context == "group_parent":
             # !! this is weird, group_parent isn't a single context, we need some other way to handle this
             # !! this is called via a weird round trip to the group get_name method anyway, it's bizarre??
@@ -2209,28 +2236,7 @@ class CarConsist(Consist):
                 + self.id
                 + " with no context provided"
             )
-        if len(result) == 1:
-            return result
-        if len(result) == 2:
-            return [(
-                "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
-                    a=result[0],
-                    b=result[1],
-                )
-            )]
-        if len(result) == 3:
-            return ["string(STR_NAME_CONSIST_COMPOUND_3, string({a}), string({b}), string({c}))".format(
-                a=result[0],
-                b=result[1],
-                c=result[2],
-            )]
-        if len(result) == 4:
-            return ["string(STR_NAME_CONSIST_COMPOUND_4, string({a}), string({b}), string({c}), string({d}))".format(
-                a=result[0],
-                b=result[1],
-                c=result[2],
-                d=result[3],
-            )]
+        return result
 
     @property
     def joker(self):
@@ -4292,15 +4298,16 @@ class MailHSTCarConsist(MailCarConsistBase):
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
 
-    def get_name(self, context=None, unit_variant=None):
+    def get_name(self, context, unit_variant):
         # special name handling to use the cab name
-        # !! this doesn't work in the docs,
-        # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
-        # !! buy menu text kinda does that, but would need to convert all names to do this
-        return ["string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
-            a="STR_NAME_" + self.cab_id,
-            b="STR_NAME_SUFFIX_HST_MAIL_CAR",
-        )]
+        if context == "docs":
+            result = ["STR_CABBAGE"]
+        else:
+            result = [
+                "STR_NAME_" + self.cab_id,
+                "STR_NAME_SUFFIX_HST_MAIL_CAR",
+            ]
+        return result
 
 
 class OpenCarConsistBase(CarConsist):
@@ -4505,16 +4512,16 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
 
-    def get_name(self, context=None, unit_variant=None):
-        # special name handling to use the cab name
-        # !! this doesn't work in the docs,
-        # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
-        # !! buy menu text kinda does that, but would need to convert all names to do this
-        # no need to handle purchase list variant context for these
-        return ["string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
-            a="STR_NAME_" + self.cab_id,
-            b=self._str_name_suffix,
-        )]
+    def get_name(self, context, unit_variant):
+        if context == "docs":
+            result = ["STR_CABBAGE"]
+        else:
+            # special name handling to use the cab name
+            result = [
+                "STR_NAME_" + self.cab_id,
+                self._str_name_suffix,
+            ]
+        return result
 
 
 class PassengerCarConsist(PassengerCarConsistBase):
@@ -4665,16 +4672,21 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
 
-    def get_name(self, context=None, unit_variant=None):
+    def get_name(self, context, unit_variant):
         # special name handling to use the cab name
         # !! this doesn't work in the docs,
         # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
         # !! buy menu text kinda does that, but would need to convert all names to do this
         # no need to handle purchase list variant context here
-        return ["string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
-            a="STR_NAME_" + self.cab_id,
-            b="STR_NAME_SUFFIX_HST_PASSENGER_CAR",
-        )]
+        if context == "default_name":
+            # CABBAGE 896
+            result = ["STR_CABBAGE"]
+        else:
+            result = [
+                "STR_NAME_" + self.cab_id,
+                "STR_NAME_SUFFIX_HST_PASSENGER_CAR",
+            ]
+        return result
 
 
 class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
@@ -5551,35 +5563,29 @@ class UnitVariant(object):
                     + str(list(global_constants.colour_sets.keys()).index(colour_name))
                     + ") | 0xD000"
                 )
-        # parse the flat list [a, b, c] into a list of 2 tuples [(a, b), (c, 0)] as we need to push 2 WORD values into each DWORD register
-        value_pairs = [
-            (
-                stack_values[i],
-                stack_values[i + 1] if i + 1 < len(stack_values) else "0",
-            )
-            for i in range(0, len(stack_values), 2)
-        ]
-        return value_pairs
+        return utils.convert_flat_list_to_pairs_of_tuples(stack_values)
 
-    def get_name_text_stack(self):
+    def get_name_text_stack_colour_suffixes(self):
         # get a pair of colours to put on the text stack to use in name suffix string if required
-        result = []
+        colour_name_switch_names = []
         if self.uses_random_livery:
             if (
                 self.buyable_variant.livery["colour_set"]
-                != "random_from_consist_liveries_1"
+                == "random_from_consist_liveries_2"
             ):
                 for colour_name in self.all_candidate_livery_colour_sets_for_variant[
                     0:2
                 ]:
                     if colour_name == "company_colour":
-                        result.append("switch_get_colour_name(company_colour1)")
+                        colour_name_switch_names.append(
+                            "switch_get_colour_name(company_colour1)"
+                        )
                     elif colour_name == "complement_company_colour":
-                        result.append(
+                        colour_name_switch_names.append(
                             "switch_get_colour_name_complement_company_colour(company_colour1)"
                         )
                     else:
-                        result.append(
+                        colour_name_switch_names.append(
                             "switch_get_colour_name("
                             + str(
                                 list(global_constants.colour_sets.keys()).index(
@@ -5588,11 +5594,15 @@ class UnitVariant(object):
                             )
                             + ")"
                         )
-                if len(result) < 2:
+                if len(colour_name_switch_names) < 2:
                     raise BaseException(
                         self.id
                         + " has get_name_text_stack length < 2, which won't work - check what livery colour_set it's using"
                     )
+        result = []
+        for colour_name_switch_name in colour_name_switch_names:
+            # OR with to get the correct string range
+            result.append("(" + colour_name_switch_name + " | 0xD000)")
         return result
 
     def get_wagon_recolour_strategy_params(self, context=None):
