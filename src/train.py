@@ -2906,9 +2906,33 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
         )
 
 
+class DedicatedCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBase):
+    """
+    Random choice of covered or uncovered coil car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_dedicated_coil_car"
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_coil_cars"
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
+            liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+            ],
+        )
+
+
+
 class GenericCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBase):
     """
-    Random choice of cold metal car sprite, from available coil cars, bolster cars etc.
+    Random choice of cold metal car sprite, from available coil cars, bolster cars, flat cars etc.
     """
 
     def __init__(self, **kwargs):

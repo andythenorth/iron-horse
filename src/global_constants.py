@@ -39,6 +39,7 @@ buy_menu_sort_order_wagons = [
     "bolster_car",
     "coil_car_uncovered",
     "coil_car_covered",
+    "randomised_dedicated_coil_car",
     "hopper_car",
     "mgr_hopper_car",
     "rock_hopper_car",
