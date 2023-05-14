@@ -36,13 +36,14 @@ STR_COLOUR_NAME_COLOUR_ORANGE                                   :Orange
 STR_COLOUR_NAME_COLOUR_BROWN                                    :Brown
 STR_COLOUR_NAME_COLOUR_GREY                                     :Grey
 STR_COLOUR_NAME_COLOUR_WHITE                                    :White
-# avoid fancy names, they confuse people
+# avoid metaphor/narrative names for the colours, they confuse people, stick to actual real colours
 STR_COLOUR_NAME_CUSTOM_BAUXITE                                  :Brown
-STR_COLOUR_NAME_CUSTOM_BLUE                                     :Blue
 STR_COLOUR_NAME_CUSTOM_DARK_GREY                                :Grey
 STR_COLOUR_NAME_CUSTOM_NIGHTSHADE                               :Black
 STR_COLOUR_NAME_CUSTOM_PEWTER                                   :Pewter
 STR_COLOUR_NAME_CUSTOM_SILVER                                   :Silver
+STR_COLOUR_NAME_CUSTOM_STRAW                                    :Straw
+STR_COLOUR_NAME_CUSTOM_SULPHUR                                  :Mustard
 STR_COLOUR_NAME_CUSTOM_TEAL                                     :Teal
 STR_COLOUR_NAME_CUSTOM_VIOLET                                   :Violet
 
@@ -71,11 +72,13 @@ STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Random
 STR_NAME_SUFFIX_MIXED_COLOURS                                   : - {RED}M{ORANGE}i{YELLOW}x{GREEN}e{BLUE}d {PURPLE}C{RED}o{ORANGE}l{YELLOW}o{GREEN}u{BLUE}r{PURPLE}s
 
 # livery name suffixes
+# fancy names are better here, as there can be more than 2 colours, so the names give a flavour
 STR_NAME_SUFFIX_LIVERY_MIX_1                                    :- Variety
 STR_NAME_SUFFIX_LIVERY_MIX_2                                    :- {STRING}/{STRING}
 STR_NAME_SUFFIX_LIVERY_MIX_3                                    :- Rust/Shale
 STR_NAME_SUFFIX_LIVERY_MIX_4                                    :- Seafoam/Amethyst
 STR_NAME_SUFFIX_LIVERY_MIX_5                                    :- Silver/Pewter
+STR_NAME_SUFFIX_LIVERY_MIX_6                                    :- Mustard/Straw
 
 # names for buyable variant groups
 STR_WAGON_GROUP_AUTOMOBILE_CARS                                 :Vehicle Transporters
@@ -210,6 +213,7 @@ STR_NAME_SUFFIX_SLIDING_ROOF_CAR                                :Sliding Roof Va
 STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Sliding Wall Van
 STR_NAME_SUFFIX_SCRAP_METAL_CAR                                 :Scrap Wagon
 STR_NAME_SUFFIX_SUBURBAN_PASSENGER_CAR                          :Suburban Coach
+STR_NAME_SUFFIX_SULPHUR_TANK_CAR                                :Acid Tanker
 STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR                           :Swing Roof Hopper
 STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Tarpaulin Wagon

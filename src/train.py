@@ -911,7 +911,9 @@ class Consist(object):
             colour_set = livery["purchase"]
         else:
             colour_set = livery["colour_set"]
-        if "random_from_consist_liveries_5" in colour_set:
+        if "random_from_consist_liveries_6" in colour_set:
+            return 108
+        elif "random_from_consist_liveries_5" in colour_set:
             return 107
         elif "random_from_consist_liveries_4" in colour_set:
             return 106
@@ -5209,6 +5211,9 @@ class TankCarAcidConsist(TankCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
         self.randomised_candidate_groups = ["randomised_chemicals_tank_car"]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_acid_tank_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -5222,6 +5227,7 @@ class TankCarAcidConsist(TankCarConsistBase):
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_4"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_6"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -5231,6 +5237,8 @@ class TankCarAcidConsist(TankCarConsistBase):
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.wagon_liveries["FREIGHT_SULPHUR"],
+                global_constants.wagon_liveries["FREIGHT_STRAW"],
             ],
         )
 
@@ -5258,6 +5266,7 @@ class TankCarProductConsist(TankCarConsistBase):
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_4"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -5265,8 +5274,52 @@ class TankCarProductConsist(TankCarConsistBase):
                 global_constants.wagon_liveries["FREIGHT_TEAL"],
                 global_constants.wagon_liveries["FREIGHT_VIOLET"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.wagon_liveries["FREIGHT_GREY"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.wagon_liveries["FREIGHT_SILVER"],
+                global_constants.wagon_liveries["FREIGHT_PEWTER"],
+                # sulphur tried, not effective
+            ],
+        )
+
+
+class TankCarSulphurConsist(TankCarConsistBase):
+    """
+    Visual variant of the standard tank car, same refits, different default cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "sulphur_tank_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
+        self.randomised_candidate_groups = ["randomised_chemicals_tank_car"]
+        self._joker = True
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_acid_tank_cars"
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.sulphur_tank_car_livery_recolour_maps,
+            "weathered": graphics_constants.sulphur_tank_car_livery_recolour_maps_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_4"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_6"],
+                global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+                global_constants.wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.wagon_liveries["FREIGHT_TEAL"],
+                global_constants.wagon_liveries["FREIGHT_VIOLET"],
+                global_constants.wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.wagon_liveries["FREIGHT_SILVER"],
+                global_constants.wagon_liveries["FREIGHT_PEWTER"],
+                global_constants.wagon_liveries["FREIGHT_SULPHUR"],
+                global_constants.wagon_liveries["FREIGHT_STRAW"],
             ],
         )
 
@@ -5286,6 +5339,8 @@ class TankCarChemicalsRandomisedConsist(RandomisedConsistMixin, TankCarConsistBa
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_4"],
+                #global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"], # needs more wagons to work
             ],
         )
 

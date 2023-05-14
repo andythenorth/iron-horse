@@ -53,6 +53,7 @@ buy_menu_sort_order_wagons = [
     "skip_car",
     "tank_car",
     "acid_tank_car",
+    "sulphur_tank_car",
     "product_tank_car",
     "pressure_tank_car",
     "cryo_tank_car",
@@ -236,6 +237,7 @@ intro_month_offsets_by_role_group = {
 # shared across all rosters, keep alphabetised, order not significant
 # only needed for groups composing more than one type of consist
 buyable_variant_group_consist_base_ids_by_group_name = {
+    "wagon_group_acid_tank_cars": "acid_tank_car",
     "wagon_group_automobile_cars": "automobile_car",
     "wagon_group_box_cars": "box_car",
     "wagon_group_coil_cars": "coil_car_uncovered",
@@ -332,6 +334,8 @@ custom_wagon_recolour_sprite_maps = {
     "custom_dark_silver": (2, 4, 35, 19, 21, 22, 23, 14),
     "custom_pewter": (2, 3, 18, 19, 20, 21, 22, 13),
     "custom_dark_pewter": (2, 114, 18, 19, 20, 21, 22, 13),
+    "custom_sulphur": (62, 62 + 1, 62 + 2, 62 + 3, 62 + 4, 62 + 5, 62 + 6, 62 + 7),
+    "custom_dark_sulphur": (62, 62 + 1, 62 + 2, 193, 194, 50, 51, 52),
 }
 
 # shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
@@ -354,13 +358,14 @@ colour_sets = {
     "grey": ["COLOUR_GREY", "custom_dark_grey"],
     "white": ["COLOUR_WHITE", "custom_dark_white"],
     "freight_bauxite": ["custom_bauxite", "custom_light_bauxite"],
-    "freight_blue": ["custom_blue", "COLOUR_BLUE"],
     "freight_grey": ["custom_dark_grey", "COLOUR_GREY"],
     "freight_nightshade": ["custom_nightshade", "custom_light_nightshade"],
     "freight_teal": ["custom_teal", "custom_dark_teal"],
     "freight_violet": ["custom_violet", "custom_dark_violet"],
     "freight_silver": ["custom_silver", "custom_dark_silver"],
     "freight_pewter": ["custom_pewter", "custom_dark_pewter"],
+    "freight_sulphur": ["custom_sulphur", "custom_dark_sulphur"],
+    "freight_straw": ["COLOUR_BROWN", "COLOUR_CREAM"],
 }
 
 # select a colour that matches the current company colour
@@ -496,16 +501,16 @@ wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "FREIGHT_BAUXITE": {
-        "colour_set": "freight_bauxite",
+    "RANDOM_FROM_CONSIST_LIVERIES_6": {
+        "colour_set": "random_from_consist_liveries_6",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "FREIGHT_BLUE": {
-        "colour_set": "freight_blue",
+    "FREIGHT_BAUXITE": {
+        "colour_set": "freight_bauxite",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -562,6 +567,22 @@ wagon_liveries = {
     },
     "FREIGHT_SILVER": {
         "colour_set": "freight_silver",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_STRAW": {
+        "colour_set": "freight_straw",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_SULPHUR": {
+        "colour_set": "freight_sulphur",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -627,6 +648,8 @@ wagon_livery_mixes = {
     "random_from_consist_liveries_4": ["freight_teal", "freight_violet"],
     # silver-ish
     "random_from_consist_liveries_5": ["freight_silver", "freight_pewter"],
+    # yellow / faded
+    "random_from_consist_liveries_6": ["freight_sulphur", "freight_straw"],
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
