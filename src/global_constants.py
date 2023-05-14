@@ -80,7 +80,7 @@ buy_menu_sort_order_wagons = [
     "slag_ladle_car",
     "randomised_piece_goods_car",
     "randomised_flat_car",
-    "randomised_metal_coil_car",
+    "randomised_generic_coil_car",
     "randomised_hopper_car",
     "randomised_bulk_car",
     "randomised_chemicals_tank_car",

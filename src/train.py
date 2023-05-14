@@ -2403,7 +2403,7 @@ class BolsterCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_metal_coil_car",
+            "randomised_generic_coil_car",
             "randomised_flat_car",
         ]
         self._joker = True
@@ -2839,7 +2839,7 @@ class CoilCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_metal_coil_car"]
+        self.randomised_candidate_groups = ["randomised_dedicated_coil_car", "randomised_generic_coil_car"]
 
 
 class CoilCarCoveredConsist(CoilCarConsistBase):
@@ -2906,13 +2906,13 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
         )
 
 
-class ColdMetalCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBase):
+class GenericCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBase):
     """
     Random choice of cold metal car sprite, from available coil cars, bolster cars etc.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_metal_coil_car"
+        self.base_id = "randomised_generic_coil_car"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -3553,7 +3553,7 @@ class FlatCarBulkheadConsist(FlatCarConsistBase):
         )
         self.randomised_candidate_groups = [
             "randomised_piece_goods_car",
-            "randomised_metal_coil_car",
+            "randomised_generic_coil_car",
             "randomised_flat_car",
         ]
         self._joker = True
@@ -3615,7 +3615,7 @@ class FlatCarPlateConsist(FlatCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_metal_coil_car",
+            "randomised_generic_coil_car",
             "randomised_piece_goods_car",
             "randomised_flat_car",
         ]
@@ -3704,7 +3704,7 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_metal_coil_car",
+            "randomised_generic_coil_car",
             "randomised_piece_goods_car",
             "randomised_flat_car",
         ]

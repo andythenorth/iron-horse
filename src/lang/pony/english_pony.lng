@@ -104,7 +104,7 @@ STR_WAGON_GROUP_RANDOMISED_COVERED_HOPPER_CARS                  :Covered Hoppers
 STR_WAGON_GROUP_RANDOMISED_DUMP_CARS                            :Mineral Wagons
 STR_WAGON_GROUP_RANDOMISED_FLAT_CARS                            :Flatbed Cargo Wagons
 STR_WAGON_GROUP_RANDOMISED_HOPPER_CARS                          :Hoppers
-STR_WAGON_GROUP_RANDOMISED_METAL_COIL_CARS                      :Coil Wagons
+STR_WAGON_GROUP_RANDOMISED_GENERIC_COIL_CARS                    :Coil Wagons
 STR_WAGON_GROUP_RANDOMISED_OPEN_CARS                            :Open Wagons
 STR_WAGON_GROUP_RANDOMISED_PIECE_GOODS_CARS                     :Piece Goods Wagons
 STR_WAGON_GROUP_RESTAURANT_CARS                                 :Restaurant Cars
@@ -188,8 +188,8 @@ STR_NAME_SUFFIX_RANDOMISED_CHEMICALS_TANK_CAR                   :Chemicals Tanke
 STR_NAME_SUFFIX_RANDOMISED_COVERED_HOPPER_CAR                   :Covered Hopper
 STR_NAME_SUFFIX_RANDOMISED_DUMP_CAR                             :Mineral Wagon
 STR_NAME_SUFFIX_RANDOMISED_FLAT_CAR                             :Flatbed Cargo Wagon
+STR_NAME_SUFFIX_RANDOMISED_GENERIC_COIL_CAR                     :Coil Wagon
 STR_NAME_SUFFIX_RANDOMISED_HOPPER_CAR                           :Hopper
-STR_NAME_SUFFIX_RANDOMISED_METAL_COIL_CAR                       :Coil Wagon
 STR_NAME_SUFFIX_RANDOMISED_OPEN_CAR                             :Open Wagon
 STR_NAME_SUFFIX_RANDOMISED_PIECE_GOODS_CAR                      :Piece Goods Wagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Van

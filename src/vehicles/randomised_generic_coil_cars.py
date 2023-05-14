@@ -1,10 +1,10 @@
-from train import ColdMetalCarRandomisedConsist, FreightCar
+from train import GenericCoilCarRandomisedConsist, FreightCar
 
 
 def main():
     # --------------- pony ----------------------------------------------------------------------
 
-    consist = ColdMetalCarRandomisedConsist(
+    consist = GenericCoilCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=16750,
         gen=1,
@@ -16,7 +16,7 @@ def main():
 
     # no new type A for gen 2, gen 1 type A continues
 
-    consist = ColdMetalCarRandomisedConsist(
+    consist = GenericCoilCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=16760,
         gen=2,
@@ -26,7 +26,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = ColdMetalCarRandomisedConsist(
+    consist = GenericCoilCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=16770,
         gen=3,
@@ -36,7 +36,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = ColdMetalCarRandomisedConsist(
+    consist = GenericCoilCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=16780,
         gen=3,
@@ -46,7 +46,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = ColdMetalCarRandomisedConsist(
+    consist = GenericCoilCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=16790,
         gen=4,
@@ -56,7 +56,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = ColdMetalCarRandomisedConsist(
+    consist = GenericCoilCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=16800,
         gen=4,
@@ -66,7 +66,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = ColdMetalCarRandomisedConsist(
+    consist = GenericCoilCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=16810,
         gen=4,
@@ -80,7 +80,7 @@ def main():
         chassis="empty_32px",
     )
 
-    consist = ColdMetalCarRandomisedConsist(
+    consist = GenericCoilCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=16820,
         gen=5,
@@ -90,7 +90,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = ColdMetalCarRandomisedConsist(
+    consist = GenericCoilCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=16830,
         gen=5,

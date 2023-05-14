@@ -97,9 +97,9 @@ from vehicles import randomised_box_cars
 from vehicles import randomised_bulk_cars
 from vehicles import randomised_chemicals_tank_cars
 from vehicles import randomised_covered_hopper_cars
-from vehicles import randomised_metal_coil_cars
 from vehicles import randomised_dump_cars
 from vehicles import randomised_flat_cars
+from vehicles import randomised_generic_coil_cars
 from vehicles import randomised_hopper_cars
 from vehicles import randomised_open_cars
 from vehicles import randomised_piece_goods_cars
@@ -368,8 +368,8 @@ def main():
     randomised_covered_hopper_cars.main()
     randomised_dump_cars.main()
     randomised_flat_cars.main()
+    randomised_generic_coil_cars.main()
     randomised_hopper_cars.main()
-    randomised_metal_coil_cars.main()
     randomised_open_cars.main()
     randomised_piece_goods_cars.main()
     rock_hopper_cars.main()
