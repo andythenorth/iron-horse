@@ -5228,6 +5228,8 @@ class TankCarAcidConsist(TankCarConsistBase):
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.wagon_liveries["FREIGHT_LEMON"],
+                global_constants.wagon_liveries["FREIGHT_MUSTARD"],
             ],
         )
 
@@ -5264,6 +5266,8 @@ class TankCarProductConsist(TankCarConsistBase):
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.wagon_liveries["FREIGHT_LEMON"],
+                global_constants.wagon_liveries["FREIGHT_MUSTARD"],
             ],
         )
 

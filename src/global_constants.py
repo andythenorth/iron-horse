@@ -332,6 +332,10 @@ custom_wagon_recolour_sprite_maps = {
     "custom_dark_silver": (2, 4, 35, 19, 21, 22, 23, 14),
     "custom_pewter": (2, 3, 18, 19, 20, 21, 22, 13),
     "custom_dark_pewter": (2, 114, 18, 19, 20, 21, 22, 13),
+    "custom_mustard": (62, 62 + 1, 62 + 2, 62 + 3, 62 + 4, 62 + 5, 62 + 6, 62 + 7),
+    "custom_dark_mustard": (61, 62, 62 + 1, 192, 193, 65, 50, 51),
+    "custom_lemon": (62, 192, 193, 194, 195, 196, 197, 14),
+    "custom_dark_lemon": (62, 192, 193, 194, 195, 196, 197, 121),
 }
 
 # shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
@@ -361,6 +365,8 @@ colour_sets = {
     "freight_violet": ["custom_violet", "custom_dark_violet"],
     "freight_silver": ["custom_silver", "custom_dark_silver"],
     "freight_pewter": ["custom_pewter", "custom_dark_pewter"],
+    "freight_mustard": ["custom_mustard", "custom_dark_mustard"],
+    "freight_lemon": ["custom_lemon", "custom_dark_lemon"],
 }
 
 # select a colour that matches the current company colour
@@ -531,6 +537,22 @@ wagon_liveries = {
     "FREIGHT_GREY_NO_WEATHERING": {
         "colour_set": "freight_grey",
         "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_LEMON": {
+        "colour_set": "freight_lemon",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_MUSTARD": {
+        "colour_set": "freight_mustard",
+        "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
