@@ -238,6 +238,7 @@ class Roster(object):
                 + " did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen"
             )
         if len(result) == 1:
+            print(result)
             raise BaseException(
                 randomisation_consist.id
                 + " has only one choice for randomisation_candidates, this is pointless nonsense, consider removing "

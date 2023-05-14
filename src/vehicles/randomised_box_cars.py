@@ -4,8 +4,6 @@ from train import BoxCarRandomisedConsist, FreightCar
 def main():
     # --------------- pony ----------------------------------------------------------------------
 
-    print("CABBAGE 3000: BoxCarRandomisedConsist gen 4A nerfed off due to issues with only one wagon randomisation candidate")
-    """
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=16680,
@@ -15,7 +13,7 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
-    """
+
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=16690,

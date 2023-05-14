@@ -4,7 +4,16 @@ from train import BoxCarCurtainSideConsist, FreightCar
 def main():
     # --------------- pony ----------------------------------------------------------------------
 
-    # gen 4 start, only B and C lengths
+    consist = BoxCarCurtainSideConsist(
+        roster_id="pony",
+        base_numeric_id=11430,
+        gen=4,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+
     consist = BoxCarCurtainSideConsist(
         roster_id="pony",
         base_numeric_id=9580,

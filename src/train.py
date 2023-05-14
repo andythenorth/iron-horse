@@ -2591,6 +2591,7 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
+                global_constants.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -4432,6 +4433,7 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
+                global_constants.wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
