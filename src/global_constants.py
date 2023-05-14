@@ -490,9 +490,25 @@ wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "FREIGHT_GREY_NO_WEATHERING": {
+        "colour_set": "freight_grey",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "FREIGHT_NIGHTSHADE": {
         "colour_set": "freight_nightshade",
         "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_NIGHTSHADE_NO_WEATHERING": {
+        "colour_set": "freight_nightshade",
+        "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),

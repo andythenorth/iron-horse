@@ -2307,6 +2307,7 @@ class AutomobileCarConsistBase(CarConsist):
                 # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
                 global_constants.wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE_NO_WEATHERING"],
+                global_constants.wagon_liveries["FREIGHT_GREY_NO_WEATHERING"],
             ],
         )
 
