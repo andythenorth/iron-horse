@@ -911,7 +911,9 @@ class Consist(object):
             colour_set = livery["purchase"]
         else:
             colour_set = livery["colour_set"]
-        if "random_from_consist_liveries_4" in colour_set:
+        if "random_from_consist_liveries_5" in colour_set:
+            return 107
+        elif "random_from_consist_liveries_4" in colour_set:
             return 106
         elif "random_from_consist_liveries_3" in colour_set:
             return 105
@@ -5012,6 +5014,7 @@ class SiloCarConsistBase(CarConsist):
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_4"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -5019,7 +5022,8 @@ class SiloCarConsistBase(CarConsist):
                 global_constants.wagon_liveries["FREIGHT_TEAL"],
                 global_constants.wagon_liveries["FREIGHT_VIOLET"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.wagon_liveries["FREIGHT_GREY"],
+                global_constants.wagon_liveries["FREIGHT_SILVER"],
+                global_constants.wagon_liveries["FREIGHT_PEWTER"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
             ],
         )
@@ -5567,7 +5571,7 @@ class UnitVariant(object):
         if self.uses_random_livery:
             if (
                 self.buyable_variant.livery["colour_set"]
-                == "random_from_consist_liveries_2"
+                in ["random_from_consist_liveries_2"]
             ):
                 for colour_name in self.all_candidate_livery_colour_sets_for_variant[
                     0:2

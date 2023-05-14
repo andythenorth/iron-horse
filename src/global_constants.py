@@ -327,6 +327,10 @@ custom_wagon_recolour_sprite_maps = {
         135,
         14,
     ),  # WIP, may need improved
+    "custom_silver": (2, 18, 19, 20, 21, 22, 23, 14),
+    "custom_dark_silver": (2, 4, 35, 19, 21, 22, 23, 14),
+    "custom_pewter": (2, 3, 18, 19, 20, 21, 22, 13),
+    "custom_dark_pewter": (2, 114, 18, 19, 20, 21, 22, 13),
 }
 
 # shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
@@ -354,6 +358,8 @@ colour_sets = {
     "freight_nightshade": ["custom_nightshade", "custom_light_nightshade"],
     "freight_teal": ["custom_teal", "custom_dark_teal"],
     "freight_violet": ["custom_violet", "custom_dark_violet"],
+    "freight_silver": ["custom_silver", "custom_dark_silver"],
+    "freight_pewter": ["custom_pewter", "custom_dark_pewter"],
 }
 
 # select a colour that matches the current company colour
@@ -481,6 +487,14 @@ wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "RANDOM_FROM_CONSIST_LIVERIES_5": {
+        "colour_set": "random_from_consist_liveries_5",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "FREIGHT_BAUXITE": {
         "colour_set": "freight_bauxite",
         "use_weathering": True,
@@ -537,6 +551,22 @@ wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "FREIGHT_PEWTER": {
+        "colour_set": "freight_pewter",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_SILVER": {
+        "colour_set": "freight_silver",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "FREIGHT_TEAL": {
         "colour_set": "freight_teal",
         "use_weathering": True,
@@ -580,6 +610,7 @@ wagon_livery_mixes = {
         "freight_bauxite",
         "freight_grey",
         "freight_nightshade",
+        "freight_silver",
         "freight_teal",
         "freight_violet",
     ],
@@ -593,6 +624,8 @@ wagon_livery_mixes = {
     ],
     # chemicals
     "random_from_consist_liveries_4": ["freight_teal", "freight_violet"],
+    # silver-ish
+    "random_from_consist_liveries_5": ["freight_silver", "freight_pewter"],
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
