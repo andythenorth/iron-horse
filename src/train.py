@@ -275,8 +275,7 @@ class Consist(object):
         if context == "purchase_level_1":
             result = [default_name]
         elif context == "default_name":
-            # CABBAGE 899
-            result = ["STR_CABBAGE"]
+            result = [default_name]
         else:
             if self.str_name_suffix is not None:
                 result = [
@@ -2168,11 +2167,9 @@ class CarConsist(Consist):
             ]
 
         if context == "docs":
-            # CABBAGE 599
             result = [
-                "STR_CABBAGE",
-                "STR_PARENTHESES",
-                "STR_NAME_SUFFIX_SMALL",
+                self.wagon_title_class_str,
+                self.wagon_title_optional_randomised_suffix_str,
             ]
         elif context == "default_name":
             result = default_result
@@ -4300,13 +4297,10 @@ class MailHSTCarConsist(MailCarConsistBase):
 
     def get_name(self, context, unit_variant):
         # special name handling to use the cab name
-        if context == "docs":
-            result = ["STR_CABBAGE"]
-        else:
-            result = [
-                "STR_NAME_" + self.cab_id,
-                "STR_NAME_SUFFIX_HST_MAIL_CAR",
-            ]
+        result = [
+            "STR_NAME_" + self.cab_id,
+            "STR_NAME_SUFFIX_HST_MAIL_CAR",
+        ]
         return result
 
 
@@ -4513,14 +4507,11 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         self._joker = True
 
     def get_name(self, context, unit_variant):
-        if context == "docs":
-            result = ["STR_CABBAGE"]
-        else:
-            # special name handling to use the cab name
-            result = [
-                "STR_NAME_" + self.cab_id,
-                self._str_name_suffix,
-            ]
+        # special name handling to use the cab name
+        result = [
+            "STR_NAME_" + self.cab_id,
+            self._str_name_suffix,
+        ]
         return result
 
 
@@ -4674,18 +4665,10 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
 
     def get_name(self, context, unit_variant):
         # special name handling to use the cab name
-        # !! this doesn't work in the docs,
-        # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
-        # !! buy menu text kinda does that, but would need to convert all names to do this
-        # no need to handle purchase list variant context here
-        if context == "default_name":
-            # CABBAGE 896
-            result = ["STR_CABBAGE"]
-        else:
-            result = [
-                "STR_NAME_" + self.cab_id,
-                "STR_NAME_SUFFIX_HST_PASSENGER_CAR",
-            ]
+        result = [
+            "STR_NAME_" + self.cab_id,
+            "STR_NAME_SUFFIX_HST_PASSENGER_CAR",
+        ]
         return result
 
 
