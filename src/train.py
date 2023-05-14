@@ -5038,6 +5038,7 @@ class SiloCarConsist(SiloCarConsistBase):
         self.base_id = "silo_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
+        self.randomised_candidate_groups = ["randomised_silo_car"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_silo_cars"
@@ -5052,6 +5053,7 @@ class SiloCarVBarrelConsist(SiloCarConsistBase):
         self.base_id = "v_barrel_silo_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
+        self.randomised_candidate_groups = ["randomised_silo_car"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_silo_cars"
@@ -5076,6 +5078,30 @@ class SiloCarCementConsist(SiloCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            ],
+        )
+
+
+class SiloCarRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase):
+    """
+    Random choice of silo car sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_silo_car"
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_silo_cars"
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
+            liveries=[
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_4"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
             ],
         )
 
