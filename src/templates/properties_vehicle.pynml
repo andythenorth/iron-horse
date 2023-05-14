@@ -35,7 +35,7 @@
 
     item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
         property {
-            name:                           string(STR_CABBAGE); <!--! name static prop not used, use callback instead -->
+            <!--! name static prop not used, use callback instead -->
             climates_available:             NO_CLIMATE; // nml constant
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
                 <!--! some properties should not be set for trailing parts of articulated consists -->
