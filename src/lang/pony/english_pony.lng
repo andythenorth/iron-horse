@@ -119,6 +119,8 @@ STR_WAGON_GROUP_SWING_ROOF_HOPPER_CARS                          :Swing Roof Hopp
 STR_WAGON_GROUP_TANK_CARS                                       :Tankers
 STR_WAGON_GROUP_TARPAULIN_CARS                                  :Tarpaulin Wagons
 STR_WAGON_GROUP_TORPEDO_CARS                                    :Torpedo Wagons
+# special case
+STR_WAGON_GROUP_MORE                                            :More...
 
 # wagon class suffixes
 # as of Jan 2019 these are switched from en-us to en-gb

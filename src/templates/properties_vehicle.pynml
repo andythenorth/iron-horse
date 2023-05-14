@@ -30,14 +30,20 @@
     </tal:buy_menu_additional_text>
 
     <!--! !!! this could be moved to a dedicated .pynml file, but as of April 2023 I'm not 100% convinced it's done -->
-    <tal:variant_name condition="unit_variant.buyable_variant.buyable_variant_group is not None">
+    <tal:variant_name condition="unit_variant.buyable_variant.buyable_variant_group is not None and vehicle.is_lead_unit_of_consist">
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_0, [1]) {
+            ${consist.get_name(context='purchase_level_0', unit_variant=unit_variant)};
+        }
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_1, [1]) {
+            return ${consist.get_name(context='purchase_level_1', unit_variant=unit_variant)};
+        }
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_autoreplace_lhs, [1]) {
+            return ${consist.get_name(context='autoreplace_lhs', unit_variant=unit_variant)};
+        }
+
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
-            <!--! !! if we explicitly handle indent level 0 for the group name,
-                     then we can safely rely on the default in contexts like the autoreplace UI -->
-            <tal:wagon condition="(consist.power == 0) and (unit_variant.buyable_variant.buyable_variant_group is not None)">
-                0: return ${unit_variant.buyable_variant.buyable_variant_group.name};
-            </tal:wagon>
-                1..99: return ${consist.get_name(context='purchase_level_1', unit_variant=unit_variant)};
+            0: ${unit_variant.id}_switch_name_purchase_level_0;
+            1: ${unit_variant.id}_switch_name_purchase_level_1;
             return CB_RESULT_NO_TEXT; <!--! will use property instead -->
         }
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, [
@@ -55,7 +61,7 @@
                 getbits(extra_callback_info1, 0, 8)
             ]) {
             0x20: ${unit_variant.id}_switch_name_purchase_extra_bits;
-            0x22: return ${consist.get_name(context='autoreplace_lhs', unit_variant=unit_variant)};
+            0x22: ${unit_variant.id}_switch_name_autoreplace_lhs;
             return CB_RESULT_NO_TEXT; <!--! will use property instead -->
         }
     </tal:variant_name>
@@ -63,7 +69,7 @@
 
     item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
         property {
-            name:                           ${consist.get_name(unit_variant=unit_variant)};
+            name:                           ${consist.get_name(context="static_property", unit_variant=unit_variant)};
             climates_available:             NO_CLIMATE; // nml constant
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
                 <!--! some properties should not be set for trailing parts of articulated consists -->
@@ -115,12 +121,12 @@
             effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
         }
         graphics {
-            <tal:variant_name condition="unit_variant.buyable_variant.buyable_variant_group is not None">
-                name:                           ${unit_variant.id}_switch_name;
-            </tal:variant_name>
             default:                        ${vehicle.id}_switch_graphics;
             purchase:                       ${vehicle.id}_switch_graphics_purchase;
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
+                <tal:variant_name condition="unit_variant.buyable_variant.buyable_variant_group is not None">
+                    name:                           ${unit_variant.id}_switch_name;
+                </tal:variant_name>
                 <!--! certain callbacks should not be handled for trailing parts of articulated consists -->
                 cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
                 <tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">

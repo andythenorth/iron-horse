@@ -959,7 +959,9 @@ class Consist(object):
 
         # some wagons (mostly railcar trailers and pax coaches) might want to show an optional role string
         if self._buy_menu_additional_text_role_string is not None:
-            result.append("STR_ROLE, string(" + self._buy_menu_additional_text_role_string + ")")
+            result.append(
+                "STR_ROLE, string(" + self._buy_menu_additional_text_role_string + ")"
+            )
 
         # driving cab hint comes after role string
         if self.buy_menu_additional_text_hint_driving_cab:
@@ -976,7 +978,11 @@ class Consist(object):
             result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS")
 
         if len(result) == 1:
-            return "STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(" + result[0] + ")"
+            return (
+                "STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string("
+                + result[0]
+                + ")"
+            )
         if len(result) == 2:
             return (
                 "STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR, string("
@@ -2086,20 +2092,21 @@ class CarConsist(Consist):
                 subtype_str = "STR_NAME_SUFFIX_TWIN"
             return "STR_PARENTHESES, string(" + subtype_str + ")"
 
-    def get_name(self, context=None, unit_variant=None):
-        if self.is_randomised_wagon_type or self.is_caboose:
-            optional_randomised_suffix = "STR_NAME_SUFFIX_RANDOMISED_WAGON"
-        else:
-            optional_randomised_suffix = None
-
+    def get_wagon_title_optional_livery_suffix_str(self, unit_variant):
         if getattr(unit_variant, "uses_random_livery", False):
             try:
                 random_livery_num = unit_variant.buyable_variant.livery["colour_set"][
                     -1
                 ]
-                if unit_variant.buyable_variant.livery["colour_set"] == "random_from_consist_liveries_1":
+                if (
+                    unit_variant.buyable_variant.livery["colour_set"]
+                    == "random_from_consist_liveries_1"
+                ):
                     optional_livery_suffix = "STR_NAME_SUFFIX_LIVERY_MIX_1"
-                elif unit_variant.buyable_variant.livery["colour_set"] == "random_from_consist_liveries_3":
+                elif (
+                    unit_variant.buyable_variant.livery["colour_set"]
+                    == "random_from_consist_liveries_3"
+                ):
                     optional_livery_suffix = "STR_NAME_SUFFIX_LIVERY_MIX_3"
                 else:
                     optional_livery_suffix = "STR_NAME_SUFFIX_LIVERY_MIX_2"
@@ -2107,24 +2114,69 @@ class CarConsist(Consist):
                 raise BaseException(self.id)
         else:
             optional_livery_suffix = "STR_EMPTY"
+        return optional_livery_suffix
 
-        if context == "purchase_level_1" or context == "autoreplace_lhs":
+    @property
+    def wagon_title_optional_randomised_suffix_str(self):
+        if self.is_randomised_wagon_type or self.is_caboose:
+            return "STR_NAME_SUFFIX_RANDOMISED_WAGON"
+        else:
+            return None
+
+    def get_name(self, context=None, unit_variant=None):
+        if self.wagon_title_optional_randomised_suffix_str is not None:
+            default_result = [
+                self.wagon_title_class_str,
+                self.wagon_title_subtype_str,
+                self.wagon_title_optional_randomised_suffix_str,
+            ]
+        else:
+            default_result = [
+                self.wagon_title_class_str,
+                self.wagon_title_subtype_str,
+            ]
+
+        if context in ["docs", "static_property"]:
+            result = default_result
+        elif context == "purchase_level_0":
+            result = default_result
+            # over-ride result for special case
+            # !! but for wagons, why would unit_variant ever be None here?
+            # !! looks like this is just covering cases where params aren't being correctly passed??
+            if unit_variant is not None:
+                if unit_variant.buyable_variant.buyable_variant_group is not None:
+                    return unit_variant.buyable_variant.buyable_variant_group.get_name(
+                        context=context
+                    )
+        elif context == "purchase_level_1":
             result = [
                 self.wagon_title_class_str,
-                optional_livery_suffix
+                self.get_wagon_title_optional_livery_suffix_str(unit_variant),
             ]
-        #elif context == "autoreplace_lhs":
-            #result = [
-                #self.wagon_title_class_str,
-                #self.wagon_title_subtype_str,
-                #optional_livery_suffix,
-            #]
+            # over-ride result for special case
+            if unit_variant.buyable_variant.buyable_variant_group is not None:
+                if "fixed" in unit_variant.buyable_variant.buyable_variant_group_id:
+                    result = ["string(STR_WAGON_GROUP_MORE)"]
+        # elif context == "autoreplace_lhs":
+        # result = [
+        # self.wagon_title_class_str,
+        # self.wagon_title_subtype_str,
+        # optional_livery_suffix,
+        # ]
+        elif context == "autoreplace_lhs":
+            # !! same as purchase level 1, until text stack handling is sorted
+            result = [
+                self.wagon_title_class_str,
+                self.get_wagon_title_optional_livery_suffix_str(unit_variant),
+            ]
         elif context == "group_parent":
-            if optional_randomised_suffix is not None:
+            # !! this is weird, group_parent isn't a single context, we need some other way to handle this
+            # !! this is called via a weird round trip to the group get_name method anyway, it's bizarre??
+            if self.wagon_title_optional_randomised_suffix_str is not None:
                 result = [
                     "STR_WAGON_GROUP_" + self.base_id.upper() + "S",
                     self.wagon_title_subtype_str,
-                    optional_randomised_suffix,
+                    self.wagon_title_optional_randomised_suffix_str,
                 ]
             else:
                 result = [
@@ -2132,22 +2184,19 @@ class CarConsist(Consist):
                     self.wagon_title_subtype_str,
                 ]
         else:
-            if optional_randomised_suffix is not None:
-                result = [
-                    self.wagon_title_class_str,
-                    self.wagon_title_subtype_str,
-                    optional_randomised_suffix,
-                ]
-            else:
-                result = [
-                    self.wagon_title_class_str,
-                    self.wagon_title_subtype_str,
-                ]
-        #return ["string(STR_NAME_CONSIST_COMPOUND_1)"]
+            raise BaseException(
+                "get_name called for wagon consist "
+                + self.id
+                + " with no context provided"
+            )
+        if len(result) == 1:
+            return result[0]
         if len(result) == 2:
-            return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
-                a=result[0],
-                b=result[1],
+            return (
+                "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
+                    a=result[0],
+                    b=result[1],
+                )
             )
         if len(result) == 3:
             return "string(STR_NAME_CONSIST_COMPOUND_3, string({a}), string({b}), string({c}))".format(
@@ -5496,8 +5545,13 @@ class UnitVariant(object):
         # get a pair of colours to put on the text stack to use in name suffix string if required
         result = []
         if self.uses_random_livery:
-            if self.buyable_variant.livery["colour_set"] != "random_from_consist_liveries_1":
-                for colour_name in self.all_candidate_livery_colour_sets_for_variant[0:2]:
+            if (
+                self.buyable_variant.livery["colour_set"]
+                != "random_from_consist_liveries_1"
+            ):
+                for colour_name in self.all_candidate_livery_colour_sets_for_variant[
+                    0:2
+                ]:
                     if colour_name == "company_colour":
                         result.append("switch_get_colour_name(company_colour1)")
                     elif colour_name == "complement_company_colour":
@@ -5508,7 +5562,9 @@ class UnitVariant(object):
                         result.append(
                             "switch_get_colour_name("
                             + str(
-                                list(global_constants.colour_sets.keys()).index(colour_name)
+                                list(global_constants.colour_sets.keys()).index(
+                                    colour_name
+                                )
                             )
                             + ")"
                         )

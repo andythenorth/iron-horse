@@ -338,7 +338,7 @@ class DocHelper(object):
         return result
 
     def unpack_name_string(self, consist):
-        substrings = consist.get_name().split("string(")
+        substrings = consist.get_name(context="docs").split("string(")
         # engines have an untranslated name defined via _name, wagons use a translated string
         if consist._name is not None:
             name = consist._name

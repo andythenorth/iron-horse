@@ -454,8 +454,7 @@ class BuyableVariantGroup(object):
         # convenience function, note also parent_vehicle, which is often what we want
         return self.parent_vehicle.unit.consist
 
-    @property
-    def name(self):
+    def get_name(self, context=None):
         # assumes wagon groups as of April 2023, change if needed
         # !! might want to handle case of group_base_id = None?
         # !! might throw a plural name for groups where there's only one member?
@@ -473,4 +472,4 @@ class BuyableVariantGroup(object):
             if len(self.buyable_variants) > 1:
                 return self.parent_consist.get_name(context="group_parent")
             else:
-                return self.parent_consist.get_name()
+                return self.parent_consist.get_name(context)
