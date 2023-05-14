@@ -2574,11 +2574,15 @@ class BoxCarSlidingWallConsist(BoxCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # player choice tried, not needed
+                global_constants.wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
+                # grey doesn't look very good
             ],
         )
 
@@ -2612,12 +2616,14 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
+                global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
-                # player choice tried, not needed
             ],
         )
 
@@ -3056,7 +3062,6 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
-                # player choice tried, not needed
             ],
         )
 
@@ -3492,7 +3497,6 @@ class FlatCarBulkheadConsist(FlatCarConsistBase):
                 ],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
-                # player choice tried, not needed
             ],
         )
 
@@ -4314,7 +4318,6 @@ class OpenCarHoodConsist(OpenCarConsistBase):
                 ],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
-                # player choice tried, not needed
             ],
             has_cover=True,
         )
@@ -4469,7 +4472,9 @@ class PassengerCarConsist(PassengerCarConsistBase):
         if self.base_track_type_name == "NG":
             self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE"
         else:
-            self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+            self._buy_menu_additional_text_role_string = (
+                "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+            )
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -4946,7 +4951,6 @@ class SiloCarConsist(SiloCarConsistBase):
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
-                # player choice tried, not needed
             ],
         )
 
