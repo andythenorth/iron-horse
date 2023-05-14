@@ -273,15 +273,15 @@ class Consist(object):
     def get_name(self, context=None, unit_variant=None):
         default_name = "string(STR_NAME_" + self.id + ")"
         if context == "purchase_level_1":
-            return default_name
+            return [default_name]
         else:
             if self.str_name_suffix is not None:
-                return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string(STR_PARENTHESES, string({b})))".format(
+                return ["string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string(STR_PARENTHESES, string({b})))".format(
                     a="STR_NAME_" + self.id,
                     b=self.str_name_suffix,
-                )
+                )]
             else:
-                return default_name
+                return [default_name]
 
     def engine_varies_power_by_power_source(self, vehicle):
         if self.power_by_power_source is not None and vehicle.is_lead_unit_of_consist:
@@ -2130,12 +2130,11 @@ class CarConsist(Consist):
         group = unit_variant.buyable_variant.buyable_variant_group
         if group.parent_consist.use_named_buyable_variant_group != None:
             try:
-                return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
+                return ["string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
                     a="STR_"
                     + group.parent_consist.use_named_buyable_variant_group.upper(),
                     b=group.parent_consist.wagon_title_subtype_str,
-                )
-
+                )]
             except:
                 raise BaseException(group.parent_vehicle.id)
         else:
@@ -2160,7 +2159,7 @@ class CarConsist(Consist):
         if context in ["docs", "static_property"]:
             result = default_result
             # CABBAGE 599
-            return "string(STR_NAME_CONSIST_COMPOUND_2, string(STR_CABBAGE), string(STR_PARENTHESES, string(STR_NAME_SUFFIX_SMALL)))"
+            return ["string(STR_NAME_CONSIST_COMPOUND_2, string(STR_CABBAGE), string(STR_PARENTHESES, string(STR_NAME_SUFFIX_SMALL)))"]
         elif context == "purchase_level_0":
             result = default_result
             # over-ride result for special case
@@ -2211,27 +2210,27 @@ class CarConsist(Consist):
                 + " with no context provided"
             )
         if len(result) == 1:
-            return result[0]
+            return result
         if len(result) == 2:
-            return (
+            return [(
                 "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
                     a=result[0],
                     b=result[1],
                 )
-            )
+            )]
         if len(result) == 3:
-            return "string(STR_NAME_CONSIST_COMPOUND_3, string({a}), string({b}), string({c}))".format(
+            return ["string(STR_NAME_CONSIST_COMPOUND_3, string({a}), string({b}), string({c}))".format(
                 a=result[0],
                 b=result[1],
                 c=result[2],
-            )
+            )]
         if len(result) == 4:
-            return "string(STR_NAME_CONSIST_COMPOUND_4, string({a}), string({b}), string({c}), string({d}))".format(
+            return ["string(STR_NAME_CONSIST_COMPOUND_4, string({a}), string({b}), string({c}), string({d}))".format(
                 a=result[0],
                 b=result[1],
                 c=result[2],
                 d=result[3],
-            )
+            )]
 
     @property
     def joker(self):
@@ -4298,10 +4297,10 @@ class MailHSTCarConsist(MailCarConsistBase):
         # !! this doesn't work in the docs,
         # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
         # !! buy menu text kinda does that, but would need to convert all names to do this
-        return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
+        return ["string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
             a="STR_NAME_" + self.cab_id,
             b="STR_NAME_SUFFIX_HST_MAIL_CAR",
-        )
+        )]
 
 
 class OpenCarConsistBase(CarConsist):
@@ -4512,10 +4511,10 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
         # !! buy menu text kinda does that, but would need to convert all names to do this
         # no need to handle purchase list variant context for these
-        return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
+        return ["string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
             a="STR_NAME_" + self.cab_id,
             b=self._str_name_suffix,
-        )
+        )]
 
 
 class PassengerCarConsist(PassengerCarConsistBase):
@@ -4672,10 +4671,10 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
         # !! buy menu text kinda does that, but would need to convert all names to do this
         # no need to handle purchase list variant context here
-        return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
+        return ["string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
             a="STR_NAME_" + self.cab_id,
             b="STR_NAME_SUFFIX_HST_PASSENGER_CAR",
-        )
+        )]
 
 
 class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
