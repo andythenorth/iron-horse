@@ -2123,6 +2123,27 @@ class CarConsist(Consist):
         else:
             return None
 
+    def get_name_group_cabbage(self, context=None, unit_variant=None):
+        # assumes wagon groups as of April 2023, change if needed
+        # !! might want to handle case of group_base_id = None?
+        # !! might throw a plural name for groups where there's only one member?
+        group = unit_variant.buyable_variant.buyable_variant_group
+        if group.parent_consist.use_named_buyable_variant_group != None:
+            try:
+                return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
+                    a="STR_"
+                    + group.parent_consist.use_named_buyable_variant_group.upper(),
+                    b=group.parent_consist.wagon_title_subtype_str,
+                )
+
+            except:
+                raise BaseException(group.parent_vehicle.id)
+        else:
+            if len(group.buyable_variants) > 1:
+                return group.parent_consist.get_name(context="group_parent")
+            else:
+                return group.parent_consist.get_name(context)
+
     def get_name(self, context=None, unit_variant=None):
         if self.wagon_title_optional_randomised_suffix_str is not None:
             default_result = [
@@ -2138,6 +2159,8 @@ class CarConsist(Consist):
 
         if context in ["docs", "static_property"]:
             result = default_result
+            # CABBAGE 599
+            return "string(STR_NAME_CONSIST_COMPOUND_2, string(STR_CABBAGE), string(STR_PARENTHESES, string(STR_NAME_SUFFIX_SMALL)))"
         elif context == "purchase_level_0":
             result = default_result
             # over-ride result for special case
@@ -2145,9 +2168,7 @@ class CarConsist(Consist):
             # !! looks like this is just covering cases where params aren't being correctly passed??
             if unit_variant is not None:
                 if unit_variant.buyable_variant.buyable_variant_group is not None:
-                    return unit_variant.buyable_variant.buyable_variant_group.get_name(
-                        context=context
-                    )
+                    return self.get_name_group_cabbage(context=context, unit_variant=unit_variant)
         elif context == "purchase_level_1":
             result = [
                 self.wagon_title_class_str,

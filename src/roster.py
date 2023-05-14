@@ -453,23 +453,3 @@ class BuyableVariantGroup(object):
     def parent_consist(self):
         # convenience function, note also parent_vehicle, which is often what we want
         return self.parent_vehicle.unit.consist
-
-    def get_name(self, context=None):
-        # assumes wagon groups as of April 2023, change if needed
-        # !! might want to handle case of group_base_id = None?
-        # !! might throw a plural name for groups where there's only one member?
-        if self.parent_consist.use_named_buyable_variant_group != None:
-            try:
-                return "string(STR_NAME_CONSIST_COMPOUND_2, string({a}), string({b}))".format(
-                    a="STR_"
-                    + self.parent_consist.use_named_buyable_variant_group.upper(),
-                    b=self.parent_consist.wagon_title_subtype_str,
-                )
-
-            except:
-                raise BaseException(self.parent_vehicle.id)
-        else:
-            if len(self.buyable_variants) > 1:
-                return self.parent_consist.get_name(context="group_parent")
-            else:
-                return self.parent_consist.get_name(context)
