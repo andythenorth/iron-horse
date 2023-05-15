@@ -52,9 +52,9 @@ buy_menu_sort_order_wagons = [
     "scrap_metal_car",
     "skip_car",
     "tank_car",
+    "product_tank_car",
     "acid_tank_car",
     "sulphur_tank_car",
-    "product_tank_car",
     "pressure_tank_car",
     "cryo_tank_car",
     "covered_hopper_car",
@@ -341,6 +341,8 @@ custom_wagon_recolour_sprite_maps = {
     "custom_dark_sulphur": (62, 62 + 1, 62 + 2, 193, 194, 50, 51, 52),
     "custom_ruby": (40, 41, 42, 43, 44, 45, 46, 47),
     "custom_faded_ruby": (71, 72, 73, 43, 44, 76, 77, 47),
+    "custom_oil_black": (1, 2, 3, 4, 5, 6, 7, 8),
+    "custom_faded_oil_black": (1, 70, 16, 4, 26, 6, 7, 8),
 }
 
 # shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
@@ -372,6 +374,7 @@ colour_sets = {
     "freight_sulphur": ["custom_sulphur", "custom_dark_sulphur"],
     "freight_straw": ["COLOUR_BROWN", "COLOUR_CREAM"],
     "freight_ruby": ["custom_ruby", "custom_faded_ruby"],
+    "freight_oil": ["custom_oil_black", "custom_faded_oil_black"],
 }
 
 # select a colour that matches the current company colour
@@ -523,6 +526,14 @@ wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "RANDOM_FROM_CONSIST_LIVERIES_8": {
+        "colour_set": "random_from_consist_liveries_8",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "FREIGHT_BAUXITE": {
         "colour_set": "freight_bauxite",
         "use_weathering": True,
@@ -571,6 +582,14 @@ wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "FREIGHT_OIL_BLACK": {
+        "colour_set": "freight_oil",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "FREIGHT_PEWTER": {
         "colour_set": "freight_pewter",
         "use_weathering": True,
@@ -582,6 +601,14 @@ wagon_liveries = {
     "FREIGHT_RUBY": {
         "colour_set": "freight_ruby",
         "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_RED": {
+        "colour_set": "red",
+        "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),

@@ -17,7 +17,7 @@ def main():
 
     consist = CoveredHopperCarDryPowderConsist(
         roster_id="pony",
-        base_numeric_id=15030,
+        base_numeric_id=17880,
         gen=3,
         subtype="U",
         base_track_type_name="NG",
@@ -28,7 +28,7 @@ def main():
 
     consist = CoveredHopperCarDryPowderConsist(
         roster_id="pony",
-        base_numeric_id=15040,
+        base_numeric_id=17860,
         gen=4,
         subtype="U",
         base_track_type_name="NG",
@@ -50,7 +50,7 @@ def main():
 
     consist = CoveredHopperCarDryPowderConsist(
         roster_id="pony",
-        base_numeric_id=13550,
+        base_numeric_id=17800,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -70,7 +70,7 @@ def main():
 
     consist = CoveredHopperCarDryPowderConsist(
         roster_id="pony",
-        base_numeric_id=13570,
+        base_numeric_id=17820,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -92,7 +92,7 @@ def main():
 
     consist = CoveredHopperCarDryPowderConsist(
         roster_id="pony",
-        base_numeric_id=13600,
+        base_numeric_id=17840,
         gen=5,
         subtype="C",
         sprites_complete=True,

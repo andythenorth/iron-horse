@@ -40,8 +40,9 @@ STR_COLOUR_NAME_COLOUR_WHITE                                    :White
 STR_COLOUR_NAME_CUSTOM_BAUXITE                                  :Brown
 STR_COLOUR_NAME_CUSTOM_DARK_GREY                                :Grey
 STR_COLOUR_NAME_CUSTOM_NIGHTSHADE                               :Black
+STR_COLOUR_NAME_CUSTOM_OIL_BLACK                                :Oil Black
 STR_COLOUR_NAME_CUSTOM_PEWTER                                   :Pewter
-STR_COLOUR_NAME_CUSTOM_RUBY                                     :Ruby
+STR_COLOUR_NAME_CUSTOM_RUBY                                     :Dark Red
 STR_COLOUR_NAME_CUSTOM_SILVER                                   :Silver
 STR_COLOUR_NAME_CUSTOM_STRAW                                    :Straw
 STR_COLOUR_NAME_CUSTOM_SULPHUR                                  :Mustard

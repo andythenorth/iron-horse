@@ -16,7 +16,7 @@ def main():
 
     consist = CoveredHopperCarSwingRoofConsist(
         roster_id="pony",
-        base_numeric_id=16110,
+        base_numeric_id=16660,
         gen=5,
         subtype="C",
         sprites_complete=True,

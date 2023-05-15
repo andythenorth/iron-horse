@@ -8,7 +8,7 @@ def main():
 
     consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
-        base_numeric_id=13660,
+        base_numeric_id=18300,
         gen=4,
         subtype="B",
         intro_year_offset=3,  # let's be a little bit later for this one
@@ -34,7 +34,7 @@ def main():
 
     consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
-        base_numeric_id=13680,
+        base_numeric_id=18320,
         gen=5,
         subtype="B",
         sprites_complete=True,
