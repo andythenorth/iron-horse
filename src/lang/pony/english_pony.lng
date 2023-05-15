@@ -41,6 +41,7 @@ STR_COLOUR_NAME_CUSTOM_BAUXITE                                  :Brown
 STR_COLOUR_NAME_CUSTOM_DARK_GREY                                :Grey
 STR_COLOUR_NAME_CUSTOM_NIGHTSHADE                               :Black
 STR_COLOUR_NAME_CUSTOM_PEWTER                                   :Pewter
+STR_COLOUR_NAME_CUSTOM_RUBY                                     :Ruby
 STR_COLOUR_NAME_CUSTOM_SILVER                                   :Silver
 STR_COLOUR_NAME_CUSTOM_STRAW                                    :Straw
 STR_COLOUR_NAME_CUSTOM_SULPHUR                                  :Mustard
@@ -79,6 +80,7 @@ STR_NAME_SUFFIX_LIVERY_MIX_3                                    :- Rust/Shale
 STR_NAME_SUFFIX_LIVERY_MIX_4                                    :- Seafoam/Amethyst
 STR_NAME_SUFFIX_LIVERY_MIX_5                                    :- Silver/Pewter
 STR_NAME_SUFFIX_LIVERY_MIX_6                                    :- Mustard/Straw
+STR_NAME_SUFFIX_LIVERY_MIX_7                                    :- Ruby/Rust
 
 # names for buyable variant groups
 STR_WAGON_GROUP_AUTOMOBILE_CARS                                 :Vehicle Transporters

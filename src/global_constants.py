@@ -339,6 +339,8 @@ custom_wagon_recolour_sprite_maps = {
     "custom_dark_pewter": (2, 114, 18, 19, 20, 21, 22, 13),
     "custom_sulphur": (62, 62 + 1, 62 + 2, 62 + 3, 62 + 4, 62 + 5, 62 + 6, 62 + 7),
     "custom_dark_sulphur": (62, 62 + 1, 62 + 2, 193, 194, 50, 51, 52),
+    "custom_ruby": (40, 41, 42, 43, 44, 45, 46, 47),
+    "custom_faded_ruby": (71, 72, 73, 43, 44, 76, 77, 47),
 }
 
 # shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
@@ -369,6 +371,7 @@ colour_sets = {
     "freight_pewter": ["custom_pewter", "custom_dark_pewter"],
     "freight_sulphur": ["custom_sulphur", "custom_dark_sulphur"],
     "freight_straw": ["COLOUR_BROWN", "COLOUR_CREAM"],
+    "freight_ruby": ["custom_ruby", "custom_faded_ruby"],
 }
 
 # select a colour that matches the current company colour
@@ -512,6 +515,14 @@ wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "RANDOM_FROM_CONSIST_LIVERIES_7": {
+        "colour_set": "random_from_consist_liveries_7",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "FREIGHT_BAUXITE": {
         "colour_set": "freight_bauxite",
         "use_weathering": True,
@@ -562,6 +573,14 @@ wagon_liveries = {
     },
     "FREIGHT_PEWTER": {
         "colour_set": "freight_pewter",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_RUBY": {
+        "colour_set": "freight_ruby",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -653,6 +672,8 @@ wagon_livery_mixes = {
     "random_from_consist_liveries_5": ["freight_silver", "freight_pewter"],
     # yellow / faded
     "random_from_consist_liveries_6": ["freight_sulphur", "freight_straw"],
+    # rust / ruby
+    "random_from_consist_liveries_7": ["freight_ruby", "freight_bauxite"],
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
