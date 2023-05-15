@@ -5055,7 +5055,7 @@ class SiloCarVBarrelConsist(SiloCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "v_barrel_silo_car"
+        self.base_id = "silo_car_v_barrel"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
         self.randomised_candidate_groups = ["randomised_silo_car"]

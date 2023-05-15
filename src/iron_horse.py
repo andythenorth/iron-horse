@@ -112,6 +112,7 @@ from vehicles import rock_hopper_cars
 from vehicles import roller_roof_hopper_cars
 from vehicles import scrap_metal_cars
 from vehicles import silo_cars
+from vehicles import silo_cars_v_barrel
 from vehicles import skip_cars
 from vehicles import slag_ladle_cars
 from vehicles import sliding_roof_cars
@@ -122,7 +123,6 @@ from vehicles import swing_roof_hopper_cars
 from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 from vehicles import torpedo_cars
-from vehicles import v_barrel_silo_cars
 from vehicles import vehicle_parts_box_cars
 
 
@@ -383,6 +383,7 @@ def main():
     rock_hopper_cars.main()
     roller_roof_hopper_cars.main()
     silo_cars.main()
+    silo_cars_v_barrel.main()
     scrap_metal_cars.main()
     skip_cars.main()
     slag_ladle_cars.main()
@@ -394,7 +395,6 @@ def main():
     tank_cars.main()
     tarpaulin_cars.main()
     torpedo_cars.main()
-    v_barrel_silo_cars.main()
     vehicle_parts_box_cars.main()
 
     roster_manager.validate_vehicles()

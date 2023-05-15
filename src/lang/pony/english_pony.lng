@@ -210,6 +210,7 @@ STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Restaurant Car
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Rock Hopper
 STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR                          :Roller Roof Hopper
 STR_NAME_SUFFIX_SILO_CAR                                        :Silo Wagon
+STR_NAME_SUFFIX_SILO_CAR_V_BARREL                               :Silo Wagon
 STR_NAME_SUFFIX_SKIP_CAR                                        :Skips
 STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Slag Ladle Wagon
 STR_NAME_SUFFIX_SLIDING_ROOF_CAR                                :Sliding Roof Van
@@ -221,7 +222,6 @@ STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR                           :Swing Roof Hopp
 STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Tarpaulin Wagon
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedo Wagon
-STR_NAME_SUFFIX_V_BARREL_SILO_CAR                               :Silo Wagon
 STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Sliding Wall Van
 
 # cargo subtypes
