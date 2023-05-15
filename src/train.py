@@ -5064,29 +5064,6 @@ class SiloCarVBarrelConsist(SiloCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_silo_cars"
 
 
-class SiloCarCementConsist(SiloCarConsistBase):
-    """
-    Cement-coloured silo car.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "cement_silo_car"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
-        self._joker = True
-        # Graphics configuration
-        weathered_variants = {
-            "unweathered": graphics_constants.cement_silo_livery_recolour_maps,
-            "weathered": graphics_constants.cement_silo_livery_recolour_maps_weathered,
-        }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants,
-            liveries=[
-                global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-            ],
-        )
-
-
 class SiloCarRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase):
     """
     Random choice of silo car sprite.
@@ -5107,6 +5084,82 @@ class SiloCarRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase):
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_4"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
+            ],
+        )
+
+
+class SiloCarCementConsist(SiloCarConsistBase):
+    """
+    Cement-coloured silo car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "cement_silo_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
+        self.randomised_candidate_groups = ["randomised_cement_silo_car"]
+        self._joker = True
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_cement_silo_cars"
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.cement_silo_livery_recolour_maps,
+            "weathered": graphics_constants.cement_silo_livery_recolour_maps_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            ],
+        )
+
+
+class SiloCarCementVBarrelConsist(SiloCarConsistBase):
+    """
+    Cement-coloured silo car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "cement_silo_car_v_barrel"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
+        self.randomised_candidate_groups = ["randomised_cement_silo_car"]
+        self._joker = True
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_cement_silo_cars"
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.cement_silo_livery_recolour_maps,
+            "weathered": graphics_constants.cement_silo_livery_recolour_maps_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            ],
+        )
+
+
+class SiloCarCementRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase):
+    """
+    Random choice of cement silo car sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_cement_silo_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
+        self._joker = True
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_cement_silo_cars"
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
+            liveries=[
+                global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             ],
         )
 

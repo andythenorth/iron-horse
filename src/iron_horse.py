@@ -46,8 +46,8 @@ from vehicles import bulkhead_flat_cars
 from vehicles import caboose_cars
 from vehicles import carbon_black_hopper_cars
 from vehicles import cement_silo_cars
+from vehicles import cement_silo_cars_v_barrel
 from vehicles import chemical_covered_hopper_cars
-from vehicles import v_barrel_silo_cars
 from vehicles import coil_buggy_cars
 from vehicles import coil_cars_covered
 from vehicles import coil_cars_uncovered
@@ -95,6 +95,7 @@ from vehicles import railbus_passenger_trailer_cars
 from vehicles import railcar_passenger_trailer_cars
 from vehicles import randomised_box_cars
 from vehicles import randomised_bulk_cars
+from vehicles import randomised_cement_silo_cars
 from vehicles import randomised_chemicals_tank_cars
 from vehicles import randomised_covered_hopper_cars
 from vehicles import randomised_dedicated_coil_cars
@@ -121,6 +122,7 @@ from vehicles import swing_roof_hopper_cars
 from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 from vehicles import torpedo_cars
+from vehicles import v_barrel_silo_cars
 from vehicles import vehicle_parts_box_cars
 
 
@@ -317,8 +319,8 @@ def main():
     caboose_cars.main()
     carbon_black_hopper_cars.main()
     cement_silo_cars.main()
+    cement_silo_cars_v_barrel.main()
     chemical_covered_hopper_cars.main()
-    v_barrel_silo_cars.main()
     coil_buggy_cars.main()
     coil_cars_covered.main()
     coil_cars_uncovered.main()
@@ -367,6 +369,7 @@ def main():
     railcar_passenger_trailer_cars.main()
     randomised_box_cars.main()
     randomised_bulk_cars.main()
+    randomised_cement_silo_cars.main()
     randomised_chemicals_tank_cars.main()
     randomised_covered_hopper_cars.main()
     randomised_dedicated_coil_cars.main()
@@ -391,6 +394,7 @@ def main():
     tank_cars.main()
     tarpaulin_cars.main()
     torpedo_cars.main()
+    v_barrel_silo_cars.main()
     vehicle_parts_box_cars.main()
 
     roster_manager.validate_vehicles()
