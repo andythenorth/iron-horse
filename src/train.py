@@ -953,6 +953,8 @@ class Consist(object):
                 self.id
                 + " get_candidate_liveries_for_randomised_strategy: extension list too short "
                 + str(extension)
+                + "; \n this is probably because we're slicing 8, and have more than 8 colours defined; which will fail;"
+                + "; \n there are now more random bits available for OpenTTD 14 so this might be solvable"
             )
         # !! it's possible this doesn't close
         while len(result) < 8:
