@@ -59,3 +59,28 @@ def main():
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
     )
+
+    consist = BoxCarVehiclePartsConsist(
+        roster_id="pony",
+        base_numeric_id=6130,
+        gen=5,
+        subtype="D",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(
+        type=FreightCar,
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="2_axle_1cc_filled_20px",
+        symmetry_type="asymmetric",
+        spriterow_num=0,
+    )
+
+    consist.add_unit(
+        type=FreightCar,
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="2_axle_1cc_filled_20px",
+        symmetry_type="asymmetric",
+        spriterow_num=2,
+    )
+
