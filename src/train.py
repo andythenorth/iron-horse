@@ -911,7 +911,9 @@ class Consist(object):
             colour_set = livery["purchase"]
         else:
             colour_set = livery["colour_set"]
-        if "random_from_consist_liveries_7" in colour_set:
+        if "random_from_consist_liveries_8" in colour_set:
+            return 110
+        elif "random_from_consist_liveries_7" in colour_set:
             return 109
         elif "random_from_consist_liveries_6" in colour_set:
             return 108
@@ -3250,11 +3252,13 @@ class DumpCarConsist(DumpCarConsistBase):
             global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
             global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
             global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+            global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_8"],
             global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.wagon_liveries["COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.wagon_liveries["FREIGHT_BAUXITE"],
             global_constants.wagon_liveries["FREIGHT_GREY"],
             global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
+            global_constants.wagon_liveries["FREIGHT_OIL_BLACK"],
             global_constants.wagon_liveries["FREIGHT_TEAL"],
         ]
 
@@ -3298,11 +3302,13 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
             global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
             global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
             global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+            global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_8"],
             global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.wagon_liveries["COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.wagon_liveries["FREIGHT_BAUXITE"],
             global_constants.wagon_liveries["FREIGHT_GREY"],
             global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
+            global_constants.wagon_liveries["FREIGHT_OIL_BLACK"],
             global_constants.wagon_liveries["FREIGHT_TEAL"],
         ]
 
@@ -3355,6 +3361,20 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
         self.base_id = "scrap_metal_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_scrap"]
+        # Graphics configuration
+        self.gestalt_graphics.liveries = [
+            global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_8"],
+            global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
+            global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+            global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
+            global_constants.wagon_liveries["FREIGHT_OIL_BLACK"],
+            global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
+            global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            global_constants.wagon_liveries["COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"],
+            global_constants.wagon_liveries["FREIGHT_TEAL"],
+            global_constants.wagon_liveries["FREIGHT_RUBY"],
+            global_constants.wagon_liveries["FREIGHT_BAUXITE"],
+        ]
 
 
 # not in alphabetical order as it depends on subclassing DumpCarConsistBase

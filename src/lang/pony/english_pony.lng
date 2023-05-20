@@ -82,6 +82,7 @@ STR_NAME_SUFFIX_LIVERY_MIX_4                                    :- Seafoam/Ameth
 STR_NAME_SUFFIX_LIVERY_MIX_5                                    :- Silver/Pewter
 STR_NAME_SUFFIX_LIVERY_MIX_6                                    :- Mustard/Straw
 STR_NAME_SUFFIX_LIVERY_MIX_7                                    :- Ruby/Rust
+STR_NAME_SUFFIX_LIVERY_MIX_8                                    :- Obsidian/Nighshade
 
 # names for buyable variant groups
 STR_WAGON_GROUP_AUTOMOBILE_CARS                                 :Vehicle Transporters

@@ -374,7 +374,7 @@ colour_sets = {
     "freight_sulphur": ["custom_sulphur", "custom_dark_sulphur"],
     "freight_straw": ["COLOUR_BROWN", "COLOUR_CREAM"],
     "freight_ruby": ["custom_ruby", "custom_faded_ruby"],
-    "freight_oil": ["custom_oil_black", "custom_faded_oil_black"],
+    "freight_oil_black": ["custom_oil_black", "custom_faded_oil_black"],
 }
 
 # select a colour that matches the current company colour
@@ -583,7 +583,7 @@ wagon_liveries = {
         ],
     },
     "FREIGHT_OIL_BLACK": {
-        "colour_set": "freight_oil",
+        "colour_set": "freight_oil_black",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -701,6 +701,8 @@ wagon_livery_mixes = {
     "random_from_consist_liveries_6": ["freight_sulphur", "freight_straw"],
     # rust / ruby
     "random_from_consist_liveries_7": ["freight_ruby", "freight_bauxite"],
+    # black
+    "random_from_consist_liveries_8": ["freight_oil_black", "freight_nightshade"],
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
