@@ -37,7 +37,7 @@ from rosters import pony
 # import wagons
 from vehicles import acid_tank_cars
 from vehicles import aggregate_cars
-
+from vehicles import aggregate_hopper_cars
 # from vehicles import alignment_cars
 from vehicles import automobile_cars
 from vehicles import bolster_cars
@@ -68,6 +68,7 @@ from vehicles import flat_cars
 from vehicles import goods_box_cars
 from vehicles import hood_open_cars
 from vehicles import hopper_cars
+from vehicles import hopper_cars_high_side
 from vehicles import hst_mail_cars
 from vehicles import hst_passenger_cars
 from vehicles import ingot_cars
@@ -85,7 +86,6 @@ from vehicles import mineral_covered_hopper_cars
 from vehicles import mgr_hopper_cars
 from vehicles import open_cars
 from vehicles import ore_dump_cars
-from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
 from vehicles import peat_cars
 from vehicles import plate_cars
@@ -308,6 +308,7 @@ def main():
     # wagons
     acid_tank_cars.main()
     aggregate_cars.main()
+    aggregate_hopper_cars.main()
     """
     # only comment in if needed for debugging
     alignment_cars.main()
@@ -341,6 +342,7 @@ def main():
     goods_box_cars.main()
     hood_open_cars.main()
     hopper_cars.main()
+    hopper_cars_high_side.main()
     hst_mail_cars.main()
     hst_passenger_cars.main()
     ingot_cars.main()
@@ -356,7 +358,6 @@ def main():
     mineral_covered_hopper_cars.main()
     mgr_hopper_cars.main()
     ore_dump_cars.main()
-    ore_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()
     peat_cars.main()

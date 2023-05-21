@@ -11,23 +11,7 @@ sys.path.append(os.path.join('src')) # add to the module search path
 
 # never leave empty strings or strings with only spaces in this list, that will strip everything from a lang file
 dead_strings = [
-    "STR_COLOUR_NAME_0",
-    "STR_COLOUR_NAME_1",
-    "STR_COLOUR_NAME_2",
-    "STR_COLOUR_NAME_3",
-    "STR_COLOUR_NAME_4",
-    "STR_COLOUR_NAME_5",
-    "STR_COLOUR_NAME_6",
-    "STR_COLOUR_NAME_7",
-    "STR_COLOUR_NAME_8",
-    "STR_COLOUR_NAME_9",
-    "STR_COLOUR_NAME_10",
-    "STR_COLOUR_NAME_11",
-    "STR_COLOUR_NAME_12",
-    "STR_COLOUR_NAME_13",
-    "STR_COLOUR_NAME_14",
-    "STR_COLOUR_NAME_15",
-    "STR_COLOUR_NAME_16",
+    "STR_NAME_SUFFIX_ORE_HOPPER_CAR"
 ]
 
 rosters = ["ibex", "moose", "pony"]

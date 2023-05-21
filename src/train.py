@@ -2621,7 +2621,9 @@ class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
             liveries=[
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
             ],
         )
 
@@ -3277,6 +3279,12 @@ class DumpCarAggregateConsist(DumpCarConsistBase):
             "randomised_bulk_car",
         ]
         self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics.liveries = [
+            global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+            global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            global_constants.wagon_liveries["COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"],
+        ]
 
 
 class DumpCarHighSideConsist(DumpCarConsistBase):
@@ -3919,7 +3927,6 @@ class HopperCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self.randomised_candidate_groups = [
-            "randomised_hopper_car",
             "randomised_bulk_car",
         ]
         # Graphics configuration
@@ -3928,13 +3935,37 @@ class HopperCarConsistBase(CarConsist):
             liveries=[
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries["COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"],
+                global_constants.wagon_liveries["FREIGHT_RUBY"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
+                global_constants.wagon_liveries["FREIGHT_SILVER"],
+                global_constants.wagon_liveries["FREIGHT_PEWTER"],
+                global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
             ],
         )
+
+
+class HopperCarAggregateConsist(HopperCarConsistBase):
+    """
+    Hopper for rock cargos, same refits as standard hopper, just a visual variant.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "aggregate_hopper_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics.liveries = [
+            global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+            global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            global_constants.wagon_liveries["COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"],
+        ]
 
 
 class HopperCarConsist(HopperCarConsistBase):
@@ -3946,6 +3977,28 @@ class HopperCarConsist(HopperCarConsistBase):
         self.base_id = "hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
+        self.randomised_candidate_groups = [
+            "randomised_hopper_car",
+            "randomised_bulk_car",
+        ]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_hopper_cars"
+
+
+class HopperCarHighSideConsist(HopperCarConsistBase):
+    """
+    Hopper for ore cargos, same refits as standard hopper, just a visual variant.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "hopper_car_high_side"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["hopper_ore"]
+        self.randomised_candidate_groups = [
+            "randomised_hopper_car",
+            "randomised_bulk_car",
+        ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_hopper_cars"
@@ -3999,23 +4052,11 @@ class HopperCarRandomisedConsist(RandomisedConsistMixin, HopperCarConsistBase):
             liveries=[
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
             ],
         )
-
-
-class HopperCarOreConsist(HopperCarConsistBase):
-    """
-    Hopper for ore cargos, same refits as standard hopper, just a visual variant.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "ore_hopper_car"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["hopper_ore"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_hopper_cars"
 
 
 class HopperCarRockConsist(HopperCarConsistBase):
@@ -4028,16 +4069,20 @@ class HopperCarRockConsist(HopperCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
         self._joker = True
-        # adjust default liveries set by the base class
+        # Graphics configuration
         self.gestalt_graphics.liveries = [
             global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
             global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+            global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
             global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
             global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.wagon_liveries["COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"],
+            # ruby before bauxite to ensure it appears in buy menu order for mixed version
+            # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+            global_constants.wagon_liveries["FREIGHT_RUBY"],
             global_constants.wagon_liveries["FREIGHT_BAUXITE"],
             global_constants.wagon_liveries["FREIGHT_GREY"],
-            # player choice, various others tried, not needed
+            global_constants.wagon_liveries["FREIGHT_TEAL"],
         ]
 
 
