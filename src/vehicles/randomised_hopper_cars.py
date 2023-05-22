@@ -2,6 +2,43 @@ from train import HopperCarRandomisedConsist, FreightCar
 
 
 def main():
+    # --------------- pony ng ----------------------------------------------------------------------
+
+    consist = HopperCarRandomisedConsist(
+        roster_id="pony",
+        base_numeric_id=12590,
+        gen=1,
+        subtype="U",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
+
+    # no new type A for gen 2, gen 1 type A continues
+
+    consist = HopperCarRandomisedConsist(
+        roster_id="pony",
+        base_numeric_id=10690,
+        gen=3,
+        subtype="U",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
+
+    consist = HopperCarRandomisedConsist(
+        roster_id="pony",
+        base_numeric_id=11850,
+        gen=4,
+        subtype="U",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
+
     # --------------- pony ----------------------------------------------------------------------
 
     consist = HopperCarRandomisedConsist(

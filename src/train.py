@@ -3275,9 +3275,8 @@ class DumpCarAggregateConsist(DumpCarConsistBase):
         self.base_id = "aggregate_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
-        self.randomised_candidate_groups = [
-            "randomised_bulk_car",
-        ]
+        # don't include aggregate wagons in randomised lists, they don't look good
+        self.randomised_candidate_groups = []
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
@@ -3355,6 +3354,7 @@ class DumpCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_8"],
             ],
         )
 
@@ -3959,6 +3959,8 @@ class HopperCarAggregateConsist(HopperCarConsistBase):
         self.base_id = "aggregate_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
+        # don't include aggregate hoppers in randomised lists, they don't look good
+        self.randomised_candidate_groups = []
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
@@ -4068,6 +4070,8 @@ class HopperCarRockConsist(HopperCarConsistBase):
         self.base_id = "rock_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
+        # don't include rock hoppers in randomised lists, they don't look good
+        self.randomised_candidate_groups = []
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
