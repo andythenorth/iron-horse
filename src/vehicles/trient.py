@@ -35,8 +35,6 @@ def main(roster_id):
     )
 
     consist.description = """"""
-    consist.foamer_facts = (
-        """"""
-    )
+    consist.foamer_facts = """"""
 
     return consist

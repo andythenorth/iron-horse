@@ -4,7 +4,9 @@ from train import BulkCarRandomisedConsist, FreightCar
 def main():
     # --------------- pony NG ----------------------------------------------------------------------
 
-    print("CABBAGE 4400, all ng randomised bulk cars nerfed off as they need variants reworked (so ore brown is a remap variant, not drawn etc)")
+    print(
+        "CABBAGE 4400, all ng randomised bulk cars nerfed off as they need variants reworked (so ore brown is a remap variant, not drawn etc)"
+    )
 
     """
 

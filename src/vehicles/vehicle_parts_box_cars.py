@@ -83,4 +83,3 @@ def main():
         symmetry_type="asymmetric",
         spriterow_num=2,
     )
-

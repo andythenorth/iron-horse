@@ -63,7 +63,6 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-
     consist = HopperCarHighSideConsist(
         roster_id="pony",
         base_numeric_id=19610,
