@@ -176,7 +176,7 @@
             }
         </tal:wagons_only_mode>
         <!--! now turn off anything that shouldn't be available in simplified gameplay mode -->
-        <tal:simplified_gameplay_only_mode condition="consist.joker">
+        <tal:simplified_gameplay_only_mode condition="consist.joker or not unit_variant.buyable_variant.is_default_buyable_variant_for_consist">
             if (param_simplified_gameplay==1) {
                 item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
                     property {
