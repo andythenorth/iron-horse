@@ -3,7 +3,16 @@ Changelog
 
 
 ------------
-3.0 Preview 2
+3.0.1 Release
+------------
+
+*Fixes*
+
+- Fix: TGV-type trains with distributed power were only adding power with the default buyable variant
+
+
+------------
+3.0.0 Release
 ------------
 
 "A horse is worth more than riches" — Spanish proverb
