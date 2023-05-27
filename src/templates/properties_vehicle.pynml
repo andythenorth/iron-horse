@@ -25,7 +25,14 @@
 <tal:wagons_add_power condition="consist.wagons_add_power and vehicle.is_lead_unit_of_consist">
     // -- power varies if specific engines are present in the consist -- //
     <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power_0, [count_veh_id(${consist.cab_id}) > 0]) {
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power_0, [
+        <tal:cabs repeat="unit_variant consist.cab_consist.units[0].unit_variants">
+            count_veh_id(${unit_variant.id}) > 0
+            <tal:OR condition="not:repeat.unit_variant.end">
+                ||
+            </tal:OR>
+        </tal:cabs>
+        ]) {
         1: return ${consist.cab_power};
         return 0;
     }
