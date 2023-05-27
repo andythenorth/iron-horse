@@ -56,8 +56,8 @@ STR_COLOUR_NAME_CUSTOM_VIOLET                                   :Violet
 
 # livery name suffixes
 # fancy names are better here, as there can be more than 2 colours, so the names give a flavour
-STR_NAME_SUFFIX_LIVERY_MIX_1                                    :- Variety
-STR_NAME_SUFFIX_LIVERY_MIX_2                                    :- {STRING}/{STRING}
+STR_NAME_SUFFIX_LIVERY_MIX_1                                    :- {STRING}/{STRING}
+STR_NAME_SUFFIX_LIVERY_MIX_2                                    :- Variety
 STR_NAME_SUFFIX_LIVERY_MIX_3                                    :- Rust/Shale
 STR_NAME_SUFFIX_LIVERY_MIX_4                                    :- Seafoam/Amethyst
 STR_NAME_SUFFIX_LIVERY_MIX_5                                    :- Silver/Pewter

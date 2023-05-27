@@ -730,8 +730,10 @@ wagon_liveries = {
 
 # for wagons with mixed livery, the permitted liveries for that specific mix type
 wagon_livery_mixes = {
+    # company colour + 1
+    "random_from_consist_liveries_1": ["complement_company_colour", "company_colour"],
     # most everything (but explicit add, so not *everything*)
-    "random_from_consist_liveries_1": [
+    "random_from_consist_liveries_2": [
         "company_colour",
         "complement_company_colour",
         "freight_bauxite",
@@ -741,8 +743,6 @@ wagon_livery_mixes = {
         "freight_teal",
         "freight_violet",
     ],
-    # company colour + 1
-    "random_from_consist_liveries_2": ["complement_company_colour", "company_colour"],
     # rust belt
     "random_from_consist_liveries_3": [
         "freight_bauxite",

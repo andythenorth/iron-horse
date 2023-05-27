@@ -2147,7 +2147,7 @@ class CarConsist(Consist):
             optional_livery_suffix = "STR_EMPTY"
         result = [optional_livery_suffix]
         # we _may_ need to put colours on the stack for the string
-        if optional_livery_suffix == "STR_NAME_SUFFIX_LIVERY_MIX_2":
+        if optional_livery_suffix == "STR_NAME_SUFFIX_LIVERY_MIX_1":
             result.extend(unit_variant.get_name_text_stack_colour_suffixes())
         return result
 
@@ -2556,6 +2556,7 @@ class BoxCarGoodsConsist(BoxCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["box_goods"]
         # don't include in random box car group, at least for pony, looks bad - other rosters may differ?
         self.randomised_candidate_groups = ["randomised_piece_goods_car"]
+        self._joker = True
         # Graphics configuration
         self.roof_type = "freight_brown"
         weathered_variants = {
@@ -2583,6 +2584,7 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
             "randomised_box_car",
             "randomised_piece_goods_car",
         ]
+        self._joker = True
         # graphics derived from shared template
         parent_id_base = "box_car"
         # buyable variant groups are created post-hoc and can group across subclasses
@@ -3038,7 +3040,6 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
-        self._joker = True
 
 
 class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
@@ -3639,6 +3640,7 @@ class FarmProductsHopperCarConsist(CarConsist):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_farm_product_cars"
+        self._joker = True
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.farm_products_hopper_car_livery_recolour_maps,
@@ -4044,6 +4046,7 @@ class HopperCarMGRConsist(HopperCarConsistBase):
         # don't include MGR hoppers in randomised lists, they don't look good
         self.randomised_candidate_groups = []
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
+        self._joker = True
         # adjust default liveries set by the base class
         self.gestalt_graphics.liveries = [
             global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
@@ -4567,6 +4570,7 @@ class OpenCarHoodConsist(OpenCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_open_cars"
+        self._joker = True
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.hood_open_car_body_recolour_map,
@@ -4605,6 +4609,7 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_open_cars"
+        self._joker = True
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.merchandise_car_body_recolour_map,
@@ -5189,6 +5194,7 @@ class SiloCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
+        self._joker = True
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.v_barrel_silo_car_livery_recolour_maps,
@@ -5927,7 +5933,7 @@ class UnitVariant(object):
         if self.uses_random_livery:
             if (
                 self.buyable_variant.livery["colour_set"]
-                in ["random_from_consist_liveries_2"]
+                in ["random_from_consist_liveries_1"]
             ):
                 for colour_name in self.all_candidate_livery_colour_sets_for_variant[
                     0:2
