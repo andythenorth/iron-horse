@@ -6,37 +6,7 @@ def main():
 
     consist = HopperCarRockConsist(
         roster_id="pony",
-        base_numeric_id=11350,
-        gen=2,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
-
-    consist = HopperCarRockConsist(
-        roster_id="pony",
-        base_numeric_id=10110,
-        gen=3,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
-
-    consist = HopperCarRockConsist(
-        roster_id="pony",
-        base_numeric_id=11370,
-        gen=3,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
-
-    consist = HopperCarRockConsist(
-        roster_id="pony",
-        base_numeric_id=10120,
+        base_numeric_id=19910,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -46,7 +16,7 @@ def main():
 
     consist = HopperCarRockConsist(
         roster_id="pony",
-        base_numeric_id=11040,
+        base_numeric_id=19930,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -56,7 +26,7 @@ def main():
 
     consist = HopperCarRockConsist(
         roster_id="pony",
-        base_numeric_id=11050,
+        base_numeric_id=19950,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -66,30 +36,30 @@ def main():
 
     consist = HopperCarRockConsist(
         roster_id="pony",
-        base_numeric_id=10650,
+        base_numeric_id=19970,
         gen=5,
         subtype="A",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
 
     consist = HopperCarRockConsist(
         roster_id="pony",
-        base_numeric_id=10640,
+        base_numeric_id=19990,
         gen=5,
         subtype="B",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hopppers_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_24px")
 
     consist = HopperCarRockConsist(
         roster_id="pony",
-        base_numeric_id=10660,
+        base_numeric_id=20010,
         gen=5,
         subtype="C",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hoppers_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_32px")

@@ -18,6 +18,12 @@ class Roster(object):
         # engines only used once at __init__ time, it's a list of modules, not the actual consists
         self.engines = kwargs.get("engines")
         self.engine_consists = []
+        # create a structure to hold (buyable) variant groups
+        # deliberately instantiated as none - cannot be populated as a structure until later, after all consists are inited
+        self.buyable_variant_groups = None
+        self.buyable_variant_group_base_ids = kwargs.get(
+            "buyable_variant_group_base_ids", {}
+        )
         self.intro_years = kwargs.get("intro_years")
         self.speeds = kwargs.get("speeds")
         self.freight_car_capacity_per_unit_length = kwargs.get(
@@ -28,12 +34,17 @@ class Roster(object):
         )
         self.pax_car_capacity_types = kwargs.get("pax_car_capacity_types")
         self.train_car_weight_factors = kwargs.get("train_car_weight_factors")
-        self.livery_presets = kwargs.get("livery_presets", [])
+        self.engine_liveries = kwargs.get("engine_liveries", [])
+        self.wagon_liveries = kwargs.get("wagon_liveries", {})
         self.default_pax_liveries = kwargs.get("default_pax_liveries", [])
         self.suburban_pax_liveries = kwargs.get("suburban_pax_liveries", [])
         self.default_mail_liveries = kwargs.get("default_mail_liveries", [])
-        self.electric_railcar_mail_liveries = kwargs.get("electric_railcar_mail_liveries", [])
-        self.diesel_railcar_mail_liveries = kwargs.get("diesel_railcar_mail_liveries", [])
+        self.electric_railcar_mail_liveries = kwargs.get(
+            "electric_railcar_mail_liveries", []
+        )
+        self.diesel_railcar_mail_liveries = kwargs.get(
+            "diesel_railcar_mail_liveries", []
+        )
         self.default_metro_liveries = kwargs.get("default_metro_liveries", [])
         self.dvt_mail_liveries = kwargs.get("dvt_mail_liveries", [])
 
@@ -119,7 +130,7 @@ class Roster(object):
                 all_randomised_candidate_groups.append(
                     consist.randomised_candidate_groups
                 )
-            if consist.is_randomised_wagon:
+            if consist.is_randomised_wagon_type:
                 if (
                     consist.base_track_type_name
                     not in randomised_wagons_by_track_type_name_and_gen
@@ -181,7 +192,8 @@ class Roster(object):
                 result.append(consist)
         return result
 
-    def get_wagon_randomisation_candidates(self, randomisation_consist):
+    def get_wagon_randomisation_candidates(self, buyable_variant):
+        randomisation_consist = buyable_variant.consist
         result = []
         for base_id, wagons in self.wagon_consists.items():
             for wagon_consist in wagons:
@@ -199,38 +211,48 @@ class Roster(object):
                     continue
                 if randomisation_consist.subtype != wagon_consist.subtype:
                     continue
-                for unit_variant in wagon_consist.units[0].unit_variants:
-                    result.append(unit_variant)
+                # if there are buyable variants that have random livery
+                # then we want to only append those as it's more direct and leads to shorter candidate lists
+                # otherwise append all the variants
+                unit_variants = wagon_consist.units[0].unit_variants
+                matched_results = []
+                for unit_variant in unit_variants:
+                    if (
+                        unit_variant.buyable_variant.livery["colour_set"]
+                        == buyable_variant.livery["colour_set"]
+                    ):
+                        matched_results.append(unit_variant)
+                if len(matched_results) == 0:
+                    for unit_variant in unit_variants:
+                        if (
+                            unit_variant.buyable_variant.livery["colour_set"]
+                            in global_constants.wagon_livery_mixes[
+                                buyable_variant.livery["colour_set"]
+                            ]
+                        ):
+                            matched_results.append(unit_variant)
+                result.extend(matched_results)
         if len(result) == 0:
             raise BaseException(
                 randomisation_consist.id
                 + " did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen"
             )
         if len(result) == 1:
+            print(result)
             raise BaseException(
                 randomisation_consist.id
                 + " has only one choice for randomisation_candidates, this is pointless nonsense, consider removing "
                 + randomisation_consist.id
             )
-        if len(result) > 16:
+        if len(result) > 64:
             # we have a limited number of random bits, and we need to use them independently of company colour choices
-            # so guard against consuming too many, 16 variants is 4 bits, and that's quite enough
-            print(result)
+            # so guard against consuming too many, 64 variants is 6 bits, and that's all we have spare
             raise BaseException(
                 randomisation_consist.id
-                + " has more than 16 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates"
+                + " has more than 64 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates"
             )
-        # length of results needs to be power of 2 as random choice can only be picked from powers of 2s (1 bit = 2 options, 2 bits = 4 options, 3 bits = 8 options, 4 bits = 16 options)
-        # so just do a clunky manual append here, JFDI, not figuring out a power of 2 detector at this time of night :P
-        # this will cause uneven probabilities, but eh, life is not perfect
-        if len(result) == 3:
-            result.append(result[0])
-        # this relies on recursing a bit to get to 8 as needed
-        if len(result) >= 5 and len(result) < 9:
-            result.extend(result[: 8 - len(result)])
-        if len(result) >= 9:
-            result.extend(result[: 16 - len(result)])
-        return result
+        # length of results needs to be power of 2 as random choice can only be picked from powers of 2s, so use utils.extend_list_to_power_of_2_length
+        return utils.extend_list_to_power_of_2_length(result)
 
     @property
     def default_livery(self):
@@ -247,7 +269,12 @@ class Roster(object):
         # for the general case, this is a convenience approach to insert a default_livery for ease of constructing template repeats
         # note that default_livery is not guaranteed to contain all the key/value pairs that additional_liveries has
         result = [self.default_livery]
-        result.extend([self.livery_presets[additional_livery_name] for additional_livery_name in additional_livery_names])
+        result.extend(
+            [
+                self.engine_liveries[additional_livery_name]
+                for additional_livery_name in additional_livery_names
+            ]
+        )
         return result
 
     def intro_year_ranges(self, base_track_type_name):
@@ -316,10 +343,114 @@ class Roster(object):
         wagon_consist.roster_id = self.id
 
     def post_init_actions(self):
-        # init has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
+        # init of consists has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
         for engine in self.engines:
             consist = engine.main(self.id)
             self.engine_consists.append(consist)
         self.wagon_consists = dict(
             [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons]
         )
+
+    def add_buyable_variant_groups(self):
+        # creating groups has to happen after *all* consists are inited
+
+        # create the structure to hold the groups, this is set to None when the roster is inited, and should be None when this method is called
+        if self.buyable_variant_groups is not None:
+            raise BaseException(
+                "add_buyable_variant_groups() called more than once for roster "
+                + self.id
+            )
+
+        self.buyable_variant_groups = {}
+
+        # for every buyable variant for every consist
+        # - add a group if it doesn't already exist
+        # - add the buyable variant as a member of the group
+        for consist in self.consists_in_buy_menu_order:
+            for buyable_variant in consist.buyable_variants:
+                if (
+                    not buyable_variant.buyable_variant_group_id
+                    in self.buyable_variant_groups
+                ):
+                    self.buyable_variant_groups[
+                        buyable_variant.buyable_variant_group_id
+                    ] = BuyableVariantGroup(
+                        id=buyable_variant.buyable_variant_group_id,
+                    )
+                self.buyable_variant_groups[
+                    buyable_variant.buyable_variant_group_id
+                ].add_buyable_variant(buyable_variant)
+        # now deal with nested groups
+        # we do this after creating all the groups, as some groups need to reference other groups
+        for (
+            buyable_variant_group_id,
+            buyable_variant_group,
+        ) in self.buyable_variant_groups.items():
+            # we're only interested in nesting wagons as of May 2023
+            parent_consist = buyable_variant_group.parent_consist
+            if parent_consist.group_as_wagon:
+                if parent_consist.use_named_buyable_variant_group is not None:
+                    base_id_for_target_parent_consist = global_constants.buyable_variant_group_consist_base_ids_by_group_name[
+                        parent_consist.use_named_buyable_variant_group
+                    ]
+                    candidate_parent_group = None
+                    for consist in self.wagon_consists[
+                        base_id_for_target_parent_consist
+                    ]:
+                        if consist.base_id == base_id_for_target_parent_consist:
+                            match_failed = False
+                            if consist.gen != parent_consist.gen:
+                                match_failed = True
+                            if consist.subtype != parent_consist.subtype:
+                                match_failed = True
+                            if not match_failed:
+                                candidate_parent_group = consist.buyable_variants[
+                                    0
+                                ].buyable_variant_group
+                                break
+                else:
+                    candidate_parent_group = parent_consist.buyable_variants[
+                        0
+                    ].buyable_variant_group
+
+                # we can't assign parent group to current group, that would be silly / recursive
+                if candidate_parent_group != buyable_variant_group:
+                    buyable_variant_group.parent_group = candidate_parent_group
+
+    def get_buyable_variants_in_buy_menu_order(self):
+        # relies on the buyable variant group order already being sorted when it's consrtructed from consists_in_buy_menu_order
+        # as a convenience, this flattens that order to a list that's easy to iterate over in template
+        result = []
+        for (
+            buyable_variant_group_id,
+            buyable_variant_group,
+        ) in self.buyable_variant_groups.items():
+            for buyable_variant in buyable_variant_group.buyable_variants:
+                result.append(buyable_variant)
+        return result
+
+
+class BuyableVariantGroup(object):
+    """
+    Simple class to hold groups of buyable variants.
+    These provide the variant_group in nml.
+    A group may comprise buyable variants for a single consist, or implement other rules.
+    """
+
+    def __init__(self, id):
+        self.id = id
+        self.buyable_variants = []
+        self.parent_group = None
+
+    def add_buyable_variant(self, buyable_variant):
+        self.buyable_variants.append(buyable_variant)
+
+    @property
+    def parent_vehicle(self):
+        # actually returns a unit_variant, but eh, equivalent to 'vehicle' in the nml templating
+        return self.buyable_variants[0].lead_unit_variant_matching_buyable_variant
+
+    @property
+    def parent_consist(self):
+        # convenience function, note also parent_vehicle, which is often what we want
+        return self.parent_vehicle.unit.consist

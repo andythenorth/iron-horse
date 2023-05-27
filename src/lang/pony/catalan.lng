@@ -11,31 +11,7 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessiva
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Desmesurada
 STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Joc simplificat
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Jugar amb un conjunt simplificat de trens. Hi Haurà menys tipus de trens i vagons disponibles.  Trens macos como el llevaneus, cambres de conducció i locomotores molt lentes no estan disponibles.
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Selecció de color de cotxe aleatori
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Colors aleatoris en cotxes de càrrega aporten varietat als trens.{}{}Hi ha dos colors base per vagons de càrrega, segons els colors de la companyia, o segons els paràmetres d'Iron Horse.  Iron Horse escollirà no més de dues textures aleatòries de cada color base, depenent de la configuració.{}{}Intercanviar vagons en el depòsit (utilitzant ctrl-click) per a canviar el color base.{}{}Alguns tipus de vagó tenen les seves pròpies normes i els seus colors no poden assignar-se aleatoriament; com els vagons de frenada, express, o de passatgers.
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Textures de dos colors base (per defecte)
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Textures d'un sol color base
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :Sense selecció aleatòria
-STR_PARAM_WAGON_BASE_COLOUR_1                                   :Color 1 de cotxe base
-STR_PARAM_WAGON_BASE_COLOUR_2                                   :Color 2 de cotxe base
-STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Poder escollir esquemes de color per a groups de vehicles és una característica genial d'OpenTTD.{}{}Grups de vehicles no poden determinar el color dels vagons i les locomotores per separat.{}{}Aquest paràmetre pot establir opcionalment colors específics per vagons de càrrega en comptes dels colors de la companyia.{}{}Aquesta configuració s'aplicarà a {WHITE}tots {BLACK}els trens agrupats o no.{BLACK}{}{}Aquesta configuració no s'aplica a certs vagons, com els de frenada, correu o passatgers.
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Utilitzar els colors de la companyias (per defecte)
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Blau marí
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_2                            :Verd clar
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_3                            :Rosat
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_4                            :Groc
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_5                            :Vermell
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_6                            :Blau cel
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_7                            :Verd
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_8                            :Verd fosc
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_9                            :Blau
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_10                           :Crema
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_11                           :Malva
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_12                           :Lila
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_13                           :Taronja
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :Marró
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :Gris
-STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :Blanc
+STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Selecció de color de cotxe aleatori
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
@@ -81,7 +57,6 @@ STR_NAME_SUFFIX_LOG_CAR                                         :Cotxe transport
 STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Cotxe contenidor baix
 STR_NAME_SUFFIX_MAIL_CAR                                        :Cotxe de correu
 STR_NAME_SUFFIX_OPEN_CAR                                        :Cotxe obert
-STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Cotxe de minerals
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Cotxe de passatge
 STR_NAME_SUFFIX_PLATE_CAR                                       :Cotxe plater
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Cotxe tanc
@@ -100,8 +75,8 @@ STR_NAME_SUFFIX_TORPEDO_CAR                                     :Cotxe torpedo
 STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Cotxe transportador de piezas
 
 # buy menu wrappers
-STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
-STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
 
 # role information for buy menu
 STR_ROLE                                                        :{BLACK}Rol: {GOLD}{STRING}
@@ -121,8 +96,8 @@ STR_WAGONS_ADD_POWER_CAB                                        :Potència (Dist
 STR_WAGONS_ADD_POWER_MIDDLE                                     :Potència (Distribuida): {GOLD}{POWER} al adjuntar {STRING} unitat
 
 # other buy menu hints
-STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Adjuntar al davant o al darrera del tren, amb almenys una locomotora
-STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonificació: {GOLD}Millora costs d'operació i tases de pagament per {WHITE}Cotxes de Passatgers {GOLD}i {WHITE}Cotxes de Passatgers de Primera Classe {}{}{BLACK}Aquesta bonificació s'aplica un cop per tren
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB                   :{BLACK}Adjuntar al davant o al darrera del tren, amb almenys una locomotora
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR                :{}{BLACK}Bonificació: {GOLD}Millora costs d'operació i tases de pagament per {WHITE}Cotxes de Passatgers {GOLD}i {WHITE}Cotxes de Passatgers de Primera Classe {}{}{BLACK}Aquesta bonificació s'aplica un cop per tren
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Completats: {GOLD}Oh i tant

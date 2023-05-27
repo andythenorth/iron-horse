@@ -42,57 +42,18 @@ grf {
             };
         }
     }
-    <tal:num_options define="num_options 16">
-        param 3 {
-            param_wagon_base_colour_1 {
-                name: string(STR_PARAM_WAGON_BASE_COLOUR_1);
-                desc: string(STR_PARAM_WAGON_BASE_COLOUR_DESC);
-                type: int;
-                min_value: 0;
-                max_value: ${num_options - 1};
-                def_value: 13; <!--! default to CC brown -->
-                names: {
-                    <tal:options repeat="option_num range(num_options)">
-                        <!--! there is an additiona of 1 here as a value was removed, but I didn't want to adjust all the lang translations -->
-                        ${option_num}: string(STR_PARAM_WAGON_BASE_COLOUR_OPTION_${option_num + 1});
-                    </tal:options>
-                };
-            }
-        }
-        param 4 {
-            param_wagon_base_colour_2 {
-                name: string(STR_PARAM_WAGON_BASE_COLOUR_2);
-                desc: string(STR_PARAM_WAGON_BASE_COLOUR_DESC);
-                type: int;
-                min_value: 0;
-                max_value: ${num_options - 1};
-                def_value: 14; <!--! default to CC grey -->
-                names: {
-                    <tal:options repeat="option_num range(num_options)">
-                        <!--! there is an additiona of 1 here as a value was removed, but I didn't want to adjust all the lang translations -->
-                        ${option_num}: string(STR_PARAM_WAGON_BASE_COLOUR_OPTION_${option_num + 1});
-                    </tal:options>
-                };
-            }
-        }
-    </tal:num_options>
+    <!--! param 3 deleted -->
+    <!--! param 4 deleted -->
 	param 5 {
-	    <tal:num_options define="num_options 3">
-            param_wagon_colour_randomisation_strategy {
-                name: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY);
-                desc: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC);
-                type: int;
-                min_value: 0;
-                max_value: ${num_options - 1};
-                def_value: 0;
-                names: {
-                    <tal:options repeat="option_num range(num_options)">
-                        ${option_num}: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_${option_num});
-                    </tal:options>
-                };
-            }
-        </tal:num_options>
+        param_wagon_colour_randomisation {
+            name: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION);
+            desc: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC);
+			type: bool;
+			def_value: 1;
+			bit: 1;
+        }
 	}
+    <!--! param 6 skipped / deleted? -->
 	param 7 {
 		param_wagons_only_mode {
 			name: string(STR_PARAM_WAGONS_ONLY_MODE);
@@ -123,9 +84,7 @@ disable_item(FEAT_TRAINS, 00, 115);
 
 // sort order
 sort(FEAT_TRAINS, [
-<tal:foo repeat="consist consists">
-    ${','.join([str(unit_variant.numeric_id) for unit_variant in consist.units[0].unit_variants])},
-</tal:foo>
+    ${','.join([str(buyable_variant.lead_unit_variant_matching_buyable_variant.numeric_id) for buyable_variant in roster.get_buyable_variants_in_buy_menu_order()])},
 ]);
 
 // fix depot view for trains

@@ -23,7 +23,7 @@ def main(roster_id):
         type=DieselEngineUnit, weight=70, vehicle_length=6, spriterow_num=0
     )
 
-    consist.description = """CABBAGE."""
-    consist.foamer_facts = """CABBAGE, Alco S1, EMD switchers"""
+    consist.description = """"""
+    consist.foamer_facts = """"""
 
     return consist

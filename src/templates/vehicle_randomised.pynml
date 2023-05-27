@@ -1,80 +1,112 @@
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_random_self,
-                            random_bits_randomised_wagon_choose_wagon(
-                                ${len(consist.roster.get_wagon_randomisation_candidates(consist)).bit_length() - 1}
-                            )
-    ) {
-    <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
-        ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
-    </tal:randomisation_candidates>
-}
+<tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_self,
+                                random_bits_randomised_wagon_choose_wagon(
+                                    ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)).bit_length() - 1}
+                                )
+        ) {
+        <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)">
+            ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
+        </tal:randomisation_candidates>
+    }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_random_neighbour_plus_one,
-                            <!--! this doesn't check if neighbour actually exists, but eh, 'probably fine', it will fail safe I think
-                                  the picking from bit 3 onwards is just a wild guess to try and make this independent from colour and weathering choices -->
-                                  [STORE_TEMP(-2, 0x10F),
-                                             getbits(
-                                                    var[0x61, 8, 0x00FFFFFF, 0x5F],
-                                                     3,
-                                                     ${len(consist.roster.get_wagon_randomisation_candidates(consist)).bit_length() - 1}
-                                   )]
-    ) {
-    <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
-        ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
-    </tal:randomisation_candidates>
-}
+    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_neighbour_plus_one,
+                                <!--! this doesn't check if neighbour actually exists, but eh, 'probably fine', it will fail safe I think
+                                      the picking from bit 3 onwards is just a wild guess to try and make this independent from colour and weathering choices -->
+                                      [STORE_TEMP(-2, 0x10F),
+                                                 getbits(
+                                                        var[0x61, 8, 0x00FFFFFF, 0x5F],
+                                                         3,
+                                                         ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)).bit_length() - 1}
+                                       )]
+        ) {
+        <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)">
+            ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
+        </tal:randomisation_candidates>
+    }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_random_neighbour,
-                            <!--! this doesn't check if neighbour actually exists, but eh, 'probably fine', it will fail safe I think
-                                  the picking from bit 3 onwards is just a wild guess to try and make this independent from colour and weathering choices -->
-                                  [STORE_TEMP(-1, 0x10F),
-                                             getbits(
-                                                    var[0x61, 8, 0x00FFFFFF, 0x5F],
-                                                     3,
-                                                     ${len(consist.roster.get_wagon_randomisation_candidates(consist)).bit_length() - 1}
-                                   )]
-    ) {
-    <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
-        ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
-    </tal:randomisation_candidates>
-}
+    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_neighbour,
+                                <!--! this doesn't check if neighbour actually exists, but eh, 'probably fine', it will fail safe I think
+                                      the picking from bit 3 onwards is just a wild guess to try and make this independent from colour and weathering choices -->
+                                      [STORE_TEMP(-1, 0x10F),
+                                                 getbits(
+                                                        var[0x61, 8, 0x00FFFFFF, 0x5F],
+                                                         3,
+                                                         ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)).bit_length() - 1}
+                                       )]
+        ) {
+        <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)">
+            ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
+        </tal:randomisation_candidates>
+    }
 
-<!--! some basic recursion here to increase chances of runs of same sprite, looks better -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_neighbour,
-                            <!--! this doesn't check if neighbour actually exists, but eh, 'probably fine', it will fail safe I think -->
-                                  [STORE_TEMP(-1, 0x10F), getbits(var[0x61, 8, 0x00FFFFFF, 0x5F], 2, 1)]
-    ) {
-    0: ${vehicle.id}_switch_graphics_vehicle_random_neighbour;
-    1: ${vehicle.id}_switch_graphics_vehicle_random_neighbour_plus_one;
-}
+    <!--! some basic recursion here to increase chances of runs of same sprite, looks better -->
+    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_check_neighbour,
+                                <!--! this doesn't check if neighbour actually exists, but eh, 'probably fine', it will fail safe I think -->
+                                      [STORE_TEMP(-1, 0x10F), getbits(var[0x61, 8, 0x00FFFFFF, 0x5F], 2, 1)]
+        ) {
+        0: ${unit_variant.id}_switch_graphics_variant_random_neighbour;
+        1: ${unit_variant.id}_switch_graphics_variant_random_neighbour_plus_one;
+    }
 
-<!--! note that the random chain is used by both graphics and colour mapping chains -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_choose_randomised_wagon, random_bits_randomised_wagon_check_neighbour_or_self()) {
-    0: ${vehicle.id}_switch_graphics_vehicle_random_self;
-    1: ${vehicle.id}_switch_graphics_vehicle_check_neighbour;
-}
+    <!--! note that the random chain is used by both graphics and colour mapping chains -->
+    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon, random_bits_randomised_wagon_check_neighbour_or_self()) {
+        0: ${unit_variant.id}_switch_graphics_variant_random_self;
+        1: ${unit_variant.id}_switch_graphics_variant_check_neighbour;
+    }
+    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
+        <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)">
+            ${repeat.randomisation_candidate.index}: ${randomisation_candidate.unit.id}_switch_graphics_vehicle;
+        </tal:randomisation_candidates>
+    }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, ${vehicle.id}_switch_graphics_vehicle_choose_randomised_wagon()) {
-    <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
-        ${repeat.randomisation_candidate.index}: ${randomisation_candidate.unit.id}_switch_graphics_vehicle;
-    </tal:randomisation_candidates>
-}
+    // buy menu graphics chain
+    spriteset(${unit_variant.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
+        ${consist.get_nml_for_spriteset_template(y_offset=0)}
+    }
+    <!--! handle colour mapping which can vary per buyable variant
+          note that we have to make the same random choice here as the graphics chain, so we delegate to a shared procedure -->
+    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_variant, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
+        <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)">
+            ${repeat.randomisation_candidate.index}:return switch_colour_mapping(
+                ${randomisation_candidate.get_wagon_recolour_strategy_params()},
+            );
+        </tal:randomisation_candidates>
+    }
+    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_variant_purchase, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
+        <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)">
+            ${repeat.randomisation_candidate.index}:return switch_colour_mapping(
+                ${randomisation_candidate.get_wagon_recolour_strategy_params(context="purchase")},
+            );
+        </tal:randomisation_candidates>
+    }
+</tal:unit_variants>
 
-// buy menu graphics chain
-spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
-    ${consist.get_nml_for_spriteset_template(y_offset=0)}
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, vehicle_type_id) {
+    <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+        ${unit_variant.numeric_id}: ${unit_variant.id}_switch_graphics_variant;
+    </tal:unit_variants>
+    <!--! no default, by design all variants should be explicitly found -->
 }
 <!--! purchase sprites always go through a switch in case the template does anything specific for purchase graphics
       when there is nothing specific, then this is just a null switch -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
-    return ${vehicle.id}_ss_purchase;
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, vehicle_type_id) {
+    <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+        ${unit_variant.numeric_id}: ${unit_variant.id}_ss_purchase;
+    </tal:unit_variants>
+    <!--! no default, by design all variants should be explicitly found -->
 }
 
-<!--! handle colour mapping which can vary per buyable variant
-      note that we have to make the same random choice here as the graphics chain, so we delegate to a shared procedure -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, ${vehicle.id}_switch_graphics_vehicle_choose_randomised_wagon()) {
-    <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
-        ${repeat.randomisation_candidate.index}:return switch_colour_mapping(${randomisation_candidate.unit.consist.cc_num_to_randomise}, ${randomisation_candidate.unit.consist.auto_colour_randomisation_strategy_num}, ${int(randomisation_candidate.use_wagon_base_colour_parameter_cabbage)});
-    </tal:randomisation_candidates>
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id) {
+    <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+        ${unit_variant.numeric_id}: ${unit_variant.id}_switch_colour_mapping_variant;
+    </tal:unit_variants>
+    <!--! no default, by design all variants should be explicitly found -->
+}
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping_purchase, vehicle_type_id) {
+    <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+        ${unit_variant.numeric_id}: ${unit_variant.id}_switch_colour_mapping_variant_purchase;
+    </tal:unit_variants>
+    <!--! no default, by design all variants should be explicitly found -->
 }
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />

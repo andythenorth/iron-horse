@@ -154,27 +154,6 @@ acid_tank_car_livery_recolour_maps = (
             161: CC1 + 7,
         },
     ),
-    (
-        "SULP",
-        {
-            136: 62,
-            137: 62 + 1,
-            138: 62 + 2,
-            139: 62 + 3,
-            140: 62 + 4,
-            141: 62 + 5,
-            142: 62 + 6,
-            143: 62 + 7,
-            154: 62,
-            155: 62 + 1,
-            156: 62 + 2,
-            157: 62 + 3,
-            158: 62 + 4,
-            159: 62 + 5,
-            160: 62 + 6,
-            161: 62 + 7,
-        },
-    ),
 )
 acid_tank_car_livery_recolour_maps_weathered = (
     (
@@ -196,28 +175,6 @@ acid_tank_car_livery_recolour_maps_weathered = (
             159: CC1 + 5,
             160: CC1 + 6,
             161: CC1 + 7,
-        },
-    ),
-    (
-        "SULP",
-        {
-            # should be kept in sync with the SULP map in polar fox tanker maps
-            136: 62,
-            137: 62 + 1,
-            138: 62 + 2,
-            139: 193,
-            140: 194,
-            141: 50,
-            142: 51,
-            143: 52,
-            154: 62,
-            155: 62 + 1,
-            156: 62 + 2,
-            157: 193,
-            158: 194,
-            159: 50,
-            160: 51,
-            161: 52,
         },
     ),
 )
@@ -331,33 +288,18 @@ chemical_covered_hopper_car_livery_recolour_maps_weathered = (
     ),
 )
 
-chemical_silo_car_livery_recolour_maps = (
+v_barrel_silo_car_livery_recolour_maps = (
     (
         "DFLT",
         {
-            136: 88,
-            137: 97,
-            138: 98,
-            139: 157,
-            140: 158,
-            141: 159,
-            142: 160,
-            143: 103,
-        },
-    ),
-)
-chemical_silo_car_livery_recolour_maps_weathered = (
-    (
-        "DFLT",
-        {
-            136: 88,
-            137: 97,
-            138: 156,
-            139: 157,
-            140: 158,
-            141: 101,
-            142: 102,
-            143: 103,
+            136: CC1,
+            137: CC1 + 1,
+            138: CC1 + 2,
+            139: CC1 + 3,
+            140: CC1 + 4,
+            141: CC1 + 5,
+            142: CC1 + 6,
+            143: CC1 + 7,
         },
     ),
 )
@@ -506,7 +448,7 @@ kaolin_hopper_car_livery_recolour_maps_weathered = (
     ),
 )
 
-livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
+livestock_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
 mineral_covered_hopper_car_livery_recolour_maps = (
     (
@@ -607,4 +549,68 @@ sliding_wall_livery_recolour_maps = (
 )
 sliding_wall_livery_recolour_maps_weathered = (
     ("DFLT", {40: 33, 41: 34, 42: 6, 43: 36, 44: 20, 45: 21, 46: 22, 47: 39}),
+)
+
+sulphur_tank_car_livery_recolour_maps = (
+    (
+        "DFLT",
+        {
+            136: 104,
+            137: 2,
+            138: 25,
+            139: 17,
+            140: 18,
+            141: 19,
+            142: 20,
+            143: 10,
+            154: CC1,
+            155: CC1 + 1,
+            156: CC1 + 2,
+            157: CC1 + 3,
+            158: CC1 + 4,
+            159: CC1 + 5,
+            160: CC1 + 6,
+            161: CC1 + 7,
+        },
+    ),
+)
+sulphur_tank_car_livery_recolour_maps_weathered = (
+    (
+        "DFLT",
+        {
+            # should be kept in sync with the SULP map in polar fox tanker maps
+            136: 1,
+            137: 2,
+            138: 106,
+            139: 17,
+            140: 18,
+            141: 7,
+            142: 20,
+            143: 10,
+            154: CC1,
+            155: CC1 + 1,
+            156: CC1 + 2,
+            157: CC1 + 3,
+            158: CC1 + 4,
+            159: CC1 + 5,
+            160: CC1 + 6,
+            161: CC1 + 7,
+        },
+    ),
+)
+
+tank_car_livery_recolour_maps = (
+    (
+        "DFLT",
+        {
+            136: CC1,
+            137: CC1 + 1,
+            138: CC1 + 2,
+            139: CC1 + 3,
+            140: CC1 + 4,
+            141: CC1 + 5,
+            142: CC1 + 6,
+            143: CC1 + 7,
+        },
+    ),
 )

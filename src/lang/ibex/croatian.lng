@@ -49,8 +49,8 @@ STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Vagon sa cerado
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Vagon-torpedo
 
 # buy menu wrappers
-STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
-STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
 
 # role information for buy menu
 STR_ROLE                                                        :{BLACK}Uloga: {GOLD}{STRING}

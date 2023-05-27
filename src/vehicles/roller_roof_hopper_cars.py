@@ -6,7 +6,7 @@ def main():
 
     consist = CoveredHopperCarRollerRoofConsist(
         roster_id="pony",
-        base_numeric_id=16140,
+        base_numeric_id=16270,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -16,7 +16,7 @@ def main():
 
     consist = CoveredHopperCarRollerRoofConsist(
         roster_id="pony",
-        base_numeric_id=16130,
+        base_numeric_id=16840,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -36,7 +36,7 @@ def main():
 
     consist = CoveredHopperCarRollerRoofConsist(
         roster_id="pony",
-        base_numeric_id=15960,
+        base_numeric_id=17160,
         gen=5,
         subtype="B",
         sprites_complete=True,

@@ -6,7 +6,7 @@ def main():
     # gen 2 start eh?
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
-        base_numeric_id=14130,
+        base_numeric_id=19070,
         gen=2,
         subtype="U",
         base_track_type_name="NG",
@@ -17,7 +17,7 @@ def main():
 
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
-        base_numeric_id=14140,
+        base_numeric_id=19090,
         gen=3,
         subtype="U",
         base_track_type_name="NG",
@@ -28,7 +28,7 @@ def main():
 
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
-        base_numeric_id=14150,
+        base_numeric_id=19110,
         gen=4,
         subtype="U",
         base_track_type_name="NG",
@@ -40,7 +40,7 @@ def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
-        base_numeric_id=13220,
+        base_numeric_id=19130,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -50,7 +50,7 @@ def main():
 
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
-        base_numeric_id=13230,
+        base_numeric_id=19150,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -60,7 +60,7 @@ def main():
 
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
-        base_numeric_id=13240,
+        base_numeric_id=19170,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -70,7 +70,7 @@ def main():
 
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
-        base_numeric_id=13250,
+        base_numeric_id=19190,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -80,7 +80,7 @@ def main():
 
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
-        base_numeric_id=8610,
+        base_numeric_id=19210,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -90,7 +90,7 @@ def main():
 
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
-        base_numeric_id=13270,
+        base_numeric_id=19230,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -100,7 +100,7 @@ def main():
 
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
-        base_numeric_id=13280,
+        base_numeric_id=19250,
         gen=5,
         subtype="C",
         sprites_complete=True,

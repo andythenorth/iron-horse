@@ -14,7 +14,7 @@ def main(roster_id):
 
     consist.add_unit(type=SnowploughUnit, weight=50, vehicle_length=4)
 
-    consist.description = """CABBAGE."""
-    consist.foamer_facts = """CABBAGE"""
+    consist.description = """"""
+    consist.foamer_facts = """"""
 
     return consist

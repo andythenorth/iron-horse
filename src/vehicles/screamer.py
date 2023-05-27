@@ -18,7 +18,14 @@ def main(roster_id):
         pantograph_type="z-shaped-double",
         intro_year_offset=2,  # introduce later than gen epoch by design
         # railfreight grey, intercity, GNER?
-        additional_liveries=["BANGER_BLUE", "FREIGHTLINER_GBRF", "RES", "SWOOSH", "DBSCHENKER", "FREIGHTLINER_2"],
+        additional_liveries=[
+            "BANGER_BLUE",
+            "FREIGHTLINER_GBRF",
+            "RES",
+            "SWOOSH",
+            "DBSCHENKER",
+            "FREIGHTLINER_2",
+        ],
         default_livery_extra_docs_examples=[
             ("COLOUR_WHITE", "COLOUR_BLUE"),
             ("COLOUR_BLUE", "COLOUR_WHITE"),

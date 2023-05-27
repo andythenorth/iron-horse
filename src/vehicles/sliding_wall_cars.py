@@ -170,7 +170,7 @@ def main():
 
     consist = BoxCarSlidingWallConsist(
         roster_id="ibex",
-        base_numeric_id=20,
+        base_numeric_id=5170,
         gen=6,
         subtype="D",
         sprites_complete=True,

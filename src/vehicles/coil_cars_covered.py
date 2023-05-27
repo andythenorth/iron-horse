@@ -4,7 +4,17 @@ from train import CoilCarCoveredConsist, FreightCar
 def main():
     # --------------- pony ----------------------------------------------------------------------
 
-    # start gen 4, B and C lengths only
+    # start gen 4
+
+    consist = CoilCarCoveredConsist(
+        roster_id="pony",
+        base_numeric_id=11030,
+        gen=4,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
     consist = CoilCarCoveredConsist(
         roster_id="pony",
@@ -34,7 +44,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_2cc_filled_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_24px")
 
     consist = CoilCarCoveredConsist(
         roster_id="pony",
@@ -44,4 +54,4 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_2cc_filled_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")

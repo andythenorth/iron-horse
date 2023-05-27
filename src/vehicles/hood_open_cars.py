@@ -2,7 +2,6 @@ from train import OpenCarHoodConsist, FreightCar
 
 
 def main():
-
     # --------------- pony ----------------------------------------------------------------------
 
     # only type A for gen 1

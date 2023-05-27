@@ -2,10 +2,27 @@ STR_GRF_NAME_VERSIONED                                          :${roster.str_gr
 STR_GRF_DOCS_URL                                                :${utils.get_docs_url()}
 <!--! empty string is not translated :) -->
 STR_EMPTY                                                       :
+STR_CABBAGE                                                     :CABBAGE
 
-STR_NAME_CONSIST_PLAIN                                          :{STRING} {STRING}
-STR_NAME_CONSIST_COMPOUND                                       :{STRING} {STRING}
-STR_NAME_CONSIST_PARENTHESES                                    :{STRING} ({STRING}) {STRING}
+STR_PARENTHESES                                                 :({STRING})
+STR_NAME_CONTAINER_1                                            :{STRING}
+STR_NAME_CONTAINER_2                                            :{STRING} {STRING}
+STR_NAME_CONTAINER_3                                            :{STRING} {STRING} {STRING}
+STR_NAME_CONTAINER_4                                            :{STRING} {STRING} {STRING} {STRING}
+
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_1      :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2      :{STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_3      :{STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_4      :{STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_5      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_6      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_7      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_8      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+
+# buy menu wrappers
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_THREE_SUBSTR               :{STRING}{}{STRING}{}{STRING}
 
 <!--! consist names (engines) -->
 <tal:consist_names repeat="consist consists">

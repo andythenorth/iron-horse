@@ -5,7 +5,7 @@ def main():
     # --------------- pony NG ----------------------------------------------------------------------
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=10070,
+        base_numeric_id=18160,
         gen=1,
         subtype="U",
         base_track_type_name="NG",
@@ -18,7 +18,7 @@ def main():
 
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=9660,
+        base_numeric_id=18180,
         gen=3,
         subtype="U",
         base_track_type_name="NG",
@@ -29,7 +29,7 @@ def main():
 
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=9720,
+        base_numeric_id=18200,
         gen=4,
         subtype="U",
         base_track_type_name="NG",
@@ -41,7 +41,7 @@ def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=10050,
+        base_numeric_id=18220,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -53,7 +53,7 @@ def main():
 
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=11720,
+        base_numeric_id=18240,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -63,7 +63,7 @@ def main():
 
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=10060,
+        base_numeric_id=18260,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -73,13 +73,13 @@ def main():
 
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=11760,
+        base_numeric_id=18280,
         gen=5,
         subtype="C",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_2cc_filled_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
 
     consist = LivestockCarConsist(
         roster_id="pony",

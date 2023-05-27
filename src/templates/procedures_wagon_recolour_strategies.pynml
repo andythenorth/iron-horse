@@ -1,0 +1,169 @@
+<!--! ** Various strategies for random recolouring of vehicles / intermodal containers ** -->
+
+<!--!
+    !!! as of April 2023, this has nearly-complete support for randomising to 2nd company colour
+    but that looks bad with certain 2CC settings, in groups, and is not used
+    probably should be removed here, and in train.py wagon_recolour_strategy_num method
+-->
+<tal:colour_sets repeat="colour_set global_constants.colour_sets.items()">
+    <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
+    <!--! uses 1 random bit from self, just 2 colour choices, more is overkill and often looks bad -->
+    switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_1cc,
+                <!--! check if randomisation is enabled (player parameter) -->
+                param_wagon_colour_randomisation && LOAD_TEMP(${temp_storage_ids.flag_use_weathering})
+                ? random_bits_colour_set()
+                : 0) {
+        1: return ${utils.unpack_colour(colour_set[1][1], 1)};
+        return ${utils.unpack_colour(colour_set[1][0], 1)};
+    }
+    switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_2cc,
+                <!--! check if randomisation is enabled (player parameter) -->
+                param_wagon_colour_randomisation && LOAD_TEMP(${temp_storage_ids.flag_use_weathering})
+                ? random_bits_colour_set()
+                : 0) {
+        1: return ${utils.unpack_colour(colour_set[1][1], 2)};
+        return ${utils.unpack_colour(colour_set[1][0], 2)};
+    }
+</tal:colour_sets>
+
+<!--! company colour passed as a param to avoid pissing around switching between vars for CC1 or CC2 -->
+switch(FEAT_TRAINS, SELF, switch_get_complement_to_company_colour, context_company_colour, context_company_colour) {
+    <tal:complements_to_company_colours repeat="complement_pair global_constants.complements_to_company_colours.items()">
+        ${complement_pair[0]}: return ${complement_pair[1]};
+    </tal:complements_to_company_colours>
+}
+
+<!--! up to 8 random liveries (all 8 must be passed as params when initing the wagon chain -->
+switch(FEAT_TRAINS, SELF, switch_get_random_from_available_liveries, random_bits_wagon_random_remap_livery()) {
+     <tal:available_liveries repeat="livery_num range(8)">
+         ${livery_num}: return LOAD_TEMP(${temp_storage_ids.get("wagon_recolour_livery_num_" + str(livery_num))});
+     </tal:available_liveries>
+}
+
+<!--! convenience switch to define how to pick a colour -->
+switch(FEAT_TRAINS, SELF, switch_get_colour_constant_for_strategy, context_company_colour, [
+            <!--! stacked ternary to (1) check if in purchase and force the result if so (2) switch to random livery or fixed, per strategy -->
+            LOAD_TEMP(${temp_storage_ids.flag_context_is_purchase}) == 1
+                ? LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num_purchase})
+                : (
+                    LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num}) >= 103
+                    ? switch_get_random_from_available_liveries()
+                    : LOAD_TEMP(${temp_storage_ids.wagon_recolour_strategy_num})
+                )
+            ]
+        ) {
+    101: return switch_get_complement_to_company_colour(context_company_colour);
+    100: return context_company_colour;
+    return; <!--! just return the recolour strategy number -->
+}
+
+<!--! * Strategies for random recolouring of wagons *
+    1. strategies apply rules to branch to colour sets, which apply a random choice from 2 shades of the chosen colour (as of Nov 2020)
+    2. player parameter can choose certain strategies explicitly
+    3. magic may or may not get added for engine-specific or cargo-specific colours
+-->
+
+<!--! as of Dec 2019 this was not used with articulated vehicles,
+      ¿ however as of August 2022 type D (articulated) wagons appear to use this so eh, maybe it got extended? -->
+
+<tal:switch_colour_set_use_weathering repeat="cc [['1cc', '1cc'], ['2cc', '2cc']]">
+    switch (FEAT_TRAINS, SELF, switch_colour_set_use_weathering_${cc[0]}_to_${cc[1]},
+                        switch_get_colour_constant_for_strategy(
+                            company_colour${cc[1][0]}
+                        )
+                    ) {
+        <tal:colour_sets repeat="colour_set global_constants.colour_sets.items()">
+            <!--! this relies on order matching the order of company colours per nml / openttd constants;
+                  e.g. COLOUR_DARK_BLUE = 0, COLOUR_WHITE= 15
+                  we then extend our own custom colour sets after the default colours -->
+            <!--! // debug: ${colour_set[1][0]}, ${colour_set[1][1]} -->
+            ${repeat.colour_set.index}: switch_colour_set_${colour_set[0]}_${cc[0]};
+        </tal:colour_sets>
+    }
+</tal:switch_colour_set_use_weathering>
+
+switch (FEAT_TRAINS, SELF, switch_cc_num_to_recolour, LOAD_TEMP(${temp_storage_ids.cc_num_to_recolour})) {
+    1: switch_colour_set_use_weathering_1cc_to_1cc;
+    2: switch_colour_set_use_weathering_2cc_to_2cc;
+}
+
+switch (FEAT_TRAINS, SELF, switch_colour_mapping,
+        cc_num_to_recolour,
+        flag_use_weathering,
+        flag_context_is_purchase,
+        wagon_recolour_strategy_num,
+        wagon_recolour_strategy_num_purchase,
+        <tal:available_liveries repeat="livery_num range(8)">
+            wagon_recolour_livery_num_${livery_num},
+        </tal:available_liveries>
+                [
+                 STORE_TEMP(cc_num_to_recolour, ${temp_storage_ids.cc_num_to_recolour}),
+                 STORE_TEMP(flag_use_weathering, ${temp_storage_ids.flag_use_weathering}),
+                 STORE_TEMP(flag_context_is_purchase, ${temp_storage_ids.flag_context_is_purchase}),
+                 STORE_TEMP(wagon_recolour_strategy_num, ${temp_storage_ids.wagon_recolour_strategy_num}),
+                 STORE_TEMP(wagon_recolour_strategy_num_purchase, ${temp_storage_ids.wagon_recolour_strategy_num_purchase}),
+                 <tal:available_liveries repeat="livery_num range(8)">
+                     STORE_TEMP(wagon_recolour_livery_num_${livery_num}, ${temp_storage_ids.get("wagon_recolour_livery_num_" + str(livery_num))}),
+                 </tal:available_liveries>
+                ]) {
+    switch_cc_num_to_recolour;
+}
+
+<!--! * Strategies for random recolouring of intermodal containers * -->
+
+<!--!  these are rudimentary in that
+       1. they won't recolour within the container group, only between wagons
+       2. only 1cc is recoloured due to combinatorial explosion if both 1cc and 2cc are randomised in recolour sprites (those sprites _could_ be generated though)
+       3. I didn't check if the random bits used to choose colour set collide with any other uses
+       4. this works for train wagons, wouldn't work for ships as individual containers can't be controlled
+-->
+
+<!--!! possibly it would be better better to
+     - generate box containers for all the CC variants directly in Polar Fox, including the alternative shade for every company colour
+     - then compose those into fixed container groups in Iron Horse (cc1_alt etc), so each group produces 16 colour variants
+     - then switch the final sprites on the company current colour
+     - seems like work, but it's what ships will probably need to do?
+     - would non-trivially complicate generating intermodal container spritesets etc
+     - also would remove randomisation from non-box containers
+     - so basically, unappealing-->
+<!--!<tal:switch_by_company_colour repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">-->
+<tal:switch_by_company_colour repeat="cc [['1cc', '1cc']]">
+    switch (FEAT_TRAINS, SELF, switch_intermodal_by_company_colour_${cc[0]}_to_${cc[1]}, company_colour${cc[1][0]}) {
+        COLOUR_DARK_BLUE: switch_colour_set_dark_blue_${cc[0]};
+        COLOUR_PALE_GREEN: switch_colour_set_pale_green_${cc[0]};
+        COLOUR_PINK: switch_colour_set_pink_${cc[0]};
+        COLOUR_YELLOW: switch_colour_set_yellow_${cc[0]};
+        COLOUR_RED: switch_colour_set_red_${cc[0]};
+        COLOUR_LIGHT_BLUE: switch_colour_set_light_blue_${cc[0]};
+        COLOUR_GREEN: switch_colour_set_green_${cc[0]};
+        COLOUR_DARK_GREEN: switch_colour_set_dark_green_${cc[0]};
+        COLOUR_BLUE: switch_colour_set_blue_${cc[0]};
+        COLOUR_CREAM: switch_colour_set_cream_${cc[0]};
+        COLOUR_MAUVE: switch_colour_set_mauve_${cc[0]};
+        COLOUR_PURPLE: switch_colour_set_purple_${cc[0]};
+        COLOUR_ORANGE: switch_colour_set_orange_${cc[0]};
+        COLOUR_BROWN: switch_colour_set_brown_${cc[0]};
+        COLOUR_GREY: switch_colour_set_grey_${cc[0]};
+        COLOUR_WHITE: switch_colour_set_white_${cc[0]};
+    }
+</tal:switch_by_company_colour>
+
+
+<!--! * Strategy for forcing express intermodal to match cargo sprinter * -->
+
+<!--! this doesn't strictly belong in here as it's not random, but it's a convenient location for this niche case
+      it's also not a procedure, it's just a switch yielding a result-->
+switch (FEAT_TRAINS, SELF, intermodal_car_switch_colour_mapping_not_a_cargo_sprinter, vehicle_is_flipped) {
+    1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
+    return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+}
+<!--! check parent engine ID to see if company colour should be forced to match -->
+switch (FEAT_TRAINS, PARENT, intermodal_car_switch_colour_mapping_force_if_cargo_sprinter, vehicle_type_id) {
+    <!--! this doesn't check grfid currently - add later if needed -->
+    <tal:cargo_sprinter_ids repeat="engine_id roster_manager.cargo_sprinter_ids">
+        <!--! apply regular 1CC and 2CC - note that this _should_ take the PARENT scope for those values -->
+        ${engine_id}: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+    </tal:cargo_sprinter_ids>
+    return intermodal_car_switch_colour_mapping_not_a_cargo_sprinter;
+}
+

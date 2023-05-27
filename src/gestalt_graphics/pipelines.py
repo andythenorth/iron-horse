@@ -62,7 +62,13 @@ class Pipeline(object):
         # this is so that it has the processed spritesheet available, which is essential for creating buy menu sprites
         # n.b if buy menu sprite processing has conditions by vehicle type, could pass a dedicated function for each type of processing
         buy_menu_buyable_variant_unit_row_maps = []
-        num_livery_rows_per_unit = len(self.consist.buyable_variants)
+        # !! JFDI hax May 2023, to handle differing requirements for real (pixel painted) vs. sprite recolour liveries
+        # this is likely incomplete as other gestalts need handled, e.g. automobile cars
+        # should probably be handled via a flag on the gestalt
+        if self.consist.gestalt_graphics.__class__.__name__ in ["GestaltGraphicsBoxCarOpeningDoors"]:
+            num_livery_rows_per_unit = 1
+        else:
+            num_livery_rows_per_unit = len(self.consist.buyable_variants)
         # organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
         for buyable_variant in self.consist.buyable_variants:
             result = []
@@ -564,7 +570,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
 
             dice_image = Image.open(
                 os.path.join(
-                    currentdir, "src", "graphics", "randomised_wagon_overlay.png"
+                    currentdir, "src", "graphics", "randomisation_icons", "dice.png"
                 )
             ).crop((10, 10, 10 + dice_image_width, 10 + dice_image_height))
             dice_recolour_maps = {
@@ -599,7 +605,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
 
             fade_image = Image.open(
                 os.path.join(
-                    currentdir, "src", "graphics", "randomised_wagon_overlay.png"
+                    currentdir, "src", "graphics", "randomisation_icons", "dice.png"
                 )
             ).crop((10, 30, 10 + fade_image_width, 30 + fade_image_height))
             # create a mask so that we paste only the overlay pixels (no blue pixels)

@@ -15,7 +15,14 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         # red stripe? Teeside steelmaster?
-        additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "DBSCHENKER", "LARGE_LOGO", "LOADHAUL", "SWOOSH_LESS"],
+        additional_liveries=[
+            "RAILFREIGHT_TRIPLE_GREY",
+            "RAILFREIGHT_TRIPLE_GREY_COAL",
+            "DBSCHENKER",
+            "LARGE_LOGO",
+            "LOADHAUL",
+            "SWOOSH_LESS",
+        ],
         default_livery_extra_docs_examples=[
             ("COLOUR_GREY", "COLOUR_YELLOW"),
             ("COLOUR_WHITE", "COLOUR_GREY"),

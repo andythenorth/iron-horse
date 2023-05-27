@@ -74,4 +74,3 @@ def main():
     )
 
     consist.add_unit(type=IntermodalCar, chassis="4_axle_1cc_filled_32px")
-

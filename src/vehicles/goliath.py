@@ -27,8 +27,6 @@ def main(roster_id):
     )
 
     consist.description = """It gets the job done either way."""
-    consist.foamer_facts = (
-        """YEC <i>Janus</i>, Corus <i>Trojan</i>"""
-    )
+    consist.foamer_facts = """YEC <i>Janus</i>, Corus <i>Trojan</i>"""
 
     return consist

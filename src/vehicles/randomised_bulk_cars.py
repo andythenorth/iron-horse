@@ -2,7 +2,6 @@ from train import BulkCarRandomisedConsist, FreightCar
 
 
 def main():
-
     # --------------- pony NG ----------------------------------------------------------------------
 
     consist = BulkCarRandomisedConsist(

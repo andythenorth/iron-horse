@@ -10,7 +10,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=10090,
+        base_numeric_id=17900,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=10100,
+        base_numeric_id=18100,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -40,7 +40,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=10150,
+        base_numeric_id=17920,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -50,7 +50,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=10160,
+        base_numeric_id=18120,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -70,7 +70,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=10440,
+        base_numeric_id=17940,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -102,7 +102,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=10460,
+        base_numeric_id=18020,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -112,7 +112,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=12280,
+        base_numeric_id=18040,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -124,7 +124,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=10550,
+        base_numeric_id=18140,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -134,7 +134,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=12270,
+        base_numeric_id=18000,
         gen=6,
         subtype="C",
         sprites_complete=True,

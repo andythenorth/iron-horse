@@ -264,10 +264,20 @@ def main():
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
-        livery_presets={
+        engine_liveries={
+            "_DEFAULT": {
+                # this is just a fallback for some special cases, such as snowploughs
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "FREIGHTLINER_GBRF": {
                 # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
-                "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_YELLOW",
+                    "company_colour2": "company_colour1",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
                     ("COLOUR_DARK_GREEN", "COLOUR_YELLOW"),
@@ -277,7 +287,10 @@ def main():
             },
             "FREIGHTLINER_2": {
                 # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
-                "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_YELLOW",
+                    "company_colour2": "company_colour1",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
                     ("COLOUR_DARK_GREEN", "COLOUR_YELLOW"),
@@ -285,7 +298,10 @@ def main():
                 ],
             },
             "RAILFREIGHT_RED_STRIPE": {
-                "remap_to_cc": {"company_colour1": "COLOUR_GREY", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_GREY",
+                    "company_colour2": "company_colour1",
+                },
                 "forced_intro_year": 1975,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -294,7 +310,10 @@ def main():
             },
             "RAILFREIGHT_TRIPLE_GREY": {
                 # note the remap to white, to provide lightest of the triple greys as cc1
-                "remap_to_cc": {"company_colour1": "COLOUR_WHITE", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_WHITE",
+                    "company_colour2": "company_colour1",
+                },
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -305,7 +324,10 @@ def main():
             },
             "RAILFREIGHT_TRIPLE_GREY_COAL": {
                 # note the remap to white, to provide lightest of the triple greys as cc1
-                "remap_to_cc": {"company_colour1": "COLOUR_WHITE", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_WHITE",
+                    "company_colour2": "company_colour1",
+                },
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -414,7 +436,10 @@ def main():
                 ],
             },
             "DUTCH": {
-                "remap_to_cc": {"company_colour1": "COLOUR_GREY", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_GREY",
+                    "company_colour2": "company_colour1",
+                },
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -423,7 +448,10 @@ def main():
                 ],
             },
             "DUTCH_UNLIMITED": {
-                "remap_to_cc": {"company_colour1": "COLOUR_GREY", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_GREY",
+                    "company_colour2": "company_colour1",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_YELLOW", "COLOUR_WHITE"),
@@ -459,13 +487,19 @@ def main():
                 ],
             },
             "INDUSTRIAL_BROWN": {
-                "remap_to_cc": {"company_colour1": "COLOUR_BROWN", "company_colour2": "company_colour2"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_BROWN",
+                    "company_colour2": "company_colour2",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             "INDUSTRIAL_YELLOW": {
-                "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour2"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_YELLOW",
+                    "company_colour2": "company_colour2",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
@@ -477,7 +511,7 @@ def main():
                 ],
             },
         },
-        # empty dicts currently, but could hold remaps, docs image colours etc if needed
+        # remaps, docs image colours etc as needed
         default_pax_liveries=[
             {
                 "docs_image_input_cc": [
@@ -539,7 +573,10 @@ def main():
             },
             {
                 "relative_spriterow_num": 4,
-                "remap_to_cc": {"company_colour1": "COLOUR_RED", "company_colour2": "company_colour2"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_RED",
+                    "company_colour2": "company_colour2",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_RED"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -577,7 +614,10 @@ def main():
             },
             {
                 "relative_spriterow_num": 4,
-                "remap_to_cc": {"company_colour1": "COLOUR_RED", "company_colour2": "company_colour2"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_RED",
+                    "company_colour2": "company_colour2",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_RED"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -615,7 +655,10 @@ def main():
             },
             {
                 "relative_spriterow_num": 4,
-                "remap_to_cc": {"company_colour1": "COLOUR_RED", "company_colour2": "company_colour2"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_RED",
+                    "company_colour2": "company_colour2",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_RED"),
                     ("COLOUR_RED", "COLOUR_WHITE"),

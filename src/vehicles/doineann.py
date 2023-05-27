@@ -12,7 +12,7 @@ def main(roster_id):
         role="heavy_freight",
         role_child_branch_num=1,
         power_by_power_source={
-            "DIESEL": 2750, # within range of Resilient
+            "DIESEL": 2750,  # within range of Resilient
         },
         random_reverse=True,
         gen=5,
@@ -26,7 +26,9 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=DieselEngineUnit, weight=110, vehicle_length=8,
+        type=DieselEngineUnit,
+        weight=110,
+        vehicle_length=8,
     )
 
     consist.description = """Let there be some more test made of my metal."""

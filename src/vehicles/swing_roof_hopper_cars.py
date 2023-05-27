@@ -16,11 +16,10 @@ def main():
 
     consist = CoveredHopperCarSwingRoofConsist(
         roster_id="pony",
-        base_numeric_id=16110,
+        base_numeric_id=16660,
         gen=5,
         subtype="C",
         sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hoppers_32px")
-

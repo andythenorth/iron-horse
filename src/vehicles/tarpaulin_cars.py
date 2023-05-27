@@ -18,7 +18,7 @@ def main():
 
     consist = FlatCarTarpaulinConsist(
         roster_id="pony",
-        base_numeric_id=9390,
+        base_numeric_id=16050,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -42,7 +42,7 @@ def main():
 
     consist = FlatCarTarpaulinConsist(
         roster_id="ibex",
-        base_numeric_id=8820,
+        base_numeric_id=12790,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main():
 
     consist = FlatCarTarpaulinConsist(
         roster_id="ibex",
-        base_numeric_id=8840,
+        base_numeric_id=16730,
         gen=6,
         subtype="C",
         sprites_complete=True,

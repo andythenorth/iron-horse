@@ -114,3 +114,31 @@ def unpack_colour(colour_name, cc_to_remap):
             + " + company_colour"
             + str(1 if cc_to_remap == 2 else 2)
         )
+
+def extend_list_to_power_of_2_length(list_to_extend):
+    # length of random choices needs to be power of 2 as random choice can only be picked from powers of 2s (1 bit = 2 options, 2 bits = 4 options, 3 bits = 8 options, 4 bits = 16 options, 5 bits = 32 options)
+    # so just do a clunky manual append here, JFDI, not figuring out a power of 2 detector at this time of night :P
+    # this will cause uneven probabilities, but eh, life is not perfect
+    if len(list_to_extend) == 3:
+        list_to_extend.append(list_to_extend[0])
+    if len(list_to_extend) >= 5 and len(list_to_extend) < 9:
+        list_to_extend.extend(list_to_extend[: 8 - len(list_to_extend)])
+    if len(list_to_extend) >= 9 and len(list_to_extend) < 17:
+        list_to_extend.extend(list_to_extend[: 16 - len(list_to_extend)])
+    if len(list_to_extend) >= 17 and len(list_to_extend) < 33:
+        list_to_extend.extend(list_to_extend[: 32 - len(list_to_extend)])
+    if len(list_to_extend) >= 33:
+        list_to_extend.extend(list_to_extend[: 64 - len(list_to_extend)])
+    return list_to_extend
+
+def convert_flat_list_to_pairs_of_tuples(flat_list):
+    # used to create a list suitable for iterating over and pushing values to the text stack
+    # parse a flat list [a, b, c] into a list of 2 tuples [(a, b), (c, 0)] as we need to push 2 WORD values into each DWORD text stack register
+    pairs = [
+        (
+            flat_list[i],
+            flat_list[i + 1] if i + 1 < len(flat_list) else "0",
+        )
+        for i in range(0, len(flat_list), 2)
+    ]
+    return pairs

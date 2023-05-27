@@ -30,9 +30,7 @@ def main(roster_id):
         type=ElectricEngineUnit, weight=92, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = (
-        """Nowt to fuss about with this one."""
-    )
+    consist.description = """Nowt to fuss about with this one."""
     consist.foamer_facts = """SR CC1/CC2 locomotives, English Electric Class EP01 exported from UK to Poland"""
 
     return consist
