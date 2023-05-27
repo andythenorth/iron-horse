@@ -745,16 +745,6 @@ class Consist(object):
     def roster(self):
         return iron_horse.roster_manager.get_roster_by_id(self.roster_id)
 
-    def get_expression_for_availability(self):
-        result = []
-        if self.joker:
-            result.append("param_simplified_gameplay==0")
-        if self.hide_in_wagons_only_mode:
-            result.append("param_wagons_only_mode==0")
-        # a hack to make this check work now that roster is removed, for the non-joker case, with no other condition to match
-        result.append("1")
-        return " && ".join(result)
-
     def get_nml_expression_for_default_cargos(self):
         # sometimes first default cargo is not available, so we use a list
         # this avoids unwanted cases like box cars defaulting to mail when goods cargo not available

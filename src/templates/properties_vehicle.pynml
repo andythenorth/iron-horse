@@ -157,12 +157,33 @@
     }
 
     <tal:rosters condition="vehicle.is_lead_unit_of_consist">
-        if (${consist.get_expression_for_availability()}) {
-            item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
-                property {
-                    climates_available:             ALL_CLIMATES;
-                }
+        <!--! constructing combinatorial 'if' expressions is too complicated, just turn the vehicle on or off in a way that will probably go wrong eh? -->
+
+        <!--! first default to 'on' if lead unit of a consist (we don't want trailing parts -->
+        item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
+            property {
+                climates_available:             ALL_CLIMATES;
             }
         }
+        <!--! now turn off anything that shouldn't be available in wagons only mode -->
+        <tal:wagons_only_mode condition="consist.hide_in_wagons_only_mode">
+            if (param_wagons_only_mode==1) {
+                item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        </tal:wagons_only_mode>
+        <!--! now turn off anything that shouldn't be available in simplified gameplay mode -->
+        <tal:simplified_gameplay_only_mode condition="consist.joker">
+            if (param_simplified_gameplay==1) {
+                item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        </tal:simplified_gameplay_only_mode>
     </tal:rosters>
 </tal:unit_variants>
