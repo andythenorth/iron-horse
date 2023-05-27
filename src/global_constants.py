@@ -42,9 +42,9 @@ buy_menu_sort_order_wagons = [
     "randomised_dedicated_coil_car",
     "hopper_car",
     "hopper_car_high_side",
-    "mgr_hopper_car",
-    "rock_hopper_car",
     "aggregate_hopper_car",
+    "rock_hopper_car",
+    "mgr_hopper_car",
     "dump_car",
     "dump_car_high_side",
     "randomised_dump_car",
@@ -61,9 +61,9 @@ buy_menu_sort_order_wagons = [
     "covered_hopper_car",
     "dry_powder_hopper_car",
     "mineral_covered_hopper_car",
+    "chemical_covered_hopper_car",
     "roller_roof_hopper_car",
     "swing_roof_hopper_car",
-    "chemical_covered_hopper_car",
     "silo_car",
     "silo_car_v_barrel",
     "randomised_silo_car",
@@ -344,6 +344,10 @@ custom_wagon_recolour_sprite_maps = {
     "custom_faded_ruby": (71, 72, 73, 43, 44, 76, 77, 47),
     "custom_oil_black": (1, 2, 3, 4, 5, 6, 7, 8),
     "custom_faded_oil_black": (1, 70, 16, 4, 26, 6, 7, 8),
+    "custom_gremlin_green": (24, 25, 26, 27, 28, 29, 30, 31),
+    "custom_faded_gremlin_green": (24, 25, 26, 109, 28, 29, 59, 103),
+    "custom_ochre": (60, 61, 62, 63, 192, 193, 194, 196),
+    "custom_faded_ochre": (60, 61, 62, 117, 192, 193, 196, 197),
 }
 
 # shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
@@ -376,6 +380,9 @@ colour_sets = {
     "freight_straw": ["COLOUR_BROWN", "COLOUR_CREAM"],
     "freight_ruby": ["custom_ruby", "custom_faded_ruby"],
     "freight_oil_black": ["custom_oil_black", "custom_faded_oil_black"],
+    "freight_gremlin_green": ["custom_gremlin_green", "custom_faded_gremlin_green"],
+    "freight_ochre": ["custom_ochre", "custom_faded_ochre"],
+    "freight_sand": ["COLOUR_BROWN", "custom_dark_brown"],
 }
 
 # select a colour that matches the current company colour
@@ -535,6 +542,30 @@ wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "RANDOM_FROM_CONSIST_LIVERIES_9": {
+        "colour_set": "random_from_consist_liveries_9",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_10": {
+        "colour_set": "random_from_consist_liveries_10",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_11": {
+        "colour_set": "random_from_consist_liveries_11",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "FREIGHT_BAUXITE": {
         "colour_set": "freight_bauxite",
         "use_weathering": True,
@@ -546,6 +577,14 @@ wagon_liveries = {
     "FREIGHT_BAUXITE_NO_WEATHERING": {
         "colour_set": "freight_bauxite",
         "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_GREMLIN_GREEN": {
+        "colour_set": "freight_gremlin_green",
+        "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -583,6 +622,14 @@ wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "FREIGHT_OCHRE": {
+        "colour_set": "freight_ochre",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "FREIGHT_OIL_BLACK": {
         "colour_set": "freight_oil_black",
         "use_weathering": True,
@@ -610,6 +657,14 @@ wagon_liveries = {
     "FREIGHT_RED": {
         "colour_set": "red",
         "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_SAND": {
+        "colour_set": "freight_sand",
+        "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
@@ -698,12 +753,18 @@ wagon_livery_mixes = {
     "random_from_consist_liveries_4": ["freight_teal", "freight_violet"],
     # silver-ish
     "random_from_consist_liveries_5": ["freight_silver", "freight_pewter"],
-    # yellow / faded
-    "random_from_consist_liveries_6": ["freight_sulphur", "freight_straw"],
+    # yellow / ochre
+    "random_from_consist_liveries_6": ["freight_sulphur", "freight_ochre"],
     # rust / ruby
     "random_from_consist_liveries_7": ["freight_ruby", "freight_bauxite"],
     # black
     "random_from_consist_liveries_8": ["freight_oil_black", "freight_nightshade"],
+    # ochre / sand
+    "random_from_consist_liveries_9": ["freight_ochre", "freight_sand"],
+    # moss /
+    "random_from_consist_liveries_10": ["freight_gremlin_green", "freight_silver"],
+    # yellow / faded
+    "random_from_consist_liveries_11": ["freight_sulphur", "freight_straw"],
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions

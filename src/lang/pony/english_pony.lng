@@ -19,6 +19,9 @@ STR_PARAM_WAGONS_ONLY_MODE_DESC                                 :Play with only 
 STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Wagon colour randomisation
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Random freight wagon colours add variety to trains.{}{}Some wagon types have their own colour rules and will not use the randomisation setting; for example, brake vans, express-type wagons and passenger coaches.
 
+STR_ERROR_INFLATION_INCOMPATIBLE                                :Iron Horse is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings.
+STR_ERROR_TERMITE_DEPRECATED                                    :Iron Horse now includes the railtypes from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks.
+
 # reuses the constants for the company colour names, so "COLOUR_" is repeated again in the trailing part of some string names
 STR_COLOUR_NAME_COLOUR_DARK_BLUE                                :Dark Blue
 STR_COLOUR_NAME_COLOUR_PALE_GREEN                               :Pale Green
@@ -39,7 +42,9 @@ STR_COLOUR_NAME_COLOUR_WHITE                                    :White
 # avoid metaphor/narrative names for the colours, they confuse people, stick to actual real colours
 STR_COLOUR_NAME_CUSTOM_BAUXITE                                  :Brown
 STR_COLOUR_NAME_CUSTOM_DARK_GREY                                :Grey
+STR_COLOUR_NAME_CUSTOM_GREMLIN_GREEN                            :Green
 STR_COLOUR_NAME_CUSTOM_NIGHTSHADE                               :Black
+STR_COLOUR_NAME_CUSTOM_OCHRE                                    :Ochre
 STR_COLOUR_NAME_CUSTOM_OIL_BLACK                                :Oil Black
 STR_COLOUR_NAME_CUSTOM_PEWTER                                   :Pewter
 STR_COLOUR_NAME_CUSTOM_RUBY                                     :Dark Red
@@ -49,8 +54,19 @@ STR_COLOUR_NAME_CUSTOM_SULPHUR                                  :Mustard
 STR_COLOUR_NAME_CUSTOM_TEAL                                     :Teal
 STR_COLOUR_NAME_CUSTOM_VIOLET                                   :Violet
 
-STR_ERROR_INFLATION_INCOMPATIBLE                                :Iron Horse is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings.
-STR_ERROR_TERMITE_DEPRECATED                                    :Iron Horse now includes the railtypes from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks.
+# livery name suffixes
+# fancy names are better here, as there can be more than 2 colours, so the names give a flavour
+STR_NAME_SUFFIX_LIVERY_MIX_1                                    :- Variety
+STR_NAME_SUFFIX_LIVERY_MIX_2                                    :- {STRING}/{STRING}
+STR_NAME_SUFFIX_LIVERY_MIX_3                                    :- Rust/Shale
+STR_NAME_SUFFIX_LIVERY_MIX_4                                    :- Seafoam/Amethyst
+STR_NAME_SUFFIX_LIVERY_MIX_5                                    :- Silver/Pewter
+STR_NAME_SUFFIX_LIVERY_MIX_6                                    :- Mustard/Ochre
+STR_NAME_SUFFIX_LIVERY_MIX_7                                    :- Ruby/Rust
+STR_NAME_SUFFIX_LIVERY_MIX_8                                    :- Obsidian/Nightshade
+STR_NAME_SUFFIX_LIVERY_MIX_9                                    :- Ochre/Straw
+STR_NAME_SUFFIX_LIVERY_MIX_10                                   :- Moss/Silver
+STR_NAME_SUFFIX_LIVERY_MIX_11                                   :- Mustard/Straw
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY_HYBRID                                  :Battery Hybrid
@@ -72,17 +88,6 @@ STR_NAME_SUFFIX_TWIN                                            :Twin
 # special feature suffixes
 STR_NAME_SUFFIX_RANDOMISED_WAGON                                : - Random
 STR_NAME_SUFFIX_MIXED_COLOURS                                   : - {RED}M{ORANGE}i{YELLOW}x{GREEN}e{BLUE}d {PURPLE}C{RED}o{ORANGE}l{YELLOW}o{GREEN}u{BLUE}r{PURPLE}s
-
-# livery name suffixes
-# fancy names are better here, as there can be more than 2 colours, so the names give a flavour
-STR_NAME_SUFFIX_LIVERY_MIX_1                                    :- Variety
-STR_NAME_SUFFIX_LIVERY_MIX_2                                    :- {STRING}/{STRING}
-STR_NAME_SUFFIX_LIVERY_MIX_3                                    :- Rust/Shale
-STR_NAME_SUFFIX_LIVERY_MIX_4                                    :- Seafoam/Amethyst
-STR_NAME_SUFFIX_LIVERY_MIX_5                                    :- Silver/Pewter
-STR_NAME_SUFFIX_LIVERY_MIX_6                                    :- Mustard/Straw
-STR_NAME_SUFFIX_LIVERY_MIX_7                                    :- Ruby/Rust
-STR_NAME_SUFFIX_LIVERY_MIX_8                                    :- Obsidian/Nightshade
 
 # names for buyable variant groups
 STR_WAGON_GROUP_AUTOMOBILE_CARS                                 :Vehicle Transporters
