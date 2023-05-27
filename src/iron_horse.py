@@ -63,7 +63,8 @@ from vehicles import express_cars
 from vehicles import express_intermodal_cars
 from vehicles import express_railcar_passenger_trailer_cars
 from vehicles import farm_products_box_cars
-from vehicles import farm_products_hopper_cars
+from vehicles import farm_products_type_one_hopper_cars
+from vehicles import farm_products_type_two_hopper_cars
 from vehicles import flat_cars
 from vehicles import goods_box_cars
 from vehicles import hood_open_cars
@@ -100,6 +101,7 @@ from vehicles import randomised_chemicals_tank_cars
 from vehicles import randomised_covered_hopper_cars
 from vehicles import randomised_dedicated_coil_cars
 from vehicles import randomised_dump_cars
+from vehicles import randomised_farm_products_hopper_cars
 from vehicles import randomised_flat_cars
 from vehicles import randomised_generic_coil_cars
 from vehicles import randomised_hopper_cars
@@ -337,7 +339,8 @@ def main():
     express_intermodal_cars.main()
     express_railcar_passenger_trailer_cars.main()
     farm_products_box_cars.main()
-    farm_products_hopper_cars.main()
+    farm_products_type_one_hopper_cars.main()
+    farm_products_type_two_hopper_cars.main()
     flat_cars.main()
     goods_box_cars.main()
     hood_open_cars.main()
@@ -375,6 +378,7 @@ def main():
     randomised_covered_hopper_cars.main()
     randomised_dedicated_coil_cars.main()
     randomised_dump_cars.main()
+    randomised_farm_products_hopper_cars.main()
     randomised_flat_cars.main()
     randomised_generic_coil_cars.main()
     randomised_hopper_cars.main()

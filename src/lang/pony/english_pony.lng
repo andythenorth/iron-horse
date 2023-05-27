@@ -172,7 +172,8 @@ STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tanker
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Express Van
 STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Express Container Wagon
 STR_NAME_SUFFIX_FARM_PRODUCTS_BOX_CAR                           :Farm Products Van
-STR_NAME_SUFFIX_FARM_PRODUCTS_HOPPER_CAR                        :Farm Products Hopper
+STR_NAME_SUFFIX_FARM_PRODUCTS_TYPE_ONE_HOPPER_CAR               :Farm Products Hopper
+STR_NAME_SUFFIX_FARM_PRODUCTS_TYPE_TWO_HOPPER_CAR               :Farm Products Hopper
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Wagon
 STR_NAME_SUFFIX_GOODS_BOX_CAR                                   :Goods Van
 STR_NAME_SUFFIX_HOOD_OPEN_CAR                                   :Hood Open Wagon
@@ -209,6 +210,7 @@ STR_NAME_SUFFIX_RANDOMISED_CHEMICALS_TANK_CAR                   :Chemicals Tanke
 STR_NAME_SUFFIX_RANDOMISED_COVERED_HOPPER_CAR                   :Covered Hopper
 STR_NAME_SUFFIX_RANDOMISED_DEDICATED_COIL_CAR                   :Coil Carrier
 STR_NAME_SUFFIX_RANDOMISED_DUMP_CAR                             :Mineral Wagon
+STR_NAME_SUFFIX_RANDOMISED_FARM_PRODUCTS_HOPPER_CAR             :Farm Products Hopper
 STR_NAME_SUFFIX_RANDOMISED_FLAT_CAR                             :Flatbed Cargo Wagon
 STR_NAME_SUFFIX_RANDOMISED_GENERIC_COIL_CAR                     :Coil Wagon
 STR_NAME_SUFFIX_RANDOMISED_HOPPER_CAR                           :Hopper

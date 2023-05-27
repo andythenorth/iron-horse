@@ -2130,7 +2130,12 @@ class CarConsist(Consist):
     def get_wagon_title_optional_livery_suffix_stack(self, unit_variant):
         if getattr(unit_variant, "uses_random_livery", False):
             try:
-                optional_livery_suffix = "STR_NAME_SUFFIX_LIVERY_MIX_" + unit_variant.buyable_variant.livery["colour_set"].split("random_from_consist_liveries_")[1]
+                optional_livery_suffix = (
+                    "STR_NAME_SUFFIX_LIVERY_MIX_"
+                    + unit_variant.buyable_variant.livery["colour_set"].split(
+                        "random_from_consist_liveries_"
+                    )[1]
+                )
             except:
                 raise BaseException(self.id)
         else:
@@ -2256,6 +2261,7 @@ class RandomisedConsistMixin(object):
     def joker(self):
         # no randomised wagons in simplified gameplay mode
         return True
+
 
 class AlignmentCarConsist(CarConsist):
     """
@@ -2861,7 +2867,10 @@ class CoilCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_dedicated_coil_car", "randomised_generic_coil_car"]
+        self.randomised_candidate_groups = [
+            "randomised_dedicated_coil_car",
+            "randomised_generic_coil_car",
+        ]
 
 
 class CoilCarCoveredConsist(CoilCarConsistBase):
@@ -2951,7 +2960,6 @@ class DedicatedCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBa
         )
 
 
-
 class GenericCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBase):
     """
     Random choice of cold metal car sprite, from available coil cars, bolster cars, flat cars etc.
@@ -3004,8 +3012,8 @@ class CoveredHopperCarConsistBase(CarConsist):
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                 # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.wagon_liveries["FREIGHT_RUBY"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
@@ -3061,8 +3069,8 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                 # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.wagon_liveries["FREIGHT_RUBY"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
@@ -3173,8 +3181,8 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                 # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.wagon_liveries["FREIGHT_RUBY"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
@@ -3212,8 +3220,8 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                 # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.wagon_liveries["FREIGHT_RUBY"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
@@ -3608,13 +3616,12 @@ class FarmProductsBoxCarConsist(CarConsist):
         )
 
 
-class FarmProductsHopperCarConsist(CarConsist):
+class FarmProductsHopperCarConsistBase(CarConsist):
     """
     Farm type cargos - covered hoppers.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "farm_products_hopper_car"
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
@@ -3638,6 +3645,53 @@ class FarmProductsHopperCarConsist(CarConsist):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.wagon_liveries[
+                    "_DEFAULT"
+                ],  # company colour not used on these wagons
+            ],
+        )
+
+
+class FarmProductsTypeOneHopperCarConsist(FarmProductsHopperCarConsistBase):
+    """
+    Farm type cargos - covered hoppers.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "farm_products_type_one_hopper_car"
+        super().__init__(**kwargs)
+        self.randomised_candidate_groups = [
+            "randomised_farm_products_hopper_car",
+        ]
+
+
+class FarmProductsTypeTwoHopperCarConsist(FarmProductsHopperCarConsistBase):
+    """
+    Farm type cargos - covered hoppers.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "farm_products_type_two_hopper_car"
+        super().__init__(**kwargs)
+        self.randomised_candidate_groups = [
+            "randomised_farm_products_hopper_car",
+        ]
+
+
+class FarmProductsHopperCarRandomisedConsist(
+    RandomisedConsistMixin, FarmProductsHopperCarConsistBase
+):
+    """
+    Random choice of farm products hopper sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_farm_products_hopper_car"
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
             liveries=[
                 global_constants.wagon_liveries[
                     "_DEFAULT"
@@ -3959,7 +4013,9 @@ class HopperCarConsistBase(CarConsist):
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-                global_constants.wagon_liveries["COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"],
+                global_constants.wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
                 global_constants.wagon_liveries["FREIGHT_RUBY"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
@@ -4332,8 +4388,8 @@ class LivestockCarConsist(CarConsist):
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                 # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.wagon_liveries["FREIGHT_RUBY"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_GREY"],
@@ -5218,8 +5274,8 @@ class SiloCarConsistBase(CarConsist):
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                 # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.wagon_liveries["FREIGHT_RUBY"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_SILVER"],
@@ -5456,8 +5512,8 @@ class TankCarConsist(TankCarConsistBase):
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                 # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.wagon_liveries["FREIGHT_RUBY"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_SULPHUR"],
@@ -5503,8 +5559,8 @@ class TankCarAcidConsist(TankCarConsistBase):
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                 # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.wagon_liveries["FREIGHT_RUBY"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_SULPHUR"],
@@ -5546,8 +5602,8 @@ class TankCarProductConsist(TankCarConsistBase):
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                 # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.wagon_liveries["FREIGHT_RUBY"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_NIGHTSHADE"],
@@ -5592,8 +5648,8 @@ class TankCarSulphurConsist(TankCarConsistBase):
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                 # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.wagon_liveries["FREIGHT_RUBY"],
                 global_constants.wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.wagon_liveries["FREIGHT_SULPHUR"],
@@ -5622,7 +5678,7 @@ class TankCarChemicalsRandomisedConsist(RandomisedConsistMixin, TankCarConsistBa
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_4"],
-                #global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"], # needs more wagons to work
+                # global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"], # needs more wagons to work
             ],
         )
 
@@ -5935,10 +5991,9 @@ class UnitVariant(object):
         # get a pair of colours to put on the text stack to use in name suffix string if required
         colour_name_switch_names = []
         if self.uses_random_livery:
-            if (
-                self.buyable_variant.livery["colour_set"]
-                in ["random_from_consist_liveries_1"]
-            ):
+            if self.buyable_variant.livery["colour_set"] in [
+                "random_from_consist_liveries_1"
+            ]:
                 for colour_name in self.all_candidate_livery_colour_sets_for_variant[
                     0:2
                 ]:
