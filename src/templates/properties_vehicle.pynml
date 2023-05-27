@@ -181,6 +181,7 @@
                 item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
                     property {
                         climates_available:             NO_CLIMATE;
+                        variant_group:                  ${unit_variant.id};
                     }
                 }
             }
