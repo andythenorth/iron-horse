@@ -21,7 +21,7 @@ def main():
         gen=3,
         subtype="U",
         base_track_type_name="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
