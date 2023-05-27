@@ -2262,6 +2262,10 @@ class RandomisedConsistMixin(object):
         # need to turn off colour randomisation on the random consist, it's handled explicitly by the template
         self.use_colour_randomisation_strategies = False
 
+    @property
+    def joker(self):
+        # no randomised wagons in simplified gameplay mode
+        return True
 
 class AlignmentCarConsist(CarConsist):
     """
