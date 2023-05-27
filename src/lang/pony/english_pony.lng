@@ -16,8 +16,8 @@ STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Simplified game
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Play with a simplified set of trains. There will be fewer types of engines and wagons available.  Eye-candy trains like snowploughs, driving cab cars and very slow locomotives will not be available.
 STR_PARAM_WAGONS_ONLY_MODE                                      :Wagons-only mode
 STR_PARAM_WAGONS_ONLY_MODE_DESC                                 :Play with only wagons. All engines, snowploughs etc will be hidden.{}{}Can also be used with 'Simplified gameplay' to reduce the range of wagons if desired.{}{}Note that this option only makes sense if at least one other grf with engines is used in the game.{}{}Wagons will not appear in the game if there are no engines matching their railtype.
-STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Wagon colour randomisation
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Random freight wagon colours add variety to trains.{}{}Some wagon types have their own colour rules and will not use the randomisation setting; for example, brake vans, express-type wagons and passenger coaches.
+STR_PARAM_WAGON_COLOUR_RANDOMISATION                            :Wagon colour fading
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Faded freight wagon colours add variety to trains (random chance each wagon is faded).
 
 STR_ERROR_INFLATION_INCOMPATIBLE                                :Iron Horse is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings.
 STR_ERROR_TERMITE_DEPRECATED                                    :Iron Horse now includes the railtypes from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks.
