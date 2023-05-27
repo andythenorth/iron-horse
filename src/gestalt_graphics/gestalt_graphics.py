@@ -510,6 +510,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         contested_cargo_labels = {
             "CHLO": "cryo_tank",
             "FOOD": "reefer",
+            "N7__": "cryo_tank",
             "RFPR": "chemicals_tank",
             "SULP": "tank",
         }
@@ -525,7 +526,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
                 cargo_label,
                 "already exists, being over-written by",
                 container_type,
-                "label",
+                "label; update contested_cargo_labels in gestalt_graphics",
             )
         # default to allowing, most cargos aren't contested
         return True
