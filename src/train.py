@@ -4494,6 +4494,10 @@ class MailHSTCarConsist(MailCarConsistBase):
         ]
         return result
 
+    @property
+    def hide_in_wagons_only_mode(self):
+        return True
+
 
 class OpenCarConsistBase(CarConsist):
     """
@@ -4869,6 +4873,10 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         ]
         return result
 
+    @property
+    def hide_in_wagons_only_mode(self):
+        return True
+
 
 class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
     """
@@ -4927,6 +4935,10 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         for i in range(len(result), 16):
             result.append(-1)
         return result
+
+    @property
+    def hide_in_wagons_only_mode(self):
+        return True
 
 
 class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
