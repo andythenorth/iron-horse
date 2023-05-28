@@ -287,6 +287,11 @@ class Consist(object):
                 result = [default_name]
         return result
 
+    def get_name_static_prop(self, context, unit_variant):
+        stack_items = self.get_name(context=context, unit_variant=unit_variant)
+        print(stack_items)
+        return "string(STR_CABBAGE)"
+
     def get_name_text_stack(self, context, unit_variant):
         stack_items = self.get_name(context=context, unit_variant=unit_variant)
 

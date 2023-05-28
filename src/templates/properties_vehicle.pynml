@@ -35,8 +35,10 @@
 
     item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
         property {
-            <!--! name static prop not used, use callback instead -->
-            climates_available:             NO_CLIMATE; // nml constant
+            <!--! as of May 2023, name static prop only is used for searching via the buy menu search widget, all other names use name callback -->
+            name:                           ${consist.get_name_static_prop(context="default_name", unit_variant=unit_variant)};
+            <!--! hide all vehicles by default, enabled via conditional checks later, this is so e.g. steam engine tenders aren't buyable vehicles -->
+            climates_available:             NO_CLIMATE;
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
                 <!--! some properties should not be set for trailing parts of articulated consists -->
                 engine_class:                   ${vehicle.engine_class};
