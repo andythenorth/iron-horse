@@ -21,7 +21,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=DieselEngineUnit,
-        weight=60,
+        weight=132,
         vehicle_length=8,
         effect_offsets=[(0, 1), (0, -1)],  # double the smoke eh?
     )
