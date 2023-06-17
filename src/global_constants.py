@@ -14,9 +14,9 @@ buy_menu_sort_order_wagons = [
     "suburban_passenger_car",
     "mail_car",
     "express_car",
+    "double_deck_automobile_car", # order before other automobile cars as needed in simplified mode
     "automobile_car",
     "low_floor_automobile_car",
-    "double_deck_automobile_car",
     "express_intermodal_car",
     "intermodal_car",
     "low_floor_intermodal_car",
@@ -243,7 +243,7 @@ intro_month_offsets_by_role_group = {
 # only needed for groups composing more than one type of consist
 buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_acid_tank_cars": "acid_tank_car",
-    "wagon_group_automobile_cars": "automobile_car",
+    "wagon_group_automobile_cars": "double_deck_automobile_car",
     "wagon_group_box_cars": "box_car",
     "wagon_group_cement_silo_cars": "cement_silo_car",
     "wagon_group_coil_cars": "coil_car_uncovered",

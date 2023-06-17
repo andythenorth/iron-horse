@@ -2328,6 +2328,7 @@ class AutomobileCarConsist(AutomobileCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_automobile_cars"
+        self._joker = True
 
     @property
     def _consist_ruleset(self):
@@ -2380,6 +2381,7 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_automobile_cars"
+        self._joker = True
 
     @property
     def _consist_ruleset(self):
@@ -4311,6 +4313,7 @@ class IntermodalLowFloorCarConsist(IntermodalCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_intermodal_cars"
+        self._joker = True
 
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
