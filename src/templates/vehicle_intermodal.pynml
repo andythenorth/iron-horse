@@ -1,7 +1,3 @@
-<!--! 'reversed' is random reversal on construction, depending on vehicle random bits
-      'flipped' is user flipping vehicle in depot
-      don't conflate them :) -->
-
 // graphics chain for vehicle platform
 // position variants are 'default', 'first', 'last', 'middle', etc, and are dependent on consist_ruleset
 <!--! note that this does not yet account for (masked) overlays which will be needed for well cars
@@ -10,42 +6,36 @@
       will need the spritesheet format figuring out - intermodal cars are asymmetric, so probably interleave the masks with each row, like opening doors on pax cars
 -->
 <tal:position_variants repeat="position_variant consist.gestalt_graphics.position_variants">
-    spriteset(${vehicle.id}_ss_${position_variant}_unflipped, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10 + (repeat.position_variant.index * 60))}
-    }
-    spriteset(${vehicle.id}_ss_${position_variant}_flipped, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name('reversed', 'flipped', 10 + (repeat.position_variant.index * 60) + 30)}
-    }
-
-    <!--! handle user flipped state -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_${position_variant}, vehicle_is_flipped) {
-        1: return ${vehicle.id}_ss_${position_variant}_flipped;
-        return ${vehicle.id}_ss_${position_variant}_unflipped;
+    <!--! as of June 2023, the spritesheets contain an alternative livery which was not included in initial variant wagons release
+          hence the row offset of 60, not 30
+    -->
+    spriteset(${vehicle.id}_ss_${position_variant}, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (repeat.position_variant.index * 60))}
     }
 </tal:position_variants>
 
 <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '1_unit_sets'">
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, 0) {
-        return ${vehicle.id}_switch_graphics_platform_default;
+        return ${vehicle.id}_ss_default;
     }
 </tal:position_ruleset>
 
 <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '2_unit_sets'">
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_intermodal_platform_ruleset_2_unit_sets()) {
-        0: return ${vehicle.id}_switch_graphics_platform_default;
-        1: return ${vehicle.id}_switch_graphics_platform_first;
-        2: return ${vehicle.id}_switch_graphics_platform_last;
-        return ${vehicle.id}_switch_graphics_platform_default;
+        0: return ${vehicle.id}_ss_default;
+        1: return ${vehicle.id}_ss_first;
+        2: return ${vehicle.id}_ss_last;
+        return ${vehicle.id}_ss_default;
     }
 </tal:position_ruleset>
 
 <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '4_unit_sets'">
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_intermodal_platform_ruleset_4_unit_sets()) {
-        0: ${vehicle.id}_switch_graphics_platform_default;
-        1: return ${vehicle.id}_switch_graphics_platform_first;
-        2: return ${vehicle.id}_switch_graphics_platform_last;
-        3: return ${vehicle.id}_switch_graphics_platform_middle;
-        return ${vehicle.id}_switch_graphics_platform_default;
+        0: ${vehicle.id}_ss_default;
+        1: return ${vehicle.id}_ss_first;
+        2: return ${vehicle.id}_ss_last;
+        3: return ${vehicle.id}_ss_middle;
+        return ${vehicle.id}_ss_default;
     }
 </tal:position_ruleset>
 
