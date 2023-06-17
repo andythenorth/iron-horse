@@ -1,7 +1,7 @@
 import global_constants
 import pickle
 import utils
-
+import copy
 
 class Roster(object):
     """
@@ -156,10 +156,10 @@ class Roster(object):
             for group_id in sorted(group):
                 for super_group in super_groups:
                     if group_id in super_group:
-                        super_group.extend(group)
+                        super_group.extend(copy.deepcopy(group))
                         seen = True
             if not seen:
-                super_groups.append(group)
+                super_groups.append(copy.deepcopy(group))
         # super_groups will contain the same id multiple times, so consolidate to uniques
         super_groups = [list(set(super_group)) for super_group in super_groups]
         for super_group in super_groups:
@@ -195,8 +195,16 @@ class Roster(object):
     def get_wagon_randomisation_candidates(self, buyable_variant):
         randomisation_consist = buyable_variant.consist
         result = []
+        if 'randomised_dump_car_pony_gen_1A' in randomisation_consist.id:
+            print(randomisation_consist.id)
+            print(randomisation_consist.base_id)
         for base_id, wagons in self.wagon_consists.items():
             for wagon_consist in wagons:
+                if 'randomised_dump_car_pony_gen_1A' in randomisation_consist.id:
+                    if wagon_consist.id in ["hopper_car_pony_gen_1A", "hopper_car_pony_gen_3A", "open_car_pony_gen_1A", "open_car_pony_gen_4A"]:
+                        if len(wagon_consist.randomised_candidate_groups) > 0:
+                            print(wagon_consist.id)
+                            print(wagon_consist.randomised_candidate_groups)
                 if (
                     randomisation_consist.base_id
                     not in wagon_consist.randomised_candidate_groups
