@@ -195,16 +195,8 @@ class Roster(object):
     def get_wagon_randomisation_candidates(self, buyable_variant):
         randomisation_consist = buyable_variant.consist
         result = []
-        if 'randomised_dump_car_pony_gen_1A' in randomisation_consist.id:
-            print(randomisation_consist.id)
-            print(randomisation_consist.base_id)
         for base_id, wagons in self.wagon_consists.items():
             for wagon_consist in wagons:
-                if 'randomised_dump_car_pony_gen_1A' in randomisation_consist.id:
-                    if wagon_consist.id in ["hopper_car_pony_gen_1A", "hopper_car_pony_gen_3A", "open_car_pony_gen_1A", "open_car_pony_gen_4A"]:
-                        if len(wagon_consist.randomised_candidate_groups) > 0:
-                            print(wagon_consist.id)
-                            print(wagon_consist.randomised_candidate_groups)
                 if (
                     randomisation_consist.base_id
                     not in wagon_consist.randomised_candidate_groups

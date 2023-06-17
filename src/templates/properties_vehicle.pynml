@@ -35,7 +35,8 @@
 
     item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
         property {
-            <!--! name static prop not used, use callback instead -->
+            <!--! name static prop used for buy menu search only -->
+            name:                           ${consist.get_name_as_property(unit_variant=unit_variant)};
             climates_available:             NO_CLIMATE; // nml constant
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
                 <!--! some properties should not be set for trailing parts of articulated consists -->

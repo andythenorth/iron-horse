@@ -270,7 +270,7 @@ class Consist(object):
                         return "STR_NAME_SUFFIX_ELECTRIC_AC_DC"
             return None
 
-    def get_name(self, context, unit_variant):
+    def get_name_parts(self, context, unit_variant):
         default_name = "STR_NAME_" + self.id
         if context == "purchase_level_1":
             result = [default_name]
@@ -287,8 +287,8 @@ class Consist(object):
                 result = [default_name]
         return result
 
-    def get_name_text_stack(self, context, unit_variant):
-        stack_items = self.get_name(context=context, unit_variant=unit_variant)
+    def get_name_as_text_stack(self, context, unit_variant):
+        stack_items = self.get_name_parts(context=context, unit_variant=unit_variant)
 
         # we need to know how many strings we have to handle, so that we can provide a container string with correct number of {STRING} entries
         # this is non-trivial as we might have non-string items for the stack (e.g. number or procedure results), used by a preceding substring
@@ -308,6 +308,13 @@ class Consist(object):
                 # otherwise pass through as is
                 result.append(stack_item)
         return utils.convert_flat_list_to_pairs_of_tuples(result)
+
+    def get_name_as_property(self, unit_variant):
+        # text filter in buy menu needs name as prop as of June 2023
+        # this is very rudimentary and doesn't include all the parts of the name
+        name_parts = self.get_name_parts(context="default_name", unit_variant=unit_variant)
+        result = "string(" + name_parts[0] + ")"
+        return result
 
     def engine_varies_power_by_power_source(self, vehicle):
         if self.power_by_power_source is not None and vehicle.is_lead_unit_of_consist:
@@ -2143,7 +2150,7 @@ class CarConsist(Consist):
         result = [optional_livery_suffix]
         # we _may_ need to put colours on the stack for the string
         if optional_livery_suffix == "STR_NAME_SUFFIX_LIVERY_MIX_1":
-            result.extend(unit_variant.get_name_text_stack_colour_suffixes())
+            result.extend(unit_variant.get_name_as_text_stack_colour_suffixes())
         return result
 
     @property
@@ -2153,7 +2160,7 @@ class CarConsist(Consist):
         else:
             return None
 
-    def get_name(self, context, unit_variant):
+    def get_name_parts(self, context, unit_variant):
         if self.wagon_title_optional_randomised_suffix_str is not None:
             default_result = [
                 self.wagon_title_class_str,
@@ -2215,7 +2222,7 @@ class CarConsist(Consist):
             )
         elif context == "group_parent":
             # !! this is weird, group_parent isn't a single context, we need some other way to handle this
-            # !! this is called via a weird round trip to the group get_name method anyway, it's bizarre??
+            # !! this is called via a weird round trip to the group get_name_parts method anyway, it's bizarre??
             if self.wagon_title_optional_randomised_suffix_str is not None:
                 result = [
                     "STR_WAGON_GROUP_" + self.base_id.upper() + "S",
@@ -2229,7 +2236,7 @@ class CarConsist(Consist):
                 ]
         else:
             raise BaseException(
-                "get_name called for wagon consist "
+                "get_name_parts called for wagon consist "
                 + self.id
                 + " with no context provided"
             )
@@ -4545,7 +4552,7 @@ class MailHSTCarConsist(MailCarConsistBase):
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
 
-    def get_name(self, context, unit_variant):
+    def get_name_parts(self, context, unit_variant):
         # special name handling to use the cab name
         result = [
             "STR_NAME_" + self.cab_id,
@@ -4767,7 +4774,7 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
 
-    def get_name(self, context, unit_variant):
+    def get_name_parts(self, context, unit_variant):
         # special name handling to use the cab name
         result = [
             "STR_NAME_" + self.cab_id,
@@ -4924,7 +4931,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
 
-    def get_name(self, context, unit_variant):
+    def get_name_parts(self, context, unit_variant):
         # special name handling to use the cab name
         result = [
             "STR_NAME_" + self.cab_id,
@@ -5990,7 +5997,7 @@ class UnitVariant(object):
                 )
         return utils.convert_flat_list_to_pairs_of_tuples(stack_values)
 
-    def get_name_text_stack_colour_suffixes(self):
+    def get_name_as_text_stack_colour_suffixes(self):
         # get a pair of colours to put on the text stack to use in name suffix string if required
         colour_name_switch_names = []
         if self.uses_random_livery:
@@ -6021,7 +6028,7 @@ class UnitVariant(object):
                 if len(colour_name_switch_names) < 2:
                     raise BaseException(
                         self.id
-                        + " has get_name_text_stack length < 2, which won't work - check what livery colour_set it's using"
+                        + " has get_name_as_text_stack length < 2, which won't work - check what livery colour_set it's using"
                     )
         result = []
         for colour_name_switch_name in colour_name_switch_names:

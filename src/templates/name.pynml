@@ -1,5 +1,5 @@
 switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_default, [
-        <tal:name_parts repeat="value_pair consist.get_name_text_stack(context='default_name', unit_variant=unit_variant)">
+        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='default_name', unit_variant=unit_variant)">
             STORE_TEMP(
                 ${value_pair[0]}
                 | (${value_pair[1]} << 16),
@@ -10,7 +10,7 @@ switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_default, [
     return string(STR_NAME_CONTAINER_1);
 }
 switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_0, [
-        <tal:name_parts repeat="value_pair consist.get_name_text_stack(context='purchase_level_0', unit_variant=unit_variant)">
+        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='purchase_level_0', unit_variant=unit_variant)">
             STORE_TEMP(
                 ${value_pair[0]}
                 | (${value_pair[1]} << 16),
@@ -21,7 +21,7 @@ switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_0, [
     return string(STR_NAME_CONTAINER_1);
 }
 switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_1, [
-        <tal:name_parts repeat="value_pair consist.get_name_text_stack(context='purchase_level_1', unit_variant=unit_variant)">
+        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='purchase_level_1', unit_variant=unit_variant)">
             STORE_TEMP(
                 ${value_pair[0]}
                 | (${value_pair[1]} << 16),
@@ -32,7 +32,7 @@ switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_1, [
     return string(STR_NAME_CONTAINER_1);
 }
 switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_2, [
-        <tal:name_parts repeat="value_pair consist.get_name_text_stack(context='purchase_level_2', unit_variant=unit_variant)">
+        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='purchase_level_2', unit_variant=unit_variant)">
             STORE_TEMP(
                 ${value_pair[0]}
                 | (${value_pair[1]} << 16),
@@ -43,7 +43,7 @@ switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_2, [
     return string(STR_NAME_CONTAINER_1);
 }
 switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_autoreplace_lhs, [
-        <tal:name_parts repeat="value_pair consist.get_name_text_stack(context='autoreplace_lhs', unit_variant=unit_variant)">
+        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='autoreplace_lhs', unit_variant=unit_variant)">
             STORE_TEMP(
                 ${value_pair[0]}
                 | (${value_pair[1]} << 16),
