@@ -3,6 +3,26 @@ Changelog
 
 
 ------------
+3.1.0 Release
+------------
+
+*Changes*
+
+- freight wagons now available in many colours, as buyable variants, including
+    - single-colour variants (with optional weathering)
+    - random mixes of 2 or more colours
+    - random mixes of both colour and wagon type
+- tweaked tech tree and appearance for many wagon types
+- removed parameters to set colours for wagons
+- removed colour change when wagons are flipped in depot
+- added additional livery for Saxon
+
+*Fixes*
+
+- Lion weight was too low
+
+
+------------
 3.0.1 Release
 ------------
 
