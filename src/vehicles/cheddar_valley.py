@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9260,
         name="Cheddar Valley",
         role="super_heavy_freight",
-        role_child_branch_num=-3,
+        role_child_branch_num=3,
         power_by_power_source={
             "DIESEL": 4200,
         },

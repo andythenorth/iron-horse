@@ -7,10 +7,10 @@ def main(roster_id):
         id="blackthorn",
         base_numeric_id=12510,
         name="Blackthorn",
-        role="heavy_freight",
+        role="super_heavy_freight",
         role_child_branch_num=1,
         power_by_power_source={
-            "DIESEL": 3450,
+            "DIESEL": 3500, # basically same power as Grid, this is just a roleplay progression, not a gameplay progression
         },
         random_reverse=True,
         gen=6,
