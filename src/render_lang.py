@@ -13,6 +13,7 @@ import sys
 sys.path.append(os.path.join("src"))  # add to the module search path
 
 import codecs  # used for writing files - more unicode friendly than standard open() module
+import json
 
 # chameleon used in most template cases
 from chameleon import PageTemplateLoader
@@ -51,6 +52,23 @@ def main():
     hint_file.close()
 
     consists = roster.consists_in_buy_menu_order
+
+    with open(os.path.join(currentdir, "src", "lang", "lang.json"), "r") as f:
+        lang_src_data = json.load(f)
+    lang_cabbage_lines = []
+
+    for node_name, node_value in lang_src_data.items():
+        if "_COMMENT" in node_name:
+            lang_cabbage_lines.append(node_value)
+        else:
+            lang_cabbage_lines.append(node_name + ":" + node_value["base"])
+
+    for consist in consists:
+        if consist._name is not None:
+            lang_cabbage_lines.append(
+                "STR_NAME_" + consist.id.upper() + ":" + consist._name
+            )
+
     languages_with_generation = ("english",)
     for i in languages_with_generation:
         # compile strings to single lang file - english
@@ -60,15 +78,20 @@ def main():
             os.path.join(lang_src, i + "_" + roster.id + ".lng"), "r", "utf8"
         )
         dst_file = codecs.open(os.path.join(lang_dst, i + ".lng"), "w", "utf8")
-        lang_content = src_file.read()
-        lang_content = lang_content + lang_template(
-            consists=consists,
-            command_line_args=command_line_args,
-            git_info=git_info,
-            utils=utils,
-            roster=roster,
+        lang_content = src_file.read()  # !! LEGACY READ OF OLD FILE
+        lang_content = utils.unescape_chameleon_output(
+            lang_template(
+                consists=consists,
+                command_line_args=command_line_args,
+                git_info=git_info,
+                utils=utils,
+                roster=roster,
+                lang_cabbage_lines=lang_cabbage_lines,
+            )
         )
-        dst_file.write(lang_content)
+        lines = lang_content.split("\n")
+        stripped_lines = [line.lstrip() for line in lines]
+        dst_file.write("\n".join(stripped_lines))
         dst_file.close()
 
     print(

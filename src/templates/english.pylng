@@ -1,3 +1,7 @@
+##grflangid 0x01
+##plural 0
+# this is the default translation and is en-gb
+
 STR_GRF_NAME_VERSIONED                                          :${roster.str_grf_name} ${git_info.get_monorepo_tag_parts()[1]}
 STR_GRF_DOCS_URL                                                :${utils.get_docs_url()}
 <!--! empty string is not translated :) -->
@@ -24,9 +28,6 @@ STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_THREE_SUBSTR               :{STRING}{}{STRING}{}{STRING}
 
-<!--! consist names (engines) -->
-<tal:consist_names repeat="consist consists">
-<tal:consist_name condition="consist._name is not None">
-STR_NAME_${consist.id}                                          :${consist._name}
-</tal:consist_name>
-</tal:consist_names>
+<tal:lang_strings repeat="lang_line lang_cabbage_lines">
+    ${lang_line}
+</tal:lang_strings>

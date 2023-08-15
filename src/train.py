@@ -271,7 +271,7 @@ class Consist(object):
             return None
 
     def get_name_parts(self, context, unit_variant):
-        default_name = "STR_NAME_" + self.id
+        default_name = "STR_NAME_" + self.id.upper()
         if context == "purchase_level_1":
             result = [default_name]
         elif context == "default_name":
@@ -279,7 +279,7 @@ class Consist(object):
         else:
             if self.str_name_suffix is not None:
                 result = [
-                    "STR_NAME_" + self.id,
+                    "STR_NAME_" + self.id.upper(),
                     "STR_PARENTHESES",
                     self.str_name_suffix,
                 ]
@@ -1882,7 +1882,7 @@ class TGVCabEngineConsist(EngineConsist):
 
     @property
     def buy_menu_distributed_power_name_substring(self):
-        return "STR_NAME_" + self.id
+        return "STR_NAME_" + self.id.upper()
 
     @property
     def buy_menu_distributed_power_hp_value(self):
@@ -1958,7 +1958,7 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
 
     @property
     def buy_menu_distributed_power_name_substring(self):
-        return "STR_NAME_" + self.cab_id
+        return "STR_NAME_" + self.cab_id.upper()
 
     @property
     def buy_menu_distributed_power_hp_value(self):
@@ -4555,7 +4555,7 @@ class MailHSTCarConsist(MailCarConsistBase):
     def get_name_parts(self, context, unit_variant):
         # special name handling to use the cab name
         result = [
-            "STR_NAME_" + self.cab_id,
+            "STR_NAME_" + self.cab_id.upper(),
             "STR_NAME_SUFFIX_HST_MAIL_CAR",
         ]
         return result
@@ -4777,7 +4777,7 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
     def get_name_parts(self, context, unit_variant):
         # special name handling to use the cab name
         result = [
-            "STR_NAME_" + self.cab_id,
+            "STR_NAME_" + self.cab_id.upper(),
             self._str_name_suffix,
         ]
         return result
@@ -4934,7 +4934,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
     def get_name_parts(self, context, unit_variant):
         # special name handling to use the cab name
         result = [
-            "STR_NAME_" + self.cab_id,
+            "STR_NAME_" + self.cab_id.upper(),
             "STR_NAME_SUFFIX_HST_PASSENGER_CAR",
         ]
         return result
