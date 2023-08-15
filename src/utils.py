@@ -58,6 +58,10 @@ def get_docs_url():
 
 
 def parse_base_lang():
+    # but the TOML is partial input, not complete output so eh...maybe not
+    # oh but the roster or roster manager could handle getting the lang for the roster, and render_lang and render_docs could call that
+    print("parse_base_lang needs refactored as we have the lang strings now in TOML or so?")
+
     # expose base lang strings to python - for reuse in docs
     base_lang_file = codecs.open(
         os.path.join(

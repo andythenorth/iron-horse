@@ -13,7 +13,7 @@ import sys
 sys.path.append(os.path.join("src"))  # add to the module search path
 
 import codecs  # used for writing files - more unicode friendly than standard open() module
-import json
+import tomllib
 
 # chameleon used in most template cases
 from chameleon import PageTemplateLoader
@@ -53,21 +53,28 @@ def main():
 
     consists = roster.consists_in_buy_menu_order
 
-    with open(os.path.join(currentdir, "src", "lang", "lang.json"), "r") as f:
-        lang_src_data = json.load(f)
-    lang_cabbage_lines = []
+    with open(os.path.join(currentdir, "src", "lang", "lang.toml"), "rb") as fp:
+        lang_src_data = tomllib.load(fp)
+    lang_cabbage = {}
 
     for node_name, node_value in lang_src_data.items():
-        if "_COMMENT" in node_name:
-            lang_cabbage_lines.append(node_value)
+        # all lang strings should provide a default base value, which can optionally be over-ridden per roster
+        if roster.id in node_value.keys():
+            lang_cabbage[node_name] = node_value[roster.id]
         else:
-            lang_cabbage_lines.append(node_name + ":" + node_value["base"])
+            lang_cabbage[node_name] = node_value["base"]
 
     for consist in consists:
         if consist._name is not None:
-            lang_cabbage_lines.append(
-                "STR_NAME_" + consist.id.upper() + ":" + consist._name
-            )
+            lang_cabbage["STR_NAME_" + consist.id.upper()] = consist._name
+
+    # flatten the strings for rendering
+    lang_cabbage_lines = []
+    longest_string_length = max([len(key)] for key in lang_cabbage.keys())[0]
+    for string_name, string_value in lang_cabbage.items():
+        # note that stupid pretty formatting of generated output is just to ease debugging string generation when needed
+        separator = ":".rjust(longest_string_length - len(string_name) + 7)
+        lang_cabbage_lines.append(string_name + separator + string_value)
 
     languages_with_generation = ("english",)
     for i in languages_with_generation:

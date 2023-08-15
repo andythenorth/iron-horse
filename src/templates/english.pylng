@@ -28,6 +28,7 @@ STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_THREE_SUBSTR               :{STRING}{}{STRING}{}{STRING}
 
+# content is generated below here
 <tal:lang_strings repeat="lang_line lang_cabbage_lines">
     ${lang_line}
 </tal:lang_strings>
