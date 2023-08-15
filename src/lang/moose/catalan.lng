@@ -74,10 +74,6 @@ STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Cotxe de lona
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Cotxe torpedo
 STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Cotxe transportador de piezas
 
-# buy menu wrappers
-STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
-STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
-
 # role information for buy menu
 STR_ROLE                                                        :{BLACK}Rol: {GOLD}{STRING}
 STR_ROLE_DRIVING_CAB                                            :Cabina de Conducció

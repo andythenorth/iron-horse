@@ -50,10 +50,6 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Cisterna
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Plachtový vůz
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpédový vůz
 
-# buy menu wrappers
-STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
-STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
-
 # role information for buy menu
 STR_ROLE                                                        :{BLACK}Role: {GOLD}{STRING}
 STR_ROLE_FREIGHT                                                :Náklad

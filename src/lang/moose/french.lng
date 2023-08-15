@@ -90,10 +90,6 @@ STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Wagon à carros
 STR_CARGO_SUBTYPE_VEHI_0                                        : (Voitures)
 STR_CARGO_SUBTYPE_VEHI_1                                        : (Camions)
 
-# buy menu wrappers
-STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
-STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
-
 # role information for buy menu
 STR_ROLE                                                        :{BLACK}Rôle: {GOLD}{STRING}
 STR_ROLE_DRIVING_CAB                                            :Voiture-pilote

@@ -48,10 +48,6 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Vagon cisterna
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Vagon sa ceradom
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Vagon-torpedo
 
-# buy menu wrappers
-STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
-STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
-
 # role information for buy menu
 STR_ROLE                                                        :{BLACK}Uloga: {GOLD}{STRING}
 STR_ROLE_FREIGHT                                                :Teret
