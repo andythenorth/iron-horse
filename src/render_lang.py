@@ -13,7 +13,6 @@ import sys
 sys.path.append(os.path.join("src"))  # add to the module search path
 
 import codecs  # used for writing files - more unicode friendly than standard open() module
-import tomllib
 
 # chameleon used in most template cases
 from chameleon import PageTemplateLoader
@@ -23,36 +22,6 @@ templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"))
 
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
-
-
-def get_lang_data(lang, roster):
-    global_pragma = {}
-    lang_strings = {}
-    with open(os.path.join(currentdir, "src", "lang", lang + ".toml"), "rb") as fp:
-        lang_source = tomllib.load(fp)
-
-    for node_name, node_value in lang_source.items():
-        if node_name == "GLOBAL_PRAGMA":
-            # explicit handling of global pragma items
-            global_pragma["grflangid"] = node_value["grflangid"]
-            global_pragma["plural"] = node_value["plural"]
-            if node_value.get("gender", False):
-                global_pragma["gender"] = node_value["gender"]
-            if node_value.get("case", False):
-                global_pragma["case"] = node_value["case"]
-        else:
-            # all lang strings should provide a default base value, which can optionally be over-ridden per roster
-            # !! this should be handled by the roster method which fetches the lang src
-            if roster.id in node_value.keys():
-                lang_strings[node_name] = node_value[roster.id]
-            else:
-                lang_strings[node_name] = node_value["base"]
-
-    for consist in roster.consists_in_buy_menu_order:
-        if consist._name is not None:
-            lang_strings["STR_NAME_" + consist.id.upper()] = consist._name
-
-    return {"global_pragma": global_pragma, "lang_strings": lang_strings}
 
 
 def main():
@@ -82,7 +51,7 @@ def main():
     # compile strings to single lang file as of August 2023 - english
     languages_with_generation = ("english",)
     for lang_name in languages_with_generation:
-        lang_data = get_lang_data(lang_name, roster)
+        lang_data = roster.get_lang_data(lang_name)
         # flatten the strings for rendering
         lang_strings_formatted_as_lng_lines = []
         longest_string_length = max(

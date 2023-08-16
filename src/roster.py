@@ -1,7 +1,10 @@
-import global_constants
-import pickle
-import utils
 import copy
+import global_constants
+import os
+import pickle
+import tomllib
+import utils
+currentdir = os.curdir
 
 class Roster(object):
     """
@@ -428,6 +431,35 @@ class Roster(object):
             for buyable_variant in buyable_variant_group.buyable_variants:
                 result.append(buyable_variant)
         return result
+
+    def get_lang_data(self, lang):
+        # strings optionally vary per roster, so we have a method to fetch all lang data via the roster
+        global_pragma = {}
+        lang_strings = {}
+        with open(os.path.join(currentdir, "src", "lang", lang + ".toml"), "rb") as fp:
+            lang_source = tomllib.load(fp)
+
+        for node_name, node_value in lang_source.items():
+            if node_name == "GLOBAL_PRAGMA":
+                # explicit handling of global pragma items
+                global_pragma["grflangid"] = node_value["grflangid"]
+                global_pragma["plural"] = node_value["plural"]
+                if node_value.get("gender", False):
+                    global_pragma["gender"] = node_value["gender"]
+                if node_value.get("case", False):
+                    global_pragma["case"] = node_value["case"]
+            else:
+                # all lang strings should provide a default base value, which can optionally be over-ridden per roster
+                if self.id in node_value.keys():
+                    lang_strings[node_name] = node_value[self.id]
+                else:
+                    lang_strings[node_name] = node_value["base"]
+
+        for consist in self.consists_in_buy_menu_order:
+            if consist._name is not None:
+                lang_strings["STR_NAME_" + consist.id.upper()] = consist._name
+
+        return {"global_pragma": global_pragma, "lang_strings": lang_strings}
 
 
 class BuyableVariantGroup(object):
