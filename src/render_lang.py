@@ -37,7 +37,7 @@ def main():
     )
     if os.path.exists(lang_dst):
         shutil.rmtree(lang_dst)
-    os.mkdir(lang_dst)
+    os.makedirs(lang_dst)
 
     hint_file = codecs.open(
         os.path.join(lang_dst, "_lang_files_here_are_generated.txt"), "w", "utf8"

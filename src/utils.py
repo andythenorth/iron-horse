@@ -57,29 +57,6 @@ def get_docs_url():
     return "/".join(result)
 
 
-def parse_base_lang():
-    # but the TOML is partial input, not complete output so eh...maybe not
-    # oh but the roster or roster manager could handle getting the lang for the roster, and render_lang and render_docs could call that
-    print("parse_base_lang needs refactored as we have the lang strings now in TOML or so?")
-
-    # expose base lang strings to python - for reuse in docs
-    base_lang_file = codecs.open(
-        os.path.join(
-            "generated", "lang", get_command_line_args().grf_name, "english.lng"
-        ),
-        "r",
-        "utf8",
-    )
-    text = base_lang_file.readlines()
-    # this is fragile, playing one line python is silly :)
-    strings = dict(
-        (line.split(":", 1)[0].strip(), line.split(":", 1)[1].strip())
-        for line in text
-        if ":" in line
-    )
-    return strings
-
-
 def get_offsets(length, flipped=False):
     # offsets can also be over-ridden on a per-model basis by providing this property in the model class
     base_offsets = global_constants.default_spritesheet_offsets[str(length)]

@@ -28,9 +28,6 @@ docs_src = os.path.join(currentdir, "src", "docs_templates")
 
 palette = utils.dos_palette_to_rgb()
 
-# get the strings from base lang file so they can be used in docs
-base_lang_strings = utils.parse_base_lang()
-
 
 class DocHelper(object):
     # dirty class to help do some doc formatting
@@ -40,6 +37,9 @@ class DocHelper(object):
     # these only used in docs as of April 2018
     buy_menu_sprite_max_width = 65  # up to 2 units eh
     buy_menu_sprite_height = 16
+
+    def __init__(self, lang_strings):
+        self.lang_strings = lang_strings
 
     def buy_menu_sprite_width(self, consist):
         if not consist.dual_headed:
@@ -149,7 +149,10 @@ class DocHelper(object):
         result = []
         for consist in roster.engine_consists:
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
-            if consist.buy_menu_additional_text_hint_driving_cab or consist.wagons_add_power:
+            if (
+                consist.buy_menu_additional_text_hint_driving_cab
+                or consist.wagons_add_power
+            ):
                 result.append(consist)
         return result
 
@@ -204,7 +207,9 @@ class DocHelper(object):
         variants_config = []
 
         for buyable_variant in consist.buyable_variants:
-            livery = consist.gestalt_graphics.all_liveries[buyable_variant.buyable_variant_num]
+            livery = consist.gestalt_graphics.all_liveries[
+                buyable_variant.buyable_variant_num
+            ]
             # docs_image_input_cc is mandatory for each livery, fail if it's not present
             if "docs_image_input_cc" not in livery.keys():
                 raise BaseException(consist + livery)
@@ -227,18 +232,18 @@ class DocHelper(object):
                     + "_"
                     + self.get_livery_file_substr(cc_remap_pair)
                 )
-                result['livery_name'] = livery_name
+                result["livery_name"] = livery_name
                 # handle possible remap of CC1
                 if livery.get("remap_to_cc", None) is not None:
                     CC1_remap = livery["remap_to_cc"]["company_colour1"]
                     CC2_remap = livery["remap_to_cc"]["company_colour2"]
-                    if CC1_remap == 'company_colour1':
+                    if CC1_remap == "company_colour1":
                         CC1_remap = cc_remap_pair[0]
-                    if CC1_remap == 'company_colour2':
+                    if CC1_remap == "company_colour2":
                         CC1_remap = cc_remap_pair[1]
-                    if CC2_remap == 'company_colour1':
+                    if CC2_remap == "company_colour1":
                         CC2_remap = cc_remap_pair[0]
-                    if CC2_remap == 'company_colour2':
+                    if CC2_remap == "company_colour2":
                         CC2_remap = cc_remap_pair[1]
                 else:
                     CC1_remap = cc_remap_pair[0]
@@ -347,20 +352,22 @@ class DocHelper(object):
             for name_part in name_parts:
                 if name_part is not None:
                     # this will fail if name parts are found that don't correspond to string IDs (for example putting variables on the text stack)
-                    result.append(base_lang_strings[name_part])
-            return ' '.join(result)
+                    result.append(self.lang_strings[name_part])
+            return " ".join(result)
 
     def unpack_role_string_for_consist(self, consist):
         # strip off some nml boilerplate
-        role_key = consist.buy_menu_additional_text_role_string.replace("STR_ROLE, string(", "")
+        role_key = consist.buy_menu_additional_text_role_string.replace(
+            "STR_ROLE, string(", ""
+        )
         role_key = role_key.replace(")", "")
-        return base_lang_strings[role_key]
+        return self.lang_strings[role_key]
 
     def get_role_string_from_role(self, role):
         # mangle on some boilerplate to get the nml string
         for role_group, roles in global_constants.role_group_mapping.items():
             if role in roles:
-                return base_lang_strings[
+                return self.lang_strings[
                     global_constants.role_string_mapping[role_group]
                 ]
 
@@ -372,7 +379,10 @@ class DocHelper(object):
     def consist_has_direct_replacment(self, consist):
         if consist.replacement_consist.role != consist.role:
             return False
-        elif consist.replacement_consist.role_child_branch_num != consist.role_child_branch_num:
+        elif (
+            consist.replacement_consist.role_child_branch_num
+            != consist.role_child_branch_num
+        ):
             return False
         elif consist.replacement_consist.gen != consist.gen + 1:
             return False
@@ -387,7 +397,7 @@ class DocHelper(object):
             # !! we actually need to control the order somewhere - see vehicle_power_source_tree??
             result = []
             for power_data in consist.vehicle_power_source_tree:
-                power_source_name = base_lang_strings[
+                power_source_name = self.lang_strings[
                     "STR_POWER_SOURCE_" + power_data[0]
                 ]
                 power_value = str(consist.power_by_power_source[power_data[0]]) + " hp"
@@ -449,6 +459,7 @@ def render_docs(
     docs_output_path,
     iron_horse,
     consists,
+    doc_helper,
     use_markdown=False,
     source_is_repo_root=False,
 ):
@@ -474,10 +485,9 @@ def render_docs(
             global_constants=global_constants,
             command_line_args=command_line_args,
             git_info=git_info,
-            base_lang_strings=base_lang_strings,
             metadata=metadata,
             utils=utils,
-            doc_helper=DocHelper(),
+            doc_helper=doc_helper,
             doc_name=doc_name,
         )
         if use_markdown:
@@ -494,7 +504,7 @@ def render_docs(
                 git_info=git_info,
                 metadata=metadata,
                 utils=utils,
-                doc_helper=DocHelper(),
+                doc_helper=doc_helper,
                 doc_name=doc_name,
             )
         # save the results of templating
@@ -507,7 +517,9 @@ def render_docs(
         doc_file.close()
 
 
-def render_docs_vehicle_details(consist, template_name, docs_output_path, consists):
+def render_docs_vehicle_details(
+    consist, template_name, docs_output_path, consists, doc_helper
+):
     # imports inside functions are generally avoided
     # but PageTemplateLoader is expensive to import and causes unnecessary overhead for Pool mapping when processing docs graphics
     from chameleon import PageTemplateLoader
@@ -524,10 +536,9 @@ def render_docs_vehicle_details(consist, template_name, docs_output_path, consis
         global_constants=global_constants,
         command_line_args=command_line_args,
         git_info=git_info,
-        base_lang_strings=base_lang_strings,
         metadata=metadata,
         utils=utils,
-        doc_helper=DocHelper(),
+        doc_helper=doc_helper,
         doc_name=doc_name,
     )
     doc_file = codecs.open(
@@ -537,15 +548,13 @@ def render_docs_vehicle_details(consist, template_name, docs_output_path, consis
     doc_file.close()
 
 
-def render_docs_images(consist, static_dir_dst, generated_graphics_path):
+def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_helper):
     # process vehicle buy menu sprites for reuse in docs
     # extend this similar to render_docs if other image types need processing in future
 
     # vehicles: assumes render_graphics has been run and generated dir has correct content
     # I'm not going to try and handle that in python, makefile will handle it in production
     # for development, just run render_graphics manually before running render_docs
-
-    doc_helper = DocHelper()
 
     vehicle_spritesheet = Image.open(
         os.path.join(generated_graphics_path, consist.id + ".png")
@@ -699,14 +708,10 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path):
         )
 
     for processed_vehicle_image, variant in docs_image_variants:
-        cc_remap_indexes = doc_helper.remap_company_colours(
-            variant["cc_remaps"]
-        )
+        cc_remap_indexes = doc_helper.remap_company_colours(variant["cc_remaps"])
         # probably fragile workaround to use the alternative livery spriterow
         # for the edge case that a docs default livery 2nd company colour matches the alternative livery triggers
-        cc_remap_indexes = doc_helper.remap_company_colours(
-            variant["cc_remaps"]
-        )
+        cc_remap_indexes = doc_helper.remap_company_colours(variant["cc_remaps"])
 
         processed_vehicle_image = processed_vehicle_image.copy().point(
             lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i
@@ -739,6 +744,9 @@ def main():
     iron_horse.main()
 
     roster = iron_horse.roster_manager.active_roster
+    # can't pass roster in to DocHelper at init, multiprocessing fails as it can't pickle the roster object
+    doc_helper = DocHelper(lang_strings=roster.get_lang_data("english")["lang_strings"])
+
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
     num_pool_workers = command_line_args.num_pool_workers
     if num_pool_workers == 0:
@@ -796,24 +804,30 @@ def main():
     markdown_docs = ["changelog"]
 
     render_docs_start = time()
-    render_docs(html_docs, "html", html_docs_output_path, iron_horse, consists)
-    render_docs(txt_docs, "txt", docs_output_path, iron_horse, consists)
+    render_docs(
+        html_docs, "html", html_docs_output_path, iron_horse, consists, doc_helper
+    )
+    render_docs(txt_docs, "txt", docs_output_path, iron_horse, consists, doc_helper)
     render_docs(
         license_docs,
         "txt",
         docs_output_path,
         iron_horse,
         consists,
+        doc_helper,
         source_is_repo_root=True,
     )
     # just render the markdown docs twice to get txt and html versions, simples no?
-    render_docs(markdown_docs, "txt", docs_output_path, iron_horse, consists)
+    render_docs(
+        markdown_docs, "txt", docs_output_path, iron_horse, consists, doc_helper
+    )
     render_docs(
         markdown_docs,
         "html",
         html_docs_output_path,
         iron_horse,
         consists,
+        doc_helper,
         use_markdown=True,
     )
     print("render_docs", time() - render_docs_start)
@@ -823,7 +837,13 @@ def main():
     render_vehicle_details_start = time()
     for consist in roster.engine_consists:
         consist.assert_description_foamer_facts()
-        render_docs_vehicle_details(consist, "vehicle_details_engine", html_docs_output_path, consists)
+        render_docs_vehicle_details(
+            consist,
+            "vehicle_details_engine",
+            html_docs_output_path,
+            consists,
+            doc_helper,
+        )
     """
     for wagon_class in global_constants.buy_menu_sort_order_wagons:
         for consist in roster.wagon_consists[wagon_class]:
@@ -839,14 +859,21 @@ def main():
     slow_start = time()
     if use_multiprocessing == False:
         for consist in consists:
-            render_docs_images(consist, static_dir_dst, generated_graphics_path)
+            render_docs_images(
+                consist, static_dir_dst, generated_graphics_path, doc_helper
+            )
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
         # probably potato / potato tbh
         pool = multiprocessing.Pool(processes=num_pool_workers)
         pool.starmap(
             render_docs_images,
-            zip(consists, repeat(static_dir_dst), repeat(generated_graphics_path)),
+            zip(
+                consists,
+                repeat(static_dir_dst),
+                repeat(generated_graphics_path),
+                repeat(doc_helper),
+            ),
         )
         pool.close()
         pool.join()
