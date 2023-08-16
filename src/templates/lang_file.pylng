@@ -1,5 +1,5 @@
 <!--! global pragma directives -->
-<tal:global_pragma repeat="pragma_directive global_pragma.items()">
+<tal:global_pragma repeat="pragma_directive lang_data.global_pragma.items()">
     ##${pragma_directive[0]} ${pragma_directive[1]}
 </tal:global_pragma>
 
