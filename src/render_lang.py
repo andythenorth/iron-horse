@@ -23,6 +23,39 @@ templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"))
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
+def render_lang(roster, lang_name, lang_dst):
+    lang_data = roster.get_lang_data(lang_name)
+    lang_template = templates["lang_file.pylng"]
+    # flatten the strings for rendering
+    lang_strings_formatted_as_lng_lines = []
+    longest_string_length = max(
+        [len(key)] for key in lang_data["lang_strings"].keys()
+    )[0]
+    for string_name, string_value in lang_data["lang_strings"].items():
+        # note that stupid pretty formatting of generated output is just to ease debugging string generation when needed, otherwise not essential
+        separator = ":".rjust(longest_string_length - len(string_name) + 7)
+        lang_strings_formatted_as_lng_lines.append(
+            string_name + separator + string_value
+        )
+
+    lang_content = utils.unescape_chameleon_output(
+        lang_template(
+            command_line_args=command_line_args,
+            git_info=git_info,
+            utils=utils,
+            roster=roster,
+            lang_data=lang_data,
+            lang_strings_formatted_as_lng_lines=lang_strings_formatted_as_lng_lines,
+        )
+    )
+    # we clean up some templating artefacts just to produce more readable output for debugging when needed, otherwise not essential
+    lines = lang_content.split("\n")
+    stripped_lines = [line.lstrip() for line in lines]
+    cleaned_lang_content = "\n".join(stripped_lines)
+    # write the output eh
+    dst_file = codecs.open(os.path.join(lang_dst, lang_name + ".lng"), "w", "utf8")
+    dst_file.write(cleaned_lang_content)
+    dst_file.close()
 
 def main():
     print("[RENDER LANG]", " ".join(sys.argv))
@@ -47,41 +80,10 @@ def main():
     )
     hint_file.close()
 
-    lang_template = templates["lang_file.pylng"]
     # compile strings to single lang file as of August 2023 - english
     languages_with_generation = ("english",)
     for lang_name in languages_with_generation:
-        lang_data = roster.get_lang_data(lang_name)
-        # flatten the strings for rendering
-        lang_strings_formatted_as_lng_lines = []
-        longest_string_length = max(
-            [len(key)] for key in lang_data["lang_strings"].keys()
-        )[0]
-        for string_name, string_value in lang_data["lang_strings"].items():
-            # note that stupid pretty formatting of generated output is just to ease debugging string generation when needed, otherwise not essential
-            separator = ":".rjust(longest_string_length - len(string_name) + 7)
-            lang_strings_formatted_as_lng_lines.append(
-                string_name + separator + string_value
-            )
-
-        lang_content = utils.unescape_chameleon_output(
-            lang_template(
-                command_line_args=command_line_args,
-                git_info=git_info,
-                utils=utils,
-                roster=roster,
-                lang_data=lang_data,
-                lang_strings_formatted_as_lng_lines=lang_strings_formatted_as_lng_lines,
-            )
-        )
-        # we clean up some templating artefacts just to produce more readable output for debugging when needed, otherwise not essential
-        lines = lang_content.split("\n")
-        stripped_lines = [line.lstrip() for line in lines]
-        cleaned_lang_content = "\n".join(stripped_lines)
-        # write the output eh
-        dst_file = codecs.open(os.path.join(lang_dst, lang_name + ".lng"), "w", "utf8")
-        dst_file.write(cleaned_lang_content)
-        dst_file.close()
+        render_lang(roster, lang_name, lang_dst)
 
     print(
         "[RENDER LANG]",
