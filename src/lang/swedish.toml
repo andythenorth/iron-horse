@@ -1,0 +1,78 @@
+[GLOBAL_PRAGMA]
+grflangid = "0x2e"
+plural = "0"
+
+[STR_GRF_DESCRIPTION]
+base = "Licens: {SILVER}GPL v2{}{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "Tågkapacitet"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "Väldigt liten"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "Enastående"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "Överdriven"
+
+[STR_NAME_SUFFIX_DIESEL]
+base = "Diesel"
+
+[STR_NAME_SUFFIX_ELECTRODIESEL]
+base = "Elektrodiesel"
+
+[STR_NAME_SUFFIX_METRO]
+base = "Tunnelbana"
+
+[STR_NAME_SUFFIX_STEAM]
+base = "Ånga"
+
+[STR_NAME_SUFFIX_SMALL]
+base = "Liten"
+
+[STR_NAME_SUFFIX_MEDIUM]
+base = "Medium"
+
+[STR_NAME_SUFFIX_LARGE]
+base = "Stor"
+
+[STR_NAME_SUFFIX_BOX_CAR]
+base = "Skåpbil"
+
+[STR_NAME_SUFFIX_CABOOSE_CAR]
+base = "Bromsvagn"
+
+[STR_NAME_SUFFIX_DUMP_CAR]
+base = "Dumpningsbar Lastvagn"
+
+[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+base = "Tankvagn för Matolja"
+
+[STR_NAME_SUFFIX_FLAT_CAR]
+base = "Flakvagn"
+
+[STR_NAME_SUFFIX_INTERMODAL_CAR]
+base = "Kombinationsflakvagn"
+
+[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+base = "Boskapsvagn"
+
+[STR_NAME_SUFFIX_MAIL_CAR]
+base = "Postvagn"
+
+[STR_NAME_SUFFIX_OPEN_CAR]
+base = "Öppen Vagn"
+
+[STR_NAME_SUFFIX_PASSENGER_CAR]
+base = "Passagerarvagn"
+
+[STR_NAME_SUFFIX_REEFER_CAR]
+base = "Kylvagn"
+
+[STR_NAME_SUFFIX_SILO_CAR]
+base = "Cisternvagn"
+
+[STR_NAME_SUFFIX_TANK_CAR]
+base = "Tankvagn"

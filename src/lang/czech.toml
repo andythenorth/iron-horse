@@ -1,0 +1,149 @@
+[GLOBAL_PRAGMA]
+grflangid = "0x15"
+plural = "10"
+gender = "fp map f mnp m n np"
+case = "acc nom loc big voc ins dat small gen"
+
+[STR_GRF_DESCRIPTION]
+base = "Licence: {SILVER}GPL v2{}{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "Kapacita vlaku"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "Maličká"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "Obrovská"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "Nadměrná"
+
+[STR_NAME_SUFFIX_DIESEL]
+base = "Dieselová"
+
+[STR_NAME_SUFFIX_ELECTRODIESEL]
+base = "Diesel-Elektrická"
+
+[STR_NAME_SUFFIX_METRO]
+base = "Metro vůz"
+
+[STR_NAME_SUFFIX_STEAM]
+base = "Parní"
+
+[STR_NAME_SUFFIX_SMALL]
+base = "Malý"
+
+[STR_NAME_SUFFIX_MEDIUM]
+base = "Střední"
+
+[STR_NAME_SUFFIX_LARGE]
+base = "Velký"
+
+[STR_NAME_SUFFIX_ALIGNMENT_CAR]
+base = "Zarovnávací vůz"
+
+[STR_NAME_SUFFIX_BOX_CAR]
+base = "Krytý nákladní vůz"
+
+[STR_NAME_SUFFIX_CABOOSE_CAR]
+base = "Služební vůz"
+
+[STR_NAME_SUFFIX_CRYO_TANK_CAR]
+base = "Chladící cisterna"
+
+[STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
+base = "Kontejnerový vůz"
+
+[STR_NAME_SUFFIX_DUMP_CAR]
+base = "Výsypný vůz"
+
+[STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
+base = "Vysokostěnný minerální vůz"
+
+[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+base = "Potravinová cisterna"
+
+[STR_NAME_SUFFIX_EXPRESS_CAR]
+base = "Expresní vůz"
+
+[STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR]
+base = "Expresní kontejnerový vůz"
+
+[STR_NAME_SUFFIX_FLAT_CAR]
+base = "Nízkostěnný vůz"
+
+[STR_NAME_SUFFIX_HST_PASSENGER_CAR]
+base = "HST osobní vůz"
+
+[STR_NAME_SUFFIX_INTERMODAL_CAR]
+base = "Kontejnerový vůz"
+
+[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+base = "Vůz na dobytek"
+
+[STR_NAME_SUFFIX_MAIL_CAR]
+base = "Poštovní vůz"
+
+[STR_NAME_SUFFIX_OPEN_CAR]
+base = "Otevřený vůz"
+
+[STR_NAME_SUFFIX_PASSENGER_CAR]
+base = "Vůz pro cestující"
+
+[STR_NAME_SUFFIX_PLATE_CAR]
+base = "Plošinový vůz"
+
+[STR_NAME_SUFFIX_REEFER_CAR]
+base = "Chladící vůz"
+
+[STR_NAME_SUFFIX_SILO_CAR]
+base = "Silo vůz"
+
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR]
+base = "Vůz s posuvnými stěnami"
+
+[STR_NAME_SUFFIX_TANK_CAR]
+base = "Cisterna"
+
+[STR_NAME_SUFFIX_TARPAULIN_CAR]
+base = "Plachtový vůz"
+
+[STR_NAME_SUFFIX_TORPEDO_CAR]
+base = "Torpédový vůz"
+
+[STR_ROLE]
+base = "{BLACK}Role: {GOLD}{STRING}"
+
+[STR_ROLE_FREIGHT]
+base = "Náklad"
+
+[STR_ROLE_GENERAL_PURPOSE]
+base = "Obecný účel"
+
+[STR_ROLE_GENERAL_PURPOSE_EXPRESS]
+base = "Obecný účel /Expres"
+
+[STR_ROLE_HST]
+base = "Vysoká rychlost"
+
+[STR_ROLE_METRO]
+base = "Vysoká městská kapacita"
+
+[STR_ROLE_VERY_HIGH_SPEED]
+base = "Velmi vysoká rychlost"
+
+[STR_ROLE_LOLZ]
+base = "Lolz"
+
+[STR_WAGONS_ADD_POWER_CAB]
+base = "Výkon (Distribuováno): {GOLD}{POWER} za {STRING} připojený vagon"
+
+[STR_WAGONS_ADD_POWER_MIDDLE]
+base = "Výkon (Distribuováno): {GOLD} {POWER}, když je připojen k  {STRING} jednotce"
+
+[STR_SPRITES_COMPLETE]
+base = "Grafika dokončena:  {GOLD} Jo"
+
+[STR_SPRITES_INCOMPLETE]
+base = "Grafika dokončena: {GOLD} Ne, ani náhodou"

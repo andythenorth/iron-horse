@@ -1,0 +1,73 @@
+[GLOBAL_PRAGMA]
+grflangid = "0x02"
+plural = "0"
+gender = "m w n p"
+
+[STR_GRF_DESCRIPTION]
+base = "Lizenz: {SILVER}GPL v2{}{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "Zugkapazität"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "kümmerlich"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "phänomenal"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "übermäßig"
+
+[STR_NAME_SUFFIX_DIESEL]
+base = "Diesel"
+
+[STR_NAME_SUFFIX_ELECTRODIESEL]
+base = "Dieselelektrisch"
+
+[STR_NAME_SUFFIX_STEAM]
+base = "Dampf"
+
+[STR_NAME_SUFFIX_SMALL]
+base = "Klein"
+
+[STR_NAME_SUFFIX_MEDIUM]
+base = "Mittel"
+
+[STR_NAME_SUFFIX_LARGE]
+base = "Groß"
+
+[STR_NAME_SUFFIX_BOX_CAR]
+base = "geschlossener Wagen"
+
+[STR_NAME_SUFFIX_CABOOSE_CAR]
+base = "Bremserwagen"
+
+[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+base = "Lebensmittel-Kesselwagen"
+
+[STR_NAME_SUFFIX_FLAT_CAR]
+base = "Flachwagen"
+
+[STR_NAME_SUFFIX_INTERMODAL_CAR]
+base = "Wagen für kombinierten Verkehr"
+
+[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+base = "Viehwagen"
+
+[STR_NAME_SUFFIX_MAIL_CAR]
+base = "Postwagen"
+
+[STR_NAME_SUFFIX_OPEN_CAR]
+base = "offener Wagen"
+
+[STR_NAME_SUFFIX_PASSENGER_CAR]
+base = "Personenwagen"
+
+[STR_NAME_SUFFIX_REEFER_CAR]
+base = "Kühlwagen"
+
+[STR_NAME_SUFFIX_SILO_CAR]
+base = "Silowagen"
+
+[STR_NAME_SUFFIX_TANK_CAR]
+base = "Kesselwagen"

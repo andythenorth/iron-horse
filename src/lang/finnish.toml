@@ -1,0 +1,108 @@
+[GLOBAL_PRAGMA]
+grflangid = "0x35"
+plural = "0"
+
+[STR_GRF_DESCRIPTION]
+base = "Lisenssi: {SILVER}GPL v2{}{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "Junien kapasiteetti"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "Mitätön"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "Loistava"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "Kohtuuton"
+
+[STR_NAME_SUFFIX_DIESEL]
+base = "Diesel"
+
+[STR_NAME_SUFFIX_ELECTRODIESEL]
+base = "Sähkö-Diesel"
+
+[STR_NAME_SUFFIX_METRO]
+base = "Metro"
+
+[STR_NAME_SUFFIX_STEAM]
+base = "Höyry"
+
+[STR_NAME_SUFFIX_SMALL]
+base = "Kevyt"
+
+[STR_NAME_SUFFIX_MEDIUM]
+base = "Keskiraskas"
+
+[STR_NAME_SUFFIX_LARGE]
+base = "Raskas"
+
+[STR_NAME_SUFFIX_ALIGNMENT_CAR]
+base = "Ryhmitysvaunu"
+
+[STR_NAME_SUFFIX_BOX_CAR]
+base = "Yleisvaunu"
+
+[STR_NAME_SUFFIX_CABOOSE_CAR]
+base = "Jarruvaunu"
+
+[STR_NAME_SUFFIX_CRYO_TANK_CAR]
+base = "Kryosäiliövaunu"
+
+[STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
+base = "Sivupeitevaunu"
+
+[STR_NAME_SUFFIX_DUMP_CAR]
+base = "Rikastevaunu"
+
+[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+base = "Elintarvikesäiliövaunu"
+
+[STR_NAME_SUFFIX_EXPRESS_CAR]
+base = "Päivävaunu"
+
+[STR_NAME_SUFFIX_FLAT_CAR]
+base = "Avovaunu"
+
+[STR_NAME_SUFFIX_INTERMODAL_CAR]
+base = "Yhdistettyjen kuljetusten vaunu"
+
+[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+base = "Karjavaunu"
+
+[STR_NAME_SUFFIX_MAIL_CAR]
+base = "Postivaunu"
+
+[STR_NAME_SUFFIX_OPEN_CAR]
+base = "Laidallinen avovaunu"
+
+[STR_NAME_SUFFIX_PASSENGER_CAR]
+base = "Matkustajavaunu"
+
+[STR_NAME_SUFFIX_PLATE_CAR]
+base = "Järeän tavaran vaunu"
+
+[STR_NAME_SUFFIX_REEFER_CAR]
+base = "Jäähdytysvaunu"
+
+[STR_NAME_SUFFIX_SILO_CAR]
+base = "Jauhevaunu"
+
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR]
+base = "Siirtokatevaunu"
+
+[STR_NAME_SUFFIX_TANK_CAR]
+base = "Säiliövaunu"
+
+[STR_NAME_SUFFIX_TARPAULIN_CAR]
+base = "Peitekangasvaunu"
+
+[STR_NAME_SUFFIX_TORPEDO_CAR]
+base = "Torpedovaunu"
+
+[STR_SPRITES_COMPLETE]
+base = "{}Grafiikat piirretty: {GOLD}Kyllä"
+
+[STR_SPRITES_INCOMPLETE]
+base = "{}Grafiikat piirretty: {GOLD}Ei"

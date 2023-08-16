@@ -80,10 +80,12 @@ def main():
     )
     hint_file.close()
 
-    # compile strings to single lang file as of August 2023 - english
-    languages_with_generation = ("english",)
-    for lang_name in languages_with_generation:
-        render_lang(roster, lang_name, lang_dst)
+    # we'll try and read any toml file in the lang dir, this requires that no other toml files are present there
+    # possibly the installed languages should be handled by the roster when it parses the toml, not sure eh? (potato / potato?)
+    for file_name in os.listdir(os.path.join("src", "lang")):
+        if file_name.endswith(".toml"):
+            lang_name = file_name.split(".")[0]
+            render_lang(roster, lang_name, lang_dst)
 
     print(
         "[RENDER LANG]",
