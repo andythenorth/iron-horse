@@ -1,10 +1,17 @@
-##grflangid 0x01
-##plural 0
-# this is the default translation and is en-gb
+<!--! global pragma directives -->
+<tal:global_pragma repeat="pragma_directive global_pragma.items()">
+    ##${pragma_directive[0]} ${pragma_directive[1]}
+</tal:global_pragma>
 
+<!--! render pre-formatted string lines -->
+<tal:strings_as_lng_lines repeat="lng_line lang_strings_formatted_as_lng_lines">
+    ${lng_line}
+</tal:strings_as_lng_lines>
+
+<!--! non-translated strings -->
 STR_GRF_NAME_VERSIONED                                          :${roster.str_grf_name} ${git_info.get_monorepo_tag_parts()[1]}
 STR_GRF_DOCS_URL                                                :${utils.get_docs_url()}
-<!--! empty string is not translated :) -->
+
 STR_EMPTY                                                       :
 STR_CABBAGE                                                     :CABBAGE
 
@@ -27,8 +34,3 @@ STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_8      :{STRING}, {STRI
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_THREE_SUBSTR               :{STRING}{}{STRING}{}{STRING}
-
-# content is generated below here
-<tal:lang_strings repeat="lang_line lang_cabbage_lines">
-    ${lang_line}
-</tal:lang_strings>

@@ -53,28 +53,39 @@ def main():
 
     consists = roster.consists_in_buy_menu_order
 
-    with open(os.path.join(currentdir, "src", "lang", "lang.toml"), "rb") as fp:
+    with open(os.path.join(currentdir, "src", "lang", "english.toml"), "rb") as fp:
         lang_src_data = tomllib.load(fp)
-    lang_cabbage = {}
+    global_pragma = {}
+    lang_strings = {}
 
     for node_name, node_value in lang_src_data.items():
-        # all lang strings should provide a default base value, which can optionally be over-ridden per roster
-        if roster.id in node_value.keys():
-            lang_cabbage[node_name] = node_value[roster.id]
+        if node_name == "GLOBAL_PRAGMA":
+            # explicit handling of global pragma items
+            global_pragma["grflangid"] = node_value["grflangid"]
+            global_pragma["plural"] = node_value["plural"]
+            if node_value.get("gender", False):
+                global_pragma["gender"] = node_value["gender"]
+            if node_value.get("case", False):
+                global_pragma["case"] = node_value["case"]
         else:
-            lang_cabbage[node_name] = node_value["base"]
+            # all lang strings should provide a default base value, which can optionally be over-ridden per roster
+            # !! this should be handled by the roster method which fetches the lang src
+            if roster.id in node_value.keys():
+                lang_strings[node_name] = node_value[roster.id]
+            else:
+                lang_strings[node_name] = node_value["base"]
 
     for consist in consists:
         if consist._name is not None:
-            lang_cabbage["STR_NAME_" + consist.id.upper()] = consist._name
+            lang_strings["STR_NAME_" + consist.id.upper()] = consist._name
 
     # flatten the strings for rendering
-    lang_cabbage_lines = []
-    longest_string_length = max([len(key)] for key in lang_cabbage.keys())[0]
-    for string_name, string_value in lang_cabbage.items():
+    lang_strings_formatted_as_lng_lines = []
+    longest_string_length = max([len(key)] for key in lang_strings.keys())[0]
+    for string_name, string_value in lang_strings.items():
         # note that stupid pretty formatting of generated output is just to ease debugging string generation when needed
         separator = ":".rjust(longest_string_length - len(string_name) + 7)
-        lang_cabbage_lines.append(string_name + separator + string_value)
+        lang_strings_formatted_as_lng_lines.append(string_name + separator + string_value)
 
     languages_with_generation = ("english",)
     for i in languages_with_generation:
@@ -93,7 +104,8 @@ def main():
                 git_info=git_info,
                 utils=utils,
                 roster=roster,
-                lang_cabbage_lines=lang_cabbage_lines,
+                global_pragma = global_pragma,
+                lang_strings_formatted_as_lng_lines=lang_strings_formatted_as_lng_lines,
             )
         )
         lines = lang_content.split("\n")
