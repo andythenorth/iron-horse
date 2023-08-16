@@ -95,10 +95,10 @@ $(GRAPHICS_TARGETS): $(shell $(FIND_FILES) --ext=.py --ext=.png src)
 	$(_V) $(PYTHON3) src/render_graphics.py $(PY_GLOBAL_ARGS) --grf-name=$(subst generated/graphics/,,$(subst /make_target,,$@))
 	$(_V) touch $@
 
-$(LANG_FILES): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pylng --ext=.lng src)
+$(LANG_FILES): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pylng --ext=.toml src)
 	$(_V) $(PYTHON3) src/render_lang.py $(PY_GLOBAL_ARGS) --grf-name=$(subst /english.lng,,$(subst generated/lang/,,$@))
 
-$(HTML_DOCS): $(GRAPHICS_TARGETS) $(LANG_FILES) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
+$(HTML_DOCS): $(GRAPHICS_TARGETS) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.toml --ext=.png src)
 	$(_V) $(PYTHON3) src/render_docs.py $(PY_GLOBAL_ARGS) --grf-name=$(subst /index.html,,$(subst docs/,,$@))
 
 html_docs: $(HTML_DOCS)
