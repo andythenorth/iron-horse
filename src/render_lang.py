@@ -90,7 +90,7 @@ def main():
     languages_with_generation = ("english",)
     for i in languages_with_generation:
         # compile strings to single lang file - english
-        lang_template = templates[i + ".pylng"]
+        lang_template = templates["lang_file.pylng"]
 
         src_file = codecs.open(
             os.path.join(lang_src, i + "_" + roster.id + ".lng"), "r", "utf8"
