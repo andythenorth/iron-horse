@@ -109,8 +109,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping_purchase, vehicle
     <!--! no default, by design all variants should be explicitly found -->
 }
 
-<tal:include metal:use-macro="load: graphics_switches.pynml" />
+<tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
-<tal:include metal:use-macro="load: capacity_switches.pynml" />
+<tal:include metal:use-macro="load: capacity.pynml" />
 
-<tal:include metal:use-macro="load: properties_vehicle.pynml" />
+<tal:include metal:use-macro="load: properties.pynml" />

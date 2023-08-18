@@ -62,10 +62,10 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
     return ${vehicle.id}_ss_purchase;
 }
 
-<tal:include metal:use-macro="load: graphics_switches.pynml" />
+<tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
 <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
-    <tal:include metal:use-macro="load: capacity_switches.pynml" />
+    <tal:include metal:use-macro="load: capacity.pynml" />
 </tal:optional_capacity_switches>
 
-<tal:include metal:use-macro="load: properties_vehicle.pynml" />
+<tal:include metal:use-macro="load: properties.pynml" />
