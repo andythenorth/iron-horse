@@ -479,10 +479,6 @@ mineral_covered_hopper_car_livery_recolour_maps_weathered = (
     ),
 )
 
-oil_tank_car_livery_recolour_maps = (
-    ("DFLT", {136: 1, 137: 2, 138: 3, 139: 4, 140: 5, 141: 6, 142: 7, 143: 8}),
-)
-
 pellet_hopper_car_livery_recolour_maps = (
     ("DFLT", {136: 4, 137: 5, 138: 6, 139: 19, 140: 20, 141: 21, 142: 22, 143: 23}),
 )
