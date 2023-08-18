@@ -320,6 +320,20 @@ covered_hopper_car_livery_recolour_maps = (
     ),
 )
 
+# broken away from Polar Fox, as the automatic chlorine cargo recolour is dropped for these as of August 2023
+cryo_tanker_livery_recolour_maps = (
+    (
+        "DFLT",
+        {136: 5, 137: 7, 138: 9, 139: 11, 140: 12, 141: 13, 142: 14, 143: 15},
+    ),
+)
+cryo_tanker_livery_recolour_maps_weathered = (
+    (
+        "DFLT",
+        {136: 34, 137: 7, 138: 9, 139: 11, 140: 12, 141: 38, 142: 14, 143: 15},
+    ),
+)
+
 curtain_side_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
 # pass through (recolour gestalt is used only to trigger automatic chassis drawing)

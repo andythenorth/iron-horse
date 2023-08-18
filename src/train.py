@@ -3949,8 +3949,8 @@ class GasTankCarConsistBase(CarConsist):
         )
         # Graphics configuration
         weathered_variants = {
-            "unweathered": polar_fox.constants.cryo_tanker_livery_recolour_maps,
-            "weathered": polar_fox.constants.cryo_tanker_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.cryo_tanker_livery_recolour_maps,
+            "weathered": graphics_constants.cryo_tanker_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
