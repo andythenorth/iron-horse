@@ -747,11 +747,8 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
 
 class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     """
-    Simple recolouring from false body colour to:
-    - a single default livery
-    - optional extra liveries for specific cargos
-
-    Recolouring from false body colour makes it easy to adjust liveries across all vehicles of the same type.
+    Simple recolouring from false body colour to a single default livery
+    Recolouring from false body colour makes it easy to adjust base liveries across all vehicles of the same type.
     This gestalt can also be used as a shortcut simply for adding automated chassis.
     """
 
@@ -783,28 +780,7 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
         return "vehicle_with_simple_body_colour_remaps.pynml"
 
     def get_output_row_types(self):
-        return ["livery_spriterows"]
-
-    @property
-    def num_cargo_sprite_variants(self):
-        # rows can be reused across multiple cargo labels, so find uniques (assumes row nums are identical when reused across labels)
-        row_nums_seen = []
-        for row_nums in self.cargo_row_map.values():
-            for row_num in row_nums:
-                row_nums_seen.append(row_num)
-        return len(set(row_nums_seen))
-
-    @property
-    def cargo_row_map(self):
-        result = {}
-        counter = 0
-        # take the cargo recolour maps for 'unweathered' as the default
-        for cargo_map in self.weathered_variants["unweathered"]:
-            result[cargo_map[0]] = [
-                counter
-            ]  # list with a single value, as cargo labels can map to multiple rows, but no plan to use that for this gestalt (June 2020)
-            counter += 1
-        return result
+        return ["simple_recolour_spriterows"]
 
 
 class GestaltGraphicsConsistPositionDependent(GestaltGraphics):

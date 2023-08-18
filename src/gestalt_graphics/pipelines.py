@@ -1143,11 +1143,11 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 )
             )
 
-    def add_livery_spriterows(self):
-        # no loading / loaded states, intended for tankers etc
-        # provides cargo-specific recolourings, a default recolouring, and template alternates 1CC or 2CC livery on user flip
+    def add_simple_recolour_spriterows(self):
+        # provides a simple default recolouring
+        # no loading / loaded states
+        # can also be used with an empty recolour for the case of triggering chassis compositing
 
-        # first add the CC alternative livery, as it's easier to add first than handle adding it after arbitrary cargo livery rows
         crop_box_source = (
             0,
             self.base_yoffs,
@@ -1165,30 +1165,29 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         )
 
         for (
-            weathered_variant,
-            recolour_maps,
+            weathered_variant_label,
+            recolour_map,
         ) in self.consist.gestalt_graphics.weathered_variants.items():
-            for label, recolour_map in recolour_maps:
-                crop_box_dest = (
-                    0,
-                    0,
-                    self.sprites_max_x_extent,
-                    graphics_constants.spriterow_height,
-                )
+            crop_box_dest = (
+                0,
+                0,
+                self.sprites_max_x_extent,
+                graphics_constants.spriterow_height,
+            )
 
-                self.units.append(
-                    AppendToSpritesheet(
-                        vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest
-                    )
+            self.units.append(
+                AppendToSpritesheet(
+                    vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest
                 )
-                self.units.append(SimpleRecolour(recolour_map))
-                self.units.append(
-                    AddCargoLabel(
-                        label=label,
-                        x_offset=self.sprites_max_x_extent + 5,
-                        y_offset=-1 * graphics_constants.spriterow_height,
-                    )
+            )
+            self.units.append(SimpleRecolour(recolour_map))
+            self.units.append(
+                AddCargoLabel(
+                    label=weathered_variant_label,
+                    x_offset=self.sprites_max_x_extent + 5,
+                    y_offset=-1 * graphics_constants.spriterow_height,
                 )
+            )
 
     def add_pax_mail_car_with_opening_doors_spriterows(self, row_count):
         # this loop builds the spriterow and comps doors etc
@@ -1381,12 +1380,12 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
 
         for (
             weathered_variant,
-            recolour_maps,
+            recolour_map,
         ) in self.consist.gestalt_graphics.weathered_variants.items():
             self.units.append(
                 AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest)
             )
-            self.units.append(SimpleRecolour(recolour_maps[0][1]))
+            self.units.append(SimpleRecolour(recolour_map))
             box_car_input_image_1.close()
 
     def add_caboose_spriterows(self, row_count):
@@ -1770,9 +1769,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 if spriterow_type == "has_cover":
                     input_spriterow_count = 1
                     self.add_generic_spriterows(spriterow_type)
-                elif spriterow_type == "livery_spriterows":
+                elif spriterow_type == "simple_recolour_spriterows":
                     input_spriterow_count = 1
-                    self.add_livery_spriterows()
+                    self.add_simple_recolour_spriterows()
                 elif spriterow_type == "box_car_with_opening_doors_spriterows":
                     input_spriterow_count = 2
                     self.add_box_car_with_opening_doors_spriterows()

@@ -2598,15 +2598,8 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
-            "unweathered": (
-                ("DFLT", graphics_constants.merchandise_car_body_recolour_map),
-            ),
-            "weathered": (
-                (
-                    "DFLT",
-                    graphics_constants.merchandise_car_body_recolour_map_weathered,
-                ),
-            ),
+            "unweathered": graphics_constants.merchandise_car_body_recolour_map,
+            "weathered": graphics_constants.merchandise_car_body_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base=parent_id_base,
