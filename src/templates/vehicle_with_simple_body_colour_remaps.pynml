@@ -1,30 +1,14 @@
 <!--!
-    simple recolouring of vehicle body
-    support for optional 'weathered' variants (intended to be 2 values 'unweathered' and 'weathered', but this could be flexible)
-    liveries optionally mapped to cargos, but no support here for load states - the entire vehicle is coloured for the cargo
-    e.g. tank cars with black for oil, cc for chemicals, grey for petrol etc.
+    supports:
+    - simple recolouring of body at vehicle compile time
+    - in-game recolour via recolour sprites (handled in colour mapping)
+    - optional 'weathered' variants (intended to be 2 values 'unweathered' and 'weathered', but this could be flexible)
 -->
 
 <!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing -->
 <tal:weathered_variants repeat="weathered_variant consist.gestalt_graphics.weathered_variants">
-    <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
-        spriteset(${vehicle.id}_ss_${weathered_variant}_${cargo_variant_num}, "${graphics_path}${consist.id}.png") {
-            ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (cargo_variant_num * 30) + (consist.gestalt_graphics.num_cargo_sprite_variants * repeat.weathered_variant.index * 30))}
-        }
-    </tal:cargo_variants>
-
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_${weathered_variant}, cargo_type_in_veh) {
-        <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-            <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-                <!--! cargo_row_map provides a list format to support multiple variants for same cargo label, but that is unused for this gestalt, so just take first item -->
-                ${mapping[0]}: return ${vehicle.id}_ss_${weathered_variant}_${mapping[1][0]};
-            </tal:exclude_default_cargo>
-        </tal:cargos>
-        <tal:default_cargo repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-            <tal:block condition="mapping[0] == 'DFLT'">
-                return  ${vehicle.id}_ss_${weathered_variant}_${mapping[1][0]};
-            </tal:block>
-        </tal:default_cargo>
+    spriteset(${vehicle.id}_ss_${weathered_variant}, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (repeat.weathered_variant.index * 30))}
     }
 </tal:weathered_variants>
 
@@ -32,39 +16,28 @@
 <!--! this could be parameterised procedure, as it's used for other gestalts also -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
     <tal:weathered_variants repeat="weathered_variant consist.gestalt_graphics.weathered_variants">
-        ${repeat.weathered_variant.index}: return ${vehicle.id}_switch_graphics_vehicle_${weathered_variant};
+        ${repeat.weathered_variant.index}: return ${vehicle.id}_ss_${weathered_variant};
     </tal:weathered_variants>
-    return ${vehicle.id}_switch_graphics_vehicle_unweathered; <!--! this default should not be reached in this case, but eh -->
+    return ${vehicle.id}_ss_unweathered; <!--! this default should not be reached in this case, but eh -->
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, param_wagon_colour_randomisation) {
-    0: ${vehicle.id}_switch_graphics_vehicle_unweathered; <!--! no randomisation -->
+    0: ${vehicle.id}_ss_unweathered; <!--! no randomisation -->
     ${vehicle.id}_switch_graphics_vehicle_choose_weathered_variant;
 }
 
-// buy menu graphics chain
-<tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
-    spriteset(${vehicle.id}_ss_purchase_${cargo_variant_num}, "${graphics_path}${consist.id}.png") {
-        ${consist.get_nml_for_spriteset_template(y_offset=cargo_variant_num * 30)}
-    }
-</tal:cargo_variants>
-
 <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
-<!--! purchase sprites always go through a switch in case the template does anything specific for purchase graphics
-      if there was nothing specific, then this would just be a null switch, but in this case we switch to the livery for (default) cargo -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, cargo_type_in_veh) {
-    <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-        <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-            ${mapping[0]}: return ${vehicle.id}_ss_purchase_${mapping[1][0]};
-        </tal:exclude_default_cargo>
-    </tal:cargos>
-    <tal:default_cargo repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-        <tal:block condition="mapping[0] == 'DFLT'">
-            return ${vehicle.id}_ss_purchase_${mapping[1][0]};
-        </tal:block>
-    </tal:default_cargo>
+// buy menu graphics chain
+spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
+    ${consist.get_nml_for_spriteset_template(y_offset=0)}
 }
+<!--! purchase sprites always go through a switch in case the template does anything specific for purchase graphics
+      if there was nothing specific, then this is just a null switch-->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
+    return ${vehicle.id}_ss_purchase;
+}
+
 <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
     <tal:include metal:use-macro="load: capacity.pynml" />
 </tal:optional_capacity_switches>
