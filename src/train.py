@@ -4014,6 +4014,7 @@ class HopperCarConsistBase(CarConsist):
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_8"],
                 global_constants.wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
                 global_constants.wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -4137,6 +4138,7 @@ class HopperCarRandomisedConsist(RandomisedConsistMixin, HopperCarConsistBase):
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
                 global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
+                global_constants.wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_8"],
             ],
         )
 

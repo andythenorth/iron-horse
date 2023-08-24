@@ -15,7 +15,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.32,
         fixed_run_cost_points=245,  # cost malus, early heavy freight engines are too cheap to run relative to smaller engines
         gen=2,
-        additional_liveries=["FREIGHT_BLACK"],
+        additional_liveries=["2CC", "BANGER_BLUE", "FREIGHT_BLACK"],
         sprites_complete=True,
     )
 
