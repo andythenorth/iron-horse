@@ -14,7 +14,7 @@ def main(roster_id):
         },
         tractive_effort_coefficient=0.4,
         gen=3,
-        additional_liveries=["FREIGHT_BLACK"],
+        additional_liveries=["BANGER_BLUE", "FREIGHT_BLACK"],
         sprites_complete=True,
     )
 
