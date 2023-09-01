@@ -17,6 +17,7 @@ def main(roster_id):
         pantograph_type="diamond-single",
         gen=2,
         intro_year_offset=3,  # introduce later than gen epoch by design
+        extended_vehicle_life=True,
         fixed_run_cost_points=105,  # substantial cost bonus so it can make money
         additional_liveries=["INDUSTRIAL", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,

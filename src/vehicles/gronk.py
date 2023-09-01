@@ -19,7 +19,7 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         intro_year_offset=-9,  # introduce much earlier than gen epoch by design
-        vehicle_life=60,  # extended vehicle life for all gronks eh
+        extended_vehicle_life=True, # extended vehicle life for all gronks eh
         additional_liveries=["BANGER_BLUE", "DBSCHENKER", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

@@ -15,8 +15,9 @@ def main(roster_id):
         # dibble for game balance, assume some slip control
         tractive_effort_coefficient=0.34,
         gen=5,
-        pantograph_type="z-shaped-single",
         intro_year_offset=-13,  # introduce earlier than gen epoch by design
+        extended_vehicle_life=True,
+        pantograph_type="z-shaped-single",
         additional_liveries=["RAILFREIGHT_RED_STRIPE"],
         sprites_complete=True,
     )

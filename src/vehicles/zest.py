@@ -17,7 +17,7 @@ def main(roster_id):
         pantograph_type="diamond-single",
         gen=4,
         intro_year_offset=6,  # introduce later than gen epoch by design
-        vehicle_life=70,  # extended vehicle life to match Stoat
+        extended_vehicle_life=True,
         fixed_run_cost_points=105,  # substantial cost bonus so it can make money
         additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,

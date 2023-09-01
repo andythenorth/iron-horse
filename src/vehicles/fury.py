@@ -17,6 +17,7 @@ def main(roster_id):
         speed=125,  # Fury not replaced, but has gen 6 speeds
         pantograph_type="z-shaped-double",
         intro_year_offset=1,  # introduce later than gen epoch by design
+        extended_vehicle_life=True,
         # intercity, railfreight?
         additional_liveries=["SWOOSH", "FREIGHTLINER_GBRF", "RES"],
         default_livery_extra_docs_examples=[

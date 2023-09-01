@@ -15,6 +15,7 @@ def main(roster_id):
         random_reverse=True,
         gen=1,
         intro_year_offset=20,  # introduce much later than gen epoch by design
+        extended_vehicle_life=True,
         fixed_run_cost_points=140,  # minor run cost bonus as default algorithm makes run cost too high
         additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,

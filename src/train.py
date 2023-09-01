@@ -73,6 +73,8 @@ class Consist(object):
         self._intro_year_days_offset = (
             None  # defined in subclasses, no need for instances to define this
         )
+        # vehicle life uses a default value, but can be extended automatically via a bool keyword, or it can be set manually
+        self.extended_vehicle_life = kwargs.get("extended_vehicle_life", False)
         self._vehicle_life = kwargs.get("vehicle_life", None)
         #  most consists are automatically replaced by the next consist in the role tree
         # ocasionally we need to merge two branches of the role, in this case set replacement consist id
@@ -312,7 +314,9 @@ class Consist(object):
     def get_name_as_property(self, unit_variant):
         # text filter in buy menu needs name as prop as of June 2023
         # this is very rudimentary and doesn't include all the parts of the name
-        name_parts = self.get_name_parts(context="default_name", unit_variant=unit_variant)
+        name_parts = self.get_name_parts(
+            context="default_name", unit_variant=unit_variant
+        )
         result = "string(" + name_parts[0] + ")"
         return result
 
@@ -495,16 +499,20 @@ class Consist(object):
         if self._vehicle_life is not None:
             # allow vehicles to provide a vehicle life if they want
             return self._vehicle_life
-        elif self.replacement_consist is not None:
+        if self.extended_vehicle_life:
+            lifespan = 60
+        else:
+            lifespan = 40
+        if self.replacement_consist is not None:
             time_to_replacement = self.replacement_consist.intro_year - self.intro_year
-            if time_to_replacement > 40:
+            if time_to_replacement > lifespan:
                 # round to nearest 10, then add some padding
                 return time_to_replacement - (time_to_replacement % 10) + 10
             else:
-                return 40
+                return lifespan
         else:
             # pick a sensible value for vehicles that don't otherwise get replaced
-            return 40
+            return lifespan
 
     @property
     def model_life(self):

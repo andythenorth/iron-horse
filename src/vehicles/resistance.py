@@ -17,6 +17,7 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         intro_year_offset=-4,  # earlier than the IRL introduction of this never-built train...
+        extended_vehicle_life=True,
         pantograph_type="z-shaped-double",
         caboose_family="railfreight_2",
         additional_liveries=[

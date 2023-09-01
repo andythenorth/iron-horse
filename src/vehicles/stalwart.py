@@ -16,6 +16,7 @@ def main(roster_id):
         gen=4,
         pantograph_type="z-shaped-double",
         intro_year_offset=-1,  # introduce earlier than gen epoch by design
+        extended_vehicle_life=True,
         # additional_liveries=["BANGER_BLUE", "SWOOSH", "WHITE_STRIPE", "2CC", "RAILFREIGHT_RED_STRIPE",],
         additional_liveries=[
             "BANGER_BLUE",

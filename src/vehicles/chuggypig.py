@@ -18,7 +18,7 @@ def main(roster_id):
         fixed_run_cost_points=100,  # substantial cost bonus so it can make money
         random_reverse=True,
         gen=4,
-        vehicle_life=60,  # extended vehicle life for all gronks eh
+        extended_vehicle_life=True, # extended vehicle life for all gronks eh
         additional_liveries=["BANGER_BLUE", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
