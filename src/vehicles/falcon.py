@@ -9,7 +9,7 @@ def main(roster_id):
         name="Falcon",
         role="super_heavy_express",
         role_child_branch_num=-2,
-        replacement_consist_id="onslaught",  # this Joker ends with Onslaught
+        replacement_consist_id="rapid",  # this Joker ends with Rapid (switching child branch) - goal is to keep Falcon around for a while, because I like it
         power_by_power_source={
             "DIESEL": 2800,
         },
