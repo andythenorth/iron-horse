@@ -779,7 +779,7 @@ def main():
     # convenience for local development, this means docs/index.html can be opened from shell, and has list of links to tech tree, which is a common use case
     shutil.copyfile(os.path.join(docs_src, "local_docs_root.html"), os.path.join(currentdir, "docs", "index.html"))
 
-    static_dir_src = os.path.join(docs_src, "html", "static")
+    static_dir_src = os.path.join(docs_src, "static")
     static_dir_dst = os.path.join(html_docs_output_path, "static")
     shutil.copytree(static_dir_src, static_dir_dst)
 
