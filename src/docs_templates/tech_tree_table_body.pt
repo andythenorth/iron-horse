@@ -27,7 +27,7 @@
                                     <ul>
                                         <li>Passengers, mail and valuables</li>
                                         <li>High-priority freight cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars</li>
-                                        <li>General freight, but if a dedicated freight engine is available with similar power, the freight engine will generally be lower cost, and higher performance</li>
+                                        <li>General freight, but if a dedicated freight engine is available with similar power, the freight engine will generally be lower cost to buy and run</li>
                                     </ul>
                                 </div>
                                 <div tal:case="'driving_cab_car'">
@@ -75,8 +75,8 @@
                                 <div tal:case="'hst'">
                                     <h4>High-Speed Trains</h4>
                                     <ul>
-                                        <li> high-speed diesel passenger engines with dedicated high-speed coaches</li>
-                                        <li> can attach other types of cars to haul mail or freight cargos but will travel at less than maximum engine speed</li>
+                                        <li> high-speed diesel passenger engines with dedicated high-speed coaches and mail cars</li>
+                                        <li> can attach other types of cars to haul freight cargos but will travel at less than maximum engine speed</li>
                                     </ul>
                                 </div>
                                 <div tal:case="'very_high_speed'">
