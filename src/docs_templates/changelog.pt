@@ -3,8 +3,47 @@ Changelog
 
 
 ------------
+3.2.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.2.0.
+
+
+*Changes*
+
+- Doineann is no longer replaced by Blackthorn, and will be available perpetually after introduction
+- added additional liveries for
+    - Vigilant
+    - Lemon
+    - Esk
+    - Mainstay
+    - Vulcan
+- tweaked yellow Saxon livery to be more yellow
+- added black livery for randomised dump cars and hopper cars
+- Gargouille is introduced a little earlier
+- Falcon is now replaced by Rapid, not Onslaught, meaning Falcon no longer has very short period of availability
+- removed run cost malus for Vulcan, Dragon, Falcon, Defiant and Relentless
+- extended vehicle life of certain engines, mostly 'robust' electric locomotives, but also some steam and diesel locomotives
+- Slug power is increased slightly and now matches Centaur exactly
+- Dyanmo power is increased slightly
+
+
+*Fixes*
+
+- corrected wrong colour pixels in one livery for Swift
+- passenger coaches weren't properly aware of vehicle variants and were showing brake coaches when they shouldn't
+
+
+*Codechanges*
+
+- switch lang files to TOML format
+
+
+------------
 3.1.0 Release
 ------------
+
 
 *Changes*
 
@@ -17,6 +56,7 @@ Changelog
 - removed colour change when wagons are flipped in depot
 - added additional livery for Saxon
 
+
 *Fixes*
 
 - Lion weight was too low
@@ -25,6 +65,7 @@ Changelog
 ------------
 3.0.1 Release
 ------------
+
 
 *Fixes*
 
@@ -35,9 +76,11 @@ Changelog
 3.0.0 Release
 ------------
 
+
 "A horse is worth more than riches" — Spanish proverb
 
 Time for Iron Horse 3.  It's the one right after Iron Horse 2.
+
 
 **"Pitch me"**
 
