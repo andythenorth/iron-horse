@@ -268,10 +268,12 @@ class RosterManager(list):
                     "report_as_pax_car_to_neighbouring_vehicle_in_rulesets",
                     False,
                 ):
-                    result.append(consist.base_numeric_id)
+                    for buyable_variant in consist.buyable_variants:
+                        result.append(buyable_variant.lead_unit_variant_matching_buyable_variant.id)
         for consist in self.active_roster.engine_consists:
             if getattr(consist, "treat_as_pax_car_for_var_41", False):
-                result.append(consist.id)
+                for buyable_variant in consist.buyable_variants:
+                    result.append(buyable_variant.lead_unit_variant_matching_buyable_variant.id)
         if len(result) > 255:
             utils.echo_message(
                 "action 2 switch is limited to 255 values, pax_car_ids result exceeds this - needs split across multiple switches"
