@@ -10,7 +10,7 @@ def main(roster_id):
         role="express",
         role_child_branch_num=-1,
         power_by_power_source={
-            "AC": 1800,
+            "AC": 1900, # matches or better than equivalent gen steam engines
         },
         random_reverse=True,
         gen=3,
