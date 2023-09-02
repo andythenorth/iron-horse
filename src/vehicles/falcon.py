@@ -16,7 +16,6 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         intro_year_offset=5,  # introduce later than gen epoch by design
-        fixed_run_cost_points=230,  # give a serious malus to this one (balancing eh?)
         additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),

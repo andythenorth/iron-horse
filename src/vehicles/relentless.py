@@ -16,7 +16,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.355,
         random_reverse=True,
         gen=6,
-        fixed_run_cost_points=290,  # run cost nerf as light weight throws the cost too cheap
+        fixed_run_cost_points=190,  # run cost nerf as light weight throws the cost too cheap
         additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
     )
