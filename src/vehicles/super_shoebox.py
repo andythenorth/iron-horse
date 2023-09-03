@@ -14,15 +14,17 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         gen=5,
         # additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
-        additional_liveries=[],
+        additional_liveries=["INTERCITY_RASPBERRY_RIPPLE", "RES", "SWOOSH", "DBSCHENKER"], # "RAILFREIGHT_TRIPLE_GREY"
         default_livery_extra_docs_examples=[
             ("COLOUR_PINK", "COLOUR_WHITE"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
             ("COLOUR_CREAM", "COLOUR_GREY"),
             ("COLOUR_ORANGE", "COLOUR_BROWN"),
         ],
+        decor_spriterow_num=6,
+        show_decor_in_purchase_for_variants=[1],
         sprites_complete=True,
-        sprites_additional_liveries_potential=True,  # railfreight, dutch, DB Schenker?
+        sprites_additional_liveries_potential=True,
     )
 
     consist.add_unit(
