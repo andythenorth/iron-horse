@@ -10,11 +10,12 @@ def main(roster_id):
         role="super_heavy_freight",
         role_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 2950,
+            "DIESEL": 3300, # first high HP diesel in this roster??
         },
+        speed=87,  # for lolz
         random_reverse=True,
         gen=4,
-        intro_year_offset=10,  # let's be later for this one, it's short-lived also
+        intro_year_offset=12,  # let's be later for this one, it's long-lived also
         additional_liveries=["BANGER_BLUE", "SWOOSH"],
         sprites_complete=True,
     )
@@ -27,6 +28,6 @@ def main(roster_id):
     )
 
     consist.description = """Good horses make short miles."""
-    consist.foamer_facts = """BRCW / BR D0260 Lion prototype"""
+    consist.foamer_facts = """BRCW / BR D0260 Lion prototype, Brush HS4000 Kestrel prototype"""
 
     return consist
