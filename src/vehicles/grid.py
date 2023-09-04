@@ -20,6 +20,7 @@ def main(roster_id):
             "BANGER_BLUE",
             "RAILFREIGHT_RED_STRIPE",
             "RAILFREIGHT_TRIPLE_GREY",
+            "RAILFREIGHT_TRIPLE_GREY_COAL",
             "SWOOSH",
         ],
         sprites_complete=False,
