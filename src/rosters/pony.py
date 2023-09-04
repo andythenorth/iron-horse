@@ -11,7 +11,6 @@ from vehicles import argus
 from vehicles import arrow
 from vehicles import avenger
 from vehicles import bean_feast
-from vehicles import blackthorn
 from vehicles import blaze
 from vehicles import boar_cat
 from vehicles import bone
@@ -791,7 +790,6 @@ def main():
             maelstrom,
             doineann,
             doubletide,
-            blackthorn,
             girt_licker,
             lemon,
             esk,

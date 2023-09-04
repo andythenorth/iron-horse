@@ -13,15 +13,16 @@ def main(roster_id):
             "DIESEL": 3450,
         },
         random_reverse=True,
-        intro_year_offset=-10,  # let's be a little bit earlier for this one
+        intro_year_offset=-8,  # let's be a little bit earlier for this one
         gen=5,
         caboose_family="railfreight_1",
         additional_liveries=[
             "BANGER_BLUE",
             "RAILFREIGHT_RED_STRIPE",
             "RAILFREIGHT_TRIPLE_GREY",
+            "SWOOSH",
         ],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
@@ -29,6 +30,6 @@ def main(roster_id):
     )
 
     consist.description = """These aren't bad at all."""
-    consist.foamer_facts = """BR Class 56"""
+    consist.foamer_facts = """BR Class 56, GBRF Class 69"""
 
     return consist
