@@ -27,14 +27,13 @@ from vehicles import captain_steel
 from vehicles import cargo_sprinter
 from vehicles import carrack
 from vehicles import centaur
-
-# from vehicles import challenger # for NA roster
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chinook
 from vehicles import chuggypig
 from vehicles import clipper
 from vehicles import constance
+from vehicles import cyclone
 from vehicles import daring
 from vehicles import deasil
 from vehicles import decapod
@@ -138,7 +137,6 @@ from vehicles import stoat
 from vehicles import streamer
 from vehicles import strongbow
 from vehicles import sunshine_coast
-from vehicles import super_shoebox
 from vehicles import swift
 from vehicles import tenacious
 from vehicles import tencendur
@@ -743,8 +741,8 @@ def main():
             defiant,
             relentless,
             dynamo,
+            cyclone,
             shoebox,
-            super_shoebox,
             ultra_shoebox,
             hurly_burly,
             moor_gallop,

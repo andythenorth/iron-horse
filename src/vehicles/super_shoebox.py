@@ -7,12 +7,12 @@ def main(roster_id):
         id="super_shoebox",
         base_numeric_id=9920,
         name="Super Shoebox",
-        role="express",
-        role_child_branch_num=-1,
+        role="heavy_express",
+        role_child_branch_num=-3,
         power_by_power_source={"DIESEL": 1250, "AC": 2600},
         random_reverse=True,
         pantograph_type="z-shaped-single",
-        gen=5,
+        gen=6,
         # additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
         additional_liveries=["INTERCITY_RASPBERRY_RIPPLE", "RES", "SWOOSH", "DBSCHENKER"], # "RAILFREIGHT_TRIPLE_GREY"
         default_livery_extra_docs_examples=[
