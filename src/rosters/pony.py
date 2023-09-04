@@ -328,9 +328,6 @@ def main():
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PINK", "COLOUR_WHITE"),
                 ],
             },
             "YEOMAN": {
