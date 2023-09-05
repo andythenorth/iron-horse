@@ -682,7 +682,8 @@ class Consist(object):
                 if self.role in group_roles:
                     return self.get_speed_by_class("express")
             # then check other specific roles
-            if self.role in ["mail_railcar", "pax_railcar"]:
+            # !! this would be better determined by setting self.speed_class appropriately in the consist subclasses
+            if self.role in ["mail_railcar", "pax_railcar", "pax_railbus"]:
                 return self.get_speed_by_class("suburban")
             elif self.role in ["hst"]:
                 return self.get_speed_by_class("hst")
