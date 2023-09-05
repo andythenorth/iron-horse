@@ -78,6 +78,9 @@ from vehicles import helm_wind_middle_mail
 from vehicles import helm_wind_middle_passenger
 from vehicles import hercules
 from vehicles import high_flyer
+from vehicles import hokuhokusei_cab
+from vehicles import hokuhokusei_middle_mail
+from vehicles import hokuhokusei_middle_passenger
 from vehicles import hurly_burly
 from vehicles import intrepid
 from vehicles import jupiter
@@ -852,6 +855,9 @@ def main():
             brenner_cab,
             brenner_middle_passenger,
             brenner_middle_mail,
+            hokuhokusei_cab,
+            hokuhokusei_middle_passenger,
+            hokuhokusei_middle_mail,
             # metro
             serpentine,
             westbourne,
