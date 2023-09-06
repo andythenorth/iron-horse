@@ -14,7 +14,7 @@ def main(roster_id):
         },
         random_reverse=True,
         gen=5,
-        pantograph_type="diamond-double",
+        pantograph_type="z-shaped-single",
         intro_year_offset=4,  # introduce later than gen epoch by design
         extended_vehicle_life=True,
         fixed_run_cost_points=180,  # substantial cost bonus for balance against same-era steam engines
