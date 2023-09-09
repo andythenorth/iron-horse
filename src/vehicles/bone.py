@@ -20,7 +20,7 @@ def main(roster_id):
             "RAILFREIGHT_RED_STRIPE",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY_COAL",
-            "DBSCHENKER",
+            "DB_SCHENKER",
             "EWS",
         ],
         default_livery_extra_docs_examples=[

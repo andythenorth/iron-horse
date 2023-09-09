@@ -18,7 +18,7 @@ def main(roster_id):
         additional_liveries=[
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY_COAL",
-            "DBSCHENKER",
+            "DB_SCHENKER",
             "LARGE_LOGO",
             "LOADHAUL",
             "SWOOSH_LESS",

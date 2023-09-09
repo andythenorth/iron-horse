@@ -24,7 +24,7 @@ def main(roster_id):
             "FREIGHTLINER_GBRF",
             "RES",
             "SWOOSH",
-            "DBSCHENKER",
+            "DB_SCHENKER",
             "FREIGHTLINER_2",
         ],
         default_livery_extra_docs_examples=[

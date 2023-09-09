@@ -369,7 +369,7 @@ def main():
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                 ],
             },
-            "DBSCHENKER": {
+            "DB_SCHENKER": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),

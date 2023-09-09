@@ -14,7 +14,7 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         gen=6,
         # additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
-        additional_liveries=["INTERCITY_RASPBERRY_RIPPLE", "RES", "SWOOSH", "DBSCHENKER"], # "RAILFREIGHT_TRIPLE_GREY"
+        additional_liveries=["INTERCITY_RASPBERRY_RIPPLE", "RES", "SWOOSH", "DB_SCHENKER"], # "RAILFREIGHT_TRIPLE_GREY"
         default_livery_extra_docs_examples=[
             ("COLOUR_PINK", "COLOUR_WHITE"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),

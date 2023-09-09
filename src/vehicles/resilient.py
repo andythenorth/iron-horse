@@ -22,6 +22,7 @@ def main(roster_id):
             "RES",
             "FREIGHTLINER_GBRF",
             "DUTCH",
+            "DB_SCHENKER",
         ],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
