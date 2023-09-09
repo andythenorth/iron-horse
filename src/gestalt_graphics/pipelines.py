@@ -674,6 +674,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             "diamond-single-with-base": "diamond-with-base.png",
             "z-shaped-single": "z-shaped.png",
             "z-shaped-double": "z-shaped.png",
+            "z-shaped-single-minimal": "z-shaped-minimal.png",
             "z-shaped-single-reversed": "z-shaped-reversed.png",
             "z-shaped-single-with-base": "z-shaped-with-base.png",
         }
@@ -709,11 +710,13 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             "diamond-single-with-base": {"down": ["a"], "up": ["A"]},
             "z-shaped-single": {"down": ["a"], "up": ["A"]},
             "z-shaped-single-reversed": {"down": ["a"], "up": ["A"]},
+            # aB was tried and removed, TMWFTLB, instead just use Ab and respect depot flip
             "z-shaped-double": {
                 "down": ["a", "b"],
                 "up": ["A", "b"],
-            },  # aB was tried and removed, TMWFTLB, instead just use Ab and respect depot flip
+            },
             "z-shaped-single-with-base": {"down": ["a"], "up": ["A"]},
+            "z-shaped-single-minimal": {"down": ["a"], "up": ["A"]},
         }
         pantograph_state_sprite_map = {
             "a": [

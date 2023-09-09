@@ -17,12 +17,11 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         intro_year_offset=4,  # introduce later than gen epoch by design
         extended_vehicle_life=True,
-        fixed_run_cost_points=180,  # substantial cost bonus for balance against same-era steam engines
-        additional_liveries=[],
+        additional_liveries=["SWOOSH", "SWOOSH_LESS", "DB_SCHENKER", "INDUSTRIAL_YELLOW"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PINK", "COLOUR_WHITE"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
-            ("COLOUR_PALE_GREEN", "COLOUR_PINK"),
+            ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
         ],
         sprites_complete=False,
     )
