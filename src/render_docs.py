@@ -285,6 +285,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
         cc_remap_indexes = doc_helper.remap_company_colours(variant["cc_remaps"])
         # probably fragile workaround to use the alternative livery spriterow
         # for the edge case that a docs default livery 2nd company colour matches the alternative livery triggers
+        # !! but this is the same line as above?? what's it supposed to be doing?
         cc_remap_indexes = doc_helper.remap_company_colours(variant["cc_remaps"])
 
         processed_vehicle_image = processed_vehicle_image.copy().point(
