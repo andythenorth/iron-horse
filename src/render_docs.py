@@ -136,7 +136,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
     # these 'source' var names for images are misleading
     source_vehicle_image = Image.new(
         "P",
-        (doc_helper.buy_menu_sprite_width(consist), doc_helper.buy_menu_sprite_height),
+        (doc_helper.docs_sprite_width(consist), doc_helper.docs_sprite_height),
         255,
     )
     source_vehicle_image.putpalette(Image.open("palette_key.png").palette)
@@ -161,8 +161,8 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
                 box=(
                     consist.buy_menu_x_loc,
                     10 + y_offset,
-                    consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width(consist),
-                    10 + y_offset + doc_helper.buy_menu_sprite_height,
+                    consist.buy_menu_x_loc + doc_helper.docs_sprite_width(consist),
+                    10 + y_offset + doc_helper.docs_sprite_height,
                 )
             )
         if consist.dual_headed:
@@ -174,7 +174,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
                     224,
                     10 + y_offset,
                     224 + (4 * consist.length) + 1,
-                    10 + y_offset + doc_helper.buy_menu_sprite_height,
+                    10 + y_offset + doc_helper.docs_sprite_height,
                 )
             )
             source_vehicle_image_2 = vehicle_spritesheet.copy().crop(
@@ -182,7 +182,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
                     104,
                     10 + y_offset,
                     104 + (4 * consist.length) + 1,
-                    10 + y_offset + doc_helper.buy_menu_sprite_height,
+                    10 + y_offset + doc_helper.docs_sprite_height,
                 )
             )
             source_vehicle_image_tmp = source_vehicle_image.copy()
@@ -192,7 +192,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
                     0,
                     0,
                     source_vehicle_image_1.size[0],
-                    doc_helper.buy_menu_sprite_height,
+                    doc_helper.docs_sprite_height,
                 ),
             )
             source_vehicle_image_tmp.paste(
@@ -201,14 +201,14 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
                     source_vehicle_image_1.size[0] - 1,
                     0,
                     source_vehicle_image_1.size[0] - 1 + source_vehicle_image_2.size[0],
-                    doc_helper.buy_menu_sprite_height,
+                    doc_helper.docs_sprite_height,
                 ),
             )
         crop_box_dest = (
             0,
             0,
-            doc_helper.buy_menu_sprite_width(consist),
-            doc_helper.buy_menu_sprite_height,
+            doc_helper.docs_sprite_width(consist),
+            doc_helper.docs_sprite_height,
         )
         source_vehicle_image.paste(
             source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest
@@ -228,7 +228,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
                     consist.buy_menu_x_loc,
                     10,
                     consist.buy_menu_x_loc + pan_crop_width,
-                    10 + doc_helper.buy_menu_sprite_height,
+                    10 + doc_helper.docs_sprite_height,
                 )
             )
             pantographs_mask = pantographs_image.copy()
@@ -255,14 +255,14 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
                         pan_start_x_loc,
                         10,
                         pan_start_x_loc + pan_crop_width,
-                        10 + doc_helper.buy_menu_sprite_height,
+                        10 + doc_helper.docs_sprite_height,
                     )
                 )
                 crop_box_dest_pan_2 = (
-                    int(doc_helper.buy_menu_sprite_width(consist) / 2),
+                    int(doc_helper.docs_sprite_width(consist) / 2),
                     0,
-                    int(doc_helper.buy_menu_sprite_width(consist) / 2) + pan_crop_width,
-                    doc_helper.buy_menu_sprite_height,
+                    int(doc_helper.docs_sprite_width(consist) / 2) + pan_crop_width,
+                    doc_helper.docs_sprite_height,
                 )
                 pantographs_mask = pantographs_image.copy()
                 pantographs_mask = pantographs_mask.point(
@@ -296,7 +296,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
         processed_vehicle_image = processed_vehicle_image.resize(
             (
                 4 * processed_vehicle_image.size[0],
-                4 * doc_helper.buy_menu_sprite_height,
+                4 * doc_helper.docs_sprite_height,
             ),
             resample=Image.Resampling.NEAREST,
         )

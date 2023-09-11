@@ -11,19 +11,19 @@ class DocHelper(object):
     palette = utils.dos_palette_to_rgb()
 
     # these only used in docs as of April 2018
-    buy_menu_sprite_max_width = 65  # up to 2 units eh
-    buy_menu_sprite_height = 16
+    docs_sprite_max_width = 65  # up to 2 units eh
+    docs_sprite_height = 16
 
     def __init__(self, lang_strings):
         self.lang_strings = lang_strings
 
-    def buy_menu_sprite_width(self, consist):
+    def docs_sprite_width(self, consist):
         if not consist.dual_headed:
             # +1 for the buffers etc
-            return min((consist.buy_menu_width + 1), self.buy_menu_sprite_max_width)
+            return min((consist.buy_menu_width + 1), self.docs_sprite_max_width)
         # openttd automatically handles dual head, but we need to calculate double width explicitly for docs
         if consist.dual_headed:
-            return min((2 * 4 * consist.length) + 1, self.buy_menu_sprite_max_width)
+            return min((2 * 4 * consist.length) + 1, self.docs_sprite_max_width)
 
     def get_vehicles_by_subclass(self, consists, filter_subclasses_by_name=None):
         # first find all the subclasses + their vehicles
@@ -287,7 +287,7 @@ class DocHelper(object):
             for consist in vehicle_consists:
                 vehicle_data = [
                     consist.id,
-                    str(self.buy_menu_sprite_width(consist)),
+                    str(self.docs_sprite_width(consist)),
                     consist.base_numeric_id,
                 ]
                 result["sorted_by_vehicle_type"][vehicle_type].append(vehicle_data)
