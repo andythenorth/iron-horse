@@ -1,5 +1,3 @@
-import global_constants
-
 from roster import Roster
 
 from vehicles import ares

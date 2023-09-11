@@ -2,7 +2,6 @@ import polar_fox
 import gestalt_graphics.graphics_constants as graphics_constants
 from gestalt_graphics import pipelines
 import utils
-import global_constants
 
 
 class GestaltGraphics(object):
@@ -617,7 +616,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
             ]
         else:
             raise BaseException(
-                consist_ruleset
+                self.consist_ruleset
                 + " not matched in GestaltGraphicsAutomobilesTransporter get_output_row_types()"
             )
         if self.add_masked_overlay:

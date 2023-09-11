@@ -14,7 +14,7 @@ from polar_fox.graphics_units import (
     TransposeAsymmetricSprites,
 )
 import polar_fox.pixa as pixa
-from polar_fox.pixa import Spritesheet, PieceCargoSprites
+from polar_fox.pixa import PieceCargoSprites
 from gestalt_graphics import graphics_constants
 
 DOS_PALETTE = Image.open("palette_key.png").palette
