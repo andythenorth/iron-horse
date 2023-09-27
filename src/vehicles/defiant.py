@@ -17,7 +17,7 @@ def main(roster_id):
         random_reverse=True,
         gen=6,
         intro_year_offset=-4,  # let's be a little bit earlier for this one
-        fixed_run_cost_points=300,  # run cost nerf as light weight throws the cost too cheap
+        fixed_run_cost_points=200,  # run cost nerf as light weight throws the cost too cheap
         sprites_complete=True,
     )
 

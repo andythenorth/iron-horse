@@ -14,18 +14,20 @@ buy_menu_sort_order_wagons = [
     "suburban_passenger_car",
     "mail_car",
     "express_car",
+    "double_deck_automobile_car", # order before other automobile cars as needed in simplified mode
     "automobile_car",
     "low_floor_automobile_car",
-    "double_deck_automobile_car",
     "express_intermodal_car",
     "intermodal_car",
     "low_floor_intermodal_car",
     "open_car",
     "merchandise_open_car",
     "hood_open_car",
+    "randomised_open_car",
     "box_car",
     "merchandise_box_car",
     "curtain_side_box_car",
+    "randomised_box_car",
     "sliding_wall_car",
     "vehicle_parts_box_car",
     "goods_box_car",
@@ -37,36 +39,44 @@ buy_menu_sort_order_wagons = [
     "bolster_car",
     "coil_car_uncovered",
     "coil_car_covered",
+    "randomised_dedicated_coil_car",
     "hopper_car",
-    "mgr_hopper_car",
+    "hopper_car_high_side",
+    "aggregate_hopper_car",
     "rock_hopper_car",
-    "mineral_hopper_car",
-    "ore_hopper_car",
+    "mgr_hopper_car",
     "dump_car",
     "dump_car_high_side",
+    "randomised_dump_car",
     "aggregate_car",
     "ore_dump_car",
     "scrap_metal_car",
     "skip_car",
     "tank_car",
     "product_tank_car",
+    "sulphur_tank_car",
     "acid_tank_car",
     "pressure_tank_car",
     "cryo_tank_car",
     "covered_hopper_car",
     "dry_powder_hopper_car",
     "mineral_covered_hopper_car",
+    "chemical_covered_hopper_car",
     "roller_roof_hopper_car",
     "swing_roof_hopper_car",
-    "chemical_covered_hopper_car",
     "silo_car",
-    "chemical_silo_car",
+    "silo_car_v_barrel",
+    "randomised_silo_car",
+    "cement_silo_car_v_barrel",
     "cement_silo_car",
+    "randomised_cement_silo_car",
     "livestock_car",
     "edibles_tank_car",
     "reefer_car",
     "farm_products_box_car",
-    "farm_products_hopper_car",
+    "farm_products_type_one_hopper_car",
+    "farm_products_type_two_hopper_car",
+    "randomised_farm_products_hopper_car",
     "log_car",
     "kaolin_hopper_car",
     "carbon_black_hopper_car",
@@ -76,13 +86,10 @@ buy_menu_sort_order_wagons = [
     "coil_buggy_car",
     "ingot_car",
     "slag_ladle_car",
-    "randomised_open_car",
-    "randomised_box_car",
     "randomised_piece_goods_car",
     "randomised_flat_car",
-    "randomised_metal_coil_car",
+    "randomised_generic_coil_car",
     "randomised_hopper_car",
-    "randomised_dump_car",
     "randomised_bulk_car",
     "randomised_chemicals_tank_car",
     "randomised_covered_hopper_car",
@@ -102,7 +109,7 @@ railtype_labels_by_vehicle_track_type_name = {
     "RAIL": ["IHA_", "RAIL"],
     "RAIL_ELECTRIFIED_AC": ["IHB_", "ELRL"],
     "RAIL_ELECTRIFIED_AC_DC": ["IHG_", "ELRL"],
-    "RAIL_ELECTRIFIED_DC": ["IHF_"], # no fallback for DC if not present
+    "RAIL_ELECTRIFIED_DC": ["IHF_"],  # no fallback for DC if not present
     "RAIL_HIGH_CLEARANCE": ["IHAB"],
     "METRO": [
         "IHC_",
@@ -232,11 +239,29 @@ intro_month_offsets_by_role_group = {
     "lolz": 11,
 }
 
+# shared across all rosters, keep alphabetised, order not significant
+# only needed for groups composing more than one type of consist
+buyable_variant_group_consist_base_ids_by_group_name = {
+    "wagon_group_acid_tank_cars": "acid_tank_car",
+    "wagon_group_automobile_cars": "double_deck_automobile_car",
+    "wagon_group_box_cars": "box_car",
+    "wagon_group_cement_silo_cars": "cement_silo_car",
+    "wagon_group_coil_cars": "coil_car_uncovered",
+    "wagon_group_covered_hopper_cars": "covered_hopper_car",
+    "wagon_group_dump_cars": "dump_car",
+    "wagon_group_farm_product_cars": "farm_products_type_one_hopper_car",
+    "wagon_group_hopper_cars": "hopper_car",
+    "wagon_group_intermodal_cars": "intermodal_car",
+    "wagon_group_open_cars": "open_car",
+    "wagon_group_pressure_tank_cars": "pressure_tank_car",
+    "wagon_group_silo_cars": "silo_car",
+    "wagon_group_sliding_wall_cars": "sliding_wall_car",
+}
+
 # custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants
 # post python 3.7, we rely on dict order being stable here, so we can get keys by position when we need to
 custom_wagon_recolour_sprite_maps = {
     "custom_dark_brown": (105, 106, 33, 34, 35, 36, 37, 38),
-    "custom_bauxite": (60, 61, 73, 62, 75, 76, 77, 78),
     "custom_dark_pink": (40, 41, 42, 43, 44, 45, 46, 47),
     "custom_light_pink": (43, 44, 45, 46, 47, 166, 167, 168),
     "custom_dark_grey": (3, 16, 17, 18, 19, 20, 21, 22),
@@ -246,6 +271,7 @@ custom_wagon_recolour_sprite_maps = {
     "custom_light_mauve": (129, 130, 131, 132, 133, 134, 135, 14),
     "custom_dark_orange": (62, 63, 64, 193, 194, 195, 196, 197),
     "custom_dark_cream": (112, 113, 114, 116, 117, 118, 119, 120),
+    # can't name it dark_green cos that conflates with DARK_GREEN
     "custom_green": (
         80,
         82,
@@ -255,7 +281,8 @@ custom_wagon_recolour_sprite_maps = {
         86,
         207,
         209,
-    ),  # can't name it dark_green cos that conflates with DARK_GREEN
+    ),
+    # can't name it dark_blue cos that conflates with DARK_BLUE
     "custom_blue": (
         147,
         148,
@@ -265,7 +292,8 @@ custom_wagon_recolour_sprite_maps = {
         152,
         153,
         210,
-    ),  # can't name it dark_blue cos that conflates with DARK_BLUE
+    ),
+    # can't name it dark_light_blue cos that would be silly
     "custom_light_blue": (
         155,
         156,
@@ -275,7 +303,8 @@ custom_wagon_recolour_sprite_maps = {
         160,
         161,
         210,
-    ),  # can't name it dark_light_blue cos that would be silly
+    ),
+    # can't name it light_dark_blue cos that would be silly
     "custom_dark_blue": (
         199,
         200,
@@ -285,10 +314,459 @@ custom_wagon_recolour_sprite_maps = {
         204,
         205,
         152,
-    ),  # can't name it light_dark_blue cos that would be silly
+    ),
     "custom_dark_red": (180, 181, 182, 183, 164, 165, 166, 167),
     "custom_pale_green": (97, 98, 99, 100, 101, 102, 103, 14),
     "custom_dark_green": (89, 90, 91, 92, 93, 94, 95, 31),
+    # tried darker bauxite colours, doesn't work well
+    "custom_bauxite": (70, 71, 122, 124, 75, 126, 77, 78),
+    "custom_light_bauxite": (71, 122, 74, 125, 76, 127, 78, 79),
+    "custom_nightshade": (104, 2, 25, 17, 18, 19, 20, 10),
+    "custom_light_nightshade": (1, 2, 106, 17, 18, 7, 20, 10),
+    "custom_teal": (88, 97, 98, 157, 158, 159, 160, 103),
+    "custom_dark_teal": (88, 97, 156, 157, 158, 101, 102, 103),
+    "custom_violet": (136, 170, 171, 172, 173, 174, 175, 176),  # WIP, may need improved
+    "custom_dark_violet": (
+        129,
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        14,
+    ),  # WIP, may need improved
+    "custom_silver": (2, 18, 19, 20, 21, 22, 23, 14),
+    "custom_dark_silver": (2, 4, 35, 19, 21, 22, 23, 14),
+    "custom_pewter": (2, 3, 18, 19, 20, 21, 22, 13),
+    "custom_dark_pewter": (2, 114, 18, 19, 20, 21, 22, 13),
+    "custom_sulphur": (62, 62 + 1, 62 + 2, 62 + 3, 62 + 4, 62 + 5, 62 + 6, 62 + 7),
+    "custom_dark_sulphur": (62, 62 + 1, 62 + 2, 193, 194, 50, 51, 52),
+    "custom_ruby": (40, 41, 42, 43, 44, 45, 46, 47),
+    "custom_faded_ruby": (71, 72, 73, 43, 44, 76, 77, 47),
+    "custom_oil_black": (1, 2, 3, 4, 5, 6, 7, 8),
+    "custom_faded_oil_black": (1, 70, 16, 4, 26, 6, 7, 8),
+    "custom_gremlin_green": (24, 25, 26, 27, 28, 29, 30, 31),
+    "custom_faded_gremlin_green": (24, 25, 26, 109, 28, 29, 59, 103),
+    "custom_ochre": (60, 61, 62, 63, 192, 193, 194, 196),
+    "custom_faded_ochre": (60, 61, 62, 117, 192, 193, 196, 197),
+}
+
+# shared colour sets with variants of CC, may be used by multiple strategies, not used in graphics generation, so not in graphics_constants
+# post python 3.7, we rely on dict order being stable here, so we can get keys by position when we need to
+colour_sets = {
+    "dark_blue": ["COLOUR_DARK_BLUE", "custom_dark_blue"],
+    "pale_green": ["COLOUR_PALE_GREEN", "custom_pale_green"],
+    "pink": ["COLOUR_PINK", "custom_dark_pink"],
+    "yellow": ["COLOUR_YELLOW", "custom_dark_yellow"],
+    "red": ["COLOUR_RED", "custom_dark_red"],
+    "light_blue": ["COLOUR_LIGHT_BLUE", "custom_light_blue"],
+    "green": ["COLOUR_GREEN", "custom_green"],
+    "dark_green": ["COLOUR_DARK_GREEN", "custom_dark_green"],
+    "blue": ["COLOUR_BLUE", "custom_blue"],
+    "cream": ["COLOUR_CREAM", "custom_dark_cream"],
+    "mauve": ["COLOUR_MAUVE", "custom_light_mauve"],
+    "purple": ["COLOUR_PURPLE", "custom_light_purple"],
+    "orange": ["COLOUR_ORANGE", "custom_dark_orange"],
+    "brown": ["COLOUR_BROWN", "custom_dark_brown"],
+    "grey": ["COLOUR_GREY", "custom_dark_grey"],
+    "white": ["COLOUR_WHITE", "custom_dark_white"],
+    "freight_bauxite": ["custom_bauxite", "custom_light_bauxite"],
+    "freight_grey": ["custom_dark_grey", "COLOUR_GREY"],
+    "freight_nightshade": ["custom_nightshade", "custom_light_nightshade"],
+    "freight_teal": ["custom_teal", "custom_dark_teal"],
+    "freight_violet": ["custom_violet", "custom_dark_violet"],
+    "freight_silver": ["custom_silver", "custom_dark_silver"],
+    "freight_pewter": ["custom_pewter", "custom_dark_pewter"],
+    "freight_sulphur": ["custom_sulphur", "custom_dark_sulphur"],
+    "freight_straw": ["COLOUR_BROWN", "COLOUR_CREAM"],
+    "freight_ruby": ["custom_ruby", "custom_faded_ruby"],
+    "freight_oil_black": ["custom_oil_black", "custom_faded_oil_black"],
+    "freight_gremlin_green": ["custom_gremlin_green", "custom_faded_gremlin_green"],
+    "freight_ochre": ["custom_ochre", "custom_faded_ochre"],
+    "freight_sand": ["COLOUR_BROWN", "custom_dark_brown"],
+}
+
+# select a colour that matches the current company colour
+# current company colour: complementary colour
+complements_to_company_colours = {
+    "COLOUR_DARK_BLUE": "COLOUR_BLUE",
+    "COLOUR_PALE_GREEN": "COLOUR_GREEN",
+    "COLOUR_PINK": "COLOUR_RED",
+    "COLOUR_YELLOW": "COLOUR_ORANGE",
+    "COLOUR_RED": "COLOUR_PINK",
+    "COLOUR_LIGHT_BLUE": "COLOUR_BLUE",
+    "COLOUR_GREEN": "COLOUR_DARK_GREEN",
+    "COLOUR_DARK_GREEN": "COLOUR_GREEN",
+    "COLOUR_BLUE": "COLOUR_DARK_BLUE",
+    "COLOUR_CREAM": "COLOUR_BROWN",
+    "COLOUR_MAUVE": "COLOUR_PURPLE",
+    "COLOUR_PURPLE": "COLOUR_MAUVE",
+    "COLOUR_ORANGE": "COLOUR_YELLOW",
+    "COLOUR_BROWN": "COLOUR_CREAM",
+    "COLOUR_GREY": "COLOUR_BROWN",  # more likely we want to complement grey with brown than white
+    "COLOUR_WHITE": "COLOUR_GREY",
+}
+
+# wagon liveries overlap between rosters so are in global constants (engine liveries are per-roster)
+# custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants
+wagon_liveries = {
+    # _DEFAULT only used for cases where the livery isn't actually meaningful, e.g. randomised consists
+    "_DEFAULT": {
+        "colour_set": "company_colour",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "COMPANY_COLOUR_USE_WEATHERING": {
+        "colour_set": "company_colour",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "COMPANY_COLOUR_NO_WEATHERING": {
+        "colour_set": "company_colour",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING": {
+        "colour_set": "complement_company_colour",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING": {
+        "colour_set": "complement_company_colour",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_1": {
+        "colour_set": "random_from_consist_liveries_1",
+        "purchase": "company_colour",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_NO_WEATHERING_1": {
+        "colour_set": "random_from_consist_liveries_1",
+        "purchase": "company_colour",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_2": {
+        "colour_set": "random_from_consist_liveries_2",
+        "purchase": "complement_company_colour",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_NO_WEATHERING_2": {
+        "colour_set": "random_from_consist_liveries_2",
+        "purchase": "complement_company_colour",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_3": {
+        "colour_set": "random_from_consist_liveries_3",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_NO_WEATHERING_3": {
+        "colour_set": "random_from_consist_liveries_3",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_4": {
+        "colour_set": "random_from_consist_liveries_4",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_5": {
+        "colour_set": "random_from_consist_liveries_5",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_6": {
+        "colour_set": "random_from_consist_liveries_6",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_7": {
+        "colour_set": "random_from_consist_liveries_7",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_8": {
+        "colour_set": "random_from_consist_liveries_8",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_9": {
+        "colour_set": "random_from_consist_liveries_9",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_10": {
+        "colour_set": "random_from_consist_liveries_10",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "RANDOM_FROM_CONSIST_LIVERIES_11": {
+        "colour_set": "random_from_consist_liveries_11",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_BAUXITE": {
+        "colour_set": "freight_bauxite",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_BAUXITE_NO_WEATHERING": {
+        "colour_set": "freight_bauxite",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_GREMLIN_GREEN": {
+        "colour_set": "freight_gremlin_green",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_GREY": {
+        "colour_set": "freight_grey",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_GREY_NO_WEATHERING": {
+        "colour_set": "freight_grey",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_NIGHTSHADE": {
+        "colour_set": "freight_nightshade",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_NIGHTSHADE_NO_WEATHERING": {
+        "colour_set": "freight_nightshade",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_OCHRE": {
+        "colour_set": "freight_ochre",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_OIL_BLACK": {
+        "colour_set": "freight_oil_black",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_PEWTER": {
+        "colour_set": "freight_pewter",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_RUBY": {
+        "colour_set": "freight_ruby",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_RED": {
+        "colour_set": "red",
+        "use_weathering": False,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_SAND": {
+        "colour_set": "freight_sand",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_SILVER": {
+        "colour_set": "freight_silver",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_STRAW": {
+        "colour_set": "freight_straw",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_SULPHUR": {
+        "colour_set": "freight_sulphur",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_TEAL": {
+        "colour_set": "freight_teal",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "FREIGHT_VIOLET": {
+        "colour_set": "freight_violet",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "CC_BLUE": {
+        "colour_set": "blue",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+    "CC_DARK_BLUE": {
+        "colour_set": "dark_blue",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
+}
+
+# for wagons with mixed livery, the permitted liveries for that specific mix type
+wagon_livery_mixes = {
+    # company colour + 1
+    "random_from_consist_liveries_1": ["complement_company_colour", "company_colour"],
+    # most everything (but explicit add, so not *everything*)
+    "random_from_consist_liveries_2": [
+        "company_colour",
+        "complement_company_colour",
+        "freight_bauxite",
+        "freight_grey",
+        "freight_nightshade",
+        "freight_silver",
+        "freight_teal",
+        "freight_violet",
+    ],
+    # rust belt
+    "random_from_consist_liveries_3": [
+        "freight_bauxite",
+        "freight_grey",
+        "freight_nightshade",
+    ],
+    # chemicals
+    "random_from_consist_liveries_4": ["freight_teal", "freight_violet"],
+    # silver-ish
+    "random_from_consist_liveries_5": ["freight_silver", "freight_pewter"],
+    # yellow / ochre
+    "random_from_consist_liveries_6": ["freight_sulphur", "freight_ochre"],
+    # rust / ruby
+    "random_from_consist_liveries_7": ["freight_ruby", "freight_bauxite"],
+    # black
+    "random_from_consist_liveries_8": ["freight_oil_black", "freight_nightshade"],
+    # ochre / sand
+    "random_from_consist_liveries_9": ["freight_ochre", "freight_sand"],
+    # moss /
+    "random_from_consist_liveries_10": ["freight_gremlin_green", "freight_silver"],
+    # yellow / faded
+    "random_from_consist_liveries_11": ["freight_sulphur", "freight_straw"],
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
@@ -313,11 +791,21 @@ temp_storage_ids = dict(
     num_vehs_in_vehid_chain_multiple_ids=17,  # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
     position_in_vehid_chain_multiple_ids=18,  # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
     position_in_vehid_chain_from_end_multiple_ids=19,  # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
-    cc_num_to_randomise=20,  # used in procedures_colour_randomisation_strategies
-    auto_colour_randomisation_strategy_num=21,  # used in procedures_colour_randomisation_strategies
-    use_wagon_base_colour_parameter=22,  # used in procedures_colour_randomisation_strategies
-    unreversible_spritelayer_cargos=23,  # used to handle esoteric cases where spritelayer cargos need to reverse
-    consist_specific_position_variant_num=24,  # used to store result of switch_graphics_pax_car_ruleset() and similar
+    cc_num_to_recolour=20,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_strategy_num=21,  # used in procedures_wagon_recolour_strategies
+    unreversible_spritelayer_cargos=22,  # used to handle esoteric cases where spritelayer cargos need to reverse
+    consist_specific_position_variant_num=23,  # used to store result of switch_graphics_pax_car_ruleset() and similar
+    flag_use_weathering=24,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_0=25,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_1=26,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_2=27,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_3=28,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_4=29,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_5=30,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_6=31,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_livery_num_7=32,  # used in procedures_wagon_recolour_strategies
+    flag_context_is_purchase=33,  # used in procedures_wagon_recolour_strategies
+    wagon_recolour_strategy_num_purchase=34,  # used in procedures_wagon_recolour_strategies
 )
 
 # standard offsets for trains

@@ -29,7 +29,10 @@ switch (FEAT_TRAINS, SELF, random_bits_weathered_variant, switch_alternative_var
     return;
 }
 
-switch (FEAT_TRAINS, SELF, random_bits_base_colour, switch_alternative_var_random_bits(1, 1)) {
+<!--! up to 8 random liveries for wagon recolour/remaps
+      these may overlap random wagon choices due to shortage of bits, but eh, JFDI
+-->
+switch (FEAT_TRAINS, SELF, random_bits_wagon_random_remap_livery, switch_alternative_var_random_bits(1, 3)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
@@ -41,10 +44,10 @@ switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_check_neighbour_or_self,
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
-<!--! the picking from bit 3 onwards is just a wild guess to try and make this independent from colour and weathering choices etc
-      bits_counts varies, but is limited upstream by get_wagon_randomisation_candidates() (limited to 4 as of August 2022)
+<!--! the picking from bit 2 onwards is just a wild guess to try and make this independent from colour and weathering choices etc
+      bits_counts varies, but is limited upstream by get_wagon_randomisation_candidates()
 -->
-switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_choose_wagon, bits_count, switch_alternative_var_random_bits(3, bits_count)) {
+switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_choose_wagon, bits_count, switch_alternative_var_random_bits(2, bits_count)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }

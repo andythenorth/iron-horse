@@ -14,8 +14,9 @@ def main(roster_id):
         },
         random_reverse=True,
         gen=6,
-        pantograph_type="z-shaped-double",
         intro_year_offset=2,  # introduce later than gen epoch by design
+        extended_vehicle_life=True,
+        pantograph_type="z-shaped-double",
         additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
     )

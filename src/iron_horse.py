@@ -37,7 +37,7 @@ from rosters import pony
 # import wagons
 from vehicles import acid_tank_cars
 from vehicles import aggregate_cars
-
+from vehicles import aggregate_hopper_cars
 # from vehicles import alignment_cars
 from vehicles import automobile_cars
 from vehicles import bolster_cars
@@ -46,8 +46,8 @@ from vehicles import bulkhead_flat_cars
 from vehicles import caboose_cars
 from vehicles import carbon_black_hopper_cars
 from vehicles import cement_silo_cars
+from vehicles import cement_silo_cars_v_barrel
 from vehicles import chemical_covered_hopper_cars
-from vehicles import chemical_silo_cars
 from vehicles import coil_buggy_cars
 from vehicles import coil_cars_covered
 from vehicles import coil_cars_uncovered
@@ -63,11 +63,13 @@ from vehicles import express_cars
 from vehicles import express_intermodal_cars
 from vehicles import express_railcar_passenger_trailer_cars
 from vehicles import farm_products_box_cars
-from vehicles import farm_products_hopper_cars
+from vehicles import farm_products_type_one_hopper_cars
+from vehicles import farm_products_type_two_hopper_cars
 from vehicles import flat_cars
 from vehicles import goods_box_cars
 from vehicles import hood_open_cars
 from vehicles import hopper_cars
+from vehicles import hopper_cars_high_side
 from vehicles import hst_mail_cars
 from vehicles import hst_passenger_cars
 from vehicles import ingot_cars
@@ -82,12 +84,9 @@ from vehicles import mail_cars
 from vehicles import merchandise_box_cars
 from vehicles import merchandise_open_cars
 from vehicles import mineral_covered_hopper_cars
-
-# from vehicles import mineral_hopper_cars
 from vehicles import mgr_hopper_cars
 from vehicles import open_cars
 from vehicles import ore_dump_cars
-from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
 from vehicles import peat_cars
 from vehicles import plate_cars
@@ -97,25 +96,31 @@ from vehicles import railbus_passenger_trailer_cars
 from vehicles import railcar_passenger_trailer_cars
 from vehicles import randomised_box_cars
 from vehicles import randomised_bulk_cars
+from vehicles import randomised_cement_silo_cars
 from vehicles import randomised_chemicals_tank_cars
 from vehicles import randomised_covered_hopper_cars
-from vehicles import randomised_metal_coil_cars
+from vehicles import randomised_dedicated_coil_cars
 from vehicles import randomised_dump_cars
+from vehicles import randomised_farm_products_hopper_cars
 from vehicles import randomised_flat_cars
+from vehicles import randomised_generic_coil_cars
 from vehicles import randomised_hopper_cars
 from vehicles import randomised_open_cars
 from vehicles import randomised_piece_goods_cars
+from vehicles import randomised_silo_cars
 from vehicles import reefer_cars
 from vehicles import restaurant_cars
 from vehicles import rock_hopper_cars
 from vehicles import roller_roof_hopper_cars
 from vehicles import scrap_metal_cars
 from vehicles import silo_cars
+from vehicles import silo_cars_v_barrel
 from vehicles import skip_cars
 from vehicles import slag_ladle_cars
 from vehicles import sliding_roof_cars
 from vehicles import sliding_wall_cars
 from vehicles import suburban_passenger_cars
+from vehicles import sulphur_tank_cars
 from vehicles import swing_roof_hopper_cars
 from vehicles import tank_cars
 from vehicles import tarpaulin_cars
@@ -173,6 +178,11 @@ class RosterManager(list):
         self.numeric_id_defender = []
         for roster in self:
             roster.validate_vehicles(self.numeric_id_defender)
+
+    def add_buyable_variant_groups(self):
+        # has to be explicitly called after all vehicles and vehicle units are registered to each roster
+        for roster in self:
+            roster.add_buyable_variant_groups()
 
     @property
     def active_roster(self):
@@ -258,10 +268,12 @@ class RosterManager(list):
                     "report_as_pax_car_to_neighbouring_vehicle_in_rulesets",
                     False,
                 ):
-                    result.append(consist.base_numeric_id)
+                    for buyable_variant in consist.buyable_variants:
+                        result.append(buyable_variant.lead_unit_variant_matching_buyable_variant.id)
         for consist in self.active_roster.engine_consists:
             if getattr(consist, "treat_as_pax_car_for_var_41", False):
-                result.append(consist.id)
+                for buyable_variant in consist.buyable_variants:
+                    result.append(buyable_variant.lead_unit_variant_matching_buyable_variant.id)
         if len(result) > 255:
             utils.echo_message(
                 "action 2 switch is limited to 255 values, pax_car_ids result exceeds this - needs split across multiple switches"
@@ -300,6 +312,7 @@ def main():
     # wagons
     acid_tank_cars.main()
     aggregate_cars.main()
+    aggregate_hopper_cars.main()
     """
     # only comment in if needed for debugging
     alignment_cars.main()
@@ -311,8 +324,8 @@ def main():
     caboose_cars.main()
     carbon_black_hopper_cars.main()
     cement_silo_cars.main()
+    cement_silo_cars_v_barrel.main()
     chemical_covered_hopper_cars.main()
-    chemical_silo_cars.main()
     coil_buggy_cars.main()
     coil_cars_covered.main()
     coil_cars_uncovered.main()
@@ -328,11 +341,13 @@ def main():
     express_intermodal_cars.main()
     express_railcar_passenger_trailer_cars.main()
     farm_products_box_cars.main()
-    farm_products_hopper_cars.main()
+    farm_products_type_one_hopper_cars.main()
+    farm_products_type_two_hopper_cars.main()
     flat_cars.main()
     goods_box_cars.main()
     hood_open_cars.main()
     hopper_cars.main()
+    hopper_cars_high_side.main()
     hst_mail_cars.main()
     hst_passenger_cars.main()
     ingot_cars.main()
@@ -346,10 +361,8 @@ def main():
     merchandise_box_cars.main()
     merchandise_open_cars.main()
     mineral_covered_hopper_cars.main()
-    # mineral_hopper_cars.main()
     mgr_hopper_cars.main()
     ore_dump_cars.main()
-    ore_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()
     peat_cars.main()
@@ -362,23 +375,29 @@ def main():
     railcar_passenger_trailer_cars.main()
     randomised_box_cars.main()
     randomised_bulk_cars.main()
+    randomised_cement_silo_cars.main()
     randomised_chemicals_tank_cars.main()
     randomised_covered_hopper_cars.main()
+    randomised_dedicated_coil_cars.main()
     randomised_dump_cars.main()
+    randomised_farm_products_hopper_cars.main()
     randomised_flat_cars.main()
+    randomised_generic_coil_cars.main()
     randomised_hopper_cars.main()
-    randomised_metal_coil_cars.main()
     randomised_open_cars.main()
     randomised_piece_goods_cars.main()
+    randomised_silo_cars.main()
     rock_hopper_cars.main()
     roller_roof_hopper_cars.main()
     silo_cars.main()
+    silo_cars_v_barrel.main()
     scrap_metal_cars.main()
     skip_cars.main()
     slag_ladle_cars.main()
     sliding_roof_cars.main()
     sliding_wall_cars.main()
     suburban_passenger_cars.main()
+    sulphur_tank_cars.main()
     swing_roof_hopper_cars.main()
     tank_cars.main()
     tarpaulin_cars.main()
@@ -386,3 +405,4 @@ def main():
     vehicle_parts_box_cars.main()
 
     roster_manager.validate_vehicles()
+    roster_manager.add_buyable_variant_groups()

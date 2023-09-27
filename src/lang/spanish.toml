@@ -1,0 +1,235 @@
+[GLOBAL_PRAGMA]
+grflangid = "0x04"
+plural = "0"
+gender = "m f"
+
+[STR_GRF_DESCRIPTION]
+base = "Licencia: {SILVER}GPL v2{}{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "Capacidad del tren"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC]
+base = "Ajusta la capacidad del tren para estilos de juego alternativos.{}{}Puny: {GOLD}Reducción del 33%{BLACK}{}Marvellous: {GOLD}por defecto{BLACK}{}Excesivo: {GOLD}Incremento del 33%{BLACK}{}Desmesurado: {GOLD}Incremento del 77%{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "Insignificante"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "Maravillosa"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "Excesiva"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3]
+base = "Desmesurado"
+
+[STR_PARAM_SIMPLIFIED_GAMEPLAY]
+base = "Juego simplificado"
+
+[STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC]
+base = "Jugar con un conjunto simplificado de trenes. Habrá menos tipos de trenes y vagones disponibles.  Trenes atractivos como quitanieves, cabinas de conducción y locomotoras muy lentas no están disponibles."
+
+[STR_PARAM_WAGON_COLOUR_RANDOMISATION]
+base = "Selección de color de vagón aleatorio"
+
+[STR_NAME_SUFFIX_DIESEL]
+base = "Diésel"
+
+[STR_NAME_SUFFIX_ELECTRODIESEL]
+base = "Electro-Diésel"
+
+[STR_NAME_SUFFIX_METRO]
+base = "Metro"
+
+[STR_NAME_SUFFIX_STEAM]
+base = "Vapor"
+
+[STR_NAME_SUFFIX_SMALL]
+base = "Pequeño"
+
+[STR_NAME_SUFFIX_MEDIUM]
+base = "Medio"
+
+[STR_NAME_SUFFIX_LARGE]
+base = "Grande"
+
+[STR_NAME_SUFFIX_TWIN]
+base = "Doble"
+
+[STR_NAME_SUFFIX_ALIGNMENT_CAR]
+base = "Vagón de alineamiento"
+
+[STR_NAME_SUFFIX_BOX_CAR]
+base = "Vagón cerrado"
+
+[STR_NAME_SUFFIX_COIL_BUGGY_CAR]
+base = "Vagón de bobinado"
+
+[STR_NAME_SUFFIX_BOLSTER_CAR]
+base = "Vagón de carga plana"
+
+[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR]
+base = "Vagón plataforma"
+
+[STR_NAME_SUFFIX_CABOOSE_CAR]
+base = "Vagón de cola"
+
+[STR_NAME_SUFFIX_CEMENT_SILO_CAR]
+base = "Vagón cementero"
+
+[STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR]
+base = "Vagón carbonero"
+
+[STR_NAME_SUFFIX_COIL_CAR_COVERED]
+base = "Vagón de bobinado cubierto"
+
+[STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
+base = "Vagón de bobinado abierto"
+
+[STR_NAME_SUFFIX_COVERED_HOPPER_CAR]
+base = "Vagón tolva cubierto"
+
+[STR_NAME_SUFFIX_CRYO_TANK_CAR]
+base = "Vagón tanque de hidrógeno líquido"
+
+[STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
+base = "Vagón de cortina lateral"
+
+[STR_NAME_SUFFIX_DUMP_CAR]
+base = "Vagón de minerales"
+
+[STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
+base = "Vagón de minerales de lado alto"
+
+[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+base = "Vagón cisterna de alimentos"
+
+[STR_NAME_SUFFIX_EXPRESS_CAR]
+base = "Vagón express"
+
+[STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR]
+base = "Vagón contenedor express"
+
+[STR_NAME_SUFFIX_FLAT_CAR]
+base = "Vagón plano"
+
+[STR_NAME_SUFFIX_HOPPER_CAR]
+base = "Vagón tolva"
+
+[STR_NAME_SUFFIX_HST_PASSENGER_CAR]
+base = "Vagón de pasaje de alta velocidad"
+
+[STR_NAME_SUFFIX_INGOT_CAR]
+base = "Vagón metalero"
+
+[STR_NAME_SUFFIX_INTERMODAL_CAR]
+base = "Vagón contenedor"
+
+[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+base = "Vagón de ganado"
+
+[STR_NAME_SUFFIX_LOG_CAR]
+base = "Vagón de madera"
+
+[STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR]
+base = "Vagón contenedor bajo"
+
+[STR_NAME_SUFFIX_MAIL_CAR]
+base = "Vagón de correo"
+
+[STR_NAME_SUFFIX_OPEN_CAR]
+base = "Vagón abierto"
+
+[STR_NAME_SUFFIX_PASSENGER_CAR]
+base = "Vagón de pasaje"
+
+[STR_NAME_SUFFIX_PLATE_CAR]
+base = "Vagón platero"
+
+[STR_NAME_SUFFIX_PRODUCT_TANK_CAR]
+base = "Vagón tanque"
+
+[STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR]
+base = "Vagón de pasaje de alta densidad"
+
+[STR_NAME_SUFFIX_REEFER_CAR]
+base = "Vagón refrigerado"
+
+[STR_NAME_SUFFIX_RESTAURANT_CAR]
+base = "Vagón restaurante"
+
+[STR_NAME_SUFFIX_ROCK_HOPPER_CAR]
+base = "Vagón de minerales"
+
+[STR_NAME_SUFFIX_SILO_CAR]
+base = "Vagón silo"
+
+[STR_NAME_SUFFIX_SLAG_LADLE_CAR]
+base = "Vagón de escoria metalúrgica"
+
+[STR_NAME_SUFFIX_SLIDING_ROOF_CAR]
+base = "Vagón de techo deslizante"
+
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR]
+base = "Vagón de portón deslizante"
+
+[STR_NAME_SUFFIX_SCRAP_METAL_CAR]
+base = "Vagón de chatarra"
+
+[STR_NAME_SUFFIX_TANK_CAR]
+base = "Vagón cisterna"
+
+[STR_NAME_SUFFIX_TARPAULIN_CAR]
+base = "Vagón lona tarp"
+
+[STR_NAME_SUFFIX_TORPEDO_CAR]
+base = "Vagón torpedo"
+
+[STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR]
+base = "Vagón transportador de piezas"
+
+[STR_ROLE]
+base = "{BLACK}Rol: {GOLD}{STRING}"
+
+[STR_ROLE_DRIVING_CAB]
+base = "Cabina de Conducción"
+
+[STR_ROLE_FREIGHT]
+base = "Carga"
+
+[STR_ROLE_GENERAL_PURPOSE]
+base = "Propósito General"
+
+[STR_ROLE_GENERAL_PURPOSE_EXPRESS]
+base = "Propósito General / Express"
+
+[STR_ROLE_HST]
+base = "Alta Velocidad"
+
+[STR_ROLE_LOLZ]
+base = "Joker"
+
+[STR_ROLE_METRO]
+base = "Urbano de Alta Capacidad"
+
+[STR_ROLE_VERY_HIGH_SPEED]
+base = "Muy Alta Velocidad"
+
+[STR_WAGONS_ADD_POWER_CAB]
+base = "Potencia (Distribuída): {GOLD}{POWER} por cada {STRING} unidad adjuntada"
+
+[STR_WAGONS_ADD_POWER_MIDDLE]
+base = "Potencia (Distribuída): {GOLD}{POWER} al adjuntar {STRING} unidad"
+
+[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB]
+base = "{BLACK}Attach to front or rear of train, with at least one other engine"
+
+[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR]
+base = "{}{BLACK}Bonus: {GOLD}Improves running costs and payment rates for {WHITE}Passenger Coaches {GOLD}and {WHITE}Luxury Passenger Coaches {}{}{BLACK}This bonus applies only once per train"
+
+[STR_SPRITES_COMPLETE]
+base = "{}Sprites Completados: {GOLD}Sip"
+
+[STR_SPRITES_INCOMPLETE]
+base = "{}Sprites Completados: {GOLD}Nop"

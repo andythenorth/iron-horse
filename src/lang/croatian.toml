@@ -1,0 +1,134 @@
+[GLOBAL_PRAGMA]
+grflangid = "0x38"
+plural = "6"
+gender = "male female middle"
+case = "aku dat gen ins lok nom vok"
+
+[STR_GRF_DESCRIPTION]
+base = "Licenca: {SILVER}GPL v2{}{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "Kapacitet vlaka"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "Slabašan"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "Divan"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "Prekomjeran"
+
+[STR_NAME_SUFFIX_DIESEL]
+base = "Dizel"
+
+[STR_NAME_SUFFIX_ELECTRODIESEL]
+base = "Elektro-dizel"
+
+[STR_NAME_SUFFIX_METRO]
+base = "Metro"
+
+[STR_NAME_SUFFIX_STEAM]
+base = "Para"
+
+[STR_NAME_SUFFIX_SMALL]
+base = "Mali"
+
+[STR_NAME_SUFFIX_MEDIUM]
+base = "Srednji"
+
+[STR_NAME_SUFFIX_LARGE]
+base = "Veliki"
+
+[STR_NAME_SUFFIX_ALIGNMENT_CAR]
+base = "Vagon za poravnanje"
+
+[STR_NAME_SUFFIX_BOX_CAR]
+base = "Zatvoreni vagon"
+
+[STR_NAME_SUFFIX_CABOOSE_CAR]
+base = "Vagon za kočničara"
+
+[STR_NAME_SUFFIX_CRYO_TANK_CAR]
+base = "Krio-cisterna"
+
+[STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
+base = "Vagon sa stranicama od cerade"
+
+[STR_NAME_SUFFIX_DUMP_CAR]
+base = "Vagon za rudače"
+
+[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+base = "Vagon cisterna za prehrambene proizvode"
+
+[STR_NAME_SUFFIX_EXPRESS_CAR]
+base = "Ekspresni vagon"
+
+[STR_NAME_SUFFIX_FLAT_CAR]
+base = "Plato-vagon"
+
+[STR_NAME_SUFFIX_HST_PASSENGER_CAR]
+base = "Putnički vagon za vlak velike brzine"
+
+[STR_NAME_SUFFIX_INTERMODAL_CAR]
+base = "Intermodalni vagon"
+
+[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+base = "Vagon za stoku"
+
+[STR_NAME_SUFFIX_MAIL_CAR]
+base = "Poštanski vagon"
+
+[STR_NAME_SUFFIX_OPEN_CAR]
+base = "Otvoreni vagon"
+
+[STR_NAME_SUFFIX_PASSENGER_CAR]
+base = "Putnički vagon"
+
+[STR_NAME_SUFFIX_PLATE_CAR]
+base = "Plato-vagon"
+
+[STR_NAME_SUFFIX_REEFER_CAR]
+base = "Vagon hladnjača"
+
+[STR_NAME_SUFFIX_SILO_CAR]
+base = "Vagon-silos"
+
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR]
+base = "Vagon sa pomičnim stranicama"
+
+[STR_NAME_SUFFIX_TANK_CAR]
+base = "Vagon cisterna"
+
+[STR_NAME_SUFFIX_TARPAULIN_CAR]
+base = "Vagon sa ceradom"
+
+[STR_NAME_SUFFIX_TORPEDO_CAR]
+base = "Vagon-torpedo"
+
+[STR_ROLE]
+base = "{BLACK}Uloga: {GOLD}{STRING}"
+
+[STR_ROLE_FREIGHT]
+base = "Teret"
+
+[STR_ROLE_GENERAL_PURPOSE]
+base = "Opća namjena"
+
+[STR_ROLE_GENERAL_PURPOSE_EXPRESS]
+base = "Opća namjena / ekspresni"
+
+[STR_ROLE_HST]
+base = "Visoka brzina"
+
+[STR_ROLE_METRO]
+base = "Gradski visokog kapaciteta"
+
+[STR_ROLE_VERY_HIGH_SPEED]
+base = "Vrlo visoka brzina"
+
+[STR_SPRITES_COMPLETE]
+base = "{}Kompletirani spriteovi: {GOLD}Da"
+
+[STR_SPRITES_INCOMPLETE]
+base = "{}Kompletirani spriteovi: {GOLD}Ne"

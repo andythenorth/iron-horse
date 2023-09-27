@@ -16,7 +16,7 @@ def main():
 
     consist = SiloCarConsist(
         roster_id="pony",
-        base_numeric_id=12730,
+        base_numeric_id=17390,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -26,7 +26,7 @@ def main():
 
     consist = SiloCarConsist(
         roster_id="pony",
-        base_numeric_id=12740,
+        base_numeric_id=17430,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -46,7 +46,7 @@ def main():
 
     consist = SiloCarConsist(
         roster_id="pony",
-        base_numeric_id=12670,
+        base_numeric_id=17410,
         gen=5,
         subtype="B",
         sprites_complete=True,

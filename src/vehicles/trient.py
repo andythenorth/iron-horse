@@ -34,9 +34,7 @@ def main(roster_id):
         spriterow_num=0,
     )
 
-    consist.description = """CABBAGE."""
-    consist.foamer_facts = (
-        """CABBAGE - GMD  / EMD Class 59, uprated GMD / EMD 710 series prime mover"""
-    )
+    consist.description = """"""
+    consist.foamer_facts = """"""
 
     return consist

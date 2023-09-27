@@ -15,7 +15,7 @@ def main(roster_id):
         random_reverse=True,
         base_track_type_name="NG",
         gen=3,
-        intro_year_offset=15,
+        intro_year_offset=11,
         additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

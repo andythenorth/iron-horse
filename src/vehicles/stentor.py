@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=14420,
         name="Stentor",
         role="super_heavy_freight",
-        role_child_branch_num=-2,  # Joker eh
+        role_child_branch_num=-3,  # Joker eh
         power_by_power_source={
             "DIESEL": 4200,
         },
@@ -20,7 +20,11 @@ def main(roster_id):
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         caboose_family="railfreight_2",
         # more liveries ought to be possible, but I couldn't make them work so eh.  EWS?
-        additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "SWOOSH"],
+        additional_liveries=[
+            "RAILFREIGHT_TRIPLE_GREY",
+            "RAILFREIGHT_TRIPLE_GREY_COAL",
+            "SWOOSH",
+        ],
         sprites_complete=True,
     )
 

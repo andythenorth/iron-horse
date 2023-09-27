@@ -1,0 +1,29 @@
+<tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(vehicle) and vehicle.is_lead_unit_of_consist">
+    // -- power varies by railtype -- //
+    <!--! order of power sources is significant here, the switch chain should check highest value first, progressing to lowest
+          the python method will return the power sources in the required order -->
+    <tal:power_source repeat="power_source_data consist.vehicle_power_source_tree">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power_${power_source_data[2]}, tile_powers_track_type_name_${power_source_data[1]}()) {
+            1: return ${consist.power_by_power_source[power_source_data[0]]};
+            <tal:next condition="power_source_data[3] != None">
+                return ${vehicle.id}_switch_power_${power_source_data[3]};
+            </tal:next>
+        }
+    </tal:power_source>
+</tal:railtype_varies_power>
+
+<tal:wagons_add_power condition="consist.wagons_add_power and vehicle.is_lead_unit_of_consist">
+    // -- power varies if specific engines are present in the consist -- //
+    <!--! this is unsophisticated and doesn't bother enforcing that the cab unit must be contiguous with appropriate wagons -->
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power_0, [
+        <tal:cabs repeat="unit_variant consist.cab_consist.units[0].unit_variants">
+            count_veh_id(${unit_variant.id}) > 0
+            <tal:OR condition="not:repeat.unit_variant.end">
+                ||
+            </tal:OR>
+        </tal:cabs>
+        ]) {
+        1: return ${consist.cab_power};
+        return 0;
+    }
+</tal:wagons_add_power>

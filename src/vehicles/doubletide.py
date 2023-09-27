@@ -11,7 +11,7 @@ def main(roster_id):
         role_child_branch_num=-1,
         # no replacement by design - continues to game end as 10/8, especially for industrial use etc
         power_by_power_source={
-            "DIESEL": 2750, # within range of Resilient
+            "DIESEL": 2750,  # within range of Resilient
         },
         random_reverse=True,
         gen=5,

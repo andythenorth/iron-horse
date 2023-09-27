@@ -1,5 +1,3 @@
-import global_constants
-
 from roster import Roster
 
 from vehicles import niagra
@@ -99,10 +97,17 @@ def main():
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
-        livery_presets={
+        engine_liveries={
+            "_DEFAULT": {
+                # this is just a fallback for some special cases, such as snowploughs
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "FOO": {
                 # optional remap, allowing 1cc wagons to be whatever player chooses
-                #"remap_to_cc": {"company_colour1": "company_colour1", "company_colour2": "company_colour2"},
+                # "remap_to_cc": {"company_colour1": "company_colour1", "company_colour2": "company_colour2"},
                 "docs_image_input_cc": [
                     ("COLOUR_YELLOW", "COLOUR_PALE_GREEN"),
                     ("COLOUR_ORANGE", "COLOUR_DARK_GREEN"),

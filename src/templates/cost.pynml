@@ -1,0 +1,12 @@
+<!--! some vehicles vary running cost if restaurant car is in consist
+      this will need generalised if other similar vehicles are added, e.g. motorail, observation car etc -->
+<tal:running_cost_factor condition="getattr(consist, 'affected_by_restaurant_car_in_consist', False) and vehicle.is_lead_unit_of_consist">
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_running_cost_factor, switch_is_restaurant_car_in_consist_0()) {
+        <!--! eliminate run costs if 1 restaurant car is present (more than 1 has no additional effect)
+            not particularly tested for balance as of April 2021, 'rough is good enough'
+             value of restaurant car varies by number of pax cars in consist and train speed, but is generally net positive above about 4 coaches or so
+        -->
+        1: return 0;
+        0: return ${consist.running_cost};
+    }
+</tal:running_cost_factor>

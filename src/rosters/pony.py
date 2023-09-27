@@ -1,5 +1,3 @@
-import global_constants
-
 from roster import Roster
 
 from vehicles import ares
@@ -11,7 +9,6 @@ from vehicles import argus
 from vehicles import arrow
 from vehicles import avenger
 from vehicles import bean_feast
-from vehicles import blackthorn
 from vehicles import blaze
 from vehicles import boar_cat
 from vehicles import bone
@@ -27,14 +24,13 @@ from vehicles import captain_steel
 from vehicles import cargo_sprinter
 from vehicles import carrack
 from vehicles import centaur
-
-# from vehicles import challenger # for NA roster
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chinook
 from vehicles import chuggypig
 from vehicles import clipper
 from vehicles import constance
+from vehicles import cyclone
 from vehicles import daring
 from vehicles import deasil
 from vehicles import decapod
@@ -80,6 +76,9 @@ from vehicles import helm_wind_middle_mail
 from vehicles import helm_wind_middle_passenger
 from vehicles import hercules
 from vehicles import high_flyer
+from vehicles import hokuhokusei_cab
+from vehicles import hokuhokusei_middle_mail
+from vehicles import hokuhokusei_middle_passenger
 from vehicles import hurly_burly
 from vehicles import intrepid
 from vehicles import jupiter
@@ -138,7 +137,6 @@ from vehicles import stoat
 from vehicles import streamer
 from vehicles import strongbow
 from vehicles import sunshine_coast
-from vehicles import super_shoebox
 from vehicles import swift
 from vehicles import tenacious
 from vehicles import tencendur
@@ -264,10 +262,20 @@ def main():
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
-        livery_presets={
+        engine_liveries={
+            "_DEFAULT": {
+                # this is just a fallback for some special cases, such as snowploughs
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "FREIGHTLINER_GBRF": {
                 # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
-                "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_YELLOW",
+                    "company_colour2": "company_colour1",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
                     ("COLOUR_DARK_GREEN", "COLOUR_YELLOW"),
@@ -277,7 +285,10 @@ def main():
             },
             "FREIGHTLINER_2": {
                 # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
-                "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_YELLOW",
+                    "company_colour2": "company_colour1",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
                     ("COLOUR_DARK_GREEN", "COLOUR_YELLOW"),
@@ -285,7 +296,10 @@ def main():
                 ],
             },
             "RAILFREIGHT_RED_STRIPE": {
-                "remap_to_cc": {"company_colour1": "COLOUR_GREY", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_GREY",
+                    "company_colour2": "company_colour1",
+                },
                 "forced_intro_year": 1975,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -294,7 +308,10 @@ def main():
             },
             "RAILFREIGHT_TRIPLE_GREY": {
                 # note the remap to white, to provide lightest of the triple greys as cc1
-                "remap_to_cc": {"company_colour1": "COLOUR_WHITE", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_WHITE",
+                    "company_colour2": "company_colour1",
+                },
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -305,13 +322,13 @@ def main():
             },
             "RAILFREIGHT_TRIPLE_GREY_COAL": {
                 # note the remap to white, to provide lightest of the triple greys as cc1
-                "remap_to_cc": {"company_colour1": "COLOUR_WHITE", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_WHITE",
+                    "company_colour2": "company_colour1",
+                },
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_PINK", "COLOUR_WHITE"),
                 ],
             },
             "YEOMAN": {
@@ -350,7 +367,7 @@ def main():
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                 ],
             },
-            "DBSCHENKER": {
+            "DB_SCHENKER": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -414,7 +431,10 @@ def main():
                 ],
             },
             "DUTCH": {
-                "remap_to_cc": {"company_colour1": "COLOUR_GREY", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_GREY",
+                    "company_colour2": "company_colour1",
+                },
                 "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -423,7 +443,10 @@ def main():
                 ],
             },
             "DUTCH_UNLIMITED": {
-                "remap_to_cc": {"company_colour1": "COLOUR_GREY", "company_colour2": "company_colour1"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_GREY",
+                    "company_colour2": "company_colour1",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_YELLOW", "COLOUR_WHITE"),
@@ -459,13 +482,19 @@ def main():
                 ],
             },
             "INDUSTRIAL_BROWN": {
-                "remap_to_cc": {"company_colour1": "COLOUR_BROWN", "company_colour2": "company_colour2"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_BROWN",
+                    "company_colour2": "company_colour2",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
             "INDUSTRIAL_YELLOW": {
-                "remap_to_cc": {"company_colour1": "COLOUR_YELLOW", "company_colour2": "company_colour2"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_YELLOW",
+                    "company_colour2": "company_colour2",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
@@ -477,7 +506,7 @@ def main():
                 ],
             },
         },
-        # empty dicts currently, but could hold remaps, docs image colours etc if needed
+        # remaps, docs image colours etc as needed
         default_pax_liveries=[
             {
                 "docs_image_input_cc": [
@@ -539,7 +568,10 @@ def main():
             },
             {
                 "relative_spriterow_num": 4,
-                "remap_to_cc": {"company_colour1": "COLOUR_RED", "company_colour2": "company_colour2"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_RED",
+                    "company_colour2": "company_colour2",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_RED"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -577,7 +609,10 @@ def main():
             },
             {
                 "relative_spriterow_num": 4,
-                "remap_to_cc": {"company_colour1": "COLOUR_RED", "company_colour2": "company_colour2"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_RED",
+                    "company_colour2": "company_colour2",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_RED"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -615,7 +650,10 @@ def main():
             },
             {
                 "relative_spriterow_num": 4,
-                "remap_to_cc": {"company_colour1": "COLOUR_RED", "company_colour2": "company_colour2"},
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_RED",
+                    "company_colour2": "company_colour2",
+                },
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_RED"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -700,8 +738,8 @@ def main():
             defiant,
             relentless,
             dynamo,
+            cyclone,
             shoebox,
-            super_shoebox,
             ultra_shoebox,
             hurly_burly,
             moor_gallop,
@@ -750,7 +788,6 @@ def main():
             maelstrom,
             doineann,
             doubletide,
-            blackthorn,
             girt_licker,
             lemon,
             esk,
@@ -816,6 +853,9 @@ def main():
             brenner_cab,
             brenner_middle_passenger,
             brenner_middle_mail,
+            hokuhokusei_cab,
+            hokuhokusei_middle_passenger,
+            hokuhokusei_middle_mail,
             # metro
             serpentine,
             westbourne,

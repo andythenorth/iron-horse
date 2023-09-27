@@ -30,12 +30,12 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_choose_weathere
     return ${vehicle.id}_switch_graphics_vehicle_unweathered; <!--! this default should not be reached in this case, but eh -->
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, param_wagon_colour_randomisation_strategy) {
-    2: ${vehicle.id}_switch_graphics_vehicle_unweathered; <!--! no randomisation -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, param_wagon_colour_randomisation) {
+    0: ${vehicle.id}_switch_graphics_vehicle_unweathered; <!--! no randomisation -->
     ${vehicle.id}_switch_graphics_vehicle_choose_weathered_variant;
 }
 
-<tal:include metal:use-macro="load: graphics_switches.pynml" />
+<tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
 // buy menu graphics chain
 spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
@@ -49,8 +49,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
 }
 
 <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
-    <tal:include metal:use-macro="load: capacity_switches.pynml" />
+    <tal:include metal:use-macro="load: capacity.pynml" />
 </tal:optional_capacity_switches>
 
-<tal:include metal:use-macro="load: properties_vehicle.pynml" />
+<tal:include metal:use-macro="load: properties.pynml" />
 

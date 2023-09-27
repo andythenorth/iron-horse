@@ -1,5 +1,6 @@
 from train import EngineConsist, ElectricEngineUnit
 
+
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
@@ -15,6 +16,7 @@ def main(roster_id):
         gen=3,
         pantograph_type="diamond-single",
         intro_year_offset=8,  # introduce later than gen epoch by design
+        extended_vehicle_life=True,
         additional_liveries=["FANCY_BLUE"],
         sprites_complete=True,
     )
@@ -26,6 +28,8 @@ def main(roster_id):
     consist.description = (
         """He paws fiercely, rejoicing in his strength, and charges into the fray."""
     )
-    consist.foamer_facts = """SR CC1/CC2 locomotives, English Electric export boxcab locomotives"""
+    consist.foamer_facts = (
+        """SR CC1/CC2 locomotives, English Electric export boxcab locomotives"""
+    )
 
     return consist

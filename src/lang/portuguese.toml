@@ -1,0 +1,25 @@
+[GLOBAL_PRAGMA]
+grflangid = "0x36"
+plural = "0"
+gender = "n m f mp fp"
+
+[STR_GRF_DESCRIPTION]
+base = "Licença: {SILVER}GPL v2{}{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "Capacidade do comboio"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "Insignificante"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "Maravilhoso"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "Excessivo"
+
+[STR_NAME_SUFFIX_DIESEL]
+base = "(Diesel)"
+
+[STR_NAME_SUFFIX_STEAM]
+base = "(Vapor)"

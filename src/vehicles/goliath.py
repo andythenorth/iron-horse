@@ -10,7 +10,7 @@ def main(roster_id):
         role="branch_freight",
         role_child_branch_num=1,
         power_by_power_source={
-            "DIESEL": 1300,  # progression drops a bit on hp/speed ratio from previous gen, but it's fine, this is for low-end roles
+            "DIESEL": 1500,
         },
         # dibble TE up for game balance, assume low gearing or something
         tractive_effort_coefficient=0.375,
@@ -27,8 +27,6 @@ def main(roster_id):
     )
 
     consist.description = """It gets the job done either way."""
-    consist.foamer_facts = (
-        """YEC <i>Janus</i>, Corus <i>Trojan</i>"""
-    )
+    consist.foamer_facts = """YEC <i>Janus</i>, Corus <i>Trojan</i>"""
 
     return consist

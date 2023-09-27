@@ -24,6 +24,8 @@ def main(roster_id):
     )
 
     consist.description = """Steel yourself, this one's on the move."""
-    consist.foamer_facts = """GEC Stephenson steel mill locomotives, Alco RSD-1 export switcher"""
+    consist.foamer_facts = (
+        """GEC Stephenson steel mill locomotives, Alco RSD-1 export switcher"""
+    )
 
     return consist

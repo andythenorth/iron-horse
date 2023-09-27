@@ -1,0 +1,235 @@
+[GLOBAL_PRAGMA]
+grflangid = "0x22"
+plural = "0"
+gender = "Masculin Femenin"
+
+[STR_GRF_DESCRIPTION]
+base = "Llicència: {SILVER}GPL v2{}{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "Capacitat del tren"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC]
+base = "Ajusta la capacitat del tren per a estils de joc alternatius.{}{}Puny: {GOLD}Reducció del 33%{BLACK}{}Fantàstica: {GOLD}per defecte{BLACK}{}Excessiva: {GOLD}Increment del 33%{BLACK}{}Desmesurada: {GOLD}Increment del 77%{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "Diminuta"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "Fantàstica"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "Excessiva"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3]
+base = "Desmesurada"
+
+[STR_PARAM_SIMPLIFIED_GAMEPLAY]
+base = "Joc simplificat"
+
+[STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC]
+base = "Jugar amb un conjunt simplificat de trens. Hi Haurà menys tipus de trens i vagons disponibles.  Trens macos como el llevaneus, cambres de conducció i locomotores molt lentes no estan disponibles."
+
+[STR_PARAM_WAGON_COLOUR_RANDOMISATION]
+base = "Selecció de color de cotxe aleatori"
+
+[STR_NAME_SUFFIX_DIESEL]
+base = "Diesel"
+
+[STR_NAME_SUFFIX_ELECTRODIESEL]
+base = "Elèctric-Diesel"
+
+[STR_NAME_SUFFIX_METRO]
+base = "Metro"
+
+[STR_NAME_SUFFIX_STEAM]
+base = "Vapor"
+
+[STR_NAME_SUFFIX_SMALL]
+base = "Petit"
+
+[STR_NAME_SUFFIX_MEDIUM]
+base = "Mitjà"
+
+[STR_NAME_SUFFIX_LARGE]
+base = "Gran"
+
+[STR_NAME_SUFFIX_TWIN]
+base = "Doble"
+
+[STR_NAME_SUFFIX_ALIGNMENT_CAR]
+base = "Cotxe d'alineament"
+
+[STR_NAME_SUFFIX_BOX_CAR]
+base = "Furgó"
+
+[STR_NAME_SUFFIX_COIL_BUGGY_CAR]
+base = "Cotxe de bobinat"
+
+[STR_NAME_SUFFIX_BOLSTER_CAR]
+base = "Cotxe de càrrega plana"
+
+[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR]
+base = "Vagó plataforma"
+
+[STR_NAME_SUFFIX_CABOOSE_CAR]
+base = "Furgó de Cua"
+
+[STR_NAME_SUFFIX_CEMENT_SILO_CAR]
+base = "Vagó bòbila"
+
+[STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR]
+base = "Vagó carboner"
+
+[STR_NAME_SUFFIX_COIL_CAR_COVERED]
+base = "Cotxe de bobinat cobert"
+
+[STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
+base = "Cotxe de bobinat obert"
+
+[STR_NAME_SUFFIX_COVERED_HOPPER_CAR]
+base = "Vago tolva cobert"
+
+[STR_NAME_SUFFIX_CRYO_TANK_CAR]
+base = "Tanc d'hidrògen líquid"
+
+[STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
+base = "Vagó de cortina lateral"
+
+[STR_NAME_SUFFIX_DUMP_CAR]
+base = "Vagó de minerals"
+
+[STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
+base = "Vagó de minerals de costat alt"
+
+[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+base = "Cotxe cisterna per a comestibles"
+
+[STR_NAME_SUFFIX_EXPRESS_CAR]
+base = "Vagó express"
+
+[STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR]
+base = "Vagó contenidor express"
+
+[STR_NAME_SUFFIX_FLAT_CAR]
+base = "Vagó pla"
+
+[STR_NAME_SUFFIX_HOPPER_CAR]
+base = "Vagó tolva"
+
+[STR_NAME_SUFFIX_HST_PASSENGER_CAR]
+base = "Vagó de passatge d'alta velocitat"
+
+[STR_NAME_SUFFIX_INGOT_CAR]
+base = "Vagó metall"
+
+[STR_NAME_SUFFIX_INTERMODAL_CAR]
+base = "Vagó contenidor"
+
+[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+base = "Vagó ramader"
+
+[STR_NAME_SUFFIX_LOG_CAR]
+base = "Cotxe transportador de fusta"
+
+[STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR]
+base = "Cotxe contenidor baix"
+
+[STR_NAME_SUFFIX_MAIL_CAR]
+base = "Cotxe de correu"
+
+[STR_NAME_SUFFIX_OPEN_CAR]
+base = "Cotxe obert"
+
+[STR_NAME_SUFFIX_PASSENGER_CAR]
+base = "Cotxe de passatge"
+
+[STR_NAME_SUFFIX_PLATE_CAR]
+base = "Cotxe plater"
+
+[STR_NAME_SUFFIX_PRODUCT_TANK_CAR]
+base = "Cotxe tanc"
+
+[STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR]
+base = "Cotxe de passatge d'alta densidad"
+
+[STR_NAME_SUFFIX_REEFER_CAR]
+base = "Cotxe refrigerat"
+
+[STR_NAME_SUFFIX_RESTAURANT_CAR]
+base = "Cotxe restaurant"
+
+[STR_NAME_SUFFIX_ROCK_HOPPER_CAR]
+base = "Cotxe de minerals"
+
+[STR_NAME_SUFFIX_SILO_CAR]
+base = "Cotxe sitja"
+
+[STR_NAME_SUFFIX_SLAG_LADLE_CAR]
+base = "Cotxe de deixalla metalúrgica"
+
+[STR_NAME_SUFFIX_SLIDING_ROOF_CAR]
+base = "Cotxe de sostre deslliçant"
+
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR]
+base = "Cotxe de porta deslliçant"
+
+[STR_NAME_SUFFIX_SCRAP_METAL_CAR]
+base = "Cotxe de deixalla"
+
+[STR_NAME_SUFFIX_TANK_CAR]
+base = "Cotxe cisterna"
+
+[STR_NAME_SUFFIX_TARPAULIN_CAR]
+base = "Cotxe de lona"
+
+[STR_NAME_SUFFIX_TORPEDO_CAR]
+base = "Cotxe torpedo"
+
+[STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR]
+base = "Cotxe transportador de piezas"
+
+[STR_ROLE]
+base = "{BLACK}Rol: {GOLD}{STRING}"
+
+[STR_ROLE_DRIVING_CAB]
+base = "Cabina de Conducció"
+
+[STR_ROLE_FREIGHT]
+base = "Càrrega"
+
+[STR_ROLE_GENERAL_PURPOSE]
+base = "Propòsit General"
+
+[STR_ROLE_GENERAL_PURPOSE_EXPRESS]
+base = "Propòsit General / Express"
+
+[STR_ROLE_HST]
+base = "Alta Velocitat"
+
+[STR_ROLE_LOLZ]
+base = "Joker"
+
+[STR_ROLE_METRO]
+base = "Urbà d'Alta Capacitat"
+
+[STR_ROLE_VERY_HIGH_SPEED]
+base = "Molt Alta Velocitat"
+
+[STR_WAGONS_ADD_POWER_CAB]
+base = "Potència (Distribuida): {GOLD}{POWER} per cada {STRING} unitat adjuntada"
+
+[STR_WAGONS_ADD_POWER_MIDDLE]
+base = "Potència (Distribuida): {GOLD}{POWER} al adjuntar {STRING} unitat"
+
+[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB]
+base = "{BLACK}Adjuntar al davant o al darrera del tren, amb almenys una locomotora"
+
+[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR]
+base = "{}{BLACK}Bonificació: {GOLD}Millora costs d'operació i tases de pagament per {WHITE}Cotxes de Passatgers {GOLD}i {WHITE}Cotxes de Passatgers de Primera Classe {}{}{BLACK}Aquesta bonificació s'aplica un cop per tren"
+
+[STR_SPRITES_COMPLETE]
+base = "{}Sprites Completats: {GOLD}Oh i tant"
+
+[STR_SPRITES_INCOMPLETE]
+base = "{}Sprites Completats: {GOLD}No pas"

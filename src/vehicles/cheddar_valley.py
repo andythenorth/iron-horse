@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9260,
         name="Cheddar Valley",
         role="super_heavy_freight",
-        role_child_branch_num=-3,
+        role_child_branch_num=3,
         power_by_power_source={
             "DIESEL": 4200,
         },
@@ -19,7 +19,7 @@ def main(roster_id):
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         # unfinished EWS livery exists, but eh
-        additional_liveries=["YEOMAN", "DBSCHENKER", "FREIGHTLINER_GBRF"],
+        additional_liveries=["YEOMAN", "DB_SCHENKER", "FREIGHTLINER_GBRF"],
         default_livery_extra_docs_examples=[
             ("COLOUR_WHITE", "COLOUR_GREEN"),
             ("COLOUR_ORANGE", "COLOUR_RED"),

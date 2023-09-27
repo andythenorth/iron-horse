@@ -2,7 +2,6 @@ import polar_fox
 import gestalt_graphics.graphics_constants as graphics_constants
 from gestalt_graphics import pipelines
 import utils
-import global_constants
 
 
 class GestaltGraphics(object):
@@ -55,6 +54,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(["check_buy_menu_only"])
         self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_switch_purchase = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
         self.liveries = kwargs["liveries"]
         self.default_livery_extra_docs_examples = kwargs.get(
@@ -118,7 +118,8 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
             + (2 * graphics_constants.randomised_wagon_extra_unit_width)
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
-        self.colour_mapping_with_purchase = False
+        self.colour_mapping_switch_purchase = "_switch_colour_mapping_purchase"
+        self.colour_mapping_with_purchase = True
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
         self.processing_priority = 2
 
@@ -132,7 +133,8 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         candidate_consists = []
         for unit_variant in consist.frozen_roster_items[
             "wagon_randomisation_candidates"
-        ]:
+        ][0]:
+            # ^^^ !! picking the first item off is hax
             if unit_variant.unit.consist not in candidate_consists:
                 candidate_consists.append(unit_variant.unit.consist)
         # this appears to just slice out the first two items of the list to make a pair of buy menu sprites
@@ -507,6 +509,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         contested_cargo_labels = {
             "CHLO": "cryo_tank",
             "FOOD": "reefer",
+            "N7__": "cryo_tank",
             "RFPR": "chemicals_tank",
             "SULP": "tank",
         }
@@ -522,7 +525,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
                 cargo_label,
                 "already exists, being over-written by",
                 container_type,
-                "label",
+                "label; update contested_cargo_labels in gestalt_graphics",
             )
         # default to allowing, most cargos aren't contested
         return True
@@ -613,7 +616,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
             ]
         else:
             raise BaseException(
-                consist_ruleset
+                self.consist_ruleset
                 + " not matched in GestaltGraphicsAutomobilesTransporter get_output_row_types()"
             )
         if self.add_masked_overlay:
@@ -743,11 +746,8 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
 
 class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     """
-    Simple recolouring from false body colour to:
-    - a single default livery
-    - optional extra liveries for specific cargos
-
-    Recolouring from false body colour makes it easy to adjust liveries across all vehicles of the same type.
+    Simple recolouring from false body colour to a single default livery
+    Recolouring from false body colour makes it easy to adjust base liveries across all vehicles of the same type.
     This gestalt can also be used as a shortcut simply for adding automated chassis.
     """
 
@@ -779,28 +779,7 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
         return "vehicle_with_simple_body_colour_remaps.pynml"
 
     def get_output_row_types(self):
-        return ["livery_spriterows"]
-
-    @property
-    def num_cargo_sprite_variants(self):
-        # rows can be reused across multiple cargo labels, so find uniques (assumes row nums are identical when reused across labels)
-        row_nums_seen = []
-        for row_nums in self.cargo_row_map.values():
-            for row_num in row_nums:
-                row_nums_seen.append(row_num)
-        return len(set(row_nums_seen))
-
-    @property
-    def cargo_row_map(self):
-        result = {}
-        counter = 0
-        # take the cargo recolour maps for 'unweathered' as the default
-        for cargo_map in self.weathered_variants["unweathered"]:
-            result[cargo_map[0]] = [
-                counter
-            ]  # list with a single value, as cargo labels can map to multiple rows, but no plan to use that for this gestalt (June 2020)
-            counter += 1
-        return result
+        return ["simple_recolour_spriterows"]
 
 
 class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
@@ -835,6 +814,7 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
         self.num_load_state_or_similar_spriterows = 2
         # colour mapping stuff...
         self.colour_mapping_switch = "_switch_colour_mapping"
+        self.colour_mapping_switch_purchase = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
         # verify that the spriterow_group_mappings keys are in the expected order
         if list(self.spriterow_group_mappings.keys()) != [

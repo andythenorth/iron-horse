@@ -137,7 +137,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, getbits(extra
 }
 
 
-<tal:include metal:use-macro="load: graphics_switches.pynml" />
+<tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
 <!--! dedicated colour remapping with rules against specific cc2 colours-->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id) {
@@ -158,8 +158,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id)
 }
 
 <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
-    <tal:include metal:use-macro="load: capacity_switches.pynml" />
+    <tal:include metal:use-macro="load: capacity.pynml" />
 </tal:optional_capacity_switches>
 
-<tal:include metal:use-macro="load: properties_vehicle.pynml" />
+<tal:include metal:use-macro="load: properties.pynml" />
 

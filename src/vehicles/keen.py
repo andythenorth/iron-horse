@@ -15,7 +15,7 @@ def main(roster_id):
         random_reverse=True,
         gen=3,
         intro_year_offset=-13,  # introduce much earlier than gen epoch by design
-        fixed_run_cost_points=240, # adjust to match similar engines of same gen
+        fixed_run_cost_points=240,  # adjust to match similar engines of same gen
         additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

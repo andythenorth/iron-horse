@@ -1,0 +1,58 @@
+[GLOBAL_PRAGMA]
+grflangid = "0x1b"
+plural = "0"
+gender = "male"
+
+[STR_GRF_DESCRIPTION]
+base = "Lisensie: {SILVER}GPL v2{}{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "Trein dravermoë"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "Klein"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "Wonderlik"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "Uitbundig"
+
+[STR_NAME_SUFFIX_DIESEL]
+base = "(Diesel)"
+
+[STR_NAME_SUFFIX_ELECTRODIESEL]
+base = "(Elektro-Diesel)"
+
+[STR_NAME_SUFFIX_STEAM]
+base = "(Stoom)"
+
+[STR_NAME_SUFFIX_BOX_CAR]
+base = "Boks Wa"
+
+[STR_NAME_SUFFIX_CABOOSE_CAR]
+base = "Kondukteurs Wa"
+
+[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+base = "Eetbare Tenk Wa"
+
+[STR_NAME_SUFFIX_FLAT_CAR]
+base = "Plat Wa"
+
+[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+base = "Lewendehawe Wa"
+
+[STR_NAME_SUFFIX_MAIL_CAR]
+base = "Pos Wa"
+
+[STR_NAME_SUFFIX_OPEN_CAR]
+base = "Oop Wa"
+
+[STR_NAME_SUFFIX_PASSENGER_CAR]
+base = "Passasiersmotor"
+
+[STR_NAME_SUFFIX_REEFER_CAR]
+base = "Verkoelde Wa"
+
+[STR_NAME_SUFFIX_TANK_CAR]
+base = "Tenk Wa"

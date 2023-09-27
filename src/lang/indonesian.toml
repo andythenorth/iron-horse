@@ -1,0 +1,243 @@
+[GLOBAL_PRAGMA]
+grflangid = "0x5a"
+plural = "1"
+
+[STR_GRF_DESCRIPTION]
+base = "Lisensi: {SILVER}GPL v2{}{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "Kapapitas Kereta"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC]
+base = "Atur Kapapitas Kereta Untuk Kesulitan Permainan.{}{}Puny: {GOLD}33% Lebih Sedikit{BLACK}{}Marvellous: {GOLD}default{BLACK}{}Excessive: {GOLD}33% Lebih Banyak{BLACK}{}Outrageous: {GOLD}77% Lebih Banyak{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "Puny"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "Marvellous (default)"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "Excessive"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3]
+base = "Outrageous"
+
+[STR_PARAM_SIMPLIFIED_GAMEPLAY]
+base = "Gameplay Simple"
+
+[STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC]
+base = "Bermain Dengan Opsi Kereta Lebih Simple. Ini Akan Mengurangi Jumlah Kereta. Kereta Eye-candy Seperti snowploughs(Pembersih Salju), driving cab cars (Gerbong Dengan Kabin Kemudi) Dan Lokomotiv yang sangat lamban tidak akan tersedia."
+
+[STR_PARAM_WAGON_COLOUR_RANDOMISATION]
+base = "Warna Gerbong Acak"
+
+[STR_NAME_SUFFIX_DIESEL]
+base = "Diesel"
+
+[STR_NAME_SUFFIX_ELECTRODIESEL]
+base = "Elektro-Diesel"
+
+[STR_NAME_SUFFIX_METRO]
+base = "Metro"
+
+[STR_NAME_SUFFIX_STEAM]
+base = "Uap"
+
+[STR_NAME_SUFFIX_SMALL]
+base = "Kecil"
+
+[STR_NAME_SUFFIX_MEDIUM]
+base = "Medium"
+
+[STR_NAME_SUFFIX_LARGE]
+base = "Besar"
+
+[STR_NAME_SUFFIX_TWIN]
+base = "Ganda"
+
+[STR_NAME_SUFFIX_ALIGNMENT_CAR]
+base = "Gerbong Penjajaran"
+
+[STR_NAME_SUFFIX_BOX_CAR]
+base = "Gerbong Box"
+
+[STR_NAME_SUFFIX_COIL_BUGGY_CAR]
+base = "Gerbong Koil"
+
+[STR_NAME_SUFFIX_BOLSTER_CAR]
+base = "Gerbong Pendukung"
+
+[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR]
+base = "Gerbong Datar"
+
+[STR_NAME_SUFFIX_CABOOSE_CAR]
+base = "Van Rem"
+
+[STR_NAME_SUFFIX_CEMENT_SILO_CAR]
+base = "Gerbong Semen"
+
+[STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR]
+base = "Gerbong Hopper"
+
+[STR_NAME_SUFFIX_COIL_CAR_COVERED]
+base = "Gerbong Koil Tertutup"
+
+[STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
+base = "Gerbong Koil"
+
+[STR_NAME_SUFFIX_COVERED_HOPPER_CAR]
+base = "Gerbong Hopper Tertutup"
+
+[STR_NAME_SUFFIX_CRYO_TANK_CAR]
+base = "Gerbong Tanker Cryo"
+
+[STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
+base = "Gerbong Tepi Terpal"
+
+[STR_NAME_SUFFIX_DUMP_CAR]
+base = "Gerbong Mineral"
+
+[STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
+base = "Gerbong Mineral Tinggi"
+
+[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+base = "Tanker Edibles"
+
+[STR_NAME_SUFFIX_EXPRESS_CAR]
+base = "Gerbong Express"
+
+[STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR]
+base = "Gerbong Kontainer Express"
+
+[STR_NAME_SUFFIX_FLAT_CAR]
+base = "Gerbong Datar"
+
+[STR_NAME_SUFFIX_HOPPER_CAR]
+base = "Hopper"
+
+[STR_NAME_SUFFIX_HST_PASSENGER_CAR]
+base = "Gerbong Penumpang"
+
+[STR_NAME_SUFFIX_INGOT_CAR]
+base = "Gerbong Penggangkut Logam"
+
+[STR_NAME_SUFFIX_INTERMODAL_CAR]
+base = "Gerbong Kontainer"
+
+[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+base = "Gerbong Ternak"
+
+[STR_NAME_SUFFIX_LOG_CAR]
+base = "Gerbong Kayu"
+
+[STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR]
+base = "Gerbong Kontainer Rendah"
+
+[STR_NAME_SUFFIX_MAIL_CAR]
+base = "Gerbong Surat/Parcel"
+
+[STR_NAME_SUFFIX_OPEN_CAR]
+base = "Gerbong Terbuka"
+
+[STR_NAME_SUFFIX_PASSENGER_CAR]
+base = "Gerbong Penumpang"
+
+[STR_NAME_SUFFIX_PLATE_CAR]
+base = "Gerbong Piring"
+
+[STR_NAME_SUFFIX_PRODUCT_TANK_CAR]
+base = "Tanker Produk"
+
+[STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR]
+base = "Gerbong Kereta Rangakaian"
+
+[STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR]
+base = "Gerbong Kereta Rangakaian"
+
+[STR_NAME_SUFFIX_REEFER_CAR]
+base = "Gerbong Kulkas"
+
+[STR_NAME_SUFFIX_RESTAURANT_CAR]
+base = "Gerbong Restoran"
+
+[STR_NAME_SUFFIX_ROCK_HOPPER_CAR]
+base = "Gerbong Batu"
+
+[STR_NAME_SUFFIX_SILO_CAR]
+base = "Gerbong Silo"
+
+[STR_NAME_SUFFIX_SLAG_LADLE_CAR]
+base = "Gerbong Terak"
+
+[STR_NAME_SUFFIX_SLIDING_ROOF_CAR]
+base = "Gerbong Atap Geser"
+
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR]
+base = "Gerbong Dinding Geser"
+
+[STR_NAME_SUFFIX_SCRAP_METAL_CAR]
+base = "Gerbong Rongsokan"
+
+[STR_NAME_SUFFIX_SUBURBAN_PASSENGER_CAR]
+base = "Gerbong Sub urban"
+
+[STR_NAME_SUFFIX_TANK_CAR]
+base = "Tanker"
+
+[STR_NAME_SUFFIX_TARPAULIN_CAR]
+base = "Gerbong Terpal"
+
+[STR_NAME_SUFFIX_TORPEDO_CAR]
+base = "Gerbong Torpedo"
+
+[STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR]
+base = "Gerbong Suku Cadang"
+
+[STR_ROLE]
+base = "{BLACK}Role: {GOLD}{STRING}"
+
+[STR_ROLE_DRIVING_CAB]
+base = "Kabin Kemudi"
+
+[STR_ROLE_FREIGHT]
+base = "Barang"
+
+[STR_ROLE_GENERAL_PURPOSE]
+base = "Tujuan Umum"
+
+[STR_ROLE_GENERAL_PURPOSE_EXPRESS]
+base = "Tujuan Umum Express"
+
+[STR_ROLE_HST]
+base = "Kecepatan Tinggi"
+
+[STR_ROLE_LOLZ]
+base = "Langsir/tram"
+
+[STR_ROLE_METRO]
+base = "Urban"
+
+[STR_ROLE_SUBURBAN]
+base = "Sub Urban"
+
+[STR_ROLE_VERY_HIGH_SPEED]
+base = "Kecepatan Sangat Tinggi"
+
+[STR_WAGONS_ADD_POWER_CAB]
+base = "Tenaga (Didistribusikan): {GOLD}{POWER} per {STRING} unit tersambung"
+
+[STR_WAGONS_ADD_POWER_MIDDLE]
+base = "Tenaga (Didistribusikan): {GOLD}{POWER} Ketika Di Sambung Dengan {STRING}"
+
+[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB]
+base = "{BLACK}Pasang Di Depan Atau Di Belakang Dari Kereta, Dengan Setidaknya satu lomomotiv Lainya"
+
+[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR]
+base = "{}{BLACK}Bonus: {GOLD}Meningkatkan biaya operasional dan tarif pembayaran untuk {WHITE}Gerbong Penumpang {GOLD}Dan {WHITE}Gerbong Penumpang Mewah {}{}{BLACK}Bonua Ini Akan Berdampak satu kali per satu kereta"
+
+[STR_SPRITES_COMPLETE]
+base = "{}Sprite Terselesaikan: {GOLD}Ya"
+
+[STR_SPRITES_INCOMPLETE]
+base = "{}Sprites Terselesaikan: {GOLD}Tidak"

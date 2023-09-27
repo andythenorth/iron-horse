@@ -16,12 +16,11 @@ def main(roster_id):
         gen=5,
         speed=125,  # Onslaught not replaced, but has gen 6 speeds
         intro_year_offset=-8,  # let's be really early with this one to give a mail engine matching Blaze HST intro year
-        fixed_run_cost_points=300,  # give a small malus to this one (balancing eh?)
-        #additional_liveries=["BANGER_BLUE", "LARGE_LOGO", "FANCY_BLUE", "INTERCITY_RASPBERRY_RIPPLE", "RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
+        # additional_liveries=["BANGER_BLUE", "LARGE_LOGO", "FANCY_BLUE", "INTERCITY_RASPBERRY_RIPPLE", "RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
         additional_liveries=["BANGER_BLUE"],
         decor_spriterow_num=7,
         sprites_complete=True,
-        sprites_additional_liveries_potential=True, # more?
+        sprites_additional_liveries_potential=True,  # more?
     )
 
     consist.add_unit(

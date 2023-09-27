@@ -1,0 +1,77 @@
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_default, [
+        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='default_name', unit_variant=unit_variant)">
+            STORE_TEMP(
+                ${value_pair[0]}
+                | (${value_pair[1]} << 16),
+                ${'0x10' + str(repeat.value_pair.index)}
+            ),
+        </tal:name_parts>
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_0, [
+        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='purchase_level_0', unit_variant=unit_variant)">
+            STORE_TEMP(
+                ${value_pair[0]}
+                | (${value_pair[1]} << 16),
+                ${'0x10' + str(repeat.value_pair.index)}
+            ),
+        </tal:name_parts>
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_1, [
+        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='purchase_level_1', unit_variant=unit_variant)">
+            STORE_TEMP(
+                ${value_pair[0]}
+                | (${value_pair[1]} << 16),
+                ${'0x10' + str(repeat.value_pair.index)}
+            ),
+        </tal:name_parts>
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_2, [
+        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='purchase_level_2', unit_variant=unit_variant)">
+            STORE_TEMP(
+                ${value_pair[0]}
+                | (${value_pair[1]} << 16),
+                ${'0x10' + str(repeat.value_pair.index)}
+            ),
+        </tal:name_parts>
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_autoreplace_lhs, [
+        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='autoreplace_lhs', unit_variant=unit_variant)">
+            STORE_TEMP(
+                ${value_pair[0]}
+                | (${value_pair[1]} << 16),
+                ${'0x10' + str(repeat.value_pair.index)}
+            ),
+        </tal:name_parts>
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: ${unit_variant.id}_switch_name_purchase_level_0;
+    1: ${unit_variant.id}_switch_name_purchase_level_1;
+    2: ${unit_variant.id}_switch_name_purchase_level_2; <!--! more than 2 not required as of May 2023 -->
+    return ${unit_variant.id}_switch_name_purchase_default;
+}
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: ${unit_variant.id}_switch_name_purchase_extra_bits;
+    0x22: ${unit_variant.id}_switch_name_autoreplace_lhs;
+    return ${unit_variant.id}_switch_name_purchase_default;
+}
+
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, param_simplified_gameplay) {
+    <!--! simplified gameplay uses minimal variant nesting, so just use default name -->
+    1: ${unit_variant.id}_switch_name_purchase_default;
+    return ${unit_variant.id}_switch_name_not_simplified_gameplay;
+}
+
+

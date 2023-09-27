@@ -6,48 +6,6 @@ def main():
 
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=16640,
-        gen=1,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
-
-    # no new type A for gen 2, gen 1 type A continues
-
-    consist = BoxCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=16650,
-        gen=2,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
-
-    consist = BoxCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=16660,
-        gen=3,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
-
-    consist = BoxCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=16670,
-        gen=3,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
-
-    consist = BoxCarRandomisedConsist(
-        roster_id="pony",
         base_numeric_id=16680,
         gen=4,
         subtype="A",

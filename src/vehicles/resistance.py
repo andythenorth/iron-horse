@@ -16,10 +16,17 @@ def main(roster_id):
         tractive_effort_coefficient=0.4,
         random_reverse=True,
         gen=5,
-        intro_year_offset=-4, # earlier than the IRL introduction of this never-built train...
+        intro_year_offset=-4,  # earlier than the IRL introduction of this never-built train...
+        extended_vehicle_life=True,
         pantograph_type="z-shaped-double",
         caboose_family="railfreight_2",
-        additional_liveries=["RAILFREIGHT_RED_STRIPE", "RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "DBSCHENKER", "EWS"],
+        additional_liveries=[
+            "RAILFREIGHT_RED_STRIPE",
+            "RAILFREIGHT_TRIPLE_GREY",
+            "RAILFREIGHT_TRIPLE_GREY_COAL",
+            "DB_SCHENKER",
+            "EWS",
+        ],
         sprites_complete=True,
     )
 
@@ -27,9 +34,7 @@ def main(roster_id):
         type=ElectricEngineUnit, weight=120, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = (
-        """A hard-charging bag of bones."""
-    )
+    consist.description = """A hard-charging bag of bones."""
     consist.foamer_facts = """Proposed BR Class 88, derived from class 58 design"""
 
     return consist

@@ -14,7 +14,7 @@ from polar_fox.graphics_units import (
     TransposeAsymmetricSprites,
 )
 import polar_fox.pixa as pixa
-from polar_fox.pixa import Spritesheet, PieceCargoSprites
+from polar_fox.pixa import PieceCargoSprites
 from gestalt_graphics import graphics_constants
 
 DOS_PALETTE = Image.open("palette_key.png").palette
@@ -62,7 +62,13 @@ class Pipeline(object):
         # this is so that it has the processed spritesheet available, which is essential for creating buy menu sprites
         # n.b if buy menu sprite processing has conditions by vehicle type, could pass a dedicated function for each type of processing
         buy_menu_buyable_variant_unit_row_maps = []
-        num_livery_rows_per_unit = len(self.consist.buyable_variants)
+        # !! JFDI hax May 2023, to handle differing requirements for real (pixel painted) vs. sprite recolour liveries
+        # this is likely incomplete as other gestalts need handled, e.g. automobile cars
+        # should probably be handled via a flag on the gestalt
+        if self.consist.gestalt_graphics.__class__.__name__ in ["GestaltGraphicsBoxCarOpeningDoors"]:
+            num_livery_rows_per_unit = 1
+        else:
+            num_livery_rows_per_unit = len(self.consist.buyable_variants)
         # organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
         for buyable_variant in self.consist.buyable_variants:
             result = []
@@ -564,7 +570,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
 
             dice_image = Image.open(
                 os.path.join(
-                    currentdir, "src", "graphics", "randomised_wagon_overlay.png"
+                    currentdir, "src", "graphics", "randomisation_icons", "dice.png"
                 )
             ).crop((10, 10, 10 + dice_image_width, 10 + dice_image_height))
             dice_recolour_maps = {
@@ -599,7 +605,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
 
             fade_image = Image.open(
                 os.path.join(
-                    currentdir, "src", "graphics", "randomised_wagon_overlay.png"
+                    currentdir, "src", "graphics", "randomisation_icons", "dice.png"
                 )
             ).crop((10, 30, 10 + fade_image_width, 30 + fade_image_height))
             # create a mask so that we paste only the overlay pixels (no blue pixels)
@@ -668,6 +674,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             "diamond-single-with-base": "diamond-with-base.png",
             "z-shaped-single": "z-shaped.png",
             "z-shaped-double": "z-shaped.png",
+            "z-shaped-single-minimal": "z-shaped-minimal.png",
             "z-shaped-single-reversed": "z-shaped-reversed.png",
             "z-shaped-single-with-base": "z-shaped-with-base.png",
         }
@@ -703,11 +710,13 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             "diamond-single-with-base": {"down": ["a"], "up": ["A"]},
             "z-shaped-single": {"down": ["a"], "up": ["A"]},
             "z-shaped-single-reversed": {"down": ["a"], "up": ["A"]},
+            # aB was tried and removed, TMWFTLB, instead just use Ab and respect depot flip
             "z-shaped-double": {
                 "down": ["a", "b"],
                 "up": ["A", "b"],
-            },  # aB was tried and removed, TMWFTLB, instead just use Ab and respect depot flip
+            },
             "z-shaped-single-with-base": {"down": ["a"], "up": ["A"]},
+            "z-shaped-single-minimal": {"down": ["a"], "up": ["A"]},
         }
         pantograph_state_sprite_map = {
             "a": [
@@ -1137,11 +1146,11 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 )
             )
 
-    def add_livery_spriterows(self):
-        # no loading / loaded states, intended for tankers etc
-        # provides cargo-specific recolourings, a default recolouring, and template alternates 1CC or 2CC livery on user flip
+    def add_simple_recolour_spriterows(self):
+        # provides a simple default recolouring
+        # no loading / loaded states
+        # can also be used with an empty recolour for the case of triggering chassis compositing
 
-        # first add the CC alternative livery, as it's easier to add first than handle adding it after arbitrary cargo livery rows
         crop_box_source = (
             0,
             self.base_yoffs,
@@ -1159,30 +1168,29 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         )
 
         for (
-            weathered_variant,
-            recolour_maps,
+            weathered_variant_label,
+            recolour_map,
         ) in self.consist.gestalt_graphics.weathered_variants.items():
-            for label, recolour_map in recolour_maps:
-                crop_box_dest = (
-                    0,
-                    0,
-                    self.sprites_max_x_extent,
-                    graphics_constants.spriterow_height,
-                )
+            crop_box_dest = (
+                0,
+                0,
+                self.sprites_max_x_extent,
+                graphics_constants.spriterow_height,
+            )
 
-                self.units.append(
-                    AppendToSpritesheet(
-                        vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest
-                    )
+            self.units.append(
+                AppendToSpritesheet(
+                    vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest
                 )
-                self.units.append(SimpleRecolour(recolour_map))
-                self.units.append(
-                    AddCargoLabel(
-                        label=label,
-                        x_offset=self.sprites_max_x_extent + 5,
-                        y_offset=-1 * graphics_constants.spriterow_height,
-                    )
+            )
+            self.units.append(SimpleRecolour(recolour_map))
+            self.units.append(
+                AddCargoLabel(
+                    label=weathered_variant_label,
+                    x_offset=self.sprites_max_x_extent + 5,
+                    y_offset=-1 * graphics_constants.spriterow_height,
                 )
+            )
 
     def add_pax_mail_car_with_opening_doors_spriterows(self, row_count):
         # this loop builds the spriterow and comps doors etc
@@ -1375,12 +1383,12 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
 
         for (
             weathered_variant,
-            recolour_maps,
+            recolour_map,
         ) in self.consist.gestalt_graphics.weathered_variants.items():
             self.units.append(
                 AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest)
             )
-            self.units.append(SimpleRecolour(recolour_maps[0][1]))
+            self.units.append(SimpleRecolour(recolour_map))
             box_car_input_image_1.close()
 
     def add_caboose_spriterows(self, row_count):
@@ -1764,9 +1772,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 if spriterow_type == "has_cover":
                     input_spriterow_count = 1
                     self.add_generic_spriterows(spriterow_type)
-                elif spriterow_type == "livery_spriterows":
+                elif spriterow_type == "simple_recolour_spriterows":
                     input_spriterow_count = 1
-                    self.add_livery_spriterows()
+                    self.add_simple_recolour_spriterows()
                 elif spriterow_type == "box_car_with_opening_doors_spriterows":
                     input_spriterow_count = 2
                     self.add_box_car_with_opening_doors_spriterows()

@@ -1,0 +1,122 @@
+[GLOBAL_PRAGMA]
+grflangid = "0x27"
+plural = "0"
+gender = "m ma f"
+case = "fp fs mp ms"
+
+[STR_GRF_DESCRIPTION]
+base = "Licenza: {SILVER}GPL v2{}{BLACK}"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY]
+base = "Capacità del treno"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
+base = "Squallida"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1]
+base = "Meravigliosa"
+
+[STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2]
+base = "Eccessiva"
+
+[STR_NAME_SUFFIX_DIESEL]
+base = "Diesel"
+
+[STR_NAME_SUFFIX_ELECTRODIESEL]
+base = "Diesel-Elettrica"
+
+[STR_NAME_SUFFIX_METRO]
+base = "Metropolitana"
+
+[STR_NAME_SUFFIX_STEAM]
+base = "(A vapore)"
+
+[STR_NAME_SUFFIX_SMALL]
+base = "Piccolo"
+
+[STR_NAME_SUFFIX_MEDIUM]
+base = "Intermedio"
+
+[STR_NAME_SUFFIX_LARGE]
+base = "Grande"
+
+[STR_NAME_SUFFIX_ALIGNMENT_CAR]
+base = "Carro per allineamento"
+
+[STR_NAME_SUFFIX_BOX_CAR]
+base = "Carro chiuso"
+
+[STR_NAME_SUFFIX_CABOOSE_CAR]
+base = "Carro di fine convoglio"
+
+[STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
+base = "Carro a tendine laterali"
+
+[STR_NAME_SUFFIX_DUMP_CAR]
+base = "Carro per minerali"
+
+[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+base = "Carro cisterna per prodotti alimentari"
+
+[STR_NAME_SUFFIX_EXPRESS_CAR]
+base = "Carro per merci leggere"
+
+[STR_NAME_SUFFIX_FLAT_CAR]
+base = "Carro piatto"
+
+[STR_NAME_SUFFIX_INTERMODAL_CAR]
+base = "Carro intermodale"
+
+[STR_NAME_SUFFIX_LIVESTOCK_CAR]
+base = "Carro bestiame"
+
+[STR_NAME_SUFFIX_MAIL_CAR]
+base = "Carro postale"
+
+[STR_NAME_SUFFIX_OPEN_CAR]
+base = "Carro aperto"
+
+[STR_NAME_SUFFIX_PASSENGER_CAR]
+base = "Carrozza passeggeri"
+
+[STR_NAME_SUFFIX_PLATE_CAR]
+base = "Carro piatto"
+
+[STR_NAME_SUFFIX_REEFER_CAR]
+base = "Carro frigorifero"
+
+[STR_NAME_SUFFIX_SILO_CAR]
+base = "Carro silos"
+
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR]
+base = "Carro a pareti scorrevoli"
+
+[STR_NAME_SUFFIX_TANK_CAR]
+base = "Carro cisterna"
+
+[STR_NAME_SUFFIX_TARPAULIN_CAR]
+base = "Carro telonato"
+
+[STR_ROLE]
+base = "Ruolo: {GOLD}{STRING}"
+
+[STR_ROLE_FREIGHT]
+base = "Merci"
+
+[STR_ROLE_GENERAL_PURPOSE]
+base = "Universale"
+
+[STR_ROLE_GENERAL_PURPOSE_EXPRESS]
+base = "Merci leggere / Universale"
+
+[STR_ROLE_METRO]
+base = "Urbano ad alta capacità"
+
+[STR_ROLE_VERY_HIGH_SPEED]
+base = "Alta Velocità"
+
+[STR_SPRITES_COMPLETE]
+base = "{}Sprite Completi: {GOLD}Sì"
+
+[STR_SPRITES_INCOMPLETE]
+base = "{}Sprite Completi: {GOLD}No"

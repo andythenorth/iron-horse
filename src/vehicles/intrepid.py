@@ -16,12 +16,13 @@ def main(roster_id):
         gen=4,
         fixed_run_cost_points=40,  # give a bonus so this can be a genuine mixed-traffic engine
         intro_year_offset=6,  # let's be later for this one
+        extended_vehicle_life=True,
         default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE")],
         caboose_family="railfreight_1",
         # add triple grey railfreight
         additional_liveries=["LARGE_LOGO", "RAILFREIGHT_RED_STRIPE"],
         sprites_complete=True,
-        sprites_additional_liveries_potential=True, # triple grey railfreight?
+        sprites_additional_liveries_potential=True,  # triple grey railfreight?
     )
 
     consist.add_unit(

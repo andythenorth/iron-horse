@@ -9,14 +9,13 @@ def main(roster_id):
         name="Falcon",
         role="super_heavy_express",
         role_child_branch_num=-2,
-        replacement_consist_id="onslaught",  # this Joker ends with Onslaught
+        replacement_consist_id="rapid",  # this Joker ends with Rapid (switching child branch) - goal is to keep Falcon around for a while, because I like it
         power_by_power_source={
             "DIESEL": 2800,
         },
         random_reverse=True,
         gen=4,
         intro_year_offset=5,  # introduce later than gen epoch by design
-        fixed_run_cost_points=230,  # give a serious malus to this one (balancing eh?)
         additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),

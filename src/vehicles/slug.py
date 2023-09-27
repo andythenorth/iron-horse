@@ -10,12 +10,19 @@ def main(roster_id):
         role="freight",
         role_child_branch_num=2,
         power_by_power_source={
-            "DIESEL": 1950,
+            "DIESEL": 2000, # there is no point not matching this to the Centaur
         },
         random_reverse=True,
         gen=5,
         # red stripe? Teeside steelmaster?
-        additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "DBSCHENKER", "LARGE_LOGO", "LOADHAUL", "SWOOSH_LESS"],
+        additional_liveries=[
+            "RAILFREIGHT_TRIPLE_GREY",
+            "RAILFREIGHT_TRIPLE_GREY_COAL",
+            "DB_SCHENKER",
+            "LARGE_LOGO",
+            "LOADHAUL",
+            "SWOOSH_LESS",
+        ],
         default_livery_extra_docs_examples=[
             ("COLOUR_GREY", "COLOUR_YELLOW"),
             ("COLOUR_WHITE", "COLOUR_GREY"),

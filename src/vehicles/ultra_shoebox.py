@@ -7,12 +7,15 @@ def main(roster_id):
         id="ultra_shoebox",
         base_numeric_id=11210,
         name="Ultra Shoebox",
-        role="express",
-        role_child_branch_num=-1,
+        role="heavy_express",
+        role_child_branch_num=-3,
         power_by_power_source={"DIESEL": 1650, "AC": 2800},
+        speed=125, # for lolz and also gen 6 compatibility
         random_reverse=True,
         pantograph_type="z-shaped-single",
-        gen=6,
+        gen=5,
+        intro_year_offset=6, # earlier than anything IRL, but we want 125 mph capability so eh, there we go
+        extended_vehicle_life=True, # because long time until replaced
         additional_liveries=[],
         default_livery_extra_docs_examples=[
             ("COLOUR_RED", "COLOUR_RED"),
@@ -24,7 +27,7 @@ def main(roster_id):
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
-        sprites_additional_liveries_potential=True, # banger blue, yellow?
+        sprites_additional_liveries_potential=True,  # banger blue, yellow? - unused banger blue from Super Shoebox also?  Freightliner swoosh?
     )
 
     consist.add_unit(

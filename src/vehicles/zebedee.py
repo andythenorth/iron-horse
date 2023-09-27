@@ -10,14 +10,21 @@ def main(roster_id):
         role="ultra_heavy_express",
         role_child_branch_num=-2,
         power_by_power_source={
-            "AC": 4850, # 4850 not 5000 simply for rapid and obvious distinction from the nearby 3800 and 5800 power bands
+            "AC": 4850,  # 4850 not 5000 simply for rapid and obvious distinction from the nearby 3800 and 5800 power bands
         },
         random_reverse=True,
         gen=4,
         speed=115,
         pantograph_type="z-shaped-double",
         intro_year_offset=12,  # introduce much later than gen epoch by design
-        additional_liveries=["GNER", "RES", "RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "LOADHAUL"],
+        extended_vehicle_life=True,
+        additional_liveries=[
+            "GNER",
+            "RES",
+            "RAILFREIGHT_TRIPLE_GREY",
+            "RAILFREIGHT_TRIPLE_GREY_COAL",
+            "LOADHAUL",
+        ],
         default_livery_extra_docs_examples=[("COLOUR_BLUE", "COLOUR_WHITE")],
         sprites_complete=True,
     )
