@@ -16,6 +16,7 @@ def main(roster_id):
         pantograph_type="diamond-single",
         gen=2,
         intro_year_offset=3,  # introduce later than gen epoch by design
+        fixed_run_cost_points=120,  # substantial cost bonus for balance against same-era steam engines
         extended_vehicle_life=True,
         additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
