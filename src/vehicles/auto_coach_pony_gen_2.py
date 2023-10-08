@@ -17,7 +17,6 @@ def main(roster_id):
         name="Autocoach Set",
         replacement_consist_id="slammer",  # auto-coach ends with gen 4 Slammer
         gen=2,
-        intro_year_offset=15,  # introduce significantly later than gen epoch
         sprites_complete=True,
     )
 
