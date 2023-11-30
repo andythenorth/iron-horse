@@ -1,8 +1,5 @@
 <!--! this is the template for snowploughs -->
 
-<!--! 'random_reverse' property is not supported in this template
-      'flipped' is user flipping vehicle in depot and *is* supported here
-      don't conflate them :) -->
 // default graphics chain
 spriteset(${vehicle.id}_ss_unflipped_unreversed, "${graphics_path}${consist.id}.png") {
     ${vehicle.get_spriteset_template_name_2('unreversed', 10)}

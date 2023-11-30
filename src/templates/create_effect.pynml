@@ -18,36 +18,25 @@
 
 <!--! create effect -->
 <!--! complicated due to support for railtype changes AND randomly reversed variants -->
-<tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
-    <tal:railtypes repeat="railtype vehicle.effects">
-        <tal:effect define="effects vehicle.get_nml_expression_for_effects(reversed_variant, railtype)">
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_${railtype}_${reversed_variant}, ${effects[0]}) {
-                return ${effects[1]};
-            }
-        </tal:effect>
-    </tal:railtypes>
+<tal:railtypes repeat="railtype vehicle.effects">
+    <tal:effect define="effects vehicle.get_nml_expression_for_effects(railtype)">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_${railtype}, ${effects[0]}) {
+            return ${effects[1]};
+        }
+    </tal:effect>
+</tal:railtypes>
 
-    <tal:effect_type_varies_by_power_source switch="vehicle.effects_vary_by_power_source">
-        <tal:effects_vary_by_power_source case="True">
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_check_railtype_${reversed_variant}, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
-                <!--! assumes just 2 effects, default and electrified, deal with that later if it's a problem later -->
-                1: return ${vehicle.id}_switch_create_effect_electrified_${reversed_variant};
-                return ${vehicle.id}_switch_create_effect_default_${reversed_variant};
-            }
-        </tal:effects_vary_by_power_source>
-        <tal:default case="False">
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_check_railtype_${reversed_variant}, 1) {
-                return ${vehicle.id}_switch_create_effect_default_${reversed_variant};
-            }
-        </tal:default
-    </tal:effect_type_varies_by_power_source>
-</tal:random_reverse_variants>
-
-<tal:optional_random_reverse_variants condition="len(consist.reversed_variants) > 1">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_reversed_variants, random_bits_reversed_engine()) {
-        <tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
-            ${repeat.reversed_variant.index}: return ${vehicle.id}_switch_create_effect_check_railtype_${reversed_variant};
-        </tal:reversible_variants>
-    }
-</tal:optional_random_reverse_variants>
-
+<tal:effect_type_varies_by_power_source switch="vehicle.effects_vary_by_power_source">
+    <tal:effects_vary_by_power_source case="True">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_check_railtype, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
+            <!--! assumes just 2 effects, default and electrified, deal with that later if it's a problem later -->
+            1: return ${vehicle.id}_switch_create_effect_electrified;
+            return ${vehicle.id}_switch_create_effect_default;
+        }
+    </tal:effects_vary_by_power_source>
+    <tal:default case="False">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_check_railtype, 1) {
+            return ${vehicle.id}_switch_create_effect_default;
+        }
+    </tal:default
+</tal:effect_type_varies_by_power_source>

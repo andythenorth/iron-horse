@@ -1,9 +1,5 @@
 <!--! box cars that have doors closed when empty / loaded, and doors open when loading -->
 
-<!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
-      'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
-      don't conflate them :) -->
-
 <tal:weathered_variants repeat="weathered_variant consist.gestalt_graphics.weathered_variants">
     // default graphics chain
     spriteset(${vehicle.id}_ss_${weathered_variant}_doors_closed, "${graphics_path}${consist.id}.png") {

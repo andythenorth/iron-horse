@@ -5,7 +5,6 @@
     - optional 'weathered' variants (intended to be 2 values 'unweathered' and 'weathered', but this could be flexible)
 -->
 
-<!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing -->
 <tal:weathered_variants repeat="weathered_variant consist.gestalt_graphics.weathered_variants">
     spriteset(${vehicle.id}_ss_${weathered_variant}, "${graphics_path}${consist.id}.png") {
         ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (repeat.weathered_variant.index * 30))}

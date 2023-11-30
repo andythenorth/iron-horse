@@ -1,68 +1,49 @@
  <!--! this is the default template for trains that don't supply their own template -->
 
-<!--! 'reversed' is random reversal on construction, depending on vehicle random bits -->
-<tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
-    <!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
-    <tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
-        spriteset(${vehicle.id}_ss_${reversed_variant}_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
-            ${vehicle.get_spriteset_template_name_2(reversed_variant, 10 + (repeat.livery.index * 30) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 30))}
-        }
-    </tal:liveries>
-
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${reversed_variant}, vehicle_type_id) {
-        <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-            ${unit_variant.numeric_id}: return ${vehicle.id}_ss_${reversed_variant}_${unit_variant.buyable_variant.buyable_variant_num};
-        </tal:unit_variants>
-        <!--! no default, by design all variants should be explicitly found -->
+<!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
+<tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
+    spriteset(${vehicle.id}_ss_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (repeat.livery.index * 30) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 30))}
     }
+</tal:liveries>
 
-    <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
-        <!--! optional decor sprites - as of Mar 2023 this is only intended for snowploughs on single units, and won't handle articulated consists  -->
-        spriteset(${vehicle.id}_ss_decor_${reversed_variant}, "${graphics_path}${consist.id}.png") {
-            ${vehicle.get_spriteset_template_name_2(reversed_variant, 10 + (consist.decor_spriterow_num * 30))}
-        }
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_decor_${reversed_variant}, random_bits_engine_show_decor()) {
-            1: return ${vehicle.id}_ss_decor_${reversed_variant};
-            return ss_global_empty;
-        }
-    </tal:conditional_decor>
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery, vehicle_type_id) {
+    <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+        ${unit_variant.numeric_id}: return ${vehicle.id}_ss_${unit_variant.buyable_variant.buyable_variant_num};
+    </tal:unit_variants>
+    <!--! no default, by design all variants should be explicitly found -->
+}
 
-    <tal:pantographs condition="consist.pantograph_type is not None">
-        <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
-        <tal:pantographs repeat="pantograph_state ['down', 'up']">
-            spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${reversed_variant}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
-                ${vehicle.get_spriteset_template_name_2(reversed_variant, 10 + (vehicle.spriterow_num * 30))}
-            }
-        </tal:pantographs>
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${reversed_variant}, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
-            1: return ${vehicle.id}_ss_pantographs_up_${reversed_variant};
-            return ${vehicle.id}_ss_pantographs_down_${reversed_variant};
+<tal:conditional_decor condition="consist.decor_spriterow_num is not None">
+    <!--! optional decor sprites - as of Mar 2023 this is only intended for snowploughs on single units, and won't handle articulated consists  -->
+    spriteset(${vehicle.id}_ss_decor, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (consist.decor_spriterow_num * 30))}
+    }
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_decor, random_bits_engine_show_decor()) {
+        1: return ${vehicle.id}_ss_decor;
+        return ss_global_empty;
+    }
+</tal:conditional_decor>
+
+<tal:pantographs condition="consist.pantograph_type is not None">
+    <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
+    <tal:pantographs repeat="pantograph_state ['down', 'up']">
+        spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
+            ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (vehicle.spriterow_num * 30))}
         }
     </tal:pantographs>
-
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}, getbits(extra_callback_info1, 8, 8)) {
-        <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names[1:]">
-            ${extra_sprite_layer[0]}: return ${vehicle.id}_switch_graphics_${extra_sprite_layer[1]}_${reversed_variant};
-        </tal:extra_sprite_layers>
-        return ${vehicle.id}_switch_graphics_livery_${reversed_variant};
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
+        1: return ${vehicle.id}_ss_pantographs_up;
+        return ${vehicle.id}_ss_pantographs_down;
     }
-</tal:random_reverse_variants>
+</tal:pantographs>
 
-<tal:switch_random_reverse_variants switch="len(consist.reversed_variants) > 1">
-    <tal:has_random_reverse_variant case="True">
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, random_bits_reversed_engine()) {
-            <tal:random_graphics_variations repeat="reversed_variant consist.reversed_variants">
-                ${repeat.reversed_variant.index}: return ${vehicle.id}_switch_graphics_${reversed_variant};
-            </tal:random_graphics_variations>
-        }
-    </tal:has_random_reverse_variant>
-    <tal:no_random_reverse_variant case="False">
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, 0) {
-            return ${vehicle.id}_switch_graphics_${consist.reversed_variants[0]};
-        }
-    </tal:no_random_reverse_variant>
-</tal:switch_random_reverse_variants>
-
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names[1:]">
+        ${extra_sprite_layer[0]}: return ${vehicle.id}_switch_graphics_${extra_sprite_layer[1]};
+    </tal:extra_sprite_layers>
+    return ${vehicle.id}_switch_graphics_livery;
+}
 
 // buy menu graphics chain
 <!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->

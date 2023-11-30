@@ -59,23 +59,3 @@ switch (FEAT_TRAINS, SELF, random_bits_engine_show_decor, switch_alternative_var
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
-
-<!--! special case -->
-
-<!--! NOTE the units of some articulated consists *will* randomly reverse on build
-      in that case it's *correct* for each unit to pick from SELF as the choice is on a per-unit basis, not per consist - don't break that behaviour
-      choice of bit overlaps with bits used in randomised wagons, but engines aren't wagons, so should be fine
--->
-switch (FEAT_TRAINS, SELF, random_bits_reversed_engine, getbits(random_bits, 2, 1)) {
-    <!--! return with nothing else to yield the computed value  -->
-    return;
-}
-
-<!--! caboose uses random_switch for liveries as of August 2022, so this might collide, but probably fine as we pick the last bit
-      note that this does not use articulated offset - articulated caboose not supported
--->
-switch (FEAT_TRAINS, SELF, random_bits_reversed_caboose, getbits(random_bits, 7, 1)) {
-    <!--! return with nothing else to yield the computed value  -->
-    return;
-}
-

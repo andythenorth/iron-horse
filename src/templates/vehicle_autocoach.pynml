@@ -1,7 +1,7 @@
 <!--! this is the template for autocoach sets -->
 
-<!--! 'random_reverse' property is not supported by this vehicle type
-      user flipping vehicle in depot is not supported by this vehicle tpye
+<!--!
+    user flipping vehicle in depot is not supported by this vehicle type (articulated)
 -->
 // default graphics chain
 <tal:reversed repeat="reversed ['unreversed', 'reversed']">

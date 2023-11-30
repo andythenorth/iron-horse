@@ -123,7 +123,7 @@ class Consist(object):
         self.buy_menu_additional_text_hint_restaurant_car = False
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
         self._str_name_suffix = None
-        # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
+        # random_reverse means (1) randomised flip of vehicle when built (2) player can also flip vehicle manually
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get("random_reverse", False)
         # just a simple buy cost tweak, only use when needed
@@ -230,6 +230,7 @@ class Consist(object):
 
     @property
     def reversed_variants(self):
+        print("CABBAGE 99 reversed_variants deprecated")
         # Handles 'unreversed' and optional 'reversed' variant, which if provided, will be chosen at random per consist
         # NOT the same as 'flipped' which is a player choice in-game, and handled separately
         # Previous model_variant approach for this was deprecated March 2018, needlessly complicated
@@ -6339,7 +6340,7 @@ class Train(object):
         # vehicles can also over-ride this on init (stored on each model_variant as _effect_offsets)
         return [(0, 0)]
 
-    def get_nml_expression_for_effects(self, reversed_variant, railtype="default"):
+    def get_nml_expression_for_effects(self, railtype="default"):
         # provides part of nml switch for effects (smoke)
 
         # effects can be over-ridden per vehicle, or use a default from the vehicle subclass
@@ -6347,12 +6348,6 @@ class Train(object):
             effect_offsets = self._effect_offsets
         else:
             effect_offsets = self.default_effect_offsets
-
-        # when vehicles (e.g. steam engines) are reversed, invert the effect x position
-        if reversed_variant == "reversed":
-            effect_offsets = [
-                (offsets[0] * -1, offsets[1]) for offsets in effect_offsets
-            ]
 
         # z offset is handled independently to x, y for simplicity, option to over-ride z offset default per vehicle
         if self._effect_z_offset is not None:
@@ -6382,18 +6377,6 @@ class Train(object):
             "[" + ",".join(result) + "]",
             str(len(result)) + " + CB_RESULT_CREATE_EFFECT_CENTER",
         ]
-
-    @property
-    def switch_id_for_create_effect(self):
-        # randomly reversed vehicles need to use a dependent random switch, this doesn't exist for non-reversible vehicles, so need to conditionally handle switch routing
-        if len(self.consist.reversed_variants) > 1:
-            return self.id + "_switch_create_effect_reversed_variants"
-        else:
-            return (
-                self.id
-                + "_switch_create_effect_check_railtype_"
-                + self.consist.reversed_variants[0]
-            )
 
     def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
         expression_template = Template(

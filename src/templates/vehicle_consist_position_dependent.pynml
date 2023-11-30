@@ -5,8 +5,7 @@
       - most sprites are symmetric, except, e.g. brake coaches; if vehicle is flipped, any asymmetric sprite will be flipped
  -->
 
-<!--! 'random_reverse' property is not supported in this template
-      'flipped' is user flipping vehicle in depot and *is* supported here, don't conflate them :) -->
+<!--! 'flipped' is user flipping vehicle in depot and *is* supported here -->
 // default graphics chain
 <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
     <tal:base_liveries repeat="base_livery_num range(consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant)">
