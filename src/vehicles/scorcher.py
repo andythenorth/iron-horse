@@ -8,9 +8,10 @@ def main(roster_id):
         base_numeric_id=12360,
         name="Scorcher HST",
         role="hst",  # quite a specific role, may or may not scale to other rosters
-        role_child_branch_num=1,
+        role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 5850,
+            "DIESEL": 5500,
+            "AC": 7200,
         },
         intro_year_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
