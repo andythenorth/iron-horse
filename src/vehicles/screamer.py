@@ -16,7 +16,6 @@ def main(roster_id):
         gen=5,
         intro_year_offset=2,  # introduce later than gen epoch by design
         extended_vehicle_life=True,
-        speed=125,
         pantograph_type="z-shaped-double",
         # railfreight grey, intercity, GNER?
         additional_liveries=[

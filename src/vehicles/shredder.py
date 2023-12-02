@@ -15,7 +15,6 @@ def main(roster_id):
         random_reverse=True,
         fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=5,
-        speed=125,  # Shredder not replaced, but has gen 6 speeds
         intro_year_offset=7,  # introduce later than gen epoch by design
         # additional_liveries=["DB_SCHENKER"],
         sprites_complete=True,

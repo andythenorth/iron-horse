@@ -10,7 +10,6 @@ def main(roster_id):
         role="heavy_express",
         role_child_branch_num=-3,
         power_by_power_source={"DIESEL": 1650, "AC": 2800},
-        speed=125, # for lolz and also gen 6 compatibility
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=5,

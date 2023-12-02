@@ -205,13 +205,13 @@ def main():
                     75,
                     90,
                     105,
-                    115,
-                    125,
+                    120,
+                    120,
                 ],
-                "hst": [0, 0, 0, 112, 125, 125],
-                "hst_on_lgv": [0, 0, 0, 112, 125, 140],
-                "very_high_speed": [0, 0, 0, 0, 125, 125],
-                "very_high_speed_on_lgv": [0, 0, 0, 0, 140, 186],
+                "hst": [0, 0, 0, 112, 128, 128], # CABBAGE
+                "hst_on_lgv": [0, 0, 0, 112, 140, 140], # CABBAGE
+                "very_high_speed": [0, 0, 0, 0, 120, 120], # CABBAGE
+                "very_high_speed_on_lgv": [0, 0, 0, 0, 140, 186], # CABBAGE
             },
             "METRO": {
                 "standard": [45, 55, 65]
@@ -421,6 +421,22 @@ def main():
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
+                ],
+            },
+            "SWOOSH_1995": {
+                "remap_to_cc": None,
+                "forced_intro_year": 1995,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PINK", "COLOUR_WHITE"),
+                ],
+            },
+            "SWOOSH_2_1995": {
+                "remap_to_cc": None,
+                "forced_intro_year": 1995,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PINK", "COLOUR_WHITE"),
                 ],
             },
             "BLUE_PULLMAN": {

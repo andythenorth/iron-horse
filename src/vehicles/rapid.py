@@ -17,7 +17,6 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         intro_year_offset=2,  # let's not have everything turn up in 1990
-        speed=125,  # Rapid not replaced, but has gen 6 speeds
         fixed_run_cost_points=45,  # give a bonus so this can be a genuine mixed-traffic engine
         additional_liveries=["RES"],
         sprites_complete=True,

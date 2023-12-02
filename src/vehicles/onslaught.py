@@ -14,7 +14,6 @@ def main(roster_id):
         },
         random_reverse=True,
         gen=5,
-        speed=125,  # Onslaught not replaced, but has gen 6 speeds
         intro_year_offset=-8,  # let's be really early with this one to give a mail engine matching Blaze HST intro year
         # additional_liveries=["BANGER_BLUE", "LARGE_LOGO", "FANCY_BLUE", "INTERCITY_RASPBERRY_RIPPLE", "RAILFREIGHT_TRIPLE_GREY", "DUTCH"],
         additional_liveries=["BANGER_BLUE"],
