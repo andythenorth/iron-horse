@@ -13,7 +13,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=5,
-        intro_year_offset=12,  # introduce later than gen epoch by design
+        intro_year_offset=6,  # introduce later than gen epoch by design
         additional_liveries=[],
         sprites_complete=True,
         sprites_additional_liveries_potential=True,  # banger blue, industrial?
