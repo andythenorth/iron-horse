@@ -32,7 +32,7 @@ def main():
         base_numeric_id=16190,
         gen=6,
         subtype="U",
-        intro_year_offset=-10,  # match to Scorcher HST
+        intro_year_offset=-8,  # match to Scorcher HST
         cab_id="scorcher",
         lgv_capable=True,  # for lolz
         sprites_complete=True,

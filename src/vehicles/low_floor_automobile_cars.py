@@ -37,19 +37,3 @@ def main():
     consist.add_unit(
         type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px"
     )
-
-    consist = AutomobileLowFloorCarConsist(
-        roster_id="pony", base_numeric_id=14930, gen=6, subtype="B"
-    )
-
-    consist.add_unit(
-        type=AutomobileCarAsymmetric, chassis="2_axle_running_gear_only_24px"
-    )
-
-    consist = AutomobileLowFloorCarConsist(
-        roster_id="pony", base_numeric_id=14940, gen=6, subtype="C"
-    )
-
-    consist.add_unit(
-        type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px"
-    )
