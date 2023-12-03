@@ -13,7 +13,7 @@ def main(roster_id):
             "DIESEL": 5500,
             "AC": 7200,
         },
-        intro_year_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
+        intro_year_offset=-8,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
         lgv_capable=True,  # for lolz
         additional_liveries=["SWOOSH_LESS"],
@@ -31,7 +31,7 @@ def main(roster_id):
 
     consist.description = """Power is of the essence. Faster is everything."""
     consist.foamer_facts = (
-        """BR Class 43 (High Speed Train), life-extended with new primer mover"""
+        """IEP THING CLASS 800 CABBAGE"""
     )
 
     return consist
