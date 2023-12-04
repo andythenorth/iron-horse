@@ -18,7 +18,6 @@ from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle_mail
 from vehicles import brenner_middle_passenger
-from vehicles import bright_country
 from vehicles import buffalo
 from vehicles import captain_steel
 from vehicles import cargo_sprinter
@@ -49,6 +48,7 @@ from vehicles import driving_cab_passenger_pony_gen_6
 from vehicles import dryth
 from vehicles import dynamo
 from vehicles import eastern
+from vehicles import electra
 from vehicles import esk
 from vehicles import falcon
 from vehicles import firebird
@@ -858,7 +858,7 @@ def main():
             high_flyer,
             sunshine_coast,
             olympic,
-            bright_country,
+            electra,
             # brit high speed pax
             firebird,
             blaze,

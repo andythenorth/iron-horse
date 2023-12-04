@@ -61,6 +61,7 @@ from vehicles import dump_cars_high_side
 from vehicles import edibles_tank_cars
 from vehicles import express_cars
 from vehicles import express_intermodal_cars
+from vehicles import express_railcar_mail_trailer_cars
 from vehicles import express_railcar_passenger_trailer_cars
 from vehicles import farm_products_box_cars
 from vehicles import farm_products_type_one_hopper_cars
@@ -339,6 +340,7 @@ def main():
     edibles_tank_cars.main()
     express_cars.main()
     express_intermodal_cars.main()
+    express_railcar_mail_trailer_cars.main()
     express_railcar_passenger_trailer_cars.main()
     farm_products_box_cars.main()
     farm_products_type_one_hopper_cars.main()

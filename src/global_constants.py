@@ -9,6 +9,7 @@ buy_menu_sort_order_wagons = [
     "railbus_passenger_trailer_car",
     "railcar_passenger_trailer_car",
     "express_railcar_passenger_trailer_car",
+    "express_railcar_mail_trailer_car",
     "passenger_car",
     "restaurant_car",
     "suburban_passenger_car",
@@ -188,7 +189,7 @@ role_group_mapping = OrderedDict(
             "suburban",
             ["pax_railcar", "pax_suburban_coach"],
         ),
-        ("express_railcar", ["express_pax_railcar"]),
+        ("express_railcar", ["express_pax_railcar", "express_mail_railcar"]),
         ("hst", ["hst"]),
         ("very_high_speed", ["very_high_speed"]),
         (

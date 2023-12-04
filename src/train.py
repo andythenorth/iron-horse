@@ -1548,6 +1548,68 @@ class MailEngineRailcarConsist(MailEngineConsist):
         return result
 
 
+class MailEngineExpressRailcarConsist(MailEngineConsist):
+    """
+    Consist for an express mail railcar (single unit, combinable).
+    Intended for express-speed, high-power long-distance EMUs, use railbus or railcars for short / slow / commuter routes.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
+        self.buy_cost_adjustment_factor = 0.85
+        # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
+        self.fixed_run_cost_points = 155
+        # non-standard cite
+        self._cite = "Dr Constance Speed"
+        # Graphics configuration
+        if self.gen in [2, 3]:
+            self.roof_type = "pax_mail_ridged"
+        else:
+            self.roof_type = "pax_mail_smooth"
+        # position variants
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        # * unit with no cabs (center car)
+        # * special unit with no cabs (center car)
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="railcars_4_unit_sets",
+            liveries=self.roster.default_mail_liveries,
+            pantograph_type=self.pantograph_type,
+        )
+
+
+    @property
+    def equivalent_ids_alt_var_41(self):
+        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
+        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
+        # this redefinition specific to express pax railcars and will be fragile if railcars or trailers are changed/extended
+        # also relies on same ruleset being used for all of express_railcar_passenger_trailer_car trailers
+        result = []
+        # this will catch self also
+        for consist in self.roster.engine_consists:
+            if (
+                (consist.gen == self.gen)
+                and (consist.base_track_type_name == self.base_track_type_name)
+                and (consist.role in ["express_mail_railcar"])
+            ):
+                result.extend(consist.lead_unit_variants_numeric_ids)
+        for consist in self.roster.wagon_consists[
+            "express_railcar_mail_trailer_car"
+        ]:
+            if (consist.gen == self.gen) and (
+                consist.base_track_type_name == self.base_track_type_name
+            ):
+                result.extend(consist.lead_unit_variants_numeric_ids)
+        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
+        for i in range(len(result), 16):
+            result.append(-1)
+        return result
+
+
 class PassengerEngineConsist(EngineConsist):
     """
     Consist of engines / units that has passenger capacity
@@ -4489,6 +4551,40 @@ class MailCarConsistBase(CarConsist):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
+class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
+    """
+    Common base class for mail railcar trailer cars.
+    """
+
+    def __init__(self, **kwargs):
+        # don't set base_id here, let subclasses do it
+        super().__init__(**kwargs)
+        # cab_id must be passed, do not mask errors with .get()
+        self.cab_id = kwargs["cab_id"]
+        self._buyable_variant_group_id = self.cab_id
+        # get the intro year offset and life props from the cab, to ensure they're in sync
+        self.intro_year_offset = self.cab_consist.intro_year_offset
+        self._model_life = self.cab_consist.model_life
+        self._vehicle_life = self.cab_consist.vehicle_life
+        # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
+        self.power_by_power_source = {
+            key: 0 for key in self.cab_consist.power_by_power_source.keys()
+        }
+        self.pantograph_type = self.cab_consist.pantograph_type
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
+        self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
+        self._joker = True
+
+    def get_name_parts(self, context, unit_variant):
+        # special name handling to use the cab name
+        result = [
+            "STR_NAME_" + self.cab_id.upper(),
+            self._str_name_suffix,
+        ]
+        return result
+
+
 class MailCarConsist(MailCarConsistBase):
     """
     Mail cars - also handle express freight, valuables.
@@ -4524,6 +4620,70 @@ class MailCarConsist(MailCarConsistBase):
             consist_ruleset="mail_cars",
             liveries=liveries,
         )
+
+
+class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
+    """
+    Unpowered mail trailer car for express railcars.
+    Position-dependent sprites for cabs etc.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "express_railcar_mail_trailer_car"
+        super().__init__(**kwargs)
+        self.speed_class = "express"
+        self.buy_cost_adjustment_factor = 2.1
+        self.floating_run_cost_multiplier = 4.75
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["express_non_core"]
+        )
+        self._joker = True
+        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
+        self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        self.weight_factor = 0.66 if self.base_track_type_name == "NG" else 1.5
+        # Graphics configuration
+        if self.gen in [2, 3]:
+            self.roof_type = "pax_mail_ridged"
+        else:
+            self.roof_type = "pax_mail_smooth"
+        # position variants
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        # * unit with no cabs (center car)
+        # * special unit with no cabs (center car)
+        # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="railcars_4_unit_sets",
+            liveries=self.cab_consist.gestalt_graphics.liveries,
+            pantograph_type=self.pantograph_type,
+        )
+
+    @property
+    def equivalent_ids_alt_var_41(self):
+        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
+        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
+        # this redefinition specific to pax railcar trailers and will be fragile if railcars or trailers are changed/extended
+        # also relies on same ruleset being used for all of express_railcar_mail_trailer_car trailers
+        result = []
+        result.extend(self.lead_unit_variants_numeric_ids)
+        for consist in self.roster.engine_consists:
+            if (
+                (consist.gen == self.gen)
+                and (consist.base_track_type_name == self.base_track_type_name)
+                and (consist.role in ["express_mail_railcar"])
+            ):
+                result.extend(consist.lead_unit_variants_numeric_ids)
+        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
+        for i in range(len(result), 16):
+            result.append(-1)
+        return result
+
+    @property
+    def hide_in_wagons_only_mode(self):
+        return True
 
 
 class MailHSTCarConsist(MailCarConsistBase):
@@ -6774,6 +6934,7 @@ class ElectricExpressRailcarPaxUnit(ElectricRailcarBaseUnit):
         self.capacity = self.get_pax_car_capacity()
 
 
+
 class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
     """
     Unit for a mail electric railcar.  Just a sparse subclass to set capacity.
@@ -7010,6 +7171,17 @@ class ExpressMailCar(ExpressCar):
         super().__init__(**kwargs)
         # mail wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
         self._symmetry_type = "asymmetric"
+
+
+class MailRailcarTrailerCar(ExpressCar):
+    """
+    Railcar (or railbus) unpowered mail trailer. This subclass only exists to set tail light
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # TrainCar sets auto tail light, over-ride it
+        self.tail_light = kwargs["tail_light"]  # fail if not passed, required arg
 
 
 class AutomobileCarAsymmetric(ExpressCar):
