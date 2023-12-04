@@ -208,10 +208,10 @@ def main():
                     120,
                     120,
                 ],
-                "hst": [0, 0, 0, 112, 128, 128], # CABBAGE
-                "hst_on_lgv": [0, 0, 0, 112, 140, 140], # CABBAGE
-                "very_high_speed": [0, 0, 0, 0, 120, 120], # CABBAGE
-                "very_high_speed_on_lgv": [0, 0, 0, 0, 140, 186], # CABBAGE
+                "hst": [0, 0, 0, 112, 128, 128],  # CABBAGE
+                "hst_on_lgv": [0, 0, 0, 112, 140, 140],  # CABBAGE
+                "very_high_speed": [0, 0, 0, 0, 120, 120],  # CABBAGE
+                "very_high_speed_on_lgv": [0, 0, 0, 0, 140, 186],  # CABBAGE
             },
             "METRO": {
                 "standard": [45, 55, 65]
@@ -497,6 +497,15 @@ def main():
                     ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
                 ],
             },
+            "ROYAL_MAIL": {
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_RED",
+                    "company_colour2": "company_colour2",
+                },
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
+                ],
+            },
             "INDUSTRIAL_BROWN": {
                 "remap_to_cc": {
                     "company_colour1": "COLOUR_BROWN",
@@ -666,6 +675,61 @@ def main():
             },
             {
                 "relative_spriterow_num": 4,
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_RED",
+                    "company_colour2": "company_colour2",
+                },
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_RED"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+        ],
+        express_railcar_mail_liveries=[
+            {
+                "relative_spriterow_num": 0,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "relative_spriterow_num": 1,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "relative_spriterow_num": 2,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "relative_spriterow_num": 3,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "relative_spriterow_num": 4,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "relative_spriterow_num": 5,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "relative_spriterow_num": 6,
                 "remap_to_cc": {
                     "company_colour1": "COLOUR_RED",
                     "company_colour2": "company_colour2",

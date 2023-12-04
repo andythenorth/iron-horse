@@ -12,10 +12,11 @@ def main(roster_id):
         name="Electra", # or RedStar?
         role="express_mail_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
-        power_by_power_source={"AC": 1120},
+        power_by_power_source={"AC": 1440},
         pantograph_type="z-shaped-single-with-base",
         gen=5,
         intro_year_offset=1,  # introduce later by design
+        additional_liveries=["GNER", "SWOOSH_1995", "SWOOSH_2_1995", "ROYAL_MAIL", "ROYAL_MAIL", "ROYAL_MAIL"], # CABBAGE
         sprites_complete=False,
     )
 

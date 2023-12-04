@@ -45,6 +45,9 @@ class Roster(object):
         self.electric_railcar_mail_liveries = kwargs.get(
             "electric_railcar_mail_liveries", []
         )
+        self.express_railcar_mail_liveries = kwargs.get(
+            "express_railcar_mail_liveries", []
+        )
         self.diesel_railcar_mail_liveries = kwargs.get(
             "diesel_railcar_mail_liveries", []
         )

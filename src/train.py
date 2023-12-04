@@ -1577,7 +1577,9 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_4_unit_sets",
-            liveries=self.roster.default_mail_liveries,
+            liveries=self.roster.get_liveries_by_name(
+                kwargs.get("additional_liveries", [])
+            ),
             pantograph_type=self.pantograph_type,
         )
 
@@ -4633,7 +4635,7 @@ class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.buy_cost_adjustment_factor = 2.1
-        self.floating_run_cost_multiplier = 4.75
+        self.floating_run_cost_multiplier = 3.2
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["express_non_core"]
         )
