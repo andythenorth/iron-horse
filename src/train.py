@@ -1718,7 +1718,9 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_4_unit_sets",
-            liveries=self.roster.default_pax_liveries,
+            liveries=self.roster.get_liveries_by_name(
+                kwargs.get("additional_liveries", [])
+            ),
             pantograph_type=self.pantograph_type,
         )
 

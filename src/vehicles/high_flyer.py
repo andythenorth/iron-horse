@@ -15,6 +15,7 @@ def main(roster_id):
         pantograph_type="diamond-single-with-base",
         gen=3,
         intro_year_offset=2,  # introduce later by design
+        additional_liveries=["WHITE_STRIPE"], # express railcars set explicit liveries, as they may vary from standard pax/mail
         sprites_complete=True,
     )
 
