@@ -14,7 +14,7 @@ def main(roster_id):
         },
         random_reverse=True,
         gen=4,
-        speed=115,
+        speed=120,
         pantograph_type="z-shaped-double",
         intro_year_offset=12,  # introduce much later than gen epoch by design
         extended_vehicle_life=True,
