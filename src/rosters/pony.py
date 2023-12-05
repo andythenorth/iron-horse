@@ -685,61 +685,6 @@ def main():
                 ],
             },
         ],
-        express_railcar_mail_liveries=[
-            {
-                "relative_spriterow_num": 0,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 1,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 2,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 3,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 4,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 5,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 6,
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_RED",
-                    "company_colour2": "company_colour2",
-                },
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_RED"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-        ],
         dvt_mail_liveries=[
             {
                 "docs_image_input_cc": [
