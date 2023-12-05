@@ -19,6 +19,7 @@ def main(roster_id):
         random_reverse=True,
         gen=1,
         extended_vehicle_life=True, # extended vehicle life for all gronks eh
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_BROWN"],
         sprites_complete=True,
     )

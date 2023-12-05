@@ -16,6 +16,7 @@ def main(roster_id):
         fixed_run_cost_points=100,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=5,  # not replaced by anything (?)
         caboose_family="railfreight_2",
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL"],
         default_livery_extra_docs_examples=[
             ("COLOUR_GREY", "COLOUR_YELLOW"),

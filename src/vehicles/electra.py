@@ -16,7 +16,8 @@ def main(roster_id):
         pantograph_type="z-shaped-single-with-base",
         gen=5,
         intro_year_offset=1,  # introduce later by design
-        additional_liveries=["GNER", "SWOOSH", "SWOOSH", "SWOOSH", "SWOOSH", "ROYAL_MAIL"], # CABBAGE - NOTE THAT LIVERY METADATA CAN REPEAT FOR MULTIPLE ROWS
+        #note that livery names are metadata only and can repeat for different spriterows
+        additional_liveries=["WHITE_STRIPE", "SWOOSH", "SWOOSH", "SWOOSH", "SWOOSH", "ROYAL_MAIL"], # CABBAGE - NOTE THAT LIVERY METADATA CAN REPEAT FOR MULTIPLE ROWS
         sprites_complete=False,
     )
 

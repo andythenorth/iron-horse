@@ -262,12 +262,56 @@ def main():
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
+        # generally, reuse of these is encouraged, they're (mostly) just metadata and can be repeated multiple times for different spriterows of a vehicle
+        # keep alphabetised
         engine_liveries={
-            "_DEFAULT": {
-                # this is just a fallback for some special cases, such as snowploughs
+            "BANGER_BLUE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "DB_SCHENKER": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "DUTCH_1986": {
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_GREY",
+                    "company_colour2": "company_colour1",
+                },
+                "forced_intro_year": 1986,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_YELLOW", "COLOUR_WHITE"),
+                    ("COLOUR_GREY", "COLOUR_WHITE"),
+                ],
+            },
+            "DUTCH": {
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_GREY",
+                    "company_colour2": "company_colour1",
+                },
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_YELLOW", "COLOUR_WHITE"),
+                    ("COLOUR_GREY", "COLOUR_WHITE"),
+                ],
+            },
+            "EWS": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_PINK", "COLOUR_YELLOW"),
+                ],
+            },
+            "FREIGHT_BLACK": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                 ],
             },
             "FREIGHTLINER_GBRF": {
@@ -283,16 +327,45 @@ def main():
                     ("COLOUR_MAUVE", "COLOUR_YELLOW"),
                 ],
             },
-            "FREIGHTLINER_2": {
-                # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
+            "INDUSTRIAL_BROWN": {
                 "remap_to_cc": {
-                    "company_colour1": "COLOUR_YELLOW",
-                    "company_colour2": "company_colour1",
+                    "company_colour1": "COLOUR_BROWN",
+                    "company_colour2": "company_colour2",
                 },
                 "docs_image_input_cc": [
-                    ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
-                    ("COLOUR_DARK_GREEN", "COLOUR_YELLOW"),
-                    ("COLOUR_GREEN", "COLOUR_YELLOW"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "INDUSTRIAL_YELLOW": {
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_YELLOW",
+                    "company_colour2": "company_colour2",
+                },
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "INTERCITY_RASPBERRY_RIPPLE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PINK", "COLOUR_WHITE"),
+                    ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
+                ],
+            },
+            "LARGE_LOGO": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                ],
+            },
+            "LOADHAUL": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_ORANGE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
                 ],
             },
             "RAILFREIGHT_RED_STRIPE": {
@@ -331,166 +404,6 @@ def main():
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
             },
-            "YEOMAN": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_GREY"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_GREY"),
-                    ("COLOUR_ORANGE", "COLOUR_WHITE"),
-                ],
-            },
-            "EWS": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_PINK", "COLOUR_YELLOW"),
-                ],
-            },
-            "FREIGHT_BLACK": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                ],
-            },
-            "INDUSTRIAL": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                ],
-            },
-            "BANGER_BLUE": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                ],
-            },
-            "DB_SCHENKER": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "BLUE_GREY": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                ],
-            },
-            "LARGE_LOGO": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                ],
-            },
-            "WHITE_STRIPE": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                ],
-            },
-            "INTERCITY_RASPBERRY_RIPPLE": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PINK", "COLOUR_WHITE"),
-                    ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
-                ],
-            },
-            "GNER": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                ],
-            },
-            "SWOOSH": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
-                ],
-            },
-            "SWOOSH_LESS": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
-                ],
-            },
-            "SWOOSH_1995": {
-                "remap_to_cc": None,
-                "forced_intro_year": 1995,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PINK", "COLOUR_WHITE"),
-                ],
-            },
-            "SWOOSH_2_1995": {
-                "remap_to_cc": None,
-                "forced_intro_year": 1995,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_PINK", "COLOUR_WHITE"),
-                ],
-            },
-            "BLUE_PULLMAN": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
-                ],
-            },
-            "DUTCH": {
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_GREY",
-                    "company_colour2": "company_colour1",
-                },
-                "forced_intro_year": 1986,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_YELLOW", "COLOUR_WHITE"),
-                    ("COLOUR_GREY", "COLOUR_WHITE"),
-                ],
-            },
-            "DUTCH_UNLIMITED": {
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_GREY",
-                    "company_colour2": "company_colour1",
-                },
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_YELLOW", "COLOUR_WHITE"),
-                    ("COLOUR_GREY", "COLOUR_WHITE"),
-                ],
-            },
-            "FINSBURY_CABS": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_DARK_GREEN", "COLOUR_WHITE"),
-                ],
-            },
-            "FANCY_BLUE": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "LOADHAUL": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_ORANGE", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
-                ],
-            },
             "RES": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -506,28 +419,37 @@ def main():
                     ("COLOUR_RED", "COLOUR_LIGHT_BLUE"),
                 ],
             },
-            "INDUSTRIAL_BROWN": {
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_BROWN",
-                    "company_colour2": "company_colour2",
-                },
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "INDUSTRIAL_YELLOW": {
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_YELLOW",
-                    "company_colour2": "company_colour2",
-                },
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            "2CC": {
+            "SWOOSH": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
+                ],
+            },
+            "SWOOSH_1995": {
+                "remap_to_cc": None,
+                "forced_intro_year": 1995,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
+                ],
+            },
+            "WHITE_STRIPE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            "YEOMAN": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_GREY"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_GREY"),
+                    ("COLOUR_ORANGE", "COLOUR_WHITE"),
                 ],
             },
         },

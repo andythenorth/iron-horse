@@ -17,6 +17,7 @@ def main(roster_id):
         fixed_run_cost_points=150,  # small cost bonus for balance against same gen Haar
         gen=3,
         intro_year_offset=4,  # introduce a bit later
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["FREIGHT_BLACK"],
         sprites_complete=True,
     )

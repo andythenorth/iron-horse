@@ -18,7 +18,8 @@ def main(roster_id):
         intro_year_offset=-2,  # let's be a littler earlier for this one
         caboose_family="railfreight_1",
         # add railfreight triple grey
-        additional_liveries=["WHITE_STRIPE", "RAILFREIGHT_RED_STRIPE", "DUTCH"],
+        #note that livery names are metadata only and can repeat for different spriterows
+        additional_liveries=["WHITE_STRIPE", "RAILFREIGHT_RED_STRIPE", "DUTCH_1986"],
         decor_spriterow_num=4,
         sprites_complete=True,
     )

@@ -15,7 +15,8 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         intro_year_offset=1,  # introduce later than gen epoch by design
-        additional_liveries=["FINSBURY_CABS", "BANGER_BLUE"],
+        #note that livery names are metadata only and can repeat for different spriterows
+        additional_liveries=["SWOOSH", "BANGER_BLUE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_DARK_GREEN", "COLOUR_ORANGE"),
             ("COLOUR_BLUE", "COLOUR_BLUE"),

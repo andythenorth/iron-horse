@@ -15,7 +15,8 @@ def main(roster_id):
         pantograph_type="z-shaped-single-with-base",
         gen=5,
         intro_year_offset=1,  # introduce later by design
-        additional_liveries=["GNER", "SWOOSH", "SWOOSH_LESS"], # express railcars set explicit liveries, as they may vary from standard pax/mail
+        #note that livery names are metadata only and can repeat for different spriterows
+        additional_liveries=["WHITE_STRIPE", "SWOOSH", "SWOOSH"], # express railcars set explicit liveries, as they may vary from standard pax/mail
         sprites_complete=True,
     )
 

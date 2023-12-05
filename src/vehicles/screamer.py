@@ -18,13 +18,14 @@ def main(roster_id):
         extended_vehicle_life=True,
         pantograph_type="z-shaped-double",
         # railfreight grey, intercity, GNER?
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=[
             "BANGER_BLUE",
             "FREIGHTLINER_GBRF",
             "RES",
             "SWOOSH",
             "DB_SCHENKER",
-            "FREIGHTLINER_2",
+            "FREIGHTLINER_GBRF",
         ],
         default_livery_extra_docs_examples=[
             ("COLOUR_WHITE", "COLOUR_BLUE"),

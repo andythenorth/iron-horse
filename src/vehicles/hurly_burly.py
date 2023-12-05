@@ -18,6 +18,7 @@ def main(roster_id):
         pantograph_type="diamond-double",
         intro_year_offset=5,  # introduce later than gen epoch by design
         fixed_run_cost_points=180,  # substantial cost bonus for balance against same-era steam engines
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PINK", "COLOUR_WHITE"),

@@ -15,6 +15,7 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         caboose_family="railfreight_1",
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE", "LARGE_LOGO", "RAILFREIGHT_RED_STRIPE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),

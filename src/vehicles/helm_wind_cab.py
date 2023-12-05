@@ -16,7 +16,8 @@ def main(roster_id):
         pantograph_type="z-shaped-single-reversed",
         gen=5,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
-        additional_liveries=["GNER"],
+        #note that livery names are metadata only and can repeat for different spriterows
+        additional_liveries=["WHITE_STRIPE"],
         sprites_complete=True,
     )
 

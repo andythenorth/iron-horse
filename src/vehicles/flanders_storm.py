@@ -19,6 +19,7 @@ def main(roster_id):
         pantograph_type="z-shaped-double",
         intro_year_offset=5,  # introduce later than gen epoch by design
         caboose_family="railfreight_2",
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["RAILFREIGHT_TRIPLE_GREY"],
         sprites_complete=True,
     )

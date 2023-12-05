@@ -17,11 +17,12 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         # red stripe? Teeside steelmaster?
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=[
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY_COAL",
             "DB_SCHENKER",
-            "SWOOSH_LESS",
+            "SWOOSH",
             "LOADHAUL",
         ],
         default_livery_extra_docs_examples=[

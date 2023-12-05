@@ -16,6 +16,7 @@ def main(roster_id):
         base_track_type_name="NG",
         gen=4,
         intro_year_offset=10,
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

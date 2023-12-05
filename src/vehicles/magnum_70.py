@@ -20,6 +20,7 @@ def main(roster_id):
         gen=6,
         intro_year_offset=-6,  # introduce earlier than gen epoch by design
         extended_vehicle_life=True, # extended vehicle life for all gronks eh
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

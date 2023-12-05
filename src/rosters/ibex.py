@@ -173,7 +173,7 @@ def main():
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
         engine_liveries={
-            "_DEFAULT": {
+            "SWOOSH": {
                 # this is just a fallback for some special cases, such as snowploughs
                 "remap_to_cc": None,
                 "docs_image_input_cc": [

@@ -18,6 +18,7 @@ def main(roster_id):
         intro_year_offset=1,  # introduce later than gen epoch by design
         extended_vehicle_life=True,
         # intercity, railfreight?
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["SWOOSH", "FREIGHTLINER_GBRF", "RES"],
         default_livery_extra_docs_examples=[
             ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),

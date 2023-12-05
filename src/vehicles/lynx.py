@@ -16,6 +16,7 @@ def main(roster_id):
         fixed_run_cost_points=100,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=5,  # not replaced by anything (?)
         intro_year_offset=7,  # introduce later than gen epoch by design
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

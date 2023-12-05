@@ -1362,7 +1362,7 @@ class AutoCoachCombineConsist(EngineConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_autocoach.pynml",
-            liveries=[self.roster.engine_liveries["_DEFAULT"]],
+            liveries=[self.roster.engine_liveries["SWOOSH"]],
         )
 
     @property
@@ -1924,7 +1924,7 @@ class SnowploughEngineConsist(EngineConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_snowplough.pynml",
-            liveries=[self.roster.engine_liveries["_DEFAULT"]],
+            liveries=[self.roster.engine_liveries["SWOOSH"]],
         )
 
 
@@ -2831,7 +2831,7 @@ class CabooseCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCaboose(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
             liveries=[
-                global_constants.wagon_liveries["_DEFAULT"],
+                global_constants.wagon_liveries["SWOOSH"],
             ],
             spriterow_labels=kwargs.get("spriterow_labels"),
             caboose_families=kwargs.get("caboose_families"),
@@ -3649,7 +3649,7 @@ class ExpressIntermodalCarConsist(CarConsist):
             liveries=[
                 # intermodal container wagons can't use random colour swaps on the wagons...
                 # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
-                global_constants.wagon_liveries["_DEFAULT"],
+                global_constants.wagon_liveries["SWOOSH"],
             ],
         )
 
@@ -3693,7 +3693,7 @@ class FarmProductsBoxCarConsist(CarConsist):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.wagon_liveries[
-                    "_DEFAULT"
+                    "SWOOSH"
                 ],  # company colour not used on these wagons
             ],
         )
@@ -3730,7 +3730,7 @@ class FarmProductsHopperCarConsistBase(CarConsist):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.wagon_liveries[
-                    "_DEFAULT"
+                    "SWOOSH"
                 ],  # company colour not used on these wagons
             ],
         )
@@ -3777,7 +3777,7 @@ class FarmProductsHopperCarRandomisedConsist(
             dice_colour=2,
             liveries=[
                 global_constants.wagon_liveries[
-                    "_DEFAULT"
+                    "SWOOSH"
                 ],  # company colour not used on these wagons
             ],
         )
@@ -4029,7 +4029,7 @@ class GasTankCarConsistBase(CarConsist):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
-                global_constants.wagon_liveries["_DEFAULT"],
+                global_constants.wagon_liveries["SWOOSH"],
             ],
         )
 
@@ -4358,7 +4358,7 @@ class IntermodalCarConsistBase(CarConsist):
             consist_ruleset=consist_ruleset,
             liveries=[
                 global_constants.wagon_liveries[
-                    "_DEFAULT"
+                    "SWOOSH"
                 ],  # !! as of April 2023, company colour isn't used for default intermodal sprite, so use _DEFAULT
             ],
         )

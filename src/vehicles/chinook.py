@@ -15,6 +15,7 @@ def main(roster_id):
         gen=4,
         fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
         caboose_family="railfreight_1",
+        #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
