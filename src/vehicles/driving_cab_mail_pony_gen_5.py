@@ -8,6 +8,7 @@ def main(roster_id):
         base_numeric_id=13020,
         name="Driving Van Trailer",
         gen=5,
+        lgv_capable=True,  # for lolz
         sprites_complete=True,
     )
 

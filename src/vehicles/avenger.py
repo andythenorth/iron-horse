@@ -16,6 +16,7 @@ def main(roster_id):
         gen=5,
         pantograph_type="z-shaped-single",
         intro_year_offset=-2,  # introduce slightly earlier than gen epoch by design
+        lgv_capable=True,  # for lolz
         # additional_liveries=["WHITE_STRIPE", "RAILFREIGHT_TRIPLE_GREY"],
         #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["RAILFREIGHT_TRIPLE_GREY"],

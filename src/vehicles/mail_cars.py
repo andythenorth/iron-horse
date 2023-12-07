@@ -169,35 +169,3 @@ def main():
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
-
-    # gen 6 broadly same as gen 5, but new liveries (any other difference?)
-
-    consist = MailCarConsist(
-        roster_id="pony",
-        base_numeric_id=9910,
-        gen=6,
-        subtype="A",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=ExpressMailCar, chassis="2_axle_solid_express_16px")
-
-    consist = MailCarConsist(
-        roster_id="pony",
-        base_numeric_id=10990,
-        gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
-
-    consist = MailCarConsist(
-        roster_id="pony",
-        base_numeric_id=9050,
-        gen=6,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")

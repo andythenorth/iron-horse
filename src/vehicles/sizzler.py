@@ -15,6 +15,7 @@ def main(roster_id):
         random_reverse=True,
         gen=6,
         intro_year_offset=2,  # introduce later than gen epoch by design
+        lgv_capable=True,  # for lolz
         extended_vehicle_life=True,
         pantograph_type="z-shaped-double",
         #note that livery names are metadata only and can repeat for different spriterows

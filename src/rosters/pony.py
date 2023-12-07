@@ -208,8 +208,16 @@ def main():
                     120,
                     120,
                 ],
+                "express_on_lgv": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    140,
+                    140,
+                ],
                 "hst": [0, 0, 0, 112, 128, 128],  # CABBAGE
-                "hst_on_lgv": [0, 0, 0, 112, 140, 140],  # CABBAGE
+                "hst_on_lgv": [0, 0, 0, 0, 140, 140],  # CABBAGE
                 "very_high_speed": [0, 0, 0, 0, 120, 120],  # CABBAGE
                 "very_high_speed_on_lgv": [0, 0, 0, 0, 140, 186],  # CABBAGE
             },
@@ -441,6 +449,16 @@ def main():
                 "docs_image_input_cc": [
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
+                ],
+            },
+            "WHITE_STRIPE_1995": {
+                "remap_to_cc": None,
+                "forced_intro_year": 1995,
+                "docs_image_input_cc": [
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
                 ],
             },
             "YEOMAN": {
@@ -455,6 +473,32 @@ def main():
         },
         # remaps, docs image colours etc as needed
         default_pax_liveries=[
+            {
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+        ],
+        gen_5_pax_liveries=[
+            {
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             {
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -485,6 +529,47 @@ def main():
             },
         ],
         default_mail_liveries=[
+            {
+                "relative_spriterow_num": 3,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "relative_spriterow_num": 0,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "relative_spriterow_num": 1,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "relative_spriterow_num": 2,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+            {
+                "relative_spriterow_num": 4,
+                "remap_to_cc": {
+                    "company_colour1": "COLOUR_RED",
+                    "company_colour2": "company_colour2",
+                },
+                "docs_image_input_cc": [
+                    ("COLOUR_RED", "COLOUR_RED"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+        ],
+        gen_5_mail_liveries=[
             {
                 "relative_spriterow_num": 3,
                 "docs_image_input_cc": [

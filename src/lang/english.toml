@@ -486,6 +486,12 @@ base = "Flat Wagon"
 [STR_NAME_SUFFIX_GOODS_BOX_CAR]
 base = "Goods Van"
 
+[STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR]
+base= "High Speed Mail"
+
+[STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR]
+base= "High Speed Coach"
+
 [STR_NAME_SUFFIX_HOOD_OPEN_CAR]
 base = "Hood Open Wagon"
 
@@ -674,6 +680,9 @@ base = "{BLACK}Role: {GOLD}{STRING}"
 [STR_ROLE_DRIVING_CAB]
 base = "Driving Cab"
 
+[STR_ROLE_EXPRESS]
+base = "Express"
+
 [STR_ROLE_FREIGHT]
 base = "Freight"
 
@@ -683,7 +692,7 @@ base = "General Purpose"
 [STR_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "General Purpose / Express"
 
-[STR_ROLE_HST]
+[STR_ROLE_HIGH_SPEED]
 base = "High Speed"
 
 [STR_ROLE_LOLZ]
@@ -739,6 +748,9 @@ base = "{BLACK}Requires dedicated high speed rails to reach maximum speed"
 
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR]
 base = "{}{BLACK}Bonus: {GOLD}Eliminates running costs for all Passenger Coaches in the train"
+
+[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR_EXTENDED]
+base = "{}{BLACK}Bonus: {GOLD}Eliminates running costs for all Passenger Coaches or High Speed Coaches in the train"
 
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS]
 base = "{}{BLACK}Colour mix: {GOLD}{STRING}"

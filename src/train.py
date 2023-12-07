@@ -101,7 +101,7 @@ class Consist(object):
         )
         self.dual_headed = kwargs.get("dual_headed", False)
         self.tilt_bonus = False  # over-ride in subclass as needed
-        self.lgv_capable = False  # over-ride in subclass as needed
+        self.lgv_capable = kwargs.get("lgv_capable", False)
         self.requires_high_clearance = kwargs.get("requires_high_clearance", False)
         # solely used for ottd livery (company colour) selection, set in subclass as needed
         self.train_flag_mu = False
@@ -704,6 +704,16 @@ class Consist(object):
             )
 
         # mildly JDFI hacky
+        for role_group_mapping_key in [
+            "express",
+            "driving_cab",
+            "express_railcar",
+            "high_power_railcar",
+        ]:
+            group_roles = global_constants.role_group_mapping[role_group_mapping_key]
+            if self.role in group_roles:
+                return self.get_speed_by_class("express_on_lgv")
+
         if self.role in ["hst"]:
             return self.get_speed_by_class("hst_on_lgv")
         elif self.role in ["very_high_speed"]:
@@ -1021,7 +1031,11 @@ class Consist(object):
 
         # driving cab hint comes after role string
         if self.buy_menu_additional_text_hint_restaurant_car:
-            result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR")
+            # this roster and generation specific check is definition of BAD FEATURE, but eh, regrets later?
+            if self.roster_id == "pony" and self.gen == 5:
+                result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR_EXTENDED")
+            else:
+                result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR")
 
         # livery variants comes after role string
         if unit_variant is not None:
@@ -1583,7 +1597,6 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
             pantograph_type=self.pantograph_type,
         )
 
-
     @property
     def equivalent_ids_alt_var_41(self):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
@@ -1599,9 +1612,7 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
                 and (consist.role in ["express_mail_railcar"])
             ):
                 result.extend(consist.lead_unit_variants_numeric_ids)
-        for consist in self.roster.wagon_consists[
-            "express_railcar_mail_trailer_car"
-        ]:
+        for consist in self.roster.wagon_consists["express_railcar_mail_trailer_car"]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
@@ -1679,7 +1690,6 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         # always dual-head
         self.dual_headed = True
-        self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.2
         # higher speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base for high speed
@@ -4690,6 +4700,42 @@ class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
         return True
 
 
+class MailHighSpeedCarConsist(MailCarConsistBase):
+    """
+    High speed (LGV capable) variant of mail car.
+    Position-dependent sprites for brake car etc.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "high_speed_mail_car"
+        super().__init__(**kwargs)
+        self.speed_class = "express"
+        self.lgv_capable = True
+        # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
+        self.buy_cost_adjustment_factor = 1.9
+        self.floating_run_cost_multiplier = 4
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        self.weight_factor = 1
+        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
+        self._buy_menu_additional_text_role_string = "STR_ROLE_EXPRESS"
+        # Graphics configuration
+        # mail cars have consist cargo mappings for pax, mail (freight uses mail)
+        # * pax matches pax liveries for generation
+        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
+        # position based variants
+        spriterow_group_mappings = {
+            "default": 0,
+            "first": 1,
+            "last": 1,
+            "special": 2,
+        }
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="mail_cars",
+            liveries=self.roster.default_mail_liveries,
+        )
+
+
 class MailHSTCarConsist(MailCarConsistBase):
     """
     Trailer dedicated for Mail on HST-type trains (no wagon attach, but matching stats and livery).
@@ -4703,7 +4749,6 @@ class MailHSTCarConsist(MailCarConsistBase):
         # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
-        self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.66
         # get the intro year offset and life props from the cab, to ensure they're in sync
         self.intro_year_offset = self.cab_consist.intro_year_offset
@@ -4712,7 +4757,7 @@ class MailHSTCarConsist(MailCarConsistBase):
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_additional_text_role_string = "STR_ROLE_HST"
+        self._buy_menu_additional_text_role_string = "STR_ROLE_HIGH_SPEED"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -5000,6 +5045,43 @@ class PassengerCarConsist(PassengerCarConsistBase):
         )
 
 
+class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
+    """
+    High speed (LGV capable) variant of passenger car.
+    Default decay rate, capacities within reasonable distance of original base set pax coaches.
+    Position-dependent sprites for brake car etc.
+    """
+
+    # very specific flag used for variable run costs and cargo aging factor with restaurant cars
+    # !! this will need made more general if e.g. motorail or observation cars are added
+    # not sure why I did this as a class property, but eh
+    affected_by_restaurant_car_in_consist = True
+
+    def __init__(self, **kwargs):
+        self.base_id = "high_speed_passenger_car"
+        super().__init__(**kwargs)
+        self.lgv_capable = True
+        # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
+        self.buy_cost_adjustment_factor = 1.9
+        self.floating_run_cost_multiplier = 4
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        self.weight_factor = 1
+        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
+        self._buy_menu_additional_text_role_string = "STR_ROLE_EXPRESS"
+        # Graphics configuration
+        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
+        # position based variants:
+        #   * standard coach
+        #   * brake coach front
+        #   * brake coach rear
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="pax_cars",
+            liveries=self.roster.gen_5_pax_liveries,
+        )
+
+
 class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
     """
     Unpowered passenger trailer car for express railcars.
@@ -5078,7 +5160,6 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
-        self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33
@@ -5091,7 +5172,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_additional_text_role_string = "STR_ROLE_HST"
+        self._buy_menu_additional_text_role_string = "STR_ROLE_EXPRESS"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -6936,7 +7017,6 @@ class ElectricExpressRailcarPaxUnit(ElectricRailcarBaseUnit):
         super().__init__(**kwargs)
         # magic to set capacity subject to length and vehicle capacity type
         self.capacity = self.get_pax_car_capacity()
-
 
 
 class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):

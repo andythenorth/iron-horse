@@ -40,6 +40,10 @@ class Roster(object):
         self.engine_liveries = kwargs.get("engine_liveries", [])
         self.wagon_liveries = kwargs.get("wagon_liveries", {})
         self.default_pax_liveries = kwargs.get("default_pax_liveries", [])
+        # !! CABBAGE - this gen_5_mail_liveries and gen_5_pax_liveries shows how adding named attrs to the roster directly is stupid
+        # !! might also be that this method of defining liveries for wagons for just one generation is stupid?
+        self.gen_5_mail_liveries = kwargs.get("gen_5_mail_liveries", [])
+        self.gen_5_pax_liveries = kwargs.get("gen_5_pax_liveries", [])
         self.suburban_pax_liveries = kwargs.get("suburban_pax_liveries", [])
         self.default_mail_liveries = kwargs.get("default_mail_liveries", [])
         self.electric_railcar_mail_liveries = kwargs.get(

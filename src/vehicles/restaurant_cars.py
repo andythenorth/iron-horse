@@ -49,6 +49,7 @@ def main():
         base_numeric_id=14600,
         gen=5,
         subtype="U",
+        lgv_capable=True,  # for lolz
         sprites_complete=True,
     )
 
@@ -61,6 +62,7 @@ def main():
         base_numeric_id=14610,
         gen=6,
         subtype="U",
+        lgv_capable=True,  # for lolz
         sprites_complete=True,
     )
 

@@ -22,6 +22,7 @@ def main():
         subtype="U",
         intro_year_offset=-10,  # match to Blaze HST
         cab_id="blaze",
+        lgv_capable=True,  # for lolz
         sprites_complete=True,
     )
 

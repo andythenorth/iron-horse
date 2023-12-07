@@ -16,7 +16,7 @@ def main(roster_id):
         gen=5,
         lgv_capable=True,  # for lolz
         #note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE", "WHITE_STRIPE", "SWOOSH_1995", "SWOOSH_1995"],
+        additional_liveries=["BANGER_BLUE", "WHITE_STRIPE_1995", "SWOOSH_1995", "SWOOSH_1995"],
         sprites_complete=True,
     )
 

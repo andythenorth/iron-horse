@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="scorcher",
         base_numeric_id=12360,
-        name="Scorcher HST",
+        name="Scorcher",
         role="hst",  # quite a specific role, may or may not scale to other rosters
         role_child_branch_num=-1,
         power_by_power_source={
