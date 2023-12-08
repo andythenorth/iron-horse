@@ -30,7 +30,7 @@ def main(roster_id):
 
     consist.description = """She was like a bird for speed, an arrow for directness."""
     consist.foamer_facts = (
-        """BR Class 325"""
+        """BR Class 325 mail/parcels EMU"""
     )
 
     return consist
