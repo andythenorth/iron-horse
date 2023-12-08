@@ -204,7 +204,7 @@ base = "Propósito General"
 [STR_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "Propósito General / Express"
 
-[STR_ROLE_HIGH_SPEED]
+[STR_ROLE_INTERCITY_EXPRESS]
 base = "Alta Velocidad"
 
 [STR_ROLE_LOLZ]

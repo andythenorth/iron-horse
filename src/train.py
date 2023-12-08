@@ -1409,7 +1409,6 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.role = "driving_cab_express_mail"
-        self.role_child_branch_num = -1  # driving cab cars are probably jokers?
         self.buy_menu_additional_text_hint_driving_cab = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
         self.power_by_power_source = {"NULL": 300}
@@ -1654,7 +1653,6 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.role = "driving_cab_express_pax"
-        self.role_child_branch_num = -1  # driving cab cars are probably jokers?
         self.buy_menu_additional_text_hint_driving_cab = True
         # special purpose attr for use with alt var 41 and pax_car_ids
         self.treat_as_pax_car_for_var_41 = True
@@ -1672,11 +1670,16 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # position based variants
+        # !! CABBAGE BAD JFDI STUFF
+        if self.id == "driving_cab_high_speed_passenger_pony_gen_5":
+            liveries = self.roster.gen_5_pax_liveries
+        else:
+            liveries = self.roster.default_pax_liveries
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="driving_cab_cars",
-            liveries=self.roster.default_pax_liveries,
+            liveries=liveries,
         )
 
 
@@ -4717,7 +4720,7 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_additional_text_role_string = "STR_ROLE_EXPRESS"
+        self._buy_menu_additional_text_role_string = "STR_ROLE_INTERCITY_EXPRESS"
         # Graphics configuration
         # mail cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
@@ -4757,7 +4760,7 @@ class MailHSTCarConsist(MailCarConsistBase):
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_additional_text_role_string = "STR_ROLE_HIGH_SPEED"
+        self._buy_menu_additional_text_role_string = "STR_ROLE_INTERCITY_EXPRESS"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -5067,7 +5070,7 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_additional_text_role_string = "STR_ROLE_EXPRESS"
+        self._buy_menu_additional_text_role_string = "STR_ROLE_INTERCITY_EXPRESS"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -5172,7 +5175,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_additional_text_role_string = "STR_ROLE_EXPRESS"
+        self._buy_menu_additional_text_role_string = "STR_ROLE_INTERCITY_EXPRESS"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:

@@ -487,7 +487,7 @@ base = "Flat Wagon"
 base = "Goods Van"
 
 [STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR]
-base= "High Speed Mail"
+base= "High Speed Mail Van"
 
 [STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR]
 base= "High Speed Coach"
@@ -692,8 +692,8 @@ base = "General Purpose"
 [STR_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "General Purpose / Express"
 
-[STR_ROLE_HIGH_SPEED]
-base = "High Speed"
+[STR_ROLE_INTERCITY_EXPRESS]
+base = "InterCity Express"
 
 [STR_ROLE_LOLZ]
 base = "Joker"

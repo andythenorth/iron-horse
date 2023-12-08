@@ -118,7 +118,7 @@ base = "Opća namjena"
 [STR_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "Opća namjena / ekspresni"
 
-[STR_ROLE_HIGH_SPEED]
+[STR_ROLE_INTERCITY_EXPRESS]
 base = "Visoka brzina"
 
 [STR_ROLE_METRO]

@@ -211,12 +211,12 @@ role_string_mapping = {
     "express": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
     "freight": "STR_ROLE_FREIGHT",
     "high_power_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
-    "hst": "STR_ROLE_HIGH_SPEED",
+    "hst": "STR_ROLE_INTERCITY_EXPRESS",
     "lolz": "STR_ROLE_LOLZ",
     "express_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
     "metro": "STR_ROLE_METRO",
     "suburban": "STR_ROLE_SUBURBAN",
-    "very_high_speed": "STR_ROLE_VERY_HIGH_SPEED",
+    "very_high_speed": "STR_ROLE_INTERCITY_EXPRESS",
     "universal": "STR_ROLE_GENERAL_PURPOSE",
 }
 

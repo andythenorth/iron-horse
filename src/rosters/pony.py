@@ -41,10 +41,11 @@ from vehicles import dover
 from vehicles import dragon
 from vehicles import dreadnought
 from vehicles import driving_cab_mail_pony_gen_5
-from vehicles import driving_cab_mail_pony_gen_6
+from vehicles import driving_cab_high_speed_mail_pony_gen_5
+from vehicles import driving_cab_high_speed_mail_pony_gen_6
 from vehicles import driving_cab_passenger_pony_gen_4
 from vehicles import driving_cab_passenger_pony_gen_5
-from vehicles import driving_cab_passenger_pony_gen_6
+from vehicles import driving_cab_high_speed_passenger_pony_gen_5
 from vehicles import dryth
 from vehicles import dynamo
 from vehicles import eastern
@@ -787,9 +788,10 @@ def main():
             # driving cab cars
             driving_cab_passenger_pony_gen_4,
             driving_cab_passenger_pony_gen_5,
-            driving_cab_passenger_pony_gen_6,
+            driving_cab_high_speed_passenger_pony_gen_5,
             driving_cab_mail_pony_gen_5,
-            driving_cab_mail_pony_gen_6,
+            driving_cab_high_speed_mail_pony_gen_5,
+            driving_cab_high_speed_mail_pony_gen_6,
             # branch freight
             buffalo,
             saxon,

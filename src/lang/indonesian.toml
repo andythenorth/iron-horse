@@ -209,7 +209,7 @@ base = "Tujuan Umum"
 [STR_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "Tujuan Umum Express"
 
-[STR_ROLE_HIGH_SPEED]
+[STR_ROLE_INTERCITY_EXPRESS]
 base = "Kecepatan Tinggi"
 
 [STR_ROLE_LOLZ]

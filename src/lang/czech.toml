@@ -124,7 +124,7 @@ base = "Obecný účel"
 [STR_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "Obecný účel /Expres"
 
-[STR_ROLE_HIGH_SPEED]
+[STR_ROLE_INTERCITY_EXPRESS]
 base = "Vysoká rychlost"
 
 [STR_ROLE_METRO]

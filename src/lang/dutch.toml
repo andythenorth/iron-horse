@@ -122,7 +122,7 @@ base = "Algemeen gebruik"
 [STR_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "Algemeen gebruik / expresse"
 
-[STR_ROLE_HIGH_SPEED]
+[STR_ROLE_INTERCITY_EXPRESS]
 base = "Hoge snelheid"
 
 [STR_ROLE_METRO]

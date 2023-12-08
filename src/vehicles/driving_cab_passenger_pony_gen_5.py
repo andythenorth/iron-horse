@@ -7,6 +7,7 @@ def main(roster_id):
         id="driving_cab_passenger_pony_gen_5",
         base_numeric_id=14210,
         name="Driving Trailer",
+        role_child_branch_num=-1,  # driving cab cars are probably jokers?
         gen=5,
         sprites_complete=True,
     )

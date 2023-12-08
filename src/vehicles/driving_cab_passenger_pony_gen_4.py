@@ -7,6 +7,7 @@ def main(roster_id):
         id="driving_cab_passenger_pony_gen_4",
         base_numeric_id=14430,
         name="Driving Trailer",
+        role_child_branch_num=-1,  # driving cab cars are probably jokers?
         gen=4,
         intro_year_offset=16,  # a lot later, very short lived, replaced by gen 5 quickly
         sprites_complete=True,
