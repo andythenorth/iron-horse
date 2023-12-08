@@ -7,9 +7,9 @@ from train import (
 def main(roster_id):
     consist = MailEngineExpressRailcarConsist(
         roster_id=roster_id,
-        id="electra",
+        id="chronos",
         base_numeric_id=11080,
-        name="Electra", # or RedStar?
+        name="Chronos",
         role="express_mail_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={"AC": 1440},

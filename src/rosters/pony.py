@@ -49,7 +49,7 @@ from vehicles import driving_cab_high_speed_passenger_pony_gen_5
 from vehicles import dryth
 from vehicles import dynamo
 from vehicles import eastern
-from vehicles import electra
+from vehicles import chronos
 from vehicles import esk
 from vehicles import falcon
 from vehicles import firebird
@@ -876,7 +876,7 @@ def main():
             high_flyer,
             sunshine_coast,
             olympic,
-            electra,
+            chronos,
             # brit high speed pax
             firebird,
             blaze,

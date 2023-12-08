@@ -9,7 +9,7 @@ def main():
         base_numeric_id=10220,
         gen=5,
         subtype="U",
-        cab_id="electra",
+        cab_id="chronos",
         sprites_complete=False,
     )
 
