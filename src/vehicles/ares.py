@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=11170,
         name="Ares",
         role="mail_railcar",
-        role_child_branch_num=2,
+        role_child_branch_num=3,
         power_by_power_source={
             "AC": 400,
         },
