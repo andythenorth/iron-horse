@@ -48,7 +48,7 @@
                                     <!--! currently universal is assumed to only be railcars for RAIL, if that changes adjust approach to suit -->
                                     <h4>Railcars / Multiple-Unit Trains</h4>
                                     <ul>
-                                        <li>These run at the speed of freight trains, and are suited to
+                                        <li>These run at similar speeds to freight trains, and are suited to
                                             <ul>
                                                 <li>short routes</li>
                                                 <li>routes which are heavily used by freight trains, which limit the maximum speed of other trains on the route</li>
@@ -73,14 +73,14 @@
                                     </ul>
                                 </div>
                                 <div tal:case="'hst'">
-                                    <h4>High-Speed Trains</h4>
+                                    <h4>InterCity Express Trains</h4>
                                     <ul>
-                                        <li> high-speed diesel passenger engines with dedicated high-speed coaches and mail cars</li>
+                                        <li> high-speed engines with dedicated high-speed coaches and mail cars</li>
                                         <li> can attach other types of cars to haul freight cargos but will travel at less than maximum engine speed</li>
                                     </ul>
                                 </div>
                                 <div tal:case="'very_high_speed'">
-                                    <h4>Very High-Speed Trains</h4>
+                                    <h4>InterCity Express Trains With Distributed Power</h4>
                                     <ul>
                                         <li> TGV-style electric passenger trains with very high speeds</li>
                                         <li> power is distributed throughout the train
