@@ -83,6 +83,11 @@ class DocHelper(object):
                     for role_child_branch in self.get_role_child_branches(
                         consists, base_track_type_and_label[0], role
                     ):
+                        # special case to drop anything that shouldn't be in tech tree (e.g. TGV middle cars)
+                        # this relies on forcing child branch IDs up into 1000+ values (which is probably fine?)
+                        if (role_child_branch > 999) or (role_child_branch < -999):
+                            continue
+                        # allowed cases
                         if not (simplified_gameplay and role_child_branch < 0):
                             role_child_branches[role_child_branch] = {}
                             # walk the generations, providing default None objects
@@ -94,17 +99,18 @@ class DocHelper(object):
                                 role_child_branches[role_child_branch][gen] = None
                     # get the engines matching this role and track type, and place them into the child branches
                     for consist in consists:
-                        if not (
-                            simplified_gameplay and consist.role_child_branch_num < 0
-                        ):
-                            if (
-                                consist.base_track_type_name
-                                == base_track_type_and_label[0]
-                            ) and (consist.role == role):
-                                role_child_branches[consist.role_child_branch_num][
-                                    consist.gen
-                                ] = consist
-                    # only to role group to tree for this track type if there are actual vehicles in it
+                        if (simplified_gameplay and consist.role_child_branch_num < 0):
+                            continue
+                        if (consist.role_child_branch_num > 999) or (consist.role_child_branch_num < -999):
+                            continue
+                        if (
+                            consist.base_track_type_name
+                            == base_track_type_and_label[0]
+                        ) and (consist.role == role):
+                            role_child_branches[consist.role_child_branch_num][
+                                consist.gen
+                            ] = consist
+                    # only add role group to tree for this track type if there are actual vehicles in it
                     if len(role_child_branches) > 0:
                         result.setdefault(base_track_type_and_label, {})
                         result[base_track_type_and_label].setdefault(role_group, {})

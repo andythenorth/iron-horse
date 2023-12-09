@@ -2061,6 +2061,12 @@ class TGVMiddleMailEngineConsist(TGVMiddleEngineConsistMixin, MailEngineConsist)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # force the child branches apart for middle engines, based on cab ID
+        if self.cab_consist.role_child_branch_num < 0:
+            offset = -2000
+        else:
+            offset = 2000
+        self.role_child_branch_num = offset + self.cab_consist.role_child_branch_num
 
 
 class TGVMiddlePassengerEngineConsist(
@@ -2072,6 +2078,12 @@ class TGVMiddlePassengerEngineConsist(
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # force the child branches apart for middle engines, based on cab ID
+        if self.cab_consist.role_child_branch_num < 0:
+            offset = -1000
+        else:
+            offset = 1000
+        self.role_child_branch_num = offset + self.cab_consist.role_child_branch_num
 
 
 class CarConsist(Consist):

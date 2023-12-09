@@ -8,7 +8,6 @@ def main(roster_id):
         base_numeric_id=430,
         name="Hokuhokusei Mail Van",
         role="very_high_speed",
-        role_child_branch_num=-6, # note branch number offset, this is solely to make the tech tree group the cabs and middle cars for main branch
         pantograph_type="z-shaped-single-with-base",
         power_by_power_source={
             "AC": 0

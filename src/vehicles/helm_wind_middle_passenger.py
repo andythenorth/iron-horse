@@ -8,7 +8,6 @@ def main(roster_id):
         base_numeric_id=2890,
         name="Helm Wind Passenger Coach",
         role="very_high_speed",
-        role_child_branch_num=2,
         power_by_power_source={
             "AC": 0
         },  # set power 0, when attached to correct cab, cab power will be increased
