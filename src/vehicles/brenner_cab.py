@@ -29,6 +29,6 @@ def main(roster_id):
     )
 
     consist.description = """And you shall know this velocity."""
-    consist.foamer_facts = """Alstom Class 390 <i>Pendolino</i>"""
+    consist.foamer_facts = """Alstom Class 390 <i>Pendolino</i>, Alstom Class 373 <i>Eurostar</i>"""
 
     return consist
