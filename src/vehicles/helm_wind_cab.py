@@ -33,7 +33,7 @@ def main(roster_id):
 
     consist.description = """Can we get there faster? That's what drives me."""
     consist.foamer_facts = (
-        """BR InterCity 225 (Class 91), Shinkansen-style distributed traction"""
+        """BR InterCity 225 (Class 91), BR APT-P, Shinkansen-style distributed traction"""
     )
 
     return consist
