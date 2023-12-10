@@ -4,9 +4,9 @@ from train import TGVMiddleMailEngineConsist, ElectricHighSpeedMailUnit
 def main(roster_id):
     consist = TGVMiddleMailEngineConsist(
         roster_id=roster_id,
-        id="hokuhokusei_middle_mail",
+        id="gloaming_middle_mail",
         base_numeric_id=430,
-        name="Hokuhokusei Mail Van",
+        name="gloaming Mail Van",
         role="very_high_speed",
         pantograph_type="z-shaped-single-with-base",
         power_by_power_source={
@@ -19,7 +19,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=ElectricHighSpeedMailUnit,
-        weight=52,
+        weight=54,
         spriterow_num=0,
         chassis="jacobs_solid_express_32px",
         repeat=2,

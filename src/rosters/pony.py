@@ -62,6 +62,9 @@ from vehicles import gargouille
 from vehicles import general_endeavour
 from vehicles import geronimo
 from vehicles import girt_licker
+from vehicles import gloaming_cab
+from vehicles import gloaming_middle_mail
+from vehicles import gloaming_middle_passenger
 from vehicles import goliath
 from vehicles import gowsty
 from vehicles import grid
@@ -77,9 +80,6 @@ from vehicles import helm_wind_middle_mail
 from vehicles import helm_wind_middle_passenger
 from vehicles import hercules
 from vehicles import high_flyer
-from vehicles import hokuhokusei_cab
-from vehicles import hokuhokusei_middle_mail
-from vehicles import hokuhokusei_middle_passenger
 from vehicles import hurly_burly
 from vehicles import intrepid
 from vehicles import jupiter
@@ -100,6 +100,7 @@ from vehicles import merlion
 from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
+from vehicles import nimbus
 from vehicles import olympic
 from vehicles import onslaught
 from vehicles import peasweep
@@ -119,7 +120,6 @@ from vehicles import revolution
 from vehicles import roarer
 from vehicles import saxon
 from vehicles import scooby
-from vehicles import scorcher
 from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
@@ -880,16 +880,16 @@ def main():
             # brit high speed pax
             firebird,
             blaze,
-            scorcher,
+            nimbus,
             helm_wind_cab,
             helm_wind_middle_passenger,
             helm_wind_middle_mail,
             brenner_cab,
             brenner_middle_passenger,
             brenner_middle_mail,
-            hokuhokusei_cab,
-            hokuhokusei_middle_passenger,
-            hokuhokusei_middle_mail,
+            gloaming_cab,
+            gloaming_middle_passenger,
+            gloaming_middle_mail,
             # metro
             serpentine,
             westbourne,

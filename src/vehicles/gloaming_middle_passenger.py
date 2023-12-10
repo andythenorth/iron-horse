@@ -4,9 +4,9 @@ from train import TGVMiddlePassengerEngineConsist, ElectricHighSpeedPaxUnit
 def main(roster_id):
     consist = TGVMiddlePassengerEngineConsist(
         roster_id=roster_id,
-        id="hokuhokusei_middle_passenger",
+        id="gloaming_middle_passenger",
         base_numeric_id=420,
-        name="Hokuhokusei Passenger Coach",
+        name="gloaming Passenger Coach",
         role="very_high_speed",
         pantograph_type="z-shaped-single-with-base",
         power_by_power_source={
@@ -19,7 +19,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=ElectricHighSpeedPaxUnit,
-        weight=52,
+        weight=54,
         spriterow_num=0,
         chassis="jacobs_solid_express_32px",
         repeat=2,

@@ -33,8 +33,8 @@ def main():
         base_numeric_id=12530,
         gen=6,
         subtype="U",
-        intro_year_offset=-8,  # match to Scorcher HST
-        cab_id="scorcher",
+        intro_year_offset=-8,  # match to nimbus HST
+        cab_id="nimbus",
         lgv_capable=True,  # for lolz
         sprites_complete=True,
     )
