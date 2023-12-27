@@ -100,7 +100,7 @@ class Consist(object):
             "show_decor_in_purchase_for_variants", []
         )
         self.dual_headed = kwargs.get("dual_headed", False)
-        self.tilt_bonus = False  # over-ride in subclass as needed
+        self.tilt_bonus = kwargs.get("tilt_bonus", False)
         self.lgv_capable = kwargs.get("lgv_capable", False)
         self.requires_high_clearance = kwargs.get("requires_high_clearance", False)
         # solely used for ottd livery (company colour) selection, set in subclass as needed

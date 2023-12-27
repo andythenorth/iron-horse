@@ -33,9 +33,10 @@ def main():
         base_numeric_id=16190,
         gen=6,
         subtype="U",
-        intro_year_offset=-8,  # match to nimbus HST
+        intro_year_offset=-9,  # match to Nimbus HST
         cab_id="nimbus",
         lgv_capable=True,  # for lolz
+        tilt_bonus=True,  # for lolz
         sprites_complete=True,
     )
 
