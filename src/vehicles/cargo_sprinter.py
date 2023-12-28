@@ -15,7 +15,7 @@ def main(roster_id):
         role_child_branch_num=-1,
         dual_headed=True,
         power_by_power_source={
-            "NULL": 1650,  # matched to Griffon, Ultra Shoebox
+            "DIESEL": 1650,  # matched to Griffon, Ultra Shoebox
         },
         gen=6,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
