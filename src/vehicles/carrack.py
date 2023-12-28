@@ -10,9 +10,10 @@ def main(roster_id):
         role="express",
         role_child_branch_num=1,
         power_by_power_source={
-            "STEAM": 1150,
+            "STEAM": 1200,
         },
         tractive_effort_coefficient=0.18,
+        fixed_run_cost_points=140,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=2,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
         extended_vehicle_life=True,

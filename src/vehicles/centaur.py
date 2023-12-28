@@ -7,10 +7,10 @@ def main(roster_id):
         id="centaur",
         base_numeric_id=14810,
         name="Centaur",
-        role="freight",
-        role_child_branch_num=-2,
+        role="express",
+        role_child_branch_num=1,
         power_by_power_source={
-            "DIESEL": 2000,  # tried it as 2500 hp, doesn't work
+            "DIESEL": 2250,  # tried it as 2500 hp, doesn't work
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
@@ -19,11 +19,12 @@ def main(roster_id):
         # red stripe? Teeside steelmaster?
         #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=[
-            "RAILFREIGHT_TRIPLE_GREY",
-            "RAILFREIGHT_TRIPLE_GREY_COAL",
+            "SWOOSH",
+            "SWOOSH",
             "DB_SCHENKER",
             "SWOOSH",
-            "LOADHAUL",
+            "RAILFREIGHT_TRIPLE_GREY",
+            "RES",
         ],
         default_livery_extra_docs_examples=[
             ("COLOUR_GREY", "COLOUR_YELLOW"),
@@ -33,10 +34,8 @@ def main(roster_id):
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
             ("COLOUR_YELLOW", "COLOUR_YELLOW"),
         ],
-        decor_spriterow_num=6,
-        show_decor_in_purchase_for_variants=[1, 2],
         caboose_family="railfreight_2",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
@@ -44,6 +43,6 @@ def main(roster_id):
     )
 
     consist.description = """Technically, we're all half centaur."""
-    consist.foamer_facts = """proposed BR Class 38, intended to replace class 37"""
+    consist.foamer_facts = """proposed BR Class 38 (Class 37 replacement), body shape derived from SNCF <i>Nez Cassés</i> ('broken nose') locomotive and originally proposed for BR Class 60"""
 
     return consist

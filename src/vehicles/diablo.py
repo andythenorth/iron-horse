@@ -7,18 +7,17 @@ def main(roster_id):
         id="diablo",
         base_numeric_id=4910,
         name="2-6-0 Diablo",
-        role="freight",
-        role_child_branch_num=2,
+        role="express",
+        role_child_branch_num=-1,
         power_by_power_source={
-            "STEAM": 1500,  # same as Haar
+            "STEAM": 1450,
         },
-        speed=75,  # for lolz
         tractive_effort_coefficient=0.22,
-        fixed_run_cost_points=150,  # small cost bonus for balance against same gen Haar
+        fixed_run_cost_points=140,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=3,
         intro_year_offset=4,  # introduce a bit later
         #note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["FREIGHT_BLACK"],
+        additional_liveries=["SWOOSH", "FREIGHT_BLACK"],
         sprites_complete=True,
     )
 

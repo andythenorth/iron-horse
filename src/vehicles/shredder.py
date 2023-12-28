@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=11870,
         name="Shredder",  # Griffon and Shredder names are wrong way round, but seems to suit the shapes so eh, leave it :)
         role="express",
-        role_child_branch_num=1,
+        role_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 2250,  # intended for short mail / supplies trains
         },
@@ -16,7 +16,7 @@ def main(roster_id):
         fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=5,
         intro_year_offset=7,  # introduce later than gen epoch by design
-        # additional_liveries=["DB_SCHENKER"],
+        additional_liveries=["SWOOSH", "DB_SCHENKER"],
         sprites_complete=True,
     )
 
