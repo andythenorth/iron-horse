@@ -36,6 +36,6 @@ def main(roster_id):
     )
 
     consist.description = """A hard-charging bag of bones."""
-    consist.foamer_facts = """Proposed BR Class 88, derived from class 58 design"""
+    consist.foamer_facts = """Proposed BR Class 88, derived from Class 58 design"""
 
     return consist

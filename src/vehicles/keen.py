@@ -30,6 +30,6 @@ def main(roster_id):
     )
 
     consist.description = """Gallop apace, you fiery-footed steeds."""
-    consist.foamer_facts = """18in Hunslet tanks, Austerity tanks, LNER J94 class"""
+    consist.foamer_facts = """18in Hunslet tanks, Austerity tanks, LNER J94 Class"""
 
     return consist

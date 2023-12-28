@@ -17,7 +17,7 @@ def main(roster_id):
         fixed_run_cost_points=140,  # minor cost bonus so it can make money
         gen=1,
         #note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE"],
+        additional_liveries=["SWOOSH"],
         sprites_complete=True,
     )
 
