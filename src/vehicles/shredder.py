@@ -10,7 +10,7 @@ def main(roster_id):
         role="express",
         role_child_branch_num=-1,
         power_by_power_source={
-            "DIESEL": 2250,  # intended for short mail / supplies trains
+            "DIESEL": 2150,  # intended for short mail / supplies trains
         },
         random_reverse=True,
         fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine

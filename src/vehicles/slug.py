@@ -10,7 +10,7 @@ def main(roster_id):
         role="freight",
         role_child_branch_num=2,
         power_by_power_source={
-            "DIESEL": 2000,
+            "DIESEL": 2200,
         },
         random_reverse=True,
         gen=5,

@@ -10,7 +10,7 @@ def main(roster_id):
         role="express",
         role_child_branch_num=1,
         power_by_power_source={
-            "DIESEL": 2250,  # tried it as 2500 hp, doesn't work
+            "DIESEL": 2200,
         },
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
@@ -35,11 +35,11 @@ def main(roster_id):
             ("COLOUR_YELLOW", "COLOUR_YELLOW"),
         ],
         caboose_family="railfreight_2",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
-        type=DieselEngineUnit, weight=100, vehicle_length=8, spriterow_num=0
+        type=DieselEngineUnit, weight=90, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = """Technically, we're all half centaur."""
