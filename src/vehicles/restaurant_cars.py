@@ -50,19 +50,7 @@ def main():
         gen=5,
         subtype="U",
         lgv_capable=True,  # for lolz
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=PaxRestaurantCar, chassis="4_axle_solid_express_32px")
-
-    # gen 6 broadly same as gen 5, but new liveries (any other difference?)
-
-    consist = PassengerRestaurantCarConsist(
-        roster_id="pony",
-        base_numeric_id=14610,
-        gen=6,
-        subtype="U",
-        lgv_capable=True,  # for lolz
+        liveries="gen_5_and_6_pax_liveries", # override default liveries from gestalt
         sprites_complete=True,
     )
 
