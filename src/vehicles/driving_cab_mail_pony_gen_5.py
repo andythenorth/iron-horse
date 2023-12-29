@@ -9,7 +9,7 @@ def main(roster_id):
         name="Driving Van Trailer",
         role_child_branch_num=-1,  # driving cab cars are probably jokers?
         gen=5,
-        sprites_complete=False,
+        sprites_complete=False, # needs gen 6 pax liveries, possibly other things
     )
 
     consist.add_unit(type=CabbageDVTUnit, weight=32, chassis="railcar_32px")
