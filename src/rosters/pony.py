@@ -447,6 +447,14 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
                 ],
             },
+            # the default "nothing" livery
+            "VANILLA": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
             "WHITE_STRIPE": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -477,42 +485,24 @@ def main():
         # remaps, docs image colours etc as needed
         default_pax_liveries=[
             {
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
+                "livery_name": "VANILLA",
             },
             {
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
+                "livery_name": "VANILLA",
             },
         ],
         gen_5_pax_liveries=[
             {
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
+                "livery_name": "VANILLA",
             },
             {
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
+                "livery_name": "VANILLA",
             },
             {
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
+                "livery_name": "VANILLA",
             },
             {
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
+                "livery_name": "VANILLA",
             },
         ],
         suburban_pax_liveries=[
@@ -697,36 +687,21 @@ def main():
         ],
         dvt_mail_liveries=[
             {
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
+                "livery_name": "VANILLA",
             },
             {
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
+                "livery_name": "VANILLA",
             },
             {
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
+                "livery_name": "VANILLA",
             },
             {
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
+                "livery_name": "VANILLA",
             },
         ],
         default_metro_liveries=[
             {
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
+                "livery_name": "VANILLA",
             },
         ],
         # this list is manually maintained deliberately, even though it could be mostly automated using tech tree

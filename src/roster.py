@@ -282,10 +282,13 @@ class Roster(object):
         return result
 
     def get_pax_mail_liveries(self, livery_group_name, consist):
-        print(consist.gen)
-        print(livery_group_name)
-        return self.pax_mail_liveries[livery_group_name]
-
+        result = []
+        for livery in self.pax_mail_liveries[livery_group_name]:
+            if 'livery_name' in livery.keys():
+                result.append(self.engine_and_pax_mail_car_liveries[livery["livery_name"]])
+            else:
+                result.append(livery)
+        return result
 
     def intro_year_ranges(self, base_track_type_name):
         # return a list of year pairs (first year, last year) for generations
