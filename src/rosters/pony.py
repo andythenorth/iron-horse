@@ -22,6 +22,7 @@ from vehicles import buffalo
 from vehicles import captain_steel
 from vehicles import cargo_sprinter
 from vehicles import carrack
+from vehicles import celt
 from vehicles import centaur
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
@@ -811,6 +812,7 @@ def main():
             # freight
             hercules,
             eastern,
+            celt,
             haar,
             trojan,
             growler,
