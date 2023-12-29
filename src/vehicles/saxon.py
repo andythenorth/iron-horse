@@ -18,7 +18,7 @@ def main(roster_id):
         gen=3,
         intro_year_offset=-8,  # introduce earlier than gen epoch by design
         #note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE", "INDUSTRIAL_YELLOW"],
+        additional_liveries=["BANGER_BLUE", "FREIGHT_BLACK", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 
