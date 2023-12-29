@@ -128,12 +128,14 @@ class DocHelper(object):
         # - cab cars
         # - powered wagons for TGVs
         # - powered cabooses for propelling
+        # - we also exclude engines with Gronk! role because they're silly
         result = []
         for consist in roster.engine_consists:
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if (
                 consist.buy_menu_additional_text_hint_driving_cab
                 or consist.wagons_add_power
+                or consist.role in ["gronk!"]
             ):
                 result.append(consist)
         return result
