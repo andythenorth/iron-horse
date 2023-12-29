@@ -16,7 +16,7 @@ def main(roster_id):
         fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=3,
         #note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE"],
+        additional_liveries=["BANGER_BLUE", "FREIGHT_BLACK"],
         sprites_complete=True,
     )
 
@@ -35,6 +35,6 @@ def main(roster_id):
     consist.description = (
         """A right big'un from Mr. Gresley. Put these in your pipe and smoke it."""
     )
-    consist.foamer_facts = """LNER P2"""
+    consist.foamer_facts = """LNER P1, P2"""
 
     return consist
