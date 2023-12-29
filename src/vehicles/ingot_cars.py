@@ -24,7 +24,7 @@ def main():
         gen=1,
         subtype="U",
         speed=35,  # note rare non-standard speed, don't spill hot ingots eh?
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=IngotCar, chassis="empty_8px", repeat=2)
@@ -36,7 +36,7 @@ def main():
         gen=4,
         subtype="U",
         speed=35,  # note rare non-standard speed, don't spill hot ingots eh?
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=IngotCar, chassis="empty_8px", repeat=2)
