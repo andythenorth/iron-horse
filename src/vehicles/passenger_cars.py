@@ -186,6 +186,7 @@ def main():
         base_numeric_id=9780,
         gen=5,
         subtype="B",
+        liveries="gen_5_and_6_pax_liveries", # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -196,6 +197,7 @@ def main():
         base_numeric_id=12170,
         gen=5,
         subtype="C",
+        liveries="gen_5_and_6_pax_liveries", # override default liveries from gestalt
         sprites_complete=True,
     )
 
