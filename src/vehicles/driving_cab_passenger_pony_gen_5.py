@@ -9,6 +9,7 @@ def main(roster_id):
         name="Driving Trailer",
         role_child_branch_num=-1,  # driving cab cars are probably jokers?
         gen=5,
+        liveries="gen_5_and_6_pax_liveries", # override default liveries from gestalt
         sprites_complete=True,
     )
 
