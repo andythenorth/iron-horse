@@ -19,7 +19,7 @@ def main(roster_id):
         tilt_bonus=True,  # for lolz
         #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["SWOOSH"],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(

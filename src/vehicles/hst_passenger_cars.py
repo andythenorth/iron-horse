@@ -37,7 +37,7 @@ def main():
         cab_id="nimbus",
         lgv_capable=True,  # for lolz
         tilt_bonus=True,  # for lolz
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
