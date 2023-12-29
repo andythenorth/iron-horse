@@ -67,35 +67,28 @@
                     <h2>3. What next?</h2>
 
                     <p class="lead">Find out more about ${roster.str_grf_name}.  Or try it out in OpenTTD!</p>
-                    <a class="btn btn-large btn-primary" href="tech_tree_table_red.html">Tech Tree</a>
+                    <a class="btn btn-large btn-primary" href="tech_tree_table_red.html">Engine tech tree</a>
                     &nbsp;
-                    <a class="btn btn-large btn-info" href="trains.html">List of Trains</a>
+                    <a class="btn btn-large btn-info" href="trains.html">List of all trains</a>
                 </div>
                 <hr />
                 <br />
                 <div id="tips-tricks-secret-features">
                     <h2>4. Tips, tricks and secret features</h2>
                     <h3>Company colour choices</h3>
-                    <ul>
-                        <li>
-                            ${roster.str_grf_name} has full support for 2 company colours.
-                            White is a recommended choice for the 2nd company colour (except for wagons), but it's fun to experiment with other combinations.
-                        </li>
-                        <li>
-                            Most wagons will switch between 1st and 2nd company colours if flipped in depot (use ctrl-click on the wagon).  Most wagons will also select random colour variations when built.
-                        </li>
-                    </ul>
+                    <p>${roster.str_grf_name} has full support for 2 company colours.</p>
+                    <p>White is a recommended choice for the 2nd company colour (except for wagons), but it's fun to experiment with other combinations.</p>
                     <h3>Cargo support</h3>
                     <p>${roster.str_grf_name} provides vehicles for a wide range of cargos, and should be compatible with all industry and cargo grfs.</p>
                     <p>Many wagons show cargo when loaded, and again a wide range of cargos are supported.</p>
                     <p>Autorefit (refit-at-stations) is supported for almost all vehicles.</p>
-                    <h3>Secret features and other details</h3>
-                    <p><em>Haulage bonus:</em> some electric railcars are allowed to increase their maximum speed when hauled by another engine that has a higher speed (or a faster express railcar).</p>
+                    <h3>Other features and details</h3>
                     <p><em>Tail lights:</em> trains will show a rear light.</p>
+                    <p><em>Bi-mode trains:</em> electro-diesel or similar engines will work with or without electricity.  Power is generally increased on electrified rails, and smoke or sparks will be show appropriately for current power type.</p>
                     <p><em>Magic appearance:</em> some vehicles will adapt their appearance depending on their position in the train, including passenger coaches, mail vans and intermodal wagons.</p>
                     <p><em>Integer length trains:</em> ${roster.str_grf_name} vehicles have consistent length and it's very easy to make integer length trains (length will show in depot as 4.0, 6.0, 8.0 etc). This has minimal gameplay effect, but is good for people who have tidy-mind problems.</p>
-                    <p><em>Bi-mode trains:</em> electro-diesel or similar engines will work with or without electricity.  Power is generally increased on electrified rails, and smoke or sparks will be show appropriately for current power type.</p>
                     <p><em>Brake vans / cabooses:</em> are just for eye-candy, and have no gameplay effect ;).</p>
+                    <p><em>Haulage bonus:</em> some electric railcars are allowed to increase their maximum speed when hauled by another engine that has a higher speed (or a faster express railcar).</p>
                 </div>
                 <hr />
                 <br />
