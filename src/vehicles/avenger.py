@@ -17,15 +17,13 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         intro_year_offset=-2,  # introduce slightly earlier than gen epoch by design
         lgv_capable=True,  # for lolz
-        # additional_liveries=["WHITE_STRIPE", "RAILFREIGHT_TRIPLE_GREY"],
         #note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["RAILFREIGHT_TRIPLE_GREY"],
+        additional_liveries=["WHITE_STRIPE", "RAILFREIGHT_TRIPLE_GREY"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
             ("COLOUR_ORANGE", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
-        sprites_additional_liveries_potential=True,  # GNER?
     )
 
     consist.add_unit(
