@@ -44,7 +44,6 @@ class Roster(object):
         )
         self.freight_wagon_liveries = kwargs.get("freight_wagon_liveries", {})
         self.pax_mail_livery_groups = kwargs.get("pax_mail_livery_groups", {})
-        print(kwargs.get("pax_mail_livery_groups", {}))
 
     @property
     def buy_menu_sort_order(self):
@@ -275,8 +274,10 @@ class Roster(object):
         )
         return result
 
-    def get_pax_mail_liveries(self, livery_group_name, consist):
+    def get_pax_mail_liveries(self, default_livery_group_name, **kwargs):
         result = []
+        # we can optionally specify liveries per consist by passing the liveries keyword when defining the vehicle, otherwise use the default for this consist subclass
+        livery_group_name = kwargs.get("liveries", default_livery_group_name)
         # !! CABBAGE - the get() is used to support unfinished rosters which otherwise fail on missing pax_mail_livery_groups keyword
         for livery in self.pax_mail_livery_groups.get(livery_group_name, []):
             livery_CABBAGE = self.engine_and_pax_mail_car_liveries[livery[0]].copy()

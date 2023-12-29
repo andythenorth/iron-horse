@@ -491,7 +491,7 @@ def main():
                 ("VANILLA", 0),
                 ("VANILLA", 1)
             ],
-            "gen_5_pax_liveries": [
+            "gen_5_and_6_pax_liveries": [
                 ("VANILLA", 0),
                 ("VANILLA", 1),
                 ("VANILLA", 2),
@@ -502,24 +502,24 @@ def main():
                 ("VANILLA", 0),
             ],
             "default_mail_liveries": [
+                ("VANILLA", 3),
                 ("VANILLA", 0),
                 ("VANILLA", 1),
                 ("VANILLA", 2),
-                ("VANILLA", 3),
                 ("ROYAL_MAIL", 4),
             ],
             "diesel_railcar_mail_liveries": [
+                ("VANILLA", 2),
                 ("VANILLA", 0),
                 ("VANILLA", 1),
-                ("VANILLA", 2),
                 ("VANILLA", 3),
                 ("ROYAL_MAIL", 4),
             ],
             "electric_railcar_mail_liveries": [
+                ("VANILLA", 3),
                 ("VANILLA", 0),
                 ("VANILLA", 1),
                 ("VANILLA", 2),
-                ("VANILLA", 3),
                 ("ROYAL_MAIL", 4),
             ],
             "dvt_mail_liveries": [
