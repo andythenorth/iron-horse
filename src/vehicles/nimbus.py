@@ -15,11 +15,12 @@ def main(roster_id):
         },
         intro_year_offset=-9,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
+        pantograph_type="z-shaped-single-reversed",
         lgv_capable=True,  # for lolz
         tilt_bonus=True,  # for lolz
         #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["SWOOSH"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -29,7 +30,7 @@ def main(roster_id):
         capacity=24,
         effect_offsets=[(0, 1), (0, -1)],  # double the smoke eh?
         spriterow_num=0,
-        tail_light="hst_32px_1",
+        tail_light="very_high_speed_32px_2",
     )
 
     consist.description = """Power is of the essence. Faster is everything."""
