@@ -24,7 +24,7 @@ def main(roster_id):
             "RAILFREIGHT_TRIPLE_GREY_COAL",
             "SWOOSH",
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
