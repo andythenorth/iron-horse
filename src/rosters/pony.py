@@ -275,7 +275,7 @@ def main():
         # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
         # generally, reuse of these is encouraged, they're (mostly) just metadata and can be repeated multiple times for different spriterows of a vehicle
         # keep alphabetised
-        engine_liveries={
+        engine_and_pax_mail_car_liveries={
             "BANGER_BLUE": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
