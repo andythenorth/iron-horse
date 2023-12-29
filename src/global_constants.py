@@ -76,6 +76,7 @@ buy_menu_sort_order_wagons = [
     "livestock_car",
     "edibles_tank_car",
     "reefer_car",
+    "reefer_car_alt",
     "farm_products_box_car",
     "farm_products_type_one_hopper_car",
     "farm_products_type_two_hopper_car",
@@ -264,6 +265,7 @@ buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_intermodal_cars": "intermodal_car",
     "wagon_group_open_cars": "open_car",
     "wagon_group_pressure_tank_cars": "pressure_tank_car",
+    "wagon_group_reefer_cars": "reefer_car",
     "wagon_group_silo_cars": "silo_car",
     "wagon_group_sliding_wall_cars": "sliding_wall_car",
 }

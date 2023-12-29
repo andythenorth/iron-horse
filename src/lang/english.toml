@@ -352,6 +352,9 @@ moose = "Gondolas"
 [STR_WAGON_GROUP_RANDOMISED_PIECE_GOODS_CARS]
 base = "Piece Goods Wagons"
 
+[STR_WAGON_GROUP_REEFER_CARS]
+base = "Refrigerated Vans"
+
 [STR_WAGON_GROUP_RESTAURANT_CARS]
 base = "Restaurant Cars"
 
@@ -613,6 +616,9 @@ base = "Piece Goods Wagon"
 base = "Silo Wagon"
 
 [STR_NAME_SUFFIX_REEFER_CAR]
+base = "Refrigerated Van"
+
+[STR_NAME_SUFFIX_REEFER_CAR_ALT]
 base = "Refrigerated Van"
 
 [STR_NAME_SUFFIX_RESTAURANT_CAR]

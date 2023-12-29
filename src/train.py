@@ -5839,14 +5839,13 @@ class PieceGoodsCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
         )
 
 
-class ReeferCarConsist(CarConsist):
+class ReeferCarConsistBase(CarConsist):
     """
     Refrigerated cargos.
     No actual cargo aging change - doesn't really work - so trade higher speed against lower capacity instead.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "reefer_car"
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = ["refrigerated_freight"]
@@ -5865,7 +5864,7 @@ class ReeferCarConsist(CarConsist):
             "weathered": graphics_constants.refrigerated_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="reefer_car",
+            id_base=self.base_id,
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -5873,6 +5872,32 @@ class ReeferCarConsist(CarConsist):
                 ],
             ],
         )
+
+
+class ReeferCarConsist(ReeferCarConsistBase):
+    """
+    Standard reefer car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "reefer_car"
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_reefer_cars"
+
+
+class ReeferCarAltConsist(ReeferCarConsistBase):
+    """
+    Alternative reefer car style.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "reefer_car_alt"
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_reefer_cars"
 
 
 class SiloCarConsistBase(CarConsist):

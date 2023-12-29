@@ -112,6 +112,7 @@ from vehicles import randomised_open_cars
 from vehicles import randomised_piece_goods_cars
 from vehicles import randomised_silo_cars
 from vehicles import reefer_cars
+from vehicles import reefer_alt_cars
 from vehicles import restaurant_cars
 from vehicles import rock_hopper_cars
 from vehicles import roller_roof_hopper_cars
@@ -376,6 +377,7 @@ def main():
     pressure_tank_cars.main()
     product_tank_cars.main()
     reefer_cars.main()
+    reefer_alt_cars.main()
     restaurant_cars.main()
     railbus_passenger_trailer_cars.main()
     railcar_passenger_trailer_cars.main()
