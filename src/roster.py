@@ -43,9 +43,7 @@ class Roster(object):
             "engine_and_pax_mail_car_liveries", []
         )
         self.freight_wagon_liveries = kwargs.get("freight_wagon_liveries", {})
-        self.pax_mail_livery_groups = kwargs.get(
-            "pax_mail_livery_groups", {}
-        )
+        self.pax_mail_livery_groups = kwargs.get("pax_mail_livery_groups", {})
         print(kwargs.get("pax_mail_livery_groups", {}))
 
     @property
@@ -281,12 +279,8 @@ class Roster(object):
         result = []
         # !! CABBAGE - the get() is used to support unfinished rosters which otherwise fail on missing pax_mail_livery_groups keyword
         for livery in self.pax_mail_livery_groups.get(livery_group_name, []):
-            livery_CABBAGE = self.engine_and_pax_mail_car_liveries[
-                livery["livery_name"]
-            ].copy()
-            livery_CABBAGE["relative_spriterow_num"] = livery[
-                "relative_spriterow_num"
-            ]
+            livery_CABBAGE = self.engine_and_pax_mail_car_liveries[livery[0]].copy()
+            livery_CABBAGE["relative_spriterow_num"] = livery[1]
             result.append(livery_CABBAGE)
         return result
 

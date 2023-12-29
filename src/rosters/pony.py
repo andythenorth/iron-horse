@@ -482,136 +482,54 @@ def main():
                 ],
             },
         },
-        # lists of liveries for pax / mail vehicles
-        # buy menu order will match list order; can optionally reshuffle which spriterow is used in buy menu via relative_spriterow_num
+        # lists of 2-tuple (livery_name, relative_spriterow_num) for pax / mail vehicles
+        # buy menu order will match liast order
+        # - livery name comes from roster engine_and_pax_mail_car_liveries
+        # - relative_spriterow_num allows reordering sprites relative to spritesheet
         pax_mail_livery_groups={
             "default_pax_liveries": [
-                {
-                    "relative_spriterow_num": 0,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 1,
-                    "livery_name": "VANILLA",
-                },
+                ("VANILLA", 0),
+                ("VANILLA", 1)
             ],
             "gen_5_pax_liveries": [
-                {
-                    "relative_spriterow_num": 0,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 1,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 2,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 3,
-                    "livery_name": "VANILLA",
-                },
+                ("VANILLA", 0),
+                ("VANILLA", 1),
+                ("VANILLA", 2),
+                ("VANILLA", 3),
             ],
             "suburban_pax_liveries": [
-                {
-                    "relative_spriterow_num": 1,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 0,
-                    "livery_name": "VANILLA",
-                },
+                ("VANILLA", 1),
+                ("VANILLA", 0),
             ],
             "default_mail_liveries": [
-                {
-                    "relative_spriterow_num": 3,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 0,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 1,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 2,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 4,
-                    "livery_name": "ROYAL_MAIL",
-                },
+                ("VANILLA", 0),
+                ("VANILLA", 1),
+                ("VANILLA", 2),
+                ("VANILLA", 3),
+                ("ROYAL_MAIL", 4),
             ],
             "diesel_railcar_mail_liveries": [
-                {
-                    "relative_spriterow_num": 2,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 0,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 1,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 3,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 4,
-                    "livery_name": "ROYAL_MAIL",
-                },
+                ("VANILLA", 0),
+                ("VANILLA", 1),
+                ("VANILLA", 2),
+                ("VANILLA", 3),
+                ("ROYAL_MAIL", 4),
             ],
             "electric_railcar_mail_liveries": [
-                {
-                    "relative_spriterow_num": 3,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 0,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 1,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 2,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 4,
-                    "livery_name": "ROYAL_MAIL",
-                },
+                ("VANILLA", 0),
+                ("VANILLA", 1),
+                ("VANILLA", 2),
+                ("VANILLA", 3),
+                ("ROYAL_MAIL", 4),
             ],
             "dvt_mail_liveries": [
-                {
-                    "relative_spriterow_num": 0,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 1,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 2,
-                    "livery_name": "VANILLA",
-                },
-                {
-                    "relative_spriterow_num": 3,
-                    "livery_name": "VANILLA",
-                },
+                ("VANILLA", 0),
+                ("VANILLA", 1),
+                ("VANILLA", 2),
+                ("VANILLA", 3),
             ],
             "default_metro_liveries": [
-                {
-                    "relative_spriterow_num": 0,
-                    "livery_name": "VANILLA",
-                },
+                ("VANILLA", 0),
             ],
         },
         # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
