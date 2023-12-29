@@ -518,12 +518,12 @@ def main():
                 ("ROYAL_MAIL", 4),
             ],
             "gen_5_and_6_mail_liveries": [
+                ("VANILLA", 5),
                 ("VANILLA", 0),
                 ("VANILLA", 1),
                 ("SWOOSH_2000", 2),
                 ("SWOOSH_2000", 3),
                 ("VANILLA", 4),
-                ("VANILLA", 5),
                 ("ROYAL_MAIL", 6),
             ],
             "diesel_railcar_mail_liveries": [

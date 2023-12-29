@@ -8,7 +8,8 @@ def main():
         base_numeric_id=10990,
         gen=5,
         subtype="U",
-        sprites_complete=False,
+        liveries="gen_5_and_6_mail_liveries", # override default liveries from gestalt
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
