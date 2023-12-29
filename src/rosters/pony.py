@@ -494,8 +494,8 @@ def main():
             "gen_5_and_6_pax_liveries": [
                 ("VANILLA", 0),
                 ("VANILLA", 1),
-                ("VANILLA", 2),
-                ("VANILLA", 3),
+                ("SWOOSH_1995", 2),
+                ("SWOOSH_1995", 3),
             ],
             "suburban_pax_liveries": [
                 ("VANILLA", 1),
