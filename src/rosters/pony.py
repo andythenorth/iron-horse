@@ -447,6 +447,15 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
                 ],
             },
+            "SWOOSH_2000": {
+                "remap_to_cc": None,
+                "forced_intro_year": 2000,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
+                ],
+            },
             # the default "nothing" livery
             "VANILLA": {
                 "remap_to_cc": None,
@@ -494,8 +503,8 @@ def main():
             "gen_5_and_6_pax_liveries": [
                 ("VANILLA", 0),
                 ("VANILLA", 1),
-                ("SWOOSH_1995", 2),
-                ("SWOOSH_1995", 3),
+                ("SWOOSH_2000", 2),
+                ("SWOOSH_2000", 3),
             ],
             "suburban_pax_liveries": [
                 ("VANILLA", 1),
@@ -507,6 +516,15 @@ def main():
                 ("VANILLA", 1),
                 ("VANILLA", 2),
                 ("ROYAL_MAIL", 4),
+            ],
+            "gen_5_and_6_mail_liveries": [
+                ("VANILLA", 0),
+                ("VANILLA", 1),
+                ("SWOOSH_2000", 2),
+                ("SWOOSH_2000", 3),
+                ("VANILLA", 4),
+                ("VANILLA", 5),
+                ("ROYAL_MAIL", 6),
             ],
             "diesel_railcar_mail_liveries": [
                 ("VANILLA", 2),
