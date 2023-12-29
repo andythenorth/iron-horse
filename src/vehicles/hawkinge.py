@@ -13,6 +13,7 @@ def main(roster_id):
             "STEAM": 2350,
         },
         tractive_effort_coefficient=0.25,
+        fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=3,
         intro_year_offset=5,  # introduce later than gen epoch by design
         #note that livery names are metadata only and can repeat for different spriterows
