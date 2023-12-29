@@ -39,21 +39,18 @@ class Roster(object):
         self.train_car_weight_factors = kwargs.get("train_car_weight_factors")
         self.engine_and_pax_mail_car_liveries = kwargs.get("engine_and_pax_mail_car_liveries", [])
         self.freight_wagon_liveries = kwargs.get("freight_wagon_liveries", {})
-        self.default_pax_liveries = kwargs.get("default_pax_liveries", [])
         # !! CABBAGE - this gen_5_mail_liveries and gen_5_pax_liveries shows how adding named attrs to the roster directly is stupid
         # !! might also be that this method of defining liveries for wagons for just one generation is stupid?
-        self.gen_5_mail_liveries = kwargs.get("gen_5_mail_liveries", [])
-        self.gen_5_pax_liveries = kwargs.get("gen_5_pax_liveries", [])
-        self.suburban_pax_liveries = kwargs.get("suburban_pax_liveries", [])
-        self.default_mail_liveries = kwargs.get("default_mail_liveries", [])
-        self.electric_railcar_mail_liveries = kwargs.get(
-            "electric_railcar_mail_liveries", []
-        )
-        self.diesel_railcar_mail_liveries = kwargs.get(
-            "diesel_railcar_mail_liveries", []
-        )
-        self.default_metro_liveries = kwargs.get("default_metro_liveries", [])
-        self.dvt_mail_liveries = kwargs.get("dvt_mail_liveries", [])
+        self.pax_mail_liveries = {}
+        self.pax_mail_liveries["default_pax_liveries"] = kwargs.get("default_pax_liveries", [])
+        self.pax_mail_liveries["gen_5_mail_liveries"] = kwargs.get("gen_5_mail_liveries", [])
+        self.pax_mail_liveries["gen_5_pax_liveries"] = kwargs.get("gen_5_pax_liveries", [])
+        self.pax_mail_liveries["suburban_pax_liveries"] = kwargs.get("suburban_pax_liveries", [])
+        self.pax_mail_liveries["default_mail_liveries"] = kwargs.get("default_mail_liveries", [])
+        self.pax_mail_liveries["electric_railcar_mail_liveries"] = kwargs.get("electric_railcar_mail_liveries", [])
+        self.pax_mail_liveries["diesel_railcar_mail_liveries"] = kwargs.get("diesel_railcar_mail_liveries", [])
+        self.pax_mail_liveries["default_metro_liveries"] = kwargs.get("default_metro_liveries", [])
+        self.pax_mail_liveries["dvt_mail_liveries"] = kwargs.get("dvt_mail_liveries", [])
 
     @property
     def buy_menu_sort_order(self):
@@ -283,6 +280,12 @@ class Roster(object):
             ]
         )
         return result
+
+    def get_pax_mail_liveries(self, livery_group_name, consist):
+        print(consist.gen)
+        print(livery_group_name)
+        return self.pax_mail_liveries[livery_group_name]
+
 
     def intro_year_ranges(self, base_track_type_name):
         # return a list of year pairs (first year, last year) for generations

@@ -1425,10 +1425,11 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # position based variants
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
+        liveries = self.roster.get_pax_mail_liveries("dvt_mail_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="driving_cab_cars",
-            liveries=self.roster.dvt_mail_liveries,
+            liveries=liveries,
         )
 
 
@@ -1483,10 +1484,11 @@ class MailEngineMetroConsist(MailEngineConsist):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
+        liveries = self.roster.get_pax_mail_liveries("default_metro_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="metro",
-            liveries=self.roster.default_metro_liveries,
+            liveries=liveries,
         )
 
     @property
@@ -1538,9 +1540,9 @@ class MailEngineRailcarConsist(MailEngineConsist):
                 "special": 0,
             }
         if self.role_child_branch_num in [2]:
-            liveries = self.roster.electric_railcar_mail_liveries
+            liveries = self.roster.get_pax_mail_liveries("electric_railcar_mail_liveries", self)
         else:
-            liveries = self.roster.diesel_railcar_mail_liveries
+            liveries = self.roster.get_pax_mail_liveries("diesel_railcar_mail_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset=consist_ruleset,
@@ -1670,8 +1672,8 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # position based variants
-        liveries = self.roster.default_pax_liveries
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="driving_cab_cars",
@@ -1780,10 +1782,11 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
+        liveries = self.roster.get_pax_mail_liveries("default_metro_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="metro",
-            liveries=self.roster.default_metro_liveries,
+            liveries=liveries,
         )
 
     @property
@@ -1812,10 +1815,11 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         # * unit with driving cab rear end
         # ruleset will combine these to make multiple-units 1, 2 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_2_unit_sets",
-            liveries=self.roster.default_pax_liveries,
+            liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
 
@@ -1869,9 +1873,9 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         if self.role_child_branch_num in [2]:
-            liveries = self.roster.suburban_pax_liveries
+            liveries = self.roster.get_pax_mail_liveries("suburban_pax_liveries", self)
         else:
-            liveries = self.roster.default_pax_liveries
+            liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_3_unit_sets",
@@ -4639,7 +4643,7 @@ class MailCarConsist(MailCarConsistBase):
             "last": brake_car_sprites,
             "special": bonus_sprites,
         }
-        liveries = self.roster.default_mail_liveries
+        liveries = self.roster.get_pax_mail_liveries("default_mail_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="mail_cars",
@@ -4740,10 +4744,11 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
             "last": 1,
             "special": 2,
         }
+        liveries = self.roster.get_pax_mail_liveries("default_mail_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="mail_cars",
-            liveries=self.roster.default_mail_liveries,
+            liveries=liveries,
         )
 
 
@@ -5049,10 +5054,11 @@ class PassengerCarConsist(PassengerCarConsistBase):
         #   * brake coach rear
         #   * I removed special coaches from PassengerLuxuryCarConsist Feb 2021, as Restaurant cars were added
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
-            liveries=self.roster.default_pax_liveries,
+            liveries=liveries,
         )
 
 
@@ -5086,10 +5092,11 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
         #   * brake coach front
         #   * brake coach rear
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
+        liveries = self.roster.get_pax_mail_liveries("gen_5_pax_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
-            liveries=self.roster.gen_5_pax_liveries,
+            liveries=liveries,
         )
 
 
@@ -5360,10 +5367,11 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         # Graphics configuration
         # position based variants are not used for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 0, "special": 0}
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
-            liveries=self.roster.default_pax_liveries,
+            liveries=liveries,
         )
 
 
@@ -5399,7 +5407,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         #   * brake coach rear
         #   * I removed special coaches from PassengerCarConsistBase Dec 2018, overkill
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
-        liveries = self.roster.suburban_pax_liveries
+        liveries = self.roster.get_pax_mail_liveries("suburban_pax_liveries", self)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
