@@ -92,9 +92,13 @@
                                         <li> attaching other types of cars is not recommended, the train will be very underpowered and will travel at much less than maximum engine speed</li>
                                     </ul>
                                 </div>
+                                <div tal:case="'gronk!'">
+                                    <h4>Gronk!</h4>
+                                    <p>Slow engines that have limited gameplay use but look nice.</p>
+                                </div>
                                 <div tal:case="'lolz'">
                                     <h4>Lolz</h4>
-                                    <p>Silly trains that don't have any gameplay purpose but look nice.</p>
+                                    <p>Silly trains that have no gameplay purpose at all but look nice.</p>
                                 </div>
                             </tal:descriptions>
                         </tal:descriptions_rail>
@@ -178,7 +182,7 @@
                                                 <span tal:condition="'mail_railcar' not in role and 'pax_railcar' and 'pax_railbus' not in role">
                                                     ${doc_helper.get_role_string_from_role(role)}
                                                 </span>
-                                                <span tal:condition="role_child_branch < 0 and role not in ['gronk!', 'snoughplough!']">
+                                                <span tal:condition="role_child_branch < 0">
                                                     <br /><span class="muted">(Joker)</span>
                                                 </span>
                                             </th>

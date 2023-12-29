@@ -692,11 +692,14 @@ base = "General Purpose"
 [STR_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "General Purpose / Express"
 
+[STR_ROLE_GRONK]
+base = "Gronk!"
+
 [STR_ROLE_INTERCITY_EXPRESS]
 base = "InterCity Express"
 
 [STR_ROLE_LOLZ]
-base = "Joker"
+base = "Lolz"
 
 [STR_ROLE_METRO]
 base = "High Capacity Urban"

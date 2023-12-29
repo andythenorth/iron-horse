@@ -17,7 +17,7 @@ buy_menu_sort_order_wagons = [
     "mail_car",
     "high_speed_mail_car",
     "express_car",
-    "double_deck_automobile_car", # order before other automobile cars as needed in simplified mode
+    "double_deck_automobile_car",  # order before other automobile cars as needed in simplified mode
     "automobile_car",
     "low_floor_automobile_car",
     "express_intermodal_car",
@@ -195,9 +195,14 @@ role_group_mapping = OrderedDict(
         ("hst", ["hst"]),
         ("very_high_speed", ["very_high_speed"]),
         (
-            "lolz",
+            "gronk!",
             [
                 "gronk!",
+            ],
+        ),
+        (
+            "lolz",
+            [
                 "snoughplough!",
             ],
         ),
@@ -209,15 +214,16 @@ role_group_mapping = OrderedDict(
 role_string_mapping = {
     "driving_cab": "STR_ROLE_DRIVING_CAB",
     "express": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
+    "express_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
     "freight": "STR_ROLE_FREIGHT",
+    "gronk!": "STR_ROLE_GRONK",
     "high_power_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
     "hst": "STR_ROLE_INTERCITY_EXPRESS",
     "lolz": "STR_ROLE_LOLZ",
-    "express_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
     "metro": "STR_ROLE_METRO",
     "suburban": "STR_ROLE_SUBURBAN",
-    "very_high_speed": "STR_ROLE_INTERCITY_EXPRESS",
     "universal": "STR_ROLE_GENERAL_PURPOSE",
+    "very_high_speed": "STR_ROLE_INTERCITY_EXPRESS",
 }
 
 # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
@@ -239,6 +245,7 @@ intro_month_offsets_by_role_group = {
     "very_high_speed": 8,
     "food_wagons": 9,
     "non_core_wagons": 10,
+    "gronk!": 11,
     "lolz": 11,
 }
 
