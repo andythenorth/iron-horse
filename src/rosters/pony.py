@@ -482,228 +482,138 @@ def main():
                 ],
             },
         },
-        # remaps, docs image colours etc as needed
-        default_pax_liveries=[
-            {
-                "livery_name": "VANILLA",
-            },
-            {
-                "livery_name": "VANILLA",
-            },
-        ],
-        gen_5_pax_liveries=[
-            {
-                "livery_name": "VANILLA",
-            },
-            {
-                "livery_name": "VANILLA",
-            },
-            {
-                "livery_name": "VANILLA",
-            },
-            {
-                "livery_name": "VANILLA",
-            },
-        ],
-        suburban_pax_liveries=[
-            {
-                "relative_spriterow_num": 1,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 0,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-        ],
-        default_mail_liveries=[
-            {
-                "relative_spriterow_num": 3,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 0,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 1,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 2,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 4,
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_RED",
-                    "company_colour2": "company_colour2",
+        # lists of liveries for pax / mail vehicles
+        # buy menu order will match list order; can optionally reshuffle which spriterow is used in buy menu via relative_spriterow_num
+        pax_mail_livery_groups={
+            "default_pax_liveries": [
+                {
+                    "relative_spriterow_num": 0,
+                    "livery_name": "VANILLA",
                 },
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_RED"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-        ],
-        gen_5_mail_liveries=[
-            {
-                "relative_spriterow_num": 3,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 0,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 1,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 2,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 4,
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_RED",
-                    "company_colour2": "company_colour2",
+                {
+                    "relative_spriterow_num": 1,
+                    "livery_name": "VANILLA",
                 },
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_RED"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-        ],
-        diesel_railcar_mail_liveries=[
-            {
-                "relative_spriterow_num": 2,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 0,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 1,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 3,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 4,
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_RED",
-                    "company_colour2": "company_colour2",
+            ],
+            "gen_5_pax_liveries": [
+                {
+                    "relative_spriterow_num": 0,
+                    "livery_name": "VANILLA",
                 },
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_RED"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-        ],
-        electric_railcar_mail_liveries=[
-            {
-                "relative_spriterow_num": 3,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 0,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 1,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 2,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_BLUE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-            {
-                "relative_spriterow_num": 4,
-                "remap_to_cc": {
-                    "company_colour1": "COLOUR_RED",
-                    "company_colour2": "company_colour2",
+                {
+                    "relative_spriterow_num": 1,
+                    "livery_name": "VANILLA",
                 },
-                "docs_image_input_cc": [
-                    ("COLOUR_RED", "COLOUR_RED"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                ],
-            },
-        ],
-        dvt_mail_liveries=[
-            {
-                "livery_name": "VANILLA",
-            },
-            {
-                "livery_name": "VANILLA",
-            },
-            {
-                "livery_name": "VANILLA",
-            },
-            {
-                "livery_name": "VANILLA",
-            },
-        ],
-        default_metro_liveries=[
-            {
-                "livery_name": "VANILLA",
-            },
-        ],
+                {
+                    "relative_spriterow_num": 2,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 3,
+                    "livery_name": "VANILLA",
+                },
+            ],
+            "suburban_pax_liveries": [
+                {
+                    "relative_spriterow_num": 1,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 0,
+                    "livery_name": "VANILLA",
+                },
+            ],
+            "default_mail_liveries": [
+                {
+                    "relative_spriterow_num": 3,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 0,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 1,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 2,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 4,
+                    "livery_name": "ROYAL_MAIL",
+                },
+            ],
+            "diesel_railcar_mail_liveries": [
+                {
+                    "relative_spriterow_num": 2,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 0,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 1,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 3,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 4,
+                    "livery_name": "ROYAL_MAIL",
+                },
+            ],
+            "electric_railcar_mail_liveries": [
+                {
+                    "relative_spriterow_num": 3,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 0,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 1,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 2,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 4,
+                    "livery_name": "ROYAL_MAIL",
+                },
+            ],
+            "dvt_mail_liveries": [
+                {
+                    "relative_spriterow_num": 0,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 1,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 2,
+                    "livery_name": "VANILLA",
+                },
+                {
+                    "relative_spriterow_num": 3,
+                    "livery_name": "VANILLA",
+                },
+            ],
+            "default_metro_liveries": [
+                {
+                    "relative_spriterow_num": 0,
+                    "livery_name": "VANILLA",
+                },
+            ],
+        },
         # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
         engines=[
             # challenger, # for NA roster

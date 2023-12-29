@@ -4,7 +4,9 @@ import os
 import pickle
 import tomllib
 import utils
+
 currentdir = os.curdir
+
 
 class Roster(object):
     """
@@ -37,20 +39,14 @@ class Roster(object):
         )
         self.pax_car_capacity_types = kwargs.get("pax_car_capacity_types")
         self.train_car_weight_factors = kwargs.get("train_car_weight_factors")
-        self.engine_and_pax_mail_car_liveries = kwargs.get("engine_and_pax_mail_car_liveries", [])
+        self.engine_and_pax_mail_car_liveries = kwargs.get(
+            "engine_and_pax_mail_car_liveries", []
+        )
         self.freight_wagon_liveries = kwargs.get("freight_wagon_liveries", {})
-        # !! CABBAGE - this gen_5_mail_liveries and gen_5_pax_liveries shows how adding named attrs to the roster directly is stupid
-        # !! might also be that this method of defining liveries for wagons for just one generation is stupid?
-        self.pax_mail_liveries = {}
-        self.pax_mail_liveries["default_pax_liveries"] = kwargs.get("default_pax_liveries", [])
-        self.pax_mail_liveries["gen_5_mail_liveries"] = kwargs.get("gen_5_mail_liveries", [])
-        self.pax_mail_liveries["gen_5_pax_liveries"] = kwargs.get("gen_5_pax_liveries", [])
-        self.pax_mail_liveries["suburban_pax_liveries"] = kwargs.get("suburban_pax_liveries", [])
-        self.pax_mail_liveries["default_mail_liveries"] = kwargs.get("default_mail_liveries", [])
-        self.pax_mail_liveries["electric_railcar_mail_liveries"] = kwargs.get("electric_railcar_mail_liveries", [])
-        self.pax_mail_liveries["diesel_railcar_mail_liveries"] = kwargs.get("diesel_railcar_mail_liveries", [])
-        self.pax_mail_liveries["default_metro_liveries"] = kwargs.get("default_metro_liveries", [])
-        self.pax_mail_liveries["dvt_mail_liveries"] = kwargs.get("dvt_mail_liveries", [])
+        self.pax_mail_livery_groups = kwargs.get(
+            "pax_mail_livery_groups", {}
+        )
+        print(kwargs.get("pax_mail_livery_groups", {}))
 
     @property
     def buy_menu_sort_order(self):
@@ -283,11 +279,15 @@ class Roster(object):
 
     def get_pax_mail_liveries(self, livery_group_name, consist):
         result = []
-        for livery in self.pax_mail_liveries[livery_group_name]:
-            if 'livery_name' in livery.keys():
-                result.append(self.engine_and_pax_mail_car_liveries[livery["livery_name"]])
-            else:
-                result.append(livery)
+        # !! CABBAGE - the get() is used to support unfinished rosters which otherwise fail on missing pax_mail_livery_groups keyword
+        for livery in self.pax_mail_livery_groups.get(livery_group_name, []):
+            livery_CABBAGE = self.engine_and_pax_mail_car_liveries[
+                livery["livery_name"]
+            ].copy()
+            livery_CABBAGE["relative_spriterow_num"] = livery[
+                "relative_spriterow_num"
+            ]
+            result.append(livery_CABBAGE)
         return result
 
     def intro_year_ranges(self, base_track_type_name):
