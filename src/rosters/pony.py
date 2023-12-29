@@ -527,17 +527,17 @@ def main():
                 ("ROYAL_MAIL", 6),
             ],
             "diesel_railcar_mail_liveries": [
-                ("VANILLA", 2),
-                ("VANILLA", 0),
-                ("VANILLA", 1),
+                ("RES", 2),
+                ("INTERCITY_RASPBERRY_RIPPLE", 0),
+                ("WHITE_STRIPE", 1),
                 ("VANILLA", 3),
                 ("ROYAL_MAIL", 4),
             ],
             "electric_railcar_mail_liveries": [
                 ("VANILLA", 3),
-                ("VANILLA", 0),
-                ("VANILLA", 1),
-                ("VANILLA", 2),
+                ("INTERCITY_RASPBERRY_RIPPLE", 0),
+                ("WHITE_STRIPE", 1),
+                ("RES", 2),
                 ("ROYAL_MAIL", 4),
             ],
             "dvt_mail_liveries": [

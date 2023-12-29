@@ -1542,9 +1542,9 @@ class MailEngineRailcarConsist(MailEngineConsist):
                 "special": 0,
             }
         if self.role_child_branch_num in [2]:
-            liveries = self.roster.get_pax_mail_liveries("electric_railcar_mail_liveries", **kwargs)
-        else:
             liveries = self.roster.get_pax_mail_liveries("diesel_railcar_mail_liveries", **kwargs)
+        else:
+            liveries = self.roster.get_pax_mail_liveries("electric_railcar_mail_liveries", **kwargs)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset=consist_ruleset,
