@@ -1670,11 +1670,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # position based variants
-        # !! CABBAGE BAD JFDI STUFF
-        if self.id == "driving_cab_high_speed_passenger_pony_gen_5":
-            liveries = self.roster.gen_5_pax_liveries
-        else:
-            liveries = self.roster.default_pax_liveries
+        liveries = self.roster.default_pax_liveries
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
