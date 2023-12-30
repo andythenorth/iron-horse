@@ -612,14 +612,6 @@ def main():
             revolution,
             avenger,
             sizzler,
-            # driving cab cars
-            driving_cab_passenger_pony_gen_4,
-            driving_cab_passenger_pony_gen_5,
-            driving_cab_high_speed_passenger_pony_gen_5,
-            driving_cab_high_speed_passenger_pony_gen_6,
-            driving_cab_mail_pony_gen_5,
-            driving_cab_high_speed_mail_pony_gen_5,
-            driving_cab_high_speed_mail_pony_gen_6,
             # branch freight
             buffalo,
             saxon,
@@ -715,6 +707,14 @@ def main():
             gloaming_cab,
             gloaming_middle_passenger,
             gloaming_middle_mail,
+            # driving cab cars
+            driving_cab_passenger_pony_gen_4,
+            driving_cab_passenger_pony_gen_5,
+            driving_cab_high_speed_passenger_pony_gen_5,
+            driving_cab_high_speed_passenger_pony_gen_6,
+            driving_cab_mail_pony_gen_5,
+            driving_cab_high_speed_mail_pony_gen_5,
+            driving_cab_high_speed_mail_pony_gen_6,
             # metro
             serpentine,
             westbourne,
