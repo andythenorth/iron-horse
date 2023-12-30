@@ -10,7 +10,8 @@ def main(roster_id):
         role_child_branch_num=-2,  # driving cab cars are probably jokers?
         gen=5,
         lgv_capable=True,  # for lolz
-        sprites_complete=False,
+        liveries="gen_5_and_6_pax_liveries", # override default liveries from gestalt
+        sprites_complete=True,
     )
 
     consist.add_unit(type=CabControlPaxCarUnit, weight=32, chassis="railcar_32px")

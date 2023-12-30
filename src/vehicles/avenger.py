@@ -18,7 +18,7 @@ def main(roster_id):
         intro_year_offset=-2,  # introduce slightly earlier than gen epoch by design
         lgv_capable=True,  # for lolz
         #note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["WHITE_STRIPE", "RAILFREIGHT_TRIPLE_GREY"],
+        additional_liveries=["WHITE_STRIPE", "SWOOSH", "SWOOSH_2000", "SWOOSH_2000", "RAILFREIGHT_TRIPLE_GREY"],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
             ("COLOUR_ORANGE", "COLOUR_WHITE"),
