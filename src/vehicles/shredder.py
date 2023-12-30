@@ -17,7 +17,7 @@ def main(roster_id):
         gen=5,
         intro_year_offset=7,  # introduce later than gen epoch by design
         additional_liveries=["SWOOSH", "SWOOSH", "DB_SCHENKER"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
