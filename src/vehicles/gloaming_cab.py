@@ -11,10 +11,10 @@ def main(roster_id):
         role_child_branch_num=-2,
         dual_headed=True,
         power_by_power_source={
-            "AC": 3200,
+            "AC": 3100,
         },
         gen=6,
-        intro_year_offset=-3,  # introduce earlier than gen epoch by design
+        intro_year_offset=-14,  # introduce earlier than gen epoch by design, similar to Brenner
         #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["SWOOSH"],
         sprites_complete=False,

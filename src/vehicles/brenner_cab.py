@@ -14,7 +14,7 @@ def main(roster_id):
             "AC": 3000,
         },
         gen=6,
-        intro_year_offset=-14,  # introduce earlier than gen epoch by design
+        intro_year_offset=-14,  # introduce earlier than gen epoch by design, similar to Gloaming
         #note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["SWOOSH"],
         sprites_complete=True,
