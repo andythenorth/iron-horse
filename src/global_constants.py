@@ -165,14 +165,6 @@ role_group_mapping = OrderedDict(
             ],
         ),
         (
-            "driving_cab",
-            [
-                "driving_cab_express_pax",
-                "driving_cab_express_mail",
-                "driving_cab_express_mixed",
-            ],
-        ),
-        (
             "freight",
             [
                 "branch_freight",
@@ -195,6 +187,14 @@ role_group_mapping = OrderedDict(
         ("express_railcar", ["express_pax_railcar", "express_mail_railcar"]),
         ("hst", ["hst"]),
         ("very_high_speed", ["very_high_speed"]),
+        (
+            "driving_cab",
+            [
+                "driving_cab_express_pax",
+                "driving_cab_express_mail",
+                "driving_cab_express_mixed",
+            ],
+        ),
         (
             "gronk!",
             [

@@ -30,14 +30,6 @@
                                         <li>General freight, but if a dedicated freight engine is available with similar power, the freight engine will generally be lower cost to buy and run</li>
                                     </ul>
                                 </div>
-                                <div tal:case="'driving_cab_car'">
-                                    <h4>Driving Van Trailers</h4>
-                                    <ul>
-                                        <li>Attach to front or rear of express trains that have at least one other engine</li>
-                                        <li>Carries mail and express freight</li>
-                                        <li>Unpowered in real-life, but OpenTTD requires these to have some power so they can lead the train, so a low value is set</li>
-                                    </ul>
-                                </div>
                                 <div tal:case="'freight'">
                                     <h4>Freight Engines</h4>
                                     <p>
@@ -90,6 +82,14 @@
                                             </ul></li>
                                         <li> tilt bonus for higher speed through curves</li>
                                         <li> attaching other types of cars is not recommended, the train will be very underpowered and will travel at much less than maximum engine speed</li>
+                                    </ul>
+                                </div>
+                                <div tal:case="'driving_cab'">
+                                    <h4>Driving Van Trailers</h4>
+                                    <ul>
+                                        <li>Attach to front or rear of express trains that have at least one other engine</li>
+                                        <li>Carries mail and express freight</li>
+                                        <li>Unpowered in real-life, but OpenTTD requires these to have some power so they can lead the train, so a low value is set</li>
                                     </ul>
                                 </div>
                                 <div tal:case="'gronk!'">
