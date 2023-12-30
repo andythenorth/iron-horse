@@ -16,8 +16,8 @@ def main(roster_id):
         fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=5,
         intro_year_offset=7,  # introduce later than gen epoch by design
-        additional_liveries=["SWOOSH", "DB_SCHENKER"],
-        sprites_complete=True,
+        additional_liveries=["SWOOSH", "SWOOSH", "DB_SCHENKER"],
+        sprites_complete=False,
     )
 
     consist.add_unit(
