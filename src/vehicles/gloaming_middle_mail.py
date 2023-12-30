@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="gloaming_middle_mail",
         base_numeric_id=430,
-        name="gloaming Mail Van",
+        name="Gloaming Mail Van",
         role="very_high_speed",
         pantograph_type="z-shaped-single-with-base",
         power_by_power_source={

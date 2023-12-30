@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="gloaming_middle_passenger",
         base_numeric_id=420,
-        name="gloaming Passenger Coach",
+        name="Gloaming Passenger Coach",
         role="very_high_speed",
         pantograph_type="z-shaped-single-with-base",
         power_by_power_source={
