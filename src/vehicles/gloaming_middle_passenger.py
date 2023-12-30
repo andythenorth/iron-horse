@@ -21,7 +21,7 @@ def main(roster_id):
         type=ElectricHighSpeedPaxUnit,
         weight=54,
         spriterow_num=0,
-        chassis="jacobs_solid_express_32px",
+        chassis="4_axle_solid_express_32px",
         repeat=2,
     )
 
