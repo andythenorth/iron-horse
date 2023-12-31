@@ -16,7 +16,7 @@ def main(roster_id):
         gen=5,
         intro_year_offset=-8,  # let's be really early with this one to give a mail engine matching Blaze HST intro year
         # additional_liveries=["BANGER_BLUE", "LARGE_LOGO", "SWOOSH", "INTERCITY_RASPBERRY_RIPPLE", "RAILFREIGHT_TRIPLE_GREY", "DUTCH_1986"],
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE"],
         decor_spriterow_num=7,
         sprites_complete=True,

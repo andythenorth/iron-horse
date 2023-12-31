@@ -18,7 +18,7 @@ def main(roster_id):
         fixed_run_cost_points=110,  # substantial cost bonus so it can make money
         random_reverse=True,
         gen=1,
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["FREIGHT_BLACK", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

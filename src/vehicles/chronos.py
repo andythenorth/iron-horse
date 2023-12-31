@@ -16,8 +16,15 @@ def main(roster_id):
         pantograph_type="z-shaped-single-with-base",
         gen=5,
         intro_year_offset=1,  # introduce later by design
-        #note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["WHITE_STRIPE", "SWOOSH", "SWOOSH", "SWOOSH", "SWOOSH", "ROYAL_MAIL"], # CABBAGE - NOTE THAT LIVERY METADATA CAN REPEAT FOR MULTIPLE ROWS
+        # note that livery names are metadata only and can repeat for different spriterows
+        additional_liveries=[
+            "WHITE_STRIPE",
+            "SWOOSH",
+            "SWOOSH",
+            "SWOOSH",
+            "SWOOSH",
+            "ROYAL_MAIL",
+        ],  # CABBAGE - NOTE THAT LIVERY METADATA CAN REPEAT FOR MULTIPLE ROWS
         sprites_complete=False,
     )
 
@@ -29,8 +36,6 @@ def main(roster_id):
     )
 
     consist.description = """She was like a bird for speed, an arrow for directness."""
-    consist.foamer_facts = (
-        """BR Class 325 mail/parcels EMU"""
-    )
+    consist.foamer_facts = """BR Class 325 mail/parcels EMU"""
 
     return consist

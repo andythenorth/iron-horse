@@ -19,7 +19,7 @@ def main(roster_id):
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_BLUE", "COLOUR_GREY"),
         ],
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
         decor_spriterow_num=3,
         sprites_complete=True,

@@ -20,7 +20,7 @@ def main(roster_id):
         extended_vehicle_life=True,
         pantograph_type="z-shaped-double",
         caboose_family="railfreight_2",
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=[
             "RAILFREIGHT_RED_STRIPE",
             "RAILFREIGHT_TRIPLE_GREY",

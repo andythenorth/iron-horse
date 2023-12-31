@@ -18,7 +18,7 @@ def main(roster_id):
         lgv_capable=True,  # for lolz
         extended_vehicle_life=True,
         pantograph_type="z-shaped-double",
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
     )

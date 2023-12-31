@@ -29,7 +29,6 @@ def main():
 
     consist.add_unit(type=IngotCar, chassis="empty_8px", repeat=2)
 
-
     consist = IngotCarConsist(
         roster_id="pony",
         base_numeric_id=60,

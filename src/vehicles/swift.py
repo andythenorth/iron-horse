@@ -14,7 +14,7 @@ def main(roster_id):
         },
         tractive_effort_coefficient=0.18,
         gen=2,
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
     )

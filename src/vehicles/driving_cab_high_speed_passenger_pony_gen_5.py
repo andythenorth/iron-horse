@@ -10,13 +10,15 @@ def main(roster_id):
         role_child_branch_num=-2,  # driving cab cars are probably jokers?
         gen=5,
         lgv_capable=True,  # for lolz
-        liveries="gen_5_and_6_pax_liveries", # override default liveries from gestalt
+        liveries="gen_5_and_6_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
     consist.add_unit(type=CabControlPaxCarUnit, weight=32, chassis="railcar_32px")
 
     consist.description = """Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Clever idea we had eh?"""
-    consist.foamer_facts = """proposed BR MK5 Driving Trailer (DT) with added generator"""
+    consist.foamer_facts = (
+        """proposed BR MK5 Driving Trailer (DT) with added generator"""
+    )
 
     return consist

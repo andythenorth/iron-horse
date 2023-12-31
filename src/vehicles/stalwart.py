@@ -18,7 +18,7 @@ def main(roster_id):
         intro_year_offset=-1,  # introduce earlier than gen epoch by design
         extended_vehicle_life=True,
         # additional_liveries=["BANGER_BLUE", "SWOOSH", "WHITE_STRIPE", "SWOOSH", "RAILFREIGHT_RED_STRIPE",],
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=[
             "BANGER_BLUE",
             "WHITE_STRIPE",

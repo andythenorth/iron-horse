@@ -18,7 +18,7 @@ def main(roster_id):
         intro_year_offset=7,  # introduce later than gen epoch by design
         extended_vehicle_life=True,
         # additional_liveries=["FREIGHT_BLACK", "BANGER_BLUE"],
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
         sprites_additional_liveries_potential=True,  # nightshade / nighthawk?

@@ -13,9 +13,9 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=5,
-        intro_year_offset=6, # earlier than anything IRL, but we want 125 mph capability so eh, there we go
-        extended_vehicle_life=True, # because long time until replaced
-        #note that livery names are metadata only and can repeat for different spriterows
+        intro_year_offset=6,  # earlier than anything IRL, but we want 125 mph capability so eh, there we go
+        extended_vehicle_life=True,  # because long time until replaced
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=[],
         default_livery_extra_docs_examples=[
             ("COLOUR_RED", "COLOUR_RED"),

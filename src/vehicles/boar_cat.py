@@ -15,7 +15,7 @@ def main(roster_id):
         random_reverse=True,
         base_track_type_name="NG",
         gen=4,
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

@@ -2,6 +2,7 @@ from train import TGVCabEngineConsist, ElectricEngineUnit
 
 # pax capacity on these limits use for 100% mail consists - use the Gloaming for that?
 
+
 def main(roster_id):
     consist = TGVCabEngineConsist(
         roster_id=roster_id,
@@ -15,7 +16,7 @@ def main(roster_id):
         },
         gen=6,
         intro_year_offset=-14,  # introduce earlier than gen epoch by design, similar to Gloaming
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["SWOOSH"],
         sprites_complete=False,
     )

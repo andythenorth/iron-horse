@@ -15,7 +15,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.25,
         fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=3,
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE", "FREIGHT_BLACK"],
         sprites_complete=True,
     )

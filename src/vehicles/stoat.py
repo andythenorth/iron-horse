@@ -19,7 +19,7 @@ def main(roster_id):
         intro_year_offset=3,  # introduce later than gen epoch by design
         extended_vehicle_life=True,
         fixed_run_cost_points=105,  # substantial cost bonus so it can make money
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )

@@ -18,7 +18,7 @@ def main(roster_id):
         pantograph_type="z-shaped-double",
         intro_year_offset=12,  # introduce much later than gen epoch by design
         extended_vehicle_life=True,
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=[
             "WHITE_STRIPE",
             "RES",

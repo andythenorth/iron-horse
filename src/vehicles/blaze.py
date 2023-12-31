@@ -15,8 +15,13 @@ def main(roster_id):
         intro_year_offset=-10,  # let's be a little bit earlier for this one - keep coaches matched
         gen=5,
         lgv_capable=True,  # for lolz
-        #note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE", "WHITE_STRIPE_1995", "SWOOSH_1995", "SWOOSH_1995"],
+        # note that livery names are metadata only and can repeat for different spriterows
+        additional_liveries=[
+            "BANGER_BLUE",
+            "WHITE_STRIPE_1995",
+            "SWOOSH_1995",
+            "SWOOSH_1995",
+        ],
         sprites_complete=True,
     )
 

@@ -20,7 +20,7 @@ def main(roster_id):
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         caboose_family="railfreight_2",
         # more liveries ought to be possible, but I couldn't make them work so eh.  EWS?
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=[
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY_COAL",

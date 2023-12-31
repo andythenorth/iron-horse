@@ -15,7 +15,7 @@ def main(roster_id):
         pantograph_type="z-shaped-single-reversed",
         gen=5,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["WHITE_STRIPE"],
         sprites_complete=True,
     )
@@ -31,8 +31,6 @@ def main(roster_id):
     )
 
     consist.description = """Can we get there faster? That's what drives me."""
-    consist.foamer_facts = (
-        """BR InterCity 225 (Class 91), BR APT-P, Shinkansen-style distributed traction"""
-    )
+    consist.foamer_facts = """BR InterCity 225 (Class 91), BR APT-P, Shinkansen-style distributed traction"""
 
     return consist

@@ -16,7 +16,7 @@ def main(roster_id):
         intro_year_offset=-8,  # let's be a little bit earlier for this one
         gen=5,
         caboose_family="railfreight_1",
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=[
             "BANGER_BLUE",
             "RAILFREIGHT_RED_STRIPE",

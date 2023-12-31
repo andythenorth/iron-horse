@@ -16,7 +16,7 @@ def main(roster_id):
         fixed_run_cost_points=140,  # substantial cost bonus as a mixed traffic engine
         intro_year_offset=-2,  # let's not have everything turn up in 1960
         gen=4,
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE"],
         sprites_complete=True,
     )

@@ -17,7 +17,7 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         intro_year_offset=-4,  # let's be a little earlier for this one
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE", "SWOOSH", "SWOOSH"],
         default_livery_extra_docs_examples=[
             ("COLOUR_ORANGE", "COLOUR_WHITE"),

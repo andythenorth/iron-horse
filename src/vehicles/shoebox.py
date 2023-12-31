@@ -14,8 +14,15 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         gen=4,
         intro_year_offset=3,  # introduce later than gen epoch by design
-        #note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE", "INTERCITY_RASPBERRY_RIPPLE", "RES", "RAILFREIGHT_TRIPLE_GREY", "SWOOSH", "DB_SCHENKER"], # "RAILFREIGHT_TRIPLE_GREY"
+        # note that livery names are metadata only and can repeat for different spriterows
+        additional_liveries=[
+            "BANGER_BLUE",
+            "INTERCITY_RASPBERRY_RIPPLE",
+            "RES",
+            "RAILFREIGHT_TRIPLE_GREY",
+            "SWOOSH",
+            "DB_SCHENKER",
+        ],  # "RAILFREIGHT_TRIPLE_GREY"
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
             ("COLOUR_BLUE", "COLOUR_BLUE"),

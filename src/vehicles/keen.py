@@ -16,7 +16,7 @@ def main(roster_id):
         gen=3,
         intro_year_offset=-13,  # introduce much earlier than gen epoch by design
         fixed_run_cost_points=240,  # adjust to match similar engines of same gen
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
