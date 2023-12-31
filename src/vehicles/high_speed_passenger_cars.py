@@ -12,4 +12,4 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=PaxCar, chassis="high_speed_32px")
