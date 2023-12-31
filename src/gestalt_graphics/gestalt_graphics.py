@@ -38,6 +38,10 @@ class GestaltGraphics(object):
         # stub, for compatibility reasons
         return ["single_row"]
 
+    def buy_menu_row_map(self, consist):
+        # stub, for compatibility reasons
+        return {}
+
     @property
     def all_liveries(self):
         # stub to map this gestalt's liveries to the wider all_liveries structure
@@ -130,7 +134,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
     def nml_template(self):
         return "vehicle_randomised.pynml"
 
-    def buy_menu_sprite_variants(self, consist):
+    def buy_menu_row_map(self, consist):
         # for practicality we only want the default variant where variants exist,
         # e.g. no cc recoloured variants etc as it's seriously not worth handling those here
         candidate_consists = []
@@ -154,7 +158,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
                 0,
             ),
         ]
-        # buy menu sprite generation supports providing multiple variants (used for cabooses)
+        # buy menu sprite generation supports providing multiple variants (used for livery variants etc)
         # but here we only need one, in the default buy menu position
         return {0: source_data}
 
@@ -421,7 +425,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         )
         return None
 
-    def buy_menu_sprite_variants(self, consist):
+    def buy_menu_row_map(self, consist):
         result = {}
         for counter, buy_menu_sprite_pair in enumerate(self.buy_menu_sprite_pairs):
             # vehicle id, y offset to buy menu row

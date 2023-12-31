@@ -820,13 +820,20 @@ class Consist(object):
         return result
 
     @property
-    def buy_menu_x_loc(self):
-        # automatic buy menu sprite if single-unit consist
-        # extend this to check an auto_buy_menu_sprite property if manual over-rides are needed in future
+    def requires_custom_buy_menu_sprite(self):
+        # boolean check for whether we'll need a custom buy menu sprite, or if we can default to just using 6th angle of vehicle
         if len(self.units) > 1:
             # custom buy menu sprite for articulated vehicles
-            return 360
+            return True
         elif self.is_randomised_wagon_type or self.is_caboose:
+            return True
+        else:
+            return False
+
+    @property
+    def buy_menu_x_loc(self):
+        if self.requires_custom_buy_menu_sprite:
+            # always x = 360 for custom buy menu sprites (y is calculated elsewhere for variant livery etc)
             return 360
         else:
             # default to just using 6th angle of vehicle

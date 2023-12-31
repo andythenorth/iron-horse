@@ -61,6 +61,12 @@ class Pipeline(object):
         # this function is passed (uncalled) into the pipeline, and then called at render time
         # this is so that it has the processed spritesheet available, which is essential for creating buy menu sprites
         # n.b if buy menu sprite processing has conditions by vehicle type, could pass a dedicated function for each type of processing
+
+        # !! this knows too much, some of it should be done in the gestalt
+        # !! the processing should be here
+        # !! the structure for the rows should be returned by the gestalt
+        # !! there is some precedent with buy_menu_row_map in the randomised wagons gestalt
+
         buy_menu_buyable_variant_unit_row_maps = []
         # !! JFDI hax May 2023, to handle differing requirements for real (pixel painted) vs. sprite recolour liveries
         # this is likely incomplete as other gestalts need handled, e.g. automobile cars
@@ -105,6 +111,12 @@ class Pipeline(object):
                 spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
                 # increment x offset for pasting in next vehicle
                 x_offset += unit_length_in_pixels
+        print(self.consist.gestalt_graphics.buy_menu_row_map(self.consist))
+        if (self.consist.id) in ["westbourne", "olympic"]:
+            print("CABBAGE 4050", self.consist.id)
+            print(self.consist.gestalt_graphics.consist_ruleset)
+            print(num_livery_rows_per_unit)
+            print(buy_menu_buyable_variant_unit_row_maps)
         return spritesheet
 
     def render_common(
@@ -452,7 +464,7 @@ class CheckBuyMenuOnlyPipeline(Pipeline):
         self.consist = consist
         self.graphics_output_path = graphics_output_path
 
-        if self.consist.buy_menu_x_loc == 360:
+        if self.consist.requires_custom_buy_menu_sprite:
             # !! this currently will cause the vehicle spritesheet buy menu sprites to be copied to the pans spritesheet,
             # !! it needs pixels from the pans spritesheet, but automated buy menu sprites need providing first
             self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
@@ -532,7 +544,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         for (
             spriterow_num_dest,
             source_data,
-        ) in self.consist.gestalt_graphics.buy_menu_sprite_variants(
+        ) in self.consist.gestalt_graphics.buy_menu_row_map(
             self.consist
         ).items():
             for counter, (source_vehicle, spriterow_num_src) in enumerate(source_data):
@@ -903,7 +915,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
 
         self.add_pantograph_spriterows()
 
-        if self.consist.buy_menu_x_loc == 360:
+        if self.consist.requires_custom_buy_menu_sprite:
             self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # this will render a spritesheet with an additional suffix, separate from the vehicle spritesheet
@@ -1807,7 +1819,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 )
             )
 
-        if self.consist.buy_menu_x_loc == 360:
+        if self.consist.requires_custom_buy_menu_sprite:
             self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # for this pipeline, input_image is just blank white 10px high image, to which the vehicle sprites are then appended
