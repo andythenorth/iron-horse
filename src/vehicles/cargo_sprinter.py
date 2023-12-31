@@ -13,7 +13,6 @@ def main(roster_id):
         name="Cargo Sprinter",
         role="mail_railcar",  # abuse of existing railcar role for convenience
         role_child_branch_num=-1,
-        dual_headed=True,
         power_by_power_source={
             "DIESEL": 1650,  # matched to Griffon, Ultra Shoebox
         },

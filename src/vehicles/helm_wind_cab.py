@@ -12,7 +12,6 @@ def main(roster_id):
         power_by_power_source={
             "AC": 1700,
         },
-        dual_headed=True,
         pantograph_type="z-shaped-single-reversed",
         gen=5,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design

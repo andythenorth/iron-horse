@@ -1442,6 +1442,7 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.dual_headed = True
         # non-standard cite
         self._cite = "Arabella Unit"
         # run cost algorithm doesn't account for dual-head / high power MUs reliably, so just fix it here, using assumption that there are very few cargo sprinters and this will be fine
@@ -1953,6 +1954,7 @@ class TGVCabEngineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.dual_headed = True
         self.buy_menu_additional_text_hint_wagons_add_power = True
         self.tilt_bonus = True
         self.lgv_capable = True

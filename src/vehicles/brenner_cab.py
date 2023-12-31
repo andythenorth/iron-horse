@@ -10,7 +10,6 @@ def main(roster_id):
         name="Brenner",
         role="very_high_speed",
         role_child_branch_num=-2,
-        dual_headed=True,
         power_by_power_source={
             "AC": 3000,
         },
