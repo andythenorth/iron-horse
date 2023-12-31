@@ -50,6 +50,33 @@ class GestaltGraphics(object):
         # if self.liveries is undefined, that's an error
         return self.liveries
 
+    # JFDI hacks CABBAGE
+    def buy_menu_buyable_variant_unit_row_maps(self, consist):
+        result = []
+        # !! JFDI hax May 2023, to handle differing requirements for real (pixel painted) vs. sprite recolour liveries
+        # this is likely incomplete as other gestalts need handled, e.g. automobile cars
+        # should probably be handled via a flag on the gestalt
+        if consist.gestalt_graphics.__class__.__name__ in [
+            "GestaltGraphicsBoxCarOpeningDoors"
+        ]:
+            num_livery_rows_per_unit = 1
+        else:
+            num_livery_rows_per_unit = len(consist.buyable_variants)
+        # organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
+        for buyable_variant in consist.buyable_variants:
+            unit_variants_row_map = []
+            for unit in consist.units:
+                unit_variant_row_num = (
+                    unit.spriterow_num * num_livery_rows_per_unit
+                ) + (
+                    buyable_variant.relative_spriterow_num
+                    * consist.gestalt_graphics.num_load_state_or_similar_spriterows
+                )
+                unit_variants_row_map.append([unit, unit_variant_row_num])
+            result.append(unit_variants_row_map)
+
+        return result
+
 
 class GestaltGraphicsEngine(GestaltGraphics):
     """
@@ -146,7 +173,8 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         ]
         # buy menu sprite generation supports providing multiple variants (used for livery variants etc)
         # but here we only need one, in the default buy menu position
-        return {0: source_data}
+        result = {0: source_data}
+        return result
 
 
 class GestaltGraphicsVisibleCargo(GestaltGraphics):
@@ -431,6 +459,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
             ]
 
             result[counter] = source_data
+        print(result)
         return result
 
 
