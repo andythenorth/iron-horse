@@ -490,7 +490,6 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
                 spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
                 # increment x offset for pasting in next vehicle
                 x_offset += unit_length_in_pixels
-        print(self.consist.gestalt_graphics.buy_menu_row_map(self.consist))
         if (self.consist.id) in ["westbourne", "olympic"]:
             print("CABBAGE 4050", self.consist.id)
             print(self.consist.gestalt_graphics.consist_ruleset)
