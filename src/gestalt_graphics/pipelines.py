@@ -57,68 +57,6 @@ class Pipeline(object):
             currentdir, "src", "graphics", "roofs", self.vehicle_unit.roof + ".png"
         )
 
-    def process_buy_menu_sprite(self, spritesheet):
-        # this function is passed (uncalled) into the pipeline, and then called at render time
-        # this is so that it has the processed spritesheet available, which is essential for creating buy menu sprites
-        # n.b if buy menu sprite processing has conditions by vehicle type, could pass a dedicated function for each type of processing
-
-        # !! this knows too much, some of it should be done in the gestalt
-        # !! the processing should be here
-        # !! the structure for the rows should be returned by the gestalt
-        # !! there is some precedent with buy_menu_row_map in the randomised wagons gestalt
-
-        buy_menu_buyable_variant_unit_row_maps = []
-        # !! JFDI hax May 2023, to handle differing requirements for real (pixel painted) vs. sprite recolour liveries
-        # this is likely incomplete as other gestalts need handled, e.g. automobile cars
-        # should probably be handled via a flag on the gestalt
-        if self.consist.gestalt_graphics.__class__.__name__ in ["GestaltGraphicsBoxCarOpeningDoors"]:
-            num_livery_rows_per_unit = 1
-        else:
-            num_livery_rows_per_unit = len(self.consist.buyable_variants)
-        # organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
-        for buyable_variant in self.consist.buyable_variants:
-            result = []
-            for unit in self.consist.units:
-                unit_variant_row_num = (unit.spriterow_num * num_livery_rows_per_unit) + (buyable_variant.relative_spriterow_num * self.consist.gestalt_graphics.num_load_state_or_similar_spriterows)
-                result.append([unit, unit_variant_row_num])
-            buy_menu_buyable_variant_unit_row_maps.append(result)
-        # now walk the pre-organised structure, placing unit sprites
-        for buyable_variant_counter, buy_menu_buyable_variant_unit_row_map in enumerate(buy_menu_buyable_variant_unit_row_maps):
-            x_offset = 0
-            for unit, unit_variant_row_num in buy_menu_buyable_variant_unit_row_map:
-                # currently no cap on purchase menu sprite width
-                # consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh
-                unit_length_in_pixels = 4 * unit.vehicle_length
-                unit_spriterow_offset = unit_variant_row_num * graphics_constants.spriterow_height
-                crop_box_src = (
-                    224,
-                    10 + unit_spriterow_offset,
-                    224
-                    + unit_length_in_pixels
-                    + 1,  # allow for 1px coupler / corrider overhang
-                    26 + unit_spriterow_offset,
-                )
-                crop_box_dest = (
-                    360 + x_offset,
-                    10 + buyable_variant_counter * graphics_constants.spriterow_height,
-                    360
-                    + x_offset
-                    + unit_length_in_pixels
-                    + 1,  # allow for 1px coupler / corrider overhang
-                    26 + buyable_variant_counter * graphics_constants.spriterow_height,
-                )
-                custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_src)
-                spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
-                # increment x offset for pasting in next vehicle
-                x_offset += unit_length_in_pixels
-        print(self.consist.gestalt_graphics.buy_menu_row_map(self.consist))
-        if (self.consist.id) in ["westbourne", "olympic"]:
-            print("CABBAGE 4050", self.consist.id)
-            print(self.consist.gestalt_graphics.consist_ruleset)
-            print(num_livery_rows_per_unit)
-            print(buy_menu_buyable_variant_unit_row_maps)
-        return spritesheet
-
     def render_common(
         self,
         input_image,
@@ -450,30 +388,6 @@ class GenerateSpritelayerCargoSets(Pipeline):
         )
 
 
-class CheckBuyMenuOnlyPipeline(Pipeline):
-    """
-    Opens the input image, inserts a custom buy menu if required, then saves with no other changes.
-    """
-
-    def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
-        super().__init__()
-
-    def render(self, consist, global_constants, graphics_output_path):
-        self.units = []
-        self.consist = consist
-        self.graphics_output_path = graphics_output_path
-
-        if self.consist.requires_custom_buy_menu_sprite:
-            # !! this currently will cause the vehicle spritesheet buy menu sprites to be copied to the pans spritesheet,
-            # !! it needs pixels from the pans spritesheet, but automated buy menu sprites need providing first
-            self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
-
-        input_image = Image.open(self.vehicle_source_input_path)
-        self.render_common(input_image, self.units)
-        input_image.close()
-
-
 class GenerateEmptySpritesheet(Pipeline):
     """
     Trivial generation of an empty spritesheet (with bounding boxes), which will then be used in following pipelines.
@@ -496,11 +410,168 @@ class GenerateEmptySpritesheet(Pipeline):
         empty_spriterow_image.close()
 
 
+class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
+    """
+    Create a custom buy menu sprite for the common cases (articulated vehicles etc).
+    For complex cases (randomisation etc) create a specific pipeline.
+    Possibly this could have been a unit not a pipeline, but eh.
+    This way was marginally easier to integrate - units are in polar fox and not specific to trains.
+    Potato / potato.
+
+    Subclass this to control which spritesheet(s) are passed to it.
+    """
+
+    def __init__(self):
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        super().__init__()
+
+    def process_buy_menu_sprite(self, spritesheet):
+        # this function is passed (uncalled) into the pipeline, and then called at render time
+        # this is so that it has the processed spritesheet available, which is essential for creating buy menu sprites
+        # n.b if buy menu sprite processing has conditions by vehicle type, could pass a dedicated function for each type of processing
+
+        # !! this knows too much, some of it should be done in the gestalt
+        # !! the processing should be here
+        # !! the structure for the rows should be returned by the gestalt
+        # !! there is some precedent with buy_menu_row_map in the randomised wagons gestalt
+
+        buy_menu_buyable_variant_unit_row_maps = []
+        # !! JFDI hax May 2023, to handle differing requirements for real (pixel painted) vs. sprite recolour liveries
+        # this is likely incomplete as other gestalts need handled, e.g. automobile cars
+        # should probably be handled via a flag on the gestalt
+        if self.consist.gestalt_graphics.__class__.__name__ in ["GestaltGraphicsBoxCarOpeningDoors"]:
+            num_livery_rows_per_unit = 1
+        else:
+            num_livery_rows_per_unit = len(self.consist.buyable_variants)
+        # organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
+        for buyable_variant in self.consist.buyable_variants:
+            result = []
+            for unit in self.consist.units:
+                unit_variant_row_num = (unit.spriterow_num * num_livery_rows_per_unit) + (buyable_variant.relative_spriterow_num * self.consist.gestalt_graphics.num_load_state_or_similar_spriterows)
+                result.append([unit, unit_variant_row_num])
+            buy_menu_buyable_variant_unit_row_maps.append(result)
+        # now walk the pre-organised structure, placing unit sprites
+        for buyable_variant_counter, buy_menu_buyable_variant_unit_row_map in enumerate(buy_menu_buyable_variant_unit_row_maps):
+            x_offset = 0
+            for unit, unit_variant_row_num in buy_menu_buyable_variant_unit_row_map:
+                # currently no cap on purchase menu sprite width
+                # consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh
+                unit_length_in_pixels = 4 * unit.vehicle_length
+                unit_spriterow_offset = unit_variant_row_num * graphics_constants.spriterow_height
+                crop_box_src = (
+                    224,
+                    10 + unit_spriterow_offset,
+                    224
+                    + unit_length_in_pixels
+                    + 1,  # allow for 1px coupler / corrider overhang
+                    26 + unit_spriterow_offset,
+                )
+                crop_box_dest = (
+                    360 + x_offset,
+                    10 + buyable_variant_counter * graphics_constants.spriterow_height,
+                    360
+                    + x_offset
+                    + unit_length_in_pixels
+                    + 1,  # allow for 1px coupler / corrider overhang
+                    26 + buyable_variant_counter * graphics_constants.spriterow_height,
+                )
+                custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_src)
+                spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
+                # increment x offset for pasting in next vehicle
+                x_offset += unit_length_in_pixels
+        print(self.consist.gestalt_graphics.buy_menu_row_map(self.consist))
+        if (self.consist.id) in ["westbourne", "olympic"]:
+            print("CABBAGE 4050", self.consist.id)
+            print(self.consist.gestalt_graphics.consist_ruleset)
+            print(num_livery_rows_per_unit)
+            print(buy_menu_buyable_variant_unit_row_maps)
+        return spritesheet
+
+    def render(self):
+        # not implemented - implement in subclasses
+        pass
+
+
+class GenerateBuyMenuSpriteVanillaVehiclePipeline(GenerateBuyMenuSpriteVanillaPipelineBase):
+    """
+    Vanilla buy menu sprite for vehicles.
+    """
+
+    def __init__(self):
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        super().__init__()
+
+    def render(self, consist, global_constants, graphics_output_path):
+        self.units = []
+        self.consist = consist
+        self.graphics_output_path = graphics_output_path
+
+        self.units.append(
+            AddBuyMenuSprite(self.process_buy_menu_sprite)
+        )
+
+        # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
+        spritesheet_image = Image.open(
+            os.path.join(self.graphics_output_path, self.consist.id + ".png")
+        )
+
+        self.render_common(spritesheet_image, self.units)
+        spritesheet_image.close()
+
+
+class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(GenerateBuyMenuSpriteVanillaPipelineBase):
+    """
+    Pantograph spritesheets need buy menu sprite(s) generating.
+    Easiest to give this a custom pipeline, as then it's trivial to ensure it's run explicitly *after* the pantograph spritesheets are generated.
+    """
+
+    def __init__(self):
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        super().__init__()
+
+    def render(self, consist, global_constants, graphics_output_path):
+        self.units = []
+        self.consist = consist
+        self.graphics_output_path = graphics_output_path
+
+        self.units.append(
+            AddBuyMenuSprite(self.process_buy_menu_sprite)
+        )
+
+        suffix = "_pantographs_" + self.pantograph_state
+        # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
+        spritesheet_image = Image.open(
+            os.path.join(self.graphics_output_path, self.consist.id + suffix + ".png")
+        )
+        self.render_common(spritesheet_image, self.units, output_suffix=suffix)
+        spritesheet_image.close()
+
+
+class GenerateBuyMenuSpriteVanillaPantographsUpPipeline(GenerateBuyMenuSpriteVanillaPantographsPipelineBase):
+    """Sparse subclass, solely to set pan 'up' state (simplest way to implement this)."""
+
+    pantograph_state = "up"  # lol, actually valid class vars
+
+    def __init__(self):
+        super().__init__()
+
+
+class GenerateBuyMenuSpriteVanillaPantographsDownPipeline(
+    GenerateBuyMenuSpriteVanillaPantographsPipelineBase
+):
+    """Sparse subclass, solely to set pan 'down' state (simplest way to implement this)."""
+
+    pantograph_state = "down"  # lol, actually valid class vars
+
+    def __init__(self):
+        super().__init__()
+
+
 class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
     """
-    Creates a custom buy menu composed from the randomisation candidates for this wagon, then saves with no other changes.
+    Creates a custom buy menu for randomised vehicles - composing from the randomisation candidates.
     Possibly this could have been a unit not a pipeline, but eh.
-    This way was marginally easier to integrate.
+    This way was marginally easier to integrate - units are in polar fox and not specific to trains.
     Also keeps a clean separation between the generation of the vehicle sprites and the fancy buy menu sprite.
     Potato / potato.
     """
@@ -509,7 +580,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
 
-    def process_buy_menu_sprite_from_randomisation_candidates(self, spritesheet):
+    def process_buy_menu_sprite(self, spritesheet):
         # this function is passed (uncalled) into the pipeline, and then called at render time
 
         # take the first and last candidates;
@@ -652,7 +723,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         self.graphics_output_path = graphics_output_path
 
         self.units.append(
-            AddBuyMenuSprite(self.process_buy_menu_sprite_from_randomisation_candidates)
+            AddBuyMenuSprite(self.process_buy_menu_sprite)
         )
 
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
@@ -914,9 +985,6 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         self.graphics_output_path = graphics_output_path
 
         self.add_pantograph_spriterows()
-
-        if self.consist.requires_custom_buy_menu_sprite:
-            self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # this will render a spritesheet with an additional suffix, separate from the vehicle spritesheet
         input_image = Image.open(self.vehicle_source_input_path).crop(
@@ -1819,9 +1887,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 )
             )
 
-        if self.consist.requires_custom_buy_menu_sprite:
-            self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
-
         # for this pipeline, input_image is just blank white 10px high image, to which the vehicle sprites are then appended
         input_image = Image.new("P", (graphics_constants.spritesheet_width, 10), 255)
         input_image.putpalette(DOS_PALETTE)
@@ -1836,12 +1901,14 @@ def get_pipelines(pipeline_names):
     # looks like it could be replaced by a simple dict lookup directly from gestalt_graphics, but eh, I tried, it's faff
     pipelines = {
         "pass_through_pipeline": PassThroughPipeline,
-        "check_buy_menu_only": CheckBuyMenuOnlyPipeline,
-        "generate_buy_menu_sprite_from_randomisation_candidates": GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline,
         "generate_empty_spritesheet": GenerateEmptySpritesheet,
+        "generate_buy_menu_sprite_vanilla_vehicle": GenerateBuyMenuSpriteVanillaVehiclePipeline,
+        "generate_buy_menu_sprite_vanilla_pantographs_down": GenerateBuyMenuSpriteVanillaPantographsDownPipeline,
+        "generate_buy_menu_sprite_vanilla_pantographs_up": GenerateBuyMenuSpriteVanillaPantographsUpPipeline,
+        "generate_buy_menu_sprite_from_randomisation_candidates": GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline,
         "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
-        "generate_pantographs_up_spritesheet": GeneratePantographsUpSpritesheetPipeline,
         "generate_pantographs_down_spritesheet": GeneratePantographsDownSpritesheetPipeline,
+        "generate_pantographs_up_spritesheet": GeneratePantographsUpSpritesheetPipeline,
         "generate_spritelayer_cargo_sets": GenerateSpritelayerCargoSets,
     }
     return [pipelines[pipeline_name]() for pipeline_name in pipeline_names]
