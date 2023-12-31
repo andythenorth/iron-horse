@@ -439,7 +439,9 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
         # !! JFDI hax May 2023, to handle differing requirements for real (pixel painted) vs. sprite recolour liveries
         # this is likely incomplete as other gestalts need handled, e.g. automobile cars
         # should probably be handled via a flag on the gestalt
-        if self.consist.gestalt_graphics.__class__.__name__ in ["GestaltGraphicsBoxCarOpeningDoors"]:
+        if self.consist.gestalt_graphics.__class__.__name__ in [
+            "GestaltGraphicsBoxCarOpeningDoors"
+        ]:
             num_livery_rows_per_unit = 1
         else:
             num_livery_rows_per_unit = len(self.consist.buyable_variants)
@@ -447,17 +449,26 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
         for buyable_variant in self.consist.buyable_variants:
             result = []
             for unit in self.consist.units:
-                unit_variant_row_num = (unit.spriterow_num * num_livery_rows_per_unit) + (buyable_variant.relative_spriterow_num * self.consist.gestalt_graphics.num_load_state_or_similar_spriterows)
+                unit_variant_row_num = (
+                    unit.spriterow_num * num_livery_rows_per_unit
+                ) + (
+                    buyable_variant.relative_spriterow_num
+                    * self.consist.gestalt_graphics.num_load_state_or_similar_spriterows
+                )
                 result.append([unit, unit_variant_row_num])
             buy_menu_buyable_variant_unit_row_maps.append(result)
         # now walk the pre-organised structure, placing unit sprites
-        for buyable_variant_counter, buy_menu_buyable_variant_unit_row_map in enumerate(buy_menu_buyable_variant_unit_row_maps):
+        for buyable_variant_counter, buy_menu_buyable_variant_unit_row_map in enumerate(
+            buy_menu_buyable_variant_unit_row_maps
+        ):
             x_offset = 0
             for unit, unit_variant_row_num in buy_menu_buyable_variant_unit_row_map:
                 # currently no cap on purchase menu sprite width
                 # consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh
                 unit_length_in_pixels = 4 * unit.vehicle_length
-                unit_spriterow_offset = unit_variant_row_num * graphics_constants.spriterow_height
+                unit_spriterow_offset = (
+                    unit_variant_row_num * graphics_constants.spriterow_height
+                )
                 crop_box_src = (
                     224,
                     10 + unit_spriterow_offset,
@@ -492,7 +503,9 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
         pass
 
 
-class GenerateBuyMenuSpriteVanillaVehiclePipeline(GenerateBuyMenuSpriteVanillaPipelineBase):
+class GenerateBuyMenuSpriteVanillaVehiclePipeline(
+    GenerateBuyMenuSpriteVanillaPipelineBase
+):
     """
     Vanilla buy menu sprite for vehicles.
     """
@@ -506,9 +519,7 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(GenerateBuyMenuSpriteVanillaPi
         self.consist = consist
         self.graphics_output_path = graphics_output_path
 
-        self.units.append(
-            AddBuyMenuSprite(self.process_buy_menu_sprite)
-        )
+        self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
         spritesheet_image = Image.open(
@@ -519,7 +530,9 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(GenerateBuyMenuSpriteVanillaPi
         spritesheet_image.close()
 
 
-class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(GenerateBuyMenuSpriteVanillaPipelineBase):
+class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
+    GenerateBuyMenuSpriteVanillaPipelineBase
+):
     """
     Pantograph spritesheets need buy menu sprite(s) generating.
     Easiest to give this a custom pipeline, as then it's trivial to ensure it's run explicitly *after* the pantograph spritesheets are generated.
@@ -534,9 +547,7 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(GenerateBuyMenuSpriteV
         self.consist = consist
         self.graphics_output_path = graphics_output_path
 
-        self.units.append(
-            AddBuyMenuSprite(self.process_buy_menu_sprite)
-        )
+        self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         suffix = "_pantographs_" + self.pantograph_state
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
@@ -547,7 +558,9 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(GenerateBuyMenuSpriteV
         spritesheet_image.close()
 
 
-class GenerateBuyMenuSpriteVanillaPantographsUpPipeline(GenerateBuyMenuSpriteVanillaPantographsPipelineBase):
+class GenerateBuyMenuSpriteVanillaPantographsUpPipeline(
+    GenerateBuyMenuSpriteVanillaPantographsPipelineBase
+):
     """Sparse subclass, solely to set pan 'up' state (simplest way to implement this)."""
 
     pantograph_state = "up"  # lol, actually valid class vars
@@ -615,9 +628,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         for (
             spriterow_num_dest,
             source_data,
-        ) in self.consist.gestalt_graphics.buy_menu_row_map(
-            self.consist
-        ).items():
+        ) in self.consist.gestalt_graphics.buy_menu_row_map(self.consist).items():
             for counter, (source_vehicle, spriterow_num_src) in enumerate(source_data):
                 # note that we want the *generated* source wagon spritesheet
                 source_vehicle_input_path = os.path.join(
@@ -722,9 +733,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         self.consist = consist
         self.graphics_output_path = graphics_output_path
 
-        self.units.append(
-            AddBuyMenuSprite(self.process_buy_menu_sprite)
-        )
+        self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
         spritesheet_image = Image.open(
@@ -855,7 +864,11 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         loc_points = [
             (
                 pixel[0],
-                pixel[1] - (self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height),
+                pixel[1]
+                - (
+                    self.consist.gestalt_graphics.num_pantograph_rows
+                    * graphics_constants.spriterow_height
+                ),
                 pixel[2],
             )
             for pixel in loc_points
@@ -881,7 +894,12 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             "P",
             (
                 graphics_constants.spritesheet_width,
-                (2 * self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height) + 10,
+                (
+                    2
+                    * self.consist.gestalt_graphics.num_pantograph_rows
+                    * graphics_constants.spriterow_height
+                )
+                + 10,
             ),
             255,
         )
@@ -941,7 +959,14 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         )
         pantograph_output_image.paste(
             vehicle_debug_image,
-            (0, 10 + (self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height)),
+            (
+                0,
+                10
+                + (
+                    self.consist.gestalt_graphics.num_pantograph_rows
+                    * graphics_constants.spriterow_height
+                ),
+            ),
         )
         pantograph_debug_image = pantograph_output_image.copy().crop(
             (
@@ -959,7 +984,14 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         )  # the inversion here of blue and white looks a bit odd, but potato / potato
         pantograph_output_image.paste(
             pantograph_debug_image,
-            (0, 10 + (self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height)),
+            (
+                0,
+                10
+                + (
+                    self.consist.gestalt_graphics.num_pantograph_rows
+                    * graphics_constants.spriterow_height
+                ),
+            ),
             pantograph_debug_mask,
         )
 
@@ -971,7 +1003,12 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             0,
             10,
             self.global_constants.sprites_max_x_extent,
-            10 + (2 * self.consist.gestalt_graphics.num_pantograph_rows * graphics_constants.spriterow_height),
+            10
+            + (
+                2
+                * self.consist.gestalt_graphics.num_pantograph_rows
+                * graphics_constants.spriterow_height
+            ),
         )
         self.units.append(AppendToSpritesheet(pantograph_spritesheet, crop_box_dest))
         pantograph_input_image.close()
@@ -1131,7 +1168,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         return chassis_image
 
     def add_generic_spriterows(self, spriterow_type):
-
         crop_box_source = (
             0,
             self.base_yoffs,
@@ -1275,7 +1311,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
     def add_pax_mail_car_with_opening_doors_spriterows(self, row_count):
         # this loop builds the spriterow and comps doors etc
         for row_num in range(int(row_count / 2)):
-
             # get doors
             doors_bboxes = (
                 self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed

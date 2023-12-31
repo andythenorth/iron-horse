@@ -28,7 +28,6 @@ class GestaltGraphics(object):
         # ruleset may also be used for buy menu sprite processing
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
 
-
     @property
     def nml_template(self):
         # over-ride in sub-classes as needed
@@ -60,7 +59,9 @@ class GestaltGraphicsEngine(GestaltGraphics):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.pipelines = pipelines.get_pipelines(["pass_through_pipeline", "generate_buy_menu_sprite_vanilla_vehicle"])
+        self.pipelines = pipelines.get_pipelines(
+            ["pass_through_pipeline", "generate_buy_menu_sprite_vanilla_vehicle"]
+        )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_switch_purchase = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = True
@@ -157,7 +158,10 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(
-            ["extend_spriterows_for_composited_sprites_pipeline", "generate_buy_menu_sprite_vanilla_vehicle"]
+            [
+                "extend_spriterows_for_composited_sprites_pipeline",
+                "generate_buy_menu_sprite_vanilla_vehicle",
+            ]
         )
         # default unweathered body recolour to CC1, pass param to over-ride as needed
         # can optionally extend with "weathered" variant and an appropriate recolour map
@@ -317,7 +321,10 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     def __init__(self, weathered_variants, **kwargs):
         super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(
-            ["extend_spriterows_for_composited_sprites_pipeline", "generate_buy_menu_sprite_vanilla_vehicle"]
+            [
+                "extend_spriterows_for_composited_sprites_pipeline",
+                "generate_buy_menu_sprite_vanilla_vehicle",
+            ]
         )
         self.id_base = kwargs.get("id_base")
         # a default 'unweathered' variant must be provided
@@ -438,7 +445,10 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         super().__init__(**kwargs)
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(
-            ["extend_spriterows_for_composited_sprites_pipeline", "generate_buy_menu_sprite_vanilla_vehicle"]
+            [
+                "extend_spriterows_for_composited_sprites_pipeline",
+                "generate_buy_menu_sprite_vanilla_vehicle",
+            ]
         )
         # we need to run the spritelayer cargo pipelines separately from the vehicle pipelines, but we still use this gestalt as the entry point
         self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
@@ -575,7 +585,10 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         super().__init__(**kwargs)
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(
-            ["extend_spriterows_for_composited_sprites_pipeline", "generate_buy_menu_sprite_vanilla_vehicle"]
+            [
+                "extend_spriterows_for_composited_sprites_pipeline",
+                "generate_buy_menu_sprite_vanilla_vehicle",
+            ]
         )
         # we need to run the spritelayer cargo pipelines separately from the vehicle pipelines, but we still use this gestalt as the entry point
         self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
@@ -741,7 +754,10 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     def __init__(self, weathered_variants, **kwargs):
         super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(
-            ["extend_spriterows_for_composited_sprites_pipeline", "generate_buy_menu_sprite_vanilla_vehicle"]
+            [
+                "extend_spriterows_for_composited_sprites_pipeline",
+                "generate_buy_menu_sprite_vanilla_vehicle",
+            ]
         )
         # recolour_maps map cargo labels to liveries, use 'DFLT' as the labe in the case of just one livery
         # a default 'unweathered' variant must be provided
@@ -813,7 +829,10 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
             )
         # configure pipelines
         self.pipelines = pipelines.get_pipelines(
-            ["extend_spriterows_for_composited_sprites_pipeline", "generate_buy_menu_sprite_vanilla_vehicle"]
+            [
+                "extend_spriterows_for_composited_sprites_pipeline",
+                "generate_buy_menu_sprite_vanilla_vehicle",
+            ]
         )
         # add pantographs as necessary
         if kwargs.get("pantograph_type", None) is not None:
@@ -884,7 +903,9 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
             else:
                 source_row_num = position_variant_num
             # group of n rows - n liveries * two loaded/loading states (opening doors)
-            row_group_size = self.num_load_state_or_similar_spriterows * len(self.liveries)
+            row_group_size = self.num_load_state_or_similar_spriterows * len(
+                self.liveries
+            )
             for i in range(1, 1 + row_group_size):
                 result[base_row_num + (row_group_size * position_variant_num) + i] = (
                     base_row_num + (row_group_size * source_row_num) + i
