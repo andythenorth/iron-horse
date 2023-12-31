@@ -445,6 +445,61 @@
     }
 </tal:ruleset>
 
+<tal:ruleset define="default 0; first 1; last 2; special 3;">
+    // pax coach position switches
+    switch (FEAT_TRAINS, SELF, switch_graphics_tgv_ruleset_position_default, 0) {
+        return ${default};
+    }
+
+    <!--! if special -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_tgv_ruleset_position_special_check_length, num_vehs_in_vehid_chain) {
+        <!--! don't show 'special' if same id chain < 4 vehicles -->
+        0..3: return switch_graphics_tgv_ruleset_position_default;
+        return ${special};
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_tgv_ruleset_position_check_special, position_in_vehid_chain_from_end - position_in_vehid_chain) {
+        0..1: return switch_graphics_tgv_ruleset_position_special_check_length;
+        switch_graphics_tgv_ruleset_position_default;
+    }
+
+    <!--! if last -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_tgv_ruleset_position_check_last_neighbouring, [STORE_TEMP(1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]) {
+        <!--! don't show last if following vehicle is also a valid pax car with a different ID -->
+        <tal:pax_car_ids repeat="pax_car_id roster_manager.pax_car_ids">
+        ${pax_car_id}: return ${default};
+        </tal:pax_car_ids>
+        return ${last};
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_tgv_ruleset_position_check_last, position_in_vehid_chain_from_end) {
+        0: switch_graphics_tgv_ruleset_position_check_last_neighbouring;
+        switch_graphics_tgv_ruleset_position_check_special;
+    }
+
+    <!--! if first -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_tgv_ruleset_position_check_first_neighbouring, [STORE_TEMP(-1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]) {
+        <!--! don't show first if preceeding vehicle is also a valid pax car with a different ID -->
+        <tal:pax_car_ids repeat="pax_car_id roster_manager.pax_car_ids">
+        ${pax_car_id}: return ${default};
+        </tal:pax_car_ids>
+        return ${first};
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_tgv_ruleset_position_first_check_length, num_vehs_in_vehid_chain) {
+        <!--! don't show 'first' if same id chain < 5 vehicles -->
+        0..4: return switch_graphics_tgv_ruleset_position_default;
+        return switch_graphics_tgv_ruleset_position_check_first_neighbouring;
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_tgv_ruleset_position_check_first, position_in_vehid_chain) {
+        0: return switch_graphics_tgv_ruleset_position_first_check_length;
+        switch_graphics_tgv_ruleset_position_check_last;
+    }
+
+    switch (FEAT_TRAINS, SELF, switch_graphics_tgv_ruleset, num_vehs_in_vehid_chain) {
+        <!--! always show default if same id chain < 2 vehicles -->
+        0..1: return switch_graphics_tgv_ruleset_position_default;
+        return switch_graphics_tgv_ruleset_position_check_first;
+    }
+</tal:ruleset>
+
 <tal:ruleset define="default 0; last 1;">
     // driving cab position switches
     <!--! only show 'last' if consist has > 1 vehicle - keeps the cab orientated <- when built in depot, matching buy menu -->

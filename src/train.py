@@ -2017,7 +2017,7 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="pax_cars",
+            consist_ruleset="tgv",
             # this won't work for TGV mail cars if mail-specific liveries (TGV La Poste etc) are added in future, but eh, only 2 liveries as of Dec 2022
             liveries=self.cab_consist.gestalt_graphics.liveries,
             pantograph_type=self.pantograph_type,
