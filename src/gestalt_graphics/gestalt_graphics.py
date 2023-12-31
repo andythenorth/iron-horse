@@ -24,6 +24,9 @@ class GestaltGraphics(object):
         self.buy_menu_width_addition = 0
         # over-ride this in subclasses as needed
         self.num_load_state_or_similar_spriterows = 1
+        # optional - rulesets are used to define for different types of vehicle how sprites change depending on consist position
+        # ruleset may also be used for buy menu sprite processing
+        self.consist_ruleset = kwargs.get("consist_ruleset", None)
 
     @property
     def nml_template(self):
@@ -51,7 +54,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
     """
 
     def __init__(self, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(["check_buy_menu_only"])
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_switch_purchase = "_switch_colour_mapping"
@@ -103,7 +106,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
     """
 
     def __init__(self, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(
             [
                 "generate_empty_spritesheet",
@@ -164,7 +167,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     """
 
     def __init__(self, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
@@ -324,7 +327,7 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     """
 
     def __init__(self, weathered_variants, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
@@ -376,7 +379,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         buy_menu_sprite_pairs,
         **kwargs
     ):
-        super().__init__()
+        super().__init__(**kwargs)
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
         self.pipelines = pipelines.get_pipelines(
             [
@@ -446,7 +449,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
     """
 
     def __init__(self, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
@@ -457,7 +460,6 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = False
-        self.consist_ruleset = kwargs.get("consist_ruleset", None)
         self.liveries = kwargs["liveries"]
         # add layers for container sprites
         # !! this might need extended for double stacks in future - see automobile gestalt for examples of deriving this from number of cargo sprite layers
@@ -584,7 +586,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     """
 
     def __init__(self, spritelayer_cargo_layers=["default"], **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
@@ -595,7 +597,6 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_with_purchase = False
-        self.consist_ruleset = kwargs.get("consist_ruleset", None)
         self.cargo_sprites_are_asymmetric = True
         self.liveries = kwargs["liveries"]
         # derive number of layers for cargo sprites
@@ -616,7 +617,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
             ]
         else:
             raise BaseException(
-                self.consist_ruleset
+                str(self.consist_ruleset)
                 + " not matched in GestaltGraphicsAutomobilesTransporter get_output_row_types()"
             )
         if self.add_masked_overlay:
@@ -752,7 +753,7 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     """
 
     def __init__(self, weathered_variants, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
@@ -800,14 +801,12 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
     """
 
     def __init__(self, spriterow_group_mappings, **kwargs):
-        super().__init__()
+        super().__init__(**kwargs)
         # spriterow_group_mappings provided by subclass calling gestalt_graphics:
         # - spriterow numbers for named positions in consist
         # - spriterow numbers are zero-indexed *relative* to the start of the consist-cargo block, to reduce shuffling them all if new rows are inserted in future
         # - *all* of the keys must be provided in the mapping, set values to 0 if unused
         self.spriterow_group_mappings = spriterow_group_mappings
-        # rulesets are used to define for different types of vehicle how sprites change depending on consist position
-        self.consist_ruleset = kwargs.get("consist_ruleset", None)
         # liveries provided by subclass calling gestalt_graphics
         self.liveries = kwargs.get("liveries", [])
         # we'll generate spriterows for doors closed and doors open
@@ -926,7 +925,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
         num_extra_layers_for_spritelayer_cargos=None,
         **kwargs
     ):
-        super().__init__()
+        super().__init__(**kwargs)
         self.pipelines = pipelines.get_pipelines(["pass_through_pipeline"])
         self._nml_template = _nml_template
         self._cargo_row_map = cargo_row_map
