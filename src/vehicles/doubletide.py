@@ -16,7 +16,7 @@ def main(roster_id):
         random_reverse=True,
         gen=5,
         intro_year_offset=9,  # let's be quite a bit later for this one, Yillen is long-lived
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
@@ -25,6 +25,7 @@ def main(roster_id):
         sprites_complete=True,
     )
 
+    # 2 separate units so that buy menu has reversed cabs
     consist.add_unit(
         type=DieselEngineUnit, weight=68, vehicle_length=5, spriterow_num=0
     )
