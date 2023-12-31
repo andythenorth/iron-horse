@@ -69,6 +69,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         self.default_livery_extra_docs_examples = kwargs.get(
             "default_livery_extra_docs_examples", []
         )
+        # add pantographs as necessary
         if kwargs.get("pantograph_type", None) is not None:
             self.pipelines.extend(
                 pipelines.get_pipelines(
