@@ -421,6 +421,10 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
     Subclass this to control which spritesheet(s) are passed to it.
     """
 
+    # JFDI hacks - class attributes is valid here
+    # as of Jan 2024, magical flags are as good as any other solution for passing pipeline type to buy_menu_row_map resolver
+    is_pantographs_pipeline = False
+
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
@@ -436,7 +440,7 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
         # !! there is some precedent with buy_menu_row_map in the randomised wagons gestalt
 
         # now walk the pre-organised structure, placing unit sprites
-        for row_data in self.consist.gestalt_graphics.buy_menu_row_map(self.consist):
+        for row_data in self.consist.gestalt_graphics.buy_menu_row_map(self):
             x_offset = 0
             for (
                 source_vehicle_unit,
@@ -496,6 +500,10 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
         super().__init__()
 
     def render(self, consist, global_constants, graphics_output_path):
+        # only generate the buy menu sprite if required
+        if not consist.requires_custom_buy_menu_sprite:
+            return
+
         self.units = []
         self.consist = consist
         self.graphics_output_path = graphics_output_path
@@ -506,6 +514,8 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
         spritesheet_image = Image.open(
             os.path.join(self.graphics_output_path, self.consist.id + ".png")
         )
+
+        print(self.consist.id, "GenerateBuyMenuSpriteVanillaVehiclePipeline called")
 
         self.render_common(spritesheet_image, self.units)
         spritesheet_image.close()
@@ -519,11 +529,18 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
     Easiest to give this a custom pipeline, as then it's trivial to ensure it's run explicitly *after* the pantograph spritesheets are generated.
     """
 
+    # as of Jan 2024, magical flags are as good as any other solution for passing pipeline type to buy_menu_row_map resolver
+    is_pantographs_pipeline = True
+
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
 
     def render(self, consist, global_constants, graphics_output_path):
+        # only generate the buy menu sprite if required
+        if not consist.requires_custom_buy_menu_sprite:
+            return
+
         self.units = []
         self.consist = consist
         self.graphics_output_path = graphics_output_path
@@ -606,7 +623,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                 x_offset_dest=0,
             ),
         ]
-        for row_data in self.consist.gestalt_graphics.buy_menu_row_map(self.consist):
+        for row_data in self.consist.gestalt_graphics.buy_menu_row_map(self):
             for counter, (source_vehicle_unit, input_spriterow_num) in enumerate(
                 row_data["source_vehicles_and_input_spriterow_nums"]
             ):

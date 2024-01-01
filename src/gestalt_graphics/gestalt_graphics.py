@@ -48,36 +48,85 @@ class GestaltGraphics(object):
 
     # !! JFDI hacks CABBAGE
     # !! override in subclasses as needed
-    def buy_menu_row_map(self, consist):
+    def buy_menu_row_map(self, pipeline):
         result = []
+        # !! CABBAGE OUTDATED COMMENT organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
+        for buyable_variant_counter, buyable_variant in enumerate(
+            pipeline.consist.buyable_variants
+        ):
+            # buyable_variant_counter maps to spriterow_num_dest
+            # the spritesheet has buy menu sprites in their own descending vertical order corresponding to buyable variants
+            # the buy menu sprites don't align vertically with any specific vehicle spriterow
+            source_vehicles_and_input_spriterow_nums = []
+
+            for unit_counter, unit in enumerate(pipeline.consist.units):
+                # vehicle unit, y offset (num spriterows) to buy menu input row
+                source_vehicles_and_input_spriterow_nums.append(
+                    [
+                        unit,
+                        self.cabbage_buy_menu_unit_variant_row_resolver(
+                            unit_counter, pipeline, buyable_variant, unit
+                        ),
+                    ]
+                )
+
+            row_config = {
+                "spriterow_num_dest": buyable_variant_counter,
+                "source_vehicles_and_input_spriterow_nums": source_vehicles_and_input_spriterow_nums,
+            }
+            result.append(row_config)
+        return result
+
+    # !! JFDI hacks CABBAGE
+    # !! override in subclasses as needed
+    def cabbage_buy_menu_unit_variant_row_resolver(
+        self, unit_counter, pipeline, buyable_variant, unit
+    ):
         # !! JFDI hax May 2023, to handle differing requirements for real (pixel painted) vs. sprite recolour liveries
         # this is likely incomplete as other gestalts need handled, e.g. automobile cars
         # should probably be handled via a flag on the gestalt
-        if consist.gestalt_graphics.__class__.__name__ in [
+        # !! isn't this already known somewhere?  Gestalts might be counting liveries already
+        if pipeline.consist.gestalt_graphics.__class__.__name__ in [
             "GestaltGraphicsBoxCarOpeningDoors"
         ]:
             num_livery_rows_per_unit = 1
         else:
-            num_livery_rows_per_unit = len(consist.buyable_variants)
-        # organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
-        for counter, buyable_variant in enumerate(consist.buyable_variants):
-            unit_variants_row_map = {
-                "spriterow_num_dest": counter,
-                "source_vehicles_and_input_spriterow_nums": [],
-            }
-            for unit in consist.units:
-                unit_variant_row_num = (
-                    unit.spriterow_num * num_livery_rows_per_unit
-                ) + (
-                    buyable_variant.relative_spriterow_num
-                    * consist.gestalt_graphics.num_load_state_or_similar_spriterows
-                )
-                # vehicle unit, y offset to buy menu row
-                unit_variants_row_map[
-                    "source_vehicles_and_input_spriterow_nums"
-                ].append([unit, unit_variant_row_num])
-            result.append(unit_variants_row_map)
-        return result
+            num_livery_rows_per_unit = len(pipeline.consist.buyable_variants)
+
+        # !! CABBAGE - this needs to delegate to consist_ruleset, to find, e.g. an additional y offset to the spriterow for 'first' or 'last' etc
+        if pipeline.consist.id in ["olympic"]:
+            print(self.consist_ruleset)
+            print(self.spriterow_group_mappings)
+            if pipeline.is_pantographs_pipeline:
+                if unit_counter == 0:
+                    unit_variant_row_num = 0
+                else:
+                    unit_variant_row_num = 4  # !! this just needs to be an empty row?? or does it depend on the consist?
+            else:
+                if unit_counter == 0:
+                    unit_variant_row_num = (
+                        num_livery_rows_per_unit
+                        * self.spriterow_group_mappings["first"]
+                        * self.num_load_state_or_similar_spriterows
+                    ) + (
+                        buyable_variant.relative_spriterow_num
+                        * self.num_load_state_or_similar_spriterows
+                    )
+                else:
+                    unit_variant_row_num = (
+                        num_livery_rows_per_unit
+                        * self.spriterow_group_mappings["last"]
+                        * self.num_load_state_or_similar_spriterows
+                    ) + (
+                        buyable_variant.relative_spriterow_num
+                        * self.num_load_state_or_similar_spriterows
+                    )
+        else:
+            unit_variant_row_num = (unit.spriterow_num * num_livery_rows_per_unit) + (
+                (buyable_variant.relative_spriterow_num)
+                * self.num_load_state_or_similar_spriterows
+            )
+        return unit_variant_row_num
 
 
 class GestaltGraphicsEngine(GestaltGraphics):
@@ -149,11 +198,11 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
     def nml_template(self):
         return "vehicle_randomised.pynml"
 
-    def buy_menu_row_map(self, consist):
+    def buy_menu_row_map(self, pipeline):
         # for practicality we only want the default variant where variants exist,
         # e.g. no cc recoloured variants etc as it's seriously not worth handling those here
         candidate_consists = []
-        for unit_variant in consist.frozen_roster_items[
+        for unit_variant in pipeline.consist.frozen_roster_items[
             "wagon_randomisation_candidates"
         ][0]:
             # ^^^ !! picking the first item off is hax
@@ -163,7 +212,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022
         source_vehicles_and_input_spriterow_nums = [
-            # vehicle unit, y offset to buy menu row
+            # vehicle unit, y offset (num spriterows) to buy menu input row
             # note that buy_menu_row_map works with *units* not consists; we can always look up the consist from the unit, but not trivially the other way round
             (
                 list(candidate_consists)[0].units[0],
@@ -451,19 +500,19 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         )
         return None
 
-    def buy_menu_row_map(self, consist):
+    def buy_menu_row_map(self, pipeline):
         result = []
         for counter, buy_menu_sprite_pair in enumerate(self.buy_menu_sprite_pairs):
             row_config = {"spriterow_num_dest": counter}
-            # vehicle unit, y offset to buy menu row
+            # vehicle unit, y offset (num spriterows) to buy menu input row
             # note that buy_menu_row_map works with *units* not consists; we can always look up the consist from the unit, but not trivially the other way round
             source_vehicles_and_input_spriterow_nums = [
                 (
-                    consist.units[0],
+                    pipeline.consist.units[0],
                     self.spriterow_labels.index(buy_menu_sprite_pair[0]),
                 ),
                 (
-                    consist.units[0],
+                    pipeline.consist.units[0],
                     self.spriterow_labels.index(buy_menu_sprite_pair[1]),
                 ),
             ]
