@@ -520,8 +520,6 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
             os.path.join(self.graphics_output_path, self.consist.id + ".png")
         )
 
-        print(self.consist.id, "GenerateBuyMenuSpriteVanillaVehiclePipeline called")
-
         self.render_common(spritesheet_image, self.units)
         spritesheet_image.close()
 
