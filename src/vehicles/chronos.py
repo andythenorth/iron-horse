@@ -8,11 +8,11 @@ def main(roster_id):
     consist = MailEngineExpressRailcarConsist(
         roster_id=roster_id,
         id="chronos",
-        base_numeric_id=11080,
+        base_numeric_id=6400,
         name="Chronos",
         role="express_mail_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
-        power_by_power_source={"AC": 1440},
+        power_by_power_source={"AC": 2800},
         pantograph_type="z-shaped-single-with-base",
         gen=5,
         intro_year_offset=1,  # introduce later by design
@@ -24,7 +24,7 @@ def main(roster_id):
             "SWOOSH",
             "SWOOSH",
             "ROYAL_MAIL",
-        ],  # CABBAGE - NOTE THAT LIVERY METADATA CAN REPEAT FOR MULTIPLE ROWS
+        ],
         sprites_complete=False,
     )
 
@@ -33,6 +33,7 @@ def main(roster_id):
         weight=40,
         chassis="railcar_32px",
         tail_light="railcar_32px_3",
+        repeat=2
     )
 
     consist.description = """She was like a bird for speed, an arrow for directness."""

@@ -694,10 +694,10 @@ def main():
             sunshine_coast,
             olympic,
             chronos,
+            nimbus,
             # brit high speed pax
             firebird,
             blaze,
-            nimbus,
             helm_wind_cab,
             helm_wind_middle_passenger,
             helm_wind_middle_mail,

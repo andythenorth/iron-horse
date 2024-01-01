@@ -27,17 +27,3 @@ def main():
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="high_speed_32px")
-
-    consist = MailHSTCarConsist(
-        roster_id="pony",
-        base_numeric_id=16190,
-        gen=6,
-        subtype="U",
-        intro_year_offset=-9,  # match to Nimbus HST
-        cab_id="nimbus",
-        lgv_capable=True,  # for lolz
-        tilt_bonus=True,  # for lolz
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=ExpressMailCar, chassis="high_speed_32px")

@@ -5,18 +5,22 @@ def main(roster_id):
     consist = PassengerEngineExpressRailcarConsist(
         roster_id=roster_id,
         id="olympic",
-        base_numeric_id=12810,
+        base_numeric_id=900,
         name="Olympic",
         role="express_pax_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={
-            "AC": 1120,
+            "AC": 2400,
         },
         pantograph_type="z-shaped-single-with-base",
         gen=5,
         intro_year_offset=1,  # introduce later by design
-        #note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["WHITE_STRIPE", "SWOOSH", "SWOOSH"], # express railcars set explicit liveries, as they may vary from standard pax/mail
+        # note that livery names are metadata only and can repeat for different spriterows
+        additional_liveries=[
+            "WHITE_STRIPE",
+            "SWOOSH",
+            "SWOOSH",
+        ],  # express railcars set explicit liveries, as they may vary from standard pax/mail
         sprites_complete=True,
     )
 
@@ -25,6 +29,7 @@ def main(roster_id):
         weight=46,
         chassis="railcar_32px",
         tail_light="railcar_32px_3",
+        repeat=2,
     )
 
     consist.description = """Faster with control. Always faster. Always control."""

@@ -1,41 +1,39 @@
-from train import PassengerHSTCabEngineConsist, DieselEngineUnit
+from train import PassengerEngineExpressRailcarConsist, ElectricExpressRailcarPaxUnit
 
 
 def main(roster_id):
-    consist = PassengerHSTCabEngineConsist(
+    consist = PassengerEngineExpressRailcarConsist(
         roster_id=roster_id,
         id="nimbus",
-        base_numeric_id=12360,
+        base_numeric_id=6380,
         name="Nimbus IET",
-        role="hst",  # quite a specific role, may or may not scale to other rosters
-        role_child_branch_num=-1,
+        role="express_pax_railcar",  # quite a specific role, may or may not scale to other rosters
+        role_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 5500,
-            "AC": 7200,
+            "DIESEL": 1500,
+            "AC": 2800,
         },
         intro_year_offset=-9,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
         pantograph_type="z-shaped-single-reversed",
         lgv_capable=True,  # for lolz
         tilt_bonus=True,  # for lolz
-        #note that livery names are metadata only and can repeat for different spriterows
+        # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["SWOOSH"],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
-        type=DieselEngineUnit,
-        weight=70,
-        vehicle_length=8,
+        type=ElectricExpressRailcarPaxUnit,
+        weight=60,
         capacity=24,
-        effect_offsets=[(0, 1), (0, -1)],  # double the smoke eh?
-        spriterow_num=0,
+        chassis="railcar_32px",
         tail_light="very_high_speed_32px_2",
+        suppress_roof_sprite=True,
+        repeat=2,
     )
 
     consist.description = """Power is of the essence. Faster is everything."""
-    consist.foamer_facts = (
-        """Bombardier Class 221 <i>Super Voyager</i>, Hitachi Class 800 <i>Intercity Express Train</i>"""
-    )
+    consist.foamer_facts = """Bombardier Class 221 <i>Super Voyager</i>, Hitachi Class 800 <i>Intercity Express Train</i>"""
 
     return consist

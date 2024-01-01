@@ -5,12 +5,12 @@ def main(roster_id):
     consist = PassengerEngineExpressRailcarConsist(
         roster_id=roster_id,
         id="high_flyer",
-        base_numeric_id=13260,
+        base_numeric_id=4120,
         name="High Flyer",
         role="express_pax_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={
-            "AC": 840,
+            "AC": 1600,
         },
         pantograph_type="diamond-single-with-base",
         gen=3,
@@ -27,6 +27,7 @@ def main(roster_id):
         weight=48,
         chassis="railcar_32px",
         tail_light="railcar_32px_3",
+        repeat=2,
     )
 
     consist.description = """All Pullman Electric Express."""

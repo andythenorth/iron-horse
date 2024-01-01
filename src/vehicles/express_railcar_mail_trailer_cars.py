@@ -6,7 +6,7 @@ def main():
 
     consist = MailExpressRailcarTrailerCarConsist(
         roster_id="pony",
-        base_numeric_id=10220,
+        base_numeric_id=4900,
         gen=5,
         subtype="U",
         cab_id="chronos",
@@ -17,4 +17,5 @@ def main():
         type=MailRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
+        repeat=2,
     )
