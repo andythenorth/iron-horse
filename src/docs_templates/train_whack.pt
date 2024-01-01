@@ -52,7 +52,7 @@
                         // note use of weighted keys to prevent too much metro when same base_track_type_name is enforced
                         var base_track_type_key = base_track_type_keys_weighted[Math.floor(Math.random()*base_track_type_keys_weighted.length)];
                         consists = all_consists_grouped['sorted_by_base_track_type_and_vehicle_type'][base_track_type_key];
-                        // metro jank, over-ride weightings if metro, as there are no wagons and so more engines than usual are needed
+                        // metro jank, override weightings if metro, as there are no wagons and so more engines than usual are needed
                         if (base_track_type_key == 'METRO') {
                             engines_weighting = [1, 2, 2, 3, 3, 3, 3, 4, 4, 5, 6];
                         }

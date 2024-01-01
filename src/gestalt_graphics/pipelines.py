@@ -69,7 +69,7 @@ class Pipeline(object):
         # each unit is then called in order, passing in and returning a pixa SpriteSheet
         # finally the spritesheet is saved
         if output_base_name is None:
-            # default to consist name for file name, but can over-ride for e.g. containers by passing something in
+            # default to consist name for file name, but can override for e.g. containers by passing something in
             output_base_name = self.consist.id
         output_path = os.path.join(
             self.graphics_output_path,

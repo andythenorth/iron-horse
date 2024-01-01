@@ -65,7 +65,7 @@ class Consist(object):
         # either gen xor intro_year is required, don't set both, one will be interpolated from the other
         self._intro_year = kwargs.get("intro_year", None)
         self._gen = kwargs.get("gen", None)
-        # over-ride this in subclasses if needed, there's no case currently for setting it via keyword
+        # override this in subclasses if needed, there's no case currently for setting it via keyword
         self._model_life = None
         # if gen is used, the calculated intro year can be adjusted with +ve or -ve offset
         self.intro_year_offset = kwargs.get("intro_year_offset", None)
@@ -79,7 +79,7 @@ class Consist(object):
         #  most consists are automatically replaced by the next consist in the role tree
         # ocasionally we need to merge two branches of the role, in this case set replacement consist id
         self._replacement_consist_id = kwargs.get("replacement_consist_id", None)
-        # default loading speed multiplier, over-ride in subclasses as needed
+        # default loading speed multiplier, override in subclasses as needed
         self._loading_speed_multiplier = 1
         self.base_track_type_name = kwargs.get("base_track_type_name", "RAIL")
         # modify base_track_type_name for electric engines when writing out the actual rail type
@@ -87,7 +87,7 @@ class Consist(object):
         self.tractive_effort_coefficient = kwargs.get(
             "tractive_effort_coefficient", 0.3
         )  # 0.3 is recommended default value
-        # private var, can be used to over-rides default (per generation, per class) speed
+        # private var, can be used to overrides default (per generation, per class) speed
         self._speed = kwargs.get("speed", None)
         # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.power_by_power_source = kwargs.get("power_by_power_source", None)
@@ -129,16 +129,16 @@ class Consist(object):
         # just a simple buy cost tweak, only use when needed
         self.electro_diesel_buy_cost_malus = None
         # arbitrary multiplier to the calculated buy cost, e.g. 1.1, 0.9 etc
-        # set to 1 by default, over-ride in subclasses as needed
+        # set to 1 by default, override in subclasses as needed
         self.buy_cost_adjustment_factor = 1
         # fixed (baseline) buy costs on this subtype, 10 points
         # leave this alone except for edge cases (e.g. driving van trailers which are implemented as engines, but need wagon costs)
         self.fixed_buy_cost_points = 10
         # arbitrary multiplier to the calculated run cost, e.g. 1.1, 0.9 etc
-        # set to 1 by default, over-ride in subclasses as needed
+        # set to 1 by default, override in subclasses as needed
         self.floating_run_cost_multiplier = 1
         # fixed (baseline) run costs on this subtype, 100 points
-        self.fixed_run_cost_points = 30  # default, over-ride in subclass as needed
+        self.fixed_run_cost_points = 30  # default, override in subclass as needed
         # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
         self.default_cargos = []
         self.class_refit_groups = []
@@ -338,18 +338,18 @@ class Consist(object):
     @property
     def buy_cost(self):
         # stub only
-        # vehicle classes should over-ride this to provide class-appropriate cost calculation
+        # vehicle classes should override this to provide class-appropriate cost calculation
         return 0
 
     @property
     def running_cost(self):
         # stub only
-        # vehicle classes should over-ride this to provide class-appropriate running cost calculation
+        # vehicle classes should override this to provide class-appropriate running cost calculation
         return 0
 
     @property
     def intro_year(self):
-        # automatic intro_year, but can over-ride by passing in kwargs for consist
+        # automatic intro_year, but can override by passing in kwargs for consist
         if self._intro_year:
             assert self._gen == None, (
                 "%s consist has both gen and intro_year set, which is incorrect"
@@ -656,7 +656,7 @@ class Consist(object):
                 )
 
     def get_speed_by_class(self, speed_class):
-        # automatic speed, but can over-ride by passing in kwargs for consist
+        # automatic speed, but can override by passing in kwargs for consist
         speeds_by_track_type = self.roster.speeds[self.base_track_type_name]
         return speeds_by_track_type[speed_class][self.gen - 1]
 
@@ -742,7 +742,7 @@ class Consist(object):
 
     @property
     def loading_speed_multiplier(self):
-        # over-ride in subclass as needed
+        # override in subclass as needed
         return self._loading_speed_multiplier
 
     @property
@@ -1230,7 +1230,7 @@ class EngineConsist(Consist):
         # arbitrary multiplier to floating run costs (factors are speed, power, weight)
         # adjust per subtype as needed
         self.floating_run_cost_multiplier = 8.5
-        # fixed (baseline) run costs on this subtype, or more rarely instances can over-ride this
+        # fixed (baseline) run costs on this subtype, or more rarely instances can override this
         self.fixed_run_cost_points = kwargs.get("fixed_run_cost_points", 180)
         # optionally force a specific caboose family to be used
         self._caboose_family = kwargs.get("caboose_family", None)
@@ -1649,7 +1649,7 @@ class PassengerEngineConsist(EngineConsist):
         self.buy_cost_adjustment_factor = 1.8
         # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
         self.fixed_run_cost_points = 84
-        # specific structure for capacity multiplier and loading speed, over-ride in subclasses as needed
+        # specific structure for capacity multiplier and loading speed, override in subclasses as needed
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
 
     @property
@@ -2109,16 +2109,16 @@ class CarConsist(Consist):
         super().__init__(**kwargs)
         self.roster.register_wagon_consist(self)
 
-        self._joker = False  # over-ride this in sub-class as needed
+        self._joker = False  # override this in subclass as needed
         self.speed_class = (
-            "standard"  # over-ride this in sub-class for, e.g. express freight consists
+            "standard"  # override this in subclass for, e.g. express freight consists
         )
         self.subtype = kwargs["subtype"]
-        # Weight factor: over-ride in sub-class as needed
+        # Weight factor: override in subclass as needed
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1
         # used to synchronise / desynchronise groups of vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
-        # default all to car consists to 'universal' offset, over-ride in subclasses as needed
+        # default all to car consists to 'universal' offset, override in subclasses as needed
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["universal"]
         )
@@ -2357,7 +2357,7 @@ class CarConsist(Consist):
     @property
     def joker(self):
         # jokers are bonus vehicles (mostly) engines which don't fit strict tech tree progression
-        # for cars, jokers are mid-length 'B' vehicles and/or rules from the sub-class
+        # for cars, jokers are mid-length 'B' vehicles and/or rules from the subclass
         if self.subtype == "B" or self._joker == True:
             return True
         else:
@@ -4890,7 +4890,7 @@ class MailCarConsistBase(CarConsist):
             "non_freight_special_cases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["mail"]
-        # specific structure for capacity multiplier and loading speed, over-ride in subclasses as needed
+        # specific structure for capacity multiplier and loading speed, override in subclasses as needed
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
         # keep matched to ExpressCarConsist
         self.floating_run_cost_multiplier = 2.33
@@ -5325,7 +5325,7 @@ class PassengerCarConsistBase(CarConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["pax"]
-        # specific structure for capacity multiplier and loading speed, over-ride in subclasses as needed
+        # specific structure for capacity multiplier and loading speed, override in subclasses as needed
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["express_core"]
@@ -5586,7 +5586,7 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "railbus_passenger_trailer_car"
         super().__init__(**kwargs)
-        # PassengerCarConsistBase sets 'express' speed, but railbus trailers should over-ride this
+        # PassengerCarConsistBase sets 'express' speed, but railbus trailers should override this
         self.speed_class = "standard"
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
@@ -5649,7 +5649,7 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "railcar_passenger_trailer_car"
         super().__init__(**kwargs)
-        # PassengerCarConsistBase sets 'express' speed, but railcar trailers should over-ride this
+        # PassengerCarConsistBase sets 'express' speed, but railcar trailers should override this
         self.speed_class = "suburban"
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         self.buy_cost_adjustment_factor = 2.1
@@ -5744,7 +5744,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "suburban_passenger_car"
         super().__init__(**kwargs)
-        # PassengerCarConsistBase sets 'express' speed, but suburban coaches should over-ride this
+        # PassengerCarConsistBase sets 'express' speed, but suburban coaches should override this
         # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
         self.speed_class = "suburban"
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
@@ -6892,7 +6892,7 @@ class Train(object):
         self.engine_class = "ENGINE_CLASS_STEAM"
         # structure for effect spawn and sprites, default and per railtype as needed
         self.effects = {}  # empty if no effects, set in subtypes as needed
-        # optional, use to over-ride automatic effect positioning
+        # optional, use to override automatic effect positioning
         # expects a list of offset pairs [(x, y), (x, y)] etc
         # n.b max 4 effects (nml limit)
         self._effect_offsets = kwargs.get("effect_offsets", None)
@@ -6906,12 +6906,12 @@ class Train(object):
         # optional - occasionally we need to suppress composited roof sprites and just draw our own
         self.suppress_roof_sprite = kwargs.get("suppress_roof_sprite", False)
         # optional - some engine units need to set explicit tail light spritesheets
-        # subclasses may over-ride this, e.g. wagons have an automatic tail light based on vehicle length
+        # subclasses may override this, e.g. wagons have an automatic tail light based on vehicle length
         self.tail_light = kwargs.get("tail_light", "empty")
         # 'symmetric' or 'asymmetric'?
-        # defaults to symmetric, over-ride in sub-classes or per vehicle as needed
+        # defaults to symmetric, override in subclasses or per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "symmetric")
-        # optional - a switch name to trigger re-randomising vehicle random bits - over-ride as need in subclasses
+        # optional - a switch name to trigger re-randomising vehicle random bits - override as need in subclasses
         self.random_trigger_switch = None
 
     def get_capacity_variations(self, capacity):
@@ -7108,8 +7108,8 @@ class Train(object):
 
     @property
     def default_effect_offsets(self):
-        # over-ride this in subclasses as needed (e.g. to move steam engine smoke to front by default
-        # vehicles can also over-ride this on init (stored on each model_variant as _effect_offsets)
+        # override this in subclasses as needed (e.g. to move steam engine smoke to front by default
+        # vehicles can also override this on init (stored on each model_variant as _effect_offsets)
         return [(0, 0)]
 
     def get_nml_expression_for_effects(self, railtype="default"):
@@ -7121,7 +7121,7 @@ class Train(object):
         else:
             effect_offsets = self.default_effect_offsets
 
-        # z offset is handled independently to x, y for simplicity, option to over-ride z offset default per vehicle
+        # z offset is handled independently to x, y for simplicity, option to override z offset default per vehicle
         if self._effect_z_offset is not None:
             z_offset = self._effect_z_offset
         else:
@@ -7342,7 +7342,7 @@ class BatteryHybridEngineUnit(Train):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
         self.effects = {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]}
-        # most battery hybrid engines are asymmetric, over-ride per vehicle as needed
+        # most battery hybrid engines are asymmetric, override per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
 
@@ -7357,7 +7357,7 @@ class DieselEngineUnit(Train):
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
         }
-        # most diesel engines are asymmetric, over-ride per vehicle as needed
+        # most diesel engines are asymmetric, override per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
 
@@ -7411,7 +7411,7 @@ class ElectricEngineUnit(Train):
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
         }
-        # almost all electric engines are asymmetric, over-ride per vehicle as needed
+        # almost all electric engines are asymmetric, override per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
 
@@ -7471,7 +7471,7 @@ class ElectroDieselEngineUnit(Train):
         }
         # electro-diesels are complex eh?
         self.consist.electro_diesel_buy_cost_malus = 1  # will get same buy cost factor as electric engine of same gen (blah balancing)
-        # almost all electro-diesel engines are asymmetric, over-ride per vehicle as needed
+        # almost all electro-diesel engines are asymmetric, override per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
 
@@ -7625,7 +7625,7 @@ class SteamEngineUnit(Train):
 
     @property
     def default_effect_offsets(self):
-        # force steam engine smoke to front by default, can also over-ride per unit for more precise positioning
+        # force steam engine smoke to front by default, can also override per unit for more precise positioning
         return [(1 + int(math.floor(-0.5 * self.vehicle_length)), 0)]
 
 
@@ -7655,7 +7655,7 @@ class TrainCar(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.consist = kwargs["consist"]
-        # most wagons are symmetric, over-ride per vehicle or subclass as needed
+        # most wagons are symmetric, override per vehicle or subclass as needed
         self._symmetry_type = kwargs.get("symmetry_type", "symmetric")
         # all wagons use auto tail-lights based on length
         self.tail_light = str(self.vehicle_length * 4) + "px"
@@ -7689,7 +7689,7 @@ class AlignmentCar(TrainCar):
 
 class CabooseCar(TrainCar):
     """
-    Caboose Car. This sub-class only exists to set weight in absence of cargo capacity, in other respects it's just a standard wagon.
+    Caboose Car. This subclass only exists to set weight in absence of cargo capacity, in other respects it's just a standard wagon.
     """
 
     def __init__(self, **kwargs):
@@ -7724,7 +7724,7 @@ class PaxRailcarTrailerCar(PaxCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # TrainCar sets auto tail light, over-ride it
+        # TrainCar sets auto tail light, override it
         self.tail_light = kwargs["tail_light"]  # fail if not passed, required arg
 
 
@@ -7791,7 +7791,7 @@ class MailRailcarTrailerCar(ExpressCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # TrainCar sets auto tail light, over-ride it
+        # TrainCar sets auto tail light, override it
         self.tail_light = kwargs["tail_light"]  # fail if not passed, required arg
 
 

@@ -6,7 +6,7 @@ import utils
 
 class GestaltGraphics(object):
     """
-    Simple class, which is extended in sub-classes to configure:
+    Simple class, which is extended in subclasses to configure:
      - base vehicle recolour (if any)
      - cargo graphics (if any)
      - pantographs (if any)
@@ -22,7 +22,7 @@ class GestaltGraphics(object):
         # set directly by the consist self.gestalt_graphics.add_masked_overlay = True, or by kwargs on a specific gestalt subclass
         self.add_masked_overlay = False
         self.buy_menu_width_addition = 0
-        # over-ride this in subclasses as needed
+        # override this in subclasses as needed
         self.num_load_state_or_similar_spriterows = 1
         # optional - rulesets are used to define for different types of vehicle how sprites change depending on consist position
         # ruleset may also be used for buy menu sprite processing
@@ -30,7 +30,7 @@ class GestaltGraphics(object):
 
     @property
     def nml_template(self):
-        # over-ride in sub-classes as needed
+        # override in subclasses as needed
         # return a pnml file name, e.g. `return 'vehicle_default.pynml'`
         return None
 
@@ -46,8 +46,6 @@ class GestaltGraphics(object):
         # if self.liveries is undefined, that's an error
         return self.liveries
 
-    # !! JFDI hacks CABBAGE
-    # !! override in subclasses as needed
     def buy_menu_row_map(self, pipeline):
         result = []
         # !! CABBAGE OUTDATED COMMENT organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
@@ -249,7 +247,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                 "generate_buy_menu_sprite_vanilla_vehicle",
             ]
         )
-        # default unweathered body recolour to CC1, pass param to over-ride as needed
+        # default unweathered body recolour to CC1, pass param to override as needed
         # can optionally extend with "weathered" variant and an appropriate recolour map
         # (weathered variant only used for non-CC body recolouring; CC will provide variants via recolour sprites automatically)
         self.weathered_variants = kwargs.get(
@@ -635,7 +633,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
                 if self.allow_adding_cargo_label(cargo_label, container_type, result):
                     result[cargo_label] = (container_type, "DFLT")
 
-            # then insert or over-ride entries with cargo_label: (container_type, [CARGO_LABEL]) where there are explicit graphics for a cargo
+            # then insert or override entries with cargo_label: (container_type, [CARGO_LABEL]) where there are explicit graphics for a cargo
             for cargo_label, recolour_map in cargo_maps[1]:
                 if self.allow_adding_cargo_label(cargo_label, container_type, result):
                     result[cargo_label] = (container_type, cargo_label)
@@ -660,7 +658,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
 
     @property
     def nml_template(self):
-        # over-ride in sub-classes as needed
+        # override in subclasses as needed
         return "vehicle_intermodal.pynml"
 
 
@@ -831,7 +829,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
 
     @property
     def nml_template(self):
-        # over-ride in sub-classes as needed
+        # override in subclasses as needed
         return "vehicle_automobile_car.pynml"
 
 
@@ -945,7 +943,7 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
 
     @property
     def nml_template(self):
-        # over-ride in sub-classes as needed
+        # override in subclasses as needed
         return "vehicle_consist_position_dependent.pynml"
 
     def get_output_row_types(self):
