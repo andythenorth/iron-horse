@@ -47,14 +47,22 @@ class GestaltGraphics(object):
         return self.liveries
 
     def buy_menu_row_map(self, pipeline):
+        # return a structure for buy_menu_row_map conforming to:
+        # [
+        #   {
+        #       "spriterow_num_dest": int for destination spriterow num in output spritesheet,
+        #       "source_vehicles_and_input_spriterow_nums": [(vehicle unit class instance, int for input spriterow in input spritesheet), (...)],
+        #   },
+        #   {...},
+        # ]
+        # the gestalt should internally take care of anything like position-dependent sprites and return an appropriate row_map
+        # that covers the majority of cases
+        # if any really special cases are needed (e.g. randomised wagon sprites) a gestalt subclass can be configured to use an alternative pipeline for the buy menu sprite
+
         result = []
-        # !! CABBAGE OUTDATED COMMENT organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
         for buyable_variant_counter, buyable_variant in enumerate(
             pipeline.consist.buyable_variants
         ):
-            # buyable_variant_counter maps to spriterow_num_dest
-            # the spritesheet has buy menu sprites in their own descending vertical order corresponding to buyable variants
-            # the buy menu sprites don't align vertically with any specific vehicle spriterow
             source_vehicles_and_input_spriterow_nums = []
 
             for unit_counter, unit in enumerate(pipeline.consist.units):
@@ -62,12 +70,15 @@ class GestaltGraphics(object):
                 source_vehicles_and_input_spriterow_nums.append(
                     [
                         unit,
-                        self.cabbage_buy_menu_unit_variant_row_resolver(
+                        self.get_buy_menu_unit_input_row_num(
                             unit_counter, pipeline, buyable_variant, unit
                         ),
                     ]
                 )
 
+            # buyable_variant_counter maps to spriterow_num_dest
+            # the spritesheet has buy menu sprites in their own descending vertical order corresponding to buyable variants
+            # the custom buy menu sprites don't align vertically with any specific vehicle spriterow and have dedicated nml templating
             row_config = {
                 "spriterow_num_dest": buyable_variant_counter,
                 "source_vehicles_and_input_spriterow_nums": source_vehicles_and_input_spriterow_nums,
@@ -75,14 +86,11 @@ class GestaltGraphics(object):
             result.append(row_config)
         return result
 
-    # !! JFDI hacks CABBAGE
-    # !! override in subclasses as needed
-    def cabbage_buy_menu_unit_variant_row_resolver(
+    def get_buy_menu_unit_input_row_num(
         self, unit_counter, pipeline, buyable_variant, unit
     ):
-        # !! JFDI hax May 2023, to handle differing requirements for real (pixel painted) vs. sprite recolour liveries
-        # this is likely incomplete as other gestalts need handled, e.g. automobile cars
-        # should probably be handled via a flag on the gestalt
+        # override in subclasses as needed
+
         # !! isn't this already known somewhere?  Gestalts might be counting liveries already
         if pipeline.consist.gestalt_graphics.__class__.__name__ in [
             "GestaltGraphicsBoxCarOpeningDoors"
@@ -92,9 +100,15 @@ class GestaltGraphics(object):
             num_livery_rows_per_unit = len(pipeline.consist.buyable_variants)
 
         # !! CABBAGE - this needs to delegate to consist_ruleset, to find, e.g. an additional y offset to the spriterow for 'first' or 'last' etc
+        if pipeline.consist.id in ["sliding_wall_car_pony_gen_5D"]:
+            print(pipeline.consist.id)
+            print(unit_counter)
+            print("------")
         if pipeline.consist.id in ["olympic"]:
+            print(pipeline.consist.id)
             print(self.consist_ruleset)
             print(self.spriterow_group_mappings)
+            print("------")
             if pipeline.is_pantographs_pipeline:
                 if unit_counter == 0:
                     unit_variant_row_num = 0
@@ -1059,6 +1073,10 @@ class GestaltGraphicsCustom(GestaltGraphics):
     @property
     def cargo_label_mapping(self):
         return self._cargo_label_mapping
+
+    def buy_menu_row_map(self, pipeline):
+        # not implemented as of Jan 2024 - provide custom buy menu sprites via the template and/or manually in the spritesheet
+        raise BaseException("buy_menu_row_map called in GestaltGraphicsCustom for consist " + pipeline.consist.id + " - this isn't supported.")
 
     @property
     def weathered_variants(self):

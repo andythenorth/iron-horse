@@ -436,8 +436,6 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
 
         # this is the vanilla function, intended for articulated consists, which will build a sprite from the vehicle units
         # liveries etc are supported
-        # if special cases are needed they can be supplied in an alternative pipeline, and the gestalt can use that
-
         #
         # gestalt must return a structure for buy_menu_row_map conforming to:
         # [
@@ -447,7 +445,9 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
         #   },
         #   {...},
         # ]
-        # the gestalt should internally take care of anything like position-dependent sprites and return an appropriate row_map
+        # each gestalt should internally take care of anything like position-dependent sprites and return an appropriate row_map
+        # that covers the majority of cases
+        # if any really special cases are needed (e.g. randomised wagon sprites) they can be supplied in an alternative pipeline
         for row_data in self.consist.gestalt_graphics.buy_menu_row_map(self):
             x_offset = 0
             for (
