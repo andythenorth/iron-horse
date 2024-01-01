@@ -431,15 +431,23 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
 
     def process_buy_menu_sprite(self, spritesheet):
         # this function is passed (uncalled) into the pipeline, and then called at render time
-        # this is so that it has the processed spritesheet available, which is essential for creating buy menu sprites
-        # n.b if buy menu sprite processing has conditions by vehicle type, could pass a dedicated function for each type of processing
+        # this was done so that it has the processed spritesheet available, which is essential for creating buy menu sprites
+        # as of Jan 2024 that limitation could be met differently, as there are multiple render phases, but the existing solution works
 
-        # !! this knows too much, some of it should be done in the gestalt
-        # !! the processing should be here
-        # !! the structure for the rows should be returned by the gestalt
-        # !! there is some precedent with buy_menu_row_map in the randomised wagons gestalt
+        # this is the vanilla function, intended for articulated consists, which will build a sprite from the vehicle units
+        # liveries etc are supported
+        # if special cases are needed they can be supplied in an alternative pipeline, and the gestalt can use that
 
-        # now walk the pre-organised structure, placing unit sprites
+        #
+        # gestalt must return a structure for buy_menu_row_map conforming to:
+        # [
+        #   {
+        #       "spriterow_num_dest": int for destination spriterow num in output spritesheet,
+        #       "source_vehicles_and_input_spriterow_nums": [(vehicle unit class instance, int for input spriterow in input spritesheet), (...)],
+        #   },
+        #   {...},
+        # ]
+        # the gestalt should internally take care of anything like position-dependent sprites and return an appropriate row_map
         for row_data in self.consist.gestalt_graphics.buy_menu_row_map(self):
             x_offset = 0
             for (
@@ -477,9 +485,6 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
                 spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
                 # increment x offset for pasting in next vehicle
                 x_offset += unit_length_in_pixels
-
-        if (self.consist.id) in ["westbourne", "olympic"]:
-            print("CABBAGE 4050", self.consist.id)
 
         return spritesheet
 
