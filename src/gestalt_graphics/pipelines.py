@@ -436,44 +436,46 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
         # !! there is some precedent with buy_menu_row_map in the randomised wagons gestalt
 
         # now walk the pre-organised structure, placing unit sprites
-        buy_menu_buyable_variant_unit_row_maps = self.consist.gestalt_graphics.buy_menu_buyable_variant_unit_row_maps(self.consist)
-
-        for buyable_variant_counter, buy_menu_buyable_variant_unit_row_map in enumerate(
-            buy_menu_buyable_variant_unit_row_maps
-        ):
+        for row_data in self.consist.gestalt_graphics.buy_menu_row_map(self.consist):
             x_offset = 0
-            for unit, unit_variant_row_num in buy_menu_buyable_variant_unit_row_map:
+            for (
+                source_vehicle_unit,
+                input_row_num,
+            ) in row_data["source_vehicles_and_input_spriterow_nums"]:
                 # currently no cap on purchase menu sprite width
                 # consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh
-                unit_length_in_pixels = 4 * unit.vehicle_length
-                unit_spriterow_offset = (
-                    unit_variant_row_num * graphics_constants.spriterow_height
+                unit_length_in_pixels = 4 * source_vehicle_unit.vehicle_length
+                input_spriterow_y_offset = (
+                    input_row_num * graphics_constants.spriterow_height
                 )
-                crop_box_src = (
+                crop_box_input = (
                     224,
-                    10 + unit_spriterow_offset,
+                    10 + input_spriterow_y_offset,
                     224
                     + unit_length_in_pixels
                     + 1,  # allow for 1px coupler / corrider overhang
-                    26 + unit_spriterow_offset,
+                    26 + input_spriterow_y_offset,
                 )
                 crop_box_dest = (
                     360 + x_offset,
-                    10 + buyable_variant_counter * graphics_constants.spriterow_height,
+                    10
+                    + row_data["spriterow_num_dest"]
+                    * graphics_constants.spriterow_height,
                     360
                     + x_offset
                     + unit_length_in_pixels
                     + 1,  # allow for 1px coupler / corrider overhang
-                    26 + buyable_variant_counter * graphics_constants.spriterow_height,
+                    26
+                    + row_data["spriterow_num_dest"]
+                    * graphics_constants.spriterow_height,
                 )
-                custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_src)
+                custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_input)
                 spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
                 # increment x offset for pasting in next vehicle
                 x_offset += unit_length_in_pixels
 
         if (self.consist.id) in ["westbourne", "olympic"]:
             print("CABBAGE 4050", self.consist.id)
-            print(self.consist.gestalt_graphics.consist_ruleset)
 
         return spritesheet
 
@@ -596,38 +598,41 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         # I tried doing fancy generic counter maths for offsets etc, but it got stupid, just hard-code everything, there are only 2 wagon parts to draw
         slice_configuration = [
             dict(
-                x_offset_src=0,
+                x_offset_input=0,
                 x_offset_dest=unit_slice_length_in_pixels + dice_image_width + 1,
             ),
             dict(
-                x_offset_src=int(unit_length_in_pixels - unit_slice_length_in_pixels),
+                x_offset_input=int(unit_length_in_pixels - unit_slice_length_in_pixels),
                 x_offset_dest=0,
             ),
         ]
-        for (
-            spriterow_num_dest,
-            source_data,
-        ) in self.consist.gestalt_graphics.buy_menu_row_map(self.consist).items():
-            for counter, (source_vehicle, spriterow_num_src) in enumerate(source_data):
+        for row_data in self.consist.gestalt_graphics.buy_menu_row_map(self.consist):
+            for counter, (source_vehicle_unit, input_spriterow_num) in enumerate(
+                row_data["source_vehicles_and_input_spriterow_nums"]
+            ):
                 # note that we want the *generated* source wagon spritesheet
                 source_vehicle_input_path = os.path.join(
                     self.graphics_output_path,
-                    source_vehicle.id + ".png",
+                    source_vehicle_unit.consist.id + ".png",
                 )
                 source_vehicle_image = Image.open(source_vehicle_input_path)
                 if self.consist.id == "randomised_box_car_pony_gen_1A":
                     # source_vehicle_image.show()
                     pass
-                y_offset_src = spriterow_num_src * graphics_constants.spriterow_height
-                y_offset_dest = spriterow_num_dest * graphics_constants.spriterow_height
-                crop_box_src = (
-                    224 + slice_configuration[counter]["x_offset_src"],
-                    10 + y_offset_src,
+                input_spriterow_y_offset = (
+                    input_spriterow_num * graphics_constants.spriterow_height
+                )
+                y_offset_dest = (
+                    row_data["spriterow_num_dest"] * graphics_constants.spriterow_height
+                )
+                crop_box_input = (
+                    224 + slice_configuration[counter]["x_offset_input"],
+                    10 + input_spriterow_y_offset,
                     224
-                    + slice_configuration[counter]["x_offset_src"]
+                    + slice_configuration[counter]["x_offset_input"]
                     + unit_slice_length_in_pixels
                     + 1,  # allow for 1px coupler / corrider overhang
-                    26 + y_offset_src,
+                    26 + input_spriterow_y_offset,
                 )
                 crop_box_dest = (
                     360 + slice_configuration[counter]["x_offset_dest"],
@@ -638,7 +643,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                     + 1,  # allow for 1px coupler / corrider overhang
                     26 + y_offset_dest,
                 )
-                custom_buy_menu_sprite = source_vehicle_image.crop(crop_box_src)
+                custom_buy_menu_sprite = source_vehicle_image.crop(crop_box_input)
                 spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
 
             dice_image = Image.open(

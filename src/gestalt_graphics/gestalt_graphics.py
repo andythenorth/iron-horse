@@ -38,10 +38,6 @@ class GestaltGraphics(object):
         # stub, for compatibility reasons
         return ["single_row"]
 
-    def buy_menu_row_map(self, consist):
-        # stub, for compatibility reasons
-        return {}
-
     @property
     def all_liveries(self):
         # stub to map this gestalt's liveries to the wider all_liveries structure
@@ -50,8 +46,9 @@ class GestaltGraphics(object):
         # if self.liveries is undefined, that's an error
         return self.liveries
 
-    # JFDI hacks CABBAGE
-    def buy_menu_buyable_variant_unit_row_maps(self, consist):
+    # !! JFDI hacks CABBAGE
+    # !! override in subclasses as needed
+    def buy_menu_row_map(self, consist):
         result = []
         # !! JFDI hax May 2023, to handle differing requirements for real (pixel painted) vs. sprite recolour liveries
         # this is likely incomplete as other gestalts need handled, e.g. automobile cars
@@ -63,8 +60,11 @@ class GestaltGraphics(object):
         else:
             num_livery_rows_per_unit = len(consist.buyable_variants)
         # organise a structure of [[[unit_0, unit_0A_row_num], [unit_1, unit_1A_row_num]], [[unit_0, unit_0B_row_num], [unit_1, unit_1B_row_num]]] where A and B are buyable variants of livery (or other variants)
-        for buyable_variant in consist.buyable_variants:
-            unit_variants_row_map = []
+        for counter, buyable_variant in enumerate(consist.buyable_variants):
+            unit_variants_row_map = {
+                "spriterow_num_dest": counter,
+                "source_vehicles_and_input_spriterow_nums": [],
+            }
             for unit in consist.units:
                 unit_variant_row_num = (
                     unit.spriterow_num * num_livery_rows_per_unit
@@ -72,9 +72,11 @@ class GestaltGraphics(object):
                     buyable_variant.relative_spriterow_num
                     * consist.gestalt_graphics.num_load_state_or_similar_spriterows
                 )
-                unit_variants_row_map.append([unit, unit_variant_row_num])
+                # vehicle unit, y offset to buy menu row
+                unit_variants_row_map[
+                    "source_vehicles_and_input_spriterow_nums"
+                ].append([unit, unit_variant_row_num])
             result.append(unit_variants_row_map)
-
         return result
 
 
@@ -160,20 +162,26 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         # this appears to just slice out the first two items of the list to make a pair of buy menu sprites
         # note that for randomised wagons, the list of candidates is compile time non-deterministic
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022
-        source_data = [
-            # vehicle id, y offset to buy menu row
+        source_vehicles_and_input_spriterow_nums = [
+            # vehicle unit, y offset to buy menu row
+            # note that buy_menu_row_map works with *units* not consists; we can always look up the consist from the unit, but not trivially the other way round
             (
-                list(candidate_consists)[0],
+                list(candidate_consists)[0].units[0],
                 0,
             ),
             (
-                list(candidate_consists)[1],
+                list(candidate_consists)[1].units[0],
                 0,
             ),
         ]
         # buy menu sprite generation supports providing multiple variants (used for livery variants etc)
         # but here we only need one, in the default buy menu position
-        result = {0: source_data}
+        result = [
+            {
+                "spriterow_num_dest": 0,
+                "source_vehicles_and_input_spriterow_nums": source_vehicles_and_input_spriterow_nums,
+            }
+        ]
         return result
 
 
@@ -444,22 +452,26 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         return None
 
     def buy_menu_row_map(self, consist):
-        result = {}
+        result = []
         for counter, buy_menu_sprite_pair in enumerate(self.buy_menu_sprite_pairs):
-            # vehicle id, y offset to buy menu row
-            source_data = [
+            row_config = {"spriterow_num_dest": counter}
+            # vehicle unit, y offset to buy menu row
+            # note that buy_menu_row_map works with *units* not consists; we can always look up the consist from the unit, but not trivially the other way round
+            source_vehicles_and_input_spriterow_nums = [
                 (
-                    consist,
+                    consist.units[0],
                     self.spriterow_labels.index(buy_menu_sprite_pair[0]),
                 ),
                 (
-                    consist,
+                    consist.units[0],
                     self.spriterow_labels.index(buy_menu_sprite_pair[1]),
                 ),
             ]
 
-            result[counter] = source_data
-        print(result)
+            row_config[
+                "source_vehicles_and_input_spriterow_nums"
+            ] = source_vehicles_and_input_spriterow_nums
+            result.append(row_config)
         return result
 
 
