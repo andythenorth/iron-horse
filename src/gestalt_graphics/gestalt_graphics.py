@@ -57,7 +57,9 @@ class GestaltGraphics(object):
         # ]
         # the gestalt should internally take care of anything like position-dependent sprites and return an appropriate row_map
         # that covers the majority of cases
-        # if any really special cases are needed (e.g. randomised wagon sprites) a gestalt subclass can be configured to use an alternative pipeline for the buy menu sprite
+        # if any special cases are needed (e.g. randomised wagon sprites) do one of the following:
+        # option 1. subclass this function in the gestalt
+        # option 2. a gestalt subclass can be configured to use an alternative pipeline for the buy menu sprite
 
         result = []
         for buyable_variant_counter, buyable_variant in enumerate(
@@ -104,40 +106,10 @@ class GestaltGraphics(object):
             print(pipeline.consist.id)
             print(unit_counter)
             print("------")
-        if pipeline.consist.id in ["olympic"]:
-            print(pipeline.consist.id)
-            print(self.consist_ruleset)
-            print(self.spriterow_group_mappings)
-            print("------")
-            if pipeline.is_pantographs_pipeline:
-                if unit_counter == 0:
-                    unit_variant_row_num = 0
-                else:
-                    unit_variant_row_num = 4  # !! this just needs to be an empty row?? or does it depend on the consist?
-            else:
-                if unit_counter == 0:
-                    unit_variant_row_num = (
-                        num_livery_rows_per_unit
-                        * self.spriterow_group_mappings["first"]
-                        * self.num_load_state_or_similar_spriterows
-                    ) + (
-                        buyable_variant.relative_spriterow_num
-                        * self.num_load_state_or_similar_spriterows
-                    )
-                else:
-                    unit_variant_row_num = (
-                        num_livery_rows_per_unit
-                        * self.spriterow_group_mappings["last"]
-                        * self.num_load_state_or_similar_spriterows
-                    ) + (
-                        buyable_variant.relative_spriterow_num
-                        * self.num_load_state_or_similar_spriterows
-                    )
-        else:
-            unit_variant_row_num = (unit.spriterow_num * num_livery_rows_per_unit) + (
-                (buyable_variant.relative_spriterow_num)
-                * self.num_load_state_or_similar_spriterows
-            )
+        unit_variant_row_num = (unit.spriterow_num * num_livery_rows_per_unit) + (
+            (buyable_variant.relative_spriterow_num)
+            * self.num_load_state_or_similar_spriterows
+        )
         return unit_variant_row_num
 
 
@@ -1015,6 +987,40 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
                 )
         return result
 
+    def get_buy_menu_unit_input_row_num(
+        self, unit_counter, pipeline, buyable_variant, unit
+    ):
+        # as of Jan 2024 it was easiest to enforce that this only works with consist comprised of exactly 2 units
+        # that means we can just do first / last, and not worry about other position variants
+        # support for arbitrary number of units could be added, derived from consist ruleset, but those cases don't exist as of Jan 2024
+        if len(pipeline.consist.units) != 2:
+            raise BaseException(
+                "GestaltGraphicsConsistPositionDependent.get_buy_menu_unit_input_row_num(): consist "
+                + pipeline.consist.id
+                + " does not have exactly 2 units - this case is not currently supported"
+            )
+
+        if pipeline.is_pantographs_pipeline:
+            # CABBAGE !! pantograph calculations unfinished - not sure where I'm going to get these from?
+            if unit_counter == 0:
+                unit_variant_row_num = 0
+            else:
+                unit_variant_row_num = 4  # !! this just needs to be an empty row?? or does it depend on the consist?
+        else:
+            if unit_counter == 0:
+                position_variant_offset = self.spriterow_group_mappings["first"]
+            else:
+                position_variant_offset = self.spriterow_group_mappings["last"]
+            unit_variant_row_num = (
+                self.num_spritesheet_liveries_per_position_variant
+                * position_variant_offset
+                * self.num_load_state_or_similar_spriterows
+            ) + (
+                buyable_variant.relative_spriterow_num
+                * self.num_load_state_or_similar_spriterows
+            )
+        return unit_variant_row_num
+
 
 class GestaltGraphicsCustom(GestaltGraphics):
     """
@@ -1076,7 +1082,11 @@ class GestaltGraphicsCustom(GestaltGraphics):
 
     def buy_menu_row_map(self, pipeline):
         # not implemented as of Jan 2024 - provide custom buy menu sprites via the template and/or manually in the spritesheet
-        raise BaseException("buy_menu_row_map called in GestaltGraphicsCustom for consist " + pipeline.consist.id + " - this isn't supported.")
+        raise BaseException(
+            "buy_menu_row_map called in GestaltGraphicsCustom for consist "
+            + pipeline.consist.id
+            + " - this isn't supported."
+        )
 
     @property
     def weathered_variants(self):
