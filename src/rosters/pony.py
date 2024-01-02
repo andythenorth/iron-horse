@@ -64,9 +64,6 @@ from vehicles import gargouille
 from vehicles import general_endeavour
 from vehicles import geronimo
 from vehicles import girt_licker
-from vehicles import gloaming_cab
-from vehicles import gloaming_middle_mail
-from vehicles import gloaming_middle_passenger
 from vehicles import goliath
 from vehicles import gowsty
 from vehicles import grid
@@ -127,6 +124,9 @@ from vehicles import serpentine
 from vehicles import shoebox
 from vehicles import shredder
 from vehicles import sizzler
+from vehicles import skeiron_cab
+from vehicles import skeiron_middle_mail
+from vehicles import skeiron_middle_passenger
 from vehicles import skipper
 from vehicles import slammer
 from vehicles import slug
@@ -704,9 +704,9 @@ def main():
             brenner_cab,
             brenner_middle_passenger,
             brenner_middle_mail,
-            gloaming_cab,
-            gloaming_middle_passenger,
-            gloaming_middle_mail,
+            skeiron_cab,
+            skeiron_middle_passenger,
+            skeiron_middle_mail,
             # driving cab cars
             driving_cab_passenger_pony_gen_4,
             driving_cab_passenger_pony_gen_5,

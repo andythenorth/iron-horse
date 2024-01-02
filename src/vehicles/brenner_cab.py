@@ -1,6 +1,6 @@
 from train import TGVCabEngineConsist, ElectricEngineUnit
 
-# pax capacity on these limits use for 100% mail consists - use the Gloaming for that?
+# pax capacity on these limits use for 100% mail consists - use the Skeiron for that?
 
 
 def main(roster_id):
@@ -15,7 +15,7 @@ def main(roster_id):
             "AC": 3000,
         },
         gen=6,
-        intro_year_offset=-14,  # introduce earlier than gen epoch by design, similar to Gloaming
+        intro_year_offset=-14,  # introduce earlier than gen epoch by design, similar to Skeiron
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["SWOOSH"],
         sprites_complete=False,

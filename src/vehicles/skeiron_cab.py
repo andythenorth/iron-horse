@@ -1,14 +1,14 @@
 from train import TGVCabEngineConsist, ElectricEngineUnit
 
-# Gloaming does not have pax capacity, so it can be used for pure mail consists
+# skeiron does not have pax capacity, so it can be used for pure mail consists
 
 
 def main(roster_id):
     consist = TGVCabEngineConsist(
         roster_id=roster_id,
-        id="gloaming_cab",
+        id="skeiron_cab",
         base_numeric_id=9620,
-        name="Gloaming",
+        name="Skeiron",
         role="very_high_speed",
         role_child_branch_num=2,
         power_by_power_source={
