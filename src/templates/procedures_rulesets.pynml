@@ -254,7 +254,7 @@
     <!--! there is never 1 unit for this ruleset, always minimum 2 -->
 
     <!--! if 2 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_2, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) % 12) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_2, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
         0: return ${first};
         return ${last};
     }
@@ -262,7 +262,7 @@
     <!--! there are never 3 units for this ruleset, always multiple of 2 -->
 
     <!--! if 4 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_4, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) % 12) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_4, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
         0: return ${first};
         1: return ${default};
         2: return ${special};
@@ -272,7 +272,7 @@
     <!--! there are never 5 units for this ruleset, always multiple of 2 -->
 
     <!--! if 6 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_6, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) % 12) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_6, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
         0: return ${first};
         1: return ${default};
         2: return ${default};
@@ -284,7 +284,7 @@
     <!--! there are never 7 units for this ruleset, always multiple of 2 -->
 
     <!--! if 8 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_8, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) % 12) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_8, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
         0: return ${first};
         1: return ${default};
         2: return ${special};
@@ -298,7 +298,7 @@
     <!--! there are never 9 units for this ruleset, always multiple of 2 -->
 
     <!--! if 10 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_10, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) % 12) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_10, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
         0: return ${first};
         1: return ${default};
         2: return ${special};
@@ -314,7 +314,7 @@
     <!--! there are never 11 units for this ruleset, always multiple of 2 -->
 
     <!--! if 12 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_12, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) % 12) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_12, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
         0: return ${first};
         1: return ${default};
         2: return ${special};
@@ -330,7 +330,7 @@
     }
 
     <!--! this is a remainder block, how many units are in it? -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_less_than_12_remaining, LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) % 12) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_less_than_12_remaining, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied}) % 12) {
         <!--! there is never 1 unit for this ruleset, always minimum 2 -->
         2: return switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_2;
         <!--! there are never 3 units for this ruleset, always multiple of 2 -->
@@ -345,12 +345,47 @@
         return switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_12;
     }
 
-    <!--! given the consist, how many blocks of 6 units are there?  Is the unit within a block of 6, or a remainder block?
-          we actually control positions out to 12 units, as we want specific combinations up to that limit -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) >= (LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) - (LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids})  % 12))) {
-        1: return switch_graphics_railcar_ruleset_6_unit_sets_less_than_12_remaining;
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_foo,
+        <!--! for blocks of 6, just modulo 12 will get the result we need -->
+            STORE_TEMP(
+                LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) % 12,
+                ${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied}
+            ),
+        ){
         return switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_12;
     }
+
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_bar,
+            STORE_TEMP(
+                <!--! store the vehicle position in equivalent-id chain, but with the base offset applied -->
+                LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) - LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_base_offset}),
+                ${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied}
+            ),
+        ){
+        return switch_graphics_railcar_ruleset_6_unit_sets_less_than_12_remaining;
+    }
+
+    <!--! given the consist, how many blocks of 6 units are there?  Is the unit within a block of 6, or a remainder block?
+          we actually control positions out to 12 units, as we want specific combinations up to that limit -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets,
+            [
+                STORE_TEMP(
+                    <!--! how many blocks of 6 will fit in the total consist?
+                          then remove one, because we want
+                          - n whole blocks of 6
+                          - a remainder amount which is at least 6 (and won't be more than 12), to which we apply special rules
+                          this is to ensure we don't get isolated blocks of 2 cab units at the end of consists that are > 12 units long
+                          note we multiply the n-1 block count by 6 to store an *actual* position, which we will then use to branch graphics on later
+                    -->
+                    6 * ((LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) / 6) - 1),
+                    ${temp_storage_ids.position_in_vehid_chain_base_offset}
+                ),
+                (LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) >= LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_base_offset}))
+            ]) {
+        1: return switch_graphics_railcar_ruleset_6_unit_sets_bar;
+        return switch_graphics_railcar_ruleset_6_unit_sets_foo;
+    }
+
 </tal:ruleset>
 
 <tal:ruleset define="default 0; first 1; last 2; special 3;">
