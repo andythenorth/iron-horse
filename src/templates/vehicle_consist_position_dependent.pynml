@@ -96,6 +96,15 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_engine_an
             }
         </tal:position_ruleset>
 
+        <tal:position_ruleset case="'railcars_6_unit_sets'">
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point, switch_graphics_railcar_ruleset_6_unit_sets()) {
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${position_variants['default']};
+                1: return ${vehicle.id}_switch_graphics_vehicle_layers_${position_variants['first']};
+                2: return ${vehicle.id}_switch_graphics_vehicle_layers_${position_variants['last']};
+                3: return ${vehicle.id}_switch_graphics_vehicle_layers_${position_variants['special']};
+            }
+        </tal:position_ruleset>
+
         <tal:position_ruleset case="'railcars_4_unit_sets'">
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point, switch_graphics_railcar_ruleset_4_unit_sets()) {
                 0: return ${vehicle.id}_switch_graphics_vehicle_layers_${position_variants['default']};

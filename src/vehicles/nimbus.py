@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="nimbus",
         base_numeric_id=6380,
-        name="Nimbus IET",
+        name="Nimbus",
         role="express_pax_railcar",  # quite a specific role, may or may not scale to other rosters
         role_child_branch_num=-2,
         power_by_power_source={
