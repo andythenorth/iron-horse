@@ -330,7 +330,9 @@
     }
 
     <!--! this is a remainder block, how many units are in it? -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_less_than_12_remaining, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied}) % 12) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_6_unit_sets_less_than_12_remaining,
+            (LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) - LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_base_offset})) % 12
+        ) {
         <!--! there is never 1 unit for this ruleset, always minimum 2 -->
         2: return switch_graphics_railcar_ruleset_6_unit_sets_modulo_num_units_in_consist_2;
         <!--! there are never 3 units for this ruleset, always multiple of 2 -->
@@ -377,10 +379,14 @@
                           this is to ensure we don't get isolated blocks of 2 cab units at the end of consists that are > 12 units long
                           note we multiply the n-1 block count by 6 to store an *actual* position, which we will then use to branch graphics on later
                     -->
-                    6 * ((LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) / 6) - 1),
+                    LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) > 6
+                        ?
+                        6 * ((LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) / 6) - 1)
+                        :
+                        0,
                     ${temp_storage_ids.position_in_vehid_chain_base_offset}
                 ),
-                (LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) >= LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_base_offset}))
+                (LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) > LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_base_offset}))
             ]) {
         1: return switch_graphics_railcar_ruleset_6_unit_sets_bar;
         return switch_graphics_railcar_ruleset_6_unit_sets_foo;
