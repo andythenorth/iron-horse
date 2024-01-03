@@ -18,8 +18,6 @@ def main(roster_id):
         pantograph_type="z-shaped-single-reversed",
         lgv_capable=True,  # for lolz
         tilt_bonus=True,  # for lolz
-        # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["SWOOSH"],
         sprites_complete=False,
     )
 

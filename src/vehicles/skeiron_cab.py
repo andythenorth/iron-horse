@@ -11,6 +11,7 @@ def main(roster_id):
         name="Skeiron",
         role="very_high_speed",
         role_child_branch_num=2,
+        pantograph_type="z-shaped-single-with-base",
         power_by_power_source={
             "AC": 3200,  # more than Brenner, but Brenner has pax capacity
         },
