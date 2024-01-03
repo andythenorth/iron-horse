@@ -1599,7 +1599,7 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
         # * unit with no cabs (center car)
         # * special unit with no cabs (center car)
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        liveries = self.roster.get_pax_mail_liveries("gen_5_and_6_mail_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("default_mail_liveries", **kwargs)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_4_unit_sets",
@@ -1735,12 +1735,11 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset=kwargs.get("consist_ruleset", "railcars_6_unit_sets"),
-            liveries=self.roster.get_liveries_by_name(
-                kwargs.get("additional_liveries", [])
-            ),
+            liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
 

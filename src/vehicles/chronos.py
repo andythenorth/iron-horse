@@ -16,6 +16,7 @@ def main(roster_id):
         pantograph_type="z-shaped-single-with-base",
         gen=5,
         intro_year_offset=1,  # introduce later by design
+        liveries="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
         sprites_complete=False,
     )
 
