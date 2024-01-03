@@ -1599,12 +1599,11 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
         # * unit with no cabs (center car)
         # * special unit with no cabs (center car)
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        liveries = self.roster.get_pax_mail_liveries("gen_5_and_6_mail_liveries", **kwargs)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_4_unit_sets",
-            liveries=self.roster.get_liveries_by_name(
-                kwargs.get("additional_liveries", [])
-            ),
+            liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
 
