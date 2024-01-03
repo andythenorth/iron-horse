@@ -115,43 +115,131 @@
     // intermodal platform 4 unit position switches
     <!--! if 1 unit in sequence -->
     <!--! 0 = first, 1 = middle, 2 = last -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_1, position_in_vehid_chain % 4) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_1, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
         0: return ${default};
     }
 
     <!--! if 2 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_2, position_in_vehid_chain % 4) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_2, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
         0: return ${first};
         return ${last};
     }
 
     <!--! if 3 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_3, position_in_vehid_chain % 4) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_3, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
         0: return ${first};
         1: return ${middle};
         return ${last};
     }
 
     <!--! if 4 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_4, position_in_vehid_chain % 4) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_4, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
         0: ${first};
         1: ${middle};
         2: ${middle};
         return ${last};
     }
 
+    <!--! if 5 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_5, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
+        0: ${first};
+        1: ${middle};
+        2: ${last};
+        3: ${first};
+        return ${last};
+    }
+
+    <!--! if 6 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_6, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
+        0: ${first};
+        1: ${middle};
+        2: ${last};
+        3: ${first};
+        4: ${middle};
+        return ${last};
+    }
+
+    <!--! if 7 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_7, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
+        0: ${first};
+        1: ${middle};
+        2: ${middle};
+        3: ${last};
+        4: ${first};
+        5: ${middle};
+        return ${last};
+    }
+
+    <!--! if 7 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_8, LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied})) {
+        0: ${first};
+        1: ${middle};
+        2: ${middle};
+        3: ${last};
+        4: ${first};
+        5: ${middle};
+        6: ${middle};
+        return ${last};
+    }
+
     <!--! this is a remainder block, how many units are in it? -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_less_than_4_remaining, num_vehs_in_vehid_chain % 4) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_check_remainder_block_length, [
+            (num_vehs_in_vehid_chain - LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_base_offset})) % 8
+        ]) {
         1: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_1;
         2: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_2;
         3: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_3;
-        return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_4;
+        4: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_4;
+        5: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_5;
+        6: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_6;
+        7: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_7;
+        return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_8;
     }
 
-    <!--! given the consist, how many blocks of 4 units are there?  Is the unit within a block of 4, or a remainder block? -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 4))) {
-        1: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_less_than_4_remaining;
-        return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_4;
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_whole_divisor_block,
+        <!--! for whole blocks of 4, just modulo 8 will get the result we need
+              we use 8 rather than 4 to allow special handling of special sprites (if needed) alternate blocks of 4, in A, B, A, B type pattern -->
+            STORE_TEMP(
+                position_in_vehid_chain % 8,
+                ${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied}
+            ),
+        ){
+        return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_8;
+    }
+
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_check_remainder_block_apply_base_offset_to_position,
+            STORE_TEMP(
+                <!--! store the vehicle position in equivalent-id chain, but with the base offset applied -->
+                position_in_vehid_chain - LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_base_offset}),
+                ${temp_storage_ids.position_in_vehid_chain_multiple_ids_with_base_offset_applied}
+            ),
+        ){
+        return switch_graphics_intermodal_platform_ruleset_4_unit_sets_check_remainder_block_length;
+    }
+
+    <!--! given the consist, how many blocks of 4 units are there?  Is the unit within a block of 4, or a remainder block?
+          we actually control positions out to 8 units, as we want specific combinations up to that limit -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets,
+            [
+                STORE_TEMP(
+                    <!--! how many blocks of 4 will fit in the total consist?
+                          then remove one, because we want
+                          - n whole blocks of 4 (divisor = 4)
+                          - a remainder amount which is at least 4 (and won't be more than 8), to which we apply special rules
+                          this is to ensure we don't get isolated blocks of 2 cab units at the end of consists that are > 12 units long
+                          note we multiply the n-1 block count by the divisor to store an *actual* position in the relative ID chain, which we will use to split behaviour on later
+                    -->
+                    num_vehs_in_vehid_chain > 4
+                        ?
+                        4 * ((num_vehs_in_vehid_chain / 4) - 1)
+                        :
+                        0,
+                    ${temp_storage_ids.position_in_vehid_chain_base_offset}
+                ),
+                (position_in_vehid_chain >= LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_base_offset}))
+            ]) {
+        1: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_check_remainder_block_apply_base_offset_to_position;
+        return switch_graphics_intermodal_platform_ruleset_4_unit_sets_whole_divisor_block;
     }
 </tal:ruleset>
 
@@ -465,7 +553,6 @@
         return ${last};
     }
 
-    <!--! this is a remainder block, how many units are in it? -->
     <!--! this is a remainder block, how many units are in it? -->
     switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_4_unit_sets_check_remainder_block_length,
             (LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) - LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_base_offset})) % 8
