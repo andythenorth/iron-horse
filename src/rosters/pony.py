@@ -1,5 +1,8 @@
 from roster import Roster
 
+from vehicles import alize_cab
+from vehicles import alize_middle_mail
+from vehicles import alize_middle_passenger
 from vehicles import ares
 from vehicles import athena
 
@@ -701,6 +704,9 @@ def main():
             helm_wind_cab,
             helm_wind_middle_passenger,
             helm_wind_middle_mail,
+            alize_cab,
+            alize_middle_passenger,
+            alize_middle_mail,
             brenner_cab,
             brenner_middle_passenger,
             brenner_middle_mail,
