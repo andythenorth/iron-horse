@@ -12,11 +12,11 @@ def main(roster_id):
         power_by_power_source={
             "AC": 1700,
         },
-        pantograph_type="z-shaped-single-reversed",
+        pantograph_type="z-shaped-single-with-base",
         gen=5,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["WHITE_STRIPE"],
+        additional_liveries=["SWOOSH", "SWOOSH"],
         sprites_complete=False,
     )
 
