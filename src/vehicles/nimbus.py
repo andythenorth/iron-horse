@@ -11,7 +11,7 @@ def main(roster_id):
         role_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 1500,
-            "AC": 2800,
+            "AC": 2500,
         },
         intro_year_offset=-9,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,

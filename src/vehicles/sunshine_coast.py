@@ -10,7 +10,7 @@ def main(roster_id):
         role="express_pax_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={
-            "AC": 2000,
+            "AC": 1900,
         },
         pantograph_type="z-shaped-single-with-base",
         gen=4,

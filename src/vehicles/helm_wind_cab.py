@@ -10,7 +10,7 @@ def main(roster_id):
         role="very_high_speed",
         role_child_branch_num=1,
         power_by_power_source={
-            "AC": 1700,
+            "AC": 1900,
         },
         pantograph_type="z-shaped-single-reversed",
         gen=5,
