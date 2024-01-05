@@ -26,6 +26,4 @@ def main(roster_id):
     consist.description = """I've rebuilt some of the Argus fleet to be more handy. Now we're sucking diesel."""
     consist.foamer_facts = """BR Class 71/74, Class 73"""
 
-    consist.clone(base_numeric_id=850, clone_units=[2])
-
     return consist

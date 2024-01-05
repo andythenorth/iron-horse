@@ -32,6 +32,4 @@ def main(roster_id):
     )
     consist.foamer_facts = """Metropolitan Railway electric locos"""
 
-    consist.clone(base_numeric_id=830, clone_units=[2])
-
     return consist
