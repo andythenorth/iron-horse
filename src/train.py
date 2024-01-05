@@ -1403,7 +1403,10 @@ class EngineConsist(Consist):
 
     @property
     def joker(self):
-        # jokers are bonus vehicles (mostly) engines which don't fit strict tech tree progression
+        # jokers are bonus vehicles (mostly) engines which are excluded from simplified game mode
+        # all clones are automatically jokers and excluded
+        if self.cloned_from_consist is not None:
+            return True
         # for engines, jokers use -ve value for role_child_branch_num, tech tree vehicles use +ve
         return self.role_child_branch_num < 0
 

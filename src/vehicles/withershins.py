@@ -30,4 +30,6 @@ def main(roster_id):
     consist.description = """It's a rat pack. What more do you want?"""
     consist.foamer_facts = """BR Class 24, BR Class 25"""
 
+    consist.clone(base_numeric_id=9580, clone_units=[1, 0])
+
     return consist

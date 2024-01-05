@@ -30,4 +30,13 @@ def main(roster_id):
     )
     consist.foamer_facts = """DRS Class 20/3 (re-engineered)"""
 
+    consist.clone(base_numeric_id=820, clone_units=[1])
+
+    # this is a JFDI thing, the Lynx 2-unit version needs a reversed sprite, but the buy menu compositor does not support that as of Jan 2024, so hax
+    consist.clones[0].add_unit(
+        type=DieselEngineUnit, weight=72, vehicle_length=6, spriterow_num=1
+    )
+    # also JFDI, the default single unit should randomly reverse, the 2-unit version should not, so hax
+    consist.clones[0].random_reverse=False
+
     return consist

@@ -29,4 +29,6 @@ def main(roster_id):
     )
     consist.foamer_facts = """BR Class 74, Class 73"""
 
+    consist.clone(base_numeric_id=860, clone_units=[2])
+
     return consist

@@ -33,4 +33,6 @@ def main(roster_id):
         """SR CC1/CC2 locomotives, English Electric export boxcab locomotives"""
     )
 
+    consist.clone(base_numeric_id=9920, clone_units=[1, 0])
+
     return consist

@@ -36,4 +36,6 @@ def main(roster_id):
     consist.description = """Kelpie were right good, this is the rebuilt version."""
     consist.foamer_facts = """BR Class 33"""
 
+    consist.clone(base_numeric_id=800, clone_units=[2])
+
     return consist
