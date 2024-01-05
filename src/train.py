@@ -6,6 +6,7 @@ import sys
 
 sys.path.append(os.path.join("src"))  # add to the module search path
 
+import copy
 import math
 import random
 
@@ -62,6 +63,10 @@ class Consist(object):
         self.use_named_buyable_variant_group = None
         # create a structure to hold the units
         self.units = []
+        # we clone some consists to make alternate length variants, we need to track that
+        self.clones = []
+        # store the consist this was cloned from, may also be used to determine if this is a clone or not
+        self.cloned_from_consist = None
         # either gen xor intro_year is required, don't set both, one will be interpolated from the other
         self._intro_year = kwargs.get("intro_year", None)
         self._gen = kwargs.get("gen", None)
@@ -169,6 +174,42 @@ class Consist(object):
         self.sprites_additional_liveries_potential = kwargs.get(
             "sprites_additional_liveries_potential", False
         )
+
+    def clone(self, **kwargs):
+        # consists have support for optional clones, which are used to provide variants of different lengths
+        # e.g. diesels with 1 or 2 units, and similar
+        # a consist can have more than one clone variant
+        # parameters
+        # - base_numeric_id: (int) used for the cloned consist
+        # - clone_units: [repeat=n1, repeat=n2] etc for each unit defined in the original consist
+        # so to extend a 1 unit consist to a 2 unit variant: clone_units=[2]
+        # to shorten a 2 unit consist to a 1 unit variant: clone_units=[1, 0]
+
+        # we clone the consist by copying the current consist, this is the simplest way to not get caught out by any properties in subclasses
+        cloned_consist = copy.deepcopy(self)
+        cloned_consist.cloned_from_consist = self
+        cloned_consist.id = self.id + "_clone_" + str(len(self.clones))
+        cloned_consist.base_numeric_id = kwargs["base_numeric_id"]
+        cloned_consist._buyable_variant_group_id = self.id
+        # purchase menu variant decor isn't supported if the consist is articulated, so just forcibly clear this property
+        cloned_consist.show_decor_in_purchase_for_variants = []
+        # we have to recreate the units from scratch using the original classes and kwargs stored when they were inited
+        # this is faff, but is the simplest available method due to the way the structure for units + buyable_variants is constructed and unit_variant IDs assigned
+        cloned_consist.units = []
+        for counter, unit in enumerate(self.units):
+            unit_kwargs = unit.kwargs_for_optional_consist_cloning_later.copy()
+            del unit_kwargs["consist"] # drop this, it's re-added to kwargs later by add_unit, which will cause an error to be thrown
+            cloned_consist.add_unit(
+                type(unit), repeat=kwargs["clone_units"][counter], **unit_kwargs
+            )
+        # we'll need to adjust some stats, e.g. power, running_cost etc
+        cloned_consist.stats_adjustment_factor = len(cloned_consist.units) / len(self.units)
+        # recalculate power
+        for power_type, power_value in self.power_by_power_source.items():
+            cloned_consist.power_by_power_source[power_type] = int(power_value * cloned_consist.stats_adjustment_factor)
+
+        self.clones.append(cloned_consist)
+        # no return needed
 
     def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed
@@ -1262,6 +1303,10 @@ class EngineConsist(Consist):
 
     @property
     def buy_cost(self):
+        # first check if we're simply a clone, because then we just take the costs from the clone source vehicle, and adjust them to account for differing number of units
+        if self.cloned_from_consist is not None:
+            return int(self.cloned_from_consist.buy_cost * self.stats_adjustment_factor)
+
         # max speed = 200mph by design - see assert_speed()
         # multiplier for speed, max value will be 25
         speed_cost_points = self.speed / 8
@@ -1295,6 +1340,11 @@ class EngineConsist(Consist):
     def running_cost(self):
         # algorithmic calculation of engine run costs
         # as of Feb 2019, it's fixed cost (set by subtype) + floating costs (derived from power, speed, weight)
+
+        # first check if we're simply a clone, because then we just take the costs from the clone source vehicle, and adjust them to account for differing number of units
+        if self.cloned_from_consist is not None:
+            return int(self.cloned_from_consist.running_cost * self.stats_adjustment_factor)
+
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
         is_NG = True if self.base_track_type_name == "NG" else False
         # max speed = 200mph by design - see assert_speed() - (NG assumes 100mph max)
@@ -1550,9 +1600,13 @@ class MailEngineRailcarConsist(MailEngineConsist):
                 "special": 0,
             }
         if self.role_child_branch_num in [2]:
-            liveries = self.roster.get_pax_mail_liveries("diesel_railcar_mail_liveries", **kwargs)
+            liveries = self.roster.get_pax_mail_liveries(
+                "diesel_railcar_mail_liveries", **kwargs
+            )
         else:
-            liveries = self.roster.get_pax_mail_liveries("electric_railcar_mail_liveries", **kwargs)
+            liveries = self.roster.get_pax_mail_liveries(
+                "electric_railcar_mail_liveries", **kwargs
+            )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset=consist_ruleset,
@@ -1881,9 +1935,13 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         if self.role_child_branch_num in [2]:
-            liveries = self.roster.get_pax_mail_liveries("suburban_pax_liveries", **kwargs)
+            liveries = self.roster.get_pax_mail_liveries(
+                "suburban_pax_liveries", **kwargs
+            )
         else:
-            liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
+            liveries = self.roster.get_pax_mail_liveries(
+                "default_pax_liveries", **kwargs
+            )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_3_unit_sets",
@@ -6911,6 +6969,8 @@ class Train(object):
         self._symmetry_type = kwargs.get("symmetry_type", "symmetric")
         # optional - a switch name to trigger re-randomising vehicle random bits - override as need in subclasses
         self.random_trigger_switch = None
+        # store the kwargs so we can clone this unit later if we need to
+        self.kwargs_for_optional_consist_cloning_later = kwargs
 
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter

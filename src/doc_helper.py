@@ -52,7 +52,7 @@ class DocHelper(object):
 
     def get_engines_by_roster_and_base_track_type(self, roster, base_track_type_name):
         result = []
-        for consist in roster.engine_consists:
+        for consist in roster.engine_consists_excluding_clones:
             if consist.base_track_type_name == base_track_type_name:
                 result.append(consist)
         return result
@@ -130,7 +130,7 @@ class DocHelper(object):
         # - powered cabooses for propelling
         # - we also exclude engines with Gronk! role because they're silly
         result = []
-        for consist in roster.engine_consists:
+        for consist in roster.engine_consists_excluding_clones:
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if (
                 consist.buy_menu_additional_text_hint_driving_cab
@@ -281,7 +281,7 @@ class DocHelper(object):
 
         # for vehicle_type, vehicle_consists in [engines, wagons]:
         # parse the engine and wagon consists into a consistent structure
-        engines = ("engines", roster.engine_consists)
+        engines = ("engines", roster.engine_consists_excluding_clones)
         wagon_consists = []
         for wagon_class in global_constants.buy_menu_sort_order_wagons:
             wagon_consists.extend(

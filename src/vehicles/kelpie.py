@@ -31,4 +31,6 @@ def main(roster_id):
     consist.description = """Neat these are, to my mind."""
     consist.foamer_facts = """BR Class 26/27/33"""
 
+    consist.clone(base_numeric_id=450, clone_units=[2])
+
     return consist

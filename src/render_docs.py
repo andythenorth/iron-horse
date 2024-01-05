@@ -358,7 +358,8 @@ def main():
     static_dir_dst = os.path.join(html_docs_output_path, "static")
     shutil.copytree(static_dir_src, static_dir_dst)
 
-    consists = roster.consists_in_buy_menu_order
+    # note we remove any consists that are clones, we don't need them in docs
+    consists = [consist for consist in roster.consists_in_buy_menu_order if consist.cloned_from_consist == None]
     # default sort for docs is by intro year
     consists = sorted(consists, key=lambda consist: consist.intro_year)
     dates = sorted([i.intro_year for i in consists])
@@ -412,7 +413,7 @@ def main():
     # render vehicle details
     # this is slow and _might_ go faster in an MP pool, but eh overhead...
     render_vehicle_details_start = time()
-    for consist in roster.engine_consists:
+    for consist in roster.engine_consists_excluding_clones:
         consist.assert_description_foamer_facts()
         render_docs_vehicle_details(
             consist,

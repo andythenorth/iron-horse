@@ -58,6 +58,16 @@ class Roster(object):
         return result
 
     @property
+    def engine_consists_excluding_clones(self):
+        # we don't always want clones in the engine list (e.g. when generating tech tree in docs and similar cases)
+        # this is a convenience wrapper to knock out any clones from engine list
+        return [
+            engine_consist
+            for engine_consist in self.engine_consists
+            if engine_consist.cloned_from_consist is None
+        ]
+
+    @property
     def consists_in_buy_menu_order(self):
         result = []
         result.extend(self.engine_consists)
@@ -355,6 +365,9 @@ class Roster(object):
         for engine in self.engines:
             consist = engine.main(self.id)
             self.engine_consists.append(consist)
+            # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
+            for cloned_consist in consist.clones:
+                self.engine_consists.append(cloned_consist)
         self.wagon_consists = dict(
             [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons]
         )

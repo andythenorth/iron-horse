@@ -35,12 +35,16 @@ class Pipeline(object):
     def vehicle_source_input_path(self):
         # convenience method to get the vehicle template image
         # I considered having this return the Image, not just the path, but it's not saving much, and is less obvious what it does when used
+        if self.consist.cloned_from_consist is not None:
+            consist_filename_stem = self.consist.cloned_from_consist.id
+        else:
+            consist_filename_stem = self.consist.id
         return os.path.join(
             currentdir,
             "src",
             "graphics",
             self.consist.roster_id,
-            self.consist.id + ".png",
+            consist_filename_stem + ".png",
         )
 
     @property
