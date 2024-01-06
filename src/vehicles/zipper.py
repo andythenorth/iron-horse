@@ -16,7 +16,7 @@ def main(roster_id):
         # introduce early by design
         intro_year_offset=-4,
         pax_car_capacity_type="railbus_combine", # specific to combined mail + pax consist
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
