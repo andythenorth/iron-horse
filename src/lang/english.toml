@@ -731,6 +731,9 @@ base = "Battery Hybrid"
 [STR_POWER_SOURCE_DC]
 base = "Electric (DC)"
 
+[STR_POWER_SOURCE_METRO]
+base = "Metro"
+
 [STR_POWER_SOURCE_DIESEL]
 base = "Diesel"
 
