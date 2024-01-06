@@ -5942,6 +5942,19 @@ class ReeferCarConsistBase(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["food_wagons"]
         )
+
+
+class ReeferCarConsist(ReeferCarConsistBase):
+    """
+    Standard reefer car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "reefer_car"
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_reefer_cars"
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -5959,19 +5972,6 @@ class ReeferCarConsistBase(CarConsist):
         )
 
 
-class ReeferCarConsist(ReeferCarConsistBase):
-    """
-    Standard reefer car.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "reefer_car"
-        super().__init__(**kwargs)
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_reefer_cars"
-
-
 class ReeferCarAltConsist(ReeferCarConsistBase):
     """
     Alternative reefer car style.
@@ -5983,6 +5983,21 @@ class ReeferCarAltConsist(ReeferCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_reefer_cars"
+        # Graphics configuration
+        self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.refrigerated_alt_livery_recolour_maps,
+            "weathered": graphics_constants.refrigerated_alt_livery_recolour_maps_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base=self.base_id,
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+            ],
+        )
 
 
 class SiloCarConsistBase(CarConsist):
