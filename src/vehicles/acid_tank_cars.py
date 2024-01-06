@@ -2,6 +2,42 @@ from train import TankCarAcidConsist, FreightCar
 
 
 def main():
+    # --------------- pony NG ----------------------------------------------------------------------
+
+    consist = TankCarAcidConsist(
+        roster_id="pony",
+        base_numeric_id=10090,
+        gen=2,
+        subtype="U",
+        base_track_type_name="NG",
+        intro_year_offset=-10,  # let's be earlier for this one
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = TankCarAcidConsist(
+        roster_id="pony",
+        base_numeric_id=11820,
+        gen=3,
+        subtype="U",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = TankCarAcidConsist(
+        roster_id="pony",
+        base_numeric_id=12490,
+        gen=4,
+        subtype="U",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
     # --------------- pony ----------------------------------------------------------------------
 
     consist = TankCarAcidConsist(
