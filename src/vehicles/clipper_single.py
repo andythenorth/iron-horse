@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=14690,
         name="Clipper",
         role="pax_railbus",
-        role_child_branch_num=-2,  # joker to hide them from simplified mode
+        role_child_branch_num=-3000,  # excessive child branch number to hide them from tech tree (and also -ve to hide in simplified mode)
         power_by_power_source={
             "DIESEL": 180,
         },

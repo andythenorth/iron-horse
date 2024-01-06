@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=14700,
         name="Skipper",
         role="pax_railbus",
-        role_child_branch_num=-2,  # joker to hide them from simplified mode
+        role_child_branch_num=-3000,  # excessive child branch number to hide them from tech tree (and also -ve to hide in simplified mode)
         power_by_power_source={
             "DIESEL": 225,
         },
@@ -28,6 +28,6 @@ def main(roster_id):
     )
 
     consist.description = """Patience is the virtue of the donkeys."""
-    consist.foamer_facts = """BR Class 142 <i>Pacer</i>"""
+    consist.foamer_facts = """BR Class 141/142/143/144 <i>Pacers</i>"""
 
     return consist

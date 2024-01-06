@@ -34,6 +34,6 @@ def main(roster_id):
     )
 
     consist.description = """Patience is the virtue of the donkeys."""
-    consist.foamer_facts = """BR Class 142 <i>Pacer</i>"""
+    consist.foamer_facts = """BR Class 141/142/143/144 <i>Pacers</i>"""
 
     return consist
