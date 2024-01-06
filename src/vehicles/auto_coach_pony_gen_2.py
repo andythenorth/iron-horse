@@ -15,7 +15,7 @@ def main(roster_id):
         id="auto_coach_pony_gen_2",
         base_numeric_id=4690,
         name="Autocoach Set",
-        replacement_consist_id="slammer",  # auto-coach ends with gen 4 Slammer
+        replacement_consist_id="clipper",  # auto-coach ends with gen 4 clipper
         gen=2,
         sprites_complete=True,
     )

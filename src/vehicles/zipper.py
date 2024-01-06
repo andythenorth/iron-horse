@@ -1,28 +1,36 @@
-from train import PassengerEngineRailbusConsist, DieselRailcarPaxUnit
+from train import PassengerEngineRailbusConsist, DieselRailcarCombineUnitPax, DieselRailcarCombineUnitMail
 
 
 def main(roster_id):
     consist = PassengerEngineRailbusConsist(
         roster_id=roster_id,
         id="zipper",
-        base_numeric_id=14710,
+        base_numeric_id=260,
         name="Zipper",
         role="pax_railbus",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={
-            "DIESEL": 280,
+            "DIESEL": 480,
         },
         gen=6,
         # introduce early by design
         intro_year_offset=-4,
-        sprites_complete=True,
+        pax_car_capacity_type="railbus_combine", # specific to combined mail + pax consist
+        sprites_complete=False,
     )
 
     consist.add_unit(
-        type=DieselRailcarPaxUnit,
-        weight=25,
-        chassis="railbus_lwb_24px",
-        tail_light="railcar_24px_1",
+        type=DieselRailcarCombineUnitMail,
+        weight=21,
+        chassis="railbus_lwb_20px",
+        tail_light="railcar_24px_2", # !!!!!!!!! CABBAGE
+    )
+
+    consist.add_unit(
+        type=DieselRailcarCombineUnitPax,
+        weight=21,
+        chassis="railbus_lwb_20px",
+        tail_light="railcar_24px_2", # !!!!!!!!! CABBAGE
     )
 
     consist.description = """It's the same donkey, but with a new saddle."""

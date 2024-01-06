@@ -59,7 +59,7 @@ class Consist(object):
         # set explicitly to a named group matching a consist id
         # set explicitly to a base id, for e.g. wagon groups defined on the roster, which will then compose a group name using e.g. consist track type, gen etc
         # or implicitly inferred later from rules for e.g. livery variants
-        self._buyable_variant_group_id = None
+        self._buyable_variant_group_id = kwargs.get("buyable_variant_group_id", None)
         self.use_named_buyable_variant_group = None
         # create a structure to hold the units
         self.units = []
@@ -198,15 +198,21 @@ class Consist(object):
         cloned_consist.units = []
         for counter, unit in enumerate(self.units):
             unit_kwargs = unit.kwargs_for_optional_consist_cloning_later.copy()
-            del unit_kwargs["consist"] # drop this, it's re-added to kwargs later by add_unit, which will cause an error to be thrown
+            del unit_kwargs[
+                "consist"
+            ]  # drop this, it's re-added to kwargs later by add_unit, which will cause an error to be thrown
             cloned_consist.add_unit(
                 type(unit), repeat=kwargs["clone_units"][counter], **unit_kwargs
             )
         # we'll need to adjust some stats, e.g. power, running_cost etc
-        cloned_consist.stats_adjustment_factor = len(cloned_consist.units) / len(self.units)
+        cloned_consist.stats_adjustment_factor = len(cloned_consist.units) / len(
+            self.units
+        )
         # recalculate power
         for power_type, power_value in self.power_by_power_source.items():
-            cloned_consist.power_by_power_source[power_type] = int(power_value * cloned_consist.stats_adjustment_factor)
+            cloned_consist.power_by_power_source[power_type] = int(
+                power_value * cloned_consist.stats_adjustment_factor
+            )
 
         self.clones.append(cloned_consist)
         # no return needed
@@ -1343,7 +1349,9 @@ class EngineConsist(Consist):
 
         # first check if we're simply a clone, because then we just take the costs from the clone source vehicle, and adjust them to account for differing number of units
         if self.cloned_from_consist is not None:
-            return int(self.cloned_from_consist.running_cost * self.stats_adjustment_factor)
+            return int(
+                self.cloned_from_consist.running_cost * self.stats_adjustment_factor
+            )
 
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
         is_NG = True if self.base_track_type_name == "NG" else False
@@ -1871,6 +1879,9 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         self.train_flag_mu = True
         # big cost bonus for railbus
         self.fixed_run_cost_points = 48
+        # optional keyword override, intended for Combine type railbuses, otherwise just use the default for this class
+        if "pax_car_capacity_type" in kwargs:
+            self.pax_car_capacity_type = self.roster.pax_car_capacity_types[kwargs["pax_car_capacity_type"]]
         # non-standard cite
         self._cite = "Arabella Unit"
         # Graphics configuration
@@ -1879,11 +1890,15 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         # ruleset will combine these to make multiple-units 1, 2 vehicles long, then repeating the pattern
-        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
+        if self.base_track_type_name == "NG":
+            consist_ruleset = "railcars_2_unit_sets"
+        else:
+            consist_ruleset = "railcars_3_unit_sets"
         liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="railcars_2_unit_sets",
+            consist_ruleset=consist_ruleset,
             liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
@@ -1901,12 +1916,12 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
                 and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["pax_railbus"])
             ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
+                result.extend(consist.unique_numeric_ids)
         for consist in self.roster.wagon_consists["railbus_passenger_trailer_car"]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
+                result.extend(consist.lead_unit_variants_numeric_ids) # won't handle articulated consists correctly
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range(len(result), 16):
             result.append(-1)
@@ -7321,44 +7336,17 @@ class Train(object):
         return nml_result
 
 
-class AutoCoachCombineUnitMail(Train):
+class BatteryHybridEngineUnit(Train):
     """
-    Mail unit for a combine auto coach (articulated driving cab consist with mail + pax capacity)
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.engine_class = "ENGINE_CLASS_STEAM"
-        self.effects = {}
-        self._symmetry_type = "asymmetric"
-        # usually refit classes come from consist, but we special case to the unit for this combine coach
-        self.articulated_unit_different_class_refit_groups = [
-            "mail"
-        ]  # note mail only, no other express cargos
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type_name
-        ][self.consist.gen - 1]
-        # also account for some pax capacity 'on' this unit (implemented on adjacent pax unit)
-        self.capacity = (
-            0.75 * self.vehicle_length * base_capacity
-        ) / polar_fox.constants.mail_multiplier
-
-
-class AutoCoachCombineUnitPax(Train):
-    """
-    Pax unit for a combine auto coach (articulated driving cab consist with mail + pax capacity)
+    Unit for a battery hybrid engine.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.engine_class = "ENGINE_CLASS_DIESEL"  # !! needs changing??
-        self.effects = {}
-        self._symmetry_type = "asymmetric"
-        # usually refit classes come from consist, but we special case to the unit for this combine coach
-        self.articulated_unit_different_class_refit_groups = ["pax"]
-        # magic to set capacity subject to length and vehicle capacity type
-        self.capacity = self.get_pax_car_capacity()
+        self.engine_class = "ENGINE_CLASS_DIESEL"
+        self.effects = {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]}
+        # most battery hybrid engines are asymmetric, override per vehicle as needed
+        self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
 
 class CabbageDVTUnit(Train):
@@ -7394,17 +7382,86 @@ class CabControlPaxCarUnit(Train):
         self.capacity = self.get_pax_car_capacity()
 
 
-class BatteryHybridEngineUnit(Train):
+class CombineUnitMailBase(Train):
     """
-    Unit for a battery hybrid engine.
+    Mail unit for a combine vehicle (articulated consist with mail + pax capacity)
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # usually refit classes come from consist, but we special case to the unit for this combine coach
+        self.articulated_unit_different_class_refit_groups = [
+            "mail"
+        ]  # note mail only, no other express cargos
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
+            self.consist.base_track_type_name
+        ][self.consist.gen - 1]
+        # also account for some pax capacity 'on' this unit (implemented on adjacent pax unit)
+        self.capacity = (
+            0.75 * self.vehicle_length * base_capacity
+        ) / polar_fox.constants.mail_multiplier
+
+
+class CombineUnitPaxBase(Train):
+    """
+    Pax unit for a combine vehicle (articulated consist with mail + pax capacity)
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # usually refit classes come from consist, but we special case to the unit for this combine coach
+        self.articulated_unit_different_class_refit_groups = ["pax"]
+        # magic to set capacity subject to length and vehicle capacity type
+        self.capacity = self.get_pax_car_capacity()
+
+
+class AutoCoachCombineUnitMail(CombineUnitMailBase):
+    """
+    Mail unit for a combine auto coach (articulated driving cab consist with mail + pax capacity)
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = "ENGINE_CLASS_STEAM"
+        self.effects = {}
+        self._symmetry_type = "asymmetric"
+
+
+class AutoCoachCombineUnitPax(CombineUnitPaxBase):
+    """
+    Pax unit for a combine auto coach (articulated driving cab consist with mail + pax capacity)
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = "ENGINE_CLASS_STEAM"
+        self.effects = {}
+        self._symmetry_type = "asymmetric"
+
+
+class DieselRailcarCombineUnitMail(CombineUnitMailBase):
+    """
+    Mail unit for a combine diesel railcar (articulated consist with mail + pax capacity)
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
-        self.effects = {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]}
-        # most battery hybrid engines are asymmetric, override per vehicle as needed
-        self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
+        self.effects = {}
+        self._symmetry_type = "asymmetric"
+
+
+class DieselRailcarCombineUnitPax(CombineUnitPaxBase):
+    """
+    Pax unit for a combine diesel railcar (articulated consist with mail + pax capacity)
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = "ENGINE_CLASS_DIESEL"
+        self.effects = {}
+        self._symmetry_type = "asymmetric"
 
 
 class DieselEngineUnit(Train):

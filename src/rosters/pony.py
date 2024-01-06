@@ -32,6 +32,7 @@ from vehicles import cheese_bug
 from vehicles import chinook
 from vehicles import chuggypig
 from vehicles import clipper
+from vehicles import clipper_single
 from vehicles import constance
 from vehicles import cyclone
 from vehicles import daring
@@ -131,6 +132,7 @@ from vehicles import skeiron_cab
 from vehicles import skeiron_middle_mail
 from vehicles import skeiron_middle_passenger
 from vehicles import skipper
+from vehicles import skipper_single
 from vehicles import slammer
 from vehicles import slug
 from vehicles import snapper
@@ -170,6 +172,7 @@ from vehicles import zebedee
 from vehicles import zest
 from vehicles import zeus
 from vehicles import zipper
+from vehicles import zipper_single
 from vehicles import zorro
 
 
@@ -263,14 +266,19 @@ def main():
                 "multiplier": 1.5,
                 "loading_speed_multiplier": 1.75,
             },
-            # very specifically tuned multiplier against a single pony vehicle
+            "restaurant": {
+                "multiplier": 0.45,
+                "loading_speed_multiplier": 1,
+            },
+            # very specifically tuned multiplier against combin consists
             "autocoach_combine": {
                 "multiplier": 2.7,
                 "loading_speed_multiplier": 1.75,
             },
-            "restaurant": {
-                "multiplier": 0.45,
-                "loading_speed_multiplier": 1,
+            # very specifically tuned multiplier against combin consists
+            "railbus_combine": {
+                "multiplier": 2.5,
+                "loading_speed_multiplier": 1.75,
             },
         },
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
@@ -673,8 +681,11 @@ def main():
             auto_coach_pony_gen_2,
             # railbuses
             clipper,
+            clipper_single,
             skipper,
+            skipper_single,
             zipper,
+            zipper_single,
             # diesel railcars
             deasil,
             slammer,
