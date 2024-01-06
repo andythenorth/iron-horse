@@ -129,6 +129,7 @@ class DocHelper(object):
         # - powered wagons for TGVs
         # - powered cabooses for propelling
         # - we also exclude engines with Gronk! role because they're silly
+        # - anything with a variant group parent is just a sub-variant of some sort
         result = []
         for consist in roster.engine_consists_excluding_clones:
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
@@ -136,6 +137,7 @@ class DocHelper(object):
                 consist.buy_menu_additional_text_hint_driving_cab
                 or consist.wagons_add_power
                 or consist.role in ["gronk!"]
+                or consist._buyable_variant_group_id is not None
             ):
                 result.append(consist)
         return result
