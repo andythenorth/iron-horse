@@ -103,6 +103,12 @@ from vehicles import merlion
 from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
+from vehicles import ng_1
+from vehicles import ng_2
+from vehicles import ng_3
+from vehicles import ng_4
+from vehicles import ng_5
+from vehicles import ng_6
 from vehicles import nimbus
 from vehicles import olympic
 from vehicles import onslaught
@@ -746,9 +752,15 @@ def main():
             cheese_bug,
             bean_feast,
             thor,
+            ng_1,
+            ng_2,
+            ng_3,
             pikel,
             boar_cat,
             gargouille,
+            ng_5,
+            ng_4,
+            ng_6,
             maximillian,
             # ng railcars
             mumble,
