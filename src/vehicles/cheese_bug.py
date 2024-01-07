@@ -8,10 +8,11 @@ def main(roster_id):
         base_numeric_id=9530,
         name="2-6-2 Cheese Bug",
         role="universal",
-        role_child_branch_num=1,
+        role_child_branch_num=-1,
+        replacement_consist_id="pikel",
         base_track_type_name="NG",
         power_by_power_source={
-            "STEAM": 300,
+            "STEAM": 400,
         },
         tractive_effort_coefficient=0.2,
         gen=1,

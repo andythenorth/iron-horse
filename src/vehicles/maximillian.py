@@ -10,7 +10,7 @@ def main(roster_id):
         role="universal",
         role_child_branch_num=2,
         power_by_power_source={
-            "DIESEL": 900,
+            "DIESEL": 1200, # designed so it can replace 8/8 previous gen engines if so desired
         },
         random_reverse=True,
         base_track_type_name="NG",

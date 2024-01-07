@@ -101,14 +101,10 @@ from vehicles import maximillian
 from vehicles import magnum_70
 from vehicles import merlion
 from vehicles import merrylegs
+from vehicles import mighty
 from vehicles import moor_gallop
 from vehicles import mumble
-from vehicles import ng_1
-from vehicles import ng_2
-from vehicles import ng_3
-from vehicles import ng_4
-from vehicles import ng_5
-from vehicles import ng_6
+from vehicles import nile
 from vehicles import nimbus
 from vehicles import olympic
 from vehicles import onslaught
@@ -126,6 +122,7 @@ from vehicles import reliance
 from vehicles import resilient
 from vehicles import resistance
 from vehicles import revolution
+from vehicles import rockhampton
 from vehicles import roarer
 from vehicles import saxon
 from vehicles import scooby
@@ -133,6 +130,7 @@ from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
 from vehicles import shredder
+from vehicles import silverfern
 from vehicles import sizzler
 from vehicles import skeiron_cab
 from vehicles import skeiron_middle_mail
@@ -152,6 +150,7 @@ from vehicles import streamer
 from vehicles import strongbow
 from vehicles import sunshine_coast
 from vehicles import swift
+from vehicles import taw
 from vehicles import tenacious
 from vehicles import tencendur
 from vehicles import thor
@@ -163,6 +162,7 @@ from vehicles import toaster
 from vehicles import tornado
 from vehicles import trojan
 from vehicles import tyburn
+from vehicles import tyrconnell
 from vehicles import ultra_shoebox
 from vehicles import vigilant
 from vehicles import viking
@@ -751,17 +751,17 @@ def main():
             # ng engines
             cheese_bug,
             bean_feast,
-            thor,
-            ng_1,
-            ng_2,
-            ng_3,
             pikel,
             boar_cat,
+            thor,
+            taw,
             gargouille,
-            ng_5,
-            ng_4,
-            ng_6,
+            silverfern,
             maximillian,
+            mighty,
+            tyrconnell,
+            nile,
+            rockhampton,
             # ng railcars
             mumble,
             snapper,
