@@ -1,34 +1,30 @@
-from train import EngineConsist, SteamEngineUnit
+from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="ng_3",
-        base_numeric_id=14140,
-        name="TEST",
+        id="tyrconnell",
+        base_numeric_id=830,
+        name="2-8-0 Tyrconnell",
         role="universal",
         role_child_branch_num=-3,
         base_track_type_name="NG",
         power_by_power_source={
-            "STEAM": 900,
+            "STEAM": 800,
         },
         tractive_effort_coefficient=0.3,
-        gen=3,
-        intro_year_offset=15,
+        gen=2,
         random_reverse=True,
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["INDUSTRIAL_YELLOW"],
+        #additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=False,
     )
 
+    consist.add_unit(type=SteamEngineUnit, weight=65, vehicle_length=5, spriterow_num=0)
+
     consist.add_unit(
-        type=SteamEngineUnit,
-        weight=30,
-        vehicle_length=8,
-        effect_offsets=[(-3, 0), (1, 0)],  # double the smoke eh?
-        effect_z_offset=10,  # reduce smoke z position to suit NG engine height
-        spriterow_num=0,
+        type=SteamEngineTenderUnit, weight=29, vehicle_length=3, spriterow_num=1
     )
 
     consist.description = (
