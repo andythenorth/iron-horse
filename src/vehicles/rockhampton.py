@@ -14,7 +14,7 @@ def main(roster_id):
             "DIESEL": 1600,
         },
         gen=4,
-        intro_year_offset=15,
+        intro_year_offset=8,
         random_reverse=True,
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
@@ -23,7 +23,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=DieselEngineUnit,
-        weight=30,
+        weight=55,
         vehicle_length=8,
         effect_z_offset=10,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,

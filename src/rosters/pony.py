@@ -102,6 +102,7 @@ from vehicles import magnum_70
 from vehicles import merlion
 from vehicles import merrylegs
 from vehicles import mighty
+from vehicles import mighty_2
 from vehicles import moor_gallop
 from vehicles import mumble
 from vehicles import nile
@@ -756,11 +757,12 @@ def main():
             thor,
             taw,
             gargouille,
-            silverfern,
+            mighty_2,
             maximillian,
             mighty,
             tyrconnell,
             nile,
+            silverfern,
             rockhampton,
             # ng railcars
             mumble,

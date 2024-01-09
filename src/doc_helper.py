@@ -136,7 +136,7 @@ class DocHelper(object):
             if (
                 consist.buy_menu_additional_text_hint_driving_cab
                 or consist.wagons_add_power
-                or consist.role in ["gronk!"]
+                or consist.role in ["gronk!", "pax_metro", "mail_metro"]
                 or consist._buyable_variant_group_id is not None
             ):
                 result.append(consist)
