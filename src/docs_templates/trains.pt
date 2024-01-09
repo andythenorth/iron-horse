@@ -7,7 +7,7 @@
             <div class="span12">
                 <h2>
                     <!--! for set design numerology purposes it's possible to hover over this for a more detailed breakdown-->
-                    <span title="${len(roster.engine_consists_excluding_clones) - len(doc_helper.not_really_engine_consists(roster))} engines and ${len(doc_helper.not_really_engine_consists(roster))} snowploughs, cab cars, gronks and similar.">
+                    <span title="${len(roster.engine_consists_excluding_clones) - len(doc_helper.not_really_engine_consists(roster))} engines and ${len(doc_helper.not_really_engine_consists(roster))} snowploughs, cab cars, gronks, metro trains, and similar.">
                         ${len(roster.engine_consists_excluding_clones)} engines
                     </span>
                     and ${sum([len(roster.wagon_consists[wagon_class]) for wagon_class in roster.wagon_consists])} wagons

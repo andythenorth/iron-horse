@@ -10,12 +10,12 @@ def main(roster_id):
         role="universal",
         role_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 1200, # designed so it can replace 8/8 previous gen engines if so desired
+            "DIESEL": 800, # designed so it can replace 8/8 previous gen engines if so desired
         },
         random_reverse=True,
         base_track_type_name="NG",
-        gen=4,
-        intro_year_offset=11,
+        gen=3,
+        intro_year_offset=8,
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=False,
