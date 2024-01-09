@@ -43,6 +43,6 @@ def main(roster_id):
     )
 
     consist.description = """Technically, we're all half centaur."""
-    consist.foamer_facts = """proposed BR Class 38 (Class 37 replacement), body shape derived from SNCF <i>Nez Cassés</i> ('broken nose') locomotive and originally proposed for BR Class 60"""
+    consist.foamer_facts = """proposed BR Class 38 (Class 37 replacement), body shape derived from SNCF <i>Nez Cassés</i> ('broken nose') locomotive and originally proposed for BR Class 60; also Portugese CP Class 1930"""
 
     return consist
