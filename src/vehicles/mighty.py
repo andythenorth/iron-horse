@@ -8,13 +8,13 @@ def main(roster_id):
         base_numeric_id=14150,
         name="Mighty",
         role="universal",
-        role_child_branch_num=-2,
+        role_child_branch_num=-3,
         power_by_power_source={
-            "DIESEL": 1200,
+            "DIESEL": 1000,
         },
         random_reverse=True,
         base_track_type_name="NG",
-        gen=4,
+        gen=3,
         intro_year_offset=8,
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],

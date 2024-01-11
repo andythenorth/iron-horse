@@ -14,7 +14,7 @@ def main(roster_id):
             "STEAM": 400,
         },
         tractive_effort_coefficient=0.2,
-        gen=2,
+        gen=1,
         random_reverse=True,
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],

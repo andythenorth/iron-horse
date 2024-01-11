@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=14950,
         name="Maximillian",
         role="universal",
-        role_child_branch_num=2,
+        role_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 900,
         },

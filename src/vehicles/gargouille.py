@@ -10,7 +10,7 @@ def main(roster_id):
         role="universal",
         role_child_branch_num=2,
         power_by_power_source={
-            "DIESEL": 750,
+            "DIESEL": 800,
         },
         random_reverse=True,
         base_track_type_name="NG",

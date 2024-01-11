@@ -8,13 +8,13 @@ def main(roster_id):
         base_numeric_id=10360,
         name="Boar Cat",
         role="universal",
-        role_child_branch_num=1,
+        role_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 600,
         },
         random_reverse=True,
         base_track_type_name="NG",
-        gen=4,
+        gen=3,
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,

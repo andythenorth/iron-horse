@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=9630,
         name="Snapper",
         role="pax_railbus",
-        role_child_branch_num=1,
+        role_child_branch_num=-1,
         base_track_type_name="NG",
         power_by_power_source={
             "DIESEL": 350,
