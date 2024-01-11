@@ -33,4 +33,14 @@ def main(roster_id):
         """CFD Locotracteur BB-400, South African 'Funkey' diesels, FAUR L45H B-B"""
     )
 
+    consist.clone(base_numeric_id=910, clone_units=[1])
+
+    # this is a JFDI thing, the 2-unit version needs a reversed sprite, but the buy menu compositor does not support that as of Jan 2024, so hax
+    consist.clones[0].add_unit(
+        type=DieselEngineUnit, weight=23, vehicle_length=4, spriterow_num=1
+    )
+
+    # JFDI recalculate power to account for 2 units
+    consist.clones[0].set_clone_power_from_clone_source()
+
     return consist
