@@ -11,11 +11,12 @@ def main(roster_id):
         role_child_branch_num=-4,
         base_track_type_name="NG",
         power_by_power_source={
-            "STEAM": 800,
+            "STEAM": 900,
         },
         tractive_effort_coefficient=0.3,
         gen=2,
-        random_reverse=True,
+        intro_year_offset=-5, # introduce early eh
+        random_reverse=False,
         # note that livery names are metadata only and can repeat for different spriterows
         #additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=False,

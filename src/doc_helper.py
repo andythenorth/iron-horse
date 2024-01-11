@@ -126,9 +126,9 @@ class DocHelper(object):
         # some engines aren't really engines
         # - snowploughs
         # - cab cars
+        # - metro trains
         # - powered wagons for TGVs
         # - powered cabooses for propelling
-        # - we also exclude engines with Gronk! role because they're silly
         # - anything with a variant group parent is just a sub-variant of some sort
         result = []
         for consist in roster.engine_consists_excluding_clones:
@@ -136,7 +136,7 @@ class DocHelper(object):
             if (
                 consist.buy_menu_additional_text_hint_driving_cab
                 or consist.wagons_add_power
-                or consist.role in ["gronk!", "pax_metro", "mail_metro"]
+                or consist.role in ["pax_metro", "mail_metro"]
                 or consist._buyable_variant_group_id is not None
             ):
                 result.append(consist)

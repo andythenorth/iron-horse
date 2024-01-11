@@ -10,7 +10,7 @@ def main(roster_id):
         role="universal",
         role_child_branch_num=2,
         power_by_power_source={
-            "DIESEL": 800,
+            "DIESEL": 900,
         },
         random_reverse=True,
         base_track_type_name="NG",
@@ -23,7 +23,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=DieselEngineUnit,
-        weight=30,
+        weight=40,
         vehicle_length=6,
         effect_z_offset=9,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,

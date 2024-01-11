@@ -24,7 +24,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=SteamEngineUnit,
-        weight=30,
+        weight=80,
         vehicle_length=8,
         effect_offsets=[(-3, 0), (1, 0)],  # double the smoke eh?
         effect_z_offset=10,  # reduce smoke z position to suit NG engine height

@@ -6,11 +6,11 @@ def main(roster_id):
         roster_id=roster_id,
         id="silverfern",
         base_numeric_id=14220,
-        name="Silverfern",
+        name="Solano",
         role="universal",
         role_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 1000,
+            "DIESEL": 900,
         },
         random_reverse=True,
         base_track_type_name="NG",
@@ -23,7 +23,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=DieselEngineUnit,
-        weight=44,
+        weight=40,
         vehicle_length=6,
         effect_z_offset=10,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,
@@ -31,6 +31,7 @@ def main(roster_id):
 
     consist.description = """"""
     # https://en.wikipedia.org/wiki/New_Zealand_DE_class_locomotive, also NZ Di class
+    # nah it's CP_Class_9020 now, and rename from Silverfern
     consist.foamer_facts = (
         """"""
     )

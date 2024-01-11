@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="workish",
         base_numeric_id=9300,
-        name="Workish",
+        name="Zorro",
         role="mail_railcar",
         role_child_branch_num=1,
         base_track_type_name="NG",

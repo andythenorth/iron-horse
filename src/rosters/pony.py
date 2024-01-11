@@ -201,7 +201,7 @@ def main():
         intro_years={
             "RAIL": [1860, 1900, 1930, 1960, 1990, 2020],
             "METRO": [1900, 1950, 2000],
-            "NG": [1860, 1905, 1950, 2000],
+            "NG": [1860, 1905, 1950, 1995],
         },
         # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
         # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
@@ -767,9 +767,9 @@ def main():
             mighty,
             #mka,
             tyrconnell,
-            #nile,
-            #silverfern_2,
-            #rockhampton,
+            nile,
+            silverfern_2,
+            rockhampton,
             #dl,
             # ng railcars
             mumble,

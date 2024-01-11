@@ -11,7 +11,7 @@ def main(roster_id):
         role_child_branch_num=-2,
         base_track_type_name="NG",
         power_by_power_source={
-            "STEAM": 800,
+            "STEAM": 600,
         },
         tractive_effort_coefficient=0.3,
         gen=2,
