@@ -107,6 +107,7 @@ from vehicles import mighty_2
 from vehicles import mka
 from vehicles import moor_gallop
 from vehicles import mumble
+from vehicles import mumble_single
 from vehicles import nile
 from vehicles import nimbus
 from vehicles import olympic
@@ -765,15 +766,16 @@ def main():
             # maximillian, # remove??
             mighty,
             #mka,
-            #tyrconnell,
+            tyrconnell,
             #nile,
             #silverfern_2,
             #rockhampton,
             #dl,
             # ng railcars
             mumble,
-            snapper,
+            mumble_single,
+            #snapper, # remove??
             workish,
-            zorro,
+            #zorro, # remove??
         ],
     )

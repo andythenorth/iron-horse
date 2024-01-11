@@ -11,7 +11,7 @@ def main(roster_id):
         role_child_branch_num=1,
         base_track_type_name="NG",
         power_by_power_source={
-            "DIESEL": 360,
+            "DIESEL": 420,
         },
         gen=3,
         sprites_complete=True,

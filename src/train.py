@@ -1905,10 +1905,7 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         # * unit with driving cab rear end
         # ruleset will combine these to make multiple-units 1, 2 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        if self.base_track_type_name == "NG":
-            consist_ruleset = "railcars_2_unit_sets"
-        else:
-            consist_ruleset = "railcars_3_unit_sets"
+        consist_ruleset = "railcars_3_unit_sets"
         liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
@@ -1936,7 +1933,7 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
                 consist.base_track_type_name == self.base_track_type_name
             ):
                 result.extend(
-                    consist.lead_unit_variants_numeric_ids
+                    consist.unique_numeric_ids
                 )  # won't handle articulated consists correctly
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range(len(result), 16):
@@ -5696,7 +5693,7 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="railcars_2_unit_sets",
+            consist_ruleset="railcars_3_unit_sets",
             liveries=self.cab_consist.gestalt_graphics.liveries,
             pantograph_type=self.pantograph_type,
         )
@@ -5714,12 +5711,12 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
                 and (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.role in ["pax_railbus"])
             ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
+                result.extend(consist.unique_numeric_ids)
         for consist in self.roster.wagon_consists["railbus_passenger_trailer_car"]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
+                result.extend(consist.unique_numeric_ids)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range(len(result), 16):
             result.append(-1)
