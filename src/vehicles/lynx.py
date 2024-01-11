@@ -36,6 +36,10 @@ def main(roster_id):
     consist.clones[0].add_unit(
         type=DieselEngineUnit, weight=72, vehicle_length=6, spriterow_num=1
     )
+
+    # JFDI recalculate power to account for 2 units
+    consist.clones[0].set_clone_power_from_clone_source()
+
     # also JFDI, the default single unit should randomly reverse, the 2-unit version should not, so hax
     consist.clones[0].random_reverse=False
 

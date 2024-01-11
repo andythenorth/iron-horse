@@ -204,17 +204,24 @@ class Consist(object):
             cloned_consist.add_unit(
                 type(unit), repeat=kwargs["clone_units"][counter], **unit_kwargs
             )
-        # we'll need to adjust some stats, e.g. power, running_cost etc
-        cloned_consist.stats_adjustment_factor = len(cloned_consist.units) / len(
-            self.units
-        )
-        # recalculate power
-        for power_type, power_value in self.power_by_power_source.items():
-            cloned_consist.power_by_power_source[power_type] = int(
-                power_value * cloned_consist.stats_adjustment_factor
-            )
-
+        cloned_consist.set_clone_power_from_clone_source()
         self.clones.append(cloned_consist)
+        # no return needed
+
+    @property
+    def clone_stats_adjustment_factor(self):
+        # clones need to adjust some stats, e.g. power, running_cost etc
+        return len(self.units) / len(self.cloned_from_consist.units)
+
+    def set_clone_power_from_clone_source(self):
+        # recalculate power for a clone, adjusting by num units or other factor
+        for (
+            power_type,
+            power_value,
+        ) in self.cloned_from_consist.power_by_power_source.items():
+            self.power_by_power_source[power_type] = int(
+                power_value * self.clone_stats_adjustment_factor
+            )
         # no return needed
 
     def resolve_buyable_variants(self):
@@ -1313,7 +1320,9 @@ class EngineConsist(Consist):
     def buy_cost(self):
         # first check if we're simply a clone, because then we just take the costs from the clone source vehicle, and adjust them to account for differing number of units
         if self.cloned_from_consist is not None:
-            return int(self.cloned_from_consist.buy_cost * self.stats_adjustment_factor)
+            return int(
+                self.cloned_from_consist.buy_cost * self.clone_stats_adjustment_factor
+            )
 
         # max speed = 200mph by design - see assert_speed()
         # multiplier for speed, max value will be 25
@@ -1352,7 +1361,8 @@ class EngineConsist(Consist):
         # first check if we're simply a clone, because then we just take the costs from the clone source vehicle, and adjust them to account for differing number of units
         if self.cloned_from_consist is not None:
             return int(
-                self.cloned_from_consist.running_cost * self.stats_adjustment_factor
+                self.cloned_from_consist.running_cost
+                * self.clone_stats_adjustment_factor
             )
 
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
@@ -1883,7 +1893,9 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         self.fixed_run_cost_points = 48
         # optional keyword override, intended for Combine type railbuses, otherwise just use the default for this class
         if "pax_car_capacity_type" in kwargs:
-            self.pax_car_capacity_type = self.roster.pax_car_capacity_types[kwargs["pax_car_capacity_type"]]
+            self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
+                kwargs["pax_car_capacity_type"]
+            ]
         # non-standard cite
         self._cite = "Arabella Unit"
         # Graphics configuration
@@ -1923,7 +1935,9 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
-                result.extend(consist.lead_unit_variants_numeric_ids) # won't handle articulated consists correctly
+                result.extend(
+                    consist.lead_unit_variants_numeric_ids
+                )  # won't handle articulated consists correctly
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range(len(result), 16):
             result.append(-1)
