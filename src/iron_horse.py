@@ -33,6 +33,7 @@ from railtypes import rail_high_clearance
 from rosters import ibex
 from rosters import moose
 from rosters import pony
+from rosters import wallaby
 
 # import wagons
 from vehicles import acid_tank_cars
@@ -308,6 +309,7 @@ def main():
     roster_manager.add_roster(ibex)
     roster_manager.add_roster(moose)
     roster_manager.add_roster(pony)
+    roster_manager.add_roster(wallaby)
 
     # spritelayer cargos
     intermodal_containers.main()

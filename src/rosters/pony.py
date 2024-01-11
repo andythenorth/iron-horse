@@ -40,7 +40,6 @@ from vehicles import deasil
 from vehicles import decapod
 from vehicles import defiant
 from vehicles import diablo
-from vehicles import dl
 from vehicles import doineann
 from vehicles import doubletide
 from vehicles import dover
@@ -104,10 +103,8 @@ from vehicles import merlion
 from vehicles import merrylegs
 from vehicles import mighty
 from vehicles import mighty_2
-from vehicles import mka
 from vehicles import moor_gallop
 from vehicles import mumble
-from vehicles import nile
 from vehicles import nimbus
 from vehicles import olympic
 from vehicles import onslaught
@@ -125,7 +122,6 @@ from vehicles import reliance
 from vehicles import resilient
 from vehicles import resistance
 from vehicles import revolution
-from vehicles import rockhampton
 from vehicles import roarer
 from vehicles import saxon
 from vehicles import scooby
@@ -134,7 +130,6 @@ from vehicles import serpentine
 from vehicles import shoebox
 from vehicles import shredder
 from vehicles import silverfern
-from vehicles import silverfern_2
 from vehicles import sizzler
 from vehicles import skeiron_cab
 from vehicles import skeiron_middle_mail
@@ -166,7 +161,6 @@ from vehicles import toaster
 from vehicles import tornado
 from vehicles import trojan
 from vehicles import tyburn
-from vehicles import tyrconnell
 from vehicles import ultra_shoebox
 from vehicles import vigilant
 from vehicles import viking
@@ -193,7 +187,7 @@ def main():
         # note that the grf name is Iron Horse, as the pony roster was released for many years under that name, and changing it would needlessly confuse players
         # but to avoid overloading the word 'horse', which is widely used in src, we continue using 'pony' as the roster id
         grf_name="iron-horse",
-        grfid=r"CA\12\22",
+        grfid=r"CA\12\22", # when bumping grfid, increment last digit(s) to whatever is last used across all iron-[x] grfs
         str_grf_name="Iron Horse",
         # ELRL, ELNG is mapped to RAIL, NG etc
         # default intro dates per generation, can be over-ridden if needed by setting intro_year kw on consist
@@ -764,12 +758,6 @@ def main():
             silverfern,
             maximillian,
             mighty,
-            #mka,
-            #tyrconnell,
-            #nile,
-            #silverfern_2,
-            #rockhampton,
-            #dl,
             # ng railcars
             mumble,
             snapper,

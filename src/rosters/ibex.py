@@ -85,7 +85,7 @@ def main():
         id="ibex",
         numeric_id=3,
         grf_name="iron-ibex",
-        grfid=r"CA\12\21",
+        grfid=r"CA\12\21", # when bumping grfid, increment last digit(s) to whatever is last used across all iron-[x] grfs
         str_grf_name="Iron Ibex",
         # ELRL, ELNG is mapped to RAIL, NG etc
         # default intro dates per generation, can be over-ridden if needed by setting intro_year kw on consist

@@ -9,7 +9,7 @@ def main():
         id="moose",
         numeric_id=2,
         grf_name="iron-moose",
-        grfid=r"CA\12\20",
+        grfid=r"CA\12\20", # when bumping grfid, increment last digit(s) to whatever is last used across all iron-[x] grfs
         str_grf_name="Iron Moose",
         # ELRL, ELNG is mapped to RAIL, NG etc
         # default intro dates per generation, can be over-ridden if needed by setting intro_year kw on consist
