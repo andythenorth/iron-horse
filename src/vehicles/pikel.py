@@ -31,4 +31,14 @@ def main(roster_id):
     consist.description = """This diesel engine modernises our narrow gauge lines."""
     consist.foamer_facts = """FAUR L45H B-B, generic narrow-gauge diesel locomotives"""
 
+    consist.clone(base_numeric_id=920, clone_units=[1])
+
+    # this is a JFDI thing, the Lynx 2-unit version needs a reversed sprite, but the buy menu compositor does not support that as of Jan 2024, so hax
+    consist.clones[0].add_unit(
+        type=DieselEngineUnit, weight=22, vehicle_length=4, spriterow_num=1
+    )
+
+    # JFDI recalculate power to account for 2 units
+    consist.clones[0].set_clone_power_from_clone_source()
+
     return consist
