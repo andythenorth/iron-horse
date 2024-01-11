@@ -8,9 +8,9 @@ def main(roster_id):
         base_numeric_id=14220,
         name="Silverfern",
         role="universal",
-        role_child_branch_num=-3,
+        role_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 1200,
+            "DIESEL": 1000,
         },
         random_reverse=True,
         base_track_type_name="NG",
@@ -23,8 +23,8 @@ def main(roster_id):
 
     consist.add_unit(
         type=DieselEngineUnit,
-        weight=30,
-        vehicle_length=8,
+        weight=44,
+        vehicle_length=6,
         effect_z_offset=10,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,
     )

@@ -40,6 +40,7 @@ from vehicles import deasil
 from vehicles import decapod
 from vehicles import defiant
 from vehicles import diablo
+from vehicles import dl
 from vehicles import doineann
 from vehicles import doubletide
 from vehicles import dover
@@ -103,6 +104,7 @@ from vehicles import merlion
 from vehicles import merrylegs
 from vehicles import mighty
 from vehicles import mighty_2
+from vehicles import mka
 from vehicles import moor_gallop
 from vehicles import mumble
 from vehicles import nile
@@ -132,6 +134,7 @@ from vehicles import serpentine
 from vehicles import shoebox
 from vehicles import shredder
 from vehicles import silverfern
+from vehicles import silverfern_2
 from vehicles import sizzler
 from vehicles import skeiron_cab
 from vehicles import skeiron_middle_mail
@@ -757,13 +760,16 @@ def main():
             thor,
             taw,
             gargouille,
-            mighty_2,
+            #mighty_2,
+            silverfern,
             maximillian,
             mighty,
-            tyrconnell,
-            nile,
-            silverfern,
-            rockhampton,
+            #mka,
+            #tyrconnell,
+            #nile,
+            #silverfern_2,
+            #rockhampton,
+            #dl,
             # ng railcars
             mumble,
             snapper,

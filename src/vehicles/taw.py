@@ -11,7 +11,7 @@ def main(roster_id):
         role_child_branch_num=-2,
         base_track_type_name="NG",
         power_by_power_source={
-            "STEAM": 600,
+            "STEAM": 800,
         },
         tractive_effort_coefficient=0.3,
         gen=2,
@@ -23,7 +23,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=SteamEngineUnit,
-        weight=30,
+        weight=40,
         vehicle_length=6,
         effect_offsets=[(-3, 0), (1, 0)],  # double the smoke eh?
         effect_z_offset=10,  # reduce smoke z position to suit NG engine height

@@ -1,5 +1,6 @@
 from train import EngineConsist, DieselEngineUnit
 
+# !!! deprecated
 
 def main(roster_id):
     consist = EngineConsist(

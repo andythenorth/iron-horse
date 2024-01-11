@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=14140,
         name="2-6-2+2-6-2 Nile",
         role="universal",
-        role_child_branch_num=-4,
+        role_child_branch_num=-5,
         base_track_type_name="NG",
         power_by_power_source={
             "STEAM": 1200,

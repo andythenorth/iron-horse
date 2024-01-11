@@ -1,35 +1,37 @@
-from train import EngineConsist, SteamEngineUnit
+from train import EngineConsist, DieselEngineUnit
 
 
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="cheese_bug",
-        base_numeric_id=9530,
-        name="2-6-2 Cheese Bug",
+        id="dl",
+        base_numeric_id=10550,
+        name="DL",
         role="universal",
-        role_child_branch_num=1,
+        role_child_branch_num=-5,
         base_track_type_name="NG",
         power_by_power_source={
-            "STEAM": 300,
+            "DIESEL": 1600,
         },
-        tractive_effort_coefficient=0.2,
-        gen=1,
+        gen=4,
+        intro_year_offset=8,
         random_reverse=True,
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
-        type=SteamEngineUnit,
-        weight=16,
-        vehicle_length=4,
+        type=DieselEngineUnit,
+        weight=55,
+        vehicle_length=8,
         effect_z_offset=10,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,
     )
 
-    consist.description = """I present you this trusty little engine."""
-    consist.foamer_facts = """generic narrow-gauge steam locomotives"""
+    consist.description = (
+        """"""
+    )
+    consist.foamer_facts = """"""
 
     return consist

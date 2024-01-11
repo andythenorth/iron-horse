@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=10290,
         name="Rockhampton",
         role="universal",
-        role_child_branch_num=-3,
+        role_child_branch_num=-4,
         base_track_type_name="NG",
         power_by_power_source={
             "DIESEL": 1600,
