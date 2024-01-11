@@ -6,7 +6,8 @@ def main():
     consist = IntermodalCarConsist(
         roster_id="pony",
         base_numeric_id=13000,
-        gen=4,
+        gen=3,
+        intro_year_offset=15,  # let's be a little bit later for this one
         subtype="U",
         base_track_type_name="NG",
         sprites_complete=True,

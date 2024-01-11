@@ -26,17 +26,6 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = BolsterCarConsist(
-        roster_id="pony",
-        base_numeric_id=15010,
-        gen=4,
-        subtype="U",
-        base_track_type_name="NG",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
-
     # --------------- pony ----------------------------------------------------------------------
 
     consist = BolsterCarConsist(

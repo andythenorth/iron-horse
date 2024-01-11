@@ -26,17 +26,6 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = FlatCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=16530,
-        gen=4,
-        subtype="U",
-        base_track_type_name="NG",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
-
     # --------------- pony ----------------------------------------------------------------------
 
     consist = FlatCarRandomisedConsist(
