@@ -84,6 +84,7 @@ from vehicles import helm_wind_middle_mail
 from vehicles import helm_wind_middle_passenger
 from vehicles import hercules
 from vehicles import high_flyer
+from vehicles import hinterland
 from vehicles import hurly_burly
 from vehicles import intrepid
 from vehicles import jupiter
@@ -134,8 +135,6 @@ from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
 from vehicles import shredder
-from vehicles import silverfern
-from vehicles import silverfern_2
 from vehicles import sizzler
 from vehicles import skeiron_cab
 from vehicles import skeiron_middle_mail
@@ -146,6 +145,7 @@ from vehicles import slammer
 from vehicles import slug
 from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
+from vehicles import solano
 from vehicles import spinner
 from vehicles import stag
 from vehicles import stalwart
@@ -762,13 +762,13 @@ def main():
             taw,
             gargouille,
             #mighty_2,
-            silverfern,
+            solano,
             # maximillian, # remove??
             mighty,
             #mka,
             tyrconnell,
             nile,
-            silverfern_2,
+            hinterland,
             rockhampton,
             #dl,
             # ng railcars

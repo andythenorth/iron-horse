@@ -29,6 +29,9 @@ def main(roster_id):
         spriterow_num=0,
     )
 
+    # Irish Rail 141 / 181
+    # see also https://es.wikipedia.org/wiki/Serie_1600_de_Renfe
+    # see also https://en.wikipedia.org/wiki/FGC_254_Series
     consist.description = """"""
     consist.foamer_facts = (
         """"""

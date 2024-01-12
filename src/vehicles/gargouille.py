@@ -17,7 +17,7 @@ def main(roster_id):
         gen=3,
         intro_year_offset=11,
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["INDUSTRIAL_YELLOW"],
+        additional_liveries=["INDUSTRIAL_YELLOW", "BANGER_BLUE", "INDUSTRIAL_YELLOW"], # different body heights, for lolz :P
         sprites_complete=True,
     )
 

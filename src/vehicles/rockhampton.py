@@ -28,6 +28,9 @@ def main(roster_id):
         spriterow_num=0,
     )
 
+
+    # various NZ / tasrail / QLD diesels
+    # but could have been entirely different - https://en.wikipedia.org/wiki/Euskotren_TD2000_series
     consist.description = (
         """"""
     )
