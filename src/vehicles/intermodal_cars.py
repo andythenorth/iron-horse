@@ -8,12 +8,24 @@ def main():
         base_numeric_id=13000,
         gen=3,
         intro_year_offset=15,  # let's be a little bit later for this one
-        subtype="U",
+        subtype="A",
         base_track_type_name="NG",
         sprites_complete=True,
     )
 
     consist.add_unit(type=IntermodalCar, chassis="4_axle_ng_16px")
+
+    consist = IntermodalCarConsist(
+        roster_id="pony",
+        base_numeric_id=9630,
+        gen=3,
+        intro_year_offset=15,  # let's be a little bit later for this one
+        subtype="B",
+        base_track_type_name="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=IntermodalCar, chassis="4_axle_ng_24px")
 
     # --------------- pony ----------------------------------------------------------------------
     consist = IntermodalCarConsist(
