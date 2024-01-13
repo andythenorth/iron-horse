@@ -174,7 +174,6 @@ from vehicles import viking
 from vehicles import vulcan
 from vehicles import westbourne
 from vehicles import withershins
-from vehicles import workish
 from vehicles import wyvern
 from vehicles import xerxes
 from vehicles import yak
@@ -761,21 +760,15 @@ def main():
             thor,
             taw,
             gargouille,
-            #mighty_2,
             solano,
-            # maximillian, # remove??
             mighty,
-            #mka,
             tyrconnell,
             nile,
             hinterland,
             rockhampton,
-            #dl,
             # ng railcars
             mumble,
             mumble_single,
-            #snapper, # remove??
-            workish,
-            #zorro, # remove??
+            zorro,
         ],
     )

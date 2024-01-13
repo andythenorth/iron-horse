@@ -5,15 +5,15 @@ def main(roster_id):
     consist = MailEngineRailcarConsist(
         roster_id=roster_id,
         id="zorro",
-        base_numeric_id=9350,
+        base_numeric_id=9300,
         name="Zorro",
         role="mail_railcar",
-        role_child_branch_num=-1,
+        role_child_branch_num=1,
         base_track_type_name="NG",
         power_by_power_source={
-            "DIESEL": 500,
+            "DIESEL": 420,
         },
-        gen=4,
+        gen=3,
         sprites_complete=True,
     )
 
@@ -25,7 +25,7 @@ def main(roster_id):
         tail_light="railcar_24px_1",
     )
 
-    consist.description = """A pleasing upgrade to our narrow-gauge parcels railcars. Regrettably, goats are still not permitted."""
-    consist.foamer_facts = """CFC X2000/X5000, CFD Autorails"""
+    consist.description = """A reliable way to move mail, supplies and express freight. Goats are not however, at this time, permitted."""
+    consist.foamer_facts = """CFC Autorail Billard, CFC X2000/X5000"""
 
     return consist
