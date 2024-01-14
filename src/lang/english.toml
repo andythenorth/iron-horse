@@ -489,6 +489,9 @@ base = "Flat Wagon"
 [STR_NAME_SUFFIX_GOODS_BOX_CAR]
 base = "Goods Van"
 
+[STR_NAME_SUFFIX_HEAVY_DUTY_FLAT_CAR]
+base= "Heavy Duty Flat Wagon"
+
 [STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR]
 base= "High Speed Mail Van"
 

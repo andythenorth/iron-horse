@@ -4219,6 +4219,44 @@ class FlatCarConsist(FlatCarConsistBase):
         )
 
 
+class FlatCarHeavyDutyConsist(FlatCarConsistBase):
+    """
+    Flatbed - no stakes, visible cargo.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "heavy_duty_flat_car"
+        super().__init__(**kwargs)
+        self._loading_speed_multiplier = 1.5
+        self.buy_cost_adjustment_factor = 1.2
+        self.weight_factor = 2  # double the default weight
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            piece="flat",
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+            ],
+        )
+
+
 class FlatCarPlateConsist(FlatCarConsistBase):
     """
     Low-side wagon - variant on flat wagon, refits same
@@ -7989,6 +8027,17 @@ class FreightCar(TrainCar):
 class CoilBuggyCar(FreightCar):
     """
     Coil buggy car. This subclass only exists to set the capacity.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # just double whatever is set by the init, what could go wrong? :)
+        self.capacity = 2 * self.capacity
+
+
+class HeavyDutyCar(FreightCar):
+    """
+    Heavy duty car. This subclass only exists to set the capacity.
     """
 
     def __init__(self, **kwargs):

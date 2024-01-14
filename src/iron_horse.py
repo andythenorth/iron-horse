@@ -68,6 +68,7 @@ from vehicles import farm_products_type_one_hopper_cars
 from vehicles import farm_products_type_two_hopper_cars
 from vehicles import flat_cars
 from vehicles import goods_box_cars
+from vehicles import heavy_duty_flat_cars
 from vehicles import high_speed_mail_cars
 from vehicles import high_speed_passenger_cars
 from vehicles import hood_open_cars
@@ -355,6 +356,7 @@ def main():
     hood_open_cars.main()
     hopper_cars.main()
     hopper_cars_high_side.main()
+    heavy_duty_flat_cars.main()
     hst_mail_cars.main()
     hst_passenger_cars.main()
     ingot_cars.main()
