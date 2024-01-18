@@ -3689,6 +3689,33 @@ class DumpCarAggregateConsist(DumpCarConsistBase):
         ]
 
 
+class DumpCarHeavyDutyConsist(DumpCarConsistBase):
+    """
+    Heavy duty dump car, higher capacity, reduced speed (set in vehicle class, not consist)
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "heavy_duty_dump_car"
+        super().__init__(**kwargs)
+        self._loading_speed_multiplier = 1.5
+        self.buy_cost_adjustment_factor = 1.2
+        self.weight_factor = 2  # double the default weight
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics.liveries = [
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+            global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            global_constants.freight_wagon_liveries[
+                "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+            ],
+            global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+            global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+        ]
+
+
 class DumpCarHighSideConsist(DumpCarConsistBase):
     """
     High Side Dump Car.
@@ -4221,7 +4248,7 @@ class FlatCarConsist(FlatCarConsistBase):
 
 class FlatCarHeavyDutyConsist(FlatCarConsistBase):
     """
-    Flatbed - no stakes, visible cargo.
+    Heavy duty flat car, higher capacity, reduced speed (set in vehicle class, not consist)
     """
 
     def __init__(self, **kwargs):

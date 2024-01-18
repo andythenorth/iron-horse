@@ -90,6 +90,7 @@ buy_menu_sort_order_wagons = [
     "coil_buggy_car",
     "ingot_car",
     "slag_ladle_car",
+    "heavy_duty_dump_car",
     "heavy_duty_flat_car",
     "randomised_piece_goods_car",
     "randomised_flat_car",
