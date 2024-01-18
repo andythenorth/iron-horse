@@ -3,6 +3,7 @@ from train import FlatCarHeavyDutyConsist, HeavyDutyCar
 
 def main():
     # --------------- pony NG ----------------------------------------------------------------------
+
     consist = FlatCarHeavyDutyConsist(
         roster_id="pony",
         base_numeric_id=13580,
@@ -10,7 +11,7 @@ def main():
         subtype="U",
         base_track_type_name="NG",
         speed=35,  # note rare non-standard speed, don't spill heavy things eh?
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=HeavyDutyCar, chassis="4_axle_ng_16px")
@@ -23,7 +24,7 @@ def main():
         gen=1,
         subtype="A",
         speed=35,  # note rare non-standard speed, don't spill hot ingots eh?
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_16px")
@@ -34,7 +35,7 @@ def main():
         gen=2,
         subtype="B",
         speed=35,  # note rare non-standard speed, don't spill hot ingots eh?
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_24px")
@@ -45,7 +46,7 @@ def main():
         gen=4,
         subtype="A",
         speed=35,  # note rare non-standard speed, don't spill hot ingots eh?
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_16px")
@@ -56,7 +57,7 @@ def main():
         gen=4,
         subtype="B",
         speed=35,  # note rare non-standard speed, don't spill hot ingots eh?
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_24px")
