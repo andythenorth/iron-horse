@@ -793,13 +793,13 @@ base = "[unused]"
 base = "[unused]"
 
 [STR_RAILTYPE_LGV_BUILD_WINDOW_CAPTION]
-base = "[unused]"
+base = "New Dedicated High Speed Vehicles"
 
 [STR_RAILTYPE_LGV_AUTOREPLACE_TEXT]
-base = "[unused]"
+base = "Dedicated High Speed Vehicles"
 
 [STR_RAILTYPE_LGV_NEW_ENGINE_TEXT]
-base = "[unused]"
+base = "high speed rail vehicle"
 
 # lgv electrified track strings
 [STR_RAILTYPE_LGV_ELECTRIFIED_NAME]
@@ -818,7 +818,7 @@ base = "New Dedicated High Speed Vehicles"
 base = "Dedicated High Speed Vehicles"
 
 [STR_RAILTYPE_LGV_ELECTRIFIED_NEW_ENGINE_TEXT]
-base = "high speed"
+base = "high speed rail vehicle"
 
 
 # metro track strings
@@ -838,7 +838,7 @@ base = "New Metro Vehicles"
 base = "Metro Rail Vehicles"
 
 [STR_RAILTYPE_METRO_NEW_ENGINE_TEXT]
-base = "metro"
+base = "metro rail vehicle"
 
 
 # narrow gauge track strings
@@ -858,7 +858,7 @@ base = "New Narrow Gauge Vehicles"
 base = "Narrow Gauge Rail Vehicles"
 
 [STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT]
-base = "narrow gauge"
+base = "narrow gauge rail vehicle"
 
 
 # narrow gauge electrified track strings
@@ -878,7 +878,7 @@ base = "New Electrified Narrow Gauge Vehicles"
 base = "Electrified Narrow Gauge Vehicles"
 
 [STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT]
-base = "electrified narrow gauge"
+base = "electrified narrow gauge rail vehicle"
 
 
 # high clearance track strings
@@ -898,7 +898,7 @@ base = "New High Clearance Vehicles"
 base = "High Clearance Vehicles"
 
 [STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NEW_ENGINE_TEXT]
-base = "high clearance"
+base = "high clearance rail vehicle"
 
 
 # electrified AC track strings
@@ -918,7 +918,7 @@ base = "New AC Electrified Vehicles"
 base = "AC Electrified Vehicles"
 
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT]
-base = "AC electrified"
+base = "AC electric rail vehicle"
 
 # rail electrified ac dc
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NAME]
@@ -937,7 +937,7 @@ base = "New AC / DC Electrified Vehicles"
 base = "AC / DC Electrified Vehicles"
 
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NEW_ENGINE_TEXT]
-base = "AC / DC electrified"
+base = "AC / DC electric rail vehicle"
 
 # rail electrified dc
 [STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NAME]
@@ -956,5 +956,5 @@ base = "New DC Electrified Vehicles"
 base = "DC Electrified Vehicles"
 
 [STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NEW_ENGINE_TEXT]
-base = "DC electrified"
+base = "DC electric rail vehicle"
 
