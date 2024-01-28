@@ -16,6 +16,7 @@ def main(roster_id):
         base_track_type_name="NG",
         gen=3,
         intro_year_offset=3,
+        extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW", "BANGER_BLUE", "INDUSTRIAL_YELLOW"], # different cab heights, for lolz :P
         sprites_complete=False,

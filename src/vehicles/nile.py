@@ -16,6 +16,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.3,
         gen=3,
         intro_year_offset=-15, # introduce early, even though wagons are not available at 55 mph, it's a long-lifed joker really
+        extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         random_reverse=True,
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],

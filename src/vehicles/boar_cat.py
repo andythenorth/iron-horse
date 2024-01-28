@@ -15,6 +15,7 @@ def main(roster_id):
         random_reverse=True,
         base_track_type_name="NG",
         gen=3,
+        extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=False,

@@ -14,6 +14,7 @@ def main(roster_id):
             "DIESEL": 420,
         },
         gen=3,
+        extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         sprites_complete=True,
     )
 
