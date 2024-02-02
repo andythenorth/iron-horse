@@ -19,7 +19,7 @@ def main(roster_id):
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["SWOOSH", "INDUSTRIAL_YELLOW"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -30,12 +30,12 @@ def main(roster_id):
         spriterow_num=0,
     )
 
-    consist.description = """"""
+    consist.description = """Let a bit of sun in, I say."""
     # https://en.wikipedia.org/wiki/New_Zealand_DE_class_locomotive, also NZ Di class
     # nah it's CP_Class_9020 now, and rename from Silverfern
     # see also https://trainspo.com/photo/98083/
     consist.foamer_facts = (
-        """"""
+        """Alstom AD 12 B export locomotives"""
     )
 
     return consist
