@@ -35,7 +35,7 @@ def main(roster_id):
     # nah it's CP_Class_9020 now, and rename from Silverfern
     # see also https://trainspo.com/photo/98083/
     consist.foamer_facts = (
-        """Alstom AD 12 B export locomotives"""
+        """ Portugese CP Class 9020 (Alstom AD 12 B)"""
     )
 
     return consist
