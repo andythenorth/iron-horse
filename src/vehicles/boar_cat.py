@@ -18,7 +18,7 @@ def main(roster_id):
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -36,7 +36,7 @@ def main(roster_id):
 
     consist.clone(base_numeric_id=910, clone_units=[1])
 
-    # this is a JFDI thing, the 2-unit version needs a reversed sprite, but the buy menu compositor does not support that as of Jan 2024, so hax
+    # this is a JFDI thing, the 2-unit version varies sprites per unit position, which is generally supported, but the *buy menu* compositor does not support that as of Jan 2024, so hax
     consist.clones[0].add_unit(
         type=DieselEngineUnit, weight=23, vehicle_length=4, spriterow_num=1
     )
