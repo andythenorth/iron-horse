@@ -8,14 +8,14 @@ def main(roster_id):
         base_numeric_id=14550,
         name="Hinterland",
         role="universal",
-        role_child_branch_num=-4,
+        role_child_branch_num=-5,
         power_by_power_source={
             "DIESEL": 1200,
         },
         random_reverse=True,
         base_track_type_name="NG",
         gen=3,
-        intro_year_offset=1,
+        intro_year_offset=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
@@ -34,7 +34,7 @@ def main(roster_id):
     # https://en.wikipedia.org/wiki/Queensland_Railways_1270_class
     # https://en.wikipedia.org/wiki/Queensland_Railways_1150_class
     consist.foamer_facts = (
-        """"""
+        """Alco RSD8 / DL351"""
     )
 
     return consist

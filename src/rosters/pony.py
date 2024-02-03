@@ -1,5 +1,6 @@
 from roster import Roster
 
+from vehicles import alfama
 from vehicles import alize_cab
 from vehicles import alize_middle_mail
 from vehicles import alize_middle_passenger
@@ -103,8 +104,6 @@ from vehicles import maximillian
 from vehicles import magnum_70
 from vehicles import merlion
 from vehicles import merrylegs
-from vehicles import mighty
-from vehicles import mighty_2
 from vehicles import mka
 from vehicles import moor_gallop
 from vehicles import mumble
@@ -155,7 +154,6 @@ from vehicles import streamer
 from vehicles import strongbow
 from vehicles import sunshine_coast
 from vehicles import swift
-from vehicles import taw
 from vehicles import tenacious
 from vehicles import tencendur
 from vehicles import thor
@@ -200,7 +198,7 @@ def main():
         intro_years={
             "RAIL": [1860, 1900, 1930, 1960, 1990, 2020],
             "METRO": [1900, 1950, 2000],
-            "NG": [1860, 1905, 1950, 1995],
+            "NG": [1860, 1910, 1960, 2010],
         },
         # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
         # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
@@ -758,10 +756,9 @@ def main():
             pikel,
             boar_cat,
             thor,
-            taw,
+            alfama,
             gargouille,
             solano,
-            mighty,
             tyrconnell,
             nile,
             hinterland,

@@ -8,12 +8,13 @@ def main(roster_id):
         base_numeric_id=10290,
         name="Rockhampton",
         role="universal",
-        role_child_branch_num=-5,
+        role_child_branch_num=-4,
         base_track_type_name="NG",
         power_by_power_source={
-            "DIESEL": 1600,
+            "DIESEL": 1200,
         },
-        gen=4,
+        gen=3,
+        intro_year_offset=4, # introduce a bit later
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         random_reverse=True,
         # note that livery names are metadata only and can repeat for different spriterows
@@ -35,6 +36,6 @@ def main(roster_id):
     consist.description = (
         """"""
     )
-    consist.foamer_facts = """"""
+    consist.foamer_facts = """New Zealand Railways DJ class (Mitsubishi bo-bo-bo)"""
 
     return consist

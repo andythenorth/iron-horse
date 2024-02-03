@@ -6,16 +6,16 @@ def main(roster_id):
         roster_id=roster_id,
         id="nile",
         base_numeric_id=14140,
-        name="2-6-2+2-6-2 Nile",
+        name="2-4-2+2-4-2 Nile",
         role="universal",
         role_child_branch_num=-5,
         base_track_type_name="NG",
         power_by_power_source={
-            "STEAM": 1200,
+            "STEAM": 900,
         },
         tractive_effort_coefficient=0.3,
-        gen=3,
-        intro_year_offset=-15, # introduce early, even though wagons are not available at 55 mph, it's a long-lifed joker really
+        gen=2,
+        intro_year_offset=10, # introduce a bit later
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         random_reverse=True,
         # note that livery names are metadata only and can repeat for different spriterows
