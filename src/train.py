@@ -533,6 +533,7 @@ class Consist(object):
                 (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.gen == self.gen)
                 and (consist != self)
+                and (consist.cloned_from_consist is None)
             ):
                 if (
                     (consist.role == self.role)
