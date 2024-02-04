@@ -620,7 +620,7 @@ def main():
             defiant,
             relentless,
             dynamo,
-            cyclone,
+            #cyclone, # 3.4.0
             shoebox,
             ultra_shoebox,
             hurly_burly,
@@ -647,7 +647,7 @@ def main():
             # freight
             hercules,
             eastern,
-            celt,
+            #celt, # 3.4.0
             haar,
             trojan,
             growler,
@@ -726,15 +726,15 @@ def main():
             helm_wind_cab,
             helm_wind_middle_passenger,
             helm_wind_middle_mail,
-            alize_cab,
-            alize_middle_passenger,
-            alize_middle_mail,
+            #alize_cab, # 3.4.0
+            #alize_middle_passenger, # 3.4.0
+            #alize_middle_mail, # 3.4.0
             brenner_cab,
             brenner_middle_passenger,
             brenner_middle_mail,
-            skeiron_cab,
-            skeiron_middle_passenger,
-            skeiron_middle_mail,
+            #skeiron_cab, # 3.4.0
+            #skeiron_middle_passenger, # 3.4.0
+            #skeiron_middle_mail, # 3.4.0
             # driving cab cars
             driving_cab_passenger_pony_gen_4,
             driving_cab_passenger_pony_gen_5,
@@ -766,8 +766,8 @@ def main():
             # ng railcars
             mumble,
             mumble_single,
-            #snapper, # restore in next Horse version
-            #snapper_single,
+            #snapper, # 3.4.0
+            #snapper_single, # 3.4.0
             zorro,
         ],
     )
