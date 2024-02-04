@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="nile",
         base_numeric_id=14140,
-        name="2-4-2+2-4-2 Nile",
+        name="2-6-0+0-6-2 Nile",
         role="universal",
         role_child_branch_num=-5,
         base_track_type_name="NG",
@@ -35,8 +35,6 @@ def main(roster_id):
     consist.description = (
         """"""
     )
-    # https://en.wikipedia.org/wiki/Victorian_Railways_G_class#/media/File:Puffing_Billy_Garratt_G42_07.jpg
-    # https://en.wikipedia.org/wiki/South_African_Class_NG_G16_2-6-2%2B2-6-2
-    consist.foamer_facts = """"""
+    consist.foamer_facts = """Victorian Railways G class Garratt locomotives"""
 
     return consist

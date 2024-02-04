@@ -33,7 +33,7 @@ def main(roster_id):
 
     consist.description = (
         """"""
-    ) # https://www.flickr.com/photos/73789322@N04/6716060735
-    consist.foamer_facts = """"""
+    )
+    consist.foamer_facts = """Mallet locomotives used by Portugese narrow gauge railways"""
 
     return consist

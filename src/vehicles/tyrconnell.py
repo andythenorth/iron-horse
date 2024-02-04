@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="tyrconnell",
         base_numeric_id=930,
-        name="2-8-0 Tyrconnell",
+        name="4-8-0 Tyrconnell",
         role="universal",
         role_child_branch_num=-4,
         base_track_type_name="NG",
@@ -31,6 +31,6 @@ def main(roster_id):
     consist.description = (
         """"""
     )
-    consist.foamer_facts = """"""
+    consist.foamer_facts = """Londonderry and Lough Swilly Railway Company 4-8-0 locomotives"""
 
     return consist
