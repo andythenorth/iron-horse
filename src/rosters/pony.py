@@ -251,9 +251,9 @@ def main():
                 ],
                 # NG standard/suburban/express same in Pony, balanced against trams, RVs
                 # suburban has to be provided as the mail railcar expects it, just copying it in is easiest solution
-                "suburban": [45, 45, 60, 60],
-                # suburban has to be provided as the coaches/mail vans etc expect it, just copying it in is easiest solution
-                "express": [45, 45, 60, 60],
+                "suburban": [45, 45, 60, 75],
+                # NG express breaks from standard in gen 4
+                "express": [45, 45, 60, 75],
             },
         },
         # capacity factor per generation, will be multiplied by vehicle length
@@ -766,6 +766,8 @@ def main():
             # ng railcars
             mumble,
             mumble_single,
+            #snapper, # restore in next Horse version
+            #snapper_single,
             zorro,
         ],
     )

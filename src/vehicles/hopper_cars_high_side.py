@@ -26,6 +26,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
+    """ # restore in next version
     consist = HopperCarHighSideConsist(
         roster_id="pony",
         base_numeric_id=19790,
@@ -36,7 +37,7 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
-
+    """
     # --------------- pony ----------------------------------------------------------------------
 
     # also just type A for gen 1, 2 and 3

@@ -49,6 +49,7 @@ def main():
 
     consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
 
+    """ # restore in next version
     consist = PassengerCarConsist(
         roster_id="pony",
         base_numeric_id=9900,
@@ -70,7 +71,7 @@ def main():
     )
 
     consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
-
+    """
     # --------------- pony ----------------------------------------------------------------------
     consist = PassengerCarConsist(
         roster_id="pony",

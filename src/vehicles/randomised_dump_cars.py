@@ -28,6 +28,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
+    """ # restore in next version
     consist = DumpCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=14540,
@@ -38,7 +39,7 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
-
+    """
     # --------------- pony ----------------------------------------------------------------------
 
     consist = DumpCarRandomisedConsist(

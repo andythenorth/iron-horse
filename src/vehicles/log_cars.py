@@ -27,6 +27,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_spine_16px")
 
+    """ # restore in next version
     consist = LogCarConsist(
         roster_id="pony",
         base_numeric_id=16240,
@@ -37,7 +38,7 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_spine_16px")
-
+    """
     # --------------- pony ----------------------------------------------------------------------
 
     consist = LogCarConsist(
