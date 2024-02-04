@@ -10,7 +10,7 @@ def main(roster_id):
         role_child_branch_num=-2,  # driving cab cars are probably jokers?
         gen=5,
         lgv_capable=True,  # for lolz
-        sprites_complete=False,  # needs gen 6 pax liveries
+        sprites_complete=True,  # !! needs gen 6 pax liveries - add later
     )
 
     consist.add_unit(type=CabbageDVTUnit, weight=32, chassis="railcar_32px")
