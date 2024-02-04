@@ -20,15 +20,14 @@ def main(roster_id):
         random_reverse=True,
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
         type=SteamEngineUnit,
         weight=40,
         vehicle_length=6,
-        effect_offsets=[(-3, 0), (1, 0)],  # double the smoke eh?
-        effect_z_offset=10,  # reduce smoke z position to suit NG engine height
+        effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,
     )
 
