@@ -19,7 +19,7 @@ def main(roster_id):
         random_reverse=False,
         # note that livery names are metadata only and can repeat for different spriterows
         #additional_liveries=["INDUSTRIAL_YELLOW"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=65, vehicle_length=5, spriterow_num=0)
