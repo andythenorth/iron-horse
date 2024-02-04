@@ -22,7 +22,7 @@ def main():
         intro_year_offset=15,  # let's be a little bit later for this one
         subtype="B",
         base_track_type_name="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=IntermodalCar, chassis="4_axle_ng_24px")
