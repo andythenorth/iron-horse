@@ -718,8 +718,8 @@ def main():
             high_flyer,
             sunshine_coast,
             olympic,
-            chronos,
-            nimbus,
+            # chronos, # 3.4.0 - also trailers
+            # nimbus, # 3.4.0 - also trailers
             # brit high speed pax
             firebird,
             blaze,
