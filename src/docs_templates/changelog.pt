@@ -1,6 +1,105 @@
 Changelog
 =========
 
+DRAFT
+
+additional liveries for Shoebox
+
+DB Schenker livery for Resilient
+
+experiment with moving Lion to 3300 hp, 87 mph, and making it longer-lived by moving replacement to Toaster instead of Stentor (33 years vs. 18 years); also note that it's also inspired by HS4000 Kestrel
+
+split Shoebox and Dynamo lines, making Shoeboxes heavy_general; remove Super Shoebox as redundant, introduce Ultra Shoebox in 1995 or so, bump stats around for balance;
+
+remove Blackthorn, there's absolutely minimal value to it, it was just roleplay, for same stats
+
+improved Grid liveries
+
+ set 99 mph suburban speed class for Zipper railbus
+
+ increase power of Little Bear, Captain Steel, Goliath and General Endeavour (addresses power creep of these engines due to Yillen and Doubletide which were more HP for less total length)
+use same hp for light freight diesels as light general purpose diesels - no rationale for them being different
+
+add standard gauge ingot cars
+
+experimental adjustment of Constance power as it's silly having 3600 hp on both modes - try 3450 hp on diesel to match similar power band diesels, and then 4200 hp on electric, as there's nothing electric between 3600 hp and 5000 hp
+
+Toaster was slightly nerfed by lower HP but higher weight compared to Stentor and Cheddar Valley; increase the HP to 4200
+
+Pinhorse run cost was significantly too high
+
+introduce autocoach at gen epoch, no point spacing it out
+
+shorten generation span for Argus / Booster / Tornado, they were being introduced too far behind the era epoch, which blocks using them for mainline service due to incompatible speeds when other engines are upgraded
+
+intermodal car containers were out of place when flipped
+
+adjust gen 5 and gen 6 express speeds to be 120 mph for both generations; adjust HST speeds appropriately
+
+remove some gen 6 vehicles as redundant (same speed and stats as gen 5)
+
+additional liveries for Olympic railcar
+
+reshuffle driving cab cars and add high speed coaches and mail vans
+
+155 mph for very high speed on LGV (Helm Wind)
+
+adjust Trojan and Viking hp to match class 37s, simply no point having them different
+ Centaur, Shredder, Slug, Viking all do need to be around 2200hp, for easy replacement of gen 4 2200 hp engines, really
+
+rebalance some freight engines to general purpose (Braf, Diablo, Merlion, Centaur); adjust other branches accordingly;
+
+redraw Centaur sprite to SNCF broken-nose style (the sprite derived from Class 60 was never inspiring for this engine)
+note that Centaur also similar to CP Class 1930
+
+reduce running costs for Hawkinge, Pegasus, Streamer, so they can be used for mixed traffic
+
+freight black additional livery for Pegasus
+
+freight black additional livery for Saxon
+
+white stripe livery for Avenger
+
+improve Brenner cab appearance
+
+improved position-variant selection for 6-unit railcars, by ensuring that no 2-unit orphans are shown at the rear of consists that are longer than 12 units
+switch 4 unit mailcars to the improved ruleset method, eliminating 2-unit orphans that appeared at the end of certain longer train lengths
+
+restaurant car sprite variant for express railcars
+
+additional livery for Chinook
+
+2-unit Kelpie and 1-unit Chinook
+
+copy former Triton livery into Flanders Storm
+
+set default pacers to 10/8 twin-unit with combined mail and pax capacity (will function as replacements for autocoaches, and as 16/8 vehicle when combined with 6/8 single unit pacer)
+
+add narrow gauge acid tank cars
+
+lower Magnum 70 bonnet to look more modern, and less out of proportion to 4/8 NG engines (relative to power)
+
+remove 55 mph / 65 mph NG speed split, make gen 3 and gen 4 60 mph; adjust NG locomotives accordingly
+
+add Heavy Duty Flat Wagons 35 mph 2x standard capacity
+add Heavy Duty Bulk Wagons
+
+add gen 4C open car
+
+add 6/8 NG intermodal car
+
+set extended model life for most NG engines
+
+Solano sprites complete
+
+sprites complete for Tyrconnell
+
+sprites for Hinterland, Rockhampton
+sprites complete for Nile
+
+
+
+
 
 ------------
 3.2.0 Release
