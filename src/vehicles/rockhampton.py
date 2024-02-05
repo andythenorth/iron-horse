@@ -26,7 +26,7 @@ def main(roster_id):
         type=DieselEngineUnit,
         weight=55,
         vehicle_length=8,
-        effect_z_offset=10,  # reduce smoke z position to suit NG engine height
+        effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,
     )
 

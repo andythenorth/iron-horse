@@ -19,20 +19,18 @@ def main(roster_id):
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
         type=DieselEngineUnit,
         weight=65,
         vehicle_length=8,
-        effect_z_offset=10,  # reduce smoke z position to suit NG engine height
+        effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,
     )
 
     consist.description = """"""
-    # https://en.wikipedia.org/wiki/Queensland_Railways_1270_class
-    # https://en.wikipedia.org/wiki/Queensland_Railways_1150_class
     consist.foamer_facts = (
         """Alco RSD8 / DL351"""
     )
