@@ -1,104 +1,125 @@
 Changelog
 =========
 
-DRAFT
 
-additional liveries for Shoebox
-
-DB Schenker livery for Resilient
-
-experiment with moving Lion to 3300 hp, 87 mph, and making it longer-lived by moving replacement to Toaster instead of Stentor (33 years vs. 18 years); also note that it's also inspired by HS4000 Kestrel
-
-split Shoebox and Dynamo lines, making Shoeboxes heavy_general; remove Super Shoebox as redundant, introduce Ultra Shoebox in 1995 or so, bump stats around for balance;
-
-remove Blackthorn, there's absolutely minimal value to it, it was just roleplay, for same stats
-
-improved Grid liveries
-
- set 99 mph suburban speed class for Zipper railbus
-
- increase power of Little Bear, Captain Steel, Goliath and General Endeavour (addresses power creep of these engines due to Yillen and Doubletide which were more HP for less total length)
-use same hp for light freight diesels as light general purpose diesels - no rationale for them being different
-
-add standard gauge ingot cars
-
-experimental adjustment of Constance power as it's silly having 3600 hp on both modes - try 3450 hp on diesel to match similar power band diesels, and then 4200 hp on electric, as there's nothing electric between 3600 hp and 5000 hp
-
-Toaster was slightly nerfed by lower HP but higher weight compared to Stentor and Cheddar Valley; increase the HP to 4200
-
-Pinhorse run cost was significantly too high
-
-introduce autocoach at gen epoch, no point spacing it out
-
-shorten generation span for Argus / Booster / Tornado, they were being introduced too far behind the era epoch, which blocks using them for mainline service due to incompatible speeds when other engines are upgraded
-
-intermodal car containers were out of place when flipped
-
-adjust gen 5 and gen 6 express speeds to be 120 mph for both generations; adjust HST speeds appropriately
-
-remove some gen 6 vehicles as redundant (same speed and stats as gen 5)
-
-additional liveries for Olympic railcar
-
-reshuffle driving cab cars and add high speed coaches and mail vans
-
-155 mph for very high speed on LGV (Helm Wind)
-
-adjust Trojan and Viking hp to match class 37s, simply no point having them different
- Centaur, Shredder, Slug, Viking all do need to be around 2200hp, for easy replacement of gen 4 2200 hp engines, really
-
-rebalance some freight engines to general purpose (Braf, Diablo, Merlion, Centaur); adjust other branches accordingly;
-
-redraw Centaur sprite to SNCF broken-nose style (the sprite derived from Class 60 was never inspiring for this engine)
-note that Centaur also similar to CP Class 1930
-
-reduce running costs for Hawkinge, Pegasus, Streamer, so they can be used for mixed traffic
-
-freight black additional livery for Pegasus
-
-freight black additional livery for Saxon
-
-white stripe livery for Avenger
-
-improve Brenner cab appearance
-
-improved position-variant selection for 6-unit railcars, by ensuring that no 2-unit orphans are shown at the rear of consists that are longer than 12 units
-switch 4 unit mailcars to the improved ruleset method, eliminating 2-unit orphans that appeared at the end of certain longer train lengths
-
-restaurant car sprite variant for express railcars
-
-additional livery for Chinook
-
-2-unit Kelpie and 1-unit Chinook
-
-copy former Triton livery into Flanders Storm
-
-set default pacers to 10/8 twin-unit with combined mail and pax capacity (will function as replacements for autocoaches, and as 16/8 vehicle when combined with 6/8 single unit pacer)
-
-add narrow gauge acid tank cars
-
-lower Magnum 70 bonnet to look more modern, and less out of proportion to 4/8 NG engines (relative to power)
-
-remove 55 mph / 65 mph NG speed split, make gen 3 and gen 4 60 mph; adjust NG locomotives accordingly
-
-add Heavy Duty Flat Wagons 35 mph 2x standard capacity
-add Heavy Duty Bulk Wagons
-
-add gen 4C open car
-
-add 6/8 NG intermodal car
-
-set extended model life for most NG engines
-
-Solano sprites complete
-
-sprites complete for Tyrconnell
-
-sprites for Hinterland, Rockhampton
-sprites complete for Nile
+------------
+3.3.0 Release
+------------
 
 
+Not savegame compatible with Iron Horse releases before 3.2.0.
 
+
+*Late-game express vehicles revamp*
+
+- express rail vehicles from generation 5 onwards (around 1990) now have 120 mph as their maximum speed (previously 105 mph then 125 mph in 2020)
+- added driving cabs, passenger coaches, restaurant cars and mail vans that can use dedicated high speed rail, and have 140 mph maximum speed
+- enabled Avenger and Sizzler engines to use dedicated high speed rail (at 140 mph)
+- increased Helm Wind speed on dedicated high speed rail to 155 mph
+- removed multiple generation 6 vehicles as they had stats very close to a generation 5 equivalent, including:
+    - passenger coaches and mail vans (most of their liveries moved to generation 5 vehicles as variants)
+    - Blackthorn freight diesel (identical to Grid; livery moved to Grid as a variant)
+    - Super Shoebox (Ultra Shoebox now introduced earlier and stats adjusted)
+    - Scorcher HST (Blaze HST now faster; Scorcher liveries moved to Blaze as variants)
+    - Bright Country express railcar (liveries moved to Olympic as variants)
+
+
+*Narrow gauge vehicles revamp*
+
+- narrow gauge vehicles from generation 3 onwards (around 1960) now have 60 mph as their maximum speed (previously 55 mph then 65 mph in 2010)
+- added engines:
+    - Alfama 0-4-4-0 Mallet steam engine, 600 hp available around 1900
+    - Tyrconnel 4-8-0 steam engine, 900 hp, available around 1905
+    - Nile 2-6-0+0-6-2 Garratt steam engine, 900 hp, available around 1920
+    - Solano diesel engine, 900 hp, available around 1960
+    - Rockhampton diesel engine, 1200 hp, available around 1964
+    - Hinterland diesel engine, 1200 hp, available around 1964
+- Bean Feast moved to generation 1
+- Boar Cat moved to generation 3
+- removed generation 4 vehicles including:
+    - Maximillian diesel
+    - Snapper railcar
+    - Zorro railcar moved to generation 3, Workish railcar removed
+    - generation 4 wagons and coaches removed
+
+
+*Changes*
+
+- small railcars now have 2 length variants:
+    - 10/8 twin-unit with combined mail and passenger capacity
+    - 6/8 single unit, passengers-only
+    - when one of each length is combined, the result is a 1-tile long multiple-unit railcar for pasenger and mail service on branch lines etc
+    - vehicles changed:
+        - Mumble
+        - Clipper
+        - Skipper
+        - Zipper
+- set Zipper railcar to 99 mph maximum speed
+- some diesel engines now have variants offering 1 or 2 units, (mostly for convenient replacement of other vehicles), including
+    - Kelpie, Foxhound, Griffon, Lynx
+    - Chinook, Withershins
+    - Pikel, Boar Cat
+- added new vehicles
+    - non-streamlined mail driving van trailer (1990)
+    - heavy duty wagons with 35 mph maximum speed, but twice the capacity of equivalent normal wagons
+        - heavy-duty flat wagons for both narrow gauge and standard gauge
+        - heavy duty bulk wagons for both narrow gauge and standard gauge
+        - ingot cars for standard gauge
+    - generation 4 large open car
+    - narrow gauge medium intermodal car
+    - narrow gauge acid tank cars
+- minor balance adjustments
+    - set extended model life for most narrow gauge engines
+    - moved freight engines to general purpose / express:
+        - Braf
+        - Diablo
+        - Merlion
+        - Centaur
+    - reduced running costs for large express steam engines so they can be used for mixed traffic:
+        - Hawkinge
+        - Pegasus
+        - Streamer
+    - introduce Autocoach earlier (1900)
+    - adjusted Lion heavy freight engine to 3300 hp, 87 mph, to increase its useful lifespan until replaced by Toaster in 2005
+    - adjusted Constance power so it's not the same on both diesel and AC electric:
+        - 3450 hp on diesel to match similar power band diesels
+        - 4200 hp on AC electric
+    - adjusted some generation 5 mid-power engines to all have around 2200hp, for easy replacement of previous generation 2200 hp engines
+        - Centaur
+        - Shredder
+        - Slug
+        - Viking
+    - adjusted some light freight engine power values to account for previous changes in similar engines
+        - Little Bear
+        - Captain Steel
+        - Goliath
+        - General Endeavour
+    - other minor balance changes
+- redrawn Centaur to SNCF broken-nose style, as also used for Portugese CP Rail Class 1930
+- additional or improved liveries for
+    - Shoebox (multiple liveries)
+    - Resilient (DB-style)
+    - Grid (multiple liveries)
+    - Pegasus (black)
+    - Saxon (black)
+    - Avenger (white stripe)
+    - Chinook (red + company colour)
+    - Flanders Storm (added former Triton livery)
+- adjusted Magnum 70 appearance
+- improved Brenner appearance
+- improved appearance magic for multiple unit railcars etc.
+- added restaurant car sprite variant for express railcars
+
+
+*Docs*
+
+- tweaks to tech tree appearance
+
+
+*Fixes*
+
+- Pinhorse run cost was significantly too high
+- containers incorrectly positioned when container wagons were flipped in depot
 
 
 ------------
