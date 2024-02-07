@@ -27,6 +27,17 @@ def main():
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_ng_16px")
 
+    consist = MailCarConsist(
+        roster_id="pony",
+        base_numeric_id=12360,
+        gen=3,
+        subtype="B",
+        base_track_type_name="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_ng_24px")
+
     """ # restore in next version
     consist = MailCarConsist(
         roster_id="pony",
