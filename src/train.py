@@ -7175,7 +7175,8 @@ class Train(object):
         extra_flags = []
         if unit_variant.buyable_variant.buyable_variant_group is not None:
             # some of these aren't needed for wagons or articulated trailing parts, but eh, probably fine?
-            if not unit_variant.buyable_variant.is_default_buyable_variant_for_consist:
+            # disable news and exclusive preview for all variants except the default
+            if unit_variant.buyable_variant.get_variant_group_parent_vehicle_id() is not None:
                 extra_flags.append("VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE")
                 extra_flags.append("VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW")
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW")
