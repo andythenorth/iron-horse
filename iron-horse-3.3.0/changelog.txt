@@ -1,0 +1,2746 @@
+Changelog
+=========
+
+
+------------
+3.3.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.3.0.
+
+
+*Late-game express vehicles revamp*
+
+- express rail vehicles from generation 5 onwards (around 1990) now have 120 mph as their maximum speed (previously 105 mph then 125 mph in 2020)
+- added driving cabs, passenger coaches, restaurant cars and mail vans that can use dedicated high speed rail, and have 140 mph maximum speed
+- enabled Avenger and Sizzler engines to use dedicated high speed rail (at 140 mph)
+- increased Helm Wind speed on dedicated high speed rail to 155 mph
+- removed multiple generation 6 vehicles as they had stats very close to a generation 5 equivalent, including:
+    - passenger coaches and mail vans (most of their liveries moved to generation 5 vehicles as variants)
+    - Blackthorn freight diesel (identical to Grid; livery moved to Grid as a variant)
+    - Super Shoebox (Ultra Shoebox now introduced earlier and stats adjusted)
+    - Scorcher HST (Blaze HST now faster; Scorcher liveries moved to Blaze as variants)
+    - Bright Country express railcar (liveries moved to Olympic as variants)
+
+
+*Narrow gauge vehicles revamp*
+
+- narrow gauge vehicles from generation 3 onwards (around 1960) now have 60 mph as their maximum speed (previously 55 mph then 65 mph in 2010)
+- added engines:
+    - Alfama 0-4-4-0 Mallet steam engine, 600 hp available around 1900
+    - Tyrconnel 4-8-0 steam engine, 900 hp, available around 1905
+    - Nile 2-6-0+0-6-2 Garratt steam engine, 900 hp, available around 1920
+    - Solano diesel engine, 900 hp, available around 1960
+    - Rockhampton diesel engine, 1200 hp, available around 1964
+    - Hinterland diesel engine, 1200 hp, available around 1964
+- Bean Feast moved to generation 1
+- Boar Cat moved to generation 3
+- removed generation 4 vehicles including:
+    - Maximillian diesel
+    - Snapper railcar
+    - Zorro railcar moved to generation 3, Workish railcar removed
+    - generation 4 wagons and coaches removed
+
+
+*Changes*
+
+- small railcars now have 2 length variants:
+    - 10/8 twin-unit with combined mail and passenger capacity
+    - 6/8 single unit, passengers-only
+    - when one of each length is combined, the result is a 1-tile long multiple-unit railcar for pasenger and mail service on branch lines etc
+    - vehicles changed:
+        - Mumble
+        - Clipper
+        - Skipper
+        - Zipper
+- set Zipper railcar to 99 mph maximum speed
+- some diesel engines now have variants offering 1 or 2 units, (mostly for convenient replacement of other vehicles), including
+    - Kelpie, Foxhound, Griffon, Lynx
+    - Chinook, Withershins
+    - Pikel, Boar Cat
+- added new vehicles
+    - non-streamlined mail driving van trailer (1990)
+    - heavy duty wagons with 35 mph maximum speed, but twice the capacity of equivalent normal wagons
+        - heavy-duty flat wagons for both narrow gauge and standard gauge
+        - heavy duty bulk wagons for both narrow gauge and standard gauge
+        - ingot cars for standard gauge
+    - generation 4 large open car
+    - narrow gauge medium intermodal car
+    - narrow gauge acid tank cars
+- minor balance adjustments
+    - set extended model life for most narrow gauge engines
+    - moved freight engines to general purpose / express:
+        - Braf
+        - Diablo
+        - Merlion
+        - Centaur
+    - reduced running costs for large express steam engines so they can be used for mixed traffic:
+        - Hawkinge
+        - Pegasus
+        - Streamer
+    - introduce Autocoach earlier (1900)
+    - adjusted Lion heavy freight engine to 3300 hp, 87 mph, to increase its useful lifespan until replaced by Toaster in 2005
+    - adjusted Constance power so it's not the same on both diesel and AC electric:
+        - 3450 hp on diesel to match similar power band diesels
+        - 4200 hp on AC electric
+    - adjusted some generation 5 mid-power engines to all have around 2200hp, for easy replacement of previous generation 2200 hp engines
+        - Centaur
+        - Shredder
+        - Slug
+        - Viking
+    - adjusted some light freight engine power values to account for previous changes in similar engines
+        - Little Bear
+        - Captain Steel
+        - Goliath
+        - General Endeavour
+    - other minor balance changes
+- redrawn Centaur to SNCF broken-nose style, as also used for Portugese CP Rail Class 1930
+- additional or improved liveries for
+    - Shoebox (multiple liveries)
+    - Resilient (DB-style)
+    - Grid (multiple liveries)
+    - Pegasus (black)
+    - Saxon (black)
+    - Avenger (white stripe)
+    - Chinook (red + company colour)
+    - Flanders Storm (added former Triton livery)
+- adjusted Magnum 70 appearance
+- improved Brenner appearance
+- improved appearance magic for multiple unit railcars etc.
+- added restaurant car sprite variant for express railcars
+
+
+*Docs*
+
+- tweaks to tech tree appearance
+
+
+*Fixes*
+
+- Pinhorse run cost was significantly too high
+- containers incorrectly positioned when container wagons were flipped in depot
+
+
+------------
+3.2.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.2.0.
+
+
+*Changes*
+
+- Doineann is no longer replaced by Blackthorn, and will be available perpetually after introduction
+- added additional liveries for
+    - Vigilant
+    - Lemon
+    - Esk
+    - Mainstay
+    - Vulcan
+- tweaked yellow Saxon livery to be more yellow
+- added black livery for randomised dump cars and hopper cars
+- Gargouille is introduced a little earlier
+- Falcon is now replaced by Rapid, not Onslaught, meaning Falcon no longer has very short period of availability
+- removed run cost malus for Vulcan, Dragon, Falcon, Defiant and Relentless
+- extended vehicle life of certain engines, mostly 'robust' electric locomotives, but also some steam and diesel locomotives
+- Slug power is increased slightly and now matches Centaur exactly
+- Dynamo power is increased slightly
+
+
+*Fixes*
+
+- corrected wrong colour pixels in one livery for Swift
+- passenger coaches weren't properly aware of vehicle variants and were showing brake coaches when they shouldn't
+
+
+*Codechanges*
+
+- switch lang files to TOML format
+
+
+------------
+3.1.0 Release
+------------
+
+
+*Changes*
+
+- freight wagons now available in many colours, as buyable variants, including
+    - single-colour variants (with optional weathering)
+    - random mixes of 2 or more colours
+    - random mixes of both colour and wagon type
+- tweaked tech tree and appearance for many wagon types
+- removed parameters to set colours for wagons
+- removed colour change when wagons are flipped in depot
+- added additional livery for Saxon
+
+
+*Fixes*
+
+- Lion weight was too low
+
+
+------------
+3.0.1 Release
+------------
+
+
+*Fixes*
+
+- Fix: TGV-type trains with distributed power were only adding power with the default buyable variant
+
+
+------------
+3.0.0 Release
+------------
+
+
+"A horse is worth more than riches" — Spanish proverb
+
+Time for Iron Horse 3.  It's the one right after Iron Horse 2.
+
+
+**"Pitch me"**
+
+*New ways to choose vehicle liveries*
+
+- more liveries to choose from
+- easier to select liveries
+
+
+*Revamped tech tree*
+
+- better progression
+- fewer repeating models that only differ in paint and stats
+- multiple new engines, super for gameplay
+
+
+*Full use of 'vehicle variants' feature in OpenTTD 13*
+
+- Iron Horse 3 requires OpenTTD 13 or newer
+- not compatible with previous Iron Horse versions
+- uses a new GRFID
+- Iron Horse 1 and 2 still available as separate grfs
+
+
+*Changes*
+
+- liveries are now individual vehicle variants in the buy menu
+- many new liveries added for engines, passenger vehicles and mail vehicles
+- powered vehicles with dedicated trailer cars are grouped together in the buy menu
+    - for example, Blaze HST coaches and mail vans will be grouped as variants with the Blaze HST power cars
+- freight wagons *do not* have livery variants for Iron Horse 3.0.0, but freight wagon livery variants may be added in future
+- rebalanced tech tree
+    - now exactly 150 engines
+        - (161 including snowploughs, cab cars, auto-trailers and similar)
+    - adjusted progression of some lines, especially electric engines and high-horsepower diesels
+    - added engines
+        - Eastern, steam freight engine, 1250 hp, available around 1900
+        - Keen, steam freight engine, 1800 hp, available around 1917
+        - Yak, steam freight engine, 1000 hp, available around 1930
+        - Dynamo, electric general purpose engine, 1800 hp, available around 1935
+        - Dryth, electric freight engine, 2900 hp, available around 1938
+        - Maelstrom, diesel freight engine, 2200 hp, available around 1958
+        - Trojan, diesel freight engine, 1700 hp, available around 1966
+        - Lion, diesel freight engine, 2950 hp, available around 1970
+        - Tincans, electric freight engine, 5200 hp, available around 1977
+        - Doineann, diesel freight engine, 2750 hp, available around 1986
+        - Resistance, electric freight engine, 5800 hp, available around 1986
+        - Centaur, diesel freight engine, 2000 hp, available around 1990
+        - General Endeavour, diesel freight engine, 1300 hp, available around 1990
+        - Constance, electro-diesel general purpose engine, 3600 hp / 3600 hp, available around 2018
+    - removed some engines that repeated a previous model, 'upgraded' by a new livery and minor stats bump
+        - Blind Smuir
+        - Evolution
+        - Hector
+        - Highlander
+        - Nimbus
+        - Phoenix
+        - Super Stentor
+        - Triton
+    - removed Vanguard, replaced by Rapid
+    - Defiant is now a general purpose engine, with 4150 hp
+- changed appearance of Pinhorse
+- some engines now randomly show miniature snowploughs when built
+    - includes Kelpie, Griffon, Growler, Slug and Onslaught
+- reduced capacity of generation 5 (1990s) freight wagons
+    - no longer such a large jump up from generation 4, and now linear with all other generation increases
+    - this removes the effect where upgraded trains had less hp per tonne than previous generation, due to freight wagon capacity spiking up sharply
+
+
+*Fixes*
+
+- Magnum 70 did not display power correctly in some circumstances
+
+
+*Docs*
+
+- show variants on engine details pages
+
+
+*Codechanges*
+
+- reduce template complexity and eliminate a large number of duplicate realsprites, as OpenTTD now correctly handles offsets for flipped vehicles that are < 8/8 long
+- engine liveries no longer use the complicated approach of triggering different sprites if a specific company colour combination is set
+- passenger and mail vehicle liveries no longer use the complicated approach of triggering different sprites by flipping the vehicle in depot
+
+
+-------------
+2.64.0 Release
+-------------
+
+
+*Changes*
+
+- added stainless steel and alloy steel to Ingot Carrier cargo refits
+- added food to farm products cargo refits
+- adjusted power of Pinhorse and Argus engines to match Stoat
+
+
+*Docs*
+
+- remove unwanted 'CABBAGE' placeholder text from train list page
+
+
+-------------
+2.63.1 Release
+-------------
+
+
+*Fixes*
+
+- some articulated engines were using 'passenger coach' company colour for trailing parts
+
+
+-------------
+2.63.0 Release
+-------------
+
+
+*Changes*
+
+- adjusted power and tech tree positions for Evolution, Resilient, Revolution, Shredder, Vanguard locomotives
+- added basic set of wagons for transporting vehicles cargo
+    - Vehicle Transporters (single deck wagons)
+    - Car Transporters (double-deck wagons)
+    - refits for vehicles (car sprites), and also for passengers (motorail)
+
+
+-------------
+2.62.0 Release
+-------------
+
+
+*Changes*
+
+- added Chemical Silo Wagons, as a visual variation to standard Silo Wagons
+- added Randomised Covered Hoppers
+- added narrow gauge Randomised Piece Goods Wagons
+- added cleaning agents to refits for Silo Wagons and similar wagon types
+- added alloy steel and stainless steel to refits for Ingot Carriers
+- added steel pipe cargo support
+- renamed "Cold Metal Wagon - Randomised" to more accurate name "Coil Wagon - Randomised"
+- improved appearance of dice sprites used in buy menu to indicate randomised wagons
+
+
+-------------
+2.61.1 Release
+-------------
+
+
+*Fixes*
+
+- Very High Speed trains were not showing raised pantographs whilst running on dedicated high speed railway
+- running costs were too high for all 'gronk!' engine types, including:
+    - Grub
+    - Lamia
+    - Gronk
+    - Chuggypig
+    - Magnum 70
+
+
+-------------
+2.61.0 Release
+-------------
+
+
+*Changes*
+
+- added Super Stentor, 4550 hp, available around 2022
+- tweaked Relentless
+    - increased power to 4250 hp
+    - improved appearance
+- adjusted Onslaught
+    - now continues indefinitely, not replaced by Relentless
+    - speed increased to 125 mph
+- adjusted Avenger
+    - now continues indefinitely, not replaced by Sizzler
+    - speed increased to 125 mph
+
+
+*Docs*
+
+- note the 'Wagons only mode' parameter in Get Started page
+
+
+*Translations*
+
+- deleted outdated and very incomplete US-English translation
+
+
+-------------
+2.60.0 Release
+-------------
+
+
+*Changes*
+
+- added 'Wagons-only mode' setting, which hides all engines, snowploughs etc.
+    - can also be used with 'Simplified gameplay' to reduce the range of wagons if desired
+    - note that this option only makes sense if at least one other grf with engines is used in the game
+    - wagons will not appear in the game if there are no engines matching their railtype
+
+
+Observant readers will notice that versions 2.53 through 2.59 are missing. "Certain mistakes were made."
+
+
+-------------
+2.52.0 Release
+-------------
+
+
+*Docs*
+
+- improved display of power values
+
+
+-------------
+2.51.0 Release
+-------------
+
+
+*Changes*
+
+- added Doubletide freight engine as later-game upgrade for Yillen, 2500 hp, available around 1999
+- increased Zest speed to 87 mph to match later-game wagon speeds
+- added large gen 4 randomised chemicals tanker
+- extended individual vehicle life of certain vehicle models which are available to buy for a long time
+- improved display of randomised vehicle names in buy menu:
+    -  now shows the wagon size before '- Randomised' suffix, not after, as that's more useful to see
+- improved appearance of multiple brake vans
+
+
+-------------
+2.50.0 Release
+-------------
+
+
+Not savegame compatible with Iron Horse releases before 2.50.0.
+
+
+*Changes*
+
+- reworked Brake Vans
+    - removed Goods Brake Van
+    - increased randomisation of Brake Vans
+    - will now show different body types (symmetric, asymmetric, enclosed porch, open porch etc)
+    - additional liveries
+    - some variants are dedicated to specific engines
+    - improved buy menu sprites to indicate random behaviour
+    - a randomised, date appropriate sprite now shown when in depot and not attached to an engine (previously showed 1860 sprite)
+- improved buy menu sprites for randomised wagons
+- for Xerxes and Yillen engines, each unit will now randomly reverse when built
+- set running cost same for Mail Vans, Express Vans and Express Container Cars
+- added support for woodchip and flour cargos (2TallTyler)
+- label ELRL railtype explicitly as 'AC Electric', as Iron Ibex is likely to add 'DC Electric' in future, and the two railtypes need distinct names
+- improved railtype sort order in construction menu
+- removed 'roster' parameter - rosters will be provided as separate grfs
+
+
+*Docs*
+
+- show both speeds for vehicles that travel faster on Dedicated High Speed Railway (Brenner and similar)
+- show power for trailer cars of trains that provide distributed power (Brenner and similar)
+- show both power values for electro-diesels
+- added 'Ultra Heavy Freight' and 'Ultra Heavy Express' role groups
+- improved Code Reference page
+- noted that Python 3.10 is recommended (version of argparse used requires a specific 3.9 rev or newer, so easier to recommend 3.10)
+
+
+*Codechanges*
+
+- refactored many vehicle numeric IDs
+    - max ID for articulated vehicles is ~8192
+    - IDs have been freed below 8192 by moving non-articulated vehicles to IDs above 8192
+    - compile-time guards are provided to enforce articulated vehicles below 8192 and non-articulated above 8192
+- reworked Makefile and compile
+    - added support for compiling multiple grfs (Horse, Ibex, Moose), simultaneously or individually
+    - improved some aspects of prerequisite detection and general flow of make steps
+    - updated the approach to providing args to python entry points, using argparse to manage and validate parameters
+    - fixed some irksome failures with graphics generation '.new.png' handling
+- added railtype and roster managers to Iron Horse, simplifying global / cross-roster lookups
+- refactored approach to vehicles with multiple power sources, adding support for an arbitrary number of power sources
+- refactored approach to managing vehicle intro date synchronisation / de-synchronisation (includes minor visible differences in gameplay)
+
+
+-------------
+2.49.1 Release
+-------------
+
+
+Not savegame compatible with Iron Horse releases before 2.49.0.
+
+
+*Changes*
+
+- added alternative liveries for Avenger and Roarer, triggered by choice of second company colour
+
+
+-------------
+2.49.0 Release
+-------------
+
+
+Not savegame compatible with Iron Horse releases before 2.49.0.
+
+
+*Changes*
+
+- added gen 5 small Scrap Wagon
+- adjusted alternative engine liveries to only trigger on choice of second company colour, instead of combo of both company colours
+- updated which colours trigger each alternative livery
+- replaced randomised wagon buy menu icons with dice icons in varying colours, instead of '?' icons
+- improved Super Shoebox sprite
+- moved caboose cars to end of buy menu, after randomised wagons
+
+
+*Docs*
+
+- simplify explanations of alternative liveries
+- use blue company colour, not dark blue for 'blue' docs examples
+- correctly show alternative livery when blue examples should trigger it
+
+
+*Fixes*
+
+- vehicles showing alternative_cc_livery in buy menu will now recolour correctly in that case
+
+
+-------------
+2.48.0 Release
+-------------
+
+
+*Changes*
+
+- added wagons
+    - Flatbed Cargo Wagon - Randomised
+    - gen 5 small Hopper
+    - gen 5 small Hopper - Randomised
+    - gen 5 small Mineral Wagon - Randomised
+    - gen 5 small Chemicals Tanker - Randomised
+- added aluminium cargo to coil carrier refits
+- extend bolster wagon cargo refits to match flat wagons
+
+
+*Fixes*
+
+- fixed bad pixels for bulk cargos in hood open wagon
+
+
+-------------
+2.47.1 Release
+-------------
+
+
+*Changes*
+
+- added 2 extra engine-specific liveries for Brake Vans and Goods Brake Vans
+
+
+*Docs*
+
+- fixed Train Whack! by removing 'randomised wagon' sprites
+- fixed random choice of sprites in page headers by removing 'randomised wagon' sprites
+
+
+-------------
+2.47.0 Release
+-------------
+
+
+Not savegame compatible with Iron Horse releases before 2.47.0.
+
+
+*Changes*
+
+- added Goods Brake Vans
+- adjusted sprites for Brake Vans
+- all types of brake van will now use company colours chosen by player for 'Freight Wagon', rather than 'Passenger Coach'
+- added multiple types of 'randomised wagon', when these wagons are built a random suitable wagon sprite will be chosen
+    - Open Wagon - Randomised (same refittable cargo as other open wagons)
+    - Van - Randomised (same refittable cargo as otherother vans)
+    - Piece Goods Wagon - Randomised (mix of open/van/plate/covered wagon sprites, same refittable cargo as plate/tarpaulin wagons)
+    - Mineral Wagon - Randomised (same refittable cargo as mineral/aggregate wagons)
+    - Hopper Wagon - Randomised (same refittable cargo as non-covered hoppers)
+    - Bulk Wagon - Randomised (mix of non-covered hopper/mineral wagon sprites, same refittable cargo as non-covered hoppers)
+    - Chemicals Tanker - Randomised (mix of acid/product tanker sprites, same refittable cargo as tankers)
+    - Cold Metal Wagon - Randomised (mix of coil/bolster/plate/flat/covered wagon sprites, same refittable cargo as coil wagons)
+
+
+*Fixes*
+
+- removed SAA4 fallback railtype label from Metro, it's not an appropriate fallback for Metro
+
+
+-------------
+2.46.2 Release
+-------------
+
+
+*Fixes*
+
+- hidden unfinished automobile transporter wagons
+
+
+-------------
+2.46.1 Release
+-------------
+
+
+*Changes*
+
+- for vehicles that can use Dedicated High Speed Railway
+    - explain variable speed in buy menu
+    - default to showing lower (normal rail) speed in buy menu
+
+
+*Fixes*
+
+- set correct speed for Helm Wind on normal rail
+- added missing strings for Dedicated High Speed Railway
+- set correct weight for narrow gauge railbus trailers
+
+
+-------------
+2.46.0 Release
+-------------
+
+
+*Changes*
+
+- added Dedicated High Speed Railway
+    - only usable by certain high speed vehicles (Helm Wind, Scorcher, Brenner)
+    - provides curve speed bonus
+    - forbids level crossings
+    - sprites need improved
+- high speed vehicles will be limited to 125mph unless using Dedicated High Speed Railway
+    - applies to Helm Wind, Scorcher, Brenner
+    - can reach maximum speed on Dedicated High Speed Railway
+- added very high speed Mail Vans for Helm Wind and Brenner
+- removed passenger capacity from Brenner engine
+- added Hood Wagons
+- railtype labels changed for all vehicles, an Iron Horse specific scheme is used, with fallbacks to commonly used existing types
+
+
+*Docs*
+
+- explain a little about Iron Horse railtype use in 'Code reference' page
+
+
+-------------
+2.45.0 Release
+-------------
+
+
+*Changes*
+
+- added railtypes directly to Iron Horse
+    - Narrow Gauge Railway for narrow gauge trains
+    - Metro Railway for metro trains
+    - Iron Horse no longer requires the separate Termite railtype grf
+    - other railtype grfs continue to work with Iron Horse
+- added a parameter setting to turn Iron Horse extra railtypes off / on (on by default)
+- improved sprites for narrow gauge and metro depots
+- added new size option 'Nanoscopic' for the train capacity parameter setting
+    - 'Nanoscopic' provides a 77% reduction compared to default capacity of Iron Horse vehicles
+- improved order of parameter settings
+- improved appearance of narrow gauge Dry Powder Hoppers
+- added narrow gauge Chemical Covered Hoppers
+- added randomly-selected colour variant for Pressure Tankers and Cryo Tankers when refitted for chlorine cargo
+- changed Magnum 70 engine from diesel to battery hybrid
+    - no gameplay difference
+    - different vehicle smoke effect
+- set correct default cargos for Aggregate Wagons and Ore Dump Wagons
+- adjusted default cargos for Box Vans and other equivalent wagons
+
+
+*Docs*
+
+- mention included railtypes on 'Get started' page, no longer recommend Termite
+
+
+-------------
+2.44.0 Release
+-------------
+
+
+*Changes*
+
+- added engines
+    - Hawkinge steam general purpose engine, 2350 hp, available around 1935
+    - Dreadnought diesel general purpose engine, 3300 hp, available around 1990
+- increased power of Pegasus and Streamer from 2200 hp to 2300 hp for balancing reasons
+- adjusted intro dates for narrow gauge Bulkhead Flat Wagons and Dry Powder Hoppers to better match standard gauge equivalents
+- adjusted how passenger and mail coaches choose livery based on lead engine
+    - passenger and mail coaches have alternate liveries, which the player can always select by ctrl-clicking the coach in depot
+    - for some engines, the alternate livery will also be used automatically when the coach is attached to the engine
+    - this is not a new feature, but was broken in recent releases and is now fixed
+    - the list of engines that trigger the alternate livery has been reviewed and reset
+
+
+*Codechanges*
+
+- set correct 2cc shade when a palette shade variant is returned
+    - copied from Unsinkable Sam where the behaviour was correct
+    - no-op in Iron Horse currently as 2cc isn't actually used in this way
+
+
+-------------
+2.43.0 Release
+-------------
+
+
+*Changes*
+
+- added Goods Vans
+- improved appearance of Refrigerated Vans
+
+
+*Fixes*
+
+- merchandise open wagons were showing wrong bulk cargo sprites
+
+
+-------------
+2.42.0 Release
+-------------
+
+
+*Changes*
+
+- added wagons
+    - Merchandise Open Wagons
+    - Merchandise Vans
+    - Farm Products Vans
+- removed Fruit & Vegetables Vans
+- adjusted default refits for Farm Products Hoppers
+- improved appearance of Open Wagons
+
+
+-------------
+2.41.0 Release
+-------------
+
+
+*Changes*
+
+- Sliding Roof Vans will now show randomly selected colour variations (paint fading etc) when purchased
+- Brake Vans now show appropriate sprite for current era when in depot and not attached to an engine
+
+
+*Fixes*
+
+- parameters for wagon base colour 1 and 2 were ignored if wagon colour randomisation was turned off (via parameter)
+    - second fix of this one, previous fix was flawed and didn't solve the issue
+    - previous fix introduced another bug with Ore Dump Wagons not using company colour
+
+
+*Docs*
+
+- further improved 'Get started' page
+
+
+-------------
+2.40.0 Release
+-------------
+
+
+*Changes*
+
+- the following wagon types will now show randomly selected colour variations (paint fading etc) when purchased
+    - Carbon Black Hoppers
+    - Cement Wagons
+    - Chemical Covered Hoppers
+    - China Clay Hoppers
+    - Covered Hoppers
+    - Cryo Tankers
+    - Farm Products Hoppers
+    - Mineral Covered Hoppers
+    - Pressure Tankers
+    - Product Tankers
+    - Tankers
+
+
+*Fixes*
+
+- parameters for wagon base colour 1 and 2 were ignored if wagon colour randomisation was turned off (via parameter)
+
+
+*Docs*
+
+- improved 'Get started' page
+    - added hints, tips etc
+    - removed outdated items
+- improved 'Code reference' page
+    - added compiling instructions
+- improved navigation
+    - removed 'Translate...' link as translation no longer uses the web translator
+    - added 'Changelog' link
+    - moved 'Code reference' link to be less prominent
+
+
+-------------
+2.39.0 Release
+-------------
+
+
+*Changes*
+
+- added narrow gauge log cars
+
+
+-------------
+2.38.0 Release
+-------------
+
+
+*Changes*
+
+- added engines
+    - Decapod steam general purpose engine, 650 hp, available around 1907
+    - Stag steam general purpose engine, 800 hp, available around 1930
+
+
+*Fixes*
+
+- Proper Job sprites off by 1px in \ view
+
+
+-------------
+2.37.0 Release
+-------------
+
+
+*Changes*
+
+- added Twin variant of Livestock Wagon (available gen 5 and 6 only)
+    - these are non-standard 10/8 length
+    - articulated so can't be flipped to change livery
+
+
+*Fixes*
+
+- 24px freight roof sprite too tall in | view
+- incorrect sprites for gen 5B low floor intermodal car
+- Daring run cost was too low relative to similar engines
+
+
+-------------
+2.36.1 Release
+-------------
+
+
+*Fixes*
+
+- fixed Mail Van speed (was accidentally nerfed in 2.36.0)
+
+
+-------------
+2.36.0 Release
+-------------
+
+
+Not savegame compatible with Iron Horse releases before 2.32.0.
+
+
+*Changes*
+
+- added HST Mail Vans for use with Firebird, Blaze and Scorcher HSTs
+
+
+*Fixes*
+
+- set correct buy menu order for Xerxes
+
+
+-------------
+2.35.0 Release
+-------------
+
+
+Not savegame compatible with Iron Horse releases before 2.32.0.
+
+
+*Changes*
+
+- added Foxhound general purpose / express engine, 1450 hp, available around 1958
+- added Falcon general purpose / express engine, 2800 hp, available around 1965
+
+
+-------------
+2.34.0 Release
+-------------
+
+
+Not savegame compatible with Iron Horse releases before 2.32.0.
+
+
+*Changes*
+
+- added Mineral Covered Hoppers
+- adjusted some covered hopper default cargos
+
+
+-------------
+2.33.0 Release
+-------------
+
+
+Not savegame compatible with Iron Horse releases before 2.32.0.
+
+
+*Changes*
+
+- added China Clay Hoppers (for FIRS kaolin)
+
+
+-------------
+2.32.0 Release
+-------------
+
+
+Not savegame compatible with previous Iron Horse releases.
+
+
+*Changes*
+
+- adjusted covered hopper (sheltered bulk cargo) wagons
+    - Potash Hoppers are replaced by Chemical Covered Hoppers, sprites painted to suit potash, phosphate and similar cargos
+    - brown Covered Hopper sprites are replaced by silver / grey sprites
+    - added Dry Powder Hoppers
+    - added Roller Roof Hoppers (available gen 5 and 6 only)
+    - added Swing Roof Hoppers (available gen 5 and 6 only)
+    - Grain Hoppers are replaced by dedicated Farm Products Hoppers, which refit to cereals and other crops, and also farm supplies
+
+
+*Fixes*
+
+- 'Aggregate Wagon' not 'Aggregates Wagon' (consistency)
+- add missing quote for Xerxes (Fairyfloss)
+- remove extraneous buffer pixels from 8/8 livestock cars
+
+
+-------------
+2.31.0 Release
+-------------
+
+
+*Changes*
+
+- added engines
+    - Lynx general purpose / express engine, 1650 hp, available around 1997
+    - Xerxes steam heavy freight engine, 1450 hp, available around 1880
+- alternative liveries (via company colour combos) for
+    - Griffon
+    - Intrepid
+    - Kelpie
+    - more information in html docs https://grf.farm/
+- improved Griffon sprite
+- let Potash Hoppers refit as standard covered hoppers
+- covered hoppers now load at same speed as open hoppers
+
+
+*Fixes*
+
+- incorrect buffer placement on gen 6 Ore Hopper
+
+
+-------------
+2.30.0 Release
+-------------
+
+
+Iron Horse 2.30.0 is *possibly* savegame compatible with previous Iron Horse versions, but some existing mineral wagons _might_ change name and appearance. YOLO.
+
+
+*Changes*
+
+- reshuffled some general purpose / express engines
+    - 4-6-4 Streamer is now super-heavy class, equivalent and alternative to 2-8-2 Pegasus, 2200 hp, available around 1934
+    - add 2-6-2 Arrow general purpose / express engine, equivalent and alternative to 4-6-0 Strongbow, 1900 hp, available around 1934
+    - added Tenacious general purpose / express engine, equivalent and alternative to the Wyvern / Intrepid, 2150 hp, available around 1960
+    - tweaked Dragon sprites to ensure they're distinct from Tenacious
+    - switched Resilient alternative livery to one inspired by Freightliner/GBRF
+- removed expiry from Yillen, it's a useful size and looks nice for slower industrial lines (e.g. steelworks) even when obsolete for other uses
+- adjusted mineral (bulk cargo) wagons
+    - added Ore Dump Wagons, mostly based on rotary tipplers
+    - added Aggregates Wagons
+    - added MGR Hoppers (available gen 4 and 5 only)
+    - adjusted sprites for Hoppers, to differentiate from MGR Hoppers
+    - improved sprites for High Side Mineral Wagons
+
+
+*Docs*
+
+- split freight and express 'heavy' roles into 'heavy' and 'super-heavy'
+- (fix) Chuggypig replaces Lamia, not Gronk in tech tree view
+
+
+*Translations*
+
+- translation updates (thanks translators)
+
+
+-------------
+2.29.0 Release
+-------------
+
+
+Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, but any existing Merlion engines in savegames will change name and appearance.
+
+
+*Changes*
+
+- reshuffled some gen 4 diesel engines
+    - Merlion is now a freight engine, equivalent and alternative to the Growler, 1750 hp, available around 1958
+    - added Daring general purpose / express engine, same role as Merlion previously filled, 1750 hp, available around 1961
+    - added Withershins heavy freight engine, equivalent and alternative to the Chinook, 2900 hp, available around 1960
+    - Intrepid sprites now inspired by 'banger blue' BR class 47
+- improved chassis pixels for Kelpie and Griffon
+
+
+*Fixes
+
+- set correct weight for all Shoeboxes
+
+
+*Docs*
+
+- added space between value and unit for 'hp' and 'mph' values
+
+
+-------------
+2.28.0 Release
+-------------
+
+
+*Changes*
+
+- added freight engines
+    - Mainstay steam heavy freight engine, 1850 hp, available around 1930
+    - Yillen diesel heavy freight engine, 2200 hp, available around 1958
+- added wagons
+    - narrow gauge Skips (low speed side-tipping wagons)
+    - Acid Tankers (general liquids)
+    - Pressure Tankers (gas cargos)
+- adjusted Cryo Tankers
+    - reworked sprites to be fatter appearance
+    - gen 3 and narrow gauge Cryo Tankers replaced by equivalent Pressure Tankers
+- sprite support for peat cargo
+
+
+*Fixes*
+
+- many intermodal wagons may have had incorrect sprites for platform height (most default wagons were probably using incorrect low_floor variant)
+- remove extraneous pixels from \ view of Blind Smuir
+
+
+*Codechanges*
+
+- prevent rendered spritesheets being created more than once, avoiding problems where pool workers are deleting files in use by another pool worker
+- coil buggies and ingot cars referenced a non-existent chassis sprite (didn't error as chassis sprite isn't used, but should still be defined)
+
+
+-------------
+2.27.0 Release
+-------------
+
+
+*Changes*
+
+- adjusted narrow gauge engine roster
+    - added Thor, Gargouille and Maximillian as larger narrow gauge engines, with a little more power than the smaller engines
+    - adjusted stats of Cheese Bug, Bean Feast, Pikel and Boar Cat to differentiate from the larger engines
+- added wagons
+    - Potash Hoppers (refit potash only)
+    - narrow gauge Bolster Wagons
+    - narrow gauge Covered Hoppers
+    - narrow gauge Cryo Tankers
+    - narrow cauge Ore Hoppers
+    - narrow gauge small Brake Van
+- renamed Timber Wagon to Log Carrier as the cargo it carries is 'logs in FIRS', 'timber' being a different cargo
+- reduced capacity of Edibles Tanker and Refrigerated Van to reflect higher speeds (now matches Expess Vans)
+- sprite support for sugarcane cargo (2TallTyler)
+
+
+*Fixes*
+
+- door sprites were wrong in | view for gen 5D and 6D sliding wall vans
+- pixels were missing for Snapper, Mumble, and narrow gauge railcar trailers
+- gen 2 mineral wagons, hoppers and ore hoppers weren't supposed to be included, as gen 1 and 2 stats overlap for these wagons
+
+
+*Docs*
+
+- (fix) sprites were misaligned in Train Whack mini-game
+
+
+-------------
+2.26.0 Release
+-------------
+
+
+*Changes*
+
+- better electrified railtype compatibility for electro-diesel (bi-mode) vehicles
+    - these vehicles should now use 'electrified' power and visual effects on a wider range of electrified railtypes
+    - previously they only worked correctly for railtypes with 'ELRL' label
+    - requires OpenTTD 1.11.0 or newer
+    - tested as working with NuTracks 2
+
+
+*Fixes*
+
+- electro-diesel (bi-mode) railcars now show power on diesel in buy menu, not power on electric, consistent with other bi-mode vehicles
+
+
+-------------
+2.25.0 Release
+-------------
+
+
+*Changes*
+
+- provide earlier (available 1860) versions for some wagons
+    - Mineral Wagon
+    - Hopper
+    - Ore Hopper
+
+
+*Fixes*
+
+- railbuses should not be available in simplified gameplay
+
+
+-------------
+2.24.0 Release
+-------------
+
+
+"The world would not make a racehorse of a donkey." - proverb
+
+
+*Changes*
+
+- added 3 railbuses
+    - Clipper, 180 hp, 31 passengers, available around 1956
+    - Skipper, 225 hp, 36 passengers, available around 1986
+    - Zipper, 280 hp, 36 passengers, available around 2016
+- minor run-cost tweaks to railcars to balance against railbuses
+
+
+*Translations*
+
+- translation updates (thanks translators)
+
+
+-------------
+2.23.0 Release
+-------------
+
+
+*Changes*
+
+- rebalanced Passenger Coaches to have lower capacity
+- added Suburban Coaches with high capacity
+    - speeds match railcars
+    - Suburban Coaches use the alternative coach livery to make them visually distinct from Passenger Coaches
+    - the livery can be toggled to match standard Passenger Coaches by depot flip (ctrl-click on the vehicle in depot)
+    -  Suburban Coaches will be hidden in simplified gameplay mode
+- the following railcars now have 'Suburban High Capacity' as role, and have increased capacity
+    - Deasil, Slammer, Tin Rocket, Happy Train
+    - Athena, Geronimo, Breeze, Zeus
+- minor tweaks to narrow gauge passenger vehicle capacities
+- reintroduced Restaurant Cars
+    - adding a Restaurant Car to a train will provide a bonus: eliminates the running cost for all Passenger Coaches in the train
+- reduced running costs of some higher speed passenger vehicles for game balance
+- show the role in buy menu for all types of passenger vehicle
+
+
+*Codechanges*
+
+- removed all code relating to cargo age period, this is now at the default 185 value for all Iron Horse vehicles
+- unified some methods relating to passenger car capacity and loading speed
+- split railbus classes out from railcar classes
+
+
+*Translations*
+- translation updates (thanks translators)
+
+
+-------------
+2.22.0 Release
+-------------
+
+
+*Changes*
+
+- deleted Restaurant Cars
+- deleted Luxury Passenger Coaches
+- removed cargo aging bonus from some wagon types that were using it
+- removed cargo aging malus from Passenger Coaches
+- removed cargo aging malus from Metro trains
+
+
+*Fixes*
+
+- Passenger Coaches running were too high by factor of 3 (purchase menu showed correct value, purchased vehicles used wrong value)
+- door sprites out of place by 1 pixel for gen 6C Driving Van Trailer
+
+
+-------------
+2.21.1 Release
+-------------
+
+
+*Fixes*
+
+- use correct sprites for gen 5 Low-floor Container Wagon (Small)
+
+
+-------------
+2.21.0 Release
+-------------
+
+
+*Changes*
+
+- added Restaurant Cars
+    - adding a Restaurant Car to a train will provide a bonus: improved run costs and payment rates for all Passenger Coaches and Luxury Passenger Coaches in the train
+    - the bonus reduces run costs for those coaches by 70%
+    - the bonus increases cargo aging rate for those coaches by 30%
+    - the bonus is applied once only per train, adding more than one Restaurant Car will have no additional effect
+    - the bonus applies only to Passenger Coaches and Luxury Passenger Coaches, not railcars, high-speed trains, mail vans etc
+    - the bonus can significantly improve profits on some routes, but Restaurant Cars are expensive to buy and run...it's up to you to decide if they're worth it ;)
+- rebalanced Passenger Coach and Luxury Passenger Coach purchase and run costs
+- simplified cargo aging for passenger vehicles
+    - Passenger Coaches are unchanged, with faster carging (roughly every 0.75 days)
+    - Metro trains are unchanged, with very fast cargo aging (roughly every 0.47 days)
+    - all other passenger vehicles now use the same standard value for cargo aging (every 2.5 days), where some previously had slower aging rates
+    - this change simplifies balancing between passenger vehicles (and makes maintenance of the grf easier)
+    - gameplay effect of this change should be negligible in most games
+- renamed Luxury Railcars to Express Railcars
+- minor tweaks to purchase costs of Express Railcars, Express Railcar Trailers and Railcar Trailers
+- improved appearance of Blackthorn and Stentor engines
+
+
+-------------
+2.20.0 Release
+-------------
+
+
+*Changes*
+
+- adjusted electric engine tech tree
+    - moved Stoat to electric freight engine, 1050 hp, available around 1903
+    - added Zest electric freight engine, 1600 hp, available around 1966
+    - moved Pinhorse to earlier generation, 900 hp, available around 1903
+    - added Argus electric general purpose engine, 1250 hp, available around 1936
+    - added Booster electro-diesel general purpose engine, 600 hp diesel power, 1600 hp electric power, available around 1969
+    - added Tornado electro-diesel general purpose engine, 750 hp diesel power, 1900 hp electric power, available around 2002
+    - changed Shoebox to 8/8 length, 950 hp diesel power, 2300 hp electric power, available around 1963
+    - changed Super Shoebox to 8/8 length, 1250 hp diesel power, 2600 hp electric power, available around 1990
+    - changed Ultra Shoebox to 8/8 length, 1650 hp diesel power, 2800 hp electric power, available around 2020
+    - added Hector electric general purpose engine, 4040 hp, available around 2021
+    - added Nimbus electric general purpose engine, 5400 hp, available around 2023
+    - adjusted Screamer power to 4800 hp
+- fixed loading speeds for all vehicles, some were too fast, some were too slow
+- reduced run cost of metro units
+
+
+*Docs*
+
+- added more livery examples for some engines
+
+
+-------------
+2.19.0 Release
+-------------
+
+
+*Changes*
+
+- added 3 Driving Trailers (driving cab cars)
+    - passengers only, as an alternative to the existing Driving Van Trailers which are mail and express freight
+    - attach to front or rear of a train with at least one other engine
+    - for OpenTTD reasons, vehicles must have power to lead a train, so these vehicles include a small amount of power
+    - first available around 1976
+    - multiple liveries, livery shown depends on consist cargo and user choice (depot flip the vehicle)
+    - automatically flips if last vehicle in train
+- added Stentor heavy freight engine, 4050 hp, available around 1993
+- improved appearance of Flanders Storm engine
+
+
+-------------
+2.18.0 Release
+-------------
+
+
+*Changes*
+
+- adjust running costs down (again) for high speed and very high speed trains to try and make them competitive with other trains whilst not being over-powered
+- added cement to refittable cargos for Box Vans, Curtain Side Vans, Sliding Wall Vans and Vehicle Parts Vans
+- use slab cargo sprites for alloy steel and stainless steel
+
+
+*Fixes*
+
+- cargo sprites were incomplete for gen 6A and 6B Rock Hoppers
+
+
+-------------
+2.17.0 Release
+-------------
+
+
+*Changes*
+
+- added alternative intercity-ish livery for Resilient, shown if second company colour is white
+- provided Autocoach with sprites showing open doors when loading/unloading
+- added phosphate to refittable cargos for Covered Hoppers, Grain Hoppers and Pellet Hoppers
+- improved the choice of default cargo for some wagon types, to better support different FIRS economies
+
+
+-------------
+2.16.0 Release
+-------------
+
+
+*Changes*
+
+- adjusted freight engine tech tree
+    - added Quietus electro-diesel, 3250 hp diesel power, 6700 hp electric power
+    - increased Triton power to 7200 hp
+- increased Revolution run cost, to account for high power in electric mode
+- adjusted railcar tech tree
+    - Zeus changed to electric power, not electro-diesel, hyrid power has limited gameplay benefit for the general-purpose passenger railcars
+    - removed Mail Rail, overlapped too much with Pylon on both stats and appearance, not worth the candle
+    - increased Pylon diesel power to 700 hp
+    - added Cargo Sprinter diesel freight railcar
+        - 99 mph, 1650 hp
+        - express cargo refits (mail, food, engineering supplies etc)
+        - for increased capacity add Express Container Wagons, these match Cargo Sprinter speed, and will also match appearance
+        - other wagon types can be added, but might not match appearance or speed
+    - Bright Country luxury railcar adjusted to electro-diesel
+        - 620 hp of diesel power
+        - experimental idea, this may be of limited gameplay benefit
+        - intended use is long routes that are partially electrified, with lightly-trafficked non-electrified sections, but eh, try it out
+- increased capacity for standard Passenger Coaches
+    - significant bump to these, e.g. 12 pax -> 16 pax in early game, 48 pax -> 64 pax in late game
+    - similar increases also applied to railcars, railcar trailers and hst coaches
+    - should aid gameplay with highly-connected cdist networks which tend to require high passenger capacities
+    - Luxury Passenger Coaches unchanged, these match closely to original TTD capacities
+- added Bolster Wagons,
+    - looks like a flat wagon with side stakes
+    - refit to 'long products' and metals industry cargos, e.g. steel, copper, aluminium, pipe, wood etc
+- changed Stake Wagon to Timber Wagon
+    - removed pipe refit, now wood only
+- added Sliding Roof wagons
+    - same refits as Tarpaulin Wagons
+    - cargo visible during loading
+- repainted Tarpaulin Car (again) to use company colour tarpaulin, the previous white/grey version just looked odd
+- added Twin variant of Sliding Wall Vans
+    - these are non-standard 10/8 length
+    - articulated so can't be flipped to change livery
+    - bit of realism eh? :)
+- added Low-floor Container Wagons
+- improved appearance of cargo sprites for logs
+- added slab cargo sprites for carbon steel
+
+
+*Fixes*
+
+- container wagons weren't showing tail lights
+- autocoach was using diesel engine sound effect and colour scheme, now uses steam engine sound effect and colour scheme
+
+
+*Docs*
+
+- freight engine tech tree now shows branches roughly in order of power, instead of Blind Smuir branch being shown after branches containing higher powered engines
+
+
+*Codechanges*
+
+- blacken python code (auto-format)
+- refactored intermodal cargo sprites code to be both simpler and more flexible
+
+
+-------------
+2.15.0 Release
+-------------
+
+
+*Changes*
+
+- added narrow gauge Ingot Carriers
+    - inspired by steel mill ingot buggies, used for casting and transporting ingots
+    - refit to carbon steel, cast iron, pig iron
+    - articulated, can't be flipped
+    - relatively high capacity, slow speed
+- added narrow gauge Coil Buggies
+    - inspired by steel mill coil transport buggies
+    - same refits as Coil Carriers
+    - articulated, can't be flipped
+    - relatively high capacity, slow speed
+- added gen 6 short Container Wagon
+- added narrow gauge Scrap Wagons
+- added narrow gauge Bulkhead Flat Wagons
+- added ammonia to Cryo Tanker refittable cargos
+- set coal as default cargo for Hopper
+- intermodal containers will use random recolour of CC1 to alternate shade
+- added more variety to box container 1CC / 2CC / red combinations
+- improved appearance of gen 4 narrow gauge Tanker
+- improved appearance of cargo sprites for eye-longitudinal coils
+
+
+*Fixes*
+
+- luxury railcar trailers
+    - introduction dates were too early
+    - capacities were too high
+- one angle of roof sprites was too tall for 6/8 vehicles with automated roof sprites
+- fixed errors with gen 4C pax coach pixels
+
+
+*Docs*
+
+- add context to license.pt
+- move license.pt to repo root so it's more easily found
+
+
+-------------
+2.14.0 Release
+-------------
+
+
+*Changes*
+
+- adjusted freight engine tech tree
+    - added Defiant, 3650 hp, follows from Bone
+    - increased Blackthorn power to 3650 hp
+    - reduced Cheddar Valley power to 4050 hp
+    - renamed Endeavour to Highlander, power increased to 4450 hp, follows from Cheddar Valley
+- reduced running costs of high speed and very high speed trains
+- reduced running costs of Onslaught and Relentless
+- adjusted automatic running cost algorithm so that gen 6 engines are not significantly cheaper to run than gen 5, with insignificant changes to all other engine running costs as a side effect
+- added cargo sprites for
+    - aluminium (ingots)
+    - zinc (ingots)
+- added cargo sprites for Tarpaulin Wagons and Covered Coil Carriers (shown when loading / unloading)
+- added flatrack intermodal container sprites for Container Wagons, for certain cargos
+    - aluminium (ingots)
+    - pipe
+    - zinc (ingots)
+- improved appearance of Plate Cars
+- improved placement of certain coil cargo sprites
+
+
+-------------
+2.13.0 Release
+-------------
+
+
+*Changes*
+
+- enable colour randomisation for Torpedo Cars
+- added cargo sprites for
+    - pipe (as used in FIRS Steeltown)
+    - steel wire rod (as used in FIRS v4 Steeltown)
+- reworked tarp-covered cargo sprites, used as sprites for unknown cargo on many wagon types
+
+
+*Fixes*
+
+- removed Coil Carrier and Uncovered Coil Carrier from simplified gameplay mode
+
+
+*Docs*
+
+- fix footer placement on changelog html page
+
+
+-------------
+2.12.0 Release
+-------------
+
+
+*Changes*
+
+- reworked parameters for freight wagon colours and randomisation
+    - added 2 'wagon base colour' parameters - optionally set freight wagons to use fixed colours instead of company colours, even in groups with colour schemes
+    - added 'wagon colour randomisation' parameter, offering 3 options for randomising the colours of freight wagons
+    - these apply to most freight wagons, with some exceptions, for example, brake vans, mail vans and passenger coaches
+- added a new 'Outrageous' option to 'train capacity' parameter, providing 77% increase of default vehicle capacity
+- added descriptions and '(default)' labels to parameters where needed
+- renamed Coil Carrier to Covered Coil Carrier
+- added a new uncovered Coil Carrier type with visible cargo
+- improved sprites for
+    - Covered Coil Carriers
+    - Tarpaulin Wagons
+
+
+*Codechanges*
+
+- fixed rendering of vehicles cargo pipeline when MP pool isn't used
+- refactored some switches so nml can automatically optimise them to constants when appropriate (glx)
+
+
+-------------
+2.11.1 Release
+-------------
+
+
+*Changes*
+
+- default for 'Random Wagon Colour 3' should be company colour 1, not company colour 2
+
+
+-------------
+2.11.0 Release
+-------------
+
+
+*Changes*
+
+- experimental 'Random Wagon Colour' parameters
+    - freight wagons will randomise to 1 of 4 colours when built
+    - players can use the parameters to control these colours
+    - options for specific colours, or company colours 1 and 2
+    - ctrl-click flip the vehicle in depot to always current company colours (non-random)
+    - example 1: set 4 different colours for more variety in trains
+    - example 2: turn off wagon colour randomisation by setting all 4 parameters to the same colour
+    - example 3: use as a workaround where OpenTTD group liveries don't support company colour choices for wagons
+- feature is experimental and may change
+- feature is compatible with Iron Horse 2.8.0+ savegames, but the new parameters may not be visible unless OpenTTD is restarted
+
+
+-------------
+2.10.1 Release
+-------------
+
+
+*Fixes*
+
+- remove experimental company colour handling for wagons, which was accidentally shipped in versions 2.8.0 thru 2.10.0
+    - this is a revert of https://github.com/andythenorth/iron-horse/commit/5b3b0b015ad2bbf48f4e148ce763ac564f5d617c
+
+
+-------------
+2.10.0 Release
+-------------
+
+
+*Changes*
+
+- added Captain Steel branch freight engine, alternative to Little Bear
+    - available around 1960
+    - 75 mph / 1150 hp
+    - inspired by Alco S1, EMD switchers, Brush Bagnall steelworks locos
+
+
+-------------
+2.9.1 Release
+-------------
+
+
+*Translations*
+
+- French translation (Arikover)
+
+
+-------------
+2.9.0 Release
+-------------
+
+
+*Changes*
+
+- added Chuggypig joker engine, as alternative to Gronk
+    - available around 1960
+    - 35 mph / 400 hp
+    - inspired by Thomas Hill Steelman, BR Class 07, miscellaneous industrial diesel shunters
+- added Autocoach Set
+    - available around 1915
+    - attach to front or rear of a train with at least one other engine
+    - for OpenTTD reasons, vehicles must have power to lead a train, so these vehicles include a small amount of power
+    - 75 mph, combined pax and mail capacity (not refittable)
+    - inspired by SR and LMS auto-coach sets, LNER articulated coach sets
+- increase Lemon speed to 75 mph, so it can stick around for longer in steam-diesel transition period, similar to Diablo and Blind Smuir
+- link to grf.farm docs from in-game
+
+
+*Fixes*
+
+- Chinook run cost was too high
+- incorrect pixels for some liveries for gen 4B mail car
+
+
+*Docs*
+
+- link to grf.farm docs from readme
+- adjust Gronk description
+- change the majority of headings in html docs from title case to sentence case
+
+
+-------------
+2.8.0 Release
+-------------
+
+
+"We were in the jungle, there were too many of us, we had access to too much money, too much equipment, and little by little we went insane" - Francis Ford Coppola
+
+Not savegame compatible with previous Iron Horse releases.
+
+
+*New and Re-Balanced Engines*
+
+- the engine tech tree has been re-worked
+    - many engines now have one or more equivalent alternates
+        - this is primarily an eye-candy feature, the gameplay difference between alternates is negligible
+        - the new parameter option for simplified gameplay mode will hide the alternates
+    - more engines are available in early game, making early game more interesting
+    - more engines (and more varied engines) are available in late game, which was previously bland
+    - some engines have longer lifespan, and can be used across several generations, particularly express engines moving to a freight role in later years
+    - some gaps in power ranges are filled, especially for electric engines in later game
+- new or significantly changed engines
+    - Avenger, inspired by BR Class 89
+    - Blind Smuir, inspired by LMS Class 5 Black Five, BR Standard 5 Class
+    - Bone, inspired by BR Class 58
+    - Buffalo, inspired by LNWR Webb Coal Tank
+    - Diablo, inspired by LMS Hughes Crab, BR Standard Class 4 2-6-0
+    - Endeavour, inspired by EMD / Progress Rail JT42CWR (Class 66)
+    - Esk, inspired by LMS Garratt
+    - Evolution, inspired by BR Class 47, Brush Class 57, original TTD UU '47'
+    - Goliath, inspired by YEC Janus, Corus Trojan, Corus Hunslet Bo-bo
+    - Intrepid, inspired by BR Class 35 Hymek, Brush Falcon prototype and BRCW Lion prototype
+    - Lamia, inspired by Bagnall saddle tanks
+    - Magnum 70, inspired by Clayton CB40/CBD80/CBD90
+    - Merlion, inspired by BR Class 31
+    - Resilient, inspired by BR Class 47, Brush Class 57, original TTD UU '47'
+    - Shredder, inspired by EMD JT42HW-HS (Class 67)
+    - Streamer, inspired by LNER V2, LNER streamlined B17/A4/P2
+    - Swift, inspired GNR Class C1, Class C2 Klondike
+    - Thunderer, inspired by GWR 2900 Saint Class, GWR 4000 Star Class
+    - Toaster, inspired by GE Class 70 Powerhaul
+    - Vigilant, inspired by GCR Class 8K / ROD 2-8-0, GWR 2800 Class
+    - Viking, inspired by MaK / Vossloh G1206/G1700), Corus Di8, Eurotunnel Class 0001 (Class 21)
+    - Vulcan, inspired by English Electric DP2 prototype
+    - Zebedee, inspired by BR Class 87, Class 86
+- engines with minor changes for balance with the revised tech tree
+    - Blackthorn, Blaze, Carrack, Cheddar Valley, Fury, Girt Licker, Grub, Phoenix, Revolution, Roarer, Scorcher, Screamer, Strongbow, Super Shoebox, Tencendur, Ultra Shoebox
+- renamed
+    - Gwynt is renamed to Hercules
+- removed
+    - Hercules branch freight diesel engine (Hercules name re-used for freight steam engine)
+
+
+*Changes*
+
+- alternative liveries for some company colour combinations
+    - more information in html docs https://grf.farm/
+- increased gen 5 freight speed to 87 mph
+- cap gen 6 freight speed to same 87 mph, as the forced gen 5->6 transition is low yield for gameplay interest, and should be optional
+    - this also means that some gen 5 engines remain relevant for gen 6;
+    - increased gen 6 wagon capacity and reduced tare weight to reward upgrading if players want to take the option
+- increased gen 6 railcar speeds to 99 mph
+- extended model life for Gronk! type engines
+- added a trailer car for High Flyer luxury railcar
+- significantly increased power for all luxury railcars, so they function better with trailers
+- gen 6 Torpedo Car isn't required, stop at gen 5
+- renamed 'Vehicle Parts Box Car' to 'Vehicle Parts Van'
+- adjusted gen 2A hopper sprite to look older
+- use 2CC for high-side dump cars to create contrast with standard dump cars in buy menu
+- improve Growler roof appearance
+- improved Slug and Phoenix sprites
+- tweaks to Dragon sprites
+- added nameplate to Moor Gallop sprite
+- tweak Onslaught engine room window positions
+- tweak to Roarer sprite
+- moved Sunshine Coast pans to front of unit
+- Helm Wind looks better with reversed pantograph
+
+
+*Docs*
+
+- added Train Whack pointless mini-game
+- much improved vehicle details page
+- improved ordering of role branches in Tech Tree
+- set titles for docs html pages
+- added anchor links (element ids) to vehicle details headings for deep linking
+- improved Tech Tree vehicle box border contrast
+- added space between value and unit suffixes (hp, mph etc)
+
+
+*Codechanges*
+
+- refactored spritelayer_cargo templating
+- refactored handling of vehicle role and role child branch
+- use the generated vehicle image (with caution) in pantograph debug image, not the raw input image, as it contains the rendered roof and chassis, so is a better debug image (can also then be used in docs)
+- re-implemented docs image randomiser using json, with nested engines / wagons
+
+
+-------------
+2.7.0 Release
+-------------
+
+
+*Changes*
+
+- added Vehicle Parts Vans
+    - same refits as Box Vans
+    - intended particularly for use with FIRS Steeltown
+- added Bulkhead Flat Wagons
+    - same refits as Flat Wagons, different appearance
+    - intended particularly for metals cargos
+- adjusted appearance of Flat Wagons
+- improved appearance of coil and log cargo sprites
+- slightly increased power for Growler, Slug and Phoenix diesel engines
+
+
+*Fixes*
+
+- corrected shading on narrow gauge Tankers
+
+
+-------------
+2.6.0 Release
+-------------
+
+
+*Changes*
+
+- added generation 2 Mineral Wagon
+- added generation 3 large Passenger Coach
+- added unpowered Railcar Passenger Trailers and Railcar Luxury Trailers
+    - these will combine with either railcars or luxury railcars of the same generation, as appropriate
+- reduced railcar running costs which had been power-crept by cost reductions in other vehicles, leaving railcars uncompetitive on target routes
+- renamed 'Coil Car' to 'Coil Carrier'
+- added support for FIRS steel sheet cargo
+- tweaks to railcar chassis sprites
+
+
+*Fixes*
+
+- use correct pantograph for High Flyer
+- electric railcars generally had weights too high; should be lower than equivalent diesel railcar in most cases
+- don't show brake car sprites for passenger coaches when the neighbouring vehicle is also a passenger car even if a different type
+- removed spurious door light pixels in generation 4 Passenger Coach (Medium)
+
+
+*Docs*
+
+- re-implemented vehicle images in global header
+- note that translations page is outdated
+- improvements to trains page
+- provided page per vehicle giving more details about the vehicle (experimental feature)
+
+
+*Translations*
+
+- removed doubled parens in en-us translation (desmondgc)
+
+
+-------------
+2.5.0 Release
+-------------
+
+
+*Changes*
+
+- reduced Hurly Burly electric engine run costs for balance with same-era steam engines
+- added a gen 2 Cryo Tanker, available around 1900
+- adjusted intro date for gen 2 Hopper and Product Tanker, now available around 1890
+
+
+-------------
+2.4.0 Release
+-------------
+
+
+Not savegame compatible with previous Iron Horse releases.
+
+
+*New and Changed Engines*
+
+- reworked medium-power general/purpose express engines
+    - reduced running costs on these to make them genuinely viable for general freight as well as express trains
+    - provided more generations of these engines as they're very useful for trains around 5-6 tiles long
+    - renamed 4-6-0 Upcountry to 4-6-0 Thunderer
+    - added 4-6-0 Strongbow express / general purpose steam engine
+        - inspired by Jubilee / Royal Scot, as featured in original TTD
+        - available around 1930
+    - added Vanguard express / general purpose diesel engine
+        - inspired by the never-built British Rail class 38, a medium-power engine using a class 60 bodyshell
+        - available around 1992
+    - removed Thunderbird
+    - Revolution bi-mode engine adjusted to better fit medium-power general purpose/express role
+        - in diesel mode, Revolution follows Vanguard
+        - in electric mode, power is increased, Revolution follows Fury
+- reworked high-power general purpose express engines
+    - added Onslaught diesel engine, follows Dragon
+        - inspired by British Rail class 50 and the never-built 'Super Deltic'
+        - available around 1982
+    - added Relentless diesel engine, follows Onslaught
+        - inspired by Vossloh and similar European diesel engines
+    - Screamer and Sizzler electric engine power reduced for game balance
+- electric heavy freight engine changes
+    - renamed Gosling Blast to Triton
+    - repainted Triton to be boxy, too many cheese-slope electric locomotives
+    - reduced power of Flanders Storm and Triton for game balance
+- diesel heavy freight engine changes
+    - renamed Chimera to Endeavour
+    - repainted Endeavour, I didn't like the class 70-ish sprite, it's now class 66-ish (livery inspired by Freightliner)
+    - reduced power of Cheddar Valley and Endeavour for game balance
+- added luxury passenger railcars
+    - these run at express train speeds, and have more power but lower capacity than standard railcars
+    - High Flyer (available around 1930)
+    - Sunshine Coast (available around 1960)
+    - Olympic (available around 1990)
+    - Bright Country (available around 2020)
+    - electric railcar power adjusted to balance with the new luxury railcars
+- added Firebird high speed train
+    - inspired by UK Blue Pullman train, but featuring Deltic-type power and speed
+    - available around 1960
+- increased power of Driving Cab Cars a little, as it's of benefit for diesel express trains
+- most steam engines redrawn for improved appearance
+- changed livery for
+    - Fury (inspired by UK Freightliner livery)
+    - Revolution (freestyle livery matching generation 6 driving carb car)
+    - Tencendur (to provide variety in steam engines)
+- tweaks to sprites for
+    - Athena
+    - Blaze
+    - Blackthorn
+    - Dover
+    - Dragon
+    - Flanders Storm
+    - Geronimo
+    - Grid
+    - Happy Train
+    - Jupiter
+    - Plastic Postbox
+    - Scooby
+    - Scorcher
+    - Sizzler
+    - Slammer
+    - Zeus
+- rebalanced power and weight for many engines
+    - based on a ratio derived from power, weight and maximum speed
+    - relative performance differences across multiple generations for each engine role are now more deliberately designed
+
+
+*New and Changed Wagons*
+
+- added 7 Carbon Black Hoppers
+    - dedicated to carbon black cargo (found in FIRS v4 Steeltown economy)
+- added 5 Torpedo Wagons
+    - dedicated to pig iron cargo (found in FIRS v4 Steeltown economy)
+- added 3 Slag Ladle Wagons
+    - 2 standard gauge, 1 narrow gauge
+    - dedicated to slag cargo (found in FIRS v4 Steeltown economy)
+    - limited to 35 mph due to carrying red-hot molten slag in open top ladles
+- adjusted some wagon types that had an alternative hand-drawn livery using ctrl-click in depot
+    - for most wagon types ctrl-click in depot now only toggles 1st / 2nd company colour
+    - some wagon types have been split or combined
+- hopper-type wagons adjusted to
+    - Hopper (grey)
+    - Rock Hopper (company colour)
+    - Ore Hopper (brown)
+- mineral-type wagons adjusted to
+    - Mineral Wagon (company colour)
+    - High Side Mineral Wagon (company colour)
+    - Scrap Wagon (black)
+- covered-hopper type wagons adjusted to
+    - Covered Hopper (brown)
+    - Grain Hopper (company color + grey)
+    - Pellet Hopper (grey)
+- silo type wagons adjusted to
+    - Silo Wagon (company colour)
+    - Cement Silo Wagon (dirty grey colour)
+- removed Chemicals Tanker in favour of Product Tanker
+    - same refits as Tanker
+    - shiny appearance
+- removed some generation 6 short wagons, not needed
+- improved appearance for
+    - Tarpaulin Cars
+    - generation 6 Passenger Coaches (all types)
+- use mail as default cargo for Express Vans, not engineering supplies, avoids confusion when adding Express Vans to mail trains
+
+
+*Changes*
+
+- play-testing showed that running costs were too high in many cases
+    - running costs reduced for many trains
+    - should generally aid profitability, too little profit is a bigger gameplay evil than too much profit
+    - notably routes involving transfers should be more profitable
+- minor reduction of speeds of railcars / freight vehicles in later game
+    - 84 mph for generation 5 (around 1990), previously 87 mph
+    - 93 mph generation 6 (around 2020), previously 96 mph
+- increased spacing of buffer pixels in - views
+- added description text for Jokers parameter
+- use 3-unit sets for some electric mail railcars (previously 2-unit sets)
+
+
+*Fixes*
+
+- haulage speed bonus calculation was broken, causing electric railcar default speed to be too high
+- HST coaches were too heavy
+- adjusted HST coach buy cost to be about same as luxury passenger coach
+- removed alternative company livery option that was added for certain wagon types in 2.3, on reflection it was a flawed idea
+
+
+*Docs*
+
+- show hp/speed ratio in docs, as a guide to relative performance of engines
+- option for tech tree table in 1CC (blue) or 2CC (red & white)
+- show both power ratings for bi-mode engines in tech-tree table
+- show 'replaced by' info in tech tree table
+- add anchor links to sections on code reference page
+
+
+*Codechanges*
+
+- local refactoring including removal of unused legacy vars and simplifying of templates
+- Makefile fixes
+    - some shells expanded the roster asterisk in the Makefile, use ALL instead
+    - NML needs the graphics sources at least on first run, so add them as order-only dependencies
+    - don't use directories as dependencies in Makefiles
+- compile optimisation for speed and filesize
+    - save 5k realsprites by setting purchase sprites to [] when no realsprites is needed
+    - set additional grfcodec container and compression options in makefile
+    - forcibly suppress animated pixel warnings
+    - remove around ~7k duplicated realsprites by only providing 4 realsprites for some symmetrical 8/8 vehicles
+    - use stored procedures in multiple places, significantly reducing NML switch counts
+    - use global switches for tail-lights, not per vehicle, significantly reducing NML switch counts
+
+
+*Lang*
+
+- removed some outdated/unused lang strings
+
+
+-------------
+2.3.0 Release
+-------------
+
+
+*Features*
+
+- added 9 Silo Wagons
+    - multiple liveries, livery shown depends on vehicle cargo and/or user choice (depot flip the vehicle to toggle cargo livery / solid company colour)
+- added alternative solid company livery (toggle by depot-flipping the vehicle) for the following vehicle types:
+    - Chemicals Tankers
+    - Cryo Tankers
+    - Edibles Tankers
+    - Tankers
+- improved Covered Hopper appearance, including some cargo-specific liveries and tweaks to pixels
+- added opening doors to Livestock Wagons
+- adjusted which default cargo will be set for some vehicles (depends on which cargos are available in game)
+
+
+---------------------
+2.2.0 - 2.2.1 Release
+---------------------
+
+
+Not savegame compatible with previous versions of Iron Horse.
+
+The wrong version of 2.2.0 was released to bananas, so 2.2.1 replaces that.
+
+
+*Features*
+
+- added 2 Driving Van Trailers (driving cab cars)
+    - attach to front or rear of a train with at least one other engine
+    - for OpenTTD reasons, vehicles must have power to lead a train, so these vehicles include a small amount of power
+    - refittable to mail and express freight cargos
+    - first available around 1990
+    - multiple liveries, livery shown depends on consist cargo and user choice (depot flip the vehicle)
+    - automatically flips if last vehicle in train
+- added 3 Joker vehicles with limited gameplay benefit
+    - Grub small steam engine (1860), 35 mph, 250 hp
+    - Gronk small diesel engine (1951), 35 mph, 400 hp
+    - Snowplough (1900)
+        - has a small amount of power set so it can lead a train
+        - can transport a small amount of mail or express freight cargos
+        - automatically flips if last vehicle in train
+- added parameter to disable Joker vehicles (enabled by default)
+- added narrow gauge mineral wagon for gen 2 (around 1905)
+- improved appearance of steam engines, diesel shunters, some electric engines by reducing contrast of pixels in the wheel area
+
+
+*Fixes*
+
+- Zeus railcar had incorrect electric power value when built (buy menu showed correct value)
+- Scooby and Dover railcars had incorrect sprites for 2 angles
+
+
+*Docs*
+
+- added experimental tech tree page, showing engine progression
+
+
+*Codechanges*
+
+- ported version / revision info from hg to git
+- rewrote parts of compile for compatibility with python 3.8
+- rewrote parts of compile for speed
+- using combination of python 3.8 and pypy interpreters, compile speed reduced by 40% in local tests
+
+
+-------------
+2.1.1 Release
+-------------
+
+
+*Fixes*
+
+- medium container wagon sprites were misaligned in \ angle
+- mail railcars had reversed sprites for some angles
+
+
+*Translations*
+
+- some languages updated
+- translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
+
+
+-------------
+2.1.0 Release
+-------------
+
+
+*Container Wagons*
+
+- added Container Wagons in small, medium and large sizes
+- added Express Container Wagons (high speed, low capacity) in medium and large sizes
+- narrow gauge Container Wagon
+- first available around 1960
+- around 300 different container sprites and colour combinations, chosen automatically depending on cargo from
+	- box containers
+	- curtain side containers
+	- bulk cargo containers
+	- tanktainers
+	- chemicals tanktainers
+	- cryogenic tanktainers
+	- edible cargos tanktainers
+	- refrigerated containers
+	- livestock containers
+	- flatracks with wood
+- container sprites may randomise when wagon reloads
+- use depot-flip to show alternate livery for container wagons
+- container wagons automatically combine into articulated sets when built
+
+
+*Other Features*
+
+- introduce first Tanker in generation 1 (1860) not gen 2 (1900)
+- add large generation 4 Fruit & Vegetables Van
+- add large generation 4 Refrigerated Van
+- added narrow gauge Hoppers
+- add High Side Mineral Wagons, split from Mineral Wagons
+- improved selection of default cargos for some wagon types
+
+
+*Fixes*
+
+- tweaks to fix minor errors in multiple sprites
+- force intro dates for generation 1 trains to all be identical, avoiding situation where engines are missing wagons or vice versa around 1860
+
+
+*Docs*
+
+- show vehicle sprites in code reference page
+- better formatting of role string in trains page
+
+
+*Translations*
+
+- some languages updated
+- translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
+
+
+-------------
+2.0.0 Release
+-------------
+
+
+"Whoa Runaway horses...Racing through the darkness....Runaway Horses." - Belinda Carlisle
+
+2 years in the making, Iron Horse 2 is an end-to-end rework of Iron Horse.
+
+Same focus on gameplay.
+
+Greatly expanded set of vehicles, strongly inspired by British trains.
+
+All sprites redrawn.
+
+Dive in and play.
+
+
+*Recommended OpenTTD settings*
+
+- 'Vehicles never expire: Off'
+- 'Weight multiplier for freight to simulate heavy trains: 1'
+- 'Enable wagon speed limits: On'
+- these settings are recommended, but not required
+
+
+*Improved Tech Tree*
+
+- 6 distinct generations of vehicles
+- first trains introduced around 1860
+- last new trains introduced around 2022
+- engines now have clear roles, displayed in buy menu
+    - freight
+    - general purpose / express
+    - high speed / very high speed
+    - high capacity urban
+- engine roles depend on OpenTTD setting 'Enable wagon speed limits: On'
+    - without this setting Iron Horse 2 works fine, but some freight engines will overlap general purpose / express engines
+- greatly expanded range of vehicles
+- some Iron Horse 1 vehicles have been kept, with new stats and sprites, all other vehicles are new
+- all stats rebalanced, including speeds, power and costs
+- 357 trains in total, Iron Horse 2 is designed to be used with OpenTTD setting 'Vehicles never expire: Off'
+
+
+*Engines*
+
+- added wider range of low-power, medium-power and high-power engines
+    - Iron Horse 1 had gaps where there wasn't really an appropriate engine for some routes
+    - medium-power engines were especially lacking in Iron Horse 1 after 1935
+-  electric engine roster expanded to 16
+    - 12 electric
+    - 4 electro-diesel (bi-mode)
+    - first electric engine available around 1905
+    - Iron Horse 1 included only 4 electric engines
+
+
+*Railcars*
+
+- expanded railcars to 20
+    - 16 standard gauge and 4 narrow gauge
+    - Iron Horse 1 included only 3 railcars
+- dedicated variants for
+    - passengers
+    - mail/express freight
+    - Iron Horse 1 relied on refitting passenger railcars to handle mail/express freight, which was faff, and can't be used reliably with auto-refit in stations
+- added electric and electro-diesel railcars
+- first railcars now available around 1925
+- railcar appearance will automatically adapt to consist, creating single cars, or multiple-unit trains
+
+
+*High Speed / Very High Speed Trains*
+
+- added dedicated high speed and very high speed trains
+- fastest train in Iron Horse 2 is 186 mph (Brenner, available around 2018)
+    - 155 mph Screamer from Iron Horse 1 is removed, these trains replace it
+- maximum speed will only be available with dedicated passenger coaches
+- first high speed train available around 1980
+- first very high speed train available around 1987
+- very high speed trains include
+    - distributed power: all coaches are powered
+    - tilt bonus for faster speed through curves
+
+
+*Wagons and Coaches*
+
+- added wider range of wagons and coaches
+    - Luxury Passenger Coach
+    - Express Van
+    - Curtain Side Van
+    - Sliding Wall Van
+    - Tarpaulin Wagon
+    - Coil Car
+    - Plate Wagon
+    - Stake Wagon
+    - Coal Hopper
+    - Mineral Wagon
+    - Chemicals Tanker
+    - Cryo Tanker
+    - Grain Hopper
+    - Fruit & Vegetables Van
+    - multiple lengths for wagons and coaches, increasing visual variety
+- some Iron Horse 1 wagons are missing from Iron Horse 2, but will be restored in future when sprites are finished
+    - Intermodal Flat Car
+    - Metal Car (torpedo wagon)
+    - Supplies Car
+    - Vehicle Transporter Car
+- Combine Car is removed permanently, as it cannot work with OpenTTD autoreplace
+- passenger coach and mail van appearance automatically adapts to consist
+    - alternative liveries depending on attached engine
+    - sprite variants such as brake coaches, restaurant cars, post office vans as appropriate
+
+
+*Narrow Gauge Trains*
+
+- simpler but more useful narrow gauge engine roster
+- expanded narrow gauge railcars, first available around 1950
+- expanded narrow gauge wagon and coach types
+- narrow gauge engines and railcars are somewhat 'inspired by' French and Corsican trains, as British and Irish narrow gauge is more limited
+
+
+*Metro Trains*
+
+- sprites redrawn
+- minor stats adjustments
+
+
+*Improved Visual Appearance*
+
+- reworked all sprites
+- added multiple livery options for many vehicles (random, or when vehicle is flipped in depot)
+- all vehicle lengths now 4/8, 6/8, 8/8, 10/8, or 12/8
+    - easy to make exact tile-length trains if desired
+- depot flip enabled for many vehicles (was disabled in Iron Horse 1 as a side effect of how vehicles were coded)
+- more accurately positioned visual effects
+- rear lights on consists
+- electric vehicle pantographs are raised on electric rails, otherwise lowered
+- doors open on many vehicles when loading/unloading
+
+
+*Cargos*
+
+- updated cargo support for FIRS
+- improved assignment of default cargos for wagons (noticeable when using different climates, industry newgrfs etc)
+
+
+*Docs*
+
+- improved display of trains
+- better navigation
+- added a basic gameplay guide
+
+*Translations*
+
+
+- default translations now appropriate to British English (previously used US English)
+- multiple languages updated
+
+
+*Codechanges*
+
+- reworked Makefile and general approach to compiling
+- improved compile speed, including very fast compiles if only sprites are changed
+- removed the requirement that all vehicles are articulated (was used to support vehicles with sprites longer than 8/8)
+- reworked graphics generation
+    - automated buy menu sprites
+    - automated cargo sprites
+    - automated chassis and roofs
+    - automated pantographs
+- added shared library of cargo sprites, cargo refits etc with Road Hog and Unsinkable Sam
+- refactored classes and templates
+- simplified vehicle definitions, removing boilerplate and redundancy
+
+
+*Known issues for 2.0.0 release*
+
+- there may be a period during 1860s when engines are available, but no suitable wagons (or wagons but no suitable engines), this is due to randomised vehicle introduction dates and will be fixed in future
+- loading speeds are unbalanced, and some vehicle types may load too slowly or too quickly, this will be fixed in future
+- electric and electro-diesel engines might behave incorrectly on electric railtypes where the label isn't 'ELRL', this may be fixed in future
+- Iron Horse 2 grf and docs are not published on #openttdcoop bundles server, this may be fixed in future
+- Brenner cab doors do not open when loading, this will not be fixed
+
+
+-------------
+1.9.1 Release
+-------------
+
+
+*Fixes*
+
+- weight was too high for Slammer and Tin Rocket, now reduced
+- Tin Rocket HP reduced in line with reduced weight
+
+
+-------------
+1.9.0 Release
+-------------
+
+
+*Features*
+
+- rename the 'Brit' roster to 'Iron Pony'
+- added 'Longwater', 'Tyburn' and 'Tidewater' metro freight units
+- removed 'Mole' metro locomotive and metro freight car
+- covered hoppers now refit to sand cargo
+
+
+*Fixes*
+
+- correct offsets for some vehicles at 4/8 and 6/8 lengths
+- some sprites out of place for passenger metros
+
+
+*Codechanges*
+
+- removed incremental compile support
+- sped up the compile in a few places
+- support for compiling a single roster using a compile-time parameter
+- random sprites now use random bits from lead unit of articulated-consist, not per-unit, allowing the whole vehicle to use the same randomly chosen set of sprites
+
+
+*Language Updates*
+
+- translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
+
+
+-------------
+1.8.0 Release
+-------------
+
+
+Not savegame compatible with previous versions of Iron Horse.
+
+
+*Features*
+
+- add Aberdare 2-6-0 freight engine
+- rebalanced power of early freight engines (previously for many routes it made more sense to use the equivalent express engine, as it had more power)
+- re-balanced Cargo Sprinter for express freight
+    - lower power, but with very low costs
+    - with no wagons attached, Cargo Sprinter will reach top speed quickly
+    - 1 or 2 wagons can be hauled per Cargo Sprinter, but acceleration will be slower
+    - add as many Cargo Sprinters to the consist as you need, they're affordable
+- add vehicle transporter car (no cargo graphics yet)
+- covered hoppers now refit to rubber cargo
+- refit support for FIRS Cassava, Edible Oil, Nuts and Vehicles cargos
+- refit and cargo graphics for FIRS Phosphate
+
+
+*Fixes*
+
+- improved offsets for vehicles longer than 8/8
+- Cargo Sprinter refits didn't match intermodal cars
+
+
+*Language Updates*
+
+- many languages
+- translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
+
+
+-------------
+1.7.0 Release
+-------------
+
+
+*Features*
+
+- scrap metal cargo graphics for hopper and open cars
+- tank cars show different livery depending on cargo refit
+
+
+*Fixes*
+
+- all vehicles were 1px out of position for North-facing \ and / views
+- Cargo Sprinter sprites were broken in multiple ways
+- Cargo Sprinter weight and vehicle length were wrong
+- Little Bear, some sprites were 1px out of position
+- narrow gauge mail car, some sprites were out of position and/or too high
+- bad purple pixels in Tin Rocket and narrow gauge open car
+- tweaks to Slammer \ and / views
+- covered hopper car was out of position
+
+
+-------------
+1.6.1 Release
+-------------
+
+
+*Fixes*
+
+- Big Bertha tractive effort was a little too low
+- 2nd generation reefer car sprites were out of position
+
+
+*Language Updates*
+
+- dutch
+- translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
+
+
+-------------
+1.6.0 Release
+-------------
+
+
+*New Features / Changes*
+
+- metal cars (3 generations)
+- caboose car for narrow gauge
+- '0-8-0 Collier' is now '0-10-0 Big Bertha' with even more TE (it was already high, now it's insanely high)
+- refit support for FIRS Beans and Nitrates cargos
+- all tank engines now have randomised forward/reversed sprites (random when built in depot)
+- improved sprite shading for some box cars and flat cars
+- improved sprites for some metro trains / wagons
+
+
+*Fixes*
+
+- box cars now have capacity > 0 when refitted to mail
+
+
+*Language Updates*
+
+- multiple languages
+- translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
+
+
+*Codechanges*
+
+- compile now uses python 3 not python 2
+- compile now requires nml 0.4.0 or newer
+- refactored compile scripts, keeping pyflakes happy, and not relying on weird magic related to python imports
+
+
+-------------
+1.5.0 Release
+-------------
+
+
+*New Features / Changes*
+
+- balanced loading speeds for all vehicles
+- tank, hopper, covered hopper and intermodal cars load twice as fast as other types
+- metro trains load twice as fast as other passenger trains
+- clay cargo sprites for open and hopper cars
+- more cargo sprites for supplies cars
+- more cargo sprites for narrow gauge flat cars (timber, lumber, metal, tarpaulins)
+- most text now translatable
+
+
+*Language Updates*
+
+- af_ZA (telanus)
+- ca_ES (juanjo)
+- de_DE (planetmaker)
+- en_US (Supercheese)
+- es_ES (SilverSurferZzZ)
+- fr_FR (arikover)
+- hr_HR (Voyager1)
+- la_VA (Supercheese)
+- nl_NL (Alberth)
+
+
+-------------
+1.4.0 Release
+-------------
+
+
+*New Features / Changes*
+
+- added supplies cars (two generations); refit engineering supplies, farm supplies, building materials
+- added a 3rd generation open car (large and fast, available late 1990s)
+- added a 2nd generation covered hopper car (1950s)
+- introduce 2nd generation tank wagon earlier for game balance
+- introduce 1st & 2nd generation hoppers earlier for game balance
+- flat wagons use metal as default cargo
+- more pleasing buy menu order for wagons
+- improve appearance of Cargo Sprinter when loaded
+
+
+*Fixes*
+
+- a few wagons had excessive weights
+- 2nd generation open car missing cargo sprite for | direction
+- passenger car capacity was 0 when refitted to tourists cargo
+- stop mail cars refitting to tourists cargo
+
+
+-------------
+1.3.1 Release
+-------------
+
+
+*Fixes*
+
+- stop box cars and open cars refitting to tourists cargo
+
+
+-------------
+1.3.0 Release
+-------------
+
+
+*New Features / Changes*
+
+- added a narrow gauge mail car, bored of refitting box cars to mail
+- fast (2nd generation) open, flat and box cars were introduced too early, unbalanced the game
+
+
+*Fixes*
+
+- reefers weren't refitting refrigerated class (oops)
+- dibble pax car loading speeds so later generations don't load slower than earlier
+- gen 3 brit flat car loads out of place by one pixel
+
+
+*Language Updates*
+
+- de_DE (planetmaker)
+- fr_FR (arikover)
+- la_VA (Supercheese)
+
+
+-------------
+1.2.1 Release
+-------------
+
+
+*New Features / Changes*
+
+- generation 3 flat car
+- introduce generation 1 edibles tanker earlier
+- loading sprites for Tin Rocket when refitted to freight cargos
+
+
+*Fixes*
+
+- url to tt-forums thread was wrong in docs
+- bad spritesheet for gen 2 flat car
+- partial load state added for supply cargos for gen 2 brit flat car
+
+
+*Codechanges*
+
+- compiler defaults to multiprocessing *off* instead of *on*, to avoid DoS-ing people's systems
+
+
+-------------
+1.1.1 Release
+-------------
+
+
+*New Features / Changes*
+
+- shuffled order of some wagons in buy menu
+- box cars and reefer cars show progress while loading (open doors empty, open doors with crates loaded)
+- improved online docs http://bundles.openttdcoop.org/iron-horse/releases/LATEST/docs/
+
+
+*Fixes*
+
+- engines no longer show as having passenger capacity (when filtering by cargo in buy menu)
+- narrow gauge wagons now available in 1860, same as first narrow gauge engine
+
+
+-------------
+1.1.0 Release
+-------------
+
+
+*New Features / Changes*
+
+- new sprites for Walker narrow gauge diesel
+- removed Planet narrow gauge diesel
+- adjusted narrow gauge vehicle stats for game balance
+- flat cars no longer refit to express cargos, use open, box or mail cars instead
+- edibles tank cars no longer refit rubber (yum yum chewy rubber)
+- bumped minimum compatible version to avoid breaking savegames
+
+
+-------------
+1.0.0 Release
+-------------
+
+
+*New Features / Changes*
+
+- improved sprites for Mole Metro loco and metro car
+- it's 1.0.0...
+
+
+-------------------
+Release Candidate 6
+-------------------
+
+
+*New Features / Changes*
+
+- randomly chosen 1st or 2nd company colour for hopper cars
+- open wagons load state graphics for default and bulk cargos
+- close mail car doors when 100% loaded
+- increase Double Juice diesel power (a lot) and electric power (a bit) for game balance
+- introduce Gridiron 5 years earlier for game balance
+
+
+*Fixes*
+
+- Northock 2-8-2 not 4-8-2
+- correct smoke position for engines with random graphics variations (reversed tank engines)
+- wagons and cargo sprinters now use loaded graphics in depot if they are loaded
+
+
+*Code Changes
+
+- removed a bunch of strings relating to buy menu extra text
+- decided we'll never show buy menu extra text, sign of BAD FEATURES; read the docs instead
+- made it easier to support tanktainer on cargo sprinter, and opening doors on box and reefer cars
+- cleaned up some other nonsense around visual effects and power
+- extended the Pixa pipeline for cargo recolouring to also handle 1cc/2cc swap
+
+
+-------------------
+Release Candidate 5
+-------------------
+
+
+*New Features / Changes*
+
+- rejig tank cars
+    - add two edibles tank cars, for food-type cargos (water, milk, alcohol etc)
+    - edibles tank cars have high speed limits, and cargo-aging bonus
+    - remove one standard tank car
+    - adjust speeds and intro dates for tank cars
+    - tank cars no longer refit to food-type cargos, use edibles tank car instead
+- introduce first-generation reefer car later, and make it faster (game balance)
+- change order of wagons in buy menu (puts the most widely-refittable wagons first)
+- randomly chosen 1st or 2nd company colour for:
+    - edibles tank cars
+    - tank cars
+    - flat cars
+    - covered hopper cars
+- narrow gauge tank car is now black not company colour
+
+
+*Fixes*
+
+- avoid refitting hoppers to fruit (fruit cargo often has bulk class for historical reasons)
+- allow refitting box cars to refit fruit (same issue with bulk class on fruit)
+- don't refit flat wagons to food, the birds will eat it
+
+
+-------------------
+Release Candidate 4
+-------------------
+
+
+*New Features / Changes*
+
+- new sprites for third generation hopper car
+- randomly chosen 1st or 2nd company colour for
+    - box cars
+    - open cars
+    - reefer cars
+- covered hopper cars can now refit to Building Materials cargo
+
+
+-------------------
+Release Candidate 3
+-------------------
+
+
+*Fixes*
+
+- Ramsbottom tender misaligned in \ view
+- smoke correctly positioned for most vehicles
+- Double Juice shows electric sparks or diesel smoke, depending on power type
+
+
+-------------------
+Release Candidate 2
+-------------------
+
+*Fixes*
+
+- Cargo Sprinter wasn't refitting at stations correctly
+- purple pixels on 2nd generation hopper car
+- many vehicles had loading speeds which were too high
+
+
+-------------------
+Release Candidate 1
+-------------------
+
+
+*New Features / Changes*
+
+- set buy and run costs for all wagons
+- sprites for generation 3 hopper car
+- use company colours on generation 3 box car
+- separate speed limit for narrow gauge wagons
+
+
+*Language Updates*
+
+- Afrikaans (Telanus)
+
+
+-------
+Alpha 6
+-------
+
+
+*New Features / Changes*
+
+- Chaplin tank randomised reversed sprites
+- adjust vehicle name to Mail Car (Metro)
+- multiple tweaks to vehicle stats for game balance (too many to list)
+
+
+*Fixes*
+
+- some pax coaches using wrong sprite template
+- Hudswell length should be 7/8
+- Donegal should be 7/8 long
+- Walker has 6/8 length
+- bad spritesheet for some views of Little Bear
+- Lemon tender wrong position in \ view
+- set refittable pax on Combine cars (closes #6931)
+- Cyclops sprites out of place (closes #6893)
+- set default cargo correctly on lead slice of articulated consist (closes #6894)
+- apparent fix for (limited) auto-replace of caboose
+- spritesheet issues resolved for Tin Rocket
+- sprites borked for gen 2 hopper car
+- NG livestock is 4/8 long
+
+
+*Language Updates*
+
+- ca_ES: 1 change by juanjo
+- lb_LU: 18 changes by Phreeze
+- hr_HR: 1 change by Voyager1
+- es_ES: 1 change by SilverSurferZzZ
+- ru_RU: 1 change by George
+- nl_NL: 5 changes by foobar
+- ko_KR: 18 changes by kevin
+- fi_FI: 4 changes by Arexander
+
+
+*Code Changes*
+
+- partial compiles, very much faster for isolated changes
+- removed some dead strings
+- provide NO_MP make flag for use during debugging
+
+
+---------
+Alpha 1-5
+---------
+
+
+Yair, stuff.  Nothing to see here.
