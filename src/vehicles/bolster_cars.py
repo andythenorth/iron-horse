@@ -8,7 +8,7 @@ def main():
         roster_id="pony",
         base_numeric_id=14990,
         gen=1,
-        subtype="U",
+        subtype="A",
         base_track_type_name="NG",
         sprites_complete=True,
     )
@@ -19,12 +19,23 @@ def main():
         roster_id="pony",
         base_numeric_id=15000,
         gen=3,
-        subtype="U",
+        subtype="A",
         base_track_type_name="NG",
         sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = BolsterCarConsist(
+        roster_id="pony",
+        base_numeric_id=14540,
+        gen=3,
+        subtype="B",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
 
     # --------------- pony ----------------------------------------------------------------------
 

@@ -35,7 +35,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     # --------------- pony ----------------------------------------------------------------------
 

@@ -8,7 +8,7 @@ def main():
         roster_id="pony",
         base_numeric_id=16870,
         gen=1,
-        subtype="U",
+        subtype="A",
         base_track_type_name="NG",
         sprites_complete=True,
     )
@@ -19,12 +19,23 @@ def main():
         roster_id="pony",
         base_numeric_id=15950,
         gen=3,
-        subtype="U",
+        subtype="A",
         base_track_type_name="NG",
         sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
+
+    consist = FlatCarRandomisedConsist(
+        roster_id="pony",
+        base_numeric_id=12530,
+        gen=3,
+        subtype="B",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     # --------------- pony ----------------------------------------------------------------------
 
