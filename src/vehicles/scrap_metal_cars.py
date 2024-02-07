@@ -8,7 +8,7 @@ def main():
         roster_id="pony",
         base_numeric_id=19070,
         gen=2,
-        subtype="U",
+        subtype="A",
         base_track_type_name="NG",
         sprites_complete=True,
     )
@@ -19,7 +19,7 @@ def main():
         roster_id="pony",
         base_numeric_id=19090,
         gen=3,
-        subtype="U",
+        subtype="A",
         base_track_type_name="NG",
         sprites_complete=True,
     )
@@ -31,7 +31,7 @@ def main():
         roster_id="pony",
         base_numeric_id=19110,
         gen=4,
-        subtype="U",
+        subtype="B",
         base_track_type_name="NG",
         sprites_complete=True,
     )
