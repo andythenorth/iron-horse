@@ -4,7 +4,7 @@ grflangid = 0x01
 plural = 0
 
 [STR_GRF_DESCRIPTION]
-base = ":License: {SILVER}GPL v2{}{BLACK}"
+base = "License: {SILVER}GPL v2{}{BLACK}"
 
 # parameters (action 14 etc)
 [STR_PARAM_ADD_RAILTYPES]
