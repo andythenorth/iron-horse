@@ -1,10 +1,49 @@
-from train import EdiblesTankCarConsist, ExpressCar
+from train import EdiblesTankCarConsist, ExpressCar, FreightCar
 
 
 def main():
+
+    # --------------- pony NG ----------------------------------------------------------------------
+
+    # note that NG uses FreightCar not ExpressCar, as there is no adjustment of capacity for higher speed
+    # this is a bit of an inconsistency in the set design, but it's a tradeoff where the alternative is having no NG edibles tanker at all, or bizarrely low capacity
+
+    consist = EdiblesTankCarConsist(
+        roster_id="pony",
+        base_numeric_id=19960,
+        gen=2,
+        subtype="A",
+        base_track_type_name="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = EdiblesTankCarConsist(
+        roster_id="pony",
+        base_numeric_id=19980,
+        gen=3,
+        subtype="A",
+        base_track_type_name="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = EdiblesTankCarConsist(
+        roster_id="pony",
+        base_numeric_id=20000,
+        gen=3,
+        subtype="B",
+        base_track_type_name="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
+
     # --------------- pony ----------------------------------------------------------------------
 
-    # no gen 1 or 2 for edibles tank cars - straight to gen 3
+    # no gen 1 for edibles tank cars - straight to gen 2
 
     consist = EdiblesTankCarConsist(
         roster_id="pony",
