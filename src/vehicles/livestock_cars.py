@@ -27,18 +27,17 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    """ # restore in next version ??
     consist = LivestockCarConsist(
         roster_id="pony",
         base_numeric_id=18200,
-        gen=4,
-        subtype="U",
+        gen=3,
+        subtype="B",
         base_track_type_name="NG",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
-    """
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
+
     # --------------- pony ----------------------------------------------------------------------
     consist = LivestockCarConsist(
         roster_id="pony",

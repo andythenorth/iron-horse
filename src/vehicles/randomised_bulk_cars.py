@@ -26,18 +26,17 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    """ # restore in next version
     consist = BulkCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=17030,
-        gen=4,
-        subtype="U",
+        gen=3,
+        subtype="B",
         base_track_type_name="NG",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
-    """
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
+
     # --------------- pony ----------------------------------------------------------------------
 
     consist = BulkCarRandomisedConsist(
