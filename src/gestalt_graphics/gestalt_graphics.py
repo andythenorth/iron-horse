@@ -105,7 +105,7 @@ class GestaltGraphics(object):
         if pipeline.consist.id in ["sliding_wall_car_pony_gen_5D"]:
             print(pipeline.consist.id)
             print(unit_counter)
-            print("------")
+            print("--- ^ buy menu spriterow y offset debug ---")
         unit_variant_row_num = (unit.spriterow_num * num_livery_rows_per_unit) + (
             (buyable_variant.relative_spriterow_num)
             * self.num_load_state_or_similar_spriterows
