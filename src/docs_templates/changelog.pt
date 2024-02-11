@@ -3,6 +3,41 @@ Changelog
 
 
 ------------
+3.4.0 Release
+------------
+
+
+*Changes*
+
+- added medium length Livestock Wagons
+- added narrow gauge Edibles Tankers
+- added multiple medium length narrow gauge wagons, available around 1960
+    - Acid Tankers
+    - Aggregate Hoppers
+    - Bolster Wagons
+    - Box Vans
+    - Bulkhead Flat Wagons
+    - Covered Hoppers
+    - Farm Products Wagons
+    - Flat Wagons
+    - Hoppers
+    - Livestock Wagon
+    - Mail Vans
+    - Mineral Wagons
+    - Open Wagons
+    - Pressurised Tankers
+    - Scrap Wagons
+    - Tankers
+- replaced some generation 1 narrow gauge wagon sprites with sprites used for generation 3 in previous versions of Iron Horse
+- replaced some generation 3 narrow gauge wagon sprites with sprites used for generation 4 in previous versions of Iron Horse
+
+
+*Fixes*
+
+- some wagon variants were parented to a group of the wrong railtype, leading to incorrect variant groups in the buy menu
+
+
+------------
 3.3.0 Release
 ------------
 
