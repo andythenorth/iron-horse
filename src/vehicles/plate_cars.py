@@ -2,6 +2,41 @@ from train import FlatCarPlateConsist, FreightCar
 
 
 def main():
+    # --------------- pony NG ----------------------------------------------------------------------
+
+    consist = FlatCarPlateConsist(
+        roster_id="pony",
+        base_numeric_id=10130,
+        gen=1,
+        subtype="A",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = FlatCarPlateConsist(
+        roster_id="pony",
+        base_numeric_id=10700,
+        gen=3,
+        subtype="A",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = FlatCarPlateConsist(
+        roster_id="pony",
+        base_numeric_id=10820,
+        gen=3,
+        subtype="B",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
+
     # --------------- pony ----------------------------------------------------------------------
 
     consist = FlatCarPlateConsist(
