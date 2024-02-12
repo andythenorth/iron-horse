@@ -42,6 +42,10 @@
     </tal:user_flipped>
 </tal:lengths>
 
+<!--! reusable vehicle 'empty' spriteset -->
+spriteset(ss_global_empty_vehicle, "src/graphics/spriterow_template.png") {
+    spriteset_template_asymmetric_unreversed_8_8_unflipped(10, NOANIM)
+}
 
 // buy menu spriteset templates
 template spriteset_template_purchase_default(x_loc, y_loc, width, x_offset, anim_flag) {
@@ -52,21 +56,25 @@ template spriteset_template_purchase_default(x_loc, y_loc, width, x_offset, anim
     []
     []
     []
-    [x_loc, y_loc, width, 16, x_offset, -11, anim_flag]
+    [x_loc, y_loc, width, 16, x_offset, -9, anim_flag | NOCROP]
     []
 }
 template spriteset_template_purchase_dual_headed(x_loc, y_loc, width, x_offset, anim_flag) {
     //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
     []
     []
-    [104, y_loc, width, 16, 1 + x_offset, -11, anim_flag]
+    [104, y_loc, width, 16, 1 + x_offset, -9, anim_flag | NOCROP]
     []
     []
     []
-    [x_loc, y_loc, width, 16, -2 + x_offset, -11, anim_flag]
+    [x_loc, y_loc, width, 16, -2 + x_offset, -9, anim_flag | NOCROP]
     []
 }
 
+<!--! reusabel purchase 'empty' spriteset -->
+spriteset(ss_global_empty_purchase, "src/graphics/spriterow_template.png") {
+    spriteset_template_purchase_default(224, 10, 1, 0, NOANIM)
+}
 
 <!--!
 // buy menu spriteset template

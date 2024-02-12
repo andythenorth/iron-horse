@@ -21,7 +21,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery, vehicle_type_id
     }
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_decor, random_bits_engine_show_decor()) {
         1: return ${vehicle.id}_ss_decor;
-        return ss_global_empty;
+        return ss_global_empty_vehicle;
     }
 </tal:conditional_decor>
 
@@ -79,7 +79,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase_livery
                     ${unit_variant.numeric_id}: return ${vehicle.id}_ss_decor_purchase;
                 </tal:block>
                 <tal:block case="False">
-                    ${unit_variant.numeric_id}: return ss_global_empty;
+                    ${unit_variant.numeric_id}: return ss_global_empty_purchase;
                 </tal:block>
             </tal:show_decor_in_purchase_menu>
         </tal:unit_variants>
@@ -104,7 +104,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase_livery
                 return ${vehicle.id}_ss_${extra_sprite_layer[1]}_purchase;
             </tal:block>
             <tal:block case="'decor'">
-                return ${vehicle.id}_switch_graphics_vehicle_purchase_decor;
+                return ${vehicle.id}_switch_graphics_vehicle_purchase_livery;
             </tal:block>
         </tal:result>
     }
