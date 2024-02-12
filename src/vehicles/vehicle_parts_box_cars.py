@@ -2,6 +2,30 @@ from train import BoxCarVehiclePartsConsist, FreightCar
 
 
 def main():
+    # --------------- pony NG ----------------------------------------------------------------------
+
+    consist = BoxCarVehiclePartsConsist(
+        roster_id="pony",
+        base_numeric_id=11960,
+        gen=3,
+        subtype="A",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = BoxCarVehiclePartsConsist(
+        roster_id="pony",
+        base_numeric_id=13340,
+        gen=3,
+        subtype="B",
+        base_track_type_name="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
+
     # --------------- pony ----------------------------------------------------------------------
 
     # starts gen 4, B and C only
