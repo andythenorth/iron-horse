@@ -2,6 +2,31 @@ from train import BoxCarSlidingWallConsist, FreightCar
 
 
 def main():
+
+    # --------------- pony NG ----------------------------------------------------------------------
+
+    consist = BoxCarSlidingWallConsist(
+        roster_id="pony",
+        base_numeric_id=11540,
+        gen=3,
+        subtype="A",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = BoxCarSlidingWallConsist(
+        roster_id="pony",
+        base_numeric_id=12340,
+        gen=3,
+        subtype="B",
+        base_track_type_name="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
+
     # --------------- pony ----------------------------------------------------------------------
 
     # starts gen 4, B and C only
