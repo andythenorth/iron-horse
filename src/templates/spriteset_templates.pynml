@@ -48,6 +48,7 @@ spriteset(ss_global_empty_vehicle, "src/graphics/spriterow_template.png") {
 }
 
 // buy menu spriteset templates
+<!--! note that these are clipped to 14px to suit Horse, with a y_loc + 2; this may not work for grfs that use taller sprites -->
 template spriteset_template_purchase_default(x_loc, y_loc, width, x_offset, anim_flag) {
     //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
     []
@@ -56,18 +57,18 @@ template spriteset_template_purchase_default(x_loc, y_loc, width, x_offset, anim
     []
     []
     []
-    [x_loc, y_loc, width, 16, x_offset, -9, anim_flag | NOCROP]
+    [x_loc, y_loc + 2, width, 14, x_offset, -8, anim_flag | NOCROP]
     []
 }
 template spriteset_template_purchase_dual_headed(x_loc, y_loc, width, x_offset, anim_flag) {
     //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
     []
     []
-    [104, y_loc, width, 16, 1 + x_offset, -9, anim_flag | NOCROP]
+    [104, y_loc + 2, width, 14, 1 + x_offset, -8, anim_flag | NOCROP]
     []
     []
     []
-    [x_loc, y_loc, width, 16, -2 + x_offset, -9, anim_flag | NOCROP]
+    [x_loc, y_loc + 2, width, 14, -2 + x_offset, -8, anim_flag | NOCROP]
     []
 }
 
