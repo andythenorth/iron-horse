@@ -3,6 +3,27 @@ Changelog
 
 
 ------------
+3.5.0 Release
+------------
+
+
+*Changes*
+
+- added multiple narrow gauge wagon types
+    - Merchandise Open Wagons
+    - Merchandise Box Vans
+    - Plate Wagons
+    - Sliding Wall Vans
+- added medium narrow gauge wagons
+    - Chemical Covered Hoppers
+    - Randomised Hoppers
+    - Randomised Mineral Wagons
+    - Randomised Open Wagons
+- improved appearance of Livestock Wagons
+
+
+
+------------
 3.4.0 Release
 ------------
 
