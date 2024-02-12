@@ -52,8 +52,6 @@ def main():
         repeat=2,
     )
 
-    """
-    # 3.4.0
     consist = PassengerExpressRailcarTrailerCarConsist(
         roster_id="pony",
         base_numeric_id=440,
@@ -71,4 +69,3 @@ def main():
         suppress_roof_sprite=True,
         repeat=2,
     )
-    """

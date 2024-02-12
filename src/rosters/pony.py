@@ -620,7 +620,7 @@ def main():
             defiant,
             relentless,
             dynamo,
-            #cyclone, # 3.4.0
+            cyclone,
             shoebox,
             ultra_shoebox,
             hurly_burly,
@@ -647,7 +647,7 @@ def main():
             # freight
             hercules,
             eastern,
-            #celt, # 3.4.0
+            celt,
             haar,
             trojan,
             growler,
@@ -718,23 +718,23 @@ def main():
             high_flyer,
             sunshine_coast,
             olympic,
-            # chronos, # 3.4.0 - also trailers
-            # nimbus, # 3.4.0 - also trailers
+            chronos,
+            nimbus,
             # brit high speed pax
             firebird,
             blaze,
             helm_wind_cab,
             helm_wind_middle_passenger,
             helm_wind_middle_mail,
-            #alize_cab, # 3.4.0
-            #alize_middle_passenger, # 3.4.0
-            #alize_middle_mail, # 3.4.0
+            alize_cab,
+            alize_middle_passenger,
+            alize_middle_mail,
             brenner_cab,
             brenner_middle_passenger,
             brenner_middle_mail,
-            #skeiron_cab, # 3.4.0
-            #skeiron_middle_passenger, # 3.4.0
-            #skeiron_middle_mail, # 3.4.0
+            skeiron_cab,
+            skeiron_middle_passenger,
+            skeiron_middle_mail,
             # driving cab cars
             driving_cab_passenger_pony_gen_4,
             driving_cab_passenger_pony_gen_5,
@@ -766,8 +766,8 @@ def main():
             # ng railcars
             mumble,
             mumble_single,
-            #snapper, # 3.4.0
-            #snapper_single, # 3.4.0
+            #snapper, # 3.6.0
+            #snapper_single, # 3.6.0
             zorro,
         ],
     )
