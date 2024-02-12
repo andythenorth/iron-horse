@@ -2,6 +2,41 @@ from train import OpenCarRandomisedConsist, FreightCar
 
 
 def main():
+    # --------------- pony ng ----------------------------------------------------------------------
+
+    consist = OpenCarRandomisedConsist(
+        roster_id="pony",
+        base_numeric_id=9900,
+        gen=1,
+        subtype="A",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
+
+    consist = OpenCarRandomisedConsist(
+        roster_id="pony",
+        base_numeric_id=9950,
+        gen=3,
+        subtype="A",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
+
+    consist = OpenCarRandomisedConsist(
+        roster_id="pony",
+        base_numeric_id=11080,
+        gen=3,
+        subtype="B",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
+
     # --------------- pony ----------------------------------------------------------------------
 
     consist = OpenCarRandomisedConsist(
