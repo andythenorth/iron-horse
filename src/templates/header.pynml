@@ -88,5 +88,5 @@ sort(FEAT_TRAINS, [
 ]);
 
 // fix depot view for trains
-traininfo_y_offset = 0;
+traininfo_y_offset = 2;
 train_width_32_px = 1;
