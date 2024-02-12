@@ -50,6 +50,7 @@ from vehicles import cement_silo_cars_v_barrel
 from vehicles import chemical_covered_hopper_cars
 from vehicles import coil_buggy_cars
 from vehicles import coil_cars_covered
+from vehicles import coil_cars_covered_asymmetric
 from vehicles import coil_cars_uncovered
 from vehicles import covered_hopper_cars
 from vehicles import cryo_tank_cars
@@ -334,6 +335,7 @@ def main():
     chemical_covered_hopper_cars.main()
     coil_buggy_cars.main()
     coil_cars_covered.main()
+    coil_cars_covered_asymmetric.main()
     coil_cars_uncovered.main()
     covered_hopper_cars.main()
     cryo_tank_cars.main()

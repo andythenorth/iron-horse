@@ -3151,6 +3151,48 @@ class CoilCarConsistBase(CarConsist):
         ]
 
 
+class CoilCarCoveredAsymmetricConsist(CoilCarConsistBase):
+    """
+    Covered coil car.  No visible cargo.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "coil_car_covered_asymmetric"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
+        self.cc_num_to_recolour = 1
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_coil_cars"
+        self._joker = True
+        # Graphics configuration
+        weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            ],
+            piece="coil",
+            has_cover=True,
+        )
+
+
 class CoilCarCoveredConsist(CoilCarConsistBase):
     """
     Covered coil car.  No visible cargo.
@@ -8062,6 +8104,16 @@ class CoilBuggyCar(FreightCar):
         super().__init__(**kwargs)
         # just double whatever is set by the init, what could go wrong? :)
         self.capacity = 2 * self.capacity
+
+
+class CoilCarAsymmetric(FreightCar):
+    """
+    Asymmetric coil car. This subclass sets the symmetry_type to asymmetric.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._symmetry_type = "asymmetric"
 
 
 class HeavyDutyCar(FreightCar):

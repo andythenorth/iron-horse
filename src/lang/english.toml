@@ -441,6 +441,9 @@ base = "Chemical Covered Hopper"
 [STR_NAME_SUFFIX_COIL_CAR_COVERED]
 base = "Covered Coil Carrier"
 
+[STR_NAME_SUFFIX_COIL_CAR_COVERED_ASYMMETRIC]
+base = "Covered Coil Carrier"
+
 [STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
 base = "Coil Carrier"
 
