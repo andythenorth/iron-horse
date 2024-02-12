@@ -2,6 +2,30 @@ from train import OpenCarMerchandiseConsist, FreightCar
 
 
 def main():
+    # --------------- pony NG ----------------------------------------------------------------------
+
+    consist = OpenCarMerchandiseConsist(
+        roster_id="pony",
+        base_numeric_id=14950,
+        gen=3,
+        subtype="A",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = OpenCarMerchandiseConsist(
+        roster_id="pony",
+        base_numeric_id=13220,
+        gen=3,
+        subtype="B",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
+
     # --------------- pony ----------------------------------------------------------------------
 
     consist = OpenCarMerchandiseConsist(
