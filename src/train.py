@@ -4443,7 +4443,7 @@ class FlatCarSlidingRoofConsistHiCube(FlatCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "sliding_roof_hi_cube_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["flat_sliding_roof"]
+        self.default_cargos = polar_fox.constants.default_cargos["box_vehicle_parts"] # minor abuse of existing list
         self.buy_cost_adjustment_factor = 1.2
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
@@ -4469,6 +4469,9 @@ class FlatCarSlidingRoofConsistHiCube(FlatCarConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_7"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_8"
+                ],
+                global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.freight_wagon_liveries[
@@ -4476,6 +4479,10 @@ class FlatCarSlidingRoofConsistHiCube(FlatCarConsistBase):
                 ],
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
             ],
             piece="flat",
             has_cover=True,

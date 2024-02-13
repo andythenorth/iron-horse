@@ -8,7 +8,7 @@ def main():
 
     consist = FlatCarSlidingRoofConsistHiCube(
         roster_id="pony",
-        base_numeric_id=15120,
+        base_numeric_id=12050,
         gen=5,
         subtype="B",
         sprites_complete=False,
@@ -18,10 +18,10 @@ def main():
 
     consist = FlatCarSlidingRoofConsistHiCube(
         roster_id="pony",
-        base_numeric_id=15920,
+        base_numeric_id=18520,
         gen=5,
         subtype="C",
-        sprites_complete=15330,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_32px")
