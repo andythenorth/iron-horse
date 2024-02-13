@@ -3165,6 +3165,7 @@ class CoilCarCoveredAsymmetricConsist(CoilCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_coil_cars"
         self._joker = True
+        self.random_reverse = True
         # Graphics configuration
         weathered_variants = {"unweathered": graphics_constants.covered_coil_car_asymmetric_body_recolour_map,
                               "weathered": graphics_constants.covered_coil_car_asymmetric_body_recolour_map_weathered}
@@ -3286,6 +3287,7 @@ class DedicatedCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBa
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_coil_cars"
         self._joker = True
+        self.random_reverse = True # because the asymmetric covered wagons can reverse
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -3311,6 +3313,7 @@ class GenericCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBase
     def __init__(self, **kwargs):
         self.base_id = "randomised_generic_coil_car"
         super().__init__(**kwargs)
+        self.random_reverse = True # because the asymmetric covered wagons can reverse
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -7412,7 +7415,6 @@ class Train(object):
         if self.consist.random_reverse:
             if hasattr(self.consist, "gestalt_graphics"):
                 for nml_template in [
-                    "vehicle_with_visible_cargo.pynml",
                     "vehicle_box_car_with_opening_doors.pynml",
                     "vehicle_with_cargo_specific_liveries.pynml",
                     "vehicle_consist_position_dependent.pynml",
