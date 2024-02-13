@@ -1688,13 +1688,14 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # - there is a case not handled, where long cargo sprites will overlap cabbed vehicles in / direction with cab at N end, hard to solve
         # - this has no awareness of vehicle symmetry_type property, so will needlessly scan too many pixels for symmetric vehicles
         #   that's TMWFTLB to fix right now, as it will require relative offsets of all the loc points for probably very little performance gain
-        # note that piece *cannot* support asymmetric spritesheets (bulk can), TMWFTLB to support currently
-        # - asymmetric vehicle support might be possible if really needed, but cargo sprites will be symmetric
+        # NOTE that piece only *partially* supports asymmetric spritesheets
+        # - asymmetric vehicle support can be used, but cargo sprites will be symmetric, TMWFTLB to adjust this
+        # - coil_car_covered_asymmetric is an example where this is ok, as the sprites are only seen during loading, and covered in transit
         # - for asymmetric cargo sprites, use spritelayer cargos instead (see automobile or intermodal cargos)
         crop_box_vehicle_cargo_loc_row = (
-            self.second_col_start_x,
+            0,
             self.base_yoffs,
-            self.second_col_start_x + self.col_image_width,
+            self.sprites_max_x_extent,
             self.base_yoffs + graphics_constants.spriterow_height,
         )
         vehicle_cargo_loc_image = self.vehicle_source_image.copy().crop(
@@ -1702,7 +1703,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         )
         # get the loc points
         loc_points = [
-            (pixel[0] + self.second_col_start_x, pixel[1], pixel[2])
+            (pixel[0], pixel[1], pixel[2])
             for pixel in pixa.pixascan(vehicle_cargo_loc_image)
             if pixel[2] == 226
         ]
@@ -1728,15 +1729,15 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         )
 
         crop_box_mask_source = (
-            self.second_col_start_x,
+            0,
             self.base_yoffs + graphics_constants.spriterow_height,
-            self.second_col_start_x + self.col_image_width,
+            self.sprites_max_x_extent,
             self.base_yoffs + (2 * graphics_constants.spriterow_height),
         )
         crop_box_mask_dest = (
-            self.second_col_start_x,
             0,
-            self.second_col_start_x + self.col_image_width,
+            0,
+            self.sprites_max_x_extent,
             graphics_constants.spriterow_height,
         )
         vehicle_mask_source = (
