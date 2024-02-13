@@ -38,6 +38,7 @@ buy_menu_sort_order_wagons = [
     "flat_car",
     "bulkhead_flat_car",
     "sliding_roof_car",
+    "sliding_roof_hi_cube_car",
     "tarpaulin_car",
     "bolster_car",
     "coil_car_uncovered",

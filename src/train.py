@@ -4401,7 +4401,7 @@ class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
 
 class FlatCarSlidingRoofConsist(FlatCarConsistBase):
     """
-    Sliding roof van - sfins2 holdall and similar - same refits as flat, not van (experimental)
+    Sliding roof flat - sfins2 holdall and similar - same refits as flat, not van
     """
 
     def __init__(self, **kwargs):
@@ -4429,6 +4429,53 @@ class FlatCarSlidingRoofConsist(FlatCarConsistBase):
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 # tried more, doesn't add anything
+            ],
+            piece="flat",
+            has_cover=True,
+        )
+
+
+class FlatCarSlidingRoofConsistHiCube(FlatCarConsistBase):
+    """
+    Sliding roof flat - rover KSA cube and similar - same refits as flat, not van
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "sliding_roof_hi_cube_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["flat_sliding_roof"]
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
+        )
+        self.randomised_candidate_groups = [
+            "randomised_piece_goods_car",
+        ]
+        self._joker = True
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.body_recolour_CC1,
+        }
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_7"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
             ],
             piece="flat",
             has_cover=True,
