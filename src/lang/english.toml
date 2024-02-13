@@ -652,7 +652,7 @@ base = "Skips"
 base = "Slag Ladle Wagon"
 
 [STR_NAME_SUFFIX_SLIDING_ROOF_CAR]
-base = "Sliding Roof Van"
+base = "Sliding Roof Wagon"
 
 [STR_NAME_SUFFIX_SLIDING_ROOF_HI_CUBE_CAR]
 base = "Cube Wagon"
