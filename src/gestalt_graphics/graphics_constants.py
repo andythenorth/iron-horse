@@ -261,6 +261,26 @@ chemical_covered_hopper_car_livery_recolour_maps_weathered = {
     142: 30,
     143: 168,
 }
+covered_coil_car_asymmetric_body_recolour_map = {
+    136: 5,
+    137: 6,
+    138: 7,
+    139: 20,
+    140: 21,
+    141: 22,
+    142: 23,
+    143: 14,
+}
+covered_coil_car_asymmetric_body_recolour_map_weathered = {
+    136: 33,
+    137: 34,
+    138: 7,
+    139: 36,
+    140: 21,
+    141: 22,
+    142: 23,
+    143: 39,
+}
 v_barrel_silo_car_livery_recolour_maps = {
     136: CC1,
     137: CC1 + 1,

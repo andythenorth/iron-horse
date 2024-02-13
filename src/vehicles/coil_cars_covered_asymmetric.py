@@ -25,24 +25,23 @@ def main():
     )
 
     consist.add_unit(type=CoilCarAsymmetric, chassis="4_axle_filled_32px")
-    """
+
     consist = CoilCarCoveredAsymmetricConsist(
         roster_id="pony",
-        base_numeric_id=12570,
+        base_numeric_id=13430,
         gen=5,
         subtype="B",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=CoilCarAsymmetric, chassis="4_axle_1cc_filled_24px")
 
     consist = CoilCarCoveredAsymmetricConsist(
         roster_id="pony",
-        base_numeric_id=12580,
+        base_numeric_id=15730,
         gen=5,
         subtype="C",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=CoilCarAsymmetric, chassis="4_axle_1cc_filled_32px")
-    """
