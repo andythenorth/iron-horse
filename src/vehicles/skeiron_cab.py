@@ -11,7 +11,7 @@ def main(roster_id):
         name="Skeiron",
         role="very_high_speed",
         role_child_branch_num=2,
-        pantograph_type="z-shaped-single-with-base",
+        pantograph_type="z-shaped-single",
         power_by_power_source={
             "AC": 3200,  # more than Brenner, but Brenner has pax capacity
         },
@@ -27,7 +27,7 @@ def main(roster_id):
         weight=54,
         spriterow_num=0,
         chassis="4_axle_solid_express_32px",
-        tail_light="very_high_speed_32px_2",
+        tail_light="very_high_speed_32px_3",
     )
 
     consist.description = """."""
