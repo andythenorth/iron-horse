@@ -13,7 +13,7 @@ def main(roster_id):
         },  # set power 0, when attached to correct cab, cab power will be increased
         gen=6,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
