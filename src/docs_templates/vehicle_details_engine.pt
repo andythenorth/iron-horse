@@ -151,7 +151,7 @@
                 </div>
 
                 <style>
-                    table.livery-table {
+                    table.livery-or-trailers-table {
                         width: 100%;
                         background-color: #eee;
                         border-color: solid 1px #80c4fc;
@@ -161,18 +161,18 @@
                         font-size: 16px;
                         margin-bottom: 30px;
                     }
-                    table.livery-table tr {
+                    table.livery-or-trailers-table tr {
                         vertical-align: top;
                     }
-                    table.livery-table td, table.livery-table th {
+                    table.livery-or-trailers-table td, table.livery-or-trailers-table th {
                         margin: 0;
                         padding: 16px;
                         border-bottom: solid 1px #b4dcec;
                     }
-                    table.livery-table tr:last-of-type td, table.livery-table tr:last-of-type th {
+                    table.livery-or-trailers-table tr:last-of-type td, table.livery-or-trailers-table tr:last-of-type th {
                         border-bottom: none;
                     }
-                    table.livery-table .livery-table-first-col {
+                    table.livery-or-trailers-table .livery-or-trailers-table-first-col {
                         min-width: 215px;
                         width: 215px;
                         background: #b4dcec;
@@ -180,26 +180,26 @@
                         background: #b4dcec;
                         color: #18506c;
                     }
-                    table.livery-table thead tr:first-of-type th.livery-table-first-col {
+                    table.livery-or-trailers-table thead tr:first-of-type th.livery-or-trailers-table-first-col {
                         border-top-left-radius: 4px;
                     }
-                    table.livery-table tbody tr:last-of-type th.livery-table-first-col {
+                    table.livery-or-trailers-table tbody tr:last-of-type th.livery-or-trailers-table-first-col {
                         border-bottom-left-radius: 4px;
                     }
-                    table.livery-table td.livery-table-col-with-divider, table.livery-table th.livery-table-col-with-divider {
+                    table.livery-or-trailers-table td.livery-or-trailers-table-col-with-divider, table.livery-or-trailers-table th.livery-or-trailers-table-col-with-divider {
                         border-left: solid 1px #b4dcec;
                     }
-                    table.livery-table .livery-example-container {
+                    table.livery-or-trailers-table .livery-example-container {
                         display: inline-block;
                          width: 128px;
                     }
                 </style>
 
-                <table class="livery-table text-left">
+                <table class="livery-or-trailers-table text-left">
                     <tal:buyable_variants repeat="buyable_variant consist.buyable_variants">
                         <tr>
-                            <th class="livery-table-first-col"><div style="margin-top:12px;">Livery ${repeat.buyable_variant.number} examples</div></th>
-                            <td class="livery-table-col-with-divider">
+                            <th class="livery-or-trailers-table-first-col"><div style="margin-top:12px;">Livery ${repeat.buyable_variant.number} examples</div></th>
+                            <td class="livery-or-trailers-table-col-with-divider">
                                 <tal:livery_examples repeat="livery_variant [livery_variant for livery_variant in doc_helper.get_docs_livery_variants(consist) if livery_variant['buyable_variant'] == buyable_variant]">
                                     <div class="livery-example-container">
                                         <div class="vehicle-image"
@@ -228,6 +228,34 @@
                         </tr>
                     </tal:buyable_variants>
                 </table>
+
+                <tal:has_dedicated_trailers condition="len(consist.dedicated_trailer_consists) > 0">
+                    <h3>Dedicated Trailers / Coaches / Mail Vans</h3>
+                    <table class="livery-or-trailers-table text-left">
+                        <tal:trailer_consist repeat="trailer_consist consist.dedicated_trailer_consists">
+                            <tr>
+                                <th class="livery-or-trailers-table-first-col"><div style="margin-top:12px;">${doc_helper.unpack_name_string(trailer_consist)}</div></th>
+                                <td class="livery-or-trailers-table-col-with-divider">
+
+                                    <tal:buyable_variants repeat="buyable_variant consist.buyable_variants">
+                                        <div>
+                                            <tal:livery_examples repeat="livery_variant [livery_variant for livery_variant in doc_helper.get_docs_livery_variants(consist) if livery_variant['buyable_variant'] == buyable_variant]">
+                                                <div class="vehicle-image"
+                                                    style="width:${2 * doc_helper.docs_sprite_max_width};
+                                                           display:inline-block;">
+                                                    <img src="static/img/${trailer_consist.id}_${livery_variant['livery_name']}.png"
+                                                         width="${2 * doc_helper.docs_sprite_width(trailer_consist)}"
+                                                         height="${2 * doc_helper.docs_sprite_height}" />
+                                                </div>
+                                            </tal:livery_examples>
+                                        </div>
+                                    </tal:buyable_variants>
+                                </td>
+                            </tr>
+                        </tal:trailer_consist>
+                    </table>
+                </tal:has_dedicated_trailers>
+
                 <h3 id="foamer-facts">Foamer Facts</h3>
                 <p>Inspired by ${structure: consist.foamer_facts}.</p>
 
@@ -296,6 +324,7 @@
                         </tr>
                         <tr>
                             <td colspan="3" style="text-align:center">
+                                <!--! this really isn't a well constructed table, but eh -->
                                 <tal:similar_consists repeat="similar_consist consist.similar_consists">
                                     <div style="display:inline-block; margin:10px;">
                                         <a href="${similar_consist.id}.html">
