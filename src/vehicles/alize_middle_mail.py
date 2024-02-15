@@ -14,14 +14,14 @@ def main(roster_id):
         # no pantographs for Alizé middle cars
         gen=5,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
         type=ElectricHighSpeedMailUnit,
         weight=42,
         spriterow_num=0,
-        chassis="4_axle_solid_express_32px",
+        chassis="jacobs_solid_express_32px",
         repeat=2,
     )
 
