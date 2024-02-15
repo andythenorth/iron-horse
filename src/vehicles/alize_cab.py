@@ -12,7 +12,7 @@ def main(roster_id):
         power_by_power_source={
             "AC": 1900,
         },
-        pantograph_type="z-shaped-single-with-base",
+        pantograph_type="z-shaped-single",
         gen=5,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
         # note that livery names are metadata only and can repeat for different spriterows
@@ -27,7 +27,7 @@ def main(roster_id):
         capacity=0,
         spriterow_num=0,
         chassis="4_axle_solid_express_32px",
-        tail_light="very_high_speed_32px_1",
+        tail_light="very_high_speed_32px_3",
     )
 
     consist.description = """"""
