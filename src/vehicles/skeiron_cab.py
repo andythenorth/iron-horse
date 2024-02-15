@@ -19,7 +19,7 @@ def main(roster_id):
         intro_year_offset=-14,  # introduce earlier than gen epoch by design, similar to Brenner
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["SWOOSH", "WHITE_STRIPE"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
