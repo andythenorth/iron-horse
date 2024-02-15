@@ -94,6 +94,7 @@ class GestaltGraphics(object):
         # override in subclasses as needed
 
         # !! isn't this already known somewhere?  Gestalts might be counting liveries already
+        # ?? self.num_load_state_or_similar_spriterows on the gestalt?
         if pipeline.consist.gestalt_graphics.__class__.__name__ in [
             "GestaltGraphicsBoxCarOpeningDoors"
         ]:
@@ -106,6 +107,7 @@ class GestaltGraphics(object):
             print(pipeline.consist.id)
             print(unit_counter)
             print("--- ^ buy menu spriterow y offset debug ---")
+
         unit_variant_row_num = (unit.spriterow_num * num_livery_rows_per_unit) + (
             (buyable_variant.relative_spriterow_num)
             * self.num_load_state_or_similar_spriterows
