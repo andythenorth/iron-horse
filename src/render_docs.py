@@ -144,67 +144,21 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
     docs_image_variants = []
 
     for variant in doc_helper.get_docs_livery_variants(consist):
-        # !! massive JFDI hax to make this work - really the gestalt should know how many rows are consumed per livery
-        if (
-            consist.gestalt_graphics.__class__.__name__
-            == "GestaltGraphicsConsistPositionDependent"
-        ):
-            y_offset = 60 * variant["buyable_variant"].relative_spriterow_num
+        if consist.docs_image_spriterow is not None:
+            y_offset = 30 * consist.docs_image_spriterow
+        elif consist.requires_custom_buy_menu_sprite:
+            y_offset = 30 * variant["buyable_variant"].relative_spriterow_num
         else:
-            if consist.docs_image_spriterow is not None:
-                y_offset = 30 * consist.docs_image_spriterow
-            else:
-                y_offset = 30 * variant["buyable_variant"].relative_spriterow_num
-        if not consist.dual_headed:
-            # relies on additional_liveries being in predictable row offsets (should be true as of July 2020)
-            source_vehicle_image_tmp = vehicle_spritesheet.crop(
-                box=(
-                    consist.buy_menu_x_loc,
-                    10 + y_offset,
-                    consist.buy_menu_x_loc + doc_helper.docs_sprite_width(consist),
-                    10 + y_offset + doc_helper.docs_sprite_height,
-                )
+            y_offset = 30 * variant["buyable_variant"].relative_spriterow_num * consist.gestalt_graphics.num_load_state_or_similar_spriterows
+        # relies on additional_liveries being in predictable row offsets (should be true as of July 2020)
+        source_vehicle_image_tmp = vehicle_spritesheet.crop(
+            box=(
+                consist.buy_menu_x_loc,
+                10 + y_offset,
+                consist.buy_menu_x_loc + doc_helper.docs_sprite_width(consist),
+                10 + y_offset + doc_helper.docs_sprite_height,
             )
-        if consist.dual_headed:
-            # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
-            # !! hard-coded values might fail in future, sort that out then if needed, they can be looked up in global constants
-            # !! this also won't work with engine additional_liveries currently
-            # !! this should be replaceable - the buy menu sprite generator _should_ now (early 2024) be extensible to handle the dual-head case, which can then be used for docs
-            source_vehicle_image_1 = vehicle_spritesheet.copy().crop(
-                box=(
-                    224,
-                    10 + y_offset,
-                    224 + (4 * consist.length) + 1,
-                    10 + y_offset + doc_helper.docs_sprite_height,
-                )
-            )
-            source_vehicle_image_2 = vehicle_spritesheet.copy().crop(
-                box=(
-                    104,
-                    10 + y_offset,
-                    104 + (4 * consist.length) + 1,
-                    10 + y_offset + doc_helper.docs_sprite_height,
-                )
-            )
-            source_vehicle_image_tmp = source_vehicle_image.copy()
-            source_vehicle_image_tmp.paste(
-                source_vehicle_image_1,
-                (
-                    0,
-                    0,
-                    source_vehicle_image_1.size[0],
-                    doc_helper.docs_sprite_height,
-                ),
-            )
-            source_vehicle_image_tmp.paste(
-                source_vehicle_image_2,
-                (
-                    source_vehicle_image_1.size[0] - 1,
-                    0,
-                    source_vehicle_image_1.size[0] - 1 + source_vehicle_image_2.size[0],
-                    doc_helper.docs_sprite_height,
-                ),
-            )
+        )
         crop_box_dest = (
             0,
             0,
@@ -218,7 +172,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
         if "skeiron_middle_passenger" in consist.id:
             print("skeiron_middle_passenger CABBAGE 2009")
             print("y_offset", y_offset)
-            source_vehicle_image_tmp.show()
+            #source_vehicle_image_tmp.show()
 
         # add pantographs if needed
         if consist.pantograph_type is not None:
@@ -229,6 +183,9 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
                 )
             )
             pan_crop_width = consist.buy_menu_width
+            # dual_headed is never anything but special casing to handle the OpenTTD magical behaviour eh? :)
+            if consist.dual_headed:
+                pan_crop_width = pan_crop_width * 2
             pantographs_image = pantographs_spritesheet.crop(
                 box=(
                     consist.buy_menu_x_loc,
@@ -249,37 +206,6 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
                 pantographs_mask.crop(crop_box_dest),
             )
 
-            if consist.dual_headed:
-                # oof, super special handling of pans for dual-headed vehicles
-                pan_start_x_loc = (
-                    global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[
-                        2
-                    ][0]
-                )
-                pantographs_image = pantographs_spritesheet.crop(
-                    box=(
-                        pan_start_x_loc,
-                        10,
-                        pan_start_x_loc + pan_crop_width,
-                        10 + doc_helper.docs_sprite_height,
-                    )
-                )
-                crop_box_dest_pan_2 = (
-                    int(doc_helper.docs_sprite_width(consist) / 2),
-                    0,
-                    int(doc_helper.docs_sprite_width(consist) / 2) + pan_crop_width,
-                    doc_helper.docs_sprite_height,
-                )
-                pantographs_mask = pantographs_image.copy()
-                pantographs_mask = pantographs_mask.point(
-                    lambda i: 0 if i == 255 or i == 0 else 255
-                ).convert(
-                    "1"
-                )  # the inversion here of blue and white looks a bit odd, but potato / potato
-                source_vehicle_image.paste(
-                    pantographs_image, crop_box_dest_pan_2, pantographs_mask
-                )
-                pantographs_spritesheet.close()
         docs_image_variants.append(
             [
                 source_vehicle_image.copy(),
