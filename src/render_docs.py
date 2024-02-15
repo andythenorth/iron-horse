@@ -169,6 +169,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
             # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
             # !! hard-coded values might fail in future, sort that out then if needed, they can be looked up in global constants
             # !! this also won't work with engine additional_liveries currently
+            # !! this should be replaceable - the buy menu sprite generator _should_ now (early 2024) be extensible to handle the dual-head case, which can then be used for docs
             source_vehicle_image_1 = vehicle_spritesheet.copy().crop(
                 box=(
                     224,
@@ -213,6 +214,11 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
         source_vehicle_image.paste(
             source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest
         )
+
+        if "skeiron_middle_passenger" in consist.id:
+            print("skeiron_middle_passenger CABBAGE 2009")
+            print("y_offset", y_offset)
+            source_vehicle_image_tmp.show()
 
         # add pantographs if needed
         if consist.pantograph_type is not None:

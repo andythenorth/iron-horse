@@ -458,37 +458,39 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
                 source_vehicle_unit,
                 input_row_num,
             ) in row_data["source_vehicles_and_input_spriterow_nums"]:
-                # currently no cap on purchase menu sprite width
-                # consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh
-                unit_length_in_pixels = 4 * source_vehicle_unit.vehicle_length
-                input_spriterow_y_offset = (
-                    input_row_num * graphics_constants.spriterow_height
-                )
-                crop_box_input = (
-                    224,
-                    10 + input_spriterow_y_offset,
-                    224
-                    + unit_length_in_pixels
-                    + 1,  # allow for 1px coupler / corrider overhang
-                    26 + input_spriterow_y_offset,
-                )
-                crop_box_dest = (
-                    360 + x_offset,
-                    10
-                    + row_data["spriterow_num_dest"]
-                    * graphics_constants.spriterow_height,
-                    360
-                    + x_offset
-                    + unit_length_in_pixels
-                    + 1,  # allow for 1px coupler / corrider overhang
-                    26
-                    + row_data["spriterow_num_dest"]
-                    * graphics_constants.spriterow_height,
-                )
-                custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_input)
-                spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
-                # increment x offset for pasting in next vehicle
-                x_offset += unit_length_in_pixels
+                # the generated sprite for dual_headed case is intended for docs use only (OpenTTD already assembles the buy menu sprite in that case)
+                for input_sprite_x_offset in [224, 104] if self.consist.dual_headed else [224]:
+                    # currently no cap on purchase menu sprite width
+                    # consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh
+                    unit_length_in_pixels = 4 * source_vehicle_unit.vehicle_length
+                    input_spriterow_y_offset = (
+                        input_row_num * graphics_constants.spriterow_height
+                    )
+                    crop_box_input = (
+                        input_sprite_x_offset,
+                        10 + input_spriterow_y_offset,
+                        input_sprite_x_offset
+                        + unit_length_in_pixels
+                        + 1,  # allow for 1px coupler / corrider overhang
+                        26 + input_spriterow_y_offset,
+                    )
+                    crop_box_dest = (
+                        360 + x_offset,
+                        10
+                        + row_data["spriterow_num_dest"]
+                        * graphics_constants.spriterow_height,
+                        360
+                        + x_offset
+                        + unit_length_in_pixels
+                        + 1,  # allow for 1px coupler / corrider overhang
+                        26
+                        + row_data["spriterow_num_dest"]
+                        * graphics_constants.spriterow_height,
+                    )
+                    custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_input)
+                    spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
+                    # increment x offset for pasting in next vehicle
+                    x_offset += unit_length_in_pixels
 
         return spritesheet
 

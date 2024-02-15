@@ -894,6 +894,8 @@ class Consist(object):
             return True
         elif self.is_randomised_wagon_type or self.is_caboose:
             return True
+        elif self.dual_headed:
+            return True
         else:
             return False
 
