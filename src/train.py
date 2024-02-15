@@ -534,6 +534,7 @@ class Consist(object):
                 and (consist.gen == self.gen)
                 and (consist != self)
                 and (consist.cloned_from_consist is None)
+                and (getattr(consist, "cab_id", None) is None)
             ):
                 if (
                     (consist.role == self.role)
