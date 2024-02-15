@@ -503,6 +503,14 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
                 ],
             },
+            "TGV_LA_POSTE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_YELLOW", "COLOUR_BLUE"),
+                ],
+            },
             "YEOMAN": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
