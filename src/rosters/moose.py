@@ -1,7 +1,43 @@
 from roster import Roster
 
-from vehicles import niagra
-from vehicles import snowplough_moose_gen_2
+# list in buy menu order
+engine_module_names = [
+    # challenger, # for NA roster
+    # branch express
+    # foo,
+    # express (electro-diesels with non-standard position in power/length tree)
+    # foo,
+    # express
+    # foo,
+    # driving cab cars
+    # foo,
+    # branch freight
+    "niagra",
+    # freight
+    # foo,
+    # joker engines / snowploughs
+    "snowplough_moose_gen_2",
+    # cargo sprinter
+    # foo,
+    # auto-coach (only one as autoreplace can't handle mixed cargo articulated consists)
+    # foo,
+    # railbuses
+    # foo,
+    # diesel railcars
+    # foo,
+    # electric railcars
+    # foo,
+    # express electric railcars
+    # foo,
+    # high speed pax
+    # foo,
+    # metro
+    # foo,
+    # ng engines
+    # foo,
+    # ng railcars
+    # foo,
+]
 
 
 def main():
@@ -116,42 +152,5 @@ def main():
                 ],
             },
         },
-        # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
-        engines=[
-            # challenger, # for NA roster
-            # branch express
-            # foo,
-            # express (electro-diesels with non-standard position in power/length tree)
-            # foo,
-            # express
-            # foo,
-            # driving cab cars
-            # foo,
-            # branch freight
-            niagra,
-            # freight
-            # foo,
-            # joker engines / snowploughs
-            snowplough_moose_gen_2,
-            # cargo sprinter
-            # foo,
-            # auto-coach (only one as autoreplace can't handle mixed cargo articulated consists)
-            # foo,
-            # railbuses
-            # foo,
-            # diesel railcars
-            # foo,
-            # electric railcars
-            # foo,
-            # express electric railcars
-            # foo,
-            # high speed pax
-            # foo,
-            # metro
-            # foo,
-            # ng engines
-            # foo,
-            # ng railcars
-            # foo,
-        ],
+        engine_module_names=engine_module_names,
     )

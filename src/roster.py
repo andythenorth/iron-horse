@@ -1,11 +1,13 @@
 import copy
-import global_constants
+import importlib
 import os
 import pickle
 import tomllib
-import utils
 
 currentdir = os.curdir
+
+import global_constants
+import utils
 
 
 class Roster(object):
@@ -20,8 +22,8 @@ class Roster(object):
         self.grf_name = kwargs.get("grf_name")
         self.grfid = kwargs.get("grfid")
         self.str_grf_name = kwargs.get("str_grf_name")
-        # engines only used once at __init__ time, it's a list of modules, not the actual consists
-        self.engines = kwargs.get("engines")
+        # engine_module_names only used once at __init__ time, it's a list of module names, not the actual consists
+        self.engine_module_names = kwargs.get("engine_module_names")
         self.engine_consists = []
         # create a structure to hold (buyable) variant groups
         # deliberately instantiated as none - cannot be populated as a structure until later, after all consists are inited
@@ -363,8 +365,11 @@ class Roster(object):
 
     def post_init_actions(self):
         # init of consists has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
-        for engine in self.engines:
-            consist = engine.main(self.id)
+        for engine_module_name in self.engine_module_names:
+            engine_module_name = importlib.import_module(
+                "." + engine_module_name, package="vehicles"
+            )
+            consist = engine_module_name.main(self.id)
             self.engine_consists.append(consist)
             # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
             for cloned_consist in consist.clones:

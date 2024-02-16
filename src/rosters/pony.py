@@ -1,187 +1,203 @@
 from roster import Roster
 
-from vehicles import alfama
-from vehicles import alize_cab
-from vehicles import alize_middle_mail
-from vehicles import alize_middle_passenger
-from vehicles import ares
-from vehicles import athena
-
-# one auto coach only as autoreplace can't handle mixed cargo articulated consists
-from vehicles import auto_coach_pony_gen_2
-from vehicles import argus
-from vehicles import arrow
-from vehicles import avenger
-from vehicles import bean_feast
-from vehicles import blaze
-from vehicles import boar_cat
-from vehicles import bone
-from vehicles import booster
-from vehicles import braf
-from vehicles import breeze
-from vehicles import brenner_cab
-from vehicles import brenner_middle_mail
-from vehicles import brenner_middle_passenger
-from vehicles import buffalo
-from vehicles import captain_steel
-from vehicles import cargo_sprinter
-from vehicles import carrack
-from vehicles import celt
-from vehicles import centaur
-from vehicles import cheddar_valley
-from vehicles import cheese_bug
-from vehicles import chinook
-from vehicles import chuggypig
-from vehicles import clipper
-from vehicles import clipper_single
-from vehicles import constance
-from vehicles import cyclone
-from vehicles import daring
-from vehicles import deasil
-from vehicles import decapod
-from vehicles import defiant
-from vehicles import diablo
-from vehicles import dl
-from vehicles import doineann
-from vehicles import doubletide
-from vehicles import dover
-from vehicles import dragon
-from vehicles import dreadnought
-from vehicles import driving_cab_mail_pony_gen_5
-from vehicles import driving_cab_high_speed_mail_pony_gen_5
-from vehicles import driving_cab_high_speed_mail_pony_gen_6
-from vehicles import driving_cab_passenger_pony_gen_4
-from vehicles import driving_cab_passenger_pony_gen_5
-from vehicles import driving_cab_high_speed_passenger_pony_gen_5
-from vehicles import driving_cab_high_speed_passenger_pony_gen_6
-from vehicles import dryth
-from vehicles import dynamo
-from vehicles import eastern
-from vehicles import chronos
-from vehicles import esk
-from vehicles import falcon
-from vehicles import firebird
-from vehicles import fleet
-from vehicles import flanders_storm
-from vehicles import flindermouse
-from vehicles import foxhound
-from vehicles import fury
-from vehicles import gargouille
-from vehicles import general_endeavour
-from vehicles import geronimo
-from vehicles import girt_licker
-from vehicles import goliath
-from vehicles import gowsty
-from vehicles import grid
-from vehicles import griffon
-from vehicles import gronk
-from vehicles import growler
-from vehicles import grub
-from vehicles import haar
-from vehicles import happy_train
-from vehicles import hawkinge
-from vehicles import helm_wind_cab
-from vehicles import helm_wind_middle_mail
-from vehicles import helm_wind_middle_passenger
-from vehicles import hercules
-from vehicles import high_flyer
-from vehicles import hinterland
-from vehicles import hurly_burly
-from vehicles import intrepid
-from vehicles import jupiter
-from vehicles import keen
-from vehicles import kelpie
-from vehicles import lamia
-from vehicles import lark
-from vehicles import lemon
-from vehicles import lion
-from vehicles import little_bear
-from vehicles import longwater
-from vehicles import lynx
-from vehicles import maelstrom
-from vehicles import mainstay
-from vehicles import maximillian
-from vehicles import magnum_70
-from vehicles import merlion
-from vehicles import merrylegs
-from vehicles import mka
-from vehicles import moor_gallop
-from vehicles import mumble
-from vehicles import mumble_single
-from vehicles import nile
-from vehicles import nimbus
-from vehicles import olympic
-from vehicles import onslaught
-from vehicles import peasweep
-from vehicles import pegasus
-from vehicles import pikel
-from vehicles import pinhorse
-from vehicles import plastic_postbox
-from vehicles import proper_job
-from vehicles import pylon
-from vehicles import quietus
-from vehicles import rapid
-from vehicles import relentless
-from vehicles import reliance
-from vehicles import resilient
-from vehicles import resistance
-from vehicles import revolution
-from vehicles import rockhampton
-from vehicles import roarer
-from vehicles import saxon
-from vehicles import scooby
-from vehicles import screamer
-from vehicles import serpentine
-from vehicles import shoebox
-from vehicles import shredder
-from vehicles import sizzler
-from vehicles import skeiron_cab
-from vehicles import skeiron_middle_mail
-from vehicles import skeiron_middle_passenger
-from vehicles import skipper
-from vehicles import skipper_single
-from vehicles import slammer
-from vehicles import slug
-from vehicles import snapper
-from vehicles import snowplough_pony_gen_2
-from vehicles import solano
-from vehicles import spinner
-from vehicles import stag
-from vehicles import stalwart
-from vehicles import stentor
-from vehicles import stoat
-from vehicles import streamer
-from vehicles import strongbow
-from vehicles import sunshine_coast
-from vehicles import swift
-from vehicles import tenacious
-from vehicles import tencendur
-from vehicles import thor
-from vehicles import thunderer
-from vehicles import tideway
-from vehicles import tin_rocket
-from vehicles import tincans
-from vehicles import toaster
-from vehicles import tornado
-from vehicles import trojan
-from vehicles import tyburn
-from vehicles import tyrconnell
-from vehicles import ultra_shoebox
-from vehicles import vigilant
-from vehicles import viking
-from vehicles import vulcan
-from vehicles import westbourne
-from vehicles import withershins
-from vehicles import wyvern
-from vehicles import xerxes
-from vehicles import yak
-from vehicles import yillen
-from vehicles import zebedee
-from vehicles import zest
-from vehicles import zeus
-from vehicles import zipper
-from vehicles import zipper_single
-from vehicles import zorro
+# list in buy menu order
+engine_module_names = [
+    # "challenger", # for NA roster
+    # branch express
+    "lark",
+    "merrylegs",
+    "decapod",
+    "proper_job",
+    "stag",
+    "kelpie",
+    "foxhound",
+    "griffon",
+    "lynx",
+    "pinhorse",
+    "argus",
+    "booster",
+    "tornado",
+    # express
+    "reliance",
+    "spinner",
+    "carrack",
+    "braf",
+    "tencendur",
+    "diablo",
+    "thunderer",
+    "daring",
+    "merlion",
+    "shredder",
+    "centaur",
+    "swift",
+    "strongbow",
+    "arrow",
+    "wyvern",
+    "tenacious",
+    "intrepid",
+    "resilient",
+    "rapid",
+    "pegasus",
+    "streamer",
+    "hawkinge",
+    "dragon",
+    "vulcan",
+    "falcon",
+    "onslaught",
+    "dreadnought",
+    "defiant",
+    "relentless",
+    "dynamo",
+    # "cyclone", # unfinished, nerfed
+    "shoebox",
+    "ultra_shoebox",
+    "hurly_burly",
+    "moor_gallop",
+    "roarer",
+    "fury",
+    "constance",
+    "stalwart",
+    "zebedee",
+    "screamer",
+    "revolution",
+    "avenger",
+    "sizzler",
+    # branch freight
+    "buffalo",
+    "saxon",
+    "yak",
+    "little_bear",
+    "captain_steel",
+    "goliath",
+    "general_endeavour",
+    "stoat",
+    "zest",
+    # freight
+    "hercules",
+    "eastern",
+    # "celt", # unfinished, nerfed
+    "haar",
+    "trojan",
+    "growler",
+    "viking",
+    "slug",
+    "xerxes",
+    "keen",
+    "vigilant",
+    "mainstay",
+    "yillen",
+    "maelstrom",
+    "doineann",
+    "doubletide",
+    "girt_licker",
+    "lemon",
+    "esk",
+    "chinook",
+    "withershins",
+    "lion",
+    "grid",
+    "bone",
+    "toaster",
+    "cheddar_valley",
+    "stentor",
+    "flindermouse",
+    "dryth",
+    "peasweep",
+    "resistance",
+    "tincans",
+    "flanders_storm",
+    "quietus",
+    # gronks / snowploughs
+    "grub",
+    "lamia",
+    "gronk",
+    "chuggypig",
+    "magnum_70",
+    "snowplough_pony_gen_2",
+    # cargo sprinter
+    "cargo_sprinter",
+    # auto-coach (only one as autoreplace can't handle mixed cargo articulated consists)
+    "auto_coach_pony_gen_2",
+    # railbuses
+    "clipper",
+    "clipper_single",
+    "skipper",
+    "skipper_single",
+    "zipper",
+    "zipper_single",
+    # diesel railcars
+    "deasil",
+    "slammer",
+    "tin_rocket",
+    "happy_train",
+    "gowsty",
+    "scooby",
+    "plastic_postbox",
+    # electric railcars
+    "athena",
+    "geronimo",
+    "breeze",
+    "zeus",
+    "ares",
+    "dover",
+    "jupiter",
+    "pylon",
+    # express electric railcars
+    "high_flyer",
+    "sunshine_coast",
+    "olympic",
+    # "chronos", # unfinished, nerfed - see also trailer
+    # "nimbus", # unfinished, nerfed - see also trailer
+    # brit high speed pax
+    "firebird",
+    "blaze",
+    "helm_wind_cab",
+    "helm_wind_middle_passenger",
+    "helm_wind_middle_mail",
+    "alize_cab",
+    "alize_middle_passenger",
+    "alize_middle_mail",
+    "brenner_cab",
+    "brenner_middle_passenger",
+    "brenner_middle_mail",
+    "skeiron_cab",
+    "skeiron_middle_passenger",
+    "skeiron_middle_mail",
+    # driving cab cars
+    "driving_cab_passenger_pony_gen_4",
+    "driving_cab_passenger_pony_gen_5",
+    "driving_cab_high_speed_passenger_pony_gen_5",
+    "driving_cab_high_speed_passenger_pony_gen_6",
+    "driving_cab_mail_pony_gen_5",
+    "driving_cab_high_speed_mail_pony_gen_5",
+    "driving_cab_high_speed_mail_pony_gen_6",
+    # metro
+    "serpentine",
+    "westbourne",
+    "fleet",
+    "longwater",
+    "tyburn",
+    "tideway",
+    # ng engines
+    "cheese_bug",
+    "bean_feast",
+    "pikel",
+    "boar_cat",
+    "thor",
+    "alfama",
+    "gargouille",
+    "solano",
+    "tyrconnell",
+    "nile",
+    "hinterland",
+    "rockhampton",
+    # ng railcars
+    "mumble",
+    "mumble_single",
+    # "snapper", # 3.6.0
+    # "snapper_single", # 3.6.0
+    "zorro",
+]
 
 
 def main():
@@ -278,12 +294,12 @@ def main():
                 "multiplier": 0.45,
                 "loading_speed_multiplier": 1,
             },
-            # very specifically tuned multiplier against combin consists
+            # very specifically tuned multiplier against combine consists
             "autocoach_combine": {
                 "multiplier": 2.7,
                 "loading_speed_multiplier": 1.75,
             },
-            # very specifically tuned multiplier against combin consists
+            # very specifically tuned multiplier against combine consists
             "railbus_combine": {
                 "multiplier": 2.5,
                 "loading_speed_multiplier": 1.75,
@@ -526,10 +542,7 @@ def main():
         # - livery name comes from roster engine_and_pax_mail_car_liveries
         # - relative_spriterow_num allows reordering sprites relative to spritesheet
         pax_mail_livery_groups={
-            "default_pax_liveries": [
-                ("VANILLA", 0),
-                ("VANILLA", 1)
-            ],
+            "default_pax_liveries": [("VANILLA", 0), ("VANILLA", 1)],
             "gen_5_and_6_pax_liveries": [
                 ("VANILLA", 0),
                 ("VANILLA", 1),
@@ -580,202 +593,5 @@ def main():
                 ("VANILLA", 0),
             ],
         },
-        # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
-        engines=[
-            # challenger, # for NA roster
-            # branch express
-            lark,
-            merrylegs,
-            decapod,
-            proper_job,
-            stag,
-            kelpie,
-            foxhound,
-            griffon,
-            lynx,
-            pinhorse,
-            argus,
-            booster,
-            tornado,
-            # express
-            reliance,
-            spinner,
-            carrack,
-            braf,
-            tencendur,
-            diablo,
-            thunderer,
-            daring,
-            merlion,
-            shredder,
-            centaur,
-            swift,
-            strongbow,
-            arrow,
-            wyvern,
-            tenacious,
-            intrepid,
-            resilient,
-            rapid,
-            pegasus,
-            streamer,
-            hawkinge,
-            dragon,
-            vulcan,
-            falcon,
-            onslaught,
-            dreadnought,
-            defiant,
-            relentless,
-            dynamo,
-            #cyclone, # unfinished, nerfed
-            shoebox,
-            ultra_shoebox,
-            hurly_burly,
-            moor_gallop,
-            roarer,
-            fury,
-            constance,
-            stalwart,
-            zebedee,
-            screamer,
-            revolution,
-            avenger,
-            sizzler,
-            # branch freight
-            buffalo,
-            saxon,
-            yak,
-            little_bear,
-            captain_steel,
-            goliath,
-            general_endeavour,
-            stoat,
-            zest,
-            # freight
-            hercules,
-            eastern,
-            # celt, # unfinished, nerfed
-            haar,
-            trojan,
-            growler,
-            viking,
-            slug,
-            xerxes,
-            keen,
-            vigilant,
-            mainstay,
-            yillen,
-            maelstrom,
-            doineann,
-            doubletide,
-            girt_licker,
-            lemon,
-            esk,
-            chinook,
-            withershins,
-            lion,
-            grid,
-            bone,
-            toaster,
-            cheddar_valley,
-            stentor,
-            flindermouse,
-            dryth,
-            peasweep,
-            resistance,
-            tincans,
-            flanders_storm,
-            quietus,
-            # gronks / snowploughs
-            grub,
-            lamia,
-            gronk,
-            chuggypig,
-            magnum_70,
-            snowplough_pony_gen_2,
-            # cargo sprinter
-            cargo_sprinter,
-            # auto-coach (only one as autoreplace can't handle mixed cargo articulated consists)
-            auto_coach_pony_gen_2,
-            # railbuses
-            clipper,
-            clipper_single,
-            skipper,
-            skipper_single,
-            zipper,
-            zipper_single,
-            # diesel railcars
-            deasil,
-            slammer,
-            tin_rocket,
-            happy_train,
-            gowsty,
-            scooby,
-            plastic_postbox,
-            # electric railcars
-            athena,
-            geronimo,
-            breeze,
-            zeus,
-            ares,
-            dover,
-            jupiter,
-            pylon,
-            # express electric railcars
-            high_flyer,
-            sunshine_coast,
-            olympic,
-            #chronos, # unfinished, nerfed - see also trailer
-            #nimbus, # unfinished, nerfed - see also trailer
-            # brit high speed pax
-            firebird,
-            blaze,
-            helm_wind_cab,
-            helm_wind_middle_passenger,
-            helm_wind_middle_mail,
-            alize_cab,
-            alize_middle_passenger,
-            alize_middle_mail,
-            brenner_cab,
-            brenner_middle_passenger,
-            brenner_middle_mail,
-            skeiron_cab,
-            skeiron_middle_passenger,
-            skeiron_middle_mail,
-            # driving cab cars
-            driving_cab_passenger_pony_gen_4,
-            driving_cab_passenger_pony_gen_5,
-            driving_cab_high_speed_passenger_pony_gen_5,
-            driving_cab_high_speed_passenger_pony_gen_6,
-            driving_cab_mail_pony_gen_5,
-            driving_cab_high_speed_mail_pony_gen_5,
-            driving_cab_high_speed_mail_pony_gen_6,
-            # metro
-            serpentine,
-            westbourne,
-            fleet,
-            longwater,
-            tyburn,
-            tideway,
-            # ng engines
-            cheese_bug,
-            bean_feast,
-            pikel,
-            boar_cat,
-            thor,
-            alfama,
-            gargouille,
-            solano,
-            tyrconnell,
-            nile,
-            hinterland,
-            rockhampton,
-            # ng railcars
-            mumble,
-            mumble_single,
-            #snapper, # 3.6.0
-            #snapper_single, # 3.6.0
-            zorro,
-        ],
+        engine_module_names=engine_module_names,
     )
