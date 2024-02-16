@@ -30,13 +30,6 @@ def get_command_line_args():
         choices=["iron-horse", "iron-moose", "iron-ibex", "id-report-only"],
     )
     argparser.add_argument(
-        "-sc",
-        "--suppress-cargo-sprites",
-        action=argparse.BooleanOptionalAction,
-        dest="suppress_cargo_sprites",
-        help="Optionally suppress visible cargo sprites in the grf output, can save substantial compile time",
-    )
-    argparser.add_argument(
         "-sd",
         "--suppress-docs",
         action=argparse.BooleanOptionalAction,

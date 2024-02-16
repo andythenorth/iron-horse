@@ -44,14 +44,11 @@ endif
 ifdef PW
     pool-workers = --pool_workers=$(PW)
 endif
-ifeq ($(SC), True)
-  suppress-cargo-sprites = --suppress-cargo-sprites
-endif
 ifeq ($(SD), True)
   suppress-docs = --suppress-docs
 endif
 # --grf-name needs to be handled differently depending on the python script, so is not included in PY_GLOBAL_ARGS
-PY_GLOBAL_ARGS = $(pool-workers) $(suppress-cargo-sprites) $(suppress-docs)
+PY_GLOBAL_ARGS = $(pool-workers) $(suppress-docs)
 
 # GRF_FILES include the full path to generated dir and .grf suffixes
 GRF_FILES = $(GRF_NAMES:%=generated/%.grf)

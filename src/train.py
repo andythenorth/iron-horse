@@ -7343,17 +7343,6 @@ class Train(object):
         return "RUNNING_COST_STEAM"
 
     @property
-    def vehicle_nml_template(self):
-        # optionally drop the cargos in the compile, can save substantial compile time
-        if utils.get_command_line_args().suppress_cargo_sprites:
-            return "vehicle_default.pynml"
-
-        if self.consist.gestalt_graphics.nml_template:
-            return self.consist.gestalt_graphics.nml_template
-        # default case
-        return "vehicle_default.pynml"
-
-    @property
     def roof(self):
         # fetch spritesheet name to use for roof when generating graphics
         if self.consist.roof_type is not None:
@@ -7531,7 +7520,7 @@ class Train(object):
             "%s consist.gen is None, which is invalid.  Set gen or intro_year" % self.id
         )
         # templating
-        template_name = self.vehicle_nml_template
+        template_name = self.consist.gestalt_graphics.nml_template
         template = templates[template_name]
         nml_result = template(
             vehicle=self,
