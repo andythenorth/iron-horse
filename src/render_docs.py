@@ -169,11 +169,6 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
             source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest
         )
 
-        if "skeiron_middle_passenger" in consist.id:
-            print("skeiron_middle_passenger CABBAGE 2009")
-            print("y_offset", y_offset)
-            #source_vehicle_image_tmp.show()
-
         # add pantographs if needed
         if consist.pantograph_type is not None:
             # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
