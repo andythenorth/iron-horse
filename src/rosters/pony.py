@@ -726,7 +726,7 @@ def main():
             high_flyer,
             sunshine_coast,
             olympic,
-            chronos,
+            #chronos, # unfinished, nerfed - see also trailer
             #nimbus, # unfinished, nerfed - see also trailer
             # brit high speed pax
             firebird,
