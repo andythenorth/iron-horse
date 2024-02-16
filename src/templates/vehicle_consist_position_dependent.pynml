@@ -22,7 +22,7 @@
         <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
         <tal:pantographs repeat="pantograph_state ['down', 'up']">
             spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${position_variant_num}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
-                ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (position_variant_num * 60))}
+                ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (position_variant_num * 30))}
             }
         </tal:pantographs>
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${position_variant_num}, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
