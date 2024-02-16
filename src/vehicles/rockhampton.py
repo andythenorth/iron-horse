@@ -34,7 +34,7 @@ def main(roster_id):
     # various NZ / tasrail / QLD diesels
     # but could have been entirely different - https://en.wikipedia.org/wiki/Euskotren_TD2000_series
     consist.description = (
-        """"""
+        """From down under emerges a tiny colossus. Footsure, flexible and all grunt."""
     )
     consist.foamer_facts = """New Zealand Railways DJ class (Mitsubishi bo-bo-bo)"""
 

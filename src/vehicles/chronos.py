@@ -28,7 +28,7 @@ def main(roster_id):
         repeat=2
     )
 
-    consist.description = """She was like a bird for speed, an arrow for directness."""
+    consist.description = """Time's courier swift. Chronos weaves through night and day. Posts haste, never late."""
     consist.foamer_facts = """BR Class 325 mail/parcels EMU"""
 
     return consist

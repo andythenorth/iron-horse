@@ -33,7 +33,7 @@ def main(roster_id):
     )
 
     consist.description = (
-        """"""
+        """Is twice as nice."""
     )
     consist.foamer_facts = """Victorian Railways G class Garratt locomotives"""
 

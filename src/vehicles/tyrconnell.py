@@ -29,7 +29,7 @@ def main(roster_id):
     )
 
     consist.description = (
-        """"""
+        """A titan from the North. Steadfast and stout."""
     )
     consist.foamer_facts = """Londonderry and Lough Swilly Railway Company 4-8-0 locomotives"""
 

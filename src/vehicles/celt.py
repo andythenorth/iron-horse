@@ -21,7 +21,7 @@ def main(roster_id):
 
     consist.add_unit(type=SteamEngineUnit, weight=90, vehicle_length=8, spriterow_num=0)
 
-    consist.description = """"""
-    consist.foamer_facts = """"""
+    consist.description = """Celt, boyo, she's like a choir in the valleys - powerful, resonant, hefty."""
+    consist.foamer_facts = """GWR 7200 Class, LNER Class S1, LNER Class T1"""
 
     return consist

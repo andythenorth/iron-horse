@@ -30,7 +30,7 @@ def main(roster_id):
         spriterow_num=0,
     )
 
-    consist.description = """"""
+    consist.description = """Our pride, a force from overseas. Thrives in the solitude of the frontier or the clamor of the mills."""
     consist.foamer_facts = (
         """Alco RSD8 / DL351"""
     )

@@ -34,7 +34,7 @@ def main(roster_id):
         tail_light="hst_32px_1",
     )
 
-    consist.description = """She was like a bird for speed, an arrow for directness."""
+    consist.description = """Power is of the essence. Faster is everything."""
     consist.foamer_facts = """BR Class 43 (High Speed Train)"""
 
     return consist

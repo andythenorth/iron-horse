@@ -31,7 +31,7 @@ def main(roster_id):
         repeat=2,
     )
 
-    consist.description = """Power is of the essence. Faster is everything."""
+    consist.description = """Bridging realms of power. Diesel heart and electric soul. Whispers through dawn's light."""
     consist.foamer_facts = """Bombardier Class 221 <i>Super Voyager</i>, Hitachi Class 800 <i>Intercity Express Train</i>"""
 
     return consist

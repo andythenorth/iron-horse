@@ -31,7 +31,7 @@ def main(roster_id):
         type=ElectricEngineUnit, weight=92, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """."""
-    consist.foamer_facts = """ """
+    consist.description = """Nippy as a whippet, eats miles like hot dinners. Proper electric workhorse, that one."""
+    consist.foamer_facts = """Austrian Federal Railways (ÖBB) 1163 class"""
 
     return consist

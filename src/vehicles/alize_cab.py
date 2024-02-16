@@ -33,7 +33,7 @@ def main(roster_id):
         tail_light="very_high_speed_32px_3",
     )
 
-    consist.description = """"""
+    consist.description = """Whispers in the wind. Graceful as she slices air. Swift, pure, and untamed."""
     consist.foamer_facts = """TGV Sud-Est, with TGV 001-style distributed traction"""
 
     return consist

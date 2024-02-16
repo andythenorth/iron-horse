@@ -32,7 +32,7 @@ def main(roster_id):
     )
 
     consist.description = (
-        """"""
+        """Dances with mid-power grace. Articulated finesse in every turn."""
     )
     consist.foamer_facts = """Mallet locomotives used by Portugese narrow gauge railways"""
 
