@@ -20,7 +20,7 @@ def main(roster_id):
         default_livery_extra_docs_examples=[
             ("COLOUR_ORANGE", "COLOUR_WHITE"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(

@@ -14,7 +14,7 @@ def main(roster_id):
         # no pantographs for Alizé middle cars
         gen=5,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
