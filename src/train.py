@@ -1473,7 +1473,7 @@ class AutoCoachCombineConsist(EngineConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_autocoach.pynml",
-            liveries=[self.roster.engine_and_pax_mail_car_liveries["SWOOSH"]],
+            liveries=self.roster.get_liveries_by_name([]), # inserts the default liveries for docs examples
         )
 
     @property
@@ -2049,7 +2049,7 @@ class SnowploughEngineConsist(EngineConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_snowplough.pynml",
-            liveries=[self.roster.engine_and_pax_mail_car_liveries["SWOOSH"]],
+            liveries=self.roster.get_liveries_by_name([]), # inserts the default liveries for docs examples
         )
 
 
@@ -2133,7 +2133,6 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
             default_livery_extra_docs_examples=self.cab_consist.gestalt_graphics.default_livery_extra_docs_examples,
             pantograph_type=self.pantograph_type,
         )
-        print(self.gestalt_graphics.default_livery_extra_docs_examples)
 
     @property
     def cab_power(self):
