@@ -38,6 +38,7 @@ from rosters import pony
 from vehicles import acid_tank_cars
 from vehicles import aggregate_cars
 from vehicles import aggregate_hopper_cars
+
 # from vehicles import alignment_cars
 from vehicles import automobile_cars
 from vehicles import bolster_cars
@@ -277,11 +278,15 @@ class RosterManager(list):
                     False,
                 ):
                     for buyable_variant in consist.buyable_variants:
-                        result.append(buyable_variant.lead_unit_variant_matching_buyable_variant.id)
+                        result.append(
+                            buyable_variant.lead_unit_variant_matching_buyable_variant.id
+                        )
         for consist in self.active_roster.engine_consists:
             if getattr(consist, "treat_as_pax_car_for_var_41", False):
                 for buyable_variant in consist.buyable_variants:
-                    result.append(buyable_variant.lead_unit_variant_matching_buyable_variant.id)
+                    result.append(
+                        buyable_variant.lead_unit_variant_matching_buyable_variant.id
+                    )
         if len(result) > 255:
             utils.echo_message(
                 "action 2 switch is limited to 255 values, pax_car_ids result exceeds this - needs split across multiple switches"

@@ -54,19 +54,23 @@ def report_sprites_complete(consists):
     incomplete_by_track_type = {}
     for consist in consists:
         if not consist.sprites_complete:
-            incomplete_by_track_type.setdefault(consist.base_track_type_name, []).append(
-                consist
-            )
+            incomplete_by_track_type.setdefault(
+                consist.base_track_type_name, []
+            ).append(consist)
     for track_type, incomplete_consists in incomplete_by_track_type.items():
         print("  *", track_type, len(incomplete_consists))
     # also track vehicles where additional liveries are intended, but not defined and drawn
     sprites_additional_liveries_potential_total = len(
-        [consist.sprites_additional_liveries_potential for consist in consists if consist.sprites_additional_liveries_potential]
+        [
+            consist.sprites_additional_liveries_potential
+            for consist in consists
+            if consist.sprites_additional_liveries_potential
+        ]
     )
     print(
         "Additional livery ideas exist for",
         sprites_additional_liveries_potential_total,
-        "consists"
+        "consists",
     )
 
 

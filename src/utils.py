@@ -7,7 +7,9 @@ from polar_fox.utils import echo_message as echo_message
 from polar_fox.utils import dos_palette_to_rgb as dos_palette_to_rgb
 from polar_fox.utils import unescape_chameleon_output as unescape_chameleon_output
 from polar_fox.utils import split_nml_string_lines as split_nml_string_lines
-from polar_fox.utils import unwrap_nml_string_declaration as unwrap_nml_string_declaration
+from polar_fox.utils import (
+    unwrap_nml_string_declaration as unwrap_nml_string_declaration,
+)
 
 
 def get_command_line_args():
@@ -89,6 +91,7 @@ def unpack_colour(colour_name, cc_to_remap):
             + str(1 if cc_to_remap == 2 else 2)
         )
 
+
 def extend_list_to_power_of_2_length(list_to_extend):
     # length of random choices needs to be power of 2 as random choice can only be picked from powers of 2s (1 bit = 2 options, 2 bits = 4 options, 3 bits = 8 options, 4 bits = 16 options, 5 bits = 32 options)
     # so just do a clunky manual append here, JFDI, not figuring out a power of 2 detector at this time of night :P
@@ -104,6 +107,7 @@ def extend_list_to_power_of_2_length(list_to_extend):
     if len(list_to_extend) >= 33:
         list_to_extend.extend(list_to_extend[: 64 - len(list_to_extend)])
     return list_to_extend
+
 
 def convert_flat_list_to_pairs_of_tuples(flat_list):
     # used to create a list suitable for iterating over and pushing values to the text stack

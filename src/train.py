@@ -1226,9 +1226,9 @@ class Consist(object):
                 wagon_randomisation_candidates.append(
                     self.roster.get_wagon_randomisation_candidates(buyable_variant)
                 )
-            self.frozen_roster_items[
-                "wagon_randomisation_candidates"
-            ] = wagon_randomisation_candidates
+            self.frozen_roster_items["wagon_randomisation_candidates"] = (
+                wagon_randomisation_candidates
+            )
         # no return
 
     def assert_buyable_variant_groups(self):
@@ -1473,7 +1473,9 @@ class AutoCoachCombineConsist(EngineConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_autocoach.pynml",
-            liveries=self.roster.get_liveries_by_name([]), # inserts the default liveries for docs examples
+            liveries=self.roster.get_liveries_by_name(
+                []
+            ),  # inserts the default liveries for docs examples
         )
 
     @property
@@ -2049,7 +2051,9 @@ class SnowploughEngineConsist(EngineConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_snowplough.pynml",
-            liveries=self.roster.get_liveries_by_name([]), # inserts the default liveries for docs examples
+            liveries=self.roster.get_liveries_by_name(
+                []
+            ),  # inserts the default liveries for docs examples
         )
 
 
@@ -2173,7 +2177,7 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         # this will catch self also
         # note that TGV middle cars are in engine_consists, not wagon_consists, as powered vehicles
         for consist in self.roster.engine_consists:
-            if getattr(consist, 'cab_id', None) == self.cab_id:
+            if getattr(consist, "cab_id", None) == self.cab_id:
                 result.extend(consist.unique_numeric_ids)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range(len(result), 16):
@@ -3195,8 +3199,10 @@ class CoilCarCoveredAsymmetricConsist(CoilCarConsistBase):
         self._joker = True
         self.random_reverse = True
         # Graphics configuration
-        weathered_variants = {"unweathered": graphics_constants.covered_coil_car_asymmetric_body_recolour_map,
-                              "weathered": graphics_constants.covered_coil_car_asymmetric_body_recolour_map_weathered}
+        weathered_variants = {
+            "unweathered": graphics_constants.covered_coil_car_asymmetric_body_recolour_map,
+            "weathered": graphics_constants.covered_coil_car_asymmetric_body_recolour_map_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
             liveries=[
@@ -3315,7 +3321,7 @@ class DedicatedCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBa
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_coil_cars"
         self._joker = True
-        self.random_reverse = True # because the asymmetric covered wagons can reverse
+        self.random_reverse = True  # because the asymmetric covered wagons can reverse
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -3341,7 +3347,7 @@ class GenericCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBase
     def __init__(self, **kwargs):
         self.base_id = "randomised_generic_coil_car"
         super().__init__(**kwargs)
-        self.random_reverse = True # because the asymmetric covered wagons can reverse
+        self.random_reverse = True  # because the asymmetric covered wagons can reverse
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -4471,7 +4477,9 @@ class FlatCarSlidingRoofConsistHiCube(FlatCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "sliding_roof_hi_cube_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["box_vehicle_parts"] # minor abuse of existing list
+        self.default_cargos = polar_fox.constants.default_cargos[
+            "box_vehicle_parts"
+        ]  # minor abuse of existing list
         self.buy_cost_adjustment_factor = 1.2
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
@@ -7305,7 +7313,10 @@ class Train(object):
         if unit_variant.buyable_variant.buyable_variant_group is not None:
             # some of these aren't needed for wagons or articulated trailing parts, but eh, probably fine?
             # disable news and exclusive preview for all variants except the default
-            if unit_variant.buyable_variant.get_variant_group_parent_vehicle_id() is not None:
+            if (
+                unit_variant.buyable_variant.get_variant_group_parent_vehicle_id()
+                is not None
+            ):
                 extra_flags.append("VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE")
                 extra_flags.append("VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW")
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW")

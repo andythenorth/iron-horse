@@ -421,7 +421,10 @@ class Roster(object):
                     ]:
                         if consist.base_id == base_id_for_target_parent_consist:
                             match_failed = False
-                            if consist.base_track_type_name != parent_consist.base_track_type_name:
+                            if (
+                                consist.base_track_type_name
+                                != parent_consist.base_track_type_name
+                            ):
                                 match_failed = True
                             if consist.gen != parent_consist.gen:
                                 match_failed = True

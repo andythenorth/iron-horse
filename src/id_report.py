@@ -52,7 +52,10 @@ def main():
         65000,
     )
     report_content = ""
-    for label, id_runs in {"Articulated IDs": id_gaps_articulated, "Non-Articulated IDs": id_gaps_non_articulated}.items():
+    for label, id_runs in {
+        "Articulated IDs": id_gaps_articulated,
+        "Non-Articulated IDs": id_gaps_non_articulated,
+    }.items():
         id_gaps = []
         for id_run in id_runs:
             if id_run[0] == id_run[1]:
@@ -61,13 +64,7 @@ def main():
             else:
                 # range of ids
                 id_gaps.append(" to ".join([str(id) for id in id_run]))
-        report_content += (
-            "Vacant "
-            + label
-            + ":\n"
-            + ", ".join(id_gaps)
-            + "\n"
-        )
+        report_content += "Vacant " + label + ":\n" + ", ".join(id_gaps) + "\n"
     # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
     print(report_content)
 

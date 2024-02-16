@@ -27,6 +27,7 @@ docs_src = os.path.join(currentdir, "src", "docs_templates")
 
 palette = utils.dos_palette_to_rgb()
 
+
 def render_docs(
     doc_list,
     file_type,
@@ -149,7 +150,11 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
         elif consist.requires_custom_buy_menu_sprite:
             y_offset = 30 * variant["buyable_variant"].relative_spriterow_num
         else:
-            y_offset = 30 * variant["buyable_variant"].relative_spriterow_num * consist.gestalt_graphics.num_load_state_or_similar_spriterows
+            y_offset = (
+                30
+                * variant["buyable_variant"].relative_spriterow_num
+                * consist.gestalt_graphics.num_load_state_or_similar_spriterows
+            )
         # relies on additional_liveries being in predictable row offsets (should be true as of July 2020)
         source_vehicle_image_tmp = vehicle_spritesheet.crop(
             box=(
@@ -279,14 +284,21 @@ def main():
 
     shutil.copy(os.path.join(docs_src, "index.html"), docs_output_path)
     # convenience for local development, this means docs/index.html can be opened from shell, and has list of links to tech tree, which is a common use case
-    shutil.copyfile(os.path.join(docs_src, "local_docs_root.html"), os.path.join(currentdir, "docs", "index.html"))
+    shutil.copyfile(
+        os.path.join(docs_src, "local_docs_root.html"),
+        os.path.join(currentdir, "docs", "index.html"),
+    )
 
     static_dir_src = os.path.join(docs_src, "static")
     static_dir_dst = os.path.join(html_docs_output_path, "static")
     shutil.copytree(static_dir_src, static_dir_dst)
 
     # note we remove any consists that are clones, we don't need them in docs
-    consists = [consist for consist in roster.consists_in_buy_menu_order if consist.cloned_from_consist == None]
+    consists = [
+        consist
+        for consist in roster.consists_in_buy_menu_order
+        if consist.cloned_from_consist == None
+    ]
     # default sort for docs is by intro year
     consists = sorted(consists, key=lambda consist: consist.intro_year)
     dates = sorted([i.intro_year for i in consists])

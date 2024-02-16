@@ -6,6 +6,7 @@ import json
 import global_constants
 import utils
 
+
 class DocHelper(object):
     # Some constants
     palette = utils.dos_palette_to_rgb()
@@ -99,13 +100,14 @@ class DocHelper(object):
                                 role_child_branches[role_child_branch][gen] = None
                     # get the engines matching this role and track type, and place them into the child branches
                     for consist in consists:
-                        if (simplified_gameplay and consist.role_child_branch_num < 0):
+                        if simplified_gameplay and consist.role_child_branch_num < 0:
                             continue
-                        if (consist.role_child_branch_num > 999) or (consist.role_child_branch_num < -999):
+                        if (consist.role_child_branch_num > 999) or (
+                            consist.role_child_branch_num < -999
+                        ):
                             continue
                         if (
-                            consist.base_track_type_name
-                            == base_track_type_and_label[0]
+                            consist.base_track_type_name == base_track_type_and_label[0]
                         ) and (consist.role == role):
                             role_child_branches[consist.role_child_branch_num][
                                 consist.gen
@@ -154,9 +156,9 @@ class DocHelper(object):
         input_colours = {"CC1": 198, "CC2": 80}
         for input_colour, output_colour in remap.items():
             for i in range(0, 8):
-                result[
-                    input_colours[input_colour] + i
-                ] = self.get_palette_index_for_company_colour(output_colour, i)
+                result[input_colours[input_colour] + i] = (
+                    self.get_palette_index_for_company_colour(output_colour, i)
+                )
         return result
 
     def get_palette_index_for_company_colour(self, company_colour, offset):
