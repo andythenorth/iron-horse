@@ -628,7 +628,7 @@ def main():
             defiant,
             relentless,
             dynamo,
-            cyclone,
+            #cyclone, # unfinished, nerfed
             shoebox,
             ultra_shoebox,
             hurly_burly,
@@ -655,7 +655,7 @@ def main():
             # freight
             hercules,
             eastern,
-            celt,
+            # celt, # unfinished, nerfed
             haar,
             trojan,
             growler,
@@ -727,7 +727,7 @@ def main():
             sunshine_coast,
             olympic,
             chronos,
-            nimbus,
+            #nimbus, # unfinished, nerfed - see also trailer
             # brit high speed pax
             firebird,
             blaze,
