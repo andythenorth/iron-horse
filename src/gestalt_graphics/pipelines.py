@@ -550,6 +550,10 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
         if not consist.requires_custom_buy_menu_sprite:
             return
 
+        # some consists don't show pans in the buy menu (usually unpowered)
+        if consist.suppress_pantograph_if_no_engine_attached:
+            return
+
         self.units = []
         self.consist = consist
         self.graphics_output_path = graphics_output_path

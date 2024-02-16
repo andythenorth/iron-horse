@@ -98,6 +98,8 @@ class Consist(object):
         self.power_by_power_source = kwargs.get("power_by_power_source", None)
         # some engines require pantograph sprites composited, don't bother setting this unless required
         self.pantograph_type = kwargs.get("pantograph_type", None)
+        # some consists don't show pans in the buy menu (usually unpowered)
+        self.suppress_pantograph_if_no_engine_attached = False
         # some engines have an optional decor layer, which is a manual spriterow num (as decor might not be widely used?)
         self.decor_spriterow_num = kwargs.get("decor_spriterow_num", None)
         # stupid extra-detail, control which variants show decor in purchase menu
@@ -5629,6 +5631,7 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
             key: 0 for key in self.cab_consist.power_by_power_source.keys()
         }
         self.pantograph_type = self.cab_consist.pantograph_type
+        self.suppress_pantograph_if_no_engine_attached = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"

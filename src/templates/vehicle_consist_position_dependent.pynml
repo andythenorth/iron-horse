@@ -185,7 +185,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase, vehic
     </tal:unit_variants>
     <!--! no default, by design all variants should be explicitly found -->
 }
-<tal:conditional_pantographs switch="consist.pantograph_type is not None">
+<tal:conditional_pantographs switch="(consist.pantograph_type is not None) and (not consist.suppress_pantograph_if_no_engine_attached)">
     <tal:has_pantographs case="True">
         <!--! purchase sprites for case where pantograph layer is needed -->
         spriteset(${vehicle.id}_ss_pantograph_purchase, "${graphics_path}${consist.id}_pantographs_down.png") {
