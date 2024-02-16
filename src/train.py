@@ -2129,10 +2129,11 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="tgv",
-            # this won't work for TGV mail cars if mail-specific liveries (TGV La Poste etc) are added in future, but eh, only 2 liveries as of Dec 2022
             liveries=self.cab_consist.gestalt_graphics.liveries,
+            default_livery_extra_docs_examples=self.cab_consist.gestalt_graphics.default_livery_extra_docs_examples,
             pantograph_type=self.pantograph_type,
         )
+        print(self.gestalt_graphics.default_livery_extra_docs_examples)
 
     @property
     def cab_power(self):

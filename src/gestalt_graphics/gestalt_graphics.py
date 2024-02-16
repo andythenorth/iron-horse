@@ -892,6 +892,9 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
         self.spriterow_group_mappings = spriterow_group_mappings
         # liveries provided by subclass calling gestalt_graphics
         self.liveries = kwargs.get("liveries", [])
+        self.default_livery_extra_docs_examples = kwargs.get(
+            "default_livery_extra_docs_examples", []
+        )
         # we'll generate spriterows for doors closed and doors open
         self.num_load_state_or_similar_spriterows = 2
         # colour mapping stuff...
