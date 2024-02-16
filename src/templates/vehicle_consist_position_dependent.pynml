@@ -25,9 +25,29 @@
                 ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (position_variant_num * 30))}
             }
         </tal:pantographs>
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${position_variant_num}, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_state_${position_variant_num}, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
             1: return ${vehicle.id}_ss_pantographs_up_${position_variant_num};
             return ${vehicle.id}_ss_pantographs_down_${position_variant_num};
+        }
+        <!--! some vehicles don't show pans if the OpenTTD consist is not powered
+              this isn't very sophisticated as of Feb 2024, it literally just checks if engine (cab cars) are in the conist, doesn't check for contiguous chain -->
+        switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_pantographs_${position_variant_num},
+            [
+                <!--! OR because if the consist doesn't use the suppression flag, we always show pans -->
+                ${int(not consist.suppress_pantograph_if_no_engine_attached)}
+                <tal:has_cab_consist condition="getattr(consist, 'cab_consist', None) is not None">
+                    ||
+                    <tal:cabs repeat="unit_variant consist.cab_consist.units[0].unit_variants">
+                        count_veh_id(${unit_variant.id}) > 0
+                        <tal:OR condition="not:repeat.unit_variant.end">
+                            ||
+                        </tal:OR>
+                    </tal:cabs>
+                </tal:has_cab_consist>
+            ]
+        ) {
+            1: return ${vehicle.id}_switch_graphics_pantographs_state_${position_variant_num};
+            return ss_global_empty_vehicle;
         }
     </tal:pantographs>
 </tal:consist_position_variants>
