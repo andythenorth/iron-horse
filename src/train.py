@@ -2166,6 +2166,20 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
     def buy_menu_distributed_power_hp_value(self):
         return self.cab_consist.power
 
+    @property
+    def equivalent_ids_alt_var_41(self):
+        # find other mail or pax middle cars for this TGV cab
+        result = []
+        # this will catch self also
+        # note that TGV middle cars are in engine_consists, not wagon_consists, as powered vehicles
+        for consist in self.roster.engine_consists:
+            if getattr(consist, 'cab_id', None) == self.cab_id:
+                result.extend(consist.unique_numeric_ids)
+        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
+        for i in range(len(result), 16):
+            result.append(-1)
+        return result
+
 
 class TGVMiddleMailEngineConsist(TGVMiddleEngineConsistMixin, MailEngineConsist):
     """
