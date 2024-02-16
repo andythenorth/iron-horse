@@ -322,12 +322,13 @@ class Roster(object):
                 raise BaseException("Error: " + consist.id + " has no units defined")
             elif len(consist.units) == 1:
                 if consist.base_numeric_id <= global_constants.max_articulated_id:
+                    # se
                     raise BaseException(
                         "Error: "
                         + consist.id
                         + " with base_numeric_id "
                         + str(consist.base_numeric_id)
-                        + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles"
+                        + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles (Iron Horse restriction for legacy reasons - OpenTTD limit is 16383 for articulated vehicle IDs, but some docs were outdated)"
                     )
                     # utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
                     # utils.echo_message(str(consist.base_numeric_id))
@@ -341,7 +342,7 @@ class Roster(object):
                             + str(numeric_id)
                             + " which is part of an articulated vehicle, and needs a numeric_id smaller than "
                             + str(global_constants.max_articulated_id)
-                            + " (use a lower consist base_numeric_id)"
+                            + " - use a lower consist base_numeric_id (Iron Horse restriction for legacy reasons - OpenTTD limit is 16383 for articulated vehicle IDs, but some docs were outdated)"
                         )
             for numeric_id in consist.unique_numeric_ids:
                 if numeric_id in numeric_id_defender:

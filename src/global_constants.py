@@ -941,7 +941,9 @@ sprites_max_x_extent = (
     + spritesheet_bounding_boxes_asymmetric_unreversed[7][1]
 )
 
-# articulated parts must have a value less than 8192 (13 bit value)
+# articulated parts must have an ID less than 8192 (13 bit value)
+# ^ apparently this was based on incorrect information (outdated wiki?) - max ID is 16383
+# fixing this would require a significant reset of IDs, TMWFTLB
 max_articulated_id = 8191
 
 # shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
