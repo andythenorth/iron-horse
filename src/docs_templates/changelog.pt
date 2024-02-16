@@ -3,6 +3,37 @@ Changelog
 
 
 ------------
+3.6.0 Release
+------------
+
+
+*Changes*
+
+
+- added Intercity Express trains (very high speed, with distributed traction)
+    - Alizé (inspired by TGV), 155 mph, 1900 hp per unit, available around 1987
+    - Skeiron (inspired by Eurostar), 186 mph, 3200 hp per unit, available around 2006
+- added wagon types
+    - Coil Carriers (as covered, asymmetric variant)
+    - Sliding Roof Vans (as cube variant)
+
+
+*Docs*
+
+- if a vehicle has dedicated trailers, show them on the vehicle details page (e.g. HSTs, railcars etc)
+- fixes to certain missing or broken sprites
+- added missing descriptions for some recently added engines
+
+
+*Fixes*
+
+- corrected sequencing of trailer vehicles for very high speed trains, including with mixed mail and passenger trailers
+- improved handling of pantograph visibility for unpowered railcar trailers
+- 7 electric engines had diamond-shaped pantographs incorrectly positioned for some angles
+- buy menu rows were too tall due to an incorrectly sized empty sprite
+
+
+------------
 3.5.0 Release
 ------------
 
