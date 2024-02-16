@@ -1,3 +1,4 @@
+import importlib
 import os.path
 
 currentdir = os.curdir
@@ -15,126 +16,136 @@ generated_files_path = os.path.join(currentdir, global_constants.generated_files
 # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
 os.makedirs(generated_files_path, exist_ok=True)
 
+# spritelayer_cargo_modules are dynamic imports later, but registered_spritelayer_cargos wasn't trivial to convert to a dynamic import
 from spritelayer_cargos import registered_spritelayer_cargos
-from spritelayer_cargos import intermodal_containers
-from spritelayer_cargos import automobiles
 
-# import railtypes
-from railtypes import lgv
-from railtypes import lgv_electrified
-from railtypes import metro
-from railtypes import narrow_gauge
-from railtypes import rail_electrified_ac
-from railtypes import rail_electrified_ac_dc
-from railtypes import rail_electrified_dc
-from railtypes import rail_high_clearance
+spritelayer_cargo_module_names = [
+    "intermodal_containers",
+    "automobiles",
+]
 
-# import rosters
-from rosters import ibex
-from rosters import moose
-from rosters import pony
+# in the rare case that an unfinished railtype won't init cleanly, comment it out here
+railtype_module_names = [
+    "lgv",
+    "lgv_electrified",
+    "metro",
+    "narrow_gauge",
+    "rail_electrified_ac",
+    "rail_electrified_ac_dc",
+    "rail_electrified_dc",
+    "rail_high_clearance",
+]
 
-# import wagons
-from vehicles import acid_tank_cars
-from vehicles import aggregate_cars
-from vehicles import aggregate_hopper_cars
+# comment out any unfinished rosters here
+roster_module_names = [
+    "ibex",
+    "moose",
+    "pony",
+]
 
-# from vehicles import alignment_cars
-from vehicles import automobile_cars
-from vehicles import bolster_cars
-from vehicles import box_cars
-from vehicles import bulkhead_flat_cars
-from vehicles import caboose_cars
-from vehicles import carbon_black_hopper_cars
-from vehicles import cement_silo_cars
-from vehicles import cement_silo_cars_v_barrel
-from vehicles import chemical_covered_hopper_cars
-from vehicles import coil_buggy_cars
-from vehicles import coil_cars_covered
-from vehicles import coil_cars_covered_asymmetric
-from vehicles import coil_cars_uncovered
-from vehicles import covered_hopper_cars
-from vehicles import cryo_tank_cars
-from vehicles import curtain_side_box_cars
-from vehicles import double_deck_automobile_cars
-from vehicles import dry_powder_hopper_cars
-from vehicles import dump_cars
-from vehicles import dump_cars_high_side
-from vehicles import edibles_tank_cars
-from vehicles import express_cars
-from vehicles import express_intermodal_cars
-from vehicles import express_railcar_mail_trailer_cars
-from vehicles import express_railcar_passenger_trailer_cars
-from vehicles import farm_products_box_cars
-from vehicles import farm_products_type_one_hopper_cars
-from vehicles import farm_products_type_two_hopper_cars
-from vehicles import flat_cars
-from vehicles import goods_box_cars
-from vehicles import heavy_duty_dump_cars
-from vehicles import heavy_duty_flat_cars
-from vehicles import high_speed_mail_cars
-from vehicles import high_speed_passenger_cars
-from vehicles import hood_open_cars
-from vehicles import hopper_cars
-from vehicles import hopper_cars_high_side
-from vehicles import hst_mail_cars
-from vehicles import hst_passenger_cars
-from vehicles import ingot_cars
-from vehicles import intermodal_cars
-from vehicles import kaolin_hopper_cars
-from vehicles import livestock_cars
-from vehicles import log_cars
-
-# from vehicles import low_floor_automobile_cars
-from vehicles import low_floor_intermodal_cars
-from vehicles import mail_cars
-from vehicles import merchandise_box_cars
-from vehicles import merchandise_open_cars
-from vehicles import mineral_covered_hopper_cars
-from vehicles import mgr_hopper_cars
-from vehicles import open_cars
-from vehicles import ore_dump_cars
-from vehicles import passenger_cars
-from vehicles import peat_cars
-from vehicles import plate_cars
-from vehicles import pressure_tank_cars
-from vehicles import product_tank_cars
-from vehicles import railbus_passenger_trailer_cars
-from vehicles import railcar_passenger_trailer_cars
-from vehicles import randomised_box_cars
-from vehicles import randomised_bulk_cars
-from vehicles import randomised_cement_silo_cars
-from vehicles import randomised_chemicals_tank_cars
-from vehicles import randomised_covered_hopper_cars
-from vehicles import randomised_dedicated_coil_cars
-from vehicles import randomised_dump_cars
-from vehicles import randomised_farm_products_hopper_cars
-from vehicles import randomised_flat_cars
-from vehicles import randomised_generic_coil_cars
-from vehicles import randomised_hopper_cars
-from vehicles import randomised_open_cars
-from vehicles import randomised_piece_goods_cars
-from vehicles import randomised_silo_cars
-from vehicles import reefer_cars
-from vehicles import reefer_alt_cars
-from vehicles import restaurant_cars
-from vehicles import rock_hopper_cars
-from vehicles import roller_roof_hopper_cars
-from vehicles import scrap_metal_cars
-from vehicles import silo_cars
-from vehicles import silo_cars_v_barrel
-from vehicles import skip_cars
-from vehicles import slag_ladle_cars
-from vehicles import sliding_roof_cars
-from vehicles import sliding_roof_hi_cube_cars
-from vehicles import sliding_wall_cars
-from vehicles import suburban_passenger_cars
-from vehicles import sulphur_tank_cars
-from vehicles import swing_roof_hopper_cars
-from vehicles import tank_cars
-from vehicles import tarpaulin_cars
-from vehicles import torpedo_cars
-from vehicles import vehicle_parts_box_cars
+wagon_module_names = [
+    "acid_tank_cars",
+    "aggregate_cars",
+    "aggregate_hopper_cars",
+    # """
+    # # only comment in if needed for debugging
+    # "alignment_cars",
+    # """
+    "automobile_cars",
+    "bolster_cars",
+    "box_cars",
+    "bulkhead_flat_cars",
+    "caboose_cars",
+    "carbon_black_hopper_cars",
+    "cement_silo_cars",
+    "cement_silo_cars_v_barrel",
+    "chemical_covered_hopper_cars",
+    "coil_buggy_cars",
+    "coil_cars_covered",
+    "coil_cars_covered_asymmetric",
+    "coil_cars_uncovered",
+    "covered_hopper_cars",
+    "cryo_tank_cars",
+    "curtain_side_box_cars",
+    "double_deck_automobile_cars",
+    "dry_powder_hopper_cars",
+    "dump_cars",
+    "dump_cars_high_side",
+    "edibles_tank_cars",
+    "express_cars",
+    "express_intermodal_cars",
+    "express_railcar_mail_trailer_cars",
+    "express_railcar_passenger_trailer_cars",
+    "farm_products_box_cars",
+    "farm_products_type_one_hopper_cars",
+    "farm_products_type_two_hopper_cars",
+    "flat_cars",
+    "goods_box_cars",
+    "high_speed_mail_cars",
+    "high_speed_passenger_cars",
+    "hood_open_cars",
+    "hopper_cars",
+    "hopper_cars_high_side",
+    "heavy_duty_dump_cars",
+    "heavy_duty_flat_cars",
+    "hst_mail_cars",
+    "hst_passenger_cars",
+    "ingot_cars",
+    "intermodal_cars",
+    "kaolin_hopper_cars",
+    "livestock_cars",
+    "log_cars",
+    # "low_floor_automobile_cars",
+    "low_floor_intermodal_cars",
+    "mail_cars",
+    "merchandise_box_cars",
+    "merchandise_open_cars",
+    "mineral_covered_hopper_cars",
+    "mgr_hopper_cars",
+    "ore_dump_cars",
+    "open_cars",
+    "passenger_cars",
+    "peat_cars",
+    "plate_cars",
+    "pressure_tank_cars",
+    "product_tank_cars",
+    "reefer_cars",
+    "reefer_alt_cars",
+    "restaurant_cars",
+    "railbus_passenger_trailer_cars",
+    "railcar_passenger_trailer_cars",
+    "randomised_box_cars",
+    "randomised_bulk_cars",
+    "randomised_cement_silo_cars",
+    "randomised_chemicals_tank_cars",
+    "randomised_covered_hopper_cars",
+    "randomised_dedicated_coil_cars",
+    "randomised_dump_cars",
+    "randomised_farm_products_hopper_cars",
+    "randomised_flat_cars",
+    "randomised_generic_coil_cars",
+    "randomised_hopper_cars",
+    "randomised_open_cars",
+    "randomised_piece_goods_cars",
+    "randomised_silo_cars",
+    "rock_hopper_cars",
+    "roller_roof_hopper_cars",
+    "silo_cars",
+    "silo_cars_v_barrel",
+    "scrap_metal_cars",
+    "skip_cars",
+    "slag_ladle_cars",
+    "sliding_roof_cars",
+    "sliding_roof_hi_cube_cars",
+    "sliding_wall_cars",
+    "suburban_passenger_cars",
+    "sulphur_tank_cars",
+    "swing_roof_hopper_cars",
+    "tank_cars",
+    "tarpaulin_cars",
+    "torpedo_cars",
+    "vehicle_parts_box_cars",
+]
 
 
 class RailTypeManager(list):
@@ -300,130 +311,25 @@ roster_manager = RosterManager()
 
 
 def main():
-    # in the rare case that an unfinished railtype won't init cleanly, comment it out here and possibly also in the import
-    # built-in support for disabled railtypes was removed as overly complex
-    railtype_manager.add_railtype(lgv)
-    railtype_manager.add_railtype(lgv_electrified)
-    railtype_manager.add_railtype(metro)
-    railtype_manager.add_railtype(narrow_gauge)
-    railtype_manager.add_railtype(rail_electrified_ac)
-    railtype_manager.add_railtype(rail_electrified_ac_dc)
-    railtype_manager.add_railtype(rail_electrified_dc)
-    railtype_manager.add_railtype(rail_high_clearance)
+    # railtypes
+    for railtype_module_name in railtype_module_names:
+        railtype_module = importlib.import_module("." + railtype_module_name, package="railtypes")
+        railtype_manager.add_railtype(railtype_module)
 
     # rosters
-    # in the rare case that an unfinished roster won't init cleanly, comment it out here and possibly also in the import
-    # built-in support for disabled rosters was removed during the conversion to multi-grf, it was an unnecessary abstraction when only one roster is used per grf
-    roster_manager.add_roster(ibex)
-    roster_manager.add_roster(moose)
-    roster_manager.add_roster(pony)
+    for roster_module_name in roster_module_names:
+        roster_module = importlib.import_module("." + roster_module_name, package="rosters")
+        roster_manager.add_roster(roster_module)
 
     # spritelayer cargos
-    intermodal_containers.main()
-    automobiles.main()
+    for spritelayer_cargo_module_name in spritelayer_cargo_module_names:
+        spritelayer_cargo_module = importlib.import_module("." + spritelayer_cargo_module_name, package="spritelayer_cargos")
+        spritelayer_cargo_module.main()
 
     # wagons
-    acid_tank_cars.main()
-    aggregate_cars.main()
-    aggregate_hopper_cars.main()
-    """
-    # only comment in if needed for debugging
-    alignment_cars.main()
-    """
-    automobile_cars.main()
-    bolster_cars.main()
-    box_cars.main()
-    bulkhead_flat_cars.main()
-    caboose_cars.main()
-    carbon_black_hopper_cars.main()
-    cement_silo_cars.main()
-    cement_silo_cars_v_barrel.main()
-    chemical_covered_hopper_cars.main()
-    coil_buggy_cars.main()
-    coil_cars_covered.main()
-    coil_cars_covered_asymmetric.main()
-    coil_cars_uncovered.main()
-    covered_hopper_cars.main()
-    cryo_tank_cars.main()
-    curtain_side_box_cars.main()
-    double_deck_automobile_cars.main()
-    dry_powder_hopper_cars.main()
-    dump_cars.main()
-    dump_cars_high_side.main()
-    edibles_tank_cars.main()
-    express_cars.main()
-    express_intermodal_cars.main()
-    express_railcar_mail_trailer_cars.main()
-    express_railcar_passenger_trailer_cars.main()
-    farm_products_box_cars.main()
-    farm_products_type_one_hopper_cars.main()
-    farm_products_type_two_hopper_cars.main()
-    flat_cars.main()
-    goods_box_cars.main()
-    high_speed_mail_cars.main()
-    high_speed_passenger_cars.main()
-    hood_open_cars.main()
-    hopper_cars.main()
-    hopper_cars_high_side.main()
-    heavy_duty_dump_cars.main()
-    heavy_duty_flat_cars.main()
-    hst_mail_cars.main()
-    hst_passenger_cars.main()
-    ingot_cars.main()
-    intermodal_cars.main()
-    kaolin_hopper_cars.main()
-    livestock_cars.main()
-    log_cars.main()
-    # low_floor_automobile_cars.main()
-    low_floor_intermodal_cars.main()
-    mail_cars.main()
-    merchandise_box_cars.main()
-    merchandise_open_cars.main()
-    mineral_covered_hopper_cars.main()
-    mgr_hopper_cars.main()
-    ore_dump_cars.main()
-    open_cars.main()
-    passenger_cars.main()
-    peat_cars.main()
-    plate_cars.main()
-    pressure_tank_cars.main()
-    product_tank_cars.main()
-    reefer_cars.main()
-    reefer_alt_cars.main()
-    restaurant_cars.main()
-    railbus_passenger_trailer_cars.main()
-    railcar_passenger_trailer_cars.main()
-    randomised_box_cars.main()
-    randomised_bulk_cars.main()
-    randomised_cement_silo_cars.main()
-    randomised_chemicals_tank_cars.main()
-    randomised_covered_hopper_cars.main()
-    randomised_dedicated_coil_cars.main()
-    randomised_dump_cars.main()
-    randomised_farm_products_hopper_cars.main()
-    randomised_flat_cars.main()
-    randomised_generic_coil_cars.main()
-    randomised_hopper_cars.main()
-    randomised_open_cars.main()
-    randomised_piece_goods_cars.main()
-    randomised_silo_cars.main()
-    rock_hopper_cars.main()
-    roller_roof_hopper_cars.main()
-    silo_cars.main()
-    silo_cars_v_barrel.main()
-    scrap_metal_cars.main()
-    skip_cars.main()
-    slag_ladle_cars.main()
-    sliding_roof_cars.main()
-    sliding_roof_hi_cube_cars.main()
-    sliding_wall_cars.main()
-    suburban_passenger_cars.main()
-    sulphur_tank_cars.main()
-    swing_roof_hopper_cars.main()
-    tank_cars.main()
-    tarpaulin_cars.main()
-    torpedo_cars.main()
-    vehicle_parts_box_cars.main()
+    for wagon_module_name in wagon_module_names:
+        wagon_module = importlib.import_module("." + wagon_module_name, package="vehicles")
+        wagon_module.main()
 
     roster_manager.validate_vehicles()
     roster_manager.add_buyable_variant_groups()
