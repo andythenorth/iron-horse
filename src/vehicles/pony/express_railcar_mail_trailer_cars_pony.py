@@ -1,12 +1,12 @@
 from train import MailExpressRailcarTrailerCarConsist, MailRailcarTrailerCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
     """
     # unfinished - nerfed
     consist = MailExpressRailcarTrailerCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=4900,
         gen=5,
         subtype="U",

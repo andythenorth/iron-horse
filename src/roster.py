@@ -363,7 +363,7 @@ class Roster(object):
                 wagon_module = importlib.import_module(
                     "." + wagon_module_name + "_" + self.id, package_name
                 )
-                wagon_module.main()
+                wagon_module.main(self.id)
             except ModuleNotFoundError:
                 # we want to warn, not fail, if a module is missing
                 # to suppress this warning, add an empty module file with main() and pass

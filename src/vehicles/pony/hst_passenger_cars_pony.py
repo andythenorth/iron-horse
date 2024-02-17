@@ -1,11 +1,11 @@
 from train import PassengerHSTCarConsist, PaxCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = PassengerHSTCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=12940,
         gen=4,
         subtype="U",
@@ -17,7 +17,7 @@ def main():
     consist.add_unit(type=PaxCar, chassis="high_speed_32px")
 
     consist = PassengerHSTCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=12520,
         gen=5,
         subtype="U",

@@ -1,11 +1,11 @@
 from train import BoxCarGoodsConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = BoxCarGoodsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16480,
         gen=3,
         subtype="A",
@@ -15,7 +15,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
     consist = BoxCarGoodsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16490,
         gen=3,
         subtype="B",
@@ -25,7 +25,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
     consist = BoxCarGoodsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16500,
         gen=4,
         subtype="A",
@@ -35,7 +35,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
     consist = BoxCarGoodsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16440,
         gen=4,
         subtype="B",
@@ -45,7 +45,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
 
     consist = BoxCarGoodsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16450,
         gen=4,
         subtype="C",
@@ -58,7 +58,7 @@ def main():
     )
 
     consist = BoxCarGoodsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16460,
         gen=5,
         subtype="B",
@@ -71,7 +71,7 @@ def main():
     )
 
     consist = BoxCarGoodsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16470,
         gen=5,
         subtype="C",
@@ -84,7 +84,7 @@ def main():
     )
     """
     consist = BoxCarGoodsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16460,
         gen=6,
         subtype="B",
@@ -98,7 +98,7 @@ def main():
     )
 
     consist = BoxCarGoodsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16470,
         gen=6,
         subtype="C",

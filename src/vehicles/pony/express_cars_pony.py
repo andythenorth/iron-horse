@@ -1,7 +1,7 @@
 from train import ExpressCarConsist, ExpressCar
 
 
-def main():
+def main(roster_id):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     # no NG express cars in pony, use mail car
@@ -9,7 +9,7 @@ def main():
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = ExpressCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=17900,
         gen=1,
         subtype="A",
@@ -19,7 +19,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="3_axle_solid_express_16px")
 
     consist = ExpressCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=18100,
         gen=2,
         subtype="A",
@@ -29,7 +29,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="3_axle_solid_express_16px")
 
     consist = ExpressCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10140,
         gen=2,
         subtype="B",
@@ -39,7 +39,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_24px")
 
     consist = ExpressCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=17920,
         gen=3,
         subtype="A",
@@ -49,7 +49,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="3_axle_solid_express_16px")
 
     consist = ExpressCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=18120,
         gen=3,
         subtype="B",
@@ -59,7 +59,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_24px")
 
     consist = ExpressCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10430,
         gen=4,
         subtype="A",
@@ -69,7 +69,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="2_axle_solid_express_16px")
 
     consist = ExpressCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=17940,
         gen=4,
         subtype="B",
@@ -79,7 +79,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_24px")
 
     consist = ExpressCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=12260,
         gen=4,
         subtype="C",
@@ -89,7 +89,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_32px")
 
     consist = ExpressCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10450,
         gen=5,
         subtype="A",
@@ -99,7 +99,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="2_axle_solid_express_16px")
 
     consist = ExpressCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=18020,
         gen=5,
         subtype="B",
@@ -109,7 +109,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_24px")
 
     consist = ExpressCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=18040,
         gen=5,
         subtype="C",

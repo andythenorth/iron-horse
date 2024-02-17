@@ -1,11 +1,11 @@
 from train import OpenCarMerchandiseConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = OpenCarMerchandiseConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11850,
         gen=1,
         subtype="A",
@@ -16,7 +16,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
     consist = OpenCarMerchandiseConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14950,
         gen=3,
         subtype="A",
@@ -27,7 +27,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
     consist = OpenCarMerchandiseConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13220,
         gen=3,
         subtype="B",
@@ -40,7 +40,7 @@ def main():
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = OpenCarMerchandiseConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16290,
         gen=4,
         subtype="A",
@@ -50,7 +50,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
     consist = OpenCarMerchandiseConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16300,
         gen=4,
         subtype="B",
@@ -60,7 +60,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
 
     consist = OpenCarMerchandiseConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16310,
         gen=5,
         subtype="A",
@@ -70,7 +70,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_16px")
 
     consist = OpenCarMerchandiseConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16320,
         gen=5,
         subtype="B",
@@ -80,7 +80,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
     consist = OpenCarMerchandiseConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16330,
         gen=5,
         subtype="C",

@@ -4,11 +4,11 @@ from train import (
 )
 
 
-def main():
+def main(roster_id):
     # --------------- pony NG----------------------------------------------------------------------
 
     consist = PassengerRailbusTrailerCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10030,
         gen=3,
         subtype="U",

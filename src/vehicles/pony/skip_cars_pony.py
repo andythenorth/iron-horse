@@ -1,11 +1,11 @@
 from train import HopperCarSkipConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = HopperCarSkipConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6120,
         gen=1,
         subtype="U",

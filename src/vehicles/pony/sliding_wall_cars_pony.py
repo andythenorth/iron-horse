@@ -1,12 +1,12 @@
 from train import BoxCarSlidingWallConsist, FreightCar
 
 
-def main():
+def main(roster_id):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = BoxCarSlidingWallConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11540,
         gen=3,
         subtype="A",
@@ -17,7 +17,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
     consist = BoxCarSlidingWallConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=12340,
         gen=3,
         subtype="B",
@@ -31,7 +31,7 @@ def main():
     # starts gen 4, B and C only
 
     consist = BoxCarSlidingWallConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10610,
         gen=4,
         subtype="B",
@@ -42,7 +42,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_24px")
 
     consist = BoxCarSlidingWallConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10830,
         gen=4,
         subtype="C",
@@ -57,7 +57,7 @@ def main():
     )
 
     consist = BoxCarSlidingWallConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=9450,
         gen=5,
         subtype="B",
@@ -71,7 +71,7 @@ def main():
     )
 
     consist = BoxCarSlidingWallConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=9480,
         gen=5,
         subtype="C",
@@ -85,7 +85,7 @@ def main():
     )
 
     consist = BoxCarSlidingWallConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=5190,
         gen=5,
         subtype="D",

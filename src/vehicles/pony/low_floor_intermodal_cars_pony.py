@@ -1,11 +1,11 @@
 from train import IntermodalLowFloorCarConsist, IntermodalCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = IntermodalLowFloorCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14450,
         gen=5,
         subtype="A",
@@ -16,7 +16,7 @@ def main():
     consist.add_unit(type=IntermodalCar, chassis="2_axle_1cc_low_floor_16px")
 
     consist = IntermodalLowFloorCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14460,
         gen=5,
         subtype="B",
@@ -26,7 +26,7 @@ def main():
     consist.add_unit(type=IntermodalCar, chassis="4_axle_1cc_low_floor_24px")
 
     consist = IntermodalLowFloorCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14470,
         gen=5,
         subtype="C",

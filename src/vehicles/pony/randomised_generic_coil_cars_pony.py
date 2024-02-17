@@ -1,11 +1,11 @@
 from train import GenericCoilCarRandomisedConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = GenericCoilCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16750,
         gen=1,
         subtype="A",
@@ -17,7 +17,7 @@ def main():
     # no new type A for gen 2, gen 1 type A continues
 
     consist = GenericCoilCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16760,
         gen=2,
         subtype="B",
@@ -27,7 +27,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = GenericCoilCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16770,
         gen=3,
         subtype="A",
@@ -37,7 +37,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     consist = GenericCoilCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16780,
         gen=3,
         subtype="B",
@@ -47,7 +47,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = GenericCoilCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16790,
         gen=4,
         subtype="A",
@@ -57,7 +57,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     consist = GenericCoilCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16800,
         gen=4,
         subtype="B",
@@ -67,7 +67,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = GenericCoilCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16810,
         gen=4,
         subtype="C",
@@ -81,7 +81,7 @@ def main():
     )
 
     consist = GenericCoilCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16820,
         gen=5,
         subtype="B",
@@ -91,7 +91,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = GenericCoilCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16830,
         gen=5,
         subtype="C",

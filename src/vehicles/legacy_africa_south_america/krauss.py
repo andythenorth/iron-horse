@@ -1,7 +1,7 @@
 from train import EngineConsist, DieselEngineUnit
 
 
-def main():  # for rest of stats, look up Krauss Maffei Brazil
+def main(roster_id):  # for rest of stats, look up Krauss Maffei Brazil
     consist = EngineConsist(
         id="krauss",
         base_numeric_id=9300,

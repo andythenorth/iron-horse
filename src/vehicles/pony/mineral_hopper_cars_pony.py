@@ -1,11 +1,11 @@
 from train import HopperCarMineralConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = HopperCarMineralConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6780,
         gen=1,
         subtype="A",
@@ -15,7 +15,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = HopperCarMineralConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6790,
         gen=3,
         subtype="A",
@@ -25,7 +25,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = HopperCarMineralConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6800,
         gen=3,
         subtype="B",
@@ -35,7 +35,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
     consist = HopperCarMineralConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6810,
         gen=4,
         subtype="A",
@@ -45,7 +45,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = HopperCarMineralConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6820,
         gen=4,
         subtype="B",
@@ -55,7 +55,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
 
     consist = HopperCarMineralConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6830,
         gen=4,
         subtype="C",
@@ -65,7 +65,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_half_filled_greebled_32px")
 
     consist = HopperCarMineralConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6840,
         gen=5,
         subtype="A",
@@ -75,7 +75,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = HopperCarMineralConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6850,
         gen=5,
         subtype="B",
@@ -85,7 +85,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
 
     consist = HopperCarMineralConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6860,
         gen=5,
         subtype="C",
@@ -95,7 +95,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_half_filled_greebled_32px")
 
     consist = HopperCarMineralConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6870,
         gen=6,
         subtype="B",
@@ -105,7 +105,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
     consist = HopperCarMineralConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6880,
         gen=6,
         subtype="C",

@@ -1,11 +1,11 @@
 from train import CoveredHopperCarSwingRoofConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = CoveredHopperCarSwingRoofConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16100,
         gen=5,
         subtype="B",
@@ -15,7 +15,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_hoppers_24px")
 
     consist = CoveredHopperCarSwingRoofConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16660,
         gen=5,
         subtype="C",

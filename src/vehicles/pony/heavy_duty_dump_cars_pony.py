@@ -1,11 +1,11 @@
 from train import DumpCarHeavyDutyConsist, HeavyDutyCar
 
 
-def main():
+def main(roster_id):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = DumpCarHeavyDutyConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10480,
         gen=1,
         subtype="U",
@@ -19,7 +19,7 @@ def main():
     # --------------- pony -------------------------------------------------------------------------
 
     consist = DumpCarHeavyDutyConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13720,
         gen=1,
         subtype="A",
@@ -30,7 +30,7 @@ def main():
     consist.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_16px")
 
     consist = DumpCarHeavyDutyConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16630,
         gen=2,
         subtype="B",
@@ -41,7 +41,7 @@ def main():
     consist.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_24px")
 
     consist = DumpCarHeavyDutyConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16530,
         gen=4,
         subtype="A",
@@ -52,7 +52,7 @@ def main():
     consist.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_16px")
 
     consist = DumpCarHeavyDutyConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16190,
         gen=4,
         subtype="B",

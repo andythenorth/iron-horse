@@ -1,11 +1,11 @@
 from train import SiloCarCementVBarrelConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = SiloCarCementVBarrelConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13200,
         gen=4,
         subtype="A",
@@ -15,7 +15,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = SiloCarCementVBarrelConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13210,
         gen=4,
         subtype="B",
@@ -25,7 +25,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
     consist = SiloCarCementVBarrelConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13290,
         gen=4,
         subtype="C",
@@ -35,7 +35,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
 
     consist = SiloCarCementVBarrelConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13300,
         gen=5,
         subtype="A",
@@ -45,7 +45,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
     consist = SiloCarCementVBarrelConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13310,
         gen=5,
         subtype="B",
@@ -55,7 +55,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hopppers_24px")
 
     consist = SiloCarCementVBarrelConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13400,
         gen=5,
         subtype="C",

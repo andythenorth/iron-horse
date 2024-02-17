@@ -1,12 +1,12 @@
 from train import HopperCarMGRConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
     # just type gen 4 and 5
 
     consist = HopperCarMGRConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=15490,
         gen=4,
         subtype="A",
@@ -16,7 +16,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = HopperCarMGRConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16600,
         gen=4,
         subtype="B",
@@ -26,7 +26,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
 
     consist = HopperCarMGRConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=15510,
         gen=5,
         subtype="A",
@@ -36,7 +36,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
     consist = HopperCarMGRConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16640,
         gen=5,
         subtype="B",

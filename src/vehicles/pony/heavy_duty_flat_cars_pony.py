@@ -1,11 +1,11 @@
 from train import FlatCarHeavyDutyConsist, HeavyDutyCar
 
 
-def main():
+def main(roster_id):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = FlatCarHeavyDutyConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13580,
         gen=1,
         subtype="U",
@@ -19,7 +19,7 @@ def main():
     # --------------- pony -------------------------------------------------------------------------
 
     consist = FlatCarHeavyDutyConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10020,
         gen=1,
         subtype="A",
@@ -30,7 +30,7 @@ def main():
     consist.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_16px")
 
     consist = FlatCarHeavyDutyConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10240,
         gen=2,
         subtype="B",
@@ -41,7 +41,7 @@ def main():
     consist.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_24px")
 
     consist = FlatCarHeavyDutyConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10160,
         gen=4,
         subtype="A",
@@ -52,7 +52,7 @@ def main():
     consist.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_16px")
 
     consist = FlatCarHeavyDutyConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10220,
         gen=4,
         subtype="B",

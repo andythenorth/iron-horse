@@ -1,7 +1,7 @@
 from train import EngineConsist, DieselEngineUnit
 
 
-def main():  # GE Shovelnose - meter gauge ish
+def main(roster_id):  # GE Shovelnose - meter gauge ish
     consist = EngineConsist(
         id="cooper",
         base_numeric_id=10480,

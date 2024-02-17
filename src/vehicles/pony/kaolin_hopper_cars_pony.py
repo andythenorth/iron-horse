@@ -1,11 +1,11 @@
 from train import KaolinHopperCarConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = KaolinHopperCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16150,
         gen=5,
         subtype="B",
@@ -15,7 +15,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
     consist = KaolinHopperCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16160,
         gen=5,
         subtype="C",

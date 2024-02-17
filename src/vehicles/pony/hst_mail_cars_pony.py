@@ -1,11 +1,11 @@
 from train import MailHSTCarConsist, ExpressMailCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = MailHSTCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16170,
         gen=4,
         subtype="U",
@@ -17,7 +17,7 @@ def main():
     consist.add_unit(type=ExpressMailCar, chassis="high_speed_32px")
 
     consist = MailHSTCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16180,
         gen=5,
         subtype="U",

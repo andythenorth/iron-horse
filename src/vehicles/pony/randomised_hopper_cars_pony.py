@@ -1,11 +1,11 @@
 from train import HopperCarRandomisedConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=12590,
         gen=1,
         subtype="A",
@@ -16,7 +16,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10690,
         gen=3,
         subtype="A",
@@ -27,7 +27,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=9620,
         gen=3,
         subtype="B",
@@ -40,7 +40,7 @@ def main():
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16860,
         gen=1,
         subtype="A",
@@ -52,7 +52,7 @@ def main():
     # no new type A for gen 2, gen 1 type A continues
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14090,
         gen=2,
         subtype="B",
@@ -62,7 +62,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16880,
         gen=3,
         subtype="A",
@@ -72,7 +72,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16890,
         gen=3,
         subtype="B",
@@ -82,7 +82,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16900,
         gen=4,
         subtype="A",
@@ -92,7 +92,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16910,
         gen=4,
         subtype="B",
@@ -102,7 +102,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=8430,
         gen=5,
         subtype="A",
@@ -112,7 +112,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16930,
         gen=5,
         subtype="B",
@@ -122,7 +122,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16940,
         gen=5,
         subtype="C",

@@ -1,7 +1,7 @@
 from train import EdiblesTankCarConsist, ExpressCar, FreightCar
 
 
-def main():
+def main(roster_id):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
@@ -9,7 +9,7 @@ def main():
     # this is a bit of an inconsistency in the set design, but it's a tradeoff where the alternative is having no NG edibles tanker at all, or bizarrely low capacity
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=19960,
         gen=2,
         subtype="A",
@@ -20,7 +20,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=19980,
         gen=3,
         subtype="A",
@@ -31,7 +31,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=20000,
         gen=3,
         subtype="B",
@@ -45,7 +45,7 @@ def main():
     # no gen 1 for edibles tank cars - straight to gen 2
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=12070,
         gen=2,
         subtype="A",
@@ -55,7 +55,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="2_axle_filled_16px")
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10230,
         gen=3,
         subtype="A",
@@ -65,7 +65,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="3_axle_filled_16px")
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=12030,
         gen=4,
         subtype="A",
@@ -75,7 +75,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="3_axle_filled_16px")
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10730,
         gen=4,
         subtype="B",
@@ -85,7 +85,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="4_axle_sparse_24px")
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10260,
         gen=4,
         subtype="C",
@@ -95,7 +95,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="4_axle_sparse_32px")
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10250,
         gen=5,
         subtype="A",
@@ -105,7 +105,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="3_axle_filled_16px")
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10740,
         gen=5,
         subtype="B",
@@ -115,7 +115,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="4_axle_sparse_24px")
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=12090,
         gen=5,
         subtype="C",
@@ -127,7 +127,7 @@ def main():
     # gen 6A not included - could add?
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11140,
         gen=6,
         subtype="B",
@@ -137,7 +137,7 @@ def main():
     consist.add_unit(type=ExpressCar, chassis="4_axle_sparse_24px")
 
     consist = EdiblesTankCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11130,
         gen=6,
         subtype="C",

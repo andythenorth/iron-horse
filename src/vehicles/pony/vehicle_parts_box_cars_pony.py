@@ -1,11 +1,11 @@
 from train import BoxCarVehiclePartsConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = BoxCarVehiclePartsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11960,
         gen=3,
         subtype="A",
@@ -16,7 +16,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
     consist = BoxCarVehiclePartsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13340,
         gen=3,
         subtype="B",
@@ -30,7 +30,7 @@ def main():
     # starts gen 4, B and C only
 
     consist = BoxCarVehiclePartsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=18300,
         gen=4,
         subtype="B",
@@ -41,7 +41,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_24px")
 
     consist = BoxCarVehiclePartsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13670,
         gen=4,
         subtype="C",
@@ -56,7 +56,7 @@ def main():
     )
 
     consist = BoxCarVehiclePartsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=18320,
         gen=5,
         subtype="B",
@@ -70,7 +70,7 @@ def main():
     )
 
     consist = BoxCarVehiclePartsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13690,
         gen=5,
         subtype="C",
@@ -84,7 +84,7 @@ def main():
     )
 
     consist = BoxCarVehiclePartsConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=6130,
         gen=5,
         subtype="D",

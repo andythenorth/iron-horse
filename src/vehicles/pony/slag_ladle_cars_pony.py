@@ -1,11 +1,11 @@
 from train import SlagLadleCarConsist, SlagLadleCar
 
 
-def main():
+def main(roster_id):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = SlagLadleCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13480,
         gen=1,
         subtype="U",
@@ -19,7 +19,7 @@ def main():
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = SlagLadleCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13070,
         gen=1,
         subtype="U",
@@ -30,7 +30,7 @@ def main():
     consist.add_unit(type=SlagLadleCar, chassis="buffers_only_16px")
 
     consist = SlagLadleCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13080,
         gen=4,
         subtype="U",

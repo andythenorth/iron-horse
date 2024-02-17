@@ -1,11 +1,11 @@
 from train import TankCarAcidConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = TankCarAcidConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10090,
         gen=2,
         subtype="A",
@@ -17,7 +17,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
     consist = TankCarAcidConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11820,
         gen=3,
         subtype="A",
@@ -28,7 +28,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
     consist = TankCarAcidConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=17860,
         gen=3,
         subtype="B",
@@ -41,7 +41,7 @@ def main():
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = TankCarAcidConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=15170,
         gen=2,
         subtype="A",
@@ -52,7 +52,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
     consist = TankCarAcidConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16250,
         gen=3,
         subtype="A",
@@ -62,7 +62,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="3_axle_filled_16px")
 
     consist = TankCarAcidConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=15190,
         gen=3,
         subtype="B",
@@ -72,7 +72,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
     consist = TankCarAcidConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=15210,
         gen=4,
         subtype="A",
@@ -82,7 +82,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = TankCarAcidConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13520,
         gen=4,
         subtype="B",
@@ -92,7 +92,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_24px")
 
     consist = TankCarAcidConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=15340,
         gen=4,
         subtype="C",
@@ -102,7 +102,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_32px")
 
     consist = TankCarAcidConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=15590,
         gen=5,
         subtype="A",
@@ -112,7 +112,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_alt_16px")
 
     consist = TankCarAcidConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=15280,
         gen=5,
         subtype="B",
@@ -122,7 +122,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_24px")
 
     consist = TankCarAcidConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=15370,
         gen=5,
         subtype="C",

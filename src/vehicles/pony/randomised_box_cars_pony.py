@@ -1,11 +1,11 @@
 from train import BoxCarRandomisedConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = BoxCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16680,
         gen=4,
         subtype="A",
@@ -15,7 +15,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     consist = BoxCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16690,
         gen=4,
         subtype="B",
@@ -25,7 +25,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = BoxCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16700,
         gen=4,
         subtype="C",
@@ -39,7 +39,7 @@ def main():
     )
 
     consist = BoxCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16710,
         gen=5,
         subtype="B",
@@ -49,7 +49,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = BoxCarRandomisedConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16720,
         gen=5,
         subtype="C",

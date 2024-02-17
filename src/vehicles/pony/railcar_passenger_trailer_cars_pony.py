@@ -4,7 +4,7 @@ from train import (
 )
 
 
-def main():
+def main(roster_id):
     # --------------- pony NG----------------------------------------------------------------------
 
     # Pony NG uses railbus trailers, not railcar
@@ -13,7 +13,7 @@ def main():
     # gen 3 could be added but needs the engine grilles replacing with pax car pixels
 
     consist = PassengerRailcarTrailerCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11980,
         gen=4,
         subtype="U",
@@ -28,7 +28,7 @@ def main():
     )
 
     consist = PassengerRailcarTrailerCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14930,
         gen=4,
         subtype="U",
@@ -43,7 +43,7 @@ def main():
     )
 
     consist = PassengerRailcarTrailerCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11950,
         gen=5,
         subtype="U",
@@ -58,7 +58,7 @@ def main():
     )
 
     consist = PassengerRailcarTrailerCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14910,
         gen=5,
         subtype="U",
@@ -73,7 +73,7 @@ def main():
     )
 
     consist = PassengerRailcarTrailerCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11090,
         gen=6,
         subtype="U",
@@ -88,7 +88,7 @@ def main():
     )
 
     consist = PassengerRailcarTrailerCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14920,
         gen=6,
         subtype="U",

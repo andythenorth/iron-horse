@@ -1,11 +1,11 @@
 from train import AutomobileDoubleDeckCarConsist, AutomobileCarAsymmetric
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------    # intro gen 4
     """
     consist = AutomobileDoubleDeckCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=5790,
         gen=4,
         subtype="B",
@@ -15,7 +15,7 @@ def main():
     consist.add_unit(type=AutomobileCarAsymmetric, chassis="2_axle_running_gear_only_24px")
     """
     consist = AutomobileDoubleDeckCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14840,
         gen=4,
         subtype="C",
@@ -27,7 +27,7 @@ def main():
     )
     """
     consist = AutomobileDoubleDeckCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=5810,
         gen=5,
         subtype="B",
@@ -37,7 +37,7 @@ def main():
     consist.add_unit(type=AutomobileCarAsymmetric, chassis="2_axle_running_gear_only_24px")
     """
     consist = AutomobileDoubleDeckCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=17330,
         gen=5,
         subtype="C",
@@ -49,7 +49,7 @@ def main():
     )
     """
     consist = AutomobileDoubleDeckCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=5830,
         gen=5,
         subtype="D",

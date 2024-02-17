@@ -1,11 +1,11 @@
 from train import ReeferCarConsist, ExpressCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------    # no gen 1 reefer - straight to gen 2
 
     consist = ReeferCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=8470,
         gen=2,
         subtype="A",
@@ -19,7 +19,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=8480,
         gen=3,
         subtype="A",
@@ -33,7 +33,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=8490,
         gen=3,
         subtype="B",
@@ -47,7 +47,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=8620,
         gen=4,
         subtype="A",
@@ -61,7 +61,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=8630,
         gen=4,
         subtype="B",
@@ -75,7 +75,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=8640,
         gen=4,
         subtype="C",
@@ -89,7 +89,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=8650,
         gen=5,
         subtype="B",
@@ -103,7 +103,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=8660,
         gen=5,
         subtype="C",
@@ -117,7 +117,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=8670,
         gen=6,
         subtype="B",
@@ -131,7 +131,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=8680,
         gen=6,
         subtype="C",

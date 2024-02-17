@@ -1,11 +1,11 @@
 from train import ReeferCarConsist, ExpressCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------    # no gen 1 reefer - straight to gen 2
 
     consist = ReeferCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=9770,
         gen=2,
         subtype="A",
@@ -19,7 +19,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=9760,
         gen=3,
         subtype="A",
@@ -33,7 +33,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=16430,
         gen=3,
         subtype="B",
@@ -47,7 +47,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11600,
         gen=4,
         subtype="A",
@@ -61,7 +61,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11630,
         gen=4,
         subtype="B",
@@ -75,7 +75,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=12620,
         gen=4,
         subtype="C",
@@ -89,7 +89,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11610,
         gen=5,
         subtype="B",
@@ -103,7 +103,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11620,
         gen=5,
         subtype="C",

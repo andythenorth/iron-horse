@@ -1,10 +1,10 @@
 from train import FarmProductsBoxCarConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- narrow gauge -----------------------------------------------------------------
     consist = FarmProductsBoxCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10350,
         gen=1,
         subtype="A",
@@ -17,7 +17,7 @@ def main():
     # no gen 2 for NG, straight to gen 3
 
     consist = FarmProductsBoxCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=10400,
         gen=3,
         subtype="A",
@@ -28,7 +28,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
     consist = FarmProductsBoxCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=19940,
         gen=3,
         subtype="B",
@@ -40,7 +40,7 @@ def main():
 
     # --------------- pony --------------------------------------------------------------------------
     consist = FarmProductsBoxCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11680,
         gen=2,
         subtype="A",
@@ -50,7 +50,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
     consist = FarmProductsBoxCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=12740,
         gen=2,
         subtype="B",
@@ -60,7 +60,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
 
     consist = FarmProductsBoxCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11670,
         gen=3,
         subtype="A",
@@ -70,7 +70,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
     consist = FarmProductsBoxCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11660,
         gen=3,
         subtype="B",
@@ -80,7 +80,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
 
     consist = FarmProductsBoxCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11640,
         gen=4,
         subtype="A",
@@ -90,7 +90,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
     consist = FarmProductsBoxCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11650,
         gen=4,
         subtype="B",
@@ -100,7 +100,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
 
     consist = FarmProductsBoxCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=12610,
         gen=4,
         subtype="C",
@@ -114,7 +114,7 @@ def main():
     )
 
     consist = FarmProductsBoxCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11690,
         gen=5,
         subtype="B",
@@ -124,7 +124,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
     consist = FarmProductsBoxCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=11700,
         gen=5,
         subtype="C",

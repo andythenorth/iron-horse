@@ -1,11 +1,11 @@
 from train import TorpedoCarConsist, TorpedoCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = TorpedoCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=390,
         gen=2,
         subtype="U",
@@ -19,7 +19,7 @@ def main():
     consist.add_unit(type=TorpedoCar, vehicle_length=3)
 
     consist = TorpedoCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=490,
         gen=3,
         subtype="U",
@@ -33,7 +33,7 @@ def main():
     consist.add_unit(type=TorpedoCar, vehicle_length=3)
 
     consist = TorpedoCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=90,
         gen=4,
         subtype="U",
@@ -47,7 +47,7 @@ def main():
     consist.add_unit(type=TorpedoCar, vehicle_length=3)
 
     consist = TorpedoCarConsist(
-        roster_id="ibex",
+        roster_id=roster_id,
         base_numeric_id=310,
         gen=5,
         subtype="U",

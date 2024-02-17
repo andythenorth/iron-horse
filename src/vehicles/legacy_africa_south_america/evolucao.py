@@ -3,7 +3,7 @@
 from train import EngineConsist, DieselEngineUnit
 
 
-def main():
+def main(roster_id):
     # for rest of stats, look up GE Evolution
     consist = EngineConsist(
         id="evolucao",

@@ -1,12 +1,12 @@
 from train import PeatCarConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     """
     consist = PeatCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=15170,
         gen=1,
         subtype="U",

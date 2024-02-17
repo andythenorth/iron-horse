@@ -1,11 +1,11 @@
 from train import CarbonBlackHopperCarConsist, FreightCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = CarbonBlackHopperCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13450,
         gen=3,
         subtype="A",
@@ -15,7 +15,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = CarbonBlackHopperCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13460,
         gen=4,
         subtype="A",
@@ -25,7 +25,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
 
     consist = CarbonBlackHopperCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13470,
         gen=4,
         subtype="B",
@@ -35,7 +35,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
 
     consist = CarbonBlackHopperCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13490,
         gen=5,
         subtype="B",
@@ -45,7 +45,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
 
     consist = CarbonBlackHopperCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=13500,
         gen=5,
         subtype="C",

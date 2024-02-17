@@ -1,12 +1,12 @@
 from train import AutomobileLowFloorCarConsist, AutomobileCarAsymmetric
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
     # intro gen 4
 
     consist = AutomobileLowFloorCarConsist(
-        roster_id="pony", base_numeric_id=14890, gen=4, subtype="B"
+        roster_id=roster_id, base_numeric_id=14890, gen=4, subtype="B"
     )
 
     consist.add_unit(
@@ -14,7 +14,7 @@ def main():
     )
 
     consist = AutomobileLowFloorCarConsist(
-        roster_id="pony", base_numeric_id=14900, gen=4, subtype="C"
+        roster_id=roster_id, base_numeric_id=14900, gen=4, subtype="C"
     )
 
     consist.add_unit(
@@ -22,7 +22,7 @@ def main():
     )
 
     consist = AutomobileLowFloorCarConsist(
-        roster_id="pony", base_numeric_id=14910, gen=5, subtype="B"
+        roster_id=roster_id, base_numeric_id=14910, gen=5, subtype="B"
     )
 
     consist.add_unit(
@@ -30,7 +30,7 @@ def main():
     )
 
     consist = AutomobileLowFloorCarConsist(
-        roster_id="pony", base_numeric_id=14920, gen=5, subtype="C"
+        roster_id=roster_id, base_numeric_id=14920, gen=5, subtype="C"
     )
 
     consist.add_unit(

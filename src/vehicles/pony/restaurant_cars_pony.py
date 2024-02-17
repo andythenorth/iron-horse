@@ -1,11 +1,11 @@
 from train import PassengerRestaurantCarConsist, PaxRestaurantCar
 
 
-def main():
+def main(roster_id):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = PassengerRestaurantCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14560,
         gen=1,
         subtype="U",
@@ -15,7 +15,7 @@ def main():
     consist.add_unit(type=PaxRestaurantCar, chassis="6_axle_solid_express_32px")
 
     consist = PassengerRestaurantCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14570,
         gen=2,
         subtype="U",
@@ -25,7 +25,7 @@ def main():
     consist.add_unit(type=PaxRestaurantCar, chassis="6_axle_solid_express_32px")
 
     consist = PassengerRestaurantCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14580,
         gen=3,
         subtype="U",
@@ -35,7 +35,7 @@ def main():
     consist.add_unit(type=PaxRestaurantCar, chassis="6_axle_solid_express_32px")
 
     consist = PassengerRestaurantCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14590,
         gen=4,
         subtype="U",
@@ -45,7 +45,7 @@ def main():
     consist.add_unit(type=PaxRestaurantCar, chassis="4_axle_solid_express_32px")
 
     consist = PassengerRestaurantCarConsist(
-        roster_id="pony",
+        roster_id=roster_id,
         base_numeric_id=14600,
         gen=5,
         subtype="U",
