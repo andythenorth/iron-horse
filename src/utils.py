@@ -1,6 +1,5 @@
 import argparse
 import os.path
-import codecs  # used for writing files - more unicode friendly than standard open() module
 import global_constants
 from polar_fox import git_info
 from polar_fox.utils import echo_message as echo_message
@@ -73,20 +72,14 @@ def unpack_colour(colour_name, cc_to_remap):
             return "palette_2cc(company_colour1, " + colour_name + ")"
     else:
         # assume custom colour
-        remap_index = (
-            (
-                2
-                * list(global_constants.custom_wagon_recolour_sprite_maps.keys()).index(
-                    colour_name
-                )
-            )
-            + cc_to_remap
-            - 1
-        )
-        # return an nml fragment in format "custom_wagon_recolour_sprites + 16 * 0 /* recolour set */ + company_colour1 /* or company_colour2 */"
+        colour_name_offset = 2 * list(
+            global_constants.custom_wagon_recolour_sprite_maps.keys()
+        ).index(colour_name)
+        remap_index = colour_name_offset + cc_to_remap - 1
+        # return an nml fragment: custom_ship_recolour_sprites + index into recolour sprite + [company_colour1 or company_colour2]
         return (
-            "custom_wagon_recolour_sprites + 16 * "
-            + str(remap_index)
+            "custom_wagon_recolour_sprites + "
+            + str(16 * remap_index)
             + " + company_colour"
             + str(1 if cc_to_remap == 2 else 2)
         )
