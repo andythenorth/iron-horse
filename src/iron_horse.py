@@ -125,7 +125,9 @@ class RosterManager(list):
         # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
         # could also have been done by having restaurant cars register themselves directly into a list on roster but eh, that's a book-keeping headache
         # if we wanted cross-grf restaurant cars then this would need extending beyond active_roster; but we don't as of April 2023, so eh
-        for consists in self.active_roster.wagon_consists.values():
+
+        # !! we know where the restaurant cars are, because wagon_consists are currently grouped by id !!
+        for consists in self.active_roster.wagon_consists_by_base_id.values():
             for consist in consists:
                 if consist.__class__.__name__ == "PassengerRestaurantCarConsist":
                     result.append(consist.base_numeric_id)
@@ -177,7 +179,7 @@ class RosterManager(list):
         # will check for other neighbouring pax cars before showing brake car
         result = []
         # if we wanted cross-grf pax cars then this would need extending beyond active_roster; but we don't as of April 2023, so eh
-        for consists in self.active_roster.wagon_consists.values():
+        for consists in self.active_roster.wagon_consists_by_base_id.values():
             for consist in consists:
                 if getattr(
                     consist,

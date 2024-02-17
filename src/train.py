@@ -1716,7 +1716,7 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
                 and (consist.role in ["express_mail_railcar"])
             ):
                 result.extend(consist.lead_unit_variants_numeric_ids)
-        for consist in self.roster.wagon_consists["express_railcar_mail_trailer_car"]:
+        for consist in self.roster.wagon_consists_by_base_id["express_railcar_mail_trailer_car"]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
@@ -1852,7 +1852,7 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
                 and (consist.role in ["express_pax_railcar"])
             ):
                 result.extend(consist.lead_unit_variants_numeric_ids)
-        for consist in self.roster.wagon_consists[
+        for consist in self.roster.wagon_consists_by_base_id[
             "express_railcar_passenger_trailer_car"
         ]:
             if (consist.gen == self.gen) and (
@@ -1945,7 +1945,7 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
                 and (consist.role in ["pax_railbus"])
             ):
                 result.extend(consist.unique_numeric_ids)
-        for consist in self.roster.wagon_consists["railbus_passenger_trailer_car"]:
+        for consist in self.roster.wagon_consists_by_base_id["railbus_passenger_trailer_car"]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
@@ -2014,7 +2014,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
                 and (consist.role in ["pax_railcar"])
             ):
                 result.extend(consist.lead_unit_variants_numeric_ids)
-        for consist in self.roster.wagon_consists["railcar_passenger_trailer_car"]:
+        for consist in self.roster.wagon_consists_by_base_id["railcar_passenger_trailer_car"]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
@@ -2304,7 +2304,7 @@ class CarConsist(Consist):
         # - subtype where there is a generation gap in the tree, but the subtype continues across the gap
         tree_permissive = []
         tree_strict = []
-        for wagon in self.roster.wagon_consists[self.base_id]:
+        for wagon in self.roster.wagon_consists_by_base_id[self.base_id]:
             if wagon.base_track_type_name == self.base_track_type_name:
                 tree_permissive.append(wagon.gen)
                 if wagon.subtype == self.subtype:
@@ -5915,7 +5915,7 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
                 and (consist.role in ["pax_railbus"])
             ):
                 result.extend(consist.unique_numeric_ids)
-        for consist in self.roster.wagon_consists["railbus_passenger_trailer_car"]:
+        for consist in self.roster.wagon_consists_by_base_id["railbus_passenger_trailer_car"]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):

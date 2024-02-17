@@ -54,7 +54,7 @@ class Roster(object):
         for base_id in global_constants.buy_menu_sort_order_wagons:
             result.extend(
                 sorted(
-                    [wagon_consist.id for wagon_consist in self.wagon_consists[base_id]]
+                    [wagon_consist.id for wagon_consist in self.wagon_consists_by_base_id[base_id]]
                 )
             )
         return result
@@ -77,7 +77,7 @@ class Roster(object):
             for base_id in global_constants.buy_menu_sort_order_wagons:
                 wagon_consists = [
                     wagon_consist
-                    for wagon_consist in self.wagon_consists[base_id]
+                    for wagon_consist in self.wagon_consists_by_base_id[base_id]
                     if wagon_consist.base_track_type_name == base_track_type_name
                 ]
                 result.extend(
@@ -204,7 +204,7 @@ class Roster(object):
     def get_wagon_randomisation_candidates(self, buyable_variant):
         randomisation_consist = buyable_variant.consist
         result = []
-        for base_id, wagons in self.wagon_consists.items():
+        for base_id, wagons in self.wagon_consists_by_base_id.items():
             for wagon_consist in wagons:
                 if (
                     randomisation_consist.base_id
@@ -360,7 +360,7 @@ class Roster(object):
         # no return value needed
 
     def register_wagon_consist(self, wagon_consist):
-        self.wagon_consists[wagon_consist.base_id].append(wagon_consist)
+        self.wagon_consists_by_base_id[wagon_consist.base_id].append(wagon_consist)
         wagon_consist.roster_id = self.id
 
     def post_init_actions(self):
@@ -377,7 +377,7 @@ class Roster(object):
             for cloned_consist in consist.clones:
                 self.engine_consists.append(cloned_consist)
         # wagons
-        self.wagon_consists = dict(
+        self.wagon_consists_by_base_id = dict(
             [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons]
         )
         for wagon_module_name in global_constants.wagon_module_names:
@@ -439,7 +439,7 @@ class Roster(object):
                         parent_consist.use_named_buyable_variant_group
                     ]
                     candidate_parent_group = None
-                    for consist in self.wagon_consists[
+                    for consist in self.wagon_consists_by_base_id[
                         base_id_for_target_parent_consist
                     ]:
                         if consist.base_id == base_id_for_target_parent_consist:

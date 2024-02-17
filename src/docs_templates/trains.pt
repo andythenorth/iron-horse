@@ -10,7 +10,7 @@
                     <span title="${len(roster.engine_consists_excluding_clones) - len(doc_helper.not_really_engine_consists(roster))} engines and ${len(doc_helper.not_really_engine_consists(roster))} snowploughs, cab cars, metro trains and similar.">
                         ${len(roster.engine_consists_excluding_clones)} engines
                     </span>
-                    and ${sum([len(roster.wagon_consists[wagon_class]) for wagon_class in roster.wagon_consists])} wagons
+                    and ${sum([len(roster.wagon_consists_by_base_id[wagon_class]) for wagon_class in roster.wagon_consists_by_base_id])} wagons
                     inspired by trains from
                     <span tal:condition="roster.id == 'zebra'">Southern and Western Africa</span>
                     <span tal:condition="roster.id == 'pony'">the UK (mostly)</span>

@@ -363,7 +363,7 @@ def main():
         )
     """
     for wagon_class in global_constants.buy_menu_sort_order_wagons:
-        for consist in roster.wagon_consists[wagon_class]:
+        for consist in roster.wagon_consists_by_base_id[wagon_class]:
             render_docs_vehicle_details(consist, "vehicle_details_wagon", html_docs_output_path, consists)
     """
     print("render_docs_vehicle_details", time() - render_vehicle_details_start)
