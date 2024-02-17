@@ -365,6 +365,8 @@ class Roster(object):
                 )
                 wagon_module.main()
             except ModuleNotFoundError:
+                # we want to warn, not fail, if a module is missing
+                # to suppress this warning, add an empty module file with main() and pass
                 utils.echo_message(
                     "wagon_module "
                     + wagon_module_name
