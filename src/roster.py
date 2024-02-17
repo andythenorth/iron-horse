@@ -71,25 +71,26 @@ class Roster(object):
         result = []
         result.extend(self.engine_consists)
         for base_track_type_name in ["RAIL", "NG"]:
-            wagon_consists = [
-                wagon_consist
-                for wagon_consist in self.wagon_consists
-                if wagon_consist.base_track_type_name == base_track_type_name
-            ]
-            result.extend(
-                # note that we want the sort order to be U, A, B, C, D so special handling
-                # this *doesn*'t handle the case of changing _multiple_ times between U and A / B / C / D between generations
-                sorted(
-                    wagon_consists,
-                    key=lambda wagon_consist: {
-                        "U": 1,
-                        "A": 2,
-                        "B": 3,
-                        "C": 4,
-                        "D": 5,
-                    }[wagon_consist.subtype],
+            for base_id in self.wagon_consists_by_base_id.keys():
+                wagon_consists = [
+                    wagon_consist
+                    for wagon_consist in self.wagon_consists_by_base_id[base_id]
+                    if wagon_consist.base_track_type_name == base_track_type_name
+                ]
+                result.extend(
+                    # note that we want the sort order to be U, A, B, C, D so special handling
+                    # this *doesn*'t handle the case of changing _multiple_ times between U and A / B / C / D between generations
+                    sorted(
+                        wagon_consists,
+                        key=lambda wagon_consist: {
+                            "U": 1,
+                            "A": 2,
+                            "B": 3,
+                            "C": 4,
+                            "D": 5,
+                        }[wagon_consist.subtype],
+                    )
                 )
-            )
         for consist in result:
             # if consist won't pickle, then multiprocessing blows up, catching it here is faster and easier
             try:
