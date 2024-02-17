@@ -25,6 +25,7 @@ class Roster(object):
         # engine_module_names only used once at __init__ time, it's a list of module names, not the actual consists
         self.engine_module_names = kwargs.get("engine_module_names")
         self.engine_consists = []
+        self.wagon_consists = []
         # create a structure to hold (buyable) variant groups
         # deliberately instantiated as none - cannot be populated as a structure until later, after all consists are inited
         self.buyable_variant_groups = None
@@ -51,12 +52,7 @@ class Roster(object):
     def buy_menu_sort_order(self):
         result = []
         result.extend([consist.id for consist in self.engine_consists])
-        for base_id in global_constants.buy_menu_sort_order_wagons:
-            result.extend(
-                sorted(
-                    [wagon_consist.id for wagon_consist in self.wagon_consists_by_base_id[base_id]]
-                )
-            )
+        result.extend([consist.id for consist in self.wagon_consists])
         return result
 
     @property
@@ -74,26 +70,25 @@ class Roster(object):
         result = []
         result.extend(self.engine_consists)
         for base_track_type_name in ["RAIL", "NG"]:
-            for base_id in global_constants.buy_menu_sort_order_wagons:
-                wagon_consists = [
-                    wagon_consist
-                    for wagon_consist in self.wagon_consists_by_base_id[base_id]
-                    if wagon_consist.base_track_type_name == base_track_type_name
-                ]
-                result.extend(
-                    # note that we want the sort order to be U, A, B, C, D so special handling
-                    # this *doesn*'t handle the case of changing _multiple_ times between U and A / B / C / D between generations
-                    sorted(
-                        wagon_consists,
-                        key=lambda wagon_consist: {
-                            "U": 1,
-                            "A": 2,
-                            "B": 3,
-                            "C": 4,
-                            "D": 5,
-                        }[wagon_consist.subtype],
-                    )
+            wagon_consists = [
+                wagon_consist
+                for wagon_consist in self.wagon_consists
+                if wagon_consist.base_track_type_name == base_track_type_name
+            ]
+            result.extend(
+                # note that we want the sort order to be U, A, B, C, D so special handling
+                # this *doesn*'t handle the case of changing _multiple_ times between U and A / B / C / D between generations
+                sorted(
+                    wagon_consists,
+                    key=lambda wagon_consist: {
+                        "U": 1,
+                        "A": 2,
+                        "B": 3,
+                        "C": 4,
+                        "D": 5,
+                    }[wagon_consist.subtype],
                 )
+            )
         for consist in result:
             # if consist won't pickle, then multiprocessing blows up, catching it here is faster and easier
             try:
@@ -361,6 +356,7 @@ class Roster(object):
 
     def register_wagon_consist(self, wagon_consist):
         self.wagon_consists_by_base_id[wagon_consist.base_id].append(wagon_consist)
+        self.wagon_consists.append(wagon_consist)
         wagon_consist.roster_id = self.id
 
     def post_init_actions(self):

@@ -60,10 +60,9 @@ class DocHelper(object):
 
     def get_wagons_by_roster_and_base_track_type(self, roster, base_track_type_name):
         result = []
-        for wagon_class in global_constants.buy_menu_sort_order_wagons:
-            for consist in roster.wagon_consists_by_base_id[wagon_class]:
-                if consist.base_track_type_name == base_track_type_name:
-                    result.append(consist)
+        for consist in roster.wagon_consists:
+            if consist.base_track_type_name == base_track_type_name:
+                result.append(consist)
         return result
 
     def engines_as_tech_tree(self, roster, consists, simplified_gameplay):
@@ -286,13 +285,7 @@ class DocHelper(object):
         # for vehicle_type, vehicle_consists in [engines, wagons]:
         # parse the engine and wagon consists into a consistent structure
         engines = ("engines", roster.engine_consists_excluding_clones)
-        wagon_consists = []
-        utils.echo_message("doc_helper 'for wagon_class in roster.wagon_consists_by_base_id.keys():' would be better delegated to roster")
-        for wagon_class in roster.wagon_consists_by_base_id.keys():
-            wagon_consists.extend(
-                [consist for consist in roster.wagon_consists_by_base_id[wagon_class]]
-            )
-        wagon_consists = self.filter_out_randomised_wagon_consists(wagon_consists)
+        wagon_consists = self.filter_out_randomised_wagon_consists(roster.wagon_consists)
         wagons = ("wagons", wagon_consists)
 
         # this code repeats for both engines and wagons, but with different source lists

@@ -127,10 +127,9 @@ class RosterManager(list):
         # if we wanted cross-grf restaurant cars then this would need extending beyond active_roster; but we don't as of April 2023, so eh
 
         # !! we know where the restaurant cars are, because wagon_consists are currently grouped by id !!
-        for consists in self.active_roster.wagon_consists_by_base_id.values():
-            for consist in consists:
-                if consist.__class__.__name__ == "PassengerRestaurantCarConsist":
-                    result.append(consist.base_numeric_id)
+        for consist in self.active_roster.wagon_consists:
+            if consist.__class__.__name__ == "PassengerRestaurantCarConsist":
+                result.append(consist.base_numeric_id)
         if len(result) > 255:
             utils.echo_message(
                 "action 2 switch is limited to 255 values, restaurant_car_ids exceeds this - needs split across multiple switches"
@@ -179,17 +178,16 @@ class RosterManager(list):
         # will check for other neighbouring pax cars before showing brake car
         result = []
         # if we wanted cross-grf pax cars then this would need extending beyond active_roster; but we don't as of April 2023, so eh
-        for consists in self.active_roster.wagon_consists_by_base_id.values():
-            for consist in consists:
-                if getattr(
-                    consist,
-                    "report_as_pax_car_to_neighbouring_vehicle_in_rulesets",
-                    False,
-                ):
-                    for buyable_variant in consist.buyable_variants:
-                        result.append(
-                            buyable_variant.lead_unit_variant_matching_buyable_variant.id
-                        )
+        for consist in self.active_roster.wagon_consists:
+            if getattr(
+                consist,
+                "report_as_pax_car_to_neighbouring_vehicle_in_rulesets",
+                False,
+            ):
+                for buyable_variant in consist.buyable_variants:
+                    result.append(
+                        buyable_variant.lead_unit_variant_matching_buyable_variant.id
+                    )
         for consist in self.active_roster.engine_consists:
             if getattr(consist, "treat_as_pax_car_for_var_41", False):
                 for buyable_variant in consist.buyable_variants:
