@@ -66,6 +66,14 @@ class Roster(object):
         ]
 
     @property
+    def wagon_consists_by_base_id(self):
+        result = {}
+        for wagon_consist in self.wagon_consists:
+            result.setdefault(wagon_consist.base_id, [])
+            result[wagon_consist.base_id].append(wagon_consist)
+        return result
+
+    @property
     def consists_in_buy_menu_order(self):
         result = []
         result.extend(self.engine_consists)
@@ -355,7 +363,6 @@ class Roster(object):
         # no return value needed
 
     def register_wagon_consist(self, wagon_consist):
-        self.wagon_consists_by_base_id[wagon_consist.base_id].append(wagon_consist)
         self.wagon_consists.append(wagon_consist)
         wagon_consist.roster_id = self.id
 
@@ -373,9 +380,6 @@ class Roster(object):
             for cloned_consist in consist.clones:
                 self.engine_consists.append(cloned_consist)
         # wagons
-        self.wagon_consists_by_base_id = dict(
-            [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons]
-        )
         for wagon_module_name in global_constants.wagon_module_names:
             try:
                 wagon_module = importlib.import_module(
