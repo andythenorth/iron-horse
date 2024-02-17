@@ -27,7 +27,7 @@ ifeq ($(strip $(EXPORTED)),no)
   # we pick the 5th item from git info for Horse, as Horse uses a monorepo strategy and tags/versions need special handling
   REPO_TAG_OR_VERSION = $(word 5,$(REPO_INFO))
 else
-  # Exported version, lines below should get modified in 'bundle_src' target
+  # Exported version
   REPO_REVISION = ${exported_revision}
   REPO_TAG_OR_VERSION = ${exported_version}
 endif
@@ -66,7 +66,7 @@ SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
 BUNDLE_DIR = bundle_dir
 
 # Build rules
-.PHONY: default graphics lang nml grf zip bundle_zip bundle_src clean copy_docs_to_grf_farm release
+.PHONY: default graphics lang nml grf zip bundle_zip clean copy_docs_to_grf_farm release
 default: html_docs grf
 bundle_zip: zip
 graphics: $(GRAPHICS_TARGETS)
@@ -132,18 +132,6 @@ $(ZIP_FILES): $(GRF_FILES) $(HTML_DOCS)
 
 $(MD5_FILE): $(GRF_FILES)
 	$(GRFID) -m $(GRF_FILES) > $(MD5_FILE)
-
-bundle_src: $(MD5_FILE)
-	if test -d $(BUNDLE_DIR); then rm -r $(BUNDLE_DIR); fi
-	mkdir $(BUNDLE_DIR)
-	$(GIT) archive -t files $(BUNDLE_DIR)/src
-	$(FILL_TEMPLATE) --template=Makefile \
-		--output=$(BUNDLE_DIR)/src/Makefile \
-		"exported_revision=$(REPO_REVISION)" \
-		"exported_version=$(REPO_TAG_OR_VERSION)"
-	$(SED) -i -e 's/^EXPORTED = no/EXPORTED = yes/' $(BUNDLE_DIR)/src/Makefile
-	$(MK_ARCHIVE) --zip --output=$(SOURCE_NAME).zip --base=$(SOURCE_NAME) \
-		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
 
 # this expects to find a '../../grf.farm' path relative to the project, and will fail otherwise
 copy_docs_to_grf_farm: $(HTML_DOCS)
