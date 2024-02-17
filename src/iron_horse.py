@@ -39,9 +39,10 @@ railtype_module_names = [
 # comment out any unfinished rosters here as needed
 roster_module_names = [
     "ibex",
-    #"moose",
+    # "moose",
     "pony",
 ]
+
 
 class RailTypeManager(list):
     """
@@ -208,17 +209,23 @@ roster_manager = RosterManager()
 def main():
     # railtypes
     for railtype_module_name in railtype_module_names:
-        railtype_module = importlib.import_module("." + railtype_module_name, package="railtypes")
+        railtype_module = importlib.import_module(
+            "." + railtype_module_name, package="railtypes"
+        )
         railtype_manager.add_railtype(railtype_module)
 
     # rosters
     for roster_module_name in roster_module_names:
-        roster_module = importlib.import_module("." + roster_module_name, package="rosters")
+        roster_module = importlib.import_module(
+            "." + roster_module_name, package="rosters"
+        )
         roster_manager.add_roster(roster_module)
 
     # spritelayer cargos
     for spritelayer_cargo_module_name in spritelayer_cargo_module_names:
-        spritelayer_cargo_module = importlib.import_module("." + spritelayer_cargo_module_name, package="spritelayer_cargos")
+        spritelayer_cargo_module = importlib.import_module(
+            "." + spritelayer_cargo_module_name, package="spritelayer_cargos"
+        )
         spritelayer_cargo_module.main()
 
     roster_manager.validate_vehicles()
