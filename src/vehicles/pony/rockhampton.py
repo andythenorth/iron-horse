@@ -14,7 +14,7 @@ def main(roster_id):
             "DIESEL": 1200,
         },
         gen=3,
-        intro_year_offset=4, # introduce a bit later
+        intro_year_offset=4,  # introduce a bit later
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         random_reverse=True,
         # note that livery names are metadata only and can repeat for different spriterows
@@ -29,7 +29,6 @@ def main(roster_id):
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,
     )
-
 
     # various NZ / tasrail / QLD diesels
     # but could have been entirely different - https://en.wikipedia.org/wiki/Euskotren_TD2000_series

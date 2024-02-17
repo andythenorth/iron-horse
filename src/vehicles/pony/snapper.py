@@ -7,12 +7,12 @@ def main(roster_id):
         id="snapper",
         base_numeric_id=9350,
         name="Snapper",
-        #role="express_pax_railcar", # use for a new vehicle
+        # role="express_pax_railcar", # use for a new vehicle
         role="pax_railbus",
         role_child_branch_num=1,
         base_track_type_name="NG",
         power_by_power_source={
-            "DIESEL": 350, # corsica AMG 800 is 590hp per engine https://fr.wikipedia.org/wiki/AMG_800
+            "DIESEL": 350,  # corsica AMG 800 is 590hp per engine https://fr.wikipedia.org/wiki/AMG_800
         },
         gen=4,
         sprites_complete=True,

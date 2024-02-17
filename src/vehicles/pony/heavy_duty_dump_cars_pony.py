@@ -16,7 +16,6 @@ def main():
 
     consist.add_unit(type=HeavyDutyCar, chassis="4_axle_ng_16px")
 
-
     # --------------- pony -------------------------------------------------------------------------
 
     consist = DumpCarHeavyDutyConsist(

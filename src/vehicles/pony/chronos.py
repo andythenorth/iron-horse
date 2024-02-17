@@ -25,7 +25,7 @@ def main(roster_id):
         weight=40,
         chassis="railcar_32px",
         tail_light="railcar_32px_3",
-        repeat=2
+        repeat=2,
     )
 
     consist.description = """Time's courier swift. Chronos weaves through night and day. Posts haste, never late."""

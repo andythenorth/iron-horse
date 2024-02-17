@@ -15,10 +15,10 @@ def main(roster_id):
         },
         tractive_effort_coefficient=0.3,
         gen=2,
-        intro_year_offset=-5, # introduce early eh
+        intro_year_offset=-5,  # introduce early eh
         random_reverse=False,
         # note that livery names are metadata only and can repeat for different spriterows
-        #additional_liveries=["INDUSTRIAL_YELLOW"],
+        # additional_liveries=["INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 
@@ -28,9 +28,9 @@ def main(roster_id):
         type=SteamEngineTenderUnit, weight=29, vehicle_length=3, spriterow_num=1
     )
 
-    consist.description = (
-        """A titan from the North. Steadfast and stout."""
+    consist.description = """A titan from the North. Steadfast and stout."""
+    consist.foamer_facts = (
+        """Londonderry and Lough Swilly Railway Company 4-8-0 locomotives"""
     )
-    consist.foamer_facts = """Londonderry and Lough Swilly Railway Company 4-8-0 locomotives"""
 
     return consist

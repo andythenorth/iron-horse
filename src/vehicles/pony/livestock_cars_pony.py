@@ -50,7 +50,6 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-
     consist = LivestockCarConsist(
         roster_id="pony",
         base_numeric_id=18140,

@@ -26,8 +26,6 @@ def main(roster_id):
     )
 
     consist.description = """"""
-    consist.foamer_facts = (
-        """TGV Sud-Est, with TGV 001-style distributed traction"""
-    )
+    consist.foamer_facts = """TGV Sud-Est, with TGV 001-style distributed traction"""
 
     return consist

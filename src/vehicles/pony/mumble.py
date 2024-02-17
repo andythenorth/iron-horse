@@ -1,4 +1,9 @@
-from train import PassengerEngineRailbusConsist, DieselRailcarCombineUnitPax, DieselRailcarCombineUnitMail
+from train import (
+    PassengerEngineRailbusConsist,
+    DieselRailcarCombineUnitPax,
+    DieselRailcarCombineUnitMail,
+)
+
 
 def main(roster_id):
     consist = PassengerEngineRailbusConsist(
@@ -14,7 +19,7 @@ def main(roster_id):
         },
         gen=3,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        pax_car_capacity_type="railbus_combine", # specific to combined mail + pax consist
+        pax_car_capacity_type="railbus_combine",  # specific to combined mail + pax consist
         sprites_complete=True,
     )
 
@@ -23,7 +28,7 @@ def main(roster_id):
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
-        tail_light="railcar_24px_1", # !!!!!!!!! CABBAGE
+        tail_light="railcar_24px_1",  # !!!!!!!!! CABBAGE
     )
 
     consist.add_unit(
@@ -31,7 +36,7 @@ def main(roster_id):
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
-        tail_light="railcar_24px_1", # !!!!!!!!! CABBAGE
+        tail_light="railcar_24px_1",  # !!!!!!!!! CABBAGE
     )
 
     consist.description = """Vitesse. Confort. Exactitude. This railcar has none of those. But it is cheap to run."""

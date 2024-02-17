@@ -1,4 +1,8 @@
-from train import PassengerEngineRailbusConsist, DieselRailcarCombineUnitPax, DieselRailcarCombineUnitMail
+from train import (
+    PassengerEngineRailbusConsist,
+    DieselRailcarCombineUnitPax,
+    DieselRailcarCombineUnitMail,
+)
 
 
 def main(roster_id):
@@ -15,7 +19,7 @@ def main(roster_id):
         gen=4,
         # introduce early by design
         intro_year_offset=-4,
-        pax_car_capacity_type="railbus_combine", # specific to combined mail + pax consist
+        pax_car_capacity_type="railbus_combine",  # specific to combined mail + pax consist
         sprites_complete=True,
     )
 
@@ -23,14 +27,14 @@ def main(roster_id):
         type=DieselRailcarCombineUnitMail,
         weight=18,
         chassis="railbus_swb_20px",
-        tail_light="railcar_24px_2", # !!!!!!!!! CABBAGE
+        tail_light="railcar_24px_2",  # !!!!!!!!! CABBAGE
     )
 
     consist.add_unit(
         type=DieselRailcarCombineUnitPax,
         weight=18,
         chassis="railbus_swb_20px",
-        tail_light="railcar_24px_2", # !!!!!!!!! CABBAGE
+        tail_light="railcar_24px_2",  # !!!!!!!!! CABBAGE
     )
 
     consist.description = (

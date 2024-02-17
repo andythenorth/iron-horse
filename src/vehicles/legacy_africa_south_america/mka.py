@@ -29,9 +29,7 @@ def main(roster_id):
         spriterow_num=0,
     )
 
-    consist.description = (
-        """"""
-    )
+    consist.description = """"""
     consist.foamer_facts = """"""
 
     return consist

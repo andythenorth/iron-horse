@@ -33,8 +33,6 @@ def main(roster_id):
     # https://en.wikipedia.org/wiki/New_Zealand_DE_class_locomotive, also NZ Di class
     # nah it's CP_Class_9020 now, and rename from Silverfern
     # see also https://trainspo.com/photo/98083/
-    consist.foamer_facts = (
-        """ Portugese CP Class 9020 (Alstom AD 12 B)"""
-    )
+    consist.foamer_facts = """ Portugese CP Class 9020 (Alstom AD 12 B)"""
 
     return consist

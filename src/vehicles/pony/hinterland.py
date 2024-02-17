@@ -31,8 +31,6 @@ def main(roster_id):
     )
 
     consist.description = """Our pride, a force from overseas. Thrives in the solitude of the frontier or the clamor of the mills."""
-    consist.foamer_facts = (
-        """Alco RSD8 / DL351"""
-    )
+    consist.foamer_facts = """Alco RSD8 / DL351"""
 
     return consist

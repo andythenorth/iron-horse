@@ -37,6 +37,6 @@ def main(roster_id):
 
     consist.clone(base_numeric_id=9850, clone_units=[1, 0])
     # also JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
-    consist.clones[0].random_reverse=True
+    consist.clones[0].random_reverse = True
 
     return consist

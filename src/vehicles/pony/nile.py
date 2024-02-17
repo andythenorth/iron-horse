@@ -15,26 +15,24 @@ def main(roster_id):
         },
         tractive_effort_coefficient=0.3,
         gen=2,
-        intro_year_offset=10, # introduce a bit later
+        intro_year_offset=10,  # introduce a bit later
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         random_reverse=True,
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
-        sprites_complete=True   ,
+        sprites_complete=True,
     )
 
     consist.add_unit(
         type=SteamEngineUnit,
         weight=80,
         vehicle_length=8,
-        effect_offsets=[(-1, 0)], # non-standard smoke position
+        effect_offsets=[(-1, 0)],  # non-standard smoke position
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,
     )
 
-    consist.description = (
-        """Is twice as nice."""
-    )
+    consist.description = """Is twice as nice."""
     consist.foamer_facts = """Victorian Railways G class Garratt locomotives"""
 
     return consist

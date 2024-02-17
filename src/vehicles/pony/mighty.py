@@ -34,8 +34,6 @@ def main(roster_id):
     # see also https://es.wikipedia.org/wiki/Serie_1600_de_Renfe
     # see also https://en.wikipedia.org/wiki/FGC_254_Series
     consist.description = """"""
-    consist.foamer_facts = (
-        """"""
-    )
+    consist.foamer_facts = """"""
 
     return consist

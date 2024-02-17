@@ -15,7 +15,7 @@ def main(roster_id):
         random_reverse=True,
         base_track_type_name="NG",
         gen=3,
-        intro_year_offset=-2, # introduce a bit earlier
+        intro_year_offset=-2,  # introduce a bit earlier
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE", "INDUSTRIAL_YELLOW"],

@@ -41,6 +41,6 @@ def main(roster_id):
     consist.clones[0].set_clone_power_from_clone_source()
 
     # also JFDI, the default single unit should randomly reverse, the 2-unit version should not, so hax
-    consist.clones[0].random_reverse=False
+    consist.clones[0].random_reverse = False
 
     return consist
