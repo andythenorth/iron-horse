@@ -55,8 +55,7 @@ GRF_FILES = $(GRF_NAMES:%=generated/%.grf)
 NFO_FILES = $(GRF_FILES:.grf=.nfo)
 NML_FILES = $(GRF_FILES:.grf=.nml)
 LANG_FILES = $(GRF_NAMES:%=generated/lang/%/english.lng)
-TAR_FILES = $(GRF_NAMES:%=%-$(REPO_TAG_OR_VERSION).tar)
-ZIP_FILE = $(PROJECT_VERSIONED_NAME).zip
+ZIP_FILES = $(GRF_NAMES:%=%-$(REPO_TAG_OR_VERSION).zip)
 MD5_FILE = $(PROJECT_NAME).check.md5
 HTML_DOCS = $(GRF_NAMES:%=docs/%/index.html)
 # we don't currently bother detecting graphics directly as deps, we rely on python spitting them all out in the compile
@@ -67,16 +66,15 @@ SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
 BUNDLE_DIR = bundle_dir
 
 # Build rules
-.PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean copy_docs_to_grf_farm release
+.PHONY: default graphics lang nml grf zip bundle_zip bundle_src clean copy_docs_to_grf_farm release
 default: html_docs grf
-bundle_tar: tar
-bundle_zip: $(ZIP_FILE)
+bundle_zip: zip
 graphics: $(GRAPHICS_TARGETS)
 lang: $(LANG_FILES)
 nml: $(NML_FILES)
 nfo: $(NFO_FILES)
 grf: $(GRF_FILES)
-tar: $(TAR_FILES)
+zip: $(ZIP_FILES)
 
 # default num. pool workers for python compile,
 # default is 0 to disable multiprocessing (also avoids multiprocessing pickle failures masking genuine python errors)
@@ -117,23 +115,20 @@ $(GRF_FILES): %.grf : %.nfo $(GRAPHICS_TARGETS)
 	time $(GRFCODEC) -s -e -c -g 2 $(notdir $@) $(dir $<)
 	$(_V) mv $(notdir $@) $@
 
-$(TAR_FILES): $(GRF_FILES) $(HTML_DOCS)
-# the goal here is a sparse tar for distribution
+$(ZIP_FILES): $(GRF_FILES) $(HTML_DOCS)
+# the goal here is a sparse zip for distribution
 # path for docs, specific to current prerequisite
 # create an intermediate dir, and copy in what we need
 # delete the intermediate dir
 # this could have been done with a list of targets, and maybe should be, but it was convenient to copy a shell loop from the install target
-	echo $(subst .tar,,$@)
-	mkdir $(subst .tar,,$@)
-	cp $< $(subst .tar,,$@)
+	echo $(subst .zip,,$@)
+	mkdir $(subst .zip,,$@)
+	cp $< $(subst .zip,,$@)
 	$(_V) for DOC_NAME in readme.txt changelog.txt license.txt ; do \
-		cp docs/$(subst generated/,,$(subst .grf,,$<))/$$DOC_NAME $(subst .tar,,$@) ; \
+		cp docs/$(subst generated/,,$(subst .grf,,$<))/$$DOC_NAME $(subst .zip,,$@) ; \
 	done
-	$(MK_ARCHIVE) --tar --output=$@ $(subst .tar,,$@)
-	rm -r $(subst .tar,,$@)
-
-$(ZIP_FILE): $(TAR_FILES)
-	$(ZIP) -9rq $(ZIP_FILE) $($@) >/dev/null
+	$(MK_ARCHIVE) --zip --output=$@ $(subst .zip,,$@)
+	rm -r $(subst .zip,,$@)
 
 $(MD5_FILE): $(GRF_FILES)
 	$(GRFID) -m $(GRF_FILES) > $(MD5_FILE)
@@ -147,7 +142,7 @@ bundle_src: $(MD5_FILE)
 		"exported_revision=$(REPO_REVISION)" \
 		"exported_version=$(REPO_TAG_OR_VERSION)"
 	$(SED) -i -e 's/^EXPORTED = no/EXPORTED = yes/' $(BUNDLE_DIR)/src/Makefile
-	$(MK_ARCHIVE) --tar --output=$(SOURCE_NAME).tar --base=$(SOURCE_NAME) \
+	$(MK_ARCHIVE) --zip --output=$(SOURCE_NAME).zip --base=$(SOURCE_NAME) \
 		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
 
 # this expects to find a '../../grf.farm' path relative to the project, and will fail otherwise
@@ -164,7 +159,7 @@ copy_docs_to_grf_farm: $(HTML_DOCS)
 # this is crude and could be done by actually checking git version, but eh, it seems to work
 release:
 	$(_V) $(MAKE) clean
-	$(_V) $(MAKE) bundle_tar
+	$(_V) $(MAKE) bundle_zip
 	$(_V) $(MAKE) copy_docs_to_grf_farm
 
 # this is a macOS-specifc install location; the pre-2017 Makefile handled multiple platforms, that could be restored if needed
@@ -183,7 +178,7 @@ install: default
 clean:
 	$(_V) echo "[CLEANING]"
 	$(_V) for f in .chameleon_cache .nmlcache src/__pycache__ src/*/__pycache__ docs generated \
-	$(GRF_FILES) $(TAR_FILES) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
+	$(GRF_FILES) $(ZIP_FILES) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).zip;\
 	do if test -e $$f;\
 	   then rm -r $$f;\
 	   fi;\
