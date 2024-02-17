@@ -366,6 +366,7 @@ class Roster(object):
     def post_init_actions(self):
         # init of consists has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
         package_name = "vehicles." + self.id
+        # engines
         for engine_module_name in self.engine_module_names:
             engine_module_name = importlib.import_module(
                 "." + engine_module_name, package_name
@@ -375,9 +376,19 @@ class Roster(object):
             # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
             for cloned_consist in consist.clones:
                 self.engine_consists.append(cloned_consist)
+        # wagons
         self.wagon_consists = dict(
             [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons]
         )
+        for wagon_module_name in global_constants.wagon_module_names:
+            try:
+                wagon_module = importlib.import_module("." + wagon_module_name, package_name)
+                wagon_module.main()
+            except ModuleNotFoundError:
+                utils.echo_message("wagon_module " + wagon_module_name + " not found in roster " + self.id)
+            except Exception:
+                raise
+
 
     def add_buyable_variant_groups(self):
         # creating groups has to happen after *all* consists are inited

@@ -221,14 +221,5 @@ def main():
         spritelayer_cargo_module = importlib.import_module("." + spritelayer_cargo_module_name, package="spritelayer_cargos")
         spritelayer_cargo_module.main()
 
-    # wagons
-    # !! needs to repeat per roster?  But wagon instantiation can probably be delegated directly to the roster now, with less confusion?
-    # !! and the wagon type list can probably go in global constants, in buy menu order?
-    package_name = "vehicles.pony"
-    utils.echo_message("iron-horse: wagon module import package_name is hard-coded to", package_name)
-    for wagon_module_name in global_constants.wagon_module_names:
-        wagon_module = importlib.import_module("." + wagon_module_name, package_name)
-        wagon_module.main()
-
     roster_manager.validate_vehicles()
     roster_manager.add_buyable_variant_groups()
