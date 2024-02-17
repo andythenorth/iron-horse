@@ -36,10 +36,10 @@ railtype_module_names = [
     "rail_high_clearance",
 ]
 
-# comment out any unfinished rosters here
+# comment out any unfinished rosters here as needed
 roster_module_names = [
-    "ibex",
-    "moose",
+    #"ibex",
+    #"moose",
     "pony",
 ]
 

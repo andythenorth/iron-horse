@@ -382,7 +382,7 @@ class Roster(object):
         )
         for wagon_module_name in global_constants.wagon_module_names:
             try:
-                wagon_module = importlib.import_module("." + wagon_module_name, package_name)
+                wagon_module = importlib.import_module("." + wagon_module_name + "_" + self.id, package_name)
                 wagon_module.main()
             except ModuleNotFoundError:
                 utils.echo_message("wagon_module " + wagon_module_name + " not found in roster " + self.id)
