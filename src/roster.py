@@ -462,7 +462,7 @@ class Roster(object):
                     buyable_variant_group.parent_group = candidate_parent_group
 
     def get_buyable_variants_in_buy_menu_order(self):
-        # relies on the buyable variant group order already being sorted when it's consrtructed from consists_in_buy_menu_order
+        # relies on the buyable variant group order already being sorted when it's constructed from consists_in_buy_menu_order
         # as a convenience, this flattens that order to a list that's easy to iterate over in template
         result = []
         for (
