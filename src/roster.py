@@ -365,9 +365,10 @@ class Roster(object):
 
     def post_init_actions(self):
         # init of consists has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
+        package_name = "vehicles." + self.id
         for engine_module_name in self.engine_module_names:
             engine_module_name = importlib.import_module(
-                "." + engine_module_name, package="vehicles"
+                "." + engine_module_name, package_name
             )
             consist = engine_module_name.main(self.id)
             self.engine_consists.append(consist)
