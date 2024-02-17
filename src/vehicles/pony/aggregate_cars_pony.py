@@ -2,7 +2,8 @@ from train import DumpCarAggregateConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = DumpCarAggregateConsist(
         roster_id="pony",
         base_numeric_id=14730,

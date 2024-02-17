@@ -2,7 +2,7 @@ from train import CabooseCarConsist, CabooseCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
     # caboose names map to labelled spriterows, as defined in the vehicle files
     # note that spriterow mapping will need redefined for each roster and base track type
     # names are arbitrary strings, except for 'default_1', 'default_2', etc which must match the number of generations for this base track type in the roster
@@ -83,8 +83,7 @@ def main():
 
     consist.add_unit(type=CabooseCar, chassis="4_axle_ng_16px")
 
-    # --------------- pony ----------------------------------------------------------------------
-    # caboose names map to labelled spriterows, as defined in the vehicle files
+    # --------------- standard gauge ---------------------------------------------------------------    # caboose names map to labelled spriterows, as defined in the vehicle files
     # note that spriterow mapping will need redefined for each roster and base track type
     # names are arbitrary strings, except for 'default_1', 'default_2', etc which must match the number of generations for this base track type in the roster
     spriterow_labels = [

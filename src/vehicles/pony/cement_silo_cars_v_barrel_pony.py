@@ -2,7 +2,7 @@ from train import SiloCarCementVBarrelConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = SiloCarCementVBarrelConsist(
         roster_id="pony",

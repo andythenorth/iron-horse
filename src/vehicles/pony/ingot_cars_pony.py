@@ -2,7 +2,7 @@ from train import IngotCarConsist, IngotCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = IngotCarConsist(
         roster_id="pony",

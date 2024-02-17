@@ -2,8 +2,7 @@ from train import CoilCarUncoveredConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # start gen 4
 
     consist = CoilCarUncoveredConsist(

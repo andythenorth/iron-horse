@@ -2,7 +2,7 @@ from train import CoveredHopperCarSwingRoofConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = CoveredHopperCarSwingRoofConsist(
         roster_id="pony",

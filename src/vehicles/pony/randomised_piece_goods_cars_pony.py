@@ -37,7 +37,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = PieceGoodsCarRandomisedConsist(
         roster_id="pony",

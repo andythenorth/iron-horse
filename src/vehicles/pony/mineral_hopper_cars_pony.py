@@ -2,7 +2,7 @@ from train import HopperCarMineralConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = HopperCarMineralConsist(
         roster_id="pony",

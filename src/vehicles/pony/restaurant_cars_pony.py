@@ -2,7 +2,7 @@ from train import PassengerRestaurantCarConsist, PaxRestaurantCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = PassengerRestaurantCarConsist(
         roster_id="pony",

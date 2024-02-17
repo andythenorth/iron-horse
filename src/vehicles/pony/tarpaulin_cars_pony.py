@@ -2,8 +2,7 @@ from train import FlatCarTarpaulinConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # gen 5 start, only B and C lengths
 
     consist = FlatCarTarpaulinConsist(

@@ -2,7 +2,8 @@ from train import DedicatedCoilCarRandomisedConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = DedicatedCoilCarRandomisedConsist(
         roster_id="pony",
         base_numeric_id=10710,

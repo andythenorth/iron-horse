@@ -2,8 +2,7 @@ from train import MailExpressRailcarTrailerCarConsist, MailRailcarTrailerCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     """
     # unfinished - nerfed
     consist = MailExpressRailcarTrailerCarConsist(

@@ -2,7 +2,7 @@ from train import BoxCarConsist, FreightCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
     consist = BoxCarConsist(
         roster_id="pony",
         base_numeric_id=18480,
@@ -38,8 +38,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
 
-    # --------------- pony ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # only type A for gen 1
 
     consist = BoxCarConsist(

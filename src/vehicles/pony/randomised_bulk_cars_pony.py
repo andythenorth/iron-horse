@@ -2,7 +2,7 @@ from train import BulkCarRandomisedConsist, FreightCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = BulkCarRandomisedConsist(
         roster_id="pony",
@@ -37,7 +37,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = BulkCarRandomisedConsist(
         roster_id="pony",

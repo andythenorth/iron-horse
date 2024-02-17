@@ -2,7 +2,7 @@ from train import FlatCarHeavyDutyConsist, HeavyDutyCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = FlatCarHeavyDutyConsist(
         roster_id="pony",

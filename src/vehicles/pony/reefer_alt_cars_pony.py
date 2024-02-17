@@ -2,7 +2,7 @@ from train import ReeferCarAltConsist, ExpressCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = ReeferCarAltConsist(
         roster_id="pony",

@@ -2,7 +2,7 @@ from train import HopperCarRandomisedConsist, FreightCar
 
 
 def main():
-    # --------------- pony ng ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
@@ -37,7 +37,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",

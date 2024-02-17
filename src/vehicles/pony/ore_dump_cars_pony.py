@@ -2,7 +2,8 @@ from train import DumpCarOreConsist, OreDumpCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = DumpCarOreConsist(
         roster_id="pony",
         base_numeric_id=15530,

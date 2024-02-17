@@ -2,8 +2,7 @@ from train import ExpressIntermodalCarConsist, ExpressIntermodalCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # only gen 5 and 6 eh
 
     consist = ExpressIntermodalCarConsist(

@@ -2,7 +2,7 @@ from train import IntermodalCarConsist, IntermodalCar
 
 
 def main():
-    # --------------- pony ng ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
     consist = IntermodalCarConsist(
         roster_id="pony",
         base_numeric_id=13000,
@@ -27,7 +27,8 @@ def main():
 
     consist.add_unit(type=IntermodalCar, chassis="4_axle_ng_24px")
 
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = IntermodalCarConsist(
         roster_id="pony",
         base_numeric_id=12920,

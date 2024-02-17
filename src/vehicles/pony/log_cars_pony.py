@@ -2,7 +2,7 @@ from train import LogCarConsist, FreightCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
     consist = LogCarConsist(
         roster_id="pony",
         base_numeric_id=16220,
@@ -39,7 +39,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_spine_16px")
     """
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = LogCarConsist(
         roster_id="pony",

@@ -6,8 +6,7 @@ def main():
 
     # no NG suburban cars in pony
 
-    # --------------- pony ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # no gen 1, the capacity difference is negligible compared to standard pax
 
     consist = PassengerSuburbanCarConsist(

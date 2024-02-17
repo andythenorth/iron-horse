@@ -2,8 +2,7 @@ from train import FlatCarSlidingRoofConsist, FreightCar
 
 
 def main():
-    # --------------- ibex ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # gen 5 start, only B and C lengths
 
     consist = FlatCarSlidingRoofConsist(

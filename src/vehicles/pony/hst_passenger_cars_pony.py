@@ -2,7 +2,8 @@ from train import PassengerHSTCarConsist, PaxCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = PassengerHSTCarConsist(
         roster_id="pony",
         base_numeric_id=12940,

@@ -2,7 +2,8 @@ from train import IntermodalLowFloorCarConsist, IntermodalCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = IntermodalLowFloorCarConsist(
         roster_id="pony",
         base_numeric_id=14450,

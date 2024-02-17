@@ -2,7 +2,7 @@ from train import TankCarProductConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = TankCarProductConsist(
         roster_id="pony",

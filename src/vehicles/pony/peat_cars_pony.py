@@ -2,7 +2,7 @@ from train import PeatCarConsist, FreightCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
 
     """
     consist = PeatCarConsist(

@@ -2,7 +2,7 @@ from train import CoilBuggyCarConsist, CoilBuggyCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = CoilBuggyCarConsist(
         roster_id="pony",

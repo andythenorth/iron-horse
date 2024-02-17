@@ -2,7 +2,7 @@ from train import OpenCarMerchandiseConsist, FreightCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
@@ -37,7 +37,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
 
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",

@@ -2,7 +2,7 @@ from train import HopperCarConsist, FreightCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = HopperCarConsist(
         roster_id="pony",
@@ -37,7 +37,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
 
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     # just type A for gen 1, 2 and 3
 

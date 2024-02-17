@@ -2,8 +2,7 @@ from train import HopperCarMGRConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # just type gen 4 and 5
 
     consist = HopperCarMGRConsist(

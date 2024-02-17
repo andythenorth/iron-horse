@@ -2,8 +2,7 @@ from train import BoxCarSlidingWallConsist, FreightCar
 
 
 def main():
-    # --------------- ibex ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # starts gen 5, may add gen 4 later
 
     consist = BoxCarSlidingWallConsist(

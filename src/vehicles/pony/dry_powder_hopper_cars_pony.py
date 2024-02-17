@@ -2,7 +2,8 @@ from train import CoveredHopperCarDryPowderConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = CoveredHopperCarDryPowderConsist(
         roster_id="pony",
         base_numeric_id=13540,

@@ -2,7 +2,7 @@ from train import KaolinHopperCarConsist, FreightCar
 
 
 def main():
-    # --------------- ibex ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = KaolinHopperCarConsist(
         roster_id="ibex",

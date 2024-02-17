@@ -2,7 +2,7 @@ from train import PassengerCarConsist, PaxCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
     consist = PassengerCarConsist(
         roster_id="pony",
         base_numeric_id=9810,
@@ -72,7 +72,8 @@ def main():
 
     consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
     """
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = PassengerCarConsist(
         roster_id="pony",
         base_numeric_id=14620,

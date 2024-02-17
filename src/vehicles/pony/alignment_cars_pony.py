@@ -2,7 +2,8 @@ from train import AlignmentCarConsist, AlignmentCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = AlignmentCarConsist(
         roster_id="pony",
         base_numeric_id=9060,

@@ -2,7 +2,7 @@ from train import FarmProductsBoxCarConsist, FreightCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=10350,

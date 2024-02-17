@@ -2,7 +2,7 @@ from train import TorpedoCarConsist, TorpedoCar
 
 
 def main():
-    # --------------- ibex ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = TorpedoCarConsist(
         roster_id="ibex",

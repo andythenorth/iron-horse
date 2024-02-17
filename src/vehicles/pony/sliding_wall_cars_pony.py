@@ -3,7 +3,7 @@ from train import BoxCarSlidingWallConsist, FreightCar
 
 def main():
 
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = BoxCarSlidingWallConsist(
         roster_id="pony",
@@ -27,8 +27,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
 
-    # --------------- pony ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # starts gen 4, B and C only
 
     consist = BoxCarSlidingWallConsist(

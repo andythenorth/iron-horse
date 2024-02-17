@@ -2,7 +2,7 @@ from train import HopperCarSkipConsist, FreightCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = HopperCarSkipConsist(
         roster_id="pony",

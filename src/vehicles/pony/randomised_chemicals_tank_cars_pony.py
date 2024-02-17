@@ -2,7 +2,7 @@ from train import TankCarChemicalsRandomisedConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
 
     consist = TankCarChemicalsRandomisedConsist(
         roster_id="pony",

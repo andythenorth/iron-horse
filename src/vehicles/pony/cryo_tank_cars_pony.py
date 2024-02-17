@@ -2,7 +2,8 @@ from train import GasTankCarCryoConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = GasTankCarCryoConsist(
         roster_id="pony",
         base_numeric_id=9060,

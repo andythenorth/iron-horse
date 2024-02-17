@@ -2,8 +2,7 @@ from train import ReeferCarConsist, ExpressCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
-    # no gen 1 reefer - straight to gen 2
+    # --------------- standard gauge ---------------------------------------------------------------    # no gen 1 reefer - straight to gen 2
 
     consist = ReeferCarConsist(
         roster_id="pony",

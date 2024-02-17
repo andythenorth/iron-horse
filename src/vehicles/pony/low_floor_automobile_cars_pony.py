@@ -2,8 +2,7 @@ from train import AutomobileLowFloorCarConsist, AutomobileCarAsymmetric
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # intro gen 4
 
     consist = AutomobileLowFloorCarConsist(

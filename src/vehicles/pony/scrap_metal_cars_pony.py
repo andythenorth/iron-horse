@@ -2,7 +2,7 @@ from train import DumpCarScrapMetalConsist, FreightCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
     # gen 2 start eh?
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
@@ -37,7 +37,8 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
 
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
         base_numeric_id=19130,

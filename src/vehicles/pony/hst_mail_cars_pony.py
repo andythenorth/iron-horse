@@ -2,7 +2,8 @@ from train import MailHSTCarConsist, ExpressMailCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = MailHSTCarConsist(
         roster_id="pony",
         base_numeric_id=16170,

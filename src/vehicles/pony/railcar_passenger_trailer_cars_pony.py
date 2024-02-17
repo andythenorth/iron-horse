@@ -9,8 +9,7 @@ def main():
 
     # Pony NG uses railbus trailers, not railcar
 
-    # --------------- pony ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # gen 3 could be added but needs the engine grilles replacing with pax car pixels
 
     consist = PassengerRailcarTrailerCarConsist(

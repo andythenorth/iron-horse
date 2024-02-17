@@ -2,8 +2,7 @@ from train import AutomobileCarConsist, AutomobileCarSymmetric
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
-    # no gen 1 or 2, straight to gen 3
+    # --------------- standard gauge ---------------------------------------------------------------    # no gen 1 or 2, straight to gen 3
     """
     consist = AutomobileCarConsist(
         roster_id="pony",

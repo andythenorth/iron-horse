@@ -2,7 +2,8 @@ from train import BoxCarGoodsConsist, FreightCar
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
+    # --------------- standard gauge ---------------------------------------------------------------
+
     consist = BoxCarGoodsConsist(
         roster_id="pony",
         base_numeric_id=16480,

@@ -2,8 +2,7 @@ from train import CoilCarCoveredAsymmetricConsist, CoilCarAsymmetric
 
 
 def main():
-    # --------------- pony ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # start gen 4
 
     consist = CoilCarCoveredAsymmetricConsist(

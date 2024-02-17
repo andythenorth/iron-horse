@@ -3,7 +3,7 @@ from train import EdiblesTankCarConsist, ExpressCar, FreightCar
 
 def main():
 
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
 
     # note that NG uses FreightCar not ExpressCar, as there is no adjustment of capacity for higher speed
     # this is a bit of an inconsistency in the set design, but it's a tradeoff where the alternative is having no NG edibles tanker at all, or bizarrely low capacity
@@ -41,8 +41,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
 
-    # --------------- pony ----------------------------------------------------------------------
-
+    # --------------- standard gauge ---------------------------------------------------------------
     # no gen 1 for edibles tank cars - straight to gen 2
 
     consist = EdiblesTankCarConsist(

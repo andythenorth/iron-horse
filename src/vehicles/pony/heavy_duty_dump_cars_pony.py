@@ -2,7 +2,7 @@ from train import DumpCarHeavyDutyConsist, HeavyDutyCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
+    # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = DumpCarHeavyDutyConsist(
         roster_id="pony",
