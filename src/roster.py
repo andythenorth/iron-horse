@@ -49,13 +49,6 @@ class Roster(object):
         self.pax_mail_livery_groups = kwargs.get("pax_mail_livery_groups", {})
 
     @property
-    def buy_menu_sort_order(self):
-        result = []
-        result.extend([consist.id for consist in self.engine_consists])
-        result.extend([consist.id for consist in self.wagon_consists])
-        return result
-
-    @property
     def engine_consists_excluding_clones(self):
         # we don't always want clones in the engine list (e.g. when generating tech tree in docs and similar cases)
         # this is a convenience wrapper to knock out any clones from engine list
@@ -104,21 +97,6 @@ class Roster(object):
             except:
                 print("Pickling failed for consist:", consist.id)
                 raise
-        # now guard against any consists missing from buy menu order or vice versa, as that wastes time asking 'wtf?' when they don't appear in game
-        consist_id_defender = set([consist.id for consist in result])
-        buy_menu_defender = set(self.buy_menu_sort_order)
-        for id in buy_menu_defender.difference(consist_id_defender):
-            utils.echo_message(
-                "Warning: consist "
-                + id
-                + " in buy_menu_sort_order, but not found in registered_consists"
-            )
-        for id in consist_id_defender.difference(buy_menu_defender):
-            utils.echo_message(
-                "Warning: consist "
-                + id
-                + " in consists, but not in buy_menu_sort_order - won't show in game"
-            )
         return result
 
     @property
