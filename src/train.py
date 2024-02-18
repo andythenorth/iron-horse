@@ -1716,7 +1716,7 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
                 and (consist.role in ["express_mail_railcar"])
             ):
                 result.extend(consist.lead_unit_variants_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id["express_railcar_mail_trailer_car"]:
+        for consist in self.roster.wagon_consists_by_base_id.get("express_railcar_mail_trailer_car", []):
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
@@ -1852,9 +1852,9 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
                 and (consist.role in ["express_pax_railcar"])
             ):
                 result.extend(consist.lead_unit_variants_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id[
-            "express_railcar_passenger_trailer_car"
-        ]:
+        for consist in self.roster.wagon_consists_by_base_id.get(
+            "express_railcar_passenger_trailer_car",
+        []):
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
@@ -1945,7 +1945,7 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
                 and (consist.role in ["pax_railbus"])
             ):
                 result.extend(consist.unique_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id["railbus_passenger_trailer_car"]:
+        for consist in self.roster.wagon_consists_by_base_id.get("railbus_passenger_trailer_car",[]):
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
@@ -2014,7 +2014,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
                 and (consist.role in ["pax_railcar"])
             ):
                 result.extend(consist.lead_unit_variants_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id["railcar_passenger_trailer_car"]:
+        for consist in self.roster.wagon_consists_by_base_id.get("railcar_passenger_trailer_car", []):
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
@@ -5905,7 +5905,7 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
                 and (consist.role in ["pax_railbus"])
             ):
                 result.extend(consist.unique_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id["railbus_passenger_trailer_car"]:
+        for consist in self.roster.wagon_consists_by_base_id.get("railbus_passenger_trailer_car",[]):
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
