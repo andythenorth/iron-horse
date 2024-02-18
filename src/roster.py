@@ -371,8 +371,12 @@ class Roster(object):
         # this is not intended to be a common case, it's for things like torpedo cars where redrawing and redefining them for all rosters is pointless
         # this may cause compile failures when refactoring stuff due to cross-roster dependencies being broken, if so comment the calls out
         for roster_id_providing_modules, wagon_module_names in self.wagon_modules_provided_by_other_rosters.items():
-             self.init_wagon_modules(roster_id_providing_modules, wagon_module_names)
-             #pass
+            # apply buy menu order to wagon_modules_provided_by_other_rosters (rather than having to manually keep the lists in sync)
+            wagon_module_names_in_buy_menu_order = []
+            for wagon_module_name in global_constants.wagon_module_names:
+                if wagon_module_name in wagon_module_names:
+                    wagon_module_names_in_buy_menu_order.append(wagon_module_name)
+            self.init_wagon_modules(roster_id_providing_modules, wagon_module_names_in_buy_menu_order)
 
     def init_wagon_modules(self, roster_id_of_module, wagon_module_names):
         package_name = "vehicles." + roster_id_of_module

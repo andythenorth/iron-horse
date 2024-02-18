@@ -133,8 +133,10 @@ engine_module_names = [
     # foo,
 ]
 
+# these can be alphabetised, the buy menu order is enforced in global constants
 wagon_modules_provided_by_other_rosters = {
     "pony": [
+        "tarpaulin_cars",
         "torpedo_cars",
     ],
 }
