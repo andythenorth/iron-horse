@@ -2329,7 +2329,7 @@ class CarConsist(Consist):
         ]
         return next_gen_intro_year - self.intro_year
 
-    def get_wagon_id(self, id_base, **kwargs):
+    def get_wagon_id(self, base_id, **kwargs):
         # auto id creator, used for wagons not locos
         substrings = []
         # prepend cab_id if present, used for e.g. railcar trailers, HST coaches etc where the wagon matches a specific 'cab' engine
@@ -2338,8 +2338,8 @@ class CarConsist(Consist):
         # special case NG - extend this for other track_types as needed
         # 'normal' rail and 'elrail' doesn't require an id modifier
         if kwargs.get("base_track_type_name", None) == "NG":
-            id_base = id_base + "_ng"
-        substrings.append(id_base)
+            base_id = base_id + "_ng"
+        substrings.append(base_id)
         substrings.append(kwargs["roster_id"])
         substrings.append("gen")
         substrings.append(str(kwargs["gen"]) + str(kwargs["subtype"]))
@@ -2723,7 +2723,6 @@ class BoxCarConsist(BoxCarConsistBase):
             "unweathered": graphics_constants.box_livery_recolour_maps,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="box_car",
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -2783,7 +2782,6 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
             "unweathered": graphics_constants.curtain_side_livery_recolour_maps,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="curtain_side_box_car",
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -2833,7 +2831,6 @@ class BoxCarGoodsConsist(BoxCarConsistBase):
             "weathered": graphics_constants.goods_box_car_body_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="goods_box_car",
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -2856,8 +2853,6 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
             "randomised_piece_goods_car",
         ]
         self._joker = True
-        # graphics derived from shared template
-        parent_id_base = "box_car"
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_box_cars"
@@ -2868,7 +2863,7 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
             "weathered": graphics_constants.merchandise_car_body_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base=parent_id_base,
+            input_spritesheet_delegate_base_id="box_car",
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -2944,7 +2939,6 @@ class BoxCarSlidingWallConsist(BoxCarConsistBase):
             "weathered": graphics_constants.sliding_wall_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="sliding_wall_car",
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -2997,7 +2991,6 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
             "unweathered": graphics_constants.box_livery_recolour_maps,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="vehicle_parts_box_car",
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -4030,7 +4023,6 @@ class ExpressCarConsist(CarConsist):
             "unweathered": graphics_constants.box_livery_recolour_maps,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="express_car",
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -4136,7 +4128,6 @@ class FarmProductsBoxCarConsist(CarConsist):
             "weathered": graphics_constants.farm_products_box_car_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="farm_products_box_car",
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -5092,7 +5083,6 @@ class LivestockCarConsist(CarConsist):
             "unweathered": graphics_constants.livestock_livery_recolour_maps,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="livestock_car",
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -6163,7 +6153,6 @@ class ReeferCarConsistBase(CarConsist):
             "weathered": graphics_constants.refrigerated_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base=self.base_id,
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[

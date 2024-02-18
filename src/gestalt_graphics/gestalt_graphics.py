@@ -392,7 +392,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
 class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     """
     Used to handle the specific case of box-type freight cars
-    - can handle id_base to produce multiple types of vehicle from one input template
+    - can handle input_spritesheet_delegate_base_id to produce multiple types of vehicle from one input template
     - doors open during loading
     - no cargo is shown by design (TMWFTLB: piece sprites could be generated in, but setting up masks etc for all vehicles is unwanted complexity)
     """
@@ -405,7 +405,7 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
                 "generate_buy_menu_sprite_vanilla_vehicle",
             ]
         )
-        self.id_base = kwargs.get("id_base")
+        self.input_spritesheet_delegate_base_id = kwargs.get("input_spritesheet_delegate_base_id", None)
         # a default 'unweathered' variant must be provided
         # additional sets of recolour maps can be provided to generate 'weathered' sprites
         # these will be randomly selected in-game for visual variety
