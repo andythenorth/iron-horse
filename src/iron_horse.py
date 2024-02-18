@@ -39,7 +39,7 @@ railtype_module_names = [
 # comment out any unfinished rosters here as needed
 roster_module_names = [
     "ibex",
-    # "moose",
+    "moose",
     "pony",
 ]
 
