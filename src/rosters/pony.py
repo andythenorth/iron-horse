@@ -199,6 +199,8 @@ engine_module_names = [
     "zorro",
 ]
 
+wagon_modules_provided_by_other_rosters = {}
+
 
 def main():
     return Roster(
@@ -594,4 +596,5 @@ def main():
             ],
         },
         engine_module_names=engine_module_names,
+        wagon_modules_provided_by_other_rosters=wagon_modules_provided_by_other_rosters,
     )

@@ -24,6 +24,7 @@ class Roster(object):
         self.str_grf_name = kwargs.get("str_grf_name")
         # engine_module_names only used once at __init__ time, it's a list of module names, not the actual consists
         self.engine_module_names = kwargs.get("engine_module_names")
+        self.wagon_modules_provided_by_other_rosters = kwargs.get("wagon_modules_provided_by_other_rosters")
         self.engine_consists = []
         self.wagon_consists = []
         # create a structure to hold (buyable) variant groups
@@ -343,7 +344,7 @@ class Roster(object):
 
     def register_wagon_consist(self, wagon_consist):
         self.wagon_consists.append(wagon_consist)
-        wagon_consist.roster_id = self.id
+        wagon_consist.roster_id = self.id # !!!!!!!!!!!!!!!!!!!!!!!!!!!! why are we setting the ID again after init?
 
     def post_init_actions(self):
         # init of consists has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
@@ -358,11 +359,21 @@ class Roster(object):
             # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
             for cloned_consist in consist.clones:
                 self.engine_consists.append(cloned_consist)
-        # wagons
-        for wagon_module_name in global_constants.wagon_module_names:
+        # wagons for this roster
+        self.init_wagon_modules(self.id, global_constants.wagon_module_names)
+        # wagons reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module
+        # this is not intended to be a common case, it's for things like torpedo cars where redrawing and redefining them for all rosters is pointless
+        # this may cause compile failures when refactoring stuff due to cross-roster dependencies being broken, if so comment the calls out
+        for roster_id_providing_modules, wagon_module_names in self.wagon_modules_provided_by_other_rosters.items():
+             #self.init_wagon_modules(roster_id_providing_modules, wagon_module_names)
+             pass
+
+    def init_wagon_modules(self, roster_id_of_module, wagon_module_names):
+        package_name = "vehicles." + roster_id_of_module
+        for wagon_module_name in wagon_module_names:
             try:
                 wagon_module = importlib.import_module(
-                    "." + wagon_module_name + "_" + self.id, package_name
+                    "." + wagon_module_name + "_" + roster_id_of_module, package_name
                 )
                 wagon_module.main(self.id)
             except ModuleNotFoundError:

@@ -133,6 +133,12 @@ engine_module_names = [
     # foo,
 ]
 
+wagon_modules_provided_by_other_rosters = {
+    "pony": [
+        "torpedo_cars",
+    ],
+}
+
 
 def main():
     return Roster(
@@ -245,6 +251,6 @@ def main():
                 ],
             },
         },
-        # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
         engine_module_names=engine_module_names,
+        wagon_modules_provided_by_other_rosters=wagon_modules_provided_by_other_rosters,
     )
