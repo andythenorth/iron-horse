@@ -104,7 +104,7 @@ engine_module_names = [
     "re_6_6_ii",
     ## DC
     # joker engines / snowploughs
-    "snowplough_ibex_gen_2",
+    #"snowplough_ibex_gen_2",
     # cargo sprinter
     # foo,
     # auto-coach (only one as autoreplace can't handle mixed cargo articulated consists)
