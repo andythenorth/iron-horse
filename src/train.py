@@ -52,7 +52,9 @@ class Consist(object):
         # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
         self.roster_id = kwargs.get("roster_id")  # just fail if there's no roster
         # rosters can optionally reuse wagon modules from other rosters, if so, store the roster_id of the origin module (otherwise roster_id is same)
-        self.roster_id_providing_module = kwargs.get("roster_id_providing_module", self.roster_id)
+        self.roster_id_providing_module = kwargs.get(
+            "roster_id_providing_module", self.roster_id
+        )
         # create a structure to hold buyable variants - the method can be over-ridden in consist subclasses to provide specific rules for buyable variants
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
         # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem
@@ -1718,7 +1720,9 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
                 and (consist.role in ["express_mail_railcar"])
             ):
                 result.extend(consist.lead_unit_variants_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id.get("express_railcar_mail_trailer_car", []):
+        for consist in self.roster.wagon_consists_by_base_id.get(
+            "express_railcar_mail_trailer_car", []
+        ):
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
@@ -1855,8 +1859,8 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
             ):
                 result.extend(consist.lead_unit_variants_numeric_ids)
         for consist in self.roster.wagon_consists_by_base_id.get(
-            "express_railcar_passenger_trailer_car",
-        []):
+            "express_railcar_passenger_trailer_car", []
+        ):
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
@@ -1947,7 +1951,9 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
                 and (consist.role in ["pax_railbus"])
             ):
                 result.extend(consist.unique_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id.get("railbus_passenger_trailer_car",[]):
+        for consist in self.roster.wagon_consists_by_base_id.get(
+            "railbus_passenger_trailer_car", []
+        ):
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
@@ -2016,7 +2022,9 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
                 and (consist.role in ["pax_railcar"])
             ):
                 result.extend(consist.lead_unit_variants_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id.get("railcar_passenger_trailer_car", []):
+        for consist in self.roster.wagon_consists_by_base_id.get(
+            "railcar_passenger_trailer_car", []
+        ):
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):
@@ -2348,6 +2356,22 @@ class CarConsist(Consist):
         substrings.append(str(kwargs["gen"]) + str(kwargs["subtype"]))
         result = "_".join(substrings)
         return result
+
+    def get_input_spritesheet_delegate_id_wagon(
+        self, input_spritesheet_delegate_base_id
+    ):
+        if self.base_track_type_name == "NG":
+            input_spritesheet_delegate_base_id = (
+                input_spritesheet_delegate_base_id + "_ng"
+            )
+
+        input_spritesheet_delegate_id = self.get_wagon_id(
+            base_id=input_spritesheet_delegate_base_id,
+            roster_id=self.roster_id,
+            gen=self.gen,
+            subtype=self.subtype,
+        )
+        return input_spritesheet_delegate_id
 
     @property
     def wagon_title_class_str(self):
@@ -2866,7 +2890,9 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
             "weathered": graphics_constants.merchandise_car_body_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            input_spritesheet_delegate_base_id="box_car",
+            input_spritesheet_delegate_id=self.get_input_spritesheet_delegate_id_wagon(
+                "box_car"
+            ),
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -5908,7 +5934,9 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
                 and (consist.role in ["pax_railbus"])
             ):
                 result.extend(consist.unique_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id.get("railbus_passenger_trailer_car",[]):
+        for consist in self.roster.wagon_consists_by_base_id.get(
+            "railbus_passenger_trailer_car", []
+        ):
             if (consist.gen == self.gen) and (
                 consist.base_track_type_name == self.base_track_type_name
             ):

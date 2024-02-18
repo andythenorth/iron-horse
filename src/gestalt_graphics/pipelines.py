@@ -35,18 +35,20 @@ class Pipeline(object):
     def vehicle_source_input_path(self):
         # convenience method to get the vehicle template image
         # I considered having this return the Image, not just the path, but it's not saving much, and is less obvious what it does when used
-        # !! possibly this should be on the consist, not sure
-        # !! definitely not on gestalt graphics, not the badger (too specific to pipeline)
-        # !! it's probably fine on pipeline?
-
         if self.consist.cloned_from_consist is not None:
             source_consist = self.consist.cloned_from_consist
         else:
             source_consist = self.consist
 
+        # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
+        if source_consist.gestalt_graphics.input_spritesheet_delegate_id is not None:
+            consist_filename_stem = self.consist.gestalt_graphics.input_spritesheet_delegate_id
+        else:
+            consist_filename_stem = source_consist.id
+
         # the consist id might have the consist's roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
         # this will have a null effect (which is fine) if the roster_id consist is the same as the module providing the graphics gile
-        consist_filename_stem = source_consist.id.replace(source_consist.roster_id, source_consist.roster_id_providing_module)
+        consist_filename_stem = consist_filename_stem.replace(source_consist.roster_id, source_consist.roster_id_providing_module)
 
         return os.path.join(
             currentdir,
@@ -746,9 +748,9 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                 fade_image = ImageOps.mirror(fade_image)
                 fade_image_mask = ImageOps.mirror(fade_image_mask)
 
-        if self.consist.id == "randomised_box_car_pony_gen_5B":
+        #if self.consist.id == "randomised_box_car_pony_gen_5B":
             # spritesheet.sprites.show()
-            pass
+            #pass
 
         return spritesheet
 
@@ -1447,22 +1449,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             )
 
     def add_box_car_with_opening_doors_spriterows(self):
-        if self.consist.gestalt_graphics.input_spritesheet_delegate_base_id is not None:
-            base_id = self.consist.gestalt_graphics.input_spritesheet_delegate_base_id
-        else:
-            base_id = self.consist.base_id
-        if self.consist.base_track_type_name == "NG":
-            base_id = base_id + "_ng"
-        box_car_id = self.consist.get_wagon_id(
-            base_id=base_id,
-            roster_id=self.consist.roster_id,
-            gen=self.consist.gen,
-            subtype=self.consist.subtype + ".png",
-        )
-        box_car_input_path = os.path.join(
-            currentdir, "src", "graphics", self.consist.roster_id, box_car_id
-        )
-
         # two spriterows, closed doors and open doors
         crop_box_source_1 = (
             0,
@@ -1477,10 +1463,10 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.base_yoffs + 2 * graphics_constants.spriterow_height,
         )
         box_car_input_image_1 = self.comp_chassis_and_body(
-            Image.open(box_car_input_path).crop(crop_box_source_1)
+            Image.open(self.vehicle_source_input_path).crop(crop_box_source_1)
         )
         box_car_input_image_2 = self.comp_chassis_and_body(
-            Image.open(box_car_input_path).crop(crop_box_source_2)
+            Image.open(self.vehicle_source_input_path).crop(crop_box_source_2)
         )
         # if self.consist.id == 'box_car_pony_gen_1A':
         # box_car_input_image_1.show() # comment in to see the image when debugging

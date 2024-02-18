@@ -29,6 +29,8 @@ class GestaltGraphics(object):
         # optional - rulesets are used to define for different types of vehicle how sprites change depending on consist position
         # ruleset may also be used for buy menu sprite processing
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
+        # optional - (not common) we can delegate to another spritesheet if we're doing e.g. different consist types, but recolouring the same base sprites
+        self.input_spritesheet_delegate_id = kwargs.get("input_spritesheet_delegate_id", None)
 
     @property
     def nml_template(self):
@@ -392,7 +394,6 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
 class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     """
     Used to handle the specific case of box-type freight cars
-    - can handle input_spritesheet_delegate_base_id to produce multiple types of vehicle from one input template
     - doors open during loading
     - no cargo is shown by design (TMWFTLB: piece sprites could be generated in, but setting up masks etc for all vehicles is unwanted complexity)
     """
@@ -405,7 +406,6 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
                 "generate_buy_menu_sprite_vanilla_vehicle",
             ]
         )
-        self.input_spritesheet_delegate_base_id = kwargs.get("input_spritesheet_delegate_base_id", None)
         # a default 'unweathered' variant must be provided
         # additional sets of recolour maps can be provided to generate 'weathered' sprites
         # these will be randomly selected in-game for visual variety
