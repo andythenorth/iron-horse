@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = KaolinHopperCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=8750,
         gen=5,
         subtype="B",
@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
 
     consist = KaolinHopperCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=8780,
         gen=5,
         subtype="C",

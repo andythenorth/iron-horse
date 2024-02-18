@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = BoxCarVehiclePartsConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11960,
         gen=3,
         subtype="A",
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
 
     consist = BoxCarVehiclePartsConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=13340,
         gen=3,
         subtype="B",
@@ -33,7 +33,7 @@ def main(roster_id, **kwargs):
 
     consist = BoxCarVehiclePartsConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18300,
         gen=4,
         subtype="B",
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
 
     consist = BoxCarVehiclePartsConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=13670,
         gen=4,
         subtype="C",
@@ -61,7 +61,7 @@ def main(roster_id, **kwargs):
 
     consist = BoxCarVehiclePartsConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18320,
         gen=5,
         subtype="B",
@@ -76,7 +76,7 @@ def main(roster_id, **kwargs):
 
     consist = BoxCarVehiclePartsConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=13690,
         gen=5,
         subtype="C",
@@ -91,7 +91,7 @@ def main(roster_id, **kwargs):
 
     consist = BoxCarVehiclePartsConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6130,
         gen=5,
         subtype="D",

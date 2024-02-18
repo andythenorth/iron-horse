@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarMGRConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=15490,
         gen=4,
         subtype="A",
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarMGRConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16600,
         gen=4,
         subtype="B",
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarMGRConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=15510,
         gen=5,
         subtype="A",
@@ -40,7 +40,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarMGRConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16640,
         gen=5,
         subtype="B",

@@ -8,7 +8,7 @@ from train import (
 def main(roster_id, **kwargs):
     consist = PassengerEngineRailbusConsist(
         roster_id=roster_id,
-                id="clipper",
+        id="clipper",
         base_numeric_id=250,
         name="Clipper",
         role="pax_railbus",

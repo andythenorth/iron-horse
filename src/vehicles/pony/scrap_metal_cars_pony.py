@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
     # gen 2 start eh?
     consist = DumpCarScrapMetalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19070,
         gen=2,
         subtype="A",
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarScrapMetalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19090,
         gen=3,
         subtype="A",
@@ -30,7 +30,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarScrapMetalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19110,
         gen=3,
         subtype="B",
@@ -44,7 +44,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarScrapMetalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19130,
         gen=3,
         subtype="A",
@@ -55,7 +55,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarScrapMetalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19150,
         gen=3,
         subtype="B",
@@ -66,7 +66,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarScrapMetalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19170,
         gen=4,
         subtype="A",
@@ -77,7 +77,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarScrapMetalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19190,
         gen=4,
         subtype="B",
@@ -88,7 +88,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarScrapMetalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19210,
         gen=5,
         subtype="A",
@@ -99,7 +99,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarScrapMetalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19230,
         gen=5,
         subtype="B",
@@ -110,7 +110,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarScrapMetalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19250,
         gen=5,
         subtype="C",

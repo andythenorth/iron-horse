@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = PassengerHSTCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12940,
         gen=4,
         subtype="U",
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
 
     consist = PassengerHSTCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12520,
         gen=5,
         subtype="U",

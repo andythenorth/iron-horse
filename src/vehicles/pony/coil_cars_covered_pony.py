@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
 
     consist = CoilCarCoveredConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11030,
         gen=4,
         subtype="A",
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
 
     consist = CoilCarCoveredConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12550,
         gen=4,
         subtype="B",
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
 
     consist = CoilCarCoveredConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12560,
         gen=4,
         subtype="C",
@@ -40,7 +40,7 @@ def main(roster_id, **kwargs):
 
     consist = CoilCarCoveredConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12570,
         gen=5,
         subtype="B",
@@ -51,7 +51,7 @@ def main(roster_id, **kwargs):
 
     consist = CoilCarCoveredConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12580,
         gen=5,
         subtype="C",

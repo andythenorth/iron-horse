@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = CoveredHopperCarSwingRoofConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16100,
         gen=5,
         subtype="B",
@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
 
     consist = CoveredHopperCarSwingRoofConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16660,
         gen=5,
         subtype="C",

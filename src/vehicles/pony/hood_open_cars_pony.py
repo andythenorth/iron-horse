@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
 
     consist = OpenCarHoodConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16520,
         gen=1,
         subtype="A",
@@ -20,7 +20,7 @@ def main(roster_id, **kwargs):
 
     consist = OpenCarHoodConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16540,
         gen=3,
         subtype="A",
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
 
     consist = OpenCarHoodConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16550,
         gen=3,
         subtype="B",
@@ -42,7 +42,7 @@ def main(roster_id, **kwargs):
 
     consist = OpenCarHoodConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16560,
         gen=4,
         subtype="A",
@@ -53,7 +53,7 @@ def main(roster_id, **kwargs):
 
     consist = OpenCarHoodConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16570,
         gen=4,
         subtype="B",
@@ -64,7 +64,7 @@ def main(roster_id, **kwargs):
 
     consist = OpenCarHoodConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16580,
         gen=5,
         subtype="B",
@@ -75,7 +75,7 @@ def main(roster_id, **kwargs):
 
     consist = OpenCarHoodConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16590,
         gen=5,
         subtype="C",

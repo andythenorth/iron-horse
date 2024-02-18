@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsTypeOneHopperCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11890,
         gen=2,
         subtype="A",
@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsTypeOneHopperCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=13320,
         gen=2,
         subtype="B",
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsTypeOneHopperCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11910,
         gen=3,
         subtype="A",
@@ -39,7 +39,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsTypeOneHopperCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=9750,
         gen=3,
         subtype="B",
@@ -50,7 +50,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsTypeOneHopperCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11120,
         gen=4,
         subtype="A",
@@ -61,7 +61,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsTypeOneHopperCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11710,
         gen=4,
         subtype="B",
@@ -72,7 +72,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsTypeOneHopperCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11840,
         gen=5,
         subtype="B",
@@ -83,7 +83,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsTypeOneHopperCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11730,
         gen=5,
         subtype="C",

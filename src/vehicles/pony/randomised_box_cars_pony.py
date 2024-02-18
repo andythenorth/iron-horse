@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = BoxCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16680,
         gen=4,
         subtype="A",
@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
 
     consist = BoxCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16690,
         gen=4,
         subtype="B",
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
 
     consist = BoxCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16700,
         gen=4,
         subtype="C",
@@ -43,7 +43,7 @@ def main(roster_id, **kwargs):
 
     consist = BoxCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16710,
         gen=5,
         subtype="B",
@@ -54,7 +54,7 @@ def main(roster_id, **kwargs):
 
     consist = BoxCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16720,
         gen=5,
         subtype="C",

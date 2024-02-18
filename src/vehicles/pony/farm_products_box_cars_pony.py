@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
     consist = FarmProductsBoxCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=10350,
         gen=1,
         subtype="A",
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsBoxCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=10400,
         gen=3,
         subtype="A",
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsBoxCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19940,
         gen=3,
         subtype="B",
@@ -44,7 +44,7 @@ def main(roster_id, **kwargs):
     # --------------- pony --------------------------------------------------------------------------
     consist = FarmProductsBoxCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11680,
         gen=2,
         subtype="A",
@@ -55,7 +55,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsBoxCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12740,
         gen=2,
         subtype="B",
@@ -66,7 +66,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsBoxCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11670,
         gen=3,
         subtype="A",
@@ -77,7 +77,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsBoxCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11660,
         gen=3,
         subtype="B",
@@ -88,7 +88,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsBoxCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11640,
         gen=4,
         subtype="A",
@@ -99,7 +99,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsBoxCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11650,
         gen=4,
         subtype="B",
@@ -110,7 +110,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsBoxCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12610,
         gen=4,
         subtype="C",
@@ -125,7 +125,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsBoxCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11690,
         gen=5,
         subtype="B",
@@ -136,7 +136,7 @@ def main(roster_id, **kwargs):
 
     consist = FarmProductsBoxCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11700,
         gen=5,
         subtype="C",

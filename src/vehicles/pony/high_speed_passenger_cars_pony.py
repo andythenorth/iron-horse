@@ -4,7 +4,7 @@ from train import PassengerHighSpeedCarConsist, PaxCar
 def main(roster_id, **kwargs):
     consist = PassengerHighSpeedCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11020,
         gen=5,
         subtype="U",

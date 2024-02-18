@@ -4,7 +4,7 @@ from train import PassengerEngineRailbusConsist, DieselRailcarPaxUnit
 def main(roster_id, **kwargs):
     consist = PassengerEngineRailbusConsist(
         roster_id=roster_id,
-                id="clipper_single",
+        id="clipper_single",
         base_numeric_id=14690,
         name="Clipper",
         role="pax_railbus",

@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = SiloCarVBarrelConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17600,
         gen=4,
         subtype="A",
@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
 
     consist = SiloCarVBarrelConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17620,
         gen=4,
         subtype="B",
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
 
     consist = SiloCarVBarrelConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=15900,
         gen=4,
         subtype="C",
@@ -39,7 +39,7 @@ def main(roster_id, **kwargs):
 
     consist = SiloCarVBarrelConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17660,
         gen=5,
         subtype="A",
@@ -50,7 +50,7 @@ def main(roster_id, **kwargs):
 
     consist = SiloCarVBarrelConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17640,
         gen=5,
         subtype="B",
@@ -61,7 +61,7 @@ def main(roster_id, **kwargs):
 
     consist = SiloCarVBarrelConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=15930,
         gen=5,
         subtype="C",

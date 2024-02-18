@@ -57,7 +57,7 @@ def main(roster_id, **kwargs):
 
     consist = CabooseCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=13140,
         gen=1,
         subtype="A",
@@ -72,7 +72,7 @@ def main(roster_id, **kwargs):
 
     consist = CabooseCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=10330,
         gen=1,
         subtype="B",
@@ -199,7 +199,7 @@ def main(roster_id, **kwargs):
 
     consist = CabooseCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=10320,
         gen=1,
         subtype="A",
@@ -214,7 +214,7 @@ def main(roster_id, **kwargs):
 
     consist = CabooseCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11250,
         gen=1,
         subtype="B",

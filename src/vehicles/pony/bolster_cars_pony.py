@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14990,
         gen=1,
         subtype="A",
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=15000,
         gen=3,
         subtype="A",
@@ -30,7 +30,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14540,
         gen=3,
         subtype="B",
@@ -44,7 +44,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14320,
         gen=1,
         subtype="A",
@@ -57,7 +57,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14330,
         gen=2,
         subtype="B",
@@ -68,7 +68,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14340,
         gen=3,
         subtype="A",
@@ -79,7 +79,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14350,
         gen=3,
         subtype="B",
@@ -90,7 +90,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14360,
         gen=3,
         subtype="C",
@@ -101,7 +101,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14370,
         gen=4,
         subtype="A",
@@ -112,7 +112,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14380,
         gen=4,
         subtype="B",
@@ -123,7 +123,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14390,
         gen=4,
         subtype="C",
@@ -134,7 +134,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14400,
         gen=5,
         subtype="B",
@@ -145,7 +145,7 @@ def main(roster_id, **kwargs):
 
     consist = BolsterCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14290,
         gen=5,
         subtype="C",

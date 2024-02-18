@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarSkipConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6120,
         gen=1,
         subtype="U",

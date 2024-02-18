@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = SlagLadleCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=13480,
         gen=1,
         subtype="U",
@@ -21,7 +21,7 @@ def main(roster_id, **kwargs):
 
     consist = SlagLadleCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=13070,
         gen=1,
         subtype="U",
@@ -33,7 +33,7 @@ def main(roster_id, **kwargs):
 
     consist = SlagLadleCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=13080,
         gen=4,
         subtype="U",

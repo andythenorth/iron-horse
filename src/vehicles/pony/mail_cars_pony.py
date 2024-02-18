@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=9990,
         gen=1,
         subtype="A",
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=9650,
         gen=3,
         subtype="A",
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12360,
         gen=3,
         subtype="B",
@@ -58,7 +58,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11320,
         gen=1,
         subtype="A",
@@ -69,7 +69,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11260,
         gen=1,
         subtype="B",
@@ -80,7 +80,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11330,
         gen=2,
         subtype="A",
@@ -91,7 +91,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=9960,
         gen=2,
         subtype="B",
@@ -102,7 +102,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=10870,
         gen=3,
         subtype="A",
@@ -113,7 +113,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11340,
         gen=3,
         subtype="B",
@@ -124,7 +124,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=9980,
         gen=3,
         subtype="C",
@@ -135,7 +135,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=10470,
         gen=4,
         subtype="A",
@@ -146,7 +146,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12200,
         gen=4,
         subtype="B",
@@ -157,7 +157,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12210,
         gen=4,
         subtype="C",
@@ -168,7 +168,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=9560,
         gen=5,
         subtype="A",
@@ -179,7 +179,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=10010,
         gen=5,
         subtype="B",
@@ -190,7 +190,7 @@ def main(roster_id, **kwargs):
 
     consist = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12180,
         gen=5,
         subtype="C",

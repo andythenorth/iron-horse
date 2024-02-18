@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarAggregateConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14730,
         gen=1,
         subtype="A",
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarAggregateConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11390,
         gen=3,
         subtype="A",
@@ -30,7 +30,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarAggregateConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11400,
         gen=3,
         subtype="B",
@@ -41,7 +41,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarAggregateConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11410,
         gen=4,
         subtype="A",
@@ -52,7 +52,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarAggregateConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11420,
         gen=4,
         subtype="B",
@@ -63,7 +63,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarAggregateConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=15740,
         gen=5,
         subtype="A",
@@ -74,7 +74,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarAggregateConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=10850,
         gen=5,
         subtype="B",
@@ -85,7 +85,7 @@ def main(roster_id, **kwargs):
 
     consist = DumpCarAggregateConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11150,
         gen=5,
         subtype="C",

@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12590,
         gen=1,
         subtype="A",
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=10690,
         gen=3,
         subtype="A",
@@ -30,7 +30,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=9620,
         gen=3,
         subtype="B",
@@ -44,7 +44,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16860,
         gen=1,
         subtype="A",
@@ -57,7 +57,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14090,
         gen=2,
         subtype="B",
@@ -68,7 +68,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16880,
         gen=3,
         subtype="A",
@@ -79,7 +79,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16890,
         gen=3,
         subtype="B",
@@ -90,7 +90,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16900,
         gen=4,
         subtype="A",
@@ -101,7 +101,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16910,
         gen=4,
         subtype="B",
@@ -112,7 +112,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=8430,
         gen=5,
         subtype="A",
@@ -123,7 +123,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16930,
         gen=5,
         subtype="B",
@@ -134,7 +134,7 @@ def main(roster_id, **kwargs):
 
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16940,
         gen=5,
         subtype="C",

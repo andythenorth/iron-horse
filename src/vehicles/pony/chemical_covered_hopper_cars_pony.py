@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14250,
         gen=2,
         subtype="A",
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14300,
         gen=3,
         subtype="A",
@@ -30,7 +30,7 @@ def main(roster_id, **kwargs):
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=13150,
         gen=3,
         subtype="B",
@@ -44,7 +44,7 @@ def main(roster_id, **kwargs):
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=13170,
         gen=2,
         subtype="A",
@@ -55,7 +55,7 @@ def main(roster_id, **kwargs):
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=10950,
         gen=3,
         subtype="A",
@@ -66,7 +66,7 @@ def main(roster_id, **kwargs):
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=12700,
         gen=4,
         subtype="A",
@@ -77,7 +77,7 @@ def main(roster_id, **kwargs):
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=15100,
         gen=4,
         subtype="B",
@@ -88,7 +88,7 @@ def main(roster_id, **kwargs):
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17340,
         gen=5,
         subtype="A",
@@ -99,7 +99,7 @@ def main(roster_id, **kwargs):
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11000,
         gen=5,
         subtype="B",
@@ -110,7 +110,7 @@ def main(roster_id, **kwargs):
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=10060,
         gen=5,
         subtype="C",
