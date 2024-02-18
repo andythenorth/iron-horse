@@ -136,6 +136,7 @@ engine_module_names = [
 # these can be alphabetised, the buy menu order is enforced in global constants
 wagon_modules_provided_by_other_rosters = {
     "pony": [
+        "reefer_cars",
         "tarpaulin_cars",
         "torpedo_cars",
     ],
