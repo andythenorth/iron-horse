@@ -38,21 +38,22 @@ class Pipeline(object):
         # !! possibly this should be on the consist, not sure
         # !! definitely not on gestalt graphics, not the badger (too specific to pipeline)
         # !! it's probably fine on pipeline?
+
         if self.consist.cloned_from_consist is not None:
-            consist_filename_stem = self.consist.cloned_from_consist.id
+            source_consist = self.consist.cloned_from_consist
         else:
-            consist_filename_stem = self.consist.id
-        if self.consist.roster_id_providing_module != self.consist.roster_id:
-            roster_id = self.consist.roster_id_providing_module
-            consist_filename_stem_parts = consist_filename_stem.split(self.consist.roster_id)
-            consist_filename_stem = "".join([consist_filename_stem_parts[0], self.consist.roster_id_providing_module, consist_filename_stem_parts[1]])
-        else:
-            roster_id = self.consist.roster_id
+            source_consist = self.consist
+
+        # the consist id might have the consist's roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
+        # this will have a null effect (which is fine) if the roster_id consist is the same as the module providing the graphics gile
+        consist_filename_stem = source_consist.id.replace(source_consist.roster_id, source_consist.roster_id_providing_module)
+
         return os.path.join(
             currentdir,
             "src",
             "graphics",
-            roster_id,
+            # roster_id providing module will always give us the correct filesystem path to the graphics file, which might differ from the current roster_id
+            source_consist.roster_id_providing_module,
             consist_filename_stem + ".png",
         )
 
