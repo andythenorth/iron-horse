@@ -343,8 +343,8 @@ class Roster(object):
         # no return value needed
 
     def register_wagon_consist(self, wagon_consist):
+        # eh this is a bit of a stub function, but we have to explicitly add the wagons when they're instantiated, and it seems cleaner to delegate it to the roster?
         self.wagon_consists.append(wagon_consist)
-        wagon_consist.roster_id = self.id # !!!!!!!!!!!!!!!!!!!!!!!!!!!! why are we setting the ID again after init?
 
     def post_init_actions(self):
         # init of consists has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
