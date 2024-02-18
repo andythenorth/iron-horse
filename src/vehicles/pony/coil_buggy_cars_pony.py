@@ -1,11 +1,12 @@
 from train import CoilBuggyCarConsist, CoilBuggyCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = CoilBuggyCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=5160,
         gen=1,
         subtype="U",

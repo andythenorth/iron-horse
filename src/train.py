@@ -2227,6 +2227,7 @@ class CarConsist(Consist):
         id = self.get_wagon_id(self.base_id, **kwargs)
         kwargs["id"] = id
         super().__init__(**kwargs)
+        self.roster_id_providing_module = kwargs["roster_id_providing_module"]
         self.roster.register_wagon_consist(self)
 
         self._joker = False  # override this in subclass as needed

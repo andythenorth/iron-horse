@@ -1,7 +1,7 @@
 from train import TGVMiddlePassengerEngineConsist, ElectricHighSpeedPaxUnit
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = TGVMiddlePassengerEngineConsist(
         roster_id=roster_id,
         id="alize_middle_passenger",

@@ -1,11 +1,12 @@
 from train import BoxCarMerchandiseConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11860,
         gen=3,
         subtype="A",
@@ -17,6 +18,7 @@ def main(roster_id):
 
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11940,
         gen=3,
         subtype="B",
@@ -30,6 +32,7 @@ def main(roster_id):
 
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16380,
         gen=4,
         subtype="A",
@@ -40,6 +43,7 @@ def main(roster_id):
 
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16390,
         gen=4,
         subtype="B",
@@ -50,6 +54,7 @@ def main(roster_id):
 
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16400,
         gen=4,
         subtype="C",
@@ -64,6 +69,7 @@ def main(roster_id):
 
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16410,
         gen=5,
         subtype="B",
@@ -74,6 +80,7 @@ def main(roster_id):
 
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16420,
         gen=5,
         subtype="C",

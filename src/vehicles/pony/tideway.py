@@ -1,7 +1,7 @@
 from train import MailEngineMetroConsist, MetroUnit
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = MailEngineMetroConsist(
         roster_id=roster_id,
         id="tideway",

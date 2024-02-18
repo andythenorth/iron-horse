@@ -1,12 +1,13 @@
 from train import FlatCarTarpaulinConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # gen 5 start, only B and C lengths
 
     consist = FlatCarTarpaulinConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=8810,
         gen=5,
         subtype="B",
@@ -17,6 +18,7 @@ def main(roster_id):
 
     consist = FlatCarTarpaulinConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12790,
         gen=5,
         subtype="C",

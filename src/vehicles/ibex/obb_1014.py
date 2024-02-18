@@ -3,7 +3,7 @@ from train import EngineConsist, ElectricEngineUnit
 # multi-system !!
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
         id="obb_1014",

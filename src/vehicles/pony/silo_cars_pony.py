@@ -1,11 +1,12 @@
 from train import SiloCarConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = SiloCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12720,
         gen=4,
         subtype="A",
@@ -16,6 +17,7 @@ def main(roster_id):
 
     consist = SiloCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17390,
         gen=4,
         subtype="B",
@@ -26,6 +28,7 @@ def main(roster_id):
 
     consist = SiloCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17430,
         gen=4,
         subtype="C",
@@ -36,6 +39,7 @@ def main(roster_id):
 
     consist = SiloCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12660,
         gen=5,
         subtype="A",
@@ -46,6 +50,7 @@ def main(roster_id):
 
     consist = SiloCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17410,
         gen=5,
         subtype="B",
@@ -56,6 +61,7 @@ def main(roster_id):
 
     consist = SiloCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12680,
         gen=5,
         subtype="C",

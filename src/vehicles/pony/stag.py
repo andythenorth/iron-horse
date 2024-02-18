@@ -2,7 +2,7 @@
 from train import EngineConsist, SteamEngineUnit
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
         id="stag",

@@ -331,15 +331,21 @@ class Roster(object):
                         )
             for numeric_id in consist.unique_numeric_ids:
                 if numeric_id in numeric_id_defender:
+                    colliding_consist = numeric_id_defender[numeric_id]
+                    # there is a specific case of reused vehicles that are allowed to overlap IDs (they will be grf-independent, and the compile doesn't actually care)
+                    # it should be enough to just check the base_id, as both consists should then have been instantiated from the same source module
+                    if colliding_consist.base_id == consist.base_id:
+                        continue
                     raise BaseException(
                         "Error: consist "
                         + consist.id
-                        + " has a unit variant with numeric_id that collides ("
+                        + " has a unit variant with a numeric_id that collides ("
                         + str(numeric_id)
-                        + ") with a numeric_id of a unit variant in another consist"
+                        + ") with a numeric_id of a unit variant in consist "
+                        + colliding_consist.id
                     )
                 else:
-                    numeric_id_defender.append(numeric_id)
+                    numeric_id_defender[numeric_id] = consist
         # no return value needed
 
     def register_wagon_consist(self, wagon_consist):
@@ -365,8 +371,8 @@ class Roster(object):
         # this is not intended to be a common case, it's for things like torpedo cars where redrawing and redefining them for all rosters is pointless
         # this may cause compile failures when refactoring stuff due to cross-roster dependencies being broken, if so comment the calls out
         for roster_id_providing_modules, wagon_module_names in self.wagon_modules_provided_by_other_rosters.items():
-             #self.init_wagon_modules(roster_id_providing_modules, wagon_module_names)
-             pass
+             self.init_wagon_modules(roster_id_providing_modules, wagon_module_names)
+             #pass
 
     def init_wagon_modules(self, roster_id_of_module, wagon_module_names):
         package_name = "vehicles." + roster_id_of_module
@@ -375,7 +381,7 @@ class Roster(object):
                 wagon_module = importlib.import_module(
                     "." + wagon_module_name + "_" + roster_id_of_module, package_name
                 )
-                wagon_module.main(self.id)
+                wagon_module.main(self.id, roster_id_providing_module=roster_id_of_module)
             except ModuleNotFoundError:
                 # we want to warn, not fail, if a module is missing
                 # to suppress this warning, add an empty module file with main() and pass

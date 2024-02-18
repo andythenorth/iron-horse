@@ -1,11 +1,12 @@
 from train import CoveredHopperCarDryPowderConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = CoveredHopperCarDryPowderConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13540,
         gen=2,
         subtype="A",
@@ -16,6 +17,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarDryPowderConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17800,
         gen=3,
         subtype="A",
@@ -26,6 +28,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarDryPowderConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13560,
         gen=4,
         subtype="A",
@@ -36,6 +39,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarDryPowderConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17820,
         gen=4,
         subtype="B",
@@ -48,6 +52,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarDryPowderConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13590,
         gen=5,
         subtype="B",
@@ -58,6 +63,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarDryPowderConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17840,
         gen=5,
         subtype="C",

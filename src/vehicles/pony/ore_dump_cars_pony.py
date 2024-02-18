@@ -1,11 +1,12 @@
 from train import DumpCarOreConsist, OreDumpCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = DumpCarOreConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15530,
         gen=3,
         subtype="A",
@@ -16,6 +17,7 @@ def main(roster_id):
 
     consist = DumpCarOreConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15540,
         gen=3,
         subtype="B",
@@ -26,6 +28,7 @@ def main(roster_id):
 
     consist = DumpCarOreConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15550,
         gen=4,
         subtype="A",
@@ -36,6 +39,7 @@ def main(roster_id):
 
     consist = DumpCarOreConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15560,
         gen=4,
         subtype="B",
@@ -48,6 +52,7 @@ def main(roster_id):
 
     consist = DumpCarOreConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15570,
         gen=5,
         subtype="B",
@@ -58,6 +63,7 @@ def main(roster_id):
 
     consist = DumpCarOreConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15580,
         gen=5,
         subtype="C",

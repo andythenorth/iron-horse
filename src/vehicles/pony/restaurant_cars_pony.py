@@ -1,11 +1,12 @@
 from train import PassengerRestaurantCarConsist, PaxRestaurantCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = PassengerRestaurantCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14560,
         gen=1,
         subtype="U",
@@ -16,6 +17,7 @@ def main(roster_id):
 
     consist = PassengerRestaurantCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14570,
         gen=2,
         subtype="U",
@@ -26,6 +28,7 @@ def main(roster_id):
 
     consist = PassengerRestaurantCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14580,
         gen=3,
         subtype="U",
@@ -36,6 +39,7 @@ def main(roster_id):
 
     consist = PassengerRestaurantCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14590,
         gen=4,
         subtype="U",
@@ -46,6 +50,7 @@ def main(roster_id):
 
     consist = PassengerRestaurantCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14600,
         gen=5,
         subtype="U",

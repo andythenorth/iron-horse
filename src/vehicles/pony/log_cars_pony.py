@@ -1,10 +1,11 @@
 from train import LogCarConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
     consist = LogCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16220,
         gen=1,
         subtype="U",
@@ -18,6 +19,7 @@ def main(roster_id):
 
     consist = LogCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16230,
         gen=3,
         subtype="U",
@@ -30,6 +32,7 @@ def main(roster_id):
     """ # restore in next version
     consist = LogCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16240,
         gen=4,
         subtype="U",
@@ -43,6 +46,7 @@ def main(roster_id):
 
     consist = LogCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11780,
         gen=2,
         subtype="A",
@@ -53,6 +57,7 @@ def main(roster_id):
 
     consist = LogCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11770,
         gen=3,
         subtype="A",
@@ -63,6 +68,7 @@ def main(roster_id):
 
     consist = LogCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11790,
         gen=3,
         subtype="B",
@@ -73,6 +79,7 @@ def main(roster_id):
 
     consist = LogCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10750,
         gen=4,
         subtype="A",
@@ -83,6 +90,7 @@ def main(roster_id):
 
     consist = LogCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11800,
         gen=4,
         subtype="B",
@@ -93,6 +101,7 @@ def main(roster_id):
 
     consist = LogCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10970,
         gen=4,
         subtype="C",
@@ -103,6 +112,7 @@ def main(roster_id):
 
     consist = LogCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11810,
         gen=5,
         subtype="B",
@@ -113,6 +123,7 @@ def main(roster_id):
 
     consist = LogCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=9970,
         gen=5,
         subtype="C",

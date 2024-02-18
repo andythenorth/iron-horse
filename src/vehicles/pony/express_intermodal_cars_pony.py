@@ -1,12 +1,13 @@
 from train import ExpressIntermodalCarConsist, ExpressIntermodalCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # only gen 5 and 6 eh
 
     consist = ExpressIntermodalCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12960,
         gen=5,
         subtype="B",
@@ -17,6 +18,7 @@ def main(roster_id):
 
     consist = ExpressIntermodalCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12970,
         gen=5,
         subtype="C",

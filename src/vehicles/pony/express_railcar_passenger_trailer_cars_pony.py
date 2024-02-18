@@ -1,11 +1,12 @@
 from train import PassengerExpressRailcarTrailerCarConsist, PaxRailcarTrailerCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = PassengerExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=6750,
         gen=3,
         subtype="U",
@@ -22,6 +23,7 @@ def main(roster_id):
 
     consist = PassengerExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=6770,
         gen=4,
         subtype="U",
@@ -38,6 +40,7 @@ def main(roster_id):
 
     consist = PassengerExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=30,
         gen=5,
         subtype="U",
@@ -56,6 +59,7 @@ def main(roster_id):
      # unfinished, nerfed
     consist = PassengerExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=440,
         gen=6,
         subtype="U",

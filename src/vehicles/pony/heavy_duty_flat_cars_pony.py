@@ -1,11 +1,12 @@
 from train import FlatCarHeavyDutyConsist, HeavyDutyCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = FlatCarHeavyDutyConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13580,
         gen=1,
         subtype="U",
@@ -20,6 +21,7 @@ def main(roster_id):
 
     consist = FlatCarHeavyDutyConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10020,
         gen=1,
         subtype="A",
@@ -31,6 +33,7 @@ def main(roster_id):
 
     consist = FlatCarHeavyDutyConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10240,
         gen=2,
         subtype="B",
@@ -42,6 +45,7 @@ def main(roster_id):
 
     consist = FlatCarHeavyDutyConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10160,
         gen=4,
         subtype="A",
@@ -53,6 +57,7 @@ def main(roster_id):
 
     consist = FlatCarHeavyDutyConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10220,
         gen=4,
         subtype="B",

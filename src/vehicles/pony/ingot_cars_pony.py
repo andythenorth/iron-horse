@@ -1,11 +1,12 @@
 from train import IngotCarConsist, IngotCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = IngotCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=5150,
         gen=1,
         subtype="U",
@@ -20,6 +21,7 @@ def main(roster_id):
 
     consist = IngotCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=80,
         gen=1,
         subtype="U",
@@ -31,6 +33,7 @@ def main(roster_id):
 
     consist = IngotCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=60,
         gen=4,
         subtype="U",

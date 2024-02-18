@@ -5,10 +5,10 @@ from train import (
 )
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = PassengerEngineRailbusConsist(
         roster_id=roster_id,
-        id="mumble",
+                id="mumble",
         base_numeric_id=830,
         name="Mumble",
         role="pax_railbus",

@@ -1,9 +1,10 @@
 from train import MailHighSpeedCarConsist, ExpressMailCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = MailHighSpeedCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10990,
         gen=5,
         subtype="U",

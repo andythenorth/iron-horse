@@ -3,7 +3,7 @@ from train import TGVCabEngineConsist, ElectricEngineUnit
 # pax capacity on these limits use for 100% mail consists - use the Skeiron for that?
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = TGVCabEngineConsist(
         roster_id=roster_id,
         id="brenner_cab",

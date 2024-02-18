@@ -1,7 +1,7 @@
 from train import EngineConsist, BatteryHybridEngineUnit
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
         id="magnum_70",

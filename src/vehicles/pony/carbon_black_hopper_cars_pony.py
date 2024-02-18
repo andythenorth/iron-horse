@@ -1,11 +1,12 @@
 from train import CarbonBlackHopperCarConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = CarbonBlackHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13450,
         gen=3,
         subtype="A",
@@ -16,6 +17,7 @@ def main(roster_id):
 
     consist = CarbonBlackHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13460,
         gen=4,
         subtype="A",
@@ -26,6 +28,7 @@ def main(roster_id):
 
     consist = CarbonBlackHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13470,
         gen=4,
         subtype="B",
@@ -36,6 +39,7 @@ def main(roster_id):
 
     consist = CarbonBlackHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13490,
         gen=5,
         subtype="B",
@@ -46,6 +50,7 @@ def main(roster_id):
 
     consist = CarbonBlackHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13500,
         gen=5,
         subtype="C",

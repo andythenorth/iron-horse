@@ -1,12 +1,13 @@
 from train import BoxCarSlidingWallConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # starts gen 5, may add gen 4 later
 
     consist = BoxCarSlidingWallConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=8730,
         gen=5,
         subtype="B",
@@ -21,6 +22,7 @@ def main(roster_id):
 
     consist = BoxCarSlidingWallConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=8740,
         gen=5,
         subtype="C",
@@ -35,6 +37,7 @@ def main(roster_id):
 
     consist = BoxCarSlidingWallConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10,
         gen=5,
         subtype="D",
@@ -59,6 +62,7 @@ def main(roster_id):
 
     consist = BoxCarSlidingWallConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=8760,
         gen=6,
         subtype="B",
@@ -73,6 +77,7 @@ def main(roster_id):
 
     consist = BoxCarSlidingWallConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=8770,
         gen=6,
         subtype="C",
@@ -87,6 +92,7 @@ def main(roster_id):
 
     consist = BoxCarSlidingWallConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=5170,
         gen=6,
         subtype="D",

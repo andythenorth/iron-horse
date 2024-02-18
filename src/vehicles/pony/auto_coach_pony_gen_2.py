@@ -9,7 +9,7 @@ from train import (
 # but speed still compares favourably with equivalent era railcars, and there's a capacity bonus also
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = AutoCoachCombineConsist(
         roster_id=roster_id,
         id="auto_coach_pony_gen_2",

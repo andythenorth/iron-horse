@@ -1,7 +1,7 @@
 from train import TGVMiddleMailEngineConsist, ElectricHighSpeedMailUnit
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = TGVMiddleMailEngineConsist(
         roster_id=roster_id,
         id="helm_wind_middle_mail",

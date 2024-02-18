@@ -1,7 +1,7 @@
 from train import PassengerHSTCabEngineConsist, DieselEngineUnit
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = PassengerHSTCabEngineConsist(
         roster_id=roster_id,
         id="blaze",

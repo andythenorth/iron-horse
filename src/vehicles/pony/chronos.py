@@ -4,9 +4,10 @@ from train import (
 )
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = MailEngineExpressRailcarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         id="chronos",
         base_numeric_id=6400,
         name="Chronos",

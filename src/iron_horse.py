@@ -91,7 +91,7 @@ class RosterManager(list):
         # has to be explicitly called after all rosters are active, and all vehicles and vehicle units are registered to each roster
         # validation will also populate numeric_id_defender which can be re-used for ID reporting
         # actual validation is delegated to the roster
-        self.numeric_id_defender = []
+        self.numeric_id_defender = {}
         for roster in self:
             roster.validate_vehicles(self.numeric_id_defender)
 

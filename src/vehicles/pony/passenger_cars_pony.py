@@ -1,10 +1,11 @@
 from train import PassengerCarConsist, PaxCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=9810,
         gen=1,
         subtype="A",
@@ -16,6 +17,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10570,
         gen=1,
         subtype="B",
@@ -29,6 +31,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=9840,
         gen=3,
         subtype="A",
@@ -40,6 +43,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=9640,
         gen=3,
         subtype="B",
@@ -52,6 +56,7 @@ def main(roster_id):
     """ # restore in next version
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=9900,
         gen=4,
         subtype="A",
@@ -63,6 +68,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=9700,
         gen=4,
         subtype="B",
@@ -76,6 +82,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14620,
         gen=1,
         subtype="A",
@@ -86,6 +93,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14630,
         gen=1,
         subtype="B",
@@ -96,6 +104,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11290,
         gen=1,
         subtype="C",
@@ -106,6 +115,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14640,
         gen=2,
         subtype="A",
@@ -116,6 +126,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14650,
         gen=2,
         subtype="B",
@@ -125,6 +136,7 @@ def main(roster_id):
     consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11300,
         gen=2,
         subtype="C",
@@ -135,6 +147,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14660,
         gen=3,
         subtype="A",
@@ -145,6 +158,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14670,
         gen=3,
         subtype="B",
@@ -155,6 +169,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11310,
         gen=3,
         subtype="C",
@@ -165,6 +180,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14680,
         gen=4,
         subtype="B",
@@ -175,6 +191,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12160,
         gen=4,
         subtype="C",
@@ -185,6 +202,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=9780,
         gen=5,
         subtype="B",
@@ -196,6 +214,7 @@ def main(roster_id):
 
     consist = PassengerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12170,
         gen=5,
         subtype="C",

@@ -6,7 +6,7 @@ def find_vacant_id_runs(numeric_id_defender, lower_bound, upper_bound):
     unused_ids = []
     for i in range(int(lower_bound / 10), int(upper_bound / 10)):
         id = i * 10
-        if id not in iron_horse.roster_manager.numeric_id_defender:
+        if id not in iron_horse.roster_manager.numeric_id_defender.keys():
             unused_ids.append(id)
     id_runs = []
     run = []
@@ -41,12 +41,12 @@ def main():
     # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
 
     id_gaps_articulated = find_vacant_id_runs(
-        iron_horse.roster_manager.numeric_id_defender,
+        iron_horse.roster_manager.numeric_id_defender.keys(),
         0,
         global_constants.max_articulated_id - 10,
     )
     id_gaps_non_articulated = find_vacant_id_runs(
-        iron_horse.roster_manager.numeric_id_defender,
+        iron_horse.roster_manager.numeric_id_defender.keys(),
         global_constants.max_articulated_id + 10,
         # yolo 65k why not
         65000,

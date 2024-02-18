@@ -1,11 +1,12 @@
 from train import TankCarConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17740,
         gen=1,
         subtype="A",
@@ -19,6 +20,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17760,
         gen=3,
         subtype="A",
@@ -30,6 +32,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17780,
         gen=3,
         subtype="B",
@@ -43,6 +46,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17700,
         gen=1,
         subtype="A",
@@ -53,6 +57,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16360,
         gen=2,
         subtype="B",
@@ -63,6 +68,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17300,
         gen=3,
         subtype="A",
@@ -73,6 +79,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14890,
         gen=3,
         subtype="B",
@@ -83,6 +90,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15710,
         gen=3,
         subtype="C",
@@ -93,6 +101,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17720,
         gen=4,
         subtype="A",
@@ -103,6 +112,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13620,
         gen=4,
         subtype="B",
@@ -113,6 +123,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17680,
         gen=4,
         subtype="C",
@@ -123,6 +134,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15450,
         gen=5,
         subtype="A",
@@ -133,6 +145,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11460,
         gen=5,
         subtype="B",
@@ -143,6 +156,7 @@ def main(roster_id):
 
     consist = TankCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10670,
         gen=5,
         subtype="C",

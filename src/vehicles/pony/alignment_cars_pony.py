@@ -1,11 +1,12 @@
 from train import AlignmentCarConsist, AlignmentCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = AlignmentCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=9060,
         gen=1,
         subtype="A",
@@ -18,6 +19,7 @@ def main(roster_id):
 
     consist = AlignmentCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=9070,
         gen=1,
         subtype="B",
@@ -30,6 +32,7 @@ def main(roster_id):
 
     consist = AlignmentCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=9080,
         gen=1,
         subtype="C",

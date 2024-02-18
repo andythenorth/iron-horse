@@ -1,7 +1,7 @@
 from train import EngineConsist, DieselEngineUnit
 
 
-def main(roster_id):  # standard gauge GE Shovelnose
+def main(roster_id, **kwargs):  # standard gauge GE Shovelnose
     consist = EngineConsist(
         id="pala", base_numeric_id=9360, name="Pala", power=1200, intro_year=1955
     )

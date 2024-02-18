@@ -1,11 +1,12 @@
 from train import DedicatedCoilCarRandomisedConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = DedicatedCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10710,
         gen=4,
         subtype="A",
@@ -16,6 +17,7 @@ def main(roster_id):
 
     consist = DedicatedCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10720,
         gen=4,
         subtype="B",
@@ -26,6 +28,7 @@ def main(roster_id):
 
     consist = DedicatedCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12880,
         gen=4,
         subtype="C",
@@ -40,6 +43,7 @@ def main(roster_id):
 
     consist = DedicatedCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12890,
         gen=5,
         subtype="B",
@@ -50,6 +54,7 @@ def main(roster_id):
 
     consist = DedicatedCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12950,
         gen=5,
         subtype="C",

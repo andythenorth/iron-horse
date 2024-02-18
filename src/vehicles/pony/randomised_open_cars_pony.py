@@ -1,11 +1,12 @@
 from train import OpenCarRandomisedConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = OpenCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=9900,
         gen=1,
         subtype="A",
@@ -17,6 +18,7 @@ def main(roster_id):
 
     consist = OpenCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=9950,
         gen=3,
         subtype="A",
@@ -28,6 +30,7 @@ def main(roster_id):
 
     consist = OpenCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11080,
         gen=3,
         subtype="B",
@@ -41,6 +44,7 @@ def main(roster_id):
 
     consist = OpenCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16970,
         gen=1,
         subtype="A",
@@ -53,6 +57,7 @@ def main(roster_id):
 
     consist = OpenCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16990,
         gen=3,
         subtype="A",
@@ -63,6 +68,7 @@ def main(roster_id):
 
     consist = OpenCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17000,
         gen=3,
         subtype="B",
@@ -73,6 +79,7 @@ def main(roster_id):
 
     consist = OpenCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17010,
         gen=4,
         subtype="A",
@@ -83,6 +90,7 @@ def main(roster_id):
 
     consist = OpenCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17020,
         gen=4,
         subtype="B",
@@ -93,6 +101,7 @@ def main(roster_id):
 
     consist = OpenCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17040,
         gen=5,
         subtype="B",
@@ -103,6 +112,7 @@ def main(roster_id):
 
     consist = OpenCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17050,
         gen=5,
         subtype="C",

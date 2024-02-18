@@ -3,7 +3,7 @@ from train import TGVCabEngineConsist, ElectricEngineUnit
 # skeiron does not have pax capacity, so it can be used for pure mail consists
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = TGVCabEngineConsist(
         roster_id=roster_id,
         id="skeiron_cab",

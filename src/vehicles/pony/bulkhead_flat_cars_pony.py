@@ -1,11 +1,12 @@
 from train import FlatCarBulkheadConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = FlatCarBulkheadConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14160,
         gen=2,
         subtype="A",
@@ -18,6 +19,7 @@ def main(roster_id):
 
     consist = FlatCarBulkheadConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14170,
         gen=3,
         subtype="A",
@@ -29,6 +31,7 @@ def main(roster_id):
 
     consist = FlatCarBulkheadConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12600,
         gen=3,
         subtype="B",
@@ -42,6 +45,7 @@ def main(roster_id):
 
     consist = FlatCarBulkheadConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13740,
         gen=3,
         subtype="A",
@@ -52,6 +56,7 @@ def main(roster_id):
 
     consist = FlatCarBulkheadConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13750,
         gen=3,
         subtype="B",
@@ -62,6 +67,7 @@ def main(roster_id):
 
     consist = FlatCarBulkheadConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13760,
         gen=3,
         subtype="C",
@@ -72,6 +78,7 @@ def main(roster_id):
 
     consist = FlatCarBulkheadConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13770,
         gen=4,
         subtype="A",
@@ -82,6 +89,7 @@ def main(roster_id):
 
     consist = FlatCarBulkheadConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13780,
         gen=4,
         subtype="B",
@@ -92,6 +100,7 @@ def main(roster_id):
 
     consist = FlatCarBulkheadConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13790,
         gen=4,
         subtype="C",
@@ -102,6 +111,7 @@ def main(roster_id):
 
     consist = FlatCarBulkheadConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13800,
         gen=5,
         subtype="B",
@@ -112,6 +122,7 @@ def main(roster_id):
 
     consist = FlatCarBulkheadConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13810,
         gen=5,
         subtype="C",

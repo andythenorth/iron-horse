@@ -1,7 +1,7 @@
 from train import MailEngineCabbageDVTConsist, CabbageDVTUnit
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = MailEngineCabbageDVTConsist(
         roster_id=roster_id,
         id="driving_cab_high_speed_mail_pony_gen_5",

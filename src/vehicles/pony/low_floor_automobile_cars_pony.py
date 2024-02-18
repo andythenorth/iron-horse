@@ -1,7 +1,7 @@
 from train import AutomobileLowFloorCarConsist, AutomobileCarAsymmetric
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # intro gen 4
 

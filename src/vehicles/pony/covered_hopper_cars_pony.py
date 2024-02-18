@@ -1,11 +1,12 @@
 from train import CoveredHopperCarConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15020,
         gen=2,
         subtype="A",
@@ -17,6 +18,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17880,
         gen=3,
         subtype="A",
@@ -28,6 +30,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15080,
         gen=3,
         subtype="B",
@@ -41,6 +44,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15960,
         gen=2,
         subtype="A",
@@ -51,6 +55,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11740,
         gen=3,
         subtype="A",
@@ -61,6 +66,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=12900,
         gen=4,
         subtype="A",
@@ -71,6 +77,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14780,
         gen=4,
         subtype="B",
@@ -81,6 +88,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13410,
         gen=5,
         subtype="B",
@@ -91,6 +99,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14120,
         gen=5,
         subtype="C",

@@ -1,10 +1,10 @@
 from train import PassengerEngineRailbusConsist, DieselRailcarPaxUnit
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = PassengerEngineRailbusConsist(
         roster_id=roster_id,
-        id="zipper_single",
+                id="zipper_single",
         base_numeric_id=14710,
         name="Zipper",
         role="pax_railbus",

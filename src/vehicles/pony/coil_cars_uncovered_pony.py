@@ -1,12 +1,13 @@
 from train import CoilCarUncoveredConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # start gen 4
 
     consist = CoilCarUncoveredConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14040,
         gen=4,
         subtype="A",
@@ -17,6 +18,7 @@ def main(roster_id):
 
     consist = CoilCarUncoveredConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14050,
         gen=4,
         subtype="B",
@@ -27,6 +29,7 @@ def main(roster_id):
 
     consist = CoilCarUncoveredConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14060,
         gen=4,
         subtype="C",
@@ -37,6 +40,7 @@ def main(roster_id):
 
     consist = CoilCarUncoveredConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14070,
         gen=5,
         subtype="B",
@@ -47,6 +51,7 @@ def main(roster_id):
 
     consist = CoilCarUncoveredConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14080,
         gen=5,
         subtype="C",

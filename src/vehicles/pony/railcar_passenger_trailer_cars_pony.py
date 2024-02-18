@@ -4,7 +4,7 @@ from train import (
 )
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- pony NG----------------------------------------------------------------------
 
     # Pony NG uses railbus trailers, not railcar
@@ -14,6 +14,7 @@ def main(roster_id):
 
     consist = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11980,
         gen=4,
         subtype="U",
@@ -29,6 +30,7 @@ def main(roster_id):
 
     consist = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14930,
         gen=4,
         subtype="U",
@@ -44,6 +46,7 @@ def main(roster_id):
 
     consist = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11950,
         gen=5,
         subtype="U",
@@ -59,6 +62,7 @@ def main(roster_id):
 
     consist = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14910,
         gen=5,
         subtype="U",
@@ -74,6 +78,7 @@ def main(roster_id):
 
     consist = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11090,
         gen=6,
         subtype="U",
@@ -89,6 +94,7 @@ def main(roster_id):
 
     consist = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14920,
         gen=6,
         subtype="U",

@@ -1,11 +1,12 @@
 from train import CoveredHopperCarMineralConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15990,
         gen=2,
         subtype="A",
@@ -16,6 +17,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16000,
         gen=3,
         subtype="A",
@@ -26,6 +28,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16010,
         gen=4,
         subtype="A",
@@ -36,6 +39,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16020,
         gen=4,
         subtype="B",
@@ -46,6 +50,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16070,
         gen=5,
         subtype="A",
@@ -56,6 +61,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16030,
         gen=5,
         subtype="B",
@@ -66,6 +72,7 @@ def main(roster_id):
 
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16040,
         gen=5,
         subtype="C",

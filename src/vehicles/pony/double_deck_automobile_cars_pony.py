@@ -1,11 +1,12 @@
 from train import AutomobileDoubleDeckCarConsist, AutomobileCarAsymmetric
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------    # intro gen 4
     """
     consist = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=5790,
         gen=4,
         subtype="B",
@@ -16,6 +17,7 @@ def main(roster_id):
     """
     consist = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=14840,
         gen=4,
         subtype="C",
@@ -28,6 +30,7 @@ def main(roster_id):
     """
     consist = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=5810,
         gen=5,
         subtype="B",
@@ -38,6 +41,7 @@ def main(roster_id):
     """
     consist = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=17330,
         gen=5,
         subtype="C",
@@ -50,6 +54,7 @@ def main(roster_id):
     """
     consist = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=5830,
         gen=5,
         subtype="D",

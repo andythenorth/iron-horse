@@ -1,7 +1,7 @@
 from train import TGVCabEngineConsist, ElectricEngineUnit
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = TGVCabEngineConsist(
         roster_id=roster_id,
         id="helm_wind_cab",

@@ -5,7 +5,7 @@ from train import MailEngineCargoSprinterEngineConsist, DieselRailcarMailUnit
 # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = MailEngineCargoSprinterEngineConsist(
         roster_id=roster_id,
         id="cargo_sprinter",

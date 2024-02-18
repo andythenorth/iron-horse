@@ -1,7 +1,7 @@
 from train import PassengerEngineRailcarConsist, DieselRailcarPaxUnit
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     consist = PassengerEngineRailcarConsist(
         roster_id=roster_id,
         id="slammer",

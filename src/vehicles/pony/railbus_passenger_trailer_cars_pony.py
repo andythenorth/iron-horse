@@ -4,11 +4,12 @@ from train import (
 )
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- pony NG----------------------------------------------------------------------
 
     consist = PassengerRailbusTrailerCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10030,
         gen=3,
         subtype="U",

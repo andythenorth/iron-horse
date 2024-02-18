@@ -1,11 +1,12 @@
 from train import GenericCoilCarRandomisedConsist, FreightCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = GenericCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16750,
         gen=1,
         subtype="A",
@@ -18,6 +19,7 @@ def main(roster_id):
 
     consist = GenericCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16760,
         gen=2,
         subtype="B",
@@ -28,6 +30,7 @@ def main(roster_id):
 
     consist = GenericCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16770,
         gen=3,
         subtype="A",
@@ -38,6 +41,7 @@ def main(roster_id):
 
     consist = GenericCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16780,
         gen=3,
         subtype="B",
@@ -48,6 +52,7 @@ def main(roster_id):
 
     consist = GenericCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16790,
         gen=4,
         subtype="A",
@@ -58,6 +63,7 @@ def main(roster_id):
 
     consist = GenericCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16800,
         gen=4,
         subtype="B",
@@ -68,6 +74,7 @@ def main(roster_id):
 
     consist = GenericCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16810,
         gen=4,
         subtype="C",
@@ -82,6 +89,7 @@ def main(roster_id):
 
     consist = GenericCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16820,
         gen=5,
         subtype="B",
@@ -92,6 +100,7 @@ def main(roster_id):
 
     consist = GenericCoilCarRandomisedConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16830,
         gen=5,
         subtype="C",

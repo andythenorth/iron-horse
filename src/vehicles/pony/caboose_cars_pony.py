@@ -1,7 +1,7 @@
 from train import CabooseCarConsist, CabooseCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
     # caboose names map to labelled spriterows, as defined in the vehicle files
     # note that spriterow mapping will need redefined for each roster and base track type
@@ -57,6 +57,7 @@ def main(roster_id):
 
     consist = CabooseCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=13140,
         gen=1,
         subtype="A",
@@ -71,6 +72,7 @@ def main(roster_id):
 
     consist = CabooseCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10330,
         gen=1,
         subtype="B",
@@ -197,6 +199,7 @@ def main(roster_id):
 
     consist = CabooseCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=10320,
         gen=1,
         subtype="A",
@@ -211,6 +214,7 @@ def main(roster_id):
 
     consist = CabooseCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=11250,
         gen=1,
         subtype="B",

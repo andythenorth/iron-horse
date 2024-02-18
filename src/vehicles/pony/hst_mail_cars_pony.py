@@ -1,11 +1,12 @@
 from train import MailHSTCarConsist, ExpressMailCar
 
 
-def main(roster_id):
+def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = MailHSTCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16170,
         gen=4,
         subtype="U",
@@ -18,6 +19,7 @@ def main(roster_id):
 
     consist = MailHSTCarConsist(
         roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=16180,
         gen=5,
         subtype="U",
