@@ -124,7 +124,10 @@ engine_module_names = [
     # express electric railcars
     # foo,
     # high speed pax
-    # foo,
+    # AC
+    "rapide_cab",
+    "rapide_middle_mail",
+    "rapide_middle_passenger",
     # metro
     # foo,
     # ng engines
@@ -275,6 +278,14 @@ def main():
                     ("COLOUR_ORANGE", "COLOUR_DARK_GREEN"),
                     ("COLOUR_ORANGE", "COLOUR_GREEN"),
                     ("COLOUR_CREAM", "COLOUR_MAUVE"),
+                ],
+            },
+            "TGV_LA_POSTE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_YELLOW", "COLOUR_BLUE"),
                 ],
             },
         },
