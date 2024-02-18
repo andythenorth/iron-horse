@@ -136,9 +136,33 @@ engine_module_names = [
 # these can be alphabetised, the buy menu order is enforced in global constants
 wagon_modules_provided_by_other_rosters = {
     "pony": [
+        "acid_tank_cars",
+        "carbon_black_hopper_cars",
+        "cement_silo_cars",
+        "coil_covered_cars_asymmetric",
+        "cryo_tank_cars",
+        "express_intermodal_cars",
+        "flat_cars",
+        "goods_box_cars",
+        "heavy_duty_dump_cars",
+        "heavy_duty_flat_cars",
+        "ingot_cars",
+        "intermodal_cars",
+        "kaolin_hopper_cars",
+        "log_cars",
+        "ore_dump_cars",
+        "pressure_tank_cars",
+        "product_tank_cars",
         "reefer_cars",
+        "silo_cars",
+        "slag_ladle_cars",
+        "sliding_roof_cars",
+        "sliding_wall_cars",
+        "sulphur_tank_cars",
+        "tank_cars",
         "tarpaulin_cars",
         "torpedo_cars",
+        "vehicle_parts_box_cars",
     ],
 }
 
