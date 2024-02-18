@@ -51,6 +51,8 @@ class Consist(object):
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
         # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
         self.roster_id = kwargs.get("roster_id")  # just fail if there's no roster
+        # rosters can optionally reuse wagon modules from other rosters, if so, store the roster_id of the origin module (otherwise roster_id is same)
+        self.roster_id_providing_module = kwargs.get("roster_id_providing_module", self.roster_id)
         # create a structure to hold buyable variants - the method can be over-ridden in consist subclasses to provide specific rules for buyable variants
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
         # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem

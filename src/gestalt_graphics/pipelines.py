@@ -35,15 +35,24 @@ class Pipeline(object):
     def vehicle_source_input_path(self):
         # convenience method to get the vehicle template image
         # I considered having this return the Image, not just the path, but it's not saving much, and is less obvious what it does when used
+        # !! possibly this should be on the consist, not sure
+        # !! definitely not on gestalt graphics, not the badger (too specific to pipeline)
+        # !! it's probably fine on pipeline?
         if self.consist.cloned_from_consist is not None:
             consist_filename_stem = self.consist.cloned_from_consist.id
         else:
             consist_filename_stem = self.consist.id
+        if self.consist.roster_id_providing_module != self.consist.roster_id:
+            roster_id = self.consist.roster_id_providing_module
+            consist_filename_stem_parts = consist_filename_stem.split(self.consist.roster_id)
+            consist_filename_stem = "".join([consist_filename_stem_parts[0], self.consist.roster_id_providing_module, consist_filename_stem_parts[1]])
+        else:
+            roster_id = self.consist.roster_id
         return os.path.join(
             currentdir,
             "src",
             "graphics",
-            self.consist.roster_id,
+            roster_id,
             consist_filename_stem + ".png",
         )
 
