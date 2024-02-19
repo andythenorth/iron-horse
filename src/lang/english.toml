@@ -248,6 +248,9 @@ base = "Vehicle Transporters"
 [STR_WAGON_GROUP_ACID_TANK_CARS]
 base = "Acid Tankers"
 
+[STR_WAGON_GROUP_AGGREGATE_HOPPER_CARS]
+base = "Aggregate Hoppers"
+
 [STR_WAGON_GROUP_BOLSTER_CARS]
 base = "Bolster Wagons"
 

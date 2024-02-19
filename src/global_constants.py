@@ -51,6 +51,7 @@ wagon_module_names = [
     "hopper_cars",
     "hopper_cars_high_side",
     "aggregate_type_one_hopper_cars",
+    "aggregate_type_two_hopper_cars",
     "rock_hopper_cars",
     "mgr_hopper_cars",
     "dump_cars",
@@ -261,6 +262,7 @@ intro_month_offsets_by_role_group = {
 # only needed for groups composing more than one type of consist
 buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_acid_tank_cars": "acid_tank_car",
+    "wagon_group_aggregate_hopper_cars": "aggregate_type_one_hopper_car",
     "wagon_group_automobile_cars": "double_deck_automobile_car",
     "wagon_group_box_cars": "box_car",
     "wagon_group_cement_silo_cars": "cement_silo_car",

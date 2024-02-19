@@ -2693,7 +2693,9 @@ class AutomobileEnclosedCarConsist(CarConsist):
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"],
-                global_constants.freight_wagon_liveries["COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING"],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING"
+                ],
             ],
         )
 
@@ -4776,6 +4778,9 @@ class HopperCarAggregateTypeOneConsist(HopperCarConsistBase):
         self.base_id = "aggregate_type_one_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_aggregate_hopper_cars"
         # don't include aggregate hoppers in randomised lists, they don't look good
         self.randomised_candidate_groups = []
         self._joker = True
@@ -4786,6 +4791,57 @@ class HopperCarAggregateTypeOneConsist(HopperCarConsistBase):
             global_constants.freight_wagon_liveries[
                 "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
             ],
+        ]
+
+
+class HopperCarAggregateTypeTwoConsist(HopperCarConsistBase):
+    """
+    Hopper for rock cargos, same refits as standard hopper, just a visual variant.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "aggregate_type_two_hopper_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_aggregate_hopper_cars"
+        # don't include aggregate hoppers in randomised lists, they don't look good
+        self.randomised_candidate_groups = []
+        self._joker = True
+        # Graphics configuration
+        liveries=[
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_1"
+            ],
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_2"
+            ],
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_7"
+            ],
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_3"
+            ],
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_5"
+            ],
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_8"
+            ],
+            global_constants.freight_wagon_liveries[
+                "COMPANY_COLOUR_USE_WEATHERING"
+            ],
+            global_constants.freight_wagon_liveries[
+                "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+            ],
+            global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+            global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+            global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+            global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
+            global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
         ]
 
 
