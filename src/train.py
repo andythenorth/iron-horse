@@ -2680,27 +2680,20 @@ class AutomobileEnclosedCarConsist(CarConsist):
         self.use_named_buyable_variant_group = "wagon_group_automobile_cars"
         self._joker = True
         # Graphics configuration
-        if self.gen in [1]:
-            self.roof_type = "pax_mail_clerestory"
-        elif self.gen in [2, 3]:
+        if self.gen in [3]:
             self.roof_type = "pax_mail_ridged"
-        else:
+        elif self.gen in [4]:
             self.roof_type = "pax_mail_smooth"
+        elif self.gen in [5]:
+            self.roof_type = None
         weathered_variants = {
             "unweathered": graphics_constants.body_recolour_CC1,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_7"
-                ],
                 global_constants.freight_wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"],
                 global_constants.freight_wagon_liveries["COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING"],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
-                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
