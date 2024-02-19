@@ -22,6 +22,7 @@ wagon_module_names = [
     "double_deck_automobile_cars",  # order before other automobile cars as needed in simplified mode
     "automobile_cars",
     # "low_floor_automobile_cars",
+    "enclosed_automobile_cars",
     "express_intermodal_cars",
     "intermodal_cars",
     "low_floor_intermodal_cars",

@@ -2661,6 +2661,50 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
         return ["low_floor"]
 
 
+class AutomobileEnclosedCarConsist(CarConsist):
+    """
+    Fully enclosed automobile transporter with, no vehicle sprites shown.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "enclosed_automobile_car"
+        super().__init__(**kwargs)
+        self.speed_class = "express"
+        self.class_refit_groups = []  # no classes, use explicit labels
+        # self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
+        self.label_refits_allowed = ["PASS", "VEHI"]
+        self.label_refits_disallowed = []
+        self.default_cargos = ["VEHI"]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_automobile_cars"
+        self._joker = True
+        # Graphics configuration
+        if self.gen in [1]:
+            self.roof_type = "pax_mail_clerestory"
+        elif self.gen in [2, 3]:
+            self.roof_type = "pax_mail_ridged"
+        else:
+            self.roof_type = "pax_mail_smooth"
+        weathered_variants = {
+            "unweathered": graphics_constants.body_recolour_CC1,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_7"
+                ],
+                global_constants.freight_wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"],
+                global_constants.freight_wagon_liveries["COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING"],
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+            ],
+        )
+
+
 class BolsterCarConsist(CarConsist):
     """
     Specialist wagon with side stakes and bolsters for long products, limited refits.
