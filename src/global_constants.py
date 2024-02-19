@@ -50,7 +50,7 @@ wagon_module_names = [
     "randomised_dedicated_coil_cars",
     "hopper_cars",
     "hopper_cars_high_side",
-    "aggregate_hopper_cars",
+    "aggregate_type_one_hopper_cars",
     "rock_hopper_cars",
     "mgr_hopper_cars",
     "dump_cars",

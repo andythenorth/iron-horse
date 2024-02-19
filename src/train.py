@@ -4767,13 +4767,13 @@ class HopperCarConsistBase(CarConsist):
         )
 
 
-class HopperCarAggregateConsist(HopperCarConsistBase):
+class HopperCarAggregateTypeOneConsist(HopperCarConsistBase):
     """
     Hopper for rock cargos, same refits as standard hopper, just a visual variant.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_hopper_car"
+        self.base_id = "aggregate_type_one_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
         # don't include aggregate hoppers in randomised lists, they don't look good
