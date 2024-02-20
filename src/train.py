@@ -4781,7 +4781,7 @@ class HopperCarAggregateTypeOneConsist(HopperCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_hopper_cars"
-        # don't include aggregate hoppers in randomised lists, they don't look good
+        # don't include silver aggregate hoppers in randomised lists, they don't look good
         self.randomised_candidate_groups = []
         self._joker = True
         # Graphics configuration
@@ -4806,32 +4806,19 @@ class HopperCarAggregateTypeTwoConsist(HopperCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_hopper_cars"
-        # don't include aggregate hoppers in randomised lists, they don't look good
-        self.randomised_candidate_groups = []
+        self.randomised_candidate_groups = [
+            "randomised_bulk_car",
+        ]
         self._joker = True
         # Graphics configuration
-        liveries=[
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_1"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_2"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_7"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_3"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_5"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_8"
-            ],
-            global_constants.freight_wagon_liveries[
-                "COMPANY_COLOUR_USE_WEATHERING"
-            ],
+        liveries = [
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_8"],
+            global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.freight_wagon_liveries[
                 "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
             ],
@@ -4882,17 +4869,19 @@ class HopperCarHighSideConsist(HopperCarConsistBase):
         self._joker = True
 
 
-class HopperCarMGRConsist(HopperCarConsistBase):
+class HopperCarMGRConsistBase(HopperCarConsistBase):
     """
     Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "mgr_hopper_car"
         super().__init__(**kwargs)
         # don't include MGR hoppers in randomised lists, they don't look good
         self.randomised_candidate_groups = []
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_mgr_hopper_cars"
         self._joker = True
         # adjust default liveries set by the base class
         self.gestalt_graphics.liveries = [
@@ -4914,6 +4903,26 @@ class HopperCarMGRConsist(HopperCarConsistBase):
             global_constants.freight_wagon_liveries["FREIGHT_STRAW"],
             # player choice, various others tried, not needed
         ]
+
+
+class HopperCarMGRConsist(HopperCarMGRConsistBase):
+    """
+    Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "mgr_hopper_car"
+        super().__init__(**kwargs)
+
+
+class HopperCarMGRTopHoodConsist(HopperCarMGRConsistBase):
+    """
+    Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "mgr_top_hood_hopper_car"
+        super().__init__(**kwargs)
 
 
 class HopperCarRandomisedConsist(RandomisedConsistMixin, HopperCarConsistBase):
