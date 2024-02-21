@@ -52,6 +52,7 @@ wagon_module_names = [
     "hopper_cars_high_side",
     "aggregate_type_one_hopper_cars",
     "aggregate_type_two_hopper_cars",
+    "aggregate_type_three_hopper_cars",
     "rock_hopper_cars",
     "mgr_hopper_cars",
     "mgr_hopper_top_hood_cars",

@@ -411,6 +411,9 @@ base = "Aggregate Hopper"
 [STR_NAME_SUFFIX_AGGREGATE_TYPE_TWO_HOPPER_CAR]
 base = "Aggregate Hopper"
 
+[STR_NAME_SUFFIX_AGGREGATE_TYPE_THREE_HOPPER_CAR]
+base = "Aggregate Hopper"
+
 [STR_NAME_SUFFIX_ALIGNMENT_CAR]
 base = "Alignment Van"
 

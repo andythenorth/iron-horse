@@ -93,34 +93,35 @@ def render_docs(
 
 
 def render_docs_vehicle_details(
-    consist, template_name, docs_output_path, consists, doc_helper
+    docs_output_path, doc_helper, consists, template_name
 ):
     # imports inside functions are generally avoided
     # but PageTemplateLoader is expensive to import and causes unnecessary overhead for Pool mapping when processing docs graphics
     from chameleon import PageTemplateLoader
-
     docs_templates = PageTemplateLoader(docs_src, format="text")
     template = docs_templates[template_name + ".pt"]
-    doc_name = consist.id
 
     roster = iron_horse.roster_manager.active_roster
-    doc = template(
-        roster=roster,
-        consist=consist,
-        consists=consists,
-        global_constants=global_constants,
-        command_line_args=command_line_args,
-        git_info=git_info,
-        metadata=metadata,
-        utils=utils,
-        doc_helper=doc_helper,
-        doc_name=doc_name,
-    )
-    doc_file = codecs.open(
-        os.path.join(docs_output_path, doc_name + ".html"), "w", "utf8"
-    )
-    doc_file.write(doc)
-    doc_file.close()
+    for consist in consists:
+        consist.assert_description_foamer_facts()
+        doc_name = consist.id
+        doc = template(
+            roster=roster,
+            consist=consist,
+            consists=consists,
+            global_constants=global_constants,
+            command_line_args=command_line_args,
+            git_info=git_info,
+            metadata=metadata,
+            utils=utils,
+            doc_helper=doc_helper,
+            doc_name=doc_name,
+        )
+        doc_file = codecs.open(
+            os.path.join(docs_output_path, doc_name + ".html"), "w", "utf8"
+        )
+        doc_file.write(doc)
+        doc_file.close()
 
 
 def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_helper):
@@ -351,19 +352,12 @@ def main():
     # render vehicle details
     # this is slow and _might_ go faster in an MP pool, but eh overhead...
     render_vehicle_details_start = time()
-    for consist in roster.engine_consists_excluding_clones:
-        consist.assert_description_foamer_facts()
-        render_docs_vehicle_details(
-            consist,
-            "vehicle_details_engine",
-            html_docs_output_path,
-            consists,
-            doc_helper,
-        )
-    """
-    for consist in roster.wagon_consists:
-        render_docs_vehicle_details(consist, "vehicle_details_wagon", html_docs_output_path, consists)
-    """
+    render_docs_vehicle_details(
+        html_docs_output_path,
+        doc_helper,
+        consists=roster.engine_consists_excluding_clones,
+        template_name="vehicle_details_engine",
+    )
     print("render_docs_vehicle_details", time() - render_vehicle_details_start)
 
     # process images for use in docs

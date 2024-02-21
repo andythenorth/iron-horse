@@ -4832,6 +4832,44 @@ class HopperCarAggregateTypeTwoConsist(HopperCarConsistBase):
         ]
 
 
+class HopperCarAggregateTypeThreeConsist(HopperCarConsistBase):
+    """
+    Hopper for rock cargos, same refits as standard hopper, just a visual variant.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "aggregate_type_three_hopper_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_aggregate_hopper_cars"
+        self.randomised_candidate_groups = [
+            "randomised_bulk_car",
+        ]
+        self._joker = True
+        # Graphics configuration
+        liveries = [
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_5"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_8"],
+            global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            global_constants.freight_wagon_liveries[
+                "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+            ],
+            global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+            global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+            global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+            global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
+            global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+        ]
+
+
 class HopperCarConsist(HopperCarConsistBase):
     """
     Standard hopper car. Defaults to coal.
