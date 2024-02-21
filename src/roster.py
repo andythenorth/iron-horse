@@ -9,6 +9,8 @@ currentdir = os.curdir
 import global_constants
 import utils
 
+# get args passed by makefile
+command_line_args = utils.get_command_line_args()
 
 class Roster(object):
     """
@@ -380,21 +382,29 @@ class Roster(object):
 
     def init_wagon_modules(self, roster_id_of_module, wagon_module_names):
         package_name = "vehicles." + roster_id_of_module
-        for wagon_module_name in wagon_module_names:
+        for wagon_module_name_stem in wagon_module_names:
+            wagon_module_name = wagon_module_name_stem + "_" + roster_id_of_module
             try:
                 wagon_module = importlib.import_module(
-                    "." + wagon_module_name + "_" + roster_id_of_module, package_name
+                    "." + wagon_module_name, package_name
                 )
                 wagon_module.main(self.id, roster_id_providing_module=roster_id_of_module)
             except ModuleNotFoundError:
-                # we want to warn, not fail, if a module is missing
-                # to suppress this warning, add an empty module file with main() and pass
-                utils.echo_message(
-                    "wagon_module "
-                    + wagon_module_name
-                    + " not found in roster "
-                    + self.id
-                )
+                # the module might be provided from another roster, which is fine
+                module_provided_by_another_roster = False
+                for wagon_module_names_from_another_roster in self.wagon_modules_provided_by_other_rosters.values():
+                    if wagon_module_name_stem in wagon_module_names_from_another_roster:
+                        module_provided_by_another_roster = True
+                        break
+                if not module_provided_by_another_roster:
+                    # we want to warn, not fail, if a module is missing
+                    # to suppress this warning, add an empty module file with main() and pass
+                    utils.echo_message(
+                        "wagon_module "
+                        + wagon_module_name
+                        + " not found in roster "
+                        + self.id
+                    )
             except Exception:
                 raise
 
