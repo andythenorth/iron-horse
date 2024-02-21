@@ -248,6 +248,9 @@ base = "Vehicle Transporters"
 [STR_WAGON_GROUP_ACID_TANK_CARS]
 base = "Acid Tankers"
 
+[STR_WAGON_GROUP_AGGREGATE_DUMP_CARS]
+base = "Aggregate Dump Wagons"
+
 [STR_WAGON_GROUP_AGGREGATE_HOPPER_CARS]
 base = "Aggregate Hoppers"
 
@@ -403,6 +406,9 @@ base = "More..."
 base = "Acid Tanker"
 
 [STR_NAME_SUFFIX_AGGREGATE_TYPE_ONE_DUMP_CAR]
+base = "Aggregate Dump Wagon"
+
+[STR_NAME_SUFFIX_AGGREGATE_TYPE_TWO_DUMP_CAR]
 base = "Aggregate Dump Wagon"
 
 [STR_NAME_SUFFIX_AGGREGATE_TYPE_ONE_HOPPER_CAR]
