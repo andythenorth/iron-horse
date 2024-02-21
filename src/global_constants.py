@@ -60,7 +60,7 @@ wagon_module_names = [
     "dump_cars",
     "dump_cars_high_side",
     "randomised_dump_cars",
-    "aggregate_cars",
+    "aggregate_type_one_dump_cars",
     "ore_dump_cars",
     "scrap_metal_cars",
     "skip_cars",

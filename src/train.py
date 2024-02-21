@@ -3808,14 +3808,14 @@ class DumpCarConsist(DumpCarConsistBase):
         ]
 
 
-class DumpCarAggregateConsist(DumpCarConsistBase):
+class DumpCarAggregateTypeOneConsist(DumpCarConsistBase):
     """
     Aggregate Car.
     Same as standard dump car, but different appearance and default cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_car"
+        self.base_id = "aggregate_type_one_dump_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
         # don't include aggregate wagons in randomised lists, they don't look good
