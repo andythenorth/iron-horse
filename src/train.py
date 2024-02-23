@@ -2479,20 +2479,6 @@ class CarConsist(Consist):
             result.extend(
                 self.get_wagon_title_optional_livery_suffix_stack(unit_variant)
             )
-        elif context == "group_parent":
-            # !! this is weird, group_parent isn't a single context, we need some other way to handle this
-            # !! this is called via a weird round trip to the group get_name_parts method anyway, it's bizarre??
-            if self.wagon_title_optional_randomised_suffix_str is not None:
-                result = [
-                    "STR_WAGON_GROUP_" + self.base_id.upper() + "S",
-                    self.wagon_title_subtype_str,
-                    self.wagon_title_optional_randomised_suffix_str,
-                ]
-            else:
-                result = [
-                    "STR_WAGON_GROUP_" + self.base_id.upper() + "S",
-                    self.wagon_title_subtype_str,
-                ]
         else:
             raise BaseException(
                 "get_name_parts called for wagon consist "
