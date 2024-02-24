@@ -3795,14 +3795,14 @@ class DumpCarConsist(DumpCarConsistBase):
         ]
 
 
-class DumpCarAggregateTypeOneConsist(DumpCarConsistBase):
+class DumpCarAggregateConsistType1(DumpCarConsistBase):
     """
     Aggregate Car.
     Same as standard dump car, but different appearance and default cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_type_one_dump_car"
+        self.base_id = "aggregate_dump_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
         # buyable variant groups are created post-hoc and can group across subclasses
@@ -3821,14 +3821,14 @@ class DumpCarAggregateTypeOneConsist(DumpCarConsistBase):
         ]
 
 
-class DumpCarAggregateTypeTwoConsist(DumpCarConsistBase):
+class DumpCarAggregateConsistType2(DumpCarConsistBase):
     """
     Aggregate Car.
     Same as standard dump car, but different appearance and default cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_type_two_dump_car"
+        self.base_id = "aggregate_dump_car_type_2"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
         # buyable variant groups are created post-hoc and can group across subclasses
@@ -4258,26 +4258,26 @@ class FarmProductsHopperCarConsistBase(CarConsist):
         )
 
 
-class FarmProductsTypeOneHopperCarConsist(FarmProductsHopperCarConsistBase):
+class FarmProductsHopperCarConsistType1(FarmProductsHopperCarConsistBase):
     """
     Farm type cargos - covered hoppers.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "farm_products_type_one_hopper_car"
+        self.base_id = "farm_products_hopper_car_type_1"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "randomised_farm_products_hopper_car",
         ]
 
 
-class FarmProductsTypeTwoHopperCarConsist(FarmProductsHopperCarConsistBase):
+class FarmProductsHopperCarConsistType2(FarmProductsHopperCarConsistBase):
     """
     Farm type cargos - covered hoppers.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "farm_products_type_two_hopper_car"
+        self.base_id = "farm_products_hopper_car_type_2"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "randomised_farm_products_hopper_car",
@@ -4797,13 +4797,13 @@ class HopperCarAggregateConsistBase(HopperCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_aggregate_hopper_cars"
 
 
-class HopperCarAggregateTypeOneConsist(HopperCarAggregateConsistBase):
+class HopperCarAggregateConsistType1(HopperCarAggregateConsistBase):
     """
     Hopper for rock cargos, just a visual variant.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_type_one_hopper_car"
+        self.base_id = "aggregate_hopper_car_type_1"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "randomised_aggregate_hopper_car",
@@ -4830,13 +4830,13 @@ class HopperCarAggregateTypeOneConsist(HopperCarAggregateConsistBase):
         ]
 
 
-class HopperCarAggregateTypeTwoConsist(HopperCarAggregateConsistBase):
+class HopperCarAggregateConsistType2(HopperCarAggregateConsistBase):
     """
     Hopper for rock cargos, just a visual variant.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_type_two_hopper_car"
+        self.base_id = "aggregate_hopper_car_type_2"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "randomised_aggregate_hopper_car",
@@ -4868,13 +4868,13 @@ class HopperCarAggregateTypeTwoConsist(HopperCarAggregateConsistBase):
         ]
 
 
-class HopperCarAggregateTypeThreeConsist(HopperCarAggregateConsistBase):
+class HopperCarAggregateConsistType3(HopperCarAggregateConsistBase):
     """
     Hopper for rock cargos, just a visual variant.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_type_three_hopper_car"
+        self.base_id = "aggregate_hopper_car_type_3"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "randomised_aggregate_hopper_car",

@@ -1,10 +1,10 @@
-from train import HopperCarAggregateTypeThreeConsist, FreightCar
+from train import HopperCarAggregateConsistType3, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = HopperCarAggregateTypeThreeConsist(
+    consist = HopperCarAggregateConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20280,
@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = HopperCarAggregateTypeThreeConsist(
+    consist = HopperCarAggregateConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20290,
@@ -26,7 +26,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = HopperCarAggregateTypeThreeConsist(
+    consist = HopperCarAggregateConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20300,

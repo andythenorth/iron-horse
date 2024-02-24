@@ -1,10 +1,10 @@
-from train import DumpCarAggregateTypeOneConsist, FreightCar
+from train import DumpCarAggregateConsistType1, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = DumpCarAggregateTypeOneConsist(
+    consist = DumpCarAggregateConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=14730,
@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
 
     # gen 1 also covers gen 2
 
-    consist = DumpCarAggregateTypeOneConsist(
+    consist = DumpCarAggregateConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11390,
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = DumpCarAggregateTypeOneConsist(
+    consist = DumpCarAggregateConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11400,
@@ -39,7 +39,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = DumpCarAggregateTypeOneConsist(
+    consist = DumpCarAggregateConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11410,
@@ -50,7 +50,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = DumpCarAggregateTypeOneConsist(
+    consist = DumpCarAggregateConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11420,
@@ -61,7 +61,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
 
-    consist = DumpCarAggregateTypeOneConsist(
+    consist = DumpCarAggregateConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=15740,
@@ -72,7 +72,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
-    consist = DumpCarAggregateTypeOneConsist(
+    consist = DumpCarAggregateConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=10850,
@@ -83,7 +83,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_24px")
 
-    consist = DumpCarAggregateTypeOneConsist(
+    consist = DumpCarAggregateConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=11150,
