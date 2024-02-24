@@ -574,7 +574,7 @@ base = "Mineral Covered Hopper"
 base = "MGR Hopper"
 
 [STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR]
-base = "MGR Hopper"
+base = "MGR Hood Hopper"
 
 [STR_NAME_SUFFIX_OPEN_CAR]
 base = "Open Wagon"
