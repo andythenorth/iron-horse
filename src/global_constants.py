@@ -835,6 +835,27 @@ temp_storage_ids = dict(
     wagon_recolour_strategy_num_purchase=34,  # used in procedures_wagon_recolour_strategies
     position_in_vehid_chain_base_offset=35,  # used in position rulesets, an offset into position_in_vehid_chain_multiple_ids
     position_in_vehid_chain_multiple_ids_with_base_offset_applied=36,  # position_in_vehid_chain_multiple_ids, with a base offset applied
+    name_substr_default_name_1=37,  # name substring
+    name_substr_default_name_2=38,  # name substring
+    name_substr_default_name_3=39,  # name substring
+    name_substr_default_name_4=40,  # name substring
+    name_substr_purchase_level_0_1=41,  # name substring
+    name_substr_purchase_level_0_2=42,  # name substring
+    name_substr_purchase_level_0_3=43,  # name substring
+    name_substr_purchase_level_0_4=44,  # name substring
+    name_substr_purchase_level_1_1=45,  # name substring
+    name_substr_purchase_level_1_2=46,  # name substring
+    name_substr_purchase_level_1_3=47,  # name substring
+    name_substr_purchase_level_1_4=48,  # name substring
+    name_substr_purchase_level_1_5=49,  # name substring
+    name_substr_purchase_level_1_6=50,  # name substring
+    name_substr_autoreplace_lhs_1=51,  # name substring
+    name_substr_autoreplace_lhs_2=52,  # name substring
+    name_substr_autoreplace_lhs_3=53,  # name substring
+    name_substr_autoreplace_lhs_4=54,  # name substring
+    name_substr_autoreplace_lhs_5=55,  # name substring
+    name_substr_autoreplace_lhs_6=56,  # name substring
+    name_substr_from_property=57,  # name substring
 )
 
 # standard offsets for trains

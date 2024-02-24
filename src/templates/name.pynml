@@ -5,32 +5,32 @@ switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, [
         <tal:name_parts repeat="name_part consist.get_name_as_text_stack(context='default_name', unit_variant=unit_variant)">
             STORE_TEMP(
                 ${name_part},
-                ${37 + repeat.name_part.index}
+                ${global_constants.temp_storage_ids["name_substr_default_name_" + str(repeat.name_part.number)]}
             ),
         </tal:name_parts>
         <tal:name_parts repeat="name_part consist.get_name_as_text_stack(context='purchase_level_0', unit_variant=unit_variant)">
             STORE_TEMP(
                 ${name_part},
-                ${41 + repeat.name_part.index}
+                ${global_constants.temp_storage_ids["name_substr_purchase_level_0_" + str(repeat.name_part.number)]}
             ),
         </tal:name_parts>
         <tal:name_parts repeat="name_part consist.get_name_as_text_stack(context='purchase_level_1', unit_variant=unit_variant)">
             STORE_TEMP(
                 ${name_part},
-                ${45 + repeat.name_part.index}
+                ${global_constants.temp_storage_ids["name_substr_purchase_level_1_" + str(repeat.name_part.number)]}
             ),
         </tal:name_parts>
         <tal:name_parts repeat="name_part consist.get_name_as_text_stack(context='autoreplace_lhs', unit_variant=unit_variant)">
             STORE_TEMP(
                 ${name_part},
-                ${51 + repeat.name_part.index}
+                ${global_constants.temp_storage_ids["name_substr_autoreplace_lhs_" + str(repeat.name_part.number)]}
             ),
         </tal:name_parts>
         <!--! !!!!!!!!! vehicle.unit_variants[0] is a shim hack following move to consist not unit_variant scope;
             also this reuses the name property, no stack, as that's all we need in some cases -->
         STORE_TEMP(
             ${consist.get_name_as_property(vehicle.unit_variants[0])},
-            57
+            ${global_constants.temp_storage_ids["name_substr_from_property"]}
         ),
         param_simplified_gameplay
     ]) {
