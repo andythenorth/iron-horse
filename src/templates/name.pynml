@@ -1,8 +1,7 @@
 switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, [
-        <!--! first initialise all registers to empty string, to prevent unwanted side effects if any are not set due to varying numbers of substrings -->
-        <tal:init_registers repeat="register_number range(37, 58)">
-            STORE_TEMP(string(STR_EMPTY), ${register_number}),
-        </tal:init_registers>
+        <!--! this does not first initialise all registers to empty string
+              that may give rise to unwanted side effects if any are not set due to varying numbers of substrings
+              but appears to be ok so far -->
         <tal:name_parts repeat="name_part consist.get_name_as_text_stack(context='default_name', unit_variant=unit_variant)">
             STORE_TEMP(
                 ${name_part},
