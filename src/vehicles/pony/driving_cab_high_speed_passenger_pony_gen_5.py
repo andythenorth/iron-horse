@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     consist = PassengerEngineCabControlCarConsist(
         roster_id=roster_id,
         id="driving_cab_high_speed_passenger_pony_gen_5",
-        base_numeric_id=9050,
+        base_numeric_id=19900,
         name="High Speed Driving Trailer",
         role_child_branch_num=-2,  # driving cab cars are probably jokers?
         gen=5,

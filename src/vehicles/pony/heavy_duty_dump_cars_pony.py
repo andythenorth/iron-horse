@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = DumpCarHeavyDutyConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10480,
+        base_numeric_id=17110,
         gen=1,
         subtype="U",
         base_track_type_name="NG",
@@ -22,7 +22,7 @@ def main(roster_id, **kwargs):
     consist = DumpCarHeavyDutyConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13720,
+        base_numeric_id=17120,
         gen=1,
         subtype="A",
         speed=35,  # note rare non-standard speed, don't spill hot ingots eh?
@@ -58,7 +58,7 @@ def main(roster_id, **kwargs):
     consist = DumpCarHeavyDutyConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16190,
+        base_numeric_id=30640,
         gen=4,
         subtype="B",
         speed=35,  # note rare non-standard speed, don't spill hot ingots eh?

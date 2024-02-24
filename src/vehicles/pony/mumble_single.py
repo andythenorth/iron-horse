@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     consist = PassengerEngineRailbusConsist(
         roster_id=roster_id,
         id="mumble_single",
-        base_numeric_id=9180,
+        base_numeric_id=17140,
         name="Mumble",
         role="pax_railbus",
         role_child_branch_num=-3000,  # excessive child branch number to hide them from tech tree (and also -ve to hide in simplified mode)

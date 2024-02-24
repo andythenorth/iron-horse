@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     consist = PassengerHSTCabEngineConsist(
         roster_id=roster_id,
         id="blaze",
-        base_numeric_id=12370,
+        base_numeric_id=21640,
         name="Blaze HST",
         role="hst",  # quite a specific role, may or may not scale to other rosters
         role_child_branch_num=1,

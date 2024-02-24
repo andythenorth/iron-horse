@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     consist = SnowploughEngineConsist(
         roster_id=roster_id,
         id="snowplough_pony_gen_2",
-        base_numeric_id=13040,
+        base_numeric_id=25130,
         name="Snowplough",
         gen=2,
         speed=75,

@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10130,
+        base_numeric_id=30130,
         gen=1,
         subtype="A",
         base_track_type_name="NG",
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10700,
+        base_numeric_id=30700,
         gen=3,
         subtype="A",
         base_track_type_name="NG",
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10820,
+        base_numeric_id=30820,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10520,
+        base_numeric_id=30520,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10530,
+        base_numeric_id=30530,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -69,7 +69,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10540,
+        base_numeric_id=30540,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -80,7 +80,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10580,
+        base_numeric_id=30580,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -91,7 +91,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10630,
+        base_numeric_id=30630,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -102,7 +102,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10590,
+        base_numeric_id=30590,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -113,7 +113,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10510,
+        base_numeric_id=30510,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -124,7 +124,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10880,
+        base_numeric_id=30880,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -135,7 +135,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10840,
+        base_numeric_id=30840,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -146,7 +146,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarPlateConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10910,
+        base_numeric_id=30910,
         gen=5,
         subtype="C",
         sprites_complete=True,

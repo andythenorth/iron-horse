@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = CarbonBlackHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13450,
+        base_numeric_id=21870,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
     consist = CarbonBlackHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13460,
+        base_numeric_id=21880,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
     consist = CarbonBlackHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13470,
+        base_numeric_id=21890,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -40,7 +40,7 @@ def main(roster_id, **kwargs):
     consist = CarbonBlackHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13490,
+        base_numeric_id=21900,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -51,7 +51,7 @@ def main(roster_id, **kwargs):
     consist = CarbonBlackHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13500,
+        base_numeric_id=21910,
         gen=5,
         subtype="C",
         sprites_complete=True,

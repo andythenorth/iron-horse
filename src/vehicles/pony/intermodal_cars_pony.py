@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
     consist = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13000,
+        base_numeric_id=28350,
         gen=3,
         intro_year_offset=15,  # let's be a little bit later for this one
         subtype="A",
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9630,
+        base_numeric_id=28360,
         gen=3,
         intro_year_offset=15,  # let's be a little bit later for this one
         subtype="B",
@@ -34,7 +34,7 @@ def main(roster_id, **kwargs):
     consist = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12920,
+        base_numeric_id=28370,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
     consist = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12930,
+        base_numeric_id=28380,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main(roster_id, **kwargs):
     consist = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12750,
+        base_numeric_id=28390,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -67,7 +67,7 @@ def main(roster_id, **kwargs):
     consist = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12760,
+        base_numeric_id=28400,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -78,7 +78,7 @@ def main(roster_id, **kwargs):
     consist = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12770,
+        base_numeric_id=28410,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -89,7 +89,7 @@ def main(roster_id, **kwargs):
     consist = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12780,
+        base_numeric_id=28420,
         gen=5,
         subtype="C",
         sprites_complete=True,

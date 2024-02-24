@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15020,
+        base_numeric_id=27880,
         gen=2,
         subtype="A",
         base_track_type_name="NG",
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15080,
+        base_numeric_id=23750,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15960,
+        base_numeric_id=23780,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=11740,
+        base_numeric_id=23800,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -67,7 +67,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12900,
+        base_numeric_id=23820,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -78,7 +78,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14780,
+        base_numeric_id=23840,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -89,7 +89,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13410,
+        base_numeric_id=23860,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -100,7 +100,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14120,
+        base_numeric_id=23880,
         gen=5,
         subtype="C",
         sprites_complete=True,

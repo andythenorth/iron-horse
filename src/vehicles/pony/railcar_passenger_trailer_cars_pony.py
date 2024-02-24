@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
     consist = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=11980,
+        base_numeric_id=17130,
         gen=4,
         subtype="U",
         sprites_complete=True,
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
     consist = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14930,
+        base_numeric_id=26060,
         gen=4,
         subtype="U",
         sprites_complete=True,
@@ -47,7 +47,7 @@ def main(roster_id, **kwargs):
     consist = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=11950,
+        base_numeric_id=27170,
         gen=5,
         subtype="U",
         sprites_complete=True,
@@ -63,7 +63,7 @@ def main(roster_id, **kwargs):
     consist = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14910,
+        base_numeric_id=25140,
         gen=5,
         subtype="U",
         sprites_complete=True,
@@ -79,7 +79,7 @@ def main(roster_id, **kwargs):
     consist = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=11090,
+        base_numeric_id=25580,
         gen=6,
         subtype="U",
         cab_id="happy_train",
@@ -95,7 +95,7 @@ def main(roster_id, **kwargs):
     consist = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14920,
+        base_numeric_id=25400,
         gen=6,
         subtype="U",
         cab_id="zeus",

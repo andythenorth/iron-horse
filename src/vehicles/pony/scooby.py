@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     consist = MailEngineRailcarConsist(
         roster_id=roster_id,
         id="scooby",
-        base_numeric_id=12110,
+        base_numeric_id=21430,
         name="Scooby",
         role="mail_railcar",
         role_child_branch_num=2,

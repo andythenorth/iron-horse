@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = OpenCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=11850,
+        base_numeric_id=23590,
         gen=1,
         subtype="A",
         base_track_type_name="NG",
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = OpenCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14950,
+        base_numeric_id=23600,
         gen=3,
         subtype="A",
         base_track_type_name="NG",
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
     consist = OpenCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13220,
+        base_numeric_id=23610,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
     consist = OpenCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16290,
+        base_numeric_id=23620,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main(roster_id, **kwargs):
     consist = OpenCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16300,
+        base_numeric_id=23630,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -67,7 +67,7 @@ def main(roster_id, **kwargs):
     consist = OpenCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16310,
+        base_numeric_id=23640,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -78,7 +78,7 @@ def main(roster_id, **kwargs):
     consist = OpenCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16320,
+        base_numeric_id=23650,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -89,7 +89,7 @@ def main(roster_id, **kwargs):
     consist = OpenCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16330,
+        base_numeric_id=23660,
         gen=5,
         subtype="C",
         sprites_complete=True,

@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = TGVCabEngineConsist(
         roster_id=roster_id,
         id="skeiron_cab",
-        base_numeric_id=10000,
+        base_numeric_id=25120,
         name="Skeiron",
         role="very_high_speed",
         role_child_branch_num=2,

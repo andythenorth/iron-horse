@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     consist = MailEngineCabbageDVTConsist(
         roster_id=roster_id,
         id="driving_cab_high_speed_mail_pony_gen_6",
-        base_numeric_id=13030,
+        base_numeric_id=17320,
         name="High Speed Driving Van Trailer",
         role_child_branch_num=-3,  # driving cab cars are probably jokers?
         gen=6,

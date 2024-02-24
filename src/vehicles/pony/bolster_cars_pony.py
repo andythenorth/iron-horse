@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14990,
+        base_numeric_id=34990,
         gen=1,
         subtype="A",
         base_track_type_name="NG",
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14540,
+        base_numeric_id=34540,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14320,
+        base_numeric_id=34320,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14330,
+        base_numeric_id=34330,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -69,7 +69,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14340,
+        base_numeric_id=34340,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -80,7 +80,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14350,
+        base_numeric_id=34350,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -91,7 +91,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14360,
+        base_numeric_id=34360,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -102,7 +102,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14370,
+        base_numeric_id=34370,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -113,7 +113,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14380,
+        base_numeric_id=34380,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -124,7 +124,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14390,
+        base_numeric_id=34390,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -135,7 +135,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14400,
+        base_numeric_id=34400,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -146,7 +146,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14290,
+        base_numeric_id=34290,
         gen=5,
         subtype="C",
         sprites_complete=True,

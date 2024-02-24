@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = DumpCarAggregateConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14730,
+        base_numeric_id=34730,
         gen=1,
         subtype="A",
         sprites_complete=True,

@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarCryoConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9060,
+        base_numeric_id=20730,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarCryoConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9090,
+        base_numeric_id=20740,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarCryoConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9100,
+        base_numeric_id=20750,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -40,7 +40,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarCryoConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15310,
+        base_numeric_id=20760,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -51,7 +51,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarCryoConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9130,
+        base_numeric_id=20770,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarCryoConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9190,
+        base_numeric_id=20780,
         gen=5,
         subtype="C",
         sprites_complete=True,

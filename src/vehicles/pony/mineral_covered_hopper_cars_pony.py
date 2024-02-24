@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15990,
+        base_numeric_id=25990,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16000,
+        base_numeric_id=26000,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16010,
+        base_numeric_id=26010,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -40,7 +40,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16020,
+        base_numeric_id=26020,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -51,7 +51,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16070,
+        base_numeric_id=26070,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16030,
+        base_numeric_id=26030,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -73,7 +73,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16040,
+        base_numeric_id=26040,
         gen=5,
         subtype="C",
         sprites_complete=True,

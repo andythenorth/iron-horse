@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = BulkCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=8340,
+        base_numeric_id=28340,
         gen=1,
         subtype="A",
         base_track_type_name="NG",
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
     consist = BulkCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=8240,
+        base_numeric_id=28240,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main(roster_id, **kwargs):
     consist = BulkCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=8250,
+        base_numeric_id=28250,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -69,7 +69,7 @@ def main(roster_id, **kwargs):
     consist = BulkCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=8260,
+        base_numeric_id=28260,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -80,7 +80,7 @@ def main(roster_id, **kwargs):
     consist = BulkCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=8270,
+        base_numeric_id=28270,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -91,7 +91,7 @@ def main(roster_id, **kwargs):
     consist = BulkCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=8280,
+        base_numeric_id=28280,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -102,7 +102,7 @@ def main(roster_id, **kwargs):
     consist = BulkCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=8290,
+        base_numeric_id=28290,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -113,7 +113,7 @@ def main(roster_id, **kwargs):
     consist = BulkCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=8300,
+        base_numeric_id=28300,
         gen=5,
         subtype="C",
         sprites_complete=True,

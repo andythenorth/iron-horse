@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
     consist = CoilCarUncoveredConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14040,
+        base_numeric_id=24040,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = CoilCarUncoveredConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14050,
+        base_numeric_id=24050,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -30,7 +30,7 @@ def main(roster_id, **kwargs):
     consist = CoilCarUncoveredConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14060,
+        base_numeric_id=24060,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -41,7 +41,7 @@ def main(roster_id, **kwargs):
     consist = CoilCarUncoveredConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14070,
+        base_numeric_id=24070,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -52,7 +52,7 @@ def main(roster_id, **kwargs):
     consist = CoilCarUncoveredConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14080,
+        base_numeric_id=24080,
         gen=5,
         subtype="C",
         sprites_complete=True,

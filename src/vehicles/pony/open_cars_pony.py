@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
     consist = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9890,
+        base_numeric_id=29890,
         gen=1,
         subtype="A",
         base_track_type_name="NG",
@@ -47,7 +47,7 @@ def main(roster_id, **kwargs):
     consist = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9860,
+        base_numeric_id=29860,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -60,7 +60,7 @@ def main(roster_id, **kwargs):
     consist = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9870,
+        base_numeric_id=29870,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -71,7 +71,7 @@ def main(roster_id, **kwargs):
     consist = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9880,
+        base_numeric_id=29880,
         gen=3,
         subtype="A",
         sprites_complete=True,

@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarHeavyDutyConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13580,
+        base_numeric_id=21920,
         gen=1,
         subtype="U",
         base_track_type_name="NG",
@@ -22,7 +22,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarHeavyDutyConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10020,
+        base_numeric_id=21930,
         gen=1,
         subtype="A",
         speed=35,  # note rare non-standard speed, don't spill hot ingots eh?
@@ -34,7 +34,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarHeavyDutyConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10240,
+        base_numeric_id=21940,
         gen=2,
         subtype="B",
         speed=35,  # note rare non-standard speed, don't spill hot ingots eh?
@@ -46,7 +46,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarHeavyDutyConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10160,
+        base_numeric_id=21950,
         gen=4,
         subtype="A",
         speed=35,  # note rare non-standard speed, don't spill hot ingots eh?
@@ -58,7 +58,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarHeavyDutyConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10220,
+        base_numeric_id=21960,
         gen=4,
         subtype="B",
         speed=35,  # note rare non-standard speed, don't spill hot ingots eh?

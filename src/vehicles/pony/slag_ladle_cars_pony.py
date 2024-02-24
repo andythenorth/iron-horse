@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = SlagLadleCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13480,
+        base_numeric_id=24030,
         gen=1,
         subtype="U",
         base_track_type_name="NG",
@@ -22,7 +22,7 @@ def main(roster_id, **kwargs):
     consist = SlagLadleCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13070,
+        base_numeric_id=23410,
         gen=1,
         subtype="U",
         speed=35,  # note rare non-standard speed, don't spill molten slag eh?
@@ -34,7 +34,7 @@ def main(roster_id, **kwargs):
     consist = SlagLadleCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13080,
+        base_numeric_id=23420,
         gen=4,
         subtype="U",
         speed=35,  # note rare non-standard speed, don't spill molten slag eh?

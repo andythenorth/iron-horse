@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
         id="wyvern",
-        base_numeric_id=11990,
+        base_numeric_id=21370,
         name="Wyvern",
         role="heavy_express",
         role_child_branch_num=1,

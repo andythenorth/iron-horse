@@ -9,7 +9,7 @@ def main(roster_id, **kwargs):
     consist = MailEngineCargoSprinterEngineConsist(
         roster_id=roster_id,
         id="cargo_sprinter",
-        base_numeric_id=12040,
+        base_numeric_id=25840,
         name="Cargo Sprinter",
         role="mail_railcar",  # abuse of existing railcar role for convenience
         role_child_branch_num=-1,

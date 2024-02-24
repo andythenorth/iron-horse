@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = FarmProductsHopperCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15150,
+        base_numeric_id=26940,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
     consist = FarmProductsHopperCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13060,
+        base_numeric_id=26950,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
     consist = FarmProductsHopperCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15300,
+        base_numeric_id=26960,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -40,7 +40,7 @@ def main(roster_id, **kwargs):
     consist = FarmProductsHopperCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=11760,
+        base_numeric_id=26970,
         gen=3,
         subtype="B",
         sprites_complete=True,

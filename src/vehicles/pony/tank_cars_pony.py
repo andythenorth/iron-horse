@@ -58,7 +58,7 @@ def main(roster_id, **kwargs):
     consist = TankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16360,
+        base_numeric_id=25040,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -80,7 +80,7 @@ def main(roster_id, **kwargs):
     consist = TankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14890,
+        base_numeric_id=25020,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -91,7 +91,7 @@ def main(roster_id, **kwargs):
     consist = TankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15710,
+        base_numeric_id=28320,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -113,7 +113,7 @@ def main(roster_id, **kwargs):
     consist = TankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13620,
+        base_numeric_id=30850,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -135,7 +135,7 @@ def main(roster_id, **kwargs):
     consist = TankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15450,
+        base_numeric_id=28310,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -146,7 +146,7 @@ def main(roster_id, **kwargs):
     consist = TankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=11460,
+        base_numeric_id=30860,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -157,7 +157,7 @@ def main(roster_id, **kwargs):
     consist = TankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10670,
+        base_numeric_id=25060,
         gen=5,
         subtype="C",
         sprites_complete=True,

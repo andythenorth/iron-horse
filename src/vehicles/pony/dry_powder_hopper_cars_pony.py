@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarDryPowderConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13540,
+        base_numeric_id=24010,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarDryPowderConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13560,
+        base_numeric_id=23240,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -53,7 +53,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarDryPowderConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=13590,
+        base_numeric_id=23250,
         gen=5,
         subtype="B",
         sprites_complete=True,
