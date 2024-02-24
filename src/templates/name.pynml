@@ -1,66 +1,42 @@
-switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_default, [
-        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='default_name', unit_variant=unit_variant)">
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, [
+        <!--! first initialise all registers to empty string, to prevent unwanted side effects if any are not set due to varying numbers of substrings -->
+        <tal:init_registers repeat="register_number range(37, 58)">
+            STORE_TEMP(string(STR_EMPTY), ${register_number}),
+        </tal:init_registers>
+        <tal:name_parts repeat="name_part consist.get_name_as_text_stack(context='default_name', unit_variant=unit_variant)">
             STORE_TEMP(
-                ${value_pair[0]}
-                | (${value_pair[1]} << 16),
-                ${'0x10' + str(repeat.value_pair.index)}
+                ${name_part},
+                ${37 + repeat.name_part.index}
             ),
         </tal:name_parts>
-    ]) {
-    return string(STR_NAME_CONTAINER_1);
-}
-switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_0, [
-        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='purchase_level_0', unit_variant=unit_variant)">
+        <tal:name_parts repeat="name_part consist.get_name_as_text_stack(context='purchase_level_0', unit_variant=unit_variant)">
             STORE_TEMP(
-                ${value_pair[0]}
-                | (${value_pair[1]} << 16),
-                ${'0x10' + str(repeat.value_pair.index)}
+                ${name_part},
+                ${41 + repeat.name_part.index}
             ),
         </tal:name_parts>
-    ]) {
-    return string(STR_NAME_CONTAINER_1);
-}
-switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_1, [
-        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='purchase_level_1', unit_variant=unit_variant)">
+        <tal:name_parts repeat="name_part consist.get_name_as_text_stack(context='purchase_level_1', unit_variant=unit_variant)">
             STORE_TEMP(
-                ${value_pair[0]}
-                | (${value_pair[1]} << 16),
-                ${'0x10' + str(repeat.value_pair.index)}
+                ${name_part},
+                ${45 + repeat.name_part.index}
             ),
         </tal:name_parts>
-    ]) {
-    return string(STR_NAME_CONTAINER_1);
-}
-switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_autoreplace_lhs, [
-        <tal:name_parts repeat="value_pair consist.get_name_as_text_stack(context='autoreplace_lhs', unit_variant=unit_variant)">
+        <tal:name_parts repeat="name_part consist.get_name_as_text_stack(context='autoreplace_lhs', unit_variant=unit_variant)">
             STORE_TEMP(
-                ${value_pair[0]}
-                | (${value_pair[1]} << 16),
-                ${'0x10' + str(repeat.value_pair.index)}
+                ${name_part},
+                ${51 + repeat.name_part.index}
             ),
         </tal:name_parts>
+        <!--! !!!!!!!!! vehicle.unit_variants[0] is a shim hack following move to consist not unit_variant scope;
+            also this reuses the name property, no stack, as that's all we need in some cases -->
+        STORE_TEMP(
+            ${consist.get_name_as_property(vehicle.unit_variants[0])},
+            57
+        ),
+        param_simplified_gameplay
     ]) {
-    return string(STR_NAME_CONTAINER_1);
-}
-
-switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
-    0: ${unit_variant.id}_switch_name_purchase_level_0;
-    1: ${unit_variant.id}_switch_name_purchase_level_1;
-    2: ${consist.get_name_as_property(unit_variant)}; <!--! more than 2 not required as of May 2023 - can just return simple name here as there are no substrings -->
-    return ${unit_variant.id}_switch_name_purchase_default;
-}
-switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_not_simplified_gameplay, [
-        getbits(extra_callback_info1, 0, 8)
-    ]) {
-    0x20: ${unit_variant.id}_switch_name_purchase_extra_bits;
-    0x22: ${unit_variant.id}_switch_name_autoreplace_lhs;
-    return ${unit_variant.id}_switch_name_purchase_default;
-}
-
-switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, param_simplified_gameplay) {
     <!--! simplified gameplay uses minimal variant nesting, so just use default name -->
-    1: ${unit_variant.id}_switch_name_purchase_default;
-    return ${unit_variant.id}_switch_name_not_simplified_gameplay;
+    1: switch_name_purchase_default;
+    return switch_name_not_simplified_gameplay;
 }
-
 

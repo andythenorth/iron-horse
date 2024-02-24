@@ -96,6 +96,7 @@ def main():
         "procedures_colour_names",
         "procedures_haulage_bonus",
         "procedures_opening_doors",
+        "procedures_name",
         "procedures_powered_by_railtype",
         "procedures_restaurant_cars",
         "procedures_rulesets",

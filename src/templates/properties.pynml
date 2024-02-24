@@ -25,13 +25,14 @@
 </tal:running_cost_factor>
 
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-    <tal:buy_menu_additional_text condition="vehicle.is_lead_unit_of_consist and unit_variant.uses_buy_menu_additional_text">
-        <tal:include metal:use-macro="load: buy_menu_additional_text.pynml" />
-    </tal:buy_menu_additional_text>
 
     <tal:name condition="vehicle.is_lead_unit_of_consist">
         <tal:include metal:use-macro="load: name.pynml" />
     </tal:name>
+
+    <tal:buy_menu_additional_text condition="vehicle.is_lead_unit_of_consist and unit_variant.uses_buy_menu_additional_text">
+        <tal:include metal:use-macro="load: buy_menu_additional_text.pynml" />
+    </tal:buy_menu_additional_text>
 
     item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
         property {

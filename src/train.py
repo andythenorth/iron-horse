@@ -336,7 +336,7 @@ class Consist(object):
     def get_name_parts(self, context, unit_variant):
         default_name = "STR_NAME_" + self.id.upper()
         if context == "purchase_level_1":
-            result = [default_name]
+            result = ["string(" + default_name + ")"]
         elif context == "default_name":
             result = [default_name]
         else:
@@ -370,7 +370,8 @@ class Consist(object):
             else:
                 # otherwise pass through as is
                 result.append(stack_item)
-        return utils.convert_flat_list_to_pairs_of_tuples(result)
+        return result
+        #return utils.convert_flat_list_to_pairs_of_tuples(result)
 
     def get_name_as_property(self, unit_variant):
         # text filter in buy menu needs name as prop as of June 2023

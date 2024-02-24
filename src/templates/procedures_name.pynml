@@ -1,0 +1,82 @@
+<!--! universal text stack for vehicle names (or at least intended to be universal) -->
+switch (FEAT_TRAINS, SELF, switch_name_purchase_default, [
+        STORE_TEMP(
+            LOAD_TEMP(37)
+            | (LOAD_TEMP(38) << 16),
+            0x100
+        ),
+        STORE_TEMP(
+            LOAD_TEMP(39)
+            | (LOAD_TEMP(40) << 16),
+            0x101
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, switch_name_purchase_level_0, [
+        STORE_TEMP(
+            LOAD_TEMP(41)
+            | (LOAD_TEMP(42) << 16),
+            0x100
+        ),
+        STORE_TEMP(
+            LOAD_TEMP(43)
+            | (LOAD_TEMP(44) << 16),
+            0x101
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, switch_name_purchase_level_1, [
+        STORE_TEMP(
+            LOAD_TEMP(45)
+            | (LOAD_TEMP(46) << 16),
+            0x100
+        ),
+        STORE_TEMP(
+            LOAD_TEMP(47)
+            | (LOAD_TEMP(48) << 16),
+            0x101
+        ),
+        STORE_TEMP(
+            LOAD_TEMP(49)
+            | (LOAD_TEMP(50) << 16),
+            0x102
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, switch_name_autoreplace_lhs, [
+        STORE_TEMP(
+            LOAD_TEMP(51)
+            | (LOAD_TEMP(52) << 16),
+            0x100
+        ),
+        STORE_TEMP(
+            LOAD_TEMP(53)
+            | (LOAD_TEMP(54) << 16),
+            0x101
+        ),
+        STORE_TEMP(
+            LOAD_TEMP(55)
+            | (LOAD_TEMP(56) << 16),
+            0x102
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+
+switch (FEAT_TRAINS, SELF, switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: switch_name_purchase_level_0;
+    1: switch_name_purchase_level_1;
+    2: LOAD_TEMP(57); <!--! more than 2 levels not required as of May 2023; can just return simple name here as there are no substrings -->
+    return switch_name_purchase_default;
+}
+switch (FEAT_TRAINS, SELF, switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: switch_name_purchase_extra_bits;
+    0x22: switch_name_autoreplace_lhs;
+    return switch_name_purchase_default;
+}
+
