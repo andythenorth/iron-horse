@@ -336,7 +336,7 @@ class Consist(object):
     def get_name_parts(self, context, unit_variant):
         default_name = "STR_NAME_" + self.id.upper()
         if context == "purchase_level_1":
-            result = ["string(" + default_name + ")"]
+            result = [default_name]
         elif context == "default_name":
             result = [default_name]
         else:
