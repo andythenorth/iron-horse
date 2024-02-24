@@ -529,7 +529,7 @@ base = "Hood Open Wagon"
 base = "Hopper"
 
 [STR_NAME_SUFFIX_HOPPER_CAR_HIGH_SIDE]
-base = "Hopper"
+base = "High Side Hopper"
 
 [STR_NAME_SUFFIX_HST_MAIL_CAR]
 base = "Mail Van"
