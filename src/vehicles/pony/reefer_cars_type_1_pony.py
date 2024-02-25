@@ -1,10 +1,10 @@
-from train import ReeferCarConsist, ExpressCar
+from train import ReeferCarConsistType1, ExpressCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------    # no gen 1 reefer - straight to gen 2
 
-    consist = ReeferCarConsist(
+    consist = ReeferCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24180,
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
         chassis="2_axle_filled_16px",
     )
 
-    consist = ReeferCarConsist(
+    consist = ReeferCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24190,
@@ -34,7 +34,7 @@ def main(roster_id, **kwargs):
         chassis="2_axle_filled_16px",
     )
 
-    consist = ReeferCarConsist(
+    consist = ReeferCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16430,
@@ -49,7 +49,7 @@ def main(roster_id, **kwargs):
         chassis="2_axle_filled_24px",
     )
 
-    consist = ReeferCarConsist(
+    consist = ReeferCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24200,
@@ -64,7 +64,7 @@ def main(roster_id, **kwargs):
         chassis="2_axle_filled_16px",
     )
 
-    consist = ReeferCarConsist(
+    consist = ReeferCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24210,
@@ -79,7 +79,7 @@ def main(roster_id, **kwargs):
         chassis="2_axle_filled_24px",
     )
 
-    consist = ReeferCarConsist(
+    consist = ReeferCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24220,
@@ -94,7 +94,7 @@ def main(roster_id, **kwargs):
         chassis="4_axle_filled_32px",
     )
 
-    consist = ReeferCarConsist(
+    consist = ReeferCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24230,
@@ -109,7 +109,7 @@ def main(roster_id, **kwargs):
         chassis="2_axle_filled_greebled_24px",
     )
 
-    consist = ReeferCarConsist(
+    consist = ReeferCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24240,

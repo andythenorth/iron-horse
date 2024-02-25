@@ -155,7 +155,7 @@ base = "Gerbong Kereta Rangakaian"
 [STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR]
 base = "Gerbong Kereta Rangakaian"
 
-[STR_NAME_SUFFIX_REEFER_CAR]
+[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Gerbong Kulkas"
 
 [STR_NAME_SUFFIX_RESTAURANT_CAR]

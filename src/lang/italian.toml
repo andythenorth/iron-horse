@@ -82,7 +82,7 @@ base = "Carrozza passeggeri"
 [STR_NAME_SUFFIX_PLATE_CAR]
 base = "Carro piatto"
 
-[STR_NAME_SUFFIX_REEFER_CAR]
+[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Carro frigorifero"
 
 [STR_NAME_SUFFIX_SILO_CAR]

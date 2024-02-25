@@ -6406,26 +6406,26 @@ class ReeferCarConsistBase(CarConsist):
         )
 
 
-class ReeferCarConsist(ReeferCarConsistBase):
+class ReeferCarConsistType1(ReeferCarConsistBase):
     """
     Standard reefer car.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "reefer_car"
+        self.base_id = "reefer_car_type_1"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_reefer_cars"
 
 
-class ReeferCarAltConsist(ReeferCarConsistBase):
+class ReeferCarConsistType2(ReeferCarConsistBase):
     """
     Alternative reefer car style.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "reefer_car_alt"
+        self.base_id = "reefer_car_type_2"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group

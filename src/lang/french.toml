@@ -174,7 +174,7 @@ base = "Remorque autorail léger"
 [STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR]
 base = "Remorque autorail"
 
-[STR_NAME_SUFFIX_REEFER_CAR]
+[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Wagon frigorifique"
 
 [STR_NAME_SUFFIX_RESTAURANT_CAR]

@@ -83,7 +83,7 @@ base = "Matkustajavaunu"
 [STR_NAME_SUFFIX_PLATE_CAR]
 base = "Järeän tavaran vaunu"
 
-[STR_NAME_SUFFIX_REEFER_CAR]
+[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Jäähdytysvaunu"
 
 [STR_NAME_SUFFIX_SILO_CAR]

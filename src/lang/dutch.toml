@@ -92,7 +92,7 @@ base = "Passagiersrijtuig"
 [STR_NAME_SUFFIX_PLATE_CAR]
 base = "Plaatwagon"
 
-[STR_NAME_SUFFIX_REEFER_CAR]
+[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Koelwagon"
 
 [STR_NAME_SUFFIX_SILO_CAR]

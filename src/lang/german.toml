@@ -63,7 +63,7 @@ base = "offener Wagen"
 [STR_NAME_SUFFIX_PASSENGER_CAR]
 base = "Personenwagen"
 
-[STR_NAME_SUFFIX_REEFER_CAR]
+[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Kühlwagen"
 
 [STR_NAME_SUFFIX_SILO_CAR]

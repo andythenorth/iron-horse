@@ -50,7 +50,7 @@ base = "Openen Waggon"
 [STR_NAME_SUFFIX_PASSENGER_CAR]
 base = "Passagéierwaggon"
 
-[STR_NAME_SUFFIX_REEFER_CAR]
+[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Killwaggon"
 
 [STR_NAME_SUFFIX_TANK_CAR]

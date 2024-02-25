@@ -1,10 +1,10 @@
-from train import ReeferCarAltConsist, ExpressCar
+from train import ReeferCarConsistType2, ExpressCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = ReeferCarAltConsist(
+    consist = ReeferCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32610,
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
         chassis="2_axle_1cc_filled_24px",
     )
 
-    consist = ReeferCarAltConsist(
+    consist = ReeferCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32620,

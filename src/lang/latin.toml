@@ -52,7 +52,7 @@ base = "Currus Apertus"
 [STR_NAME_SUFFIX_PASSENGER_CAR]
 base = "Currus Vectorius"
 
-[STR_NAME_SUFFIX_REEFER_CAR]
+[STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Currus Frigidarius"
 
 [STR_NAME_SUFFIX_TANK_CAR]
