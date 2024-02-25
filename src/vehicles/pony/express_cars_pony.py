@@ -66,6 +66,17 @@ def main(roster_id, **kwargs):
     consist = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=34710,
+        gen=3,
+        subtype="C",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_32px")
+
+    consist = ExpressCarConsist(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30600,
         gen=4,
         subtype="A",
