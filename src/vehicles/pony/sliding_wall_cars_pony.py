@@ -10,6 +10,7 @@ def main(roster_id, **kwargs):
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26980,
         gen=3,
+        intro_year_offset=15,  # let's be a little bit later for this one
         subtype="A",
         base_track_type_name="NG",
         sprites_complete=True,
@@ -22,6 +23,7 @@ def main(roster_id, **kwargs):
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26990,
         gen=3,
+        intro_year_offset=15,  # let's be a little bit later for this one
         subtype="B",
         base_track_type_name="NG",
         sprites_complete=True,
