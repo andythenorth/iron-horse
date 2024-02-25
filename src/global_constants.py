@@ -19,10 +19,10 @@ wagon_module_names = [
     "mail_cars",
     "high_speed_mail_cars",
     "express_cars",
-    "double_deck_automobile_cars",  # order before other automobile cars as needed in simplified mode
+    "enclosed_automobile_cars",
     "automobile_cars",
     # "low_floor_automobile_cars",
-    "enclosed_automobile_cars",
+    "double_deck_automobile_cars",  # order before other automobile cars as needed in simplified mode
     "express_intermodal_cars",
     "intermodal_cars",
     "low_floor_intermodal_cars",
@@ -268,7 +268,6 @@ buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_acid_tank_cars": "acid_tank_car",
     "wagon_group_aggregate_dump_cars": "aggregate_dump_car_type_1",
     "wagon_group_aggregate_hopper_cars": "aggregate_hopper_car_type_1",
-    "wagon_group_automobile_cars": "double_deck_automobile_car",
     "wagon_group_box_cars": "box_car",
     "wagon_group_cement_silo_cars": "cement_silo_car",
     "wagon_group_coil_cars": "coil_car_uncovered",
@@ -283,6 +282,7 @@ buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_reefer_cars": "reefer_car_type_1",
     "wagon_group_silo_cars": "silo_car",
     "wagon_group_sliding_wall_cars": "sliding_wall_car",
+    "wagon_group_vehicle_transporter_cars": "automobile_car",
 }
 
 # custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants

@@ -2544,8 +2544,7 @@ class AutomobileCarConsistBase(CarConsist):
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = []  # no classes, use explicit labels
-        # self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
-        self.label_refits_allowed = ["PASS", "VEHI"]
+        self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
         self.label_refits_disallowed = []
         self.default_cargos = ["VEHI"]
         # special flag to turn on cargo subtypes specific to vehicles, can be made more generic if subtypes need to be extensible in future
@@ -2582,7 +2581,7 @@ class AutomobileCarConsist(AutomobileCarConsistBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_automobile_cars"
+        self.use_named_buyable_variant_group = "wagon_group_vehicle_transporter_cars"
         self._joker = True
 
     @property
@@ -2606,9 +2605,6 @@ class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
         # blah blah, more restrictive refits for double deck, cars only
         self.label_refits_allowed = ["PASS", "VEHI"]
         self.use_cargo_subytpes_VEHI = False
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_automobile_cars"
         # double deck cars need an extra masked overlay, which is handled via gestalt_graphics
         self.gestalt_graphics.add_masked_overlay = True
 
@@ -2635,7 +2631,7 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_automobile_cars"
+        self.use_named_buyable_variant_group = "wagon_group_vehicle_transporter_cars"
         self._joker = True
 
     @property
@@ -2658,13 +2654,12 @@ class AutomobileEnclosedCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = []  # no classes, use explicit labels
-        # self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
-        self.label_refits_allowed = ["PASS", "VEHI"]
+        self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
         self.label_refits_disallowed = []
         self.default_cargos = ["VEHI"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_automobile_cars"
+        self.use_named_buyable_variant_group = "wagon_group_vehicle_transporter_cars"
         self._joker = True
         # Graphics configuration
         if self.gen in [3]:

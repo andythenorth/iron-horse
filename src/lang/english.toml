@@ -242,9 +242,6 @@ base = " - Random"
 base = " - {RED}M{ORANGE}i{YELLOW}x{GREEN}e{BLUE}d {PURPLE}C{RED}o{ORANGE}l{YELLOW}o{GREEN}u{BLUE}r{PURPLE}s"
 
 # names for buyable variant groups
-[STR_WAGON_GROUP_AUTOMOBILE_CARS]
-base = "Vehicle Transporters"
-
 [STR_WAGON_GROUP_ACID_TANK_CARS]
 base = "Acid Tankers"
 
@@ -396,6 +393,9 @@ base = "Tarpaulin Wagons"
 
 [STR_WAGON_GROUP_TORPEDO_CARS]
 base = "Torpedo Wagons"
+
+[STR_WAGON_GROUP_VEHICLE_TRANSPORTER_CARS]
+base = "Vehicle Transporters"
 
 [STR_WAGON_GROUP_MORE]
 # special case
