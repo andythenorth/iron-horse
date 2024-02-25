@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarSlidingRoofConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14270,
+        base_numeric_id=24270,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarSlidingRoofConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14280,
+        base_numeric_id=24280,
         gen=5,
         subtype="C",
         sprites_complete=True,

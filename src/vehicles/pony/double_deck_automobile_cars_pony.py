@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
     consist = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14840,
+        base_numeric_id=30890,
         gen=4,
         subtype="C",
         sprites_complete=True,

@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = DumpCarOreConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15530,
+        base_numeric_id=35530,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
     consist = DumpCarOreConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15540,
+        base_numeric_id=35540,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
     consist = DumpCarOreConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15550,
+        base_numeric_id=35550,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -40,7 +40,7 @@ def main(roster_id, **kwargs):
     consist = DumpCarOreConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15560,
+        base_numeric_id=35560,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -53,7 +53,7 @@ def main(roster_id, **kwargs):
     consist = DumpCarOreConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15570,
+        base_numeric_id=35570,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -64,7 +64,7 @@ def main(roster_id, **kwargs):
     consist = DumpCarOreConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15580,
+        base_numeric_id=35580,
         gen=5,
         subtype="C",
         sprites_complete=True,

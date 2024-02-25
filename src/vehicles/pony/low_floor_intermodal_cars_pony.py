@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = IntermodalLowFloorCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14450,
+        base_numeric_id=24450,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = IntermodalLowFloorCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14460,
+        base_numeric_id=24460,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -30,7 +30,7 @@ def main(roster_id, **kwargs):
     consist = IntermodalLowFloorCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14470,
+        base_numeric_id=24470,
         gen=5,
         subtype="C",
         sprites_complete=True,

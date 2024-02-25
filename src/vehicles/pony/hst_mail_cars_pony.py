@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = MailHSTCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16170,
+        base_numeric_id=16880,
         gen=4,
         subtype="U",
         intro_year_offset=0,  # match to Firebird
@@ -20,7 +20,7 @@ def main(roster_id, **kwargs):
     consist = MailHSTCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16180,
+        base_numeric_id=26180,
         gen=5,
         subtype="U",
         intro_year_offset=-10,  # match to Blaze HST

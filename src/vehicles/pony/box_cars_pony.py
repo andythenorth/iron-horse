@@ -32,7 +32,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10410,
+        base_numeric_id=27040,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
@@ -60,7 +60,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9590,
+        base_numeric_id=27050,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -130,7 +130,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=11520,
+        base_numeric_id=27060,
         gen=5,
         subtype="B",
         sprites_complete=True,

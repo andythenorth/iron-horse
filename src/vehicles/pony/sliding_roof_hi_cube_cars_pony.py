@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarSlidingRoofConsistHiCube(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12050,
+        base_numeric_id=30730,
         gen=5,
         subtype="B",
         sprites_complete=True,

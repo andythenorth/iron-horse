@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = ReeferCarAltConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10860,
+        base_numeric_id=32610,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -22,7 +22,7 @@ def main(roster_id, **kwargs):
     consist = ReeferCarAltConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10890,
+        base_numeric_id=32620,
         gen=5,
         subtype="C",
         sprites_complete=True,

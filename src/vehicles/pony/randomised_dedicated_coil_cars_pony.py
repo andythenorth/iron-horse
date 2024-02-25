@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = DedicatedCoilCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10710,
+        base_numeric_id=25860,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
     consist = DedicatedCoilCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10720,
+        base_numeric_id=25870,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
     consist = DedicatedCoilCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12880,
+        base_numeric_id=25880,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -44,7 +44,7 @@ def main(roster_id, **kwargs):
     consist = DedicatedCoilCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12890,
+        base_numeric_id=25890,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -55,7 +55,7 @@ def main(roster_id, **kwargs):
     consist = DedicatedCoilCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12950,
+        base_numeric_id=25900,
         gen=5,
         subtype="C",
         sprites_complete=True,

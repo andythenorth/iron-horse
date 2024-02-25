@@ -50,7 +50,7 @@ def main(roster_id, **kwargs):
     consist = EdiblesTankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12070,
+        base_numeric_id=17200,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -61,7 +61,7 @@ def main(roster_id, **kwargs):
     consist = EdiblesTankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10230,
+        base_numeric_id=17210,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -72,7 +72,7 @@ def main(roster_id, **kwargs):
     consist = EdiblesTankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12030,
+        base_numeric_id=17220,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -83,7 +83,7 @@ def main(roster_id, **kwargs):
     consist = EdiblesTankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10730,
+        base_numeric_id=17230,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -94,7 +94,7 @@ def main(roster_id, **kwargs):
     consist = EdiblesTankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10260,
+        base_numeric_id=28190,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -105,7 +105,7 @@ def main(roster_id, **kwargs):
     consist = EdiblesTankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10250,
+        base_numeric_id=28440,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -116,7 +116,7 @@ def main(roster_id, **kwargs):
     consist = EdiblesTankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10740,
+        base_numeric_id=16970,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -127,7 +127,7 @@ def main(roster_id, **kwargs):
     consist = EdiblesTankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12090,
+        base_numeric_id=28180,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -140,7 +140,7 @@ def main(roster_id, **kwargs):
     consist = EdiblesTankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=11140,
+        base_numeric_id=28170,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -151,7 +151,7 @@ def main(roster_id, **kwargs):
     consist = EdiblesTankCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=11130,
+        base_numeric_id=28160,
         gen=6,
         subtype="C",
         sprites_complete=True,

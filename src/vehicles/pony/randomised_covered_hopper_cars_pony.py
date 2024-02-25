@@ -2,44 +2,6 @@ from train import CoveredHopperCarRandomisedConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
-    # --------------- narrow gauge -----------------------------------------------------------------
-    """
-    consist = CoveredHopperCarRandomisedConsist(
-        roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
-        base_numeric_id=16620,
-        gen=2,
-        subtype="U",
-        base_track_type_name="NG",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
-
-    consist = CoveredHopperCarRandomisedConsist(
-        roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
-        base_numeric_id=16630,
-        gen=3,
-        subtype="U",
-        base_track_type_name="NG",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
-
-    consist = CoveredHopperCarRandomisedConsist(
-        roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
-        base_numeric_id=17280,
-        gen=4,
-        subtype="U",
-        base_track_type_name="NG",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
-    """
     # --------------- standard gauge ---------------------------------------------------------------
     # gen 2 start
 
@@ -68,7 +30,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15830,
+        base_numeric_id=35830,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -79,7 +41,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15840,
+        base_numeric_id=35840,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -90,7 +52,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15860,
+        base_numeric_id=35860,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -101,7 +63,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15870,
+        base_numeric_id=35870,
         gen=5,
         subtype="C",
         sprites_complete=True,

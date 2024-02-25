@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = BolsterCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15000,
+        base_numeric_id=30900,
         gen=3,
         subtype="A",
         base_track_type_name="NG",
