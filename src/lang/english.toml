@@ -487,7 +487,7 @@ base = "High Side Mineral Wagon"
 base = "Edibles Tanker"
 
 [STR_NAME_SUFFIX_ENCLOSED_AUTOMOBILE_CAR]
-base = "Enclosed Car Transporter"
+base = "Enclosed Vehicle Transporter"
 
 [STR_NAME_SUFFIX_EXPRESS_CAR]
 base = "Express Van"
