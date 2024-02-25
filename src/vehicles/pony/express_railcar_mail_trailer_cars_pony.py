@@ -4,11 +4,10 @@ from train import MailExpressRailcarTrailerCarConsist, MailRailcarTrailerCar
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     """
-    # unfinished - nerfed
     consist = MailExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
-        base_numeric_id=4900,
+        base_numeric_id=6350,
         gen=5,
         subtype="U",
         cab_id="chronos",

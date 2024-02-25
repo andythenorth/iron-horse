@@ -7,9 +7,8 @@ from train import (
 def main(roster_id, **kwargs):
     consist = MailEngineExpressRailcarConsist(
         roster_id=roster_id,
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         id="chronos",
-        base_numeric_id=6400,
+        base_numeric_id=950,
         name="Chronos",
         role="express_mail_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode

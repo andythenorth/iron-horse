@@ -146,8 +146,8 @@ engine_module_names = [
     "high_flyer",
     "sunshine_coast",
     "olympic",
-    # "chronos", # unfinished, nerfed - see also trailer
-    # "nimbus", # unfinished, nerfed - see also trailer
+    #"chronos",
+    "nimbus",
     # brit high speed pax
     "firebird",
     "blaze",

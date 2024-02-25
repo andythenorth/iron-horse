@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     consist = PassengerEngineExpressRailcarConsist(
         roster_id=roster_id,
         id="nimbus",
-        base_numeric_id=6380,
+        base_numeric_id=940,
         name="Nimbus",
         role="express_pax_railcar",  # quite a specific role, may or may not scale to other rosters
         role_child_branch_num=-2,

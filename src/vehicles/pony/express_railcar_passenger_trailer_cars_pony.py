@@ -55,12 +55,10 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    """
-     # unfinished, nerfed
     consist = PassengerExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
-        base_numeric_id=440,
+        base_numeric_id=6380,
         gen=6,
         subtype="U",
         cab_id="nimbus",
@@ -75,4 +73,4 @@ def main(roster_id, **kwargs):
         suppress_roof_sprite=True,
         repeat=2,
     )
-    """
+
