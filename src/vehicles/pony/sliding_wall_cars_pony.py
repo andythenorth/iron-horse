@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarSlidingWallConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=11540,
+        base_numeric_id=26980,
         gen=3,
         subtype="A",
         base_track_type_name="NG",
@@ -20,7 +20,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarSlidingWallConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12340,
+        base_numeric_id=26990,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
@@ -35,7 +35,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarSlidingWallConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10610,
+        base_numeric_id=27000,
         gen=4,
         subtype="B",
         intro_year_offset=5,  # let's be a little bit later for this one
@@ -47,7 +47,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarSlidingWallConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10830,
+        base_numeric_id=27010,
         gen=4,
         subtype="C",
         intro_year_offset=5,  # let's be a little bit later for this one
@@ -63,7 +63,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarSlidingWallConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9450,
+        base_numeric_id=27020,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -78,7 +78,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarSlidingWallConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9480,
+        base_numeric_id=27030,
         gen=5,
         subtype="C",
         sprites_complete=True,

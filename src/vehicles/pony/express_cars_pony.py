@@ -33,7 +33,7 @@ def main(roster_id, **kwargs):
     consist = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10140,
+        base_numeric_id=30360,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -66,7 +66,7 @@ def main(roster_id, **kwargs):
     consist = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10430,
+        base_numeric_id=30600,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -88,7 +88,7 @@ def main(roster_id, **kwargs):
     consist = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12260,
+        base_numeric_id=30660,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -99,7 +99,7 @@ def main(roster_id, **kwargs):
     consist = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10450,
+        base_numeric_id=30610,
         gen=5,
         subtype="A",
         sprites_complete=True,

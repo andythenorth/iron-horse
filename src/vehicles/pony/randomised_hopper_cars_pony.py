@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12590,
+        base_numeric_id=23900,
         gen=1,
         subtype="A",
         base_track_type_name="NG",
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10690,
+        base_numeric_id=23910,
         gen=3,
         subtype="A",
         base_track_type_name="NG",
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9620,
+        base_numeric_id=23920,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16860,
+        base_numeric_id=23930,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main(roster_id, **kwargs):
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=14090,
+        base_numeric_id=23940,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -69,7 +69,7 @@ def main(roster_id, **kwargs):
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16880,
+        base_numeric_id=23950,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -113,7 +113,7 @@ def main(roster_id, **kwargs):
     consist = HopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=8430,
+        base_numeric_id=23960,
         gen=5,
         subtype="A",
         sprites_complete=True,

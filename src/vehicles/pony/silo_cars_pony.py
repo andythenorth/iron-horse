@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = SiloCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12720,
+        base_numeric_id=32720,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -40,7 +40,7 @@ def main(roster_id, **kwargs):
     consist = SiloCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12660,
+        base_numeric_id=32660,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main(roster_id, **kwargs):
     consist = SiloCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12680,
+        base_numeric_id=32680,
         gen=5,
         subtype="C",
         sprites_complete=True,

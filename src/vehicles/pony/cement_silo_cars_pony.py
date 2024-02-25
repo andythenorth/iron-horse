@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = SiloCarCementConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10270,
+        base_numeric_id=30270,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
     consist = SiloCarCementConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10280,
+        base_numeric_id=30280,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
     consist = SiloCarCementConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10300,
+        base_numeric_id=30300,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -40,7 +40,7 @@ def main(roster_id, **kwargs):
     consist = SiloCarCementConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10310,
+        base_numeric_id=30310,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -51,7 +51,7 @@ def main(roster_id, **kwargs):
     consist = SiloCarCementConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10380,
+        base_numeric_id=30380,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main(roster_id, **kwargs):
     consist = SiloCarCementConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=10980,
+        base_numeric_id=30980,
         gen=5,
         subtype="C",
         sprites_complete=True,

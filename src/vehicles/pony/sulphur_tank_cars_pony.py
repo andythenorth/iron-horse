@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
     consist = TankCarSulphurConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12810,
+        base_numeric_id=32810,
         gen=2,
         subtype="A",
         base_track_type_name="NG",
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = TankCarSulphurConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=12830,
+        base_numeric_id=32830,
         gen=3,
         subtype="A",
         base_track_type_name="NG",
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
     consist = TankCarSulphurConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16080,
+        base_numeric_id=25780,
         gen=2,
         subtype="A",
         intro_year_offset=-10,  # let's be earlier for this one
@@ -57,7 +57,7 @@ def main(roster_id, **kwargs):
     consist = TankCarSulphurConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9660,
+        base_numeric_id=25790,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main(roster_id, **kwargs):
     consist = TankCarSulphurConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9680,
+        base_numeric_id=25800,
         gen=3,
         subtype="B",
         sprites_complete=True,

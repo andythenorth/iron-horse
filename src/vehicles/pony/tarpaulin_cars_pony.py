@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarTarpaulinConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9380,
+        base_numeric_id=25530,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarTarpaulinConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16050,
+        base_numeric_id=25540,
         gen=5,
         subtype="C",
         sprites_complete=True,

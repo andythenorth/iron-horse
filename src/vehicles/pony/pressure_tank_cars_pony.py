@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarPressureConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15050,
+        base_numeric_id=25410,
         gen=2,
         subtype="A",
         base_track_type_name="NG",
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarPressureConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15060,
+        base_numeric_id=25420,
         gen=3,
         subtype="A",
         base_track_type_name="NG",
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarPressureConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15070,
+        base_numeric_id=25430,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarPressureConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9120,
+        base_numeric_id=25440,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarPressureConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9220,
+        base_numeric_id=25450,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -67,7 +67,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarPressureConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=9290,
+        base_numeric_id=25460,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -78,7 +78,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarPressureConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15230,
+        base_numeric_id=25470,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -89,7 +89,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarPressureConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15240,
+        base_numeric_id=25480,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -100,7 +100,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarPressureConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15250,
+        base_numeric_id=25490,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -111,7 +111,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarPressureConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15320,
+        base_numeric_id=25500,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -122,7 +122,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarPressureConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15260,
+        base_numeric_id=25510,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -133,7 +133,7 @@ def main(roster_id, **kwargs):
     consist = GasTankCarPressureConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=15270,
+        base_numeric_id=25520,
         gen=5,
         subtype="C",
         sprites_complete=True,
