@@ -30,6 +30,6 @@ def main(roster_id, **kwargs):
     consist.description = """“I would not wish any companion in the world but you.”"""
     consist.foamer_facts = """Polish PKP EU07 (derived from UK Class 83 design)"""
 
-    consist.clone(base_numeric_id=11900, clone_units=[1, 0])
+    consist.clone(base_numeric_id=34950, clone_units=[1, 0])
 
     return consist

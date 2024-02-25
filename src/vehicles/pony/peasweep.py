@@ -32,6 +32,6 @@ def main(roster_id, **kwargs):
     )
     consist.foamer_facts = """LNER EM1 (BR Class 76)"""
 
-    consist.clone(base_numeric_id=15360, clone_units=[1, 0])
+    consist.clone(base_numeric_id=34940, clone_units=[1, 0])
 
     return consist

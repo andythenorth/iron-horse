@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
         id="vectron_dual_mode",
-        base_numeric_id=13120,
+        base_numeric_id=30810,
         name="Vectron Dual-Mode",
         role="heavy_express",
         role_child_branch_num=1,

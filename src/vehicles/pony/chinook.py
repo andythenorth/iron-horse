@@ -35,7 +35,7 @@ def main(roster_id, **kwargs):
     consist.description = """I send these out in twos."""
     consist.foamer_facts = """BR Class 20, uprated EE 8CSVT prime mover"""
 
-    consist.clone(base_numeric_id=9850, clone_units=[1, 0])
+    consist.clone(base_numeric_id=34900, clone_units=[1, 0])
     # also JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
     consist.clones[0].random_reverse = True
 

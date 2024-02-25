@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
         id="traxx_e_494",
-        base_numeric_id=14870,
+        base_numeric_id=34700,
         name="Captrain Italia E.494 Traxx 3 LM",
         role="ultra_heavy_freight",
         role_child_branch_num=-1,

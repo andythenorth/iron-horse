@@ -31,6 +31,6 @@ def main(roster_id, **kwargs):
     consist.description = """We're giving electrics a go for freight.  Don't right know if they'll catch on, but they can pull, I give em that."""
     consist.foamer_facts = """NER EF1"""
 
-    consist.clone(base_numeric_id=9910, clone_units=[1, 0])
+    consist.clone(base_numeric_id=34920, clone_units=[1, 0])
 
     return consist
