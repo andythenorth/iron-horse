@@ -9,7 +9,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=18000,
         gen=3,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_32px")
@@ -20,7 +20,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=18010,
         gen=4,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_32px")
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=18060,
         gen=5,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressCar, chassis="4_axle_filled_greebled_32px")
