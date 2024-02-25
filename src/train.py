@@ -562,9 +562,10 @@ class Consist(object):
     def dedicated_trailer_consists(self):
         # fetch dedicated trailer consists for this cab engine (if any)
         result = []
-        for consist in self.roster.consists_in_buy_menu_order:
-            if getattr(consist, "cab_id", None) == self.id:
-                result.append(consist)
+        for consists in [self.roster.engine_consists_excluding_clones, self.roster.wagon_consists]:
+            for consist in consists:
+                if getattr(consist, "cab_id", None) == self.id:
+                    result.append(consist)
         return result
 
     @property
