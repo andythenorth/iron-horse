@@ -5093,11 +5093,13 @@ class HopperCarRockConsist(HopperCarConsistBase):
             global_constants.freight_wagon_liveries[
                 "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
             ],
-            # ruby before bauxite to ensure it appears in buy menu order for mixed version
-            # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
             global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
             global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
             global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+            global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
+            global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
+            global_constants.freight_wagon_liveries["FREIGHT_SAND"],
             global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
         ]
 
