@@ -935,8 +935,9 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
             )
             # this assumes no gaps in the spriterows, so take the max spriterow num
             # note the +1 because livery rows are zero indexed
-            # !!! pans are now generated to be livery independent, not sure this should be needed?
-            print("CABBAGE 86663 - num_pantograph_rows shouldn't need to check liveries")
+            # note that we simply generate a row per vehicle position variant
+            # this method leads to unnecessary rows for many cases
+            # but is relied on for multiple unit (railcars etc) where not all vehicles have pans, in which case the row is simply empty
             self.num_pantograph_rows = len(self.liveries) * (
                 1 + max(self.spriterow_group_mappings.values())
             )
@@ -1020,6 +1021,7 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
             position_variant_offset = self.spriterow_group_mappings["last"]
         if pipeline.is_pantographs_pipeline:
             # !!! CABBAGE 240009 - this may not be working for all cases? e.g. express railcars, it doesn't account for pan positions reliably
+            print("CABBAGE 240009 buy menu sprite - pipeline.is_pantographs_pipeline may not handle all cases? - see Nimbus buy menu - pan is out of place on 2nd unit")
             unit_variant_row_num = position_variant_offset
         else:
             unit_variant_row_num = (
