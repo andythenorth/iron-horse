@@ -52,29 +52,28 @@
     </tal:pantographs>
 </tal:consist_position_variants>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_local_procedure_get_unit_variant_num, vehicle_type_id) {
+<tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+    <!--! stupid integer stuffing scheme to detect livery / flip / doors states, see the procedures for the schema
+          this does *not* try to handle variant ID in the same switch - that approach was removed as it caused concurrent varact2 IDs to be exhausted with higher numbers of buyabl variants -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_${unit_variant.buyable_variant.relative_spriterow_num},
+            [
+                (10 * LOAD_TEMP(${temp_storage_ids.consist_specific_position_variant_num}))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+        <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
+            ${position_variant_num}0: return ${vehicle.id}_ss_doors_closed_position_variant_${position_variant_num}_base_livery_${unit_variant.buyable_variant.relative_spriterow_num};
+            ${position_variant_num}1: return ${vehicle.id}_ss_doors_open_position_variant_${position_variant_num}_base_livery_${unit_variant.buyable_variant.relative_spriterow_num};
+        </tal:consist_position_variants>
+    }
+</tal:unit_variants>
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_engine_and_doors, vehicle_type_id) {
     <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-        ${unit_variant.numeric_id}: return ${unit_variant.buyable_variant.buyable_variant_num};
+        ${unit_variant.numeric_id}: return ${vehicle.id}_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_${unit_variant.buyable_variant.relative_spriterow_num};
     </tal:unit_variants>
     <!--! no default, by design all variants should be explicitly found -->
-}
-
-<!--! stupid integer stuffing scheme to detect livery / flip / doors states, see the procedures for the schema -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_engine_and_doors,
-        [
-            (100 * LOAD_TEMP(${temp_storage_ids.consist_specific_position_variant_num}))
-            +
-            (10 * ${vehicle.id}_switch_local_procedure_get_unit_variant_num())
-            +
-            (1 * switch_graphics_opening_doors())
-        ]
-    ) {
-    <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
-        <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-            ${position_variant_num}${unit_variant.buyable_variant.buyable_variant_num}0: return ${vehicle.id}_ss_doors_closed_position_variant_${position_variant_num}_base_livery_${unit_variant.buyable_variant.relative_spriterow_num};
-            ${position_variant_num}${unit_variant.buyable_variant.buyable_variant_num}1: return ${vehicle.id}_ss_doors_open_position_variant_${position_variant_num}_base_livery_${unit_variant.buyable_variant.relative_spriterow_num};
-        </tal:unit_variants>
-    </tal:consist_position_variants>
 }
 
 <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
