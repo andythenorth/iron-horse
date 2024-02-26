@@ -24,6 +24,10 @@
     <tal:include metal:use-macro="load: cost.pynml" />
 </tal:running_cost_factor>
 
+<tal:articulated_parts condition="vehicle.is_lead_unit_of_consist">
+    <tal:include metal:use-macro="load: articulated_parts.pynml" />
+</tal:articulated_parts>
+
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
 
     <tal:name condition="vehicle.is_lead_unit_of_consist">

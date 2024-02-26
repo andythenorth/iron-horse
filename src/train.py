@@ -1214,14 +1214,6 @@ class Consist(object):
                 ]
         return cite_name + ", " + random.choice(cite_titles)
 
-    def render_articulated_switch(self, templates):
-        template = templates["articulated_parts.pynml"]
-        nml_result = template(
-            consist=self,
-            global_constants=global_constants,
-        )
-        return nml_result
-
     def freeze_cross_roster_lookups(self):
         # graphics processing can't depend on roster object reliably, as it blows up multiprocessing (can't pickle roster), for reasons I never figured out
         # this freezes any necessary roster items in place
@@ -1290,8 +1282,6 @@ class Consist(object):
         self.assert_power()
         # templating
         nml_result = ""
-        if len(self.units) > 1:
-            nml_result = nml_result + self.render_articulated_switch(templates)
         for unit in self.unique_units:
             nml_result = nml_result + unit.render(templates, graphics_path)
         return nml_result
