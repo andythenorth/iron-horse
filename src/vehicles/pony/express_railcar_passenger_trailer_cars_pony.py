@@ -55,6 +55,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
+    """
     consist = PassengerExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
@@ -73,3 +74,4 @@ def main(roster_id, **kwargs):
         suppress_roof_sprite=True,
         repeat=2,
     )
+    """
