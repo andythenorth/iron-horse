@@ -618,6 +618,9 @@ base = "Railcar Trailer"
 [STR_NAME_SUFFIX_RANDOMISED_AGGREGATE_HOPPER_CAR]
 base = "Aggregate Hopper"
 
+[STR_NAME_SUFFIX_RANDOMISED_AGGREGATE_DUMP_CAR]
+base = "Aggregate Dump Wagon"
+
 [STR_NAME_SUFFIX_RANDOMISED_BOX_CAR]
 base = "Box Van"
 

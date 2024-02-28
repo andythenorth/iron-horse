@@ -3795,7 +3795,7 @@ class DumpCarAggregateConsistType1(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = []
+        self.randomised_candidate_groups = ["randomised_aggregate_dump_car",]
         self._joker = True
         # Graphics configuration
         # minimalist use of CC, so only one livery
@@ -3818,7 +3818,7 @@ class DumpCarAggregateConsistType2(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = []
+        self.randomised_candidate_groups = ["randomised_aggregate_dump_car",]
         self._joker = True
         # Graphics configuration
         # minimalist use of CC, so only one livery
@@ -3841,7 +3841,7 @@ class DumpCarAggregateConsistType3(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = []
+        self.randomised_candidate_groups = ["randomised_aggregate_dump_car",]
         self._joker = True
         # Graphics configuration
         # minimalist use of CC, so only one livery
@@ -3864,7 +3864,7 @@ class DumpCarAggregateConsistType4(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = []
+        self.randomised_candidate_groups = ["randomised_aggregate_dump_car",]
         self._joker = True
         # Graphics configuration
         # minimalist use of CC, so only one livery
@@ -3887,7 +3887,7 @@ class DumpCarAggregateConsistType5(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = []
+        self.randomised_candidate_groups = ["randomised_aggregate_dump_car",]
         self._joker = True
         # Graphics configuration
         # minimalist use of CC, so only one livery
@@ -3910,13 +3910,34 @@ class DumpCarAggregateConsistType6(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = []
+        self.randomised_candidate_groups = ["randomised_aggregate_dump_car",]
         self._joker = True
         # Graphics configuration
         # minimalist use of CC, so only one livery
         self.gestalt_graphics.liveries = [
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
         ]
+
+
+class DumpCarAggregateRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
+    """
+    Random choice of aggregate dump car sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_aggregate_dump_car"
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
+        # Graphics configuration
+        # minimalist use of CC, so only one livery
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
+            liveries=[
+                global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            ],
+        )
 
 
 class DumpCarHeavyDutyConsist(DumpCarConsistBase):
