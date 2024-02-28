@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
         },
         intro_year_offset=-9,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
-        pantograph_type="z-shaped-single-reversed",
+        pantograph_type="z-shaped-double",
         lgv_capable=True,  # for lolz
         tilt_bonus=True,  # for lolz
         sprites_complete=False,
