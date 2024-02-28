@@ -9,7 +9,6 @@
 // default graphics chain
 <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
     <tal:base_liveries repeat="base_livery_num range(consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant)">
-        // cabbage ${consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant}
         spriteset(${vehicle.id}_ss_doors_closed_position_variant_${position_variant_num}_base_livery_${base_livery_num}, "${graphics_path}${consist.id}.png") {
             ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (base_livery_num * 60))}
         }
