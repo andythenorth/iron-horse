@@ -20,7 +20,7 @@ def main(roster_id, **kwargs):
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         # unfinished EWS livery exists, but eh
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["YEOMAN", "DB_SCHENKER", "FREIGHTLINER_GBRF"],
+        additional_liveries=["YEOMAN", "DB_SCHENKER", "FREIGHTLINER_GBRF", "ARC"],
         default_livery_extra_docs_examples=[
             ("COLOUR_WHITE", "COLOUR_GREEN"),
             ("COLOUR_ORANGE", "COLOUR_RED"),

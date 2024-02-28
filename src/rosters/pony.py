@@ -314,6 +314,14 @@ def main():
         # generally, reuse of these is encouraged, they're (mostly) just metadata and can be repeated multiple times for different spriterows of a vehicle
         # keep alphabetised
         engine_and_pax_mail_car_liveries={
+            "ARC": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_YELLOW", "COLOUR_WHITE"),
+                ],
+            },
             "BANGER_BLUE": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
@@ -496,6 +504,14 @@ def main():
                     ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
                 ],
             },
+            "TGV_LA_POSTE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_YELLOW", "COLOUR_BLUE"),
+                ],
+            },
             # the default "nothing" livery
             "VANILLA": {
                 "remap_to_cc": None,
@@ -520,14 +536,6 @@ def main():
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
-                ],
-            },
-            "TGV_LA_POSTE": {
-                "remap_to_cc": None,
-                "docs_image_input_cc": [
-                    ("COLOUR_BLUE", "COLOUR_WHITE"),
-                    ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_YELLOW", "COLOUR_BLUE"),
                 ],
             },
             "YEOMAN": {
