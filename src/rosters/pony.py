@@ -146,8 +146,8 @@ engine_module_names = [
     "high_flyer",
     "sunshine_coast",
     "olympic",
-    #"chronos",
-    #"nimbus",
+    #"chronos",# unfinished, nerfed
+    #"nimbus",# unfinished, nerfed
     # brit high speed pax
     "firebird",
     "blaze",
@@ -194,8 +194,8 @@ engine_module_names = [
     # ng railcars
     "mumble",
     "mumble_single",
-    # "snapper", # 3.6.0
-    # "snapper_single", # 3.6.0
+    # "snapper", # unfinished, nerfed
+    # "snapper_single", # unfinished, nerfed
     "zorro",
 ]
 
