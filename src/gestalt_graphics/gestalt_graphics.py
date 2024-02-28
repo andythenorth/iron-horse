@@ -1020,8 +1020,6 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
         else:
             position_variant_offset = self.spriterow_group_mappings["last"]
         if pipeline.is_pantographs_pipeline:
-            # !!! CABBAGE 240009 - this may not be working for all cases? e.g. express railcars, it doesn't account for pan positions reliably
-            print("CABBAGE 240009 buy menu sprite - pipeline.is_pantographs_pipeline may not handle all cases? - see Nimbus buy menu - pan is out of place on 2nd unit")
             unit_variant_row_num = position_variant_offset
         else:
             unit_variant_row_num = (
