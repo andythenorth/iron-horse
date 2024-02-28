@@ -42,13 +42,17 @@ class Pipeline(object):
 
         # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
         if source_consist.gestalt_graphics.input_spritesheet_delegate_id is not None:
-            consist_filename_stem = self.consist.gestalt_graphics.input_spritesheet_delegate_id
+            consist_filename_stem = (
+                self.consist.gestalt_graphics.input_spritesheet_delegate_id
+            )
         else:
             consist_filename_stem = source_consist.id
 
         # the consist id might have the consist's roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
         # this will have a null effect (which is fine) if the roster_id consist is the same as the module providing the graphics gile
-        consist_filename_stem = consist_filename_stem.replace(source_consist.roster_id, source_consist.roster_id_providing_module)
+        consist_filename_stem = consist_filename_stem.replace(
+            source_consist.roster_id, source_consist.roster_id_providing_module
+        )
 
         return os.path.join(
             currentdir,
@@ -471,7 +475,9 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
                 input_row_num,
             ) in row_data["source_vehicles_and_input_spriterow_nums"]:
                 # the generated sprite for dual_headed case is intended for docs use only (OpenTTD already assembles the buy menu sprite in that case)
-                for input_sprite_x_offset in [224, 104] if self.consist.dual_headed else [224]:
+                for input_sprite_x_offset in (
+                    [224, 104] if self.consist.dual_headed else [224]
+                ):
                     # currently no cap on purchase menu sprite width
                     # consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh
                     unit_length_in_pixels = 4 * source_vehicle_unit.vehicle_length
@@ -499,7 +505,9 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
                         + row_data["spriterow_num_dest"]
                         * graphics_constants.spriterow_height,
                     )
-                    custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_input)
+                    custom_buy_menu_sprite = spritesheet.sprites.copy().crop(
+                        crop_box_input
+                    )
                     spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
                     # increment x offset for pasting in next vehicle
                     x_offset += unit_length_in_pixels
@@ -748,9 +756,9 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                 fade_image = ImageOps.mirror(fade_image)
                 fade_image_mask = ImageOps.mirror(fade_image_mask)
 
-        #if self.consist.id == "randomised_box_car_pony_gen_5B":
-            # spritesheet.sprites.show()
-            #pass
+        # if self.consist.id == "randomised_box_car_pony_gen_5B":
+        # spritesheet.sprites.show()
+        # pass
 
         return spritesheet
 

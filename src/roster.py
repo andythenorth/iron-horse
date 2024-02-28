@@ -12,6 +12,7 @@ import utils
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
+
 class Roster(object):
     """
     Rosters compose a set of vehicles which is complete for gameplay.
@@ -26,7 +27,9 @@ class Roster(object):
         self.str_grf_name = kwargs.get("str_grf_name")
         # engine_module_names only used once at __init__ time, it's a list of module names, not the actual consists
         self.engine_module_names = kwargs.get("engine_module_names")
-        self.wagon_modules_provided_by_other_rosters = kwargs.get("wagon_modules_provided_by_other_rosters")
+        self.wagon_modules_provided_by_other_rosters = kwargs.get(
+            "wagon_modules_provided_by_other_rosters"
+        )
         self.engine_consists = []
         self.wagon_consists = []
         # create a structure to hold (buyable) variant groups
@@ -337,7 +340,10 @@ class Roster(object):
                     # there is a specific case of reused vehicles that are allowed to overlap IDs (they will be grf-independent, and the compile doesn't actually care)
                     # it should be enough to just check the base_id, as both consists should then have been instantiated from the same source module
                     if hasattr(consist, "base_id"):
-                        if getattr(colliding_consist, "base_id", None) == consist.base_id:
+                        if (
+                            getattr(colliding_consist, "base_id", None)
+                            == consist.base_id
+                        ):
                             continue
                     raise BaseException(
                         "Error: consist "
@@ -373,13 +379,18 @@ class Roster(object):
         # wagons reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module
         # this is not intended to be a common case, it's for things like torpedo cars where redrawing and redefining them for all rosters is pointless
         # this may cause compile failures when refactoring stuff due to cross-roster dependencies being broken, if so comment the calls out
-        for roster_id_providing_modules, wagon_module_names in self.wagon_modules_provided_by_other_rosters.items():
+        for (
+            roster_id_providing_modules,
+            wagon_module_names,
+        ) in self.wagon_modules_provided_by_other_rosters.items():
             # apply buy menu order to wagon_modules_provided_by_other_rosters (rather than having to manually keep the lists in sync)
             wagon_module_names_in_buy_menu_order = []
             for wagon_module_name in global_constants.wagon_module_names:
                 if wagon_module_name in wagon_module_names:
                     wagon_module_names_in_buy_menu_order.append(wagon_module_name)
-            self.init_wagon_modules(roster_id_providing_modules, wagon_module_names_in_buy_menu_order)
+            self.init_wagon_modules(
+                roster_id_providing_modules, wagon_module_names_in_buy_menu_order
+            )
 
     def init_wagon_modules(self, roster_id_of_module, wagon_module_names):
         package_name = "vehicles." + roster_id_of_module
@@ -389,11 +400,15 @@ class Roster(object):
                 wagon_module = importlib.import_module(
                     "." + wagon_module_name, package_name
                 )
-                wagon_module.main(self.id, roster_id_providing_module=roster_id_of_module)
+                wagon_module.main(
+                    self.id, roster_id_providing_module=roster_id_of_module
+                )
             except ModuleNotFoundError:
                 # the module might be provided from another roster, which is fine
                 module_provided_by_another_roster = False
-                for wagon_module_names_from_another_roster in self.wagon_modules_provided_by_other_rosters.values():
+                for (
+                    wagon_module_names_from_another_roster
+                ) in self.wagon_modules_provided_by_other_rosters.values():
                     if wagon_module_name_stem in wagon_module_names_from_another_roster:
                         module_provided_by_another_roster = True
                         break

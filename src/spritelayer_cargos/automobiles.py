@@ -50,7 +50,7 @@ class DoubleDeckAutomobilesCargoSetBase(CargoSetBase):
     def __init__(self, **kwargs):
         self.compatible_platform_types = ["double_deck_lower", "double_deck_upper"]
         super().__init__(**kwargs)
-        self.graphics_template_subtype_name = "double_deck" # arguably should be 'dropped deck' or something as appropriate
+        self.graphics_template_subtype_name = "double_deck"  # arguably should be 'dropped deck' or something as appropriate
 
 
 """
@@ -81,13 +81,21 @@ class DefaultCars24pxCargoSet(DefaultAutomobilesCargoSetBase):
         self.length = 24
         super().__init__(**kwargs)
         self.variants = [
-            ["cars_1_15_foot_mint_green", "cars_1_15_foot_mint_green", "cars_1_15_foot_grey"],
+            [
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_grey",
+            ],
             ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
             ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_red"],
             ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_mint_green"],
             ["cars_1_15_foot_red", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
             ["cars_1_15_foot_grey", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_1CC", "cars_1_15_foot_mint_green", "cars_1_15_foot_mint_green"],
+            [
+                "cars_1_15_foot_1CC",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_mint_green",
+            ],
             ["cars_1_15_foot_mint_green", "cars_1_15_foot_red", "cars_1_15_foot_red"],
             ["cars_1_15_foot_blue", "cars_1_15_foot_blue", "cars_1_15_foot_blue"],
             ["cars_1_15_foot_blue", "cars_1_15_foot_grey", "cars_1_15_foot_blue"],
@@ -101,18 +109,78 @@ class DefaultCars32pxCargoSet(DefaultAutomobilesCargoSetBase):
         self.length = 32
         super().__init__(**kwargs)
         self.variants = [
-            ["cars_1_15_foot_mint_green", "cars_1_15_foot_mint_green", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_mint_green", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_red", "cars_1_15_foot_grey", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_grey", "cars_1_15_foot_grey", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_1CC", "cars_1_15_foot_mint_green", "cars_1_15_foot_mint_green", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_mint_green", "cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_blue", "cars_1_15_foot_blue", "cars_1_15_foot_blue", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_blue", "cars_1_15_foot_grey", "cars_1_15_foot_blue", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_blue", "cars_1_15_foot_blue", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_mint_green", "cars_1_15_foot_blue", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
+            [
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_1CC",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+            ],
         ]
 
 
@@ -121,13 +189,21 @@ class LowFloorCars24pxCargoSet(LowFloorAutomobilesCargoSetBase):
         self.length = 24
         super().__init__(**kwargs)
         self.variants = [
-            ["cars_1_15_foot_mint_green", "cars_1_15_foot_mint_green", "cars_1_15_foot_grey"],
+            [
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_grey",
+            ],
             ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
             ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_red"],
             ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_mint_green"],
             ["cars_1_15_foot_red", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
             ["cars_1_15_foot_grey", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_1CC", "cars_1_15_foot_mint_green", "cars_1_15_foot_mint_green"],
+            [
+                "cars_1_15_foot_1CC",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_mint_green",
+            ],
             ["cars_1_15_foot_mint_green", "cars_1_15_foot_red", "cars_1_15_foot_red"],
             ["cars_1_15_foot_blue", "cars_1_15_foot_blue", "cars_1_15_foot_blue"],
             ["cars_1_15_foot_blue", "cars_1_15_foot_grey", "cars_1_15_foot_blue"],
@@ -141,18 +217,78 @@ class LowFloorCars32pxCargoSet(LowFloorAutomobilesCargoSetBase):
         self.length = 32
         super().__init__(**kwargs)
         self.variants = [
-            ["cars_1_15_foot_mint_green", "cars_1_15_foot_mint_green", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_mint_green", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_red", "cars_1_15_foot_grey", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_grey", "cars_1_15_foot_grey", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_1CC", "cars_1_15_foot_mint_green", "cars_1_15_foot_mint_green", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_mint_green", "cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_blue", "cars_1_15_foot_blue", "cars_1_15_foot_blue", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_blue", "cars_1_15_foot_grey", "cars_1_15_foot_blue", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_blue", "cars_1_15_foot_blue", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_mint_green", "cars_1_15_foot_blue", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
+            [
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_1CC",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+            ],
         ]
 
 
@@ -182,13 +318,21 @@ class DoubleDeckCars24pxCargoSet(DoubleDeckAutomobilesCargoSetBase):
         self.length = 24
         super().__init__(**kwargs)
         self.variants = [
-            ["cars_1_15_foot_mint_green", "cars_1_15_foot_mint_green", "cars_1_15_foot_grey"],
+            [
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_grey",
+            ],
             ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
             ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_red"],
             ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_mint_green"],
             ["cars_1_15_foot_red", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
             ["cars_1_15_foot_grey", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_1CC", "cars_1_15_foot_mint_green", "cars_1_15_foot_mint_green"],
+            [
+                "cars_1_15_foot_1CC",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_mint_green",
+            ],
             ["cars_1_15_foot_mint_green", "cars_1_15_foot_red", "cars_1_15_foot_red"],
             ["cars_1_15_foot_blue", "cars_1_15_foot_blue", "cars_1_15_foot_blue"],
             ["cars_1_15_foot_blue", "cars_1_15_foot_grey", "cars_1_15_foot_blue"],
@@ -202,18 +346,78 @@ class DoubleDeckCars32pxCargoSet(DoubleDeckAutomobilesCargoSetBase):
         self.length = 32
         super().__init__(**kwargs)
         self.variants = [
-            ["cars_1_15_foot_mint_green", "cars_1_15_foot_mint_green", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_mint_green", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_red", "cars_1_15_foot_grey", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_grey", "cars_1_15_foot_grey", "cars_1_15_foot_grey", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_1CC", "cars_1_15_foot_mint_green", "cars_1_15_foot_mint_green", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_mint_green", "cars_1_15_foot_red", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_blue", "cars_1_15_foot_blue", "cars_1_15_foot_blue", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_blue", "cars_1_15_foot_grey", "cars_1_15_foot_blue", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_blue", "cars_1_15_foot_blue", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
-            ["cars_1_15_foot_mint_green", "cars_1_15_foot_blue", "cars_1_15_foot_red", "cars_1_15_foot_grey"],
+            [
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_1CC",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_grey",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+            ],
+            [
+                "cars_1_15_foot_mint_green",
+                "cars_1_15_foot_blue",
+                "cars_1_15_foot_red",
+                "cars_1_15_foot_grey",
+            ],
         ]
 
 
@@ -258,12 +462,12 @@ subtype_to_cargo_set_mapping = {
         DoubleDeckCars24pxCargoSet,
         DoubleDeckCars32pxCargoSet,
     ],
-    #"trucks": [
+    # "trucks": [
     #    Trucks16pxCargoSet,
     #    Trucks20pxCargoSet,
     #    Trucks24pxCargoSet,
     #    Trucks32pxCargoSet,
-    #],
+    # ],
 }
 
 
@@ -288,7 +492,9 @@ def main():
     # then register automobiles with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
-        GestaltGraphicsAutomobilesTransporter(liveries=None).cargo_label_mapping.values()
+        GestaltGraphicsAutomobilesTransporter(
+            liveries=None
+        ).cargo_label_mapping.values()
     ):
         # exclude DFLT, handled explicitly elsewhere
         if subtype_suffix != "DFLT":

@@ -76,5 +76,6 @@ def main():
     print(report_non_articulated_need_id_moving)
     """
 
+
 if __name__ == "__main__":
     main()

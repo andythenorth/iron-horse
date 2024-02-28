@@ -371,7 +371,7 @@ class Consist(object):
                 # otherwise pass through as is
                 result.append(stack_item)
         return result
-        #return utils.convert_flat_list_to_pairs_of_tuples(result)
+        # return utils.convert_flat_list_to_pairs_of_tuples(result)
 
     def get_name_as_property(self, unit_variant):
         # text filter in buy menu needs name as prop as of June 2023
@@ -562,7 +562,10 @@ class Consist(object):
     def dedicated_trailer_consists(self):
         # fetch dedicated trailer consists for this cab engine (if any)
         result = []
-        for consists in [self.roster.engine_consists_excluding_clones, self.roster.wagon_consists]:
+        for consists in [
+            self.roster.engine_consists_excluding_clones,
+            self.roster.wagon_consists,
+        ]:
             for consist in consists:
                 if getattr(consist, "cab_id", None) == self.id:
                     result.append(consist)
@@ -3795,7 +3798,9 @@ class DumpCarAggregateConsistType1(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = ["randomised_aggregate_dump_car",]
+        self.randomised_candidate_groups = [
+            "randomised_aggregate_dump_car",
+        ]
         self._joker = True
         # Graphics configuration
         # minimalist use of CC, so only one livery
@@ -3818,7 +3823,9 @@ class DumpCarAggregateConsistType2(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = ["randomised_aggregate_dump_car",]
+        self.randomised_candidate_groups = [
+            "randomised_aggregate_dump_car",
+        ]
         self._joker = True
         # Graphics configuration
         # minimalist use of CC, so only one livery
@@ -3841,7 +3848,9 @@ class DumpCarAggregateConsistType3(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = ["randomised_aggregate_dump_car",]
+        self.randomised_candidate_groups = [
+            "randomised_aggregate_dump_car",
+        ]
         self._joker = True
         # Graphics configuration
         # minimalist use of CC, so only one livery
@@ -3864,7 +3873,9 @@ class DumpCarAggregateConsistType4(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = ["randomised_aggregate_dump_car",]
+        self.randomised_candidate_groups = [
+            "randomised_aggregate_dump_car",
+        ]
         self._joker = True
         # Graphics configuration
         # minimalist use of CC, so only one livery
@@ -3887,7 +3898,9 @@ class DumpCarAggregateConsistType5(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = ["randomised_aggregate_dump_car",]
+        self.randomised_candidate_groups = [
+            "randomised_aggregate_dump_car",
+        ]
         self._joker = True
         # Graphics configuration
         # minimalist use of CC, so only one livery
@@ -3910,7 +3923,9 @@ class DumpCarAggregateConsistType6(DumpCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = ["randomised_aggregate_dump_car",]
+        self.randomised_candidate_groups = [
+            "randomised_aggregate_dump_car",
+        ]
         self._joker = True
         # Graphics configuration
         # minimalist use of CC, so only one livery
@@ -3935,7 +3950,9 @@ class DumpCarAggregateRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBa
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
             liveries=[
-                global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
             ],
         )
 
@@ -4882,6 +4899,7 @@ class HopperCarAggregateConsistBase(HopperCarConsistBase):
     """
     Base class for hopper for rock cargos, same refits as standard hopper, just a visual variant.
     """
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
@@ -4999,7 +5017,9 @@ class HopperCarAggregateConsistType3(HopperCarAggregateConsistBase):
         ]
 
 
-class HopperCarAggregateRandomisedConsist(RandomisedConsistMixin, HopperCarAggregateConsistBase):
+class HopperCarAggregateRandomisedConsist(
+    RandomisedConsistMixin, HopperCarAggregateConsistBase
+):
     """
     Random choice of aggregate hopper car sprite.
     """
@@ -5014,11 +5034,21 @@ class HopperCarAggregateRandomisedConsist(RandomisedConsistMixin, HopperCarAggre
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
             liveries=[
-                global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
-                global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
-                global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
-                global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
-                global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_7"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],

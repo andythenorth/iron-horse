@@ -92,12 +92,11 @@ def render_docs(
         doc_file.close()
 
 
-def render_docs_vehicle_details(
-    docs_output_path, doc_helper, consists, template_name
-):
+def render_docs_vehicle_details(docs_output_path, doc_helper, consists, template_name):
     # imports inside functions are generally avoided
     # but PageTemplateLoader is expensive to import and causes unnecessary overhead for Pool mapping when processing docs graphics
     from chameleon import PageTemplateLoader
+
     docs_templates = PageTemplateLoader(docs_src, format="text")
     template = docs_templates[template_name + ".pt"]
 

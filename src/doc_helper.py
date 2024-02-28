@@ -285,7 +285,9 @@ class DocHelper(object):
         # for vehicle_type, vehicle_consists in [engines, wagons]:
         # parse the engine and wagon consists into a consistent structure
         engines = ("engines", roster.engine_consists_excluding_clones)
-        wagon_consists = self.filter_out_randomised_wagon_consists(roster.wagon_consists)
+        wagon_consists = self.filter_out_randomised_wagon_consists(
+            roster.wagon_consists
+        )
         wagons = ("wagons", wagon_consists)
 
         # this code repeats for both engines and wagons, but with different source lists

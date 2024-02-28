@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
 
     consist = MailExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6350,
         gen=5,
         subtype="U",

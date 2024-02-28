@@ -57,7 +57,7 @@ def main(roster_id, **kwargs):
 
     consist = PassengerExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6380,
         gen=6,
         subtype="U",
@@ -73,4 +73,3 @@ def main(roster_id, **kwargs):
         suppress_roof_sprite=True,
         repeat=2,
     )
-

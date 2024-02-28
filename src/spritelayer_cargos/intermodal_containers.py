@@ -13,7 +13,9 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.base_id = "intermodal_containers"
-        self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(liveries=None)
+        self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
+            liveries=None
+        )
         self.provide_container_shadows = True
 
     @property
@@ -321,7 +323,9 @@ def main():
     # then register containers with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
-        GestaltGraphicsIntermodalContainerTransporters(liveries=None).cargo_label_mapping.values()
+        GestaltGraphicsIntermodalContainerTransporters(
+            liveries=None
+        ).cargo_label_mapping.values()
     ):
         # exclude DFLT, handled explicitly elsewhere
         if subtype_suffix != "DFLT":

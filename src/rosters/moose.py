@@ -40,7 +40,8 @@ engine_module_names = [
 ]
 
 # these can be alphabetised, the buy menu order is enforced in global constants
-wagon_modules_provided_by_other_rosters={}
+wagon_modules_provided_by_other_rosters = {}
+
 
 def main():
     return Roster(

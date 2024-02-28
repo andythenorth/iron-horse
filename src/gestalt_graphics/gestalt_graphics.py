@@ -6,6 +6,7 @@ import utils
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
+
 class GestaltGraphics(object):
     """
     Simple class, which is extended in subclasses to configure:
@@ -30,7 +31,9 @@ class GestaltGraphics(object):
         # ruleset may also be used for buy menu sprite processing
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         # optional - (not common) we can delegate to another spritesheet if we're doing e.g. different consist types, but recolouring the same base sprites
-        self.input_spritesheet_delegate_id = kwargs.get("input_spritesheet_delegate_id", None)
+        self.input_spritesheet_delegate_id = kwargs.get(
+            "input_spritesheet_delegate_id", None
+        )
 
     @property
     def nml_template(self):
@@ -71,9 +74,7 @@ class GestaltGraphics(object):
             dest_spriterows = pipeline.consist.buyable_variants[0:1]
         else:
             dest_spriterows = pipeline.consist.buyable_variants
-        for dest_spriterow_counter, buyable_variant in enumerate(
-            dest_spriterows
-        ):
+        for dest_spriterow_counter, buyable_variant in enumerate(dest_spriterows):
             source_vehicles_and_input_spriterow_nums = []
 
             for unit_counter, unit in enumerate(pipeline.consist.units):
@@ -510,9 +511,9 @@ class GestaltGraphicsCaboose(GestaltGraphics):
                 ),
             ]
 
-            row_config[
-                "source_vehicles_and_input_spriterow_nums"
-            ] = source_vehicles_and_input_spriterow_nums
+            row_config["source_vehicles_and_input_spriterow_nums"] = (
+                source_vehicles_and_input_spriterow_nums
+            )
             result.append(row_config)
         return result
 
