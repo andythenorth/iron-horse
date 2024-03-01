@@ -27,14 +27,14 @@ def main(roster_id, **kwargs):
         type=DieselRailcarCombineUnitMail,
         weight=18,
         chassis="railbus_swb_20px",
-        tail_light="railcar_24px_2",  # !!!!!!!!! CABBAGE
+        tail_light="railcar_20px_1",
     )
 
     consist.add_unit(
         type=DieselRailcarCombineUnitPax,
         weight=18,
         chassis="railbus_swb_20px",
-        tail_light="railcar_24px_2",  # !!!!!!!!! CABBAGE
+        tail_light="railcar_20px_1",
     )
 
     consist.description = (

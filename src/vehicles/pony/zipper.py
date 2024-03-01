@@ -27,14 +27,14 @@ def main(roster_id, **kwargs):
         type=DieselRailcarCombineUnitMail,
         weight=21,
         chassis="railbus_lwb_20px",
-        tail_light="railcar_24px_2",  # !!!!!!!!! CABBAGE
+        tail_light="railcar_20px_1",
     )
 
     consist.add_unit(
         type=DieselRailcarCombineUnitPax,
         weight=21,
         chassis="railbus_lwb_20px",
-        tail_light="railcar_24px_2",  # !!!!!!!!! CABBAGE
+        tail_light="railcar_20px_1",
     )
 
     consist.description = """It's the same donkey, but with a new saddle."""

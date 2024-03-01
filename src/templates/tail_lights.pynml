@@ -1,4 +1,4 @@
-<!--!
+    <!--!
     Separate repeats for 'auto' default tail lights and dedicated engine tail lights.
     These could be consolidated, they do similar things, but have different input list formats.
     TMWFTLB to consolidate, they rarely change, and it would demand more complexity.
@@ -9,7 +9,7 @@
                          offsets global_constants.default_spritesheet_offsets[vehicle_length]">
         template spriteset_tail_light_${pixel_length_as_str}_unflipped(y) {
                 //[left_x, upper_y, width, height, offset_x, offset_y]
-            <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_symmetric_unreversed">
+            <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
                 [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=False)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=False)[repeat.bounding_box.index][1]}]
             </tal:sprite>
         }
@@ -20,13 +20,13 @@
 </tal:auto_lengths>
 
 <tal:engine_consists repeat="engine [('railcar_32px_1', 8), ('railcar_32px_2', 8), ('railcar_32px_3', 8), ('railcar_32px_4', 8),
-                                     ('railcar_24px_1', 6), ('railcar_24px_2', 6), ('metro_32px_1', 8), ('hst_32px_1', 8),
+                                    ('railcar_20px_1', 5), ('railcar_24px_1', 6), ('metro_32px_1', 8), ('hst_32px_1', 8),
                                      ('very_high_speed_32px_1', 8), ('very_high_speed_32px_2', 8), ('very_high_speed_32px_3', 8)]">
     <tal:block define="vehicle_length str(engine[1]);
                        offsets global_constants.default_spritesheet_offsets[vehicle_length]">
         template spriteset_tail_light_${engine[0]}_unflipped(y) {
                 //[left_x, upper_y, width, height, offset_x, offset_y]
-            <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_symmetric_unreversed">
+            <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
                 [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=False)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=False)[repeat.bounding_box.index][1]}]
             </tal:sprite>
         }
@@ -40,7 +40,7 @@ spriteset(ss_tail_light_empty_unflipped, "${graphics_path}tail_lights/empty.png"
   spriteset_tail_light_32px_unflipped(10)
 }
 
-<tal:tail_lights repeat="tail_light ['empty', '8px', '12px', '16px', '20px', '24px', '32px', 'hst_32px_1', 'metro_32px_1', 'railcar_24px_1', 'railcar_24px_2', 'railcar_32px_1', 'railcar_32px_2', 'railcar_32px_3', 'railcar_32px_4', 'very_high_speed_32px_1', 'very_high_speed_32px_2', 'very_high_speed_32px_3']">
+<tal:tail_lights repeat="tail_light ['empty', '8px', '12px', '16px', '20px', '24px', '32px', 'hst_32px_1', 'metro_32px_1', 'railcar_24px_1', 'railcar_20px_1', 'railcar_32px_1', 'railcar_32px_2', 'railcar_32px_3', 'railcar_32px_4', 'very_high_speed_32px_1', 'very_high_speed_32px_2', 'very_high_speed_32px_3']">
     switch (FEAT_TRAINS, SELF, switch_graphics_layer_tail_light_${tail_light},
         [
             STORE_TEMP(PALETTE_USE_DEFAULT, 0x100),
