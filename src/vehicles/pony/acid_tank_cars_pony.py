@@ -32,7 +32,7 @@ def main(roster_id, **kwargs):
     consist = TankCarAcidConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=27860,
+        base_numeric_id=25910,
         gen=3,
         subtype="B",
         base_track_type_name="NG",

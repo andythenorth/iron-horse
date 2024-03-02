@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = HopperCarMGRTopHoodConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=20240,
+        base_numeric_id=36280,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -41,7 +41,7 @@ def main(roster_id, **kwargs):
     consist = HopperCarMGRTopHoodConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=20260,
+        base_numeric_id=36300,
         gen=5,
         subtype="B",
         sprites_complete=True,

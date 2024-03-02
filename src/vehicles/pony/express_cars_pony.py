@@ -110,7 +110,7 @@ def main(roster_id, **kwargs):
     consist = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=30610,
+        base_numeric_id=24290,
         gen=5,
         subtype="A",
         sprites_complete=True,

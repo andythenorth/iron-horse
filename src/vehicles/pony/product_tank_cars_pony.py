@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = TankCarProductConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=23980,
+        base_numeric_id=26280,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -74,7 +74,7 @@ def main(roster_id, **kwargs):
     consist = TankCarProductConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=23500,
+        base_numeric_id=27240,
         gen=4,
         subtype="C",
         sprites_complete=True,

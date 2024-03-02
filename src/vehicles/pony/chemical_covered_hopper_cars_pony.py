@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=26850,
+        base_numeric_id=37850,
         gen=3,
         subtype="A",
         base_track_type_name="NG",
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=26870,
+        base_numeric_id=39870,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=26880,
+        base_numeric_id=36880,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -78,7 +78,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=26900,
+        base_numeric_id=36900,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -111,7 +111,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarChemicalConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=26920,
+        base_numeric_id=36920,
         gen=5,
         subtype="C",
         sprites_complete=True,

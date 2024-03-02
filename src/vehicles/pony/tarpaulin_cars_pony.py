@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarTarpaulinConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=25540,
+        base_numeric_id=35610,
         gen=5,
         subtype="C",
         sprites_complete=True,

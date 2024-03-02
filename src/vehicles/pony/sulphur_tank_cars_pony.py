@@ -57,7 +57,7 @@ def main(roster_id, **kwargs):
     consist = TankCarSulphurConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=25790,
+        base_numeric_id=27850,
         gen=3,
         subtype="A",
         sprites_complete=True,

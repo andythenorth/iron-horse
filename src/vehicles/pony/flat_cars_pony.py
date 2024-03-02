@@ -46,7 +46,7 @@ def main(roster_id, **kwargs):
     consist = FlatCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=21180,
+        base_numeric_id=30460,
         gen=1,
         subtype="A",
         sprites_complete=True,

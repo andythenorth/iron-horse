@@ -33,7 +33,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=34610,
+        base_numeric_id=36610,
         gen=4,
         subtype="A",
         sprites_complete=True,

@@ -30,7 +30,7 @@ def main(roster_id, **kwargs):
     consist = HopperCarMGRConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=30250,
+        base_numeric_id=36260,
         gen=5,
         subtype="A",
         sprites_complete=True,

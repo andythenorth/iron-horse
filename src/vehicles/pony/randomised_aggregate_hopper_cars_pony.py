@@ -134,7 +134,7 @@ def main(roster_id, **kwargs):
     consist = HopperCarAggregateRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=20360,
+        base_numeric_id=21970,
         gen=5,
         subtype="C",
         sprites_complete=True,

@@ -338,13 +338,15 @@ class Roster(object):
                 if numeric_id in numeric_id_defender:
                     colliding_consist = numeric_id_defender[numeric_id]
                     # there is a specific case of reused vehicles that are allowed to overlap IDs (they will be grf-independent, and the compile doesn't actually care)
-                    # it should be enough to just check the base_id, as both consists should then have been instantiated from the same source module
+                    # if base_id matches both consists have been instantiated from the same source module...
                     if hasattr(consist, "base_id"):
                         if (
                             getattr(colliding_consist, "base_id", None)
                             == consist.base_id
                         ):
-                            continue
+                            # it's fine if both consists are then in different rosters, as they will not conflict
+                            if colliding_consist.roster.id != consist.roster.id:
+                                continue
                     raise BaseException(
                         "Error: consist "
                         + consist.id

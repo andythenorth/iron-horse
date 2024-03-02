@@ -46,7 +46,7 @@ def main(roster_id, **kwargs):
     consist = HopperCarAggregateConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=20290,
+        base_numeric_id=22980,
         gen=5,
         subtype="B",
         sprites_complete=True,

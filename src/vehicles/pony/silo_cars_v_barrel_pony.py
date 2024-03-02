@@ -62,7 +62,7 @@ def main(roster_id, **kwargs):
     consist = SiloCarVBarrelConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=30560,
+        base_numeric_id=36560,
         gen=5,
         subtype="C",
         sprites_complete=True,

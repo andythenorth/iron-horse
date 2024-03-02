@@ -53,7 +53,7 @@ def main(roster_id, **kwargs):
     consist = CoveredHopperCarDryPowderConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=23250,
+        base_numeric_id=36320,
         gen=5,
         subtype="B",
         sprites_complete=True,
