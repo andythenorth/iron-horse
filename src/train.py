@@ -7798,7 +7798,6 @@ class Train(object):
                 reversed,
                 str(self.vehicle_length),
                 "8",
-                "unflipped",
             ]
         )
         anim_flag = (

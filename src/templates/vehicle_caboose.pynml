@@ -1,7 +1,7 @@
 <!--! this is the template for caboose cars -->
 
 <tal:caboose_variants repeat="caboose_variant consist.gestalt_graphics.spriterow_labels">
-    spriteset(${vehicle.id}_ss_unflipped_${caboose_variant}, "${graphics_path}${consist.id}.png") {
+    spriteset(${vehicle.id}_ss_${caboose_variant}, "${graphics_path}${consist.id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', 10 + (repeat.caboose_variant.index * 30))}
     }
 </tal:caboose_variants>
@@ -10,7 +10,7 @@
     // ${caboose_family}
     random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_caboose_family_${caboose_family[0]}) {
         <tal:caboose_family_variants repeat="caboose_variant caboose_family[1]">
-            1: return ${vehicle.id}_ss_unflipped_${caboose_variant};
+            1: return ${vehicle.id}_ss_${caboose_variant};
         </tal:caboose_family_variants>
     }
 </tal:caboose_families>

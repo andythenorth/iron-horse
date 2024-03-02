@@ -1,5 +1,5 @@
 <!--! all spritelayer cargos share the same 'empty' spriteset -->
 spriteset(ss_global_empty, "src/graphics/spriterow_template.png") {
-    spriteset_template_asymmetric_unreversed_8_8_unflipped(10, NOANIM)
+    spriteset_template_asymmetric_unreversed_8_8(10, NOANIM)
 }
 

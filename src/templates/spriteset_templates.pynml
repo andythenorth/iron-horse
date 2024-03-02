@@ -3,37 +3,32 @@
       'flipped' is user flipping vehicle in depot
       don't conflate them :) -->
 <tal:lengths repeat="vehicle_length [2, 3, 4, 5, 6, 7, 8]">
-    <tal:user_flipped repeat="flipped [(False, 'unflipped'), (True, 'flipped')]">
-        template spriteset_template_asymmetric_unreversed_${vehicle_length}_8_${flipped[1]}(y, ANIM_FLAG) {
-                //[left_x, upper_y, width, height, offset_x, offset_y]
-            <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
-                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][1]}, ANIM_FLAG]
-            </tal:sprite>
-        }
+    template spriteset_template_asymmetric_unreversed_${vehicle_length}_8(y, ANIM_FLAG) {
+            //[left_x, upper_y, width, height, offset_x, offset_y]
+        <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
+            [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length)[repeat.bounding_box.index][1]}, ANIM_FLAG]
+        </tal:sprite>
+    }
 
-        template spriteset_template_asymmetric_reversed_${vehicle_length}_8_${flipped[1]}(y, ANIM_FLAG) {
+    template spriteset_template_asymmetric_reversed_${vehicle_length}_8(y, ANIM_FLAG) {
+            //[left_x, upper_y, width, height, offset_x, offset_y]
+        <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_reversed">
+            [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length)[repeat.bounding_box.index][1]}, ANIM_FLAG]
+        </tal:sprite>
+    }
+    <tal:symmetrical define="bb_slice slice(4,8) if vehicle_length == 8 else slice(0,8)">
+        template spriteset_template_symmetric_unreversed_${vehicle_length}_8(y, ANIM_FLAG) {
                 //[left_x, upper_y, width, height, offset_x, offset_y]
-            <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_reversed">
-                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][1]}, ANIM_FLAG]
+            <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_symmetric_unreversed[bb_slice]">
+                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length)[repeat.bounding_box.index][1]}, ANIM_FLAG]
             </tal:sprite>
         }
-        <!--! 8/8 sprites don't need adjusted offsets when flipped, so just provide 4 realsprites for 8/8 symmetric
-              reduces total sprite count, grf file size and compile time
-              non-8/8 sprites will need offsets adjusted if flipped, so have to provide all 8 angles -->
-        <tal:symmetrical define="bb_slice slice(4,8) if vehicle_length == 8 else slice(0,8)">
-            template spriteset_template_symmetric_unreversed_${vehicle_length}_8_${flipped[1]}(y, ANIM_FLAG) {
-                    //[left_x, upper_y, width, height, offset_x, offset_y]
-                <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_symmetric_unreversed[bb_slice]">
-                    [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][1]}, ANIM_FLAG]
-                </tal:sprite>
-            }
-        </tal:symmetrical>
-    </tal:user_flipped>
+    </tal:symmetrical>
 </tal:lengths>
 
 <!--! reusable vehicle 'empty' spriteset -->
 spriteset(ss_global_empty_vehicle, "src/graphics/spriterow_template.png") {
-    spriteset_template_asymmetric_unreversed_8_8_unflipped(10, NOANIM)
+    spriteset_template_asymmetric_unreversed_8_8(10, NOANIM)
 }
 
 // buy menu spriteset templates

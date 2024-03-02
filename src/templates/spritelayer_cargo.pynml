@@ -3,14 +3,14 @@
       doing a block of contiguous spritesets causes the nml spritegroups limit to be hit (probably ran out of real action 2 IDs) -->
 <tal:cargo_sets repeat="cargo_set spritelayer_cargo.cargo_sets">
     <tal:variants repeat="variant cargo_set.variants">
-        spriteset(ss_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index}_unflipped, "${graphics_path}${cargo_set.id(spritelayer_cargo)}.png") {
-            spriteset_template_asymmetric_unreversed_${int(cargo_set.length / 4)}_8_unflipped(10 + ${repeat.variant.index * 30}, NOANIM)
+        spriteset(ss_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index}, "${graphics_path}${cargo_set.id(spritelayer_cargo)}.png") {
+            spriteset_template_asymmetric_unreversed_${int(cargo_set.length / 4)}_8(10 + ${repeat.variant.index * 30}, NOANIM)
         }
     </tal:variants>
     <!--! if bits are ever needed for other random features, it's probably possible to only re-randomise specific bits on new load -->
     random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.id}_random_${cargo_set.subtype}_${cargo_set.subtype_suffix}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
         <tal:cargo_set_variants repeat="variant cargo_set.variants">
-                1: return ss_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index}_unflipped;
+                1: return ss_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index};
         </tal:cargo_set_variants>
     }
 </tal:cargo_sets>
