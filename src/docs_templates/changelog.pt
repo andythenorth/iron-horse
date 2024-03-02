@@ -3,6 +3,30 @@ Changelog
 
 
 ------------
+3.8.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.8.0.
+
+
+*Changes*
+
+- added Chronos high speed mail railcar (and trailers), 120 mph, 2800 hp, available around 1991
+- added liveries for:
+    -  gen 5 High Speed Driving Van Trailer
+    - gen 5 Mail Vans
+
+
+*Fixes*
+
+- poor logic in a validation check caused a handful of wagons to have colliding numeric IDs
+    - some wagons may have been missing from the game
+    - some wagons would have been in wrong buy menu order, and/or variant groupings
+- hide type 2 reefer cars in simplified gameplay
+
+
+------------
 3.7.1 Release
 ------------
 
@@ -19,8 +43,8 @@ Changelog
 
 Not savegame compatible with Iron Horse releases before 3.3.0.
 
-*Changes*
 
+*Changes*
 
 - added wagon types
     - Enclosed Vehicle Transporters (variant of Vehicle Transporters)
@@ -71,7 +95,6 @@ Not savegame compatible with Iron Horse releases before 3.3.0.
 
 
 *Changes*
-
 
 - added Intercity Express trains (very high speed, with distributed traction)
     - Alizé (inspired by TGV), 155 mph, 1900 hp per unit, available around 1987
