@@ -289,17 +289,6 @@ class Consist(object):
         return result
 
     @property
-    def reversed_variants(self):
-        print("CABBAGE 99 reversed_variants deprecated")
-        # Handles 'unreversed' and optional 'reversed' variant, which if provided, will be chosen at random per consist
-        # NOT the same as 'flipped' which is a player choice in-game, and handled separately
-        # Previous model_variant approach for this was deprecated March 2018, needlessly complicated
-        result = ["unreversed"]
-        if self.random_reverse:
-            result.append("reversed")
-        return result
-
-    @property
     def str_name_suffix(self):
         if getattr(self, "_str_name_suffix", None) is not None:
             return self._str_name_suffix
