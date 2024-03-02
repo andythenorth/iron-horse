@@ -289,6 +289,37 @@ def main():
                     ("COLOUR_YELLOW", "COLOUR_BLUE"),
                 ],
             },
+            # the default "nothing" livery
+            "VANILLA": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                ],
+            },
+        },
+        # lists of 2-tuple (livery_name, relative_spriterow_num) for pax / mail vehicles
+        # buy menu order will match list order
+        # - livery name comes from roster engine_and_pax_mail_car_liveries
+        # - relative_spriterow_num allows reordering sprites relative to spritesheet
+        pax_mail_livery_groups={
+            "default_pax_liveries": [("VANILLA", 0)],
+            "suburban_pax_liveries": [
+                ("VANILLA", 0),
+            ],
+            "default_mail_liveries": [
+                ("VANILLA", 0),
+            ],
+            "diesel_railcar_mail_liveries": [
+                ("VANILLA", 0),
+            ],
+            "electric_railcar_mail_liveries": [
+                ("VANILLA", 0),
+            ],
+            "default_metro_liveries": [
+                ("VANILLA", 0),
+            ],
         },
         engine_module_names=engine_module_names,
         wagon_modules_provided_by_other_rosters=wagon_modules_provided_by_other_rosters,

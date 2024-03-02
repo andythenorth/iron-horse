@@ -1029,6 +1029,14 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
                 buyable_variant.relative_spriterow_num
                 * self.num_load_state_or_similar_spriterows
             )
+
+        if buyable_variant.consist.id in ["chronos"]:
+            print("CABBAGE 7774")
+            print(buyable_variant.consist.id)
+            print("buyable_variant.buyable_variant_num", buyable_variant.buyable_variant_num)
+            print("unit_variant_row_num", unit_variant_row_num)
+            print("============")
+
         return unit_variant_row_num
 
 

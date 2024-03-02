@@ -278,11 +278,11 @@ class Roster(object):
         result = []
         # we can optionally specify liveries per consist by passing the liveries keyword when defining the vehicle, otherwise use the default for this consist subclass
         livery_group_name = kwargs.get("liveries", default_livery_group_name)
-        # !! CABBAGE - the get() is used to support unfinished rosters which otherwise fail on missing pax_mail_livery_groups keyword
-        for livery in self.pax_mail_livery_groups.get(livery_group_name, []):
-            livery_CABBAGE = self.engine_and_pax_mail_car_liveries[livery[0]].copy()
-            livery_CABBAGE["relative_spriterow_num"] = livery[1]
-            result.append(livery_CABBAGE)
+        # will fail if the livery group is not defined in the roster
+        for livery in self.pax_mail_livery_groups[livery_group_name]:
+            livery_result = self.engine_and_pax_mail_car_liveries[livery[0]].copy()
+            livery_result["relative_spriterow_num"] = livery[1]
+            result.append(livery_result)
         return result
 
     def intro_year_ranges(self, base_track_type_name):

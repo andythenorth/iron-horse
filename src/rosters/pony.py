@@ -146,7 +146,7 @@ engine_module_names = [
     "high_flyer",
     "sunshine_coast",
     "olympic",
-    #"chronos",# unfinished, nerfed
+    "chronos",
     #"nimbus",# unfinished, nerfed
     # brit high speed pax
     "firebird",
@@ -549,7 +549,7 @@ def main():
             },
         },
         # lists of 2-tuple (livery_name, relative_spriterow_num) for pax / mail vehicles
-        # buy menu order will match liast order
+        # buy menu order will match list order
         # - livery name comes from roster engine_and_pax_mail_car_liveries
         # - relative_spriterow_num allows reordering sprites relative to spritesheet
         pax_mail_livery_groups={
