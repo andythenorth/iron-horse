@@ -4,50 +4,67 @@
     TMWFTLB to consolidate, they rarely change, and it would demand more complexity.
 -->
 
-<tal:auto_lengths repeat="vehicle_length global_constants.default_spritesheet_offsets.keys()">
-    <tal:block define="pixel_length_as_str str(int(vehicle_length) * 4) + 'px';
-                         offsets global_constants.default_spritesheet_offsets[vehicle_length]">
-        template spriteset_tail_light_${pixel_length_as_str}(y) {
-                //[left_x, upper_y, width, height, offset_x, offset_y]
-            <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
-                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=False)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=False)[repeat.bounding_box.index][1]}]
-            </tal:sprite>
-        }
-        spriteset(ss_tail_light_${pixel_length_as_str}, "${graphics_path}tail_lights/${pixel_length_as_str}.png") {
-          spriteset_tail_light_${pixel_length_as_str}(10)
-        }
-    </tal:block>
-</tal:auto_lengths>
+<!--! OpenTTD 13 added support for automatically adjusting offsets for non 8/8 vehicles that are flipped in depot,
+      but we need to explicitly provide offsets here, because the tail light needs to remains in the same place, even if the vehicle is flipped -->
+<tal:flipped_state repeat="flipped_state ['unflipped', 'flipped']">
+    <tal:auto_lengths repeat="vehicle_length global_constants.default_spritesheet_offsets.keys()">
+        <tal:block define="pixel_length_as_str str(int(vehicle_length) * 4) + 'px';
+                             offsets global_constants.default_spritesheet_offsets[vehicle_length]">
+                template spriteset_tail_light_${pixel_length_as_str}_${flipped_state}(y) {
+                        //[left_x, upper_y, width, height, offset_x, offset_y]
+                    <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
+                        [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length, flipped_state)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped_state)[repeat.bounding_box.index][1]}]
+                    </tal:sprite>
+                }
+                spriteset(ss_tail_light_${pixel_length_as_str}_${flipped_state}, "${graphics_path}tail_lights/${pixel_length_as_str}.png") {
+                  spriteset_tail_light_${pixel_length_as_str}_${flipped_state}(10)
+                }
+        </tal:block>
+    </tal:auto_lengths>
 
-<tal:engine_consists repeat="engine [('railcar_32px_1', 8), ('railcar_32px_2', 8), ('railcar_32px_3', 8), ('railcar_32px_4', 8),
-                                    ('railcar_20px_1', 5), ('railcar_24px_1', 6), ('metro_32px_1', 8), ('hst_32px_1', 8),
-                                     ('very_high_speed_32px_1', 8), ('very_high_speed_32px_2', 8), ('very_high_speed_32px_3', 8)]">
-    <tal:block define="vehicle_length str(engine[1]);
-                       offsets global_constants.default_spritesheet_offsets[vehicle_length]">
-        template spriteset_tail_light_${engine[0]}(y) {
-                //[left_x, upper_y, width, height, offset_x, offset_y]
-            <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
-                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=False)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=False)[repeat.bounding_box.index][1]}]
-            </tal:sprite>
-        }
-        spriteset(ss_tail_light_${engine[0]}, "${graphics_path}tail_lights/${engine[0]}.png") {
-          spriteset_tail_light_${engine[0]}(10)
-        }
-    </tal:block>
-</tal:engine_consists>
+    <tal:engine_consists repeat="engine [('railcar_32px_1', 8), ('railcar_32px_2', 8), ('railcar_32px_3', 8), ('railcar_32px_4', 8),
+                                        ('railcar_20px_1', 5), ('railcar_24px_1', 6), ('metro_32px_1', 8), ('hst_32px_1', 8),
+                                         ('very_high_speed_32px_1', 8), ('very_high_speed_32px_2', 8), ('very_high_speed_32px_3', 8)]">
+        <tal:block define="vehicle_length str(engine[1]);
+                           offsets global_constants.default_spritesheet_offsets[vehicle_length]">
+            template spriteset_tail_light_${engine[0]}_${flipped_state}(y) {
+                    //[left_x, upper_y, width, height, offset_x, offset_y]
+                <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
+                    [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length, flipped_state)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped_state)[repeat.bounding_box.index][1]}]
+                </tal:sprite>
+            }
+            spriteset(ss_tail_light_${engine[0]}_${flipped_state}, "${graphics_path}tail_lights/${engine[0]}.png") {
+              spriteset_tail_light_${engine[0]}_${flipped_state}(10)
+            }
+        </tal:block>
+    </tal:engine_consists>
+</tal:flipped_state>
 
-spriteset(ss_tail_light_empty, "${graphics_path}tail_lights/empty.png") {
-  spriteset_tail_light_32px(10)
+spriteset(ss_tail_light_empty_unflipped, "${graphics_path}tail_lights/empty.png") {
+    spriteset_tail_light_32px_unflipped(10)
+}
+spriteset(ss_tail_light_empty_flipped, "${graphics_path}tail_lights/empty.png") {
+    spriteset_tail_light_32px_flipped(10)
+}
+
+<!--! procedure for figuring out whether to show tail light unflipped (0), flipped (1), or empty (2) -->
+
+switch (FEAT_TRAINS, SELF, switch_graphics_tail_light_check_flip, vehicle_is_flipped) {
+    1: return 1;
+    return 0;
+}
+switch (FEAT_TRAINS, SELF, switch_graphics_tail_light, position_in_consist_from_end) {
+    0: return switch_graphics_tail_light_check_flip;
+    return 2;
 }
 
 <tal:tail_lights repeat="tail_light ['empty', '8px', '12px', '16px', '20px', '24px', '32px', 'hst_32px_1', 'metro_32px_1', 'railcar_24px_1', 'railcar_20px_1', 'railcar_32px_1', 'railcar_32px_2', 'railcar_32px_3', 'railcar_32px_4', 'very_high_speed_32px_1', 'very_high_speed_32px_2', 'very_high_speed_32px_3']">
-    switch (FEAT_TRAINS, SELF, switch_graphics_layer_tail_light_${tail_light},
-        [
-            STORE_TEMP(PALETTE_USE_DEFAULT, 0x100),
-            position_in_consist_from_end
-        ]
-    ) {
-        0: return ss_tail_light_${tail_light};
-        1: return ss_tail_light_empty;
+    switch (FEAT_TRAINS, SELF, switch_graphics_layer_tail_light_${tail_light}, [
+                STORE_TEMP(PALETTE_USE_DEFAULT, 0x100),
+                switch_graphics_tail_light()
+            ]) {
+        0: return ss_tail_light_${tail_light}_unflipped;
+        1: return ss_tail_light_${tail_light}_flipped;
+        2: return ss_tail_light_empty_unflipped;
     }
 </tal:tail_lights>
