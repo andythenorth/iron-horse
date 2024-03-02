@@ -3,6 +3,16 @@ Changelog
 
 
 ------------
+3.7.1 Release
+------------
+
+
+*Fixes*
+
+- symmetrical vehicles of length less than 8/8 were being drawn in the wrong position in many cases
+
+
+------------
 3.7.0 Release
 ------------
 
