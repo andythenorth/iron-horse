@@ -2,16 +2,16 @@
 
 // default graphics chain
 spriteset(${vehicle.id}_ss_unflipped_unreversed, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name_2('unreversed', 10)}
+    ${vehicle.get_spriteset_template_name('unreversed', 10)}
 }
 spriteset(${vehicle.id}_ss_flipped_unreversed, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name_2('unreversed', 10)}
+    ${vehicle.get_spriteset_template_name('unreversed', 10)}
 }
 spriteset(${vehicle.id}_ss_unflipped_reversed, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name_2('reversed', 10)}
+    ${vehicle.get_spriteset_template_name('reversed', 10)}
 }
 spriteset(${vehicle.id}_ss_flipped_reversed, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name_2('reversed', 10)}
+    ${vehicle.get_spriteset_template_name('reversed', 10)}
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_last, position_in_consist_from_end) {

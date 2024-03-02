@@ -10,7 +10,7 @@
           hence the row offset of 60, not 30
     -->
     spriteset(${vehicle.id}_ss_${position_variant}, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (repeat.position_variant.index * 60))}
+        ${vehicle.get_spriteset_template_name('unreversed', 10 + (repeat.position_variant.index * 60))}
     }
 </tal:position_variants>
 

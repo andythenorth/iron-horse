@@ -7804,7 +7804,7 @@ class Train(object):
         )
         return expression_template.substitute(unit_offset=unit_offset)
 
-    def get_spriteset_template_name_2(self, reversed, y):
+    def get_spriteset_template_name(self, reversed, y):
         template_name = "_".join(
             [
                 "spriteset_template",

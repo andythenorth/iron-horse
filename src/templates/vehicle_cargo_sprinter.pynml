@@ -19,10 +19,10 @@
 
 // base platform graphics chain
 spriteset(${vehicle.id}_ss_unflipped_unreversed, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name_2('unreversed', 10)}
+    ${vehicle.get_spriteset_template_name('unreversed', 10)}
 }
 spriteset(${vehicle.id}_ss_masked_overlay_unflipped_unreversed, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name_2('unreversed', 40)}
+    ${vehicle.get_spriteset_template_name('unreversed', 40)}
 }
 
 // switch layers: base platform / containers

@@ -7,7 +7,7 @@
 
 <tal:weathered_variants repeat="weathered_variant consist.gestalt_graphics.weathered_variants">
     spriteset(${vehicle.id}_ss_${weathered_variant}, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (repeat.weathered_variant.index * 30))}
+        ${vehicle.get_spriteset_template_name('unreversed', 10 + (repeat.weathered_variant.index * 30))}
     }
 </tal:weathered_variants>
 

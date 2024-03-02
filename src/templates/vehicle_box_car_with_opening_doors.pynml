@@ -3,10 +3,10 @@
 <tal:weathered_variants repeat="weathered_variant consist.gestalt_graphics.weathered_variants">
     // default graphics chain
     spriteset(${vehicle.id}_ss_${weathered_variant}_doors_closed, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (vehicle.spriterow_num * 30) + (repeat.weathered_variant.index * 60))}
+        ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.spriterow_num * 30) + (repeat.weathered_variant.index * 60))}
     }
     spriteset(${vehicle.id}_ss_${weathered_variant}_doors_open, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (vehicle.spriterow_num * 30) + (repeat.weathered_variant.index * 60) + 30)}
+        ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.spriterow_num * 30) + (repeat.weathered_variant.index * 60) + 30)}
     }
 
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_${weathered_variant},

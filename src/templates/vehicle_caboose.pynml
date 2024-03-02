@@ -2,7 +2,7 @@
 
 <tal:caboose_variants repeat="caboose_variant consist.gestalt_graphics.spriterow_labels">
     spriteset(${vehicle.id}_ss_unflipped_${caboose_variant}, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (repeat.caboose_variant.index * 30))}
+        ${vehicle.get_spriteset_template_name('unreversed', 10 + (repeat.caboose_variant.index * 30))}
     }
 </tal:caboose_variants>
 

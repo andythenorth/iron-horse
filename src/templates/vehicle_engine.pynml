@@ -3,7 +3,7 @@
 <!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
 <tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
     spriteset(${vehicle.id}_ss_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (repeat.livery.index * 30) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 30))}
+        ${vehicle.get_spriteset_template_name('unreversed', 10 + (repeat.livery.index * 30) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 30))}
     }
 </tal:liveries>
 
@@ -17,7 +17,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery, vehicle_type_id
 <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
     <!--! optional decor sprites - as of Mar 2023 this is only intended for snowploughs on single units, and won't handle articulated consists  -->
     spriteset(${vehicle.id}_ss_decor, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (consist.decor_spriterow_num * 30))}
+        ${vehicle.get_spriteset_template_name('unreversed', 10 + (consist.decor_spriterow_num * 30))}
     }
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_decor, random_bits_engine_show_decor()) {
         1: return ${vehicle.id}_ss_decor;
@@ -29,7 +29,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery, vehicle_type_id
     <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
     <tal:pantographs repeat="pantograph_state ['down', 'up']">
         spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
-            ${vehicle.get_spriteset_template_name_2('unreversed', 10 + (vehicle.spriterow_num * 30))}
+            ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.spriterow_num * 30))}
         }
     </tal:pantographs>
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
