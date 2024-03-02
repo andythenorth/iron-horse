@@ -51,15 +51,8 @@ def get_docs_url():
     return "/".join(result)
 
 
-def get_offsets(length, flipped_state=None):
-    # offsets can also be over-ridden on a per-model basis by providing this property in the model class
-    base_offsets = global_constants.default_spritesheet_offsets[str(length)]
-    if flipped_state == "flipped":
-        flipped_offsets = list(base_offsets[4:8])
-        flipped_offsets.extend(base_offsets[0:4])
-        return flipped_offsets
-    else:
-        return base_offsets
+def get_offsets(length):
+    return global_constants.default_spritesheet_offsets[str(length)]
 
 
 def unpack_colour(colour_name, cc_to_remap):

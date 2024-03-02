@@ -34,7 +34,7 @@ def main(roster_id, **kwargs):
         type=DieselRailcarCombineUnitPax,
         weight=20,
         chassis="railbus_lwb_20px",
-        tail_light="railcar_20px_1",
+        tail_light="railcar_20px_2",
     )
 
     consist.description = """Patience is the virtue of the donkeys."""
