@@ -2,8 +2,8 @@
 <tal:spritesets repeat="spriteset_data consist.gestalt_graphics.unique_spritesets">
     <!--! spriteset loops got too complex in the templates, with livery, empty state, cargo loading, cargo loaded, and random variants
           so I moved the logic for spritesets into the gestalt, and simply render out all from a list with a trivial loop -->
-    spriteset(${vehicle.id}_ss_${spriteset_data[0]}_${spriteset_data[1]}, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', spriteset_data[1], spriteset_data[2])}
+    spriteset(${vehicle.id}_ss_${spriteset_data[0]}, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name_2('unreversed', spriteset_data[1])}
     }
     <!--! spritegroups aren't used here, direct to spriteset -->
 </tal:spritesets>
@@ -11,15 +11,12 @@
 <tal:spritelayer_vehicle_layers repeat="vehicle_spritelayer_name consist.gestalt_graphics.vehicle_spritelayer_names">
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${vehicle_spritelayer_name}_position_in_consist_entry_point,
         [
-            switch_graphics_automobile_transporter_ruleset_${consist.gestalt_graphics.consist_ruleset}()
-            + (10 * vehicle_is_flipped)
+            10 + switch_graphics_automobile_transporter_ruleset_${consist.gestalt_graphics.consist_ruleset}()
         ]
     ) {
-        <tal:flip_state repeat="flip_state ['unflipped', 'flipped']">
-            <tal:position_ruleset repeat="position_variant consist.gestalt_graphics.position_variants">
-                ${repeat.position_variant.index + (10 if flip_state == 'flipped' else 0)}: ${vehicle.id}_ss_${vehicle_spritelayer_name}_${position_variant}_${flip_state};
-            </tal:position_ruleset>
-        </tal:flip_state>
+        <tal:position_ruleset repeat="position_variant consist.gestalt_graphics.position_variants">
+            ${10 + repeat.position_variant.index}: ${vehicle.id}_ss_${vehicle_spritelayer_name}_${position_variant};
+        </tal:position_ruleset>
     }
 </tal:spritelayer_vehicle_layers>
 

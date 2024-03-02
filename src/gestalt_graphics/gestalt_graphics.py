@@ -753,20 +753,18 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         row_height = graphics_constants.spriterow_height
 
         result = []
-        for flipped in ["unflipped", "flipped"]:
-            start_y_cumulative = graphics_constants.spritesheet_top_margin
+        start_y_cumulative = graphics_constants.spritesheet_top_margin
 
-            # add rows for empty sprite
-            for variant in self.position_variants:
-                for vehicle_spritelayer_name in self.vehicle_spritelayer_names:
-                    result.append(
-                        [
-                            vehicle_spritelayer_name + "_" + variant,
-                            flipped,
-                            start_y_cumulative,
-                        ]
-                    )
-                    start_y_cumulative += row_height
+        # add rows for empty sprite
+        for variant in self.position_variants:
+            for vehicle_spritelayer_name in self.vehicle_spritelayer_names:
+                result.append(
+                    [
+                        vehicle_spritelayer_name + "_" + variant,
+                        start_y_cumulative,
+                    ]
+                )
+                start_y_cumulative += row_height
         return result
 
     """
