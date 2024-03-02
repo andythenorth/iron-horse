@@ -11,7 +11,7 @@ def main(roster_id, **kwargs):
         gen=5,
         subtype="U",
         cab_id="chronos",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(

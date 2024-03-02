@@ -1676,10 +1676,10 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
         else:
             self.roof_type = "pax_mail_smooth"
         # position variants
+        # * unit with two cabs (will never be used if the specific consist is articulated)
         # * unit with driving cab front end
         # * unit with driving cab rear end
         # * unit with no cabs (center car)
-        # * special unit with no cabs (center car)
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         liveries = self.roster.get_pax_mail_liveries("default_mail_liveries", **kwargs)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
