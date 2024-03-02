@@ -3,6 +3,59 @@ Changelog
 
 
 ------------
+3.7.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.3.0.
+
+*Changes*
+
+
+- added wagon types
+    - Enclosed Vehicle Transporters (variant of Vehicle Transporters)
+    - MGR Hood Hoppers (variant of MGR Hoppers)
+    - multiple types of Aggregate Dump Wagons, including a randomised version
+    - multiple types of Aggregate Hoppers, including a randomised version
+    - gen 3 large Express Van
+- improved appearance of Rock Hoppers
+- improved appearance of gen 5 Hoppers and High Side Hoppers
+- 'ARC' livery for Cheddar Valley diesel engine
+- split Car Transporters from Vehicle Transporters in purchase menu
+- allow Vehicle Transporters to refit to engineering supplies and farm supplies cargos
+- move the intro date for narrow gauge Sliding Wall Vans to 1975
+
+
+*Docs*
+
+- (fix) provide missing default "blue" livery for snowplough and autocoach
+
+
+*Fixes*
+
+- red tail lights were out of position if a vehicle was flipped
+- some vehicles had incorrect tail lights
+- Olympic railcar had incomplete restaurant car sprites for one livery
+- 6/8 narrow gauge pax and mail cars had missing pixels
+
+
+*Codechanges*
+
+- moved all IDs for non-articulated vehicles out of the articulated ID range (IDs < 16384)
+- various interventions to prevent exhaustion of concurrent varaction 2 IDs
+- removed duplicate realsprites for symmetric vehicles of length < 8/8 (reducing grf size by about ~6 MB)
+- improved compile time
+- use consistent 'type_1', 'type_2', 'type_n' approach to similar base wagon types which use different gestalts to provide variants
+- skip unnecessary nmlc palette validation, saving potentially several seconds per compile
+- organise contents of src/vehicles into a sub-directory per roster
+- use dynamic imports for vehicle modules, reducing declarative boilerplate required to add engines and wagons
+- provide support for rosters to reuse wagon modules from another roster
+- provide reusable support for delegating vehicle spritesheet source to another vehicle, via input_spritesheet_delegate_id
+- switch release archive format from .tar to .zip, as it's much smaller and faster to upload to bananas with zip compression
+- removed some legacy Makefile targets and args
+
+
+------------
 3.6.0 Release
 ------------
 
