@@ -27,17 +27,6 @@
                     [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][1]}, ANIM_FLAG]
                 </tal:sprite>
             }
-
-            <!--!
-                template spriteset_template_symmetric_reversed is identical to spriteset_template_symmetric_reversed
-                'symmetric unreversed' obvs. makes no sense in itself, but vehicle flip is used for silly livery hax
-            -->
-            template spriteset_template_symmetric_reversed_${vehicle_length}_8_${flipped[1]}(y, ANIM_FLAG) {
-                    //[left_x, upper_y, width, height, offset_x, offset_y]
-                <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_symmetric_reversed[bb_slice]">
-                    [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][1]}, ANIM_FLAG]
-                </tal:sprite>
-            }
         </tal:symmetrical>
     </tal:user_flipped>
 </tal:lengths>
