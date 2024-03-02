@@ -1030,9 +1030,14 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
                 * self.num_load_state_or_similar_spriterows
             )
 
-        if buyable_variant.consist.id in ["chronos"]:
+        if buyable_variant.consist.id in ["chronos", "olympic"]:
             print("CABBAGE 7774")
             print(buyable_variant.consist.id)
+            print("self.liveries")
+            for livery in self.liveries:
+                print(livery)
+            print("self.num_spritesheet_liveries_per_position_variant", self.num_spritesheet_liveries_per_position_variant)
+            print("self.num_load_state_or_similar_spriterows", self.num_load_state_or_similar_spriterows)
             print("buyable_variant.buyable_variant_num", buyable_variant.buyable_variant_num)
             print("unit_variant_row_num", unit_variant_row_num)
             print("============")
