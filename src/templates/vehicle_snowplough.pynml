@@ -1,25 +1,19 @@
 <!--! this is the template for snowploughs -->
 
 // default graphics chain
-spriteset(${vehicle.id}_ss_unflipped_unreversed, "${graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_unreversed, "${graphics_path}${consist.id}.png") {
     ${vehicle.get_spriteset_template_name('unreversed', 10)}
 }
-spriteset(${vehicle.id}_ss_flipped_unreversed, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('unreversed', 10)}
-}
-spriteset(${vehicle.id}_ss_unflipped_reversed, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('reversed', 10)}
-}
-spriteset(${vehicle.id}_ss_flipped_reversed, "${graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_reversed, "${graphics_path}${consist.id}.png") {
     ${vehicle.get_spriteset_template_name('reversed', 10)}
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_last, position_in_consist_from_end) {
-    0: ${vehicle.id}_ss_unflipped_reversed;
-    return ${vehicle.id}_ss_unflipped_unreversed;
+    0: ${vehicle.id}_ss_reversed;
+    return ${vehicle.id}_ss_unreversed;
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, num_vehs_in_consist) {
-    1: ${vehicle.id}_ss_unflipped_unreversed;
+    1: ${vehicle.id}_ss_unreversed;
     return ${vehicle.id}_switch_graphics_check_last;
 }
 
