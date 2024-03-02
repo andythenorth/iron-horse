@@ -5563,6 +5563,7 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
             key: 0 for key in self.cab_consist.power_by_power_source.keys()
         }
         self.pantograph_type = self.cab_consist.pantograph_type
+        self.suppress_pantograph_if_no_engine_attached = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
