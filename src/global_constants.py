@@ -965,12 +965,6 @@ spritesheet_bounding_boxes_symmetric_unreversed.extend(
     spritesheet_bounding_boxes_asymmetric_unreversed[4:8]
 )
 
-# spritesheet_bounding_boxes_symmetric_reversed is identical to symmetric unreversed
-# (reversing symmetrical vehicles is meaningless, but used for livery hax when some vehicles are flipped)
-spritesheet_bounding_boxes_symmetric_reversed = (
-    spritesheet_bounding_boxes_symmetric_unreversed
-)
-
 # rather than total spritesheet width, we often need to know the max x extent that actually contains sprites
 # this is calculated from bounding boxes
 sprites_max_x_extent = (

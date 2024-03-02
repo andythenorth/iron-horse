@@ -7726,8 +7726,6 @@ class Train(object):
         ):
             if self.consist.gestalt_graphics.colour_mapping_with_purchase:
                 return "colour_mapping_switch_with_purchase"
-            else:
-                return "colour_mapping_switch_without_purchase"
         else:
             return None
 

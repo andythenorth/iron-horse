@@ -6,21 +6,6 @@
         spriteset(ss_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index}_unflipped, "${graphics_path}${cargo_set.id(spritelayer_cargo)}.png") {
             spriteset_template_asymmetric_unreversed_${int(cargo_set.length / 4)}_8_unflipped(10 + ${repeat.variant.index * 30}, NOANIM)
         }
-        spriteset(ss_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index}_flipped, "${graphics_path}${cargo_set.id(spritelayer_cargo)}.png") {
-            spriteset_template_asymmetric_reversed_${int(cargo_set.length / 4)}_8_flipped(10 + ${repeat.variant.index * 30}, NOANIM)
-        }
-        <!--! CABBAGE - deprecated special reversed handling - this comment is redundant as of Dec 2023?
-            handle user flipped state
-            generally cargos do not flip, even when base platform is flipped
-            but there is a flag that permits them to flip to handle cases like rear unit of cargo sprinter which requires reversed cargos due to asymmetry
-        -->
-        <!--! deprecated switch
-        switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index},
-                            [vehicle_is_flipped && LOAD_TEMP(${temp_storage_ids.unreversible_spritelayer_cargos})]) {
-            1: return ss_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index}_flipped;
-            return ss_spritelayer_cargos_${spritelayer_cargo.id}_${cargo_set.subtype}_${cargo_set.subtype_suffix}_${repeat.variant.index}_unflipped;
-        }
-        -->
     </tal:variants>
     <!--! if bits are ever needed for other random features, it's probably possible to only re-randomise specific bits on new load -->
     random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.id}_random_${cargo_set.subtype}_${cargo_set.subtype_suffix}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {

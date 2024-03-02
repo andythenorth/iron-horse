@@ -13,10 +13,6 @@
     }
 </tal:spritelayer_cargo_layers>
 
-<!--! 'reversed' is random reversal on construction, depending on vehicle random bits
-      'flipped' is user flipping vehicle in depot
-      don't conflate them :) -->
-
 // base platform graphics chain
 spriteset(${vehicle.id}_ss_unflipped_unreversed, "${graphics_path}${consist.id}.png") {
     ${vehicle.get_spriteset_template_name('unreversed', 10)}

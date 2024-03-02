@@ -9,7 +9,7 @@
     <!--! spritegroups aren't used here, direct to spriteset -->
 </tal:spritesets>
 
-<!--! I did try consolidating cargo + load + flip into a single switch checking procedures, but it exceeded the 255 limit for varact 2 ranges -->
+<!--! I did try consolidating cargo + load into a single switch checking procedures, but it exceeded the 255 limit for varact 2 ranges -->
 <tal:load_state repeat="load_state ['loading', 'loaded']">
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_${load_state}, cargo_type_in_veh) {
         <tal:optimise_out_if_only_1_cargo condition="len(consist.gestalt_graphics.cargo_row_map.items()) > 1">
