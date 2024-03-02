@@ -60,36 +60,3 @@ template spriteset_template_purchase_dual_headed(x_loc, y_loc, width, x_offset, 
 spriteset(ss_global_empty_purchase, "src/graphics/spriterow_template.png") {
     spriteset_template_purchase_default(224, 10, 1, 0, NOANIM)
 }
-
-<!--!
-// buy menu spriteset template
-template spriteset_template_purchase_${vehicle.id}(y) {
-    <tal:dual_head switch="consist.dual_headed">
-        <tal:false case="False">
-            //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
-            []
-            []
-            []
-            []
-            []
-            []
-            // allow for buffers/couplings being 1px additional to the unit (they overlap in consists, but show in buy menu)
-            [${consist.buy_menu_x_loc}, y, ${consist.buy_menu_width + 1}, 16, -${int(consist.buy_menu_width / 2)}, -11 ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
-            []
-        </tal:false>
-        <tal:true case="True">
-            []
-            []
-            [104, y, ${consist.buy_menu_width + 1}, 16, 1 - ${int(consist.buy_menu_width / 2)}, -11 ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
-            []
-            []
-            []
-            // allow for buffers/couplings being 1px additional to the unit (they overlap in consists, but show in buy menu)
-            [${consist.buy_menu_x_loc}, y, ${consist.buy_menu_width + 1}, 16, -2 - ${int(consist.buy_menu_width / 2)}, -11 ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
-            []
-        </tal:true>
-    </tal:dual_head>
-
-}
-
--->
