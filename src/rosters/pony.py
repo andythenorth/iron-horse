@@ -252,10 +252,10 @@ def main():
                     140,
                     140,
                 ],
-                "hst": [0, 0, 0, 112, 128, 128],  # CABBAGE
-                "hst_on_lgv": [0, 0, 0, 0, 140, 140],  # CABBAGE
-                "very_high_speed": [0, 0, 0, 0, 128, 128],  # CABBAGE
-                "very_high_speed_on_lgv": [0, 0, 0, 0, 155, 186],  # CABBAGE
+                "hst": [0, 0, 0, 112, 128, 128],
+                "hst_on_lgv": [0, 0, 0, 0, 140, 140],
+                "very_high_speed": [0, 0, 0, 0, 128, 128],
+                "very_high_speed_on_lgv": [0, 0, 0, 0, 155, 186],
             },
             "METRO": {
                 "standard": [45, 55, 65]
