@@ -134,10 +134,6 @@
                     colour_mapping:                 switch_colour_mapping(${unit_variant.get_wagon_recolour_strategy_params()});
                     purchase_colour_mapping:        switch_colour_mapping(${unit_variant.get_wagon_recolour_strategy_params(context="purchase")});
                 </tal:use_colour_randomisation_strategies>
-                <tal:colour_mapping_switch_without_purchase case="'colour_mapping_switch_without_purchase'">
-                    colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
-                    purchase_colour_mapping:        return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! use default -->
-                </tal:colour_mapping_switch_without_purchase>
                 <tal:colour_mapping_switch_with_purchase case="'colour_mapping_switch_with_purchase'">
                     colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
                     purchase_colour_mapping:        ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch_purchase};

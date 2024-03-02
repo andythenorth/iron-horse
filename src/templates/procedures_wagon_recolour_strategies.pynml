@@ -148,17 +148,3 @@ switch (FEAT_TRAINS, SELF, switch_colour_mapping,
     }
 </tal:switch_by_company_colour>
 
-
-<!--! * Strategy for forcing express intermodal to match cargo sprinter * -->
-
-<!--! check parent engine ID to see if company colour should be forced to match -->
-switch (FEAT_TRAINS, PARENT, intermodal_car_switch_colour_mapping_force_if_cargo_sprinter, vehicle_type_id) {
-    <!--! this doesn't check grfid currently - add later if needed -->
-    <tal:cargo_sprinter_ids repeat="engine_id roster_manager.cargo_sprinter_ids">
-        <!--! apply regular 1CC and 2CC - note that this _should_ take the PARENT scope for those values -->
-        ${engine_id}: base_sprite_2cc + 16 * company_colour2 + company_colour1;
-    </tal:cargo_sprinter_ids>
-    <!--! not a cargo sprinter -->
-    return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
-}
-

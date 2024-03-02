@@ -5318,7 +5318,6 @@ class IntermodalCarConsistBase(CarConsist):
         )
         # intermodal containers can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
-        # player can still flip to the second livery
         self.use_colour_randomisation_strategies = False
         # Graphics configuration
         # various rulesets are supported, per consist, (or could be extended to checks per roster)
@@ -8346,7 +8345,7 @@ class CabooseCar(TrainCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # caboose cars may be asymmetric, they are also user-flippable as of August 2022 (flip also toggles CC)
+        # caboose cars may be asymmetric, they are also user-flippable as of August 2022
         self._symmetry_type = "asymmetric"
 
     @property
