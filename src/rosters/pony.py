@@ -75,7 +75,7 @@ engine_module_names = [
     # freight
     "hercules",
     "eastern",
-    "celt",
+    #"celt", # unfinished, nerfed
     "haar",
     "trojan",
     "growler",
