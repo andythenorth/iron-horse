@@ -759,7 +759,7 @@ base = "InterCity Express"
 base = "Lolz"
 
 [STR_ROLE_MAIL]
-base = "Mail"
+base = "Mail / Parcels"
 
 [STR_ROLE_METRO]
 base = "High Capacity Urban"
