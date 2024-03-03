@@ -30,7 +30,7 @@ def main(roster_id, **kwargs):
     )
 
     # https://en.wikipedia.org/wiki/Euskotren_TD2000_series
-    # https://en.wikipedia.org/wiki/New_Zealand_DL_class_locomotive
+    # https://en.wikipedia.org/wiki/JR_Freight_Class_DF200#DF200-7000
     consist.description = """"""
     consist.foamer_facts = """"""
 

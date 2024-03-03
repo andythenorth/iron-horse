@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
         roster_id=roster_id,
         id="seven_star",
         base_numeric_id=30870,
-        name="Seven Star",
+        name="Higuma",
         role="express",
         role_child_branch_num=-2,
         base_track_type_name="NG",
@@ -29,11 +29,11 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
     )
 
-    # https://en.wikipedia.org/wiki/Euskotren_TD2000_series
-    # https://en.wikipedia.org/wiki/JR_Freight_Class_DF200#DF200-7000
+    # https://en.wikipedia.org/wiki/New_Zealand_DL_class_locomotive
+    # https://en.wikipedia.org/wiki/New_Zealand_DM_class_locomotive
     consist.description = (
         """"""
     )
-    consist.foamer_facts = """(Mitsubishi bo-bo-bo)"""
+    consist.foamer_facts = """(Stadler / Mitsubishi bo-bo-bo)"""
 
     return consist
