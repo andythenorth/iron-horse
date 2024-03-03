@@ -195,10 +195,14 @@ role_group_mapping = OrderedDict(
             "universal",
             ["universal"],
         ),
-        # railcars get their own special case due to high capacity, bit janky but eh
+        # railcars get their own special cases due to high capacity, bit janky but eh
         (
             "suburban_or_universal_railcar",
-            ["pax_railbus", "pax_railcar", "pax_suburban_coach", "mail_railcar"],
+            ["pax_railbus", "pax_railcar", "pax_suburban_coach"],
+        ),
+        (
+            "mail_railcar",
+            ["mail_railcar"],
         ),
         ("express_railcar", ["express_pax_railcar", "express_mail_railcar"]),
         ("hst", ["hst"]),
@@ -237,6 +241,7 @@ role_string_mapping = {
     "high_power_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
     "hst": "STR_ROLE_INTERCITY_EXPRESS",
     "lolz": "STR_ROLE_LOLZ",
+    "mail_railcar": "STR_ROLE_MAIL",
     "metro": "STR_ROLE_METRO",
     "suburban_or_universal_railcar": "STR_ROLE_SUBURBAN",
     "universal": "STR_ROLE_GENERAL_PURPOSE",
@@ -258,6 +263,7 @@ intro_month_offsets_by_role_group = {
     "freight_core": 4,
     "freight_non_core": 5,
     "suburban_or_universal_railcar": 6,
+    "mail_railcar": 6,
     "metro": 7,
     "very_high_speed": 8,
     "food_wagons": 9,
