@@ -8173,13 +8173,19 @@ class ElectroDieselRailcarMailUnit(ElectroDieselRailcarBaseUnit):
 
 class ElectroDieselExpressRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
     """
-    Unit for a pax electro-diesel express railcar.  Just a sparse subclass to set capacity.
+    Unit for a pax electro-diesel express railcar.  Just a sparse subclass to set and effects.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # magic to set capacity subject to length and vehicle capacity type
         self.capacity = self.get_pax_car_capacity()
+        # effects
+        self.engine_class = "ENGINE_CLASS_DIESEL"
+        self.effects = {
+            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
+            "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
+        }
 
 
 class ElectricRailcarBaseUnit(Train):
