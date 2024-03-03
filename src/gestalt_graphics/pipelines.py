@@ -988,9 +988,14 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         vehicle_debug_image = vehicle_debug_image.copy().crop(
             (
                 0,
-                10 + self.consist.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[0],
+                10
+                + self.consist.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[
+                    0
+                ],
                 graphics_constants.spritesheet_width,
-                10 + self.consist.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[0] + graphics_constants.spriterow_height,
+                10
+                + self.consist.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[0]
+                + graphics_constants.spriterow_height,
             )
         )
         pantograph_output_image.paste(
@@ -1007,9 +1012,14 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         pantograph_debug_image = pantograph_output_image.copy().crop(
             (
                 0,
-                10 + self.consist.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[1],
+                10
+                + self.consist.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[
+                    1
+                ],
                 graphics_constants.spritesheet_width,
-                10 + self.consist.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[1] + graphics_constants.spriterow_height,
+                10
+                + self.consist.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[1]
+                + graphics_constants.spriterow_height,
             )
         )
         pantograph_debug_mask = pantograph_debug_image.copy()

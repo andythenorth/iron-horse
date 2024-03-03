@@ -20,4 +20,3 @@ def main(roster_id, **kwargs):
         tail_light="railcar_32px_3",
         repeat=2,
     )
-

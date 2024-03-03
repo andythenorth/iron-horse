@@ -373,7 +373,11 @@ class Consist(object):
 
     def engine_varies_power_by_power_source(self, vehicle):
         # note that we use self.cab_id to eliminate trailer cars from this (which use power_by_power_source to manage pantographs), this is JFDI and may need refactored in future
-        if (self.power_by_power_source is not None) and (vehicle.is_lead_unit_of_consist) and (getattr(self, "cab_consist", None) is None):
+        if (
+            (self.power_by_power_source is not None)
+            and (vehicle.is_lead_unit_of_consist)
+            and (getattr(self, "cab_consist", None) is None)
+        ):
             if len(self.power_by_power_source) > 1:
                 # as of Dec 2018, can't use both variable power and wagon power
                 # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
@@ -6230,7 +6234,9 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["suburban_or_universal_railcar"]
+            global_constants.intro_month_offsets_by_role_group[
+                "suburban_or_universal_railcar"
+            ]
         )
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE"
@@ -6296,7 +6302,9 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["suburban_or_universal_railcar"]
+            global_constants.intro_month_offsets_by_role_group[
+                "suburban_or_universal_railcar"
+            ]
         )
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         self._buy_menu_additional_text_role_string = "STR_ROLE_SUBURBAN"

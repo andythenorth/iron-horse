@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
-        tail_light="railcar_24px_1",  
+        tail_light="railcar_24px_1",
     )
 
     consist.add_unit(
@@ -36,7 +36,7 @@ def main(roster_id, **kwargs):
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
-        tail_light="railcar_24px_1",  
+        tail_light="railcar_24px_1",
     )
 
     consist.description = """Vitesse. Confort. Exactitude. This railcar has none of those. But it is cheap to run."""

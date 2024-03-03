@@ -35,7 +35,9 @@ class GestaltGraphics(object):
             "input_spritesheet_delegate_id", None
         )
         # !! we need a way to get a useful (if not perfect) debug vehicle image for checking pantograph positions, and this lets us force useful rows for vehicle and pan
-        self.jfdi_pantograph_debug_image_y_offsets = kwargs.get("jfdi_pantograph_debug_image_y_offsets", [0, 0])
+        self.jfdi_pantograph_debug_image_y_offsets = kwargs.get(
+            "jfdi_pantograph_debug_image_y_offsets", [0, 0]
+        )
 
     @property
     def nml_template(self):

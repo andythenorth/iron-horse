@@ -1,4 +1,7 @@
-from train import PassengerEngineExpressRailcarConsist, ElectroDieselExpressRailcarPaxUnit
+from train import (
+    PassengerEngineExpressRailcarConsist,
+    ElectroDieselExpressRailcarPaxUnit,
+)
 
 
 def main(roster_id, **kwargs):
