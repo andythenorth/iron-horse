@@ -102,7 +102,7 @@
                             </tal:descriptions>
                         </tal:descriptions_rail>
                         <tal:descriptions_ng condition="base_track_type_and_label[0]=='NG'">
-                            <div tal:condition="role_group=='universal'">
+                            <div tal:condition="role_group=='express'">
                                 <h4>Narrow Gauge Trains</h4>
                                 <ul>
                                     <li> low power trains with low buy and run costs, and relatively low speeds</li>

@@ -187,10 +187,12 @@ engine_module_names = [
     "alfama",
     "gargouille",
     "solano",
+    "osiris",
     "tyrconnell",
     "nile",
     "hinterland",
     "rockhampton",
+    "seven_star",
     # ng railcars
     "mumble",
     "mumble_single",
