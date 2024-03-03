@@ -1683,11 +1683,13 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
         # * unit with no cabs (center car)
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         liveries = self.roster.get_pax_mail_liveries("default_mail_liveries", **kwargs)
+        jfdi_pantograph_debug_image_y_offsets = [len(liveries) * 60, 30]
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="railcars_4_unit_sets",
             liveries=liveries,
             pantograph_type=self.pantograph_type,
+            jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
         )
 
     @property
@@ -1821,11 +1823,13 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
+        jfdi_pantograph_debug_image_y_offsets = [len(liveries) * 60, 30]
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset=kwargs.get("consist_ruleset", "railcars_6_unit_sets"),
             liveries=liveries,
             pantograph_type=self.pantograph_type,
+            jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
         )
 
     @property
