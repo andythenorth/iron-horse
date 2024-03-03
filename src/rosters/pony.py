@@ -147,7 +147,7 @@ engine_module_names = [
     "sunshine_coast",
     "olympic",
     "chronos",
-    #"nimbus",# unfinished, nerfed
+    "nimbus",
     # brit high speed pax
     "firebird",
     "blaze",
