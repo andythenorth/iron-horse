@@ -372,7 +372,8 @@ class Consist(object):
         return result
 
     def engine_varies_power_by_power_source(self, vehicle):
-        if self.power_by_power_source is not None and vehicle.is_lead_unit_of_consist:
+        # note that we use self.cab_id to eliminate trailer cars from this (which use power_by_power_source to manage pantographs), this is JFDI and may need refactored in future
+        if (self.power_by_power_source is not None) and (vehicle.is_lead_unit_of_consist) and (getattr(self, "cab_consist", None) is None):
             if len(self.power_by_power_source) > 1:
                 # as of Dec 2018, can't use both variable power and wagon power
                 # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
