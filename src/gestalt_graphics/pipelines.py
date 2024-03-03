@@ -799,6 +799,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             "z-shaped-single-minimal": "z-shaped-minimal.png",
             "z-shaped-single-reversed": "z-shaped-reversed.png",
             "z-shaped-single-with-base": "z-shaped-with-base.png",
+            "z-shaped-double-with-base": "z-shaped-with-base.png",
         }
         pantograph_input_path = os.path.join(
             currentdir,
@@ -839,6 +840,10 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             },
             "z-shaped-single-with-base": {"down": ["a"], "up": ["A"]},
             "z-shaped-single-minimal": {"down": ["a"], "up": ["A"]},
+            "z-shaped-double-with-base": {
+                "down": ["a", "b"],
+                "up": ["A", "b"],
+            },
         }
         pantograph_state_sprite_map = {
             "a": [
