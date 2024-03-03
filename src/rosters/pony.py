@@ -75,7 +75,7 @@ engine_module_names = [
     # freight
     "hercules",
     "eastern",
-    # "celt", # unfinished, nerfed
+    # "celt", # unfinished, nerfed - not convinced I like the sprite currently either
     "haar",
     "trojan",
     "growler",
@@ -194,9 +194,10 @@ engine_module_names = [
     # ng railcars
     "mumble",
     "mumble_single",
-    # "snapper", # unfinished, nerfed
-    # "snapper_single", # unfinished, nerfed
+    "snapper",
+    "snapper_single",
     "zorro",
+    "ruby",
 ]
 
 # these can be alphabetised, the buy menu order is enforced in global constants

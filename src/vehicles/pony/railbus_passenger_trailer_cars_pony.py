@@ -21,3 +21,18 @@ def main(roster_id, **kwargs):
     consist.add_unit(
         type=PaxRailcarTrailerCar, chassis="4_axle_ng_24px", tail_light="railcar_24px_1"
     )
+
+    consist = PassengerRailbusTrailerCarConsist(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=26190,
+        gen=4,
+        subtype="U",
+        base_track_type_name="NG",
+        cab_id="snapper",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(
+        type=PaxRailcarTrailerCar, chassis="4_axle_ng_24px", tail_light="railcar_24px_1"
+    )
