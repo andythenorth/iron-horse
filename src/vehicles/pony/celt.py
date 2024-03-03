@@ -13,6 +13,7 @@ def main(roster_id, **kwargs):
             "STEAM": 1500,
         },
         tractive_effort_coefficient=0.24,
+        random_reverse=True,
         gen=3,
         # note that livery names are metadata only and can repeat for different spriterows
         # additional_liveries=["FREIGHT_BLACK"],
