@@ -6230,7 +6230,7 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["suburban"]
+            global_constants.intro_month_offsets_by_role_group["suburban_or_universal_railcar"]
         )
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE"
@@ -6296,7 +6296,7 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["suburban"]
+            global_constants.intro_month_offsets_by_role_group["suburban_or_universal_railcar"]
         )
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         self._buy_menu_additional_text_role_string = "STR_ROLE_SUBURBAN"
