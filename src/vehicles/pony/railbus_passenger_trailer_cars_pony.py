@@ -30,7 +30,7 @@ def main(roster_id, **kwargs):
         subtype="U",
         base_track_type_name="NG",
         cab_id="snapper",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(

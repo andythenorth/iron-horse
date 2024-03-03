@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
         },
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(

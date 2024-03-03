@@ -53,11 +53,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
 
-    """ # restore in next version
     consist = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
-        base_numeric_id=25020,
+        base_numeric_id=34210,
         gen=4,
         subtype="A",
         base_track_type_name="NG",
@@ -69,7 +68,7 @@ def main(roster_id, **kwargs):
     consist = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
-        base_numeric_id=9700,
+        base_numeric_id=34220,
         gen=4,
         subtype="B",
         base_track_type_name="NG",
@@ -77,7 +76,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
-    """
+
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = PassengerCarConsist(
