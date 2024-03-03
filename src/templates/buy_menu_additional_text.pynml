@@ -1,4 +1,4 @@
-<tal:block switch="unit_variant.get_buy_menu_format(vehicle)">
+<tal:block switch="unit_variant.get_buy_menu_additional_text_format(vehicle)">
     <tal:variable_power case="'variable_power'">
         <!--! for variable power, we need to stuff the text stack with the values for power -->
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_buy_menu_additional_text, [
@@ -13,6 +13,28 @@
             return string(${consist.get_buy_menu_additional_text(vehicle)});
         }
     </tal:variable_power>
+    <tal:variable_power_and_lgv_capable case="'variable_power_and_lgv_capable'">
+        <!--! !! March 2024 - this is a bad sign that the additional text is not sufficiently composeable
+                 - we should not be handling combinatorial (code duplicating) results for switch / case
+                 - we need a proper tree, similar to get_name_parts
+                 - this works as it stands, but won't absorb any more cases, will need refactoring -->
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_buy_menu_additional_text, [
+            <tal:power_by_power_source repeat="power_source_data consist.power_by_power_source.items()">
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_${power_source_data[0]})
+                    | (${power_source_data[1]} << 16),
+                    ${'0x10' + str(repeat.power_source_data.index)}
+                ),
+            </tal:power_by_power_source>
+            STORE_TEMP(
+                ${int(1.60934 * consist.speed_on_lgv)}
+                | (${int(1.60934 * consist.speed)} << 16),
+                0x102 <!--! this will absolutely break on wrong register number if there are more than two power sources -->
+            )
+        ]) {
+            return string(${consist.get_buy_menu_additional_text(vehicle)});
+        }
+    </tal:variable_power_and_lgv_capable>
     <tal:lgv_capable case="'lgv_capable'">
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_buy_menu_additional_text, [
             STORE_TEMP(

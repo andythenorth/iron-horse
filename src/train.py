@@ -7334,11 +7334,16 @@ class UnitVariant(object):
             return True
         return False
 
-    def get_buy_menu_format(self, vehicle):
+    def get_buy_menu_additional_text_format(self, vehicle):
         # keep the template logic simple, present strings for a switch/case tree
         # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
         if self.unit.consist.engine_varies_power_by_power_source(vehicle):
-            return "variable_power"
+            # !! this combinatorial handling of power, lgv capable etc is a bad sign - we have the wrong kind of tree, as it's switch/case, not composeable / recursive
+            # !!! we need a better tree, similar to get_name_parts
+            if self.unit.consist.lgv_capable:
+                return "variable_power_and_lgv_capable"
+            else:
+                return "variable_power"
         elif self.unit.consist.lgv_capable:
             # yeah, simplicity failed when lgv_capable was added, this simple tree needs rethought to allow better composition of arbitrary strings
             if self.unit.consist.buy_menu_additional_text_hint_wagons_add_power:
