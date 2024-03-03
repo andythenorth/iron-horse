@@ -790,10 +790,6 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         super().__init__()
 
     def add_pantograph_spriterows(self):
-        # !! this will eventually need extending for articulated vehicles
-        # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, using the same pattern as the vehicle Spritesheet
-        # !! the spriteset templates should then match the main vehicle, just changing path
-
         pantograph_input_images = {
             "diamond-single": "diamond.png",
             "diamond-double": "diamond.png",
@@ -980,6 +976,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
 
         # add debug sprites with vehicle-pantograph comp for ease of checking
         # this very much assumes that the vehicle image has been generated, which holds currently due to the order pipelines are run in (and are in series)
+        # !! this doesn't handle the case of articulated consists, especially where the first consist row doesn't have pans
         vehicle_debug_image = Image.open(
             os.path.join(self.graphics_output_path, self.consist.id + ".png")
         )
