@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
         id="cyclone",
-        base_numeric_id=8440,
+        base_numeric_id=27870,
         name="Cyclone",
         role="express",
         role_child_branch_num=-2,
@@ -24,7 +24,7 @@ def main(roster_id, **kwargs):
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
             ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(

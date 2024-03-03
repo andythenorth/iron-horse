@@ -48,7 +48,7 @@ engine_module_names = [
     "defiant",
     "relentless",
     "dynamo",
-    # "cyclone", # unfinished, nerfed
+    "cyclone",
     "shoebox",
     "ultra_shoebox",
     "hurly_burly",
@@ -75,7 +75,7 @@ engine_module_names = [
     # freight
     "hercules",
     "eastern",
-    # "celt", # unfinished, nerfed
+    "celt",
     "haar",
     "trojan",
     "growler",
