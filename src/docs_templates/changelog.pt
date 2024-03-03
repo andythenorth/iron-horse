@@ -3,6 +3,22 @@ Changelog
 
 
 ------------
+3.9.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.8.0.
+
+
+*Changes*
+
+- added Nimbus express passenger railcar (and trailers)
+    - 120 mph (140 mph on dedicated high speed rail)
+    - 1500 hp on diesel power, 2500 hp on AC electric power
+    - available around 1991
+
+
+------------
 3.8.0 Release
 ------------
 
