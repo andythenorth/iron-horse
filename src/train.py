@@ -1632,7 +1632,9 @@ class MailEngineRailcarConsist(MailEngineConsist):
                 "last": 2,
                 "special": 0,
             }
-        if self.role_child_branch_num in [2]:
+        # this will be fragile, it's dedicated to pony roster, but eh
+        # for special cases, these vehicles could just use the livery keyword on init, but it would be over-ridden by this conditional block currently
+        if self.role_child_branch_num in [2] or self.base_track_type_name == "NG":
             liveries = self.roster.get_pax_mail_liveries(
                 "diesel_railcar_mail_liveries", **kwargs
             )
