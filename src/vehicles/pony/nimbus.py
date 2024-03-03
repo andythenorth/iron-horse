@@ -1,4 +1,4 @@
-from train import PassengerEngineExpressRailcarConsist, ElectricExpressRailcarPaxUnit
+from train import PassengerEngineExpressRailcarConsist, ElectroDieselExpressRailcarPaxUnit
 
 
 def main(roster_id, **kwargs):
@@ -15,18 +15,18 @@ def main(roster_id, **kwargs):
         },
         intro_year_offset=-9,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
-        pantograph_type="z-shaped-double",
+        pantograph_type="z-shaped-double-with-base",
         lgv_capable=True,  # for lolz
         tilt_bonus=True,  # for lolz
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
-        type=ElectricExpressRailcarPaxUnit,
+        type=ElectroDieselExpressRailcarPaxUnit,
         weight=60,
         capacity=24,
         chassis="railcar_32px",
-        tail_light="very_high_speed_32px_2",
+        tail_light="railcar_32px_5",
         suppress_roof_sprite=True,
         repeat=2,
     )
