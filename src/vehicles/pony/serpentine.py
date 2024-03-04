@@ -21,7 +21,7 @@ def main(roster_id, **kwargs):
         type=MetroUnit,
         weight=36,
         capacity=120,
-        chassis="railcar_32px",
+        chassis="metro_32px",
         tail_light="metro_32px_1",
         repeat=2,
     )

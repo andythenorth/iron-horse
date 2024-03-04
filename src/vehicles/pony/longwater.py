@@ -21,7 +21,7 @@ def main(roster_id, **kwargs):
         weight=32,
         # set capacity for freight; mail will be automatically calculated
         capacity=24,
-        chassis="railcar_32px",
+        chassis="metro_32px",
         tail_light="metro_32px_1",
         repeat=2,
     )
