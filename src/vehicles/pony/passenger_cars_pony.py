@@ -74,7 +74,7 @@ def main(roster_id, **kwargs):
         gen=4,
         subtype="C",
         base_track_type_name="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=PaxCar, chassis="4_axle_ng_32px")
