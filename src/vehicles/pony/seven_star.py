@@ -11,7 +11,7 @@ def main(roster_id, **kwargs):
         role_child_branch_num=-2,
         base_track_type_name="NG",
         power_by_power_source={
-            "DIESEL": 1200,
+            "DIESEL": 1500,
         },
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
