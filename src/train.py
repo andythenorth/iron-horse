@@ -8464,13 +8464,14 @@ class ExpressMailCar(ExpressCar):
 
 class MailRailcarTrailerCar(ExpressCar):
     """
-    Railcar (or railbus) unpowered mail trailer. This subclass only exists to set tail light
+    Railcar (or railbus) unpowered mail trailer. This subclass only exists to set tail light and symmetry type.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # TrainCar sets auto tail light, override it
         self.tail_light = kwargs["tail_light"]  # fail if not passed, required arg
+        self._symmetry_type = "asymmetric"
 
 
 class AutomobileCarAsymmetric(ExpressCar):
