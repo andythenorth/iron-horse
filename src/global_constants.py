@@ -241,7 +241,7 @@ role_string_mapping = {
     "high_power_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
     "hst": "STR_ROLE_INTERCITY_EXPRESS",
     "lolz": "STR_ROLE_LOLZ",
-    "mail_railcar": "STR_ROLE_MAIL",
+    "mail_railcar": "STR_ROLE_GENERAL_PURPOSE",
     "metro": "STR_ROLE_METRO",
     "suburban_or_universal_railcar": "STR_ROLE_SUBURBAN",
     "universal": "STR_ROLE_GENERAL_PURPOSE",

@@ -758,14 +758,11 @@ base = "InterCity Express"
 [STR_ROLE_LOLZ]
 base = "Lolz"
 
-[STR_ROLE_MAIL]
-base = "Mail / Parcels"
-
 [STR_ROLE_METRO]
-base = "High Capacity Urban"
+base = "Very High Capacity Urban"
 
 [STR_ROLE_SUBURBAN]
-base = "High Capacity Suburban"
+base = "General Purpose / High Capacity"
 
 [STR_ROLE_VERY_HIGH_SPEED]
 base = "Very High Speed"
