@@ -54,7 +54,7 @@ def main(roster_id, **kwargs):
     consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
 
     # no gen 4A NG coach
-
+    """
     consist = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
@@ -78,7 +78,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(type=PaxCar, chassis="4_axle_ng_32px")
-
+    """
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = PassengerCarConsist(
