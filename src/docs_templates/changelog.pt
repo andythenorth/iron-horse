@@ -3,6 +3,27 @@ Changelog
 
 
 ------------
+3.11.0 Release
+------------
+
+
+*Changes*
+
+- added Snapper narrow-gauge diesel railcar, 75 mph, available around 2010
+    - 2-unit version, 560 hp,
+    - single-unit version, 350 hp
+    - unpowered trailer
+- added Ruby narrow gauge diesel mail railcar, 75 mph, 600 hp, available around 2010
+- added generation 4 narrow gauge Mail Vans, 75 mph, available around 2010
+
+
+*Fixes*
+
+- Chronos trailer sprites were incorrect for some angles
+- tail lights were wrong for Mumble
+
+
+------------
 3.10.0 Release
 ------------
 
@@ -43,8 +64,8 @@ Not savegame compatible with Iron Horse releases before 3.8.0.
 
 - added Chronos high speed mail railcar (and trailers), 120 mph, 2800 hp, available around 1991
 - added liveries for:
-    -  gen 5 High Speed Driving Van Trailer
-    - gen 5 Mail Vans
+    - generation 5 High Speed Driving Van Trailer
+    - generation 5 Mail Vans
 
 
 *Fixes*
@@ -80,9 +101,9 @@ Not savegame compatible with Iron Horse releases before 3.3.0.
     - MGR Hood Hoppers (variant of MGR Hoppers)
     - multiple types of Aggregate Dump Wagons, including a randomised version
     - multiple types of Aggregate Hoppers, including a randomised version
-    - gen 3 large Express Van
+    - generation 3 large Express Van
 - improved appearance of Rock Hoppers
-- improved appearance of gen 5 Hoppers and High Side Hoppers
+- improved appearance of generation 5 Hoppers and High Side Hoppers
 - 'ARC' livery for Cheddar Valley diesel engine
 - split Car Transporters from Vehicle Transporters in purchase menu
 - allow Vehicle Transporters to refit to engineering supplies and farm supplies cargos
