@@ -23,7 +23,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(
         type=DieselEngineUnit,
-        weight=42,
+        weight=52,
         vehicle_length=6,
         effect_z_offset=10,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,
