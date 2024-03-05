@@ -6028,6 +6028,41 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         return result
 
 
+class PanoramicCarConsist(PassengerCarConsistBase):
+    """
+    Panoramic car / observation car / dome car.
+    No special effects, just an explicitly buildable visual variant of standard passenger car.
+    """
+
+    # very specific flag used for variable run costs and cargo aging factor with restaurant cars
+    # !! this will need made more general if e.g. motorail or observation cars are added
+    # not sure why I did this as a class property, but eh
+    affected_by_restaurant_car_in_consist = True
+
+    def __init__(self, **kwargs):
+        self.base_id = "panoramic_car"
+        super().__init__(**kwargs)
+        """ # not working as expected, unwanted nesting of panoramic car, needs debugged
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_passenger_cars"
+        """
+        # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
+        self.buy_cost_adjustment_factor = 1.4
+        self.floating_run_cost_multiplier = 3.33
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
+        # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
+        # Graphics configuration
+        spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
+        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+            spriterow_group_mappings,
+            consist_ruleset="pax_cars",
+            liveries=liveries,
+        )
+
+
 class PassengerCarConsist(PassengerCarConsistBase):
     """
     Standard passenger car.
@@ -6043,6 +6078,11 @@ class PassengerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "passenger_car"
         super().__init__(**kwargs)
+        """ # not working as expected, unwanted nesting of panoramic car, needs debugged
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_passenger_cars"
+        """
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
         self.floating_run_cost_multiplier = 3.33

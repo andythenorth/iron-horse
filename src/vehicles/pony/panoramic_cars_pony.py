@@ -1,9 +1,9 @@
-from train import PassengerCarConsist, PaxCar
+from train import PanoramicCarConsist, PaxCar
 
 
 def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
-    consist = PassengerCarConsist(
+    consist = PanoramicCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=35130,
@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
 
-    consist = PassengerCarConsist(
+    consist = PanoramicCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=35140,
