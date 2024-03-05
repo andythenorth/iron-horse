@@ -4,11 +4,11 @@ from train import PassengerEngineMetroConsist, MetroUnit
 def main(roster_id, **kwargs):
     consist = PassengerEngineMetroConsist(
         roster_id=roster_id,
-        id="westbourne",
-        base_numeric_id=360,
-        name="Westbourne",
+        id="westbourne_2",
+        base_numeric_id=1890,
+        name="Westbourne 2",
         role="pax_metro",
-        role_child_branch_num=1,
+        role_child_branch_num=-1,
         power_by_power_source={
             "METRO": 900,
         },
@@ -20,7 +20,7 @@ def main(roster_id, **kwargs):
         type=MetroUnit,
         weight=36,
         capacity=160,
-        chassis="metro_low_floor_32px",
+        chassis="metro_heavy_32px",
         tail_light="metro_32px_1",
         repeat=2,
     )

@@ -4,16 +4,15 @@ from train import MailEngineMetroConsist, MetroUnit
 def main(roster_id, **kwargs):
     consist = MailEngineMetroConsist(
         roster_id=roster_id,
-        id="tideway",
-        base_numeric_id=2200,
-        name="Tideway",
+        id="longwater_2",
+        base_numeric_id=1910,
+        name="Longwater 2",
         role="mail_metro",
-        role_child_branch_num=1,
+        role_child_branch_num=-1,
         power_by_power_source={
-            "METRO": 1100,
+            "METRO": 600,
         },
-        gen=3,
-        default_livery_extra_docs_examples=[("COLOUR_RED", "COLOUR_BLUE")],
+        gen=1,
         sprites_complete=True,
     )
 
@@ -21,13 +20,13 @@ def main(roster_id, **kwargs):
         type=MetroUnit,
         weight=32,
         # set capacity for freight; mail will be automatically calculated
-        capacity=30,
-        chassis="metro_low_floor_32px",
+        capacity=24,
+        chassis="metro_heavy_32px",
         tail_light="metro_32px_1",
         repeat=2,
     )
 
-    consist.description = """Do they whisper occasionally?"""
-    consist.foamer_facts = """London Underground 1996 Stock"""
+    consist.description = """Do they bury themselves? Hidden from society?"""
+    consist.foamer_facts = """London Underground 'Gate' Stock, Standard Stock"""
 
     return consist

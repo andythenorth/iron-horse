@@ -173,11 +173,17 @@ engine_module_names = [
     "driving_cab_high_speed_mail_pony_gen_6",
     # metro
     "serpentine",
+    "serpentine_2",
     "westbourne",
+    "westbourne_2",
     "fleet",
+    "fleet_2",
     "longwater",
+    "longwater_2",
     "tyburn",
+    "tyburn_2",
     "tideway",
+    "tideway_2",
     # ng engines
     "cheese_bug",
     "bean_feast",
