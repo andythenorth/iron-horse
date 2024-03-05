@@ -16,7 +16,6 @@ def main(roster_id, **kwargs):
         # introduce early by design
         intro_year_offset=-4,
         buyable_variant_group_id="clipper",  # for pony, specifically force variant group (parent) to equivalent twin-unit railbus id
-        pax_car_capacity_type="high_capacity",  # specific to standard gauge pony railbuses
         sprites_complete=True,
     )
 

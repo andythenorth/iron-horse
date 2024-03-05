@@ -187,12 +187,12 @@ engine_module_names = [
     "alfama",
     "gargouille",
     "solano",
-    #"osiris",
+    "osiris",
     "tyrconnell",
     "nile",
     "hinterland",
     "rockhampton",
-    #"seven_star",
+    "seven_star",
     # ng railcars
     "mumble",
     "mumble_single",
@@ -309,6 +309,10 @@ def main():
             "railbus_combine": {
                 "multiplier": 2.5,
                 "loading_speed_multiplier": 1.75,
+            },
+            "railbus_combine_ng": {
+                "multiplier": 2,
+                "loading_speed_multiplier": 1.5,
             },
         },
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight

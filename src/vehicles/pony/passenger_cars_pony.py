@@ -10,6 +10,7 @@ def main(roster_id, **kwargs):
         gen=1,
         subtype="A",
         base_track_type_name="NG",
+        buy_menu_additional_text_role_string="STR_ROLE_GENERAL_PURPOSE",
         sprites_complete=True,
     )
 
@@ -22,6 +23,7 @@ def main(roster_id, **kwargs):
         gen=1,
         subtype="B",
         base_track_type_name="NG",
+        buy_menu_additional_text_role_string="STR_ROLE_GENERAL_PURPOSE",
         sprites_complete=True,
     )
 
@@ -36,6 +38,7 @@ def main(roster_id, **kwargs):
         gen=3,
         subtype="A",
         base_track_type_name="NG",
+        buy_menu_additional_text_role_string="STR_ROLE_GENERAL_PURPOSE",
         sprites_complete=True,
     )
 
@@ -48,13 +51,14 @@ def main(roster_id, **kwargs):
         gen=3,
         subtype="B",
         base_track_type_name="NG",
+        buy_menu_additional_text_role_string="STR_ROLE_GENERAL_PURPOSE",
         sprites_complete=True,
     )
 
     consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
 
     # no gen 4A NG coach
-    """
+
     consist = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
@@ -78,7 +82,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(type=PaxCar, chassis="4_axle_ng_32px")
-    """
+
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = PassengerCarConsist(

@@ -1100,12 +1100,6 @@ class Consist(object):
         except:
             pass
 
-        # some wagons (mostly railcar trailers and pax coaches) might want to show an optional role string
-        if self._buy_menu_additional_text_role_string is not None:
-            result.append(
-                "STR_ROLE, string(" + self._buy_menu_additional_text_role_string + ")"
-            )
-
         # driving cab hint comes after role string
         if self.buy_menu_additional_text_hint_driving_cab:
             result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB")
@@ -1160,6 +1154,8 @@ class Consist(object):
 
     @property
     def buy_menu_additional_text_role_string(self):
+        if self._buy_menu_additional_text_role_string is not None:
+            return "STR_ROLE, string(" + self._buy_menu_additional_text_role_string + ")"
         for role_group, roles in global_constants.role_group_mapping.items():
             if self.role in roles:
                 return (
@@ -1599,6 +1595,9 @@ class MailEngineRailcarConsist(MailEngineConsist):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
+        if self.base_track_type_name == "NG" and self.gen == 4:
+            # pony NG jank, mail railcar directly set role buy menu string here, (don't set a different role as that confuses the tech tree etc)
+            self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
         # non-standard cite
         if self.base_track_type_name == "NG":
             # give NG a bonus to align run cost with NG railbus
@@ -1914,6 +1913,12 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
             self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
                 kwargs["pax_car_capacity_type"]
             ]
+        if self.base_track_type_name == "NG":
+            # pony NG jank, railbus trailers directly set role buy menu string here, (don't set a different role as that confuses the tech tree etc)
+            if self.gen == 4:
+                self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+            else:
+                self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE"
         # non-standard cite
         self._cite = "Arabella Unit"
         # Graphics configuration
@@ -6043,8 +6048,8 @@ class PassengerCarConsist(PassengerCarConsistBase):
         self.floating_run_cost_multiplier = 3.33
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
-        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        if self.base_track_type_name == "NG":
+        # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
+        if self.base_track_type_name == "NG" and self.gen < 4:
             self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE"
         else:
             self._buy_menu_additional_text_role_string = (
@@ -6231,8 +6236,12 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "railbus_passenger_trailer_car"
         super().__init__(**kwargs)
-        # PassengerCarConsistBase sets 'express' speed, but railbus trailers should override this
-        self.speed_class = "standard"
+        if self.base_track_type_name == "NG" and self.gen == 4:
+            # pony NG jank, gen 4 railbus trailers get a speed bump to 'express'
+            self.speed_class = "express"
+        else:
+            # PassengerCarConsistBase sets 'express' speed, but railbus trailers should override this
+            self.speed_class = "standard"
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         self._intro_year_days_offset = (
@@ -6241,7 +6250,12 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
             ]
         )
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE"
+        if self.base_track_type_name == "NG":
+            # pony NG jank, railbus trailers directly set role buy menu string here, (don't set a different role as that confuses the tech tree etc)
+            if self.gen == 4:
+                self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+            else:
+                self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # Graphics configuration

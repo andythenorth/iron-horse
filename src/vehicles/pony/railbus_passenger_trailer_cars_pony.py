@@ -15,6 +15,7 @@ def main(roster_id, **kwargs):
         subtype="U",
         base_track_type_name="NG",
         cab_id="mumble",
+        pax_car_capacity_type="high_capacity",  # specific capacity modifier
         sprites_complete=True,
     )
 
@@ -30,6 +31,7 @@ def main(roster_id, **kwargs):
         subtype="U",
         base_track_type_name="NG",
         cab_id="snapper",
+        pax_car_capacity_type="high_capacity",  # specific capacity modifier
         sprites_complete=True,
     )
 
