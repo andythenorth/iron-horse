@@ -75,7 +75,7 @@ engine_module_names = [
     # freight
     "hercules",
     "eastern",
-    # "celt", # unfinished, nerfed - not convinced I like the sprite currently either
+    "celt",
     "haar",
     "trojan",
     "growler",
