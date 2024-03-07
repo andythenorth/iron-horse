@@ -6053,7 +6053,10 @@ class PanoramicCarConsist(PassengerCarConsistBase):
         self.floating_run_cost_multiplier = 3.33
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
-        # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
+        # pony NG jank directly set role buy menu string here, JFDI to make it work, may not actually be needed
+        self._buy_menu_additional_text_role_string = (
+            "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+        )
         # Graphics configuration
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
         liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
