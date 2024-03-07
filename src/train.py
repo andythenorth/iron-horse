@@ -1155,7 +1155,9 @@ class Consist(object):
     @property
     def buy_menu_additional_text_role_string(self):
         if self._buy_menu_additional_text_role_string is not None:
-            return "STR_ROLE, string(" + self._buy_menu_additional_text_role_string + ")"
+            return (
+                "STR_ROLE, string(" + self._buy_menu_additional_text_role_string + ")"
+            )
         for role_group, roles in global_constants.role_group_mapping.items():
             if self.role in roles:
                 return (
@@ -1597,7 +1599,9 @@ class MailEngineRailcarConsist(MailEngineConsist):
         self.train_flag_mu = True
         if self.base_track_type_name == "NG" and self.gen == 4:
             # pony NG jank, mail railcar directly set role buy menu string here, (don't set a different role as that confuses the tech tree etc)
-            self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+            self._buy_menu_additional_text_role_string = (
+                "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+            )
         # non-standard cite
         if self.base_track_type_name == "NG":
             # give NG a bonus to align run cost with NG railbus
@@ -1821,11 +1825,6 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         else:
             self.roof_type = "pax_mail_smooth"
         # position variants
-        # * unit with driving cab front end
-        # * unit with driving cab rear end
-        # * unit with no cabs (center car)
-        # * special unit with no cabs (center car)
-        # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
         jfdi_pantograph_debug_image_y_offsets = [len(liveries) * 60, 30]
@@ -1916,7 +1915,9 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         if self.base_track_type_name == "NG":
             # pony NG jank, railbus trailers directly set role buy menu string here, (don't set a different role as that confuses the tech tree etc)
             if self.gen == 4:
-                self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+                self._buy_menu_additional_text_role_string = (
+                    "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+                )
             else:
                 self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE"
         # non-standard cite
@@ -6293,7 +6294,9 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         if self.base_track_type_name == "NG":
             # pony NG jank, railbus trailers directly set role buy menu string here, (don't set a different role as that confuses the tech tree etc)
             if self.gen == 4:
-                self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+                self._buy_menu_additional_text_role_string = (
+                    "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+                )
             else:
                 self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
@@ -8097,6 +8100,22 @@ class DieselRailcarBaseUnit(DieselEngineUnit):
         # the cab magic won't work unless it's asymmetric eh? :)
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
         # note that railcar effects are left in default position, no attempt to move them to end of vehicle, or double them (tried, looks weird)
+
+
+class DieselExpressRailcarPaxUnit(DieselRailcarBaseUnit):
+    """
+    Unit for a pax diesel express railcar.  Just a sparse subclass to set capacity and effects.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # magic to set capacity subject to length and vehicle capacity type
+        self.capacity = self.get_pax_car_capacity()
+        # effects
+        self.engine_class = "ENGINE_CLASS_DIESEL"
+        self.effects = {
+            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
+        }
 
 
 class DieselRailcarMailUnit(DieselRailcarBaseUnit):

@@ -1012,11 +1012,17 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
         # that means we can just do first / last, and not worry about other position variants
         # support for arbitrary number of units could be added, derived from consist ruleset, but those cases don't exist as of Jan 2024
         if len(pipeline.consist.units) != 2:
-            raise BaseException(
-                "GestaltGraphicsConsistPositionDependent.get_buy_menu_unit_input_row_num(): consist "
-                + pipeline.consist.id
-                + " does not have exactly 2 units - this case is not currently supported"
-            )
+            if pipeline.consist.id == "flirt":
+                #JFDI jank
+                if unit_counter == 1:
+                    position_variant_offset = self.spriterow_group_mappings["default"]
+                    return position_variant_offset
+            else:
+                raise BaseException(
+                    "GestaltGraphicsConsistPositionDependent.get_buy_menu_unit_input_row_num(): consist "
+                    + pipeline.consist.id
+                    + " does not have exactly 2 units - this case is not currently supported"
+                )
 
         if unit_counter == 0:
             position_variant_offset = self.spriterow_group_mappings["first"]

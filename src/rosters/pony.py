@@ -206,6 +206,10 @@ engine_module_names = [
     "snapper_single",
     "zorro",
     "ruby",
+    "flirt",
+    "amg_800",
+    "driving_cab_passenger_ng_pony_gen_4",
+    "driving_cab_panoramic_passenger_ng_pony_gen_4",
 ]
 
 # these can be alphabetised, the buy menu order is enforced in global constants
@@ -316,9 +320,13 @@ def main():
                 "multiplier": 2.5,
                 "loading_speed_multiplier": 1.75,
             },
-            "railbus_combine_ng": {
+            "railbus_combine_ng_1": {
                 "multiplier": 2,
                 "loading_speed_multiplier": 1.5,
+            },
+            "railbus_combine_ng_2": {
+                "multiplier": 1.4,
+                "loading_speed_multiplier": 1.25,
             },
         },
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
