@@ -237,7 +237,7 @@ role_string_mapping = {
     "driving_cab": "STR_ROLE_DRIVING_CAB",
     "express": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
     "express_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
-    "freight": "STR_ROLE_FREIGHT",
+    "freight": "STR_ROLE_GENERAL_PURPOSE_FREIGHT",
     "gronk!": "STR_ROLE_GRONK",
     "high_power_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
     "hst": "STR_ROLE_INTERCITY_EXPRESS",
