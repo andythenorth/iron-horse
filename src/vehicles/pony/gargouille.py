@@ -31,6 +31,6 @@ def main(roster_id, **kwargs):
     )
 
     consist.description = """Le petit train du jour. I've imported a few of these."""
-    consist.foamer_facts = """CFD Locotracteur BB-400, New Zealand DSG class"""
+    consist.foamer_facts = """Corsican CFD Locotracteur BB-400, New Zealand DSG class"""
 
     return consist

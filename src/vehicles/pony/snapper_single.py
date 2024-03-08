@@ -28,6 +28,6 @@ def main(roster_id, **kwargs):
     )
 
     consist.description = """Vitesse. Confort. Exactitude. This railcar has none of those. But it is cheap to run."""
-    consist.foamer_facts = """CFC Autorail Billard, CFC X2000/X5000"""
+    consist.foamer_facts = """Corsican CFC X2000/X5000, CFD Autorails"""
 
     return consist

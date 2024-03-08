@@ -34,6 +34,6 @@ def main(roster_id, **kwargs):
     )
 
     consist.description = """."""
-    consist.foamer_facts = """CORSICA AMG 800"""
+    consist.foamer_facts = """Corsican AMG 800"""
 
     return consist

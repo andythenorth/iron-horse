@@ -34,6 +34,6 @@ def main(roster_id, **kwargs):
     consist.description = (
         """"""
     )
-    consist.foamer_facts = """(Stadler / Mitsubishi bo-bo-bo)"""
+    consist.foamer_facts = """KiwiRail Stadler SALi locomotives, Kawasaki (Japan) Class DF200-7000 bo-bo-bo (dedicated locomotive for JR Kysushu <i>Seven Stars in Kyushu</i> luxury train)"""
 
     return consist

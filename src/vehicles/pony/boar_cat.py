@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
 
     consist.description = """This is a big small cat."""
     consist.foamer_facts = (
-        """CFD Locotracteur BB-400, South African 'Funkey' diesels, FAUR L45H B-B"""
+        """Corsican CFD Locotracteur BB-400, South African 'Funkey' diesels, FAUR L45H B-B"""
     )
 
     consist.clone(base_numeric_id=910, clone_units=[1])

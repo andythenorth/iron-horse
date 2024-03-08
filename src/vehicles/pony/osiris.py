@@ -29,9 +29,7 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
     )
 
-    # https://en.wikipedia.org/wiki/Euskotren_TD2000_series
-    # https://en.wikipedia.org/wiki/JR_Freight_Class_DF200#DF200-7000
     consist.description = """"""
-    consist.foamer_facts = """"""
+    consist.foamer_facts = """Euskotren TD 2000 Series"""
 
     return consist
