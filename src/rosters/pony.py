@@ -198,7 +198,7 @@ engine_module_names = [
     "nile",
     "hinterland",
     "rockhampton",
-    "seven_star",
+    "higuma",
     # ng railcars
     "mumble",
     "mumble_single",

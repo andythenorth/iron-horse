@@ -4,7 +4,7 @@ from train import EngineConsist, DieselEngineUnit
 def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="seven_star",
+        id="higuma",
         base_numeric_id=30870,
         name="Higuma",
         role="express",
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
         random_reverse=True,
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["SWOOSH", "SWOOSH"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -32,7 +32,7 @@ def main(roster_id, **kwargs):
     # https://en.wikipedia.org/wiki/New_Zealand_DL_class_locomotive
     # https://en.wikipedia.org/wiki/New_Zealand_DM_class_locomotive
     consist.description = (
-        """"""
+        """A tiny mighty bear."""
     )
     consist.foamer_facts = """KiwiRail Stadler SALi locomotives, Kawasaki (Japan) Class DF200-7000 bo-bo-bo (dedicated locomotive for JR Kysushu <i>Seven Stars in Kyushu</i> luxury train)"""
 
