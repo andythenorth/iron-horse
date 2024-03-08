@@ -13,7 +13,7 @@ def main(roster_id, **kwargs):
             "METRO": 600,
         },
         gen=1,
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     # should be 4 units not 2, would look nicer short, but eh, painting
