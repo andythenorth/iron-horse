@@ -4,9 +4,9 @@ from train import EngineConsist, DieselEngineUnit
 def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="osiris",
+        id="lebeche",
         base_numeric_id=30570,
-        name="Osiris",
+        name="Lebeche",
         role="express",
         role_child_branch_num=-1,
         power_by_power_source={
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
     )
 
-    consist.description = """"""
+    consist.description = """For new times. This is the zippy one."""
     consist.foamer_facts = """Euskotren TD 2000 Series"""
 
     return consist

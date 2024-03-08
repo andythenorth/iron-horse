@@ -193,7 +193,7 @@ engine_module_names = [
     "alfama",
     "gargouille",
     "solano",
-    "osiris",
+    "lebeche",
     "tyrconnell",
     "nile",
     "hinterland",
@@ -207,7 +207,7 @@ engine_module_names = [
     "zorro",
     "ruby",
     "flirt",
-    "amg_800",
+    "stratos",
     "driving_cab_passenger_ng_pony_gen_4",
     "driving_cab_panoramic_passenger_ng_pony_gen_4",
 ]

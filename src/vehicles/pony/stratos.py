@@ -7,9 +7,9 @@ from train import (
 def main(roster_id, **kwargs):
     consist = PassengerEngineExpressRailcarConsist(
         roster_id=roster_id,
-        id="amg_800",
+        id="stratos",
         base_numeric_id=390,
-        name="[AMG 800]",
+        name="Stratos",
         role="express_pax_railcar",  # quite a specific role, may or may not scale to other rosters
         role_child_branch_num=-2,
         base_track_type_name="NG",
@@ -33,7 +33,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist.description = """."""
+    consist.description = """Every journey becomes a panorama."""
     consist.foamer_facts = """Corsican AMG 800"""
 
     return consist
