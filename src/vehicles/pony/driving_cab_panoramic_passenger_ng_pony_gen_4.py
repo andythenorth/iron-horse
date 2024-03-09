@@ -11,14 +11,18 @@ def main(roster_id, **kwargs):
         base_track_type_name="NG",
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
-    consist.add_unit(type=CabControlPaxCarUnit, weight=32, chassis="railcar_32px")
-
-    consist.description = """"""
-    consist.foamer_facts = (
-        """KIWI DRIVING CAB"""
+    consist.add_unit(
+        type=CabControlPaxCarUnit,
+        weight=32,
+        chassis="railcar_ng_32px",
+        tail_light="railcar_32px_6",
+        suppress_roof_sprite=True,
     )
+
+    consist.description = """For a view most spectacular."""
+    consist.foamer_facts = """Generic panoramic coaches"""
 
     return consist

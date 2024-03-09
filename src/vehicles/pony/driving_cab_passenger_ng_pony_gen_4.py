@@ -16,7 +16,9 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=CabControlPaxCarUnit, weight=32, chassis="4_axle_ng_32px")
 
-    consist.description = """Now, a driving cab for the smaller trains. But not for goats."""
+    consist.description = (
+        """Now, a driving cab for the smaller trains. But not for goats."""
+    )
     consist.foamer_facts = (
         """KiwiRail SRV driving cab conversion of British Rail MK2 carriage"""
     )

@@ -20,7 +20,7 @@ def main(roster_id, **kwargs):
         tilt_bonus=True,  # for lolz
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         consist_ruleset="railcars_4_unit_sets",  # special case
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
         weight=60,
         capacity=24,
         chassis="railcar_ng_32px",
-        tail_light="railcar_32px_5",
+        tail_light="railcar_32px_6",
         suppress_roof_sprite=True,
         repeat=2,
     )
