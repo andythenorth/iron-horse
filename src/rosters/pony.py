@@ -207,9 +207,9 @@ engine_module_names = [
     "zorro",
     "ruby",
     #"golfinho", # turn off, has composition issues (chassis, roof, buy menu sprite don't support the consist unit count or varying vehicle length)
-    #"stratos",
+    "stratos",
     "driving_cab_passenger_ng_pony_gen_4",
-    #"driving_cab_panoramic_passenger_ng_pony_gen_4",
+    "driving_cab_panoramic_passenger_ng_pony_gen_4",
 ]
 
 # these can be alphabetised, the buy menu order is enforced in global constants
