@@ -338,9 +338,8 @@ def main():
             "ARC": {
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_GREY", "COLOUR_GREY"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
-                    ("COLOUR_YELLOW", "COLOUR_WHITE"),
                 ],
             },
             "BANGER_BLUE": {
