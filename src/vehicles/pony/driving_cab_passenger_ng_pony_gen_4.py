@@ -11,14 +11,14 @@ def main(roster_id, **kwargs):
         base_track_type_name="NG",
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=CabControlPaxCarUnit, weight=32, chassis="4_axle_ng_32px")
 
-    consist.description = """"""
+    consist.description = """Now, a driving cab for the smaller trains. But not for goats."""
     consist.foamer_facts = (
-        """KIWI DRIVING CAB"""
+        """KiwiRail SRV driving cab conversion of British Rail MK2 carriage"""
     )
 
     return consist
