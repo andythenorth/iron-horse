@@ -206,7 +206,7 @@ engine_module_names = [
     "snapper_single",
     "zorro",
     "ruby",
-    "golfinho",
+    #"golfinho", # turn off, has composition issues (chassis, roof, buy menu sprite don't support the consist unit count or varying vehicle length)
     "stratos",
     "driving_cab_passenger_ng_pony_gen_4",
     "driving_cab_panoramic_passenger_ng_pony_gen_4",

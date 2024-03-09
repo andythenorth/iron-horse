@@ -23,15 +23,15 @@ def main(roster_id, **kwargs):
         type=DieselRailcarCombineUnitPax,
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
-        chassis="railcar_ng_24px",
-        tail_light="railcar_24px_1",
+        chassis="railcar_ng_20px",
+        tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length
     )
 
     consist.add_unit(
         type=DieselRailcarCombineUnitMail,
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
-        chassis="railcar_ng_16px",
+        chassis="railcar_ng_24px",
         tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length - also no tail light needed, permanent middle car
     )
 
@@ -39,7 +39,7 @@ def main(roster_id, **kwargs):
         type=DieselRailcarCombineUnitPax,
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
-        chassis="railcar_ng_24px",
+        chassis="railcar_ng_20px",
         tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length
     )
 
