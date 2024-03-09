@@ -11,7 +11,7 @@ def main(roster_id, **kwargs):
         role_child_branch_num=-2,
         base_track_type_name="NG",
         power_by_power_source={
-            "DIESEL": 1500,
+            "DIESEL": 1600, # breaks the 300 hp step size, but eh, lots of precedent  1800 hp would be too much?
         },
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
