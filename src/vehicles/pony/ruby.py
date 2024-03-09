@@ -26,7 +26,7 @@ def main(roster_id, **kwargs):
         tail_light="railcar_24px_1",
     )
 
-    consist.description = """"""
+    consist.description = """A modern way to move mail and other packages. I must regret, we have not yet accommodated goats."""
     consist.foamer_facts = """CFC Autorail Billard, CFC X2000/X5000"""
 
     return consist

@@ -4,9 +4,9 @@ from train import PassengerEngineRailbusConsist, DieselRailcarCombineUnitMail, D
 def main(roster_id, **kwargs):
     consist = PassengerEngineRailbusConsist(
         roster_id=roster_id,
-        id="flirt",
+        id="golfinho",
         base_numeric_id=970,
-        name="FLIRT",
+        name="Golfinho",
         role="pax_railbus",
         role_child_branch_num=-2,
         base_track_type_name="NG",
@@ -44,7 +44,7 @@ def main(roster_id, **kwargs):
     )
 
     # https://www.stadlerrail.com/media/pdf/cttfgvl90420_en.pdf
-    consist.description = """"""
-    consist.foamer_facts = """STADLER FLIRT / CITYLINK"""
+    consist.description = """Efficiently whisking passengers about in the most modern ways. Goats remain, at this time, disallowed."""
+    consist.foamer_facts = """Stadler FLIRT, Stadler GTW, Stadler Citylink"""
 
     return consist

@@ -206,7 +206,7 @@ engine_module_names = [
     "snapper_single",
     "zorro",
     "ruby",
-    "flirt",
+    "golfinho",
     "stratos",
     "driving_cab_passenger_ng_pony_gen_4",
     "driving_cab_panoramic_passenger_ng_pony_gen_4",
