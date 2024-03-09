@@ -13,7 +13,7 @@ wagon_module_names = [
     "express_railcar_mail_trailer_cars",
     "express_railcar_passenger_trailer_cars",
     "passenger_cars",
-    #"panoramic_cars",
+    "panoramic_cars",
     "high_speed_passenger_cars",
     "restaurant_cars",
     "suburban_passenger_cars",
