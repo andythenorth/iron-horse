@@ -43,8 +43,8 @@ def main(roster_id, **kwargs):
         tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length
     )
 
-    # https://www.stadlerrail.com/media/pdf/cttfgvl90420_en.pdf
+    https://fr.wikipedia.org/wiki/Stadler_SPATZ
     consist.description = """Efficiently whisking passengers about in the most modern ways. Goats remain, at this time, disallowed."""
-    consist.foamer_facts = """Stadler FLIRT, Stadler GTW, Stadler Citylink"""
+    consist.foamer_facts = """Stadler SPATZ"""
 
     return consist
