@@ -3,13 +3,36 @@ Changelog
 
 
 ------------
+3.12.0 Release
+------------
+
+
+*Changes*
+
+- added engines
+    - Celt 2-8-4 steam freight engine, 60 mph, 1500 hp, available around 1930
+    - Lebeche narrow gauge diesel engine, 75 mph, 1200 hp, available around 2010
+    - Higuma narrow gauge diesel engine, 75 mph, 1600 hp, available around 2010
+- added narrow gauge generation 4 passenger vehicles
+    - medium and large Passenger Coaches
+    - Driving Trailer
+- reduced height of metro trains, so they look more like tube trains
+- adjusted some vehicle role strings for greater clarity
+
+
+*Fixes*
+
+- fixed bad/missing roof pixels for narrow gauge railcars and some mail cars
+
+
+------------
 3.11.0 Release
 ------------
 
 
 *Changes*
 
-- added Snapper narrow-gauge diesel railcar, 75 mph, available around 2010
+- added Snapper narrow gauge diesel railcar, 75 mph, available around 2010
     - 2-unit version, 560 hp,
     - single-unit version, 350 hp
     - unpowered trailer
