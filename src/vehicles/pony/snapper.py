@@ -21,7 +21,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(
         type=DieselRailcarCombineUnitMail,
-        weight=18,
+        weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
         tail_light="railcar_20px_1",
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(
         type=DieselRailcarCombineUnitPax,
-        weight=18,
+        weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
         tail_light="railcar_20px_1",

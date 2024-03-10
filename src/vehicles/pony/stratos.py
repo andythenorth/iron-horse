@@ -25,7 +25,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(
         type=DieselExpressRailcarPaxUnit,
-        weight=60,
+        weight=50,
         capacity=24,
         chassis="railcar_ng_32px",
         tail_light="railcar_32px_6",

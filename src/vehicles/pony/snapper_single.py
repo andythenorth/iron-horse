@@ -21,7 +21,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(
         type=DieselRailcarPaxUnit,
-        weight=18,
+        weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_24px",
         tail_light="railcar_24px_1",
