@@ -1,8 +1,7 @@
-from train import PassengerEngineRailbusConsist, DieselRailcarCombineUnitMail, DieselRailcarCombineUnitPax
-
+from train import AutoCoachCombineConsist, DieselRailcarCombineUnitMail, DieselRailcarCombineUnitPax
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineRailbusConsist(
+    consist = AutoCoachCombineConsist(
         roster_id=roster_id,
         id="golfinho",
         base_numeric_id=970,
@@ -32,7 +31,7 @@ def main(roster_id, **kwargs):
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_24px",
-        tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length - also no tail light needed, permanent middle car
+        tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length
     )
 
     consist.add_unit(
@@ -43,7 +42,7 @@ def main(roster_id, **kwargs):
         tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length
     )
 
-    https://fr.wikipedia.org/wiki/Stadler_SPATZ
+    #https://fr.wikipedia.org/wiki/Stadler_SPATZ
     consist.description = """Efficiently whisking passengers about in the most modern ways. Goats remain, at this time, disallowed."""
     consist.foamer_facts = """Stadler SPATZ"""
 
