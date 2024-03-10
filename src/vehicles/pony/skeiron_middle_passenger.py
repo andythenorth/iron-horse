@@ -22,6 +22,7 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
         chassis="jacobs_solid_express_32px",
         repeat=2,
+        effects={}, # suppress visual effects
     )
 
     consist.description = """."""

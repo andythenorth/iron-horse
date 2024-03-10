@@ -8188,9 +8188,11 @@ class ElectricEngineUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_ELECTRIC"
-        self.effects = {
-            "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
-        }
+        # use kwargs so we can suppress effects by settting to empty dict
+        self.effects = kwargs.get(
+            "effects",
+            {"default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]},
+        )
         # almost all electric engines are asymmetric, override per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
@@ -8203,9 +8205,11 @@ class ElectricHighSpeedUnitBase(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_ELECTRIC"
-        self.effects = {
-            "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
-        }
+        # use kwargs so we can suppress effects by settting to empty dict
+        self.effects = kwargs.get(
+            "effects",
+            {"default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]},
+        )
         self._symmetry_type = "asymmetric"
 
 
