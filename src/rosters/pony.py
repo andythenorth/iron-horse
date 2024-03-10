@@ -325,7 +325,7 @@ def main():
                 "loading_speed_multiplier": 1.5,
             },
             "railbus_combine_ng_2": {
-                "multiplier": 1.4,
+                "multiplier": 1.5,
                 "loading_speed_multiplier": 1.25,
             },
         },

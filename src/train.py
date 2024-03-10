@@ -1474,6 +1474,38 @@ class AutoCoachCombineConsist(EngineConsist):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
+class FixedFormationRailcarCombineConsist(EngineConsist):
+    """
+    Consist for a fixed formation articulated railcar combine (mail + pax).
+    This *does* not use consist-dependent position sprite rulesets; the formation is fixed.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
+            kwargs["pax_car_capacity_type"]
+        ]
+        if self.base_track_type_name == "NG":
+            # pony NG jank, to force a different role string for NG
+            if self.gen == 4:
+                self._buy_menu_additional_text_role_string = (
+                    "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+                )
+            else:
+                self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE"
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCustom(
+            "vehicle_fixed_formation_railcar.pynml",
+            liveries=self.roster.get_liveries_by_name(
+                []
+            ),  # inserts the default liveries for docs examples
+        )
+
+    @property
+    def loading_speed_multiplier(self):
+        return self.pax_car_capacity_type["loading_speed_multiplier"]  # !!!!!!!!!!!!!!!
+
+
 class MailEngineConsist(EngineConsist):
     """
     Consist of engines / units that has mail (and express freight) capacity
@@ -6054,9 +6086,7 @@ class PanoramicCarConsist(PassengerCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # pony NG jank directly set role buy menu string here, JFDI to make it work, may not actually be needed
-        self._buy_menu_additional_text_role_string = (
-            "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
-        )
+        self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
         # Graphics configuration
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
         liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
@@ -7617,6 +7647,8 @@ class Train(object):
         self.default_effect_z_offset = (
             12  # optimised for Pony diesel and electric trains
         )
+        # optional - we might want to force the sprites to reverse in some contexts, for example rear cabs of multiple-unit articulated railcars
+        self.reverse_sprite_template = kwargs.get("reverse_sprite_template", False)
         # optional - only set if the graphics processor generates the vehicle chassis
         self.chassis = kwargs.get("chassis", None)
         # optional - occasionally we need to suppress composited roof sprites and just draw our own

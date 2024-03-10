@@ -1,7 +1,7 @@
-from train import AutoCoachCombineConsist, DieselRailcarCombineUnitMail, DieselRailcarCombineUnitPax
+from train import FixedFormationRailcarCombineConsist, DieselRailcarCombineUnitMail, DieselRailcarCombineUnitPax
 
 def main(roster_id, **kwargs):
-    consist = AutoCoachCombineConsist(
+    consist = FixedFormationRailcarCombineConsist(
         roster_id=roster_id,
         id="golfinho",
         base_numeric_id=970,
@@ -20,26 +20,30 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(
         type=DieselRailcarCombineUnitPax,
-        weight=18,
+        weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
         tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length
-    )
-
-    consist.add_unit(
-        type=DieselRailcarCombineUnitMail,
-        weight=18,
-        effect_z_offset=11,  # reduce smoke z position to suit NG engine height
-        chassis="railcar_ng_24px",
-        tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length
+        spriterow_num=0,
     )
 
     consist.add_unit(
         type=DieselRailcarCombineUnitPax,
-        weight=18,
+        weight=22,
+        effect_z_offset=11,  # reduce smoke z position to suit NG engine height
+        chassis="railcar_ng_24px",
+        tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length
+        spriterow_num=1,
+    )
+
+    consist.add_unit(
+        type=DieselRailcarCombineUnitMail,
+        weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
         tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length
+        spriterow_num=0,
+        reverse_sprite_template=True,
     )
 
     #https://fr.wikipedia.org/wiki/Stadler_SPATZ

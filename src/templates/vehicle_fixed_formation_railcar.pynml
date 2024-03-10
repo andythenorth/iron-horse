@@ -1,0 +1,120 @@
+<!--! fixed formation railcar that *is not* composable from multiple consist-dependent vehicles and *does not* use configurable consist rulesets
+      support for pantographs and opening doors *is* included
+      this is very similar to the standard engine template, but has opening door support, but no decor spriterow support-->
+
+<!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
+<tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
+    spriteset(${vehicle.id}_ss_doors_closed_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name('reversed' if vehicle.reverse_sprite_template else 'unreversed', 10 + (repeat.livery.index * 60) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 60))}
+    }
+    spriteset(${vehicle.id}_ss_doors_open_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name('reversed' if vehicle.reverse_sprite_template else 'unreversed', 10 + 30 + (repeat.livery.index * 60) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 60))}
+    }
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_doors_${repeat.livery.index}, switch_graphics_opening_doors()) {
+        0: return ${vehicle.id}_ss_doors_closed_${repeat.livery.index};
+        1: return ${vehicle.id}_ss_doors_open_${repeat.livery.index};
+    }
+</tal:liveries>
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery, vehicle_type_id) {
+    <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+        ${unit_variant.numeric_id}: return ${vehicle.id}_switch_graphics_check_doors_${unit_variant.buyable_variant.buyable_variant_num};
+    </tal:unit_variants>
+    <!--! no default, by design all variants should be explicitly found -->
+}
+
+<tal:pantographs condition="consist.pantograph_type is not None">
+    <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
+    <tal:pantographs repeat="pantograph_state ['down', 'up']">
+        spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
+            ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.spriterow_num * 60))}
+        }
+    </tal:pantographs>
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
+        1: return ${vehicle.id}_ss_pantographs_up;
+        return ${vehicle.id}_ss_pantographs_down;
+    }
+</tal:pantographs>
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names[1:]">
+        ${extra_sprite_layer[0]}: return ${vehicle.id}_switch_graphics_${extra_sprite_layer[1]};
+    </tal:extra_sprite_layers>
+    return ${vehicle.id}_switch_graphics_livery;
+}
+
+// buy menu graphics chain
+<!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
+<tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
+spriteset(${vehicle.id}_ss_vehicle_purchase_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
+    ${consist.get_nml_for_spriteset_template(y_offset=repeat.livery.index * 60)}
+}
+</tal:liveries>
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase_livery, vehicle_type_id) {
+    <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+        ${unit_variant.numeric_id}: return ${vehicle.id}_ss_vehicle_purchase_${unit_variant.buyable_variant.buyable_variant_num};
+    </tal:unit_variants>
+    <!--! no default, by design all variants should be explicitly found -->
+}
+
+<tal:conditional_pantographs condition="consist.pantograph_type is not None">
+    <!--! purchase sprites for case where pantograph layer is needed -->
+    spriteset(${vehicle.id}_ss_pantographs_purchase, "${graphics_path}${consist.id}_pantographs_down.png") {
+        ${consist.get_nml_for_spriteset_template(y_offset=0)}
+    }
+</tal:conditional_pantographs>
+
+<tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names">
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_${extra_sprite_layer[1]},
+        STORE_TEMP(
+            <tal:more_sprites condition="not: repeat.extra_sprite_layer.end">
+                CB_FLAG_MORE_SPRITES |
+            </tal:more_sprites>
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+        <tal:result switch="extra_sprite_layer[1]">
+            <tal:block case="'base'">
+                return ${vehicle.id}_switch_graphics_vehicle_purchase_livery;
+            </tal:block>
+            <tal:block case="'pantographs'">
+                return ${vehicle.id}_ss_${extra_sprite_layer[1]}_purchase;
+            </tal:block>
+        </tal:result>
+    }
+</tal:extra_sprite_layers>
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+    <!--! chaining these switches to ensure that layers continue is slight faff, as we have to know which is the last -->
+    <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names">
+        ${extra_sprite_layer[0]}: return ${vehicle.id}_switch_graphics_purchase_${extra_sprite_layer[1]};
+    </tal:extra_sprite_layers>
+}
+
+
+<tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
+
+<!--! dedicated colour remapping with rules against specific cc2 colours-->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id) {
+    <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+        <tal:livery define="livery consist.gestalt_graphics.all_liveries[repeat.unit_variant.index]">
+            <tal:optional_forced_recolour switch="livery.get('remap_to_cc', None) is not None">
+                <tal:block case="True">
+                    <!--! recolour CC2 to arbitrary other CC as defined by livery -->
+                    ${unit_variant.numeric_id}: palette_2cc(${livery['remap_to_cc']['company_colour1']}, ${livery['remap_to_cc']['company_colour2']});
+                </tal:block>
+                <tal:block case="False">
+                    <!--! apply regular 1CC and 2CC -->
+                    ${unit_variant.numeric_id}: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                </tal:block>
+            </tal:optional_forced_recolour>
+        </tal:livery>
+    </tal:unit_variants>
+}
+
+<tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
+    <tal:include metal:use-macro="load: capacity.pynml" />
+</tal:optional_capacity_switches>
+
+<tal:include metal:use-macro="load: properties.pynml" />
