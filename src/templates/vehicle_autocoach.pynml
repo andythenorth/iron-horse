@@ -1,8 +1,8 @@
 <!--! this is the template for autocoach sets -->
 
-<!--!
-    user flipping vehicle in depot is not supported by this vehicle type (articulated)
--->
+<!--! fixed-formation articulated vehicle with opening doors
+      specific re-ordering of the articulated sprites if the vehicle is last in consist (requires all units being same length) -->
+
 // default graphics chain
 <tal:reversed repeat="reversed ['unreversed', 'reversed']">
     spriteset(${vehicle.id}_ss_doors_closed_${reversed}_0, "${graphics_path}${consist.id}.png") {
