@@ -13,7 +13,7 @@ def main(roster_id, **kwargs):
         power_by_power_source={
             "STEAM": 900,
         },
-        tractive_effort_coefficient=0.3,
+        tractive_effort_coefficient=0.31,
         gen=2,
         intro_year_offset=10,  # introduce a bit later
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
@@ -25,7 +25,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(
         type=SteamEngineUnit,
-        weight=80,
+        weight=65,
         vehicle_length=8,
         effect_offsets=[(-1, 0)],  # non-standard smoke position
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height

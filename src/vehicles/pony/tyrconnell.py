@@ -13,7 +13,7 @@ def main(roster_id, **kwargs):
         power_by_power_source={
             "STEAM": 900,
         },
-        tractive_effort_coefficient=0.3,
+        tractive_effort_coefficient=0.28,
         gen=2,
         intro_year_offset=-5,  # introduce early eh
         random_reverse=False,
@@ -22,10 +22,10 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SteamEngineUnit, weight=65, vehicle_length=5, spriterow_num=0)
+    consist.add_unit(type=SteamEngineUnit, weight=45, vehicle_length=5, spriterow_num=0)
 
     consist.add_unit(
-        type=SteamEngineTenderUnit, weight=29, vehicle_length=3, spriterow_num=1
+        type=SteamEngineTenderUnit, weight=19, vehicle_length=3, spriterow_num=1
     )
 
     consist.description = """A titan from the North. Steadfast and stout."""
