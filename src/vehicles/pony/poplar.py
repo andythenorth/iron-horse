@@ -4,29 +4,29 @@ from train import PassengerEngineMetroConsist, MetroUnit
 def main(roster_id, **kwargs):
     consist = PassengerEngineMetroConsist(
         roster_id=roster_id,
-        id="fleet_2",
-        base_numeric_id=960,
-        name="Fleet 2",
+        id="poplar",
+        base_numeric_id=1930,
+        name="Poplar",
         role="pax_metro",
         role_child_branch_num=-1,
         power_by_power_source={
-            "METRO": 1100,
+            "METRO": 600,
         },
-        gen=3,
+        gen=1,
         sprites_complete=False,
     )
 
-    # should be 4 short units, not 2 long but eh
+    # should be 4 units not 2, would look nicer short, but eh, painting
     consist.add_unit(
         type=MetroUnit,
         weight=36,
-        capacity=200,
+        capacity=120,
         chassis="metro_heavy_32px",
         tail_light="metro_32px_1",
         repeat=2,
     )
 
-    consist.description = """"""
-    consist.foamer_facts = """London Underground 1996 Stock"""
+    consist.description = """Does the money feel good? Do you like your life well."""
+    consist.foamer_facts = """London Underground 'Gate' Stock, Standard Stock"""
 
     return consist

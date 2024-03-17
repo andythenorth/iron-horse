@@ -4,9 +4,9 @@ from train import MailEngineMetroConsist, MetroUnit
 def main(roster_id, **kwargs):
     consist = MailEngineMetroConsist(
         roster_id=roster_id,
-        id="tideway_2",
+        id="bankside",
         base_numeric_id=1920,
-        name="Tideway 2",
+        name="Bankside",
         role="mail_metro",
         role_child_branch_num=-1,
         power_by_power_source={
