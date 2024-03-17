@@ -8094,7 +8094,9 @@ class DieselRailcarCombineUnitMail(CombineUnitMailBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
-        self.effects = {}
+        self.effects = {
+            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
+        }
         self._symmetry_type = "asymmetric"
 
 
@@ -8106,7 +8108,9 @@ class DieselRailcarCombineUnitPax(CombineUnitPaxBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
-        self.effects = {}
+        self.effects = {
+            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
+        }
         self._symmetry_type = "asymmetric"
 
 
