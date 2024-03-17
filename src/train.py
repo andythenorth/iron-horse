@@ -1425,6 +1425,10 @@ class EngineConsist(Consist):
         if is_NG:
             run_cost = 0.33 * run_cost
         # cap to int for nml
+        if self.id in ["stratos", "snapper", "golfinho", "mumble", "nimbus"]:
+            print(self.id)
+            print("is_NG", is_NG, "| run_cost", run_cost, "| floating_run_cost_points", floating_run_cost_points, "| self.floating_run_cost_multiplier", self.floating_run_cost_multiplier, "| fixed_run_cost_points", self.fixed_run_cost_points)
+            print("gen_multiplier", gen_multiplier, "| weight_factor", weight_factor, "| power_factor", power_factor, "| speed_cost_factor", speed_cost_factor )
         return int(run_cost)
 
     @property
@@ -1847,8 +1851,13 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 0.85
-        # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
-        self.fixed_run_cost_points = 155
+        if self.base_track_type_name == "NG":
+            # special case to knock costs on NG versions of these down similar to other railcars
+            self.fixed_run_cost_points = 120
+            self.floating_run_cost_multiplier = 4 # cleanest way to compress run cost down sufficiently
+        else:
+            # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
+            self.fixed_run_cost_points = 155
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # Graphics configuration
