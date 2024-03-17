@@ -23,7 +23,7 @@ def main(roster_id, **kwargs):
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
-        tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length
+        tail_light="railcar_20px_3",
         spriterow_num=0,
     )
 
@@ -32,7 +32,6 @@ def main(roster_id, **kwargs):
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_24px",
-        tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length
         spriterow_num=1,
     )
 
@@ -41,12 +40,11 @@ def main(roster_id, **kwargs):
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
-        tail_light="railcar_24px_1", # !!!!!!!!!!!!!!!!!!!!!!! wrong length
+        tail_light="railcar_20px_3",
         spriterow_num=0,
         reverse_sprite_template=True,
     )
 
-    #https://fr.wikipedia.org/wiki/Stadler_SPATZ
     consist.description = """Efficiently whisking passengers about in the most modern ways. Goats remain, at this time, disallowed."""
     consist.foamer_facts = """Stadler SPATZ"""
 
