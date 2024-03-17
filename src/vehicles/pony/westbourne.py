@@ -10,7 +10,7 @@ def main(roster_id, **kwargs):
         role="pax_metro",
         role_child_branch_num=1,
         power_by_power_source={
-            "METRO": 900,
+            "METRO": 850,
         },
         gen=2,
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(
         type=MetroUnit,
-        weight=36,
+        weight=33,
         capacity=160,
         chassis="metro_low_floor_32px",
         tail_light="metro_32px_1",

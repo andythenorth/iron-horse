@@ -10,7 +10,7 @@ def main(roster_id, **kwargs):
         role="mail_metro",
         role_child_branch_num=1,
         power_by_power_source={
-            "METRO": 1100,
+            "METRO": 1050,
         },
         gen=3,
         default_livery_extra_docs_examples=[("COLOUR_RED", "COLOUR_BLUE")],
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(
         type=MetroUnit,
-        weight=32,
+        weight=29,
         # set capacity for freight; mail will be automatically calculated
         capacity=30,
         chassis="metro_low_floor_32px",

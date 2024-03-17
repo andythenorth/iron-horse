@@ -26,7 +26,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist.description = """Does the money feel good? Do you like your life well."""
-    consist.foamer_facts = """London Underground 'Gate' Stock, Standard Stock"""
+    consist.description = """."""
+    consist.foamer_facts = """ """
 
     return consist

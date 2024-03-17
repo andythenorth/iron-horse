@@ -10,7 +10,7 @@ def main(roster_id, **kwargs):
         role="pax_metro",
         role_child_branch_num=1,
         power_by_power_source={
-            "METRO": 1100,
+            "METRO": 1050,
         },
         gen=3,
         default_livery_extra_docs_examples=[
@@ -23,7 +23,7 @@ def main(roster_id, **kwargs):
     # should be 4 short units, not 2 long but eh
     consist.add_unit(
         type=MetroUnit,
-        weight=36,
+        weight=33,
         capacity=200,
         chassis="metro_low_floor_32px",
         tail_light="metro_32px_1",
