@@ -3,6 +3,24 @@ Changelog
 
 
 ------------
+3.14.0 Release
+------------
+
+
+*Changes*
+
+- added Golfinho narrow gauge diesel railcar, 75 mph, 900 hp, available around 2010
+- adjusted running cost of Stratos narrow gauge diesel railcar
+- adjusted narrow gauge steam locomotive weights and tractive effort for game balance
+
+
+*Fixes*
+
+- too many visual effects for TGV-type trains (Brenner, Skerion etc)
+- not enough visual effects for combined passenger + mail railbuses (Snapper, Skipper etc)
+
+
+------------
 3.13.0 Release
 ------------
 
