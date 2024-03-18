@@ -2,6 +2,46 @@ from train import OpenCarConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
+    # --------------- metro -----------------------------------------------------------------
+    consist = OpenCarConsist(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=980,
+        gen=1,
+        subtype="D",
+        base_track_type_name="METRO",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="2_axle_metro_16px", repeat=2)
+
+
+    consist = OpenCarConsist(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=20370,
+        gen=2,
+        subtype="U",
+        base_track_type_name="METRO",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_metro_32px")
+
+
+    consist = OpenCarConsist(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=20270,
+        gen=3,
+        subtype="U",
+        base_track_type_name="METRO",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_metro_32px")
+
+
     # --------------- narrow gauge -----------------------------------------------------------------
     consist = OpenCarConsist(
         roster_id=roster_id,
@@ -155,3 +195,4 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+

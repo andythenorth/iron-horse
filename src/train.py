@@ -2388,6 +2388,8 @@ class CarConsist(Consist):
         # 'normal' rail and 'elrail' doesn't require an id modifier
         if kwargs.get("base_track_type_name", None) == "NG":
             base_id = base_id + "_ng"
+        if kwargs.get("base_track_type_name", None) == "METRO":
+            base_id = base_id + "_metro"
         substrings.append(base_id)
         substrings.append(kwargs["roster_id"])
         substrings.append("gen")

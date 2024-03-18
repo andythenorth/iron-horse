@@ -76,7 +76,7 @@ class Roster(object):
     def consists_in_buy_menu_order(self):
         result = []
         result.extend(self.engine_consists)
-        for base_track_type_name in ["RAIL", "NG"]:
+        for base_track_type_name in ["RAIL", "NG", "METRO"]:
             for base_id in self.wagon_consists_by_base_id.keys():
                 wagon_consists = [
                     wagon_consist

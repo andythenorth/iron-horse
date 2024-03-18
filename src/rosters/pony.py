@@ -298,6 +298,7 @@ def main():
         freight_car_capacity_per_unit_length={
             "RAIL": [4, 4, 5, 5.5, 6, 6],
             "NG": [3, 3, 4, 4],
+            "METRO": [4, 5, 6],
         },
         pax_car_capacity_per_unit_length={
             "RAIL": [3, 3.75, 4.5, 5.25, 6, 6],
