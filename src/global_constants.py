@@ -228,7 +228,7 @@ role_group_mapping = OrderedDict(
                 "snoughplough!",
             ],
         ),
-        ("metro", ["pax_metro", "mail_metro"]),  # note pax before mail
+        ("metro", ["pax_metro", "mail_metro", "metro"]),  # note pax before mail
     ]
 )
 

@@ -184,6 +184,12 @@ engine_module_names = [
     "wandle",
     "tideway",
     "bankside",
+    "cringle",
+    "debden",
+    "mulberry",
+    "walbrook",
+    "borax",
+    "angerstein",
     # ng engines
     "cheese_bug",
     "bean_feast",
