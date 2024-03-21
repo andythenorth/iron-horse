@@ -539,6 +539,14 @@ def main():
                     ("COLOUR_YELLOW", "COLOUR_BLUE"),
                 ],
             },
+            "TUBE": {
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_BLUE", "COLOUR_BLUE"),
+                    ("COLOUR_RED", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_DARK_BLUE"),
+                ],
+            },
             # the default "nothing" livery
             "VANILLA": {
                 "remap_to_cc": None,
@@ -628,7 +636,8 @@ def main():
                 ("VANILLA", 3),
             ],
             "default_metro_liveries": [
-                ("VANILLA", 0),
+                ("TUBE", 0),
+                ("VANILLA", 1),
             ],
         },
         engine_module_names=engine_module_names,
