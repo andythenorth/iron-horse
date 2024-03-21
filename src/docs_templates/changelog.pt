@@ -3,6 +3,23 @@ Changelog
 
 
 ------------
+3.15.0 Release
+------------
+
+
+*Changes*
+
+- added livery variants for metro trains
+- adjusted metro train weights and HP
+
+
+*Fixes*
+
+- fixed bad/missing roof pixels for some narrow gauge railcars
+- brake vans which use a specific sprite for some engines now also use the sprite for variants of that engine
+
+
+------------
 3.14.0 Release
 ------------
 
