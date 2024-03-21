@@ -173,23 +173,23 @@ engine_module_names = [
     "driving_cab_high_speed_mail_pony_gen_6",
     # metro
     "serpentine",
-    "poplar",
+    #"poplar", # unfinished, nerfed
     "westbourne",
-    "hammersmith",
+    #"hammersmith", # unfinished, nerfed
     "fleet",
-    "canary",
+    #"canary", # unfinished, nerfed
     "longwater",
-    "ravensbourne",
+    #"ravensbourne", # unfinished, nerfed
     "tyburn",
-    "wandle",
+    #"wandle", # unfinished, nerfed
     "tideway",
-    "bankside",
-    "cringle",
-    "debden",
-    "mulberry",
-    "walbrook",
-    "borax",
-    "angerstein",
+    #"bankside", # unfinished, nerfed
+    #"cringle", # unfinished, nerfed
+    #"debden", # unfinished, nerfed
+    #"mulberry", # unfinished, nerfed
+    #"walbrook", # unfinished, nerfed
+    #"borax", # unfinished, nerfed
+    #"angerstein", # unfinished, nerfed
     # ng engines
     "cheese_bug",
     "bean_feast",
