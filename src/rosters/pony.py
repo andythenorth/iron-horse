@@ -184,9 +184,9 @@ engine_module_names = [
     #"wandle", # unfinished, nerfed
     "tideway",
     #"bankside", # unfinished, nerfed
-    #"cringle", # unfinished, nerfed
-    #"debden", # unfinished, nerfed
-    #"mulberry", # unfinished, nerfed
+    "debden", # unfinished, nerfed
+    "cringle", # unfinished, nerfed
+    "mulberry", # unfinished, nerfed
     #"walbrook", # unfinished, nerfed
     #"borax", # unfinished, nerfed
     #"angerstein", # unfinished, nerfed

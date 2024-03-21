@@ -13,7 +13,7 @@ def main(roster_id, **kwargs):
             "METRO": 1050,
         },
         random_reverse=True,
-        gen=1,
+        gen=2,
         intro_year_offset=3,  # introduce later than gen epoch by design
         fixed_run_cost_points=120,  # substantial cost bonus for balance against same-era steam engines
         extended_vehicle_life=True,
