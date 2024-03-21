@@ -1607,7 +1607,7 @@ class MailEngineMetroConsist(MailEngineConsist):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
-        liveries = self.roster.get_pax_mail_liveries("default_metro_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("metro_mail_liveries", **kwargs)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="metro",
@@ -1920,7 +1920,7 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
-        liveries = self.roster.get_pax_mail_liveries("default_metro_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("metro_pax_liveries", **kwargs)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="metro",

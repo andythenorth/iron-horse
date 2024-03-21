@@ -13,8 +13,7 @@ def main(roster_id, **kwargs):
             "METRO": 1050,
         },
         gen=3,
-        default_livery_extra_docs_examples=[("COLOUR_RED", "COLOUR_BLUE")],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(

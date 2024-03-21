@@ -635,9 +635,14 @@ def main():
                 ("VANILLA", 2),
                 ("VANILLA", 3),
             ],
-            "default_metro_liveries": [
+            "metro_pax_liveries": [
                 ("TUBE", 0),
                 ("VANILLA", 1),
+            ],
+            "metro_mail_liveries": [
+                ("TUBE", 0),
+                ("VANILLA", 1),
+                ("ROYAL_MAIL", 2),
             ],
         },
         engine_module_names=engine_module_names,

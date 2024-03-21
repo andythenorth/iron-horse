@@ -13,7 +13,7 @@ def main(roster_id, **kwargs):
             "METRO": 850,
         },
         gen=2,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(

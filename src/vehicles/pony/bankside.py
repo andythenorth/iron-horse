@@ -14,7 +14,7 @@ def main(roster_id, **kwargs):
         },
         gen=3,
         default_livery_extra_docs_examples=[("COLOUR_RED", "COLOUR_BLUE")],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
