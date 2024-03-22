@@ -3,6 +3,21 @@ Changelog
 
 
 ------------
+3.16.0 Release
+------------
+
+
+*Changes*
+
+- added metro locomotives
+    - Debden, 45 mph, 600 hp, available around 1900
+    - Cringle, 55 mph, 900 hp, available around 1950
+    - Mulberry, 65 mph, 1200 hp, available around 2000
+- added metro Open Wagons
+- improved appearance of Serpentine and Longwater metro trains
+
+
+------------
 3.15.0 Release
 ------------
 
