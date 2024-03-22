@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
         fixed_run_cost_points=120,  # substantial cost bonus for balance against same-era steam engines
         extended_vehicle_life=True,
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE"],
+        additional_liveries=["BANGER_BLUE", "INDUSTRIAL_YELLOW"],
         sprites_complete=False,
     )
 
