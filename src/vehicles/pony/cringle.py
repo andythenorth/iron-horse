@@ -10,7 +10,7 @@ def main(roster_id, **kwargs):
         role="metro",
         role_child_branch_num=1,
         power_by_power_source={
-            "METRO": 1050,
+            "METRO": 900,
         },
         random_reverse=True,
         gen=2,
@@ -19,11 +19,11 @@ def main(roster_id, **kwargs):
         extended_vehicle_life=True,
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
-        type=MetroUnit, weight=60, vehicle_length=8, spriterow_num=0
+        type=MetroUnit, weight=48, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = (
