@@ -3,13 +3,13 @@ from train import OpenCarConsist, FreightCar
 
 def main(roster_id, **kwargs):
     # --------------- metro -----------------------------------------------------------------
-    """
+
     consist = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=980,
         gen=1,
-        subtype="D",
+        subtype="U",
         base_track_type_name="METRO",
         sprites_complete=False,
     )
@@ -41,7 +41,6 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_metro_32px")
-    """
 
     # --------------- narrow gauge -----------------------------------------------------------------
     consist = OpenCarConsist(
