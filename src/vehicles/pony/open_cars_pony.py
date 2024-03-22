@@ -11,7 +11,7 @@ def main(roster_id, **kwargs):
         gen=1,
         subtype="U",
         base_track_type_name="METRO",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_metro_16px", repeat=2)
@@ -24,7 +24,7 @@ def main(roster_id, **kwargs):
         gen=2,
         subtype="U",
         base_track_type_name="METRO",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_metro_32px")
@@ -37,7 +37,7 @@ def main(roster_id, **kwargs):
         gen=3,
         subtype="U",
         base_track_type_name="METRO",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_metro_32px")
