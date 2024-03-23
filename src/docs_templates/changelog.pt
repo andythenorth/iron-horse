@@ -3,6 +3,24 @@ Changelog
 
 
 ------------
+3.17.0 Release
+------------
+
+
+*Changes*
+
+- added metro locomotives
+    - Walbrook, 45 mph, 650 hp, available around 1901
+    - Borax, 55 mph, 950 hp, available around 1951
+    - Angerstein, 65 mph, 1250 hp, available around 2001
+
+
+*Docs*
+
+- added missing facts and descriptions for some metro vehicles
+
+
+------------
 3.16.0 Release
 ------------
 
