@@ -10,11 +10,11 @@ def main(roster_id, **kwargs):
         role="metro",
         role_child_branch_num=-2,
         power_by_power_source={
-            "METRO": 1050,
+            "METRO": 950,
         },
         random_reverse=True,
         gen=2,
-        intro_year_offset=3,  # introduce later than gen epoch by design
+        intro_year_offset=1,  # introduce later than gen epoch by design
         fixed_run_cost_points=120,  # substantial cost bonus for balance against same-era steam engines
         extended_vehicle_life=True,
         # note that livery names are metadata only and can repeat for different spriterows
