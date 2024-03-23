@@ -26,8 +26,8 @@ def main(roster_id, **kwargs):
     )
 
     consist.description = (
-        """."""
+        """Is this London calling to the underworld?"""
     )
-    consist.foamer_facts = """Metropolitan Railway electric locos"""
+    consist.foamer_facts = """London Underground L11 battery-electric locomotive"""
 
     return consist
