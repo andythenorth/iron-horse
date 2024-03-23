@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
         extended_vehicle_life=True,
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -27,7 +27,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.description = (
-        """."""
+        """Is London drowning? Because I live by the river."""
     )
     consist.foamer_facts = """Metropolitan Railway electric locos"""
 
