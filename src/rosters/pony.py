@@ -173,17 +173,17 @@ engine_module_names = [
     "driving_cab_high_speed_mail_pony_gen_6",
     # metro
     "serpentine",
-    #"poplar", # unfinished, nerfed
+    "poplar",
     "westbourne",
-    #"hammersmith", # unfinished, nerfed
+    "hammersmith",
     "fleet",
-    #"canary", # unfinished, nerfed
+    "canary",
     "longwater",
-    #"ravensbourne", # unfinished, nerfed
+    "ravensbourne",
     "tyburn",
-    #"wandle", # unfinished, nerfed
+    "wandle",
     "tideway",
-    #"bankside", # unfinished, nerfed
+    "bankside",
     "debden",
     "cringle",
     "mulberry",
