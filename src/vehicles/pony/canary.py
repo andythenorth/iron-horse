@@ -13,7 +13,7 @@ def main(roster_id, **kwargs):
             "METRO": 1100,
         },
         gen=3,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     # should be 4 short units, not 2 long but eh
@@ -26,7 +26,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist.description = """."""
-    consist.foamer_facts = """"""
+    consist.description = """Do Mondays go on slow-time?"""
+    consist.foamer_facts = """London Underground S Stock"""
 
     return consist

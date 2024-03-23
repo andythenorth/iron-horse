@@ -14,7 +14,7 @@ def main(roster_id, **kwargs):
         },
         gen=3,
         default_livery_extra_docs_examples=[("COLOUR_RED", "COLOUR_BLUE")],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -27,7 +27,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist.description = """."""
-    consist.foamer_facts = """ """
+    consist.description = """Is it the screech of brakes?"""
+    consist.foamer_facts = """London Underground S Stock"""
 
     return consist
