@@ -24,12 +24,14 @@ def main(roster_id, **kwargs):
         type=AutoCoachCombineUnitMail,
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
+        tail_light="railcar_20px_4",
     )
 
     consist.add_unit(
         type=AutoCoachCombineUnitPax,
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
+        tail_light="railcar_20px_4",
     )
 
     consist.description = (
