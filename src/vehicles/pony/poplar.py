@@ -25,7 +25,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist.description = """"""
+    consist.description = """Do dreams fade in the dawn? Lost in the city's waking."""
     consist.foamer_facts = """Metropolitan Railway electric multiple units"""
 
     return consist
