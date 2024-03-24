@@ -22,7 +22,7 @@ def main(roster_id, **kwargs):
         weight=36,
         capacity=200,
         chassis="metro_heavy_32px",
-        tail_light="metro_32px_1",
+        tail_light="metro_32px_3",
         repeat=2,
     )
 
