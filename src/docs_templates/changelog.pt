@@ -3,6 +3,28 @@ Changelog
 
 
 ------------
+3.18.0 Release
+------------
+
+
+*Changes*
+
+- added metro passenger units
+    - Poplar, 45 mph, 600 hp, available around 1900
+    - Hammersmith, 55 mph, 900 hp, available around 1951
+    - Canary, 65 mph, 1100 hp, available around 2001
+- added metro mail units
+    - Ravensbourne, 45 mph, 600 hp, available around 1900
+    - Wandle, 55 mph, 900 hp, available around 1951
+    - Bankside, 65 mph, 1100 hp, available around 2001
+
+
+*Fixes*
+
+- set correct tail lights for Autocoach and some metro vehicles
+
+
+------------
 3.17.0 Release
 ------------
 
