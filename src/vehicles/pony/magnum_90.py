@@ -30,6 +30,6 @@ def main(roster_id, **kwargs):
     )
 
     consist.description = """Even Gronks don't last forever."""
-    consist.foamer_facts = """Clayton CBD80/CBD90"""
+    consist.foamer_facts = """Clayton CBD90"""
 
     return consist

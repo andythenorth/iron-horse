@@ -21,7 +21,7 @@ def main(roster_id, **kwargs):
         extended_vehicle_life=True,  # extended vehicle life for all gronks eh
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE", "INDUSTRIAL_YELLOW"],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
