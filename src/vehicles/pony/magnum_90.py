@@ -4,13 +4,13 @@ from train import EngineConsist, BatteryHybridEngineUnit
 def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="magnum_70",
+        id="magnum_90",
         base_numeric_id=21680,
-        name="Magnum 70",
+        name="Magnum 90",
         role="gronk!",
-        role_child_branch_num=-2,
+        role_child_branch_num=-4,
         power_by_power_source={
-            "BATTERY_HYBRID": 500,
+            "BATTERY_HYBRID": 900,
         },
         speed=35,
         # dibble TE up for game balance, assume low gearing or something
@@ -26,10 +26,10 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(
-        type=BatteryHybridEngineUnit, weight=70, vehicle_length=4, spriterow_num=0
+        type=BatteryHybridEngineUnit, weight=90, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = """Even Gronks don't last forever."""
-    consist.foamer_facts = """Clayton CB40/CBD80/CBD90"""
+    consist.foamer_facts = """Clayton CBD80/CBD90"""
 
     return consist

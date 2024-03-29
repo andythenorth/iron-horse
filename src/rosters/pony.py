@@ -110,9 +110,11 @@ engine_module_names = [
     # gronks / snowploughs
     "grub",
     "lamia",
+    "fireball",
     "gronk",
     "chuggypig",
-    "magnum_70",
+    "progress",
+    "magnum_90",
     "snowplough_pony_gen_2",
     # cargo sprinter
     "cargo_sprinter",

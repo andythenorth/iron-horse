@@ -4,11 +4,11 @@ from train import EngineConsist, SteamEngineUnit
 def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="lamia",
-        base_numeric_id=21730,
-        name="0-6-0 Lamia",  # the name is the Basque mythical creature, not the Greek https://en.wikipedia.org/wiki/Lamia_(Basque_mythology)
+        id="fireball",
+        base_numeric_id=23990,
+        name="0-6-0 Fireball",
         role="gronk!",
-        role_child_branch_num=-2,
+        role_child_branch_num=-3,
         power_by_power_source={
             "STEAM": 350,
         },
@@ -27,7 +27,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=SteamEngineUnit, weight=35, vehicle_length=4, spriterow_num=0)
 
-    consist.description = """Nice little engine this one."""
-    consist.foamer_facts = """Bagnall saddle tanks"""
+    consist.description = """"""
+    consist.foamer_facts = """"""
 
     return consist
