@@ -22,12 +22,13 @@ def main(roster_id, **kwargs):
         extended_vehicle_life=True,  # extended vehicle life for all gronks eh
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["INDUSTRIAL_YELLOW"],
+        caboose_family="gwr_1",
         sprites_complete=True,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=35, vehicle_length=4, spriterow_num=0)
 
-    consist.description = """"""
-    consist.foamer_facts = """"""
+    consist.description = """Your typical pint-sized workhorse."""
+    consist.foamer_facts = """GWR 1366 Class pannier tanks"""
 
     return consist
