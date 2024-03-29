@@ -3,6 +3,24 @@ Changelog
 
 
 ------------
+3.19.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.19.0.
+
+
+*Changes*
+
+- added Gronks!
+    - 0-6-0 Fireball, 35 mph, 350 hp, available around 1862
+    - Progress, 35 mph, 400 hp, available around 1960
+- adjusted Magnum 70 to be Magnum 90, 8/8 long instead of 4/8 long, 900 hp
+- added twin-unit variant for Gronk (inspired by BR Class 13)
+- adjusted livery order for Ravensbourne metro unit
+
+
+------------
 3.18.0 Release
 ------------
 
