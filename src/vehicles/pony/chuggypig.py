@@ -29,6 +29,6 @@ def main(roster_id, **kwargs):
     )
 
     consist.description = """No prizes for speed, but it gets a job done."""
-    consist.foamer_facts = """Thomas Hill <i>Steelman</i>, BR Class 07, miscellaneous industrial diesel shunters"""
+    consist.foamer_facts = """Thomas Hill <i>Steelman</i>, miscellaneous industrial diesel shunters"""
 
     return consist

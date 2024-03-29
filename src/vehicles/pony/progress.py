@@ -21,14 +21,14 @@ def main(roster_id, **kwargs):
         extended_vehicle_life=True,  # extended vehicle life for all gronks eh
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE", "INDUSTRIAL_YELLOW"],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
         type=DieselEngineUnit, weight=48, vehicle_length=4, spriterow_num=0
     )
 
-    consist.description = """"""
-    consist.foamer_facts = """"""
+    consist.description = """Punchy little number."""
+    consist.foamer_facts = """GEC <i>Stephenson</i> industrial shunters, BR Class 07"""
 
     return consist
