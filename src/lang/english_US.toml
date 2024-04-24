@@ -1,20 +1,17 @@
 [GLOBAL_PRAGMA]
-grflangid = 0x02
+grflangid = 0x00
 plural = 0
 
 [STR_GRF_DESCRIPTION]
 base = "License: {SILVER}GPL v2{}{BLACK}"
 
-# parameters (action 14 etc)
 [STR_PARAM_ADD_RAILTYPES]
 base = "Iron Horse extra rail types"
-# substrings of the grf name _could_ be used here
 ibex = "Iron Ibex extra rail types"
 moose = "Iron Moose extra rail types"
 
 [STR_PARAM_ADD_RAILTYPES_DESC]
 base = "Iron Horse includes trains that require extra rail types, for example metro and narrow gauge.  These types can also be provided by alternative rail type grfs.  If alternative rail type grfs are used, the Iron Horse rail types can be turned off with this parameter setting."
-# substrings of the grf name _could_ be used here
 ibex = "Iron Ibex includes trains that require extra rail types, for example metro and narrow gauge.  These types can also be provided by alternative rail type grfs.  If alternative rail type grfs are used, the Iron Ibex rail types can be turned off with this parameter setting."
 moose = "Iron Moose includes trains that require extra rail types, for example metro and narrow gauge.  These types can also be provided by alternative rail type grfs.  If alternative rail type grfs are used, the Iron Moose rail types can be turned off with this parameter setting."
 
@@ -59,17 +56,14 @@ base = "Faded freight rail car colors add variety to trains (random chance each 
 
 [STR_ERROR_INFLATION_INCOMPATIBLE]
 base = "Iron Horse is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings."
-# substrings of the grf name _could_ be used here
 ibex = "Iron Ibex is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings."
 moose = "Iron Moose is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings."
 
 [STR_ERROR_TERMITE_DEPRECATED]
 base = "Iron Horse now includes the rail types from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks."
-# substrings of the grf name _could_ be used here
 ibex = "Iron Ibex includes the rail types from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks."
 moose = "Iron Moose includes the rail types from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks."
 
-# default colours - reuses the constants for the company colour names, so 'COLOUR_' is repeated again in the trailing part of some string names
 [STR_COLOUR_NAME_COLOUR_DARK_BLUE]
 base = "Dark Blue"
 
@@ -118,7 +112,6 @@ base = "Grey"
 [STR_COLOUR_NAME_COLOUR_WHITE]
 base = "White"
 
-# custom colours - avoid metaphor/narrative names for the colours, they confuse people, stick to actual real colours
 [STR_COLOUR_NAME_CUSTOM_BAUXITE]
 base = "Brown"
 
@@ -158,7 +151,6 @@ base = "Teal"
 [STR_COLOUR_NAME_CUSTOM_VIOLET]
 base = "Violet"
 
-# livery name suffixes - fancy names are better here, as there can be more than 2 colours, so the names give a flavour
 [STR_NAME_SUFFIX_LIVERY_MIX_1]
 base = "- {STRING}/{STRING}"
 
@@ -192,7 +184,6 @@ base = "Moss/Silver"
 [STR_NAME_SUFFIX_LIVERY_MIX_11]
 base = "Mustard/Straw"
 
-# keep these alphabetised, easier
 [STR_NAME_SUFFIX_BATTERY_HYBRID]
 base = "Battery Hybrid"
 
@@ -220,7 +211,6 @@ base = "Steam"
 [STR_NAME_SUFFIX_TRAILER]
 base = "Trailer"
 
-# size suffixes
 [STR_NAME_SUFFIX_SMALL]
 base = "Small"
 
@@ -230,7 +220,6 @@ base = "Medium"
 [STR_NAME_SUFFIX_LARGE]
 base = "Large"
 
-# special feature suffixes
 [STR_NAME_SUFFIX_TWIN]
 base = "Twin"
 
@@ -240,7 +229,6 @@ base = " - Random"
 [STR_NAME_SUFFIX_MIXED_COLOURS]
 base = " - {RED}M{ORANGE}i{YELLOW}x{GREEN}e{BLUE}d {PURPLE}C{RED}o{ORANGE}l{YELLOW}o{GREEN}u{BLUE}r{PURPLE}s"
 
-# names for buyable variant groups
 [STR_WAGON_GROUP_ACID_TANK_CARS]
 base = "Acid Tank Cars"
 
@@ -299,7 +287,6 @@ base = "Container Cars"
 base = "Livestock Boxcars"
 
 [STR_WAGON_GROUP_LOG_CARS]
-# Timber Wagon was tried as name, but is confusing as it carries logs but NOT timber
 base = "Log Flatcar"
 
 [STR_WAGON_GROUP_MAIL_CARS]
@@ -397,10 +384,8 @@ base = "Torpedo Cars"
 base = "Autoracks"
 
 [STR_WAGON_GROUP_MORE]
-# special case
 base = "More..."
 
-# wagon class suffixes, as of Jan 2019 these are switched from en-us to en-gb; !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
 [STR_NAME_SUFFIX_ACID_TANK_CAR]
 base = "Acid Tank Car"
 
@@ -465,13 +450,13 @@ base = "Cement Car"
 base = "Chemical Covered Hopper"
 
 [STR_NAME_SUFFIX_COIL_CAR_COVERED]
-base = "Covered Coil Carrier"
+base = "Covered Coil Car"
 
 [STR_NAME_SUFFIX_COIL_CAR_COVERED_ASYMMETRIC]
-base = "Covered Coil Carrier"
+base = "Covered Coil Car"
 
 [STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
-base = "Coil Carrier"
+base = "Coil Car"
 
 [STR_NAME_SUFFIX_COVERED_HOPPER_CAR]
 base = "Covered Hopper"
@@ -561,7 +546,7 @@ base = "China Clay Hopper"
 base = "Livestock Boxcar"
 
 [STR_NAME_SUFFIX_LOG_CAR]
-base = "Log Carrier"
+base = "Log Car"
 
 [STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR]
 base = "Low-floor Autorack"
@@ -639,7 +624,7 @@ base = "Chemicals Tank Car"
 base = "Covered Hopper"
 
 [STR_NAME_SUFFIX_RANDOMISED_DEDICATED_COIL_CAR]
-base = "Coil Carrier"
+base = "Coil Car"
 
 [STR_NAME_SUFFIX_RANDOMISED_DUMP_CAR]
 base = "Mineral Hopper"
@@ -725,14 +710,12 @@ base = "Torpedo Car"
 [STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR]
 base = "Sliding Wall Boxcar"
 
-# cargo subtypes - only used for automobile cars (specifically vehicles cargo) as of May 2021
 [STR_CARGO_SUBTYPE_VEHI_0]
 base = "(Cars)"
 
 [STR_CARGO_SUBTYPE_VEHI_1]
 base = "(Trucks)"
 
-# role information for buy menu
 [STR_ROLE]
 base = "{BLACK}Role: {GOLD}{STRING}"
 
@@ -796,18 +779,15 @@ base = "Diesel"
 [STR_POWER_SOURCE_STEAM]
 base = "Steam"
 
-# assumed to be handling case of lgv_capable (two speeds)
 [STR_SPEED_BY_RAILTYPE_LGV_CAPABLE]
 base = "{BLACK}Speed (Dedicated High Speed Rail): {GOLD}{VELOCITY} {}{BLACK}Speed (Normal Rail): {GOLD}{VELOCITY}"
 
-# distributed power (dedicated wagons add power)
 [STR_WAGONS_ADD_POWER_CAB]
 base = "{BLACK}Power (Distributed): {GOLD}{POWER} per {STRING} passenger or mail car attached"
 
 [STR_WAGONS_ADD_POWER_MIDDLE]
 base = "{BLACK}Power (Distributed): {GOLD}{POWER} when attached to {STRING} engine"
 
-# other buy menu hints
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB]
 base = "{BLACK}Attach to front or rear of train, with at least one other engine"
 
@@ -823,16 +803,12 @@ base = "{}{BLACK}Bonus: {GOLD}Eliminates running costs for all Passenger Cars or
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS]
 base = "{}{BLACK}Color mix: {GOLD}{STRING}"
 
-# project management
 [STR_SPRITES_COMPLETE]
 base = "{}Sprites Complete: {GOLD}Yup"
 
 [STR_SPRITES_INCOMPLETE]
 base = "{}Sprites Complete: {GOLD}Nope"
 
-## rail types
-# lgv track strings
-# this type isn't built, it's unelectrified and exists for compatibility reasons, see electrified lgv instead
 [STR_RAILTYPE_LGV_NAME]
 base = "Dedicated High Speed Railroad"
 
@@ -851,7 +827,6 @@ base = "Dedicated High Speed Vehicles"
 [STR_RAILTYPE_LGV_NEW_ENGINE_TEXT]
 base = "high speed rail vehicle"
 
-# lgv electrified track strings
 [STR_RAILTYPE_LGV_ELECTRIFIED_NAME]
 base = "Dedicated High Speed Railroad"
 
@@ -870,8 +845,6 @@ base = "Dedicated High Speed Vehicles"
 [STR_RAILTYPE_LGV_ELECTRIFIED_NEW_ENGINE_TEXT]
 base = "high speed rail vehicle"
 
-
-# metro track strings
 [STR_RAILTYPE_METRO_NAME]
 base = "Metro Railroad"
 
@@ -890,8 +863,6 @@ base = "Metro Rail Vehicles"
 [STR_RAILTYPE_METRO_NEW_ENGINE_TEXT]
 base = "metro rail vehicle"
 
-
-# narrow gauge track strings
 [STR_RAILTYPE_NARROW_GAUGE_NAME]
 base = "Narrow Gauge Railroad"
 
@@ -910,8 +881,6 @@ base = "Narrow Gauge Rail Vehicles"
 [STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT]
 base = "narrow gauge rail vehicle"
 
-
-# narrow gauge electrified track strings
 [STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NAME]
 base = "Electrified Narrow Gauge Railroad"
 
@@ -930,8 +899,6 @@ base = "Electrified Narrow Gauge Vehicles"
 [STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT]
 base = "electrified narrow gauge rail vehicle"
 
-
-# high clearance track strings
 [STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NAME]
 base = "High Clearance Railroad"
 
@@ -950,8 +917,6 @@ base = "High Clearance Vehicles"
 [STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NEW_ENGINE_TEXT]
 base = "high clearance rail vehicle"
 
-
-# electrified AC track strings
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME]
 base = "AC Electrified Railroad"
 
@@ -970,7 +935,6 @@ base = "AC Electrified Vehicles"
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT]
 base = "AC electric rail vehicle"
 
-# rail electrified ac dc
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NAME]
 base = "[unused]"
 
@@ -989,7 +953,6 @@ base = "AC / DC Electrified Vehicles"
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NEW_ENGINE_TEXT]
 base = "AC / DC electric rail vehicle"
 
-# rail electrified dc
 [STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NAME]
 base = "DC Electrified Railroad"
 
