@@ -281,7 +281,7 @@ base = "Hoppers"
 base = "Ingot Cars"
 
 [STR_WAGON_GROUP_INTERMODAL_CARS]
-base = "Container Cars"
+base = "Well Cars"
 
 [STR_WAGON_GROUP_LIVESTOCK_CARS]
 base = "Livestock Boxcars"
@@ -489,7 +489,7 @@ base = "Enclosed Autorack"
 base = "Express Boxcar"
 
 [STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR]
-base = "Express Container Car"
+base = "Express Well Car"
 
 [STR_NAME_SUFFIX_FARM_PRODUCTS_BOX_CAR]
 base = "Farm Products Boxcar"
@@ -537,7 +537,7 @@ base = "Passenger Car"
 base = "Ingot Car"
 
 [STR_NAME_SUFFIX_INTERMODAL_CAR]
-base = "Container Car"
+base = "Well Car"
 
 [STR_NAME_SUFFIX_KAOLIN_HOPPER_CAR]
 base = "China Clay Hopper"
@@ -552,7 +552,7 @@ base = "Log Car"
 base = "Low-floor Autorack"
 
 [STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR]
-base = "Low-floor Container Car"
+base = "Low-floor Well Car"
 
 [STR_NAME_SUFFIX_MAIL_CAR]
 base = "Mail Car"
