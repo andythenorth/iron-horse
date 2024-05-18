@@ -2528,13 +2528,28 @@ class CarConsist(Consist):
         return result
 
     @property
+    def joker_by_subclass_rules(self):
+        # rules can be over-ridden per subclass, for special handling of jokers for e.g. narrow gauge pax cars etc
+        return None
+
+    @property
     def joker(self):
-        # jokers are bonus vehicles (mostly) engines which don't fit strict tech tree progression
-        # for cars, jokers are mid-length 'B' vehicles and/or rules from the subclass
-        if self.subtype == "B" or self._joker == True:
+        # jokers are excluded in simplified game mode
+        # order is significant here; this is fall through, it's deliberately not else-if
+        # option to set _joker per vehicle or per subclass
+        if self._joker == True:
             return True
-        else:
-            return False
+
+        # can be over-ridden per subclass, for special handling of jokers for e.g. narrow gauge pax cars etc
+        if self.joker_by_subclass_rules != None:
+            return self.joker_by_subclass_rules
+
+        # for wagons/coaches, default jokers are medium and twin lengths, note that this may have been over-ridden by joker_by_subclass_rules above
+        if self.subtype in ["B", "D"]:
+            return True
+
+        # fall through to default result
+        return False
 
 
 class RandomisedConsistMixin(object):
@@ -5598,6 +5613,17 @@ class MailCarConsistBase(CarConsist):
     def loading_speed_multiplier(self):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
 
+    @property
+    def joker_by_subclass_rules(self):
+        # special-case handling for simplified mode with narrow gauge mail cars
+        # make short and medium lengths available, for flexibility
+        if self.base_track_type_name == "NG":
+            if self.subtype in ["A", "B"]:
+                return False
+            else:
+                return True
+        # return None if there are no special rules, then the default rules will be applied by the calling function
+        return None
 
 class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
     """
@@ -6031,6 +6057,17 @@ class PassengerCarConsistBase(CarConsist):
     @property
     def loading_speed_multiplier(self):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
+
+    @property
+    def joker_by_subclass_rules(self):
+        # special-case handling for simplified mode with narrow gauge pax cars
+        if self.base_track_type_name == "NG":
+            if self.subtype in ["A", "B"]:
+                return False
+            else:
+                return True
+        # return None if there are no special rules, then the default rules will be applied by the calling function
+        return None
 
 
 class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
