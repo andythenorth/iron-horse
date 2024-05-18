@@ -821,12 +821,23 @@ class Consist(object):
     def hide_in_wagons_only_mode(self):
         # wagons-only mode excludes all engines, and selected other vehicles
         # all engines have power, all true wagons don't
-        if self.power > 0:
-            return True
-        elif self.wagons_add_power:
-            return True
-        else:
+        if self.is_general_purpose_true_wagon:
             return False
+        else:
+            return True
+
+    @property
+    def is_general_purpose_true_wagon(self):
+        # all engines have power
+        # all true wagons don't
+        # wagons that add power aren't true wagons
+        # some subclasses handle this directly (e.g. pax trailers for specific railcars)
+        if self.power > 0:
+            return False
+        elif self.wagons_add_power:
+            return False
+        else:
+            return True
 
     @property
     def is_randomised_wagon_type(self):
@@ -5761,8 +5772,8 @@ class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
         return result
 
     @property
-    def hide_in_wagons_only_mode(self):
-        return True
+    def is_general_purpose_true_wagon(self):
+        return False
 
 
 class MailHighSpeedCarConsist(MailCarConsistBase):
@@ -5847,8 +5858,8 @@ class MailHSTCarConsist(MailCarConsistBase):
         return result
 
     @property
-    def hide_in_wagons_only_mode(self):
-        return True
+    def is_general_purpose_true_wagon(self):
+        return False
 
 
 class OpenCarConsistBase(CarConsist):
@@ -6290,8 +6301,8 @@ class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistB
         return result
 
     @property
-    def hide_in_wagons_only_mode(self):
-        return True
+    def is_general_purpose_true_wagon(self):
+        return False
 
 
 class PassengerHSTCarConsist(PassengerCarConsistBase):
@@ -6345,8 +6356,8 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         return result
 
     @property
-    def hide_in_wagons_only_mode(self):
-        return True
+    def is_general_purpose_true_wagon(self):
+        return False
 
 
 class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
@@ -6423,8 +6434,8 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         return result
 
     @property
-    def hide_in_wagons_only_mode(self):
-        return True
+    def is_general_purpose_true_wagon(self):
+        return False
 
 
 class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
@@ -6491,8 +6502,8 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         return result
 
     @property
-    def hide_in_wagons_only_mode(self):
-        return True
+    def is_general_purpose_true_wagon(self):
+        return False
 
 
 class PassengerRestaurantCarConsist(PassengerCarConsistBase):
