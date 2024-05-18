@@ -3042,6 +3042,7 @@ class BoxCarSlidingWallConsist(BoxCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_sliding_wall_cars"
+        self._joker = True
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -3830,6 +3831,7 @@ class DumpCarConsist(DumpCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_dump_cars"
+        self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
@@ -4099,6 +4101,7 @@ class DumpCarOreConsist(DumpCarConsistBase):
         self.base_id = "ore_dump_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_ore"]
+        # Graphics configuration
         self.gestalt_graphics.liveries = [
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"],
         ]
@@ -4148,6 +4151,7 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
         self.base_id = "scrap_metal_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_scrap"]
+        self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_8"],
