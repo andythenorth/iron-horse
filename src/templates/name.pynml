@@ -32,7 +32,7 @@ switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, [
             ${consist.get_name_as_property(vehicle.unit_variants[0])},
             ${global_constants.temp_storage_ids["name_substr_from_property"]}
         ),
-        param_simplified_gameplay
+        ${"param_vehicle_availability_wagons" if consist.is_general_purpose_true_wagon else "param_vehicle_availability_engines"}
     ]) {
     <!--! simplified gameplay uses minimal variant nesting, so just use default name -->
     1: switch_name_purchase_default;

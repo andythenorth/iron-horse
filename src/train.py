@@ -818,15 +818,6 @@ class Consist(object):
         return self._loading_speed_multiplier
 
     @property
-    def hide_in_wagons_only_mode(self):
-        # wagons-only mode excludes all engines, and selected other vehicles
-        # all engines have power, all true wagons don't
-        if self.is_general_purpose_true_wagon:
-            return False
-        else:
-            return True
-
-    @property
     def is_general_purpose_true_wagon(self):
         # all engines have power
         # all true wagons don't

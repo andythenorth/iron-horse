@@ -7,6 +7,28 @@ plural = 0
 base = "License: {SILVER}GPL v2{}{BLACK}"
 
 # parameters (action 14 etc)
+
+[STR_PARAM_VEHICLE_AVAILABILITY_ENGINES]
+base = "Engines"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_ENGINES_DESC]
+base = "Play with all engines, a simplified set of engines, or no engines at all. {}{}All: the full range of Iron Horse engines will be available. {}{}Simplified: there will be fewer Iron Horse engines available, and eye-candy trains like snowploughs, driving cab cars and very slow locomotives will not be available.{}{}None: no Iron Horse engines will be available. Use this to get a wagons-only version of Iron Horse (requires that engines are provided by another grf, otherwise wagons will not be available)."
+
+[STR_PARAM_VEHICLE_AVAILABILITY_WAGONS]
+base = "Wagons"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_WAGONS_DESC]
+base = "Play with all wagons, a simplified set of wagons, or no engines at all. {}{}All: the full range of Iron Horse wagons will be available. {}{}Simplified: there will be fewer Iron Horse wagons available. {}{}None: no Iron Horse wagons will be available."
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_0]
+base = "All"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_1]
+base = "Simplified"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_2]
+base = "None"
+
 [STR_PARAM_ADD_RAILTYPES]
 base = "Iron Horse extra railtypes"
 # substrings of the grf name _could_ be used here
@@ -40,17 +62,8 @@ base = "Excessive"
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4]
 base = "Outrageous"
 
-[STR_PARAM_SIMPLIFIED_GAMEPLAY]
-base = "Simplified gameplay"
-
-[STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC]
-base = "Play with a simplified set of trains. There will be fewer types of engines and wagons available.  Eye-candy trains like snowploughs, driving cab cars and very slow locomotives will not be available."
-
 [STR_PARAM_WAGONS_ONLY_MODE]
 base = "Wagons-only mode"
-
-[STR_PARAM_WAGONS_ONLY_MODE_DESC]
-base = "Play with only wagons. All engines, snowploughs etc will be hidden.{}{}Can also be used with 'Simplified gameplay' to reduce the range of wagons if desired.{}{}Note that this option only makes sense if at least one other grf with engines is used in the game.{}{}Wagons will not appear in the game if there are no engines matching their railtype."
 
 [STR_PARAM_WAGON_COLOUR_RANDOMISATION]
 base = "Wagon colour fading"
