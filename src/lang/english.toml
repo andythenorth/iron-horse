@@ -6,6 +6,7 @@ plural = 0
 [STR_GRF_DESCRIPTION]
 base = "License: {SILVER}GPL v2{}{BLACK}"
 
+
 # parameters (action 14 etc)
 
 [STR_PARAM_VEHICLE_AVAILABILITY_ENGINES]
@@ -273,8 +274,14 @@ base = "Box Vans"
 [STR_WAGON_GROUP_BULKHEAD_FLAT_CARS]
 base = "Bulkhead Flat Wagons"
 
+[STR_WAGON_GROUP_DOUBLE_DECK_AUTOMOBILE_CARS]
+base = "Car Transporters"
+
 [STR_WAGON_GROUP_CEMENT_SILO_CARS]
 base = "Cement Wagons"
+
+[STR_WAGON_GROUP_CHEMICAL_COVERED_HOPPER_CARS]
+base = "Chemical Covered Hoppers"
 
 [STR_WAGON_GROUP_COIL_BUGGY_CARS]
 base = "Coil Buggies"
@@ -300,6 +307,18 @@ base = "Farm Product Wagons"
 [STR_WAGON_GROUP_FLAT_CARS]
 base = "Flat Wagons"
 
+[STR_WAGON_GROUP_HEAVY_DUTY_DUMP_CARS]
+base = "Heavy Duty Bulk Wagons"
+
+[STR_WAGON_GROUP_HEAVY_DUTY_FLAT_CARS]
+base = "Heavy Duty Flat Wagons"
+
+[STR_WAGON_GROUP_HIGH_SPEED_MAIL_CARS]
+base = "High Speed Mail Vans"
+
+[STR_WAGON_GROUP_HIGH_SPEED_PASSENGER_CARS]
+base = "High Speed Coaches"
+
 [STR_WAGON_GROUP_HOPPER_CARS]
 base = "Hoppers"
 
@@ -324,6 +343,9 @@ base = "MGR Hoppers"
 
 [STR_WAGON_GROUP_OPEN_CARS]
 base = "Open Wagons"
+
+[STR_WAGON_GROUP_PANORAMIC_CARS]
+base = "Panoramic Coaches"
 
 [STR_WAGON_GROUP_PASSENGER_CARS]
 base = "Passenger Coaches"
@@ -380,6 +402,9 @@ base = "Rock Hoppers"
 [STR_WAGON_GROUP_ROLLER_ROOF_HOPPER_CARS]
 base = "Roller Roof Hoppers"
 
+[STR_WAGON_GROUP_SCRAP_METAL_CARS]
+base = "Scrap Wagons"
+
 [STR_WAGON_GROUP_SILO_CARS]
 base = "Silo Wagons"
 
@@ -388,6 +413,9 @@ base = "Skips"
 
 [STR_WAGON_GROUP_SLAG_LADLE_CARS]
 base = "Slag Ladle Wagon"
+
+[STR_WAGON_GROUP_SLIDING_ROOF_HI_CUBE_CARS]
+base = "Cube Wagons"
 
 [STR_WAGON_GROUP_SLIDING_WALL_CARS]
 base = "Sliding Wall Vans"

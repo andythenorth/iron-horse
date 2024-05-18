@@ -2493,7 +2493,12 @@ class CarConsist(Consist):
                 except:
                     raise BaseException(group.parent_vehicle.id)
             else:
-                result = default_result
+                # some dubious special-casing to make wagon names plural if there are variants, and a named variant group is *not* already used
+                if len(group.buyable_variants) > 1:
+                    result = default_result.copy()
+                    result[0] = result[0].replace("STR_NAME_SUFFIX_", "STR_WAGON_GROUP_") + "S"
+                else:
+                    result = default_result
         elif context == "purchase_level_1":
             # if a level 1 group has a parent, then it is also the parent of a group of level 2 vehicles
             if (
