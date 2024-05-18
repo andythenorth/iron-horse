@@ -2544,6 +2544,10 @@ class CarConsist(Consist):
         if self.joker_by_subclass_rules != None:
             return self.joker_by_subclass_rules
 
+        # all metro wagons are jokers as of May 2024
+        if self.base_track_type_name == "METRO":
+            return True
+
         # for wagons/coaches, default jokers are medium and twin lengths, note that this may have been over-ridden by joker_by_subclass_rules above
         if self.subtype in ["B", "D"]:
             return True
