@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=21750,
         name="Tornado",
         role="branch_express",
-        role_child_branch_num=-2,
+        role_child_branch_num=2,
         power_by_power_source={"DIESEL": 750, "AC": 1900},
         random_reverse=True,
         pantograph_type="z-shaped-single",
