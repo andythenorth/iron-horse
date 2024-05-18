@@ -10,7 +10,7 @@ class Railtype(object):
         self.rosters = kwargs.get("rosters", None)
         # 0 is no limit
         self.speed_limit = kwargs.get("speed_limit", 0)
-        self.curve_speed_multiplier = kwargs.get("curve_speed_multiplier", 1)
+        self.curve_speed_multiplier = kwargs.get("curve_speed_multiplier", 0)
         self.railtype_flags = kwargs.get("railtype_flags", None)
         self.construction_cost = kwargs.get("construction_cost", None)
         self.maintenance_cost = kwargs.get("construction_cost", None)

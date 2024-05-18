@@ -9,6 +9,7 @@ def main(disabled=False):
         construction_cost=5,
         maintenance_cost=7,
         railtype_flags=[],
+        curve_speed_multiplier=1, # small bufff for narrow gauge (default value for RAIL is 0)
         sort_order=38,
         # assumes compatible with all axle weights and speeds for narrow gauge rail in standardised scheme
         compatible_railtype_list=[
