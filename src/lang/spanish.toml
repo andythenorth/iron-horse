@@ -24,9 +24,6 @@ base = "Excesiva"
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3]
 base = "Desmesurado"
 
-[STR_PARAM_SIMPLIFIED_GAMEPLAY]
-base = "Juego simplificado"
-
 [STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC]
 base = "Jugar con un conjunto simplificado de trenes. Habrá menos tipos de trenes y vagones disponibles.  Trenes atractivos como quitanieves, cabinas de conducción y locomotoras muy lentas no están disponibles."
 

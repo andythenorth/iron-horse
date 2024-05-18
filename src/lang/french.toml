@@ -24,9 +24,6 @@ base = "Démesurée"
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3]
 base = "Scandaleuse"
 
-[STR_PARAM_SIMPLIFIED_GAMEPLAY]
-base = "Gameplay simplifié"
-
 [STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC]
 base = "Jouer avec une liste de locomotives et de wagons réduite à l'essentiel. Certains véhicules (comme le chasse-neige, les voitures-pilotes et les locomotives très lentes) ne seront pas disponibles."
 

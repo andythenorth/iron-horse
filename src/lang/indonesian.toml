@@ -23,9 +23,6 @@ base = "Excessive"
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3]
 base = "Outrageous"
 
-[STR_PARAM_SIMPLIFIED_GAMEPLAY]
-base = "Gameplay Simple"
-
 [STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC]
 base = "Bermain Dengan Opsi Kereta Lebih Simple. Ini Akan Mengurangi Jumlah Kereta. Kereta Eye-candy Seperti snowploughs(Pembersih Salju), driving cab cars (Gerbong Dengan Kabin Kemudi) Dan Lokomotiv yang sangat lamban tidak akan tersedia."
 

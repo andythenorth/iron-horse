@@ -1,5 +1,0 @@
-[GLOBAL_PRAGMA]
-grflangid = "0x07"
-plural = "6"
-gender = "m f n p"
-case = "abl acc dat f gen m n nom p pre"
