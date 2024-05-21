@@ -6615,18 +6615,20 @@ class PeatCarConsist(CarConsist):
 
 class PieceGoodsCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
     """
-    Randomised general freight wagon - with refits matching flat / plate / tarpaulin cars - this might be a bad idea
+    Randomised general freight wagon - with refits matching box vans - this is a compromise and means some cargos won't match e.g. non-randomised plate wagons or opens.
     """
 
     def __init__(self, **kwargs):
         self.base_id = "randomised_piece_goods_car"
         super().__init__(**kwargs)
-        self.class_refit_groups = ["flatbed_freight"]
-        self.label_refits_allowed = ["GOOD"]
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_flatbed_freight"
+        self.class_refit_groups = ["packaged_freight"]
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "box_freight"
         ]
-        self.default_cargos = polar_fox.constants.default_cargos["flat_tarpaulin_roof"]
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "non_freight_special_cases"
+        ]
+        self.default_cargos = polar_fox.constants.default_cargos["box"]
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
