@@ -72,6 +72,12 @@ base = "Wagon colour fading"
 [STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC]
 base = "Faded freight wagon colours add variety to trains (random chance each wagon is faded)."
 
+[STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD]
+base = "Build some vehicles reversed"
+
+[STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD_DESC]
+base = "Iron Horse will randomly build some vehicles as reversed, for example steam tank engines or diesel engines that have cabs at both ends.  This feature can be turned off with this parameter setting."
+
 [STR_ERROR_INFLATION_INCOMPATIBLE]
 base = "Iron Horse is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings."
 # substrings of the grf name _could_ be used here
