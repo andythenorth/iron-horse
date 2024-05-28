@@ -3,6 +3,19 @@ Changelog
 
 
 ------------
+3.21.0 Release
+------------
+
+
+*Changes*
+
+- added parameter for 'Build some vehicles reversed'
+    - Iron Horse randomly builds some vehicles as reversed, for example steam tank engines or diesel engines that have cabs at both ends
+    - this feature can now be turned off with this parameter setting
+- changed cargo refits for Randomised Piece Goods Wagons to be more flexible
+
+
+------------
 3.20.0 Release
 ------------
 
