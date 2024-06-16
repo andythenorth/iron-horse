@@ -13,8 +13,6 @@ import utils
 command_line_args = utils.get_command_line_args()
 
 generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
-# exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
-os.makedirs(generated_files_path, exist_ok=True)
 
 # spritelayer_cargo_modules are dynamic imports later, but registered_spritelayer_cargos wasn't trivial to convert to a dynamic import
 from spritelayer_cargos import registered_spritelayer_cargos
@@ -201,12 +199,14 @@ class RosterManager(list):
         return result
 
 
-# declared outside of main, got bored trying to figure out how to otherwise put it in the module scope
-railtype_manager = RailTypeManager()
-roster_manager = RosterManager()
-
-
 def main():
+    # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
+    os.makedirs(generated_files_path, exist_ok=True)
+
+    # globals *within* this module so they can be accessed externally by other modules using iron_horse.foo
+    globals()['railtype_manager'] = RailTypeManager()
+    globals()['roster_manager'] = RosterManager()
+
     # railtypes
     for railtype_module_name in railtype_module_names:
         railtype_module = importlib.import_module(
