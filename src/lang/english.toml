@@ -6,7 +6,30 @@ plural = 0
 [STR_GRF_DESCRIPTION]
 base = "License: {SILVER}GPL v2{}{BLACK}"
 
+
 # parameters (action 14 etc)
+
+[STR_PARAM_VEHICLE_AVAILABILITY_ENGINES]
+base = "Engines"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_ENGINES_DESC]
+base = "Play with all engines, a simplified set of engines, or no engines at all. {}{}All: the full range of Iron Horse engines will be available. {}{}Simplified: there will be fewer Iron Horse engines available, and eye-candy trains like snowploughs, driving cab cars and very slow locomotives will not be available.{}{}None: no Iron Horse engines will be available. Use this to get a wagons-only version of Iron Horse (requires that engines are provided by another grf, otherwise wagons will not be available)."
+
+[STR_PARAM_VEHICLE_AVAILABILITY_WAGONS]
+base = "Wagons"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_WAGONS_DESC]
+base = "Play with all wagons, a simplified set of wagons, or no engines at all. {}{}All: the full range of Iron Horse wagons will be available. {}{}Simplified: there will be fewer Iron Horse wagons available. {}{}None: no Iron Horse wagons will be available."
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_0]
+base = "All"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_1]
+base = "Simplified"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_2]
+base = "None"
+
 [STR_PARAM_ADD_RAILTYPES]
 base = "Iron Horse extra railtypes"
 # substrings of the grf name _could_ be used here
@@ -40,23 +63,20 @@ base = "Excessive"
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4]
 base = "Outrageous"
 
-[STR_PARAM_SIMPLIFIED_GAMEPLAY]
-base = "Simplified gameplay"
-
-[STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC]
-base = "Play with a simplified set of trains. There will be fewer types of engines and wagons available.  Eye-candy trains like snowploughs, driving cab cars and very slow locomotives will not be available."
-
 [STR_PARAM_WAGONS_ONLY_MODE]
 base = "Wagons-only mode"
-
-[STR_PARAM_WAGONS_ONLY_MODE_DESC]
-base = "Play with only wagons. All engines, snowploughs etc will be hidden.{}{}Can also be used with 'Simplified gameplay' to reduce the range of wagons if desired.{}{}Note that this option only makes sense if at least one other grf with engines is used in the game.{}{}Wagons will not appear in the game if there are no engines matching their railtype."
 
 [STR_PARAM_WAGON_COLOUR_RANDOMISATION]
 base = "Wagon colour fading"
 
 [STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC]
 base = "Faded freight wagon colours add variety to trains (random chance each wagon is faded)."
+
+[STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD]
+base = "Build some vehicles reversed"
+
+[STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD_DESC]
+base = "Iron Horse will randomly build some vehicles as reversed, for example steam tank engines or diesel engines that have cabs at both ends.  This feature can be turned off with this parameter setting."
 
 [STR_ERROR_INFLATION_INCOMPATIBLE]
 base = "Iron Horse is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings."
@@ -260,8 +280,14 @@ base = "Box Vans"
 [STR_WAGON_GROUP_BULKHEAD_FLAT_CARS]
 base = "Bulkhead Flat Wagons"
 
+[STR_WAGON_GROUP_DOUBLE_DECK_AUTOMOBILE_CARS]
+base = "Car Transporters"
+
 [STR_WAGON_GROUP_CEMENT_SILO_CARS]
 base = "Cement Wagons"
+
+[STR_WAGON_GROUP_CHEMICAL_COVERED_HOPPER_CARS]
+base = "Chemical Covered Hoppers"
 
 [STR_WAGON_GROUP_COIL_BUGGY_CARS]
 base = "Coil Buggies"
@@ -287,6 +313,18 @@ base = "Farm Product Wagons"
 [STR_WAGON_GROUP_FLAT_CARS]
 base = "Flat Wagons"
 
+[STR_WAGON_GROUP_HEAVY_DUTY_DUMP_CARS]
+base = "Heavy Duty Bulk Wagons"
+
+[STR_WAGON_GROUP_HEAVY_DUTY_FLAT_CARS]
+base = "Heavy Duty Flat Wagons"
+
+[STR_WAGON_GROUP_HIGH_SPEED_MAIL_CARS]
+base = "High Speed Mail Vans"
+
+[STR_WAGON_GROUP_HIGH_SPEED_PASSENGER_CARS]
+base = "High Speed Coaches"
+
 [STR_WAGON_GROUP_HOPPER_CARS]
 base = "Hoppers"
 
@@ -311,6 +349,9 @@ base = "MGR Hoppers"
 
 [STR_WAGON_GROUP_OPEN_CARS]
 base = "Open Wagons"
+
+[STR_WAGON_GROUP_PANORAMIC_CARS]
+base = "Panoramic Coaches"
 
 [STR_WAGON_GROUP_PASSENGER_CARS]
 base = "Passenger Coaches"
@@ -367,6 +408,9 @@ base = "Rock Hoppers"
 [STR_WAGON_GROUP_ROLLER_ROOF_HOPPER_CARS]
 base = "Roller Roof Hoppers"
 
+[STR_WAGON_GROUP_SCRAP_METAL_CARS]
+base = "Scrap Wagons"
+
 [STR_WAGON_GROUP_SILO_CARS]
 base = "Silo Wagons"
 
@@ -375,6 +419,9 @@ base = "Skips"
 
 [STR_WAGON_GROUP_SLAG_LADLE_CARS]
 base = "Slag Ladle Wagon"
+
+[STR_WAGON_GROUP_SLIDING_ROOF_HI_CUBE_CARS]
+base = "Cube Wagons"
 
 [STR_WAGON_GROUP_SLIDING_WALL_CARS]
 base = "Sliding Wall Vans"

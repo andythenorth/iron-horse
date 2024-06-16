@@ -3,6 +3,52 @@ Changelog
 
 
 ------------
+3.21.0 Release
+------------
+
+
+*Changes*
+
+- added parameter for 'Build some vehicles reversed'
+    - Iron Horse randomly builds some vehicles as reversed, for example steam tank engines or diesel engines that have cabs at both ends
+    - this feature can now be turned off with this parameter setting
+- changed cargo refits for Randomised Piece Goods Wagons to be more flexible
+
+
+------------
+3.20.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.20.0.
+
+
+*Changes*
+
+- changed vehicle availability parameter settings
+    - removed parameters for 'Simplified gameplay' and 'Wagons-only mode'
+    - added parameters for 'Engines' and 'Wagons', both with the following options:
+        - 'All', 'Simplified', 'None'
+    - this allows players a little more control over which engines and wagons are available
+- rebalanced which engines are available for 'Simplified' setting, removing some but including others, to better cover core gameplay
+- 'Simplified' wagons no longer includes Sliding Wall Vans, Scrap Wagons or Mineral Wagons
+- added narrow gauge Rock Hoppers
+- adjusted appearance of narrow gauge gen 3 Hoppers and Aggregate Hoppers, to make them more distinct
+
+
+*Docs*
+
+- update Code Reference page - mysys no longer relevant for Windows, and some other deps have changed
+
+
+*Fixes*
+
+- added pluralised group names for wagon variant groups that were missing them
+- removed unintended curve speed bonus for ELRL (AC electrified rails)
+- fixed missing cargo sprites for narrow gauge Plate Wagons
+
+
+------------
 3.19.0 Release
 ------------
 

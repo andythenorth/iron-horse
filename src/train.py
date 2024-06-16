@@ -818,15 +818,17 @@ class Consist(object):
         return self._loading_speed_multiplier
 
     @property
-    def hide_in_wagons_only_mode(self):
-        # wagons-only mode excludes all engines, and selected other vehicles
-        # all engines have power, all true wagons don't
+    def is_general_purpose_true_wagon(self):
+        # all engines have power
+        # all true wagons don't
+        # wagons that add power aren't true wagons
+        # some subclasses handle this directly (e.g. pax trailers for specific railcars)
         if self.power > 0:
-            return True
-        elif self.wagons_add_power:
-            return True
-        else:
             return False
+        elif self.wagons_add_power:
+            return False
+        else:
+            return True
 
     @property
     def is_randomised_wagon_type(self):
@@ -2491,7 +2493,12 @@ class CarConsist(Consist):
                 except:
                     raise BaseException(group.parent_vehicle.id)
             else:
-                result = default_result
+                # some dubious special-casing to make wagon names plural if there are variants, and a named variant group is *not* already used
+                if len(group.buyable_variants) > 1:
+                    result = default_result.copy()
+                    result[0] = result[0].replace("STR_NAME_SUFFIX_", "STR_WAGON_GROUP_") + "S"
+                else:
+                    result = default_result
         elif context == "purchase_level_1":
             # if a level 1 group has a parent, then it is also the parent of a group of level 2 vehicles
             if (
@@ -2528,13 +2535,32 @@ class CarConsist(Consist):
         return result
 
     @property
+    def joker_by_subclass_rules(self):
+        # rules can be over-ridden per subclass, for special handling of jokers for e.g. narrow gauge pax cars etc
+        return None
+
+    @property
     def joker(self):
-        # jokers are bonus vehicles (mostly) engines which don't fit strict tech tree progression
-        # for cars, jokers are mid-length 'B' vehicles and/or rules from the subclass
-        if self.subtype == "B" or self._joker == True:
+        # jokers are excluded in simplified game mode
+        # order is significant here; this is fall through, it's deliberately not else-if
+        # option to set _joker per vehicle or per subclass
+        if self._joker == True:
             return True
-        else:
-            return False
+
+        # can be over-ridden per subclass, for special handling of jokers for e.g. narrow gauge pax cars etc
+        if self.joker_by_subclass_rules != None:
+            return self.joker_by_subclass_rules
+
+        # all metro wagons are jokers as of May 2024
+        if self.base_track_type_name == "METRO":
+            return True
+
+        # for wagons/coaches, default jokers are medium and twin lengths, note that this may have been over-ridden by joker_by_subclass_rules above
+        if self.subtype in ["B", "D"]:
+            return True
+
+        # fall through to default result
+        return False
 
 
 class RandomisedConsistMixin(object):
@@ -3021,6 +3047,7 @@ class BoxCarSlidingWallConsist(BoxCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_sliding_wall_cars"
+        self._joker = True
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -3809,6 +3836,7 @@ class DumpCarConsist(DumpCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_dump_cars"
+        self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
@@ -4078,6 +4106,7 @@ class DumpCarOreConsist(DumpCarConsistBase):
         self.base_id = "ore_dump_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_ore"]
+        # Graphics configuration
         self.gestalt_graphics.liveries = [
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"],
         ]
@@ -4127,6 +4156,7 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
         self.base_id = "scrap_metal_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_scrap"]
+        self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_8"],
@@ -5598,6 +5628,17 @@ class MailCarConsistBase(CarConsist):
     def loading_speed_multiplier(self):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
 
+    @property
+    def joker_by_subclass_rules(self):
+        # special-case handling for simplified mode with narrow gauge mail cars
+        # make short and medium lengths available, for flexibility
+        if self.base_track_type_name == "NG":
+            if self.subtype in ["A", "B"]:
+                return False
+            else:
+                return True
+        # return None if there are no special rules, then the default rules will be applied by the calling function
+        return None
 
 class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
     """
@@ -5731,8 +5772,8 @@ class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
         return result
 
     @property
-    def hide_in_wagons_only_mode(self):
-        return True
+    def is_general_purpose_true_wagon(self):
+        return False
 
 
 class MailHighSpeedCarConsist(MailCarConsistBase):
@@ -5817,8 +5858,8 @@ class MailHSTCarConsist(MailCarConsistBase):
         return result
 
     @property
-    def hide_in_wagons_only_mode(self):
-        return True
+    def is_general_purpose_true_wagon(self):
+        return False
 
 
 class OpenCarConsistBase(CarConsist):
@@ -6031,6 +6072,17 @@ class PassengerCarConsistBase(CarConsist):
     @property
     def loading_speed_multiplier(self):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
+
+    @property
+    def joker_by_subclass_rules(self):
+        # special-case handling for simplified mode with narrow gauge pax cars
+        if self.base_track_type_name == "NG":
+            if self.subtype in ["A", "B"]:
+                return False
+            else:
+                return True
+        # return None if there are no special rules, then the default rules will be applied by the calling function
+        return None
 
 
 class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
@@ -6249,8 +6301,8 @@ class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistB
         return result
 
     @property
-    def hide_in_wagons_only_mode(self):
-        return True
+    def is_general_purpose_true_wagon(self):
+        return False
 
 
 class PassengerHSTCarConsist(PassengerCarConsistBase):
@@ -6304,8 +6356,8 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         return result
 
     @property
-    def hide_in_wagons_only_mode(self):
-        return True
+    def is_general_purpose_true_wagon(self):
+        return False
 
 
 class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
@@ -6382,8 +6434,8 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         return result
 
     @property
-    def hide_in_wagons_only_mode(self):
-        return True
+    def is_general_purpose_true_wagon(self):
+        return False
 
 
 class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
@@ -6450,8 +6502,8 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         return result
 
     @property
-    def hide_in_wagons_only_mode(self):
-        return True
+    def is_general_purpose_true_wagon(self):
+        return False
 
 
 class PassengerRestaurantCarConsist(PassengerCarConsistBase):
@@ -6563,18 +6615,20 @@ class PeatCarConsist(CarConsist):
 
 class PieceGoodsCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
     """
-    Randomised general freight wagon - with refits matching flat / plate / tarpaulin cars - this might be a bad idea
+    Randomised general freight wagon - with refits matching box vans - this is a compromise and means some cargos won't match e.g. non-randomised plate wagons or opens.
     """
 
     def __init__(self, **kwargs):
         self.base_id = "randomised_piece_goods_car"
         super().__init__(**kwargs)
-        self.class_refit_groups = ["flatbed_freight"]
-        self.label_refits_allowed = ["GOOD"]
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_flatbed_freight"
+        self.class_refit_groups = ["packaged_freight"]
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "box_freight"
         ]
-        self.default_cargos = polar_fox.constants.default_cargos["flat_tarpaulin_roof"]
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "non_freight_special_cases"
+        ]
+        self.default_cargos = polar_fox.constants.default_cargos["box"]
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )

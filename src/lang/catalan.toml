@@ -24,9 +24,6 @@ base = "Excessiva"
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3]
 base = "Desmesurada"
 
-[STR_PARAM_SIMPLIFIED_GAMEPLAY]
-base = "Joc simplificat"
-
 [STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC]
 base = "Jugar amb un conjunt simplificat de trens. Hi Haurà menys tipus de trens i vagons disponibles.  Trens macos como el llevaneus, cambres de conducció i locomotores molt lentes no estan disponibles."
 

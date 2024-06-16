@@ -5,17 +5,38 @@ grf {
 	desc: string(STR_GRF_DESCRIPTION);
 	url: string(STR_GRF_DOCS_URL);
 	version: ${git_info.get_revision()};
-	min_compatible_version: 7225;
+	min_compatible_version: 7240;
 	<!--! note that params are in the order they appear in the OpenTTD UI, *not* the param number -->
-	param 2 {
-		param_simplified_gameplay {
-			name: string(STR_PARAM_SIMPLIFIED_GAMEPLAY);
-			desc: string(STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC);
-			type: bool;
-			def_value: 0;
-			bit: 1;
-		}
-	}
+	param 3 {
+        param_vehicle_availability_engines {
+            type: int;
+            name: string(STR_PARAM_VEHICLE_AVAILABILITY_ENGINES);
+            desc: string(STR_PARAM_VEHICLE_AVAILABILITY_ENGINES_DESC);
+            min_value: 0;
+            max_value: 2;
+            def_value: 0;
+            names: {
+                0: string(STR_PARAM_VEHICLE_AVAILABILITY_OPTION_0);
+                1: string(STR_PARAM_VEHICLE_AVAILABILITY_OPTION_1);
+                2: string(STR_PARAM_VEHICLE_AVAILABILITY_OPTION_2);
+            };
+        }
+    }
+	param 4 {
+        param_vehicle_availability_wagons {
+            type: int;
+            name: string(STR_PARAM_VEHICLE_AVAILABILITY_WAGONS);
+            desc: string(STR_PARAM_VEHICLE_AVAILABILITY_WAGONS_DESC);
+            min_value: 0;
+            max_value: 2;
+            def_value: 0;
+            names: {
+                0: string(STR_PARAM_VEHICLE_AVAILABILITY_OPTION_0);
+                1: string(STR_PARAM_VEHICLE_AVAILABILITY_OPTION_1);
+                2: string(STR_PARAM_VEHICLE_AVAILABILITY_OPTION_2);
+            };
+        }
+    }
 	param 6 {
 		param_add_railtypes {
 			name: string(STR_PARAM_ADD_RAILTYPES);
@@ -42,8 +63,15 @@ grf {
             };
         }
     }
-    <!--! param 3 deleted -->
-    <!--! param 4 deleted -->
+	param 1 {
+        param_vehicle_random_reverse_on_build {
+            name: string(STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD);
+            desc: string(STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD_DESC);
+			type: bool;
+			def_value: 1;
+			bit: 1;
+        }
+	}
 	param 5 {
         param_wagon_colour_randomisation {
             name: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION);
@@ -52,16 +80,6 @@ grf {
 			def_value: 1;
 			bit: 1;
         }
-	}
-    <!--! param 6 skipped / deleted? -->
-	param 7 {
-		param_wagons_only_mode {
-			name: string(STR_PARAM_WAGONS_ONLY_MODE);
-			desc: string(STR_PARAM_WAGONS_ONLY_MODE_DESC);
-			type: bool;
-			def_value: 0;
-			bit: 1;
-		}
 	}
 }
 

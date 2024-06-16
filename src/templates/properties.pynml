@@ -155,14 +155,14 @@
                 create_effect:      ${vehicle.id}_switch_create_effect_check_railtype;
             </tal:create_effect>
             <tal:random_reverse_on_build condition="consist.random_reverse">
-                <!--! 50% chance of being reversed when built, if this property is set -->
-                reverse_build_probability:  return 50;
+                <!--! 50% chance of being reversed when built, if this property is set (player bool parameter can turn this off) -->
+                reverse_build_probability: return 50 * param_vehicle_random_reverse_on_build;
             </tal:random_reverse_on_build>
         }
     }
 
     <tal:rosters condition="vehicle.is_lead_unit_of_consist">
-        <!--! constructing combinatorial 'if' expressions is too complicated, just turn the vehicle on or off in a way that will probably go wrong eh? -->
+        <!--! constructing combinatorial 'if' expressions is too complicated, just turn the vehicle on or off in a cascading way that will probably go wrong eh? -->
 
         <!--! first default to 'on' if lead unit of a consist (we don't want trailing parts -->
         item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
@@ -170,26 +170,43 @@
                 climates_available:             ALL_CLIMATES;
             }
         }
-        <!--! now turn off anything that shouldn't be available in wagons only mode -->
-        <tal:wagons_only_mode condition="consist.hide_in_wagons_only_mode">
-            if (param_wagons_only_mode==1) {
+        <tal:vehicle_availability_engines condition="not: consist.is_general_purpose_true_wagon">
+            <tal:simplified_gameplay_only_mode condition="consist.joker or not unit_variant.buyable_variant.is_default_buyable_variant_for_consist">
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; <!--! equivalent of INVALID_ENGINE - no variant group -->
+                        }
+                    }
+                }
+            </tal:simplified_gameplay_only_mode>
+            if (param_vehicle_availability_engines==2) {
                 item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
                     property {
                         climates_available:             NO_CLIMATE;
                     }
                 }
             }
-        </tal:wagons_only_mode>
-        <!--! now turn off anything that shouldn't be available in simplified gameplay mode -->
-        <tal:simplified_gameplay_only_mode condition="consist.joker or not unit_variant.buyable_variant.is_default_buyable_variant_for_consist">
-            if (param_simplified_gameplay==1) {
+        </tal:vehicle_availability_engines>
+        <tal:vehicle_availability_wagons condition="consist.is_general_purpose_true_wagon">
+            <tal:simplified_gameplay_only_mode condition="consist.joker or not unit_variant.buyable_variant.is_default_buyable_variant_for_consist">
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; <!--! equivalent of INVALID_ENGINE - no variant group -->
+                        }
+                    }
+                }
+            </tal:simplified_gameplay_only_mode>
+            if (param_vehicle_availability_wagons==2) {
                 item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
                     property {
                         climates_available:             NO_CLIMATE;
-                        variant_group:                  0xFFFF; <!--! equivalent of INVALID_ENGINE - no variant group -->
                     }
                 }
             }
-        </tal:simplified_gameplay_only_mode>
+        </tal:vehicle_availability_wagons>
     </tal:rosters>
 </tal:unit_variants>
