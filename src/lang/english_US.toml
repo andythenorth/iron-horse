@@ -5,15 +5,39 @@ plural = 0
 [STR_GRF_DESCRIPTION]
 base = "License: {SILVER}GPL v2{}{BLACK}"
 
+
+# parameters (action 14 etc)
+
+[STR_PARAM_VEHICLE_AVAILABILITY_ENGINES]
+base = "Engines"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_ENGINES_DESC]
+base = "Play with all engines, a simplified set of engines, or no engines at all. {}{}All: the full range of Iron Horse engines will be available. {}{}Simplified: there will be fewer Iron Horse engines available, and eye-candy trains.{}{}None: no Iron Horse engines will be available. Use this to get a rail car only version of Iron Horse (requires that engines are provided by another NewGRF, otherwise rail cars will not be available)."
+
+[STR_PARAM_VEHICLE_AVAILABILITY_WAGONS]
+base = "Rail cars"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_WAGONS_DESC]
+base = "Play with all rail cars, a simplified set of rail cars, or no engines at all. {}{}All: the full range of Iron Horse rail cars will be available. {}{}Simplified: there will be fewer Iron Horse rail cars available. {}{}None: no Iron Horse rail cars will be available."
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_0]
+base = "All"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_1]
+base = "Simplified"
+
+[STR_PARAM_VEHICLE_AVAILABILITY_OPTION_2]
+base = "None"
+
 [STR_PARAM_ADD_RAILTYPES]
 base = "Iron Horse extra rail types"
 ibex = "Iron Ibex extra rail types"
 moose = "Iron Moose extra rail types"
 
 [STR_PARAM_ADD_RAILTYPES_DESC]
-base = "Iron Horse includes trains that require extra rail types, for example metro and narrow gauge.  These types can also be provided by alternative rail type grfs.  If alternative rail type grfs are used, the Iron Horse rail types can be turned off with this parameter setting."
-ibex = "Iron Ibex includes trains that require extra rail types, for example metro and narrow gauge.  These types can also be provided by alternative rail type grfs.  If alternative rail type grfs are used, the Iron Ibex rail types can be turned off with this parameter setting."
-moose = "Iron Moose includes trains that require extra rail types, for example metro and narrow gauge.  These types can also be provided by alternative rail type grfs.  If alternative rail type grfs are used, the Iron Moose rail types can be turned off with this parameter setting."
+base = "Iron Horse includes trains that require extra rail types.  These types can also be provided by alternative rail type grfs.  If alternative rail type grfs are used, the Iron Horse rail types can be turned off with this parameter setting."
+ibex = "Iron Ibex includes trains that require extra rail types.  These types can also be provided by alternative rail type grfs.  If alternative rail type grfs are used, the Iron Ibex rail types can be turned off with this parameter setting."
+moose = "Iron Moose includes trains that require extra rail types.  These types can also be provided by alternative rail type grfs.  If alternative rail type grfs are used, the Iron Moose rail types can be turned off with this parameter setting."
 
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY]
 base = "Train capacity"
@@ -36,23 +60,20 @@ base = "Excessive"
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4]
 base = "Outrageous"
 
-[STR_PARAM_SIMPLIFIED_GAMEPLAY]
-base = "Simplified gameplay"
-
-[STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC]
-base = "Play with a simplified set of trains. There will be fewer types of engines and rail cars available.  Eye-candy trains like snowplows, driving cab cars and very slow locomotives will not be available."
-
 [STR_PARAM_WAGONS_ONLY_MODE]
 base = "Rail cars only mode"
-
-[STR_PARAM_WAGONS_ONLY_MODE_DESC]
-base = "Play with only rail cars. All engines, snowplows etc will be hidden.{}{}Can also be used with 'Simplified gameplay' to reduce the range of rail cars if desired.{}{}Note that this option only makes sense if at least one other grf with engines is used in the game.{}{}Rail cars will not appear in the game if there are no engines matching their rail type."
 
 [STR_PARAM_WAGON_COLOUR_RANDOMISATION]
 base = "Rail car color fading"
 
 [STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC]
 base = "Faded freight rail car colors add variety to trains (random chance each rail car is faded)."
+
+[STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD]
+base = "Build some vehicles reversed"
+
+[STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD_DESC]
+base = "Iron Horse will randomly build some vehicles as reversed, for example steam tank engines or diesel engines that have cabs at both ends.  This feature can be turned off with this parameter setting."
 
 [STR_ERROR_INFLATION_INCOMPATIBLE]
 base = "Iron Horse is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings."
@@ -191,7 +212,7 @@ base = "Battery Hybrid"
 base = "Diesel"
 
 [STR_NAME_SUFFIX_ELECTRIC_AC]
-base = "AC Electric"
+base = "Electric"
 
 [STR_NAME_SUFFIX_ELECTRIC_DC]
 base = "DC Electric"
@@ -247,8 +268,14 @@ base = "Boxcars"
 [STR_WAGON_GROUP_BULKHEAD_FLAT_CARS]
 base = "Bulkhead Flatcars"
 
+[STR_WAGON_GROUP_DOUBLE_DECK_AUTOMOBILE_CARS]
+base = "Autoracks"
+
 [STR_WAGON_GROUP_CEMENT_SILO_CARS]
 base = "Cement Cars"
+
+[STR_WAGON_GROUP_CHEMICAL_COVERED_HOPPER_CARS]
+base = "Chemical Covered Hoppers"
 
 [STR_WAGON_GROUP_COIL_BUGGY_CARS]
 base = "Coil Buggies"
@@ -274,6 +301,18 @@ base = "Farm Product Boxcars"
 [STR_WAGON_GROUP_FLAT_CARS]
 base = "Flatcars"
 
+[STR_WAGON_GROUP_HEAVY_DUTY_DUMP_CARS]
+base = "Heavy Duty Bulk Cars"
+
+[STR_WAGON_GROUP_HEAVY_DUTY_FLAT_CARS]
+base = "Heavy Duty Flatcars"
+
+[STR_WAGON_GROUP_HIGH_SPEED_MAIL_CARS]
+base = "High Speed Mail Cars"
+
+[STR_WAGON_GROUP_HIGH_SPEED_PASSENGER_CARS]
+base = "High Speed Passenger Cars"
+
 [STR_WAGON_GROUP_HOPPER_CARS]
 base = "Hoppers"
 
@@ -297,6 +336,9 @@ base = "MGR Hoppers"
 
 [STR_WAGON_GROUP_OPEN_CARS]
 base = "Open Cars"
+
+[STR_WAGON_GROUP_PANORAMIC_CARS]
+base = "Panoramic Cars"
 
 [STR_WAGON_GROUP_PASSENGER_CARS]
 base = "Passenger Cars"
@@ -353,6 +395,9 @@ base = "Rock Hoppers"
 [STR_WAGON_GROUP_ROLLER_ROOF_HOPPER_CARS]
 base = "Roller Roof Hoppers"
 
+[STR_WAGON_GROUP_SCRAP_METAL_CARS]
+base = "Scrap Cars"
+
 [STR_WAGON_GROUP_SILO_CARS]
 base = "Silo Cars"
 
@@ -361,6 +406,9 @@ base = "Skips"
 
 [STR_WAGON_GROUP_SLAG_LADLE_CARS]
 base = "Slag Ladle Cars"
+
+[STR_WAGON_GROUP_SLIDING_ROOF_HI_CUBE_CARS]
+base = "High Cube Boxcars"
 
 [STR_WAGON_GROUP_SLIDING_WALL_CARS]
 base = "Sliding Wall Boxcars"
@@ -810,7 +858,7 @@ base = "{}Sprites Complete: {GOLD}Yup"
 base = "{}Sprites Complete: {GOLD}Nope"
 
 [STR_RAILTYPE_LGV_NAME]
-base = "Dedicated High Speed Railroad"
+base = "Dedicated High Speed Railway"
 
 [STR_RAILTYPE_LGV_TOOLBAR_CAPTION]
 base = "[unused]"
@@ -921,10 +969,10 @@ base = "high clearance rail vehicle"
 base = "AC Electrified Railroad"
 
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_TOOLBAR_CAPTION]
-base = "AC Electrified Railroad Construction"
+base = "Electrified Railroad Construction"
 
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_MENU_TEXT]
-base = "AC electrified railroad construction"
+base = "AC Electrified railroad construction"
 
 [STR_RAILTYPE_RAIL_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION]
 base = "New AC Electrified Vehicles"
