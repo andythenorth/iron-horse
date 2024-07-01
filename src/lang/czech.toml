@@ -23,7 +23,7 @@ base = "Nadměrná"
 base = "Dieselová"
 
 [STR_NAME_SUFFIX_ELECTRODIESEL]
-base = "Diesel-Elektrická"
+base = "Hybridní"
 
 [STR_NAME_SUFFIX_METRO]
 base = "Metro vůz"
