@@ -12,6 +12,7 @@ def main(roster_id, **kwargs):
         power_by_power_source={
             "DIESEL": 1750,
         },
+        speed=87,  # for lolz
         random_reverse=True,
         gen=4,
         caboose_family="railfreight_1",
