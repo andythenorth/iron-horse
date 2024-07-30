@@ -40,14 +40,8 @@ base = "Démesurée"
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4]
 base = "Scandaleuse"
 
-[STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC]
-base = "Jouer avec une liste de locomotives et de wagons simplifiée. Certains véhicules visuels (comme le chasse-neige, les voitures-pilotes et les locomotives très lentes) ne seront pas disponibles."
-
 [STR_PARAM_WAGONS_ONLY_MODE]
 base = "Wagons uniquement"
-
-[STR_PARAM_WAGONS_ONLY_MODE_DESC]
-base = "Jouer uniquement avec les wagons. Toutes les locomotives, chasse-neige, etc. seront masqués.{}{}Peut être utilisé avec «{NBSP}Gameplay simplifié{NBSP}» pour réduire le nombre de wagons au besoin.{}{}Cette option ne fait sens que si au moins un autre GRF fournissant des locomotives est utilisé dans le jeu.{}{}Les wagons n’apparaîtront pas en jeu si aucune locomotive n’est compatible avec leur type de rail."
 
 [STR_PARAM_WAGON_COLOUR_RANDOMISATION]
 base = "Couleur des wagons nuancée"
