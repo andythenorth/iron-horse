@@ -16,8 +16,8 @@ def main(roster_id, **kwargs):
         random_reverse=True,
         gen=3,
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["SWOOSH", "FREIGHT_BLACK"],
-        sprites_complete=False,
+        additional_liveries=["BANGER_BLUE", "SWOOSH", "FREIGHT_BLACK"],
+        sprites_complete=True,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=90, vehicle_length=8, spriterow_num=0)
