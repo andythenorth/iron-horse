@@ -4,14 +4,15 @@ from train import EngineConsist, DieselEngineUnit
 def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="slug",
+        id="phoenix",
         base_numeric_id=21120,
-        name="Slug",
-        role="freight",
-        role_child_branch_num=2,
+        name="Phoenix",
+        role="express",
+        role_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 2200,
         },
+        fixed_run_cost_points=42,  # give a huge bonus so this can be a genuine mixed-traffic engine
         random_reverse=True,
         gen=5,
         # red stripe? Teeside steelmaster?
@@ -19,19 +20,12 @@ def main(roster_id, **kwargs):
         additional_liveries=[
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY_COAL",
+            "SWOOSH",
             "DB_SCHENKER",
-            "LARGE_LOGO",
             "LOADHAUL",
             "SWOOSH",
         ],
-        default_livery_extra_docs_examples=[
-            ("COLOUR_GREY", "COLOUR_YELLOW"),
-            ("COLOUR_WHITE", "COLOUR_GREY"),
-            ("COLOUR_GREY", "COLOUR_GREY"),
-            ("COLOUR_PALE_GREEN", "COLOUR_PALE_GREEN"),
-            ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
-            ("COLOUR_YELLOW", "COLOUR_YELLOW"),
-        ],
+        default_livery_extra_docs_examples=[("COLOUR_DARK_BLUE", "COLOUR_WHITE")],
         caboose_family="railfreight_2",
         decor_spriterow_num=7,
         show_decor_in_purchase_for_variants=[2, 3],

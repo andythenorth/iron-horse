@@ -7,20 +7,19 @@ def main(roster_id, **kwargs):
         id="growler",
         base_numeric_id=20940,
         name="Growler",
-        role="freight",
-        role_child_branch_num=2,
+        role="express",
+        role_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 1750,
         },
-        speed=87,  # for lolz
+        fixed_run_cost_points=40,  # give a huge bonus so this can be a genuine mixed-traffic engine
         random_reverse=True,
         gen=4,
         caboose_family="railfreight_1",
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE", "LARGE_LOGO", "RAILFREIGHT_RED_STRIPE"],
+        additional_liveries=["SWOOSH", "LARGE_LOGO", "RAILFREIGHT_RED_STRIPE"],
         default_livery_extra_docs_examples=[
-            ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
-            ("COLOUR_PINK", "COLOUR_WHITE"),
+            ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
         ],
         decor_spriterow_num=4,
         show_decor_in_purchase_for_variants=[2],

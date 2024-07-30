@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=17150,
         name="Merlion",
         role="express",
-        role_child_branch_num=-1,
+        role_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 1750,
         },
@@ -25,6 +25,9 @@ def main(roster_id, **kwargs):
             "WHITE_STRIPE",
             "RAILFREIGHT_RED_STRIPE",
             "DUTCH_1986",
+        ],
+        default_livery_extra_docs_examples=[
+            ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
         ],
         decor_spriterow_num=5,
         sprites_complete=True,
