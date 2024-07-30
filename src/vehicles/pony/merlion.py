@@ -21,6 +21,7 @@ def main(roster_id, **kwargs):
         # add railfreight triple grey
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=[
+            "BANGER_BLUE",
             "SWOOSH",
             "WHITE_STRIPE",
             "RAILFREIGHT_RED_STRIPE",
@@ -29,7 +30,7 @@ def main(roster_id, **kwargs):
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
         ],
-        decor_spriterow_num=5,
+        decor_spriterow_num=6,
         sprites_complete=True,
     )
 
