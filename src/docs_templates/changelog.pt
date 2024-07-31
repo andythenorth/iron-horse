@@ -3,6 +3,35 @@ Changelog
 
 
 ------------
+3.22.0 Release
+------------
+
+Not savegame compatible with Iron Horse releases before 3.22.0.
+
+
+*Changes*
+
+- adjusted engine line
+    - renamed Celt to Satyr
+    - renamed Slug to Phoenix
+    - Satyr, Growler and Phoenix are now all general purpose / express engines, instead of freight, with higher maximum speed
+    - added livery for Satyr
+- all types of Covered Hopper can now refit to carbon black cargo
+- updated French and Czech language translations
+
+
+*Docs*
+
+- added basic open graph card tags, so that shared docs links in services like Discord now have better previews
+- use 'image-rendering: pixelated' for docs images, to prevent some browsers anti-aliasing pixel art sprites
+
+
+*Fixes*
+
+- wrong colour steps for some angles of Saxon and Tyrconnell
+
+
+------------
 3.21.0 Release
 ------------
 
