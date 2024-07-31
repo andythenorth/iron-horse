@@ -7,12 +7,17 @@
     <meta http-equiv="Content-Type" content="text/html" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Open Graph meta tags with placeholders -->
-    <meta property="og:title" content="CABBAGE - Iron Horse 3.21.0">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://grf.farm/iron-horse/3.21.0/html/dreadnought.html">
-    <meta property="og:image" content="https://grf.farm/iron-horse/3.21.0/html/static/img/dreadnought_variant_0_red_white.png">
-    <meta property="og:description" content="Explore the CABBAGE in Iron Horse 3.21.0.">
+
+    <tal:og_tags define="optional_consist consist | None;
+                         og_tags_content doc_helper.get_og_tags_content(doc_name, optional_consist);">
+        <!--! note that og tags require an absolute url, which we have to predict at compile time -->
+        <meta property="og:site_name" content="grf.farm">
+        <meta property="og:title" content="${title | roster.str_grf_name}">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="${og_tags_content['base_url']}/html/${doc_name}.html">
+        <meta property="og:image" content="${og_tags_content['base_url']}/html/static/img/${og_tags_content['image_filename']}">
+        <meta property="og:description" content="${title | roster.str_grf_name}">
+    </tal:og_tags>
 
     <link type="text/css" href="static/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="static/css/bootstrap-responsive.min.css" rel="stylesheet">
