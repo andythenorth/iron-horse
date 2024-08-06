@@ -4,17 +4,19 @@ from roster import Roster
 engine_module_names = [
     # challenger, # for NA roster
     # branch express
-    # foo,
+    "f40ph",
     # express (electro-diesels with non-standard position in power/length tree)
     # foo,
     # express
-    # foo,
+    "sdp40f",
+    "u28cg",
     # driving cab cars
     # foo,
     # branch freight
     "niagra",
     # freight
-    # foo,
+    "sd45",
+    "u36c",
     # joker engines / snowploughs
     "snowplough_moose_gen_2",
     # cargo sprinter
@@ -52,14 +54,13 @@ def main():
         str_grf_name="Iron Moose",
         # ELRL, ELNG is mapped to RAIL, NG etc
         # default intro dates per generation, can be over-ridden if needed by setting intro_year kw on consist
+        # Moose RAIL runs 10 years later than Horse, and is pinned to IRL UP Big Boy (1940) and UP Centennial (1970)
         intro_years={
-            "RAIL": [1860, 1900, 1930, 1960, 1990, 2020],
+            "RAIL": [1860, 1910, 1940, 1970, 2000, 2030],
             "METRO": [1900, 1950, 2000],
             "NG": [1860, 1905, 1950, 2000],
         },
         # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
-        # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
-        # NG is Corsican-style 1000mm, native brit NG is not a thing for gameplay
         speeds={
             "RAIL": {
                 # gen 5 and 6 held down by design, really fast freight is imbalanced
@@ -73,19 +74,27 @@ def main():
                 ],
                 # match standard, except gen 6
                 "suburban": [45, 45, 60, 75, 87, 99],
-                # smaller steps in gen 5 and 6, balances against faster HSTs
+                # smaller steps in gen 5 and 6, balances against faster High Speed Rail
                 "express": [
                     60,
                     75,
                     90,
                     105,
-                    115,
-                    125,
+                    120,
+                    120,
                 ],
-                "hst": [0, 0, 0, 112, 125, 125],
-                "hst_on_lgv": [0, 0, 0, 112, 125, 140],
-                "very_high_speed": [0, 0, 0, 0, 125, 125],
-                "very_high_speed_on_lgv": [0, 0, 0, 0, 140, 186],
+                "express_on_lgv": [
+                    0,
+                    0,
+                    0,
+                    0,
+                    140,
+                    140,
+                ],
+                "hst": [0, 0, 0, 112, 128, 128],
+                "hst_on_lgv": [0, 0, 0, 0, 140, 140],
+                "very_high_speed": [0, 0, 0, 0, 128, 128],
+                "very_high_speed_on_lgv": [0, 0, 0, 0, 155, 186],
             },
             "METRO": {
                 "standard": [45, 55, 65]
@@ -95,14 +104,14 @@ def main():
                 "standard": [
                     45,
                     45,
-                    55,
-                    65,
+                    60,
+                    60,
                 ],
                 # NG standard/suburban/express same in Pony, balanced against trams, RVs
                 # suburban has to be provided as the mail railcar expects it, just copying it in is easiest solution
-                "suburban": [45, 45, 55, 65],
-                # suburban has to be provided as the coaches/mail vans etc expect it, just copying it in is easiest solution
-                "express": [45, 45, 55, 65],
+                "suburban": [45, 45, 60, 75],
+                # NG express breaks from standard in gen 4
+                "express": [45, 45, 60, 75],
             },
         },
         # capacity factor per generation, will be multiplied by vehicle length
