@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
         intro_year_offset=2,  # introduce later than gen epoch by design
         caboose_family="railfreight_2",
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["INDUSTRIAL_YELLOW"],
+        additional_liveries=["BANGER_BLUE" ,"INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 
