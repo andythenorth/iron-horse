@@ -289,6 +289,9 @@ base = "Cement Wagons"
 [STR_WAGON_GROUP_CHEMICAL_COVERED_HOPPER_CARS]
 base = "Chemical Covered Hoppers"
 
+[STR_WAGON_GROUP_CHEMICAL_SWING_ROOF_HOPPER_CARS]
+base = "Chemical Swing Roof Hoppers"
+
 [STR_WAGON_GROUP_COIL_BUGGY_CARS]
 base = "Coil Buggies"
 
@@ -511,6 +514,9 @@ base = "Cement Wagon"
 
 [STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR]
 base = "Chemical Covered Hopper"
+
+[STR_NAME_SUFFIX_CHEMICAL_SWING_ROOF_HOPPER_CAR]
+base = "Chemical Swing Roof Hopper"
 
 [STR_NAME_SUFFIX_COIL_CAR_COVERED]
 base = "Covered Coil Carrier"
