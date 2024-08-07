@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
         intro_year_offset=-2,  # let's not have everything turn up in 1960
         gen=4,
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE"],
+        additional_liveries=["BANGER_BLUE", "SWOOSH"],
         sprites_complete=True,
     )
 
