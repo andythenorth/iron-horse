@@ -686,8 +686,11 @@ base = "Bulk Wagon"
 [STR_NAME_SUFFIX_RANDOMISED_CEMENT_SILO_CAR]
 base = "Cement Wagon"
 
+[STR_NAME_SUFFIX_RANDOMISED_CHEMICAL_COVERED_HOPPER_CAR]
+base = "Chemical Covered Hopper"
+
 [STR_NAME_SUFFIX_RANDOMISED_CHEMICALS_TANK_CAR]
-base = "Chemicals Tanker"
+base = "Chemical Tanker"
 
 [STR_NAME_SUFFIX_RANDOMISED_COVERED_HOPPER_CAR]
 base = "Covered Hopper"
