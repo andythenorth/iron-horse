@@ -17,14 +17,14 @@ def main(roster_id, **kwargs):
         gen=5,  # not replaced by anything (?)
         caboose_family="railfreight_2",
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL"],
+        additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "DB_SCHENKER", "BANGER_BLUE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_GREY", "COLOUR_YELLOW"),
             ("COLOUR_WHITE", "COLOUR_GREY"),
             ("COLOUR_GREY", "COLOUR_GREY"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
         ],
-        decor_spriterow_num=3,
+        decor_spriterow_num=5,
         show_decor_in_purchase_for_variants=[0, 1, 2],
         sprites_complete=True,
     )
