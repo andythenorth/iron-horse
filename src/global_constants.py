@@ -87,6 +87,7 @@ wagon_module_names = [
     "chemical_swing_roof_hopper_cars",
     "roller_roof_hopper_cars",
     "swing_roof_hopper_cars",
+    "chemical_swing_roof_hopper_cars",
     "silo_cars",
     "silo_cars_v_barrel",
     "randomised_silo_cars",
