@@ -3,6 +3,27 @@ Changelog
 
 
 ------------
+3.23.0 Release
+------------
+
+
+*Changes*
+
+
+- added liveries for
+    - Goliath
+    - Lynx
+    - Onslaught
+    - Resilient
+    - Tornado
+    - Trojan
+    - Ultra Shoebox
+    - Viking
+    - partially savegame compatible with Iron Horse 3.22.0 - existing engines from this list may have incorrect livery, this can be fixed by replacing them
+- improved appearance of some Chemical Covered Hoppers and Mineral Covered Hoppers
+
+
+------------
 3.22.0 Release
 ------------
 
