@@ -24,6 +24,7 @@ def main(roster_id, **kwargs):
             "FREIGHTLINER_GBRF",
             "DUTCH_1986",
             "DB_SCHENKER",
+            "BANGER_BLUE",
         ],
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
