@@ -24,10 +24,11 @@ def main(roster_id, **kwargs):
             "DB_SCHENKER",
             "LOADHAUL",
             "SWOOSH",
+            "BANGER_BLUE",
         ],
         default_livery_extra_docs_examples=[("COLOUR_DARK_BLUE", "COLOUR_WHITE")],
         caboose_family="railfreight_2",
-        decor_spriterow_num=7,
+        decor_spriterow_num=8,
         show_decor_in_purchase_for_variants=[2, 3],
         sprites_complete=True,
     )
