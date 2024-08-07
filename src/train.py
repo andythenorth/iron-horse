@@ -3558,6 +3558,7 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         self.base_id = "chemical_covered_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
+        self.randomised_candidate_groups = ["randomised_chemical_covered_hopper_car"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = (
@@ -3571,6 +3572,69 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_7"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_5"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_9"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_10"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
+                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+                global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
+                # tried teal, wasn't convinced
+            ],
+        )
+
+
+class CoveredHopperCarChemicalRandomisedConsist(
+    RandomisedConsistMixin, CoveredHopperCarConsistBase
+):
+    """
+    Random choice of covered hopper car sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_chemical_covered_hopper_car"
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = (
+            "wagon_group_chemical_covered_hopper_cars"
+        )
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=1,
             liveries=[
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_1"
@@ -3806,6 +3870,7 @@ class CoveredHopperCarSwingRoofChemicalConsist(CoveredHopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "chemical_swing_roof_hopper_car"
         super().__init__(**kwargs)
+        self.randomised_candidate_groups = ["randomised_chemical_covered_hopper_car"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = (
