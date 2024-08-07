@@ -8,7 +8,7 @@ from polar_fox import graphics_units
 
 # requires a tmp dir to exist, which should be gitignored
 # set the filename
-input_filenames = ["evolution", "hector", "nimbus", "resilient", "screamer"]
+input_filenames = ["tornado"]
 
 for input_filename in input_filenames:
     source_image = Image.open(os.path.join("tmp", input_filename + ".png"))
