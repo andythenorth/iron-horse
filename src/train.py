@@ -7240,7 +7240,7 @@ class TankCarAcidConsist(TankCarConsistBase):
         self.base_id = "acid_tank_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
-        self.randomised_candidate_groups = ["randomised_chemicals_tank_car"]
+        self.randomised_candidate_groups = ["randomised_chemical_tank_car"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_acid_tank_cars"
@@ -7300,7 +7300,7 @@ class TankCarProductConsist(TankCarConsistBase):
         self.base_id = "product_tank_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
-        self.randomised_candidate_groups = ["randomised_chemicals_tank_car"]
+        self.randomised_candidate_groups = ["randomised_chemical_tank_car"]
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -7357,7 +7357,7 @@ class TankCarSulphurConsist(TankCarConsistBase):
         self.base_id = "sulphur_tank_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
-        self.randomised_candidate_groups = ["randomised_chemicals_tank_car"]
+        self.randomised_candidate_groups = ["randomised_chemical_tank_car"]
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7408,13 +7408,13 @@ class TankCarSulphurConsist(TankCarConsistBase):
         )
 
 
-class TankCarChemicalsRandomisedConsist(RandomisedConsistMixin, TankCarConsistBase):
+class TankCarChemicalRandomisedConsist(RandomisedConsistMixin, TankCarConsistBase):
     """
-    Random choice of tank car sprite, from available acid / chemicals tank cars.
+    Random choice of tank car sprite, from available acid / chemical tank cars.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_chemicals_tank_car"
+        self.base_id = "randomised_chemical_tank_car"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(

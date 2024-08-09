@@ -116,7 +116,7 @@ wagon_module_names = [
     "randomised_generic_coil_cars",
     "randomised_hopper_cars",
     "randomised_bulk_cars",
-    "randomised_chemicals_tank_cars",
+    "randomised_chemical_tank_cars",
     "randomised_covered_hopper_cars",
     "caboose_cars",
 ]
@@ -795,7 +795,7 @@ wagon_livery_mixes = {
         "freight_grey",
         "freight_nightshade",
     ],
-    # chemicals
+    # chemical
     "random_from_consist_liveries_4": ["freight_teal", "freight_violet"],
     # silver-ish
     "random_from_consist_liveries_5": ["freight_silver", "freight_pewter"],
