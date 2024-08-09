@@ -56,7 +56,7 @@ base = "Sivupeitevaunu"
 [STR_NAME_SUFFIX_DUMP_CAR]
 base = "Rikastevaunu"
 
-[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+[STR_NAME_SUFFIX_FOOD_TANK_CAR]
 base = "Elintarvikesäiliövaunu"
 
 [STR_NAME_SUFFIX_EXPRESS_CAR]

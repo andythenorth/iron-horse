@@ -57,7 +57,7 @@ base = "커튼 사이드 밴"
 [STR_NAME_SUFFIX_DUMP_CAR]
 base = "광물화차"
 
-[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+[STR_NAME_SUFFIX_FOOD_TANK_CAR]
 base = "식품 유조차"
 
 [STR_NAME_SUFFIX_EXPRESS_CAR]

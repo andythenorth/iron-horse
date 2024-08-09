@@ -55,7 +55,7 @@ base = "Carro a tendine laterali"
 [STR_NAME_SUFFIX_DUMP_CAR]
 base = "Carro per minerali"
 
-[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+[STR_NAME_SUFFIX_FOOD_TANK_CAR]
 base = "Carro cisterna per prodotti alimentari"
 
 [STR_NAME_SUFFIX_EXPRESS_CAR]

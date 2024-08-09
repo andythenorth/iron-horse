@@ -96,7 +96,7 @@ base = "Vagó de minerals"
 [STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
 base = "Vagó de minerals de costat alt"
 
-[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+[STR_NAME_SUFFIX_FOOD_TANK_CAR]
 base = "Cotxe cisterna per a comestibles"
 
 [STR_NAME_SUFFIX_EXPRESS_CAR]

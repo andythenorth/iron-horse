@@ -4277,64 +4277,6 @@ class BulkCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
         )
 
 
-class EdiblesTankCarConsist(CarConsist):
-    """
-    Wine, milk, water etc.
-    No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
-    """
-
-    def __init__(self, **kwargs):
-        # tank cars are unrealistically autorefittable, and at no cost
-        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        self.base_id = "edibles_tank_car"
-        super().__init__(**kwargs)
-        self.speed_class = "express"
-        self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "edible_liquids"
-        ]
-        self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
-        self._loading_speed_multiplier = 1.5
-        self.buy_cost_adjustment_factor = 1.33
-        self.floating_run_cost_multiplier = 1.5
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["food_wagons"]
-        )
-        # Graphics configuration
-        # only one livery, but recolour gestalt used to automate adding chassis
-        weathered_variants = {
-            "unweathered": graphics_constants.edibles_tank_car_livery_recolour_maps
-        }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_1"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_2"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_3"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_5"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-            ],
-        )
-
-
 class ExpressCarConsist(CarConsist):
     """
     Express cars - express freight, valuables, mails.
@@ -5010,6 +4952,65 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
             ],
             piece="flat",
             has_cover=True,
+        )
+
+
+class FoodTankCarConsist(CarConsist):
+    """
+    Wine, milk, water etc.
+    No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
+    Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
+    """
+
+    def __init__(self, **kwargs):
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        self.base_id = "food_tank_car"
+        super().__init__(**kwargs)
+        self.speed_class = "express"
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "edible_liquids"
+        ]
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
+        self._loading_speed_multiplier = 1.5
+        self.buy_cost_adjustment_factor = 1.33
+        self.floating_run_cost_multiplier = 1.5
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["food_wagons"]
+        )
+        # Graphics configuration
+        # only one livery, but recolour gestalt used to automate adding chassis
+        weathered_variants = {
+            "unweathered": graphics_constants.food_tank_car_livery_recolour_maps
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_5"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+            ],
         )
 
 

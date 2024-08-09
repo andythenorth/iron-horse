@@ -93,7 +93,7 @@ wagon_module_names = [
     "cement_silo_cars_v_barrel",
     "randomised_cement_silo_cars",
     "livestock_cars",
-    "edibles_tank_cars",
+    "food_tank_cars",
     "reefer_cars_type_1",
     "reefer_cars_type_2",
     "farm_product_box_cars",

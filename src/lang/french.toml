@@ -266,7 +266,7 @@ base = "Wagons-trémies couverts"
 [STR_WAGON_GROUP_DUMP_CARS]
 base = "Wagons à minerai"
 
-[STR_WAGON_GROUP_EDIBLES_TANK_CARS]
+[STR_WAGON_GROUP_FOOD_TANK_CARS]
 base = "Wagons-citerne alimentaires"
 
 [STR_WAGON_GROUP_EXPRESS_CARS]
@@ -486,7 +486,7 @@ base = "Wagon à minerai"
 [STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
 base = "Wagon haut à minerai"
 
-[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+[STR_NAME_SUFFIX_FOOD_TANK_CAR]
 base = "Wagon-citerne alimentaire"
 
 [STR_NAME_SUFFIX_ENCLOSED_AUTOMOBILE_CAR]

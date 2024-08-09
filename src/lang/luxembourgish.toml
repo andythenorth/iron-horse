@@ -32,7 +32,7 @@ base = "Këschtewaggon"
 [STR_NAME_SUFFIX_CABOOSE_CAR]
 base = "Begleedwaggon"
 
-[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+[STR_NAME_SUFFIX_FOOD_TANK_CAR]
 base = "Liewensmëtteltankwaggon"
 
 [STR_NAME_SUFFIX_FLAT_CAR]

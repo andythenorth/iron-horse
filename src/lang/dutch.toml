@@ -59,7 +59,7 @@ base = "Mineralenwagon"
 [STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
 base = "Mineralenwagon met hoge zijkant"
 
-[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+[STR_NAME_SUFFIX_FOOD_TANK_CAR]
 base = "Voedseltanker"
 
 [STR_NAME_SUFFIX_EXPRESS_CAR]

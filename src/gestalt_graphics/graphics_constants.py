@@ -326,7 +326,7 @@ cryo_tanker_livery_recolour_maps_weathered = {
 curtain_side_livery_recolour_maps = body_recolour_CC1
 
 # pass through (recolour gestalt is used only to trigger automatic chassis drawing)
-edibles_tank_car_livery_recolour_maps = {}
+food_tank_car_livery_recolour_maps = {}
 
 farm_product_hopper_car_livery_recolour_maps = {
     136: 96,

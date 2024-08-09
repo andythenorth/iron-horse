@@ -304,9 +304,6 @@ base = "Covered Hoppers"
 [STR_WAGON_GROUP_DUMP_CARS]
 base = "Mineral Wagons"
 
-[STR_WAGON_GROUP_EDIBLES_TANK_CARS]
-base = "Edibles Tankers"
-
 [STR_WAGON_GROUP_EXPRESS_CARS]
 base = "Express Vans"
 
@@ -315,6 +312,9 @@ base = "Farm Product Wagons"
 
 [STR_WAGON_GROUP_FLAT_CARS]
 base = "Flat Wagons"
+
+[STR_WAGON_GROUP_FOOD_TANK_CARS]
+base = "Food Tankers"
 
 [STR_WAGON_GROUP_HEAVY_DUTY_DUMP_CARS]
 base = "Heavy Duty Bulk Wagons"
@@ -551,9 +551,6 @@ base = "Mineral Wagon"
 [STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
 base = "High Side Mineral Wagon"
 
-[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
-base = "Edibles Tanker"
-
 [STR_NAME_SUFFIX_ENCLOSED_AUTOMOBILE_CAR]
 base = "Enclosed Vehicle Transporter"
 
@@ -574,6 +571,9 @@ base = "Farm Product Hopper"
 
 [STR_NAME_SUFFIX_FLAT_CAR]
 base = "Flat Wagon"
+
+[STR_NAME_SUFFIX_FOOD_TANK_CAR]
+base = "Food Tanker"
 
 [STR_NAME_SUFFIX_GOODS_BOX_CAR]
 base = "Goods Van"

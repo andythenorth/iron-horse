@@ -42,7 +42,7 @@ base = "geschlossener Wagen"
 [STR_NAME_SUFFIX_CABOOSE_CAR]
 base = "Bremserwagen"
 
-[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+[STR_NAME_SUFFIX_FOOD_TANK_CAR]
 base = "Lebensmittel-Kesselwagen"
 
 [STR_NAME_SUFFIX_FLAT_CAR]

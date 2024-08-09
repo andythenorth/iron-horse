@@ -61,7 +61,7 @@ base = "Výsypný vůz"
 [STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
 base = "Vysokostěnný minerální vůz"
 
-[STR_NAME_SUFFIX_EDIBLES_TANK_CAR]
+[STR_NAME_SUFFIX_FOOD_TANK_CAR]
 base = "Potravinová cisterna"
 
 [STR_NAME_SUFFIX_EXPRESS_CAR]
