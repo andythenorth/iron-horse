@@ -4539,7 +4539,6 @@ class FlatCarBulkheadConsistType1(FlatCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_piece_goods_car",
             "randomised_metal_product_car",
             "randomised_flat_car",
             "randomised_bulkhead_flat_car",
@@ -4587,7 +4586,6 @@ class FlatCarBulkheadConsistType2(FlatCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_piece_goods_car",
             "randomised_metal_product_car",
             "randomised_flat_car",
             "randomised_bulkhead_flat_car",
