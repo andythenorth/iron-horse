@@ -113,7 +113,7 @@ wagon_module_names = [
     "heavy_duty_flat_cars",
     "randomised_piece_goods_cars",
     "randomised_flat_cars",
-    "randomised_generic_coil_cars",
+    "randomised_metal_product_cars",
     "randomised_hopper_cars",
     "randomised_bulk_cars",
     "randomised_chemical_tank_cars",

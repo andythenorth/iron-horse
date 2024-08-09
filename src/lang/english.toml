@@ -389,8 +389,8 @@ base = "Flatbed Cargo Wagons"
 [STR_WAGON_GROUP_RANDOMISED_HOPPER_CARS]
 base = "Hoppers"
 
-[STR_WAGON_GROUP_RANDOMISED_GENERIC_COIL_CARS]
-base = "Coil Wagons"
+[STR_WAGON_GROUP_RANDOMISED_METAL_PRODUCT_CARS]
+base = "Metal Product Wagons"
 
 [STR_WAGON_GROUP_RANDOMISED_OPEN_CARS]
 base = "Open Wagons"
@@ -710,8 +710,8 @@ base = "Farm Product Hopper"
 [STR_NAME_SUFFIX_RANDOMISED_FLAT_CAR]
 base = "Flatbed Cargo Wagon"
 
-[STR_NAME_SUFFIX_RANDOMISED_GENERIC_COIL_CAR]
-base = "Coil Wagon"
+[STR_NAME_SUFFIX_RANDOMISED_METAL_PRODUCT_CAR]
+base = "Metal Product Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_HOPPER_CAR]
 base = "Hopper"
