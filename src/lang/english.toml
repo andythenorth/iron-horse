@@ -384,7 +384,7 @@ base = "Covered Hoppers"
 base = "Mineral Wagons"
 
 [STR_WAGON_GROUP_RANDOMISED_FLAT_CARS]
-base = "Flatbed Cargo Wagons"
+base = "Flatbed Wagons"
 
 [STR_WAGON_GROUP_RANDOMISED_HOPPER_CARS]
 base = "Hoppers"
@@ -708,7 +708,7 @@ base = "Mineral Wagon"
 base = "Farm Product Hopper"
 
 [STR_NAME_SUFFIX_RANDOMISED_FLAT_CAR]
-base = "Flatbed Cargo Wagon"
+base = "Flatbed Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_METAL_PRODUCT_CAR]
 base = "Metal Product Wagon"

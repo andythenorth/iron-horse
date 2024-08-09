@@ -2770,7 +2770,6 @@ class BolsterCarConsist(CarConsist):
         )
         self.randomised_candidate_groups = [
             "randomised_metal_product_car",
-            "randomised_flat_car",
         ]
         self._joker = True
         # Graphics configuration
@@ -4816,7 +4815,6 @@ class FlatCarSlidingRoofConsist(FlatCarConsistBase):
         )
         self.randomised_candidate_groups = [
             "randomised_piece_goods_car",
-            "randomised_flat_car",
         ]
         self._joker = True
         # Graphics configuration
@@ -4909,7 +4907,6 @@ class FlatCarTarpaulinConsist(FlatCarConsistBase):
         self.randomised_candidate_groups = [
             "randomised_metal_product_car",
             "randomised_piece_goods_car",
-            "randomised_flat_car",
         ]
         self._joker = True
         # Graphics configuration
