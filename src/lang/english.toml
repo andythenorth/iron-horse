@@ -500,6 +500,9 @@ base = "Bolster Wagon"
 [STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_1]
 base = "Bulkhead Flat Wagon"
 
+[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_2]
+base = "Bulkhead Flat Wagon"
+
 [STR_NAME_SUFFIX_CABOOSE_CAR]
 base = "Brake Van"
 
