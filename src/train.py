@@ -3228,7 +3228,7 @@ class CoilBuggyCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = []  # none needed
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "metal_coil"
+            "metal_products"
         ]
         self.label_refits_disallowed = []  # none needed
         self.default_cargos = polar_fox.constants.default_cargos["coil"]
@@ -3282,7 +3282,7 @@ class CoilCarConsistBase(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = []
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "metal_coil"
+            "metal_products"
         ]
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 1.5

@@ -180,13 +180,13 @@ allowed_refits_by_label = {
         "NITR",
         "CMNT",
     ],
-    # seems to be used by intermodal, otherwise chemical tankers are deprecated in favour of product tankers
+    # seems to be used by intermodal, otherwise chemicals tankers are deprecated in favour of product tankers
     "chemicals": [
         "ACID",
         "RFPR",
         "CHLO",
     ],
-    "metal_coil": [
+    "metal_products": [
         "STEL",
         "METL",
         "STCB",
@@ -197,6 +197,13 @@ allowed_refits_by_label = {
         "STWR",
         "ALUM",
         "RBAR",
+        "STBL",
+        "STBR",
+        "STIG",
+        "STSE",
+        "STSL",
+        "TYCO",
+        "ZINC",
     ],
     "covered_hoppers": [
         "GRAI",
@@ -690,7 +697,7 @@ bulk_cargo_recolour_maps_extended = (
 
 bulk_cargo_recolour_maps = [(i[0], i[2]) for i in bulk_cargo_recolour_maps_extended]
 
-chemical_tanker_livery_recolour_maps_extended = (
+chemicals_tanker_livery_recolour_maps_extended = (
     (
         "DFLT",
         "1CC",
@@ -707,8 +714,8 @@ chemical_tanker_livery_recolour_maps_extended = (
     ),
 )
 
-chemical_tanker_livery_recolour_maps = [
-    (i[0], i[2]) for i in chemical_tanker_livery_recolour_maps_extended
+chemicals_tanker_livery_recolour_maps = [
+    (i[0], i[2]) for i in chemicals_tanker_livery_recolour_maps_extended
 ]
 
 cryo_tanker_livery_recolour_maps_extended = (
@@ -779,7 +786,7 @@ container_recolour_cargo_maps = (
     ("bulk", ([], bulk_cargo_recolour_maps)),
     (
         "chemicals_tank",
-        (allowed_refits_by_label["chemicals"], chemical_tanker_livery_recolour_maps),
+        (allowed_refits_by_label["chemicals"], chemicals_tanker_livery_recolour_maps),
     ),
     (
         "cryo_tank",
