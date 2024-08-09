@@ -63,7 +63,7 @@ base = "Vagón de bobinado"
 [STR_NAME_SUFFIX_BOLSTER_CAR]
 base = "Vagón de carga plana"
 
-[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR]
+[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_1]
 base = "Vagón plataforma"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]

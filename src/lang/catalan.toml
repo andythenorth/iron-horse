@@ -63,7 +63,7 @@ base = "Cotxe de bobinat"
 [STR_NAME_SUFFIX_BOLSTER_CAR]
 base = "Cotxe de càrrega plana"
 
-[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR]
+[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_1]
 base = "Vagó plataforma"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]

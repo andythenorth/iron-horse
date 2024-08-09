@@ -62,7 +62,7 @@ base = "Gerbong Koil"
 [STR_NAME_SUFFIX_BOLSTER_CAR]
 base = "Gerbong Pendukung"
 
-[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR]
+[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_1]
 base = "Gerbong Datar"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]

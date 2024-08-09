@@ -438,7 +438,7 @@ base = "Chariot à bobines"
 [STR_NAME_SUFFIX_BOLSTER_CAR]
 base = "Wagon plat long"
 
-[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR]
+[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_1]
 base = "Wagon plat à cloison"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]
