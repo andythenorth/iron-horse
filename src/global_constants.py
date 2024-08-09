@@ -42,6 +42,7 @@ wagon_module_names = [
     "flat_cars",
     "bulkhead_flat_cars_type_1",
     "bulkhead_flat_cars_type_2",
+    "randomised_bulkhead_flat_cars",
     "sliding_roof_cars",
     "sliding_roof_hi_cube_cars",
     "tarpaulin_cars",

@@ -686,6 +686,9 @@ base = "Box Van"
 [STR_NAME_SUFFIX_RANDOMISED_BULK_CAR]
 base = "Bulk Wagon"
 
+[STR_NAME_SUFFIX_RANDOMISED_BULKHEAD_FLAT_CAR]
+base = "Bulkhead Flat Wagon"
+
 [STR_NAME_SUFFIX_RANDOMISED_CEMENT_SILO_CAR]
 base = "Cement Wagon"
 

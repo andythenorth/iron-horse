@@ -3562,7 +3562,9 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_chemical_covered_hopper_cars"
+        self.use_named_buyable_variant_group = (
+            "wagon_group_chemical_covered_hopper_cars"
+        )
         self._joker = True
         # Graphics configuration
         # the weathering is baked in to the sprite on these so no weathered remap
@@ -3808,7 +3810,9 @@ class CoveredHopperCarSwingRoofChemicalConsist(CoveredHopperCarConsistBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_chemical_covered_hopper_cars"
+        self.use_named_buyable_variant_group = (
+            "wagon_group_chemical_covered_hopper_cars"
+        )
         self._joker = True
         self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
         # Graphics configuration
@@ -4597,6 +4601,7 @@ class FlatCarBulkheadConsistType1(FlatCarConsistBase):
             "randomised_piece_goods_car",
             "randomised_generic_coil_car",
             "randomised_flat_car",
+            "randomised_bulkhead_flat_car",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -4626,6 +4631,7 @@ class FlatCarBulkheadConsistType1(FlatCarConsistBase):
             ],
         )
 
+
 # !! add a common base for these (like AggregateHopper)?
 class FlatCarBulkheadConsistType2(FlatCarConsistBase):
     """
@@ -4643,6 +4649,7 @@ class FlatCarBulkheadConsistType2(FlatCarConsistBase):
             "randomised_piece_goods_car",
             "randomised_generic_coil_car",
             "randomised_flat_car",
+            "randomised_bulkhead_flat_car",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -4651,6 +4658,43 @@ class FlatCarBulkheadConsistType2(FlatCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            ],
+        )
+
+
+class FlatCarBulkheadRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
+    """
+    Random choice of bulkhead flat car sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_bulkhead_flat_car"
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_bulkhead_flat_cars"
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
             liveries=[
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_1"
