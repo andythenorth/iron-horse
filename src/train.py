@@ -4580,13 +4580,13 @@ class FlatCarConsistBase(CarConsist):
         )
 
 
-class FlatCarBulkheadConsist(FlatCarConsistBase):
+class FlatCarBulkheadConsistType1(FlatCarConsistBase):
     """
     Variant of flat wagon with heavy reinforced ends - refits same as flat wagon
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "bulkhead_flat_car"
+        self.base_id = "bulkhead_flat_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["bulkhead"]
         self._intro_year_days_offset = (
@@ -4597,6 +4597,9 @@ class FlatCarBulkheadConsist(FlatCarConsistBase):
             "randomised_generic_coil_car",
             "randomised_flat_car",
         ]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_bulkhead_flat_cars"
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
