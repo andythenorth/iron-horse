@@ -563,14 +563,14 @@ base = "Express Van"
 [STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR]
 base = "Express Container Wagon"
 
-[STR_NAME_SUFFIX_FARM_PRODUCTS_BOX_CAR]
-base = "Farm Products Van"
+[STR_NAME_SUFFIX_FARM_PRODUCT_BOX_CAR]
+base = "Farm Product Van"
 
-[STR_NAME_SUFFIX_FARM_PRODUCTS_HOPPER_CAR_TYPE_1]
-base = "Farm Products Hopper"
+[STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_TYPE_1]
+base = "Farm Product Hopper"
 
-[STR_NAME_SUFFIX_FARM_PRODUCTS_HOPPER_CAR_TYPE_2]
-base = "Farm Products Hopper"
+[STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_TYPE_2]
+base = "Farm Product Hopper"
 
 [STR_NAME_SUFFIX_FLAT_CAR]
 base = "Flat Wagon"
@@ -704,8 +704,8 @@ base = "Coil Carrier"
 [STR_NAME_SUFFIX_RANDOMISED_DUMP_CAR]
 base = "Mineral Wagon"
 
-[STR_NAME_SUFFIX_RANDOMISED_FARM_PRODUCTS_HOPPER_CAR]
-base = "Farm Products Hopper"
+[STR_NAME_SUFFIX_RANDOMISED_FARM_PRODUCT_HOPPER_CAR]
+base = "Farm Product Hopper"
 
 [STR_NAME_SUFFIX_RANDOMISED_FLAT_CAR]
 base = "Flatbed Cargo Wagon"

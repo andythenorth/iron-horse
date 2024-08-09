@@ -4450,7 +4450,7 @@ class FarmProductsBoxCarConsist(CarConsist):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "farm_products_box_car"
+        self.base_id = "farm_product_box_car"
         super().__init__(**kwargs)
         # note this is not derived from BoxCarBase, it's a standalone type
         self.class_refit_groups = []  # no classes, use explicit labels
@@ -4469,8 +4469,8 @@ class FarmProductsBoxCarConsist(CarConsist):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
-            "unweathered": graphics_constants.farm_products_box_car_livery_recolour_maps,
-            "weathered": graphics_constants.farm_products_box_car_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.farm_product_box_car_livery_recolour_maps,
+            "weathered": graphics_constants.farm_product_box_car_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -4506,8 +4506,8 @@ class FarmProductsHopperCarConsistBase(CarConsist):
         self._joker = True
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.farm_products_hopper_car_livery_recolour_maps,
-            "weathered": graphics_constants.farm_products_hopper_car_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.farm_product_hopper_car_livery_recolour_maps,
+            "weathered": graphics_constants.farm_product_hopper_car_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -4525,10 +4525,10 @@ class FarmProductsHopperCarConsistType1(FarmProductsHopperCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "farm_products_hopper_car_type_1"
+        self.base_id = "farm_product_hopper_car_type_1"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
-            "randomised_farm_products_hopper_car",
+            "randomised_farm_product_hopper_car",
         ]
 
 
@@ -4538,10 +4538,10 @@ class FarmProductsHopperCarConsistType2(FarmProductsHopperCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "farm_products_hopper_car_type_2"
+        self.base_id = "farm_product_hopper_car_type_2"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
-            "randomised_farm_products_hopper_car",
+            "randomised_farm_product_hopper_car",
         ]
 
 
@@ -4553,7 +4553,7 @@ class FarmProductsHopperCarRandomisedConsist(
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_farm_products_hopper_car"
+        self.base_id = "randomised_farm_product_hopper_car"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(

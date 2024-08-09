@@ -328,7 +328,7 @@ curtain_side_livery_recolour_maps = body_recolour_CC1
 # pass through (recolour gestalt is used only to trigger automatic chassis drawing)
 edibles_tank_car_livery_recolour_maps = {}
 
-farm_products_hopper_car_livery_recolour_maps = {
+farm_product_hopper_car_livery_recolour_maps = {
     136: 96,
     137: 97,
     138: 98,
@@ -338,7 +338,7 @@ farm_products_hopper_car_livery_recolour_maps = {
     142: 102,
     143: 103,
 }
-farm_products_hopper_car_livery_recolour_maps_weathered = {
+farm_product_hopper_car_livery_recolour_maps_weathered = {
     136: 88,
     137: 89,
     138: 90,
@@ -349,7 +349,7 @@ farm_products_hopper_car_livery_recolour_maps_weathered = {
     143: 95,
 }
 
-farm_products_box_car_livery_recolour_maps = {
+farm_product_box_car_livery_recolour_maps = {
     40: 96,
     41: 96 + 1,
     42: 96 + 2,
@@ -367,7 +367,7 @@ farm_products_box_car_livery_recolour_maps = {
     CC1 + 6: 61 + 6,
     CC1 + 7: 61 + 7,
 }
-farm_products_box_car_livery_recolour_maps_weathered = {
+farm_product_box_car_livery_recolour_maps_weathered = {
     40: 88,
     41: 88 + 1,
     42: 88 + 2,
