@@ -187,6 +187,18 @@ class Roster(object):
         for consist in consists:
             if consist not in result:
                 result.append(consist)
+        # Guard for detecting duplicates in the result
+            seen = set()
+            duplicates = set()
+            for consist in result:
+                if consist in seen:
+                    duplicates.add(consist)
+                else:
+                    seen.add(consist)
+
+            if duplicates:
+                # Raise an exception if duplicates are found, identifying them in the message
+                raise Exception(f"Duplicate consists found: {duplicates}")
         return result
 
     def get_wagon_randomisation_candidates(self, buyable_variant):
