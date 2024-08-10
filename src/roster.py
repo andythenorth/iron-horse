@@ -108,17 +108,18 @@ class Roster(object):
 
     @property
     def consists_in_order_optimised_for_action_2_ids(self):
-        # the base sort order for consists is for the buy menu, but this isn't effective for order in nml output
-        # because randomised wagons need action 2 IDs spanning multiple other vehicles, and this can cause problems allocating enough action 2 IDs
-        # therefore we re-order, to group (as far as we can) vehicles where IDs need to span
-        # this isn't infallible, but reduces the extent to which the randomised wagons consume action 2 IDs
         consists = self.consists_in_buy_menu_order
         result = []
         all_randomised_candidate_groups = []
         randomised_wagons_by_track_type_name_and_gen = {}
-        # we need to place wagons that are in randomisation groups together, then place the randomised wagon immediately after them
-        # first find which wagons belong together, by consolidating their groups
+        # Grouping vehicles by generation
+        vehicles_by_gen = {}
+
+        # First, categorize all consists by their generation
         for consist in consists:
+            if consist.gen not in vehicles_by_gen:
+                vehicles_by_gen[consist.gen] = []
+            vehicles_by_gen[consist.gen].append(consist)
             if (
                 len(consist.randomised_candidate_groups) > 0
                 and consist.randomised_candidate_groups
@@ -147,59 +148,70 @@ class Roster(object):
                 randomised_wagons_by_track_type_name_and_gen[
                     consist.base_track_type_name
                 ][consist.gen].append(consist)
-        super_groups = []
-        for group in all_randomised_candidate_groups:
-            seen = False
-            for group_id in sorted(group):
-                for super_group in super_groups:
-                    if group_id in super_group:
-                        super_group.extend(copy.deepcopy(group))
-                        seen = True
-            if not seen:
-                super_groups.append(copy.deepcopy(group))
-        # super_groups will contain the same id multiple times, so consolidate to uniques
-        super_groups = [list(set(super_group)) for super_group in super_groups]
-        for super_group in super_groups:
-            for (
-                base_track_type_name,
-                generations,
-            ) in randomised_wagons_by_track_type_name_and_gen.items():
-                for gen, randomised_wagons_consists in generations.items():
-                    # first find all the randomisation candidate wagons to place together
-                    # we need them by base track type and gen, then if they match this super_group
-                    for consist in consists:
-                        if (
-                            consist.base_track_type_name == base_track_type_name
-                            and consist.gen == gen
-                        ):
-                            for group_id in consist.randomised_candidate_groups:
-                                if group_id in super_group:
-                                    result.append(consist)
-                                    break
-                    # now find the actual randomised wagons that match this super group
-                    # append those after their candidate wagons
-                    for group_id in super_group:
-                        for consist in randomised_wagons_consists:
-                            if getattr(consist, "base_id", None) == group_id:
-                                result.append(consist)
-                                break
-        # now append all the remaining consists that don't need special treatment
-        for consist in consists:
-            if consist not in result:
-                result.append(consist)
-        # Guard for detecting duplicates in the result
-            seen = set()
-            duplicates = set()
-            for consist in result:
-                if consist in seen:
-                    duplicates.add(consist)
-                else:
-                    seen.add(consist)
 
-            if duplicates:
-                # Raise an exception if duplicates are found, identifying them in the message
-                raise Exception(f"Duplicate consists found: {duplicates}")
+        # Iterate over each generation and process it as a separate chunk
+        for gen in sorted(vehicles_by_gen.keys()):
+            super_groups = []
+            gen_consists = vehicles_by_gen[gen]
+            gen_result = []
+
+            # Build super_groups for the current generation
+            for group in all_randomised_candidate_groups:
+                seen = False
+                for group_id in sorted(group):
+                    for super_group in super_groups:
+                        if group_id in super_group:
+                            super_group.extend(group)
+                            seen = True
+                            break  # Prevent further processing of this super_group
+                if not seen:
+                    super_groups.append(group)
+
+            # Ensure super_groups contain unique IDs only
+            super_groups = [list(set(super_group)) for super_group in super_groups]
+
+            added_consists = set()  # Track added consists to prevent duplicates
+
+            for super_group in super_groups:
+                for (
+                    base_track_type_name,
+                    generations,
+                ) in randomised_wagons_by_track_type_name_and_gen.items():
+                    if gen in generations:
+                        randomised_wagons_consists = generations[gen]
+                        # Find and append randomisation candidate wagons
+                        for consist in gen_consists:
+                            if (
+                                consist.base_track_type_name == base_track_type_name
+                                and consist not in added_consists  # Check for duplicates
+                            ):
+                                for group_id in consist.randomised_candidate_groups:
+                                    if group_id in super_group:
+                                        gen_result.append(consist)
+                                        added_consists.add(consist)  # Mark as added
+                                        break
+                        # Append the actual randomised wagons after their candidate wagons
+                        for group_id in super_group:
+                            for consist in randomised_wagons_consists:
+                                if (
+                                    getattr(consist, "base_id", None) == group_id
+                                    and consist not in added_consists  # Check for duplicates
+                                ):
+                                    gen_result.append(consist)
+                                    added_consists.add(consist)  # Mark as added
+                                    break
+
+            # Append all the remaining consists that don't need special treatment within this generation
+            for consist in gen_consists:
+                if consist not in added_consists:  # Check for duplicates
+                    gen_result.append(consist)
+                    added_consists.add(consist)  # Mark as added
+
+            # Add the processed generation chunk to the final result
+            result.extend(gen_result)
+
         return result
+
 
     def get_wagon_randomisation_candidates(self, buyable_variant):
         randomisation_consist = buyable_variant.consist
