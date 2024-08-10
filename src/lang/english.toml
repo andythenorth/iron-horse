@@ -278,7 +278,8 @@ base = "Bolster Wagons"
 base = "Box Vans"
 
 [STR_WAGON_GROUP_BULKHEAD_FLAT_CARS]
-base = "Bulkhead Flat Wagons"
+#base = "Bulkhead Flat Wagons"
+base = "Slab Wagons"
 
 [STR_WAGON_GROUP_DOUBLE_DECK_AUTOMOBILE_CARS]
 base = "Car Transporters"
@@ -498,10 +499,12 @@ base = "Coil Buggies"
 base = "Bolster Wagon"
 
 [STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_1]
-base = "Bulkhead Flat Wagon"
+#base = "Bulkhead Flat Wagon"
+base = "Slab Wagon"
 
 [STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_2]
-base = "Bulkhead Flat Wagon"
+#base = "Bulkhead Flat Wagon"
+base = "Slab Wagon"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]
 base = "Brake Van"
@@ -687,7 +690,8 @@ base = "Box Van"
 base = "Bulk Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_BULKHEAD_FLAT_CAR]
-base = "Bulkhead Flat Wagon"
+#base = "Bulkhead Flat Wagon"
+base = "Slab Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_CEMENT_SILO_CAR]
 base = "Cement Wagon"
