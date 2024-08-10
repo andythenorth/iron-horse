@@ -1,11 +1,11 @@
-from train import FlatCarSlidingRoofConsistHiCube, FreightCar
+from train import SlidingRoofCarConsistHiCube, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # gen 5 start, only B and C lengths
 
-    consist = FlatCarSlidingRoofConsistHiCube(
+    consist = SlidingRoofCarConsistHiCube(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30730,
@@ -16,7 +16,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = FlatCarSlidingRoofConsistHiCube(
+    consist = SlidingRoofCarConsistHiCube(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18520,
