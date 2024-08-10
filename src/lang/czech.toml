@@ -91,7 +91,7 @@ base = "Otevřený vůz"
 [STR_NAME_SUFFIX_PASSENGER_CAR]
 base = "Vůz pro cestující"
 
-[STR_NAME_SUFFIX_PLATE_CAR]
+[STR_NAME_SUFFIX_DROPSIDE_FLAT_CAR]
 base = "Plošinový vůz"
 
 [STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]

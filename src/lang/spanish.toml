@@ -138,7 +138,7 @@ base = "Vagón abierto"
 [STR_NAME_SUFFIX_PASSENGER_CAR]
 base = "Vagón de pasaje"
 
-[STR_NAME_SUFFIX_PLATE_CAR]
+[STR_NAME_SUFFIX_DROPSIDE_FLAT_CAR]
 base = "Vagón platero"
 
 [STR_NAME_SUFFIX_PRODUCT_TANK_CAR]

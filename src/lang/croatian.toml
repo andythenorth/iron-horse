@@ -85,7 +85,7 @@ base = "Otvoreni vagon"
 [STR_NAME_SUFFIX_PASSENGER_CAR]
 base = "Putnički vagon"
 
-[STR_NAME_SUFFIX_PLATE_CAR]
+[STR_NAME_SUFFIX_DROPSIDE_FLAT_CAR]
 base = "Plato-vagon"
 
 [STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]

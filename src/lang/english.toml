@@ -301,6 +301,9 @@ base = "Coil Carriers"
 [STR_WAGON_GROUP_COVERED_HOPPER_CARS]
 base = "Covered Hoppers"
 
+[STR_WAGON_GROUP_DROPSIDE_FLAT_CARS]
+base = "Dropside Flat Wagons"
+
 [STR_WAGON_GROUP_DUMP_CARS]
 base = "Mineral Wagons"
 
@@ -358,9 +361,6 @@ base = "Panoramic Coaches"
 
 [STR_WAGON_GROUP_PASSENGER_CARS]
 base = "Passenger Coaches"
-
-[STR_WAGON_GROUP_PLATE_CARS]
-base = "Plate Wagons"
 
 [STR_WAGON_GROUP_PRESSURE_TANK_CARS]
 base = "Pressurised Tankers"
@@ -542,6 +542,9 @@ base = "Curtain Side Box Van"
 [STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR]
 base = "Car Transporter"
 
+[STR_NAME_SUFFIX_DROPSIDE_FLAT_CAR]
+base = "Dropside Flat Wagon"
+
 [STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR]
 base = "Covered Hopper"
 
@@ -658,9 +661,6 @@ base = "Passenger Coach"
 
 [STR_NAME_SUFFIX_PEAT_CAR]
 base = "Peat Wagons"
-
-[STR_NAME_SUFFIX_PLATE_CAR]
-base = "Plate Wagon"
 
 [STR_NAME_SUFFIX_PRESSURE_TANK_CAR]
 base = "Pressure Tanker"
