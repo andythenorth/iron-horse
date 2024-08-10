@@ -4539,7 +4539,6 @@ class FlatCarBulkheadConsistType1(FlatCarConsistBase):
         )
         self.randomised_candidate_groups = [
             "randomised_metal_product_car",
-            "randomised_flat_car",
             "randomised_bulkhead_flat_car",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
@@ -4586,7 +4585,6 @@ class FlatCarBulkheadConsistType2(FlatCarConsistBase):
         )
         self.randomised_candidate_groups = [
             "randomised_metal_product_car",
-            "randomised_flat_car",
             "randomised_bulkhead_flat_car",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
@@ -4655,6 +4653,51 @@ class FlatCarBulkheadRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBas
         )
 
 
+class FlatCarDropsideConsist(FlatCarConsistBase):
+    """
+    Low-side wagon - variant on flat wagon, refits same
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "dropside_flat_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["plate"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
+        )
+        self.randomised_candidate_groups = [
+            "randomised_metal_product_car",
+            "randomised_flat_car",
+        ]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_flat_cars"
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            piece="flat",
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            ],
+        )
+
+
 class FlatCarConsist(FlatCarConsistBase):
     """
     Flatbed - no stakes, visible cargo.
@@ -4666,6 +4709,9 @@ class FlatCarConsist(FlatCarConsistBase):
         self.randomised_candidate_groups = [
             "randomised_flat_car",
         ]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_flat_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
@@ -4729,49 +4775,6 @@ class FlatCarHeavyDutyConsist(FlatCarConsistBase):
         )
 
 
-class FlatCarPlateConsist(FlatCarConsistBase):
-    """
-    Low-side wagon - variant on flat wagon, refits same
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "dropside_flat_car"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["plate"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
-        self.randomised_candidate_groups = [
-            "randomised_metal_product_car",
-            "randomised_piece_goods_car",
-            "randomised_flat_car",
-        ]
-        self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="flat",
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_1"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_2"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_3"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            ],
-        )
-
-
 class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
     """
     Random choice of flat car sprite, from available coil cars, bolster cars etc.
@@ -4780,6 +4783,9 @@ class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "randomised_flat_car"
         super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_flat_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,

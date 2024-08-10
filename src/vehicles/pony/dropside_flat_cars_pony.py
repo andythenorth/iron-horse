@@ -1,10 +1,10 @@
-from train import FlatCarPlateConsist, FreightCar
+from train import FlatCarDropsideConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30130,
@@ -16,7 +16,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30700,
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30820,
@@ -42,7 +42,7 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30520,
@@ -55,7 +55,7 @@ def main(roster_id, **kwargs):
 
     # no gen 2A, gen 1A continues in pony
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30530,
@@ -66,7 +66,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30540,
@@ -77,7 +77,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30580,
@@ -88,7 +88,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30630,
@@ -99,7 +99,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30590,
@@ -110,7 +110,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30510,
@@ -121,7 +121,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30880,
@@ -132,7 +132,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30840,
@@ -143,7 +143,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
-    consist = FlatCarPlateConsist(
+    consist = FlatCarDropsideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30910,
