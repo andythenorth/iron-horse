@@ -6244,6 +6244,9 @@ class OpenCarPigIronConsist(OpenCarConsistBase):
         self.base_id = "pig_iron_open_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["open"]
+        self.randomised_candidate_groups = [
+            "randomised_metal_product_car",
+        ]
         self._joker = True
         # Graphics configuration
         weathered_variants = {

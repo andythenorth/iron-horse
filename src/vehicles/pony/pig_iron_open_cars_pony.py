@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     # no new type A for gen 2, gen 1 type A continues
 
@@ -39,7 +39,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = OpenCarPigIronConsist(
         roster_id=roster_id,
@@ -61,7 +61,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = OpenCarPigIronConsist(
         roster_id=roster_id,
@@ -72,18 +72,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
-
-    consist = OpenCarPigIronConsist(
-        roster_id=roster_id,
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=23060,
-        gen=4,
-        subtype="C",
-        sprites_complete=False,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
     consist = OpenCarPigIronConsist(
         roster_id=roster_id,
@@ -94,7 +83,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_alt_24px")
 
     consist = OpenCarPigIronConsist(
         roster_id=roster_id,
