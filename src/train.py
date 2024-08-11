@@ -7470,7 +7470,6 @@ class TarpaulinCarConsist(BoxCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_metal_product_car",
             "randomised_piece_goods_car",
         ]
         self._joker = True
