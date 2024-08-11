@@ -54,7 +54,7 @@ wagon_module_names = [
     "mill_open_cars",
     "mill_flat_cars_type_1",
     "mill_flat_cars_type_2",
-    #"randomised_mill_flat_cars",
+    "randomised_mill_flat_cars",
     "coil_cars_covered",
     "coil_cars_covered_asymmetric",
     "coil_cars_uncovered",

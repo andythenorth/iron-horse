@@ -398,6 +398,9 @@ base = "Hoppers"
 [STR_WAGON_GROUP_RANDOMISED_METAL_PRODUCT_CARS]
 base = "Metal Product Covered Wagons"
 
+[STR_NAME_SUFFIX_RANDOMISED_MILL_FLAT_CAR]
+base = "Mill Flat Wagons"
+
 [STR_WAGON_GROUP_RANDOMISED_OPEN_CARS]
 base = "Open Wagons"
 moose = "Gondolas"
