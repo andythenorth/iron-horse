@@ -427,6 +427,10 @@ class Roster(object):
                         parent_consist.use_named_buyable_variant_group
                     ]
                     candidate_parent_group = None
+                    if base_id_for_target_parent_consist not in self.wagon_consists_by_base_id:
+                        error_message = base_id_for_target_parent_consist + " not found in roster " + self.id
+                        error_message += "\n look in " + self.id + ".wagon_modules_provided_by_other_rosters as the module name may be incorrect there"
+                        raise BaseException(error_message)
                     for consist in self.wagon_consists_by_base_id[
                         base_id_for_target_parent_consist
                     ]:
