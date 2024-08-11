@@ -3050,6 +3050,7 @@ class BoxCarSlidingWallConsistBase(BoxCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_sliding_wall_cars"
         self._joker = True
 
+
 class BoxCarSlidingWallConsistType1(BoxCarSlidingWallConsistBase):
     """
     Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
@@ -4728,6 +4729,8 @@ class FlatCarBulkheadConsistBase(FlatCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
             ],
         )
+
+
 class FlatCarBulkheadConsistType1(FlatCarBulkheadConsistBase):
     """
     Variant of flat wagon with heavy reinforced ends - refits same as flat wagon
@@ -4750,7 +4753,9 @@ class FlatCarBulkheadConsistType2(FlatCarBulkheadConsistBase):
         super().__init__(**kwargs)
 
 
-class FlatCarBulkheadRandomisedConsist(RandomisedConsistMixin, FlatCarBulkheadConsistBase):
+class FlatCarBulkheadRandomisedConsist(
+    RandomisedConsistMixin, FlatCarBulkheadConsistBase
+):
     """
     Random choice of bulkhead flat car sprite.
     """
@@ -4758,6 +4763,28 @@ class FlatCarBulkheadRandomisedConsist(RandomisedConsistMixin, FlatCarBulkheadCo
     def __init__(self, **kwargs):
         self.base_id = "randomised_bulkhead_flat_car"
         super().__init__(**kwargs)
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            ],
+        )
 
 
 class FlatCarDropendConsist(FlatCarConsistBase):
@@ -4968,6 +4995,8 @@ class FlatCarMillConsistBase(FlatCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
             ],
         )
+
+
 class FlatCarMillConsistType1(FlatCarMillConsistBase):
     """
     Variant of flat wagon designed specfically for steel industry.
@@ -5021,7 +5050,6 @@ class FlatCarMillRandomisedConsist(RandomisedConsistMixin, FlatCarMillConsistBas
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
             ],
         )
-
 
 
 class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
