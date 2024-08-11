@@ -391,7 +391,7 @@ base = "Flatbed Wagons"
 base = "Hoppers"
 
 [STR_WAGON_GROUP_RANDOMISED_METAL_PRODUCT_CARS]
-base = "Metal Product Wagons"
+base = "Metal Product Covered Wagons"
 
 [STR_WAGON_GROUP_RANDOMISED_OPEN_CARS]
 base = "Open Wagons"
@@ -771,7 +771,7 @@ base = "Sliding Roof Wagon"
 [STR_NAME_SUFFIX_SLIDING_ROOF_HI_CUBE_CAR]
 base = "Cube Wagon"
 
-[STR_NAME_SUFFIX_SLIDING_WALL_CAR]
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]
 base = "Sliding Wall Van"
 
 [STR_NAME_SUFFIX_SCRAP_METAL_CAR]

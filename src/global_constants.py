@@ -35,7 +35,7 @@ wagon_module_names = [
     "merchandise_box_cars",
     "curtain_side_box_cars",
     "randomised_box_cars",
-    "sliding_wall_cars",
+    "sliding_wall_cars_type_1",
     "vehicle_parts_box_cars",
     "goods_box_cars",
     "sliding_roof_cars",
@@ -302,7 +302,7 @@ buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_pressure_tank_cars": "pressure_tank_car",
     "wagon_group_reefer_cars": "reefer_car_type_1",
     "wagon_group_silo_cars": "silo_car",
-    "wagon_group_sliding_wall_cars": "sliding_wall_car",
+    "wagon_group_sliding_wall_cars": "sliding_wall_car_type_1",
     "wagon_group_vehicle_transporter_cars": "automobile_car",
 }
 

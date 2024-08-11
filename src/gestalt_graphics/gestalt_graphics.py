@@ -117,7 +117,7 @@ class GestaltGraphics(object):
             num_livery_rows_per_unit = len(pipeline.consist.buyable_variants)
 
         # !! CABBAGE - this needs to delegate to consist_ruleset, to find, e.g. an additional y offset to the spriterow for 'first' or 'last' etc
-        if pipeline.consist.id in ["sliding_wall_car_pony_gen_5D"]:
+        if pipeline.consist.id in ["sliding_wall_car_type_1_pony_gen_5D"]:
             print(pipeline.consist.id)
             print(unit_counter)
             print("--- ^ buy menu spriterow y offset debug ---")

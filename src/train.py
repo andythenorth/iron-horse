@@ -3031,13 +3031,13 @@ class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
         )
 
 
-class BoxCarSlidingWallConsist(BoxCarConsistBase):
+class BoxCarSlidingWallConsistType1(BoxCarConsistBase):
     """
     Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "sliding_wall_car"
+        self.base_id = "sliding_wall_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_sliding_wall"]
         self._intro_year_days_offset = (

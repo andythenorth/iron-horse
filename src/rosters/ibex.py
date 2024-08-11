@@ -161,7 +161,7 @@ wagon_modules_provided_by_other_rosters = {
         "silo_cars",
         "slag_ladle_cars",
         "sliding_roof_cars",
-        "sliding_wall_cars",
+        "sliding_wall_cars_type_1",
         "sulphur_tank_cars",
         "tank_cars",
         "tarpaulin_cars",
