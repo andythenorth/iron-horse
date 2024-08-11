@@ -363,6 +363,9 @@ base = "Panoramic Coaches"
 [STR_WAGON_GROUP_PASSENGER_CARS]
 base = "Passenger Coaches"
 
+[STR_WAGON_GROUP_PIG_IRON_OPEN_CARS]
+base = "Pig Iron Wagons"
+
 [STR_WAGON_GROUP_PRESSURE_TANK_CARS]
 base = "Pressurised Tankers"
 
@@ -670,6 +673,9 @@ base = "Passenger Coach"
 
 [STR_NAME_SUFFIX_PEAT_CAR]
 base = "Peat Wagons"
+
+[STR_NAME_SUFFIX_PIG_IRON_OPEN_CAR]
+base = "Pig Iron Wagon"
 
 [STR_NAME_SUFFIX_PRESSURE_TANK_CAR]
 base = "Pressure Tanker"

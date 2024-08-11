@@ -51,6 +51,7 @@ wagon_module_names = [
     "bulkhead_flat_cars_type_2",
     "randomised_bulkhead_flat_cars",
     "bolster_cars",
+    "pig_iron_open_cars",
     "coil_cars_covered",
     "coil_cars_covered_asymmetric",
     "coil_cars_uncovered",

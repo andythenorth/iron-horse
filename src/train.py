@@ -6235,6 +6235,50 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
         )
 
 
+class OpenCarPigIronConsist(OpenCarConsistBase):
+    """
+    Open car for use in the steel industry, but widely repurposed and refittable.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "pig_iron_open_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["open"]
+        self._joker = True
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.merchandise_car_body_recolour_map,
+            "weathered": graphics_constants.merchandise_car_body_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            bulk=True,
+            piece="open",
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_7"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            ],
+        )
+
+
 class OpenCarRandomisedConsist(RandomisedConsistMixin, OpenCarConsistBase):
     """
     Random choice of open car sprite, from available open cars.
