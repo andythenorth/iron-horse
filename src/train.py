@@ -6253,13 +6253,13 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
         )
 
 
-class OpenCarPigIronConsist(OpenCarConsistBase):
+class OpenCarMillConsist(OpenCarConsistBase):
     """
     Open car for use in the steel industry, but widely repurposed and refittable.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "pig_iron_open_car"
+        self.base_id = "mill_open_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         self.randomised_candidate_groups = [

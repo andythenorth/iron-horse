@@ -1,4 +1,4 @@
-from train import OpenCarPigIronConsist, FreightCar
+from train import OpenCarMillConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,7 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # only type A for gen 1
 
-    consist = OpenCarPigIronConsist(
+    consist = OpenCarMillConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23000,
@@ -19,7 +19,7 @@ def main(roster_id, **kwargs):
 
     # no new type A for gen 2, gen 1 type A continues
 
-    consist = OpenCarPigIronConsist(
+    consist = OpenCarMillConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23010,
@@ -30,7 +30,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = OpenCarPigIronConsist(
+    consist = OpenCarMillConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23020,
@@ -41,7 +41,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = OpenCarPigIronConsist(
+    consist = OpenCarMillConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23030,
@@ -52,7 +52,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = OpenCarPigIronConsist(
+    consist = OpenCarMillConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23040,
@@ -63,7 +63,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = OpenCarPigIronConsist(
+    consist = OpenCarMillConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23050,
@@ -74,7 +74,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = OpenCarPigIronConsist(
+    consist = OpenCarMillConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26880,
@@ -85,7 +85,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_alt_24px")
 
-    consist = OpenCarPigIronConsist(
+    consist = OpenCarMillConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23080,

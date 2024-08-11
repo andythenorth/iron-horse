@@ -356,6 +356,9 @@ base = "MGR Hoppers"
 [STR_WAGON_GROUP_MILL_FLAT_CARS]
 base = "Mill Flat Wagons"
 
+[STR_WAGON_GROUP_MILL_OPEN_CARS]
+base = "Mill Open Wagons"
+
 [STR_WAGON_GROUP_OPEN_CARS]
 base = "Open Wagons"
 
@@ -364,9 +367,6 @@ base = "Panoramic Coaches"
 
 [STR_WAGON_GROUP_PASSENGER_CARS]
 base = "Passenger Coaches"
-
-[STR_WAGON_GROUP_PIG_IRON_OPEN_CARS]
-base = "Mill Open Wagons"
 
 [STR_WAGON_GROUP_PRESSURE_TANK_CARS]
 base = "Pressurised Tankers"
@@ -665,6 +665,9 @@ base = "Mill Flat Wagon"
 [STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_2]
 base = "Mill Flat Wagon"
 
+[STR_NAME_SUFFIX_MILL_OPEN_CAR]
+base = "Mill Open Wagon"
+
 [STR_NAME_SUFFIX_OPEN_CAR]
 base = "Open Wagon"
 
@@ -679,9 +682,6 @@ base = "Passenger Coach"
 
 [STR_NAME_SUFFIX_PEAT_CAR]
 base = "Peat Wagons"
-
-[STR_NAME_SUFFIX_PIG_IRON_OPEN_CAR]
-base = "Mill Open Wagon"
 
 [STR_NAME_SUFFIX_PRESSURE_TANK_CAR]
 base = "Pressure Tanker"
