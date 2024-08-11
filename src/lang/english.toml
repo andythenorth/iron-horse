@@ -774,6 +774,9 @@ base = "Cube Wagon"
 [STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]
 base = "Sliding Wall Van"
 
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_2]
+base = "Sliding Wall Van"
+
 [STR_NAME_SUFFIX_SCRAP_METAL_CAR]
 base = "Scrap Wagon"
 

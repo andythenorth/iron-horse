@@ -3031,13 +3031,12 @@ class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
         )
 
 
-class BoxCarSlidingWallConsistType1(BoxCarConsistBase):
+class BoxCarSlidingWallConsistBase(BoxCarConsistBase):
     """
-    Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
+    Base for sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "sliding_wall_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_sliding_wall"]
         self._intro_year_days_offset = (
@@ -3050,6 +3049,15 @@ class BoxCarSlidingWallConsistType1(BoxCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_sliding_wall_cars"
         self._joker = True
+
+class BoxCarSlidingWallConsistType1(BoxCarSlidingWallConsistBase):
+    """
+    Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "sliding_wall_car_type_1"
+        super().__init__(**kwargs)
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -3079,6 +3087,51 @@ class BoxCarSlidingWallConsistType1(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+            ],
+        )
+
+
+class BoxCarSlidingWallConsistType2(BoxCarSlidingWallConsistBase):
+    """
+    Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "sliding_wall_car_type_2"
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.box_livery_recolour_maps,
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_7"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_5"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
             ],
         )

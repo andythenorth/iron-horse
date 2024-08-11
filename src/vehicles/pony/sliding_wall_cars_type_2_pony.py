@@ -1,10 +1,10 @@
-from train import BoxCarVehiclePartsConsist, FreightCar
+from train import BoxCarSlidingWallConsistType2, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = BoxCarVehiclePartsConsist(
+    consist = BoxCarSlidingWallConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23360,
@@ -16,7 +16,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = BoxCarVehiclePartsConsist(
+    consist = BoxCarSlidingWallConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31430,
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # starts gen 4, B and C only
 
-    consist = BoxCarVehiclePartsConsist(
+    consist = BoxCarSlidingWallConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18300,
@@ -43,7 +43,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_24px")
 
-    consist = BoxCarVehiclePartsConsist(
+    consist = BoxCarSlidingWallConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23380,
@@ -59,7 +59,7 @@ def main(roster_id, **kwargs):
         chassis="4_axle_1cc_filled_32px",
     )
 
-    consist = BoxCarVehiclePartsConsist(
+    consist = BoxCarSlidingWallConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18320,
@@ -74,7 +74,7 @@ def main(roster_id, **kwargs):
         chassis="2_axle_1cc_filled_24px",
     )
 
-    consist = BoxCarVehiclePartsConsist(
+    consist = BoxCarSlidingWallConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23220,
@@ -89,7 +89,7 @@ def main(roster_id, **kwargs):
         chassis="4_axle_1cc_filled_32px",
     )
 
-    consist = BoxCarVehiclePartsConsist(
+    consist = BoxCarSlidingWallConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6130,

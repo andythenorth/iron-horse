@@ -36,6 +36,7 @@ wagon_module_names = [
     "curtain_side_box_cars",
     "randomised_box_cars",
     "sliding_wall_cars_type_1",
+    "sliding_wall_cars_type_2",
     "vehicle_parts_box_cars",
     "goods_box_cars",
     "sliding_roof_cars",
