@@ -279,7 +279,7 @@ base = "Box Vans"
 
 [STR_WAGON_GROUP_BULKHEAD_FLAT_CARS]
 #base = "Bulkhead Flat Wagons"
-base = "Slab Wagons"
+base = "Mill Flat Wagons"
 
 [STR_WAGON_GROUP_DOUBLE_DECK_AUTOMOBILE_CARS]
 base = "Car Transporters"
@@ -364,7 +364,7 @@ base = "Panoramic Coaches"
 base = "Passenger Coaches"
 
 [STR_WAGON_GROUP_PIG_IRON_OPEN_CARS]
-base = "Pig Iron Wagons"
+base = "Mill Open Wagons"
 
 [STR_WAGON_GROUP_PRESSURE_TANK_CARS]
 base = "Pressurised Tankers"
@@ -503,11 +503,11 @@ base = "Bolster Wagon"
 
 [STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_1]
 #base = "Bulkhead Flat Wagon"
-base = "Slab Wagon"
+base = "Mill Flat Wagon"
 
 [STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_2]
 #base = "Bulkhead Flat Wagon"
-base = "Slab Wagon"
+base = "Mill Flat Wagon"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]
 base = "Brake Van"
@@ -675,7 +675,7 @@ base = "Passenger Coach"
 base = "Peat Wagons"
 
 [STR_NAME_SUFFIX_PIG_IRON_OPEN_CAR]
-base = "Pig Iron Wagon"
+base = "Mill Open Wagon"
 
 [STR_NAME_SUFFIX_PRESSURE_TANK_CAR]
 base = "Pressure Tanker"
@@ -703,7 +703,7 @@ base = "Bulk Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_BULKHEAD_FLAT_CAR]
 #base = "Bulkhead Flat Wagon"
-base = "Slab Wagon"
+base = "Mill Flat Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_CEMENT_SILO_CAR]
 base = "Cement Wagon"
