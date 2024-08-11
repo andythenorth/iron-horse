@@ -4687,99 +4687,70 @@ class FlatCarConsistBase(CarConsist):
         )
 
 
-# !! add a common base for these (like AggregateHopper)?
-class FlatCarBulkheadConsistType1(FlatCarConsistBase):
+class FlatCarBulkheadConsistBase(FlatCarConsistBase):
     """
     Variant of flat wagon with heavy reinforced ends - refits same as flat wagon
     """
 
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["bulkhead"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
+        )
+        self.randomised_candidate_groups = [
+            "randomised_bulkhead_flat_car",
+        ]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_bulkhead_flat_cars"
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            piece="flat",
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            ],
+        )
+class FlatCarBulkheadConsistType1(FlatCarBulkheadConsistBase):
+    """
+    Variant of flat wagon with heavy reinforced ends - refits same as flat wagon
+    """
+
+    # low or high bulkhead? stakes or not?
     def __init__(self, **kwargs):
         self.base_id = "bulkhead_flat_car_type_1"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["bulkhead"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
-        self.randomised_candidate_groups = [
-            "randomised_metal_product_car",
-            "randomised_bulkhead_flat_car",
-        ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_bulkhead_flat_cars"
-        self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="flat",
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_1"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_2"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_3"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            ],
-        )
 
 
-# !! add a common base for these (like AggregateHopper)?
-class FlatCarBulkheadConsistType2(FlatCarConsistBase):
+class FlatCarBulkheadConsistType2(FlatCarBulkheadConsistBase):
     """
     Variant of flat wagon with heavy reinforced ends - refits same as flat wagon
     """
 
+    # low or high bulkhead? stakes or not?
     def __init__(self, **kwargs):
         self.base_id = "bulkhead_flat_car_type_2"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["bulkhead"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
-        self.randomised_candidate_groups = [
-            "randomised_metal_product_car",
-            "randomised_bulkhead_flat_car",
-        ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_bulkhead_flat_cars"
-        self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="flat",
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_1"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_2"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_3"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            ],
-        )
 
 
-class FlatCarBulkheadRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
+class FlatCarBulkheadRandomisedConsist(RandomisedConsistMixin, FlatCarBulkheadConsistBase):
     """
     Random choice of bulkhead flat car sprite.
     """
@@ -4787,33 +4758,6 @@ class FlatCarBulkheadRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBas
     def __init__(self, **kwargs):
         self.base_id = "randomised_bulkhead_flat_car"
         super().__init__(**kwargs)
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_bulkhead_flat_cars"
-        self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            dice_colour=2,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_1"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_2"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_3"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            ],
-        )
 
 
 class FlatCarDropendConsist(FlatCarConsistBase):
@@ -4981,6 +4925,80 @@ class FlatCarHeavyDutyConsist(FlatCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
             ],
         )
+
+
+class FlatCarMillConsistBase(FlatCarConsistBase):
+    """
+    Variant of flat wagon designed specfically for steel industry.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["bulkhead"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
+        )
+        self.randomised_candidate_groups = [
+            "randomised_mill_flat_car",
+        ]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_mill_flat_cars"
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            piece="flat",
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            ],
+        )
+class FlatCarMillConsistType1(FlatCarMillConsistBase):
+    """
+    Variant of flat wagon designed specfically for steel industry.
+    """
+
+    # low or high mill? stakes or not?
+    def __init__(self, **kwargs):
+        self.base_id = "mill_flat_car_type_1"
+        super().__init__(**kwargs)
+
+
+class FlatCarMillConsistType2(FlatCarMillConsistBase):
+    """
+    Variant of flat wagon designed specfically for steel industry.
+    """
+
+    # low or high mill? stakes or not?
+    def __init__(self, **kwargs):
+        self.base_id = "mill_flat_car_type_2"
+        super().__init__(**kwargs)
+
+
+class FlatCarMillRandomisedConsist(RandomisedConsistMixin, FlatCarMillConsistBase):
+    """
+    Random choice of mill flat car sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_mill_flat_car"
+        super().__init__(**kwargs)
+
 
 
 class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):

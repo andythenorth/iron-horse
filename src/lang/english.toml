@@ -278,8 +278,7 @@ base = "Bolster Wagons"
 base = "Box Vans"
 
 [STR_WAGON_GROUP_BULKHEAD_FLAT_CARS]
-#base = "Bulkhead Flat Wagons"
-base = "Mill Flat Wagons"
+base = "Bulkhead Flat Wagons"
 
 [STR_WAGON_GROUP_DOUBLE_DECK_AUTOMOBILE_CARS]
 base = "Car Transporters"
@@ -353,6 +352,9 @@ base = "Mail Vans"
 
 [STR_WAGON_GROUP_MGR_HOPPER_CARS]
 base = "MGR Hoppers"
+
+[STR_WAGON_GROUP_MILL_FLAT_CARS]
+base = "Mill Flat Wagons"
 
 [STR_WAGON_GROUP_OPEN_CARS]
 base = "Open Wagons"
@@ -502,12 +504,10 @@ base = "Coil Buggies"
 base = "Bolster Wagon"
 
 [STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_1]
-#base = "Bulkhead Flat Wagon"
-base = "Mill Flat Wagon"
+base = "Bulkhead Flat Wagon"
 
 [STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_2]
-#base = "Bulkhead Flat Wagon"
-base = "Mill Flat Wagon"
+base = "Bulkhead Flat Wagon"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]
 base = "Brake Van"
@@ -658,6 +658,12 @@ base = "MGR Hopper"
 
 [STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR]
 base = "MGR Hood Hopper"
+
+[STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_1]
+base = "Mill Flat Wagon"
+
+[STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_2]
+base = "Mill Flat Wagon"
 
 [STR_NAME_SUFFIX_OPEN_CAR]
 base = "Open Wagon"

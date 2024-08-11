@@ -1,13 +1,13 @@
-from train import FlatCarBulkheadConsistType1, FreightCar
+from train import FlatCarMillConsistType2, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = FlatCarBulkheadConsistType1(
+    consist = FlatCarMillConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=34160,
+        base_numeric_id=25930,
         gen=2,
         subtype="A",
         base_track_type_name="NG",
@@ -17,10 +17,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = FlatCarBulkheadConsistType1(
+    consist = FlatCarMillConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=34170,
+        base_numeric_id=25940,
         gen=3,
         subtype="A",
         base_track_type_name="NG",
@@ -29,10 +29,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = FlatCarBulkheadConsistType1(
+    consist = FlatCarMillConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=32600,
+        base_numeric_id=25950,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
@@ -43,10 +43,10 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = FlatCarBulkheadConsistType1(
+    consist = FlatCarMillConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=33740,
+        base_numeric_id=25960,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -54,10 +54,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = FlatCarBulkheadConsistType1(
+    consist = FlatCarMillConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=33750,
+        base_numeric_id=25970,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -65,10 +65,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = FlatCarBulkheadConsistType1(
+    consist = FlatCarMillConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=33760,
+        base_numeric_id=25980,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -76,10 +76,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
 
-    consist = FlatCarBulkheadConsistType1(
+    consist = FlatCarMillConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=33770,
+        base_numeric_id=26220,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -87,10 +87,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = FlatCarBulkheadConsistType1(
+    consist = FlatCarMillConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=33780,
+        base_numeric_id=26930,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -98,10 +98,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = FlatCarBulkheadConsistType1(
+    consist = FlatCarMillConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=33790,
+        base_numeric_id=34520,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -109,10 +109,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
 
-    consist = FlatCarBulkheadConsistType1(
+    consist = FlatCarMillConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=33800,
+        base_numeric_id=34210,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -120,10 +120,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_24px")
 
-    consist = FlatCarBulkheadConsistType1(
+    consist = FlatCarMillConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=33810,
+        base_numeric_id=30830,
         gen=5,
         subtype="C",
         sprites_complete=True,
