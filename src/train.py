@@ -4763,9 +4763,54 @@ class FlatCarBulkheadRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBas
         )
 
 
+class FlatCarDropendConsist(FlatCarConsistBase):
+    """
+    Wagon with droppable end flaps - variant on flat wagon, refits same
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "dropend_flat_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["plate"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
+        )
+        self.randomised_candidate_groups = [
+            "randomised_metal_product_car",
+            "randomised_flat_car",
+        ]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_flat_cars"
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            piece="flat",
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            ],
+        )
+
+
 class FlatCarDropsideConsist(FlatCarConsistBase):
     """
-    Low-side wagon - variant on flat wagon, refits same
+    Wagon with droppable low sides - variant on flat wagon, refits same
     """
 
     def __init__(self, **kwargs):
@@ -7071,6 +7116,7 @@ class SlidingRoofCarConsist(BoxCarConsistBase):
         )
         self.randomised_candidate_groups = [
             "randomised_piece_goods_car",
+            "randomised_metal_product_car",
         ]
         self._joker = True
         # Graphics configuration

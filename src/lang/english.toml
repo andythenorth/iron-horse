@@ -303,7 +303,7 @@ base = "Coil Carriers"
 base = "Covered Hoppers"
 
 [STR_WAGON_GROUP_DROPSIDE_FLAT_CARS]
-base = "Dropside Flat Wagons"
+base = "Drop Side Flat Wagons"
 
 [STR_WAGON_GROUP_DUMP_CARS]
 base = "Mineral Wagons"
@@ -548,8 +548,11 @@ base = "Curtain Side Box Van"
 [STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR]
 base = "Car Transporter"
 
+[STR_NAME_SUFFIX_DROPEND_FLAT_CAR]
+base = "Drop End Flat Wagon"
+
 [STR_NAME_SUFFIX_DROPSIDE_FLAT_CAR]
-base = "Dropside Flat Wagon"
+base = "Drop Side Flat Wagon"
 
 [STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR]
 base = "Covered Hopper"
