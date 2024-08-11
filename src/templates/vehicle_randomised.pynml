@@ -9,10 +9,10 @@
         </tal:randomisation_candidates>
     }
 
-    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_neighbour_plus_one,
+    switch (FEAT_TRAINS, PARENT, ${unit_variant.id}_switch_graphics_variant_random_neighbour_plus_one,
                                 <!--! this doesn't check if neighbour actually exists, but eh, 'probably fine', it will fail safe I think
                                       the picking from bit 3 onwards is just a wild guess to try and make this independent from colour and weathering choices -->
-                                      [STORE_TEMP(-2, 0x10F),
+                                      [STORE_TEMP(0, 0x10F),
                                                  getbits(
                                                         var[0x61, 8, 0x00FFFFFF, 0x5F],
                                                          3,
@@ -24,10 +24,10 @@
         </tal:randomisation_candidates>
     }
 
-    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_neighbour,
+    switch (FEAT_TRAINS, PARENT, ${unit_variant.id}_switch_graphics_variant_random_neighbour,
                                 <!--! this doesn't check if neighbour actually exists, but eh, 'probably fine', it will fail safe I think
                                       the picking from bit 3 onwards is just a wild guess to try and make this independent from colour and weathering choices -->
-                                      [STORE_TEMP(-1, 0x10F),
+                                      [STORE_TEMP(0, 0x10F),
                                                  getbits(
                                                         var[0x61, 8, 0x00FFFFFF, 0x5F],
                                                          3,
@@ -50,12 +50,12 @@
 
     <!--! note that the random chain is used by both graphics and colour mapping chains -->
     switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon, random_bits_randomised_wagon_check_neighbour_or_self()) {
-        0: ${unit_variant.id}_switch_graphics_variant_random_self;
-        1: ${unit_variant.id}_switch_graphics_variant_check_neighbour;
+        0..2: ${unit_variant.id}_switch_graphics_variant_random_self;
+        ${unit_variant.id}_switch_graphics_variant_check_neighbour;
     }
     switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
         <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)">
-            ${repeat.randomisation_candidate.index}: ${randomisation_candidate.unit.id}_switch_graphics_vehicle;
+            ${repeat.randomisation_candidate.index}: ${randomisation_candidate.unit.id}_switch_graphics;
         </tal:randomisation_candidates>
     }
 
@@ -81,7 +81,9 @@
     }
 </tal:unit_variants>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, vehicle_type_id) {
+<!--! note that we provide '_switch_graphics' not '_switch_graphics_vehicle' as there are no precursor graphics entry switches for randomised wagons
+      we'll ultimately chain instead to the selected candidate's graphics entry switch -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, vehicle_type_id) {
     <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
         ${unit_variant.numeric_id}: ${unit_variant.id}_switch_graphics_variant;
     </tal:unit_variants>
@@ -109,7 +111,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping_purchase, vehicle
     <!--! no default, by design all variants should be explicitly found -->
 }
 
-<tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
+<!--! note that graphics_entry_switches.pynml shouldn't be called as a macro here
+      randomised vehicles chain via the selected candidate's graphics entry switch, so they don't need their own graphics entry switch  -->
 
 <tal:include metal:use-macro="load: capacity.pynml" />
 
