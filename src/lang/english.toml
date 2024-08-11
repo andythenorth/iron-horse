@@ -530,6 +530,9 @@ base = "Covered Coil Carrier"
 [STR_NAME_SUFFIX_COIL_CAR_COVERED_ASYMMETRIC]
 base = "Covered Coil Carrier"
 
+[STR_NAME_SUFFIX_COIL_CAR_TARPAULIN]
+base = "Covered Coil Carrier"
+
 [STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
 base = "Coil Carrier"
 

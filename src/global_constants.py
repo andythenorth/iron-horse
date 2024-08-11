@@ -52,6 +52,7 @@ wagon_module_names = [
     "coil_cars_covered",
     "coil_cars_covered_asymmetric",
     "coil_cars_uncovered",
+    "coil_cars_tarpaulin",
     "randomised_dedicated_coil_cars",
     "randomised_metal_product_cars",
     "hopper_cars",

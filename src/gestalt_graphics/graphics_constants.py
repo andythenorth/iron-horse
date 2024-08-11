@@ -48,6 +48,27 @@ caboose_car_body_recolour_map = {
     143: CC1 + 7,
 }
 
+coil_car_tarpaulin_body_recolour_map = {
+    40: 2,
+    41: 128,
+    42: 129,
+    43: 5,
+    44: 18,
+    45: 19,
+    46: 20,
+    47: 10,
+}
+coil_car_tarpaulin_body_recolour_map_weathered = {
+    40: 106,
+    41: 33,
+    42: 130,
+    43: 35,
+    44: 19,
+    45: 20,
+    46: 21,
+    47: 38,
+}
+
 hood_open_car_body_recolour_map = {
     136: 71,
     136 + 1: 72,
