@@ -378,10 +378,10 @@ base = "Product Tankers"
 base = "Box Vans"
 
 [STR_WAGON_GROUP_RANDOMISED_BULK_CARS]
-base = "Bulk Wagons"
+base = "Bulk Cargo Combos"
 
 [STR_WAGON_GROUP_RANDOMISED_CHEMICAL_TANK_CARS]
-base = "Chemical Tankers"
+base = "Liquid Cargo Combos"
 
 [STR_WAGON_GROUP_RANDOMISED_COVERED_HOPPER_CARS]
 base = "Covered Hoppers"
@@ -396,7 +396,7 @@ base = "Flatbed Wagons"
 base = "Hoppers"
 
 [STR_WAGON_GROUP_RANDOMISED_METAL_PRODUCT_CARS]
-base = "Metal Product Covered Wagons"
+base = "Metal Cargo Combos"
 
 [STR_NAME_SUFFIX_RANDOMISED_MILL_FLAT_CAR]
 base = "Mill Flat Wagons"
@@ -406,7 +406,7 @@ base = "Open Wagons"
 moose = "Gondolas"
 
 [STR_WAGON_GROUP_RANDOMISED_PIECE_GOODS_CARS]
-base = "Piece Goods Wagons"
+base = "Piece Goods Combos"
 
 [STR_WAGON_GROUP_REEFER_CARS]
 base = "Refrigerated Vans"
