@@ -10,6 +10,7 @@
     }
 
     switch (FEAT_TRAINS, PARENT, ${unit_variant.id}_switch_graphics_variant_random_neighbour_plus_one,
+        <!--! !!! This needs to match the use of bits in _switch_graphics_variant_choose_randomised_wagon() -->
                                 <!--! this doesn't check if neighbour actually exists, but eh, 'probably fine', it will fail safe I think
                                       the picking from bit 3 onwards is just a wild guess to try and make this independent from colour and weathering choices -->
                                       [STORE_TEMP(0, 0x10F),

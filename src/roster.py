@@ -201,7 +201,7 @@ class Roster(object):
             )
         if len(result) > 64:
             # we have a limited number of random bits, and we need to use them independently of company colour choices
-            # so guard against consuming too many, 64 variants is 6 bits, and that's all we have spare
+            # so guard against consuming too many, 64 variants is 6 bits, and that's all we want to consume
             raise BaseException(
                 randomisation_consist.id
                 + " has more than 64 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates"

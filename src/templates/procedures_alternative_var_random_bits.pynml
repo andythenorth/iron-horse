@@ -32,7 +32,7 @@ switch (FEAT_TRAINS, SELF, random_bits_weathered_variant, switch_alternative_var
 <!--! up to 8 random liveries for wagon recolour/remaps
       these may overlap random wagon choices due to shortage of bits, but eh, JFDI
 -->
-switch (FEAT_TRAINS, SELF, random_bits_wagon_random_remap_livery, switch_alternative_var_random_bits(1, 3)) {
+switch (FEAT_TRAINS, SELF, random_bits_wagon_random_remap_livery, switch_alternative_var_random_bits(9, 3)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
@@ -40,14 +40,14 @@ switch (FEAT_TRAINS, SELF, random_bits_wagon_random_remap_livery, switch_alterna
 <!--! randomised wagons (those with 'RandomisedConsist' in their classnames) have specific requirements for random bits
       these tend not to overlap with 'normal' wagons, engines etc
 -->
-switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_check_neighbour_or_self, switch_alternative_var_random_bits(2, 1)) {
+switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_check_neighbour_or_self, switch_alternative_var_random_bits(6, 3)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
 <!--! the picking from bit 2 onwards is just a wild guess to try and make this independent from colour and weathering choices etc
-      bits_counts varies, but is limited upstream by get_wagon_randomisation_candidates()
+      bits_counts varies, but is limited upstream by get_wagon_randomisation_candidates() - as of Aug 2024 6 bits are used (64 candidates)
 -->
-switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_choose_wagon, bits_count, switch_alternative_var_random_bits(2, bits_count)) {
+switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_choose_wagon, bits_count, switch_alternative_var_random_bits(0, bits_count)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
