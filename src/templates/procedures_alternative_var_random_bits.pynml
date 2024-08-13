@@ -40,14 +40,19 @@ switch (FEAT_TRAINS, SELF, random_bits_wagon_random_remap_livery, switch_alterna
 <!--! randomised wagons (those with 'RandomisedConsist' in their classnames) have specific requirements for random bits
       these tend not to overlap with 'normal' wagons, engines etc
 -->
-switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_check_neighbour_or_self, switch_alternative_var_random_bits(6, 3)) {
+switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_check_parent_or_self, switch_alternative_var_random_bits(6, 3)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
 <!--! the picking from bit 2 onwards is just a wild guess to try and make this independent from colour and weathering choices etc
       bits_counts varies, but is limited upstream by get_wagon_randomisation_candidates() - as of Aug 2024 6 bits are used (64 candidates)
 -->
-switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_choose_wagon, bits_count, switch_alternative_var_random_bits(0, bits_count)) {
+switch (FEAT_TRAINS, SELF, random_bits_randomised_wagon_choose_wagon_self, bits_count, switch_alternative_var_random_bits(0, bits_count)) {
+    <!--! return with nothing else to yield the computed value  -->
+    return;
+}
+<!--! getting the engine has to use PARENT and can't use switch_alternative_var_random_bits - but in this file for consistency -->
+switch (FEAT_TRAINS, PARENT, random_bits_randomised_wagon_choose_wagon_parent, bits_count, getbits(var[0x61, 8, 0x00FFFFFF, 0x5F], 0, bits_count)) {
     <!--! return with nothing else to yield the computed value  -->
     return;
 }
