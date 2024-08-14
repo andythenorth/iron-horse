@@ -111,6 +111,7 @@ wagon_module_names = [
     "food_tank_cars",
     "reefer_cars_type_1",
     "reefer_cars_type_2",
+    "randomised_reefer_cars",
     "farm_product_box_cars",
     "farm_product_hopper_cars_type_1",
     "farm_product_hopper_cars_type_2",

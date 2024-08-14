@@ -750,6 +750,9 @@ base = "Open Wagon"
 [STR_NAME_SUFFIX_RANDOMISED_PIECE_GOODS_CAR]
 base = "Piece Goods Wagon"
 
+[STR_NAME_SUFFIX_RANDOMISED_REEFER_CAR]
+base = "Refrigerated Van"
+
 [STR_NAME_SUFFIX_RANDOMISED_SILO_CAR]
 base = "Silo Wagon"
 

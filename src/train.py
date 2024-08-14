@@ -7003,6 +7003,7 @@ class ReeferCarConsistBase(CarConsist):
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["reefer"]
+        self.randomised_candidate_groups = ["randomised_reefer_car"]
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
         self._intro_year_days_offset = (
@@ -7049,6 +7050,33 @@ class ReeferCarConsistType2(ReeferCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_reefer_cars"
         self._joker = True
+
+
+class ReeferCarRandomisedConsist(RandomisedConsistMixin, ReeferCarConsistBase):
+    """
+    Random choice of silo car sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_reefer_car"
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_reefer_cars"
+        # Graphics configuration
+        self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.refrigerated_livery_recolour_maps,
+            "weathered": graphics_constants.refrigerated_livery_recolour_maps_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+            ],
+        )
 
 
 class SiloCarConsistBase(CarConsist):
