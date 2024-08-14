@@ -196,8 +196,11 @@ class Roster(object):
             print(result)
             raise BaseException(
                 randomisation_consist.id
+                + " colour set "
+                + buyable_variant.livery["colour_set"]
                 + " has only one choice for randomisation_candidates, this is pointless nonsense, consider removing "
                 + randomisation_consist.id
+                + " or check that randomisation candidates provide this colour set"
             )
         if len(result) > 64:
             # we have a limited number of random bits, and we need to use them independently of company colour choices

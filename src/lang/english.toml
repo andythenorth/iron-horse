@@ -430,7 +430,10 @@ base = "Silo Wagons"
 base = "Skips"
 
 [STR_WAGON_GROUP_SLAG_LADLE_CARS]
-base = "Slag Ladle Wagon"
+base = "Slag Ladle Wagons"
+
+[STR_WAGON_GROUP_SLIDING_ROOF_CARS]
+base = "Sliding Roof Wagons"
 
 [STR_WAGON_GROUP_SLIDING_ROOF_HI_CUBE_CARS]
 base = "Cube Wagons"
@@ -726,6 +729,9 @@ base = "Chemical Tanker"
 [STR_NAME_SUFFIX_RANDOMISED_COVERED_HOPPER_CAR]
 base = "Covered Hopper"
 
+[STR_NAME_SUFFIX_RANDOMISED_COVERED_METAL_PRODUCT_CAR]
+base = "Covered Metal Product Wagon"
+
 [STR_NAME_SUFFIX_RANDOMISED_DEDICATED_COIL_CAR]
 base = "Coil Carrier"
 
@@ -738,8 +744,8 @@ base = "Farm Product Hopper"
 [STR_NAME_SUFFIX_RANDOMISED_FLAT_CAR]
 base = "Flatbed Wagon"
 
-[STR_NAME_SUFFIX_RANDOMISED_METAL_PRODUCT_CAR]
-base = "Metal Product Wagon"
+[STR_NAME_SUFFIX_RANDOMISED_MIXED_METAL_PRODUCT_CAR]
+base = "Mixed Metal Product Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_HOPPER_CAR]
 base = "Hopper"
@@ -755,6 +761,9 @@ base = "Refrigerated Van"
 
 [STR_NAME_SUFFIX_RANDOMISED_SILO_CAR]
 base = "Silo Wagon"
+
+[STR_NAME_SUFFIX_RANDOMISED_UNCOVERED_METAL_PRODUCT_CAR]
+base = "Uncovered Metal Product Wagon"
 
 [STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Refrigerated Van"
