@@ -89,8 +89,9 @@ wagon_module_names = [
     "randomised_bulk_cars",
     "tank_cars",
     "product_tank_cars",
-    "sulphur_tank_cars",
-    "acid_tank_cars",
+    "acid_tank_cars_type_1",
+    "acid_tank_cars_type_2",
+    "randomised_acid_tank_cars",
     "randomised_chemical_tank_cars",
     "pressure_tank_cars",
     "cryo_tank_cars",
@@ -290,7 +291,7 @@ intro_month_offsets_by_role_group = {
 # shared across all rosters, keep alphabetised, order not significant
 # only needed for groups composing more than one type of consist
 buyable_variant_group_consist_base_ids_by_group_name = {
-    "wagon_group_acid_tank_cars": "acid_tank_car",
+    "wagon_group_acid_tank_cars": "acid_tank_car_type_1",
     "wagon_group_aggregate_dump_cars": "aggregate_dump_car_type_1",
     "wagon_group_aggregate_hopper_cars": "aggregate_hopper_car_type_1",
     "wagon_group_box_cars": "box_car",

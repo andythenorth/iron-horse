@@ -151,7 +151,7 @@ sliding_roof_car_body_recolour_map_weathered = {
 # --- Simple Body Colour Recolour Maps --- #
 # label order matters, so tuples are used not dicts
 # could probably have used orderedict or named tuple, but...blah
-acid_tank_car_livery_recolour_maps = {
+acid_tank_car_type_2_livery_recolour_maps = {
     136: CC1,
     137: CC1 + 1,
     138: CC1 + 2,
@@ -169,7 +169,7 @@ acid_tank_car_livery_recolour_maps = {
     160: CC1 + 6,
     161: CC1 + 7,
 }
-acid_tank_car_livery_recolour_maps_weathered = {
+acid_tank_car_type_2_livery_recolour_maps_weathered = {
     136: CC1,
     137: CC1 + 1,
     138: CC1 + 2,
@@ -560,7 +560,7 @@ sliding_wall_livery_recolour_maps_weathered = {
     47: 39,
 }
 
-sulphur_tank_car_livery_recolour_maps = {
+acid_tank_car_type_1_livery_recolour_maps = {
     136: 104,
     137: 2,
     138: 25,
@@ -578,7 +578,7 @@ sulphur_tank_car_livery_recolour_maps = {
     160: CC1 + 6,
     161: CC1 + 7,
 }
-sulphur_tank_car_livery_recolour_maps_weathered = {
+acid_tank_car_type_1_livery_recolour_maps_weathered = {
     # should be kept in sync with the SULP map in polar fox tanker maps
     136: 1,
     137: 2,

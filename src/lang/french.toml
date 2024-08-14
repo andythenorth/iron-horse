@@ -393,7 +393,10 @@ base = "Wagons porte-automobiles"
 base = "Plus…"
 
 # wagon class suffixes, as of Jan 2019 these are switched from en-us to en-gb; !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
-[STR_NAME_SUFFIX_ACID_TANK_CAR]
+[STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_1]
+base = "Wagon-citerne d’acide"
+
+[STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2]
 base = "Wagon-citerne d’acide"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_1]
@@ -698,9 +701,6 @@ base = "Wagon à ferraille"
 
 [STR_NAME_SUFFIX_SUBURBAN_PASSENGER_CAR]
 base = "Voiture de banlieue"
-
-[STR_NAME_SUFFIX_SULPHUR_TANK_CAR]
-base = "Wagon-citerne d’acide"
 
 [STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR]
 base = "Wagon-trémie à toit baculant"

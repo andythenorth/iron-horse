@@ -398,9 +398,6 @@ base = "Hoppers"
 [STR_WAGON_GROUP_RANDOMISED_METAL_PRODUCT_CARS]
 base = "Metal Cargo Combos"
 
-[STR_NAME_SUFFIX_RANDOMISED_MILL_FLAT_CAR]
-base = "Mill Flat Wagons"
-
 [STR_WAGON_GROUP_RANDOMISED_OPEN_CARS]
 base = "Open Wagons"
 moose = "Gondolas"
@@ -464,7 +461,10 @@ base = "Vehicle Transporters"
 base = "More..."
 
 # wagon class suffixes, as of Jan 2019 these are switched from en-us to en-gb; !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
-[STR_NAME_SUFFIX_ACID_TANK_CAR]
+[STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_1]
+base = "Acid Tanker"
+
+[STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2]
 base = "Acid Tanker"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_1]
@@ -701,6 +701,9 @@ base = "Railbus Trailer"
 [STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR]
 base = "Railcar Trailer"
 
+[STR_NAME_SUFFIX_RANDOMISED_ACID_TANK_CAR]
+base = "Acid Tanker"
+
 [STR_NAME_SUFFIX_RANDOMISED_AGGREGATE_HOPPER_CAR]
 base = "Aggregate Hopper"
 
@@ -744,11 +747,14 @@ base = "Farm Product Hopper"
 [STR_NAME_SUFFIX_RANDOMISED_FLAT_CAR]
 base = "Flatbed Wagon"
 
-[STR_NAME_SUFFIX_RANDOMISED_MIXED_METAL_PRODUCT_CAR]
-base = "Mixed Metal Product Wagon"
-
 [STR_NAME_SUFFIX_RANDOMISED_HOPPER_CAR]
 base = "Hopper"
+
+[STR_NAME_SUFFIX_RANDOMISED_MILL_FLAT_CAR]
+base = "Mill Flat Wagons"
+
+[STR_NAME_SUFFIX_RANDOMISED_MIXED_METAL_PRODUCT_CAR]
+base = "Mixed Metal Product Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_OPEN_CAR]
 base = "Open Wagon"
@@ -809,9 +815,6 @@ base = "Scrap Wagon"
 
 [STR_NAME_SUFFIX_SUBURBAN_PASSENGER_CAR]
 base = "Suburban Coach"
-
-[STR_NAME_SUFFIX_SULPHUR_TANK_CAR]
-base = "Acid Tanker"
 
 [STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR]
 base = "Swing Roof Hopper"
