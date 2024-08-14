@@ -167,7 +167,7 @@ base = "Gerbong Terak"
 [STR_NAME_SUFFIX_SLIDING_ROOF_CAR]
 base = "Gerbong Atap Geser"
 
-[STR_NAME_SUFFIX_SLIDING_WALL_CAR]
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]
 base = "Gerbong Dinding Geser"
 
 [STR_NAME_SUFFIX_SCRAP_METAL_CAR]

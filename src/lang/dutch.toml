@@ -98,7 +98,7 @@ base = "Koelwagon"
 [STR_NAME_SUFFIX_SILO_CAR]
 base = "Silowagon"
 
-[STR_NAME_SUFFIX_SLIDING_WALL_CAR]
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]
 base = "Voertuig met schuifdeuren"
 
 [STR_NAME_SUFFIX_TANK_CAR]

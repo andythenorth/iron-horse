@@ -100,7 +100,7 @@ base = "Chladící vůz"
 [STR_NAME_SUFFIX_SILO_CAR]
 base = "Silo vůz"
 
-[STR_NAME_SUFFIX_SLIDING_WALL_CAR]
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]
 base = "Vůz s posuvnými stěnami"
 
 [STR_NAME_SUFFIX_TANK_CAR]

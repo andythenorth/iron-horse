@@ -94,7 +94,7 @@ base = "Vagon hladnjača"
 [STR_NAME_SUFFIX_SILO_CAR]
 base = "Vagon-silos"
 
-[STR_NAME_SUFFIX_SLIDING_WALL_CAR]
+[STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]
 base = "Vagon sa pomičnim stranicama"
 
 [STR_NAME_SUFFIX_TANK_CAR]
