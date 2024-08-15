@@ -6321,13 +6321,13 @@ class OpenCarHoodConsist(OpenCarConsistBase):
         )
 
 
-class OpenCarMerchandiseConsist(OpenCarConsistBase):
+class OpenCarHighEndConsist(OpenCarConsistBase):
     """
     Open car with alternative livery
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "merchandise_open_car"
+        self.base_id = "high_end_open_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         # buyable variant groups are created post-hoc and can group across subclasses

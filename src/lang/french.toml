@@ -570,7 +570,7 @@ base = "Fourgon postal"
 [STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR]
 base = "Fourgon de marchandise"
 
-[STR_NAME_SUFFIX_MERCHANDISE_OPEN_CAR]
+[STR_NAME_SUFFIX_HIGH_END_OPEN_CAR]
 base = "Wagon-tombereau de marchandise"
 
 [STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR]

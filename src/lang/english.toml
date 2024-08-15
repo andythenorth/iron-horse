@@ -605,6 +605,9 @@ base= "Heavy Duty Bulk Wagon"
 [STR_NAME_SUFFIX_HEAVY_DUTY_FLAT_CAR]
 base= "Heavy Duty Flat Wagon"
 
+[STR_NAME_SUFFIX_HIGH_END_OPEN_CAR]
+base = "Open Wagon"
+
 [STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR]
 base= "High Speed Mail Van"
 
@@ -652,9 +655,6 @@ base = "Mail Van"
 
 [STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR]
 base = "Merchandise Box Van"
-
-[STR_NAME_SUFFIX_MERCHANDISE_OPEN_CAR]
-base = "Merchandise Open"
 
 [STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR]
 base = "Mineral Covered Hopper"
