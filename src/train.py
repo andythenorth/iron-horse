@@ -2941,6 +2941,7 @@ class BoxCarGoodsConsist(BoxCarConsistBase):
         self.randomised_candidate_groups = ["randomised_piece_goods_car"]
         self._joker = True
         # Graphics configuration
+        # brown roof is a bit of a non-standard thing, but seems to work
         self.roof_type = "freight_brown"
         weathered_variants = {
             "unweathered": graphics_constants.goods_box_car_body_recolour_maps,
