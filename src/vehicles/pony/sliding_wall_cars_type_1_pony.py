@@ -21,7 +21,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarSlidingWallConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=26990,
+        base_numeric_id=22080,
         gen=3,
         intro_year_offset=15,  # let's be a little bit later for this one
         subtype="B",
@@ -49,7 +49,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarSlidingWallConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=27010,
+        base_numeric_id=22100,
         gen=4,
         subtype="C",
         intro_year_offset=5,  # let's be a little bit later for this one
@@ -80,7 +80,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarSlidingWallConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=27030,
+        base_numeric_id=22120,
         gen=5,
         subtype="C",
         sprites_complete=True,

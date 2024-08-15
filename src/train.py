@@ -2633,6 +2633,7 @@ class AutomobileCarConsistBase(CarConsist):
             liveries=[
                 # automobile cars can't use random colour swaps on the wagons...
                 # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
+                # ...wouldn't be desirable anyway because they are pseudo-articulated units
                 global_constants.freight_wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"],
                 global_constants.freight_wagon_liveries[
                     "FREIGHT_BAUXITE_NO_WEATHERING"
@@ -3116,6 +3117,9 @@ class BoxCarSlidingWallConsistType1(BoxCarSlidingWallConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_7"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_12"
+                ],
+                global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.freight_wagon_liveries[
@@ -3126,7 +3130,9 @@ class BoxCarSlidingWallConsistType1(BoxCarSlidingWallConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
+                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
 
@@ -3160,6 +3166,9 @@ class BoxCarSlidingWallConsistType2(BoxCarSlidingWallConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_5"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_12"
+                ],
+                global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.freight_wagon_liveries[
@@ -3170,8 +3179,9 @@ class BoxCarSlidingWallConsistType2(BoxCarSlidingWallConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
 
@@ -7440,6 +7450,9 @@ class SlidingRoofCarConsist(BoxCarConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_3"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_12"
+                ],
+                global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.freight_wagon_liveries[
@@ -7447,7 +7460,9 @@ class SlidingRoofCarConsist(BoxCarConsistBase):
                 ],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
             piece="flat",
             has_cover=True,
@@ -7493,6 +7508,9 @@ class SlidingRoofCarConsistHiCube(BoxCarConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_8"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_12"
+                ],
+                global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.freight_wagon_liveries[
@@ -7500,10 +7518,11 @@ class SlidingRoofCarConsistHiCube(BoxCarConsistBase):
                 ],
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                # teal before pewter to ensure it appears in buy menu order for mixed version
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
                 global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
-                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
             ],
             piece="flat",
             has_cover=True,
@@ -7946,6 +7965,9 @@ class TarpaulinCarConsist(BoxCarConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_5"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_12"
+                ],
+                global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.freight_wagon_liveries[
@@ -7958,8 +7980,9 @@ class TarpaulinCarConsist(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
             piece="flat",
             has_cover=True,
