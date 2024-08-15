@@ -27,7 +27,7 @@ base = "(diésel eléctrica)"
 [STR_NAME_SUFFIX_STEAM]
 base = "(vapor)"
 
-[STR_NAME_SUFFIX_BOX_CAR]
+[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
 base = "Furgón"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]

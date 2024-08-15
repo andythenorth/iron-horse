@@ -41,7 +41,7 @@ base = "Groot"
 [STR_NAME_SUFFIX_ALIGNMENT_CAR]
 base = "Lijnwagen"
 
-[STR_NAME_SUFFIX_BOX_CAR]
+[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
 base = "Gesloten wagon"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]

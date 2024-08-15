@@ -43,7 +43,7 @@ base = "Grande"
 [STR_NAME_SUFFIX_ALIGNMENT_CAR]
 base = "Carro per allineamento"
 
-[STR_NAME_SUFFIX_BOX_CAR]
+[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
 base = "Carro chiuso"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]

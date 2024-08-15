@@ -1,9 +1,9 @@
-from train import BoxCarConsist, FreightCar
+from train import BoxCarConsistType1, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
-    consist = BoxCarConsist(
+    consist = BoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18480,
@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
 
     # no gen 2 for NG, straight to gen 3
 
-    consist = BoxCarConsist(
+    consist = BoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18500,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = BoxCarConsist(
+    consist = BoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27040,
@@ -44,7 +44,7 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # only type A for gen 1
 
-    consist = BoxCarConsist(
+    consist = BoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18400,
@@ -57,7 +57,7 @@ def main(roster_id, **kwargs):
 
     # no new type A for gen 2, gen 1 type A continues
 
-    consist = BoxCarConsist(
+    consist = BoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=37050,
@@ -68,7 +68,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = BoxCarConsist(
+    consist = BoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18380,
@@ -79,7 +79,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = BoxCarConsist(
+    consist = BoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18460,
@@ -90,7 +90,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = BoxCarConsist(
+    consist = BoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18340,
@@ -101,7 +101,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = BoxCarConsist(
+    consist = BoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18420,
@@ -112,7 +112,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
 
-    consist = BoxCarConsist(
+    consist = BoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18440,
@@ -127,7 +127,7 @@ def main(roster_id, **kwargs):
         chassis="4_axle_1cc_filled_32px",
     )
 
-    consist = BoxCarConsist(
+    consist = BoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24250,
@@ -138,7 +138,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
-    consist = BoxCarConsist(
+    consist = BoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18360,

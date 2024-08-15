@@ -500,7 +500,10 @@ base = "Alignment Van"
 [STR_NAME_SUFFIX_AUTOMOBILE_CAR]
 base = "Vehicle Transporter"
 
-[STR_NAME_SUFFIX_BOX_CAR]
+[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
+base = "Box Van"
+
+[STR_NAME_SUFFIX_BOX_CAR_TYPE_2]
 base = "Box Van"
 
 [STR_NAME_SUFFIX_COIL_BUGGY_CAR]
@@ -654,7 +657,7 @@ base = "Low-floor Container Wagon"
 base = "Mail Van"
 
 [STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR]
-base = "Merchandise Box Van"
+base = "Merchandise Van"
 
 [STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR]
 base = "Mineral Covered Hopper"

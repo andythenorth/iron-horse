@@ -90,7 +90,7 @@ hood_open_car_body_recolour_map_weathered = {
     136 + 7: 118,
 }
 
-merchandise_car_body_recolour_map = {
+box_car_type_2_body_recolour_map = {
     40: 4,
     40 + 1: 5,
     40 + 2: 6,
@@ -108,7 +108,7 @@ merchandise_car_body_recolour_map = {
     136 + 6: 22,
     136 + 7: 13,
 }
-merchandise_car_body_recolour_map_weathered = {
+box_car_type_2_body_recolour_map_weathered = {
     40: 33,
     40 + 1: 34,
     40 + 2: 6,
@@ -406,7 +406,7 @@ farm_product_box_car_livery_recolour_maps_weathered = {
     CC1 + 6: 61 + 6,
     CC1 + 7: 61 + 7,
 }
-goods_box_car_body_recolour_maps = {
+merchandise_box_car_body_recolour_maps = {
     136: 70,
     136 + 1: 71,
     136 + 2: 72,
@@ -416,7 +416,7 @@ goods_box_car_body_recolour_maps = {
     136 + 6: 76,
     136 + 7: 118,
 }
-goods_box_car_body_recolour_maps_weathered = {
+merchandise_box_car_body_recolour_maps_weathered = {
     136: 70,
     136 + 1: 71,
     136 + 2: 72,

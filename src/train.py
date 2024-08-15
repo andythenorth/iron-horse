@@ -2819,13 +2819,13 @@ class BoxCarConsistBase(CarConsist):
         )
 
 
-class BoxCarConsist(BoxCarConsistBase):
+class BoxCarConsistType1(BoxCarConsistBase):
     """
     Standard box car / van
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "box_car"
+        self.base_id = "box_car_type_1"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "randomised_box_car",
@@ -2868,6 +2868,48 @@ class BoxCarConsist(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+            ],
+        )
+
+
+class BoxCarConsistType2(BoxCarConsistBase):
+    """
+    Alternative livery for standard box car / van
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "box_car_type_2"
+        super().__init__(**kwargs)
+        self.randomised_candidate_groups = [
+            "randomised_box_car",
+            "randomised_piece_goods_car",
+        ]
+        self._joker = True
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_box_cars"
+        # Graphics configuration
+        self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.box_car_type_2_body_recolour_map,
+            "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            input_spritesheet_delegate_id=self.get_input_spritesheet_delegate_id_wagon(
+                "box_car_type_1"
+            ),
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -2928,13 +2970,13 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         )
 
 
-class BoxCarGoodsConsist(BoxCarConsistBase):
+class BoxCarMerchandiseConsist(BoxCarConsistBase):
     """
     Alternative livery for standard box car / van
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "goods_box_car"
+        self.base_id = "merchandise_box_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_goods"]
         # don't include in random box car group, at least for pony, looks bad - other rosters may differ?
@@ -2944,8 +2986,8 @@ class BoxCarGoodsConsist(BoxCarConsistBase):
         # brown roof is a bit of a non-standard thing, but seems to work
         self.roof_type = "freight_brown"
         weathered_variants = {
-            "unweathered": graphics_constants.goods_box_car_body_recolour_maps,
-            "weathered": graphics_constants.goods_box_car_body_recolour_maps_weathered,
+            "unweathered": graphics_constants.merchandise_box_car_body_recolour_maps,
+            "weathered": graphics_constants.merchandise_box_car_body_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -2953,48 +2995,6 @@ class BoxCarGoodsConsist(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
-            ],
-        )
-
-
-class BoxCarMerchandiseConsist(BoxCarConsistBase):
-    """
-    Alternative livery for standard box car / van
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "merchandise_box_car"
-        super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "randomised_box_car",
-            "randomised_piece_goods_car",
-        ]
-        self._joker = True
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_box_cars"
-        # Graphics configuration
-        self.roof_type = "freight"
-        weathered_variants = {
-            "unweathered": graphics_constants.merchandise_car_body_recolour_map,
-            "weathered": graphics_constants.merchandise_car_body_recolour_map_weathered,
-        }
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            input_spritesheet_delegate_id=self.get_input_spritesheet_delegate_id_wagon(
-                "box_car"
-            ),
-            weathered_variants=weathered_variants,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_2"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
             ],
         )
 
@@ -6336,8 +6336,8 @@ class OpenCarHighEndConsist(OpenCarConsistBase):
         self._joker = True
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.merchandise_car_body_recolour_map,
-            "weathered": graphics_constants.merchandise_car_body_recolour_map_weathered,
+            "unweathered": graphics_constants.box_car_type_2_body_recolour_map,
+            "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
@@ -6374,8 +6374,8 @@ class OpenCarMillConsist(OpenCarConsistBase):
         self._joker = True
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.merchandise_car_body_recolour_map,
-            "weathered": graphics_constants.merchandise_car_body_recolour_map_weathered,
+            "unweathered": graphics_constants.box_car_type_2_body_recolour_map,
+            "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,

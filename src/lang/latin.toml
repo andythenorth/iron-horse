@@ -28,7 +28,7 @@ base = "(Electrica Diselianaque)"
 [STR_NAME_SUFFIX_STEAM]
 base = "(Vaporaria)"
 
-[STR_NAME_SUFFIX_BOX_CAR]
+[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
 base = "Currus Clausus"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]

@@ -36,7 +36,7 @@ base = "Mittel"
 [STR_NAME_SUFFIX_LARGE]
 base = "Groß"
 
-[STR_NAME_SUFFIX_BOX_CAR]
+[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
 base = "geschlossener Wagen"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]

@@ -146,7 +146,7 @@ wagon_modules_provided_by_other_rosters = {
         "cryo_tank_cars",
         "express_intermodal_cars",
         "flat_cars",
-        "goods_box_cars",
+        "merchandise_box_cars",
         "heavy_duty_dump_cars",
         "heavy_duty_flat_cars",
         "ingot_cars",

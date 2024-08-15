@@ -54,7 +54,7 @@ base = "Doble"
 [STR_NAME_SUFFIX_ALIGNMENT_CAR]
 base = "Vagón de alineamiento"
 
-[STR_NAME_SUFFIX_BOX_CAR]
+[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
 base = "Vagón cerrado"
 
 [STR_NAME_SUFFIX_COIL_BUGGY_CAR]

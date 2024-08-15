@@ -43,7 +43,7 @@ base = "Veliki"
 [STR_NAME_SUFFIX_ALIGNMENT_CAR]
 base = "Vagon za poravnanje"
 
-[STR_NAME_SUFFIX_BOX_CAR]
+[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
 base = "Zatvoreni vagon"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]

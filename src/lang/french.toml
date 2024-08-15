@@ -432,7 +432,7 @@ base = "Fourgon d’alignement"
 [STR_NAME_SUFFIX_AUTOMOBILE_CAR]
 base = "Wagon porte-véhicule"
 
-[STR_NAME_SUFFIX_BOX_CAR]
+[STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
 base = "Fourgon"
 
 [STR_NAME_SUFFIX_COIL_BUGGY_CAR]
