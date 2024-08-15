@@ -1012,6 +1012,8 @@ class Consist(object):
         else:
             colour_set = livery["colour_set"]
         # this is lolz, so many ifs just to get a string -> number mapping
+        if "random_from_consist_liveries_12" in colour_set:
+            return 114
         if "random_from_consist_liveries_11" in colour_set:
             return 113
         elif "random_from_consist_liveries_10" in colour_set:
@@ -2986,15 +2988,49 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
         # brown roof is a bit of a non-standard thing, but seems to work
         self.roof_type = "freight_brown"
         weathered_variants = {
-            "unweathered": graphics_constants.merchandise_box_car_body_recolour_maps,
-            "weathered": graphics_constants.merchandise_box_car_body_recolour_maps_weathered,
+            "unweathered": graphics_constants.body_recolour_CC1,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_7"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_5"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_9"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_12"
+                ],
+                global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
+                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                # out of order pewter, to get teal in RANDOM_FROM_CONSIST_LIVERIES_12
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
 

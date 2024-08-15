@@ -213,6 +213,9 @@ base = "Moss/Silver"
 [STR_NAME_SUFFIX_LIVERY_MIX_11]
 base = "Mustard/Straw"
 
+[STR_NAME_SUFFIX_LIVERY_MIX_12]
+base = "Teal/Pewter"
+
 # keep these alphabetised, easier
 [STR_NAME_SUFFIX_BATTERY_HYBRID]
 base = "Battery Hybrid"
@@ -350,6 +353,9 @@ base = "Log Carriers"
 [STR_WAGON_GROUP_MAIL_CARS]
 base = "Mail Vans"
 
+[STR_WAGON_GROUP_MERCHANDISE_BOX_CARS]
+base = "Merchandise Vans"
+
 [STR_WAGON_GROUP_MGR_HOPPER_CARS]
 base = "MGR Hoppers"
 
@@ -403,7 +409,7 @@ base = "Open Wagons"
 moose = "Gondolas"
 
 [STR_WAGON_GROUP_RANDOMISED_PIECE_GOODS_CARS]
-base = "Piece Goods Combos"
+base = "Goods Cargo Combos"
 
 [STR_WAGON_GROUP_REEFER_CARS]
 base = "Refrigerated Vans"
@@ -763,7 +769,7 @@ base = "Mixed Metal Product Wagon"
 base = "Open Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_PIECE_GOODS_CAR]
-base = "Piece Goods Wagon"
+base = "Goods Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_REEFER_CAR]
 base = "Refrigerated Van"

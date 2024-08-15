@@ -406,26 +406,6 @@ farm_product_box_car_livery_recolour_maps_weathered = {
     CC1 + 6: 61 + 6,
     CC1 + 7: 61 + 7,
 }
-merchandise_box_car_body_recolour_maps = {
-    136: 70,
-    136 + 1: 71,
-    136 + 2: 72,
-    136 + 3: 73,
-    136 + 4: 74,
-    136 + 5: 75,
-    136 + 6: 76,
-    136 + 7: 118,
-}
-merchandise_box_car_body_recolour_maps_weathered = {
-    136: 70,
-    136 + 1: 71,
-    136 + 2: 72,
-    136 + 3: 113,
-    136 + 4: 114,
-    136 + 5: 115,
-    136 + 6: 116,
-    136 + 7: 118,
-}
 kaolin_hopper_car_livery_recolour_maps = {
     # note that this very specifically recolours hand-drawn pixels to magic purple
     # this is to prevent these spriterows being incorrectly recoloured to 'weathered' due to the way the graphics pipeline works

@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16490,
+        base_numeric_id=25610,
         gen=3,
         subtype="B",
         sprites_complete=False,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16500,
+        base_numeric_id=24830,
         gen=4,
         subtype="A",
         sprites_complete=False,
@@ -40,7 +40,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16440,
+        base_numeric_id=25630,
         gen=4,
         subtype="B",
         sprites_complete=False,
@@ -65,7 +65,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16460,
+        base_numeric_id=25650,
         gen=5,
         subtype="B",
         sprites_complete=False,
@@ -79,7 +79,7 @@ def main(roster_id, **kwargs):
     consist = BoxCarMerchandiseConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16470,
+        base_numeric_id=24810,
         gen=5,
         subtype="C",
         sprites_complete=False,
