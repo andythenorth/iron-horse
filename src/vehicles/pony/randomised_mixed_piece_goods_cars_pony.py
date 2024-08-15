@@ -1,10 +1,10 @@
-from train import PieceGoodsCarRandomisedConsist, FreightCar
+from train import PieceGoodsCarMixedRandomisedConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- pony NG -------------------------------------------------------------------
 
-    consist = PieceGoodsCarRandomisedConsist(
+    consist = PieceGoodsCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25850,
@@ -16,7 +16,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = PieceGoodsCarRandomisedConsist(
+    consist = PieceGoodsCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25820,
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = PieceGoodsCarRandomisedConsist(
+    consist = PieceGoodsCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23710,
@@ -42,7 +42,7 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = PieceGoodsCarRandomisedConsist(
+    consist = PieceGoodsCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27080,
@@ -55,7 +55,7 @@ def main(roster_id, **kwargs):
 
     # no new type A for gen 2, gen 1 type A continues
 
-    consist = PieceGoodsCarRandomisedConsist(
+    consist = PieceGoodsCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27090,
@@ -66,7 +66,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = PieceGoodsCarRandomisedConsist(
+    consist = PieceGoodsCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27100,
@@ -77,7 +77,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = PieceGoodsCarRandomisedConsist(
+    consist = PieceGoodsCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27110,
@@ -88,7 +88,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = PieceGoodsCarRandomisedConsist(
+    consist = PieceGoodsCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27120,
@@ -99,7 +99,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = PieceGoodsCarRandomisedConsist(
+    consist = PieceGoodsCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27130,
@@ -110,7 +110,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = PieceGoodsCarRandomisedConsist(
+    consist = PieceGoodsCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27180,
@@ -121,7 +121,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_32px")
 
-    consist = PieceGoodsCarRandomisedConsist(
+    consist = PieceGoodsCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27140,
@@ -132,7 +132,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = PieceGoodsCarRandomisedConsist(
+    consist = PieceGoodsCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27150,

@@ -768,8 +768,11 @@ base = "Mixed Metal Product Wagon"
 [STR_NAME_SUFFIX_RANDOMISED_OPEN_CAR]
 base = "Open Wagon"
 
-[STR_NAME_SUFFIX_RANDOMISED_PIECE_GOODS_CAR]
-base = "Goods Wagon"
+[STR_NAME_SUFFIX_RANDOMISED_COVERED_PIECE_GOODS_CAR]
+base = "Covered Goods Wagon"
+
+[STR_NAME_SUFFIX_RANDOMISED_MIXED_PIECE_GOODS_CAR]
+base = "Mixed Goods Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_REEFER_CAR]
 base = "Refrigerated Van"
