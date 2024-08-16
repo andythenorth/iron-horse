@@ -4542,6 +4542,7 @@ class BulkCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            use_deterministic_random_vehicle_map=True,
             dice_colour=1,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -5187,6 +5188,7 @@ class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_flat_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            use_deterministic_random_vehicle_map=True,
             dice_colour=2,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -7172,6 +7174,7 @@ class PieceGoodsCarManufacturingPartsRandomisedConsist(
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            use_deterministic_random_vehicle_map=True,
             dice_colour=1,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -7941,6 +7944,7 @@ class TankCarChemicalRandomisedConsist(RandomisedConsistMixin, TankCarConsistBas
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            use_deterministic_random_vehicle_map=True,
             dice_colour=3,
             liveries=[
                 global_constants.freight_wagon_liveries[

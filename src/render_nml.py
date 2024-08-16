@@ -94,6 +94,7 @@ def main():
         "procedures_capacity",
         "procedures_cargo_subtypes",
         "procedures_colour_names",
+        "procedures_deterministic_random_vehicle_maps",
         "procedures_haulage_bonus",
         "procedures_opening_doors",
         "procedures_name",

@@ -191,6 +191,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_switch_purchase = "_switch_colour_mapping_purchase"
         self.colour_mapping_with_purchase = True
+        self.use_deterministic_random_vehicle_map = kwargs.get("use_deterministic_random_vehicle_map", False)
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
         self.processing_priority = 2
 

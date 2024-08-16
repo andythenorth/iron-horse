@@ -111,6 +111,7 @@ def convert_flat_list_to_pairs_of_tuples(flat_list):
     ]
     return pairs
 
+# methods for handling pre-compiled determinstic random maps, for randomised vehicles that use pseudo-random sequences
 def generate_run_value(num_values=10):
     """
     Generate a single value for a run.
@@ -143,7 +144,7 @@ def generate_random_map(size=64, num_values=10, min_run=2, max_run=5, prefer_run
         map_entries.extend([run_value] * run_length)
     return map_entries
 
-def get_random_maps(num_maps=64, map_size=64, num_values=10, seed=42):
+def get_deterministic_random_vehicle_maps(num_maps=64, map_size=64, num_values=10, seed=42):
     """
     Generate multiple random maps and ensure they are unique.
 
