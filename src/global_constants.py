@@ -27,6 +27,7 @@ wagon_module_names = [
     "express_intermodal_cars",
     "intermodal_cars",
     "low_floor_intermodal_cars",
+    "randomised_intermodal_cars",
     "open_cars",
     "high_end_open_cars",
     "hood_open_cars",

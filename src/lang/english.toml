@@ -744,6 +744,9 @@ base = "Covered Hopper"
 [STR_NAME_SUFFIX_RANDOMISED_COVERED_METAL_PRODUCT_CAR]
 base = "Covered Metal Product Wagon"
 
+[STR_NAME_SUFFIX_RANDOMISED_COVERED_PIECE_GOODS_CAR]
+base = "Covered Goods Wagon"
+
 [STR_NAME_SUFFIX_RANDOMISED_DEDICATED_COIL_CAR]
 base = "Coil Carrier"
 
@@ -759,6 +762,9 @@ base = "Flatbed Wagon"
 [STR_NAME_SUFFIX_RANDOMISED_HOPPER_CAR]
 base = "Hopper"
 
+[STR_NAME_SUFFIX_RANDOMISED_INTERMODAL_CAR]
+base = "Container Wagon"
+
 [STR_NAME_SUFFIX_RANDOMISED_MILL_FLAT_CAR]
 base = "Mill Flat Wagons"
 
@@ -767,9 +773,6 @@ base = "Mixed Metal Product Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_OPEN_CAR]
 base = "Open Wagon"
-
-[STR_NAME_SUFFIX_RANDOMISED_COVERED_PIECE_GOODS_CAR]
-base = "Covered Goods Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_MIXED_PIECE_GOODS_CAR]
 base = "Mixed Goods Wagon"
