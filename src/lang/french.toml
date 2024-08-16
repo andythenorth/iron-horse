@@ -501,7 +501,7 @@ base = "Fourgon express"
 [STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR]
 base = "Wagon porte-container express"
 
-[STR_NAME_SUFFIX_FARM_PRODUCT_BOX_CAR]
+[STR_NAME_SUFFIX_FARM_PRODUCT_BOX_CAR_TYPE_1]
 base = "Fourgon agricole"
 
 [STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_TYPE_1]

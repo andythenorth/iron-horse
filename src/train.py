@@ -4667,13 +4667,13 @@ class ExpressIntermodalCarConsist(CarConsist):
         return ["default"]
 
 
-class FarmProductsBoxCarConsist(CarConsist):
+class FarmProductsBoxCarConsistType1(CarConsist):
     """
     Farm type cargos - box cars / vans.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "farm_product_box_car"
+        self.base_id = "farm_product_box_car_type_1"
         super().__init__(**kwargs)
         # note this is not derived from BoxCarBase, it's a standalone type
         self.class_refit_groups = []  # no classes, use explicit labels

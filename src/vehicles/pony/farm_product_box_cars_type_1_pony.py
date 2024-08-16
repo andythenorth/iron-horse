@@ -1,9 +1,9 @@
-from train import FarmProductsBoxCarConsist, FreightCar
+from train import FarmProductsBoxCarConsistType1, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
-    consist = FarmProductsBoxCarConsist(
+    consist = FarmProductsBoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30350,
@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
 
     # no gen 2 for NG, straight to gen 3
 
-    consist = FarmProductsBoxCarConsist(
+    consist = FarmProductsBoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30400,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = FarmProductsBoxCarConsist(
+    consist = FarmProductsBoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19940,
@@ -42,7 +42,7 @@ def main(roster_id, **kwargs):
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
 
     # --------------- pony --------------------------------------------------------------------------
-    consist = FarmProductsBoxCarConsist(
+    consist = FarmProductsBoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25390,
@@ -53,7 +53,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = FarmProductsBoxCarConsist(
+    consist = FarmProductsBoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25360,
@@ -64,7 +64,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
 
-    consist = FarmProductsBoxCarConsist(
+    consist = FarmProductsBoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25230,
@@ -75,7 +75,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = FarmProductsBoxCarConsist(
+    consist = FarmProductsBoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25160,
@@ -86,7 +86,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
 
-    consist = FarmProductsBoxCarConsist(
+    consist = FarmProductsBoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25110,
@@ -97,7 +97,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = FarmProductsBoxCarConsist(
+    consist = FarmProductsBoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25080,
@@ -108,7 +108,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
 
-    consist = FarmProductsBoxCarConsist(
+    consist = FarmProductsBoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23720,
@@ -123,7 +123,7 @@ def main(roster_id, **kwargs):
         chassis="4_axle_1cc_filled_32px",
     )
 
-    consist = FarmProductsBoxCarConsist(
+    consist = FarmProductsBoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23700,
@@ -134,7 +134,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
-    consist = FarmProductsBoxCarConsist(
+    consist = FarmProductsBoxCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23540,
