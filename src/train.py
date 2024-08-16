@@ -8811,6 +8811,7 @@ class Train(object):
             vehicle=self,
             consist=self.consist,
             global_constants=global_constants,
+            utils=utils,
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
             graphics_path=graphics_path,
             spritelayer_cargos=spritelayer_cargos,

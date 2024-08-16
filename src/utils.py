@@ -1,5 +1,7 @@
 import argparse
 import os.path
+import random
+
 import global_constants
 from polar_fox import git_info
 from polar_fox.utils import echo_message as echo_message
@@ -108,3 +110,55 @@ def convert_flat_list_to_pairs_of_tuples(flat_list):
         for i in range(0, len(flat_list), 2)
     ]
     return pairs
+
+def generate_run_value(num_values=10):
+    """
+    Generate a single value for a run.
+
+    :param num_values: The range of random values (0 to num_values-1)
+    :return: A random value
+    """
+    return random.randint(0, num_values - 1)
+
+def generate_random_map(size=64, num_values=10, min_run=2, max_run=5, prefer_run_lengths={3: 0.3, 4: 0.3}):
+    """
+    Generate a single random map with values in runs.
+
+    :param size: The number of entries in the map
+    :param num_values: The range of random values (0 to num_values-1)
+    :param min_run: Minimum length of each run
+    :param max_run: Maximum length of each run
+    :param prefer_run_lengths: A dictionary with run lengths and their probabilities
+    :return: A list of values with runs
+    """
+    map_entries = []
+    while len(map_entries) < size:
+        run_length = random.choices(
+            population=list(prefer_run_lengths.keys()),
+            weights=[prefer_run_lengths.get(length, 0.1) for length in prefer_run_lengths.keys()],
+            k=1
+        )[0]
+        run_length = min(run_length, size - len(map_entries))  # Ensure it fits
+        run_value = generate_run_value(num_values)
+        map_entries.extend([run_value] * run_length)
+    return map_entries
+
+def get_random_maps(num_maps=64, map_size=64, num_values=10, seed=42):
+    """
+    Generate multiple random maps and ensure they are unique.
+
+    :param num_maps: The number of random maps to generate
+    :param map_size: The number of entries per map
+    :param num_values: The range of random values
+    :param seed: The random seed for determinism
+    :return: A list of unique maps
+    """
+    random.seed(seed)  # Set the seed for determinism
+    maps = set()
+    while len(maps) < num_maps:
+        new_map = tuple(generate_random_map(size=map_size, num_values=num_values))
+        if new_map in maps:
+            raise ValueError("Duplicate map detected. Change the seed value.")
+        maps.add(new_map)
+    return [list(map_entry) for map_entry in maps]
+

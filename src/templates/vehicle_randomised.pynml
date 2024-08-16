@@ -7,9 +7,27 @@
     - consists within groups tend to be very diverse
     This looked good to me and feedback on it was ok.
     -->
+<tal:random_maps repeat="random_map utils.get_random_maps()">
+    <!--! (position_in_vehid_chain -1) here because we can assume there's at least one engine ...
+           ...we don't try to do anything fancier than that, but this prevents high incidence of a run of just 2 at start of wagons -->
+    switch (FEAT_TRAINS, SELF, ${consist.id}_switch_random_map_${repeat.random_map.index}, (position_in_consist - 1) % 64) {
+        <tal:map_values repeat="map_entry random_map">
+            ${repeat.map_entry.index}: ${map_entry};
+        </tal:map_values>
+    }
+</tal:random_maps>
+
+<!--! pick 6 bits to choose 1 of 64 maps; the bits do possibly overlap with the variant selection bits in 1 of 10 cases, but we'll live with that -->
+switch (FEAT_TRAINS, PARENT, ${consist.id}_switch_CABBAGE_ENTRY, getbits(var[0x5F, 8, 0x00FFFFFF], 0, 6)) {
+    <tal:map_values repeat="map_index range(64)">
+        ${map_index}: ${consist.id}_switch_random_map_${map_index};
+    </tal:map_values>
+}
+
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
     switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_self,
                                 random_bits_randomised_wagon_choose_wagon_self(
+                                    0,
                                     ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)).bit_length() - 1}
                                 )
         ) {
@@ -19,6 +37,7 @@
     }
     switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_parent,
                                 random_bits_randomised_wagon_choose_wagon_parent(
+                                    ${consist.id}_switch_CABBAGE_ENTRY(),
                                     ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)).bit_length() - 1}
                                 )
         ) {
@@ -28,7 +47,7 @@
     }
     <!--! note that the random chain is used by both graphics and colour mapping chains -->
     switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon, random_bits_randomised_wagon_check_parent_or_self()) {
-        0..2: ${unit_variant.id}_switch_graphics_variant_random_self;
+        <!--!0..2: ${unit_variant.id}_switch_graphics_variant_random_self;-->
         ${unit_variant.id}_switch_graphics_variant_random_parent;
     }
 
