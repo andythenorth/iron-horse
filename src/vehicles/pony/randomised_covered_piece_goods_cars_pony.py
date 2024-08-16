@@ -4,19 +4,6 @@ from train import PieceGoodsCarCoveredRandomisedConsist, FreightCar
 def main(roster_id, **kwargs):
     # --------------- pony NG -------------------------------------------------------------------
 
-    """
-    consist = PieceGoodsCarCoveredRandomisedConsist(
-        roster_id=roster_id,
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=26410,
-        gen=1,
-        subtype="A",
-        base_track_type_name="NG",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
-    """
     consist = PieceGoodsCarCoveredRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
