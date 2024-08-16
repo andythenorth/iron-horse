@@ -45,6 +45,7 @@ wagon_module_names = [
     "tarpaulin_cars",
     "randomised_covered_piece_goods_cars",
     "randomised_mixed_piece_goods_cars",
+    "randomised_manufacturing_parts_piece_goods_cars",
     "flat_cars",
     "dropend_flat_cars",
     "dropside_flat_cars",
