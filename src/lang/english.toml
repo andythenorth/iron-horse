@@ -387,7 +387,7 @@ base = "Box Vans"
 base = "Bulk Cargo Combos"
 
 [STR_WAGON_GROUP_RANDOMISED_CHEMICAL_TANK_CARS]
-base = "Liquid Cargo Combos"
+base = "Chemical Tanker Combos"
 
 [STR_WAGON_GROUP_RANDOMISED_COVERED_HOPPER_CARS]
 base = "Covered Hoppers"
