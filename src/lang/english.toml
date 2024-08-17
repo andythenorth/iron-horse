@@ -722,12 +722,11 @@ base = "Aggregate Dump Wagon"
 [STR_NAME_SUFFIX_RANDOMISED_BOX_CAR]
 base = "Box Van"
 
-[STR_NAME_SUFFIX_RANDOMISED_BULK_CAR]
-base = "Bulk Wagon"
+[STR_NAME_SUFFIX_RANDOMISED_BOX_BULK_CAR]
+base = "Open Bulk Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_BULKHEAD_FLAT_CAR]
-#base = "Bulkhead Flat Wagon"
-base = "Mill Flat Wagon"
+base = "Bulkhead Flat Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_CEMENT_SILO_CAR]
 base = "Cement Wagon"
@@ -762,8 +761,14 @@ base = "Flatbed Wagon"
 [STR_NAME_SUFFIX_RANDOMISED_HOPPER_CAR]
 base = "Hopper"
 
+[STR_NAME_SUFFIX_RANDOMISED_HOPPER_BULK_CAR]
+base = "Hopper Bulk Wagon"
+
 [STR_NAME_SUFFIX_RANDOMISED_MILL_FLAT_CAR]
-base = "Mill Flat Wagons"
+base = "Mill Flat Wagon"
+
+[STR_NAME_SUFFIX_RANDOMISED_MIXED_BULK_CAR]
+base = "Mixed Bulk Wagon"
 
 [STR_NAME_SUFFIX_RANDOMISED_MIXED_METAL_PRODUCT_CAR]
 base = "Mixed Metal Product Wagon"

@@ -1,10 +1,10 @@
-from train import BulkCarRandomisedConsist, FreightCar
+from train import BulkCarMixedRandomisedConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = BulkCarRandomisedConsist(
+    consist = BulkCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28340,
@@ -16,7 +16,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = BulkCarRandomisedConsist(
+    consist = BulkCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16920,
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = BulkCarRandomisedConsist(
+    consist = BulkCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17030,
@@ -42,7 +42,7 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = BulkCarRandomisedConsist(
+    consist = BulkCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28240,
@@ -55,7 +55,7 @@ def main(roster_id, **kwargs):
 
     # no new type A for gen 2, gen 1 type A continues
 
-    consist = BulkCarRandomisedConsist(
+    consist = BulkCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28250,
@@ -66,7 +66,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = BulkCarRandomisedConsist(
+    consist = BulkCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28260,
@@ -77,7 +77,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = BulkCarRandomisedConsist(
+    consist = BulkCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28270,
@@ -88,7 +88,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = BulkCarRandomisedConsist(
+    consist = BulkCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28280,
@@ -99,7 +99,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = BulkCarRandomisedConsist(
+    consist = BulkCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28290,
@@ -110,7 +110,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = BulkCarRandomisedConsist(
+    consist = BulkCarMixedRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28300,

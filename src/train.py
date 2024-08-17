@@ -4185,7 +4185,8 @@ class DumpCarConsist(DumpCarConsistBase):
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "randomised_dump_car",
-            "randomised_bulk_car",
+            "randomised_box_bulk_car",
+            "randomised_mixed_bulk_car",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -4227,6 +4228,7 @@ class DumpCarAggregateConsistType1(DumpCarConsistBase):
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
             "randomised_aggregate_dump_car",
+            "randomised_box_bulk_car",
         ]
         self._joker = True
         # Graphics configuration
@@ -4252,6 +4254,7 @@ class DumpCarAggregateConsistType2(DumpCarConsistBase):
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
             "randomised_aggregate_dump_car",
+            "randomised_box_bulk_car",
         ]
         self._joker = True
         # Graphics configuration
@@ -4277,6 +4280,7 @@ class DumpCarAggregateConsistType3(DumpCarConsistBase):
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
             "randomised_aggregate_dump_car",
+            "randomised_box_bulk_car",
         ]
         self._joker = True
         # Graphics configuration
@@ -4302,6 +4306,7 @@ class DumpCarAggregateConsistType4(DumpCarConsistBase):
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
             "randomised_aggregate_dump_car",
+            "randomised_box_bulk_car",
         ]
         self._joker = True
         # Graphics configuration
@@ -4327,6 +4332,7 @@ class DumpCarAggregateConsistType5(DumpCarConsistBase):
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
             "randomised_aggregate_dump_car",
+            "randomised_box_bulk_car",
         ]
         self._joker = True
         # Graphics configuration
@@ -4352,6 +4358,7 @@ class DumpCarAggregateConsistType6(DumpCarConsistBase):
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
             "randomised_aggregate_dump_car",
+            "randomised_box_bulk_car",
         ]
         self._joker = True
         # Graphics configuration
@@ -4423,7 +4430,8 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
         self.randomised_candidate_groups = [
             "randomised_dump_car",
-            "randomised_bulk_car",
+            "randomised_box_bulk_car",
+            "randomised_mixed_bulk_car",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -4532,14 +4540,76 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
 
 
 # not in alphabetical order as it depends on subclassing DumpCarConsistBase
-class BulkCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
+class BulkCarBoxRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
+    """
+    Random choice of bulk car sprite, from available dump / box open cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_box_bulk_car"
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_randomised_bulk_cars"
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=1,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+            ],
+        )
+
+
+# not in alphabetical order as it depends on subclassing DumpCarConsistBase
+# for now we use DumpCarConsistBase base class here not hopper, as it keeps the BulkCarRandomised classes together
+class BulkCarHopperRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
     """
     Random choice of bulk car sprite, from available dump / hopper cars.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_bulk_car"
+        self.base_id = "randomised_hopper_bulk_car"
         super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_randomised_bulk_cars"
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=1,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+            ],
+        )
+
+
+# not in alphabetical order as it depends on subclassing DumpCarConsistBase
+class BulkCarMixedRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
+    """
+    Random choice of bulk car sprite, from available dump / hopper cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_mixed_bulk_car"
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_randomised_bulk_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             use_deterministic_random_vehicle_map=True,
@@ -5345,7 +5415,8 @@ class HopperCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self.randomised_candidate_groups = [
-            "randomised_bulk_car",
+            "randomised_hopper_bulk_car",
+            "randomised_mixed_bulk_car",
         ]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
@@ -5409,6 +5480,7 @@ class HopperCarAggregateConsistType1(HopperCarAggregateConsistBase):
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "randomised_aggregate_hopper_car",
+            "randomised_hopper_bulk_car",
         ]
         self._joker = True
         # Graphics configuration
@@ -5442,6 +5514,7 @@ class HopperCarAggregateConsistType2(HopperCarAggregateConsistBase):
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "randomised_aggregate_hopper_car",
+            "randomised_hopper_bulk_car",
         ]
         self._joker = True
         # Graphics configuration
@@ -5480,6 +5553,7 @@ class HopperCarAggregateConsistType3(HopperCarAggregateConsistBase):
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "randomised_aggregate_hopper_car",
+            "randomised_hopper_bulk_car",
         ]
         self._joker = True
         # Graphics configuration
@@ -5566,7 +5640,8 @@ class HopperCarConsist(HopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
         self.randomised_candidate_groups = [
             "randomised_hopper_car",
-            "randomised_bulk_car",
+            "randomised_hopper_bulk_car",
+            "randomised_mixed_bulk_car",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5584,7 +5659,8 @@ class HopperCarHighSideConsist(HopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["hopper_ore"]
         self.randomised_candidate_groups = [
             "randomised_hopper_car",
-            "randomised_bulk_car",
+            "randomised_hopper_bulk_car",
+            "randomised_mixed_bulk_car",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5695,7 +5771,7 @@ class HopperCarRockConsist(HopperCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
         # don't include rock hoppers in randomised lists, they don't look good
-        self.randomised_candidate_groups = []
+        self.randomised_candidate_groups = ["randomised_hopper_bulk_car"]
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
