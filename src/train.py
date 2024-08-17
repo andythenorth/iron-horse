@@ -4199,6 +4199,7 @@ class DumpCarConsist(DumpCarConsistBase):
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_8"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_12"],
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.freight_wagon_liveries[
                 "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -4209,6 +4210,7 @@ class DumpCarConsist(DumpCarConsistBase):
             global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
             global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
             global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
         ]
 
 
@@ -4444,6 +4446,7 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_8"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_12"],
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.freight_wagon_liveries[
                 "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -4454,6 +4457,7 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
             global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
             global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
             global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
         ]
 
 
@@ -4504,6 +4508,7 @@ class DumpCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_8"
                 ],
+                global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_12"],
             ],
         )
 
