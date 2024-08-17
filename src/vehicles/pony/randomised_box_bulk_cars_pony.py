@@ -52,6 +52,17 @@ def main(roster_id, **kwargs):
     consist = BulkCarBoxRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=22160,
+        gen=5,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
+
+    consist = BulkCarBoxRandomisedConsist(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16500,
         gen=5,
         subtype="B",
