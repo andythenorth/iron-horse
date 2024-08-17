@@ -4,7 +4,7 @@
       Each map has 64 entries, corresponding to an offset which is used to select a set of random bits from the lead engine.
       -->
 <tal:deterministic_random_maps repeat="random_map utils.get_deterministic_random_vehicle_maps()">
-    <!--! (position_in_vehid_chain -1) here because we can assume there's at least one engine ...
+    <!--! (position_in_consist -1) here because we can assume there's at least one engine ...
            ...we don't try to do anything fancier than that, but this prevents high incidence of a run of just 2 at start of wagons -->
     switch (FEAT_TRAINS, SELF, switch_deterministic_random_vehicle_map_${repeat.random_map.index}, (position_in_consist - 1) % 64) {
         <tal:map_items repeat="map_item random_map">
