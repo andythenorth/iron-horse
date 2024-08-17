@@ -1,10 +1,10 @@
-from train import SiloCarCementConsist, FreightCar
+from train import SiloCarCementConsistType1, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = SiloCarCementConsist(
+    consist = SiloCarCementConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30270,
@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = SiloCarCementConsist(
+    consist = SiloCarCementConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30280,
@@ -26,7 +26,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = SiloCarCementConsist(
+    consist = SiloCarCementConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30300,
@@ -37,7 +37,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
 
-    consist = SiloCarCementConsist(
+    consist = SiloCarCementConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30310,
@@ -48,7 +48,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
-    consist = SiloCarCementConsist(
+    consist = SiloCarCementConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30380,
@@ -59,7 +59,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hopppers_24px")
 
-    consist = SiloCarCementConsist(
+    consist = SiloCarCementConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30980,

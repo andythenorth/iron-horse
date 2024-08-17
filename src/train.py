@@ -7507,13 +7507,13 @@ class SiloCarRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase):
         )
 
 
-class SiloCarCementConsist(SiloCarConsistBase):
+class SiloCarCementConsistType1(SiloCarConsistBase):
     """
     Cement-coloured silo car.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "cement_silo_car"
+        self.base_id = "cement_silo_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
         self.randomised_candidate_groups = ["randomised_cement_silo_car"]
@@ -7536,13 +7536,42 @@ class SiloCarCementConsist(SiloCarConsistBase):
         )
 
 
-class SiloCarCementVBarrelConsist(SiloCarConsistBase):
+class SiloCarCementConsistType2(SiloCarConsistBase):
     """
     Cement-coloured silo car.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "cement_silo_car_v_barrel"
+        self.base_id = "cement_silo_car_type_2"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
+        self.randomised_candidate_groups = ["randomised_cement_silo_car"]
+        self._joker = True
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_cement_silo_cars"
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.cement_silo_livery_recolour_maps,
+            "weathered": graphics_constants.cement_silo_livery_recolour_maps_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+            ],
+        )
+
+
+class SiloCarCementConsistType3(SiloCarConsistBase):
+    """
+    Cement-coloured silo car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "cement_silo_car_type_3"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
         self.randomised_candidate_groups = ["randomised_cement_silo_car"]
