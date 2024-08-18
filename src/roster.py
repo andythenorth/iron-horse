@@ -375,15 +375,9 @@ class Roster(object):
                     if wagon_module_name_stem in wagon_module_names_from_another_roster:
                         module_provided_by_another_roster = True
                         break
-                if not module_provided_by_another_roster:
-                    # we want to warn, not fail, if a module is missing
-                    # to suppress this warning, add an empty module file with main() and pass
-                    utils.echo_message(
-                        "wagon_module "
-                        + wagon_module_name
-                        + " not found in roster "
-                        + self.id
-                    )
+                # there was handling here to warn if a module was missing from a roster
+                # with a suppression mechanism based on empty module files
+                # but it was a TMWFTLB maintenance ovehead, so I removed it August 2024
             except Exception:
                 raise
 
