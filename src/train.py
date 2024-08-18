@@ -4982,13 +4982,13 @@ class FlatCarBulkheadRandomisedConsist(
         )
 
 
-class FlatCarDropendConsist(FlatCarConsistBase):
+class FlatCarDropEndConsist(FlatCarConsistBase):
     """
     Wagon with droppable end flaps - variant on flat wagon, refits same
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "dropend_flat_car"
+        self.base_id = "drop_end_flat_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["plate"]
         self._intro_year_days_offset = (
@@ -5028,13 +5028,13 @@ class FlatCarDropendConsist(FlatCarConsistBase):
         )
 
 
-class FlatCarDropsideConsist(FlatCarConsistBase):
+class FlatCarDropSideConsist(FlatCarConsistBase):
     """
     Wagon with droppable low sides - variant on flat wagon, refits same
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "dropside_flat_car"
+        self.base_id = "drop_side_flat_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["plate"]
         self._intro_year_days_offset = (
