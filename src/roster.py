@@ -334,6 +334,10 @@ class Roster(object):
 
     def post_init_actions(self):
         # init of consists has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
+        self.init_engine_modules()
+        self.init_wagon_modules()
+
+    def init_engine_modules(self):
         package_name = "vehicles." + self.id
         # engines
         for engine_module_name in self.engine_module_names:
@@ -345,7 +349,6 @@ class Roster(object):
             # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
             for cloned_consist in consist.clones:
                 self.engine_consists.append(cloned_consist)
-        self.init_wagon_modules()
 
     def init_wagon_modules(self):
         # wagons can be optionally reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module
