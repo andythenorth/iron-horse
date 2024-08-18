@@ -69,7 +69,7 @@ base = "Vagón plataforma"
 [STR_NAME_SUFFIX_CABOOSE_CAR]
 base = "Vagón de cola"
 
-[STR_NAME_SUFFIX_CEMENT_SILO_CAR]
+[STR_NAME_SUFFIX_CEMENT_SILO_CAR_TYPE_1]
 base = "Vagón cementero"
 
 [STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR]
@@ -156,7 +156,7 @@ base = "Vagón restaurante"
 [STR_NAME_SUFFIX_ROCK_HOPPER_CAR]
 base = "Vagón de minerales"
 
-[STR_NAME_SUFFIX_SILO_CAR]
+[STR_NAME_SUFFIX_SILO_CAR_TYPE_1]
 base = "Vagón silo"
 
 [STR_NAME_SUFFIX_SLAG_LADLE_CAR]

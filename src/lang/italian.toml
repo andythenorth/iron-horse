@@ -85,7 +85,7 @@ base = "Carro piatto"
 [STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Carro frigorifero"
 
-[STR_NAME_SUFFIX_SILO_CAR]
+[STR_NAME_SUFFIX_SILO_CAR_TYPE_1]
 base = "Carro silos"
 
 [STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]

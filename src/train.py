@@ -2500,8 +2500,9 @@ class CarConsist(Consist):
                 # some dubious special-casing to make wagon names plural if there are variants, and a named variant group is *not* already used
                 if len(group.buyable_variants) > 1:
                     result = default_result.copy()
+                    result[0] = result[0].replace("_CAR", "_CARS")
                     result[0] = (
-                        result[0].replace("STR_NAME_SUFFIX_", "STR_WAGON_GROUP_") + "S"
+                        result[0].replace("STR_NAME_SUFFIX_", "STR_WAGON_GROUP_")
                     )
                 else:
                     result = default_result
@@ -2772,8 +2773,8 @@ class BolsterCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_mixed_metal_product_car",
-            "randomised_uncovered_metal_product_car",
+            "metal_product_car_mixed_randomised",
+            "metal_product_car_uncovered_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -2831,9 +2832,9 @@ class BoxCarConsistType1(BoxCarConsistBase):
         self.base_id = "box_car_type_1"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
-            "randomised_box_car",
-            "randomised_covered_piece_goods_car",
-            "randomised_mixed_piece_goods_car",
+            "box_car_randomised",
+            "piece_goods_car_covered_randomised",
+            "piece_goods_car_mixed_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -2885,9 +2886,9 @@ class BoxCarConsistType2(BoxCarConsistBase):
         self.base_id = "box_car_type_2"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
-            "randomised_box_car",
-            "randomised_covered_piece_goods_car",
-            "randomised_mixed_piece_goods_car",
+            "box_car_randomised",
+            "piece_goods_car_covered_randomised",
+            "piece_goods_car_mixed_randomised",
         ]
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
@@ -2932,10 +2933,10 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_box_car",
-            "randomised_covered_piece_goods_car",
-            "randomised_manufacturing_parts_piece_goods_car",
-            "randomised_mixed_piece_goods_car",
+            "box_car_randomised",
+            "piece_goods_car_covered_randomised",
+            "piece_goods_car_manufacturing_parts_randomised",
+            "piece_goods_car_mixed_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -2988,9 +2989,9 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["box_goods"]
         # don't include in random box car group, at least for pony, looks bad - other rosters may differ?
         self.randomised_candidate_groups = [
-            "randomised_covered_piece_goods_car",
-            "randomised_manufacturing_parts_piece_goods_car",
-            "randomised_mixed_piece_goods_car",
+            "piece_goods_car_covered_randomised",
+            "piece_goods_car_manufacturing_parts_randomised",
+            "piece_goods_car_mixed_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -3050,7 +3051,7 @@ class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_box_car"
+        self.base_id = "box_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -3090,8 +3091,8 @@ class BoxCarSlidingWallConsistBase(BoxCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_covered_piece_goods_car",
-            "randomised_mixed_piece_goods_car",
+            "piece_goods_car_covered_randomised",
+            "piece_goods_car_mixed_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -3156,7 +3157,7 @@ class BoxCarSlidingWallConsistType2(BoxCarSlidingWallConsistBase):
         super().__init__(**kwargs)
         self.randomised_candidate_groups.extend(
             [
-                "randomised_manufacturing_parts_piece_goods_car",
+                "piece_goods_car_manufacturing_parts_randomised",
             ]
         )
 
@@ -3215,8 +3216,8 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
         )
         self._joker = True
         self.randomised_candidate_groups = [
-            "randomised_covered_piece_goods_car",
-            "randomised_mixed_piece_goods_car",
+            "piece_goods_car_covered_randomised",
+            "piece_goods_car_mixed_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -3419,9 +3420,9 @@ class CoilCarCoveredAsymmetricConsist(CoilCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
         self.cc_num_to_recolour = 1
         self.randomised_candidate_groups = [
-            "randomised_dedicated_coil_car",
-            "randomised_covered_metal_product_car",
-            "randomised_mixed_metal_product_car",
+            "dedicated_coil_car_randomised",
+            "metal_product_car_covered_randomised",
+            "metal_product_car_mixed_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -3470,9 +3471,9 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
         self.cc_num_to_recolour = 1
         self.randomised_candidate_groups = [
-            "randomised_dedicated_coil_car",
-            "randomised_covered_metal_product_car",
-            "randomised_mixed_metal_product_car",
+            "dedicated_coil_car_randomised",
+            "metal_product_car_covered_randomised",
+            "metal_product_car_mixed_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -3517,9 +3518,9 @@ class CoilCarTarpaulinConsist(CoilCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
         self.cc_num_to_recolour = 1
         self.randomised_candidate_groups = [
-            "randomised_dedicated_coil_car",
-            "randomised_covered_metal_product_car",
-            "randomised_mixed_metal_product_car",
+            "dedicated_coil_car_randomised",
+            "metal_product_car_covered_randomised",
+            "metal_product_car_mixed_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -3566,8 +3567,8 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil"]
         self.randomised_candidate_groups = [
-            "randomised_dedicated_coil_car",
-            "randomised_mixed_metal_product_car",
+            "dedicated_coil_car_randomised",
+            "metal_product_car_mixed_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -3604,7 +3605,7 @@ class DedicatedCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBa
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_dedicated_coil_car"
+        self.base_id = "dedicated_coil_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -3639,7 +3640,7 @@ class MetalProductCarRandomisedConsistBase(RandomisedConsistMixin, CoilCarConsis
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = (
-            "wagon_group_randomised_metal_product_cars"
+            "wagon_group_metal_product_cars_randomised"
         )
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -3664,7 +3665,7 @@ class MetalProductCarCoveredRandomisedConsist(MetalProductCarRandomisedConsistBa
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_covered_metal_product_car"
+        self.base_id = "metal_product_car_covered_randomised"
         super().__init__(**kwargs)
 
 
@@ -3674,7 +3675,7 @@ class MetalProductCarMixedRandomisedConsist(MetalProductCarRandomisedConsistBase
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_mixed_metal_product_car"
+        self.base_id = "metal_product_car_mixed_randomised"
         super().__init__(**kwargs)
 
 
@@ -3684,7 +3685,7 @@ class MetalProductCarUncoveredRandomisedConsist(MetalProductCarRandomisedConsist
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_uncovered_metal_product_car"
+        self.base_id = "metal_product_car_uncovered_randomised"
         super().__init__(**kwargs)
 
 
@@ -3755,7 +3756,7 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         self.base_id = "covered_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
-        self.randomised_candidate_groups = ["randomised_covered_hopper_car"]
+        self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
@@ -3770,7 +3771,7 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         self.base_id = "chemical_covered_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
-        self.randomised_candidate_groups = ["randomised_chemical_covered_hopper_car"]
+        self.randomised_candidate_groups = ["chemical_covered_hopper_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = (
@@ -3837,7 +3838,7 @@ class CoveredHopperCarChemicalRandomisedConsist(
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_chemical_covered_hopper_car"
+        self.base_id = "chemical_covered_hopper_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -3901,7 +3902,7 @@ class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
         self.base_id = "dry_powder_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
-        self.randomised_candidate_groups = ["randomised_covered_hopper_car"]
+        self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
@@ -3941,7 +3942,7 @@ class CoveredHopperCarRandomisedConsist(
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_covered_hopper_car"
+        self.base_id = "covered_hopper_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -4085,7 +4086,7 @@ class CoveredHopperCarSwingRoofChemicalConsist(CoveredHopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "chemical_swing_roof_hopper_car"
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = ["randomised_chemical_covered_hopper_car"]
+        self.randomised_candidate_groups = ["chemical_covered_hopper_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = (
@@ -4184,9 +4185,9 @@ class DumpCarConsist(DumpCarConsistBase):
         self.base_id = "dump_car"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
-            "randomised_dump_car",
-            "randomised_box_bulk_car",
-            "randomised_mixed_bulk_car",
+            "dump_car_randomised",
+            "bulk_car_box_randomised",
+            "bulk_car_mixed_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -4229,8 +4230,8 @@ class DumpCarAggregateConsistType1(DumpCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
-            "randomised_aggregate_dump_car",
-            "randomised_box_bulk_car",
+            "aggregate_dump_car_randomised",
+            "bulk_car_box_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -4255,8 +4256,8 @@ class DumpCarAggregateConsistType2(DumpCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
-            "randomised_aggregate_dump_car",
-            "randomised_box_bulk_car",
+            "aggregate_dump_car_randomised",
+            "bulk_car_box_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -4281,8 +4282,8 @@ class DumpCarAggregateConsistType3(DumpCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
-            "randomised_aggregate_dump_car",
-            "randomised_box_bulk_car",
+            "aggregate_dump_car_randomised",
+            "bulk_car_box_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -4307,8 +4308,8 @@ class DumpCarAggregateConsistType4(DumpCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
-            "randomised_aggregate_dump_car",
-            "randomised_box_bulk_car",
+            "aggregate_dump_car_randomised",
+            "bulk_car_box_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -4333,8 +4334,8 @@ class DumpCarAggregateConsistType5(DumpCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
-            "randomised_aggregate_dump_car",
-            "randomised_box_bulk_car",
+            "aggregate_dump_car_randomised",
+            "bulk_car_box_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -4359,8 +4360,8 @@ class DumpCarAggregateConsistType6(DumpCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
-            "randomised_aggregate_dump_car",
-            "randomised_box_bulk_car",
+            "aggregate_dump_car_randomised",
+            "bulk_car_box_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -4376,7 +4377,7 @@ class DumpCarAggregateRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBa
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_aggregate_dump_car"
+        self.base_id = "aggregate_dump_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -4431,9 +4432,9 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
         self.randomised_candidate_groups = [
-            "randomised_dump_car",
-            "randomised_box_bulk_car",
-            "randomised_mixed_bulk_car",
+            "dump_car_randomised",
+            "bulk_car_box_randomised",
+            "bulk_car_mixed_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -4484,7 +4485,7 @@ class DumpCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_dump_car"
+        self.base_id = "dump_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -4551,11 +4552,11 @@ class BulkCarBoxRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_box_bulk_car"
+        self.base_id = "bulk_car_box_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_randomised_bulk_cars"
+        self.use_named_buyable_variant_group = "wagon_group_bulk_cars_randomised"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
@@ -4581,11 +4582,11 @@ class BulkCarHopperRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase)
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_hopper_bulk_car"
+        self.base_id = "bulk_car_hopper_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_randomised_bulk_cars"
+        self.use_named_buyable_variant_group = "wagon_group_bulk_cars_randomised"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=1,
@@ -4610,11 +4611,11 @@ class BulkCarMixedRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_mixed_bulk_car"
+        self.base_id = "bulk_car_mixed_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_randomised_bulk_cars"
+        self.use_named_buyable_variant_group = "wagon_group_bulk_cars_randomised"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             use_deterministic_random_vehicle_map=True,
@@ -4826,7 +4827,7 @@ class FarmProductsHopperCarConsistType1(FarmProductsHopperCarConsistBase):
         self.base_id = "farm_product_hopper_car_type_1"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
-            "randomised_farm_product_hopper_car",
+            "farm_product_hopper_car_randomised",
         ]
 
 
@@ -4839,7 +4840,7 @@ class FarmProductsHopperCarConsistType2(FarmProductsHopperCarConsistBase):
         self.base_id = "farm_product_hopper_car_type_2"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
-            "randomised_farm_product_hopper_car",
+            "farm_product_hopper_car_randomised",
         ]
 
 
@@ -4851,7 +4852,7 @@ class FarmProductsHopperCarRandomisedConsist(
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_farm_product_hopper_car"
+        self.base_id = "farm_product_hopper_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -4894,7 +4895,7 @@ class FlatCarBulkheadConsistBase(FlatCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_bulkhead_flat_car",
+            "bulkhead_flat_car_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -4955,7 +4956,7 @@ class FlatCarBulkheadRandomisedConsist(
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_bulkhead_flat_car"
+        self.base_id = "bulkhead_flat_car_randomised"
         super().__init__(**kwargs)
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
@@ -4994,9 +4995,9 @@ class FlatCarDropendConsist(FlatCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_mixed_metal_product_car",
-            "randomised_uncovered_metal_product_car",
-            "randomised_flat_car",
+            "metal_product_car_mixed_randomised",
+            "metal_product_car_uncovered_randomised",
+            "flat_car_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5040,10 +5041,10 @@ class FlatCarDropsideConsist(FlatCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_mixed_piece_goods_car",
-            "randomised_mixed_metal_product_car",
-            "randomised_uncovered_metal_product_car",
-            "randomised_flat_car",
+            "piece_goods_car_mixed_randomised",
+            "metal_product_car_mixed_randomised",
+            "metal_product_car_uncovered_randomised",
+            "flat_car_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5083,7 +5084,7 @@ class FlatCarConsist(FlatCarConsistBase):
         self.base_id = "flat_car"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
-            "randomised_flat_car",
+            "flat_car_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5163,8 +5164,8 @@ class FlatCarMillConsistBase(FlatCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_mill_flat_car",
-            "randomised_uncovered_metal_product_car",
+            "mill_flat_car_randomised",
+            "metal_product_car_uncovered_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5223,7 +5224,7 @@ class FlatCarMillRandomisedConsist(RandomisedConsistMixin, FlatCarMillConsistBas
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_mill_flat_car"
+        self.base_id = "mill_flat_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -5256,7 +5257,7 @@ class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_flat_car"
+        self.base_id = "flat_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5420,8 +5421,8 @@ class HopperCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self.randomised_candidate_groups = [
-            "randomised_hopper_bulk_car",
-            "randomised_mixed_bulk_car",
+            "bulk_car_hopper_randomised",
+            "bulk_car_mixed_randomised",
         ]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
@@ -5484,8 +5485,8 @@ class HopperCarAggregateConsistType1(HopperCarAggregateConsistBase):
         self.base_id = "aggregate_hopper_car_type_1"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
-            "randomised_aggregate_hopper_car",
-            "randomised_hopper_bulk_car",
+            "aggregate_hopper_car_randomised",
+            "bulk_car_hopper_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -5518,8 +5519,8 @@ class HopperCarAggregateConsistType2(HopperCarAggregateConsistBase):
         self.base_id = "aggregate_hopper_car_type_2"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
-            "randomised_aggregate_hopper_car",
-            "randomised_hopper_bulk_car",
+            "aggregate_hopper_car_randomised",
+            "bulk_car_hopper_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -5557,8 +5558,8 @@ class HopperCarAggregateConsistType3(HopperCarAggregateConsistBase):
         self.base_id = "aggregate_hopper_car_type_3"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
-            "randomised_aggregate_hopper_car",
-            "randomised_hopper_bulk_car",
+            "aggregate_hopper_car_randomised",
+            "bulk_car_hopper_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -5595,7 +5596,7 @@ class HopperCarAggregateRandomisedConsist(
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_aggregate_hopper_car"
+        self.base_id = "aggregate_hopper_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5644,9 +5645,9 @@ class HopperCarConsist(HopperCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
         self.randomised_candidate_groups = [
-            "randomised_hopper_car",
-            "randomised_hopper_bulk_car",
-            "randomised_mixed_bulk_car",
+            "hopper_car_randomised",
+            "bulk_car_hopper_randomised",
+            "bulk_car_mixed_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5663,9 +5664,9 @@ class HopperCarHighSideConsist(HopperCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_ore"]
         self.randomised_candidate_groups = [
-            "randomised_hopper_car",
-            "randomised_hopper_bulk_car",
-            "randomised_mixed_bulk_car",
+            "hopper_car_randomised",
+            "bulk_car_hopper_randomised",
+            "bulk_car_mixed_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5735,7 +5736,7 @@ class HopperCarRandomisedConsist(RandomisedConsistMixin, HopperCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_hopper_car"
+        self.base_id = "hopper_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5776,7 +5777,7 @@ class HopperCarRockConsist(HopperCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
         # don't include rock hoppers in randomised lists, they don't look good
-        self.randomised_candidate_groups = ["randomised_hopper_bulk_car"]
+        self.randomised_candidate_groups = ["bulk_car_hopper_randomised"]
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
@@ -6377,8 +6378,8 @@ class OpenCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
         self.randomised_candidate_groups = [
-            "randomised_open_car",
-            "randomised_mixed_piece_goods_car",
+            "open_car_randomised",
+            "piece_goods_car_mixed_randomised",
         ]
 
 
@@ -6436,7 +6437,7 @@ class OpenCarHoodConsist(OpenCarConsistBase):
         self.default_cargos.extend(polar_fox.constants.default_cargos["open"])
         self.randomised_candidate_groups.extend(
             [
-                "randomised_covered_piece_goods_car",
+                "piece_goods_car_covered_randomised",
             ]
         )
         # buyable variant groups are created post-hoc and can group across subclasses
@@ -6524,9 +6525,9 @@ class OpenCarMillConsist(OpenCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         self.randomised_candidate_groups = [
-            "randomised_mixed_piece_goods_car",
-            "randomised_mixed_metal_product_car",
-            "randomised_uncovered_metal_product_car",
+            "piece_goods_car_mixed_randomised",
+            "metal_product_car_mixed_randomised",
+            "metal_product_car_uncovered_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -6569,7 +6570,7 @@ class OpenCarRandomisedConsist(RandomisedConsistMixin, OpenCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_open_car"
+        self.base_id = "open_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7186,7 +7187,7 @@ class PieceGoodsCarRandomisedConsistBase(RandomisedConsistMixin, CarConsist):
         )
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_randomised_piece_goods_cars"
+        self.use_named_buyable_variant_group = "wagon_group_piece_goods_cars_randomised"
         self._joker = True
 
 
@@ -7196,7 +7197,7 @@ class PieceGoodsCarCoveredRandomisedConsist(PieceGoodsCarRandomisedConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_covered_piece_goods_car"
+        self.base_id = "piece_goods_car_covered_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -7224,7 +7225,7 @@ class PieceGoodsCarMixedRandomisedConsist(PieceGoodsCarRandomisedConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_mixed_piece_goods_car"
+        self.base_id = "piece_goods_car_mixed_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -7251,7 +7252,7 @@ class PieceGoodsCarManufacturingPartsRandomisedConsist(
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_manufacturing_parts_piece_goods_car"
+        self.base_id = "piece_goods_car_manufacturing_parts_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -7287,7 +7288,7 @@ class ReeferCarConsistBase(CarConsist):
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["reefer"]
-        self.randomised_candidate_groups = ["randomised_reefer_car"]
+        self.randomised_candidate_groups = ["reefer_car_randomised"]
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
         self._intro_year_days_offset = (
@@ -7342,7 +7343,7 @@ class ReeferCarRandomisedConsist(RandomisedConsistMixin, ReeferCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_reefer_car"
+        self.base_id = "reefer_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7446,7 +7447,7 @@ class SiloCarConsistType1(SiloCarConsistBase):
         self.base_id = "silo_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
-        self.randomised_candidate_groups = ["randomised_silo_car"]
+        self.randomised_candidate_groups = ["silo_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_silo_cars"
@@ -7461,7 +7462,7 @@ class SiloCarConsistType2(SiloCarConsistBase):
         self.base_id = "silo_car_type_2"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
-        self.randomised_candidate_groups = ["randomised_silo_car"]
+        self.randomised_candidate_groups = ["silo_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_silo_cars"
@@ -7476,7 +7477,7 @@ class SiloCarConsistType3(SiloCarConsistBase):
         self.base_id = "silo_car_type_3"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
-        self.randomised_candidate_groups = ["randomised_silo_car"]
+        self.randomised_candidate_groups = ["silo_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_silo_cars"
@@ -7488,7 +7489,7 @@ class SiloCarRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_silo_car"
+        self.base_id = "silo_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7531,7 +7532,7 @@ class SiloCarCementConsistType1(SiloCarConsistBase):
         self.base_id = "cement_silo_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
-        self.randomised_candidate_groups = ["randomised_cement_silo_car"]
+        self.randomised_candidate_groups = ["cement_silo_car_randomised"]
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7560,7 +7561,7 @@ class SiloCarCementConsistType2(SiloCarConsistBase):
         self.base_id = "cement_silo_car_type_2"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
-        self.randomised_candidate_groups = ["randomised_cement_silo_car"]
+        self.randomised_candidate_groups = ["cement_silo_car_randomised"]
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7589,7 +7590,7 @@ class SiloCarCementConsistType3(SiloCarConsistBase):
         self.base_id = "cement_silo_car_type_3"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
-        self.randomised_candidate_groups = ["randomised_cement_silo_car"]
+        self.randomised_candidate_groups = ["cement_silo_car_randomised"]
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7615,7 +7616,7 @@ class SiloCarCementRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase)
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_cement_silo_car"
+        self.base_id = "cement_silo_car_randomised"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
         self._joker = True
@@ -7646,10 +7647,10 @@ class SlidingRoofCarConsist(BoxCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_covered_piece_goods_car",
-            "randomised_mixed_piece_goods_car",
-            "randomised_covered_metal_product_car",
-            "randomised_mixed_metal_product_car",
+            "piece_goods_car_covered_randomised",
+            "piece_goods_car_mixed_randomised",
+            "metal_product_car_covered_randomised",
+            "metal_product_car_mixed_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -7706,7 +7707,7 @@ class SlidingRoofCarConsistHiCube(BoxCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_manufacturing_parts_piece_goods_car",
+            "piece_goods_car_manufacturing_parts_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -7892,8 +7893,8 @@ class TankCarAcidConsistBase(TankCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
         self.randomised_candidate_groups = [
-            "randomised_chemical_tank_car",
-            "randomised_acid_tank_car",
+            "chemical_tank_car_randomised",
+            "acid_tank_car_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -8015,7 +8016,7 @@ class TankCarAcidRandomisedConsist(RandomisedConsistMixin, TankCarAcidConsistBas
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_acid_tank_car"
+        self.base_id = "acid_tank_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -8065,7 +8066,7 @@ class TankCarChemicalRandomisedConsist(RandomisedConsistMixin, TankCarConsistBas
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "randomised_chemical_tank_car"
+        self.base_id = "chemical_tank_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -8098,7 +8099,7 @@ class TankCarProductConsist(TankCarConsistBase):
         self.base_id = "product_tank_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
-        self.randomised_candidate_groups = ["randomised_chemical_tank_car"]
+        self.randomised_candidate_groups = ["chemical_tank_car_randomised"]
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -8159,10 +8160,10 @@ class TarpaulinCarConsist(BoxCarConsistBase):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
-            "randomised_covered_piece_goods_car",
-            "randomised_mixed_piece_goods_car",
-            "randomised_covered_metal_product_car",
-            "randomised_mixed_metal_product_car",
+            "metal_product_car_covered_randomised",
+            "piece_goods_car_covered_randomised",
+            "metal_product_car_mixed_randomised",
+            "piece_goods_car_mixed_randomised",
         ]
         self._joker = True
         # Graphics configuration
