@@ -280,11 +280,14 @@ base = "Bolster Wagons"
 [STR_WAGON_GROUP_BOX_CARS]
 base = "Box Vans"
 
+[STR_WAGON_GROUP_BOX_CARS_RANDOMISED]
+base = "Box Vans"
+
 [STR_WAGON_GROUP_BULKHEAD_FLAT_CARS]
 base = "Bulkhead Flat Wagons"
 
-[STR_WAGON_GROUP_DOUBLE_DECK_AUTOMOBILE_CARS]
-base = "Car Transporters"
+[STR_WAGON_GROUP_BULK_CARS_RANDOMISED]
+base = "Bulk Cargo Combos"
 
 [STR_WAGON_GROUP_CEMENT_SILO_CARS]
 base = "Cement Wagons"
@@ -295,6 +298,9 @@ base = "Chemical Covered Hoppers"
 [STR_WAGON_GROUP_CHEMICAL_SWING_ROOF_HOPPER_CARS]
 base = "Chemical Swing Roof Hoppers"
 
+[STR_WAGON_GROUP_CHEMICAL_TANK_CARS_RANDOMISED]
+base = "Chemical Tanker Combos"
+
 [STR_WAGON_GROUP_COIL_BUGGY_CARS]
 base = "Coil Buggies"
 
@@ -304,10 +310,19 @@ base = "Coil Carriers"
 [STR_WAGON_GROUP_COVERED_HOPPER_CARS]
 base = "Covered Hoppers"
 
+[STR_WAGON_GROUP_COVERED_HOPPER_CARS_RANDOMISED]
+base = "Covered Hoppers"
+
+[STR_WAGON_GROUP_DOUBLE_DECK_AUTOMOBILE_CARS]
+base = "Car Transporters"
+
 [STR_WAGON_GROUP_DROPSIDE_FLAT_CARS]
 base = "Drop Side Flat Wagons"
 
 [STR_WAGON_GROUP_DUMP_CARS]
+base = "Mineral Wagons"
+
+[STR_WAGON_GROUP_DUMP_CARS_RANDOMISED]
 base = "Mineral Wagons"
 
 [STR_WAGON_GROUP_EXPRESS_CARS]
@@ -318,6 +333,9 @@ base = "Farm Product Wagons"
 
 [STR_WAGON_GROUP_FLAT_CARS]
 base = "Flat Wagons"
+
+[STR_WAGON_GROUP_FLAT_CARS_RANDOMISED]
+base = "Flatbed Wagons"
 
 [STR_WAGON_GROUP_FOOD_TANK_CARS]
 base = "Food Tankers"
@@ -335,6 +353,9 @@ base = "High Speed Mail Vans"
 base = "High Speed Coaches"
 
 [STR_WAGON_GROUP_HOPPER_CARS]
+base = "Hoppers"
+
+[STR_WAGON_GROUP_HOPPER_CARS_RANDOMISED]
 base = "Hoppers"
 
 [STR_WAGON_GROUP_INGOT_CARS]
@@ -356,6 +377,9 @@ base = "Mail Vans"
 [STR_WAGON_GROUP_MERCHANDISE_BOX_CARS]
 base = "Merchandise Vans"
 
+[STR_WAGON_GROUP_METAL_PRODUCT_CARS_RANDOMISED]
+base = "Metal Cargo Combos"
+
 [STR_WAGON_GROUP_MGR_HOPPER_CARS]
 base = "MGR Hoppers"
 
@@ -365,8 +389,16 @@ base = "Mill Flat Wagons"
 [STR_WAGON_GROUP_MILL_OPEN_CARS]
 base = "Mill Open Wagons"
 
+[STR_WAGON_GROUP_MORE]
+# special case
+base = "More..."
+
 [STR_WAGON_GROUP_OPEN_CARS]
 base = "Open Wagons"
+
+[STR_WAGON_GROUP_OPEN_CARS_RANDOMISED]
+base = "Open Wagons"
+moose = "Gondolas"
 
 [STR_WAGON_GROUP_PANORAMIC_CARS]
 base = "Panoramic Coaches"
@@ -374,42 +406,14 @@ base = "Panoramic Coaches"
 [STR_WAGON_GROUP_PASSENGER_CARS]
 base = "Passenger Coaches"
 
+[STR_WAGON_GROUP_PIECE_GOODS_CARS_RANDOMISED]
+base = "Goods Cargo Combos"
+
 [STR_WAGON_GROUP_PRESSURE_TANK_CARS]
 base = "Pressurised Tankers"
 
 [STR_WAGON_GROUP_PRODUCT_TANK_CARS]
 base = "Product Tankers"
-
-[STR_WAGON_GROUP_BOX_CARS_RANDOMISED]
-base = "Box Vans"
-
-[STR_WAGON_GROUP_BULK_CARS_RANDOMISED]
-base = "Bulk Cargo Combos"
-
-[STR_WAGON_GROUP_CHEMICAL_TANK_CARS_RANDOMISED]
-base = "Chemical Tanker Combos"
-
-[STR_WAGON_GROUP_COVERED_HOPPER_CARS_RANDOMISED]
-base = "Covered Hoppers"
-
-[STR_WAGON_GROUP_DUMP_CARS_RANDOMISED]
-base = "Mineral Wagons"
-
-[STR_WAGON_GROUP_FLAT_CARS_RANDOMISED]
-base = "Flatbed Wagons"
-
-[STR_WAGON_GROUP_HOPPER_CARS_RANDOMISED]
-base = "Hoppers"
-
-[STR_WAGON_GROUP_METAL_PRODUCT_CARS_RANDOMISED]
-base = "Metal Cargo Combos"
-
-[STR_WAGON_GROUP_OPEN_CARS_RANDOMISED]
-base = "Open Wagons"
-moose = "Gondolas"
-
-[STR_WAGON_GROUP_PIECE_GOODS_CARS_RANDOMISED]
-base = "Goods Cargo Combos"
 
 [STR_WAGON_GROUP_REEFER_CARS]
 base = "Refrigerated Vans"
@@ -462,16 +466,18 @@ base = "Torpedo Wagons"
 [STR_WAGON_GROUP_VEHICLE_TRANSPORTER_CARS]
 base = "Vehicle Transporters"
 
-[STR_WAGON_GROUP_MORE]
-# special case
-base = "More..."
-
 # wagon class suffixes, as of Jan 2019 these are switched from en-us to en-gb; !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+[STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED]
+base = "Acid Tanker"
+
 [STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_1]
 base = "Acid Tanker"
 
 [STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2]
 base = "Acid Tanker"
+
+[STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_RANDOMISED]
+base = "Aggregate Dump Wagon"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_1]
 base = "Aggregate Dump Wagon"
@@ -491,6 +497,9 @@ base = "Aggregate Dump Wagon"
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_6]
 base = "Aggregate Dump Wagon"
 
+[STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_RANDOMISED]
+base = "Aggregate Hopper"
+
 [STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_TYPE_1]
 base = "Aggregate Hopper"
 
@@ -506,17 +515,29 @@ base = "Alignment Van"
 [STR_NAME_SUFFIX_AUTOMOBILE_CAR]
 base = "Vehicle Transporter"
 
+[STR_NAME_SUFFIX_BOLSTER_CAR]
+base = "Bolster Wagon"
+
+[STR_NAME_SUFFIX_BOX_CAR_RANDOMISED]
+base = "Box Van"
+
 [STR_NAME_SUFFIX_BOX_CAR_TYPE_1]
 base = "Box Van"
 
 [STR_NAME_SUFFIX_BOX_CAR_TYPE_2]
 base = "Box Van"
 
-[STR_NAME_SUFFIX_COIL_BUGGY_CAR]
-base = "Coil Buggies"
+[STR_NAME_SUFFIX_BULK_CAR_BOX_RANDOMISED]
+base = "Open Bulk Wagon"
 
-[STR_NAME_SUFFIX_BOLSTER_CAR]
-base = "Bolster Wagon"
+[STR_NAME_SUFFIX_BULK_CAR_HOPPER_RANDOMISED]
+base = "Hopper Bulk Wagon"
+
+[STR_NAME_SUFFIX_BULK_CAR_MIXED_RANDOMISED]
+base = "Mixed Bulk Wagon"
+
+[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_RANDOMISED]
+base = "Bulkhead Flat Wagon"
 
 [STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_1]
 base = "Bulkhead Flat Wagon"
@@ -530,6 +551,9 @@ base = "Brake Van"
 [STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR]
 base = "Carbon Black Hopper"
 
+[STR_NAME_SUFFIX_CEMENT_SILO_CAR_RANDOMISED]
+base = "Cement Wagon"
+
 [STR_NAME_SUFFIX_CEMENT_SILO_CAR_TYPE_1]
 base = "Cement Wagon"
 
@@ -542,8 +566,17 @@ base = "Cement Wagon"
 [STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR]
 base = "Chemical Covered Hopper"
 
+[STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR_RANDOMISED]
+base = "Chemical Covered Hopper"
+
 [STR_NAME_SUFFIX_CHEMICAL_SWING_ROOF_HOPPER_CAR]
 base = "Chemical Swing Roof Hopper"
+
+[STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED]
+base = "Chemical Tanker"
+
+[STR_NAME_SUFFIX_COIL_BUGGY_CAR]
+base = "Coil Buggies"
 
 [STR_NAME_SUFFIX_COIL_CAR_COVERED]
 base = "Covered Coil Carrier"
@@ -560,11 +593,17 @@ base = "Coil Carrier"
 [STR_NAME_SUFFIX_COVERED_HOPPER_CAR]
 base = "Covered Hopper"
 
+[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_RANDOMISED]
+base = "Covered Hopper"
+
 [STR_NAME_SUFFIX_CRYO_TANK_CAR]
 base = "Cryo Tanker"
 
 [STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
 base = "Curtain Side Box Van"
+
+[STR_NAME_SUFFIX_DEDICATED_COIL_CAR_RANDOMISED]
+base = "Coil Carrier"
 
 [STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR]
 base = "Car Transporter"
@@ -584,6 +623,9 @@ base = "Mineral Wagon"
 [STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
 base = "High Side Mineral Wagon"
 
+[STR_NAME_SUFFIX_DUMP_CAR_RANDOMISED]
+base = "Mineral Wagon"
+
 [STR_NAME_SUFFIX_ENCLOSED_AUTOMOBILE_CAR]
 base = "Enclosed Vehicle Transporter"
 
@@ -596,6 +638,9 @@ base = "Express Container Wagon"
 [STR_NAME_SUFFIX_FARM_PRODUCT_BOX_CAR_TYPE_1]
 base = "Farm Product Van"
 
+[STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_RANDOMISED]
+base = "Farm Product Hopper"
+
 [STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_TYPE_1]
 base = "Farm Product Hopper"
 
@@ -605,6 +650,9 @@ base = "Farm Product Hopper"
 [STR_NAME_SUFFIX_FLAT_CAR]
 base = "Flat Wagon"
 
+[STR_NAME_SUFFIX_FLAT_CAR_RANDOMISED]
+base = "Flatbed Wagon"
+
 [STR_NAME_SUFFIX_FOOD_TANK_CAR]
 base = "Food Tanker"
 
@@ -612,19 +660,19 @@ base = "Food Tanker"
 base = "Goods Van"
 
 [STR_NAME_SUFFIX_HEAVY_DUTY_DUMP_CAR]
-base= "Heavy Duty Bulk Wagon"
+base = "Heavy Duty Bulk Wagon"
 
 [STR_NAME_SUFFIX_HEAVY_DUTY_FLAT_CAR]
-base= "Heavy Duty Flat Wagon"
+base = "Heavy Duty Flat Wagon"
 
 [STR_NAME_SUFFIX_HIGH_END_OPEN_CAR]
 base = "Open Wagon"
 
 [STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR]
-base= "High Speed Mail Van"
+base = "High Speed Mail Van"
 
 [STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR]
-base= "High Speed Coach"
+base = "High Speed Coach"
 
 [STR_NAME_SUFFIX_HOOD_OPEN_CAR]
 base = "Hood Open Wagon"
@@ -634,6 +682,9 @@ base = "Hopper"
 
 [STR_NAME_SUFFIX_HOPPER_CAR_HIGH_SIDE]
 base = "High Side Hopper"
+
+[STR_NAME_SUFFIX_HOPPER_CAR_RANDOMISED]
+base = "Hopper"
 
 [STR_NAME_SUFFIX_HST_MAIL_CAR]
 base = "Mail Van"
@@ -668,6 +719,15 @@ base = "Mail Van"
 [STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR]
 base = "Merchandise Van"
 
+[STR_NAME_SUFFIX_METAL_PRODUCT_CAR_COVERED_RANDOMISED]
+base = "Covered Metal Product Wagon"
+
+[STR_NAME_SUFFIX_METAL_PRODUCT_CAR_MIXED_RANDOMISED]
+base = "Mixed Metal Product Wagon"
+
+[STR_NAME_SUFFIX_METAL_PRODUCT_CAR_UNCOVERED_RANDOMISED]
+base = "Uncovered Metal Product Wagon"
+
 [STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR]
 base = "Mineral Covered Hopper"
 
@@ -676,6 +736,9 @@ base = "MGR Hopper"
 
 [STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR]
 base = "MGR Hood Hopper"
+
+[STR_NAME_SUFFIX_MILL_FLAT_CAR_RANDOMISED]
+base = "Mill Flat Wagon"
 
 [STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_1]
 base = "Mill Flat Wagon"
@@ -687,6 +750,9 @@ base = "Mill Flat Wagon"
 base = "Mill Open Wagon"
 
 [STR_NAME_SUFFIX_OPEN_CAR]
+base = "Open Wagon"
+
+[STR_NAME_SUFFIX_OPEN_CAR_RANDOMISED]
 base = "Open Wagon"
 
 [STR_NAME_SUFFIX_ORE_DUMP_CAR]
@@ -701,6 +767,15 @@ base = "Passenger Coach"
 [STR_NAME_SUFFIX_PEAT_CAR]
 base = "Peat Wagons"
 
+[STR_NAME_SUFFIX_PIECE_GOODS_CAR_COVERED_RANDOMISED]
+base = "Covered Goods Wagon"
+
+[STR_NAME_SUFFIX_PIECE_GOODS_CAR_MANUFACTURING_PARTS_RANDOMISED]
+base = "Parts Cargo Wagon"
+
+[STR_NAME_SUFFIX_PIECE_GOODS_CAR_MIXED_RANDOMISED]
+base = "Mixed Goods Wagon"
+
 [STR_NAME_SUFFIX_PRESSURE_TANK_CAR]
 base = "Pressure Tanker"
 
@@ -713,86 +788,8 @@ base = "Railbus Trailer"
 [STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR]
 base = "Railcar Trailer"
 
-[STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED]
-base = "Acid Tanker"
-
-[STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_RANDOMISED]
-base = "Aggregate Hopper"
-
-[STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_RANDOMISED]
-base = "Aggregate Dump Wagon"
-
-[STR_NAME_SUFFIX_BOX_CAR_RANDOMISED]
-base = "Box Van"
-
-[STR_NAME_SUFFIX_BULK_CAR_BOX_RANDOMISED]
-base = "Open Bulk Wagon"
-
-[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_RANDOMISED]
-base = "Bulkhead Flat Wagon"
-
-[STR_NAME_SUFFIX_CEMENT_SILO_CAR_RANDOMISED]
-base = "Cement Wagon"
-
-[STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR_RANDOMISED]
-base = "Chemical Covered Hopper"
-
-[STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED]
-base = "Chemical Tanker"
-
-[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_RANDOMISED]
-base = "Covered Hopper"
-
-[STR_NAME_SUFFIX_METAL_PRODUCT_CAR_COVERED_RANDOMISED]
-base = "Covered Metal Product Wagon"
-
-[STR_NAME_SUFFIX_PIECE_GOODS_CAR_COVERED_RANDOMISED]
-base = "Covered Goods Wagon"
-
-[STR_NAME_SUFFIX_DEDICATED_COIL_CAR_RANDOMISED]
-base = "Coil Carrier"
-
-[STR_NAME_SUFFIX_DUMP_CAR_RANDOMISED]
-base = "Mineral Wagon"
-
-[STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_RANDOMISED]
-base = "Farm Product Hopper"
-
-[STR_NAME_SUFFIX_FLAT_CAR_RANDOMISED]
-base = "Flatbed Wagon"
-
-[STR_NAME_SUFFIX_HOPPER_CAR_RANDOMISED]
-base = "Hopper"
-
-[STR_NAME_SUFFIX_BULK_CAR_HOPPER_RANDOMISED]
-base = "Hopper Bulk Wagon"
-
-[STR_NAME_SUFFIX_MILL_FLAT_CAR_RANDOMISED]
-base = "Mill Flat Wagon"
-
-[STR_NAME_SUFFIX_BULK_CAR_MIXED_RANDOMISED]
-base = "Mixed Bulk Wagon"
-
-[STR_NAME_SUFFIX_METAL_PRODUCT_CAR_MIXED_RANDOMISED]
-base = "Mixed Metal Product Wagon"
-
-[STR_NAME_SUFFIX_OPEN_CAR_RANDOMISED]
-base = "Open Wagon"
-
-[STR_NAME_SUFFIX_PIECE_GOODS_CAR_MIXED_RANDOMISED]
-base = "Mixed Goods Wagon"
-
-[STR_NAME_SUFFIX_PIECE_GOODS_CAR_MANUFACTURING_PARTS_RANDOMISED]
-base = "Parts Cargo Wagon"
-
 [STR_NAME_SUFFIX_REEFER_CAR_RANDOMISED]
 base = "Refrigerated Van"
-
-[STR_NAME_SUFFIX_SILO_CAR_RANDOMISED]
-base = "Silo Wagon"
-
-[STR_NAME_SUFFIX_METAL_PRODUCT_CAR_UNCOVERED_RANDOMISED]
-base = "Uncovered Metal Product Wagon"
 
 [STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Refrigerated Van"
@@ -808,6 +805,12 @@ base = "Rock Hopper"
 
 [STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR]
 base = "Roller Roof Hopper"
+
+[STR_NAME_SUFFIX_SCRAP_METAL_CAR]
+base = "Scrap Wagon"
+
+[STR_NAME_SUFFIX_SILO_CAR_RANDOMISED]
+base = "Silo Wagon"
 
 [STR_NAME_SUFFIX_SILO_CAR_TYPE_1]
 base = "Silo Wagon"
@@ -835,9 +838,6 @@ base = "Sliding Wall Van"
 
 [STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_2]
 base = "Sliding Wall Van"
-
-[STR_NAME_SUFFIX_SCRAP_METAL_CAR]
-base = "Scrap Wagon"
 
 [STR_NAME_SUFFIX_SUBURBAN_PASSENGER_CAR]
 base = "Suburban Coach"
