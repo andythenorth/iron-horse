@@ -27,8 +27,8 @@ class Roster(object):
         self.str_grf_name = kwargs.get("str_grf_name")
         # engine_module_names only used once at __init__ time, it's a list of module names, not the actual consists
         self.engine_module_names = kwargs.get("engine_module_names")
-        self.wagon_modules_provided_by_other_rosters = kwargs.get(
-            "wagon_modules_provided_by_other_rosters"
+        self.wagon_module_names_with_roster_ids = kwargs.get(
+            "wagon_module_names_with_roster_ids"
         )
         self.engine_consists = []
         self.wagon_consists = []
@@ -126,17 +126,26 @@ class Roster(object):
             key = (track_type, gen, length, power)
 
             if key not in randomised_wagons_by_track_gen_length_power:
-                randomised_wagons_by_track_gen_length_power[key] = {"candidates": [], "randomised": []}
+                randomised_wagons_by_track_gen_length_power[key] = {
+                    "candidates": [],
+                    "randomised": [],
+                }
 
             if consist.is_randomised_wagon_type:
-                randomised_wagons_by_track_gen_length_power[key]["randomised"].append(consist)
+                randomised_wagons_by_track_gen_length_power[key]["randomised"].append(
+                    consist
+                )
             else:
-                randomised_wagons_by_track_gen_length_power[key]["candidates"].append(consist)
+                randomised_wagons_by_track_gen_length_power[key]["candidates"].append(
+                    consist
+                )
 
         # Process each group based on the combined key
         for key in sorted(randomised_wagons_by_track_gen_length_power.keys()):
             candidates = randomised_wagons_by_track_gen_length_power[key]["candidates"]
-            randomised_wagons = randomised_wagons_by_track_gen_length_power[key]["randomised"]
+            randomised_wagons = randomised_wagons_by_track_gen_length_power[key][
+                "randomised"
+            ]
 
             # Append candidates first
             result.extend(candidates)
@@ -145,7 +154,6 @@ class Roster(object):
             result.extend(randomised_wagons)
 
         return result
-
 
     def get_wagon_randomisation_candidates(self, buyable_variant):
         randomisation_consist = buyable_variant.consist
@@ -337,49 +345,28 @@ class Roster(object):
             # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
             for cloned_consist in consist.clones:
                 self.engine_consists.append(cloned_consist)
-        # wagons for this roster
-        self.init_wagon_modules(self.id, global_constants.wagon_module_names)
-        # wagons reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module
+        self.init_wagon_modules()
+
+    def init_wagon_modules(self):
+        # wagons can be optionally reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module
         # this is not intended to be a common case, it's for things like torpedo cars where redrawing and redefining them for all rosters is pointless
         # this may cause compile failures when refactoring stuff due to cross-roster dependencies being broken, if so comment the calls out
-        for (
-            roster_id_providing_modules,
-            wagon_module_names,
-        ) in self.wagon_modules_provided_by_other_rosters.items():
-            # apply buy menu order to wagon_modules_provided_by_other_rosters (rather than having to manually keep the lists in sync)
-            wagon_module_names_in_buy_menu_order = []
-            for wagon_module_name in global_constants.wagon_module_names:
-                if wagon_module_name in wagon_module_names:
-                    wagon_module_names_in_buy_menu_order.append(wagon_module_name)
-            self.init_wagon_modules(
-                roster_id_providing_modules, wagon_module_names_in_buy_menu_order
-            )
-
-    def init_wagon_modules(self, roster_id_of_module, wagon_module_names):
-        package_name = "vehicles." + roster_id_of_module
-        for wagon_module_name_stem in wagon_module_names:
-            wagon_module_name = wagon_module_name_stem + "_" + roster_id_of_module
-            try:
-                wagon_module = importlib.import_module(
-                    "." + wagon_module_name, package_name
-                )
-                wagon_module.main(
-                    self.id, roster_id_providing_module=roster_id_of_module
-                )
-            except ModuleNotFoundError:
-                # the module might be provided from another roster, which is fine
-                module_provided_by_another_roster = False
-                for (
-                    wagon_module_names_from_another_roster
-                ) in self.wagon_modules_provided_by_other_rosters.values():
-                    if wagon_module_name_stem in wagon_module_names_from_another_roster:
-                        module_provided_by_another_roster = True
-                        break
-                # there was handling here to warn if a module was missing from a roster
-                # with a suppression mechanism based on empty module files
-                # but it was a TMWFTLB maintenance ovehead, so I removed it August 2024
-            except Exception:
-                raise
+        for wagon_module_name_stem in global_constants.wagon_module_name_stems:
+            if wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
+                roster_id_providing_module = self.wagon_module_names_with_roster_ids[wagon_module_name_stem]
+                wagon_module_name = wagon_module_name_stem + "_" + roster_id_providing_module
+                package_name = "vehicles." + roster_id_providing_module
+                try:
+                    wagon_module = importlib.import_module(
+                        "." + wagon_module_name, package_name
+                    )
+                    wagon_module.main(
+                        self.id, roster_id_providing_module=roster_id_providing_module
+                    )
+                except ModuleNotFoundError:
+                    raise ModuleNotFoundError(wagon_module_name + " in " + package_name + " as defined by " + self.id + ".wagon_module_names_with_roster_ids")
+                except Exception:
+                    raise
 
     def add_buyable_variant_groups(self):
         # creating groups has to happen after *all* consists are inited
@@ -424,9 +411,20 @@ class Roster(object):
                         parent_consist.use_named_buyable_variant_group
                     ]
                     candidate_parent_group = None
-                    if base_id_for_target_parent_consist not in self.wagon_consists_by_base_id:
-                        error_message = base_id_for_target_parent_consist + " not found in roster " + self.id
-                        error_message += "\n look in " + self.id + ".wagon_modules_provided_by_other_rosters as the module name may be incorrect there"
+                    if (
+                        base_id_for_target_parent_consist
+                        not in self.wagon_consists_by_base_id
+                    ):
+                        error_message = (
+                            base_id_for_target_parent_consist
+                            + " not found in roster "
+                            + self.id
+                        )
+                        error_message += (
+                            "\n look in "
+                            + self.id
+                            + ".wagon_module_names_with_roster_ids as the module name may be incorrect there"
+                        )
                         raise BaseException(error_message)
                     for consist in self.wagon_consists_by_base_id[
                         base_id_for_target_parent_consist

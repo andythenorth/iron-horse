@@ -1,7 +1,7 @@
 from collections import OrderedDict
 
-# list in buy menu order
-wagon_module_names = [
+# in buy menu order
+wagon_module_name_stems = [
     # """
     # # only comment in if needed for debugging
     # "alignment_cars",

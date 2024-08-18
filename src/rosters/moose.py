@@ -42,7 +42,10 @@ engine_module_names = [
 ]
 
 # these can be alphabetised, the buy menu order is enforced in global constants
-wagon_modules_provided_by_other_rosters = {}
+# these can delegate to another module for reuse of wagons; this is not a common case, but used for things like torpedo cars
+# explicit wagon module lists per roster are better;
+# implicit modules lists were tried (just using global_constants list and allowing failing imports), but was no less maintenance, and was faff
+wagon_module_names_with_roster_ids = {}
 
 
 def main():
@@ -196,5 +199,5 @@ def main():
             ],
         },
         engine_module_names=engine_module_names,
-        wagon_modules_provided_by_other_rosters=wagon_modules_provided_by_other_rosters,
+        wagon_module_names_with_roster_ids=wagon_module_names_with_roster_ids,
     )

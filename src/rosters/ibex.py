@@ -137,37 +137,38 @@ engine_module_names = [
 ]
 
 # these can be alphabetised, the buy menu order is enforced in global constants
-wagon_modules_provided_by_other_rosters = {
-    "pony": [
-        "acid_tank_cars",
-        "carbon_black_hopper_cars",
-        "cement_silo_cars",
-        "coil_covered_cars_asymmetric",
-        "cryo_tank_cars",
-        "express_intermodal_cars",
-        "flat_cars",
-        "merchandise_box_cars",
-        "heavy_duty_dump_cars",
-        "heavy_duty_flat_cars",
-        "ingot_cars",
-        "intermodal_cars",
-        "kaolin_hopper_cars",
-        "log_cars",
-        "ore_dump_cars",
-        "pressure_tank_cars",
-        "product_tank_cars",
-        "reefer_cars_type_1",
-        "reefer_cars_type_2",
-        "silo_cars",
-        "slag_ladle_cars",
-        "sliding_roof_cars",
-        "sliding_wall_cars_type_1",
-        "sliding_wall_cars_type_2",
-        "sulphur_tank_cars",
-        "tank_cars",
-        "tarpaulin_cars",
-        "torpedo_cars",
-    ],
+# these can delegate to another module for reuse of wagons; this is not a common case, but used for things like torpedo cars
+# explicit wagon module lists per roster are better;
+# implicit modules lists were tried (just using global_constants list and allowing failing imports), but was no less maintenance, and was faff
+wagon_module_names_with_roster_ids = {
+    "acid_tank_cars": "pony",
+    "carbon_black_hopper_cars": "pony",
+    "cement_silo_cars": "pony",
+    "coil_covered_cars_asymmetric": "pony",
+    "cryo_tank_cars": "pony",
+    "express_intermodal_cars": "pony",
+    "flat_cars": "pony",
+    "merchandise_box_cars": "pony",
+    "heavy_duty_dump_cars": "pony",
+    "heavy_duty_flat_cars": "pony",
+    "ingot_cars": "pony",
+    "intermodal_cars": "pony",
+    "kaolin_hopper_cars": "pony",
+    "log_cars": "pony",
+    "ore_dump_cars": "pony",
+    "pressure_tank_cars": "pony",
+    "product_tank_cars": "pony",
+    "reefer_cars_type_1": "pony",
+    "reefer_cars_type_2": "pony",
+    "silo_cars": "pony",
+    "slag_ladle_cars": "pony",
+    "sliding_roof_cars": "pony",
+    "sliding_wall_cars_type_1": "pony",
+    "sliding_wall_cars_type_2": "pony",
+    "sulphur_tank_cars": "pony",
+    "tank_cars": "pony",
+    "tarpaulin_cars": "pony",
+    "torpedo_cars": "pony",
 }
 
 
@@ -322,5 +323,5 @@ def main():
             ],
         },
         engine_module_names=engine_module_names,
-        wagon_modules_provided_by_other_rosters=wagon_modules_provided_by_other_rosters,
+        wagon_module_names_with_roster_ids=wagon_module_names_with_roster_ids,
     )
