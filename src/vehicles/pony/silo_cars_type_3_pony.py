@@ -1,71 +1,72 @@
-from train import SiloCarConsist, FreightCar
+from train import SiloCarConsistType3, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = SiloCarConsist(
+    consist = SiloCarConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=32720,
+        base_numeric_id=27990,
         gen=4,
         subtype="A",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = SiloCarConsist(
+    consist = SiloCarConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=17390,
+        base_numeric_id=28010,
         gen=4,
         subtype="B",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = SiloCarConsist(
+    consist = SiloCarConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=17430,
+        base_numeric_id=28030,
         gen=4,
         subtype="C",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
 
-    consist = SiloCarConsist(
+    consist = SiloCarConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=32660,
+        base_numeric_id=28050,
         gen=5,
         subtype="A",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
-    consist = SiloCarConsist(
+    consist = SiloCarConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=17410,
+        base_numeric_id=28070,
         gen=5,
         subtype="B",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hopppers_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_24px")
 
-    consist = SiloCarConsist(
+    consist = SiloCarConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=32680,
+        base_numeric_id=28090,
         gen=5,
         subtype="C",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hoppers_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
+

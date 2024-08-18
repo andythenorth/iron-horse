@@ -7437,13 +7437,13 @@ class SiloCarConsistBase(CarConsist):
         )
 
 
-class SiloCarConsist(SiloCarConsistBase):
+class SiloCarConsistType1(SiloCarConsistBase):
     """
     Standard silo car.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "silo_car"
+        self.base_id = "silo_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
         self.randomised_candidate_groups = ["randomised_silo_car"]
@@ -7452,13 +7452,28 @@ class SiloCarConsist(SiloCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_silo_cars"
 
 
-class SiloCarVBarrelConsist(SiloCarConsistBase):
+class SiloCarConsistType2(SiloCarConsistBase):
     """
     Silo car with V-shaped barrel.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "silo_car_v_barrel"
+        self.base_id = "silo_car_type_2"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
+        self.randomised_candidate_groups = ["randomised_silo_car"]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_silo_cars"
+
+
+class SiloCarConsistType3(SiloCarConsistBase):
+    """
+    Silo car with V-shaped barrel.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "silo_car_type_3"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
         self.randomised_candidate_groups = ["randomised_silo_car"]
