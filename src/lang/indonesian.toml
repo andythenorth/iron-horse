@@ -137,7 +137,7 @@ base = "Gerbong Terbuka"
 [STR_NAME_SUFFIX_PASSENGER_CAR]
 base = "Gerbong Penumpang"
 
-[STR_NAME_SUFFIX_DROPSIDE_FLAT_CAR]
+[STR_NAME_SUFFIX_DROP_SIDE_FLAT_CAR]
 base = "Gerbong Piring"
 
 [STR_NAME_SUFFIX_PRODUCT_TANK_CAR]

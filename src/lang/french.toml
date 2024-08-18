@@ -306,7 +306,7 @@ base = "Wagons-tombereaux"
 [STR_WAGON_GROUP_PASSENGER_CARS]
 base = "Voitures"
 
-[STR_WAGON_GROUP_DROPSIDE_FLAT_CARS]
+[STR_WAGON_GROUP_DROP_SIDE_FLAT_CARS]
 base = "Wagons porte-tôles"
 
 [STR_WAGON_GROUP_PRESSURE_TANK_CARS]
@@ -597,7 +597,7 @@ base = "Voiture"
 [STR_NAME_SUFFIX_PEAT_CAR]
 base = "Wagon à tourbe"
 
-[STR_NAME_SUFFIX_DROPSIDE_FLAT_CAR]
+[STR_NAME_SUFFIX_DROP_SIDE_FLAT_CAR]
 base = "Wagon porte-tôles"
 
 [STR_NAME_SUFFIX_PRESSURE_TANK_CAR]

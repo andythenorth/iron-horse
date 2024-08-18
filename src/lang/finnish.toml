@@ -80,7 +80,7 @@ base = "Laidallinen avovaunu"
 [STR_NAME_SUFFIX_PASSENGER_CAR]
 base = "Matkustajavaunu"
 
-[STR_NAME_SUFFIX_DROPSIDE_FLAT_CAR]
+[STR_NAME_SUFFIX_DROP_SIDE_FLAT_CAR]
 base = "Järeän tavaran vaunu"
 
 [STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]

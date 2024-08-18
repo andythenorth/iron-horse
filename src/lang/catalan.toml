@@ -138,7 +138,7 @@ base = "Cotxe obert"
 [STR_NAME_SUFFIX_PASSENGER_CAR]
 base = "Cotxe de passatge"
 
-[STR_NAME_SUFFIX_DROPSIDE_FLAT_CAR]
+[STR_NAME_SUFFIX_DROP_SIDE_FLAT_CAR]
 base = "Cotxe plater"
 
 [STR_NAME_SUFFIX_PRODUCT_TANK_CAR]
