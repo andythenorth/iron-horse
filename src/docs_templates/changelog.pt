@@ -3,12 +3,84 @@ Changelog
 
 
 ------------
+3.24.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.24.0.
+
+
+*Changes*
+
+- added liveries for
+    - Foxhound
+    - Griffon
+    - Phoenix
+    - Toaster
+    - Ultra Shoebox
+- added wagons
+    - Cement Wagon (straight tank version)
+    - Chemical Swing Roof Hopper
+    - Covered Coil Carrier (tarpaulin roof)
+    - Drop End Flat Wagon
+    - Drop Side Flat Wagon (replacing Plate Wagons)
+    - Mill Flat Wagons (replacing Bulkhead Flat Wagons)
+    - Mill Open Wagons
+    - randomised Acid Tankers
+    - randomised Chemical Covered Hoppers
+    - randomised Covered Goods Wagons
+    - randomised Covered Metal Product Wagons
+    - randomised Hopper Bulk Wagons
+    - randomised Mill Flat Wagons
+    - randomised Mixed Bulk Wagons (replacing randomised Bulk Cargo Wagons)
+    - randomised Mixed Goods Wagons (replacing randomised Piece Goods Wagons)
+    - randomised Mixed Metal Product Wagons (replacing randomised Coil Wagons)
+    - randomised Open Bulk Wagons
+    - randomised Parts Cargo Wagons
+    - randomised Refrigerated Vans
+    - randomised Uncovered Metal Product Wagons
+    - Silo Wagon (straight tank version)
+- reworked Goods Vans
+    - renamed to Merchandise Vans
+    - improved sprites
+    - added multiple liveries
+- renamed Edibles Tankers to Food Tankers
+- renamed former Merchandise Open Wagons to Open Wagons
+- renamed former Merchandise Vans to Box Vans
+- added 'Combo' to names of random wagon types that have a wide range of candidate wagon types
+- extend liveries for
+    - Mineral Wagons
+    - Scrap Wagons
+    - Silo Wagons
+    - Sliding Wall Vans
+    - Sliding Roof Vans
+    - Swing Roof Hoppers
+    - Tarpaulin Wagons
+- added more refittable cargos for
+    - Cube Wagons
+    - Sliding Roof Cars
+    - Tarpaulin Cars
+- made some wagon names and pluralisation more consistent
+- reorganised buy menu
+
+
+*Fixes*
+
+- some randomised vehicles weren't showing weathered variants
+
+
+ *Codechanges*
+
+- significantly reduced concurrent varact2 ID consumption by adjusting consist order in nml file
+- added a guard to detect duplicate IDs in roster.consists_in_order_optimised_for_action_2_ids
+
+
+------------
 3.23.0 Release
 ------------
 
 
 *Changes*
-
 
 - added liveries for
     - Goliath
