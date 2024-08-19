@@ -142,7 +142,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_24px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_24px")
 
     consist = FlatCarConsist(
         roster_id=roster_id,
