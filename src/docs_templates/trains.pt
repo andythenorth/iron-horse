@@ -11,9 +11,9 @@
                         ${len(roster.engine_consists_excluding_clones)} engines
                     </span>
                     and ${len(roster.wagon_consists)} wagons
-                    inspired by trains from
+                    inspired by trains (mostly) from
                     <span tal:condition="roster.id == 'zebra'">Southern and Western Africa</span>
-                    <span tal:condition="roster.id == 'pony'">the UK (mostly)</span>
+                    <span tal:condition="roster.id == 'pony'">the UK and Ireland</span>
                 </h2>
                 <ul class="inline">
                     <tal:base_track_type_name repeat="base_track_type_name doc_helper.base_track_type_names_and_labels">
