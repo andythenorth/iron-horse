@@ -3,6 +3,23 @@ Changelog
 
 
 ------------
+3.25.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.24.0.
+
+
+*Changes*
+
+- improved appearance of
+    - Merchandise Vans
+    - Mill Flat Wagons
+    - Mill Open Wagons
+- adjusted chassis sprite selection for some wagons
+
+
+------------
 3.24.0 Release
 ------------
 
