@@ -124,6 +124,7 @@ wagon_module_name_stems = [
     "reefer_cars_type_2",
     "reefer_cars_randomised",
     "farm_product_box_cars_type_1",
+    "farm_product_box_cars_type_2",
     "farm_product_hopper_cars_type_1",
     "farm_product_hopper_cars_type_2",
     "farm_product_hopper_cars_randomised",

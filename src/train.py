@@ -4807,13 +4807,12 @@ class ExpressIntermodalCarConsist(CarConsist):
         return ["default"]
 
 
-class FarmProductsBoxCarConsistType1(CarConsist):
+class FarmProductsBoxCarConsistBase(CarConsist):
     """
-    Farm type cargos - box cars / vans.
+    Bae for farm type cargos - box cars / vans.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "farm_product_box_car_type_1"
         super().__init__(**kwargs)
         # note this is not derived from BoxCarBase, it's a standalone type
         self.class_refit_groups = []  # no classes, use explicit labels
@@ -4829,8 +4828,42 @@ class FarmProductsBoxCarConsistType1(CarConsist):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_farm_product_cars"
+
+
+class FarmProductsBoxCarConsistType1(FarmProductsBoxCarConsistBase):
+    """
+    Farm type cargos - box cars / vans.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "farm_product_box_car_type_1"
+        super().__init__(**kwargs)
         # Graphics configuration
         self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.farm_product_box_car_livery_recolour_maps,
+            "weathered": graphics_constants.farm_product_box_car_livery_recolour_maps_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "SWOOSH"
+                ],  # company colour not used on these wagons
+            ],
+        )
+
+
+class FarmProductsBoxCarConsistType2(FarmProductsBoxCarConsistBase):
+    """
+    Farm type cargos - box cars / vans.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "farm_product_box_car_type_2"
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.roof_type = "freight_cc1"
         weathered_variants = {
             "unweathered": graphics_constants.farm_product_box_car_livery_recolour_maps,
             "weathered": graphics_constants.farm_product_box_car_livery_recolour_maps_weathered,

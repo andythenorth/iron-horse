@@ -641,6 +641,9 @@ base = "Express Container Wagon"
 [STR_NAME_SUFFIX_FARM_PRODUCT_BOX_CAR_TYPE_1]
 base = "Farm Product Van"
 
+[STR_NAME_SUFFIX_FARM_PRODUCT_BOX_CAR_TYPE_2]
+base = "Farm Product Van"
+
 [STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_RANDOMISED]
 base = "Farm Product Hopper"
 
