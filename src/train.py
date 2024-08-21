@@ -3054,8 +3054,8 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
         ]
         self._joker = True
         # Graphics configuration
-        # brown roof is a bit of a non-standard thing, but seems to work
-        self.roof_type = "freight_brown"
+        # CC1 roof is a bit of a non-standard thing, but seems to work
+        self.roof_type = "freight_cc1"
         weathered_variants = {
             "unweathered": graphics_constants.body_recolour_CC1,
         }
