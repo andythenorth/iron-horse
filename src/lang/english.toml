@@ -518,6 +518,9 @@ base = "Vehicle Transporter"
 [STR_NAME_SUFFIX_BOLSTER_CAR]
 base = "Bolster Wagon"
 
+[STR_NAME_SUFFIX_BOLSTER_CAR_RANDOMISED]
+base = "Bolster Wagon"
+
 [STR_NAME_SUFFIX_BOX_CAR_RANDOMISED]
 base = "Box Van"
 
@@ -664,6 +667,9 @@ base = "Heavy Duty Bulk Wagon"
 
 [STR_NAME_SUFFIX_HEAVY_DUTY_FLAT_CAR]
 base = "Heavy Duty Flat Wagon"
+
+[STR_NAME_SUFFIX_HIGH_END_BOLSTER_CAR]
+base = "Bolster Wagon"
 
 [STR_NAME_SUFFIX_HIGH_END_OPEN_CAR]
 base = "Open Wagon"

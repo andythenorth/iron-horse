@@ -2501,8 +2501,8 @@ class CarConsist(Consist):
                 if len(group.buyable_variants) > 1:
                     result = default_result.copy()
                     result[0] = result[0].replace("_CAR", "_CARS")
-                    result[0] = (
-                        result[0].replace("STR_NAME_SUFFIX_", "STR_WAGON_GROUP_")
+                    result[0] = result[0].replace(
+                        "STR_NAME_SUFFIX_", "STR_WAGON_GROUP_"
                     )
                 else:
                     result = default_result
@@ -2755,13 +2755,12 @@ class AutomobileEnclosedCarConsist(CarConsist):
         )
 
 
-class BolsterCarConsist(CarConsist):
+class BolsterCarConsistBase(CarConsist):
     """
-    Specialist wagon with side stakes and bolsters for long products, limited refits.
+    Base class for specialist wagon with side stakes and bolsters for long products, limited refits.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "bolster_car"
         super().__init__(**kwargs)
         self.class_refit_groups = ["flatbed_freight"]
         self.label_refits_allowed = ["GOOD"]
@@ -2773,13 +2772,73 @@ class BolsterCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         self.randomised_candidate_groups = [
+            "bolster_car_randomised",
             "metal_product_car_mixed_randomised",
             "metal_product_car_uncovered_randomised",
         ]
         self._joker = True
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_bolster_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            ],
+        )
+
+
+class BolsterCarConsist(BolsterCarConsistBase):
+    """
+    Specialist wagon with side stakes and bolsters for long products, limited refits.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "bolster_car"
+        super().__init__(**kwargs)
+
+
+class BolsterCarHighEndConsist(BolsterCarConsistBase):
+    """
+    Specialist wagon with side stakes and bolsters for long products, limited refits.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "high_end_bolster_car"
+        super().__init__(**kwargs)
+
+
+class BolsterCarConsistRandomisedConsist(RandomisedConsistMixin, BolsterCarConsistBase):
+    """
+    Random choice of bolster car sprite, from available bolster cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "bolster_car_randomised"
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_bolster_cars"
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
             liveries=[
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_1"
@@ -4509,7 +4568,9 @@ class DumpCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_8"
                 ],
-                global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_12"],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_12"
+                ],
             ],
         )
 

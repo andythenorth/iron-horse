@@ -288,6 +288,8 @@ wagon_module_names_with_roster_ids = {
     "heavy_duty_dump_cars": "pony",
     "heavy_duty_flat_cars": "pony",
     "high_end_open_cars": "pony",
+    "high_end_bolster_cars": "pony",
+    "bolster_cars_randomised": "pony",
     "high_speed_mail_cars": "pony",
     "high_speed_passenger_cars": "pony",
     "hood_open_cars": "pony",
