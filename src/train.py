@@ -3168,7 +3168,10 @@ class BoxCarSlidingWallConsistType1(BoxCarSlidingWallConsistBase):
         self.base_id = "sliding_wall_car_type_1"
         super().__init__(**kwargs)
         # Graphics configuration
-        self.roof_type = "freight"
+        if self.base_track_type_name == "NG":
+            self.roof_type = "freight_cc1"
+        else:
+            self.roof_type = "freight"
         weathered_variants = {
             "unweathered": graphics_constants.sliding_wall_livery_recolour_maps,
             "weathered": graphics_constants.sliding_wall_livery_recolour_maps_weathered,
