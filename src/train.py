@@ -8730,6 +8730,8 @@ class Train(object):
         self.capacity = kwargs.get("capacity", 0)
         # spriterow_num allows assigning sprites for multi-part vehicles, and is not supported in all vehicle templates (by design - TMWFTLB to support)
         self.spriterow_num = kwargs.get("spriterow_num", 0)  # first row = 0;
+        # mostly vehicles figure out their own spriterows in output, but occasionaly we need explicit control
+        self.force_spriterow_group_in_output_spritesheet=kwargs.get("force_spriterow_group_in_output_spritesheet", 0)
         # !! the need to copy cargo refits from the consist is legacy from the default multi-unit articulated consists in Iron Horse 1
         # !! could likely be refactored !!
         self.label_refits_allowed = self.consist.label_refits_allowed

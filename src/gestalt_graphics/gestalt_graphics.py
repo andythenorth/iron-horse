@@ -352,8 +352,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                 counter += 1
         return result
 
-    @property
-    def unique_spritesets(self):
+    def get_unique_spritesets(self, vehicle):
         # the template for this gestalt was getting complex with loops and logic where logic shouldn't be
         # so instead we delegate that logic here and simplify the loop
         # this builds heavily on the row numbers already in cargo_row_map, reformatting that data to make it easy to render in the template
@@ -394,6 +393,15 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                 ]
             )
             start_y_cumulative += 2 * row_height
+
+        # vehicles with multiple units might need an offset to their sprites
+        # to handle that we post-process the y-offsets in result
+        # we make an assumption that the spriterows will always be vertically contiguous
+        # so we can take the last value of start_y_cumulative, apply the offset multiplier, then rewrite the y values in result
+        # n.b. by default force_spriterow_group_in_output_spritesheet = 0, so this has no effect unless explicitly set
+        vehicle_y_offset = vehicle.force_spriterow_group_in_output_spritesheet * (start_y_cumulative - graphics_constants.spritesheet_top_margin)
+        for row_map in result:
+            row_map[1] = row_map[1] + vehicle_y_offset
         return result
 
 
@@ -751,8 +759,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
             result.append("masked_overlay")
         return result
 
-    @property
-    def unique_spritesets(self):
+    def get_unique_spritesets(self, vehicle):
         # the template for this gestalt was getting complex with loops and logic where logic shouldn't be
         # so instead we delegate that logic here and simplify the loop
         row_height = graphics_constants.spriterow_height
@@ -1102,8 +1109,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
     def cargo_row_map(self):
         return self._cargo_row_map
 
-    @property
-    def unique_spritesets(self):
+    def get_unique_spritesets(self, vehicle):
         return self._unique_spritesets
 
     @property
