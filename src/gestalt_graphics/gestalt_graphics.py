@@ -409,21 +409,8 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     def get_buy_menu_unit_input_row_num(
         self, unit_counter, pipeline, buyable_variant, unit
     ):
-        # !! CABBAGE UNFINISHED - needs to delegate to a new common function to get unique_cargo_rows, shared with get_unique_spritesets
-        # !! see also, some gestalts have num_load_state_or_similar_spriterows which appears to be similar concern
-        if pipeline.consist.id in ["sliding_roof_car_pony_gen_5D"]:
-            print(pipeline.consist.id)
-            print("unit_counter", unit_counter)
-            print(unit.id)
-            # print(pipeline.consist.gestalt_graphics.get_unique_spritesets(unit))
-            print("--- ^ buy menu spriterow y offset debug ---")
-
-        unit_variant_row_num = unit.spriterow_num + (
-            (buyable_variant.relative_spriterow_num)
-            * self.num_load_state_or_similar_spriterows
-        )
-        return unit_variant_row_num
-
+        result = len(self.get_unique_spritesets(unit)) * unit.force_spriterow_group_in_output_spritesheet
+        return result
 
 class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     """
@@ -479,14 +466,6 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     def get_buy_menu_unit_input_row_num(
         self, unit_counter, pipeline, buyable_variant, unit
     ):
-
-        # !! CABBAGE - this needs to delegate to consist_ruleset, to find, e.g. an additional y offset to the spriterow for 'first' or 'last' etc
-        if pipeline.consist.id in ["sliding_wall_car_type_1_pony_gen_5D"]:
-            print(pipeline.consist.id)
-            print("unit_counter", unit_counter)
-            print(unit.id)
-            # print(pipeline.consist.gestalt_graphics.get_unique_spritesets(unit))
-            print("--- ^ buy menu spriterow y offset debug ---")
 
         unit_variant_row_num = unit.spriterow_num + (
             (buyable_variant.relative_spriterow_num)
