@@ -33,7 +33,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=1000,
         gen=5,
         subtype="D",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
