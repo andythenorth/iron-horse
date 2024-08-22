@@ -26,3 +26,26 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+
+    consist = SlidingRoofCarConsist(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=1000,
+        gen=5,
+        subtype="D",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(
+        type=FreightCar,
+        chassis="2_axle_1cc_filled_20px",
+        symmetry_type="asymmetric",
+        spriterow_num=0,
+    )
+
+    consist.add_unit(
+        type=FreightCar,
+        chassis="2_axle_1cc_filled_20px",
+        symmetry_type="asymmetric",
+        force_spriterow_group_in_output_spritesheet=1, # special case
+    )
