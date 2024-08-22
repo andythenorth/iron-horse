@@ -77,7 +77,7 @@ class GestaltGraphics(object):
             # pans are the same for all buyable variants, and are just provided either once, or per position variant
             dest_spriterows = pipeline.consist.buyable_variants[0:1]
         else:
-            dest_spriterows = pipeline.consist.buyable_variants
+            dest_spriterows = self.get_buy_menu_dest_spriterows(pipeline)
         for dest_spriterow_counter, buyable_variant in enumerate(dest_spriterows):
             source_vehicles_and_input_spriterow_nums = []
 
@@ -102,27 +102,19 @@ class GestaltGraphics(object):
             result.append(row_config)
         return result
 
+    def get_buy_menu_dest_spriterows(self, pipeline):
+        # default case assumes we want a buy menu sprite for each of the buyable variants
+        # that's not true for all gestalts - deal with that per gestalt as needed
+        return pipeline.consist.buyable_variants
+
     def get_buy_menu_unit_input_row_num(
         self, unit_counter, pipeline, buyable_variant, unit
     ):
         # override in subclasses as needed
 
-        # !! isn't this already known somewhere?  Gestalts might be counting liveries already
-        # ?? self.num_load_state_or_similar_spriterows on the gestalt?
-        if pipeline.consist.gestalt_graphics.__class__.__name__ in [
-            "GestaltGraphicsBoxCarOpeningDoors"
-        ]:
-            num_livery_rows_per_unit = 1
-        else:
-            num_livery_rows_per_unit = len(pipeline.consist.buyable_variants)
-
-        # !! CABBAGE - this needs to delegate to consist_ruleset, to find, e.g. an additional y offset to the spriterow for 'first' or 'last' etc
-        if pipeline.consist.id in ["sliding_wall_car_type_1_pony_gen_5D"]:
-            print(pipeline.consist.id)
-            print(unit_counter)
-            print("--- ^ buy menu spriterow y offset debug ---")
-
-        unit_variant_row_num = (unit.spriterow_num * num_livery_rows_per_unit) + (
+        unit_variant_row_num = (
+            unit.spriterow_num * len(pipeline.consist.buyable_variants)
+        ) + (
             (buyable_variant.relative_spriterow_num)
             * self.num_load_state_or_similar_spriterows
         )
@@ -191,7 +183,9 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.colour_mapping_switch_purchase = "_switch_colour_mapping_purchase"
         self.colour_mapping_with_purchase = True
-        self.use_deterministic_random_vehicle_map = kwargs.get("use_deterministic_random_vehicle_map", False)
+        self.use_deterministic_random_vehicle_map = kwargs.get(
+            "use_deterministic_random_vehicle_map", False
+        )
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
         self.processing_priority = 2
 
@@ -399,10 +393,36 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # we make an assumption that the spriterows will always be vertically contiguous
         # so we can take the last value of start_y_cumulative, apply the offset multiplier, then rewrite the y values in result
         # n.b. by default force_spriterow_group_in_output_spritesheet = 0, so this has no effect unless explicitly set
-        vehicle_y_offset = vehicle.force_spriterow_group_in_output_spritesheet * (start_y_cumulative - graphics_constants.spritesheet_top_margin)
+        vehicle_y_offset = vehicle.force_spriterow_group_in_output_spritesheet * (
+            start_y_cumulative - graphics_constants.spritesheet_top_margin
+        )
         for row_map in result:
             row_map[1] = row_map[1] + vehicle_y_offset
         return result
+
+    def get_buy_menu_dest_spriterows(self, pipeline):
+        # default case assumes we want a buy menu sprite for each of the buyable variants
+        # that's not true here, as the buyable variants only use recolour sprites, everything else is an independent consist
+        # so just take a slice containing the first variant
+        return pipeline.consist.buyable_variants[0:1]
+
+    def get_buy_menu_unit_input_row_num(
+        self, unit_counter, pipeline, buyable_variant, unit
+    ):
+        # !! CABBAGE UNFINISHED - needs to delegate to a new common function to get unique_cargo_rows, shared with get_unique_spritesets
+        # !! see also, some gestalts have num_load_state_or_similar_spriterows which appears to be similar concern
+        if pipeline.consist.id in ["sliding_roof_car_pony_gen_5D"]:
+            print(pipeline.consist.id)
+            print("unit_counter", unit_counter)
+            print(unit.id)
+            # print(pipeline.consist.gestalt_graphics.get_unique_spritesets(unit))
+            print("--- ^ buy menu spriterow y offset debug ---")
+
+        unit_variant_row_num = unit.spriterow_num + (
+            (buyable_variant.relative_spriterow_num)
+            * self.num_load_state_or_similar_spriterows
+        )
+        return unit_variant_row_num
 
 
 class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
@@ -449,6 +469,30 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
             "cargo_row_map not implemented in GestaltGraphicsBoxCarOpeningDoorsGestaltGraphics (by design)"
         )
         return None
+
+    def get_buy_menu_dest_spriterows(self, pipeline):
+        # default case assumes we want a buy menu sprite for each of the buyable variants
+        # that's not true here, as the buyable variants only use recolour sprites, everything else is an independent consist
+        # so just take a slice containing the first variant
+        return pipeline.consist.buyable_variants[0:1]
+
+    def get_buy_menu_unit_input_row_num(
+        self, unit_counter, pipeline, buyable_variant, unit
+    ):
+
+        # !! CABBAGE - this needs to delegate to consist_ruleset, to find, e.g. an additional y offset to the spriterow for 'first' or 'last' etc
+        if pipeline.consist.id in ["sliding_wall_car_type_1_pony_gen_5D"]:
+            print(pipeline.consist.id)
+            print("unit_counter", unit_counter)
+            print(unit.id)
+            # print(pipeline.consist.gestalt_graphics.get_unique_spritesets(unit))
+            print("--- ^ buy menu spriterow y offset debug ---")
+
+        unit_variant_row_num = unit.spriterow_num + (
+            (buyable_variant.relative_spriterow_num)
+            * self.num_load_state_or_similar_spriterows
+        )
+        return unit_variant_row_num
 
 
 class GestaltGraphicsCaboose(GestaltGraphics):
@@ -1021,7 +1065,7 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
         # support for arbitrary number of units could be added, derived from consist ruleset, but those cases don't exist as of Jan 2024
         if len(pipeline.consist.units) != 2:
             if pipeline.consist.id == "golfinho":
-                #JFDI jank
+                # JFDI jank
                 if unit_counter == 1:
                     position_variant_offset = self.spriterow_group_mappings["special"]
                     unit_variant_row_num = (
