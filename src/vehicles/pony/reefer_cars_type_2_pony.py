@@ -55,7 +55,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=36940,
         gen=4,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -70,7 +70,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=28110,
         gen=4,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -85,7 +85,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=31320,
         gen=4,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
