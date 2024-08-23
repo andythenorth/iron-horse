@@ -3,6 +3,29 @@ Changelog
 
 
 ------------
+3.26.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.24.0.
+
+
+*Changes*
+
+- added wagons
+    - articulated-twin Cube Wagon
+    - articulated-twin Sliding Roof Wagon
+    - Bolster Wagon (high end version)
+    - narrow gauge Farm Product Hoppers
+    - narrow gauge Merchandise Vans
+    - narrow gauge randomised Covered Goods Wagons
+    - randomised Refrigerated Vans
+    - Refrigerated Vans (alternative version)
+- improved appearance of
+    - narrow gauge Sliding Wall Vans
+
+
+------------
 3.25.0 Release
 ------------
 
