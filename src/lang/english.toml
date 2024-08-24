@@ -338,7 +338,7 @@ base = "Flat Wagons"
 base = "Flatbed Wagons"
 
 [STR_WAGON_GROUP_FOOD_TANK_CARS]
-base = "Food Tankers"
+base = "Express Food Tankers"
 
 [STR_WAGON_GROUP_HEAVY_DUTY_DUMP_CARS]
 base = "Heavy Duty Bulk Wagons"
@@ -660,7 +660,7 @@ base = "Flat Wagon"
 base = "Flatbed Wagon"
 
 [STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Food Tanker"
+base = "Express Food Tanker"
 
 [STR_NAME_SUFFIX_GOODS_BOX_CAR]
 base = "Goods Van"
