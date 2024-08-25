@@ -4323,61 +4323,23 @@ class DumpCarAggregateConsistType2(DumpCarConsistBase):
         ]
         self._joker = True
         # Graphics configuration
-        # minimalist use of CC, so only one livery
         self.gestalt_graphics.liveries = [
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_1"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_2"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_7"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_3"],
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-        ]
-
-
-class DumpCarAggregateConsistType3(DumpCarConsistBase):
-    """
-    Aggregate Car.
-    Same as standard dump car, but different appearance and default cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "aggregate_dump_car_type_3"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
-        # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = [
-            "aggregate_dump_car_randomised",
-            "bulk_car_box_randomised",
-        ]
-        self._joker = True
-        # Graphics configuration
-        # minimalist use of CC, so only one livery
-        self.gestalt_graphics.liveries = [
-            global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-        ]
-
-
-class DumpCarAggregateConsistType4(DumpCarConsistBase):
-    """
-    Aggregate Car.
-    Same as standard dump car, but different appearance and default cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "aggregate_dump_car_type_4"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
-        # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = [
-            "aggregate_dump_car_randomised",
-            "bulk_car_box_randomised",
-        ]
-        self._joker = True
-        # Graphics configuration
-        # minimalist use of CC, so only one livery
-        self.gestalt_graphics.liveries = [
-            global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            global_constants.freight_wagon_liveries[
+                "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+            ],
+            global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+            global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+            global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+            global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
+            global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
+            global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+            global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
         ]
 
 
@@ -4389,32 +4351,6 @@ class DumpCarAggregateConsistType5(DumpCarConsistBase):
 
     def __init__(self, **kwargs):
         self.base_id = "aggregate_dump_car_type_5"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
-        # don't include aggregate wagons in randomised lists, they don't look good
-        self.randomised_candidate_groups = [
-            "aggregate_dump_car_randomised",
-            "bulk_car_box_randomised",
-        ]
-        self._joker = True
-        # Graphics configuration
-        # minimalist use of CC, so only one livery
-        self.gestalt_graphics.liveries = [
-            global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-        ]
-
-
-class DumpCarAggregateConsistType6(DumpCarConsistBase):
-    """
-    Aggregate Car.
-    Same as standard dump car, but different appearance and default cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "aggregate_dump_car_type_6"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
         # buyable variant groups are created post-hoc and can group across subclasses
