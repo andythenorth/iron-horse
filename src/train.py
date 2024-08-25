@@ -4343,14 +4343,14 @@ class DumpCarAggregateConsistType2(DumpCarConsistBase):
         ]
 
 
-class DumpCarAggregateConsistType5(DumpCarConsistBase):
+class DumpCarAggregateConsistType3(DumpCarConsistBase):
     """
     Aggregate Car.
     Same as standard dump car, but different appearance and default cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_dump_car_type_5"
+        self.base_id = "aggregate_dump_car_type_3"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
         # buyable variant groups are created post-hoc and can group across subclasses

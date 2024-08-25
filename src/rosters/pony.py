@@ -231,7 +231,7 @@ wagon_module_names_with_roster_ids = {
     "aggregate_dump_cars_randomised": "pony",
     "aggregate_dump_cars_type_1": "pony",
     "aggregate_dump_cars_type_2": "pony",
-    "aggregate_dump_cars_type_5": "pony",
+    "aggregate_dump_cars_type_3": "pony",
     "aggregate_hopper_cars_randomised": "pony",
     "aggregate_hopper_cars_type_1": "pony",
     "aggregate_hopper_cars_type_2": "pony",

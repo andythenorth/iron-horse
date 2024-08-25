@@ -87,7 +87,7 @@ wagon_module_name_stems = [
     "dump_cars_randomised",
     "aggregate_dump_cars_type_1",
     "aggregate_dump_cars_type_2",
-    "aggregate_dump_cars_type_5",
+    "aggregate_dump_cars_type_3",
     "aggregate_dump_cars_randomised",
     "ore_dump_cars",
     "scrap_metal_cars",
