@@ -272,7 +272,10 @@ base = "Wagons-citerne alimentaires"
 [STR_WAGON_GROUP_EXPRESS_CARS]
 base = "Fourgons express"
 
-[STR_WAGON_GROUP_FARM_PRODUCT_CARS]
+[STR_WAGON_GROUP_FARM_PRODUCT_BOX_CARS]
+base = "Fourgons agricoles"
+
+[STR_WAGON_GROUP_FARM_PRODUCT_HOPPER_CARS]
 base = "Wagons agricoles"
 
 [STR_WAGON_GROUP_FLAT_CARS]

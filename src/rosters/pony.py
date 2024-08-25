@@ -275,6 +275,7 @@ wagon_module_names_with_roster_ids = {
     "dump_cars_randomised": "pony",
     "enclosed_automobile_cars": "pony",
     "express_cars": "pony",
+    "express_food_cars_randomised": "pony",
     "express_intermodal_cars": "pony",
     "express_railcar_mail_trailer_cars": "pony",
     "express_railcar_passenger_trailer_cars": "pony",

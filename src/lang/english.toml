@@ -328,8 +328,14 @@ base = "Mineral Wagons"
 [STR_WAGON_GROUP_EXPRESS_CARS]
 base = "Express Vans"
 
-[STR_WAGON_GROUP_FARM_PRODUCT_CARS]
-base = "Farm Product Wagons"
+[STR_WAGON_GROUP_EXPRESS_FOOD_CARS_RANDOMISED]
+base = "Express Food Combos"
+
+[STR_WAGON_GROUP_FARM_PRODUCT_BOX_CARS]
+base = "Farm Product Vans"
+
+[STR_WAGON_GROUP_FARM_PRODUCT_HOPPER_CARS]
+base = "Farm Product Hoppers"
 
 [STR_WAGON_GROUP_FLAT_CARS]
 base = "Flat Wagons"
@@ -634,6 +640,9 @@ base = "Enclosed Vehicle Transporter"
 
 [STR_NAME_SUFFIX_EXPRESS_CAR]
 base = "Express Van"
+
+[STR_NAME_SUFFIX_EXPRESS_FOOD_CAR_RANDOMISED]
+base = "Express Food Wagon"
 
 [STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR]
 base = "Express Container Wagon"

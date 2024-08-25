@@ -4713,6 +4713,7 @@ class ExpressCarConsist(CarConsist):
             "non_freight_special_cases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["express"]
+        self.randomised_candidate_groups = ["express_food_car_randomised"]
         # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         # keep matched to MailCarConsist
@@ -4764,6 +4765,38 @@ class ExpressCarConsist(CarConsist):
         )
 
 
+class ExpressFoodCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
+    """
+    Random choice of food car sprite, noting limited refits because it includes food tankers.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "express_food_car_randomised"
+        super().__init__(**kwargs)
+        self.speed_class = "express"
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "edible_liquids"
+        ]
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
+        self._loading_speed_multiplier = 1.5
+        self.buy_cost_adjustment_factor = 1.33
+        self.floating_run_cost_multiplier = 1.5
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["food_wagons"]
+        )
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+            ],
+        )
+
+
 class ExpressFoodTankCarConsist(CarConsist):
     """
     Wine, milk, water etc.
@@ -4785,6 +4818,7 @@ class ExpressFoodTankCarConsist(CarConsist):
         ]
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
+        self.randomised_candidate_groups = ["express_food_car_randomised"]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
@@ -4888,7 +4922,7 @@ class FarmProductsBoxCarConsistBase(CarConsist):
         )
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_farm_product_cars"
+        self.use_named_buyable_variant_group = "wagon_group_farm_product_box_cars"
 
 
 class FarmProductsBoxCarConsistType1(FarmProductsBoxCarConsistBase):
@@ -4959,7 +4993,7 @@ class FarmProductsHopperCarConsistBase(CarConsist):
         )
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_farm_product_cars"
+        self.use_named_buyable_variant_group = "wagon_group_farm_product_hopper_cars"
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -7387,7 +7421,7 @@ class ReeferCarConsistBase(CarConsist):
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["reefer"]
-        self.randomised_candidate_groups = ["reefer_car_randomised"]
+        self.randomised_candidate_groups = ["reefer_car_randomised", "express_food_car_randomised"]
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
         self._intro_year_days_offset = (
