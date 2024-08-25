@@ -5057,6 +5057,80 @@ class FarmProductsHopperCarRandomisedConsist(
         )
 
 
+class FoodHopperCarConsistBase(FarmProductsHopperCarConsistBase):
+    """
+    Food type covered hoppers - same refits as farm product cars.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = (
+            "wagon_group_food_hopper_cars"
+        )
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.refrigerated_livery_recolour_maps,
+            "weathered": graphics_constants.refrigerated_livery_recolour_maps_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "SWOOSH"
+                ],  # company colour not used on these wagons
+            ],
+        )
+
+
+class FoodHopperCarConsistType1(FoodHopperCarConsistBase):
+    """
+    Food type covered hoppers - same refits as farm product cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "food_hopper_car_type_1"
+        super().__init__(**kwargs)
+        self.randomised_candidate_groups = [
+            "food_hopper_car_randomised",
+        ]
+
+
+class FoodHopperCarConsistType2(FoodHopperCarConsistBase):
+    """
+    Food type covered hoppers - same refits as farm product cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "food_hopper_car_type_2"
+        super().__init__(**kwargs)
+        self.randomised_candidate_groups = [
+            "food_hopper_car_randomised",
+        ]
+
+
+class FoodHopperCarRandomisedConsist(
+    RandomisedConsistMixin, FoodHopperCarConsistBase
+):
+    """
+    Random choice of food hopper sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "food_hopper_car_randomised"
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "SWOOSH"
+                ],  # company colour not used on these wagons
+            ],
+        )
+
+
 class FlatCarConsistBase(CarConsist):
     """
     Flatbed - refits wide range of cargos, but not bulk.
@@ -7421,7 +7495,10 @@ class ReeferCarConsistBase(CarConsist):
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["reefer"]
-        self.randomised_candidate_groups = ["reefer_car_randomised", "express_food_car_randomised"]
+        self.randomised_candidate_groups = [
+            "reefer_car_randomised",
+            "express_food_car_randomised",
+        ]
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
         self._intro_year_days_offset = (
@@ -8767,7 +8844,9 @@ class Train(object):
         # spriterow_num allows assigning sprites for multi-part vehicles, and is not supported in all vehicle templates (by design - TMWFTLB to support)
         self.spriterow_num = kwargs.get("spriterow_num", 0)  # first row = 0;
         # mostly vehicles figure out their own spriterows in output, but occasionaly we need explicit control
-        self.force_spriterow_group_in_output_spritesheet=kwargs.get("force_spriterow_group_in_output_spritesheet", 0)
+        self.force_spriterow_group_in_output_spritesheet = kwargs.get(
+            "force_spriterow_group_in_output_spritesheet", 0
+        )
         # !! the need to copy cargo refits from the consist is legacy from the default multi-unit articulated consists in Iron Horse 1
         # !! could likely be refactored !!
         self.label_refits_allowed = self.consist.label_refits_allowed
