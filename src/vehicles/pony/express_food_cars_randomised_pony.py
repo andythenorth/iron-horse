@@ -8,6 +8,17 @@ def main(roster_id, **kwargs):
     consist = ExpressFoodCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=31380,
+        gen=2,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
+
+    consist = ExpressFoodCarRandomisedConsist(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31950,
         gen=3,
         subtype="A",
