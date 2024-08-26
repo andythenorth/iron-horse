@@ -4773,7 +4773,7 @@ class ExpressFoodTankCarConsistBase(CarConsist):
         ]
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
-        self.randomised_candidate_groups = ["express_food_car_randomised"]
+        self.randomised_candidate_groups = ["food_express_tank_car_randomised", "express_food_car_randomised"]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
@@ -4782,9 +4782,7 @@ class ExpressFoodTankCarConsistBase(CarConsist):
         )
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = (
-            "wagon_group_food_express_tank_cars"
-        )
+        self.use_named_buyable_variant_group = "wagon_group_food_express_tank_cars"
         # Graphics configuration
         # only one livery, but recolour gestalt used to automate adding chassis
         weathered_variants = {
@@ -4841,6 +4839,46 @@ class ExpressFoodTankCarConsistType2(ExpressFoodTankCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "food_express_tank_car_type_2"
         super().__init__(**kwargs)
+
+
+class ExpressFoodTankCarRandomisedConsist(
+    RandomisedConsistMixin, ExpressFoodTankCarConsistBase
+):
+    """
+    Random choice of express food tanker.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "food_express_tank_car_randomised"
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_5"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+            ],
+        )
 
 
 class ExpressIntermodalCarConsist(CarConsist):
@@ -5050,9 +5088,7 @@ class FoodHopperCarConsistBase(FarmProductsHopperCarConsistBase):
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = (
-            "wagon_group_food_hopper_cars"
-        )
+        self.use_named_buyable_variant_group = "wagon_group_food_hopper_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.refrigerated_livery_recolour_maps,
@@ -5094,9 +5130,7 @@ class FoodHopperCarConsistType2(FoodHopperCarConsistBase):
         ]
 
 
-class FoodHopperCarRandomisedConsist(
-    RandomisedConsistMixin, FoodHopperCarConsistBase
-):
+class FoodHopperCarRandomisedConsist(RandomisedConsistMixin, FoodHopperCarConsistBase):
     """
     Random choice of food hopper sprite.
     """

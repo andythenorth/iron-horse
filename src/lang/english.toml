@@ -668,6 +668,9 @@ base = "Food Hopper"
 [STR_NAME_SUFFIX_FOOD_HOPPER_CAR_TYPE_2]
 base = "Food Hopper"
 
+[STR_NAME_SUFFIX_FOOD_EXPRESS_TANK_CAR_RANDOMISED]
+base = "Express Food Tanker"
+
 [STR_NAME_SUFFIX_FOOD_EXPRESS_TANK_CAR_TYPE_1]
 base = "Express Food Tanker"
 

@@ -29,6 +29,7 @@ wagon_module_name_stems = [
     "reefer_cars_randomised",
     "food_express_tank_cars_type_1",
     "food_express_tank_cars_type_2",
+    "food_express_tank_cars_randomised",
     "express_food_cars_randomised",
     "express_intermodal_cars",
     "intermodal_cars",
