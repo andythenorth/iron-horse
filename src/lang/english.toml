@@ -346,7 +346,7 @@ base = "Flatbed Wagons"
 [STR_WAGON_GROUP_FOOD_HOPPER_CARS]
 base = "Food Hoppers"
 
-[STR_WAGON_GROUP_FOOD_EXPRESS_TANK_CARS_TYPE_1]
+[STR_WAGON_GROUP_FOOD_EXPRESS_TANK_CARS]
 base = "Express Food Tankers"
 
 [STR_WAGON_GROUP_HEAVY_DUTY_DUMP_CARS]
@@ -669,6 +669,9 @@ base = "Food Hopper"
 base = "Food Hopper"
 
 [STR_NAME_SUFFIX_FOOD_EXPRESS_TANK_CAR_TYPE_1]
+base = "Express Food Tanker"
+
+[STR_NAME_SUFFIX_FOOD_EXPRESS_TANK_CAR_TYPE_2]
 base = "Express Food Tanker"
 
 [STR_NAME_SUFFIX_GOODS_BOX_CAR]

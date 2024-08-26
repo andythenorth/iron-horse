@@ -4755,19 +4755,16 @@ class ExpressFoodCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
         )
 
 
-class ExpressFoodTankCarConsistType1(CarConsist):
+class ExpressFoodTankCarConsistBase(CarConsist):
     """
     Wine, milk, water etc.
     No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
     Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
     """
 
-    # !! pff the class name was changed in August 2024 to make it group near other express cars, btu the base_id etc wasn't yet
-
     def __init__(self, **kwargs):
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        self.base_id = "food_express_tank_car_type_1"
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = []  # no classes, use explicit labels
@@ -4782,6 +4779,11 @@ class ExpressFoodTankCarConsistType1(CarConsist):
         self.floating_run_cost_multiplier = 1.5
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["food_wagons"]
+        )
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = (
+            "wagon_group_food_express_tank_cars"
         )
         # Graphics configuration
         # only one livery, but recolour gestalt used to automate adding chassis
@@ -4815,6 +4817,30 @@ class ExpressFoodTankCarConsistType1(CarConsist):
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
+
+
+class ExpressFoodTankCarConsistType1(ExpressFoodTankCarConsistBase):
+    """
+    Wine, milk, water etc.
+    No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
+    Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "food_express_tank_car_type_1"
+        super().__init__(**kwargs)
+
+
+class ExpressFoodTankCarConsistType2(ExpressFoodTankCarConsistBase):
+    """
+    Wine, milk, water etc.
+    No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
+    Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "food_express_tank_car_type_2"
+        super().__init__(**kwargs)
 
 
 class ExpressIntermodalCarConsist(CarConsist):
