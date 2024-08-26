@@ -4755,7 +4755,7 @@ class ExpressFoodCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
         )
 
 
-class ExpressFoodTankCarConsist(CarConsist):
+class ExpressFoodTankCarConsistType1(CarConsist):
     """
     Wine, milk, water etc.
     No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
@@ -4767,7 +4767,7 @@ class ExpressFoodTankCarConsist(CarConsist):
     def __init__(self, **kwargs):
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        self.base_id = "food_tank_car"
+        self.base_id = "food_express_tank_car_type_1"
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = []  # no classes, use explicit labels
