@@ -329,6 +329,7 @@ wagon_module_names_with_roster_ids = {
     "peat_cars": "pony",
     "piece_goods_cars_covered_randomised": "pony",
     "piece_goods_cars_mixed_randomised": "pony",
+    "pipe_cars": "pony",
     "pressure_tank_cars": "pony",
     "product_tank_cars": "pony",
     "railbus_passenger_trailer_cars": "pony",

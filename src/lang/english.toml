@@ -418,6 +418,9 @@ base = "Passenger Coaches"
 [STR_WAGON_GROUP_PIECE_GOODS_CARS_RANDOMISED]
 base = "Goods Cargo Combos"
 
+[STR_WAGON_GROUP_PIPE_CARS]
+base = "Pipe Wagons"
+
 [STR_WAGON_GROUP_PRESSURE_TANK_CARS]
 base = "Pressurised Tankers"
 
@@ -789,7 +792,7 @@ base = "Panoramic Coach"
 base = "Passenger Coach"
 
 [STR_NAME_SUFFIX_PEAT_CAR]
-base = "Peat Wagons"
+base = "Peat Wagon"
 
 [STR_NAME_SUFFIX_PIECE_GOODS_CAR_COVERED_RANDOMISED]
 base = "Covered Goods Wagon"
@@ -799,6 +802,9 @@ base = "Parts Cargo Wagon"
 
 [STR_NAME_SUFFIX_PIECE_GOODS_CAR_MIXED_RANDOMISED]
 base = "Mixed Goods Wagon"
+
+[STR_NAME_SUFFIX_PIPE_CAR]
+base = "Pipe Wagon"
 
 [STR_NAME_SUFFIX_PRESSURE_TANK_CAR]
 base = "Pressure Tanker"

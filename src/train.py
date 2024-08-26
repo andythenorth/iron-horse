@@ -7500,6 +7500,50 @@ class PieceGoodsCarManufacturingPartsRandomisedConsist(
         )
 
 
+class PipeCarConsist(OpenCarConsistBase):
+    """
+    Pipe wagon with fixed stakes & cradles, reusable for tube and other long products.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "pipe_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["flat"]
+        self.randomised_candidate_groups = []
+        self._joker = True
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.box_car_type_2_body_recolour_map,
+            "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            piece="flat",
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_1"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_2"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_7"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_3"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            ],
+        )
+
+
 class ReeferCarConsistBase(CarConsist):
     """
     Refrigerated cargos.

@@ -74,6 +74,7 @@ wagon_module_name_stems = [
     "metal_product_cars_uncovered_randomised",
     "metal_product_cars_covered_randomised",
     "metal_product_cars_mixed_randomised",
+    "pipe_cars",
     "hopper_cars",
     "hopper_cars_high_side",
     "hopper_cars_randomised",
