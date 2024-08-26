@@ -3,14 +3,14 @@ from train import ReeferCarConsistType2, ExpressCar
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
-    """
+
     consist = ReeferCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=32000,
+        base_numeric_id=34790,
         gen=2,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
-    """
+
     consist = ReeferCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
