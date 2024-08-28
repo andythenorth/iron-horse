@@ -7500,7 +7500,7 @@ class PieceGoodsCarManufacturingPartsRandomisedConsist(
         )
 
 
-class PipeCarConsist(OpenCarConsistBase):
+class PipeCarConsist(FlatCarConsistBase):
     """
     Pipe wagon with fixed stakes & cradles, reusable for tube and other long products.
     """
