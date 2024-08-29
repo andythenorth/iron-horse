@@ -5700,7 +5700,9 @@ class HopperCarAggregateConsistType1(HopperCarAggregateConsistBase):
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_VARIETY"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"],
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.freight_wagon_liveries[
                 "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -5708,11 +5710,13 @@ class HopperCarAggregateConsistType1(HopperCarAggregateConsistBase):
             global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
             global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
             global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
             global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
             global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
             global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
             global_constants.freight_wagon_liveries["FREIGHT_SAND"],
             global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
         ]
 
 
@@ -5734,9 +5738,9 @@ class HopperCarAggregateConsistType2(HopperCarAggregateConsistBase):
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_VARIETY"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"],
-            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"],
-            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"],
-            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"],
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.freight_wagon_liveries[
                 "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -5745,13 +5749,13 @@ class HopperCarAggregateConsistType2(HopperCarAggregateConsistBase):
             global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
             global_constants.freight_wagon_liveries["FREIGHT_GREY"],
             global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
             global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
             global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
             global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
             global_constants.freight_wagon_liveries["FREIGHT_SAND"],
             global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
         ]
 
 
@@ -5773,9 +5777,9 @@ class HopperCarAggregateConsistType3(HopperCarAggregateConsistBase):
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_VARIETY"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"],
-            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"],
-            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"],
-            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"],
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.freight_wagon_liveries[
                 "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -5784,13 +5788,13 @@ class HopperCarAggregateConsistType3(HopperCarAggregateConsistBase):
             global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
             global_constants.freight_wagon_liveries["FREIGHT_GREY"],
             global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
             global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
             global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
             global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
             global_constants.freight_wagon_liveries["FREIGHT_SAND"],
             global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
         ]
 
 
@@ -5821,7 +5825,13 @@ class HopperCarAggregateRandomisedConsist(
                     "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
                 ],
                 global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+                    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"
                 ],
                 global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
@@ -5837,6 +5847,7 @@ class HopperCarAggregateRandomisedConsist(
                 global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SAND"],
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
 
@@ -5990,7 +6001,9 @@ class HopperCarRockConsist(HopperCarConsistBase):
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_VARIETY"],
             global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"],
-            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"],
+            global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"],
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.freight_wagon_liveries[
                 "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -5998,11 +6011,14 @@ class HopperCarRockConsist(HopperCarConsistBase):
             global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
             global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
             global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+            global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
             global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
             global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
             global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
             global_constants.freight_wagon_liveries["FREIGHT_SAND"],
             global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
         ]
 
 
