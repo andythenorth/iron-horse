@@ -5,7 +5,7 @@ def main(roster_id, **kwargs):
     consist = EngineConsist(
         roster_id=roster_id,
         id="krokodil_be_6_8",
-        base_numeric_id=34740,
+        base_numeric_id=32850,
         name="SBB Be 6/8 ii Krokodil",
         role="super_heavy_freight",
         role_child_branch_num=2,
