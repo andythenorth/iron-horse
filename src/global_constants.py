@@ -538,28 +538,10 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
-    "RANDOM_FROM_CONSIST_LIVERIES_NO_WEATHERING_1": {
-        "colour_set": "random_from_consist_liveries_complement_company_colour",
-        "purchase": "company_colour",
-        "use_weathering": False,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
     "RANDOM_FROM_CONSIST_LIVERIES_2": {
         "colour_set": "random_from_consist_liveries_variety",
         "purchase": "complement_company_colour",
         "use_weathering": True,
-        "docs_image_input_cc": [
-            ("COLOUR_BLUE", "COLOUR_BLUE"),
-            ("COLOUR_RED", "COLOUR_WHITE"),
-        ],
-    },
-    "RANDOM_FROM_CONSIST_LIVERIES_NO_WEATHERING_2": {
-        "colour_set": "random_from_consist_liveries_variety",
-        "purchase": "complement_company_colour",
-        "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
