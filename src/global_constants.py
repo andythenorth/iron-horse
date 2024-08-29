@@ -530,7 +530,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_1": {
-        "colour_set": "random_from_consist_liveries_1",
+        "colour_set": "random_from_consist_liveries_complement_company_colour",
         "purchase": "company_colour",
         "use_weathering": True,
         "docs_image_input_cc": [
@@ -539,7 +539,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_NO_WEATHERING_1": {
-        "colour_set": "random_from_consist_liveries_1",
+        "colour_set": "random_from_consist_liveries_complement_company_colour",
         "purchase": "company_colour",
         "use_weathering": False,
         "docs_image_input_cc": [
@@ -548,7 +548,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_2": {
-        "colour_set": "random_from_consist_liveries_2",
+        "colour_set": "random_from_consist_liveries_variety",
         "purchase": "complement_company_colour",
         "use_weathering": True,
         "docs_image_input_cc": [
@@ -557,7 +557,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_NO_WEATHERING_2": {
-        "colour_set": "random_from_consist_liveries_2",
+        "colour_set": "random_from_consist_liveries_variety",
         "purchase": "complement_company_colour",
         "use_weathering": False,
         "docs_image_input_cc": [
@@ -566,7 +566,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_3": {
-        "colour_set": "random_from_consist_liveries_3",
+        "colour_set": "random_from_consist_liveries_bauxite_grey_nightshade",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -574,7 +574,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_NO_WEATHERING_3": {
-        "colour_set": "random_from_consist_liveries_3",
+        "colour_set": "random_from_consist_liveries_bauxite_grey_nightshade",
         "use_weathering": False,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -582,7 +582,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_4": {
-        "colour_set": "random_from_consist_liveries_4",
+        "colour_set": "random_from_consist_liveries_teal_violet",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -590,7 +590,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_5": {
-        "colour_set": "random_from_consist_liveries_5",
+        "colour_set": "random_from_consist_liveries_silver_pewter",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -598,7 +598,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_6": {
-        "colour_set": "random_from_consist_liveries_6",
+        "colour_set": "random_from_consist_liveries_sulphur_ochre",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -606,7 +606,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_7": {
-        "colour_set": "random_from_consist_liveries_7",
+        "colour_set": "random_from_consist_liveries_ruby_bauxite",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -614,7 +614,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_8": {
-        "colour_set": "random_from_consist_liveries_8",
+        "colour_set": "random_from_consist_liveries_oil_black_nightshade",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -622,7 +622,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_9": {
-        "colour_set": "random_from_consist_liveries_9",
+        "colour_set": "random_from_consist_liveries_ochre_sand",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -630,7 +630,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_10": {
-        "colour_set": "random_from_consist_liveries_10",
+        "colour_set": "random_from_consist_liveries_gremlin_green_silver",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -638,7 +638,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_11": {
-        "colour_set": "random_from_consist_liveries_11",
+        "colour_set": "random_from_consist_liveries_sulphur_straw",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -646,7 +646,7 @@ freight_wagon_liveries = {
         ],
     },
     "RANDOM_FROM_CONSIST_LIVERIES_12": {
-        "colour_set": "random_from_consist_liveries_12",
+        "colour_set": "random_from_consist_liveries_teal_pewter",
         "use_weathering": True,
         "docs_image_input_cc": [
             ("COLOUR_BLUE", "COLOUR_BLUE"),
@@ -818,9 +818,9 @@ freight_wagon_liveries = {
 # for wagons with mixed livery, the permitted liveries for that specific mix type
 wagon_livery_mixes = {
     # company colour + 1
-    "random_from_consist_liveries_1": ["complement_company_colour", "company_colour"],
+    "random_from_consist_liveries_complement_company_colour": ["complement_company_colour", "company_colour"],
     # most everything (but explicit add, so not *everything*)
-    "random_from_consist_liveries_2": [
+    "random_from_consist_liveries_variety": [
         "company_colour",
         "complement_company_colour",
         "freight_bauxite",
@@ -831,29 +831,29 @@ wagon_livery_mixes = {
         "freight_violet",
     ],
     # rust belt
-    "random_from_consist_liveries_3": [
+    "random_from_consist_liveries_bauxite_grey_nightshade": [
         "freight_bauxite",
         "freight_grey",
         "freight_nightshade",
     ],
     # chemical
-    "random_from_consist_liveries_4": ["freight_teal", "freight_violet"],
+    "random_from_consist_liveries_teal_violet": ["freight_teal", "freight_violet"],
     # silver-ish
-    "random_from_consist_liveries_5": ["freight_silver", "freight_pewter"],
+    "random_from_consist_liveries_silver_pewter": ["freight_silver", "freight_pewter"],
     # yellow / ochre
-    "random_from_consist_liveries_6": ["freight_sulphur", "freight_ochre"],
+    "random_from_consist_liveries_sulphur_ochre": ["freight_sulphur", "freight_ochre"],
     # rust / ruby
-    "random_from_consist_liveries_7": ["freight_ruby", "freight_bauxite"],
+    "random_from_consist_liveries_ruby_bauxite": ["freight_ruby", "freight_bauxite"],
     # black
-    "random_from_consist_liveries_8": ["freight_oil_black", "freight_nightshade"],
+    "random_from_consist_liveries_oil_black_nightshade": ["freight_oil_black", "freight_nightshade"],
     # ochre / sand
-    "random_from_consist_liveries_9": ["freight_ochre", "freight_sand"],
+    "random_from_consist_liveries_ochre_sand": ["freight_ochre", "freight_sand"],
     # moss /
-    "random_from_consist_liveries_10": ["freight_gremlin_green", "freight_silver"],
+    "random_from_consist_liveries_gremlin_green_silver": ["freight_gremlin_green", "freight_silver"],
     # yellow / faded
-    "random_from_consist_liveries_11": ["freight_sulphur", "freight_straw"],
+    "random_from_consist_liveries_sulphur_straw": ["freight_sulphur", "freight_straw"],
     # teal / dark grey
-    "random_from_consist_liveries_12": ["freight_teal", "freight_pewter"],
+    "random_from_consist_liveries_teal_pewter": ["freight_teal", "freight_pewter"],
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions

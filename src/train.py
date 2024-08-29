@@ -1012,29 +1012,29 @@ class Consist(object):
         else:
             colour_set = livery["colour_set"]
         # this is lolz, so many ifs just to get a string -> number mapping
-        if "random_from_consist_liveries_12" in colour_set:
+        if "random_from_consist_liveries_teal_pewter" in colour_set:
             return 114
-        if "random_from_consist_liveries_11" in colour_set:
+        if "random_from_consist_liveries_sulphur_straw" in colour_set:
             return 113
-        elif "random_from_consist_liveries_10" in colour_set:
+        elif "random_from_consist_liveries_gremlin_green_silver" in colour_set:
             return 112
-        elif "random_from_consist_liveries_9" in colour_set:
+        elif "random_from_consist_liveries_ochre_sand" in colour_set:
             return 111
-        elif "random_from_consist_liveries_8" in colour_set:
+        elif "random_from_consist_liveries_oil_black_nightshade" in colour_set:
             return 110
-        elif "random_from_consist_liveries_7" in colour_set:
+        elif "random_from_consist_liveries_ruby_bauxite" in colour_set:
             return 109
-        elif "random_from_consist_liveries_6" in colour_set:
+        elif "random_from_consist_liveries_sulphur_ochre" in colour_set:
             return 108
-        elif "random_from_consist_liveries_5" in colour_set:
+        elif "random_from_consist_liveries_silver_pewter" in colour_set:
             return 107
-        elif "random_from_consist_liveries_4" in colour_set:
+        elif "random_from_consist_liveries_teal_violet" in colour_set:
             return 106
-        elif "random_from_consist_liveries_3" in colour_set:
+        elif "random_from_consist_liveries_bauxite_grey_nightshade" in colour_set:
             return 105
-        elif "random_from_consist_liveries_2" in colour_set:
+        elif "random_from_consist_liveries_variety" in colour_set:
             return 104
-        elif "random_from_consist_liveries_1" in colour_set:
+        elif "random_from_consist_liveries_complement_company_colour" in colour_set:
             return 103
         # 102 left empty for legacy reasons as of May 2023, should be refactored really
         elif "complement_company_colour" in colour_set:
@@ -2446,7 +2446,7 @@ class CarConsist(Consist):
                     "STR_NAME_SUFFIX_LIVERY_MIX_"
                     + unit_variant.buyable_variant.livery["colour_set"].split(
                         "random_from_consist_liveries_"
-                    )[1]
+                    )[1].upper()
                 )
             except:
                 raise BaseException(self.id)
@@ -2454,7 +2454,7 @@ class CarConsist(Consist):
             optional_livery_suffix = "STR_EMPTY"
         result = [optional_livery_suffix]
         # we _may_ need to put colours on the stack for the string
-        if optional_livery_suffix == "STR_NAME_SUFFIX_LIVERY_MIX_1":
+        if optional_livery_suffix == "STR_NAME_SUFFIX_LIVERY_MIX_COMPLEMENT_COMPANY_COLOUR":
             result.extend(unit_variant.get_name_as_text_stack_colour_suffixes())
         return result
 
@@ -8788,7 +8788,7 @@ class UnitVariant(object):
         colour_name_switch_names = []
         if self.uses_random_livery:
             if self.buyable_variant.livery["colour_set"] in [
-                "random_from_consist_liveries_1"
+                "random_from_consist_liveries_complement_company_colour"
             ]:
                 for colour_name in self.all_candidate_livery_colour_sets_for_variant[
                     0:2
