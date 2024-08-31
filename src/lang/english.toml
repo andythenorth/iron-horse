@@ -629,6 +629,9 @@ base = "Mineral Wagon"
 [STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
 base = "High Side Mineral Wagon"
 
+[STR_NAME_SUFFIX_DUMP_CAR_LOW_SIDE]
+base = "Low Side Mineral Wagon"
+
 [STR_NAME_SUFFIX_DUMP_CAR_RANDOMISED]
 base = "Mineral Wagon"
 

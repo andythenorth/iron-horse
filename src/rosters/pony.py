@@ -269,6 +269,7 @@ wagon_module_names_with_roster_ids = {
     "dry_powder_hopper_cars": "pony",
     "dump_cars": "pony",
     "dump_cars_high_side": "pony",
+    "dump_cars_low_side": "pony",
     "dump_cars_randomised": "pony",
     "enclosed_automobile_cars": "pony",
     "express_cars": "pony",
