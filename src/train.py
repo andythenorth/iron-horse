@@ -2840,27 +2840,11 @@ class BolsterCarConsistRandomisedConsist(RandomisedConsistMixin, BolsterCarConsi
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_bolster_cars"
         # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            ],
+            liveries=liveries,
         )
 
 
@@ -4691,7 +4675,9 @@ class DumpCarScrapMetalConsistType2(DumpCarScrapMetalConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarScrapMetalRandomisedConsist(RandomisedConsistMixin, DumpCarScrapMetalConsistBase):
+class DumpCarScrapMetalRandomisedConsist(
+    RandomisedConsistMixin, DumpCarScrapMetalConsistBase
+):
     """
     Random choice of scrap metal car sprite.
     """
@@ -4996,32 +4982,11 @@ class ExpressFoodTankCarRandomisedConsist(
         self.base_id = "food_express_tank_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-            ],
+            liveries=liveries,
         )
 
 
@@ -5213,13 +5178,11 @@ class FarmProductsHopperCarRandomisedConsist(
         self.base_id = "farm_product_hopper_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "SWOOSH"
-                ],  # company colour not used on these wagons
-            ],
+            liveries=liveries,
         )
 
 
@@ -5283,13 +5246,11 @@ class FoodHopperCarRandomisedConsist(RandomisedConsistMixin, FoodHopperCarConsis
         self.base_id = "food_hopper_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "SWOOSH"
-                ],  # company colour not used on these wagons
-            ],
+            liveries=liveries,
         )
 
 
@@ -5308,6 +5269,29 @@ class FlatCarConsistBase(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["flat"]
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["freight_core"]
+        )
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            piece="flat",
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            ],
         )
 
 
@@ -5386,27 +5370,12 @@ class FlatCarBulkheadRandomisedConsist(
     def __init__(self, **kwargs):
         self.base_id = "bulkhead_flat_car_randomised"
         super().__init__(**kwargs)
+        # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            ],
+            liveries=liveries,
         )
 
 
@@ -5431,29 +5400,6 @@ class FlatCarDropEndConsist(FlatCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_flat_cars"
         self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="flat",
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            ],
-        )
 
 
 class FlatCarDropSideConsist(FlatCarConsistBase):
@@ -5478,29 +5424,6 @@ class FlatCarDropSideConsist(FlatCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_flat_cars"
         self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="flat",
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            ],
-        )
 
 
 class FlatCarConsist(FlatCarConsistBase):
@@ -5517,29 +5440,6 @@ class FlatCarConsist(FlatCarConsistBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_flat_cars"
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="flat",
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            ],
-        )
 
 
 class FlatCarHeavyDutyConsist(FlatCarConsistBase):
@@ -5599,29 +5499,6 @@ class FlatCarMillConsistBase(FlatCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_mill_flat_cars"
         self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="flat",
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            ],
-        )
 
 
 class FlatCarMillConsistType1(FlatCarMillConsistBase):
@@ -5655,27 +5532,11 @@ class FlatCarMillRandomisedConsist(RandomisedConsistMixin, FlatCarMillConsistBas
         self.base_id = "mill_flat_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            ],
+            liveries=liveries,
         )
 
 
@@ -5691,20 +5552,12 @@ class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_flat_cars"
         # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             use_deterministic_random_vehicle_map=True,
             dice_colour=2,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-            ],
+            liveries=liveries,
         )
 
 
@@ -7850,13 +7703,11 @@ class ReeferCarRandomisedConsist(RandomisedConsistMixin, ReeferCarConsistBase):
             "unweathered": graphics_constants.refrigerated_livery_recolour_maps,
             "weathered": graphics_constants.refrigerated_livery_recolour_maps_weathered,
         }
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             dice_colour=2,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-            ],
+            liveries=liveries,
         )
 
 
