@@ -168,7 +168,7 @@ base = "Vagón de techo deslizante"
 [STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]
 base = "Vagón de portón deslizante"
 
-[STR_NAME_SUFFIX_SCRAP_METAL_CAR]
+[STR_NAME_SUFFIX_SCRAP_METAL_CAR_TYPE_1]
 base = "Vagón de chatarra"
 
 [STR_NAME_SUFFIX_TANK_CAR]

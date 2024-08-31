@@ -4623,16 +4623,21 @@ class DumpCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
         )
 
 
-class DumpCarScrapMetalConsist(DumpCarConsistBase):
+class DumpCarScrapMetalConsistBase(DumpCarConsistBase):
     """
     Scrap Metal Car
     Same as standard dump car, but different appearance and default cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "scrap_metal_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_scrap"]
+        self.randomised_candidate_groups = [
+            "scrap_metal_car_randomised",
+        ]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_scrap_metal_cars"
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
@@ -4662,6 +4667,45 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
             global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
             global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
         ]
+
+
+class DumpCarScrapMetalConsistType1(DumpCarScrapMetalConsistBase):
+    """
+    Scrap Metal Car
+    Same as standard dump car, but different appearance and default cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "scrap_metal_car_type_1"
+        super().__init__(**kwargs)
+
+
+class DumpCarScrapMetalConsistType2(DumpCarScrapMetalConsistBase):
+    """
+    Scrap Metal Car
+    Same as standard dump car, but different appearance and default cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "scrap_metal_car_type_2"
+        super().__init__(**kwargs)
+
+
+class DumpCarScrapMetalRandomisedConsist(RandomisedConsistMixin, DumpCarScrapMetalConsistBase):
+    """
+    Random choice of scrap metal car sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "scrap_metal_car_randomised"
+        super().__init__(**kwargs)
+        # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
+            liveries=liveries,
+        )
 
 
 # not in alphabetical order as it depends on subclassing DumpCarConsistBase

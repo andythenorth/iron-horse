@@ -690,7 +690,7 @@ base = "Wagon cube"
 [STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]
 base = "Wagon à parois coulissantes"
 
-[STR_NAME_SUFFIX_SCRAP_METAL_CAR]
+[STR_NAME_SUFFIX_SCRAP_METAL_CAR_TYPE_1]
 base = "Wagon à ferraille"
 
 [STR_NAME_SUFFIX_SUBURBAN_PASSENGER_CAR]
