@@ -4225,59 +4225,7 @@ class DumpCarConsistBase(CarConsist):
         )
 
 
-class DumpCarConsist(DumpCarConsistBase):
-    """
-    Standard Dump Car.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "dump_car"
-        super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "bulk_car_box_randomised",
-            "bulk_car_mixed_randomised",
-            "dump_car_randomised",
-        ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_dump_cars"
-        self._joker = True
-        # Graphics configuration
-        # !!!! unify this across all 3 types of basic dump car
-        self.gestalt_graphics.liveries = [
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-            ],
-            global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-            global_constants.freight_wagon_liveries[
-                "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-            ],
-            global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-            global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-            global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-            global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
-            global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-        ]
-
-
-class AggregateDumpCarConsistBase(DumpCarConsistBase):
+class DumpCarAggregateConsistBase(DumpCarConsistBase):
     """
     Base class for aggregate dump car.
     Same as standard dump car, but different appearance and default cargos.
@@ -4328,7 +4276,7 @@ class AggregateDumpCarConsistBase(DumpCarConsistBase):
         ]
 
 
-class DumpCarAggregateConsistType1(AggregateDumpCarConsistBase):
+class DumpCarAggregateConsistType1(DumpCarAggregateConsistBase):
     """
     Aggregate Car.
     Same as standard dump car, but different appearance and default cargos.
@@ -4339,7 +4287,7 @@ class DumpCarAggregateConsistType1(AggregateDumpCarConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarAggregateConsistType2(AggregateDumpCarConsistBase):
+class DumpCarAggregateConsistType2(DumpCarAggregateConsistBase):
     """
     Same as standard dump car, but different appearance and default cargos.
     """
@@ -4349,7 +4297,7 @@ class DumpCarAggregateConsistType2(AggregateDumpCarConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarAggregateConsistType3(AggregateDumpCarConsistBase):
+class DumpCarAggregateConsistType3(DumpCarAggregateConsistBase):
     """
     Same as standard dump car, but different appearance and default cargos.
     """
@@ -4360,7 +4308,7 @@ class DumpCarAggregateConsistType3(AggregateDumpCarConsistBase):
 
 
 class DumpCarAggregateRandomisedConsist(
-    RandomisedConsistMixin, AggregateDumpCarConsistBase
+    RandomisedConsistMixin, DumpCarAggregateConsistBase
 ):
     """
     Random choice of aggregate dump car sprite.
@@ -4445,112 +4393,112 @@ class DumpCarHeavyDutyConsist(DumpCarConsistBase):
         ]
 
 
-class DumpCarHighSideConsist(DumpCarConsistBase):
+class DumpCarMineralConsistBase(DumpCarConsistBase):
     """
-    High Side Dump Car.
-    Same as standard dump car, but different appearance and default cargos.
+    Base class for standard dump car (Mineral Wagon in UK terms).
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.randomised_candidate_groups = [
+            "bulk_car_box_randomised",
+            "bulk_car_mixed_randomised",
+            "dump_car_randomised",
+        ]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_dump_cars"
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics.liveries = [
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+            ],
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
+            ],
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
+            ],
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+            ],
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"
+            ],
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
+            ],
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
+            ],
+            global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            global_constants.freight_wagon_liveries[
+                "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+            ],
+            global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+            global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+            global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+            global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+            global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
+            global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
+            global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+            global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+        ]
+
+
+class DumpCarMineralConsist(DumpCarMineralConsistBase):
+    """
+    Standard dump car (Mineral Wagon in UK terms).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "dump_car"
+        super().__init__(**kwargs)
+
+
+class DumpCarMineralHighSideConsist(DumpCarMineralConsistBase):
+    """
+    Standard dump car (Mineral Wagon in UK terms), with high sides.
     """
 
     def __init__(self, **kwargs):
         self.base_id = "dump_car_high_side"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
-        self.randomised_candidate_groups = [
-            "bulk_car_box_randomised",
-            "bulk_car_mixed_randomised",
-            "dump_car_randomised",
-        ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_dump_cars"
-        self._joker = True
-        # Graphics configuration
-        # !!!! unify this across all 3 types of basic dump car
-        self.gestalt_graphics.liveries = [
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-            ],
-            global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-            global_constants.freight_wagon_liveries[
-                "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-            ],
-            global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-            global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-            global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-            global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
-            global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-        ]
 
 
-class DumpCarLowSideConsist(DumpCarConsistBase):
+class DumpCarMineralLowSideConsist(DumpCarMineralConsistBase):
     """
-    Low Side Dump Car.
-    Same as standard dump car, but different appearance and default cargos.
+    Standard dump car (Mineral Wagon in UK terms), with low sides.
     """
 
     def __init__(self, **kwargs):
         self.base_id = "dump_car_low_side"
         super().__init__(**kwargs)
-        # self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
-        self.randomised_candidate_groups = [
-            "bulk_car_box_randomised",
-            "bulk_car_mixed_randomised",
-            "dump_car_randomised",
-        ]
+
+
+class DumpCarMineralRandomisedConsist(
+    RandomisedConsistMixin, DumpCarMineralConsistBase
+):
+    """
+    Random choice of standard dump car (Mineral Wagon in UK terms).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "dump_car_randomised"
+        super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_dump_cars"
-        self._joker = True
         # Graphics configuration
-        # !!!! unify this across all 3 types of basic dump car
-        self.gestalt_graphics.liveries = [
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-            ],
-            global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-            global_constants.freight_wagon_liveries[
-                "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-            ],
-            global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-            global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-            global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-            global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
-            global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-        ]
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
+            liveries=liveries,
+        )
 
 
 class DumpCarOreConsist(DumpCarConsistBase):
@@ -4568,43 +4516,6 @@ class DumpCarOreConsist(DumpCarConsistBase):
         self.gestalt_graphics.liveries = [
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"],
         ]
-
-
-class DumpCarRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
-    """
-    Random choice of dump car sprite.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "dump_car_randomised"
-        super().__init__(**kwargs)
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_dump_cars"
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            dice_colour=2,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-                ],
-            ],
-        )
 
 
 class DumpCarScrapMetalConsistBase(DumpCarConsistBase):
