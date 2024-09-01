@@ -160,6 +160,8 @@ class Roster(object):
         result = []
         for base_id, wagons in self.wagon_consists_by_base_id.items():
             for wagon_consist in wagons:
+                if randomisation_consist.base_id == wagon_consist.base_id:
+                    continue
                 if (
                     randomisation_consist.base_id
                     not in wagon_consist.randomised_candidate_groups
