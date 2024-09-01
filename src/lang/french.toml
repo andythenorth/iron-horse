@@ -263,7 +263,7 @@ base = "Wagons porte-bobines"
 [STR_WAGON_GROUP_COVERED_HOPPER_CARS]
 base = "Wagons-trémies couverts"
 
-[STR_WAGON_GROUP_DUMP_CARS]
+[STR_WAGON_GROUP_MINERAL_BULK_OPEN_CARS]
 base = "Wagons à minerai"
 
 [STR_WAGON_GROUP_FOOD_TANK_CARS]
@@ -330,7 +330,7 @@ base = "Wagons-citerne à produits chimiques"
 [STR_WAGON_GROUP_COVERED_HOPPER_CARS_RANDOMISED]
 base = "Wagons-trémies couverts"
 
-[STR_WAGON_GROUP_DUMP_CARS_RANDOMISED]
+[STR_WAGON_GROUP_MINERAL_BULK_OPEN_CARS_RANDOMISED]
 base = "Wagons à minerai"
 
 [STR_WAGON_GROUP_FLAT_CARS_RANDOMISED]

@@ -3476,11 +3476,11 @@ class BulkOpenCarMineralConsistBase(BulkOpenCarConsistBase):
         self.randomised_candidate_groups = [
             "bulk_car_box_randomised",
             "bulk_car_mixed_randomised",
-            "dump_car_randomised",
+            "mineral_bulk_open_car_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_dump_cars"
+        self.use_named_buyable_variant_group = "wagon_group_mineral_bulk_open_cars"
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
@@ -3531,7 +3531,7 @@ class BulkOpenCarMineralConsist(BulkOpenCarMineralConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "dump_car"
+        self.base_id = "mineral_bulk_open_car"
         super().__init__(**kwargs)
 
 
@@ -3541,7 +3541,7 @@ class BulkOpenCarMineralHighSideConsist(BulkOpenCarMineralConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "dump_car_high_side"
+        self.base_id = "mineral_bulk_open_car_high_side"
         super().__init__(**kwargs)
 
 
@@ -3551,7 +3551,7 @@ class BulkOpenCarMineralLowSideConsist(BulkOpenCarMineralConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "dump_car_low_side"
+        self.base_id = "mineral_bulk_open_car_low_side"
         super().__init__(**kwargs)
 
 
@@ -3563,11 +3563,11 @@ class BulkOpenCarMineralRandomisedConsist(
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "dump_car_randomised"
+        self.base_id = "mineral_bulk_open_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_dump_cars"
+        self.use_named_buyable_variant_group = "wagon_group_mineral_bulk_open_cars"
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         liveries = self.gestalt_graphics.liveries.copy()

@@ -319,12 +319,6 @@ base = "Car Transporters"
 [STR_WAGON_GROUP_DROP_SIDE_FLAT_CARS]
 base = "Drop Side Flat Wagons"
 
-[STR_WAGON_GROUP_DUMP_CARS]
-base = "Mineral Wagons"
-
-[STR_WAGON_GROUP_DUMP_CARS_RANDOMISED]
-base = "Mineral Wagons"
-
 [STR_WAGON_GROUP_EXPRESS_CARS]
 base = "Express Vans"
 
@@ -388,6 +382,12 @@ base = "Merchandise Vans"
 
 [STR_WAGON_GROUP_METAL_PRODUCT_CARS_RANDOMISED]
 base = "Metal Cargo Combos"
+
+[STR_WAGON_GROUP_MINERAL_BULK_OPEN_CARS]
+base = "Mineral Wagons"
+
+[STR_WAGON_GROUP_MINERAL_BULK_OPEN_CARS_RANDOMISED]
+base = "Mineral Wagons"
 
 [STR_WAGON_GROUP_MGR_HOPPER_CARS]
 base = "MGR Hoppers"
@@ -623,18 +623,6 @@ base = "Drop Side Flat Wagon"
 [STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR]
 base = "Covered Hopper"
 
-[STR_NAME_SUFFIX_DUMP_CAR]
-base = "Mineral Wagon"
-
-[STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
-base = "High Side Mineral Wagon"
-
-[STR_NAME_SUFFIX_DUMP_CAR_LOW_SIDE]
-base = "Low Side Mineral Wagon"
-
-[STR_NAME_SUFFIX_DUMP_CAR_RANDOMISED]
-base = "Mineral Wagon"
-
 [STR_NAME_SUFFIX_ENCLOSED_AUTOMOBILE_CAR]
 base = "Enclosed Vehicle Transporter"
 
@@ -757,6 +745,18 @@ base = "Mixed Metal Product Wagon"
 
 [STR_NAME_SUFFIX_METAL_PRODUCT_CAR_UNCOVERED_RANDOMISED]
 base = "Uncovered Metal Product Wagon"
+
+[STR_NAME_SUFFIX_MINERAL_BULK_OPEN_CAR]
+base = "Mineral Wagon"
+
+[STR_NAME_SUFFIX_MINERAL_BULK_OPEN_CAR_HIGH_SIDE]
+base = "High Side Mineral Wagon"
+
+[STR_NAME_SUFFIX_MINERAL_BULK_OPEN_CAR_LOW_SIDE]
+base = "Low Side Mineral Wagon"
+
+[STR_NAME_SUFFIX_MINERAL_BULK_OPEN_CAR_RANDOMISED]
+base = "Mineral Wagon"
 
 [STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR]
 base = "Mineral Covered Hopper"
