@@ -269,7 +269,7 @@ base = " - {RED}M{ORANGE}i{YELLOW}x{GREEN}e{BLUE}d {PURPLE}C{RED}o{ORANGE}l{YELL
 base = "Acid Tankers"
 
 [STR_WAGON_GROUP_AGGREGATE_DUMP_CARS]
-base = "Stone Wagons"
+base = "Stone Tipplers"
 
 [STR_WAGON_GROUP_AGGREGATE_HOPPER_CARS]
 base = "Aggregate Hoppers"
@@ -489,16 +489,16 @@ base = "Acid Tanker"
 base = "Acid Tanker"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_RANDOMISED]
-base = "Stone Wagon"
+base = "Stone Tippler"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_1]
-base = "Stone Wagon"
+base = "Stone Tippler"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_2]
-base = "Stone Wagon"
+base = "Stone Tippler"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_3]
-base = "Stone Wagon"
+base = "Stone Tippler"
 
 [STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_RANDOMISED]
 base = "Aggregate Hopper"
@@ -786,7 +786,7 @@ base = "Open Wagon"
 base = "Open Wagon"
 
 [STR_NAME_SUFFIX_ORE_DUMP_CAR]
-base = "Ore Dump Wagon"
+base = "Ore Tippler"
 
 [STR_NAME_SUFFIX_PANORAMIC_CAR]
 base = "Panoramic Coach"
