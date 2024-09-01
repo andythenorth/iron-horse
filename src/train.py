@@ -4297,16 +4297,6 @@ class DumpCarAggregateConsistType2(DumpCarAggregateConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarAggregateConsistType3(DumpCarAggregateConsistBase):
-    """
-    Same as standard dump car, but different appearance and default cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "aggregate_dump_car_type_3"
-        super().__init__(**kwargs)
-
-
 class DumpCarAggregateRandomisedConsist(
     RandomisedConsistMixin, DumpCarAggregateConsistBase
 ):
@@ -4321,42 +4311,12 @@ class DumpCarAggregateRandomisedConsist(
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
         # Graphics configuration
-        # minimalist use of CC, so only one livery
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             use_deterministic_random_vehicle_map=True,
             dice_colour=2,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
-                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
-                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-            ],
+            liveries=liveries,
         )
 
 

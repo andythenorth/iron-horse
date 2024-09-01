@@ -3,6 +3,7 @@ from train import DumpCarAggregateRandomisedConsist, FreightCar
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
+    """
     consist = DumpCarAggregateRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
@@ -68,7 +69,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
-
+    """
     consist = DumpCarAggregateRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
