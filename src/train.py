@@ -5602,9 +5602,6 @@ class HopperCarAggregateConsistType1(HopperCarAggregateConsistBase):
             global_constants.freight_wagon_liveries[
                 "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
             ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"
-            ],
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.freight_wagon_liveries[
                 "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
@@ -5651,9 +5648,6 @@ class HopperCarAggregateConsistType2(HopperCarAggregateConsistBase):
             ],
             global_constants.freight_wagon_liveries[
                 "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"
             ],
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.freight_wagon_liveries[
@@ -5702,9 +5696,6 @@ class HopperCarAggregateConsistType3(HopperCarAggregateConsistBase):
             ],
             global_constants.freight_wagon_liveries[
                 "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"
             ],
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.freight_wagon_liveries[
@@ -5755,9 +5746,6 @@ class HopperCarAggregateRandomisedConsist(
                 ],
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"
                 ],
                 global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"

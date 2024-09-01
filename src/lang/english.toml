@@ -269,7 +269,7 @@ base = " - {RED}M{ORANGE}i{YELLOW}x{GREEN}e{BLUE}d {PURPLE}C{RED}o{ORANGE}l{YELL
 base = "Acid Tankers"
 
 [STR_WAGON_GROUP_AGGREGATE_DUMP_CARS]
-base = "Aggregate Dump Wagons"
+base = "Stone Wagons"
 
 [STR_WAGON_GROUP_AGGREGATE_HOPPER_CARS]
 base = "Aggregate Hoppers"
@@ -489,16 +489,16 @@ base = "Acid Tanker"
 base = "Acid Tanker"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_RANDOMISED]
-base = "Aggregate Dump Wagon"
+base = "Stone Wagon"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_1]
-base = "Aggregate Dump Wagon"
+base = "Stone Wagon"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_2]
-base = "Aggregate Dump Wagon"
+base = "Stone Wagon"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_3]
-base = "Aggregate Dump Wagon"
+base = "Stone Wagon"
 
 [STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_RANDOMISED]
 base = "Aggregate Hopper"
