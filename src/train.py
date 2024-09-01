@@ -4195,7 +4195,7 @@ class CoveredHopperCarSwingRoofChemicalConsist(CoveredHopperCarConsistBase):
         )
 
 
-class DumpCarConsistBase(CarConsist):
+class BulkOpenCarConsistBase(CarConsist):
     """
     Common base class for dump cars.
     Limited set of bulk (mineral) cargos, same set as hopper cars.
@@ -4225,7 +4225,7 @@ class DumpCarConsistBase(CarConsist):
         )
 
 
-class DumpCarAggregateConsistBase(DumpCarConsistBase):
+class BulkOpenCarAggregateConsistBase(BulkOpenCarConsistBase):
     """
     Base class for aggregate dump car.
     Same as standard dump car, but different appearance and default cargos.
@@ -4276,7 +4276,7 @@ class DumpCarAggregateConsistBase(DumpCarConsistBase):
         ]
 
 
-class DumpCarAggregateConsistType1(DumpCarAggregateConsistBase):
+class BulkOpenCarAggregateConsistType1(BulkOpenCarAggregateConsistBase):
     """
     Aggregate Car.
     Same as standard dump car, but different appearance and default cargos.
@@ -4287,7 +4287,7 @@ class DumpCarAggregateConsistType1(DumpCarAggregateConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarAggregateConsistType2(DumpCarAggregateConsistBase):
+class BulkOpenCarAggregateConsistType2(BulkOpenCarAggregateConsistBase):
     """
     Same as standard dump car, but different appearance and default cargos.
     """
@@ -4297,8 +4297,8 @@ class DumpCarAggregateConsistType2(DumpCarAggregateConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarAggregateRandomisedConsist(
-    RandomisedConsistMixin, DumpCarAggregateConsistBase
+class BulkOpenCarAggregateRandomisedConsist(
+    RandomisedConsistMixin, BulkOpenCarAggregateConsistBase
 ):
     """
     Random choice of aggregate dump car sprite.
@@ -4320,7 +4320,7 @@ class DumpCarAggregateRandomisedConsist(
         )
 
 
-class DumpCarHeavyDutyConsist(DumpCarConsistBase):
+class BulkOpenCarHeavyDutyConsist(BulkOpenCarConsistBase):
     """
     Heavy duty dump car, higher capacity, reduced speed (set in vehicle class, not consist)
     """
@@ -4353,7 +4353,7 @@ class DumpCarHeavyDutyConsist(DumpCarConsistBase):
         ]
 
 
-class DumpCarMineralConsistBase(DumpCarConsistBase):
+class BulkOpenCarMineralConsistBase(BulkOpenCarConsistBase):
     """
     Base class for standard dump car (Mineral Wagon in UK terms).
     """
@@ -4412,7 +4412,7 @@ class DumpCarMineralConsistBase(DumpCarConsistBase):
         ]
 
 
-class DumpCarMineralConsist(DumpCarMineralConsistBase):
+class BulkOpenCarMineralConsist(BulkOpenCarMineralConsistBase):
     """
     Standard dump car (Mineral Wagon in UK terms).
     """
@@ -4422,7 +4422,7 @@ class DumpCarMineralConsist(DumpCarMineralConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarMineralHighSideConsist(DumpCarMineralConsistBase):
+class BulkOpenCarMineralHighSideConsist(BulkOpenCarMineralConsistBase):
     """
     Standard dump car (Mineral Wagon in UK terms), with high sides.
     """
@@ -4432,7 +4432,7 @@ class DumpCarMineralHighSideConsist(DumpCarMineralConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarMineralLowSideConsist(DumpCarMineralConsistBase):
+class BulkOpenCarMineralLowSideConsist(BulkOpenCarMineralConsistBase):
     """
     Standard dump car (Mineral Wagon in UK terms), with low sides.
     """
@@ -4442,8 +4442,8 @@ class DumpCarMineralLowSideConsist(DumpCarMineralConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarMineralRandomisedConsist(
-    RandomisedConsistMixin, DumpCarMineralConsistBase
+class BulkOpenCarMineralRandomisedConsist(
+    RandomisedConsistMixin, BulkOpenCarMineralConsistBase
 ):
     """
     Random choice of standard dump car (Mineral Wagon in UK terms).
@@ -4464,7 +4464,7 @@ class DumpCarMineralRandomisedConsist(
         )
 
 
-class DumpCarOreConsist(DumpCarConsistBase):
+class BulkOpenCarOreConsist(BulkOpenCarConsistBase):
     """
     Ore Dump Car.
     Same as standard dump car, but different appearance and default cargos.
@@ -4481,7 +4481,7 @@ class DumpCarOreConsist(DumpCarConsistBase):
         ]
 
 
-class DumpCarScrapMetalConsistBase(DumpCarConsistBase):
+class BulkOpenCarScrapMetalConsistBase(BulkOpenCarConsistBase):
     """
     Scrap Metal Car
     Same as standard dump car, but different appearance and default cargos.
@@ -4527,7 +4527,7 @@ class DumpCarScrapMetalConsistBase(DumpCarConsistBase):
         ]
 
 
-class DumpCarScrapMetalConsistType1(DumpCarScrapMetalConsistBase):
+class BulkOpenCarScrapMetalConsistType1(BulkOpenCarScrapMetalConsistBase):
     """
     Scrap Metal Car
     Same as standard dump car, but different appearance and default cargos.
@@ -4538,7 +4538,7 @@ class DumpCarScrapMetalConsistType1(DumpCarScrapMetalConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarScrapMetalConsistType2(DumpCarScrapMetalConsistBase):
+class BulkOpenCarScrapMetalConsistType2(BulkOpenCarScrapMetalConsistBase):
     """
     Scrap Metal Car
     Same as standard dump car, but different appearance and default cargos.
@@ -4549,8 +4549,8 @@ class DumpCarScrapMetalConsistType2(DumpCarScrapMetalConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarScrapMetalRandomisedConsist(
-    RandomisedConsistMixin, DumpCarScrapMetalConsistBase
+class BulkOpenCarScrapMetalRandomisedConsist(
+    RandomisedConsistMixin, BulkOpenCarScrapMetalConsistBase
 ):
     """
     Random choice of scrap metal car sprite.
@@ -4568,8 +4568,8 @@ class DumpCarScrapMetalRandomisedConsist(
         )
 
 
-# not in alphabetical order as it depends on subclassing DumpCarConsistBase
-class BulkCarBoxRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
+# not in alphabetical order as it depends on subclassing BulkOpenCarConsistBase
+class BulkCarBoxRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBase):
     """
     Random choice of bulk car sprite, from available dump / box open cars.
     """
@@ -4597,9 +4597,9 @@ class BulkCarBoxRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
         )
 
 
-# not in alphabetical order as it depends on subclassing DumpCarConsistBase
-# for now we use DumpCarConsistBase base class here not hopper, as it keeps the BulkCarRandomised classes together
-class BulkCarHopperRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
+# not in alphabetical order as it depends on subclassing BulkOpenCarConsistBase
+# for now we use BulkOpenCarConsistBase base class here not hopper, as it keeps the BulkCarRandomised classes together
+class BulkCarHopperRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBase):
     """
     Random choice of bulk car sprite, from available dump / hopper cars.
     """
@@ -4627,8 +4627,8 @@ class BulkCarHopperRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase)
         )
 
 
-# not in alphabetical order as it depends on subclassing DumpCarConsistBase
-class BulkCarMixedRandomisedConsist(RandomisedConsistMixin, DumpCarConsistBase):
+# not in alphabetical order as it depends on subclassing BulkOpenCarConsistBase
+class BulkCarMixedRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBase):
     """
     Random choice of bulk car sprite, from available dump / hopper cars.
     """

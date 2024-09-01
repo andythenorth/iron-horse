@@ -1,10 +1,10 @@
-from train import DumpCarMineralConsist, FreightCar
+from train import BulkOpenCarMineralConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = DumpCarMineralConsist(
+    consist = BulkOpenCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18690,
@@ -16,7 +16,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = DumpCarMineralConsist(
+    consist = BulkOpenCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18710,
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = DumpCarMineralConsist(
+    consist = BulkOpenCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18730,
@@ -42,7 +42,7 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = DumpCarMineralConsist(
+    consist = BulkOpenCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18750,
@@ -55,7 +55,7 @@ def main(roster_id, **kwargs):
 
     # gen 1 also covers gen 2
 
-    consist = DumpCarMineralConsist(
+    consist = BulkOpenCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18770,
@@ -66,7 +66,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = DumpCarMineralConsist(
+    consist = BulkOpenCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18790,
@@ -77,7 +77,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = DumpCarMineralConsist(
+    consist = BulkOpenCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18810,
@@ -88,7 +88,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = DumpCarMineralConsist(
+    consist = BulkOpenCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18830,
@@ -99,7 +99,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
 
-    consist = DumpCarMineralConsist(
+    consist = BulkOpenCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18850,
@@ -110,7 +110,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
-    consist = DumpCarMineralConsist(
+    consist = BulkOpenCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18870,
@@ -121,7 +121,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
 
-    consist = DumpCarMineralConsist(
+    consist = BulkOpenCarMineralConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18890,

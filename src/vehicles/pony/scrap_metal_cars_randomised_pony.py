@@ -1,10 +1,10 @@
-from train import DumpCarScrapMetalRandomisedConsist, FreightCar
+from train import BulkOpenCarScrapMetalRandomisedConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = DumpCarScrapMetalRandomisedConsist(
+    consist = BulkOpenCarScrapMetalRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32180,
@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = DumpCarScrapMetalRandomisedConsist(
+    consist = BulkOpenCarScrapMetalRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32200,
@@ -26,7 +26,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = DumpCarScrapMetalRandomisedConsist(
+    consist = BulkOpenCarScrapMetalRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32220,

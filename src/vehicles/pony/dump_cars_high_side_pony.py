@@ -1,10 +1,10 @@
-from train import DumpCarMineralHighSideConsist, FreightCar
+from train import BulkOpenCarMineralHighSideConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = DumpCarMineralHighSideConsist(
+    consist = BulkOpenCarMineralHighSideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23550,
@@ -16,7 +16,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = DumpCarMineralHighSideConsist(
+    consist = BulkOpenCarMineralHighSideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=38560,
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = DumpCarMineralHighSideConsist(
+    consist = BulkOpenCarMineralHighSideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23570,
@@ -42,7 +42,7 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = DumpCarMineralHighSideConsist(
+    consist = BulkOpenCarMineralHighSideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18910,
@@ -53,7 +53,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = DumpCarMineralHighSideConsist(
+    consist = BulkOpenCarMineralHighSideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18930,
@@ -64,7 +64,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = DumpCarMineralHighSideConsist(
+    consist = BulkOpenCarMineralHighSideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18950,
@@ -75,7 +75,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = DumpCarMineralHighSideConsist(
+    consist = BulkOpenCarMineralHighSideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18970,
@@ -86,7 +86,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = DumpCarMineralHighSideConsist(
+    consist = BulkOpenCarMineralHighSideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18990,
@@ -97,7 +97,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
 
-    consist = DumpCarMineralHighSideConsist(
+    consist = BulkOpenCarMineralHighSideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19010,
@@ -108,7 +108,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
-    consist = DumpCarMineralHighSideConsist(
+    consist = BulkOpenCarMineralHighSideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19030,
@@ -119,7 +119,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
 
-    consist = DumpCarMineralHighSideConsist(
+    consist = BulkOpenCarMineralHighSideConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19050,

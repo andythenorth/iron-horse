@@ -1,10 +1,10 @@
-from train import DumpCarOreConsist, OreDumpCar
+from train import BulkOpenCarOreConsist, OreDumpCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = DumpCarOreConsist(
+    consist = BulkOpenCarOreConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35530,
@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=OreDumpCar, chassis="2_axle_gapped_16px")
 
-    consist = DumpCarOreConsist(
+    consist = BulkOpenCarOreConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35540,
@@ -26,7 +26,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=OreDumpCar, chassis="4_axle_gapped_24px")
 
-    consist = DumpCarOreConsist(
+    consist = BulkOpenCarOreConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35550,
@@ -37,7 +37,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=OreDumpCar, chassis="2_axle_gapped_16px")
 
-    consist = DumpCarOreConsist(
+    consist = BulkOpenCarOreConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35560,
@@ -50,7 +50,7 @@ def main(roster_id, **kwargs):
 
     # no gen 5A or 6A
 
-    consist = DumpCarOreConsist(
+    consist = BulkOpenCarOreConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35570,
@@ -61,7 +61,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_24px")
 
-    consist = DumpCarOreConsist(
+    consist = BulkOpenCarOreConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35580,
