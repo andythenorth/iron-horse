@@ -472,6 +472,9 @@ base = "Tankers"
 [STR_WAGON_GROUP_TARPAULIN_CARS]
 base = "Tarpaulin Wagons"
 
+[STR_WAGON_GROUP_TIPPLER_BULK_OPEN_CARS]
+base = "Tippler Wagons"
+
 [STR_WAGON_GROUP_TORPEDO_CARS]
 base = "Torpedo Wagons"
 
@@ -785,7 +788,10 @@ base = "Open Wagon"
 [STR_NAME_SUFFIX_OPEN_CAR_RANDOMISED]
 base = "Open Wagon"
 
-[STR_NAME_SUFFIX_ORE_DUMP_CAR]
+[STR_NAME_SUFFIX_ORE_DUMP_CAR_TYPE_1]
+base = "Ore Tippler"
+
+[STR_NAME_SUFFIX_ORE_DUMP_CAR_TYPE_2]
 base = "Ore Tippler"
 
 [STR_NAME_SUFFIX_PANORAMIC_CAR]

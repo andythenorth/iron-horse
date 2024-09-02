@@ -3349,7 +3349,7 @@ class BulkOpenCarAggregateConsistBase(BulkOpenCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
+        self.use_named_buyable_variant_group = "wagon_group_tippler_bulk_open_cars"
         # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
             "aggregate_dump_car_randomised",
@@ -3361,31 +3361,11 @@ class BulkOpenCarAggregateConsistBase(BulkOpenCarConsistBase):
             global_constants.freight_wagon_liveries[
                 "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
             ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-            ],
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.freight_wagon_liveries[
                 "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
             ],
-            global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-            global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-            global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-            global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-            global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
-            global_constants.freight_wagon_liveries["FREIGHT_SAND"],
             global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
         ]
 
 
@@ -3422,7 +3402,7 @@ class BulkOpenCarAggregateRandomisedConsist(
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_aggregate_dump_cars"
+        self.use_named_buyable_variant_group = "wagon_group_tippler_bulk_open_cars"
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         liveries = self.gestalt_graphics.liveries.copy()
@@ -3577,21 +3557,58 @@ class BulkOpenCarMineralRandomisedConsist(
         )
 
 
-class BulkOpenCarOreConsist(BulkOpenCarConsistBase):
+class BulkOpenCarOreConsistBase(BulkOpenCarConsistBase):
     """
-    Ore Dump Car.
+    Base class for Ore Dump Car.
     Same as standard dump car, but different appearance and default cargos.
-    The classname breaks convention (would usually be OreCar), this is to keep all dump car subclasses togther).
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "ore_dump_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_ore"]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_tippler_bulk_open_cars"
         # Graphics configuration
         self.gestalt_graphics.liveries = [
-            global_constants.freight_wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"],
+            global_constants.freight_wagon_liveries[
+                "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+            ],
+            global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+            global_constants.freight_wagon_liveries[
+                "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+            ],
+            global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+            global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+            global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+            global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+            global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
+            global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
+            global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+            global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+            global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
         ]
+
+
+class BulkOpenCarOreConsistType1(BulkOpenCarOreConsistBase):
+    """
+    Ore Dump Car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "ore_dump_car_type_1"
+        super().__init__(**kwargs)
+
+
+class BulkOpenCarOreConsistType2(BulkOpenCarOreConsistBase):
+    """
+    Ore Dump Car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "ore_dump_car_type_2"
+        super().__init__(**kwargs)
 
 
 class BulkOpenCarScrapMetalConsistBase(BulkOpenCarConsistBase):
@@ -3643,7 +3660,6 @@ class BulkOpenCarScrapMetalConsistBase(BulkOpenCarConsistBase):
 class BulkOpenCarScrapMetalConsistType1(BulkOpenCarScrapMetalConsistBase):
     """
     Scrap Metal Car
-    Same as standard dump car, but different appearance and default cargos.
     """
 
     def __init__(self, **kwargs):
@@ -3654,7 +3670,6 @@ class BulkOpenCarScrapMetalConsistType1(BulkOpenCarScrapMetalConsistBase):
 class BulkOpenCarScrapMetalConsistType2(BulkOpenCarScrapMetalConsistBase):
     """
     Scrap Metal Car
-    Same as standard dump car, but different appearance and default cargos.
     """
 
     def __init__(self, **kwargs):

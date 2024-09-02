@@ -92,7 +92,8 @@ wagon_module_name_stems = [
     "aggregate_dump_cars_type_1",
     "aggregate_dump_cars_type_2",
     "aggregate_dump_cars_randomised",
-    "ore_dump_cars",
+    "ore_dump_cars_type_1",
+    "ore_dump_cars_type_2",
     "scrap_metal_cars_type_1",
     "scrap_metal_cars_type_2",
     "scrap_metal_cars_randomised",
@@ -306,7 +307,6 @@ intro_month_offsets_by_role_group = {
 # only needed for groups composing more than one type of consist
 buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_acid_tank_cars": "acid_tank_car_type_1",
-    "wagon_group_aggregate_dump_cars": "aggregate_dump_car_type_1",
     "wagon_group_aggregate_hopper_cars": "aggregate_hopper_car_type_1",
     "wagon_group_bolster_cars": "bolster_car",
     "wagon_group_box_cars": "box_car_type_1",
@@ -335,6 +335,7 @@ buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_scrap_metal_cars": "scrap_metal_car_type_1",
     "wagon_group_silo_cars": "silo_car_type_1",
     "wagon_group_sliding_wall_cars": "sliding_wall_car_type_1",
+    "wagon_group_tippler_bulk_open_cars": "aggregate_dump_car_type_1",
     "wagon_group_vehicle_transporter_cars": "automobile_car",
 }
 

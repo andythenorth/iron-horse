@@ -155,7 +155,6 @@ wagon_module_names_with_roster_ids = {
     "intermodal_cars": "pony",
     "kaolin_hopper_cars": "pony",
     "log_cars": "pony",
-    "ore_dump_cars": "pony",
     "pressure_tank_cars": "pony",
     "product_tank_cars": "pony",
     "reefer_cars_type_1": "pony",
