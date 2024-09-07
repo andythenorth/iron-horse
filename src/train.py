@@ -3542,6 +3542,8 @@ class BulkOpenCarMineralRandomisedConsist(
     def __init__(self, **kwargs):
         self.base_id = "mineral_bulk_open_car_randomised"
         super().__init__(**kwargs)
+        # needed to clear randomised set by base class
+        self.randomised_candidate_groups = []
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_mineral_bulk_open_cars"
@@ -3648,6 +3650,11 @@ class BulkOpenCarTipplerConsistBase(BulkOpenCarConsistBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_ore"]
+        self.randomised_candidate_groups = [
+            "bulk_car_box_randomised",
+            "bulk_car_mixed_randomised",
+            "tippler_bulk_open_car_randomised",
+        ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_tippler_bulk_open_cars"
@@ -3702,11 +3709,6 @@ class BulkOpenCarTipplerConsistType1(BulkOpenCarTipplerConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "tippler_bulk_open_car_type_1"
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "bulk_car_box_randomised",
-            "bulk_car_mixed_randomised",
-            "tippler_bulk_open_car_randomised",
-        ]
 
 
 class BulkOpenCarTipplerConsistType2(BulkOpenCarTipplerConsistBase):
@@ -3717,14 +3719,6 @@ class BulkOpenCarTipplerConsistType2(BulkOpenCarTipplerConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "tippler_bulk_open_car_type_2"
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "bulk_car_box_randomised",
-        ]
-        self.randomised_candidate_groups = [
-            "bulk_car_box_randomised",
-            "bulk_car_mixed_randomised",
-            "tippler_bulk_open_car_randomised",
-        ]
 
 
 class BulkOpenCarTipplerRotaryConsistType1(BulkOpenCarTipplerConsistBase):
@@ -3735,7 +3729,8 @@ class BulkOpenCarTipplerRotaryConsistType1(BulkOpenCarTipplerConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "tippler_rotary_bulk_open_car_type_1"
         super().__init__(**kwargs)
-        # not a random candidate for anything, looks weird
+        # needed to clear randomised set by base class - rotary tipplers don't look good as randomisation candidates
+        self.randomised_candidate_groups = []
 
 
 class BulkOpenCarTipplerRandomisedConsist(
@@ -3748,6 +3743,8 @@ class BulkOpenCarTipplerRandomisedConsist(
     def __init__(self, **kwargs):
         self.base_id = "tippler_bulk_open_car_randomised"
         super().__init__(**kwargs)
+        # needed to clear randomised set by base class
+        self.randomised_candidate_groups = []
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_tippler_bulk_open_cars"
@@ -3775,6 +3772,7 @@ class BulkCarBoxRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBase
         self.use_named_buyable_variant_group = "wagon_group_bulk_cars_randomised"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            use_deterministic_random_vehicle_map=True,
             dice_colour=1,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -3805,6 +3803,7 @@ class BulkCarHopperRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistB
         self.use_named_buyable_variant_group = "wagon_group_bulk_cars_randomised"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            use_deterministic_random_vehicle_map=True,
             dice_colour=1,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -5899,6 +5898,8 @@ class HopperCarRandomisedConsist(RandomisedConsistMixin, HopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "hopper_car_randomised"
         super().__init__(**kwargs)
+        # needed to clear randomised set by base class
+        self.randomised_candidate_groups = []
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_hopper_cars"

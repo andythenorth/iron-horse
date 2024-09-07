@@ -1,4 +1,4 @@
-from train import BulkOpenCarTipplerConsistType2, OreDumpCar
+from train import BulkOpenCarTipplerConsistType2, FreightCar
 
 
 def main(roster_id, **kwargs):
@@ -13,7 +13,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=OreDumpCar, chassis="2_axle_gapped_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = BulkOpenCarTipplerConsistType2(
         roster_id=roster_id,
@@ -24,7 +24,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=OreDumpCar, chassis="4_axle_gapped_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
     consist = BulkOpenCarTipplerConsistType2(
         roster_id=roster_id,
@@ -35,7 +35,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=OreDumpCar, chassis="2_axle_gapped_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = BulkOpenCarTipplerConsistType2(
         roster_id=roster_id,
@@ -46,7 +46,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
 
     # no gen 5A or 6A
 
@@ -59,7 +59,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
 
     consist = BulkOpenCarTipplerConsistType2(
         roster_id=roster_id,
@@ -70,4 +70,4 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
