@@ -579,9 +579,6 @@ base = "Wagon-trémie «{NBSP}carrousel{NBSP}» bâché"
 [STR_NAME_SUFFIX_OPEN_CAR]
 base = "Wagon-tombereau"
 
-[STR_NAME_SUFFIX_ORE_DUMP_CAR_TYPE_1]
-base = "Wagon à minerai"
-
 [STR_NAME_SUFFIX_PANORAMIC_CAR]
 base = "Voiture panoramique"
 

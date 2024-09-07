@@ -492,16 +492,10 @@ base = "Acid Tanker"
 base = "Acid Tanker"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_RANDOMISED]
-base = "Stone Tippler"
+base = "Tippler Wagon"
 
 [STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_1]
-base = "Stone Tippler"
-
-[STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_2]
-base = "Stone Tippler"
-
-[STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_3]
-base = "Stone Tippler"
+base = "Tippler Wagon"
 
 [STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_RANDOMISED]
 base = "Aggregate Hopper"
@@ -788,12 +782,6 @@ base = "Open Wagon"
 [STR_NAME_SUFFIX_OPEN_CAR_RANDOMISED]
 base = "Open Wagon"
 
-[STR_NAME_SUFFIX_ORE_DUMP_CAR_TYPE_1]
-base = "Ore Tippler"
-
-[STR_NAME_SUFFIX_ORE_DUMP_CAR_TYPE_2]
-base = "Ore Tippler"
-
 [STR_NAME_SUFFIX_PANORAMIC_CAR]
 base = "Panoramic Coach"
 
@@ -895,6 +883,18 @@ base = "Tanker"
 
 [STR_NAME_SUFFIX_TARPAULIN_CAR]
 base = "Tarpaulin Wagon"
+
+[STR_NAME_SUFFIX_TIPPLER_BULK_OPEN_CAR_TYPE_1]
+base = "Tippler Wagon"
+
+[STR_NAME_SUFFIX_TIPPLER_BULK_OPEN_CAR_TYPE_2]
+base = "Tippler Wagon"
+
+[STR_NAME_SUFFIX_TIPPLER_BULK_OPEN_CAR_RANDOMISED]
+base = "Tippler Wagon"
+
+[STR_NAME_SUFFIX_TIPPLER_ROTARY_BULK_OPEN_CAR_TYPE_1]
+base = "Rotary Tippler"
 
 [STR_NAME_SUFFIX_TORPEDO_CAR]
 base = "Torpedo Wagon"
