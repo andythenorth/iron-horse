@@ -7,28 +7,6 @@ def main(roster_id, **kwargs):
     consist = BulkOpenCarTipplerRotaryConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=35530,
-        gen=3,
-        subtype="A",
-        sprites_complete=False,
-    )
-
-    consist.add_unit(type=OreDumpCar, chassis="2_axle_gapped_16px")
-
-    consist = BulkOpenCarTipplerRotaryConsistType1(
-        roster_id=roster_id,
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=32240,
-        gen=3,
-        subtype="B",
-        sprites_complete=False,
-    )
-
-    consist.add_unit(type=OreDumpCar, chassis="4_axle_gapped_24px")
-
-    consist = BulkOpenCarTipplerRotaryConsistType1(
-        roster_id=roster_id,
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35550,
         gen=4,
         subtype="A",
