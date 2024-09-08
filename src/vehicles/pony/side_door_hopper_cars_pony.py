@@ -46,7 +46,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
     """
     consist = HopperCarSideDoorConsist(
         roster_id=roster_id,
