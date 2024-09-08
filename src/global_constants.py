@@ -85,6 +85,7 @@ wagon_module_name_stems = [
     "rock_hopper_cars",
     "mgr_hopper_cars",
     "mgr_hopper_top_hood_cars",
+    "side_door_hopper_cars",
     "mineral_open_cars",
     "mineral_open_cars_low_side",
     "mineral_open_cars_high_side",

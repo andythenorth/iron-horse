@@ -442,6 +442,9 @@ base = "Roller Roof Hoppers"
 [STR_WAGON_GROUP_SCRAP_METAL_CARS]
 base = "Scrap Wagons"
 
+[STR_WAGON_GROUP_SIDE_DOOR_HOPPER_CARS]
+base = "Side Door Hoppers"
+
 [STR_WAGON_GROUP_SILO_CARS]
 base = "Silo Wagons"
 
@@ -841,6 +844,9 @@ base = "Scrap Wagon"
 
 [STR_NAME_SUFFIX_SCRAP_METAL_CAR_RANDOMISED]
 base = "Scrap Wagon"
+
+[STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR]
+base = "Side Door Hopper"
 
 [STR_NAME_SUFFIX_SILO_CAR_RANDOMISED]
 base = "Silo Wagon"

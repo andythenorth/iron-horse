@@ -5979,6 +5979,21 @@ class HopperCarRockConsist(HopperCarConsistBase):
         ]
 
 
+class HopperCarSideDoorConsist(HopperCarConsistBase):
+    """
+    Side door hopper (saddle-bottom hopper).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "side_door_hopper_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
+        self.randomised_candidate_groups = [
+            "bulk_car_mixed_randomised",
+        ]
+        self._joker = True
+
+
 class HopperCarSkipConsist(HopperCarConsistBase):
     """
     Dedicated (narrow gauge) skip variant of hoppers
