@@ -3347,12 +3347,7 @@ class BulkOpenCarAggregateConsistBase(BulkOpenCarConsistBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_tippler_bulk_open_cars"
-        # don't include aggregate wagons in randomised lists, they don't look good
         self.randomised_candidate_groups = [
-            "aggregate_dump_car_randomised",
             "bulk_car_box_randomised",
         ]
         self._joker = True
@@ -3368,19 +3363,7 @@ class BulkOpenCarAggregateConsistBase(BulkOpenCarConsistBase):
                 "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
             ],
             global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
-            ],
-            global_constants.freight_wagon_liveries[
                 "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
             ],
             global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
             global_constants.freight_wagon_liveries[
@@ -3388,14 +3371,8 @@ class BulkOpenCarAggregateConsistBase(BulkOpenCarConsistBase):
             ],
             global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
             global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-            global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-            global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-            global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
-            global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
-            global_constants.freight_wagon_liveries["FREIGHT_SAND"],
             global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
             global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-            global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
         ]
 
 
@@ -3406,7 +3383,7 @@ class BulkOpenCarAggregateConsistType1(BulkOpenCarAggregateConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_dump_car_type_1"
+        self.base_id = "aggregate_bulk_open_car_type_1"
         super().__init__(**kwargs)
 
 
@@ -3782,7 +3759,13 @@ class BulkCarBoxRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBase
                     "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
+                ],
+                global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
                 ],
             ],
         )
@@ -3813,7 +3796,16 @@ class BulkCarHopperRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistB
                     "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
+                ],
+                global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
                 ],
             ],
         )
@@ -3843,7 +3835,16 @@ class BulkCarMixedRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBa
                     "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
+                ],
+                global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
                 ],
             ],
         )
@@ -5562,6 +5563,12 @@ class HopperCarConsistBase(CarConsist):
                     "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
+                ],
+                global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.freight_wagon_liveries[
@@ -5571,9 +5578,12 @@ class HopperCarConsistBase(CarConsist):
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
                 global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
 
@@ -5602,6 +5612,7 @@ class HopperCarAggregateConsistType1(HopperCarAggregateConsistBase):
         self.randomised_candidate_groups = [
             "aggregate_hopper_car_randomised",
             "bulk_car_hopper_randomised",
+            "bulk_car_mixed_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -5649,6 +5660,7 @@ class HopperCarAggregateConsistType2(HopperCarAggregateConsistBase):
         self.randomised_candidate_groups = [
             "aggregate_hopper_car_randomised",
             "bulk_car_hopper_randomised",
+            "bulk_car_mixed_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -5697,6 +5709,7 @@ class HopperCarAggregateConsistType3(HopperCarAggregateConsistBase):
         self.randomised_candidate_groups = [
             "aggregate_hopper_car_randomised",
             "bulk_car_hopper_randomised",
+            "bulk_car_mixed_randomised",
         ]
         self._joker = True
         # Graphics configuration
@@ -5988,9 +6001,8 @@ class HopperCarSideDoorConsist(HopperCarConsistBase):
         self.base_id = "side_door_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
-        self.randomised_candidate_groups = [
-            "bulk_car_mixed_randomised",
-        ]
+        # not eligible for randomisation, doesn't look right
+        self.randomised_candidate_groups = []
         self._joker = True
 
 
