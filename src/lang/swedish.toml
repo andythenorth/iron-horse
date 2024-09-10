@@ -44,12 +44,6 @@ base = "Skåpbil"
 [STR_NAME_SUFFIX_CABOOSE_CAR]
 base = "Bromsvagn"
 
-[STR_NAME_SUFFIX_DUMP_CAR]
-base = "Dumpningsbar Lastvagn"
-
-[STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Tankvagn för Matolja"
-
 [STR_NAME_SUFFIX_FLAT_CAR]
 base = "Flakvagn"
 

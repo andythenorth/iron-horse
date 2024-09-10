@@ -34,9 +34,6 @@ base = "Currus Clausus"
 [STR_NAME_SUFFIX_CABOOSE_CAR]
 base = "Currus Postremus"
 
-[STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Currus Cisterninus Edulium"
-
 [STR_NAME_SUFFIX_FLAT_CAR]
 base = "Currus Planus"
 

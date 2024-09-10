@@ -55,12 +55,6 @@ base = "Krio-cisterna"
 [STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
 base = "Vagon sa stranicama od cerade"
 
-[STR_NAME_SUFFIX_DUMP_CAR]
-base = "Vagon za rudače"
-
-[STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Vagon cisterna za prehrambene proizvode"
-
 [STR_NAME_SUFFIX_EXPRESS_CAR]
 base = "Ekspresni vagon"
 

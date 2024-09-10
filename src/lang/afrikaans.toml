@@ -33,9 +33,6 @@ base = "Boks Wa"
 [STR_NAME_SUFFIX_CABOOSE_CAR]
 base = "Kondukteurs Wa"
 
-[STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Eetbare Tenk Wa"
-
 [STR_NAME_SUFFIX_FLAT_CAR]
 base = "Plat Wa"
 

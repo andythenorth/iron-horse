@@ -53,12 +53,6 @@ base = "Kryosäiliövaunu"
 [STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
 base = "Sivupeitevaunu"
 
-[STR_NAME_SUFFIX_DUMP_CAR]
-base = "Rikastevaunu"
-
-[STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Elintarvikesäiliövaunu"
-
 [STR_NAME_SUFFIX_EXPRESS_CAR]
 base = "Päivävaunu"
 

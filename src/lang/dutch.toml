@@ -53,15 +53,6 @@ base = "Cryotanker"
 [STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
 base = "Voertuig met schuifdeuren"
 
-[STR_NAME_SUFFIX_DUMP_CAR]
-base = "Mineralenwagon"
-
-[STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
-base = "Mineralenwagon met hoge zijkant"
-
-[STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Voedseltanker"
-
 [STR_NAME_SUFFIX_EXPRESS_CAR]
 base = "Expreswagen"
 

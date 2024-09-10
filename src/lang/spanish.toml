@@ -90,15 +90,6 @@ base = "Vagón tanque de hidrógeno líquido"
 [STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
 base = "Vagón de cortina lateral"
 
-[STR_NAME_SUFFIX_DUMP_CAR]
-base = "Vagón de minerales"
-
-[STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
-base = "Vagón de minerales de lado alto"
-
-[STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Vagón cisterna de alimentos"
-
 [STR_NAME_SUFFIX_EXPRESS_CAR]
 base = "Vagón express"
 

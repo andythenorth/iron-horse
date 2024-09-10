@@ -52,12 +52,6 @@ base = "Carro di fine convoglio"
 [STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
 base = "Carro a tendine laterali"
 
-[STR_NAME_SUFFIX_DUMP_CAR]
-base = "Carro per minerali"
-
-[STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Carro cisterna per prodotti alimentari"
-
 [STR_NAME_SUFFIX_EXPRESS_CAR]
 base = "Carro per merci leggere"
 

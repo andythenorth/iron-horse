@@ -89,15 +89,6 @@ base = "Gerbong Tanker Cryo"
 [STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
 base = "Gerbong Tepi Terpal"
 
-[STR_NAME_SUFFIX_DUMP_CAR]
-base = "Gerbong Mineral"
-
-[STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
-base = "Gerbong Mineral Tinggi"
-
-[STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Tanker Edibles"
-
 [STR_NAME_SUFFIX_EXPRESS_CAR]
 base = "Gerbong Express"
 

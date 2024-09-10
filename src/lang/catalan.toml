@@ -90,15 +90,6 @@ base = "Tanc d'hidrògen líquid"
 [STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
 base = "Vagó de cortina lateral"
 
-[STR_NAME_SUFFIX_DUMP_CAR]
-base = "Vagó de minerals"
-
-[STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
-base = "Vagó de minerals de costat alt"
-
-[STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Cotxe cisterna per a comestibles"
-
 [STR_NAME_SUFFIX_EXPRESS_CAR]
 base = "Vagó express"
 

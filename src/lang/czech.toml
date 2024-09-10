@@ -55,15 +55,6 @@ base = "Chladící cisterna"
 [STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR]
 base = "Kontejnerový vůz"
 
-[STR_NAME_SUFFIX_DUMP_CAR]
-base = "Výsypný vůz"
-
-[STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
-base = "Vysokostěnný minerální vůz"
-
-[STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Potravinová cisterna"
-
 [STR_NAME_SUFFIX_EXPRESS_CAR]
 base = "Expresní vůz"
 

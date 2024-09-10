@@ -236,9 +236,6 @@ base = " - {RED}N{ORANGE}u{YELLOW}a{GREEN}n{BLUE}c{PURPLE}i{RED}e{ORANGE}r"
 [STR_WAGON_GROUP_ACID_TANK_CARS]
 base = "Wagons-citerne d’acide"
 
-[STR_WAGON_GROUP_AGGREGATE_DUMP_CARS]
-base = "Wagons à agrégats"
-
 [STR_WAGON_GROUP_AGGREGATE_HOPPER_CARS]
 base = "Wagons-trémies à agrégats"
 
@@ -265,9 +262,6 @@ base = "Wagons-trémies couverts"
 
 [STR_WAGON_GROUP_MINERAL_BULK_OPEN_CARS]
 base = "Wagons à minerai"
-
-[STR_WAGON_GROUP_FOOD_TANK_CARS]
-base = "Wagons-citerne alimentaires"
 
 [STR_WAGON_GROUP_EXPRESS_CARS]
 base = "Fourgons express"
@@ -402,15 +396,6 @@ base = "Wagon-citerne d’acide"
 [STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2]
 base = "Wagon-citerne d’acide"
 
-[STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_1]
-base = "Wagon à agrégats"
-
-[STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_2]
-base = "Wagon à agrégats"
-
-[STR_NAME_SUFFIX_AGGREGATE_DUMP_CAR_TYPE_3]
-base = "Wagon à agrégats"
-
 [STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_TYPE_1]
 base = "Wagon-trémie à agrégats"
 
@@ -476,15 +461,6 @@ base = "Wagon porte-automobiles"
 
 [STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR]
 base = "Wagon-trémie couvert"
-
-[STR_NAME_SUFFIX_DUMP_CAR]
-base = "Wagon à minerai"
-
-[STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE]
-base = "Wagon haut à minerai"
-
-[STR_NAME_SUFFIX_FOOD_TANK_CAR]
-base = "Wagon-citerne alimentaire"
 
 [STR_NAME_SUFFIX_ENCLOSED_AUTOMOBILE_CAR]
 base = "Wagon porte-automobiles fermé"
@@ -623,9 +599,6 @@ base = "Wagon-trémie couvert"
 
 [STR_NAME_SUFFIX_DEDICATED_COIL_CAR_RANDOMISED]
 base = "Wagon porte-bobines"
-
-[STR_NAME_SUFFIX_DUMP_CAR_RANDOMISED]
-base = "Wagon à minerai"
 
 [STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_RANDOMISED]
 base = "Wagon-trémie agricole"

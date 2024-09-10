@@ -4,7 +4,9 @@ import tomlkit
 
 # List of strings to be removed from the TOML files
 dead_strings = [
-    "STR_PARAM_WAGONS_ONLY_MODE_DESC"
+    "STR_WAGON_GROUP_AGGREGATE_DUMP_CARS",
+    "STR_WAGON_GROUP_FOOD_TANK_CARS",
+    "STR_NAME_SUFFIX_DUMP_CAR_RANDOMISED",
 ]
 
 def delete_string(dead_strings, file_path):
