@@ -3,6 +3,39 @@ Changelog
 
 
 ------------
+3.27.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.27.0.
+
+
+*Changes*
+
+- reworked Mineral Wagons
+    - improved appearance of Mineral Wagons and High Side Mineral Wagons
+    - added Low Side Mineral Wagons
+    - added more livery options
+- reworked Ore Dump Wagons and Aggregates Dump Wagons
+    - renamed to Tippler Wagons
+    - consolidated to two types of Tippler Wagon and one type of Rotary Tippler
+    - changed appearance to include a wide range of livery options
+- added additional type of gen 5 Scrap Wagon
+- improved Bulk Cargo Combo wagons
+    - adjusted randomisation rules and candidates
+    - added more livery options
+- adjusted random colour schemes for Aggregate Hoppers and Rock Hoppers
+- reworked express food wagons
+    - renamed Food Tankers to Express Food Tankers
+    - added generation 2 Refrigerated Van
+    - added randomised Express Food Wagons
+    - consolidated gen 6 Express Food Tankers to be a variant of gen 5
+    - moved express food wagons in buy menu to be adjacent to express vans
+- split Farm Product Vans and Farm Product Hoppers to separate groups
+- added flour cargo to farm product refits
+
+
+------------
 3.26.0 Release
 ------------
 
