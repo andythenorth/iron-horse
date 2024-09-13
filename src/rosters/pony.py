@@ -228,8 +228,7 @@ wagon_module_names_with_roster_ids = {
     "acid_tank_cars_randomised": "pony",
     "acid_tank_cars_type_1": "pony",
     "acid_tank_cars_type_2": "pony",
-    # !! unfinished, turn off
-    #"aggregate_bulk_open_cars_type_1": "pony",
+    "aggregate_bulk_open_cars_type_1": "pony",
     "aggregate_hopper_cars_randomised": "pony",
     "aggregate_hopper_cars_type_1": "pony",
     "aggregate_hopper_cars_type_2": "pony",
@@ -282,9 +281,8 @@ wagon_module_names_with_roster_ids = {
     "farm_product_hopper_cars_type_2": "pony",
     "flat_cars": "pony",
     "flat_cars_randomised": "pony",
-    # !! unfinished, turn off
-    #"food_hopper_cars_type_1": "pony",
-    #"food_hopper_cars_type_2": "pony",
+    "food_hopper_cars_type_1": "pony",
+    "food_hopper_cars_type_2": "pony",
     "food_express_tank_cars_type_1": "pony",
     "food_express_tank_cars_type_2": "pony",
     "food_express_tank_cars_randomised": "pony",
@@ -328,8 +326,7 @@ wagon_module_names_with_roster_ids = {
     "peat_cars": "pony",
     "piece_goods_cars_covered_randomised": "pony",
     "piece_goods_cars_mixed_randomised": "pony",
-    # !! unfinished, turn off
-    #"pipe_cars": "pony",
+    "pipe_cars": "pony",
     "pressure_tank_cars": "pony",
     "product_tank_cars": "pony",
     "railbus_passenger_trailer_cars": "pony",
@@ -343,8 +340,7 @@ wagon_module_names_with_roster_ids = {
     "scrap_metal_cars_type_1": "pony",
     "scrap_metal_cars_type_2": "pony",
     "scrap_metal_cars_randomised": "pony",
-    # !! unfinished, turn off
-    #"side_door_hopper_cars": "pony",
+    "side_door_hopper_cars": "pony",
     "silo_cars_randomised": "pony",
     "silo_cars_type_1": "pony",
     "silo_cars_type_2": "pony",
