@@ -653,6 +653,9 @@ base = "Flat Wagon"
 [STR_NAME_SUFFIX_FLAT_CAR_RANDOMISED]
 base = "Flatbed Wagon"
 
+[STR_NAME_SUFFIX_FOOD_HOPPER_CAR_RANDOMISED]
+base = "Food Hopper"
+
 [STR_NAME_SUFFIX_FOOD_HOPPER_CAR_TYPE_1]
 base = "Food Hopper"
 
