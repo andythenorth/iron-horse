@@ -376,7 +376,7 @@ base = "Wagons-trémies à toit baculant"
 [STR_WAGON_GROUP_TANK_CARS]
 base = "Wagons-citerne"
 
-[STR_WAGON_GROUP_TARPAULIN_CARS_TYPE_1]
+[STR_WAGON_GROUP_TARPAULIN_CARS]
 base = "Wagons bâchés"
 
 [STR_WAGON_GROUP_TORPEDO_CARS]

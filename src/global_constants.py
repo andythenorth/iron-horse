@@ -629,6 +629,14 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_NIGHTSHADE": {
+        "colour_set": "random_from_consist_liveries_teal_nightshade",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER": {
         "colour_set": "random_from_consist_liveries_teal_pewter",
         "use_weathering": True,
@@ -838,6 +846,8 @@ wagon_livery_mixes = {
     "random_from_consist_liveries_sulphur_straw": ["freight_sulphur", "freight_straw"],
     # teal / dark grey
     "random_from_consist_liveries_teal_pewter": ["freight_teal", "freight_pewter"],
+    # teal / near-black
+    "random_from_consist_liveries_teal_nightshade": ["freight_teal", "freight_nightshade"],
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions

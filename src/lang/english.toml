@@ -189,6 +189,9 @@ base = "Variety"
 [STR_NAME_SUFFIX_LIVERY_MIX_BAUXITE_GREY_NIGHTSHADE]
 base = "Rust/Shale"
 
+[STR_NAME_SUFFIX_LIVERY_MIX_TEAL_NIGHTSHADE]
+base = "Teal/Nightshade"
+
 [STR_NAME_SUFFIX_LIVERY_MIX_TEAL_VIOLET]
 base = "Amethyst/Seafoam"
 

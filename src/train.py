@@ -1011,7 +1011,10 @@ class Consist(object):
             colour_set = livery["purchase"]
         else:
             colour_set = livery["colour_set"]
-        # this is lolz, so many ifs just to get a string -> number mapping
+        # !!! this is lolz, so many ifs just to get a string -> number mapping
+        # !!! it's infrequently changed, but should just be some lookup table of some kind
+        if "random_from_consist_liveries_teal_nightshade" in colour_set:
+            return 115
         if "random_from_consist_liveries_teal_pewter" in colour_set:
             return 114
         if "random_from_consist_liveries_sulphur_straw" in colour_set:
@@ -8525,10 +8528,10 @@ class TarpaulinCarConsistBase(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
+                # teal before pewter and nightshade to ensure it appears in buy menu order for mixed version
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                # teal before pewter to ensure it appears in buy menu order for mixed version
-                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
@@ -8578,14 +8581,20 @@ class TarpaulinCarConsistType3(TarpaulinCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
                 ],
+                # we use TEAL_NIGHTSHADE here not TEAL_PEWTER to improve contrast, as the wagon hood is white
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_NIGHTSHADE"
+                ],
                 global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
+                # reduced set of liveries here
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
             ],
         )
 
@@ -8612,13 +8621,18 @@ class TarpaulinCarRandomisedConsist(RandomisedConsistMixin, TarpaulinCarConsistB
                     "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
                 ],
                 global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
+                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
                 ],
                 global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
                 ],
-                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"
+                ],
+                # we use TEAL_NIGHTSHADE here not TEAL_PEWTER to improve contrast when the wagon hood is white
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_NIGHTSHADE"
+                ],
             ],
         )
 
