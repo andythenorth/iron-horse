@@ -8491,7 +8491,7 @@ class TarpaulinCarConsistBase(BoxCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_tarpaulin_cars"
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.tarpaulin_car_body_recolour_map
+            "unweathered": graphics_constants.body_recolour_CC1
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
@@ -8568,7 +8568,8 @@ class TarpaulinCarConsistType3(TarpaulinCarConsistBase):
         # Graphics configuration
         # slightly fewer liveries than TarpaulinCarConsistBase
         weathered_variants = {
-            "unweathered": graphics_constants.tarpaulin_car_body_recolour_map
+            "unweathered": graphics_constants.tarpaulin_car_body_recolour_maps,
+            "weathered": graphics_constants.tarpaulin_car_body_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",

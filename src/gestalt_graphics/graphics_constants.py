@@ -35,8 +35,6 @@ randomised_wagon_extra_unit_width = 4
 
 # --- Body Recolour Maps --- #
 
-tarpaulin_car_body_recolour_map = body_recolour_CC1
-
 caboose_car_body_recolour_map = {
     136: CC1,
     137: CC1 + 1,
@@ -587,3 +585,25 @@ tank_car_livery_recolour_maps = {
     142: CC1 + 6,
     143: CC1 + 7,
 }
+
+tarpaulin_car_body_recolour_maps = {
+    136: 4,
+    137: 6,
+    138: 8,
+    139: 9,
+    140: 10,
+    141: 11,
+    142: 13,
+    143: 15,
+}
+tarpaulin_car_body_recolour_maps_weathered = {
+    136: 3,
+    137: 5,
+    138: 110,
+    139: 8,
+    140: 37,
+    141: 10,
+    142: 12,
+    143: 14,
+}
+
