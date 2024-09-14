@@ -8480,21 +8480,12 @@ class TarpaulinCarConsistBase(BoxCarConsistBase):
             "metal_product_car_mixed_randomised",
             "piece_goods_car_covered_randomised",
             "piece_goods_car_mixed_randomised",
+            "tarpaulin_car_randomised",
         ]
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_tarpaulin_cars"
-
-
-class TarpaulinCarConsistType1(TarpaulinCarConsistBase):
-    """
-    Tarpaulin car - refits similar to box van for gameplay reasons, unlike IRL (which is flat)
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "tarpaulin_car_type_1"
-        super().__init__(**kwargs)
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.tarpaulin_car_body_recolour_map
@@ -8517,7 +8508,7 @@ class TarpaulinCarConsistType1(TarpaulinCarConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
                 ],
                 global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
+                    "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"
                 ],
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
@@ -8533,6 +8524,7 @@ class TarpaulinCarConsistType1(TarpaulinCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
                 # teal before pewter to ensure it appears in buy menu order for mixed version
@@ -8540,6 +8532,16 @@ class TarpaulinCarConsistType1(TarpaulinCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
+
+
+class TarpaulinCarConsistType1(TarpaulinCarConsistBase):
+    """
+    Tarpaulin car - refits similar to box van for gameplay reasons, unlike IRL (which is flat)
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "tarpaulin_car_type_1"
+        super().__init__(**kwargs)
 
 
 class TarpaulinCarConsistType2(TarpaulinCarConsistBase):
@@ -8550,7 +8552,18 @@ class TarpaulinCarConsistType2(TarpaulinCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "tarpaulin_car_type_2"
         super().__init__(**kwargs)
+
+
+class TarpaulinCarConsistType3(TarpaulinCarConsistBase):
+    """
+    Tarpaulin car - refits similar to box van for gameplay reasons, unlike IRL (which is flat)
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "tarpaulin_car_type_3"
+        super().__init__(**kwargs)
         # Graphics configuration
+        # slightly fewer liveries than TarpaulinCarConsistBase
         weathered_variants = {
             "unweathered": graphics_constants.tarpaulin_car_body_recolour_map
         }
@@ -8558,6 +8571,39 @@ class TarpaulinCarConsistType2(TarpaulinCarConsistBase):
             piece="flat",
             has_cover=True,
             weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+            ],
+        )
+
+
+class TarpaulinCarRandomisedConsist(RandomisedConsistMixin, TarpaulinCarConsistBase):
+    """
+    Random choice of tarpaulin car sprite
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "tarpaulin_car_randomised"
+        super().__init__(**kwargs)
+        # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=3,
+            #liveries=liveries,
             liveries=[
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"

@@ -51,6 +51,8 @@ wagon_module_name_stems = [
     "sliding_roof_hi_cube_cars",
     "tarpaulin_cars_type_1",
     "tarpaulin_cars_type_2",
+    "tarpaulin_cars_type_3",
+    "tarpaulin_cars_randomised",
     "piece_goods_cars_covered_randomised",
     "piece_goods_cars_mixed_randomised",
     "manufacturing_parts_piece_goods_cars_randomised",
