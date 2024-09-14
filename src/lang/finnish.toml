@@ -89,7 +89,7 @@ base = "Siirtokatevaunu"
 [STR_NAME_SUFFIX_TANK_CAR]
 base = "Säiliövaunu"
 
-[STR_NAME_SUFFIX_TARPAULIN_CAR]
+[STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
 base = "Peitekangasvaunu"
 
 [STR_NAME_SUFFIX_TORPEDO_CAR]

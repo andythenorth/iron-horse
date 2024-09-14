@@ -170,7 +170,7 @@ base = "Gerbong Sub urban"
 [STR_NAME_SUFFIX_TANK_CAR]
 base = "Tanker"
 
-[STR_NAME_SUFFIX_TARPAULIN_CAR]
+[STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
 base = "Gerbong Terpal"
 
 [STR_NAME_SUFFIX_TORPEDO_CAR]

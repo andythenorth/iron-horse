@@ -472,7 +472,7 @@ base = "Swing Roof Hoppers"
 [STR_WAGON_GROUP_TANK_CARS]
 base = "Tankers"
 
-[STR_WAGON_GROUP_TARPAULIN_CARS_TYPE_1]
+[STR_WAGON_GROUP_TARPAULIN_CARS]
 base = "Tarpaulin Wagons"
 
 [STR_WAGON_GROUP_TIPPLER_BULK_OPEN_CARS]
@@ -888,6 +888,9 @@ base = "Swing Roof Hopper"
 base = "Tanker"
 
 [STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
+base = "Tarpaulin Wagon"
+
+[STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_2]
 base = "Tarpaulin Wagon"
 
 [STR_NAME_SUFFIX_TIPPLER_BULK_OPEN_CAR_TYPE_1]

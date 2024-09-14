@@ -88,7 +88,7 @@ base = "Carro a pareti scorrevoli"
 [STR_NAME_SUFFIX_TANK_CAR]
 base = "Carro cisterna"
 
-[STR_NAME_SUFFIX_TARPAULIN_CAR]
+[STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
 base = "Carro telonato"
 
 [STR_ROLE]

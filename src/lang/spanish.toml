@@ -165,7 +165,7 @@ base = "Vagón de chatarra"
 [STR_NAME_SUFFIX_TANK_CAR]
 base = "Vagón cisterna"
 
-[STR_NAME_SUFFIX_TARPAULIN_CAR]
+[STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
 base = "Vagón lona tarp"
 
 [STR_NAME_SUFFIX_TORPEDO_CAR]

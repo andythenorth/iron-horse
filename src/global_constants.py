@@ -50,6 +50,7 @@ wagon_module_name_stems = [
     "sliding_roof_cars",
     "sliding_roof_hi_cube_cars",
     "tarpaulin_cars_type_1",
+    "tarpaulin_cars_type_2",
     "piece_goods_cars_covered_randomised",
     "piece_goods_cars_mixed_randomised",
     "manufacturing_parts_piece_goods_cars_randomised",
@@ -337,6 +338,7 @@ buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_scrap_metal_cars": "scrap_metal_car_type_1",
     "wagon_group_silo_cars": "silo_car_type_1",
     "wagon_group_sliding_wall_cars": "sliding_wall_car_type_1",
+    "wagon_group_tarpaulin_cars": "tarpaulin_car_type_1",
     "wagon_group_tippler_bulk_open_cars": "tippler_bulk_open_car_type_1",
     "wagon_group_vehicle_transporter_cars": "automobile_car",
 }

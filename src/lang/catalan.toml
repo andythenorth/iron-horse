@@ -165,7 +165,7 @@ base = "Cotxe de deixalla"
 [STR_NAME_SUFFIX_TANK_CAR]
 base = "Cotxe cisterna"
 
-[STR_NAME_SUFFIX_TARPAULIN_CAR]
+[STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
 base = "Cotxe de lona"
 
 [STR_NAME_SUFFIX_TORPEDO_CAR]

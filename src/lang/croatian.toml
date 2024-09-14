@@ -94,7 +94,7 @@ base = "Vagon sa pomičnim stranicama"
 [STR_NAME_SUFFIX_TANK_CAR]
 base = "Vagon cisterna"
 
-[STR_NAME_SUFFIX_TARPAULIN_CAR]
+[STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
 base = "Vagon sa ceradom"
 
 [STR_NAME_SUFFIX_TORPEDO_CAR]

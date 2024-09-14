@@ -95,7 +95,7 @@ base = "Voertuig met schuifdeuren"
 [STR_NAME_SUFFIX_TANK_CAR]
 base = "Tanker"
 
-[STR_NAME_SUFFIX_TARPAULIN_CAR]
+[STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
 base = "Wagon met dekzeil"
 
 [STR_NAME_SUFFIX_TORPEDO_CAR]

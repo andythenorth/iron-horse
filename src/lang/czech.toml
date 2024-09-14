@@ -97,7 +97,7 @@ base = "Vůz s posuvnými stěnami"
 [STR_NAME_SUFFIX_TANK_CAR]
 base = "Cisterna"
 
-[STR_NAME_SUFFIX_TARPAULIN_CAR]
+[STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
 base = "Plachtový vůz"
 
 [STR_NAME_SUFFIX_TORPEDO_CAR]

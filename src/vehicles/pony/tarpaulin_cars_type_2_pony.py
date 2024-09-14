@@ -1,28 +1,28 @@
-from train import TarpaulinCarConsistType1, FreightCar
+from train import TarpaulinCarConsistType2, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # gen 5 start, only B and C lengths
 
-    consist = TarpaulinCarConsistType1(
+    consist = TarpaulinCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=25530,
+        base_numeric_id=25750,
         gen=5,
         subtype="B",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_24px")
 
-    consist = TarpaulinCarConsistType1(
+    consist = TarpaulinCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=35610,
+        base_numeric_id=27230,
         gen=5,
         subtype="C",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
