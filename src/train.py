@@ -8470,7 +8470,7 @@ class TarpaulinCarConsist(BoxCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "tarpaulin_car"
+        self.base_id = "tarpaulin_car_type_1"
         super().__init__(**kwargs)
         self.buy_cost_adjustment_factor = 1.1
         self._intro_year_days_offset = (

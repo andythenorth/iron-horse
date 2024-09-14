@@ -49,7 +49,7 @@ wagon_module_name_stems = [
     "sliding_wall_cars_type_2",
     "sliding_roof_cars",
     "sliding_roof_hi_cube_cars",
-    "tarpaulin_cars",
+    "tarpaulin_cars_type_1",
     "piece_goods_cars_covered_randomised",
     "piece_goods_cars_mixed_randomised",
     "manufacturing_parts_piece_goods_cars_randomised",

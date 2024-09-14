@@ -354,7 +354,7 @@ wagon_module_names_with_roster_ids = {
     "suburban_passenger_cars": "pony",
     "swing_roof_hopper_cars": "pony",
     "tank_cars": "pony",
-    "tarpaulin_cars": "pony",
+    "tarpaulin_cars_type_1": "pony",
     "tippler_bulk_open_cars_randomised": "pony",
     "tippler_bulk_open_cars_type_1": "pony",
     "tippler_bulk_open_cars_type_2": "pony",

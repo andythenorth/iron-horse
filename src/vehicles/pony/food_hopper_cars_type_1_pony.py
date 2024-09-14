@@ -87,11 +87,11 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
-
+    """
     consist = FoodHopperCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=23440,
+        base_numeric_id=28500,
         gen=4,
         subtype="A",
         sprites_complete=False,
@@ -102,14 +102,14 @@ def main(roster_id, **kwargs):
     consist = FoodHopperCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=23450,
+        base_numeric_id=28510,
         gen=4,
         subtype="B",
         sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
-    """
+
     consist = FoodHopperCarConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
