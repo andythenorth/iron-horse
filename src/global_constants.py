@@ -77,7 +77,8 @@ wagon_module_name_stems = [
     "metal_product_cars_uncovered_randomised",
     "metal_product_cars_covered_randomised",
     "metal_product_cars_mixed_randomised",
-    "pipe_cars",
+    # !! unfinished
+    #"pipe_cars",
     "hopper_cars",
     "hopper_cars_high_side",
     "hopper_cars_randomised",
@@ -88,7 +89,8 @@ wagon_module_name_stems = [
     "rock_hopper_cars",
     "mgr_hopper_cars",
     "mgr_hopper_top_hood_cars",
-    "side_door_hopper_cars",
+    # !! unfinished
+    #"side_door_hopper_cars",
     "mineral_open_cars",
     "mineral_open_cars_low_side",
     "mineral_open_cars_high_side",
@@ -97,7 +99,8 @@ wagon_module_name_stems = [
     "tippler_bulk_open_cars_type_1",
     "tippler_bulk_open_cars_type_2",
     "tippler_bulk_open_cars_randomised",
-    "aggregate_bulk_open_cars_type_1",
+    # !! unfinished
+    #"aggregate_bulk_open_cars_type_1",
     "scrap_metal_cars_type_1",
     "scrap_metal_cars_type_2",
     "scrap_metal_cars_randomised",
@@ -133,9 +136,10 @@ wagon_module_name_stems = [
     "farm_product_hopper_cars_type_1",
     "farm_product_hopper_cars_type_2",
     "farm_product_hopper_cars_randomised",
-    "food_hopper_cars_type_1",
-    "food_hopper_cars_type_2",
-    "food_hopper_cars_randomised",
+    # !! unfinished
+    #"food_hopper_cars_type_1",
+    #"food_hopper_cars_type_2",
+    #"food_hopper_cars_randomised",
     "farm_product_box_cars_type_1",
     "farm_product_box_cars_type_2",
     "livestock_cars",
