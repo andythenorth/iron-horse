@@ -81,7 +81,7 @@ base = "Cotxe de bobinat cobert"
 [STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
 base = "Cotxe de bobinat obert"
 
-[STR_NAME_SUFFIX_COVERED_HOPPER_CAR]
+[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_1]
 base = "Vago tolva cobert"
 
 [STR_NAME_SUFFIX_CRYO_TANK_CAR]

@@ -4278,19 +4278,35 @@ class CoveredHopperCarConsistBase(CarConsist):
         )
 
 
-class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
+class CoveredHopperCarConsistType1(CoveredHopperCarConsistBase):
     """
-    Default covered hopper.
+    Default covered hopper type.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "covered_hopper_car"
+        self.base_id = "covered_hopper_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
         self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
+
+
+class CoveredHopperCarConsistType2(CoveredHopperCarConsistBase):
+    """
+    Default covered hopper type.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "covered_hopper_car_type_2"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
+        self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
+        self._joker = True
 
 
 class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
@@ -4422,22 +4438,6 @@ class CoveredHopperCarChemicalRandomisedConsist(
                 # tried teal, wasn't convinced
             ],
         )
-
-
-class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
-    """
-    Covered hopper for dry powder cargos, same refits as standard covered hopper, just a visual variant.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "dry_powder_hopper_car"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
-        self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
-        self._joker = True
 
 
 class CoveredHopperCarMineralConsist(CoveredHopperCarConsistBase):

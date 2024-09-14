@@ -593,7 +593,10 @@ base = "Covered Coil Carrier"
 [STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
 base = "Coil Carrier"
 
-[STR_NAME_SUFFIX_COVERED_HOPPER_CAR]
+[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_1]
+base = "Covered Hopper"
+
+[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_2]
 base = "Covered Hopper"
 
 [STR_NAME_SUFFIX_COVERED_HOPPER_CAR_RANDOMISED]
@@ -616,9 +619,6 @@ base = "Drop End Flat Wagon"
 
 [STR_NAME_SUFFIX_DROP_SIDE_FLAT_CAR]
 base = "Drop Side Flat Wagon"
-
-[STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR]
-base = "Covered Hopper"
 
 [STR_NAME_SUFFIX_ENCLOSED_AUTOMOBILE_CAR]
 base = "Enclosed Vehicle Transporter"

@@ -447,7 +447,7 @@ base = "Wagon porte-bobines couvert"
 [STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
 base = "Wagon porte-bobines"
 
-[STR_NAME_SUFFIX_COVERED_HOPPER_CAR]
+[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_1]
 base = "Wagon-trémie couvert"
 
 [STR_NAME_SUFFIX_CRYO_TANK_CAR]
@@ -459,7 +459,7 @@ base = "Wagon à rideau latéral"
 [STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR]
 base = "Wagon porte-automobiles"
 
-[STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR]
+[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_2]
 base = "Wagon-trémie couvert"
 
 [STR_NAME_SUFFIX_ENCLOSED_AUTOMOBILE_CAR]

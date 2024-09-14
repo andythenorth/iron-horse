@@ -81,7 +81,7 @@ base = "Vagón de bobinado cubierto"
 [STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
 base = "Vagón de bobinado abierto"
 
-[STR_NAME_SUFFIX_COVERED_HOPPER_CAR]
+[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_1]
 base = "Vagón tolva cubierto"
 
 [STR_NAME_SUFFIX_CRYO_TANK_CAR]

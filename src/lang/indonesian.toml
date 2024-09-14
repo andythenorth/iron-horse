@@ -80,7 +80,7 @@ base = "Gerbong Koil Tertutup"
 [STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
 base = "Gerbong Koil"
 
-[STR_NAME_SUFFIX_COVERED_HOPPER_CAR]
+[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_1]
 base = "Gerbong Hopper Tertutup"
 
 [STR_NAME_SUFFIX_CRYO_TANK_CAR]
