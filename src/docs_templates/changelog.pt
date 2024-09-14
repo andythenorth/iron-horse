@@ -3,6 +3,22 @@ Changelog
 
 
 ------------
+3.28.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.27.0.
+
+
+*Changes*
+
+- reworked Tarpaulin Wagons
+    - improved appearance of Tarpaulin Wagons
+    - added two more Tarpaulin Wagon variants
+    - added randomised Tarpaulin Wagons
+
+
+------------
 3.27.0 Release
 ------------
 
