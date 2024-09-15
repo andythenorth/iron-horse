@@ -3,6 +3,25 @@ Changelog
 
 
 ------------
+3.29.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.27.0.
+
+
+*Changes*
+
+- added Pipe Wagons
+- added Side Door Hoppers
+
+
+*Docs*
+
+- dropped spurious railtype info columns from vehicle tables in trains.html
+
+
+------------
 3.28.0 Release
 ------------
 
