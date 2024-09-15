@@ -193,7 +193,13 @@ class DocHelper(object):
         # dark blue / dark blue and red / white are defaults
         variants_config = []
 
-        for buyable_variant in consist.buyable_variants:
+        if consist.is_wagon_for_docs:
+            # optimise output by only generating one livery image for wagons, as we had 13k images in static dir, many of them empty images for wagon variants
+            buyable_variants_for_docs = consist.buyable_variants[0:1]
+        else:
+            buyable_variants_for_docs = consist.buyable_variants
+
+        for buyable_variant in buyable_variants_for_docs:
             livery = consist.gestalt_graphics.all_liveries[
                 buyable_variant.buyable_variant_num
             ]

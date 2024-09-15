@@ -364,7 +364,7 @@ def main():
     generated_graphics_path = os.path.join(
         iron_horse.generated_files_path, "graphics", roster.grf_name
     )
-    slow_start = time()
+    images_start = time()
     if use_multiprocessing == False:
         for consist in consists:
             render_docs_images(
@@ -385,7 +385,7 @@ def main():
         )
         pool.close()
         pool.join()
-    print("render_docs_images", time() - slow_start)
+    print("render_docs_images", time() - images_start)
 
     print(
         "[RENDER DOCS]",

@@ -175,6 +175,8 @@ class Consist(object):
         self.foamer_facts = """"""  # to be set per vehicle, multi-line supported
         # 0 indexed spriterows, position in generated spritesheet, used by brake vans to get a docs image for 4th gen, not 1st
         self.docs_image_spriterow = kwargs.get("docs_image_spriterow", None)
+        # used for docs management
+        self.is_wagon_for_docs = False
         # aids 'project management'
         self.sprites_complete = kwargs.get("sprites_complete", False)
         self.sprites_additional_liveries_potential = kwargs.get(
@@ -2306,6 +2308,8 @@ class CarConsist(Consist):
         self.cc_num_to_recolour = 1
         # how to handle grouping this consist type
         self.group_as_wagon = True
+        # used for docs optimisation etc
+        self.is_wagon_for_docs = True
 
     @property
     def buy_cost(self):
