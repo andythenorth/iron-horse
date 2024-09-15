@@ -65,7 +65,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=35390,
         gen=5,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
