@@ -56,7 +56,6 @@
                                     <th class="date">Designed</th>
                                     <th class="number">Power</th>
                                     <th class="number">Speed</th>
-                                    <th>Track type</th>
                                     <th>Link</th>
                                 </tr>
                             </thead>
@@ -86,7 +85,6 @@
                                             </tal:power>
                                         </td>
                                         <td class="number">${doc_helper.speed_formatted_for_docs(consist)}</td>
-                                        <td>${consist.track_type}</td>
                                         <td>
                                             <a style="text-decoration:none;" href="#${consist.id}">&#x1f517;</a>
                                         </td>
@@ -112,7 +110,6 @@
                                     <th class="date">Designed</th>
                                     <th class="number">Capacity</th>
                                     <th class="number">Speed</th>
-                                    <th>Track type</th>
                                     <th>Link</th>
                                 </tr>
                             </thead>
@@ -137,7 +134,6 @@
                                         <td class="date">${consist.intro_year}</td>
                                         <td class="number">${sum([unit.default_cargo_capacity for unit in consist.units])} t</td>
                                         <td class="number">${consist.speed} mph</td>
-                                        <td>${consist.track_type}</td>
                                         <td>
                                             <a style="text-decoration:none;" href="#${consist.id}">&#x1f517;</a>
                                         </td>
