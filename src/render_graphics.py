@@ -194,7 +194,7 @@ def main():
         "[RENDER GRAPHICS]",
         command_line_args.grf_name,
         "- complete",
-        format((time() - start), ".2f") + "s",
+        utils.string_format_compile_time_deltas(start, time()),
     )
 
 

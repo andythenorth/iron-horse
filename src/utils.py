@@ -111,6 +111,9 @@ def convert_flat_list_to_pairs_of_tuples(flat_list):
     ]
     return pairs
 
+def string_format_compile_time_deltas(time_start, time_later):
+    return format((time_later - time_start), ".2f") + " s"
+
 # methods for handling pre-compiled determinstic random maps, for randomised vehicles that use pseudo-random sequences
 def generate_run_value(num_values=10):
     """

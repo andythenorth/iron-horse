@@ -346,7 +346,7 @@ def main():
         doc_helper,
         use_markdown=True,
     )
-    print("render_docs", time() - render_docs_start)
+    print("render_docs (base files)", utils.string_format_compile_time_deltas(render_docs_start, time()))
 
     # render vehicle details
     # this is slow and _might_ go faster in an MP pool, but eh overhead...
@@ -357,7 +357,7 @@ def main():
         consists=roster.engine_consists_excluding_clones,
         template_name="vehicle_details_engine",
     )
-    print("render_docs_vehicle_details", time() - render_vehicle_details_start)
+    print("render_docs_vehicle_details", utils.string_format_compile_time_deltas(render_vehicle_details_start, time()))
 
     # process images for use in docs
     # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)
@@ -385,13 +385,13 @@ def main():
         )
         pool.close()
         pool.join()
-    print("render_docs_images", time() - render_docs_images_start)
+    print("render_docs_images", utils.string_format_compile_time_deltas(render_docs_images_start, time()))
 
     print(
         "[RENDER DOCS]",
         command_line_args.grf_name,
         "- complete",
-        format((time() - start), ".2f") + "s",
+        utils.string_format_compile_time_deltas(start, time()),
     )
 
 
