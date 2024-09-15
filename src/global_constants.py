@@ -97,7 +97,8 @@ wagon_module_name_stems = [
     "tippler_bulk_open_cars_type_1",
     "tippler_bulk_open_cars_type_2",
     "tippler_bulk_open_cars_randomised",
-    "aggregate_bulk_open_cars_type_1",
+    # !! unfinished
+    #"aggregate_bulk_open_cars_type_1",
     "scrap_metal_cars_type_1",
     "scrap_metal_cars_type_2",
     "scrap_metal_cars_randomised",
