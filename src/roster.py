@@ -356,6 +356,10 @@ class Roster(object):
         # wagons can be optionally reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module
         # this is not intended to be a common case, it's for things like torpedo cars where redrawing and redefining them for all rosters is pointless
         # this may cause compile failures when refactoring stuff due to cross-roster dependencies being broken, if so comment the calls out
+        # validation
+        for wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
+            if wagon_module_name_stem not in global_constants.wagon_module_name_stems:
+                utils.echo_message("Warning: (" + self.id + ") " + wagon_module_name_stem + " not found in global_constants.wagon_module_name_stems")
         for wagon_module_name_stem in global_constants.wagon_module_name_stems:
             if wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
                 roster_id_providing_module = self.wagon_module_names_with_roster_ids[wagon_module_name_stem]
