@@ -35,6 +35,49 @@ randomised_wagon_extra_unit_width = 4
 
 # --- Body Recolour Maps --- #
 
+"""
+aggregate_bulk_open_livery_recolour_map = {
+    136: 4,
+    136 + 1: 5,
+    136 + 2: 6,
+    136 + 3: 7,
+    136 + 4: 20,
+    136 + 5: 21,
+    136 + 6: 22,
+    136 + 7: 13,
+}
+aggregate_bulk_open_livery_recolour_map_weathered = {
+    136: 33,
+    136 + 1: 34,
+    136 + 2: 6,
+    136 + 3: 36,
+    136 + 4: 20,
+    136 + 5: 21,
+    136 + 6: 22,
+    136 + 7: 39,
+}
+"""
+aggregate_bulk_open_livery_recolour_map = {
+    136: 4,
+    137: 6,
+    138: 8,
+    139: 9,
+    140: 10,
+    141: 11,
+    142: 13,
+    143: 15,
+}
+aggregate_bulk_open_livery_recolour_map_weathered = {
+    136: 3,
+    137: 5,
+    138: 110,
+    139: 8,
+    140: 37,
+    141: 10,
+    142: 12,
+    143: 14,
+}
+
 caboose_car_body_recolour_map = {
     136: CC1,
     137: CC1 + 1,
@@ -147,9 +190,7 @@ sliding_roof_car_body_recolour_map_weathered = {
 }
 
 # --- Simple Body Colour Recolour Maps --- #
-# label order matters, so tuples are used not dicts
-# could probably have used orderedict or named tuple, but...blah
-acid_tank_car_type_2_livery_recolour_maps = {
+acid_tank_car_type_2_livery_recolour_map = {
     136: CC1,
     137: CC1 + 1,
     138: CC1 + 2,
@@ -167,7 +208,7 @@ acid_tank_car_type_2_livery_recolour_maps = {
     160: CC1 + 6,
     161: CC1 + 7,
 }
-acid_tank_car_type_2_livery_recolour_maps_weathered = {
+acid_tank_car_type_2_livery_recolour_map_weathered = {
     136: CC1,
     137: CC1 + 1,
     138: CC1 + 2,
@@ -185,7 +226,7 @@ acid_tank_car_type_2_livery_recolour_maps_weathered = {
     160: CC1 + 6,
     161: CC1 + 7,
 }
-box_livery_recolour_maps = {
+box_livery_recolour_map = {
     40: CC1,
     41: CC1 + 1,
     42: CC1 + 2,
@@ -203,7 +244,7 @@ box_livery_recolour_maps = {
     142: CC1 + 6,
     143: CC1 + 7,
 }
-carbon_black_hopper_car_livery_recolour_maps = {
+carbon_black_hopper_car_livery_recolour_map = {
     136: 1,
     137: 2,
     138: 3,
@@ -221,7 +262,7 @@ carbon_black_hopper_car_livery_recolour_maps = {
     160: 7,
     161: 8,
 }
-carbon_black_hopper_car_livery_recolour_maps_weathered = {
+carbon_black_hopper_car_livery_recolour_map_weathered = {
     136: 70,
     137: 1,
     138: 2,
@@ -239,7 +280,7 @@ carbon_black_hopper_car_livery_recolour_maps_weathered = {
     160: 6,
     161: 19,
 }
-cement_silo_livery_recolour_maps = {
+cement_silo_livery_recolour_map = {
     136: 53,
     137: 54,
     138: 6,
@@ -249,7 +290,7 @@ cement_silo_livery_recolour_maps = {
     142: 13,
     143: 15,
 }
-cement_silo_livery_recolour_maps_weathered = {
+cement_silo_livery_recolour_map_weathered = {
     136: 53,
     137: 4,
     138: 35,
@@ -260,7 +301,7 @@ cement_silo_livery_recolour_maps_weathered = {
     143: 15,
 }
 
-chemical_covered_hopper_car_livery_recolour_maps = {
+chemical_covered_hopper_car_livery_recolour_map = {
     136: 96,
     137: 54,
     138: 98,
@@ -270,7 +311,7 @@ chemical_covered_hopper_car_livery_recolour_maps = {
     142: 30,
     143: 197,
 }
-chemical_covered_hopper_car_livery_recolour_maps_weathered = {
+chemical_covered_hopper_car_livery_recolour_map_weathered = {
     136: 106,
     137: 33,
     138: 27,
@@ -300,7 +341,7 @@ covered_coil_car_asymmetric_body_recolour_map_weathered = {
     142: 23,
     143: 39,
 }
-v_barrel_silo_car_livery_recolour_maps = {
+v_barrel_silo_car_livery_recolour_map = {
     136: CC1,
     137: CC1 + 1,
     138: CC1 + 2,
@@ -310,7 +351,7 @@ v_barrel_silo_car_livery_recolour_maps = {
     142: CC1 + 6,
     143: CC1 + 7,
 }
-covered_hopper_car_livery_recolour_maps = {
+covered_hopper_car_livery_recolour_map = {
     136: CC1,
     137: CC1 + 1,
     138: CC1 + 2,
@@ -321,7 +362,7 @@ covered_hopper_car_livery_recolour_maps = {
     143: CC1 + 7,
 }
 # broken away from Polar Fox, as the automatic chlorine cargo recolour is dropped for these as of August 2023
-cryo_tanker_livery_recolour_maps = {
+cryo_tanker_livery_recolour_map = {
     136: 5,
     137: 7,
     138: 9,
@@ -331,7 +372,7 @@ cryo_tanker_livery_recolour_maps = {
     142: 14,
     143: 15,
 }
-cryo_tanker_livery_recolour_maps_weathered = {
+cryo_tanker_livery_recolour_map_weathered = {
     136: 34,
     137: 7,
     138: 9,
@@ -342,12 +383,12 @@ cryo_tanker_livery_recolour_maps_weathered = {
     143: 15,
 }
 
-curtain_side_livery_recolour_maps = body_recolour_CC1
+curtain_side_livery_recolour_map = body_recolour_CC1
 
 # pass through (recolour gestalt is used only to trigger automatic chassis drawing)
-food_tank_car_livery_recolour_maps = {}
+food_tank_car_livery_recolour_map = {}
 
-farm_product_hopper_car_livery_recolour_maps = {
+farm_product_hopper_car_livery_recolour_map = {
     136: 96,
     137: 97,
     138: 98,
@@ -357,7 +398,7 @@ farm_product_hopper_car_livery_recolour_maps = {
     142: 102,
     143: 103,
 }
-farm_product_hopper_car_livery_recolour_maps_weathered = {
+farm_product_hopper_car_livery_recolour_map_weathered = {
     136: 88,
     137: 89,
     138: 90,
@@ -368,7 +409,7 @@ farm_product_hopper_car_livery_recolour_maps_weathered = {
     143: 95,
 }
 
-farm_product_box_car_livery_recolour_maps = {
+farm_product_box_car_livery_recolour_map = {
     40: 96,
     41: 96 + 1,
     42: 96 + 2,
@@ -386,7 +427,7 @@ farm_product_box_car_livery_recolour_maps = {
     CC1 + 6: 61 + 6,
     CC1 + 7: 61 + 7,
 }
-farm_product_box_car_livery_recolour_maps_weathered = {
+farm_product_box_car_livery_recolour_map_weathered = {
     40: 88,
     41: 88 + 1,
     42: 88 + 2,
@@ -404,7 +445,7 @@ farm_product_box_car_livery_recolour_maps_weathered = {
     CC1 + 6: 61 + 6,
     CC1 + 7: 61 + 7,
 }
-kaolin_hopper_car_livery_recolour_maps = {
+kaolin_hopper_car_livery_recolour_map = {
     # note that this very specifically recolours hand-drawn pixels to magic purple
     # this is to prevent these spriterows being incorrectly recoloured to 'weathered' due to the way the graphics pipeline works
     # these purple pixels are then reset to original when the weathered recolour map is applied
@@ -413,7 +454,7 @@ kaolin_hopper_car_livery_recolour_maps = {
     12: 141,
     14: 142,
 }
-kaolin_hopper_car_livery_recolour_maps_weathered = {
+kaolin_hopper_car_livery_recolour_map_weathered = {
     17: 114,
     8: 36,
     12: 38,
@@ -425,9 +466,9 @@ kaolin_hopper_car_livery_recolour_maps_weathered = {
     141: 12,
     142: 14,
 }
-livestock_livery_recolour_maps = body_recolour_CC1
+livestock_livery_recolour_map = body_recolour_CC1
 
-mineral_covered_hopper_car_livery_recolour_maps = {
+mineral_covered_hopper_car_livery_recolour_map = {
     # note that this very specifically recolours hand-drawn pixels to magic purple
     # this is to prevent these spriterows being incorrectly recoloured to 'weathered' due to the way the graphics pipeline works
     # these purple pixels are then reset to original when the weathered recolour map is applied
@@ -435,7 +476,7 @@ mineral_covered_hopper_car_livery_recolour_maps = {
     19: 139,
     22: 142,
 }
-mineral_covered_hopper_car_livery_recolour_maps_weathered = {
+mineral_covered_hopper_car_livery_recolour_map_weathered = {
     18: 115,
     19: 116,
     22: 120,
@@ -445,7 +486,7 @@ mineral_covered_hopper_car_livery_recolour_maps_weathered = {
     139: 19,
     142: 22,
 }
-pellet_hopper_car_livery_recolour_maps = {
+pellet_hopper_car_livery_recolour_map = {
     136: 4,
     137: 5,
     138: 6,
@@ -455,7 +496,7 @@ pellet_hopper_car_livery_recolour_maps = {
     142: 22,
     143: 23,
 }
-pellet_hopper_car_livery_recolour_maps_weathered = {
+pellet_hopper_car_livery_recolour_map_weathered = {
     136: 33,
     137: 5,
     138: 6,
@@ -466,7 +507,7 @@ pellet_hopper_car_livery_recolour_maps_weathered = {
     143: 23,
 }
 
-product_tank_car_livery_recolour_maps = {
+product_tank_car_livery_recolour_map = {
     136: 16,
     137: 18,
     138: 19,
@@ -476,7 +517,7 @@ product_tank_car_livery_recolour_maps = {
     142: 23,
     143: 14,
 }
-product_tank_car_livery_recolour_maps_weathered = {
+product_tank_car_livery_recolour_map_weathered = {
     136: 16,
     137: 5,
     138: 7,
@@ -487,7 +528,7 @@ product_tank_car_livery_recolour_maps_weathered = {
     143: 14,
 }
 
-refrigerated_livery_recolour_maps = {
+refrigerated_livery_recolour_map = {
     136: 18,
     137: 19,
     138: 20,
@@ -497,7 +538,7 @@ refrigerated_livery_recolour_maps = {
     142: 14,
     143: 15,
 }
-refrigerated_livery_recolour_maps_weathered = {
+refrigerated_livery_recolour_map_weathered = {
     136: 17,
     137: 18,
     138: 19,
@@ -507,7 +548,7 @@ refrigerated_livery_recolour_maps_weathered = {
     142: 13,
     143: 15,
 }
-silo_livery_recolour_maps = {
+silo_livery_recolour_map = {
     136: CC1,
     137: CC1 + 1,
     138: CC1 + 2,
@@ -517,7 +558,7 @@ silo_livery_recolour_maps = {
     142: CC1 + 6,
     143: CC1 + 7,
 }
-sliding_wall_livery_recolour_maps = {
+sliding_wall_livery_recolour_map = {
     40: 4,
     41: 5,
     42: 6,
@@ -527,7 +568,7 @@ sliding_wall_livery_recolour_maps = {
     46: 22,
     47: 13,
 }
-sliding_wall_livery_recolour_maps_weathered = {
+sliding_wall_livery_recolour_map_weathered = {
     40: 33,
     41: 34,
     42: 6,
@@ -538,7 +579,7 @@ sliding_wall_livery_recolour_maps_weathered = {
     47: 39,
 }
 
-acid_tank_car_type_1_livery_recolour_maps = {
+acid_tank_car_type_1_livery_recolour_map = {
     136: 104,
     137: 2,
     138: 25,
@@ -556,7 +597,7 @@ acid_tank_car_type_1_livery_recolour_maps = {
     160: CC1 + 6,
     161: CC1 + 7,
 }
-acid_tank_car_type_1_livery_recolour_maps_weathered = {
+acid_tank_car_type_1_livery_recolour_map_weathered = {
     # should be kept in sync with the SULP map in polar fox tanker maps
     136: 1,
     137: 2,
@@ -575,7 +616,7 @@ acid_tank_car_type_1_livery_recolour_maps_weathered = {
     160: CC1 + 6,
     161: CC1 + 7,
 }
-tank_car_livery_recolour_maps = {
+tank_car_livery_recolour_map = {
     136: CC1,
     137: CC1 + 1,
     138: CC1 + 2,

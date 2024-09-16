@@ -97,8 +97,8 @@ wagon_module_name_stems = [
     "tippler_bulk_open_cars_type_1",
     "tippler_bulk_open_cars_type_2",
     "tippler_bulk_open_cars_randomised",
-    # !! unfinished
-    #"aggregate_bulk_open_cars_type_1",
+    "aggregate_bulk_open_cars_type_1",
+    "aggregate_bulk_open_cars_type_2",
     "scrap_metal_cars_type_1",
     "scrap_metal_cars_type_2",
     "scrap_metal_cars_randomised",
@@ -315,6 +315,7 @@ intro_month_offsets_by_role_group = {
 buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_acid_tank_cars": "acid_tank_car_type_1",
     "wagon_group_aggregate_hopper_cars": "aggregate_hopper_car_type_1",
+    "wagon_group_aggregate_bulk_open_cars": "aggregate_bulk_open_car_type_1",
     "wagon_group_bolster_cars": "bolster_car",
     "wagon_group_box_cars": "box_car_type_1",
     "wagon_group_bulkhead_flat_cars": "bulkhead_flat_car_type_1",

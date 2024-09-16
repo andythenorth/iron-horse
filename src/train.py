@@ -2895,7 +2895,7 @@ class BoxCarConsistType1(BoxCarConsistBase):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
-            "unweathered": graphics_constants.box_livery_recolour_maps,
+            "unweathered": graphics_constants.box_livery_recolour_map,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -2998,7 +2998,7 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
-            "unweathered": graphics_constants.curtain_side_livery_recolour_maps,
+            "unweathered": graphics_constants.curtain_side_livery_recolour_map,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -3167,8 +3167,8 @@ class BoxCarSlidingWallConsistType1(BoxCarSlidingWallConsistBase):
         else:
             self.roof_type = "freight"
         weathered_variants = {
-            "unweathered": graphics_constants.sliding_wall_livery_recolour_maps,
-            "weathered": graphics_constants.sliding_wall_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.sliding_wall_livery_recolour_map,
+            "weathered": graphics_constants.sliding_wall_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -3220,7 +3220,7 @@ class BoxCarSlidingWallConsistType2(BoxCarSlidingWallConsistBase):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
-            "unweathered": graphics_constants.box_livery_recolour_maps,
+            "unweathered": graphics_constants.box_livery_recolour_map,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -3281,7 +3281,7 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
-            "unweathered": graphics_constants.box_livery_recolour_maps,
+            "unweathered": graphics_constants.box_livery_recolour_map,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -3357,30 +3357,30 @@ class BulkOpenCarAggregateConsistBase(BulkOpenCarConsistBase):
         self.randomised_candidate_groups = [
             "bulk_car_box_randomised",
         ]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_aggregate_bulk_open_cars"
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics.liveries = [
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+        weathered_variants = {
+            "unweathered": graphics_constants.aggregate_bulk_open_livery_recolour_map,
+            "weathered": graphics_constants.aggregate_bulk_open_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            bulk=True,
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+                ],
+                global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
             ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-            ],
-            global_constants.freight_wagon_liveries[
-                "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-            ],
-            global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-            global_constants.freight_wagon_liveries[
-                "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-            ],
-            global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-            global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-            global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-            global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-        ]
+        )
 
 
 class BulkOpenCarAggregateConsistType1(BulkOpenCarAggregateConsistBase):
@@ -3391,6 +3391,17 @@ class BulkOpenCarAggregateConsistType1(BulkOpenCarAggregateConsistBase):
 
     def __init__(self, **kwargs):
         self.base_id = "aggregate_bulk_open_car_type_1"
+        super().__init__(**kwargs)
+
+
+class BulkOpenCarAggregateConsistType2(BulkOpenCarAggregateConsistBase):
+    """
+    Aggregate Car.
+    Same as standard dump car, but different appearance and default cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "aggregate_bulk_open_car_type_2"
         super().__init__(**kwargs)
 
 
@@ -3919,8 +3930,8 @@ class CarbonBlackHopperCarConsist(CarConsist):
         self._joker = True
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.carbon_black_hopper_car_livery_recolour_maps,
-            "weathered": graphics_constants.carbon_black_hopper_car_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.carbon_black_hopper_car_livery_recolour_map,
+            "weathered": graphics_constants.carbon_black_hopper_car_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -4246,7 +4257,7 @@ class CoveredHopperCarConsistBase(CarConsist):
         )
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.covered_hopper_car_livery_recolour_maps
+            "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -4335,7 +4346,7 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         # Graphics configuration
         # the weathering is baked in to the sprite on these so no weathered remap
         weathered_variants = {
-            "unweathered": graphics_constants.chemical_covered_hopper_car_livery_recolour_maps,
+            "unweathered": graphics_constants.chemical_covered_hopper_car_livery_recolour_map,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -4459,8 +4470,8 @@ class CoveredHopperCarMineralConsist(CoveredHopperCarConsistBase):
         self._joker = True
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_maps,
-            "weathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_map,
+            "weathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -4522,7 +4533,7 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["covered_roller_roof"]
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.pellet_hopper_car_livery_recolour_maps
+            "unweathered": graphics_constants.pellet_hopper_car_livery_recolour_map
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -4573,7 +4584,7 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.covered_hopper_car_livery_recolour_maps
+            "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -4635,7 +4646,7 @@ class CoveredHopperCarSwingRoofChemicalConsist(CoveredHopperCarConsistBase):
         # Graphics configuration
         # the weathering is baked in to the sprite on these so no weathered remap
         weathered_variants = {
-            "unweathered": graphics_constants.covered_hopper_car_livery_recolour_maps
+            "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -4715,7 +4726,7 @@ class ExpressCarConsist(CarConsist):
         else:
             self.roof_type = "pax_mail_smooth"
         weathered_variants = {
-            "unweathered": graphics_constants.box_livery_recolour_maps,
+            "unweathered": graphics_constants.box_livery_recolour_map,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -4817,7 +4828,7 @@ class ExpressFoodTankCarConsistBase(CarConsist):
         # Graphics configuration
         # only one livery, but recolour gestalt used to automate adding chassis
         weathered_variants = {
-            "unweathered": graphics_constants.food_tank_car_livery_recolour_maps
+            "unweathered": graphics_constants.food_tank_car_livery_recolour_map
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -4968,8 +4979,8 @@ class FarmProductsBoxCarConsistType1(FarmProductsBoxCarConsistBase):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
-            "unweathered": graphics_constants.farm_product_box_car_livery_recolour_maps,
-            "weathered": graphics_constants.farm_product_box_car_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.farm_product_box_car_livery_recolour_map,
+            "weathered": graphics_constants.farm_product_box_car_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -4992,8 +5003,8 @@ class FarmProductsBoxCarConsistType2(FarmProductsBoxCarConsistBase):
         # Graphics configuration
         self.roof_type = "freight_cc1"
         weathered_variants = {
-            "unweathered": graphics_constants.farm_product_box_car_livery_recolour_maps,
-            "weathered": graphics_constants.farm_product_box_car_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.farm_product_box_car_livery_recolour_map,
+            "weathered": graphics_constants.farm_product_box_car_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -5029,8 +5040,8 @@ class FarmProductsHopperCarConsistBase(CarConsist):
         self._joker = True
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.farm_product_hopper_car_livery_recolour_maps,
-            "weathered": graphics_constants.farm_product_hopper_car_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.farm_product_hopper_car_livery_recolour_map,
+            "weathered": graphics_constants.farm_product_hopper_car_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -5099,8 +5110,8 @@ class FoodHopperCarConsistBase(FarmProductsHopperCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_food_hopper_cars"
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.refrigerated_livery_recolour_maps,
-            "weathered": graphics_constants.refrigerated_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.refrigerated_livery_recolour_map,
+            "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -5483,8 +5494,8 @@ class GasTankCarConsistBase(CarConsist):
         )
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.cryo_tanker_livery_recolour_maps,
-            "weathered": graphics_constants.cryo_tanker_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.cryo_tanker_livery_recolour_map,
+            "weathered": graphics_constants.cryo_tanker_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -6200,8 +6211,8 @@ class KaolinHopperCarConsist(CarConsist):
         self._joker = True
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.kaolin_hopper_car_livery_recolour_maps,
-            "weathered": graphics_constants.kaolin_hopper_car_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.kaolin_hopper_car_livery_recolour_map,
+            "weathered": graphics_constants.kaolin_hopper_car_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -6236,7 +6247,7 @@ class LivestockCarConsist(CarConsist):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
-            "unweathered": graphics_constants.livestock_livery_recolour_maps,
+            "unweathered": graphics_constants.livestock_livery_recolour_map,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -7427,7 +7438,7 @@ class PeatCarConsist(CarConsist):
         # self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="tree_length_logs")
         utils.echo_message("Peat car using potash hopper body colour remaps")
         weathered_variants = {
-            "unweathered": polar_fox.constants.potash_hopper_car_livery_recolour_maps
+            "unweathered": polar_fox.constants.potash_hopper_car_livery_recolour_map
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -7623,8 +7634,8 @@ class ReeferCarConsistBase(CarConsist):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
-            "unweathered": graphics_constants.refrigerated_livery_recolour_maps,
-            "weathered": graphics_constants.refrigerated_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.refrigerated_livery_recolour_map,
+            "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
@@ -7677,8 +7688,8 @@ class ReeferCarRandomisedConsist(RandomisedConsistMixin, ReeferCarConsistBase):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
-            "unweathered": graphics_constants.refrigerated_livery_recolour_maps,
-            "weathered": graphics_constants.refrigerated_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.refrigerated_livery_recolour_map,
+            "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
         }
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         liveries = self.gestalt_graphics.liveries.copy()
@@ -7717,7 +7728,7 @@ class SiloCarConsistBase(CarConsist):
         self._joker = True
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.v_barrel_silo_car_livery_recolour_maps,
+            "unweathered": graphics_constants.v_barrel_silo_car_livery_recolour_map,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -7863,8 +7874,8 @@ class SiloCarCementConsistType1(SiloCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_cement_silo_cars"
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.cement_silo_livery_recolour_maps,
-            "weathered": graphics_constants.cement_silo_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.cement_silo_livery_recolour_map,
+            "weathered": graphics_constants.cement_silo_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -7892,8 +7903,8 @@ class SiloCarCementConsistType2(SiloCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_cement_silo_cars"
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.cement_silo_livery_recolour_maps,
-            "weathered": graphics_constants.cement_silo_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.cement_silo_livery_recolour_map,
+            "weathered": graphics_constants.cement_silo_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -7921,8 +7932,8 @@ class SiloCarCementConsistType3(SiloCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_cement_silo_cars"
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.cement_silo_livery_recolour_maps,
-            "weathered": graphics_constants.cement_silo_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.cement_silo_livery_recolour_map,
+            "weathered": graphics_constants.cement_silo_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -8162,7 +8173,7 @@ class TankCarConsist(TankCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["tank"]
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.tank_car_livery_recolour_maps,
+            "unweathered": graphics_constants.tank_car_livery_recolour_map,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -8236,8 +8247,8 @@ class TankCarAcidConsistType1(TankCarAcidConsistBase):
         super().__init__(**kwargs)
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.acid_tank_car_type_1_livery_recolour_maps,
-            "weathered": graphics_constants.acid_tank_car_type_1_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.acid_tank_car_type_1_livery_recolour_map,
+            "weathered": graphics_constants.acid_tank_car_type_1_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -8290,8 +8301,8 @@ class TankCarAcidConsistType2(TankCarAcidConsistBase):
         super().__init__(**kwargs)
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.acid_tank_car_type_2_livery_recolour_maps,
-            "weathered": graphics_constants.acid_tank_car_type_2_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.acid_tank_car_type_2_livery_recolour_map,
+            "weathered": graphics_constants.acid_tank_car_type_2_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -8427,8 +8438,8 @@ class TankCarProductConsist(TankCarConsistBase):
         self._joker = True
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.product_tank_car_livery_recolour_maps,
-            "weathered": graphics_constants.product_tank_car_livery_recolour_maps_weathered,
+            "unweathered": graphics_constants.product_tank_car_livery_recolour_map,
+            "weathered": graphics_constants.product_tank_car_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
