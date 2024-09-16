@@ -59,11 +59,11 @@ aggregate_bulk_open_livery_recolour_map_weathered = {
 """
 aggregate_bulk_open_livery_recolour_map = {
     136: 4,
-    137: 6,
+    137: 109,
     138: 8,
     139: 9,
     140: 10,
-    141: 11,
+    141: 38,
     142: 13,
     143: 15,
 }
