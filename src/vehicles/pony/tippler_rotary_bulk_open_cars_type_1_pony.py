@@ -37,7 +37,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_24px")
+    consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_greebled_24px")
 
     consist = BulkOpenCarTipplerRotaryConsistType1(
         roster_id=roster_id,
@@ -48,4 +48,4 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_32px")
+    consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_greebled_32px")
