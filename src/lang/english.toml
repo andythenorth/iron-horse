@@ -497,6 +497,9 @@ base = "Acid Tanker"
 [STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2]
 base = "Acid Tanker"
 
+[STR_NAME_SUFFIX_AGGREGATE_BULK_OPEN_CAR_RANDOMISED]
+base = "Stone Wagon"
+
 [STR_NAME_SUFFIX_AGGREGATE_BULK_OPEN_CAR_TYPE_1]
 base = "Stone Wagon"
 

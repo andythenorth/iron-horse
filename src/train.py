@@ -3355,6 +3355,7 @@ class BulkOpenCarAggregateConsistBase(BulkOpenCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
         self.randomised_candidate_groups = [
+            "aggregate_bulk_open_car_randomised",
             "bulk_car_box_randomised",
         ]
         # buyable variant groups are created post-hoc and can group across subclasses
@@ -3378,6 +3379,7 @@ class BulkOpenCarAggregateConsistBase(BulkOpenCarConsistBase):
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
             ],
         )
@@ -3403,6 +3405,27 @@ class BulkOpenCarAggregateConsistType2(BulkOpenCarAggregateConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "aggregate_bulk_open_car_type_2"
         super().__init__(**kwargs)
+
+
+class BulkOpenCarAggregateRandomisedConsist(
+    RandomisedConsistMixin, BulkOpenCarAggregateConsistBase
+):
+    """
+    Random choice of standard dump car (Mineral Wagon in UK terms).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "aggregate_bulk_open_car_randomised"
+        super().__init__(**kwargs)
+        # needed to clear randomised set by base class
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            dice_colour=2,
+            liveries=liveries,
+        )
 
 
 class BulkOpenCarHeavyDutyConsist(BulkOpenCarConsistBase):
