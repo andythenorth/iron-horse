@@ -2925,6 +2925,8 @@ class BoxCarConsistType1(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+                # teal before pewter to ensure it appears in buy menu order for mixed version
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
@@ -3025,8 +3027,9 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
 
@@ -3091,8 +3094,8 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
                 global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-                # out of order pewter, to get teal in RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
@@ -3309,8 +3312,9 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
 
@@ -6748,6 +6752,7 @@ class OpenCarConsist(OpenCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
             ],
         )
 
@@ -6838,6 +6843,7 @@ class OpenCarHighEndConsist(OpenCarConsistBase):
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
             ],
         )
 
@@ -6887,6 +6893,7 @@ class OpenCarMillConsist(OpenCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
             ],
         )
 
@@ -7566,6 +7573,9 @@ class PieceGoodsCarMixedRandomisedConsist(PieceGoodsCarRandomisedConsistBase):
                 ],
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
                 ],
             ],
         )
