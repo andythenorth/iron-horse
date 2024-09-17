@@ -3407,6 +3407,17 @@ class BulkOpenCarAggregateConsistType2(BulkOpenCarAggregateConsistBase):
         super().__init__(**kwargs)
 
 
+class BulkOpenCarAggregateConsistType3(BulkOpenCarAggregateConsistBase):
+    """
+    Aggregate Car.
+    Same as standard dump car, but different appearance and default cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "aggregate_bulk_open_car_type_3"
+        super().__init__(**kwargs)
+
+
 class BulkOpenCarAggregateRandomisedConsist(
     RandomisedConsistMixin, BulkOpenCarAggregateConsistBase
 ):

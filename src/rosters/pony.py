@@ -229,6 +229,7 @@ wagon_module_names_with_roster_ids = {
     "acid_tank_cars_type_2": "pony",
     "aggregate_bulk_open_cars_type_1": "pony",
     "aggregate_bulk_open_cars_type_2": "pony",
+    "aggregate_bulk_open_cars_type_3": "pony",
     "aggregate_bulk_open_cars_randomised": "pony",
     "aggregate_hopper_cars_randomised": "pony",
     "aggregate_hopper_cars_type_1": "pony",
