@@ -3785,6 +3785,7 @@ class BulkOpenCarTipplerRandomisedConsist(
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         liveries = self.gestalt_graphics.liveries.copy()
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            # !!! CABBAGE - not sure this needs to use use_deterministic_random_vehicle_map - is this legacy? check commit history
             use_deterministic_random_vehicle_map=True,
             dice_colour=2,
             liveries=liveries,
