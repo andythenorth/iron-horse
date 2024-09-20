@@ -9,68 +9,70 @@
     -->
 
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_self,
-                                random_bits_randomised_wagon_choose_wagon_self(
-                                    0,
-                                    ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)).bit_length() - 1}
-                                )
-        ) {
-        <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)">
-            ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
-        </tal:randomisation_candidates>
-    }
-    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_parent,
-                                random_bits_randomised_wagon_choose_wagon_parent(
-                                    <tal:random_bits_offset switch="consist.gestalt_graphics.use_deterministic_random_vehicle_map">
-                                        <!--! set an offset into engine bits, or not, as needed -->
-                                        <tal:case case="True">
-                                            random_bits_offset_from_deterministic_random_map(),
-                                        </tal:case>
-                                        <tal:case case="False">
-                                            0,
-                                        </tal:case>
-                                    </tal:random_bits_offset>
-                                    ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)).bit_length() - 1}
-                                )
-        ) {
-        <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)">
-            ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
-        </tal:randomisation_candidates>
-    }
-    <!--! note that the random chain is used by both graphics and colour mapping chains -->
-    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon, random_bits_randomised_wagon_check_parent_or_self()) {
-        <tal:optional_bits_from_self condition="not:consist.gestalt_graphics.use_deterministic_random_vehicle_map">
-            0..2: ${unit_variant.id}_switch_graphics_variant_random_self;
-        </tal:optional_bits_from_self>
-        ${unit_variant.id}_switch_graphics_variant_random_parent;
-    }
+    <tal:optimise_wagon_randomisation_candidates define="randomisation_candidates consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant);">
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_self,
+                                    random_bits_randomised_wagon_choose_wagon_self(
+                                        0,
+                                        ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)).bit_length() - 1}
+                                    )
+            ) {
+            <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
+                ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
+            </tal:randomisation_candidates>
+        }
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_parent,
+                                    random_bits_randomised_wagon_choose_wagon_parent(
+                                        <tal:random_bits_offset switch="consist.gestalt_graphics.use_deterministic_random_vehicle_map">
+                                            <!--! set an offset into engine bits, or not, as needed -->
+                                            <tal:case case="True">
+                                                random_bits_offset_from_deterministic_random_map(),
+                                            </tal:case>
+                                            <tal:case case="False">
+                                                0,
+                                            </tal:case>
+                                        </tal:random_bits_offset>
+                                        ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)).bit_length() - 1}
+                                    )
+            ) {
+            <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
+                ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
+            </tal:randomisation_candidates>
+        }
+        <!--! note that the random chain is used by both graphics and colour mapping chains -->
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon, random_bits_randomised_wagon_check_parent_or_self()) {
+            <tal:optional_bits_from_self condition="not:consist.gestalt_graphics.use_deterministic_random_vehicle_map">
+                0..2: ${unit_variant.id}_switch_graphics_variant_random_self;
+            </tal:optional_bits_from_self>
+            ${unit_variant.id}_switch_graphics_variant_random_parent;
+        }
 
-    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
-        <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)">
-            ${repeat.randomisation_candidate.index}: ${randomisation_candidate.unit.id}_switch_graphics;
-        </tal:randomisation_candidates>
-    }
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
+            <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
+                ${repeat.randomisation_candidate.index}: ${randomisation_candidate.unit.id}_switch_graphics;
+            </tal:randomisation_candidates>
+        }
 
-    // buy menu graphics chain
-    spriteset(${unit_variant.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
-        ${consist.get_nml_for_spriteset_template(y_offset=0)}
-    }
-    <!--! handle colour mapping which can vary per buyable variant
-          note that we have to make the same random choice here as the graphics chain, so we delegate to a shared procedure -->
-    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_variant, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
-        <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)">
-            ${repeat.randomisation_candidate.index}:return switch_colour_mapping(
-                ${randomisation_candidate.get_wagon_recolour_strategy_params()},
-            );
-        </tal:randomisation_candidates>
-    }
-    switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_variant_purchase, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
-        <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)">
-            ${repeat.randomisation_candidate.index}:return switch_colour_mapping(
-                ${randomisation_candidate.get_wagon_recolour_strategy_params(context="purchase")},
-            );
-        </tal:randomisation_candidates>
-    }
+        // buy menu graphics chain
+        spriteset(${unit_variant.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
+            ${consist.get_nml_for_spriteset_template(y_offset=0)}
+        }
+        <!--! handle colour mapping which can vary per buyable variant
+              note that we have to make the same random choice here as the graphics chain, so we delegate to a shared procedure -->
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_variant, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
+            <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
+                ${repeat.randomisation_candidate.index}:return switch_colour_mapping(
+                    ${randomisation_candidate.get_wagon_recolour_strategy_params()},
+                );
+            </tal:randomisation_candidates>
+        }
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_variant_purchase, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
+            <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
+                ${repeat.randomisation_candidate.index}:return switch_colour_mapping(
+                    ${randomisation_candidate.get_wagon_recolour_strategy_params(context="purchase")},
+                );
+            </tal:randomisation_candidates>
+        }
+    </tal:optimise_wagon_randomisation_candidates>
 </tal:unit_variants>
 
 <!--! note that we provide '_switch_graphics' not '_switch_graphics_vehicle' as there are no precursor graphics entry switches for randomised wagons
