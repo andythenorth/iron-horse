@@ -85,7 +85,10 @@ switch (FEAT_TRAINS, SELF, switch_colour_mapping,
     switch_colour_set_use_weathering_1cc_to_1cc;
 }
 
-<!--! switch as lookup table to avoid defining parameterised procedure calls 8300 times for Horse random liveries, as this appears to bloat the grf from 43 MB to 89 MB -->
+<!--! switch as lookup table for combinations of colour set params
+      this is to avoid defining parameterised procedure calls 8300 times for Horse random liveries, as this appears to bloat the grf from 43 MB to 89 MB
+      see roster.wagon_recolour_colour_sets for more info
+      -->
 switch(FEAT_TRAINS, SELF, switch_CABBAGE_WAGON_RECOLOUR_SETS, wagon_recolour_colour_set_CABBAGE_NUM, wagon_recolour_colour_set_CABBAGE_NUM) {
     <tal:CABBAGE_WAGON_RECOLOUR_SET repeat="CABBAGE_WAGON_RECOLOUR_SET roster.wagon_recolour_colour_sets">
         ${repeat.CABBAGE_WAGON_RECOLOUR_SET.index}: return switch_colour_mapping(${CABBAGE_WAGON_RECOLOUR_SET});

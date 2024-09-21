@@ -381,6 +381,13 @@ class Roster(object):
                     raise
 
     def init_wagon_recolour_colour_sets(self):
+        # wagon recolour liveries can be randomised across multiple colour sets
+        # this is a run-time randomisation, relying on a procedure that takes parameters for the candidate livery numbers
+        # however there are 10 parameters, and calls to the procedure are needed thousands of times per grf,
+        # testing proved that generating thousands of procedure calls with 10 params directly in the nml was expensive in file size, both nml and grf
+        # there are however a finite number of combinations that are actually needed (only 125 as of Sept 2024)
+        # therefore we can provide a compile-time lookup table, and index into it using a procedure call with a single parameter
+        # this does not have the same cost in nml or grf filesize
         seen_params = []
         for wagon_consist in self.wagon_consists:
             for unit in wagon_consist.unique_units:
