@@ -162,7 +162,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
 
 class GestaltGraphicsRandomisedWagon(GestaltGraphics):
     """
-    Simple Gestalt specifically for randomised wagons that have borrow sprites from other vehicles.
+    Simple Gestalt specifically for randomised wagons that reuse action 2 graphics chains from other vehicles.
     """
 
     def __init__(self, **kwargs):
