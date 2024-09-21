@@ -115,6 +115,35 @@ def string_format_compile_time_deltas(time_start, time_later):
     return format((time_later - time_start), ".2f") + " s"
 
 # methods for handling pre-compiled determinstic random maps, for randomised vehicles that use pseudo-random sequences
+
+# Define the configuration for each type of map
+map_configurations = {
+    "maps_3_4_wagon_runs": {
+        "min_run": 3,
+        "max_run": 4,
+        "prefer_run_lengths": {3: 0.5, 4: 0.5},
+        "seed": 42
+    },
+    "maps_short_runs_even_weight": {
+        "min_run": 1,
+        "max_run": 2,
+        "prefer_run_lengths": {1: 0.5, 2: 0.5},
+        "seed": 43
+    },
+    "maps_varied_with_dominance": {
+        "min_run": 2,
+        "max_run": 5,
+        "prefer_run_lengths": {3: 0.375, 2: 0.375, 4: 0.25},
+        "seed": 44
+    },
+    "maps_mostly_uniform": {
+        "min_run": 3,
+        "max_run": 6,
+        "prefer_run_lengths": {5: 0.625, 3: 0.25, 2: 0.125},
+        "seed": 45
+    }
+}
+
 def generate_run_value(value_range):
     """
     Generate a single value for a run.
@@ -147,22 +176,33 @@ def generate_random_map(size=64, value_range=64, min_run=2, max_run=5, prefer_ru
         map_entries.extend([run_value] * run_length)
     return map_entries
 
-def get_deterministic_random_vehicle_maps(num_maps=64, map_size=64, value_range=64, seed=42):
+def get_deterministic_random_vehicle_maps(map_type, num_maps=64, map_size=64, value_range=64):
     """
-    Generate multiple random maps and ensure they are unique.
+    Generate multiple random maps based on a predefined configuration.
 
-    :param num_maps: The number of random maps to generate
+    :param map_type: The string key to determine which map configuration to use
+    :param num_maps: The number of maps to generate
     :param map_size: The number of entries per map
-    :param value_range: The range of random values
-    :param seed: The random seed for determinism
+    :param value_range: The range of random values for candidates
     :return: A list of unique maps
     """
-    random.seed(seed)  # Set the seed for determinism
+    if map_type not in map_configurations:
+        raise ValueError(f"Unknown map type: {map_type}")
+
+    # Get the config for the selected map type
+    config = map_configurations[map_type]
+
+    random.seed(config["seed"])  # Set the seed for determinism
+
     maps = set()
     while len(maps) < num_maps:
-        new_map = tuple(generate_random_map(size=map_size, value_range=value_range))
-        if new_map in maps:
-            raise ValueError("Duplicate map detected. Change the seed value.")
+        new_map = tuple(generate_random_map(
+            size=map_size,
+            value_range=value_range,
+            min_run=config["min_run"],
+            max_run=config["max_run"],
+            prefer_run_lengths=config["prefer_run_lengths"]
+        ))
         maps.add(new_map)
-    return [list(map_entry) for map_entry in maps]
 
+    return [list(map_entry) for map_entry in maps]
