@@ -60,15 +60,15 @@
               note that we have to make the same random choice here as the graphics chain, so we delegate to a shared procedure -->
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_variant, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
             <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
-                ${repeat.randomisation_candidate.index}:return switch_colour_mapping(
-                    ${randomisation_candidate.get_wagon_recolour_strategy_params()},
+                ${repeat.randomisation_candidate.index}:return switch_CABBAGE_WAGON_RECOLOUR_SETS(
+                    ${randomisation_candidate.get_wagon_recolour_colour_set_CABBAGE_NUM()},
                 );
             </tal:randomisation_candidates>
         }
         <!--! purchase colour mapping is just taken from first candidate -->
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_variant_purchase, 0) {
-            return switch_colour_mapping(
-                ${randomisation_candidates[0].get_wagon_recolour_strategy_params(context="purchase")}
+            return switch_CABBAGE_WAGON_RECOLOUR_SETS(
+                ${randomisation_candidates[0].get_wagon_recolour_colour_set_CABBAGE_NUM(context="purchase")}
             );
         }
     </tal:optimise_wagon_randomisation_candidates>

@@ -131,8 +131,8 @@
             </tal:conditional_random_trigger>
             <tal:colour_mapping_cb switch="vehicle.requires_colour_mapping_cb">
                 <tal:use_colour_randomisation_strategies case="'use_colour_randomisation_strategies'">
-                    colour_mapping:                 switch_colour_mapping(${unit_variant.get_wagon_recolour_strategy_params()});
-                    purchase_colour_mapping:        switch_colour_mapping(${unit_variant.get_wagon_recolour_strategy_params(context="purchase")});
+                    colour_mapping:                 switch_CABBAGE_WAGON_RECOLOUR_SETS(${unit_variant.get_wagon_recolour_colour_set_CABBAGE_NUM()});
+                    purchase_colour_mapping:        switch_CABBAGE_WAGON_RECOLOUR_SETS(${unit_variant.get_wagon_recolour_colour_set_CABBAGE_NUM(context="purchase")});
                 </tal:use_colour_randomisation_strategies>
                 <tal:colour_mapping_switch_with_purchase case="'colour_mapping_switch_with_purchase'">
                     colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};

@@ -53,6 +53,7 @@ class Roster(object):
         )
         self.freight_wagon_liveries = kwargs.get("freight_wagon_liveries", {})
         self.pax_mail_livery_groups = kwargs.get("pax_mail_livery_groups", {})
+        self.wagon_recolour_colour_sets = []
 
     @property
     def engine_consists_excluding_clones(self):
@@ -339,6 +340,7 @@ class Roster(object):
         # init of consists has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
         self.init_engine_modules()
         self.init_wagon_modules()
+        self.init_wagon_recolour_colour_sets()
 
     def init_engine_modules(self):
         package_name = "vehicles." + self.id
@@ -377,6 +379,17 @@ class Roster(object):
                     raise ModuleNotFoundError(wagon_module_name + " in " + package_name + " as defined by " + self.id + ".wagon_module_names_with_roster_ids")
                 except Exception:
                     raise
+
+    def init_wagon_recolour_colour_sets(self):
+        seen_params = []
+        for wagon_consist in self.wagon_consists:
+            for unit in wagon_consist.unique_units:
+                if getattr(wagon_consist, "use_colour_randomisation_strategies", False):
+                    for unit_variant in unit.unit_variants:
+                        seen_params.append(unit_variant.get_wagon_recolour_strategy_params())
+                        seen_params.append(unit_variant.get_wagon_recolour_strategy_params(context="purchase"))
+
+        self.wagon_recolour_colour_sets = list(set(seen_params))
 
     def add_buyable_variant_groups(self):
         # creating groups has to happen after *all* consists are inited

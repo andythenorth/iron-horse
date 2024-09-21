@@ -9089,6 +9089,10 @@ class UnitVariant(object):
         # int used to convert False|True bools to 0|1 values for nml
         return ", ".join(str(int(i)) for i in params_numeric)
 
+    def get_wagon_recolour_colour_set_CABBAGE_NUM(self, context=None):
+        params = self.get_wagon_recolour_strategy_params(context)
+        return self.unit.consist.roster.wagon_recolour_colour_sets.index(params)
+
 
 class Train(object):
     """
