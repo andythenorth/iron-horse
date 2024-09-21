@@ -9078,7 +9078,6 @@ class UnitVariant(object):
         flag_context_is_purchase = True if context == "purchase" else False
 
         params_numeric = [
-            1,
             flag_use_weathering,
             flag_context_is_purchase,
             wagon_recolour_strategy_num,
