@@ -2304,8 +2304,6 @@ class CarConsist(Consist):
         )
         # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.use_colour_randomisation_strategies = True
-        # set to 2 in subclass if 2cc should be randomised - can't randomise both, too fiddly
-        self.cc_num_to_recolour = 1
         # how to handle grouping this consist type
         self.group_as_wagon = True
         # used for docs optimisation etc
@@ -4069,7 +4067,6 @@ class CoilCarCoveredAsymmetricConsist(CoilCarConsistBase):
         self.base_id = "coil_car_covered_asymmetric"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
-        self.cc_num_to_recolour = 1
         self.randomised_candidate_groups = [
             "dedicated_coil_car_randomised",
             "metal_product_car_covered_randomised",
@@ -4120,7 +4117,6 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         self.base_id = "coil_car_covered"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
-        self.cc_num_to_recolour = 1
         self.randomised_candidate_groups = [
             "dedicated_coil_car_randomised",
             "metal_product_car_covered_randomised",
@@ -4167,7 +4163,6 @@ class CoilCarTarpaulinConsist(CoilCarConsistBase):
         self.base_id = "coil_car_tarpaulin"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
-        self.cc_num_to_recolour = 1
         self.randomised_candidate_groups = [
             "dedicated_coil_car_randomised",
             "metal_product_car_covered_randomised",
@@ -6285,7 +6280,6 @@ class LivestockCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["freight_core"]
         )
-        self.cc_num_to_recolour = 1
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -6342,7 +6336,6 @@ class LogCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        self.cc_num_to_recolour = 2
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="tree_length_logs",
@@ -7478,7 +7471,6 @@ class PeatCarConsist(CarConsist):
         self._intro_year_days_offset = (
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
-        self.cc_num_to_recolour = 2
         # Graphics configuration
         # self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="tree_length_logs")
         utils.echo_message("Peat car using potash hopper body colour remaps")
@@ -9082,12 +9074,11 @@ class UnitVariant(object):
             # purchase strategy will be same as non-purchase
             wagon_recolour_strategy_num_purchase = wagon_recolour_strategy_num
 
-        cc_num_to_recolour = self.unit.consist.cc_num_to_recolour
         flag_use_weathering = self.buyable_variant.livery.get("use_weathering", False)
         flag_context_is_purchase = True if context == "purchase" else False
 
         params_numeric = [
-            cc_num_to_recolour,
+            1,
             flag_use_weathering,
             flag_context_is_purchase,
             wagon_recolour_strategy_num,
