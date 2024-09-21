@@ -115,21 +115,21 @@ def string_format_compile_time_deltas(time_start, time_later):
     return format((time_later - time_start), ".2f") + " s"
 
 # methods for handling pre-compiled determinstic random maps, for randomised vehicles that use pseudo-random sequences
-def generate_run_value(num_values=10):
+def generate_run_value(value_range):
     """
     Generate a single value for a run.
 
-    :param num_values: The range of random values (0 to num_values-1)
+    :param value_range: The range of random values (0 to value_range-1)
     :return: A random value
     """
-    return random.randint(0, num_values - 1)
+    return random.randint(0, value_range - 1)
 
-def generate_random_map(size=64, num_values=10, min_run=2, max_run=5, prefer_run_lengths={3: 0.3, 4: 0.3}):
+def generate_random_map(size=64, value_range=64, min_run=2, max_run=5, prefer_run_lengths={3: 0.3, 4: 0.3}):
     """
     Generate a single random map with values in runs.
 
     :param size: The number of entries in the map
-    :param num_values: The range of random values (0 to num_values-1)
+    :param value_range: The range of random values (0 to value_range-1)
     :param min_run: Minimum length of each run
     :param max_run: Maximum length of each run
     :param prefer_run_lengths: A dictionary with run lengths and their probabilities
@@ -143,24 +143,24 @@ def generate_random_map(size=64, num_values=10, min_run=2, max_run=5, prefer_run
             k=1
         )[0]
         run_length = min(run_length, size - len(map_entries))  # Ensure it fits
-        run_value = generate_run_value(num_values)
+        run_value = generate_run_value(value_range)
         map_entries.extend([run_value] * run_length)
     return map_entries
 
-def get_deterministic_random_vehicle_maps(num_maps=64, map_size=64, num_values=10, seed=42):
+def get_deterministic_random_vehicle_maps(num_maps=64, map_size=64, value_range=64, seed=42):
     """
     Generate multiple random maps and ensure they are unique.
 
     :param num_maps: The number of random maps to generate
     :param map_size: The number of entries per map
-    :param num_values: The range of random values
+    :param value_range: The range of random values
     :param seed: The random seed for determinism
     :return: A list of unique maps
     """
     random.seed(seed)  # Set the seed for determinism
     maps = set()
     while len(maps) < num_maps:
-        new_map = tuple(generate_random_map(size=map_size, num_values=num_values))
+        new_map = tuple(generate_random_map(size=map_size, value_range=value_range))
         if new_map in maps:
             raise ValueError("Duplicate map detected. Change the seed value.")
         maps.add(new_map)

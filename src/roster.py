@@ -220,8 +220,6 @@ class Roster(object):
                 randomisation_consist.id
                 + " has more than 64 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates"
             )
-        # length of results needs to be power of 2 as random choice can only be picked from powers of 2s, so use utils.extend_list_to_power_of_2_length
-        result = utils.extend_list_to_power_of_2_length(result)
         return result
 
     @property

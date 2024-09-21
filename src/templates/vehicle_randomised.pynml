@@ -20,7 +20,7 @@
                 ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
             </tal:randomisation_candidates>
         }
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_parent,
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_parent, [
                                     random_bits_randomised_wagon_choose_wagon_parent(
                                         <tal:random_bits_offset switch="consist.gestalt_graphics.use_deterministic_random_vehicle_map">
                                             <!--! set an offset into engine bits, or not, as needed -->
@@ -33,7 +33,10 @@
                                         </tal:random_bits_offset>
                                         ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)).bit_length() - 1}
                                     )
-            ) {
+                                    <!--! modulo to cap the value selected (range 64) to the range of actual candidates -->
+                                    %
+                                    ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant))}
+            ]) {
             <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
                 ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
             </tal:randomisation_candidates>
