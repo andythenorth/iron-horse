@@ -27,18 +27,18 @@
         <!--! handle colour mapping which can vary per buyable variant
               note that we have to make the same random choice here as the graphics chain, so we delegate to a shared procedure -->
         <!--! there is some faffy optimisation of colour mapping via a lookup table to reduce parameterised procedure calls (which are expensive in grf size) -->
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_variant_CABBAGE, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
             <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
-                ${repeat.randomisation_candidate.index}: return ${randomisation_candidate.get_wagon_recolour_colour_set_CABBAGE_NUM()};
+                ${repeat.randomisation_candidate.index}: return ${randomisation_candidate.get_wagon_recolour_colour_set_num()};
             </tal:randomisation_candidates>
         }
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_variant, 0) {
-            return switch_CABBAGE_WAGON_RECOLOUR_SETS(${unit_variant.id}_switch_colour_mapping_variant_CABBAGE());
+            return switch_wagon_recolour_sets(${unit_variant.id}_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
         }
         <!--! purchase colour mapping is just taken from first candidate -->
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_colour_mapping_variant_purchase, 0) {
-            return switch_CABBAGE_WAGON_RECOLOUR_SETS(
-                ${randomisation_candidates[0].get_wagon_recolour_colour_set_CABBAGE_NUM(context="purchase")}
+            return switch_wagon_recolour_sets(
+                ${randomisation_candidates[0].get_wagon_recolour_colour_set_num(context="purchase")}
             );
         }
     </tal:optimise_wagon_randomisation_candidates>
