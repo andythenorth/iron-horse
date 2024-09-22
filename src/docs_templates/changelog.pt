@@ -3,6 +3,30 @@ Changelog
 
 
 ------------
+3.30.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.27.0.
+
+
+*Changes*
+
+- added Stone Wagons
+- added gen 3 and gen 4 randomised Tippler Wagons
+- improved appearance of random wagon sequences
+- added additional livery colours for some wagon types
+- swapped company colour for Log Carriers
+
+
+*Codechanges*
+
+- refactored random wagon methods
+- refactored wagon recolour randomisation methods
+- removed spurious image generation from docs
+
+
+------------
 3.29.0 Release
 ------------
 
