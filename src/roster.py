@@ -161,21 +161,21 @@ class Roster(object):
         result = []
         for base_id, wagons in self.wagon_consists_by_base_id.items():
             for wagon_consist in wagons:
-                if randomisation_consist.base_id == wagon_consist.base_id:
-                    continue
-                if (
-                    randomisation_consist.base_id
-                    not in wagon_consist.randomised_candidate_groups
-                ):
+                if randomisation_consist.gen != wagon_consist.gen:
                     continue
                 if (
                     randomisation_consist.base_track_type_name
                     != wagon_consist.base_track_type_name
                 ):
                     continue
-                if randomisation_consist.gen != wagon_consist.gen:
-                    continue
                 if randomisation_consist.subtype != wagon_consist.subtype:
+                    continue
+                if randomisation_consist.base_id == wagon_consist.base_id:
+                    continue
+                if (
+                    randomisation_consist.base_id
+                    not in wagon_consist.randomised_candidate_groups
+                ):
                     continue
                 # if there are buyable variants that have random livery
                 # then we want to only append those as it's more direct and leads to shorter candidate lists

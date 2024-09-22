@@ -9,6 +9,7 @@ from time import time
 import iron_horse
 import utils
 import global_constants
+import pseudo_random_vehicle_maps
 from polar_fox import git_info
 
 # get args passed by makefile
@@ -29,7 +30,7 @@ os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 generated_files_path = iron_horse.generated_files_path
 
 
-def render_header_item_nml(header_item, roster, consists, graphics_path):
+def render_header_item_nml(header_item, roster, consists, graphics_path, pseudo_random_vehicle_maps):
     template = templates[header_item + ".pynml"]
     return utils.unescape_chameleon_output(
         template(
@@ -42,6 +43,7 @@ def render_header_item_nml(header_item, roster, consists, graphics_path):
             roster_manager=iron_horse.roster_manager,
             graphics_path=graphics_path,
             git_info=git_info,
+            pseudo_random_vehicle_maps=pseudo_random_vehicle_maps,
         )
     )
 
@@ -94,7 +96,6 @@ def main():
         "procedures_capacity",
         "procedures_cargo_subtypes",
         "procedures_colour_names",
-        "procedures_deterministic_random_vehicle_maps",
         "procedures_haulage_bonus",
         "procedures_opening_doors",
         "procedures_name",
@@ -103,10 +104,11 @@ def main():
         "procedures_rulesets",
         "procedures_visible_cargo",
         "procedures_wagon_recolour_strategies",
+        "pseudo_random_vehicle_maps",
     ]
     for header_item in header_items:
         grf_nml.write(
-            render_header_item_nml(header_item, roster, consists, graphics_path)
+            render_header_item_nml(header_item, roster, consists, graphics_path, pseudo_random_vehicle_maps)
         )
 
     # multiprocessing was tried here and removed as it was empirically slower in testing (due to overhead of starting extra pythons probably)

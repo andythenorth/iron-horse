@@ -1,38 +1,9 @@
-<!--! as of August 2024, this was simplified to
-    - a 5/8 chance of getting the random bits from the engine (parent)
-    - a 3/8 chance of using the random bits from the wagon (self)
-    This produces promising results:
-    - often has runs of similar vehicles within the consist
-    - occasionally consists are very varied, or all one type
-    - consists within groups tend to be very diverse
-    This looked good to me and feedback on it was ok.
-    -->
+<!--! as of Sept 2024, this was simplified to always use python generated pseudo-random maps -->
 
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
     <tal:optimise_wagon_randomisation_candidates define="randomisation_candidates consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant);">
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_self,
-                                    random_bits_randomised_wagon_choose_wagon_self(
-                                        0,
-                                        ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)).bit_length() - 1}
-                                    )
-            ) {
-            <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
-                ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
-            </tal:randomisation_candidates>
-        }
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_random_parent, [
-                                    random_bits_randomised_wagon_choose_wagon_parent(
-                                        <tal:random_bits_offset switch="consist.gestalt_graphics.random_vehicle_map_type is not None">
-                                            <!--! set an offset into engine bits, or not, as needed -->
-                                            <tal:case case="True">
-                                                random_bits_offset_from_deterministic_random_map_${consist.gestalt_graphics.random_vehicle_map_type}(),
-                                            </tal:case>
-                                            <tal:case case="False">
-                                                0,
-                                            </tal:case>
-                                        </tal:random_bits_offset>
-                                        ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant)).bit_length() - 1}
-                                    )
+        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_${consist.gestalt_graphics.random_vehicle_map_type}()
                                     <!--! modulo to cap the value selected (range 64) to the range of actual candidates -->
                                     %
                                     ${len(consist.roster.get_wagon_randomisation_candidates(unit_variant.buyable_variant))}
@@ -42,12 +13,6 @@
             </tal:randomisation_candidates>
         }
         <!--! note that the random chain is used by both graphics and colour mapping chains -->
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon, random_bits_randomised_wagon_check_parent_or_self()) {
-            <tal:optional_bits_from_self condition="consist.gestalt_graphics.random_vehicle_map_type is None">
-                0..2: ${unit_variant.id}_switch_graphics_variant_random_self;
-            </tal:optional_bits_from_self>
-            ${unit_variant.id}_switch_graphics_variant_random_parent;
-        }
 
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_graphics_variant, ${unit_variant.id}_switch_graphics_variant_choose_randomised_wagon()) {
             <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
