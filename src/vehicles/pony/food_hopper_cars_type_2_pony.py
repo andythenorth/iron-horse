@@ -91,7 +91,7 @@ def main(roster_id, **kwargs):
     consist = FoodHopperCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=28470,
+        base_numeric_id=19990,
         gen=4,
         subtype="A",
         sprites_complete=False,
@@ -102,7 +102,7 @@ def main(roster_id, **kwargs):
     consist = FoodHopperCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=28480,
+        base_numeric_id=17190,
         gen=4,
         subtype="B",
         sprites_complete=False,
