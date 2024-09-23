@@ -35,28 +35,6 @@ randomised_wagon_extra_unit_width = 4
 
 # --- Body Recolour Maps --- #
 
-"""
-aggregate_bulk_open_livery_recolour_map = {
-    136: 4,
-    136 + 1: 5,
-    136 + 2: 6,
-    136 + 3: 7,
-    136 + 4: 20,
-    136 + 5: 21,
-    136 + 6: 22,
-    136 + 7: 13,
-}
-aggregate_bulk_open_livery_recolour_map_weathered = {
-    136: 33,
-    136 + 1: 34,
-    136 + 2: 6,
-    136 + 3: 36,
-    136 + 4: 20,
-    136 + 5: 21,
-    136 + 6: 22,
-    136 + 7: 39,
-}
-"""
 aggregate_bulk_open_livery_recolour_map = {
     136: 4,
     137: 109,
@@ -166,6 +144,27 @@ box_car_type_2_body_recolour_map_weathered = {
     136 + 5: 21,
     136 + 6: 22,
     136 + 7: 39,
+}
+
+mgr_hopper_body_recolour_map = {
+    136: 4,
+    137: 109,
+    138: 7,
+    139: 9,
+    140: 10,
+    141: 31,
+    142: 12,
+    143: 14,
+}
+mgr_hopper_body_recolour_map_weathered = {
+    136: 3,
+    137: 5,
+    138: 6,
+    139: 8,
+    140: 29,
+    141: 10,
+    142: 11,
+    143: 13,
 }
 
 sliding_roof_car_body_recolour_map = {
