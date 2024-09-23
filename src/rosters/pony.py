@@ -257,6 +257,7 @@ wagon_module_names_with_roster_ids = {
     "coil_cars_covered_asymmetric": "pony",
     "coil_cars_tarpaulin": "pony",
     "coil_cars_uncovered": "pony",
+    "covered_bulk_cars_randomised": "pony",
     "covered_hopper_cars_randomised": "pony",
     "covered_hopper_cars_type_1": "pony",
     "covered_hopper_cars_type_2": "pony",

@@ -313,6 +313,9 @@ base = "Coil Carriers"
 [STR_WAGON_GROUP_COVERED_HOPPER_CARS]
 base = "Covered Hoppers"
 
+[STR_WAGON_GROUP_COVERED_BULK_CARS_RANDOMISED]
+base = "Covered Bulk Cargo Combos"
+
 [STR_WAGON_GROUP_COVERED_HOPPER_CARS_RANDOMISED]
 base = "Covered Hoppers"
 
@@ -391,6 +394,9 @@ base = "Mineral Wagons"
 
 [STR_WAGON_GROUP_MINERAL_BULK_OPEN_CARS_RANDOMISED]
 base = "Mineral Wagons"
+
+[STR_WAGON_GROUP_MINERAL_COVERED_HOPPER_CARS]
+base = "Mineral Covered Hoppers"
 
 [STR_WAGON_GROUP_MGR_HOPPER_CARS]
 base = "MGR Hoppers"
@@ -604,6 +610,9 @@ base = "Covered Coil Carrier"
 
 [STR_NAME_SUFFIX_COIL_CAR_UNCOVERED]
 base = "Coil Carrier"
+
+[STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED]
+base = "Covered Bulk Cargo Combos"
 
 [STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_1]
 base = "Covered Hopper"
