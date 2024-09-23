@@ -167,6 +167,27 @@ mgr_hopper_body_recolour_map_weathered = {
     143: 13,
 }
 
+roller_roof_hopper_body_recolour_map = {
+    136: 17,
+    137: 18,
+    138: 20,
+    139: 10,
+    140: 21,
+    141: 11,
+    142: 13,
+    143: 14,
+}
+roller_roof_hopper_body_recolour_map_weathered = {
+    136: 17,
+    137: 18,
+    138: 20,
+    139: 10,
+    140: 30,
+    141: 13,
+    142: 39,
+    143: 15,
+}
+
 sliding_roof_car_body_recolour_map = {
     40: 4,
     41: 5,

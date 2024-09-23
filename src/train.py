@@ -4577,7 +4577,8 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["covered_roller_roof"]
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.pellet_hopper_car_livery_recolour_map
+            "unweathered": graphics_constants.roller_roof_hopper_body_recolour_map,
+            "weathered": graphics_constants.roller_roof_hopper_body_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
@@ -4595,10 +4596,8 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
                 ],
                 global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
                 ],
-                # bounce TEAL to the top so it appears as the sprite for "More...", as there's no appropriate mix featuring it as of May 2023
-                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
@@ -4609,8 +4608,10 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
