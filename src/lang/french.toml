@@ -633,7 +633,7 @@ base = "Wagon-restaurant"
 [STR_NAME_SUFFIX_ROCK_HOPPER_CAR]
 base = "Wagon-trémie à pierres"
 
-[STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR]
+[STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_TYPE_1]
 base = "Wagon-trémie à toit coulissant"
 
 [STR_NAME_SUFFIX_SILO_CAR_TYPE_1]

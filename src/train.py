@@ -4565,16 +4565,18 @@ class CoveredHopperCarRandomisedConsist(
         )
 
 
-class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
+class CoveredHopperCarRollerRoofConsistBase(CoveredHopperCarConsistBase):
     """
     Covered hopper with a rollover roof, same refits as standard covered hopper, just a visual variant.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "roller_roof_hopper_car"
         super().__init__(**kwargs)
         self._joker = True
         self.default_cargos = polar_fox.constants.default_cargos["covered_roller_roof"]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_roller_roof_hopper_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.roller_roof_hopper_body_recolour_map,
@@ -4615,6 +4617,26 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
+
+
+class CoveredHopperCarRollerRoofConsistType1(CoveredHopperCarRollerRoofConsistBase):
+    """
+    Covered hopper with a rollover roof, same refits as standard covered hopper, just a visual variant.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "roller_roof_hopper_car_type_1"
+        super().__init__(**kwargs)
+
+
+class CoveredHopperCarRollerRoofConsistType2(CoveredHopperCarRollerRoofConsistBase):
+    """
+    Covered hopper with a rollover roof, same refits as standard covered hopper, just a visual variant.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "roller_roof_hopper_car_type_2"
+        super().__init__(**kwargs)
 
 
 class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
