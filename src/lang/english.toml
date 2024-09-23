@@ -848,6 +848,12 @@ base = "Rock Hopper"
 [STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_TYPE_1]
 base = "Roller Roof Hopper"
 
+[STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_TYPE_2]
+base = "Roller Roof Hopper"
+
+[STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED]
+base = "Roller Roof Hopper"
+
 [STR_NAME_SUFFIX_SCRAP_METAL_CAR_TYPE_1]
 base = "Scrap Wagon"
 

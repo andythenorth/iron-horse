@@ -4574,6 +4574,9 @@ class CoveredHopperCarRollerRoofConsistBase(CoveredHopperCarConsistBase):
         super().__init__(**kwargs)
         self._joker = True
         self.default_cargos = polar_fox.constants.default_cargos["covered_roller_roof"]
+        self.randomised_candidate_groups = [
+            "roller_roof_hopper_car_randomised",
+        ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_roller_roof_hopper_cars"
@@ -4637,6 +4640,26 @@ class CoveredHopperCarRollerRoofConsistType2(CoveredHopperCarRollerRoofConsistBa
     def __init__(self, **kwargs):
         self.base_id = "roller_roof_hopper_car_type_2"
         super().__init__(**kwargs)
+
+
+class CoveredHopperCarRollerRoofRandomisedConsist(RandomisedConsistMixin, CoveredHopperCarRollerRoofConsistBase):
+    """
+    Random choice of food car sprite, noting limited refits because it includes food tankers.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "roller_roof_hopper_car_randomised"
+        super().__init__(**kwargs)
+        # don't include MGR hoppers in randomised lists, they don't look good
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train", # random checked ok
+            dice_colour=2,
+            liveries=liveries,
+        )
 
 
 class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):

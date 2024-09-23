@@ -124,6 +124,8 @@ wagon_module_name_stems = [
     "chemical_swing_roof_hopper_cars",
     "chemical_covered_hopper_cars_randomised",
     "roller_roof_hopper_cars_type_1",
+    "roller_roof_hopper_cars_type_2",
+    "roller_roof_hopper_cars_randomised",
     "swing_roof_hopper_cars",
     "silo_cars_type_1",
     "silo_cars_type_2",
