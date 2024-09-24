@@ -109,6 +109,7 @@ wagon_module_name_stems = [
     "hopper_bulk_cars_randomised",
     "bulk_cars_mixed_randomised",
     "tank_cars_type_1",
+    "tank_cars_type_2",
     "product_tank_cars",
     "acid_tank_cars_type_1",
     "acid_tank_cars_type_2",

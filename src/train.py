@@ -8402,66 +8402,6 @@ class TankCarConsistBase(CarConsist):
         )
 
 
-class TankCarConsistType1(TankCarConsistBase):
-    """
-    Standard tank car
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "tank_car_type_1"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["tank"]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_tank_cars"
-        # Graphics configuration
-        weathered_variants = {
-            "unweathered": graphics_constants.tank_car_livery_recolour_map,
-        }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_SULPHUR_OCHRE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_VIOLET"
-                ],
-                # move oil-black to the top so that it's found as there's no random variant of it
-                global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
-                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_SULPHUR"],
-                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-                global_constants.freight_wagon_liveries["FREIGHT_VIOLET"],
-            ],
-        )
-
-
 class TankCarAcidConsistBase(TankCarConsistBase):
     """
     Base class for acid visual variant of the standard tank car, same refits, different default cargos.
@@ -8724,6 +8664,85 @@ class TankCarProductConsist(TankCarConsistBase):
                 # sulphur tried, not effective
             ],
         )
+
+
+class TankCarStandardConsistBase(TankCarConsistBase):
+    """
+    Standard tank car
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["tank"]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_tank_cars"
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.tank_car_livery_recolour_map,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_SULPHUR_OCHRE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_VIOLET"
+                ],
+                # move oil-black to the top so that it's found as there's no random variant of it
+                global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SULPHUR"],
+                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_VIOLET"],
+            ],
+        )
+
+
+class TankCarStandardConsistType1(TankCarStandardConsistBase):
+    """
+    Standard tank car
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "tank_car_type_1"
+        super().__init__(**kwargs)
+
+
+class TankCarStandardConsistType2(TankCarStandardConsistBase):
+    """
+    Standard tank car
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "tank_car_type_2"
+        super().__init__(**kwargs)
 
 
 class TarpaulinCarConsistBase(BoxCarConsistBase):

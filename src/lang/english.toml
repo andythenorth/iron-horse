@@ -920,6 +920,9 @@ base = "Swing Roof Hopper"
 [STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
 base = "Tanker"
 
+[STR_NAME_SUFFIX_TANK_CAR_TYPE_2]
+base = "Tanker"
+
 [STR_NAME_SUFFIX_TARPAULIN_CAR_RANDOMISED]
 base = "Tarpaulin Wagon"
 
