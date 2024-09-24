@@ -322,7 +322,7 @@ wagon_module_names_with_roster_ids = {
     "mill_flat_cars_type_1": "pony",
     "mill_flat_cars_type_2": "pony",
     "mill_open_cars": "pony",
-    "mineral_covered_hopper_cars": "pony",
+    "mineral_covered_hopper_cars_type_1": "pony",
     "open_cars": "pony",
     "open_cars_randomised": "pony",
     "panoramic_cars": "pony",
