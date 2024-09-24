@@ -4506,16 +4506,16 @@ class CoveredHopperCarChemicalRandomisedConsist(
         )
 
 
-class CoveredHopperCarMineralConsistType1(CoveredHopperCarConsistBase):
+class CoveredHopperCarMineralConsistBase(CoveredHopperCarConsistBase):
     """
     Covered hopper for mineral industry cargos, same refits as standard covered hopper, just a visual variant.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "mineral_covered_hopper_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
         self.randomised_candidate_groups = [
+            "mineral_covered_hopper_car_randomised",
             "covered_bulk_car_randomised",
         ]
         self._joker = True
@@ -4547,6 +4547,48 @@ class CoveredHopperCarMineralConsistType1(CoveredHopperCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
+        )
+
+
+class CoveredHopperCarMineralConsistType1(CoveredHopperCarMineralConsistBase):
+    """
+    Covered hopper for mineral industry cargos, same refits as standard covered hopper, just a visual variant.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "mineral_covered_hopper_car_type_1"
+        super().__init__(**kwargs)
+
+
+class CoveredHopperCarMineralConsistType2(CoveredHopperCarMineralConsistBase):
+    """
+    Covered hopper for mineral industry cargos, same refits as standard covered hopper, just a visual variant.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "mineral_covered_hopper_car_type_2"
+        super().__init__(**kwargs)
+
+
+class CoveredHopperCarMineralRandomisedConsist(
+    RandomisedConsistMixin, CoveredHopperCarMineralConsistBase
+):
+    """
+    Random choice of food car sprite, noting limited refits because it includes food tankers.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "mineral_covered_hopper_car_randomised"
+        super().__init__(**kwargs)
+        # clear from randomisation groups
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",  # random checked ok
+            dice_colour=2,
+            liveries=liveries,
         )
 
 
@@ -4677,7 +4719,7 @@ class CoveredHopperCarRollerRoofRandomisedConsist(
     def __init__(self, **kwargs):
         self.base_id = "roller_roof_hopper_car_randomised"
         super().__init__(**kwargs)
-        # don't include MGR hoppers in randomised lists, they don't look good
+        # clear from randomisation groups
         self.randomised_candidate_groups = []
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt

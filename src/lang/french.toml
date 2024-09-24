@@ -543,7 +543,7 @@ base = "Fourgon de marchandise"
 [STR_NAME_SUFFIX_HIGH_END_OPEN_CAR]
 base = "Wagon-tombereau de marchandise"
 
-[STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR]
+[STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR_TYPE_1]
 base = "Wagon-trémie à minerai couvert"
 
 [STR_NAME_SUFFIX_MGR_HOPPER_CAR]
