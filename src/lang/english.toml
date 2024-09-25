@@ -788,6 +788,9 @@ base = "Mineral Covered Hopper"
 [STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR_TYPE_2]
 base = "Mineral Covered Hopper"
 
+[STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR_TYPE_3]
+base = "Mineral Covered Hopper"
+
 [STR_NAME_SUFFIX_MGR_HOPPER_CAR]
 base = "MGR Hopper"
 

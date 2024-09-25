@@ -4570,6 +4570,16 @@ class CoveredHopperCarMineralConsistType2(CoveredHopperCarMineralConsistBase):
         super().__init__(**kwargs)
 
 
+class CoveredHopperCarMineralConsistType3(CoveredHopperCarMineralConsistBase):
+    """
+    Covered hopper for mineral industry cargos, same refits as standard covered hopper, just a visual variant.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "mineral_covered_hopper_car_type_3"
+        super().__init__(**kwargs)
+
+
 class CoveredHopperCarMineralRandomisedConsist(
     RandomisedConsistMixin, CoveredHopperCarMineralConsistBase
 ):

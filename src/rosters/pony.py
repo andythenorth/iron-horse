@@ -325,6 +325,7 @@ wagon_module_names_with_roster_ids = {
     "mineral_covered_hopper_cars_randomised": "pony",
     "mineral_covered_hopper_cars_type_1": "pony",
     "mineral_covered_hopper_cars_type_2": "pony",
+    "mineral_covered_hopper_cars_type_3": "pony",
     "open_cars": "pony",
     "open_cars_randomised": "pony",
     "panoramic_cars": "pony",
