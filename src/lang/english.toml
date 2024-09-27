@@ -181,7 +181,7 @@ base = "Violet"
 
 # livery name suffixes - fancy names are better here, as there can be more than 2 colours, so the names give a flavour
 [STR_NAME_SUFFIX_LIVERY_MIX_COMPLEMENT_COMPANY_COLOUR]
-base = "- {STRING}/{STRING}"
+base = "{STRING}/{STRING}"
 
 [STR_NAME_SUFFIX_LIVERY_MIX_VARIETY]
 base = "Variety"
