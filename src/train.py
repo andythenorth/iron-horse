@@ -4379,6 +4379,22 @@ class CoveredHopperCarConsistType2(CoveredHopperCarConsistBase):
         self._joker = True
 
 
+class CoveredHopperCarConsistType3(CoveredHopperCarConsistBase):
+    """
+    Default covered hopper type.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "covered_hopper_car_type_3"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
+        self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
+        self._joker = True
+
+
 class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
     """
     Covered hopper for chemical industry cargos, same refits as standard covered hopper, just a visual variant.
@@ -5376,6 +5392,19 @@ class FoodHopperCarConsistType2(FoodHopperCarConsistBase):
 
     def __init__(self, **kwargs):
         self.base_id = "food_hopper_car_type_2"
+        super().__init__(**kwargs)
+        self.randomised_candidate_groups = [
+            "food_hopper_car_randomised",
+        ]
+
+
+class FoodHopperCarConsistType3(FoodHopperCarConsistBase):
+    """
+    Food type covered hoppers - same refits as farm product cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "food_hopper_car_type_3"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "food_hopper_car_randomised",

@@ -620,6 +620,9 @@ base = "Covered Hopper"
 [STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_2]
 base = "Covered Hopper"
 
+[STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_3]
+base = "Covered Hopper"
+
 [STR_NAME_SUFFIX_COVERED_HOPPER_CAR_RANDOMISED]
 base = "Covered Hopper"
 
@@ -681,6 +684,9 @@ base = "Food Hopper"
 base = "Food Hopper"
 
 [STR_NAME_SUFFIX_FOOD_HOPPER_CAR_TYPE_2]
+base = "Food Hopper"
+
+[STR_NAME_SUFFIX_FOOD_HOPPER_CAR_TYPE_3]
 base = "Food Hopper"
 
 [STR_NAME_SUFFIX_FOOD_EXPRESS_TANK_CAR_RANDOMISED]
