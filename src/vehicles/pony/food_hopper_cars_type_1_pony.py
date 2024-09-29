@@ -119,7 +119,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_chute_greebled_24px")
 
     consist = FoodHopperCarConsistType1(
         roster_id=roster_id,
