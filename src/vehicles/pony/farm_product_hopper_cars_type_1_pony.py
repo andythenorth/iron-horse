@@ -71,7 +71,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=24000,
         gen=3,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
@@ -82,7 +82,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=23430,
         gen=3,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
