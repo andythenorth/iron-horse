@@ -10,7 +10,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=26940,
         gen=2,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
@@ -21,7 +21,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=26950,
         gen=2,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
@@ -32,7 +32,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=26960,
         gen=3,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
@@ -43,7 +43,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=26970,
         gen=3,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
