@@ -3,6 +3,35 @@ Changelog
 
 
 ------------
+3.31.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.27.0.
+
+
+*Changes*
+
+- reworked Roller Roof Hoppers
+    - improved appearance of Roller Roof Hoppers
+    - added more generation 4 and 5 Roller Roof Hopper variants
+    - added randomised Roller Roof Hoppers
+- reworked Covered Hoppers
+    - added more generation 4 and 5 Covered Hopper variants
+    - improved appearance of all Covered Hoppers
+- added randomised Covered Bulk Cargo Combo wagons
+- improved appearance of Farm Product Hoppers
+- improved appearance of MGR Hoppers
+- adjusted Mineral Covered Hopper sprites
+- adjust buy menu position for Swing Roof Hoppers
+
+
+*Fixes*
+
+- remove spurious '-' prefix company colour name suffix in buy menu
+
+
+------------
 3.30.0 Release
 ------------
 
