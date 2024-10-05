@@ -1,10 +1,10 @@
-from train import MineralChemicalCoveredHopperCarLimeConsistType1, FreightCar
+from train import MineralCoveredHopperCarLimeConsistType1, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = MineralChemicalCoveredHopperCarLimeConsistType1(
+    consist = MineralCoveredHopperCarLimeConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25990,
@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = MineralChemicalCoveredHopperCarLimeConsistType1(
+    consist = MineralCoveredHopperCarLimeConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26000,
@@ -26,7 +26,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = MineralChemicalCoveredHopperCarLimeConsistType1(
+    consist = MineralCoveredHopperCarLimeConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26010,
@@ -37,7 +37,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = MineralChemicalCoveredHopperCarLimeConsistType1(
+    consist = MineralCoveredHopperCarLimeConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26020,
@@ -48,7 +48,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
 
-    consist = MineralChemicalCoveredHopperCarLimeConsistType1(
+    consist = MineralCoveredHopperCarLimeConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26070,
@@ -59,7 +59,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
-    consist = MineralChemicalCoveredHopperCarLimeConsistType1(
+    consist = MineralCoveredHopperCarLimeConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26030,
@@ -70,7 +70,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
 
-    consist = MineralChemicalCoveredHopperCarLimeConsistType1(
+    consist = MineralCoveredHopperCarLimeConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26040,

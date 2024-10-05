@@ -1,10 +1,10 @@
-from train import CoveredHopperCarSwingRoofChemicalConsist, FreightCar
+from train import MineralCoveredHopperCarSaltSwingRoofConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = CoveredHopperCarSwingRoofChemicalConsist(
+    consist = MineralCoveredHopperCarSaltSwingRoofConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27260,
@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_hoppers_24px")
 
-    consist = CoveredHopperCarSwingRoofChemicalConsist(
+    consist = MineralCoveredHopperCarSaltSwingRoofConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22060,

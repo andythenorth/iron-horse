@@ -1,10 +1,10 @@
-from train import CoveredBulkHopperRandomisedConsist, FreightCar
+from train import MineralCoveredHopperCarRandomisedConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = CoveredBulkHopperRandomisedConsist(
+    consist = MineralCoveredHopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26590,
@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
 
     # no new type A for gen 2, gen 1 type A continues
 
-    consist = CoveredBulkHopperRandomisedConsist(
+    consist = MineralCoveredHopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32860,
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = CoveredBulkHopperRandomisedConsist(
+    consist = MineralCoveredHopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24940,
@@ -39,7 +39,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = CoveredBulkHopperRandomisedConsist(
+    consist = MineralCoveredHopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24960,
@@ -50,7 +50,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = CoveredBulkHopperRandomisedConsist(
+    consist = MineralCoveredHopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24730,
@@ -61,7 +61,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = CoveredBulkHopperRandomisedConsist(
+    consist = MineralCoveredHopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24880,
@@ -72,7 +72,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = CoveredBulkHopperRandomisedConsist(
+    consist = MineralCoveredHopperCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22230,

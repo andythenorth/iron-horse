@@ -4290,9 +4290,20 @@ class CoveredHopperCarConsistBase(CarConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "covered_hoppers"
-        ]
+        # covered hoppers don't have a good way to do class based refits, as of Oct 2024
+        # see proposed solution at https://github.com/OpenTTD/OpenTTD/discussions/12975
+        # meanwhile, compose non-standard label list from multiple subsets
+        # we assume generic covered hoppers refit anything suitable from the more specialist types
+        self.label_refits_allowed = []
+        self.label_refits_allowed.extend(
+            polar_fox.constants.allowed_refits_by_label["covered_hoppers_mineral"]
+        )
+        self.label_refits_allowed.extend(
+            polar_fox.constants.allowed_refits_by_label["covered_hoppers_pellet_powder"]
+        )
+        self.label_refits_allowed.extend(
+            polar_fox.constants.allowed_refits_by_label["farm_food_products"]
+        )
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
@@ -4395,242 +4406,6 @@ class CoveredHopperCarConsistType3(CoveredHopperCarConsistBase):
         self._joker = True
 
 
-class CoveredHopperCarSaltConsist(CoveredHopperCarConsistBase):
-    """
-    Covered hopper for salt, potash, similar cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "salt_covered_hopper_car"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
-        self.randomised_candidate_groups = [
-            "covered_bulk_car_randomised",
-            "salt_covered_hopper_car_randomised",
-        ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = (
-            "wagon_group_salt_covered_hopper_cars"
-        )
-        self._joker = True
-        # Graphics configuration
-        # the weathering is baked in to the sprite on these so no weathered remap
-        weathered_variants = {
-            "unweathered": graphics_constants.chemical_covered_hopper_car_livery_recolour_map,
-        }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
-                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
-                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
-                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
-                global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
-                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-            ],
-        )
-
-
-class CoveredHopperCarSaltRandomisedConsist(
-    RandomisedConsistMixin, CoveredHopperCarConsistBase
-):
-    """
-    Random choice of covered hopper car sprite.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "salt_covered_hopper_car_randomised"
-        super().__init__(**kwargs)
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = (
-            "wagon_group_salt_covered_hopper_cars"
-        )
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_block_train_with_minor_variation",  # random checked ok
-            dice_colour=1,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
-                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
-                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
-                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
-                global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
-                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-            ],
-        )
-
-
-class MineralChemicalCoveredHopperCarLimeConsistBase(CoveredHopperCarConsistBase):
-    """
-    Visual variant of mineral / chemical covered hopper.
-    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
-        self.randomised_candidate_groups = [
-            "mineral_covered_hopper_car_randomised",
-            "covered_bulk_car_randomised",
-        ]
-        self._joker = True
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_lime_covered_hopper_cars"
-        # Graphics configuration
-        weathered_variants = {
-            "unweathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_map,
-            "weathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_map_weathered,
-        }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
-                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-            ],
-        )
-
-
-class MineralChemicalCoveredHopperCarLimeConsistType1(MineralChemicalCoveredHopperCarLimeConsistBase):
-    """
-    Visual variant of mineral / chemical covered hopper.
-    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "lime_covered_hopper_car_type_1"
-        super().__init__(**kwargs)
-
-
-class MineralChemicalCoveredHopperCarLimeConsistType2(MineralChemicalCoveredHopperCarLimeConsistBase):
-    """
-    Visual variant of mineral / chemical covered hopper.
-    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "lime_covered_hopper_car_type_2"
-        super().__init__(**kwargs)
-
-
-class MineralChemicalCoveredHopperCarLimeConsistType3(MineralChemicalCoveredHopperCarLimeConsistBase):
-    """
-    Visual variant of mineral / chemical covered hopper.
-    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "lime_covered_hopper_car_type_3"
-        super().__init__(**kwargs)
-
-
-class MineralChemicalCoveredHopperCarLimeRandomisedConsist(
-    RandomisedConsistMixin, MineralChemicalCoveredHopperCarLimeConsistBase
-):
-    """
-    Visual variant of mineral / chemical covered hopper.
-    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "mineral_covered_hopper_car_randomised"
-        super().__init__(**kwargs)
-        # clear from randomisation groups
-        self.randomised_candidate_groups = []
-        # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
-        liveries = self.gestalt_graphics.liveries.copy()
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_loose_mixed_train",  # random checked ok
-            dice_colour=2,
-            liveries=liveries,
-        )
-
-
 class CoveredHopperCarRandomisedConsist(
     RandomisedConsistMixin, CoveredHopperCarConsistBase
 ):
@@ -4670,106 +4445,6 @@ class CoveredHopperCarRandomisedConsist(
         )
 
 
-class MineralChemicalCoveredHopperCarRollerRoofConsistBase(CoveredHopperCarConsistBase):
-    """
-    Covered hopper with a rollover roof, same refits as standard covered hopper, just a visual variant.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self._joker = True
-        self.default_cargos = polar_fox.constants.default_cargos["covered_roller_roof"]
-        self.randomised_candidate_groups = [
-            "roller_roof_hopper_car_randomised",
-            "covered_bulk_car_randomised",
-        ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_roller_roof_hopper_cars"
-        # Graphics configuration
-        weathered_variants = {
-            "unweathered": graphics_constants.roller_roof_hopper_body_recolour_map,
-            "weathered": graphics_constants.roller_roof_hopper_body_recolour_map_weathered,
-        }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
-                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
-                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-            ],
-        )
-
-
-class MineralChemicalCoveredHopperCarRollerRoofConsistType1(MineralChemicalCoveredHopperCarRollerRoofConsistBase):
-    """
-    Covered hopper with a rollover roof, same refits as standard covered hopper, just a visual variant.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "roller_roof_hopper_car_type_1"
-        super().__init__(**kwargs)
-
-
-class MineralChemicalCoveredHopperCarRollerRoofConsistType2(MineralChemicalCoveredHopperCarRollerRoofConsistBase):
-    """
-    Covered hopper with a rollover roof, same refits as standard covered hopper, just a visual variant.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "roller_roof_hopper_car_type_2"
-        super().__init__(**kwargs)
-
-
-class CoveredHopperCarRollerRoofRandomisedConsist(
-    RandomisedConsistMixin, MineralChemicalCoveredHopperCarRollerRoofConsistBase
-):
-    """
-    Random choice of food car sprite, noting limited refits because it includes food tankers.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "roller_roof_hopper_car_randomised"
-        super().__init__(**kwargs)
-        # clear from randomisation groups
-        self.randomised_candidate_groups = []
-        # Graphics configuration
-        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
-        liveries = self.gestalt_graphics.liveries.copy()
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_loose_mixed_train",  # random checked ok
-            dice_colour=2,
-            liveries=liveries,
-        )
-
-
 class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
     """
     Covered hopper with a swing roof hatch, same refits as standard covered hopper, just a visual variant.
@@ -4779,7 +4454,7 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
         self.base_id = "swing_roof_hopper_car"
         super().__init__(**kwargs)
         self._joker = True
-        self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
+        self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
@@ -4820,127 +4495,6 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
                 # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-            ],
-        )
-
-
-class CoveredHopperCarSwingRoofChemicalConsist(CoveredHopperCarConsistBase):
-    """
-    Covered hopper with a swing roof hatch for chemical industry cargos, same refits as standard covered hopper, just a visual variant.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "salt_swing_roof_hopper_car"
-        super().__init__(**kwargs)
-        self.randomised_candidate_groups = [
-            "covered_bulk_car_randomised",
-            "salt_covered_hopper_car_randomised",
-        ]
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = (
-            "wagon_group_salt_covered_hopper_cars"
-        )
-        self._joker = True
-        self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
-        # Graphics configuration
-        # the weathering is baked in to the sprite on these so no weathered remap
-        weathered_variants = {
-            "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
-        }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
-                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
-                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
-                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
-                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
-                global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
-                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-            ],
-        )
-
-
-# not in alphabetical order as it depends on subclassing CoveredHopperCarConsistBase
-class CoveredBulkHopperRandomisedConsist(
-    RandomisedConsistMixin, CoveredHopperCarConsistBase
-):
-    """
-    Random choice of bulk car sprite, from available dump / hopper cars.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "covered_bulk_car_randomised"
-        super().__init__(**kwargs)
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",  # random checked ok
-            dice_colour=3,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-                ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
-                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
-                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
-                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
@@ -5208,7 +4762,7 @@ class FarmProductsBoxCarConsistBase(CarConsist):
         # note this is not derived from BoxCarBase, it's a standalone type
         self.class_refit_groups = []  # no classes, use explicit labels
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "farm_products"
+            "farm_food_products"
         ]
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["farm_products_box"]
@@ -5278,7 +4832,7 @@ class FarmProductsHopperCarConsistBase(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "farm_products"
+            "farm_food_products"
         ]
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["farm_products_hopper"]
@@ -6930,6 +6484,439 @@ class MetalProductCarUncoveredRandomisedConsist(MetalProductCarRandomisedConsist
     def __init__(self, **kwargs):
         self.base_id = "metal_product_car_uncovered_randomised"
         super().__init__(**kwargs)
+
+
+class MineralCoveredHopperCarConsistBase(CarConsist):
+    """
+    Bulk mineral cargos needing covered protection.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "covered_hoppers_mineral"
+        ]
+        self.label_refits_disallowed = []
+        self._loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["freight_core"]
+        )
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+            ],
+        )
+
+
+class MineralCoveredHopperCarLimeConsistBase(MineralCoveredHopperCarConsistBase):
+    """
+    Visual variant of mineral / chemical covered hopper.
+    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
+        self.randomised_candidate_groups = [
+            "mineral_covered_hopper_car_randomised",
+            "covered_bulk_car_randomised",
+        ]
+        self._joker = True
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_lime_covered_hopper_cars"
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_map,
+            "weathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+            ],
+        )
+
+
+class MineralCoveredHopperCarLimeConsistType1(MineralCoveredHopperCarLimeConsistBase):
+    """
+    Visual variant of mineral / chemical covered hopper.
+    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "lime_covered_hopper_car_type_1"
+        super().__init__(**kwargs)
+
+
+class MineralCoveredHopperCarLimeConsistType2(MineralCoveredHopperCarLimeConsistBase):
+    """
+    Visual variant of mineral / chemical covered hopper.
+    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "lime_covered_hopper_car_type_2"
+        super().__init__(**kwargs)
+
+
+class MineralCoveredHopperCarLimeConsistType3(MineralCoveredHopperCarLimeConsistBase):
+    """
+    Visual variant of mineral / chemical covered hopper.
+    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "lime_covered_hopper_car_type_3"
+        super().__init__(**kwargs)
+
+
+class MineralCoveredHopperCarLimeRandomisedConsist(
+    RandomisedConsistMixin, MineralCoveredHopperCarLimeConsistBase
+):
+    """
+    Visual variant of mineral / chemical covered hopper.
+    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "mineral_covered_hopper_car_randomised"
+        super().__init__(**kwargs)
+        # clear from randomisation groups
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",  # random checked ok
+            dice_colour=2,
+            liveries=liveries,
+        )
+
+
+# not in alphabetical order as it depends on subclassing CoveredHopperCarConsistBase
+class MineralCoveredHopperCarRandomisedConsist(
+    RandomisedConsistMixin, MineralCoveredHopperCarConsistBase
+):
+    """
+    Random choice of mineral covered hopper car sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "covered_bulk_car_randomised"
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",  # random checked ok
+            dice_colour=3,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+            ],
+        )
+
+
+class MineralCoveredHopperCarRollerRoofConsistBase(MineralCoveredHopperCarConsistBase):
+    """
+    Mineral covered hopper with a rollover roof.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._joker = True
+        self.default_cargos = polar_fox.constants.default_cargos["covered_roller_roof"]
+        self.randomised_candidate_groups = [
+            "roller_roof_hopper_car_randomised",
+            "covered_bulk_car_randomised",
+        ]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_roller_roof_hopper_cars"
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.roller_roof_hopper_body_recolour_map,
+            "weathered": graphics_constants.roller_roof_hopper_body_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+            ],
+        )
+
+
+class MineralCoveredHopperCarRollerRoofConsistType1(
+    MineralCoveredHopperCarRollerRoofConsistBase
+):
+    """
+    Mineral covered hopper with a rollover roof.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "roller_roof_hopper_car_type_1"
+        super().__init__(**kwargs)
+
+
+class MineralCoveredHopperCarRollerRoofConsistType2(
+    MineralCoveredHopperCarRollerRoofConsistBase
+):
+    """
+    Mineral covered hopper with a rollover roof.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "roller_roof_hopper_car_type_2"
+        super().__init__(**kwargs)
+
+
+class MineralCoveredHopperCarRollerRoofRandomisedConsist(
+    RandomisedConsistMixin, MineralCoveredHopperCarRollerRoofConsistBase
+):
+    """
+    Mineral covered hopper with a rollover roof.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "roller_roof_hopper_car_randomised"
+        super().__init__(**kwargs)
+        # clear from randomisation groups
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",  # random checked ok
+            dice_colour=2,
+            liveries=liveries,
+        )
+
+
+class MineralCoveredHopperCarSaltConsistBase(MineralCoveredHopperCarConsistBase):
+    """
+    Mineral covered hopper for salt, potash, similar cargos.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
+        self.randomised_candidate_groups = [
+            "covered_bulk_car_randomised",
+            "salt_covered_hopper_car_randomised",
+        ]
+        # buyable variant groups are created post-hoc and can group across subclasses
+        # any buyable variants (liveries) within the subclass will be automatically added to the group
+        self.use_named_buyable_variant_group = "wagon_group_salt_covered_hopper_cars"
+        self._joker = True
+        # Graphics configuration
+        # the weathering is baked in to the sprite on these so no weathered remap
+        weathered_variants = {
+            "unweathered": graphics_constants.chemical_covered_hopper_car_livery_recolour_map,
+        }
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_GREMLIN_GREEN_SILVER"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                # ruby before bauxite to ensure it appears in buy menu order for mixed version
+                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+                global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
+                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
+                global_constants.freight_wagon_liveries["FREIGHT_SAND"],
+                global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
+                global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
+            ],
+        )
+
+
+class MineralCoveredHopperCarSaltConsist(MineralCoveredHopperCarSaltConsistBase):
+    """
+    Mineral covered hopper for salt, potash, similar cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "salt_covered_hopper_car"
+        super().__init__(**kwargs)
+
+
+class MineralCoveredHopperCarSaltSwingRoofConsist(
+    MineralCoveredHopperCarSaltConsistBase
+):
+    """
+    Mineral covered hopper for salt, potash, similar cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "salt_swing_roof_hopper_car"
+        super().__init__(**kwargs)
+
+
+class MineralCoveredHopperCarSaltRandomisedConsist(
+    RandomisedConsistMixin, MineralCoveredHopperCarSaltConsistBase
+):
+    """
+    Mineral covered hopper for salt, potash, similar cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "salt_covered_hopper_car_randomised"
+        super().__init__(**kwargs)
+        # clear from randomisation groups
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
+        liveries = self.gestalt_graphics.liveries.copy()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
+            random_vehicle_map_type="map_loose_mixed_train",  # random checked ok
+            dice_colour=2,
+            liveries=liveries,
+        )
 
 
 class OpenCarConsistBase(CarConsist):
