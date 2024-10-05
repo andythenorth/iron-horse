@@ -287,7 +287,7 @@ wagon_module_names_with_roster_ids = {
     "flat_cars_randomised": "pony",
     "food_hopper_cars_type_1": "pony",
     "food_hopper_cars_type_2": "pony",
-    "food_hopper_cars_type_3": "pony",
+    #"food_hopper_cars_type_3": "pony",
     "food_hopper_cars_randomised": "pony",
     "food_express_tank_cars_type_1": "pony",
     "food_express_tank_cars_type_2": "pony",
