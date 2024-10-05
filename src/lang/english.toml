@@ -295,12 +295,6 @@ base = "Bulk Cargo Combos"
 [STR_WAGON_GROUP_CEMENT_SILO_CARS]
 base = "Cement Wagons"
 
-[STR_WAGON_GROUP_CHEMICAL_COVERED_HOPPER_CARS]
-base = "Chemical Covered Hoppers"
-
-[STR_WAGON_GROUP_CHEMICAL_SWING_ROOF_HOPPER_CARS]
-base = "Chemical Swing Roof Hoppers"
-
 [STR_WAGON_GROUP_CHEMICAL_TANK_CARS_RANDOMISED]
 base = "Chemical Tanker Combos"
 
@@ -448,6 +442,12 @@ base = "Rock Hoppers"
 [STR_WAGON_GROUP_ROLLER_ROOF_HOPPER_CARS]
 base = "Roller Roof Hoppers"
 
+[STR_WAGON_GROUP_SALT_COVERED_HOPPER_CARS]
+base = "Salt Covered Hoppers"
+
+[STR_WAGON_GROUP_SALT_SWING_ROOF_HOPPER_CARS]
+base = "Salt Swing Roof Hoppers"
+
 [STR_WAGON_GROUP_SCRAP_METAL_CARS]
 base = "Scrap Wagons"
 
@@ -583,15 +583,6 @@ base = "Cement Wagon"
 
 [STR_NAME_SUFFIX_CEMENT_SILO_CAR_TYPE_3]
 base = "Cement Wagon"
-
-[STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR]
-base = "Chemical Covered Hopper"
-
-[STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR_RANDOMISED]
-base = "Chemical Covered Hopper"
-
-[STR_NAME_SUFFIX_CHEMICAL_SWING_ROOF_HOPPER_CAR]
-base = "Chemical Swing Roof Hopper"
 
 [STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED]
 base = "Chemical Tanker"
@@ -877,6 +868,15 @@ base = "Roller Roof Hopper"
 
 [STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED]
 base = "Roller Roof Hopper"
+
+[STR_NAME_SUFFIX_SALT_COVERED_HOPPER_CAR]
+base = "Salt Covered Hopper"
+
+[STR_NAME_SUFFIX_SALT_COVERED_HOPPER_CAR_RANDOMISED]
+base = "Salt Covered Hopper"
+
+[STR_NAME_SUFFIX_SALT_SWING_ROOF_HOPPER_CAR]
+base = "Salt Swing Roof Hopper"
 
 [STR_NAME_SUFFIX_SCRAP_METAL_CAR_TYPE_1]
 base = "Scrap Wagon"

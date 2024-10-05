@@ -1,10 +1,10 @@
-from train import CoveredHopperCarChemicalConsist, FreightCar
+from train import CoveredHopperCarSaltConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = CoveredHopperCarChemicalConsist(
+    consist = CoveredHopperCarSaltConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26840,
@@ -16,7 +16,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = CoveredHopperCarChemicalConsist(
+    consist = CoveredHopperCarSaltConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=37850,
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = CoveredHopperCarChemicalConsist(
+    consist = CoveredHopperCarSaltConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26860,
@@ -42,7 +42,7 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = CoveredHopperCarChemicalConsist(
+    consist = CoveredHopperCarSaltConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=39870,
@@ -53,7 +53,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = CoveredHopperCarChemicalConsist(
+    consist = CoveredHopperCarSaltConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36880,
@@ -64,7 +64,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = CoveredHopperCarChemicalConsist(
+    consist = CoveredHopperCarSaltConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26890,
@@ -75,7 +75,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
 
-    consist = CoveredHopperCarChemicalConsist(
+    consist = CoveredHopperCarSaltConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36900,
@@ -86,7 +86,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
 
-    consist = CoveredHopperCarChemicalConsist(
+    consist = CoveredHopperCarSaltConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17340,
@@ -97,7 +97,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
-    consist = CoveredHopperCarChemicalConsist(
+    consist = CoveredHopperCarSaltConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26910,
@@ -108,7 +108,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
 
-    consist = CoveredHopperCarChemicalConsist(
+    consist = CoveredHopperCarSaltConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36920,
