@@ -218,6 +218,7 @@ allowed_refits_by_label = {
         "PHOS",
         "POTA",
         "QLME",
+        "RFPR",
         "SALT",
         "SAND",
         "SASH",
@@ -228,7 +229,6 @@ allowed_refits_by_label = {
         "CBLK",
         "NHNO",
         "PLAS",
-        "RFPR",
         "RUBR",
     ],
     "cryo_gases": [
