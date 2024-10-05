@@ -373,6 +373,9 @@ base = "Ingot Carriers"
 [STR_WAGON_GROUP_INTERMODAL_CARS]
 base = "Container Wagons"
 
+[STR_WAGON_GROUP_LIME_COVERED_HOPPER_CARS]
+base = "Lime Covered Hoppers"
+
 [STR_WAGON_GROUP_LIVESTOCK_CARS]
 base = "Livestock Wagons"
 
@@ -394,9 +397,6 @@ base = "Mineral Wagons"
 
 [STR_WAGON_GROUP_MINERAL_BULK_OPEN_CARS_RANDOMISED]
 base = "Mineral Wagons"
-
-[STR_WAGON_GROUP_MINERAL_COVERED_HOPPER_CARS]
-base = "Mineral Covered Hoppers"
 
 [STR_WAGON_GROUP_MGR_HOPPER_CARS]
 base = "MGR Hoppers"
@@ -746,6 +746,18 @@ base = "Container Wagon"
 [STR_NAME_SUFFIX_KAOLIN_HOPPER_CAR]
 base = "China Clay Hopper"
 
+[STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_RANDOMISED]
+base = "Lime Covered Hopper"
+
+[STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1]
+base = "Lime Covered Hopper"
+
+[STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_2]
+base = "Lime Covered Hopper"
+
+[STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_3]
+base = "Lime Covered Hopper"
+
 [STR_NAME_SUFFIX_LIVESTOCK_CAR]
 base = "Livestock Wagon"
 
@@ -784,18 +796,6 @@ base = "Low Side Mineral Wagon"
 
 [STR_NAME_SUFFIX_MINERAL_BULK_OPEN_CAR_RANDOMISED]
 base = "Mineral Wagon"
-
-[STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR_RANDOMISED]
-base = "Mineral Covered Hopper"
-
-[STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR_TYPE_1]
-base = "Mineral Covered Hopper"
-
-[STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR_TYPE_2]
-base = "Mineral Covered Hopper"
-
-[STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR_TYPE_3]
-base = "Mineral Covered Hopper"
 
 [STR_NAME_SUFFIX_MGR_HOPPER_CAR]
 base = "MGR Hopper"

@@ -4530,9 +4530,10 @@ class CoveredHopperCarChemicalRandomisedConsist(
         )
 
 
-class CoveredHopperCarMineralConsistBase(CoveredHopperCarConsistBase):
+class MineralChemicalCoveredHopperCarLimeConsistBase(CoveredHopperCarConsistBase):
     """
-    Covered hopper for mineral industry cargos, same refits as standard covered hopper, just a visual variant.
+    Visual variant of mineral / chemical covered hopper.
+    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
     """
 
     def __init__(self, **kwargs):
@@ -4545,7 +4546,7 @@ class CoveredHopperCarMineralConsistBase(CoveredHopperCarConsistBase):
         self._joker = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
-        self.use_named_buyable_variant_group = "wagon_group_mineral_covered_hopper_cars"
+        self.use_named_buyable_variant_group = "wagon_group_lime_covered_hopper_cars"
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_map,
@@ -4574,41 +4575,45 @@ class CoveredHopperCarMineralConsistBase(CoveredHopperCarConsistBase):
         )
 
 
-class CoveredHopperCarMineralConsistType1(CoveredHopperCarMineralConsistBase):
+class MineralChemicalCoveredHopperCarLimeConsistType1(MineralChemicalCoveredHopperCarLimeConsistBase):
     """
-    Covered hopper for mineral industry cargos, same refits as standard covered hopper, just a visual variant.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "mineral_covered_hopper_car_type_1"
-        super().__init__(**kwargs)
-
-
-class CoveredHopperCarMineralConsistType2(CoveredHopperCarMineralConsistBase):
-    """
-    Covered hopper for mineral industry cargos, same refits as standard covered hopper, just a visual variant.
+    Visual variant of mineral / chemical covered hopper.
+    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "mineral_covered_hopper_car_type_2"
+        self.base_id = "lime_covered_hopper_car_type_1"
         super().__init__(**kwargs)
 
 
-class CoveredHopperCarMineralConsistType3(CoveredHopperCarMineralConsistBase):
+class MineralChemicalCoveredHopperCarLimeConsistType2(MineralChemicalCoveredHopperCarLimeConsistBase):
     """
-    Covered hopper for mineral industry cargos, same refits as standard covered hopper, just a visual variant.
+    Visual variant of mineral / chemical covered hopper.
+    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "mineral_covered_hopper_car_type_3"
+        self.base_id = "lime_covered_hopper_car_type_2"
         super().__init__(**kwargs)
 
 
-class CoveredHopperCarMineralRandomisedConsist(
-    RandomisedConsistMixin, CoveredHopperCarMineralConsistBase
+class MineralChemicalCoveredHopperCarLimeConsistType3(MineralChemicalCoveredHopperCarLimeConsistBase):
+    """
+    Visual variant of mineral / chemical covered hopper.
+    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "lime_covered_hopper_car_type_3"
+        super().__init__(**kwargs)
+
+
+class MineralChemicalCoveredHopperCarLimeRandomisedConsist(
+    RandomisedConsistMixin, MineralChemicalCoveredHopperCarLimeConsistBase
 ):
     """
-    Random choice of food car sprite, noting limited refits because it includes food tankers.
+    Visual variant of mineral / chemical covered hopper.
+    Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
     """
 
     def __init__(self, **kwargs):

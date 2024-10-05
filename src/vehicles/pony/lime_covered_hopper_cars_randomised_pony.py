@@ -1,10 +1,10 @@
-from train import CoveredHopperCarMineralRandomisedConsist, FreightCar
+from train import MineralChemicalCoveredHopperCarLimeRandomisedConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = CoveredHopperCarMineralRandomisedConsist(
+    consist = MineralChemicalCoveredHopperCarLimeRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24750,
@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = CoveredHopperCarMineralRandomisedConsist(
+    consist = MineralChemicalCoveredHopperCarLimeRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26610,
@@ -26,7 +26,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = CoveredHopperCarMineralRandomisedConsist(
+    consist = MineralChemicalCoveredHopperCarLimeRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26620,
@@ -37,7 +37,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = CoveredHopperCarMineralRandomisedConsist(
+    consist = MineralChemicalCoveredHopperCarLimeRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26630,
@@ -48,7 +48,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = CoveredHopperCarMineralRandomisedConsist(
+    consist = MineralChemicalCoveredHopperCarLimeRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26640,
