@@ -4905,7 +4905,7 @@ class CoveredBulkHopperRandomisedConsist(
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",  # random checked ok
-            dice_colour=1,
+            dice_colour=3,
             liveries=[
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
