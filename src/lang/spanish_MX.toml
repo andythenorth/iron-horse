@@ -51,5 +51,5 @@ base = "Coche de pasajeros"
 [STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Vagón refrigerado"
 
-[STR_NAME_SUFFIX_TANK_CAR]
+[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
 base = "Carro tanque"

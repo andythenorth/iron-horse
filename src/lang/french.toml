@@ -435,9 +435,6 @@ base = "Wagon cimentier"
 [STR_NAME_SUFFIX_CEMENT_SILO_CAR_TYPE_2]
 base = "Wagon cimentier"
 
-[STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR]
-base = "Wagon-trémie à produits chimiques couverte"
-
 [STR_NAME_SUFFIX_COIL_CAR_COVERED]
 base = "Wagon porte-bobines couvert"
 
@@ -542,9 +539,6 @@ base = "Fourgon de marchandise"
 
 [STR_NAME_SUFFIX_HIGH_END_OPEN_CAR]
 base = "Wagon-tombereau de marchandise"
-
-[STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR_TYPE_1]
-base = "Wagon-trémie à minerai couvert"
 
 [STR_NAME_SUFFIX_MGR_HOPPER_CAR]
 base = "Wagon-trémie «{NBSP}carrousel{NBSP}»"
@@ -666,7 +660,7 @@ base = "Voiture de banlieue"
 [STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR]
 base = "Wagon-trémie à toit baculant"
 
-[STR_NAME_SUFFIX_TANK_CAR]
+[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
 base = "Wagon-citerne"
 
 [STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]

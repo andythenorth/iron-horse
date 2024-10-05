@@ -66,5 +66,5 @@ base = "Kühlwagen"
 [STR_NAME_SUFFIX_SILO_CAR_TYPE_1]
 base = "Silowagen"
 
-[STR_NAME_SUFFIX_TANK_CAR]
+[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
 base = "Kesselwagen"

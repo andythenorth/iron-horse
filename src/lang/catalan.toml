@@ -162,7 +162,7 @@ base = "Cotxe de porta deslliçant"
 [STR_NAME_SUFFIX_SCRAP_METAL_CAR_TYPE_1]
 base = "Cotxe de deixalla"
 
-[STR_NAME_SUFFIX_TANK_CAR]
+[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
 base = "Cotxe cisterna"
 
 [STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]

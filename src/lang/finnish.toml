@@ -86,7 +86,7 @@ base = "Jauhevaunu"
 [STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]
 base = "Siirtokatevaunu"
 
-[STR_NAME_SUFFIX_TANK_CAR]
+[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
 base = "Säiliövaunu"
 
 [STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]

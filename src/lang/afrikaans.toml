@@ -51,5 +51,5 @@ base = "Passasiersmotor"
 [STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Verkoelde Wa"
 
-[STR_NAME_SUFFIX_TANK_CAR]
+[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
 base = "Tenk Wa"

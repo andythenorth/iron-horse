@@ -92,7 +92,7 @@ base = "Silowagon"
 [STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1]
 base = "Voertuig met schuifdeuren"
 
-[STR_NAME_SUFFIX_TANK_CAR]
+[STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
 base = "Tanker"
 
 [STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
