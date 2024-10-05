@@ -3,6 +3,27 @@ Changelog
 
 
 ------------
+3.32.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.32.0.
+
+
+*Changes*
+
+- added Food Hoppers
+- renamed Chemical Covered Hoppers to Salt Hoppers
+- renamed Mineral Covered Hoppers to Lime Hoppers
+- changed buy menu order for all types of covered bulk/hopper wagons and silo wagons
+- improved sprites for multiple types of covered bulk/hopper wagon
+- changed cargo refits for multiple types of covered bulk/hopper wagons
+    - removed 'clean' cargos from mineral-type covered hoppers
+    - added 'food / farm' cargos to 'clean' type covered hoppers
+- added clay to China Clay Hopper refits
+
+
+------------
 3.31.0 Release
 ------------
 
