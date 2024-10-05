@@ -13,7 +13,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_chute_16px")
 
     consist = CoveredHopperCarConsistType2(
         roster_id=roster_id,
@@ -57,7 +57,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_chute_greebled_16px")
 
     consist = CoveredHopperCarConsistType2(
         roster_id=roster_id,
