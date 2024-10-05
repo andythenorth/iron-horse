@@ -368,7 +368,7 @@ base = "Ingot Carriers"
 base = "Container Wagons"
 
 [STR_WAGON_GROUP_LIME_COVERED_HOPPER_CARS]
-base = "Lime Covered Hoppers"
+base = "Lime Hoppers"
 
 [STR_WAGON_GROUP_LIVESTOCK_CARS]
 base = "Livestock Wagons"
@@ -443,10 +443,10 @@ base = "Rock Hoppers"
 base = "Roller Roof Hoppers"
 
 [STR_WAGON_GROUP_SALT_COVERED_HOPPER_CARS]
-base = "Salt Covered Hoppers"
+base = "Salt Hoppers"
 
 [STR_WAGON_GROUP_SALT_SWING_ROOF_HOPPER_CARS]
-base = "Salt Swing Roof Hoppers"
+base = "Salt Hoppers"
 
 [STR_WAGON_GROUP_SCRAP_METAL_CARS]
 base = "Scrap Wagons"
@@ -738,16 +738,16 @@ base = "Container Wagon"
 base = "China Clay Hopper"
 
 [STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_RANDOMISED]
-base = "Lime Covered Hopper"
+base = "Lime Hopper"
 
 [STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1]
-base = "Lime Covered Hopper"
+base = "Lime Hopper"
 
 [STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_2]
-base = "Lime Covered Hopper"
+base = "Lime Hopper"
 
 [STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_3]
-base = "Lime Covered Hopper"
+base = "Lime Hopper"
 
 [STR_NAME_SUFFIX_LIVESTOCK_CAR]
 base = "Livestock Wagon"
@@ -870,13 +870,13 @@ base = "Roller Roof Hopper"
 base = "Roller Roof Hopper"
 
 [STR_NAME_SUFFIX_SALT_COVERED_HOPPER_CAR]
-base = "Salt Covered Hopper"
+base = "Salt Hopper"
 
 [STR_NAME_SUFFIX_SALT_COVERED_HOPPER_CAR_RANDOMISED]
-base = "Salt Covered Hopper"
+base = "Salt Hopper"
 
 [STR_NAME_SUFFIX_SALT_SWING_ROOF_HOPPER_CAR]
-base = "Salt Swing Roof Hopper"
+base = "Salt Hopper"
 
 [STR_NAME_SUFFIX_SCRAP_METAL_CAR_TYPE_1]
 base = "Scrap Wagon"
