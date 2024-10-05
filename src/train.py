@@ -6035,7 +6035,7 @@ class KaolinHopperCarConsist(CarConsist):
         self.base_id = "kaolin_hopper_car"
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = ["KAOL"]
+        self.label_refits_allowed = ["KAOL", "CLAY"]
         self.label_refits_disallowed = []
         # no point using polar fox default_cargos for a vehicle with single refit
         self.default_cargos = []
