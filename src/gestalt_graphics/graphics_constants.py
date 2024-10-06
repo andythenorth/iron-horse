@@ -488,7 +488,7 @@ kaolin_hopper_car_livery_recolour_map_weathered = {
 }
 livestock_livery_recolour_map = body_recolour_CC1
 
-mineral_covered_hopper_car_livery_recolour_map = {
+lime_hopper_car_livery_recolour_map = {
     # note that this very specifically recolours hand-drawn pixels to magic purple
     # this is to prevent these spriterows being incorrectly recoloured to 'weathered' due to the way the graphics pipeline works
     # these purple pixels are then reset to original when the weathered recolour map is applied
@@ -496,7 +496,7 @@ mineral_covered_hopper_car_livery_recolour_map = {
     19: 139,
     22: 142,
 }
-mineral_covered_hopper_car_livery_recolour_map_weathered = {
+lime_hopper_car_livery_recolour_map_weathered = {
     18: 115,
     19: 116,
     22: 120,

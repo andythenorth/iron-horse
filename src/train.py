@@ -6571,8 +6571,8 @@ class MineralCoveredHopperCarLimeConsistBase(MineralCoveredHopperCarConsistBase)
         self.use_named_buyable_variant_group = "wagon_group_lime_covered_hopper_cars"
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_map,
-            "weathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_map_weathered,
+            "unweathered": graphics_constants.lime_hopper_car_livery_recolour_map,
+            "weathered": graphics_constants.lime_hopper_car_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
