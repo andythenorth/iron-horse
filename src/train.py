@@ -6562,7 +6562,7 @@ class MineralCoveredHopperCarLimeConsistBase(MineralCoveredHopperCarConsistBase)
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
         self.randomised_candidate_groups = [
-            "mineral_covered_hopper_car_randomised",
+            "lime_covered_hopper_car_randomised",
             "covered_bulk_car_randomised",
         ]
         self._joker = True
@@ -6639,7 +6639,7 @@ class MineralCoveredHopperCarLimeRandomisedConsist(
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "mineral_covered_hopper_car_randomised"
+        self.base_id = "lime_covered_hopper_car_randomised"
         super().__init__(**kwargs)
         # clear from randomisation groups
         self.randomised_candidate_groups = []
