@@ -312,7 +312,7 @@ wagon_module_names_with_roster_ids = {
     "lime_covered_hopper_cars_randomised": "pony",
     "lime_covered_hopper_cars_type_1": "pony",
     "lime_covered_hopper_cars_type_2": "pony",
-    "lime_covered_hopper_cars_type_3": "pony",
+    #"lime_covered_hopper_cars_type_3": "pony",
     "livestock_cars": "pony",
     "log_cars": "pony",
     "low_floor_intermodal_cars": "pony",
