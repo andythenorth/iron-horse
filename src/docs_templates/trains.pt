@@ -10,7 +10,10 @@
                     <span title="${len(roster.engine_consists_excluding_clones) - len(doc_helper.not_really_engine_consists(roster))} engines and ${len(doc_helper.not_really_engine_consists(roster))} snowploughs, cab cars, metro trains and similar.">
                         ${len(roster.engine_consists_excluding_clones)} engines
                     </span>
-                    and ${len(roster.wagon_consists)} wagons
+                    and
+                    <span title="${len(roster.wagon_consists) - len(doc_helper.not_really_wagon_consists(roster))} real wagons and ${len(doc_helper.not_really_wagon_consists(roster))} randomised wagons similar.">
+                        ${len(roster.wagon_consists)} wagons
+                    </span>
                     inspired by trains (mostly) from
                     <span tal:condition="roster.id == 'zebra'">Southern and Western Africa</span>
                     <span tal:condition="roster.id == 'pony'">the UK and Ireland</span>

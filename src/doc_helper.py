@@ -143,6 +143,16 @@ class DocHelper(object):
                 result.append(consist)
         return result
 
+    def not_really_wagon_consists(self, roster):
+        # some wagons aren't really wagons
+        # - randomised wagons, which just compose a set of choices from other wagons
+        result = []
+        for consist in roster.wagon_consists:
+            # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
+            if getattr(consist.gestalt_graphics, "random_vehicle_map_type", None):
+                result.append(consist)
+        return result
+
     def get_role_child_branches_in_order(self, role_child_branches):
         # adjust the sort so that it's +ve, -ve for each value, e.g. [1, -1, 2, -2, 3, -3, 4, 5] etc
         # this gives the nicest order of related rows in tech tree, assuming that similar engines are in child_branch 1 and child_branch -1
