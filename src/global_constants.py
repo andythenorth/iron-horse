@@ -110,7 +110,12 @@ wagon_module_name_stems = [
     "bulk_cars_mixed_randomised",
     "tank_cars_type_1",
     "tank_cars_type_2",
-    "product_tank_cars",
+    "tank_cars_type_3",
+    "tank_cars_randomised",
+    "volatiles_tank_cars_type_1",
+    "product_tank_cars_type_1",
+    "product_tank_cars_type_2",
+    "product_tank_cars_randomised",
     "acid_tank_cars_type_1",
     "acid_tank_cars_type_2",
     "acid_tank_cars_randomised",
@@ -347,8 +352,9 @@ buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_lime_covered_hopper_cars": "lime_covered_hopper_car_type_1",
     "wagon_group_open_cars": "open_car",
     "wagon_group_passenger_cars": "passenger_car",
-    "wagon_group_pressure_tank_cars": "pressure_tank_car",
     "wagon_group_piece_goods_cars_randomised": "piece_goods_car_mixed_randomised",
+    "wagon_group_pressure_tank_cars": "pressure_tank_car",
+    "wagon_group_product_tank_cars": "product_tank_car_type_1",
     "wagon_group_reefer_cars": "reefer_car_type_1",
     "wagon_group_roller_roof_hopper_cars": "roller_roof_hopper_car_type_1",
     "wagon_group_salt_covered_hopper_cars": "salt_covered_hopper_car",
@@ -359,6 +365,7 @@ buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_tarpaulin_cars": "tarpaulin_car_type_1",
     "wagon_group_tippler_bulk_open_cars": "tippler_bulk_open_car_type_1",
     "wagon_group_vehicle_transporter_cars": "automobile_car",
+    "wagon_group_volatiles_tank_cars": "volatiles_tank_car_type_1",
 }
 
 # custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants

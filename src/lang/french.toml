@@ -564,7 +564,7 @@ base = "Wagon porte-tôles"
 [STR_NAME_SUFFIX_PRESSURE_TANK_CAR]
 base = "Wagon-citerne pressurisé"
 
-[STR_NAME_SUFFIX_PRODUCT_TANK_CAR]
+[STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_1]
 base = "Wagon-citerne à produits"
 
 [STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR]

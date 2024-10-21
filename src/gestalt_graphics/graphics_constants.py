@@ -527,7 +527,7 @@ pellet_hopper_car_livery_recolour_map_weathered = {
     143: 23,
 }
 
-product_tank_car_livery_recolour_map = {
+silver_grey_tank_car_livery_recolour_map = {
     136: 16,
     137: 18,
     138: 19,
@@ -537,7 +537,7 @@ product_tank_car_livery_recolour_map = {
     142: 23,
     143: 14,
 }
-product_tank_car_livery_recolour_map_weathered = {
+silver_grey_tank_car_livery_recolour_map_weathered = {
     136: 16,
     137: 5,
     138: 7,
@@ -667,4 +667,3 @@ tarpaulin_car_body_recolour_maps_weathered = {
     142: 12,
     143: 14,
 }
-

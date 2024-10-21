@@ -1,10 +1,11 @@
-from train import TankCarStandardConsistType1, FreightCar
+from train import TankCarVolatilesConsistType1, FreightCar
 
 
 def main(roster_id, **kwargs):
+    """
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17740,
@@ -18,7 +19,7 @@ def main(roster_id, **kwargs):
 
     # no gen 2 for NG, straight to gen 3
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17760,
@@ -30,7 +31,7 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17780,
@@ -41,13 +42,13 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
-
+    """
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=17700,
+        base_numeric_id=22260,
         gen=1,
         subtype="A",
         sprites_complete=False,
@@ -55,10 +56,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=25040,
+        base_numeric_id=22400,
         gen=2,
         subtype="B",
         sprites_complete=False,
@@ -66,10 +67,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=17300,
+        base_numeric_id=22280,
         gen=3,
         subtype="A",
         sprites_complete=False,
@@ -77,10 +78,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=25020,
+        base_numeric_id=22420,
         gen=3,
         subtype="B",
         sprites_complete=False,
@@ -88,10 +89,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=28320,
+        base_numeric_id=22300,
         gen=3,
         subtype="C",
         sprites_complete=False,
@@ -99,10 +100,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=17720,
+        base_numeric_id=22480,
         gen=4,
         subtype="A",
         sprites_complete=False,
@@ -110,10 +111,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=30850,
+        base_numeric_id=22320,
         gen=4,
         subtype="B",
         sprites_complete=False,
@@ -121,10 +122,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=17680,
+        base_numeric_id=22440,
         gen=4,
         subtype="C",
         sprites_complete=False,
@@ -132,10 +133,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=31860,
+        base_numeric_id=22340,
         gen=5,
         subtype="A",
         sprites_complete=False,
@@ -143,10 +144,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=36240,
+        base_numeric_id=22460,
         gen=5,
         subtype="B",
         sprites_complete=False,
@@ -154,10 +155,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
 
-    consist = TankCarStandardConsistType1(
+    consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=25060,
+        base_numeric_id=37870,
         gen=5,
         subtype="C",
         sprites_complete=False,

@@ -493,6 +493,9 @@ base = "Torpedo Wagons"
 [STR_WAGON_GROUP_VEHICLE_TRANSPORTER_CARS]
 base = "Vehicle Transporters"
 
+[STR_WAGON_GROUP_VOLATILES_TANK_CARS]
+base = "Volatiles Tankers"
+
 # wagon class suffixes, as of Jan 2019 these are switched from en-us to en-gb; !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
 [STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED]
 base = "Acid Tanker"
@@ -836,7 +839,13 @@ base = "Pipe Wagon"
 [STR_NAME_SUFFIX_PRESSURE_TANK_CAR]
 base = "Pressure Tanker"
 
-[STR_NAME_SUFFIX_PRODUCT_TANK_CAR]
+[STR_NAME_SUFFIX_PRODUCT_TANK_CAR_RANDOMISED]
+base = "Product Tanker"
+
+[STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_1]
+base = "Product Tanker"
+
+[STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_2]
 base = "Product Tanker"
 
 [STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR]
@@ -926,10 +935,16 @@ base = "Suburban Coach"
 [STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR]
 base = "Swing Roof Hopper"
 
+[STR_NAME_SUFFIX_TANK_CAR_RANDOMISED]
+base = "Tanker"
+
 [STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
 base = "Tanker"
 
 [STR_NAME_SUFFIX_TANK_CAR_TYPE_2]
+base = "Tanker"
+
+[STR_NAME_SUFFIX_TANK_CAR_TYPE_3]
 base = "Tanker"
 
 [STR_NAME_SUFFIX_TARPAULIN_CAR_RANDOMISED]
@@ -961,6 +976,9 @@ base = "Torpedo Wagon"
 
 [STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR]
 base = "Sliding Wall Van"
+
+[STR_NAME_SUFFIX_VOLATILES_TANK_CAR_TYPE_1]
+base = "Volatiles Tanker"
 
 # cargo subtypes - only used for automobile cars (specifically vehicles cargo) as of May 2021
 [STR_CARGO_SUBTYPE_VEHI_0]

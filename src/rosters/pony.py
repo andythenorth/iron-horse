@@ -337,7 +337,9 @@ wagon_module_names_with_roster_ids = {
     "piece_goods_cars_mixed_randomised": "pony",
     "pipe_cars": "pony",
     "pressure_tank_cars": "pony",
-    "product_tank_cars": "pony",
+    "product_tank_cars_randomised": "pony",
+    "product_tank_cars_type_1": "pony",
+    "product_tank_cars_type_2": "pony",
     "railbus_passenger_trailer_cars": "pony",
     "railcar_passenger_trailer_cars": "pony",
     "reefer_cars_randomised": "pony",
@@ -364,8 +366,10 @@ wagon_module_names_with_roster_ids = {
     "sliding_wall_cars_type_2": "pony",
     "suburban_passenger_cars": "pony",
     "swing_roof_hopper_cars": "pony",
+    "tank_cars_randomised": "pony",
     "tank_cars_type_1": "pony",
     "tank_cars_type_2": "pony",
+    "tank_cars_type_3": "pony",
     "tarpaulin_cars_randomised": "pony",
     "tarpaulin_cars_type_1": "pony",
     "tarpaulin_cars_type_2": "pony",
@@ -376,6 +380,7 @@ wagon_module_names_with_roster_ids = {
     "tippler_rotary_bulk_open_cars_type_1": "pony",
     "torpedo_cars": "pony",
     "vehicle_parts_box_cars": "pony",
+    "volatiles_tank_cars_type_1": "pony",
 }
 
 def main():
