@@ -35,7 +35,6 @@ import gestalt_graphics.graphics_constants as graphics_constants
 import iron_horse
 import spritelayer_cargos
 
-
 class Consist(object):
     """
     'Vehicles' (appearing in buy menu) are composed as articulated consists.
@@ -5306,7 +5305,8 @@ class GasTankCarConsistBase(CarConsist):
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         super().__init__(**kwargs)
-        self.class_refit_groups = []  # no classes, use explicit labels
+        self.class_refit_groups = ["cryo_gases"]
+        # labels are for legacy support, prior to CC_GAS class; this left in place as of Oct 2024
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
             "cryo_gases"
         ]
@@ -7983,7 +7983,8 @@ class SiloCarConsistBase(CarConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.class_refit_groups = []  # no classes, use explicit labels
+        self.class_refit_groups = ["silo_powders"]
+        # labels are for legacy support, prior to CC_GAS class; this left in place as of Oct 2024
         self.label_refits_allowed = [
             "SUGR",
             "FMSP",
@@ -8429,7 +8430,7 @@ class TankCarConsistBase(CarConsist):
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         # they may also change livery at stations if refitted between certain cargo types <shrug>
         super().__init__(**kwargs)
-        self.class_refit_groups = ["liquids"]
+        self.class_refit_groups = ["liquids_non_food_grade"]
         self.label_refits_allowed = []
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "non_generic_liquids"
@@ -9623,7 +9624,7 @@ class Train(object):
 
     @property
     def refittable_classes(self):
-        cargo_classes = []
+        result = []
         # maps lists of allowed classes.  No equivalent for disallowed classes, that's overly restrictive and damages the viability of class-based refitting
         if hasattr(self, "articulated_unit_different_class_refit_groups"):
             # in *rare* cases an articulated unit might need different refit classes to its parent consist
@@ -9631,12 +9632,32 @@ class Train(object):
         else:
             # by default get the refit classes from the consist
             class_refit_groups = self.consist.class_refit_groups
-        for i in class_refit_groups:
-            [
-                cargo_classes.append(cargo_class)
-                for cargo_class in global_constants.base_refits_by_class[i]
-            ]
-        return ",".join(set(cargo_classes))  # use set() here to dedupe
+        for class_refit_group in class_refit_groups:
+            for cargo_class in global_constants.base_refits_by_class[class_refit_group]:
+                if cargo_class in iron_horse.cargo_class_scheme.cargo_classes_taxonomy.keys():
+                    result.append(
+                        str(
+                            iron_horse.cargo_class_scheme.cargo_classes_taxonomy[cargo_class]["bit_number"]
+                        )
+                    )
+                if cargo_class not in iron_horse.cargo_class_scheme.cargo_classes_taxonomy.keys():
+                    print("CABBAGE", cargo_class)
+                    # TEMP TO MAKE COMPILE WORK
+                    result.append(cargo_class)
+        """
+        classes_mapped_to_bit_numbers = []
+        for cargo_class in self.cargo_classes:
+            classes_mapped_to_bit_numbers.append(
+                str(
+                    cargo_class_scheme.cargo_classes_taxonomy[cargo_class]["bit_number"]
+                )
+            )
+        return "bitmask(" + ",".join(classes_mapped_to_bit_numbers) + ")"
+        """
+        # use set() here to dedupe
+        result = list(set(result))
+        print(self.id, result)
+        return ",".join(result)
 
     @property
     def loading_speed(self):
