@@ -9,7 +9,6 @@ sys.path.append(os.path.join("src"))  # add to the module search path
 
 import global_constants
 import utils
-from polar_fox.cargo_classes import cargo_classes
 
 command_line_args = utils.get_command_line_args()
 
@@ -207,8 +206,6 @@ def main():
     # globals *within* this module so they can be accessed externally by other modules using iron_horse.foo
     globals()['railtype_manager'] = RailTypeManager()
     globals()['roster_manager'] = RosterManager()
-    # we add the polar fox cargo_class_scheme to globals as it requires a TOML load and parse, which we don't want to do frequently
-    globals()['cargo_class_scheme'] = cargo_classes.CargoClassSchemes().default_scheme
 
     # railtypes
     for railtype_module_name in railtype_module_names:

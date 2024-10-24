@@ -9607,7 +9607,7 @@ class Train(object):
         return ",".join(extra_flags)
 
     def get_cargo_classes_for_nml(self, allow_disallow_key):
-        classes_mapped_to_bit_numbers = []
+        result = []
         # maps lists of allowed classes.  No equivalent for disallowed classes, that's overly restrictive and damages the viability of class-based refitting
         if hasattr(self, "articulated_unit_different_class_refit_groups"):
             # in *rare* cases an articulated unit might need different refit classes to its parent consist
@@ -9619,27 +9619,8 @@ class Train(object):
             for cargo_class in global_constants.base_refits_by_class[class_refit_group][
                 allow_disallow_key
             ]:
-                if (
-                    cargo_class
-                    in iron_horse.cargo_class_scheme.cargo_classes_taxonomy.keys()
-                ):
-                    classes_mapped_to_bit_numbers.append(
-                        str(
-                            iron_horse.cargo_class_scheme.cargo_classes_taxonomy[
-                                cargo_class
-                            ]["bit_number"]
-                        )
-                    )
-                if (
-                    cargo_class
-                    not in iron_horse.cargo_class_scheme.cargo_classes_taxonomy.keys()
-                ):
-                    print("CABBAGE", cargo_class)
-                    # TEMP TO MAKE COMPILE WORK
-                    classes_mapped_to_bit_numbers.append(cargo_class)
-        # use set() here to dedupe
-        classes_mapped_to_bit_numbers = list(set(classes_mapped_to_bit_numbers))
-        return "bitmask(" + ",".join(classes_mapped_to_bit_numbers) + ")"
+                result.append(cargo_class)
+        return "bitmask(" + ",".join(result) + ")"
 
     @property
     def loading_speed(self):
