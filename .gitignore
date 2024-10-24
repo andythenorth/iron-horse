@@ -1,6 +1,6 @@
-generated/
-docs/
-tmp/
+/generated/
+/docs/
+/tmp/
 .nmlcache/
 .chameleon_cache/
 *.bak
