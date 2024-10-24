@@ -35,6 +35,7 @@ import gestalt_graphics.graphics_constants as graphics_constants
 import iron_horse
 import spritelayer_cargos
 
+
 class Consist(object):
     """
     'Vehicles' (appearing in buy menu) are composed as articulated consists.
@@ -4288,21 +4289,11 @@ class CoveredHopperCarConsistBase(CarConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.class_refit_groups = []  # no classes, use explicit labels
-        # covered hoppers don't have a good way to do class based refits, as of Oct 2024
-        # see proposed solution at https://github.com/OpenTTD/OpenTTD/discussions/12975
-        # meanwhile, compose non-standard label list from multiple subsets
+        self.class_refit_groups = ["covered_hopper_freight_any_grade"]
         # we assume generic covered hoppers refit anything suitable from the more specialist types
-        self.label_refits_allowed = []
-        self.label_refits_allowed.extend(
-            polar_fox.constants.allowed_refits_by_label["covered_hoppers_mineral"]
-        )
-        self.label_refits_allowed.extend(
-            polar_fox.constants.allowed_refits_by_label["covered_hoppers_pellet_powder"]
-        )
-        self.label_refits_allowed.extend(
-            polar_fox.constants.allowed_refits_by_label["farm_food_products"]
-        )
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "covered_hoppers_pellet_powder"
+        ]
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
@@ -4575,10 +4566,8 @@ class ExpressFoodCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
         self.base_id = "express_food_car_randomised"
         super().__init__(**kwargs)
         self.speed_class = "express"
-        self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "edible_liquids"
-        ]
+        self.class_refit_groups = ["liquids_food_grade"]
+        self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
         self._loading_speed_multiplier = 1.5
@@ -4611,10 +4600,8 @@ class ExpressFoodTankCarConsistBase(CarConsist):
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         super().__init__(**kwargs)
         self.speed_class = "express"
-        self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "edible_liquids"
-        ]
+        self.class_refit_groups = ["liquids_food_grade"]
+        self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
         self.randomised_candidate_groups = [
@@ -4829,7 +4816,7 @@ class FarmProductsHopperCarConsistBase(CarConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.class_refit_groups = []  # no classes, use explicit labels
+        self.class_refit_groups = ["covered_hopper_freight_food_grade"]
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
             "farm_food_products"
         ]
@@ -5306,10 +5293,7 @@ class GasTankCarConsistBase(CarConsist):
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         super().__init__(**kwargs)
         self.class_refit_groups = ["cryo_gases"]
-        # labels are for legacy support, prior to CC_GAS class; this left in place as of Oct 2024
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "cryo_gases"
-        ]
+        self.label_refits_allowed = []
         self.default_cargos = polar_fox.constants.default_cargos["cryo_gases"]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
@@ -6493,7 +6477,7 @@ class MineralCoveredHopperCarConsistBase(CarConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.class_refit_groups = []  # no classes, use explicit labels
+        self.class_refit_groups = ["covered_hopper_freight_non_food_grade"]
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
             "covered_hoppers_mineral"
         ]
@@ -9622,9 +9606,8 @@ class Train(object):
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY")
         return ",".join(extra_flags)
 
-    @property
-    def refittable_classes(self):
-        result = []
+    def get_cargo_classes_for_nml(self, allow_disallow_key):
+        classes_mapped_to_bit_numbers = []
         # maps lists of allowed classes.  No equivalent for disallowed classes, that's overly restrictive and damages the viability of class-based refitting
         if hasattr(self, "articulated_unit_different_class_refit_groups"):
             # in *rare* cases an articulated unit might need different refit classes to its parent consist
@@ -9633,31 +9616,30 @@ class Train(object):
             # by default get the refit classes from the consist
             class_refit_groups = self.consist.class_refit_groups
         for class_refit_group in class_refit_groups:
-            for cargo_class in global_constants.base_refits_by_class[class_refit_group]:
-                if cargo_class in iron_horse.cargo_class_scheme.cargo_classes_taxonomy.keys():
-                    result.append(
+            for cargo_class in global_constants.base_refits_by_class[class_refit_group][
+                allow_disallow_key
+            ]:
+                if (
+                    cargo_class
+                    in iron_horse.cargo_class_scheme.cargo_classes_taxonomy.keys()
+                ):
+                    classes_mapped_to_bit_numbers.append(
                         str(
-                            iron_horse.cargo_class_scheme.cargo_classes_taxonomy[cargo_class]["bit_number"]
+                            iron_horse.cargo_class_scheme.cargo_classes_taxonomy[
+                                cargo_class
+                            ]["bit_number"]
                         )
                     )
-                if cargo_class not in iron_horse.cargo_class_scheme.cargo_classes_taxonomy.keys():
+                if (
+                    cargo_class
+                    not in iron_horse.cargo_class_scheme.cargo_classes_taxonomy.keys()
+                ):
                     print("CABBAGE", cargo_class)
                     # TEMP TO MAKE COMPILE WORK
-                    result.append(cargo_class)
-        """
-        classes_mapped_to_bit_numbers = []
-        for cargo_class in self.cargo_classes:
-            classes_mapped_to_bit_numbers.append(
-                str(
-                    cargo_class_scheme.cargo_classes_taxonomy[cargo_class]["bit_number"]
-                )
-            )
-        return "bitmask(" + ",".join(classes_mapped_to_bit_numbers) + ")"
-        """
+                    classes_mapped_to_bit_numbers.append(cargo_class)
         # use set() here to dedupe
-        result = list(set(result))
-        print(self.id, result)
-        return ",".join(result)
+        classes_mapped_to_bit_numbers = list(set(classes_mapped_to_bit_numbers))
+        return "bitmask(" + ",".join(classes_mapped_to_bit_numbers) + ")"
 
     @property
     def loading_speed(self):

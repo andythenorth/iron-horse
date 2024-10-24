@@ -199,7 +199,7 @@ vehicle_set_as_disallow = false
 bit_number = 10
 code = "0x0400"
 nml_cargo_class_name = "CC_OVERSIZED"
-name = "Flatbed CABBAGE"
+name = "Flatbed"
 cargo_class_description = [
     "Flatbed CABBAGE",
 ]

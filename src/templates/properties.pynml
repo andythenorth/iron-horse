@@ -78,8 +78,8 @@
             cargo_capacity:                 ${vehicle.default_cargo_capacity};
             sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
             refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
-            refittable_cargo_classes:       bitmask(${vehicle.refittable_classes});
-            non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+            refittable_cargo_classes:       ${vehicle.get_cargo_classes_for_nml('allowed')};
+            non_refittable_cargo_classes:   ${vehicle.get_cargo_classes_for_nml('disallowed')};
             cargo_allow_refit:              [${vehicle.get_label_refits_allowed()}];
             cargo_disallow_refit:           [${vehicle.get_label_refits_disallowed()}];
             <tal:default_cargo condition="len(consist.default_cargos) > 0">
