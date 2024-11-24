@@ -9620,6 +9620,8 @@ class Train(object):
                 allow_disallow_key
             ]:
                 result.append(cargo_class)
+        # !! this does not currently support train prop 0x32 (filter allowed classes)
+        # !! if that's needed, then branch on allow_disallow_key == "allowed":
         return "bitmask(" + ",".join(result) + ")"
 
     @property
