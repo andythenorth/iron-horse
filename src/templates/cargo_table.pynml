@@ -11,4 +11,4 @@ cargotable {
 }
 
 <!--! include constants for 2024 Polar Fox cargo classes -->
-<tal:include metal:use-macro="load: ../polar_fox/cargo_classes/docs/cargo_class_constants.nml" />
+<tal:include metal:use-macro="load: ../polar_fox/cargo_classes/cargo_class_constants.nml" />
