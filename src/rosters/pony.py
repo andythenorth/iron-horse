@@ -369,7 +369,6 @@ wagon_module_names_with_roster_ids = {
     "tank_cars_randomised": "pony",
     "tank_cars_type_1": "pony",
     "tank_cars_type_2": "pony",
-    "tank_cars_type_3": "pony",
     "tarpaulin_cars_randomised": "pony",
     "tarpaulin_cars_type_1": "pony",
     "tarpaulin_cars_type_2": "pony",
