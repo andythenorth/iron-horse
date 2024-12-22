@@ -8477,7 +8477,7 @@ class TankCarAcidConsistBase(TankCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SULPHUR"],
                 global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_VIOLET"],
