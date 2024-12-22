@@ -4618,9 +4618,10 @@ class ExpressFoodTankCarConsistBase(CarConsist):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_food_express_tank_cars"
         # Graphics configuration
-        # only one livery, but recolour gestalt used to automate adding chassis
+        # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.food_tank_car_livery_recolour_map
+            "unweathered": graphics_constants.refrigerated_livery_recolour_map,
+            "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
