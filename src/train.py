@@ -8653,8 +8653,7 @@ class TankCarProductConsistType2(TankCarProductConsistBase):
         super().__init__(**kwargs)
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.silver_grey_tank_car_livery_recolour_map,
-            "weathered": graphics_constants.silver_grey_tank_car_livery_recolour_map_weathered,
+            "unweathered": graphics_constants.body_recolour_CC1,
         }
         self.gestalt_graphics.weathered_variants = weathered_variants
 
