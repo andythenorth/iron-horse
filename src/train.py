@@ -1015,11 +1015,13 @@ class Consist(object):
             colour_set = livery["colour_set"]
         # !!! this is lolz, so many ifs just to get a string -> number mapping
         # !!! it's infrequently changed, but should just be some lookup table of some kind
-        if "random_from_consist_liveries_teal_nightshade" in colour_set:
+        if "random_from_consist_liveries_red_ruby" in colour_set:
+            return 116
+        elif "random_from_consist_liveries_teal_nightshade" in colour_set:
             return 115
-        if "random_from_consist_liveries_teal_pewter" in colour_set:
+        elif "random_from_consist_liveries_teal_pewter" in colour_set:
             return 114
-        if "random_from_consist_liveries_sulphur_straw" in colour_set:
+        elif "random_from_consist_liveries_sulphur_straw" in colour_set:
             return 113
         elif "random_from_consist_liveries_gremlin_green_silver" in colour_set:
             return 112
@@ -8561,7 +8563,9 @@ class TankCarChemicalRandomisedConsist(RandomisedConsistMixin, TankCarConsistBas
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_TEAL_VIOLET"
                 ],
-                # global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"], # needs more wagons to work
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
+                ],
             ],
         )
 
@@ -8824,6 +8828,9 @@ class TankCarVolatilesConsistBase(TankCarConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_RED_RUBY"
+                ],
+                global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
                 ],
                 global_constants.freight_wagon_liveries[
@@ -8838,6 +8845,7 @@ class TankCarVolatilesConsistBase(TankCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
+                global_constants.freight_wagon_liveries["FREIGHT_RED"],
                 # ruby before bauxite to ensure it appears in buy menu order for mixed version
                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],

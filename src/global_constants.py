@@ -612,6 +612,14 @@ freight_wagon_liveries = {
             ("COLOUR_RED", "COLOUR_WHITE"),
         ],
     },
+    "RANDOM_FROM_CONSIST_LIVERIES_RED_RUBY": {
+        "colour_set": "random_from_consist_liveries_red_ruby",
+        "use_weathering": True,
+        "docs_image_input_cc": [
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_RED", "COLOUR_WHITE"),
+        ],
+    },
     "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE": {
         "colour_set": "random_from_consist_liveries_ruby_bauxite",
         "use_weathering": True,
@@ -857,6 +865,8 @@ wagon_livery_mixes = {
     "random_from_consist_liveries_silver_pewter": ["freight_silver", "freight_pewter"],
     # yellow / ochre
     "random_from_consist_liveries_sulphur_ochre": ["freight_sulphur", "freight_ochre"],
+    # red / ruby
+    "random_from_consist_liveries_red_ruby": ["red", "freight_ruby"],
     # rust / ruby
     "random_from_consist_liveries_ruby_bauxite": ["freight_ruby", "freight_bauxite"],
     # black

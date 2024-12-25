@@ -201,6 +201,9 @@ base = "Silver/Pewter"
 [STR_NAME_SUFFIX_LIVERY_MIX_SULPHUR_OCHRE]
 base = "Mustard/Ochre"
 
+[STR_NAME_SUFFIX_LIVERY_MIX_RED_RUBY]
+base = "Red/Ruby"
+
 [STR_NAME_SUFFIX_LIVERY_MIX_RUBY_BAUXITE]
 base = "Ruby/Rust"
 
