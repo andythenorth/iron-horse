@@ -91,7 +91,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
 
     consist = TankCarStandardConsistType2(
         roster_id=roster_id,
@@ -102,4 +102,4 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_32px")
