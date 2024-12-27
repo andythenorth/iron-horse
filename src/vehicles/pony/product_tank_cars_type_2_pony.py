@@ -19,6 +19,17 @@ def main(roster_id, **kwargs):
     consist = TankCarProductConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=35370,
+        gen=2,
+        subtype="B",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
+
+    consist = TankCarProductConsistType2(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33090,
         gen=3,
         subtype="A",

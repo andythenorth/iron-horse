@@ -70,18 +70,18 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
     """
-    """
+
     consist = TankCarStandardConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=32880,
+        base_numeric_id=35100,
         gen=5,
         subtype="A",
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
-    """
+    consist.add_unit(type=FreightCar, chassis="2_axle_sparse_greebled_alt_16px")
+
     consist = TankCarStandardConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
@@ -91,7 +91,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_sparse_greebled_24px")
 
     consist = TankCarStandardConsistType2(
         roster_id=roster_id,
