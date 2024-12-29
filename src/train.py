@@ -1015,7 +1015,9 @@ class Consist(object):
             colour_set = livery["colour_set"]
         # !!! this is lolz, so many ifs just to get a string -> number mapping
         # !!! it's infrequently changed, but should just be some lookup table of some kind
-        if "random_from_consist_liveries_red_ruby" in colour_set:
+        if "random_from_consist_liveries_grey_pewter" in colour_set:
+            return 117
+        elif "random_from_consist_liveries_red_ruby" in colour_set:
             return 116
         elif "random_from_consist_liveries_teal_nightshade" in colour_set:
             return 115
@@ -8466,7 +8468,7 @@ class TankCarAcidConsistBase(TankCarConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_SULPHUR_OCHRE"
                 ],
                 global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_VIOLET"
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
                 ],
                 global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
@@ -8482,8 +8484,9 @@ class TankCarAcidConsistBase(TankCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+                # # teal before pewter for buy menu appearance reasons
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-                global_constants.freight_wagon_liveries["FREIGHT_VIOLET"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
         )
 
@@ -8548,7 +8551,7 @@ class TankCarChemicalRandomisedConsist(RandomisedConsistMixin, TankCarConsistBas
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_segmented_block_train",  # random checked ok
+            random_vehicle_map_type="map_block_train_with_minor_variation",  # random checked ok
             dice_colour=3,
             liveries=[
                 global_constants.freight_wagon_liveries[
@@ -8558,13 +8561,19 @@ class TankCarChemicalRandomisedConsist(RandomisedConsistMixin, TankCarConsistBas
                     "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
+                ],
+                global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
                 ],
                 global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_VIOLET"
+                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
                 ],
                 global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_SULPHUR_OCHRE"
                 ],
             ],
         )
@@ -8605,10 +8614,16 @@ class TankCarProductConsistBase(TankCarConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
                 ],
                 global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_GREY_PEWTER"
+                ],
+                global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
                 ],
                 global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_VIOLET"
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_SULPHUR_OCHRE"
                 ],
                 global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
@@ -8620,12 +8635,15 @@ class TankCarProductConsistBase(TankCarConsistBase):
                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                # # teal before pewter for buy menu appearance reasons
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-                global_constants.freight_wagon_liveries["FREIGHT_VIOLET"],
-                # sulphur tried, not effective
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+                global_constants.freight_wagon_liveries["FREIGHT_SULPHUR"],
+                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
             ],
         )
 
@@ -8713,16 +8731,13 @@ class TankCarStandardConsistBase(TankCarConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
                 ],
                 global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_SULPHUR_OCHRE"
-                ],
-                # global_constants.freight_wagon_liveries[
-                # "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER"
-                # ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_VIOLET"
-                ],
-                global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_SULPHUR_OCHRE"
                 ],
                 global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
@@ -8734,15 +8749,13 @@ class TankCarStandardConsistBase(TankCarConsistBase):
                 # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                global_constants.freight_wagon_liveries["FREIGHT_SULPHUR"],
-                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
                 global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                # global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                # global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+                # # teal before pewter for buy menu appearance reasons
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-                global_constants.freight_wagon_liveries["FREIGHT_VIOLET"],
+                global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
+                global_constants.freight_wagon_liveries["FREIGHT_SULPHUR"],
+                global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
             ],
         )
 
@@ -8834,7 +8847,7 @@ class TankCarVolatilesConsistBase(TankCarConsistBase):
                     "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
                 ],
                 global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_VIOLET"
+                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
                 ],
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE"
@@ -8854,7 +8867,6 @@ class TankCarVolatilesConsistBase(TankCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
-                global_constants.freight_wagon_liveries["FREIGHT_VIOLET"],
             ],
         )
 

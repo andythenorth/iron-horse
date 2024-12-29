@@ -216,6 +216,9 @@ base = "Ochre/Straw"
 [STR_NAME_SUFFIX_LIVERY_MIX_GREMLIN_GREEN_SILVER]
 base = "Moss/Silver"
 
+[STR_NAME_SUFFIX_LIVERY_MIX_GREY_PEWTER]
+base = "Grey/Pewter"
+
 [STR_NAME_SUFFIX_LIVERY_MIX_SULPHUR_STRAW]
 base = "Mustard/Straw"
 
