@@ -8676,7 +8676,7 @@ class TankCarProductRandomisedConsist(
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         liveries = self.gestalt_graphics.liveries.copy()
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_block_train_with_minor_variation",  # !!!!
+            random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
             liveries=liveries,
         )
@@ -8791,7 +8791,7 @@ class TankCarStandardRandomisedConsist(
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
         liveries = self.gestalt_graphics.liveries.copy()
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_block_train_with_minor_variation",  # !!!!
+            random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
             liveries=liveries,
         )
