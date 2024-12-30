@@ -2,17 +2,17 @@ from train import TankCarVolatilesConsistType1, FreightCar
 
 
 def main(roster_id, **kwargs):
-    """
+
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=17740,
+        base_numeric_id=32900,
         gen=1,
         subtype="A",
         base_track_type_name="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
@@ -22,11 +22,11 @@ def main(roster_id, **kwargs):
     consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=17760,
+        base_numeric_id=32920,
         gen=3,
         subtype="A",
         base_track_type_name="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
@@ -34,15 +34,15 @@ def main(roster_id, **kwargs):
     consist = TankCarVolatilesConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=17780,
+        base_numeric_id=32940,
         gen=3,
         subtype="B",
         base_track_type_name="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
-    """
+
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = TankCarVolatilesConsistType1(
