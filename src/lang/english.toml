@@ -13,13 +13,13 @@ base = "License: {SILVER}GPL v2{}{BLACK}"
 base = "Engines"
 
 [STR_PARAM_VEHICLE_AVAILABILITY_ENGINES_DESC]
-base = "Play with all engines, a simplified set of engines, or no engines at all. {}{}All: the full range of Iron Horse engines will be available. {}{}Simplified: there will be fewer Iron Horse engines available, and eye-candy trains like snowploughs, driving cab cars and very slow locomotives will not be available.{}{}None: no Iron Horse engines will be available. Use this to get a wagons-only version of Iron Horse (requires that engines are provided by another grf, otherwise wagons will not be available)."
+base = "Play with all engines, a simplified set of engines, or no engines at all. {}{}{SILVER}All: {BLACK}the full range of Iron Horse engines will be available. {}{}{SILVER}Simplified: {BLACK}there will be fewer Iron Horse engines available, and eye-candy trains like snowploughs, driving cab cars and very slow locomotives will not be available.{}{}{SILVER}None: {BLACK}no Iron Horse engines will be available. Use this to get a wagons-only version of Iron Horse (requires that engines are provided by another grf, otherwise wagons will not be available)."
 
 [STR_PARAM_VEHICLE_AVAILABILITY_WAGONS]
 base = "Wagons"
 
 [STR_PARAM_VEHICLE_AVAILABILITY_WAGONS_DESC]
-base = "Play with all wagons, a simplified set of wagons, or no engines at all. {}{}All: the full range of Iron Horse wagons will be available. {}{}Simplified: there will be fewer Iron Horse wagons available. {}{}None: no Iron Horse wagons will be available."
+base = "Play with all wagons, a simplified set of wagons, or no wagons at all. {}{}{SILVER}All: {BLACK}the full range of Iron Horse wagons will be available. {}{}{SILVER}Simplified: {BLACK}there will be fewer Iron Horse wagons available. {}{}{SILVER}None: {BLACK}no Iron Horse wagons will be available."
 
 [STR_PARAM_VEHICLE_AVAILABILITY_OPTION_0]
 base = "All"
@@ -46,7 +46,7 @@ moose = "Iron Moose includes trains that require extra railtypes, for example me
 base = "Train capacity"
 
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC]
-base = "Adjust vehicle capacity for alternative gameplay styles.{}{}Nanoscopic: {GOLD}77% reduction{BLACK}{}Puny: {GOLD}33% reduction{BLACK}{}Marvellous: {GOLD}default{BLACK}{}Excessive: {GOLD}33% increase{BLACK}{}Outrageous: {GOLD}77% increase{BLACK}"
+base = "Adjust vehicle capacity for alternative gameplay styles.{}{}{SILVER}Nanoscopic: {BLACK}77% reduction{SILVER}{}Puny: {BLACK}33% reduction{SILVER}{}Marvellous: {BLACK}default{SILVER}{}Excessive: {BLACK}33% increase{SILVER}{}Outrageous: {BLACK}77% increase{BLACK}"
 
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0]
 base = "Nanoscopic"
