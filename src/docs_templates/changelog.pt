@@ -3,6 +3,21 @@ Changelog
 
 
 ------------
+3.34.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.33.0.
+
+*Changes*
+
+- reworked tanker wagons
+    - added Volatiles Tankers
+    - improved Tanker sprites
+    - improved Product Tanker sprites
+
+
+------------
 3.33.0 Release
 ------------
 
