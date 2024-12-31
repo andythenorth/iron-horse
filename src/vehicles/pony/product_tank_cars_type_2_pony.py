@@ -11,7 +11,7 @@ def main(roster_id, **kwargs):
         gen=2,
         subtype="A",
         intro_year_offset=-10,  # let's be earlier for this one
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
@@ -22,7 +22,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=35370,
         gen=2,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
@@ -99,7 +99,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=33210,
         gen=5,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_alt_16px")
@@ -110,7 +110,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=33230,
         gen=5,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
@@ -121,7 +121,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=33250,
         gen=5,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_32px")
