@@ -9107,8 +9107,6 @@ class BuyableVariant(object):
         # option to point this livery to a specific row in the spritesheet, relative to the block of livery spriterows for the specific unit or similar
         # this is just for convenience if spritesheets are a chore to re-order
         self._relative_spriterow_num = livery.get("relative_spriterow_num", None)
-        # option to date limit introduction certain liveries
-        self.forced_intro_year = livery.get("forced_intro_year", None)
         # possibly we don't need to store the livery, as we could look it up from the gestalt, but eh
         self.livery = livery
 
@@ -9252,15 +9250,7 @@ class UnitVariant(object):
 
     @property
     def intro_year(self):
-        # stupid abstraction to allow certain date-limited liveries
-        if self.buyable_variant.forced_intro_year is not None:
-            # don't accidentally introduce engines early due to the livery...
-            if self.buyable_variant.forced_intro_year > self.unit.consist.intro_year:
-                return self.buyable_variant.forced_intro_year
-            else:
-                return self.unit.consist.intro_year
-        else:
-            return self.unit.consist.intro_year
+        return self.unit.consist.intro_year
 
     @property
     def uses_random_livery(self):

@@ -527,7 +527,6 @@ def main():
                     "company_colour1": "COLOUR_GREY",
                     "company_colour2": "company_colour1",
                 },
-                "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_YELLOW", "COLOUR_WHITE"),
@@ -617,7 +616,6 @@ def main():
                     "company_colour1": "COLOUR_GREY",
                     "company_colour2": "company_colour1",
                 },
-                "forced_intro_year": 1975,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_PINK", "COLOUR_WHITE"),
@@ -629,7 +627,6 @@ def main():
                     "company_colour1": "COLOUR_WHITE",
                     "company_colour2": "company_colour1",
                 },
-                "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                     ("COLOUR_BLUE", "COLOUR_WHITE"),
@@ -643,7 +640,6 @@ def main():
                     "company_colour1": "COLOUR_WHITE",
                     "company_colour2": "company_colour1",
                 },
-                "forced_intro_year": 1986,
                 "docs_image_input_cc": [
                     ("COLOUR_RED", "COLOUR_WHITE"),
                 ],
@@ -675,7 +671,6 @@ def main():
             },
             "SWOOSH_1995": {
                 "remap_to_cc": None,
-                "forced_intro_year": 1995,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -684,7 +679,6 @@ def main():
             },
             "SWOOSH_2000": {
                 "remap_to_cc": None,
-                "forced_intro_year": 2000,
                 "docs_image_input_cc": [
                     ("COLOUR_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
@@ -726,7 +720,6 @@ def main():
             },
             "WHITE_STRIPE_1995": {
                 "remap_to_cc": None,
-                "forced_intro_year": 1995,
                 "docs_image_input_cc": [
                     ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
                     ("COLOUR_RED", "COLOUR_WHITE"),
