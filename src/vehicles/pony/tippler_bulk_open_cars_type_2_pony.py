@@ -2,6 +2,32 @@ from train import BulkOpenCarTipplerConsistType2, FreightCar
 
 
 def main(roster_id, **kwargs):
+    # --------------- narrow gauge -----------------------------------------------------------------
+
+    consist = BulkOpenCarTipplerConsistType2(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=35900,
+        gen=3,
+        subtype="A",
+        base_track_type_name="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_sparse_16px")
+
+    consist = BulkOpenCarTipplerConsistType2(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=35920,
+        gen=3,
+        subtype="B",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_sparse_24px")
+
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = BulkOpenCarTipplerConsistType2(
