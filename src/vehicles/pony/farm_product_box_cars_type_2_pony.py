@@ -11,7 +11,7 @@ def main(roster_id, **kwargs):
         gen=1,
         subtype="A",
         base_track_type_name="NG",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
@@ -25,7 +25,7 @@ def main(roster_id, **kwargs):
         gen=3,
         subtype="A",
         base_track_type_name="NG",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
@@ -37,7 +37,7 @@ def main(roster_id, **kwargs):
         gen=3,
         subtype="B",
         base_track_type_name="NG",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
@@ -49,7 +49,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=25390,
         gen=2,
         subtype="A",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
@@ -60,7 +60,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=25360,
         gen=2,
         subtype="B",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="3_axle_gapped_24px")
@@ -71,7 +71,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=25230,
         gen=3,
         subtype="A",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
@@ -82,7 +82,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=25160,
         gen=3,
         subtype="B",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
@@ -90,10 +90,10 @@ def main(roster_id, **kwargs):
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=25110,
+        base_numeric_id=35300,
         gen=4,
         subtype="A",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
@@ -101,10 +101,10 @@ def main(roster_id, **kwargs):
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=25080,
+        base_numeric_id=35600,
         gen=4,
         subtype="B",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
@@ -112,25 +112,25 @@ def main(roster_id, **kwargs):
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=23720,
+        base_numeric_id=35120,
         gen=4,
         subtype="C",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
         type=FreightCar,
-        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        suppress_roof_sprite=False,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
     )
 
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=23700,
+        base_numeric_id=28430,
         gen=5,
         subtype="B",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
@@ -138,10 +138,10 @@ def main(roster_id, **kwargs):
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=31320,
+        base_numeric_id=32960,
         gen=5,
         subtype="C",
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")

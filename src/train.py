@@ -4799,7 +4799,7 @@ class FarmProductsBoxCarConsistType2(FarmProductsBoxCarConsistBase):
         self.base_id = "farm_product_box_car_type_2"
         super().__init__(**kwargs)
         # Graphics configuration
-        self.roof_type = "freight_cc1"
+        self.roof_type = "freight"
         weathered_variants = {
             "unweathered": graphics_constants.farm_product_box_car_livery_recolour_map,
             "weathered": graphics_constants.farm_product_box_car_livery_recolour_map_weathered,
