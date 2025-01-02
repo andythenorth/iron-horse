@@ -3,11 +3,34 @@ Changelog
 
 
 ------------
+3.35.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.34.0.
+
+*Changes*
+
+- added wagons
+    - narrow gauge Tipplers
+    - narrow gauge Side Door Hoppers
+    - narrow gauge Mill Opens
+- improved appearance of multiple narrow gauge wagons
+- removed date restrictions on some engine liveries
+- improved appearance of descriptive text for some grf parameters
+
+
+*Fixes*
+
+- typo in description for "Wagons" parameter
+
+
+------------
 3.34.0 Release
 ------------
 
 
-Not savegame compatible with Iron Horse releases before 3.33.0.
+Not savegame compatible with Iron Horse releases before 3.34.0.
 
 *Changes*
 
