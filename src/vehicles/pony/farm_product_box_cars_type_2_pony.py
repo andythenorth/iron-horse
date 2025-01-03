@@ -3,14 +3,14 @@ from train import FarmProductsBoxCarConsistType2, FreightCar
 
 def main(roster_id, **kwargs):
     # --------------- pony --------------------------------------------------------------------------
-    """
+
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=25390,
+        base_numeric_id=35450,
         gen=2,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
@@ -18,10 +18,10 @@ def main(roster_id, **kwargs):
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=25360,
+        base_numeric_id=35460,
         gen=2,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="3_axle_gapped_24px")
@@ -29,25 +29,25 @@ def main(roster_id, **kwargs):
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=25230,
+        base_numeric_id=35470,
         gen=3,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=25160,
+        base_numeric_id=35480,
         gen=3,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
-    """
+    consist.add_unit(type=FreightCar, chassis="3_axle_gapped_24px")
+
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],

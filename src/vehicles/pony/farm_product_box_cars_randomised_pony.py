@@ -3,11 +3,11 @@ from train import FarmProductsBoxCarRandomisedConsist, FreightCar
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
-    """
+
     consist = FarmProductsBoxCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=19870,
+        base_numeric_id=36020,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
     consist = FarmProductsBoxCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=30320,
+        base_numeric_id=36030,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
     consist = FarmProductsBoxCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=16980,
+        base_numeric_id=36040,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -40,14 +40,14 @@ def main(roster_id, **kwargs):
     consist = FarmProductsBoxCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=30290,
+        base_numeric_id=36050,
         gen=3,
         subtype="B",
         sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="empty_24px")
-    """
+
     consist = FarmProductsBoxCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
