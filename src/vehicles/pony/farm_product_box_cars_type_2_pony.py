@@ -2,47 +2,8 @@ from train import FarmProductsBoxCarConsistType2, FreightCar
 
 
 def main(roster_id, **kwargs):
-    # --------------- narrow gauge -----------------------------------------------------------------
-    """
-    consist = FarmProductsBoxCarConsistType2(
-        roster_id=roster_id,
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=30350,
-        gen=1,
-        subtype="A",
-        base_track_type_name="NG",
-        sprites_complete=False,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
-
-    # no gen 2 for NG, straight to gen 3
-
-    consist = FarmProductsBoxCarConsistType2(
-        roster_id=roster_id,
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=30400,
-        gen=3,
-        subtype="A",
-        base_track_type_name="NG",
-        sprites_complete=False,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
-
-    consist = FarmProductsBoxCarConsistType2(
-        roster_id=roster_id,
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
-        base_numeric_id=19940,
-        gen=3,
-        subtype="B",
-        base_track_type_name="NG",
-        sprites_complete=False,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
-
     # --------------- pony --------------------------------------------------------------------------
+    """
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
@@ -93,7 +54,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=35300,
         gen=4,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
@@ -104,7 +65,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=35600,
         gen=4,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
@@ -115,7 +76,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=35120,
         gen=4,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
