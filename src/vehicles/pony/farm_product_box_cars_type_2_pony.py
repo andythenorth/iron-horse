@@ -86,7 +86,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
-
+    """
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
@@ -120,10 +120,10 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(
         type=FreightCar,
-        suppress_roof_sprite=False,  # non-standard roof for this wagon
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
     )
-    """
+
     consist = FarmProductsBoxCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
