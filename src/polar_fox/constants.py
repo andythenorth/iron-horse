@@ -298,6 +298,7 @@ allowed_refits_by_label = {
         "CERE",
         "FERT",
         "FMSP",
+        "FOOD",
         "FRUT",
         "GRAI",
         "JAVA",
