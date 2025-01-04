@@ -10549,6 +10549,17 @@ class FreightCar(TrainCar):
         self.capacity = self.vehicle_length * base_capacity
 
 
+class BinCar(FreightCar):
+    """
+    Peat wagon, cane bin car. This subclass only exists to set the capacity.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # just double whatever is set by the init, what could go wrong? :)
+        self.capacity = 2 * self.capacity
+
+
 class CoilBuggyCar(FreightCar):
     """
     Coil buggy car. This subclass only exists to set the capacity.

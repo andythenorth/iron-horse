@@ -1,4 +1,4 @@
-from train import CaneBinCarConsist, FreightCar
+from train import CaneBinCarConsist, BinCar
 
 
 def main(roster_id, **kwargs):
@@ -16,7 +16,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_8px")
+    consist.add_unit(type=BinCar, chassis="empty_8px")
 
-    consist.add_unit(type=FreightCar, chassis="empty_8px")
+    consist.add_unit(type=BinCar, chassis="empty_8px")
 
