@@ -3,6 +3,30 @@ Changelog
 
 
 ------------
+3.36.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.34.0.
+
+*Changes*
+
+- added wagons
+    - narrow gauge Cane Bins (for sugarcane cargo only)
+    - narrow gauge Peat Wagons (for peat cargo only)
+    - medium Vehicle Transporters
+    - large narow gauge Passenger Coach, available around 1960
+    - extra variants for Farm Product Vans
+- improved appearance of existing Farm Product Vans
+- allow sugarcane cargo in bulk cargo vehicles
+
+
+*Fixes*
+
+- Farm Product Vans lacked food cargo refit
+
+
+------------
 3.35.0 Release
 ------------
 
