@@ -1,7 +1,18 @@
+[STR_CARGO_SUBTYPE_VEHI_0]
+# temp, expected to be used by vehicle carriers
+suppressed_rosters = ["pony", "ibex", "moose"]
+
+[STR_CARGO_SUBTYPE_VEHI_1]
+# temp, expected to be used by vehicle carriers
+suppressed_rosters = ["pony", "ibex", "moose"]
+
 [STR_SPRITES_COMPLETE]
 suppressed_rosters = ["pony", "ibex", "moose"]
 
 [STR_SPRITES_INCOMPLETE]
+suppressed_rosters = ["pony", "ibex", "moose"]
+
+[STR_NAME_SUFFIX_ALIGNMENT_CAR]
 suppressed_rosters = ["pony", "ibex", "moose"]
 
 [STR_POWER_SOURCE_BATTERY_HYBRID]
@@ -78,3 +89,16 @@ suppressed_rosters = ["pony", "moose"]
 
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LGV_CAPABLE]
 suppressed_rosters = ["pony", "ibex", "moose"]
+
+[STR_WAGON_GROUP_BULKHEAD_FLAT_CARS]
+suppressed_rosters = ["pony", "ibex"]
+
+[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_1]
+suppressed_rosters = ["pony", "ibex"]
+
+[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_TYPE_2]
+suppressed_rosters = ["pony", "ibex"]
+
+[STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR_RANDOMISED]
+suppressed_rosters = ["pony", "ibex"]
+

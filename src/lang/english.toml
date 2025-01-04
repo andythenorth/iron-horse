@@ -962,12 +962,6 @@ base = "{BLACK}Role: {GOLD}{STRING}"
 [STR_ROLE_DRIVING_CAB]
 base = "Driving Cab"
 
-[STR_ROLE_EXPRESS]
-base = "Express"
-
-[STR_ROLE_FREIGHT]
-base = "Freight"
-
 [STR_ROLE_GENERAL_PURPOSE]
 base = "General Purpose"
 

@@ -654,12 +654,6 @@ base = "{BLACK}Rôle{NBSP}: {GOLD}{STRING}"
 [STR_ROLE_DRIVING_CAB]
 base = "Voiture-pilote"
 
-[STR_ROLE_EXPRESS]
-base = "Express"
-
-[STR_ROLE_FREIGHT]
-base = "Fret"
-
 [STR_ROLE_GENERAL_PURPOSE]
 base = "Universel"
 
