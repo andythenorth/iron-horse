@@ -65,6 +65,18 @@ def main(roster_id, **kwargs):
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_ng_24px")
 
+    consist = MailCarConsist(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=26700,
+        gen=4,
+        subtype="C",
+        base_track_type_name="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_ng_32px")
+
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist = MailCarConsist(
