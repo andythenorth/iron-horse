@@ -4,8 +4,21 @@ from train import AutomobileCarConsist, AutomobileCarSymmetric
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
-    # no gen 1 or 2, straight to gen 3
+    # no gen 1, straight to gen 2
 
+    # !! 16px version needs spritelayer cargo support finishing for 16px cargo sprites
+    """
+    consist = AutomobileCarConsist(
+        roster_id=roster_id,
+        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        base_numeric_id=22570,
+        gen=2,
+        subtype="A",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=AutomobileCarSymmetric, chassis="2_axle_solid_express_16px")
+    """
     consist = AutomobileCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
