@@ -3,6 +3,19 @@ Changelog
 
 
 ------------
+3.36.1 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.34.0.
+
+
+*Fixes*
+
+- capacity of Cane Bins and Peat Wagons was half the intended amount
+
+
+------------
 3.36.0 Release
 ------------
 
