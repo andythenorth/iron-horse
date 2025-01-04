@@ -7707,16 +7707,19 @@ class PeatCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         # Graphics configuration
-        # self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="tree_length_logs")
-        utils.echo_message("Peat car using potash hopper body colour remaps")
         weathered_variants = {
-            "unweathered": polar_fox.constants.potash_hopper_car_livery_recolour_map
+            "unweathered": graphics_constants.body_recolour_CC1
         }
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+        # there will unused vehicles sprites for cargo states, but it's ok in this limited case
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            bulk=True,
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
                 ],
                 global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
@@ -7724,6 +7727,9 @@ class PeatCarConsist(CarConsist):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
             ],
         )
 

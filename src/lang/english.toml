@@ -389,6 +389,9 @@ base = "Panoramic Coaches"
 [STR_WAGON_GROUP_PASSENGER_CARS]
 base = "Passenger Coaches"
 
+[STR_WAGON_GROUP_PEAT_CARS]
+base = "Peat Wagons"
+
 [STR_WAGON_GROUP_PIECE_GOODS_CARS_RANDOMISED]
 base = "Goods Cargo Combos"
 
