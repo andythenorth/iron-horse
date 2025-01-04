@@ -40,9 +40,6 @@ base = "Démesurée"
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4]
 base = "Scandaleuse"
 
-[STR_PARAM_WAGONS_ONLY_MODE]
-base = "Wagons uniquement"
-
 [STR_PARAM_WAGON_COLOUR_RANDOMISATION]
 base = "Couleur des wagons nuancée"
 
@@ -229,10 +226,6 @@ base = "jumeau"
 [STR_NAME_SUFFIX_RANDOMISED_WAGON]
 base = " - aléatoire"
 
-[STR_NAME_SUFFIX_MIXED_COLOURS]
-base = " - {RED}N{ORANGE}u{YELLOW}a{GREEN}n{BLUE}c{PURPLE}i{RED}e{ORANGE}r"
-
-# names for buyable variant groups
 [STR_WAGON_GROUP_ACID_TANK_CARS]
 base = "Wagons-citerne d’acide"
 

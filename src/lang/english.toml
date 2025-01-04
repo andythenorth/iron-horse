@@ -63,9 +63,6 @@ base = "Excessive"
 [STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4]
 base = "Outrageous"
 
-[STR_PARAM_WAGONS_ONLY_MODE]
-base = "Wagons-only mode"
-
 [STR_PARAM_WAGON_COLOUR_RANDOMISATION]
 base = "Wagon colour fading"
 
@@ -270,10 +267,6 @@ base = "Twin"
 [STR_NAME_SUFFIX_RANDOMISED_WAGON]
 base = " - Random"
 
-[STR_NAME_SUFFIX_MIXED_COLOURS]
-base = " - {RED}M{ORANGE}i{YELLOW}x{GREEN}e{BLUE}d {PURPLE}C{RED}o{ORANGE}l{YELLOW}o{GREEN}u{BLUE}r{PURPLE}s"
-
-# names for buyable variant groups
 [STR_WAGON_GROUP_ACID_TANK_CARS]
 base = "Acid Tankers"
 
@@ -951,9 +944,6 @@ base = "Tanker"
 base = "Tanker"
 
 [STR_NAME_SUFFIX_TANK_CAR_TYPE_2]
-base = "Tanker"
-
-[STR_NAME_SUFFIX_TANK_CAR_TYPE_3]
 base = "Tanker"
 
 [STR_NAME_SUFFIX_TARPAULIN_CAR_RANDOMISED]
