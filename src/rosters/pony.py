@@ -243,6 +243,7 @@ wagon_module_names_with_roster_ids = {
     "box_cars_type_2": "pony",
     "bulk_cars_mixed_randomised": "pony",
     "caboose_cars": "pony",
+    "cane_bin_cars": "pony",
     "carbon_black_hopper_cars": "pony",
     "cement_silo_cars_randomised": "pony",
     "cement_silo_cars_type_1": "pony",

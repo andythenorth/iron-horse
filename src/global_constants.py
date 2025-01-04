@@ -161,6 +161,7 @@ wagon_module_name_stems = [
     "kaolin_hopper_cars",
     "carbon_black_hopper_cars",
     "peat_cars",
+    "cane_bin_cars",
     # "well_cars",
     "torpedo_cars",
     "coil_buggy_cars",

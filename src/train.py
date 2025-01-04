@@ -3960,6 +3960,50 @@ class CabooseCarConsist(CarConsist):
         return result
 
 
+class CaneBinCarConsist(CarConsist):
+    """
+    Specialist transporter (narrow gauge bin) for (sugar) cane
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "cane_bin_car"
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        # limited refits by design eh
+        self.label_refits_allowed = ["SGCN"]
+        self.label_refits_disallowed = []
+        self.default_cargos = ["SGCN"]
+        self._intro_year_days_offset = (
+            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
+        )
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.body_recolour_CC1
+        }
+        # there will unused vehicles sprites for cargo states, but it's ok in this limited case
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            bulk=True,
+            weathered_variants=weathered_variants,
+            liveries=[
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries[
+                    "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
+                ],
+                global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
+                global_constants.freight_wagon_liveries["FREIGHT_GREY"],
+                global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+            ],
+        )
+
+
 class CarbonBlackHopperCarConsist(CarConsist):
     """
     Dedicated covered hopper car for carbon black.  No other cargos.

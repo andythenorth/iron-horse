@@ -443,6 +443,9 @@ base = "Cube Wagons"
 [STR_WAGON_GROUP_SLIDING_WALL_CARS]
 base = "Sliding Wall Vans"
 
+[STR_WAGON_GROUP_CANE_BIN_CARS]
+base = "Cane Bins"
+
 [STR_WAGON_GROUP_SUBURBAN_PASSENGER_CARS]
 base = "Suburban Coaches"
 
@@ -542,6 +545,9 @@ base = "Bulkhead Flat Wagon"
 
 [STR_NAME_SUFFIX_CABOOSE_CAR]
 base = "Brake Van"
+
+[STR_NAME_SUFFIX_CANE_BIN_CAR]
+base = "Cane Bin"
 
 [STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR]
 base = "Carbon Black Hopper"
