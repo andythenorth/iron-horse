@@ -360,11 +360,21 @@ class Roster(object):
         # validation
         for wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
             if wagon_module_name_stem not in global_constants.wagon_module_name_stems:
-                utils.echo_message("Warning: (" + self.id + ") " + wagon_module_name_stem + " not found in global_constants.wagon_module_name_stems")
+                utils.echo_message(
+                    "Warning: ("
+                    + self.id
+                    + ") "
+                    + wagon_module_name_stem
+                    + " not found in global_constants.wagon_module_name_stems"
+                )
         for wagon_module_name_stem in global_constants.wagon_module_name_stems:
             if wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
-                roster_id_providing_module = self.wagon_module_names_with_roster_ids[wagon_module_name_stem]
-                wagon_module_name = wagon_module_name_stem + "_" + roster_id_providing_module
+                roster_id_providing_module = self.wagon_module_names_with_roster_ids[
+                    wagon_module_name_stem
+                ]
+                wagon_module_name = (
+                    wagon_module_name_stem + "_" + roster_id_providing_module
+                )
                 package_name = "vehicles." + roster_id_providing_module
                 try:
                     wagon_module = importlib.import_module(
@@ -374,7 +384,14 @@ class Roster(object):
                         self.id, roster_id_providing_module=roster_id_providing_module
                     )
                 except ModuleNotFoundError:
-                    raise ModuleNotFoundError(wagon_module_name + " in " + package_name + " as defined by " + self.id + ".wagon_module_names_with_roster_ids")
+                    raise ModuleNotFoundError(
+                        wagon_module_name
+                        + " in "
+                        + package_name
+                        + " as defined by "
+                        + self.id
+                        + ".wagon_module_names_with_roster_ids"
+                    )
                 except Exception:
                     raise
 
@@ -391,8 +408,14 @@ class Roster(object):
             for unit in wagon_consist.unique_units:
                 if getattr(wagon_consist, "use_colour_randomisation_strategies", False):
                     for unit_variant in unit.unit_variants:
-                        seen_params.append(unit_variant.get_wagon_recolour_strategy_params())
-                        seen_params.append(unit_variant.get_wagon_recolour_strategy_params(context="purchase"))
+                        seen_params.append(
+                            unit_variant.get_wagon_recolour_strategy_params()
+                        )
+                        seen_params.append(
+                            unit_variant.get_wagon_recolour_strategy_params(
+                                context="purchase"
+                            )
+                        )
 
         self.wagon_recolour_colour_sets = list(set(seen_params))
 
@@ -494,14 +517,28 @@ class Roster(object):
                 result.append(buyable_variant)
         return result
 
-    def get_lang_data(self, lang):
+    def get_lang_data(self, lang, context):
         # strings optionally vary per roster, so we have a method to fetch all lang data via the roster
         global_pragma = {}
         lang_strings = {}
+        # we have the option to suppress selected strings in specific contexts, using a dedicated suppression file
+        suppressed_strings = tomllib.load(
+            open(
+                os.path.join(currentdir, "src", "lang", "suppressed_strings.toml"), "rb"
+            )
+        )
+
         with open(os.path.join(currentdir, "src", "lang", lang + ".toml"), "rb") as fp:
             lang_source = tomllib.load(fp)
 
         for node_name, node_value in lang_source.items():
+            # first check if the string is suppressed in this roster, when building grf only (not docs)
+            if context == "grf" and node_name in suppressed_strings:
+                if self.id in suppressed_strings[node_name].get(
+                    "suppressed_rosters", []
+                ):
+                    continue
+
             if node_name == "GLOBAL_PRAGMA":
                 # explicit handling of global pragma items
                 global_pragma["grflangid"] = node_value["grflangid"]

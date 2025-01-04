@@ -25,7 +25,7 @@ command_line_args = utils.get_command_line_args()
 
 
 def render_lang(roster, lang_name, lang_dst):
-    lang_data = roster.get_lang_data(lang_name)
+    lang_data = roster.get_lang_data(lang_name, context="grf")
     lang_template = templates["lang_file.pylng"]
     # flatten the strings for rendering
     lang_strings_formatted_as_lng_lines = []
@@ -85,6 +85,9 @@ def main():
     # we'll try and read any toml file in the lang dir, this requires that no other toml files are present there
     # possibly the installed languages should be handled by the roster when it parses the toml, not sure eh? (potato / potato?)
     for file_name in os.listdir(os.path.join("src", "lang")):
+        # skip the file used to suppress selected strings in selected contexts
+        if file_name == "suppressed_strings.toml":
+            continue
         if file_name.endswith(".toml"):
             lang_name = file_name.split(".")[0]
             render_lang(roster, lang_name, lang_dst)

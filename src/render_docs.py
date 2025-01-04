@@ -251,7 +251,9 @@ def main():
 
     roster = iron_horse.roster_manager.active_roster
     # can't pass roster in to DocHelper at init, multiprocessing fails as it can't pickle the roster object
-    doc_helper = DocHelper(lang_strings=roster.get_lang_data("english")["lang_strings"])
+    doc_helper = DocHelper(
+        lang_strings=roster.get_lang_data("english", context="docs")["lang_strings"]
+    )
 
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
     num_pool_workers = command_line_args.num_pool_workers
@@ -346,7 +348,10 @@ def main():
         doc_helper,
         use_markdown=True,
     )
-    print("render_docs (base files)", utils.string_format_compile_time_deltas(render_docs_start, time()))
+    print(
+        "render_docs (base files)",
+        utils.string_format_compile_time_deltas(render_docs_start, time()),
+    )
 
     # render vehicle details
     # this is slow and _might_ go faster in an MP pool, but eh overhead...
@@ -357,7 +362,10 @@ def main():
         consists=roster.engine_consists_excluding_clones,
         template_name="vehicle_details_engine",
     )
-    print("render_docs_vehicle_details", utils.string_format_compile_time_deltas(render_vehicle_details_start, time()))
+    print(
+        "render_docs_vehicle_details",
+        utils.string_format_compile_time_deltas(render_vehicle_details_start, time()),
+    )
 
     # process images for use in docs
     # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)
@@ -385,7 +393,10 @@ def main():
         )
         pool.close()
         pool.join()
-    print("render_docs_images", utils.string_format_compile_time_deltas(render_docs_images_start, time()))
+    print(
+        "render_docs_images",
+        utils.string_format_compile_time_deltas(render_docs_images_start, time()),
+    )
 
     print(
         "[RENDER DOCS]",
