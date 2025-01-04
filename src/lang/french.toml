@@ -296,17 +296,11 @@ base = "Wagons-tombereaux"
 [STR_WAGON_GROUP_PASSENGER_CARS]
 base = "Voitures"
 
-[STR_WAGON_GROUP_DROP_SIDE_FLAT_CARS]
-base = "Wagons porte-tôles"
-
 [STR_WAGON_GROUP_PRESSURE_TANK_CARS]
 base = "Wagons-citerne pressurisés"
 
 [STR_WAGON_GROUP_PRODUCT_TANK_CARS]
 base = "Wagons-citerne à produits"
-
-[STR_WAGON_GROUP_BOX_CARS_RANDOMISED]
-base = "Fourgons"
 
 [STR_WAGON_GROUP_BULK_CARS_RANDOMISED]
 base = "Wagons de gros"
@@ -314,24 +308,8 @@ base = "Wagons de gros"
 [STR_WAGON_GROUP_CHEMICAL_TANK_CARS_RANDOMISED]
 base = "Wagons-citerne à produits chimiques"
 
-[STR_WAGON_GROUP_COVERED_HOPPER_CARS_RANDOMISED]
-base = "Wagons-trémies couverts"
-
-[STR_WAGON_GROUP_MINERAL_BULK_OPEN_CARS_RANDOMISED]
-base = "Wagons à minerai"
-
-[STR_WAGON_GROUP_FLAT_CARS_RANDOMISED]
-base = "Wagons plats"
-
-[STR_WAGON_GROUP_HOPPER_CARS_RANDOMISED]
-base = "Wagons-trémies"
-
 [STR_WAGON_GROUP_METAL_PRODUCT_CARS_RANDOMISED]
 base = "Wagons porte-bobines"
-
-[STR_WAGON_GROUP_OPEN_CARS_RANDOMISED]
-base = "Wagons-tombereaux"
-moose = "Wagons-tombereaux"
 
 [STR_WAGON_GROUP_PIECE_GOODS_CARS_RANDOMISED]
 base = "Wagons de pièces détachées"
@@ -472,9 +450,6 @@ base = "Wagon-trémie agricole"
 
 [STR_NAME_SUFFIX_FLAT_CAR]
 base = "Wagon plat"
-
-[STR_NAME_SUFFIX_GOODS_BOX_CAR]
-base = "Fourgon de biens"
 
 [STR_NAME_SUFFIX_HEAVY_DUTY_DUMP_CAR]
 base= "Wagon de gros renforcé"
@@ -714,9 +689,6 @@ base = "Très grande vitesse"
 
 [STR_POWER_BY_POWER_SOURCE_TWO_SOURCES]
 base = "{BLACK}Puissance en {STRING}{NBSP}: {GOLD}{POWER} {}{BLACK}Puissance en {STRING}{NBSP}: {GOLD}{POWER}"
-
-[STR_POWER_BY_POWER_SOURCE_THREE_SOURCES]
-base = "{BLACK}Puissance en {STRING}{NBSP}: {GOLD}{POWER} {}{BLACK}Puissance en {STRING}{NBSP}: {GOLD}{POWER} {}{BLACK}Puissance en {STRING}{NBSP}: {GOLD}{POWER}"
 
 [STR_POWER_SOURCE_AC]
 base = "courant alternatif"

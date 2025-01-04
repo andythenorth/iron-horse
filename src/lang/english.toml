@@ -282,9 +282,6 @@ base = "Bolster Wagons"
 [STR_WAGON_GROUP_BOX_CARS]
 base = "Box Vans"
 
-[STR_WAGON_GROUP_BOX_CARS_RANDOMISED]
-base = "Box Vans"
-
 [STR_WAGON_GROUP_BULKHEAD_FLAT_CARS]
 base = "Bulkhead Flat Wagons"
 
@@ -309,20 +306,11 @@ base = "Covered Hoppers"
 [STR_WAGON_GROUP_COVERED_BULK_CARS_RANDOMISED]
 base = "Covered Bulk Cargo Combos"
 
-[STR_WAGON_GROUP_COVERED_HOPPER_CARS_RANDOMISED]
-base = "Covered Hoppers"
-
 [STR_WAGON_GROUP_DOUBLE_DECK_AUTOMOBILE_CARS]
 base = "Car Transporters"
 
-[STR_WAGON_GROUP_DROP_SIDE_FLAT_CARS]
-base = "Drop Side Flat Wagons"
-
 [STR_WAGON_GROUP_EXPRESS_CARS]
 base = "Express Vans"
-
-[STR_WAGON_GROUP_EXPRESS_FOOD_CARS_RANDOMISED]
-base = "Express Food Combos"
 
 [STR_WAGON_GROUP_FARM_PRODUCT_BOX_CARS]
 base = "Farm Product Vans"
@@ -332,9 +320,6 @@ base = "Farm Product Hoppers"
 
 [STR_WAGON_GROUP_FLAT_CARS]
 base = "Flat Wagons"
-
-[STR_WAGON_GROUP_FLAT_CARS_RANDOMISED]
-base = "Flatbed Wagons"
 
 [STR_WAGON_GROUP_FOOD_HOPPER_CARS]
 base = "Food Hoppers"
@@ -355,9 +340,6 @@ base = "High Speed Mail Vans"
 base = "High Speed Coaches"
 
 [STR_WAGON_GROUP_HOPPER_CARS]
-base = "Hoppers"
-
-[STR_WAGON_GROUP_HOPPER_CARS_RANDOMISED]
 base = "Hoppers"
 
 [STR_WAGON_GROUP_INGOT_CARS]
@@ -388,9 +370,6 @@ base = "Metal Cargo Combos"
 [STR_WAGON_GROUP_MINERAL_BULK_OPEN_CARS]
 base = "Mineral Wagons"
 
-[STR_WAGON_GROUP_MINERAL_BULK_OPEN_CARS_RANDOMISED]
-base = "Mineral Wagons"
-
 [STR_WAGON_GROUP_MGR_HOPPER_CARS]
 base = "MGR Hoppers"
 
@@ -406,10 +385,6 @@ base = "More..."
 
 [STR_WAGON_GROUP_OPEN_CARS]
 base = "Open Wagons"
-
-[STR_WAGON_GROUP_OPEN_CARS_RANDOMISED]
-base = "Open Wagons"
-moose = "Gondolas"
 
 [STR_WAGON_GROUP_PANORAMIC_CARS]
 base = "Panoramic Coaches"
@@ -442,9 +417,6 @@ base = "Rock Hoppers"
 base = "Roller Roof Hoppers"
 
 [STR_WAGON_GROUP_SALT_COVERED_HOPPER_CARS]
-base = "Salt Hoppers"
-
-[STR_WAGON_GROUP_SALT_SWING_ROOF_HOPPER_CARS]
 base = "Salt Hoppers"
 
 [STR_WAGON_GROUP_SCRAP_METAL_CARS]
@@ -693,9 +665,6 @@ base = "Express Food Tanker"
 
 [STR_NAME_SUFFIX_FOOD_EXPRESS_TANK_CAR_TYPE_2]
 base = "Express Food Tanker"
-
-[STR_NAME_SUFFIX_GOODS_BOX_CAR]
-base = "Goods Van"
 
 [STR_NAME_SUFFIX_HEAVY_DUTY_DUMP_CAR]
 base = "Heavy Duty Bulk Wagon"
@@ -1028,9 +997,6 @@ base = "Very High Speed"
 
 [STR_POWER_BY_POWER_SOURCE_TWO_SOURCES]
 base = "{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER}"
-
-[STR_POWER_BY_POWER_SOURCE_THREE_SOURCES]
-base = "{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER}"
 
 [STR_POWER_SOURCE_AC]
 base = "Electric (AC)"
