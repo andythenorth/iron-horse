@@ -13,7 +13,7 @@ def main(roster_id, **kwargs):
         subtype="U",
         base_track_type_name="NG",
         speed=35,  # note rare non-standard speed, bins are slow eh?
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=BinCar, chassis="empty_8px")
