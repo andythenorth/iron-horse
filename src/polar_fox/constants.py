@@ -348,7 +348,6 @@ allowed_refits_by_label = {
 disallowed_refits_by_label = {
     "non_dump_bulk": [
         "WOOD",
-        "SGCN",
         "FICR",
         "BDMT",
         "WDPR",
