@@ -94,9 +94,6 @@ base = "Carro telonato"
 [STR_ROLE]
 base = "Ruolo: {GOLD}{STRING}"
 
-[STR_ROLE_FREIGHT]
-base = "Merci"
-
 [STR_ROLE_GENERAL_PURPOSE]
 base = "Universale"
 

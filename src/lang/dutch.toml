@@ -104,9 +104,6 @@ base = "Torpedowagen"
 [STR_ROLE]
 base = "{BLACK}Rol: {GOLD}{STRING}"
 
-[STR_ROLE_FREIGHT]
-base = "Vracht"
-
 [STR_ROLE_GENERAL_PURPOSE]
 base = "Algemeen gebruik"
 

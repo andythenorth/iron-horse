@@ -106,9 +106,6 @@ base = "Torpédový vůz"
 [STR_ROLE]
 base = "{BLACK}Role: {GOLD}{STRING}"
 
-[STR_ROLE_FREIGHT]
-base = "Náklad"
-
 [STR_ROLE_GENERAL_PURPOSE]
 base = "Obecný účel"
 

@@ -134,12 +134,6 @@ base = "Gerbong Piring"
 [STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_1]
 base = "Tanker Produk"
 
-[STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR]
-base = "Gerbong Kereta Rangakaian"
-
-[STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR]
-base = "Gerbong Kereta Rangakaian"
-
 [STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Gerbong Kulkas"
 
@@ -181,9 +175,6 @@ base = "{BLACK}Role: {GOLD}{STRING}"
 
 [STR_ROLE_DRIVING_CAB]
 base = "Kabin Kemudi"
-
-[STR_ROLE_FREIGHT]
-base = "Barang"
 
 [STR_ROLE_GENERAL_PURPOSE]
 base = "Tujuan Umum"

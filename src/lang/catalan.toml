@@ -135,9 +135,6 @@ base = "Cotxe plater"
 [STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_1]
 base = "Cotxe tanc"
 
-[STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR]
-base = "Cotxe de passatge d'alta densidad"
-
 [STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Cotxe refrigerat"
 
@@ -176,9 +173,6 @@ base = "{BLACK}Rol: {GOLD}{STRING}"
 
 [STR_ROLE_DRIVING_CAB]
 base = "Cabina de Conducció"
-
-[STR_ROLE_FREIGHT]
-base = "Càrrega"
 
 [STR_ROLE_GENERAL_PURPOSE]
 base = "Propòsit General"

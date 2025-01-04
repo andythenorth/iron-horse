@@ -532,12 +532,6 @@ base = "Wagon-citerne pressurisé"
 [STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_1]
 base = "Wagon-citerne à produits"
 
-[STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR]
-base = "Remorque autorail léger"
-
-[STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR]
-base = "Remorque autorail"
-
 [STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_RANDOMISED]
 base = "Wagon-trémie à agrégats"
 

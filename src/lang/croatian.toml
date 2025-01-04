@@ -103,9 +103,6 @@ base = "Vagon-torpedo"
 [STR_ROLE]
 base = "{BLACK}Uloga: {GOLD}{STRING}"
 
-[STR_ROLE_FREIGHT]
-base = "Teret"
-
 [STR_ROLE_GENERAL_PURPOSE]
 base = "Opća namjena"
 

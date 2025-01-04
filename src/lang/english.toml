@@ -816,12 +816,6 @@ base = "Product Tanker"
 [STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_2]
 base = "Product Tanker"
 
-[STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR]
-base = "Railbus Trailer"
-
-[STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR]
-base = "Railcar Trailer"
-
 [STR_NAME_SUFFIX_REEFER_CAR_RANDOMISED]
 base = "Refrigerated Van"
 

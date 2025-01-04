@@ -135,9 +135,6 @@ base = "Vagón platero"
 [STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_1]
 base = "Vagón tanque"
 
-[STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR]
-base = "Vagón de pasaje de alta densidad"
-
 [STR_NAME_SUFFIX_REEFER_CAR_TYPE_1]
 base = "Vagón refrigerado"
 
@@ -176,9 +173,6 @@ base = "{BLACK}Rol: {GOLD}{STRING}"
 
 [STR_ROLE_DRIVING_CAB]
 base = "Cabina de Conducción"
-
-[STR_ROLE_FREIGHT]
-base = "Carga"
 
 [STR_ROLE_GENERAL_PURPOSE]
 base = "Propósito General"
