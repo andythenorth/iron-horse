@@ -129,7 +129,7 @@ class RosterManager(list):
             if consist.__class__.__name__ == "PassengerRestaurantCarConsist":
                 result.append(consist.base_numeric_id)
         if len(result) > 255:
-            utils.echo_message(
+            raise BaseException(
                 "action 2 switch is limited to 255 values, restaurant_car_ids exceeds this - needs split across multiple switches"
             )
         return result
@@ -165,7 +165,7 @@ class RosterManager(list):
             if "cargo_sprinter" in getattr(consist, "spritelayer_cargo_layers", []):
                 result.append(consist.id)
         if len(result) > 255:
-            utils.echo_message(
+            raise BaseException(
                 "action 2 switch is limited to 255 values, cargo_sprinter_ids exceeds this - needs split across multiple switches"
             )
         return result
@@ -193,7 +193,7 @@ class RosterManager(list):
                         buyable_variant.lead_unit_variant_matching_buyable_variant.id
                     )
         if len(result) > 255:
-            utils.echo_message(
+            raise BaseException(
                 "action 2 switch is limited to 255 values, pax_car_ids result exceeds this - needs split across multiple switches"
             )
         return result
