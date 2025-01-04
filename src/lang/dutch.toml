@@ -119,9 +119,6 @@ base = "Hoge snelheid"
 [STR_ROLE_METRO]
 base = "Hoge capaciteit stedelijk"
 
-[STR_ROLE_VERY_HIGH_SPEED]
-base = "Zeer hoge snelheid"
-
 [STR_ROLE_LOLZ]
 base = "Lolz"
 

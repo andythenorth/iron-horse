@@ -164,9 +164,6 @@ base = "Dark Red"
 [STR_COLOUR_NAME_CUSTOM_SILVER]
 base = "Silver"
 
-[STR_COLOUR_NAME_CUSTOM_STRAW]
-base = "Straw"
-
 [STR_COLOUR_NAME_CUSTOM_SULPHUR]
 base = "Mustard"
 
@@ -942,9 +939,6 @@ base = "Rotary Tippler"
 [STR_NAME_SUFFIX_TORPEDO_CAR]
 base = "Torpedo Wagon"
 
-[STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR]
-base = "Sliding Wall Van"
-
 [STR_NAME_SUFFIX_VOLATILES_TANK_CAR_TYPE_1]
 base = "Volatiles Tanker"
 
@@ -985,9 +979,6 @@ base = "Very High Capacity Urban"
 
 [STR_ROLE_SUBURBAN]
 base = "General Purpose / High Capacity"
-
-[STR_ROLE_VERY_HIGH_SPEED]
-base = "Very High Speed"
 
 [STR_POWER_BY_POWER_SOURCE_TWO_SOURCES]
 base = "{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER}"

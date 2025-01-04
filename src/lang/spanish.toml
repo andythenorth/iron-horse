@@ -171,9 +171,6 @@ base = "Vagón lona tarp"
 [STR_NAME_SUFFIX_TORPEDO_CAR]
 base = "Vagón torpedo"
 
-[STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR]
-base = "Vagón transportador de piezas"
-
 [STR_ROLE]
 base = "{BLACK}Rol: {GOLD}{STRING}"
 
@@ -197,9 +194,6 @@ base = "Gronk!"
 
 [STR_ROLE_METRO]
 base = "Urbano de Alta Capacidad"
-
-[STR_ROLE_VERY_HIGH_SPEED]
-base = "Muy Alta Velocidad"
 
 [STR_WAGONS_ADD_POWER_CAB]
 base = "Potencia (Distribuída): {GOLD}{POWER} por cada {STRING} unidad adjuntada"

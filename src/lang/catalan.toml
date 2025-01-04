@@ -171,9 +171,6 @@ base = "Cotxe de lona"
 [STR_NAME_SUFFIX_TORPEDO_CAR]
 base = "Cotxe torpedo"
 
-[STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR]
-base = "Cotxe transportador de piezas"
-
 [STR_ROLE]
 base = "{BLACK}Rol: {GOLD}{STRING}"
 
@@ -197,9 +194,6 @@ base = "Gronk!"
 
 [STR_ROLE_METRO]
 base = "Urbà d'Alta Capacitat"
-
-[STR_ROLE_VERY_HIGH_SPEED]
-base = "Molt Alta Velocitat"
 
 [STR_WAGONS_ADD_POWER_CAB]
 base = "Potència (Distribuida): {GOLD}{POWER} per cada {STRING} unitat adjuntada"

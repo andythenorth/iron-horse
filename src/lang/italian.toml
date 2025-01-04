@@ -106,9 +106,6 @@ base = "Merci leggere / Universale"
 [STR_ROLE_METRO]
 base = "Urbano ad alta capacità"
 
-[STR_ROLE_VERY_HIGH_SPEED]
-base = "Alta Velocità"
-
 [STR_SPRITES_COMPLETE]
 base = "{}Sprite Completi: {GOLD}Sì"
 

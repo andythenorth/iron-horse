@@ -118,9 +118,6 @@ base = "Visoka brzina"
 [STR_ROLE_METRO]
 base = "Gradski visokog kapaciteta"
 
-[STR_ROLE_VERY_HIGH_SPEED]
-base = "Vrlo visoka brzina"
-
 [STR_SPRITES_COMPLETE]
 base = "{}Kompletirani spriteovi: {GOLD}Da"
 

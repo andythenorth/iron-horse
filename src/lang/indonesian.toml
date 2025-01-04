@@ -176,9 +176,6 @@ base = "Gerbong Terpal"
 [STR_NAME_SUFFIX_TORPEDO_CAR]
 base = "Gerbong Torpedo"
 
-[STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR]
-base = "Gerbong Suku Cadang"
-
 [STR_ROLE]
 base = "{BLACK}Role: {GOLD}{STRING}"
 
@@ -205,9 +202,6 @@ base = "Urban"
 
 [STR_ROLE_SUBURBAN]
 base = "Sub Urban"
-
-[STR_ROLE_VERY_HIGH_SPEED]
-base = "Kecepatan Sangat Tinggi"
 
 [STR_WAGONS_ADD_POWER_CAB]
 base = "Tenaga (Didistribusikan): {GOLD}{POWER} per {STRING} unit tersambung"

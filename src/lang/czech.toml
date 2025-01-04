@@ -121,9 +121,6 @@ base = "Vysoká rychlost"
 [STR_ROLE_METRO]
 base = "Vysoká městská kapacita"
 
-[STR_ROLE_VERY_HIGH_SPEED]
-base = "Velmi vysoká rychlost"
-
 [STR_ROLE_LOLZ]
 base = "Lolz"
 

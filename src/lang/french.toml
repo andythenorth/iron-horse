@@ -135,9 +135,6 @@ base = "Rouge foncé"
 [STR_COLOUR_NAME_CUSTOM_SILVER]
 base = "Argenté"
 
-[STR_COLOUR_NAME_CUSTOM_STRAW]
-base = "Jaune paille"
-
 [STR_COLOUR_NAME_CUSTOM_SULPHUR]
 base = "Moutarde"
 
@@ -637,10 +634,6 @@ base = "Wagon bâché"
 [STR_NAME_SUFFIX_TORPEDO_CAR]
 base = "Wagon-torpille"
 
-[STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR]
-base = "Wagon à parois coulissantes"
-
-# cargo subtypes - only used for automobile cars (specifically vehicles cargo) as of May 2021
 [STR_CARGO_SUBTYPE_VEHI_0]
 base = "(voitures)"
 
@@ -677,9 +670,6 @@ base = "Transport de masse urbain"
 
 [STR_ROLE_SUBURBAN]
 base = "Universel / Haute capacité"
-
-[STR_ROLE_VERY_HIGH_SPEED]
-base = "Très grande vitesse"
 
 [STR_POWER_BY_POWER_SOURCE_TWO_SOURCES]
 base = "{BLACK}Puissance en {STRING}{NBSP}: {GOLD}{POWER} {}{BLACK}Puissance en {STRING}{NBSP}: {GOLD}{POWER}"
