@@ -7,6 +7,18 @@ def main(roster_id, **kwargs):
     consist = TankCarStandardConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
+        base_numeric_id=26700,
+        gen=1,
+        subtype="A",
+        base_track_type_name="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = TankCarStandardConsistType1(
+        roster_id=roster_id,
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17760,
         gen=3,
         subtype="A",
