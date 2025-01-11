@@ -534,12 +534,12 @@ silver_grey_tank_car_livery_recolour_map = {
     139: 20,
     140: 21,
     141: 22,
-    142: 23,
+    142: 12,
     143: 14,
 }
 silver_grey_tank_car_livery_recolour_map_weathered = {
     136: 16,
-    137: 5,
+    137: 34,
     138: 7,
     139: 9,
     140: 10,
