@@ -22,8 +22,8 @@ wagon_module_name_stems = [
     "express_cars",
     "enclosed_automobile_cars",
     "automobile_cars",
-    # "low_floor_automobile_cars",
-    "double_deck_automobile_cars",  # order before other automobile cars as needed in simplified mode
+    "low_floor_automobile_cars",
+    "double_deck_automobile_cars",
     "reefer_cars_type_1",
     "reefer_cars_type_2",
     "reefer_cars_randomised",

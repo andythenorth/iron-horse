@@ -1,7 +1,3 @@
-[STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR]
-# temp, expected to be used by vehicle carriers
-suppressed_rosters = ["pony", "ibex", "moose"]
-
 [STR_CARGO_SUBTYPE_VEHI_0]
 # temp, expected to be used by vehicle carriers
 suppressed_rosters = ["pony", "ibex", "moose"]

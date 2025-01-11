@@ -318,6 +318,7 @@ wagon_module_names_with_roster_ids = {
     "livestock_cars": "pony",
     "log_cars": "pony",
     "low_floor_intermodal_cars": "pony",
+    "low_floor_automobile_cars": "pony",
     "mail_cars": "pony",
     "manufacturing_parts_piece_goods_cars_randomised": "pony",
     "merchandise_box_cars": "pony",
