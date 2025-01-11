@@ -3,6 +3,27 @@ Changelog
 
 
 ------------
+3.37.0 Release
+------------
+
+
+Not savegame compatible with Iron Horse releases before 3.34.0.
+
+
+*Changes*
+
+- added wagons
+    - medium Low-floor Vehicle Transporters
+    - medium Car Transporters
+
+
+*Fixes*
+
+- gen 1 type 1 Tanker was drawn but not coded
+- wrong sprite for 1 angle of gen 5 large Car Transporter
+
+
+------------
 3.36.1 Release
 ------------
 
