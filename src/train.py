@@ -2721,7 +2721,10 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
 
     @property
     def _consist_ruleset(self):
-        return "4_unit_sets"
+        if self.subtype == "B":
+            return "2_unit_sets"
+        else:
+            return "4_unit_sets"
 
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
