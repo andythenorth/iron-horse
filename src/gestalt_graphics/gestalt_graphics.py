@@ -726,6 +726,12 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         # note to self, remarkably adding multiple empty rows appears to just work here :o
         if self.consist_ruleset == "1_unit_sets":
             result = ["empty"]
+        elif self.consist_ruleset == "2_unit_sets":
+            result = [
+                "empty",
+                "empty",
+                "empty",
+            ]
         elif self.consist_ruleset == "4_unit_sets":
             result = [
                 "empty",

@@ -3,18 +3,18 @@ from train import AutomobileDoubleDeckCarConsist, AutomobileCarAsymmetric
 
 def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------    # intro gen 4
-    """
+
     consist = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
-        base_numeric_id=5790,
+        base_numeric_id=26760,
         gen=4,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarAsymmetric, chassis="2_axle_running_gear_only_24px")
-    """
+    consist.add_unit(type=AutomobileCarAsymmetric, chassis="2_axle_lwb_filled_24px")
+
     consist = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
@@ -27,18 +27,18 @@ def main(roster_id, **kwargs):
     consist.add_unit(
         type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px"
     )
-    """
+
     consist = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
-        base_numeric_id=5810,
+        base_numeric_id=26770,
         gen=5,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarAsymmetric, chassis="2_axle_running_gear_only_24px")
-    """
+    consist.add_unit(type=AutomobileCarAsymmetric, chassis="2_axle_lwb_filled_24px")
+
     consist = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
