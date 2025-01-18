@@ -10,6 +10,7 @@ from itertools import repeat
 from time import time
 from PIL import Image
 import markdown
+import json
 
 import iron_horse
 import utils
@@ -240,6 +241,49 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
     source_vehicle_image.close()
 
 
+def export_roster_to_json(roster, output_dir="docs"):
+    """
+    Exports a roster to JSON for documentation and data interchange.
+
+    Args:
+        roster (Roster): The roster object containing engine and wagon consists.
+        output_dir (str): Directory to save the JSON file.
+    """
+    data = {
+        "name": roster.grf_name,
+        "engines": [],
+        "wagons": [],
+    }
+
+    # Extract engine properties
+    for engine in roster.engine_consists:
+        engine_data = {
+            "id": getattr(engine, "id", "N/A"),
+            "name": getattr(engine, "id", "Unnamed Engine"),  # Using 'id' as a placeholder
+            "power": getattr(engine, "power", 0),
+            "max_speed": getattr(engine, "speed", 0),
+        }
+        data["engines"].append(engine_data)
+
+    # Extract wagon properties
+    for wagon in roster.wagon_consists:
+        wagon_data = {
+            "id": getattr(wagon, "id", "N/A"),
+            "name": getattr(wagon, "id", "Unnamed Wagon"),
+            "cargo_types": getattr(wagon, "cargo_types", []),  # Empty list if not available
+        }
+        data["wagons"].append(wagon_data)
+
+    # Ensure output directory exists
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Write to JSON file
+    file_path = os.path.join(output_dir, f"{roster.grf_name}.json")
+    with open(file_path, "w", encoding="utf-8") as json_file:
+        json.dump(data, json_file, indent=4)
+    print(f"Roster exported to {file_path}")
+
+
 def main():
     if command_line_args.suppress_docs:
         print("[SKIPPING DOCS] render_docs.py (suppress_docs makefile flag set)")
@@ -322,6 +366,7 @@ def main():
     markdown_docs = ["changelog"]
 
     render_docs_start = time()
+    export_roster_to_json(roster)
     render_docs(
         html_docs, "html", html_docs_output_path, iron_horse, consists, doc_helper
     )
@@ -397,6 +442,8 @@ def main():
         "render_docs_images",
         utils.string_format_compile_time_deltas(render_docs_images_start, time()),
     )
+
+
 
     print(
         "[RENDER DOCS]",
