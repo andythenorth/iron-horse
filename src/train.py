@@ -373,6 +373,15 @@ class Consist(object):
         result = "string(" + name_parts[0] + ")"
         return result
 
+    def get_badges(self, unit_variant):
+        result = ["cabbage/foobar", "power/steam"]
+        if getattr(self, "report_as_pax_car_to_neighbouring_vehicle_in_rulesets", False):
+            result.append("ruleset_flags/report_as_pax_car")
+        return result
+
+    def get_badges_for_nml(self, unit_variant):
+        return "[" + ",".join(f'"{badge}"' for badge in self.get_badges(unit_variant)) + "]"
+
     def engine_varies_power_by_power_source(self, vehicle):
         # note that we use self.cab_id to eliminate trailer cars from this (which use power_by_power_source to manage pantographs), this is JFDI and may need refactored in future
         if (

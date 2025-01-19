@@ -43,7 +43,7 @@
             <!--! name static prop used for buy menu search only -->
             name:                           ${consist.get_name_as_property(unit_variant=unit_variant)};
             climates_available:             NO_CLIMATE; // nml constant
-            badges:                         ["power/steam", "cabbage/foobar"];
+            badges:                         ${consist.get_badges_for_nml(unit_variant)};
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
                 <!--! some properties should not be set for trailing parts of articulated consists -->
                 engine_class:                   ${vehicle.engine_class};

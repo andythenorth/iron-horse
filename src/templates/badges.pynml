@@ -3,6 +3,7 @@ badgetable {
     "power/diesel",
     "power/electric",
     "cabbage/foobar",
+    "ruleset_flags/report_as_pax_car",
 }
 
 item (FEAT_BADGES, power) {
@@ -43,5 +44,11 @@ item (FEAT_BADGES, test_foobar) {
     property {
         label: "cabbage/foobar";
         name: string(STR_TEST_FOOBAR);
+    }
+}
+
+item (FEAT_BADGES, test_foobar) {
+    property {
+        label: "ruleset_flags/report_as_pax_car";
     }
 }
