@@ -119,6 +119,8 @@ class Consist(object):
         # some wagons will provide power if specific engine IDs are in the consist
         self.wagons_add_power = False
         self.buy_menu_additional_text_hint_wagons_add_power = False
+        # structure to hold badges, add badges in subclass as needed
+        self._badges = []
         # wagons can be candidates for the magic randomised wagons
         # this is on Consist not CarConsist as we need to check it when determining order for all consists
         self.randomised_candidate_groups = []
@@ -374,9 +376,8 @@ class Consist(object):
         return result
 
     def get_badges(self, unit_variant):
-        result = ["cabbage/foobar", "power/steam"]
-        if getattr(self, "report_as_pax_car_to_neighbouring_vehicle_in_rulesets", False):
-            result.append("ruleset_flags/report_as_pax_car")
+        result = ["cabbage/foobar", "power_source/steam", "power_source/diesel"]
+        result.extend(list(set(self._badges)))
         return result
 
     def get_badges_for_nml(self, unit_variant):
@@ -6212,11 +6213,8 @@ class LogCarConsist(CarConsist):
 
 class MailCarConsistBase(CarConsist):
     """
-    Common base class for passenger cars.
+    Common base class for mail cars.
     """
-
-    # very specific flag used by graphics chain to detect other pax cars (could have used prop 25 userbits, but eh, screw that :)
-    report_as_pax_car_to_neighbouring_vehicle_in_rulesets = True
 
     def __init__(self, **kwargs):
         # don't set base_id here, let subclasses do it
@@ -6235,6 +6233,7 @@ class MailCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.use_colour_randomisation_strategies = False
+        self._badges.append("ruleset_flags/report_as_pax_car")
         # roof configuration
         if self.gen in [1]:
             self.roof_type = "pax_mail_clerestory"
@@ -7216,9 +7215,6 @@ class PassengerCarConsistBase(CarConsist):
     Common base class for passenger cars.
     """
 
-    # very specific flag used by graphics chain to detect other pax cars (could have used prop 25 userbits, but eh, screw that :)
-    report_as_pax_car_to_neighbouring_vehicle_in_rulesets = True
-
     def __init__(self, **kwargs):
         # don't set base_id here, let subclasses do it
         super().__init__(**kwargs)
@@ -7233,6 +7229,7 @@ class PassengerCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.use_colour_randomisation_strategies = False
+        self._badges.append("ruleset_flags/report_as_pax_car")
         # roof configuration
         if self.gen in [1]:
             self.roof_type = "pax_mail_clerestory"

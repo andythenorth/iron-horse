@@ -7,6 +7,7 @@ import sys
 
 sys.path.append(os.path.join("src"))  # add to the module search path
 
+from badge import Badge
 import global_constants
 import utils
 
@@ -40,6 +41,17 @@ roster_module_names = [
     "moose",
     "pony",
 ]
+
+
+class BadgeManager(list):
+    """
+    It's convenient to have a structure for working with badges.
+    This is a class to manage that, intended for use as a singleton, which can be passed to templates etc.
+    Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
+    """
+
+    def add_badge(self, label, **kwargs):
+        self.append(Badge(label, **kwargs))
 
 
 class RailTypeManager(list):
@@ -170,42 +182,33 @@ class RosterManager(list):
             )
         return result
 
-    @property
-    def pax_car_ids(self):
-        # for pax cars with consist-specific liveries
-        # will check for other neighbouring pax cars before showing brake car
-        result = []
-        # if we wanted cross-grf pax cars then this would need extending beyond active_roster; but we don't as of April 2023, so eh
-        for consist in self.active_roster.wagon_consists:
-            if getattr(
-                consist,
-                "report_as_pax_car_to_neighbouring_vehicle_in_rulesets",
-                False,
-            ):
-                for buyable_variant in consist.buyable_variants:
-                    result.append(
-                        buyable_variant.lead_unit_variant_matching_buyable_variant.id
-                    )
-        for consist in self.active_roster.engine_consists:
-            if getattr(consist, "treat_as_pax_car_for_var_41", False):
-                for buyable_variant in consist.buyable_variants:
-                    result.append(
-                        buyable_variant.lead_unit_variant_matching_buyable_variant.id
-                    )
-        if len(result) > 255:
-            raise BaseException(
-                "action 2 switch is limited to 255 values, pax_car_ids result exceeds this - needs split across multiple switches"
-            )
-        return result
-
 
 def main():
     # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
     os.makedirs(generated_files_path, exist_ok=True)
 
     # globals *within* this module so they can be accessed externally by other modules using iron_horse.foo
-    globals()['railtype_manager'] = RailTypeManager()
-    globals()['roster_manager'] = RosterManager()
+    globals()["badge_manager"] = BadgeManager()
+    globals()["railtype_manager"] = RailTypeManager()
+    globals()["roster_manager"] = RosterManager()
+
+    for (
+        badge_class_label,
+        badge_class_properties,
+    ) in global_constants.static_badges.items():
+        # first create a badge for the class
+        badge_manager.add_badge(
+            label=badge_class_label,
+            name=badge_class_properties.get("name", None),
+        )
+        # then create the badges for the class
+        for sublabel, sublabel_properties in badge_class_properties.get(
+            "sublabels", {}
+        ).items():
+            badge_manager.add_badge(
+                label=badge_class_label + "/" + sublabel,
+                name=sublabel_properties.get("name", None),
+            )
 
     # railtypes
     for railtype_module_name in railtype_module_names:

@@ -1,54 +1,16 @@
 badgetable {
-    "power/steam",
-    "power/diesel",
-    "power/electric",
-    "cabbage/foobar",
-    "ruleset_flags/report_as_pax_car",
+<tal:badgetable repeat="badge badge_manager">
+    "${badge.label}",
+</tal:badgetable>
 }
 
-item (FEAT_BADGES, power) {
-    property {
-        label: "power";
-        name: string(STR_POWER_SOURCE);
+<tal:badges repeat="badge badge_manager">
+    item (FEAT_BADGES, ${badge.label.replace("/", "_")}) {
+        property {
+            label: "${badge.label}";
+            <tal:name condition="badge.name is not None">
+                name: string(${badge.name});
+            </tal:name>
+        }
     }
-}
-
-item (FEAT_BADGES, steam) {
-    property {
-        label: "power/steam";
-        name: string(STR_POWER_SOURCE_STEAM);
-    }
-}
-
-item (FEAT_BADGES, diesel) {
-    property {
-        label: "power/diesel";
-        name: string(STR_POWER_SOURCE_DIESEL);
-    }
-}
-
-item (FEAT_BADGES, electric) {
-    property {
-        label: "power/electric";
-        name: string(STR_POWER_SOURCE_AC);
-    }
-}
-
-item (FEAT_BADGES, test_cabbage) {
-    property {
-        label: "cabbage";
-        name: string(STR_TEST_CABBAGE);
-    }
-}
-item (FEAT_BADGES, test_foobar) {
-    property {
-        label: "cabbage/foobar";
-        name: string(STR_TEST_FOOBAR);
-    }
-}
-
-item (FEAT_BADGES, test_foobar) {
-    property {
-        label: "ruleset_flags/report_as_pax_car";
-    }
-}
+</tal:badges>

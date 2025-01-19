@@ -851,7 +851,10 @@ freight_wagon_liveries = {
 # for wagons with mixed livery, the permitted liveries for that specific mix type
 wagon_livery_mixes = {
     # company colour + 1
-    "random_from_consist_liveries_complement_company_colour": ["complement_company_colour", "company_colour"],
+    "random_from_consist_liveries_complement_company_colour": [
+        "complement_company_colour",
+        "company_colour",
+    ],
     # most everything (but explicit add, so not *everything*)
     "random_from_consist_liveries_variety": [
         "company_colour",
@@ -880,19 +883,50 @@ wagon_livery_mixes = {
     # rust / ruby
     "random_from_consist_liveries_ruby_bauxite": ["freight_ruby", "freight_bauxite"],
     # black
-    "random_from_consist_liveries_oil_black_nightshade": ["freight_oil_black", "freight_nightshade"],
+    "random_from_consist_liveries_oil_black_nightshade": [
+        "freight_oil_black",
+        "freight_nightshade",
+    ],
     # ochre / sand
     "random_from_consist_liveries_ochre_sand": ["freight_ochre", "freight_sand"],
     # moss /
-    "random_from_consist_liveries_gremlin_green_silver": ["freight_gremlin_green", "freight_silver"],
+    "random_from_consist_liveries_gremlin_green_silver": [
+        "freight_gremlin_green",
+        "freight_silver",
+    ],
     # yellow / faded
     "random_from_consist_liveries_sulphur_straw": ["freight_sulphur", "freight_straw"],
     # teal / dark grey
     "random_from_consist_liveries_teal_pewter": ["freight_teal", "freight_pewter"],
     # teal / near-black
-    "random_from_consist_liveries_teal_nightshade": ["freight_teal", "freight_nightshade"],
+    "random_from_consist_liveries_teal_nightshade": [
+        "freight_teal",
+        "freight_nightshade",
+    ],
     # grey / dark grey
     "random_from_consist_liveries_grey_pewter": ["freight_grey", "freight_pewter"],
+}
+
+# badges can be predefined here, or created dynamically for specific consist types etc as needed
+# !! the format of this probably needs adjusting, classes might also need optional name property etc
+static_badges = {
+    "cabbage": {
+        "name": "STR_TEST_CABBAGE",
+        "sublabels": {
+            "foobar": {"name": "STR_TEST_FOOBAR"},
+        },
+    },
+    "power_source": {
+        "name": "STR_POWER_SOURCE",
+        "sublabels": {
+            "steam": {"name": "STR_POWER_SOURCE_STEAM"},
+            "diesel": {"name": "STR_POWER_SOURCE_DIESEL"},
+            "electric": {"name": "STR_POWER_SOURCE_AC"},
+        },
+    },
+    "ruleset_flags": {
+        "sublabels": {"report_as_pax_car": {}},
+    },
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
