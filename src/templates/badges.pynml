@@ -1,0 +1,47 @@
+badgetable {
+    "power/steam",
+    "power/diesel",
+    "power/electric",
+    "cabbage/foobar",
+}
+
+item (FEAT_BADGES, power) {
+    property {
+        label: "power";
+        name: string(STR_POWER_SOURCE);
+    }
+}
+
+item (FEAT_BADGES, steam) {
+    property {
+        label: "power/steam";
+        name: string(STR_POWER_SOURCE_STEAM);
+    }
+}
+
+item (FEAT_BADGES, diesel) {
+    property {
+        label: "power/diesel";
+        name: string(STR_POWER_SOURCE_DIESEL);
+    }
+}
+
+item (FEAT_BADGES, electric) {
+    property {
+        label: "power/electric";
+        name: string(STR_POWER_SOURCE_AC);
+    }
+}
+
+item (FEAT_BADGES, test_cabbage) {
+    property {
+        label: "cabbage";
+        name: string(STR_TEST_CABBAGE);
+    }
+}
+item (FEAT_BADGES, test_foobar) {
+    property {
+        label: "cabbage/foobar";
+        name: string(STR_TEST_FOOBAR);
+    }
+}

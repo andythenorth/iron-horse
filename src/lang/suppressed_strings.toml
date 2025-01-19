@@ -24,9 +24,6 @@ suppressed_rosters = ["pony", "moose"]
 [STR_POWER_SOURCE_METRO]
 suppressed_rosters = ["pony", "ibex", "moose"]
 
-[STR_POWER_SOURCE_STEAM]
-suppressed_rosters = ["pony", "ibex", "moose"]
-
 [STR_NAME_SUFFIX_ELECTRIC_DC]
 suppressed_rosters = ["pony", "moose"]
 

@@ -986,6 +986,9 @@ base = "General Purpose / High Capacity"
 [STR_POWER_BY_POWER_SOURCE_TWO_SOURCES]
 base = "{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER}"
 
+[STR_POWER_SOURCE]
+base = "Power Source"
+
 [STR_POWER_SOURCE_AC]
 base = "Electric (AC)"
 

@@ -87,6 +87,7 @@ def main():
         "cargo_table",
         "signals",
         "railtypes",
+        "badges",
         "spriteset_templates",
         "spritelayer_cargo_empty_ss",
         "tail_lights",
