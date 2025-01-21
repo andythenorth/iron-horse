@@ -392,7 +392,11 @@ class Consist(object):
         return result
 
     def get_badges_for_nml(self, unit_variant):
-        return "[" + ",".join(f'"{badge}"' for badge in self.get_badges(unit_variant)) + "]"
+        return (
+            "["
+            + ",".join(f'"{badge}"' for badge in self.get_badges(unit_variant))
+            + "]"
+        )
 
     def engine_varies_power_by_power_source(self, vehicle):
         # note that we use self.cab_id to eliminate trailer cars from this (which use power_by_power_source to manage pantographs), this is JFDI and may need refactored in future
@@ -3899,9 +3903,7 @@ class CaneBinCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         # Graphics configuration
-        weathered_variants = {
-            "unweathered": graphics_constants.body_recolour_CC1
-        }
+        weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
         # there will unused vehicles sprites for cargo states, but it's ok in this limited case
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
@@ -7591,9 +7593,7 @@ class PeatCarConsist(CarConsist):
             global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
         )
         # Graphics configuration
-        weathered_variants = {
-            "unweathered": graphics_constants.body_recolour_CC1
-        }
+        weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
         # there will unused vehicles sprites for cargo states, but it's ok in this limited case
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
