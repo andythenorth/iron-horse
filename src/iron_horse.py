@@ -51,6 +51,12 @@ class BadgeManager(list):
     """
 
     def add_badge(self, label, **kwargs):
+        # don't add duplicate badges, it will cause unexpected behaviour
+        for badge in self:
+            if badge.label == label:
+                # don't bother with any error handling as of Jan 2025, add some later if needed
+                return
+        # if not a duplicate, add the badge
         self.append(Badge(label, **kwargs))
 
 
@@ -192,24 +198,6 @@ def main():
     globals()["railtype_manager"] = RailTypeManager()
     globals()["roster_manager"] = RosterManager()
 
-    for (
-        badge_class_label,
-        badge_class_properties,
-    ) in global_constants.static_badges.items():
-        # first create a badge for the class
-        badge_manager.add_badge(
-            label=badge_class_label,
-            name=badge_class_properties.get("name", None),
-        )
-        # then create the badges for the class
-        for sublabel, sublabel_properties in badge_class_properties.get(
-            "sublabels", {}
-        ).items():
-            badge_manager.add_badge(
-                label=badge_class_label + "/" + sublabel,
-                name=sublabel_properties.get("name", None),
-            )
-
     # railtypes
     for railtype_module_name in railtype_module_names:
         railtype_module = importlib.import_module(
@@ -233,3 +221,31 @@ def main():
 
     roster_manager.validate_vehicles()
     roster_manager.add_buyable_variant_groups()
+
+    # badges, done after consists as badges can be either static (global), or dynamically created (for specific consists)
+
+    for (
+        badge_class_label,
+        badge_class_properties,
+    ) in global_constants.static_badges.items():
+        # first create a badge for the class
+        badge_manager.add_badge(
+            label=badge_class_label,
+            name=badge_class_properties.get("name", None),
+        )
+        # then create the badges for the class
+        for sublabel, sublabel_properties in badge_class_properties.get(
+            "sublabels", {}
+        ).items():
+            badge_manager.add_badge(
+                label=badge_class_label + "/" + sublabel,
+                name=sublabel_properties.get("name", None),
+            )
+
+    for roster in roster_manager:
+        for consist in roster.consists_in_buy_menu_order:
+            if consist.vehicle_family_badge is not None:
+                badge_manager.add_badge(
+                    label=consist.vehicle_family_badge,
+                )
+

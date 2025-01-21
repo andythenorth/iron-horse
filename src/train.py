@@ -375,9 +375,20 @@ class Consist(object):
         result = "string(" + name_parts[0] + ")"
         return result
 
+    @property
+    def vehicle_family_badge(self):
+        # stub only, over-ride in subclasses as appropriate
+        return None
+
     def get_badges(self, unit_variant):
+        # badges can be set on a vehicle for diverse reasons, including
+        # - badges explicitly added to _badges attr
+        # - badges arising implicitly from consist type or properties
         result = ["cabbage/foobar", "power_source/steam", "power_source/diesel"]
         result.extend(list(set(self._badges)))
+        # badge for handling vehicle_family
+        if self.vehicle_family_badge is not None:
+            result.append(self.vehicle_family_badge)
         return result
 
     def get_badges_for_nml(self, unit_variant):
@@ -1708,6 +1719,14 @@ class MailEngineRailcarConsist(MailEngineConsist):
         )
 
     @property
+    def vehicle_family_badge(self):
+        if self._buyable_variant_group_id is not None:
+            family_name = self._buyable_variant_group_id
+        else:
+            family_name = self.id
+        return "vehicle_family/" + family_name
+
+    @property
     def equivalent_ids_alt_var_41(self):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
         # this is intended for pax railcars, but mail railcars share templating in some cases, so stub in this result to prevent unwanted behaviour
@@ -1755,6 +1774,14 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
             pantograph_type=self.pantograph_type,
             jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
         )
+
+    @property
+    def vehicle_family_badge(self):
+        if self._buyable_variant_group_id is not None:
+            family_name = self._buyable_variant_group_id
+        else:
+            family_name = self.id
+        return "vehicle_family/" + family_name
 
     @property
     def equivalent_ids_alt_var_41(self):
@@ -1899,6 +1926,14 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         )
 
     @property
+    def vehicle_family_badge(self):
+        if self._buyable_variant_group_id is not None:
+            family_name = self._buyable_variant_group_id
+        else:
+            family_name = self.id
+        return "vehicle_family/" + family_name
+
+    @property
     def equivalent_ids_alt_var_41(self):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
         # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
@@ -2001,6 +2036,14 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         )
 
     @property
+    def vehicle_family_badge(self):
+        if self._buyable_variant_group_id is not None:
+            family_name = self._buyable_variant_group_id
+        else:
+            family_name = self.id
+        return "vehicle_family/" + family_name
+
+    @property
     def equivalent_ids_alt_var_41(self):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
         # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
@@ -2067,6 +2110,10 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
             liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
+
+    @property
+    def vehicle_family_badge(self):
+        return "vehicle_family/" + self.id
 
     @property
     def equivalent_ids_alt_var_41(self):
@@ -2242,6 +2289,11 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
     @property
     def buy_menu_distributed_power_hp_value(self):
         return self.cab_consist.power
+
+    @property
+    def vehicle_family_badge(self):
+        return "vehicle_family/" + self._buyable_variant_group_id
+
 
     @property
     def equivalent_ids_alt_var_41(self):
@@ -6233,7 +6285,7 @@ class MailCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.use_colour_randomisation_strategies = False
-        self._badges.append("ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # roof configuration
         if self.gen in [1]:
             self.roof_type = "pax_mail_clerestory"
@@ -6284,6 +6336,10 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
+
+    @property
+    def vehicle_family_badge(self):
+        return "vehicle_family/" + self._buyable_variant_group_id
 
     def get_name_parts(self, context, unit_variant):
         # special name handling to use the cab name
@@ -7229,7 +7285,7 @@ class PassengerCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.use_colour_randomisation_strategies = False
-        self._badges.append("ruleset_flags/report_as_pax_car")
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # roof configuration
         if self.gen in [1]:
             self.roof_type = "pax_mail_clerestory"
@@ -7287,6 +7343,10 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
             self._str_name_suffix,
         ]
         return result
+
+    @property
+    def vehicle_family_badge(self):
+        return "vehicle_family/" + self._buyable_variant_group_id
 
 
 class PanoramicCarConsist(PassengerCarConsistBase):

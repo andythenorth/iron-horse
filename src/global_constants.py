@@ -924,7 +924,7 @@ static_badges = {
             "electric": {"name": "STR_POWER_SOURCE_AC"},
         },
     },
-    "ruleset_flags": {
+    "ih_ruleset_flags": {
         "sublabels": {"report_as_pax_car": {}},
     },
 }
