@@ -501,11 +501,6 @@ class Consist(object):
             return len(self.roster.intro_years[self.base_track_type_name])
 
     @property
-    def equivalent_ids_alt_var_41(self):
-        # only implemented in subclasses that require it - easiest thing when writing it, change if needed
-        return None
-
-    @property
     def replacement_consist(self):
         # option exists to force a replacement consist, this is used to merge tech tree branches
         if self._replacement_consist_id is not None:
@@ -1726,18 +1721,6 @@ class MailEngineRailcarConsist(MailEngineConsist):
             family_name = self.id
         return "vehicle_family/" + family_name
 
-    @property
-    def equivalent_ids_alt_var_41(self):
-        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
-        # this is intended for pax railcars, but mail railcars share templating in some cases, so stub in this result to prevent unwanted behaviour
-        # mail railcars generally do not combine with anything other than their own ID, this is just a compatibility stub
-        result = []
-        result.extend(self.lead_unit_variants_numeric_ids)
-        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
-        for i in range(len(result), 16):
-            result.append(-1)
-        return result
-
 
 class MailEngineExpressRailcarConsist(MailEngineConsist):
     """
@@ -1782,33 +1765,6 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
         else:
             family_name = self.id
         return "vehicle_family/" + family_name
-
-    @property
-    def equivalent_ids_alt_var_41(self):
-        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
-        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
-        # this redefinition specific to express pax railcars and will be fragile if railcars or trailers are changed/extended
-        # also relies on same ruleset being used for all of express_railcar_passenger_trailer_car trailers
-        result = []
-        # this will catch self also
-        for consist in self.roster.engine_consists:
-            if (
-                (consist.gen == self.gen)
-                and (consist.base_track_type_name == self.base_track_type_name)
-                and (consist.role in ["express_mail_railcar"])
-            ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id.get(
-            "express_railcar_mail_trailer_car", []
-        ):
-            if (consist.gen == self.gen) and (
-                consist.base_track_type_name == self.base_track_type_name
-            ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
-        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
-        for i in range(len(result), 16):
-            result.append(-1)
-        return result
 
 
 class PassengerEngineConsist(EngineConsist):
@@ -1933,33 +1889,6 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
             family_name = self.id
         return "vehicle_family/" + family_name
 
-    @property
-    def equivalent_ids_alt_var_41(self):
-        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
-        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
-        # this redefinition specific to express pax railcars and will be fragile if railcars or trailers are changed/extended
-        # also relies on same ruleset being used for all of express_railcar_passenger_trailer_car trailers
-        result = []
-        # this will catch self also
-        for consist in self.roster.engine_consists:
-            if (
-                (consist.gen == self.gen)
-                and (consist.base_track_type_name == self.base_track_type_name)
-                and (consist.role in ["express_pax_railcar"])
-            ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id.get(
-            "express_railcar_passenger_trailer_car", []
-        ):
-            if (consist.gen == self.gen) and (
-                consist.base_track_type_name == self.base_track_type_name
-            ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
-        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
-        for i in range(len(result), 16):
-            result.append(-1)
-        return result
-
 
 class PassengerEngineMetroConsist(PassengerEngineConsist):
     """
@@ -2043,34 +1972,6 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
             family_name = self.id
         return "vehicle_family/" + family_name
 
-    @property
-    def equivalent_ids_alt_var_41(self):
-        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
-        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
-        # this redefinition specific to railbus and will be fragile if railbus or trailers are changed/extended
-        result = []
-        # this will catch self also
-        for consist in self.roster.engine_consists:
-            if (
-                (consist.gen == self.gen)
-                and (consist.base_track_type_name == self.base_track_type_name)
-                and (consist.role in ["pax_railbus"])
-            ):
-                result.extend(consist.unique_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id.get(
-            "railbus_passenger_trailer_car", []
-        ):
-            if (consist.gen == self.gen) and (
-                consist.base_track_type_name == self.base_track_type_name
-            ):
-                result.extend(
-                    consist.unique_numeric_ids
-                )  # won't handle articulated consists correctly
-        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
-        for i in range(len(result), 16):
-            result.append(-1)
-        return result
-
 
 class PassengerEngineRailcarConsist(PassengerEngineConsist):
     """
@@ -2114,35 +2015,6 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
     @property
     def vehicle_family_badge(self):
         return "vehicle_family/" + self.id
-
-    @property
-    def equivalent_ids_alt_var_41(self):
-        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
-        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
-        # this redefinition specific to pax railcars and will be fragile if railcars or trailers are changed/extended
-        # also relies on same ruleset being used for all of pax_railcar and pax railcar trailers
-        result = []
-        # assume diesel and electric railcars are combinable, this isn't a specific design intent, but stops annoying bugs when both are combined in one consist with trailers
-        # this will create edge cases if diesel and electric MUs have different liveries set, can't have everything perfect eh?
-        # this will catch self also
-        for consist in self.roster.engine_consists:
-            if (
-                (consist.gen == self.gen)
-                and (consist.base_track_type_name == self.base_track_type_name)
-                and (consist.role in ["pax_railcar"])
-            ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id.get(
-            "railcar_passenger_trailer_car", []
-        ):
-            if (consist.gen == self.gen) and (
-                consist.base_track_type_name == self.base_track_type_name
-            ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
-        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
-        for i in range(len(result), 16):
-            result.append(-1)
-        return result
 
 
 class SnowploughEngineConsist(EngineConsist):
@@ -2293,21 +2165,6 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
     @property
     def vehicle_family_badge(self):
         return "vehicle_family/" + self._buyable_variant_group_id
-
-
-    @property
-    def equivalent_ids_alt_var_41(self):
-        # find other mail or pax middle cars for this TGV cab
-        result = []
-        # this will catch self also
-        # note that TGV middle cars are in engine_consists, not wagon_consists, as powered vehicles
-        for consist in self.roster.engine_consists:
-            if getattr(consist, "cab_id", None) == self.cab_id:
-                result.extend(consist.unique_numeric_ids)
-        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
-        for i in range(len(result), 16):
-            result.append(-1)
-        return result
 
 
 class TGVMiddleMailEngineConsist(TGVMiddleEngineConsistMixin, MailEngineConsist):
@@ -6427,26 +6284,6 @@ class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
         )
 
     @property
-    def equivalent_ids_alt_var_41(self):
-        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
-        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
-        # this redefinition specific to pax railcar trailers and will be fragile if railcars or trailers are changed/extended
-        # also relies on same ruleset being used for all of express_railcar_mail_trailer_car trailers
-        result = []
-        result.extend(self.lead_unit_variants_numeric_ids)
-        for consist in self.roster.engine_consists:
-            if (
-                (consist.gen == self.gen)
-                and (consist.base_track_type_name == self.base_track_type_name)
-                and (consist.role in ["express_mail_railcar"])
-            ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
-        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
-        for i in range(len(result), 16):
-            result.append(-1)
-        return result
-
-    @property
     def is_general_purpose_true_wagon(self):
         return False
 
@@ -7510,26 +7347,6 @@ class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistB
         )
 
     @property
-    def equivalent_ids_alt_var_41(self):
-        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
-        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
-        # this redefinition specific to pax railcar trailers and will be fragile if railcars or trailers are changed/extended
-        # also relies on same ruleset being used for all of pax_railcar and pax railcar trailers
-        result = []
-        result.extend(self.lead_unit_variants_numeric_ids)
-        for consist in self.roster.engine_consists:
-            if (
-                (consist.gen == self.gen)
-                and (consist.base_track_type_name == self.base_track_type_name)
-                and (consist.role in ["express_pax_railcar"])
-            ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
-        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
-        for i in range(len(result), 16):
-            result.append(-1)
-        return result
-
-    @property
     def is_general_purpose_true_wagon(self):
         return False
 
@@ -7637,32 +7454,6 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         )
 
     @property
-    def equivalent_ids_alt_var_41(self):
-        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
-        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
-        # this redefinition specific to railbus and will be fragile if railbus or trailers are changed/extended
-        result = []
-        # this will catch self also
-        for consist in self.roster.engine_consists:
-            if (
-                (consist.gen == self.gen)
-                and (consist.base_track_type_name == self.base_track_type_name)
-                and (consist.role in ["pax_railbus"])
-            ):
-                result.extend(consist.unique_numeric_ids)
-        for consist in self.roster.wagon_consists_by_base_id.get(
-            "railbus_passenger_trailer_car", []
-        ):
-            if (consist.gen == self.gen) and (
-                consist.base_track_type_name == self.base_track_type_name
-            ):
-                result.extend(consist.unique_numeric_ids)
-        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
-        for i in range(len(result), 16):
-            result.append(-1)
-        return result
-
-    @property
     def is_general_purpose_true_wagon(self):
         return False
 
@@ -7709,26 +7500,6 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
             liveries=self.cab_consist.gestalt_graphics.liveries,
             pantograph_type=self.pantograph_type,
         )
-
-    @property
-    def equivalent_ids_alt_var_41(self):
-        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
-        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
-        # this redefinition specific to pax railcar trailers and will be fragile if railcars or trailers are changed/extended
-        # also relies on same ruleset being used for all of pax_railcar and pax railcar trailers
-        result = []
-        result.extend(self.lead_unit_variants_numeric_ids)
-        for consist in self.roster.engine_consists:
-            if (
-                (consist.gen == self.gen)
-                and (consist.base_track_type_name == self.base_track_type_name)
-                and (consist.role in ["pax_railcar"])
-            ):
-                result.extend(consist.lead_unit_variants_numeric_ids)
-        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
-        for i in range(len(result), 16):
-            result.append(-1)
-        return result
 
     @property
     def is_general_purpose_true_wagon(self):

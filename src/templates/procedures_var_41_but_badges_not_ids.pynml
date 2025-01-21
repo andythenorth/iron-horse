@@ -1,9 +1,9 @@
 <!--!
-    Var 41 only checks consecutive chains for a single ID
-    This provides an alternative checking consecutive chains using up to 16 IDs
+    Var 41 checks consecutive chains for a single ID
+    This provides an alternative checking consecutive chains using a single badge
     This checks var 61 many many times in graphics chains, and var 61 is not cached, so this _may_ introduce performance problems
     To use:
-        * switch_initialise_alt_var_41() at start of graphics chain
+        * switch_initialise_var_41_but_badges_not_ids() at start of graphics chain
         * read appropriate temp registers to use the alt var
         * the available values are similar to var 41: position from start of chain, position from end of chain, num vehicles in chain
         * LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids})
@@ -11,27 +11,16 @@
         * LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids})
 -->
 
-
-<!--!
-      Utility switches to check if vehicle ID is in list
-      Up to 16 items in list - arbitrary limit, should be enough for most cases)
-      There's no obvious alternative to having one switch per range of IDs to check
-      Be aware that this might match vehicle ID 0 incorrectly, as OpenTTD will retun 0 when checking var 61 beyond consist length - edge case TBH
--->
-switch (FEAT_TRAINS, SELF, switch_alt_var_41_match_badges, [
-            <!--! assumes temp registers 0x10F and 0x10E are set earlier in the chain -->
-            var[0x61, 0, 0x00000001, 0x7A]
-    ]) {
-    1: return 1;
-    return 0;
-}
 <!--!
     Position from start of consecutive IDs chain
     Walks forward from vehicle towards engine, checking if the ID is matched for each 'next vehicle', if matched continues, otherwise return the count of vehicles matched (this represents position in chain)
 -->
 <tal:switches repeat="counter range(127, 0, -1)">
-    switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_vehid_chain_multiple_ids_${counter}, [STORE_TEMP(${-1 * counter}, 0x10F), switch_alt_var_41_match_badges()]) {
-        <tal:block condition="not:repeat.counter.start">1: switch_alt_var_41_position_in_vehid_chain_multiple_ids_${counter + 1};</tal:block>
+    switch (FEAT_TRAINS, SELF, switch_var_41_but_badges_not_ids_position_in_vehid_chain_multiple_ids_${counter}, [
+            <!--! 0x61 check depends on temp register 0x10E (parameter containing badge to check) being set earlier in the chain -->
+            STORE_TEMP(${-1 * counter}, 0x10F), var[0x61, 0, 0x00000001, 0x7A]
+        ]) {
+        <tal:block condition="not:repeat.counter.start">1: switch_var_41_but_badges_not_ids_position_in_vehid_chain_multiple_ids_${counter + 1};</tal:block>
         return ${counter - 1};
     }
 </tal:switches>
@@ -41,8 +30,11 @@ switch (FEAT_TRAINS, SELF, switch_alt_var_41_match_badges, [
     Walks backward from vehicle away from engine, checking if the ID is matched for each 'next vehicle', if matched continues, otherwise return the count of vehicles matched (this represents position in chain)
 -->
 <tal:switches repeat="counter range(127, 0, -1)">
-    switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids_${counter}, [STORE_TEMP(${1 * counter}, 0x10F), switch_alt_var_41_match_badges()]) {
-        <tal:block condition="not:repeat.counter.start">1: switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids_${counter + 1};</tal:block>
+    switch (FEAT_TRAINS, SELF, switch_var_41_but_badges_not_ids_position_in_vehid_chain_from_end_multiple_ids_${counter}, [
+            <!--! 0x61 check depends on temp register 0x10E (parameter containing badge to check) being set earlier in the chain -->
+            STORE_TEMP(${1 * counter}, 0x10F), var[0x61, 0, 0x00000001, 0x7A]
+        ]) {
+        <tal:block condition="not:repeat.counter.start">1: switch_var_41_but_badges_not_ids_position_in_vehid_chain_from_end_multiple_ids_${counter + 1};</tal:block>
         return ${counter - 1};
     }
 </tal:switches>
@@ -51,19 +43,19 @@ switch (FEAT_TRAINS, SELF, switch_alt_var_41_match_badges, [
     Num vehicles in consecutive ID chain
     Sum of positions from start and end, plus 1 for current vehicle
 -->
-switch (FEAT_TRAINS, SELF, switch_alt_var_41_num_vehs_in_vehid_chain_multiple_ids, 1) {
+switch (FEAT_TRAINS, SELF, switch_var_41_but_badges_not_ids_num_vehs_in_vehid_chain_multiple_ids, 1) {
     return 1 + LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_multiple_ids}) + LOAD_TEMP(${temp_storage_ids.position_in_vehid_chain_from_end_multiple_ids});
 }
 
 <!--!
     Store 3 results in temp storage mimicking what built-in var 41 provides
 -->
-switch (FEAT_TRAINS, SELF, switch_initialise_alt_var_41_store_temps, [
-        STORE_TEMP(switch_alt_var_41_position_in_vehid_chain_multiple_ids_1(),
+switch (FEAT_TRAINS, SELF, switch_initialise_var_41_but_badges_not_ids_store_temps, [
+        STORE_TEMP(switch_var_41_but_badges_not_ids_position_in_vehid_chain_multiple_ids_1(),
                    ${temp_storage_ids.position_in_vehid_chain_multiple_ids}),
-        STORE_TEMP(switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids_1(),
+        STORE_TEMP(switch_var_41_but_badges_not_ids_position_in_vehid_chain_from_end_multiple_ids_1(),
                    ${temp_storage_ids.position_in_vehid_chain_from_end_multiple_ids}),
-        STORE_TEMP(switch_alt_var_41_num_vehs_in_vehid_chain_multiple_ids(),
+        STORE_TEMP(switch_var_41_but_badges_not_ids_num_vehs_in_vehid_chain_multiple_ids(),
                    ${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}),
 
         ]) {
@@ -74,6 +66,6 @@ switch (FEAT_TRAINS, SELF, switch_initialise_alt_var_41_store_temps, [
     To be called at start of graphics chain for current vehicle, with 16 params containing vehicle IDs to match
     No params can be missing, pass -1 for any 'empty' params where no real ID is passed
 -->
-switch (FEAT_TRAINS, SELF, switch_initialise_alt_var_41, badge, [STORE_TEMP(badge, 0x10E)]){
-    return switch_initialise_alt_var_41_store_temps;
+switch (FEAT_TRAINS, SELF, switch_initialise_var_41_but_badges_not_ids, badge, [STORE_TEMP(badge, 0x10E)]){
+    return switch_initialise_var_41_but_badges_not_ids_store_temps;
 }
