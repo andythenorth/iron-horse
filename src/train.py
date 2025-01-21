@@ -1799,8 +1799,8 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         self.role = "driving_cab_express_pax"
         self.buy_menu_additional_text_hint_driving_cab = True
-        # special purpose attr for use with alt var 41 and pax_car_ids
-        self.treat_as_pax_car_for_var_41 = True
+        # report cab cars as pax cars for consist rulesets
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
         self.power_by_power_source = {"NULL": 300}
         # nerf TE down to minimal value
