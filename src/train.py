@@ -7131,7 +7131,6 @@ class PassengerCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.use_colour_randomisation_strategies = False
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # roof configuration
         if self.gen in [1]:
             self.roof_type = "pax_mail_clerestory"
@@ -7209,6 +7208,7 @@ class PanoramicCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "panoramic_car"
         super().__init__(**kwargs)
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         """ # not working as expected, unwanted nesting of panoramic car, needs debugged
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7246,6 +7246,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "passenger_car"
         super().__init__(**kwargs)
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         """ # not working as expected, unwanted nesting of panoramic car, needs debugged
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7294,6 +7295,7 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "high_speed_passenger_car"
         super().__init__(**kwargs)
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.lgv_capable = True
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.9
@@ -7370,6 +7372,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "hst_passenger_car"
         super().__init__(**kwargs)
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.speed_class = "hst"
         # used to get insert the name of the parent into vehicle name
         # cab_id must be passed, do not mask errors with .get()
@@ -7523,6 +7526,7 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "restaurant_car"
         super().__init__(**kwargs)
+        self._badges.append("ih_ruleset_flags/report_as_pax_car") # intended, used for pax car ruleset behaviour
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["restaurant"]
         self.buy_cost_adjustment_factor = 2.5
         # double the luxury pax car amount; balance between the bonus amount (which scales with num. pax coaches) and the run cost of running this booster
@@ -7553,6 +7557,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "suburban_passenger_car"
         super().__init__(**kwargs)
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # PassengerCarConsistBase sets 'express' speed, but suburban coaches should override this
         # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
         self.speed_class = "suburban"
