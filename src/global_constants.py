@@ -925,7 +925,10 @@ static_badges = {
         },
     },
     "ih_ruleset_flags": {
-        "sublabels": {"report_as_pax_car": {}},
+        "sublabels": {
+            "report_as_pax_car": {},
+            "report_as_mail_car": {},
+        },
     },
 }
 

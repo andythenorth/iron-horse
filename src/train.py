@@ -1565,6 +1565,8 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         super().__init__(**kwargs)
         self.role = "driving_cab_express_mail"
         self.buy_menu_additional_text_hint_driving_cab = True
+        # report mail cab cars as pax cars for consist rulesets
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
         self.power_by_power_source = {"NULL": 300}
         # nerf TE down to minimal value
@@ -6144,7 +6146,6 @@ class MailCarConsistBase(CarConsist):
             global_constants.intro_month_offsets_by_role_group["express_core"]
         )
         self.use_colour_randomisation_strategies = False
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # roof configuration
         if self.gen in [1]:
             self.roof_type = "pax_mail_clerestory"
@@ -6217,6 +6218,8 @@ class MailCarConsist(MailCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "mail_car"
         super().__init__(**kwargs)
+        self._badges.append("ih_ruleset_flags/report_as_mail_car")
+        self._badges.append("ih_ruleset_flags/report_as_pax_car") # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
         self.speed_class = "express"
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
@@ -6299,6 +6302,8 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "high_speed_mail_car"
         super().__init__(**kwargs)
+        self._badges.append("ih_ruleset_flags/report_as_mail_car")
+        self._badges.append("ih_ruleset_flags/report_as_pax_car") # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
         self.speed_class = "express"
         self.lgv_capable = True
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
@@ -6335,6 +6340,8 @@ class MailHSTCarConsist(MailCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "hst_mail_car"
         super().__init__(**kwargs)
+        self._badges.append("ih_ruleset_flags/report_as_mail_car")
+        self._badges.append("ih_ruleset_flags/report_as_pax_car") # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
         self.speed_class = "hst"
         # used to get insert the name of the parent into vehicle name
         # cab_id must be passed, do not mask errors with .get()

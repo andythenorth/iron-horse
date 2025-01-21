@@ -400,10 +400,15 @@
     }
 
     <!--! if first -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_first_neighbouring, [STORE_TEMP(badgetype("ih_ruleset_flags/report_as_mail_car"), 0x10E), STORE_TEMP(-1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
+        <!--! don't show first if preceeding vehicle is also a valid pax car -->
+        1: return ${default};
+        return ${first};
+    }
     switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_first_check_length, num_vehs_in_vehid_chain) {
         <!--! don't show 'first' if same id chain < 5 vehicles -->
         0..4: return switch_graphics_mail_car_ruleset_position_default;
-        return ${first};
+        return switch_graphics_mail_car_ruleset_position_check_first_neighbouring;
     }
     switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_first, position_in_vehid_chain) {
         0: return switch_graphics_mail_car_ruleset_position_first_check_length;
@@ -411,8 +416,13 @@
     }
 
     <!--! if last -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_last_neighbouring, [STORE_TEMP(badgetype("ih_ruleset_flags/report_as_mail_car"), 0x10E), STORE_TEMP(1, 0x10F), var[0x61, 0, 0x00000001, 0x7A]]) {
+        <!--! don't show last if following vehicle is also a valid pax car -->
+        1: return ${default};
+        return ${last};
+    }
     switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_last, position_in_vehid_chain_from_end) {
-        0: return ${last};
+        0: switch_graphics_mail_car_ruleset_position_check_last_neighbouring;
         switch_graphics_mail_car_ruleset_position_check_first;
     }
 
