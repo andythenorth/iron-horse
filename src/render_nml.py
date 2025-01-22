@@ -102,7 +102,6 @@ def main():
         "procedures_opening_doors",
         "procedures_name",
         "procedures_powered_by_railtype",
-        "procedures_restaurant_cars",
         "procedures_rulesets",
         "procedures_visible_cargo",
         "procedures_wagon_recolour_strategies",

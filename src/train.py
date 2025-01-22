@@ -7526,6 +7526,7 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "restaurant_car"
         super().__init__(**kwargs)
+        self._badges.append("role/restaurant_car") # intended, used for pax car ruleset behaviour
         self._badges.append("ih_ruleset_flags/report_as_pax_car") # intended, used for pax car ruleset behaviour
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["restaurant"]
         self.buy_cost_adjustment_factor = 2.5

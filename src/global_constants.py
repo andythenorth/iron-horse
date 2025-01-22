@@ -930,6 +930,11 @@ static_badges = {
             "report_as_mail_car": {},
         },
     },
+    "role": {
+        "sublabels": {
+            "restaurant_car": {},
+        }
+    }
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions

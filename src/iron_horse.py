@@ -136,23 +136,6 @@ class RosterManager(list):
             raise Exception("RosterManager: no roster found for ", roster_id)
 
     @property
-    def restaurant_car_ids(self):
-        result = []
-        # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
-        # could also have been done by having restaurant cars register themselves directly into a list on roster but eh, that's a book-keeping headache
-        # if we wanted cross-grf restaurant cars then this would need extending beyond active_roster; but we don't as of April 2023, so eh
-
-        # !! we know where the restaurant cars are, because wagon_consists are currently grouped by id !!
-        for consist in self.active_roster.wagon_consists:
-            if consist.__class__.__name__ == "PassengerRestaurantCarConsist":
-                result.append(consist.base_numeric_id)
-        if len(result) > 255:
-            raise BaseException(
-                "action 2 switch is limited to 255 values, restaurant_car_ids exceeds this - needs split across multiple switches"
-            )
-        return result
-
-    @property
     def haulage_bonus_engine_id_tree(self):
         # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
         express_engine_ids = []
