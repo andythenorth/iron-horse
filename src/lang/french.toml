@@ -704,12 +704,6 @@ base = "{BLACK}Placer à l’avant ou à l’arrière du train, avec au moins un
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LGV_CAPABLE]
 base = "{BLACK}Requiert une ligne à grande vitesse dédiée pour atteindre sa vitesse maximale"
 
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR]
-base = "{}{BLACK}Bonus{NBSP}: {GOLD}Élimine les coûts d’entretien pour toutes les voitures passagers du train"
-
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR_EXTENDED]
-base = "{}{BLACK}Bonus{NBSP}: {GOLD}Élimine les coûts d’entretien pour toutes les voitures passagers et voitures à grande vitesse du train"
-
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS]
 base = "{}{BLACK}Nuances de couleur{NBSP}: {GOLD}{STRING}"
 

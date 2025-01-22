@@ -633,12 +633,6 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB]
 suppressed_rosters = ["ibex"]
 
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR]
-suppressed_rosters = ["moose", "ibex"]
-
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR_EXTENDED]
-suppressed_rosters = ["moose", "ibex"]
-
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_1]
 suppressed_rosters = ["horse", "moose", "ibex"]
 

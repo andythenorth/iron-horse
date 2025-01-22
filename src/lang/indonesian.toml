@@ -203,9 +203,6 @@ base = "Tenaga (Didistribusikan): {GOLD}{POWER} Ketika Di Sambung Dengan {STRING
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB]
 base = "{BLACK}Pasang Di Depan Atau Di Belakang Dari Kereta, Dengan Setidaknya satu lomomotiv Lainya"
 
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR]
-base = "{}{BLACK}Bonus: {GOLD}Meningkatkan biaya operasional dan tarif pembayaran untuk {WHITE}Gerbong Penumpang {GOLD}Dan {WHITE}Gerbong Penumpang Mewah {}{}{BLACK}Bonua Ini Akan Berdampak satu kali per satu kereta"
-
 [STR_SPRITES_COMPLETE]
 base = "{}Sprite Terselesaikan: {GOLD}Ya"
 

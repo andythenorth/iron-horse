@@ -931,8 +931,9 @@ static_badges = {
         },
     },
     "role": {
+        "name": "STR_BADGE_ROLE",
         "sublabels": {
-            "restaurant_car": {},
+            "restaurant_car": {"name": "STR_BADGE_ROLE_RESTAURANT_CAR"},
         }
     }
 }

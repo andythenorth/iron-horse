@@ -219,6 +219,14 @@ base = "Mustard/Straw"
 [STR_NAME_SUFFIX_LIVERY_MIX_TEAL_PEWTER]
 base = "Teal/Pewter"
 
+# badges
+
+[STR_BADGE_ROLE]
+base = "Role"
+
+[STR_BADGE_ROLE_RESTAURANT_CAR]
+base = "Eliminates running costs for all Passenger Coaches or High Speed Coaches in the train"
+
 # keep these alphabetised, easier
 [STR_NAME_SUFFIX_BATTERY_HYBRID]
 base = "Battery Hybrid"
@@ -1024,12 +1032,6 @@ base = "{BLACK}Attach to front or rear of train, with at least one other engine"
 
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LGV_CAPABLE]
 base = "{BLACK}Requires dedicated high speed rails to reach maximum speed"
-
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR]
-base = "{}{BLACK}Bonus: {GOLD}Eliminates running costs for all Passenger Coaches in the train"
-
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR_EXTENDED]
-base = "{}{BLACK}Bonus: {GOLD}Eliminates running costs for all Passenger Coaches or High Speed Coaches in the train"
 
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS]
 base = "{}{BLACK}Colour mix: {GOLD}{STRING}"

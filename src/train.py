@@ -132,8 +132,6 @@ class Consist(object):
         self._buy_menu_additional_text_role_string = None
         # simple buy menu hint flag for driving cabs
         self.buy_menu_additional_text_hint_driving_cab = False
-        # simple buy menu hint flag for restaurant cars
-        self.buy_menu_additional_text_hint_restaurant_car = False
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
         self._str_name_suffix = None
         # random_reverse means (1) randomised flip of vehicle when built (2) player can also flip vehicle manually
@@ -1136,16 +1134,6 @@ class Consist(object):
         # driving cab hint comes after role string
         if self.buy_menu_additional_text_hint_driving_cab:
             result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB")
-
-        # driving cab hint comes after role string
-        if self.buy_menu_additional_text_hint_restaurant_car:
-            # this roster and generation specific check is definition of BAD FEATURE, but eh, regrets later?
-            if self.roster_id == "pony" and self.gen == 5:
-                result.append(
-                    "STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR_EXTENDED"
-                )
-            else:
-                result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_RESTAURANT_CAR")
 
         # livery variants comes after role string
         if unit_variant is not None:
@@ -7536,7 +7524,6 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         self._joker = True
         self._buy_menu_additional_text_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
-        self.buy_menu_additional_text_hint_restaurant_car = True
         # Graphics configuration
         # position based variants are not used for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 0, "special": 0}
@@ -9201,8 +9188,6 @@ class UnitVariant(object):
                 return "lgv_capable"
         elif self.unit.consist.buy_menu_additional_text_hint_driving_cab:
             return "driving_cab"
-        elif self.unit.consist.buy_menu_additional_text_hint_restaurant_car:
-            return "restaurant_car"
         elif self.uses_random_livery:
             return "livery_variants"
         else:
