@@ -387,7 +387,7 @@ class Consist(object):
         # badges can be set on a vehicle for diverse reasons, including
         # - badges explicitly added to _badges attr
         # - badges arising implicitly from consist type or properties
-        result = ["cabbage/foobar", "power_source/steam", "power_source/diesel"]
+        result = ["power_source/steam", "power_source/diesel"]
         result.extend(list(set(self._badges)))
         # badge for handling vehicle_family
         if self.vehicle_family_badge is not None:
