@@ -930,6 +930,16 @@ static_badges = {
             "report_as_mail_car": {},
         },
     },
+    "ih_wagon_length": {
+        "name": "STR_BADGE_WAGON_LENGTH",
+        "sublabels": {
+            "a": {"name": "STR_NAME_SUFFIX_SMALL"},
+            "b": {"name": "STR_NAME_SUFFIX_MEDIUM"},
+            "c": {"name": "STR_NAME_SUFFIX_LARGE"},
+            "d": {"name": "STR_NAME_SUFFIX_TWIN"},
+            "u": {"name": "STR_EMPTY"},
+        },
+    },
     "role": {
         "name": "STR_BADGE_ROLE",
         "sublabels": {

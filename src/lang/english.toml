@@ -224,6 +224,9 @@ base = "Teal/Pewter"
 [STR_BADGE_ROLE]
 base = "Role"
 
+[STR_BADGE_WAGON_LENGTH]
+base = "Size Class"
+
 [STR_BADGE_ROLE_RESTAURANT_CAR]
 base = "Eliminates running costs for all Passenger Coaches or High Speed Coaches in the train"
 

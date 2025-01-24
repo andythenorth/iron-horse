@@ -378,6 +378,11 @@ class Consist(object):
         # stub only, over-ride in subclasses as appropriate
         return None
 
+    @property
+    def cabbage_subtype_badge(self):
+        # stub only, over-ride in subclasses as appropriate
+        return None
+
     def get_badges(self, unit_variant):
         # badges can be set on a vehicle for diverse reasons, including
         # - badges explicitly added to _badges attr
@@ -387,6 +392,8 @@ class Consist(object):
         # badge for handling vehicle_family
         if self.vehicle_family_badge is not None:
             result.append(self.vehicle_family_badge)
+        if self.cabbage_subtype_badge is not None:
+            result.append(self.cabbage_subtype_badge)
         return result
 
     def get_badges_for_nml(self, unit_variant):
@@ -2342,24 +2349,12 @@ class CarConsist(Consist):
         return input_spritesheet_delegate_id
 
     @property
-    def wagon_title_class_str(self):
-        return "STR_NAME_SUFFIX_" + self.base_id.upper()
+    def cabbage_subtype_badge(self):
+        return "ih_wagon_length/" + self.subtype.lower()
 
     @property
-    def wagon_title_subtype_str(self):
-        # subtype U is a hack to indicate there is only one subtype for this wagon, so no size suffix needed
-        if self.subtype == "U":
-            return "STR_EMPTY"
-        else:
-            if self.subtype == "A":
-                subtype_str = "STR_NAME_SUFFIX_SMALL"
-            elif self.subtype == "B":
-                subtype_str = "STR_NAME_SUFFIX_MEDIUM"
-            elif self.subtype == "C":
-                subtype_str = "STR_NAME_SUFFIX_LARGE"
-            elif self.subtype == "D":
-                subtype_str = "STR_NAME_SUFFIX_TWIN"
-            return "STR_PARENTHESES, string(" + subtype_str + ")"
+    def wagon_title_class_str(self):
+        return "STR_NAME_SUFFIX_" + self.base_id.upper()
 
     def get_wagon_title_optional_livery_suffix_stack(self, unit_variant):
         if getattr(unit_variant, "uses_random_livery", False):
@@ -2394,13 +2389,11 @@ class CarConsist(Consist):
         if self.wagon_title_optional_randomised_suffix_str is not None:
             default_result = [
                 self.wagon_title_class_str,
-                self.wagon_title_subtype_str,
                 self.wagon_title_optional_randomised_suffix_str,
             ]
         else:
             default_result = [
                 self.wagon_title_class_str,
-                self.wagon_title_subtype_str,
             ]
 
         if context == "docs":
@@ -2417,7 +2410,6 @@ class CarConsist(Consist):
                     result = [
                         "STR_"
                         + group.parent_consist.use_named_buyable_variant_group.upper(),
-                        group.parent_consist.wagon_title_subtype_str,
                     ]
                 except:
                     raise BaseException(group.parent_vehicle.id)
@@ -2453,7 +2445,6 @@ class CarConsist(Consist):
         elif context == "autoreplace_lhs":
             result = [
                 self.wagon_title_class_str,
-                self.wagon_title_subtype_str,
             ]
             result.extend(
                 self.get_wagon_title_optional_livery_suffix_stack(unit_variant)
