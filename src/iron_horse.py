@@ -207,6 +207,9 @@ def main():
 
     # badges, done after consists as badges can be either static (global), or dynamically created (for specific consists)
 
+    if roster_manager.active_roster is not None:
+        badge_manager.add_badge("newgrf/" + utils.grfid_to_dword(roster_manager.active_roster.grfid))
+
     for (
         badge_class_label,
         badge_class_properties,

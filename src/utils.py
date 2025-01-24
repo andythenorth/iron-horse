@@ -95,3 +95,23 @@ def convert_flat_list_to_pairs_of_tuples(flat_list):
 
 def string_format_compile_time_deltas(time_start, time_later):
     return format((time_later - time_start), ".2f") + " s"
+
+
+def grfid_to_dword(grfid: str) -> str:
+    """
+    Convert a GRF ID string like "CA\\12\\22" into a DWORD in hexadecimal format.
+
+    Args:
+        grfid (str): The GRF ID string, e.g., "CA\\12\\22".
+
+    Returns:
+        str: The DWORD representation in hexadecimal (e.g., "0x43411222").
+    """
+    # Remove backslashes and split into parts
+    parts = grfid.split("\\")
+    # Convert the parts into bytes
+    byte_values = [ord(parts[0][0]), ord(parts[0][1]), int(parts[1], 16), int(parts[2], 16)]
+    # Combine into a single DWORD using big-endian order
+    dword = (byte_values[0] << 24) | (byte_values[1] << 16) | (byte_values[2] << 8) | byte_values[3]
+    # Return as hexadecimal string
+    return f"{dword:08X}"
