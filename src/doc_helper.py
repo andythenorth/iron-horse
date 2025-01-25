@@ -371,12 +371,12 @@ class DocHelper(object):
         role_key = role_key.replace(")", "")
         return self.lang_strings[role_key]
 
-    def get_role_string_from_role(self, role):
+    def get_role_string_from_role(self, subrole):
         # mangle on some boilerplate to get the nml string
-        for role_group, roles in global_constants.role_subrole_mapping.items():
-            if role in roles:
+        for role, subroles in global_constants.role_subrole_mapping.items():
+            if subrole in subroles:
                 return self.lang_strings[
-                    global_constants.static_badges["role"]["sublabels"][role_group][
+                    global_constants.static_badges["role"]["sublabels"][role][
                         "name"
                     ]
                 ]

@@ -142,16 +142,16 @@ class RosterManager(list):
         # if we wanted cross-grf haulage bonus then this would need extending beyond active_roster; but we don't as of April 2023, so eh
         for consist in self.active_roster.engine_consists:
             # check for express-type roles, which are determined by multiple role groups
-            for role_group_mapping_key in [
+            for role in [
                 "express",
                 "driving_cab",
                 "express_railcar",
                 "high_power_railcar",
             ]:
-                group_roles = global_constants.role_subrole_mapping[
-                    role_group_mapping_key
+                subroles = global_constants.role_subrole_mapping[
+                    role
                 ]
-                if consist.role_cabbage in group_roles:
+                if consist.role_cabbage in subroles:
                     express_engine_ids.append(consist.id)
         return [(count, id) for count, id in enumerate(express_engine_ids)]
 

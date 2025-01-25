@@ -392,8 +392,8 @@ class Consist(object):
         # - badges explicitly added to _badges attr
         # - badges arising implicitly from consist type or properties
         result = list(set(self._badges))
-        #if self.role_cabbage is not None:
-            #result.append("role/" + self.role_cabbage)
+        # if self.role_cabbage is not None:
+        # result.append("role/" + self.role_cabbage)
         # badge for handling vehicle_family
         if self.vehicle_family_badge is not None:
             result.append(self.vehicle_family_badge)
@@ -489,7 +489,7 @@ class Consist(object):
                     group_key = group_key + "_core"
                 else:
                     group_key = group_key + "_non_core"
-            result = global_constants.intro_month_offsets_by_role_group[group_key]
+            result = global_constants.intro_month_offsets_by_role[group_key]
             if self.joker:
                 # force jokers away from vehicles in same subrole
                 # if further variation is wanted, give the joker a different intro year, automating that isn't wise
@@ -538,7 +538,10 @@ class Consist(object):
             for consist in self.roster.engine_consists:
                 if (
                     (consist.role_cabbage == self.role_cabbage)
-                    and (consist.subrole_child_branch_num == self.subrole_child_branch_num)
+                    and (
+                        consist.subrole_child_branch_num
+                        == self.subrole_child_branch_num
+                    )
                     and (consist.base_track_type_name == self.base_track_type_name)
                 ):
                     similar_consists.append(consist)
@@ -785,9 +788,7 @@ class Consist(object):
                 "express_railcar",
                 "high_power_railcar",
             ]:
-                subroles = global_constants.role_subrole_mapping[
-                    role
-                ]
+                subroles = global_constants.role_subrole_mapping[role]
                 if self.role_cabbage in subroles:
                     return self.get_speed_by_class("express")
             # then check other specific roles
@@ -812,14 +813,14 @@ class Consist(object):
             )
 
         # mildly JDFI hacky
-        for role_group_mapping_key in [
+        for role in [
             "express",
             "driving_cab",
             "express_railcar",
             "high_power_railcar",
         ]:
-            group_roles = global_constants.role_subrole_mapping[role_group_mapping_key]
-            if self.role_cabbage in group_roles:
+            subroles = global_constants.role_subrole_mapping[role]
+            if self.role_cabbage in subroles:
                 return self.get_speed_by_class("express_on_lgv")
 
         if self.role_cabbage in ["hst"]:
@@ -1191,11 +1192,13 @@ class Consist(object):
             return (
                 "STR_ROLE, string(" + self._buy_menu_additional_text_role_string + ")"
             )
-        for role_group, roles in global_constants.role_subrole_mapping.items():
-            if self.role_cabbage in roles:
+        for role, subroles in global_constants.role_subrole_mapping.items():
+            if self.role_cabbage in subroles:
                 return (
                     "STR_ROLE, string("
-                    + global_constants.static_badges["role"]["sublabels"][role_group]["name"]
+                    + global_constants.static_badges["role"]["sublabels"][role][
+                        "name"
+                    ]
                     + ")"
                 )
         raise Exception("no role string found for ", self.id)
@@ -1525,7 +1528,9 @@ class FixedFormationRailcarCombineConsist(EngineConsist):
                     "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
                 )
             else:
-                self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_GENERAL_PURPOSE"
+                self._buy_menu_additional_text_role_string = (
+                    "STR_BADGE_ROLE_GENERAL_PURPOSE"
+                )
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_fixed_formation_railcar.pynml",
@@ -1951,7 +1956,9 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
                     "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
                 )
             else:
-                self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_GENERAL_PURPOSE"
+                self._buy_menu_additional_text_role_string = (
+                    "STR_BADGE_ROLE_GENERAL_PURPOSE"
+                )
         # non-standard cite
         self._cite = "Arabella Unit"
         # Graphics configuration
@@ -2186,7 +2193,9 @@ class TGVMiddleMailEngineConsist(TGVMiddleEngineConsistMixin, MailEngineConsist)
             offset = -2000
         else:
             offset = 2000
-        self.subrole_child_branch_num = offset + self.cab_consist.subrole_child_branch_num
+        self.subrole_child_branch_num = (
+            offset + self.cab_consist.subrole_child_branch_num
+        )
 
 
 class TGVMiddlePassengerEngineConsist(
@@ -2204,7 +2213,9 @@ class TGVMiddlePassengerEngineConsist(
             offset = -1000
         else:
             offset = 1000
-        self.subrole_child_branch_num = offset + self.cab_consist.subrole_child_branch_num
+        self.subrole_child_branch_num = (
+            offset + self.cab_consist.subrole_child_branch_num
+        )
 
 
 class CarConsist(Consist):
@@ -2230,9 +2241,9 @@ class CarConsist(Consist):
         self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1
         # used to synchronise / desynchronise groups of vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
         # default all to car consists to 'universal' offset, override in subclasses as needed
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["universal"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "universal"
+        ]
         # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.use_colour_randomisation_strategies = True
         # how to handle grouping this consist type
@@ -2544,9 +2555,9 @@ class AutomobileCarConsistBase(CarConsist):
         self.default_cargos = ["VEHI"]
         # special flag to turn on cargo subtypes specific to vehicles, can be made more generic if subtypes need to be extensible in future
         # self.use_cargo_subytpes_VEHI = True
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         if self.subtype == "D":
             consist_ruleset = "articulated_permanent_twin_sets"
         else:
@@ -2694,9 +2705,9 @@ class BolsterCarConsistBase(CarConsist):
             "non_flatbed_freight"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["long_products"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self.randomised_candidate_groups = [
             "bolster_car_randomised",
             "metal_product_car_mixed_randomised",
@@ -2788,9 +2799,9 @@ class BoxCarConsistBase(CarConsist):
         ]
         self.default_cargos = polar_fox.constants.default_cargos["box"]
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
 
 
 class BoxCarConsistType1(BoxCarConsistBase):
@@ -2901,9 +2912,9 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         self.base_id = "curtain_side_box_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_curtain_side"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self.randomised_candidate_groups = [
             "box_car_randomised",
             "piece_goods_car_covered_randomised",
@@ -3061,9 +3072,9 @@ class BoxCarSlidingWallConsistBase(BoxCarConsistBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_sliding_wall"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self.randomised_candidate_groups = [
             "piece_goods_car_covered_randomised",
             "piece_goods_car_mixed_randomised",
@@ -3188,9 +3199,9 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
         self.base_id = "vehicle_parts_box_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_vehicle_parts"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self._joker = True
         self.randomised_candidate_groups = [
             "piece_goods_car_covered_randomised",
@@ -3253,9 +3264,9 @@ class BulkOpenCarConsistBase(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["dump"]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.1
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
@@ -3887,9 +3898,9 @@ class CaneBinCarConsist(CarConsist):
         self.label_refits_allowed = ["SGCN"]
         self.label_refits_disallowed = []
         self.default_cargos = ["SGCN"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         # Graphics configuration
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
         # there will unused vehicles sprites for cargo states, but it's ok in this limited case
@@ -3930,9 +3941,9 @@ class CarbonBlackHopperCarConsist(CarConsist):
         self.default_cargos = []
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -3967,9 +3978,9 @@ class CoilBuggyCarConsist(CarConsist):
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2  # double the default weight
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         self._joker = True
         # Graphics configuration
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
@@ -4019,9 +4030,9 @@ class CoilCarConsistBase(CarConsist):
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.1
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
 
 
 class CoilCarCoveredAsymmetricConsist(CoilCarConsistBase):
@@ -4257,9 +4268,9 @@ class CoveredHopperCarConsistBase(CarConsist):
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
@@ -4470,9 +4481,9 @@ class ExpressCarConsist(CarConsist):
         self.weight_factor = polar_fox.constants.mail_multiplier
         # keep matched to MailCarConsist
         self.floating_run_cost_multiplier = 2.33
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["express_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "express_core"
+        ]
         # Graphics configuration
         if self.gen in [1]:
             self.roof_type = "pax_mail_clerestory"
@@ -4533,9 +4544,9 @@ class ExpressFoodCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["food_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "food_wagons"
+        ]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",  # random checked ok
@@ -4571,9 +4582,9 @@ class ExpressFoodTankCarConsistBase(CarConsist):
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["food_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "food_wagons"
+        ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_food_express_tank_cars"
@@ -4676,9 +4687,9 @@ class ExpressIntermodalCarConsist(CarConsist):
         self.weight_factor = polar_fox.constants.mail_multiplier
         # keep matched to MailCarConsist
         self.floating_run_cost_multiplier = 2.33
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["express_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "express_core"
+        ]
         self._joker = True
         self.use_colour_randomisation_strategies = False
         # Graphics configuration
@@ -4714,9 +4725,9 @@ class FarmProductsBoxCarConsistBase(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["farm_products_box"]
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_farm_product_box_cars"
@@ -4797,9 +4808,9 @@ class FarmProductsHopperCarConsistBase(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["farm_products_hopper"]
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_farm_product_hopper_cars"
@@ -4960,9 +4971,9 @@ class FlatCarConsistBase(CarConsist):
             "non_flatbed_freight"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["flat"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
@@ -4996,9 +5007,9 @@ class FlatCarBulkheadConsistBase(FlatCarConsistBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["bulkhead"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self.randomised_candidate_groups = [
             "bulkhead_flat_car_randomised",
         ]
@@ -5082,9 +5093,9 @@ class FlatCarDropEndConsist(FlatCarConsistBase):
         self.base_id = "drop_end_flat_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["plate"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self.randomised_candidate_groups = [
             "flat_car_randomised",
             "metal_product_car_mixed_randomised",
@@ -5105,9 +5116,9 @@ class FlatCarDropSideConsist(FlatCarConsistBase):
         self.base_id = "drop_side_flat_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["plate"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self.randomised_candidate_groups = [
             "flat_car_randomised",
             "metal_product_car_mixed_randomised",
@@ -5182,9 +5193,9 @@ class FlatCarMillConsistBase(FlatCarConsistBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["bulkhead"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self.randomised_candidate_groups = [
             "metal_product_car_uncovered_randomised",
             "mill_flat_car_randomised",
@@ -5270,9 +5281,9 @@ class GasTankCarConsistBase(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["cryo_gases"]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.cryo_tanker_livery_recolour_map,
@@ -5332,9 +5343,9 @@ class HopperCarConsistBase(CarConsist):
         ]
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         self.randomised_candidate_groups = [
             "bulk_car_hopper_randomised",
             "bulk_car_mixed_randomised",
@@ -5867,9 +5878,9 @@ class IngotCarConsist(CarConsist):
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2  # double the default weight
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         self._joker = True
         self.suppress_animated_pixel_warnings = True
         # Graphics configuration
@@ -5920,9 +5931,9 @@ class IntermodalCarConsistBase(CarConsist):
         ]
         self.default_cargos = polar_fox.constants.default_cargos["box_intermodal"]
         self._loading_speed_multiplier = 2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         # intermodal containers can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         self.use_colour_randomisation_strategies = False
@@ -5998,9 +6009,9 @@ class KaolinHopperCarConsist(CarConsist):
         self.default_cargos = []
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -6033,9 +6044,9 @@ class LivestockCarConsist(CarConsist):
         self.default_cargos = ["LVST"]
         self.buy_cost_adjustment_factor = 1.2
         self.floating_run_cost_multiplier = 1.1
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -6089,9 +6100,9 @@ class LogCarConsist(CarConsist):
         self.label_refits_allowed = ["WOOD"]
         self.label_refits_disallowed = []
         self.default_cargos = ["WOOD"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="tree_length_logs",
@@ -6128,9 +6139,9 @@ class MailCarConsistBase(CarConsist):
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
         # keep matched to ExpressCarConsist
         self.floating_run_cost_multiplier = 2.33
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["express_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "express_core"
+        ]
         self.use_colour_randomisation_strategies = False
         # roof configuration
         if self.gen in [1]:
@@ -6205,13 +6216,15 @@ class MailCarConsist(MailCarConsistBase):
         self.base_id = "mail_car"
         super().__init__(**kwargs)
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
-        self._badges.append("ih_ruleset_flags/report_as_pax_car") # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
+        self._badges.append(
+            "ih_ruleset_flags/report_as_pax_car"
+        )  # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
         self.speed_class = "express"
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["express_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "express_core"
+        ]
         # mail cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
@@ -6247,13 +6260,15 @@ class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
         self.speed_class = "express"
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 3.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["express_non_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "express_non_core"
+        ]
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         print(self.role_cabbage)
-        self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
+        self._buy_menu_additional_text_role_string = (
+            "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
+        )
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.66 if self.base_track_type_name == "NG" else 1.5
         # Graphics configuration
@@ -6290,7 +6305,9 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
         self.base_id = "high_speed_mail_car"
         super().__init__(**kwargs)
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
-        self._badges.append("ih_ruleset_flags/report_as_pax_car") # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
+        self._badges.append(
+            "ih_ruleset_flags/report_as_pax_car"
+        )  # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
         self.speed_class = "express"
         self.lgv_capable = True
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
@@ -6329,7 +6346,9 @@ class MailHSTCarConsist(MailCarConsistBase):
         self.base_id = "hst_mail_car"
         super().__init__(**kwargs)
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
-        self._badges.append("ih_ruleset_flags/report_as_pax_car") # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
+        self._badges.append(
+            "ih_ruleset_flags/report_as_pax_car"
+        )  # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
         self.speed_class = "hst"
         # used to get insert the name of the parent into vehicle name
         # cab_id must be passed, do not mask errors with .get()
@@ -6447,9 +6466,9 @@ class MineralCoveredHopperCarConsistBase(CarConsist):
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
@@ -6879,9 +6898,9 @@ class OpenCarConsistBase(CarConsist):
             "non_freight_special_cases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["open"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         self.randomised_candidate_groups = [
             "open_car_randomised",
             "piece_goods_car_mixed_randomised",
@@ -7116,9 +7135,9 @@ class PassengerCarConsistBase(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["pax"]
         # specific structure for capacity multiplier and loading speed, override in subclasses as needed
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["express_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "express_core"
+        ]
         self.use_colour_randomisation_strategies = False
         # roof configuration
         if self.gen in [1]:
@@ -7209,7 +7228,9 @@ class PanoramicCarConsist(PassengerCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # pony NG jank directly set role buy menu string here, JFDI to make it work, may not actually be needed
-        self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
+        self._buy_menu_additional_text_role_string = (
+            "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
+        )
         # Graphics configuration
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
         liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
@@ -7249,7 +7270,9 @@ class PassengerCarConsist(PassengerCarConsistBase):
         # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
         self.role_cabbage = "express"
         if self.base_track_type_name == "NG" and self.gen < 4:
-            self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_GENERAL_PURPOSE"
+            self._buy_menu_additional_text_role_string = (
+                "STR_BADGE_ROLE_GENERAL_PURPOSE"
+            )
         else:
             self._buy_menu_additional_text_role_string = (
                 "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
@@ -7321,13 +7344,15 @@ class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistB
         super().__init__(**kwargs)
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["express_non_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "express_non_core"
+        ]
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         print(self.role_cabbage)
-        self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
+        self._buy_menu_additional_text_role_string = (
+            "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
+        )
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.66 if self.base_track_type_name == "NG" else 1.5
         # Graphics configuration
@@ -7428,11 +7453,9 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
             self.speed_class = "standard"
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group[
-                "suburban_or_universal_railcar"
-            ]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "suburban_or_universal_railcar"
+        ]
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         print(self.role_cabbage)
         if self.base_track_type_name == "NG":
@@ -7442,7 +7465,9 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
                     "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
                 )
             else:
-                self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_GENERAL_PURPOSE"
+                self._buy_menu_additional_text_role_string = (
+                    "STR_BADGE_ROLE_GENERAL_PURPOSE"
+                )
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # Graphics configuration
@@ -7478,11 +7503,9 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group[
-                "suburban_or_universal_railcar"
-            ]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "suburban_or_universal_railcar"
+        ]
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         print(self.role_cabbage)
         self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_SUBURBAN"
@@ -7521,8 +7544,12 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "restaurant_car"
         super().__init__(**kwargs)
-        self._badges.append("role/restaurant_car") # intended, used for pax car ruleset behaviour
-        self._badges.append("ih_ruleset_flags/report_as_pax_car") # intended, used for pax car ruleset behaviour
+        self._badges.append(
+            "role/restaurant_car"
+        )  # intended, used for pax car ruleset behaviour
+        self._badges.append(
+            "ih_ruleset_flags/report_as_pax_car"
+        )  # intended, used for pax car ruleset behaviour
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["restaurant"]
         self.buy_cost_adjustment_factor = 2.5
         # double the luxury pax car amount; balance between the bonus amount (which scales with num. pax coaches) and the run cost of running this booster
@@ -7530,7 +7557,9 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         self._joker = True
-        self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
+        self._buy_menu_additional_text_role_string = (
+            "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
+        )
         # Graphics configuration
         # position based variants are not used for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 0, "special": 0}
@@ -7597,9 +7626,9 @@ class PeatCarConsist(CarConsist):
         self.label_refits_allowed = ["PEAT"]
         self.label_refits_disallowed = []
         self.default_cargos = ["PEAT"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         # Graphics configuration
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
         # there will unused vehicles sprites for cargo states, but it's ok in this limited case
@@ -7642,9 +7671,9 @@ class PieceGoodsCarRandomisedConsistBase(RandomisedConsistMixin, CarConsist):
             "non_freight_special_cases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["box"]
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_piece_goods_cars_randomised"
@@ -7803,9 +7832,9 @@ class ReeferCarConsistBase(CarConsist):
         ]
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["food_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "food_wagons"
+        ]
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -7899,9 +7928,9 @@ class SiloCarConsistBase(CarConsist):
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -8157,9 +8186,9 @@ class SlidingRoofCarConsist(BoxCarConsistBase):
         self.base_id = "sliding_roof_car"
         super().__init__(**kwargs)
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self.randomised_candidate_groups = [
             "metal_product_car_covered_randomised",
             "metal_product_car_mixed_randomised",
@@ -8217,9 +8246,9 @@ class SlidingRoofCarConsistHiCube(BoxCarConsistBase):
             "box_vehicle_parts"
         ]  # minor abuse of existing list
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self.randomised_candidate_groups = [
             "piece_goods_car_manufacturing_parts_randomised",
         ]
@@ -8280,9 +8309,9 @@ class SlagLadleCarConsist(CarConsist):
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2  # double the default weight
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         self._joker = True
         self.suppress_animated_pixel_warnings = True
         # Graphics configuration
@@ -8336,9 +8365,9 @@ class TankCarConsistBase(CarConsist):
         ]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
 
 
 class TankCarAcidConsistBase(TankCarConsistBase):
@@ -8799,9 +8828,9 @@ class TarpaulinCarConsistBase(BoxCarConsistBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.buy_cost_adjustment_factor = 1.1
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["non_core_wagons"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "non_core_wagons"
+        ]
         self.randomised_candidate_groups = [
             "metal_product_car_covered_randomised",
             "metal_product_car_mixed_randomised",
@@ -8975,9 +9004,9 @@ class TorpedoCarConsist(CarConsist):
         self.buy_cost_adjustment_factor = 1.2
         self.floating_run_cost_multiplier = 1.33
         self.weight_factor = 2  # double the default weight
-        self._intro_year_days_offset = (
-            global_constants.intro_month_offsets_by_role_group["freight_core"]
-        )
+        self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
+            "freight_core"
+        ]
         self._joker = True
         self.suppress_animated_pixel_warnings = True
         # Graphics configuration

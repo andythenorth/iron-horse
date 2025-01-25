@@ -278,7 +278,7 @@ role_subrole_mapping = {
 # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
 # the actual values will be translated into months later
 # keep ordered by offset integer for ease of reading
-intro_month_offsets_by_role_group = {
+intro_month_offsets_by_role = {
     "universal": 0,
     "express_core": 1,
     "express_non_core": 2,
