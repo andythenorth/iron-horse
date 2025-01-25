@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="ruby",
         base_numeric_id=28310,
         name="Ruby",
-        role="mail_railcar",
+        subrole="mail_railcar",
         subrole_child_branch_num=1,
         base_track_type_name="NG",
         power_by_power_source={

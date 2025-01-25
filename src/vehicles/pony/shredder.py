@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="shredder",
         base_numeric_id=21350,
         name="Shredder",  # Griffon and Shredder names are wrong way round, but seems to suit the shapes so eh, leave it :)
-        role="express",
+        subrole="express",
         subrole_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 2150,  # intended for short mail / supplies trains

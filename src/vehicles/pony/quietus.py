@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="quietus",
         base_numeric_id=21800,
         name="Quietus",
-        role="ultra_heavy_freight",
+        subrole="ultra_heavy_freight",
         subrole_child_branch_num=3,  # in its own line as it's no neat fit to either diesel or electric progression
         power_by_power_source={
             "DIESEL": 2750,  # it's enough

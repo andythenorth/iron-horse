@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="plm_2cc2_3400",
         base_numeric_id=150,
         name="PLM 2CC2 3400",
-        role="ultra_heavy_express",
+        subrole="ultra_heavy_express",
         subrole_child_branch_num=-2,
         power_by_power_source={"DC": 4600},
         random_reverse=True,

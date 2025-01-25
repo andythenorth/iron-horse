@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="hungarian_2d2_400",
         base_numeric_id=30800,
         name="Hungarian 2D2 400",
-        role="ultra_heavy_freight",
+        subrole="ultra_heavy_freight",
         subrole_child_branch_num=-1,
         power_by_power_source={
             "DC": 4800,  # not linear steps in this line

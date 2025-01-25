@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="vectron_dual_mode",
         base_numeric_id=30810,
         name="Vectron Dual-Mode",
-        role="heavy_express",
+        subrole="heavy_express",
         subrole_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 2400,

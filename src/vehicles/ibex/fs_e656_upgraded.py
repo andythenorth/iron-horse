@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="fs_e656_upgraded",
         base_numeric_id=180,
         name="FS E.656 (upgraded)",
-        role="ultra_heavy_express",
+        subrole="ultra_heavy_express",
         subrole_child_branch_num=-1,
         power_by_power_source={"DC": 6000},
         random_reverse=True,

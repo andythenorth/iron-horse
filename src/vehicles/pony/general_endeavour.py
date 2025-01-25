@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="general_endeavour",
         base_numeric_id=20980,
         name="General Endeavour",
-        role="branch_freight",
+        subrole="branch_freight",
         subrole_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 1650,

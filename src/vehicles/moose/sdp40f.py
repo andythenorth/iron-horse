@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="sdp40f",
         base_numeric_id=22040,
         name="sdp40f",
-        role="heavy_express",
+        subrole="heavy_express",
         subrole_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 2800, # nerfed to account for HEP

@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="plastic_postbox",
         base_numeric_id=21420,
         name="Plastic Postbox",
-        role="mail_railcar",
+        subrole="mail_railcar",
         subrole_child_branch_num=2,
         replacement_consist_id="pylon",  # consolidates to electro-diesel with Pylon
         power_by_power_source={

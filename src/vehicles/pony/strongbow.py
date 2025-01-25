@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="strongbow",
         base_numeric_id=4320,
         name="4-6-0 Strongbow",
-        role="heavy_express",
+        subrole="heavy_express",
         subrole_child_branch_num=1,
         power_by_power_source={
             "STEAM": 1850,  # not an exact linear progression in this tree

@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="ares",
         base_numeric_id=20810,
         name="Ares",
-        role="mail_railcar",
+        subrole="mail_railcar",
         subrole_child_branch_num=3,
         power_by_power_source={
             "AC": 400,

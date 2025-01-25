@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="geronimo",
         base_numeric_id=20020,
         name="Geronimo",
-        role="pax_railcar",
+        subrole="pax_railcar",
         subrole_child_branch_num=2,
         power_by_power_source={
             "AC": 420,  # RL EMU HP is much lower per single car, but eh

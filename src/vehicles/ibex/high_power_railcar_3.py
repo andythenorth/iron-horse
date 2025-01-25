@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="high_power_railcar_3",
         base_numeric_id=32630,
         name="SOB BDe 4/4 62",
-        role="high_power_railcar",
+        subrole="high_power_railcar",
         subrole_child_branch_num=1,
         power_by_power_source={
             "AC": 1800,

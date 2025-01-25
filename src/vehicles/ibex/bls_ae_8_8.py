@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="bls_ae_8_8",
         base_numeric_id=130,
         name="BLS Ae 8/8",
-        role="ultra_heavy_freight",
+        subrole="ultra_heavy_freight",
         subrole_child_branch_num=3,
         power_by_power_source={
             "AC": 8700,

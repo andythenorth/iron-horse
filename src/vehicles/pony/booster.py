@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="booster",
         base_numeric_id=21760,
         name="Booster",
-        role="branch_express",
+        subrole="branch_express",
         subrole_child_branch_num=2,
         power_by_power_source={"DIESEL": 600, "AC": 1600},
         random_reverse=True,

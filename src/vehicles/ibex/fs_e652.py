@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="fs_e652",
         base_numeric_id=31120,
         name="FS E.652 Tigre 2",
-        role="ultra_heavy_freight",
+        subrole="ultra_heavy_freight",
         subrole_child_branch_num=-1,
         power_by_power_source={
             "DC": 6700,

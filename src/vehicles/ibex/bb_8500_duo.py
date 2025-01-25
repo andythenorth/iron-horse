@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="bb_8500_duo",
         base_numeric_id=200,
         name="BB 8500 / 16000 (duo)",
-        role="ultra_heavy_freight",
+        subrole="ultra_heavy_freight",
         subrole_child_branch_num=-3,
         power_by_power_source={"DC": 10700},
         gen=5,

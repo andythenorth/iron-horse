@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         id="stag",
         base_numeric_id=17870,
         name="0-6-4 Stag",
-        role="branch_express",
+        subrole="branch_express",
         subrole_child_branch_num=-1,
         power_by_power_source={
             "STEAM": 800,

@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="sbb_eem_923",
         base_numeric_id=34770,
         name="SBB Eem 923",
-        role="branch_express",
+        subrole="branch_express",
         subrole_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 750,

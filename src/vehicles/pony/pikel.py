@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="pikel",
         base_numeric_id=21100,
         name="Pikel",
-        role="universal",
+        subrole="universal",
         subrole_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 600,

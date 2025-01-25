@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="traxx_e_494",
         base_numeric_id=34700,
         name="Captrain Italia E.494 Traxx 3 LM",
-        role="ultra_heavy_freight",
+        subrole="ultra_heavy_freight",
         subrole_child_branch_num=-1,
         # !! maybe add last mile diesel?  tends to not be useful on high HP electrics, but eh...?
         power_by_power_source={"DC": 7400, "DIESEL": 2000},

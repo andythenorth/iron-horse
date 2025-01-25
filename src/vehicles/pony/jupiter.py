@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="jupiter",
         base_numeric_id=21840,
         name="Jupiter",
-        role="mail_railcar",
+        subrole="mail_railcar",
         subrole_child_branch_num=3,
         power_by_power_source={
             "AC": 680,

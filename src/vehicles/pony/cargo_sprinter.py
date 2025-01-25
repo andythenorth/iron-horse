@@ -11,7 +11,7 @@ def main(roster_id, **kwargs):
         id="cargo_sprinter",
         base_numeric_id=25840,
         name="Cargo Sprinter",
-        role="mail_railcar",  # abuse of existing railcar role for convenience
+        subrole="mail_railcar",  # abuse of existing railcar role for convenience
         subrole_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 1650,  # matched to Griffon, Ultra Shoebox

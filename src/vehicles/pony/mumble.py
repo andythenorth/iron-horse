@@ -11,7 +11,7 @@ def main(roster_id, **kwargs):
         id="mumble",
         base_numeric_id=830,
         name="Mumble",
-        role="pax_railbus",
+        subrole="pax_railbus",
         subrole_child_branch_num=1,
         base_track_type_name="NG",
         power_by_power_source={

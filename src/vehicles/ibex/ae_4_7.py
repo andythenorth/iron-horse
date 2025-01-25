@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="ae_4_7",
         base_numeric_id=30760,
         name="Ae 4/7",
-        role="super_heavy_express",
+        subrole="super_heavy_express",
         subrole_child_branch_num=1,
         power_by_power_source={
             "AC": 2800,

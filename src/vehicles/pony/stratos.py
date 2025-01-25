@@ -10,7 +10,7 @@ def main(roster_id, **kwargs):
         id="stratos",
         base_numeric_id=390,
         name="Stratos",
-        role="express_pax_railcar",  # quite a specific role, may or may not scale to other rosters
+        subrole="express_pax_railcar",  # quite a specific role, may or may not scale to other rosters
         subrole_child_branch_num=-2,
         base_track_type_name="NG",
         power_by_power_source={

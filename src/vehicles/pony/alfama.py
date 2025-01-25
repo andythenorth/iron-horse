@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="alfama",
         base_numeric_id=21670,
         name="0-4-4-0 Alfama",
-        role="universal",
+        subrole="universal",
         subrole_child_branch_num=-2,
         base_track_type_name="NG",
         power_by_power_source={

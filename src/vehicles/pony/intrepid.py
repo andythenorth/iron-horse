@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="intrepid",
         base_numeric_id=21520,
         name="Intrepid",
-        role="heavy_express",
+        subrole="heavy_express",
         subrole_child_branch_num=-1,  # -ve because Joker
         power_by_power_source={
             "DIESEL": 2200,

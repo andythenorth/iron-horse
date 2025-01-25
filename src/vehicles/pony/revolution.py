@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="revolution",
         base_numeric_id=21610,
         name="Revolution",
-        role="ultra_heavy_express",
+        subrole="ultra_heavy_express",
         subrole_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 2250,  # lol, same as Shredder eh?

@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="challenger",
         base_numeric_id=14020,
         name="4-6-6-4 Challenger",
-        role="heavy_freight",
+        subrole="heavy_freight",
         subrole_child_branch_num=-3,
         power=6000,
         tractive_effort_coefficient=0.4,

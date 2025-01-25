@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="alize_cab",
         base_numeric_id=17100,
         name="Alizé",
-        role="very_high_speed",
+        subrole="very_high_speed",
         subrole_child_branch_num=-1,
         power_by_power_source={
             "AC": 1900,

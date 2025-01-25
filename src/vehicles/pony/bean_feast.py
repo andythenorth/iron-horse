@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="bean_feast",
         base_numeric_id=21040,
         name="2-6-4 Bean Feast",
-        role="universal",
+        subrole="universal",
         subrole_child_branch_num=1,
         base_track_type_name="NG",
         power_by_power_source={

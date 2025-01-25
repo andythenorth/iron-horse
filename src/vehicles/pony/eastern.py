@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="eastern",
         base_numeric_id=280,
         name="0-8-0 Eastern",
-        role="freight",
+        subrole="freight",
         subrole_child_branch_num=1,
         power_by_power_source={
             "STEAM": 1250,

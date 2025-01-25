@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="higuma",
         base_numeric_id=30870,
         name="Higuma",
-        role="express",
+        subrole="express",
         subrole_child_branch_num=-2,
         base_track_type_name="NG",
         power_by_power_source={

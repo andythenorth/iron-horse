@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="brenner_middle_mail",
         base_numeric_id=6780,
         name="Brenner Mail Van",
-        role="very_high_speed",
+        subrole="very_high_speed",
         pantograph_type="z-shaped-single-with-base",
         power_by_power_source={
             "AC": 0

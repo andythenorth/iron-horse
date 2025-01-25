@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="girt_licker",
         base_numeric_id=70,
         name="0-10-0 Girt Licker",
-        role="super_heavy_freight",
+        subrole="super_heavy_freight",
         subrole_child_branch_num=-1,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
         power_by_power_source={
             "STEAM": 1850,  # match to Vigilant

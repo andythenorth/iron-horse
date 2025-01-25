@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="ultra_shoebox",
         base_numeric_id=21340,
         name="Ultra Shoebox",
-        role="heavy_express",
+        subrole="heavy_express",
         subrole_child_branch_num=-3,
         power_by_power_source={"DIESEL": 1650, "AC": 2800},
         random_reverse=True,

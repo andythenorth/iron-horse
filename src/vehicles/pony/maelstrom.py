@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="maelstrom",
         base_numeric_id=21050,
         name="Maelstrom",
-        role="heavy_freight",
+        subrole="heavy_freight",
         subrole_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 2200,  # keep in line with equivalent gen general purpose engines

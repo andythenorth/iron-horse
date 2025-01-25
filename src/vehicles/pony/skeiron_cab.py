@@ -9,7 +9,7 @@ def main(roster_id, **kwargs):
         id="skeiron_cab",
         base_numeric_id=25120,
         name="Skeiron",
-        role="very_high_speed",
+        subrole="very_high_speed",
         subrole_child_branch_num=2,
         pantograph_type="z-shaped-single",
         power_by_power_source={

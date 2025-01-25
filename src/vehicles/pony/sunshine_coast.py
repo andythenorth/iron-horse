@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="sunshine_coast",
         base_numeric_id=4130,
         name="Sunshine Coast",
-        role="express_pax_railcar",
+        subrole="express_pax_railcar",
         subrole_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={
             "AC": 1900,

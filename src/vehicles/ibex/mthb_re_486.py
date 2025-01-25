@@ -10,7 +10,7 @@ def main(roster_id, **kwargs):
         id="mthb_re_486",
         base_numeric_id=34750,
         name="MTHB Re 486",
-        role="super_heavy_freight",
+        subrole="super_heavy_freight",
         subrole_child_branch_num=2,
         power_by_power_source={
             "AC": 5600,

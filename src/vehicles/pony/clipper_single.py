@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="clipper_single",
         base_numeric_id=25250,
         name="Clipper",
-        role="pax_railbus",
+        subrole="pax_railbus",
         subrole_child_branch_num=-3000,  # excessive child branch number to hide them from tech tree (and also -ve to hide in simplified mode)
         power_by_power_source={
             "DIESEL": 180,

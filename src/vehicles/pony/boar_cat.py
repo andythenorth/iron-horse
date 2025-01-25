@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="boar_cat",
         base_numeric_id=21270,
         name="Boar Cat",
-        role="universal",
+        subrole="universal",
         subrole_child_branch_num=-1,
         power_by_power_source={
             "DIESEL": 600,

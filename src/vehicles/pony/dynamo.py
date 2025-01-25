@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="dynamo",
         base_numeric_id=20970,
         name="Dynamo",
-        role="express",
+        subrole="express",
         subrole_child_branch_num=-3,
         power_by_power_source={
             "AC": 1900,  # matches or better than equivalent gen steam engines

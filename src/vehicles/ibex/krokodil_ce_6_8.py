@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="krokodil_ce_6_8",
         base_numeric_id=32710,
         name="SBB Ce 6/8 ii Krokodil",
-        role="super_heavy_freight",
+        subrole="super_heavy_freight",
         subrole_child_branch_num=2,
         power_by_power_source={
             "AC": 2800,

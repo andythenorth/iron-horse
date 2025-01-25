@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="po_2d2_5500",
         base_numeric_id=17290,
         name="PO 2D2 5500",
-        role="super_heavy_freight",
+        subrole="super_heavy_freight",
         subrole_child_branch_num=-2,
         power_by_power_source={"DC": 3700},
         speed=75,

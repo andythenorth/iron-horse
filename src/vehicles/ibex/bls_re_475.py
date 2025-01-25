@@ -9,7 +9,7 @@ def main(roster_id, **kwargs):
         id="bls_re_475",
         base_numeric_id=30790,
         name="BLS Re 475 !! Multi-system",
-        role="ultra_heavy_express",
+        subrole="ultra_heavy_express",
         subrole_child_branch_num=2,
         power_by_power_source={
             "AC": 7400,

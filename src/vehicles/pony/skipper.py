@@ -11,7 +11,7 @@ def main(roster_id, **kwargs):
         id="skipper",
         base_numeric_id=240,
         name="Skipper",
-        role="pax_railbus",
+        subrole="pax_railbus",
         subrole_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={
             "DIESEL": 400,

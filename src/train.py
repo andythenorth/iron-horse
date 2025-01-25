@@ -160,9 +160,8 @@ class Consist(object):
         self.gestalt_graphics = GestaltGraphics()
         # option to provide automatic roof for all units in the consist, leave as None for no generation
         self.roof_type = None
-        # role is e.g. Heavy Freight, Express etc, and is used to automatically set model life as well as in docs
-        print("CABBAGE")
-        self.subrole = kwargs.get("role", None)
+        # subrole and branches
+        self.subrole = kwargs.get("subrole", None)
         # subrole child branch num places this vehicle on a specific child branch of the tech tree, where the subrole and role are the parent branches
         # 0 = null, no branch (for wagons etc)
         #  1..n for branches
@@ -9194,8 +9193,6 @@ class UnitVariant(object):
         if self.unit.consist.power > 0:
             return True
         if self.unit.consist.buy_menu_additional_text_hint_wagons_add_power:
-            return True
-        if self.unit.consist._buy_menu_additional_text_role_string is not None:
             return True
         if self.uses_random_livery:
             return True

@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="zeus",
         base_numeric_id=25830,
         name="Zeus",
-        role="pax_railcar",
+        subrole="pax_railcar",
         subrole_child_branch_num=2,
         power_by_power_source={
             "AC": 620,

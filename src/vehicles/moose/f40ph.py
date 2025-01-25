@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="f40ph",
         base_numeric_id=22010,
         name="F40PH",
-        role="branch_express",
+        subrole="branch_express",
         subrole_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 1800,

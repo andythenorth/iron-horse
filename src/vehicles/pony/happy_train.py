@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="happy_train",
         base_numeric_id=20330,
         name="Happy Train",
-        role="pax_railcar",
+        subrole="pax_railcar",
         subrole_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 500,

@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="thor",
         base_numeric_id=21330,
         name="0-4-4-0 Thor",
-        role="universal",
+        subrole="universal",
         subrole_child_branch_num=2,
         base_track_type_name="NG",
         power_by_power_source={

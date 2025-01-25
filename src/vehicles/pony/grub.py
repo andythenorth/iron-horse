@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="grub",
         base_numeric_id=21630,
         name="Grub",
-        role="gronk",
+        subrole="gronk",
         subrole_child_branch_num=-1,
         power_by_power_source={
             "STEAM": 350,

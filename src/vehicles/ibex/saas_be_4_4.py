@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="saas_be_4_4",
         base_numeric_id=34970,
         name="SAAS Be 4/4",
-        role="branch_express",
+        subrole="branch_express",
         subrole_child_branch_num=1,
         power_by_power_source={
             # "AC": 1400,

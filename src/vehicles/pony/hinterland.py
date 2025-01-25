@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="hinterland",
         base_numeric_id=21740,
         name="Hinterland",
-        role="universal",
+        subrole="universal",
         subrole_child_branch_num=-5,
         power_by_power_source={
             "DIESEL": 1200,

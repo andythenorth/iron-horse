@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="bls_ae_4_4",
         base_numeric_id=30930,
         name="BLS Ae 4/4",
-        role="ultra_heavy_express",
+        subrole="ultra_heavy_express",
         subrole_child_branch_num=2,
         power_by_power_source={
             "AC": 5300,  # unrealistically high, to fit to BLS Re 4/4 progression, which leans towards Swiss

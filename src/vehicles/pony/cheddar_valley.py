@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="cheddar_valley",
         base_numeric_id=21300,
         name="Cheddar Valley",
-        role="super_heavy_freight",
+        subrole="super_heavy_freight",
         subrole_child_branch_num=3,
         power_by_power_source={
             "DIESEL": 4200,

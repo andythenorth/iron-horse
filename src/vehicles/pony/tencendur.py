@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="tencendur",
         base_numeric_id=890,
         name="4-4-0 Tencendur",
-        role="express",
+        subrole="express",
         subrole_child_branch_num=1,
         power_by_power_source={
             "STEAM": 1450,

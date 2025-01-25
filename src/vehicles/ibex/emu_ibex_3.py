@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="emu_ibex_3",
         base_numeric_id=35320,
         name="SBB Ce 2/4",  # see also https://de.wikipedia.org/wiki/SOB_CFZe_4/4
-        role="pax_railcar",
+        subrole="pax_railcar",
         subrole_child_branch_num=2,
         power_by_power_source={
             "AC": 320,

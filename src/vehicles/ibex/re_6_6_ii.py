@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="re_6_6_ii",
         base_numeric_id=50,
         name="SBB Re 6/6 ii",
-        role="ultra_heavy_freight",
+        subrole="ultra_heavy_freight",
         subrole_child_branch_num=3,
         power_by_power_source={
             "AC": 10700,

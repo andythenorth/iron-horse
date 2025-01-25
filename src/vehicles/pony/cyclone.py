@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="cyclone",
         base_numeric_id=27870,
         name="Cyclone",
-        role="express",
+        subrole="express",
         subrole_child_branch_num=-3,
         power_by_power_source={
             "AC": 2200,

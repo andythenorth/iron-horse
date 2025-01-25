@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="stentor",
         base_numeric_id=21790,
         name="Stentor",
-        role="super_heavy_freight",
+        subrole="super_heavy_freight",
         subrole_child_branch_num=-3,  # Joker eh
         power_by_power_source={
             "DIESEL": 4200,

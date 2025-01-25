@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="rapide_middle_mail",
         base_numeric_id=6400,
         name="Rapide Mail Van",
-        role="very_high_speed",
+        subrole="very_high_speed",
         power_by_power_source={
             "AC": 0
         },  # set power 0, when attached to correct cab, cab power will be increased

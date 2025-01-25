@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="emu_ibex_6",
         base_numeric_id=34500,
         name="FLIRT",
-        role="pax_railcar",
+        subrole="pax_railcar",
         subrole_child_branch_num=2,
         power_by_power_source={
             "AC": 320,

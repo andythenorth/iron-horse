@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         id="decapod",
         base_numeric_id=26080,
         name="0-10-0 Decapod",
-        role="branch_express",
+        subrole="branch_express",
         subrole_child_branch_num=-1,
         power_by_power_source={
             "STEAM": 650,

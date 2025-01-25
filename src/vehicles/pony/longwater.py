@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="longwater",
         base_numeric_id=290,
         name="Longwater",
-        role="mail_metro",
+        subrole="mail_metro",
         subrole_child_branch_num=1,
         power_by_power_source={
             "METRO": 550,

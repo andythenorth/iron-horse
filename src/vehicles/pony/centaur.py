@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="centaur",
         base_numeric_id=17080,
         name="Centaur",
-        role="express",
+        subrole="express",
         subrole_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 2200,

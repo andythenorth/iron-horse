@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="obb_1170_2",
         base_numeric_id=30490,
         name="OBB 1170.2",
-        role="branch_express",
+        subrole="branch_express",
         subrole_child_branch_num=2,
         power_by_power_source={
             # "AC": 2200,

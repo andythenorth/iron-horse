@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="rapid",
         base_numeric_id=21440,
         name="Rapid",
-        role="heavy_express",
+        subrole="heavy_express",
         subrole_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 2800,  # significant jump from previous gen
