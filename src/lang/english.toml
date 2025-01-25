@@ -225,7 +225,7 @@ base = "Teal/Pewter"
 base = "Role"
 
 [STR_BADGE_ROLE_DRIVING_CAB]
-base = "Driving Cab - {BLACK}attach to front or rear of train, with at least one other engine"
+base = "Driving Cab{BLACK} - attach to front or rear of train, with at least one other engine"
 
 [STR_BADGE_ROLE_GENERAL_PURPOSE]
 base = "General Purpose"
