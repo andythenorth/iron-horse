@@ -10,7 +10,7 @@ def main(roster_id, **kwargs):
         # Marauder??
         # Prevails??
         role="heavy_freight",
-        role_child_branch_num=1,
+        subrole_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 2750,  # within range of Resilient
         },

@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=34760,
         name="De 6/6 Seetal Krokodil",
         role="freight",
-        role_child_branch_num=1,
+        subrole_child_branch_num=1,
         power_by_power_source={
             "AC": 1200,
         },

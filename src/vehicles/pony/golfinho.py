@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=970,
         name="Golfinho",
         role="pax_railbus",
-        role_child_branch_num=-2,
+        subrole_child_branch_num=-2,
         base_track_type_name="NG",
         power_by_power_source={
             "DIESEL": 900,

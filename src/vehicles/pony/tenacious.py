@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=17180,
         name="Tenacious",
         role="heavy_express",
-        role_child_branch_num=-2,  # -ve because Joker
+        subrole_child_branch_num=-2,  # -ve because Joker
         power_by_power_source={
             "DIESEL": 2150,
         },

@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=17140,
         name="Mumble",
         role="pax_railbus",
-        role_child_branch_num=-3000,  # excessive child branch number to hide them from tech tree (and also -ve to hide in simplified mode)
+        subrole_child_branch_num=-3000,  # excessive child branch number to hide them from tech tree (and also -ve to hide in simplified mode)
         base_track_type_name="NG",
         power_by_power_source={
             "DIESEL": 250,

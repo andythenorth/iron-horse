@@ -146,7 +146,7 @@
                             </thead>
                             <tbody>
                                 <tal:roles repeat="role roles">
-                                    <tal:role_child_branch tal:repeat="role_child_branch doc_helper.get_role_child_branches_in_order(tech_tree[base_track_type_and_label][role_group][role].keys())">
+                                    <tal:role_child_branch tal:repeat="role_child_branch doc_helper.get_subrole_child_branches_in_order(tech_tree[base_track_type_and_label][role_group][role].keys())">
                                         <tr style="border-top: solid ${'2px #ccc' if role in ['branch_freight', 'heavy_freight', 'super_heavy_freight', 'heavy_express', 'super_heavy_express', 'pax_railcar', 'hst', 'lolz'] else '1px #eee'};
                                                    box-shadow: inset 0 -1px #fff;
                                                    background: linear-gradient(180deg, #fff 0%, #fafafa 100%);">
@@ -217,7 +217,7 @@
 
                                                                         <small>${consist.power_speed_ratio}i</small>
                                                                         <tal:branch condition="consist.roster.id != 'pony'">
-                                                                            <small>branch: ${consist.role_child_branch_num}</small>
+                                                                            <small>branch: ${consist.subrole_child_branch_num}</small>
                                                                         </tal:branch>
                                                                     </span>
                                                                 </div>

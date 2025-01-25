@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=21370,
         name="Wyvern",
         role="heavy_express",
-        role_child_branch_num=1,
+        subrole_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 2200,  # not an exact linear progression in this tree
         },

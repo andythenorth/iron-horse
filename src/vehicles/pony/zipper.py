@@ -12,7 +12,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=260,
         name="Zipper",
         role="pax_railbus",
-        role_child_branch_num=-1,  # joker to hide them from simplified mode
+        subrole_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={
             "DIESEL": 480,
         },

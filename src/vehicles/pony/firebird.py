@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=21500,
         name="Firebird",
         role="hst",  # quite a specific role, may or may not scale to other rosters
-        role_child_branch_num=1,
+        subrole_child_branch_num=1,
         power_by_power_source={
             "DIESEL": 3300,  # it's the Deltic that never was!  It's OP, but eh, it's just cartoon trains.
         },

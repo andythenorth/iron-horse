@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=22030,
         name="U36C",
         role="super_heavy_freight",
-        role_child_branch_num=-3,
+        subrole_child_branch_num=-3,
         power_by_power_source={
             "DIESEL": 3600,  # first high HP diesel in this roster??
         },

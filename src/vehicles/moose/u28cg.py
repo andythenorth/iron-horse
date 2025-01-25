@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=22050,
         name="u28cg / u30gc",
         role="heavy_express",
-        role_child_branch_num=-3,
+        subrole_child_branch_num=-3,
         power_by_power_source={
             "DIESEL": 2800, # nerfed to account for HEP
         },

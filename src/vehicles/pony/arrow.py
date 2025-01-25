@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=6420,
         name="2-6-2 Arrow",
         role="heavy_express",
-        role_child_branch_num=-2,  # -ve because Joker
+        subrole_child_branch_num=-2,  # -ve because Joker
         power_by_power_source={
             "STEAM": 1900,  # slightly higher power, offset by higher weight
         },

@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=21460,
         name="Relentless",
         role="super_heavy_express",
-        role_child_branch_num=-2,
+        subrole_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 4200,
         },

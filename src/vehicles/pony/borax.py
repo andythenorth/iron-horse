@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=24780,
         name="Borax",
         role="metro",
-        role_child_branch_num=-2,
+        subrole_child_branch_num=-2,
         power_by_power_source={
             "METRO": 950,
         },

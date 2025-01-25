@@ -68,67 +68,67 @@ class DocHelper(object):
     def engines_as_tech_tree(self, roster, consists, simplified_gameplay):
         # structure
         # |- base_track_type_name
-        #    |- role_group
-        #       |- role
-        #          |- role child_branch
+        #    |- role
+        #       |- subrole
+        #          |- subrole child_branch
         #             |- generation
         #                |- engine consist
         # if there's no engine consist matching a combination of keys in the tree, there will be a None entry for that node in the tree, to ease walking the tree
         result = {}
         # much nested loops
         for base_track_type_and_label in self.base_track_type_names_and_labels:
-            for role_group in global_constants.role_group_mapping:
-                for role in global_constants.role_group_mapping[role_group]:
-                    role_child_branches = {}
-                    for role_child_branch in self.get_role_child_branches(
-                        consists, base_track_type_and_label[0], role
+            for role in global_constants.role_subrole_mapping:
+                for subrole in global_constants.role_subrole_mapping[role]:
+                    subrole_child_branches = {}
+                    for subrole_child_branch in self.get_subrole_child_branches(
+                        consists, base_track_type_and_label[0], subrole
                     ):
                         # special case to drop anything that shouldn't be in tech tree
                         # e.g. wagons (child branch 0) or TGV middle cars (in the +/-1000 range)
                         if (
-                            (role_child_branch == 0)
-                            or (role_child_branch > 999)
-                            or (role_child_branch < -999)
+                            (subrole_child_branch == 0)
+                            or (subrole_child_branch > 999)
+                            or (subrole_child_branch < -999)
                         ):
                             continue
                         # allowed cases
-                        if not (simplified_gameplay and role_child_branch < 0):
-                            role_child_branches[role_child_branch] = {}
+                        if not (simplified_gameplay and subrole_child_branch < 0):
+                            subrole_child_branches[subrole_child_branch] = {}
                             # walk the generations, providing default None objects
                             for gen in range(
                                 1,
                                 len(roster.intro_years[base_track_type_and_label[0]])
                                 + 1,
                             ):
-                                role_child_branches[role_child_branch][gen] = None
-                    # get the engines matching this role and track type, and place them into the child branches
+                                subrole_child_branches[subrole_child_branch][gen] = None
+                    # get the engines matching this subrole and track type, and place them into the child branches
                     for consist in consists:
                         # special case to drop anything that shouldn't be in tech tree
                         # e.g. wagons (child branch 0) or TGV middle cars (in the +/-1000 range)
                         if (
-                            (consist.role_child_branch_num == 0)
-                            or (consist.role_child_branch_num > 999)
-                            or (consist.role_child_branch_num < -999)
+                            (consist.subrole_child_branch_num == 0)
+                            or (consist.subrole_child_branch_num > 999)
+                            or (consist.subrole_child_branch_num < -999)
                         ):
                             continue
-                        if simplified_gameplay and consist.role_child_branch_num < 0:
+                        if simplified_gameplay and consist.subrole_child_branch_num < 0:
                             continue
                         if (
                             consist.base_track_type_name == base_track_type_and_label[0]
-                        ) and (consist.role == role):
-                            role_child_branches[consist.role_child_branch_num][
+                        ) and (consist.role_cabbage == subrole):
+                            subrole_child_branches[consist.subrole_child_branch_num][
                                 consist.gen
                             ] = consist
-                    # only add role group to tree for this track type if there are actual vehicles in it
-                    if len(role_child_branches) > 0:
+                    # only add subrole to tree for this track type if there are actual vehicles in it
+                    if len(subrole_child_branches) > 0:
                         result.setdefault(base_track_type_and_label, {})
-                        result[base_track_type_and_label].setdefault(role_group, {})
-                        result[base_track_type_and_label][role_group].setdefault(
-                            role, {}
+                        result[base_track_type_and_label].setdefault(role, {})
+                        result[base_track_type_and_label][role].setdefault(
+                            subrole, {}
                         )
-                        result[base_track_type_and_label][role_group][
-                            role
-                        ] = role_child_branches
+                        result[base_track_type_and_label][role][
+                            subrole
+                        ] = subrole_child_branches
         return result
 
     def not_really_engine_consists(self, roster):
@@ -145,7 +145,7 @@ class DocHelper(object):
             if (
                 consist.buy_menu_additional_text_hint_driving_cab
                 or consist.wagons_add_power
-                or consist.role in ["pax_metro", "mail_metro", "metro", "gronk"]
+                or consist.role_cabbage in ["pax_metro", "mail_metro", "metro", "gronk"]
                 or consist._buyable_variant_group_id is not None
             ):
                 result.append(consist)
@@ -161,10 +161,10 @@ class DocHelper(object):
                 result.append(consist)
         return result
 
-    def get_role_child_branches_in_order(self, role_child_branches):
+    def get_subrole_child_branches_in_order(self, subrole_child_branches):
         # adjust the sort so that it's +ve, -ve for each value, e.g. [1, -1, 2, -2, 3, -3, 4, 5] etc
         # this gives the nicest order of related rows in tech tree, assuming that similar engines are in child_branch 1 and child_branch -1
-        result = [i for i in role_child_branches]
+        result = [i for i in subrole_child_branches]
         result.sort(key=lambda x: (abs(x), -x))
         return result
 
@@ -271,12 +271,12 @@ class DocHelper(object):
             result.append(colour_name.split("COLOUR_")[1])
         return ("_").join(result).lower()
 
-    def get_role_child_branches(self, consists, base_track_type_name, role):
+    def get_subrole_child_branches(self, consists, base_track_type_name, role):
         result = []
         for consist in consists:
             if consist.base_track_type_name == base_track_type_name:
-                if consist.role is not None and consist.role == role:
-                    result.append(consist.role_child_branch_num)
+                if consist.role_cabbage is not None and consist.role_cabbage == role:
+                    result.append(consist.subrole_child_branch_num)
         return set(result)
 
     def filter_out_randomised_wagon_consists(self, wagon_consists):
@@ -373,7 +373,7 @@ class DocHelper(object):
 
     def get_role_string_from_role(self, role):
         # mangle on some boilerplate to get the nml string
-        for role_group, roles in global_constants.role_group_mapping.items():
+        for role_group, roles in global_constants.role_subrole_mapping.items():
             if role in roles:
                 return self.lang_strings[
                     global_constants.static_badges["role"]["sublabels"][role_group][
@@ -387,11 +387,11 @@ class DocHelper(object):
                 return self.unpack_name_string(consist)
 
     def consist_has_direct_replacment(self, consist):
-        if consist.replacement_consist.role != consist.role:
+        if consist.replacement_consist.role_cabbage != consist.role_cabbage:
             return False
         elif (
-            consist.replacement_consist.role_child_branch_num
-            != consist.role_child_branch_num
+            consist.replacement_consist.subrole_child_branch_num
+            != consist.subrole_child_branch_num
         ):
             return False
         elif consist.replacement_consist.gen != consist.gen + 1:
@@ -430,8 +430,8 @@ class DocHelper(object):
                 result, "Vehicle Name", self.unpack_name_string(vehicle)
             )
             result = self.fetch_prop(result, "Gen", vehicle.gen)
-            if vehicle.role is not None:
-                result = self.fetch_prop(result, "Role", vehicle.role)
+            if vehicle.role_cabbage is not None:
+                result = self.fetch_prop(result, "Subrole", vehicle.role_cabbage)
             result = self.fetch_prop(result, "Railtype", vehicle.track_type)
             result = self.fetch_prop(result, "HP", int(vehicle.power))
             result = self.fetch_prop(result, "Speed (mph)", vehicle.speed)

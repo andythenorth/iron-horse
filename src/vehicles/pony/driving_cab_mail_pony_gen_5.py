@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="driving_cab_mail_pony_gen_5",
         base_numeric_id=19970,
         name="Driving Van Trailer",
-        role_child_branch_num=-1,  # driving cab cars are probably jokers?
+        subrole_child_branch_num=-1,  # driving cab cars are probably jokers?
         gen=5,
         liveries="gen_5_and_6_mail_liveries",  # override default liveries from gestalt
         sprites_complete=True,

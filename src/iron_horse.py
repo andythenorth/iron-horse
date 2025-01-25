@@ -148,10 +148,10 @@ class RosterManager(list):
                 "express_railcar",
                 "high_power_railcar",
             ]:
-                group_roles = global_constants.role_group_mapping[
+                group_roles = global_constants.role_subrole_mapping[
                     role_group_mapping_key
                 ]
-                if consist.role in group_roles:
+                if consist.role_cabbage in group_roles:
                     express_engine_ids.append(consist.id)
         return [(count, id) for count, id in enumerate(express_engine_ids)]
 

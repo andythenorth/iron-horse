@@ -10,7 +10,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=30790,
         name="BLS Re 475 !! Multi-system",
         role="ultra_heavy_express",
-        role_child_branch_num=2,
+        subrole_child_branch_num=2,
         power_by_power_source={
             "AC": 7400,
             "DC": 7400,

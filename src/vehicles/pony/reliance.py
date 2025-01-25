@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=4890,
         name="2-4-0 Reliance",
         role="express",
-        role_child_branch_num=-1,
+        subrole_child_branch_num=-1,
         replacement_consist_id="carrack",  # this Joker ends with Carrack
         power_by_power_source={
             "STEAM": 950,

@@ -11,7 +11,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=940,
         name="Nimbus",
         role="express_pax_railcar",  # quite a specific role, may or may not scale to other rosters
-        role_child_branch_num=-2,
+        subrole_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 1500,
             "AC": 2500,

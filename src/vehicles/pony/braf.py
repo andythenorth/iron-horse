@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=0,
         name="2-6-0 Braf",  # Welsh for "fine, nice, pleasant" https://omniglot.com/language/weather/welsh.htm
         role="express",
-        role_child_branch_num=-1,
+        subrole_child_branch_num=-1,
         power_by_power_source={
             "STEAM": 1250,
         },

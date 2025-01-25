@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="driving_cab_high_speed_passenger_pony_gen_6",
         base_numeric_id=19920,
         name="High Speed Driving Trailer",
-        role_child_branch_num=-3,  # driving cab cars are probably jokers?
+        subrole_child_branch_num=-3,  # driving cab cars are probably jokers?
         gen=6,
         lgv_capable=True,  # for lolz
         sprites_complete=True,

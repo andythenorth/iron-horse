@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=790,
         name="Flindermouse",
         role="ultra_heavy_freight",
-        role_child_branch_num=2,
+        subrole_child_branch_num=2,
         power_by_power_source={
             "AC": 2500,
         },

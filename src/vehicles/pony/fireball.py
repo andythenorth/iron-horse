@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=23990,
         name="0-6-0 Fireball",
         role="gronk",
-        role_child_branch_num=-3,
+        subrole_child_branch_num=-3,
         power_by_power_source={
             "STEAM": 350,
         },

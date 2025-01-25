@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=21610,
         name="Revolution",
         role="ultra_heavy_express",
-        role_child_branch_num=-2,
+        subrole_child_branch_num=-2,
         power_by_power_source={
             "DIESEL": 2250,  # lol, same as Shredder eh?
             "AC": 5400,  # higher HP than Screamer, but heavier so similar HP / ton

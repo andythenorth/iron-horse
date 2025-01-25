@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=20800,
         name="Pylon",
         role="mail_railcar",
-        role_child_branch_num=3,
+        subrole_child_branch_num=3,
         power_by_power_source={"DIESEL": 700, "AC": 820},
         pantograph_type="z-shaped-single-with-base",
         easter_egg_haulage_speed_bonus=True,

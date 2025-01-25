@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="driving_cab_high_speed_mail_pony_gen_5",
         base_numeric_id=18090,
         name="High Speed Driving Van Trailer",
-        role_child_branch_num=-2,  # driving cab cars are probably jokers?
+        subrole_child_branch_num=-2,  # driving cab cars are probably jokers?
         gen=5,
         lgv_capable=True,  # for lolz
         liveries="gen_5_and_6_mail_liveries",  # override default liveries from gestalt

@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=17860,
         name="Falcon",
         role="super_heavy_express",
-        role_child_branch_num=-2,
+        subrole_child_branch_num=-2,
         replacement_consist_id="rapid",  # this Joker ends with Rapid (switching child branch) - goal is to keep Falcon around for a while, because I like it
         power_by_power_source={
             "DIESEL": 2800,

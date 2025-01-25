@@ -7,7 +7,7 @@ def main(roster_id, **kwargs):
         id="driving_cab_passenger_ng_pony_gen_4",
         base_numeric_id=23260,
         name="Driving Trailer",
-        role_child_branch_num=-1,  # driving cab cars are probably jokers?
+        subrole_child_branch_num=-1,  # driving cab cars are probably jokers?
         base_track_type_name="NG",
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh

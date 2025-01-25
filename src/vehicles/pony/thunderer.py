@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=4830,
         name="4-6-0 Thunderer",  # shorter 2-6-0 version was tried, but doesn't fit a power band gap in the mixed traffic roster
         role="heavy_express",
-        role_child_branch_num=-1,
+        subrole_child_branch_num=-1,
         replacement_consist_id="intrepid",  # this Joker ends with Intrepid, long-lived
         power_by_power_source={
             "STEAM": 1500,  # slightly less than the Swift (and lighter engine)

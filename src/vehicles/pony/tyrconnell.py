@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=930,
         name="4-8-0 Tyrconnell",
         role="universal",
-        role_child_branch_num=-4,
+        subrole_child_branch_num=-4,
         base_track_type_name="NG",
         power_by_power_source={
             "STEAM": 900,

@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=30990,
         name="BB 22200 (upgraded)",
         role="ultra_heavy_express",
-        role_child_branch_num=-2,
+        subrole_child_branch_num=-2,
         power_by_power_source={"DC": 7400, "AC": 7400},
         random_reverse=True,
         gen=6,

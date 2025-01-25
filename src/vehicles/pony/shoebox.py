@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=21020,
         name="Shoebox",
         role="heavy_express",
-        role_child_branch_num=-3,
+        subrole_child_branch_num=-3,
         power_by_power_source={"DIESEL": 950, "AC": 2500},
         random_reverse=True,
         pantograph_type="z-shaped-single",

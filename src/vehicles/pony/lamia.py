@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=21730,
         name="0-6-0 Lamia",  # the name is the Basque mythical creature, not the Greek https://en.wikipedia.org/wiki/Lamia_(Basque_mythology)
         role="gronk",
-        role_child_branch_num=-2,
+        subrole_child_branch_num=-2,
         power_by_power_source={
             "STEAM": 350,
         },

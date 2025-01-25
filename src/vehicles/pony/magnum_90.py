@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=21680,
         name="Magnum 90",
         role="gronk",
-        role_child_branch_num=-4,
+        subrole_child_branch_num=-4,
         power_by_power_source={
             "BATTERY_HYBRID": 900,
         },

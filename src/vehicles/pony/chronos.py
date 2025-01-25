@@ -11,7 +11,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=950,
         name="Chronos",
         role="express_mail_railcar",
-        role_child_branch_num=-1,  # joker to hide them from simplified mode
+        subrole_child_branch_num=-1,  # joker to hide them from simplified mode
         power_by_power_source={"AC": 2800},
         pantograph_type="z-shaped-single-with-base",
         gen=5,

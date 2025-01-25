@@ -8,7 +8,7 @@ def main(roster_id, **kwargs):
         base_numeric_id=32790,
         name="FS E.412 Brenner / OBB 1822",
         role="ultra_heavy_express",
-        role_child_branch_num=1,
+        subrole_child_branch_num=1,
         power_by_power_source={
             "AC": 6000,
             "DC": 6000,

@@ -214,9 +214,9 @@ PR_RUNNING_TRAIN_STEAM = -2
 # NOTE: all wagons use RUNNING_COST_DIESEL, nerfed down to small increments, for fine-grained control over low wagon run costs
 PR_RUNNING_TRAIN_DIESEL = -4
 
-# generalised mapping of roles to groups
-# order is significant
-role_group_mapping = {
+# roles and subroles
+# order is significant - used by docs tech tree
+role_subrole_mapping = {
     "express": [
         "branch_express",
         "express",
