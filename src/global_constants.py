@@ -933,10 +933,10 @@ static_badges = {
     "ih_wagon_length": {
         "name": "STR_BADGE_WAGON_LENGTH",
         "sublabels": {
-            "a": {"name": "STR_NAME_SUFFIX_SMALL"},
-            "b": {"name": "STR_NAME_SUFFIX_MEDIUM"},
-            "c": {"name": "STR_NAME_SUFFIX_LARGE"},
-            "d": {"name": "STR_NAME_SUFFIX_TWIN"},
+            "a": {"name": "STR_BADGE_WAGON_LENGTH_SMALL"},
+            "b": {"name": "STR_BADGE_WAGON_LENGTH_MEDIUM"},
+            "c": {"name": "STR_BADGE_WAGON_LENGTH_LARGE"},
+            "d": {"name": "STR_BADGE_WAGON_LENGTH_TWIN"},
             "u": {"name": "STR_EMPTY"},
         },
     },

@@ -227,6 +227,20 @@ base = "Role"
 [STR_BADGE_WAGON_LENGTH]
 base = "Size Class"
 
+# size suffixes
+[STR_BADGE_WAGON_LENGTH_SMALL]
+base = "Small"
+
+[STR_BADGE_WAGON_LENGTH_MEDIUM]
+base = "Medium"
+
+[STR_BADGE_WAGON_LENGTH_LARGE]
+base = "Large"
+
+# special feature suffixes
+[STR_BADGE_WAGON_LENGTH_TWIN]
+base = "Twin"
+
 [STR_BADGE_ROLE_RESTAURANT_CAR]
 base = "Eliminates running costs for all Passenger Coaches or High Speed Coaches in the train"
 
@@ -264,22 +278,10 @@ base = "Steam"
 [STR_NAME_SUFFIX_TRAILER]
 base = "Trailer"
 
-# size suffixes
-[STR_NAME_SUFFIX_SMALL]
-base = "Small"
-
-[STR_NAME_SUFFIX_MEDIUM]
-base = "Medium"
-
-[STR_NAME_SUFFIX_LARGE]
-base = "Large"
-
-# special feature suffixes
-[STR_NAME_SUFFIX_TWIN]
-base = "Twin"
-
 [STR_NAME_SUFFIX_RANDOMISED_WAGON]
 base = " - Random"
+
+# wagon groups
 
 [STR_WAGON_GROUP_ACID_TANK_CARS]
 base = "Acid Tankers"
