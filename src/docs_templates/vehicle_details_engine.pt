@@ -120,7 +120,7 @@
                     <tbody>
                         <tr>
                             <th>Role</th>
-                            <td>${doc_helper.unpack_role_string_for_consist(consist)}</td>
+                            <td>${doc_helper.get_role_string_for_consist(consist, iron_horse.badge_manager)}</td>
                         </tr>
                         <tr>
                             <th>Intro year / Designed</th>

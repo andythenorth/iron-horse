@@ -178,7 +178,7 @@
                                                     Railcar
                                                 </span>
                                                 <span tal:condition="'mail_railcar' not in subrole and 'pax_railcar' and 'pax_railbus' not in subrole">
-                                                    ${doc_helper.get_role_string_from_role(subrole)}
+                                                    ${doc_helper.get_role_string_from_subrole(subrole, iron_horse.badge_manager)}
                                                 </span>
                                                 <span tal:condition="subrole_child_branch < 0">
                                                     <br /><span class="muted">(Joker)</span>

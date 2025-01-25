@@ -80,7 +80,7 @@
                                         <td>
                                             <a class="table-link-dark" href="${consist.id}.html">${doc_helper.unpack_name_string(consist)}</a>
                                         </td>
-                                        <td>${doc_helper.unpack_role_string_for_consist(consist)}</td>
+                                        <td>${doc_helper.get_role_string_for_consist(consist, iron_horse.badge_manager)}</td>
                                         <td class="date">${consist.intro_year}</td>
                                         <td class="number">
                                             <tal:power repeat="power_string doc_helper.power_formatted_for_docs(consist)">

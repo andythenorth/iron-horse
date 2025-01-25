@@ -219,15 +219,46 @@ base = "Mustard/Straw"
 [STR_NAME_SUFFIX_LIVERY_MIX_TEAL_PEWTER]
 base = "Teal/Pewter"
 
-# badges
+# role badges
 
 [STR_BADGE_ROLE]
 base = "Role"
 
+[STR_BADGE_ROLE_DRIVING_CAB]
+base = "Driving Cab - {BLACK}attach to front or rear of train, with at least one other engine"
+
+[STR_BADGE_ROLE_GENERAL_PURPOSE]
+base = "General Purpose"
+
+[STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS]
+base = "General Purpose / Express"
+
+[STR_BADGE_ROLE_GENERAL_PURPOSE_FREIGHT]
+base = "General Purpose / Freight"
+
+[STR_BADGE_ROLE_GRONK]
+base = "Gronk!"
+
+[STR_BADGE_ROLE_INTERCITY_EXPRESS]
+base = "InterCity Express"
+
+[STR_BADGE_ROLE_LOLZ]
+base = "Lolz"
+
+[STR_BADGE_ROLE_METRO]
+base = "Very High Capacity Urban"
+
+[STR_BADGE_ROLE_RESTAURANT_CAR]
+base = "Eliminates running costs for all Passenger Coaches or High Speed Coaches in the train"
+
+[STR_BADGE_ROLE_SUBURBAN]
+base = "General Purpose / High Capacity"
+
+# size badges
+
 [STR_BADGE_WAGON_LENGTH]
 base = "Size Class"
 
-# size suffixes
 [STR_BADGE_WAGON_LENGTH_SMALL]
 base = "Small"
 
@@ -237,12 +268,10 @@ base = "Medium"
 [STR_BADGE_WAGON_LENGTH_LARGE]
 base = "Large"
 
-# special feature suffixes
 [STR_BADGE_WAGON_LENGTH_TWIN]
 base = "Twin"
 
-[STR_BADGE_ROLE_RESTAURANT_CAR]
-base = "Eliminates running costs for all Passenger Coaches or High Speed Coaches in the train"
+# special features badges
 
 [STR_BADGE_SPECIAL_FLAGS]
 base = "Special Features"
@@ -970,37 +999,6 @@ base = "(Cars)"
 
 [STR_CARGO_SUBTYPE_VEHI_1]
 base = "(Trucks)"
-
-# role information for buy menu
-[STR_ROLE]
-base = "{BLACK}Role: {GOLD}{STRING}"
-
-[STR_BADGE_ROLE_DRIVING_CAB]
-base = "Driving Cab - {BLACK}attach to front or rear of train, with at least one other engine"
-
-[STR_BADGE_ROLE_GENERAL_PURPOSE]
-base = "General Purpose"
-
-[STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS]
-base = "General Purpose / Express"
-
-[STR_BADGE_ROLE_GENERAL_PURPOSE_FREIGHT]
-base = "General Purpose / Freight"
-
-[STR_BADGE_ROLE_GRONK]
-base = "Gronk!"
-
-[STR_BADGE_ROLE_INTERCITY_EXPRESS]
-base = "InterCity Express"
-
-[STR_BADGE_ROLE_LOLZ]
-base = "Lolz"
-
-[STR_BADGE_ROLE_METRO]
-base = "Very High Capacity Urban"
-
-[STR_BADGE_ROLE_SUBURBAN]
-base = "General Purpose / High Capacity"
 
 [STR_POWER_BY_POWER_SOURCE_TWO_SOURCES]
 base = "{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER}"

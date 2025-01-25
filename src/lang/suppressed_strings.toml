@@ -975,6 +975,3 @@ suppressed_rosters = ["moose"]
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_7]
 suppressed_rosters = ["moose"]
 
-[STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_THREE_SUBSTR]
-suppressed_rosters = ["moose"]
-

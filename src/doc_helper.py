@@ -363,23 +363,16 @@ class DocHelper(object):
                     result.append(self.lang_strings[name_part])
             return " ".join(result)
 
-    def unpack_role_string_for_consist(self, consist):
-        # strip off some nml boilerplate
-        role_key = consist.buy_menu_additional_text_role_string.replace(
-            "STR_ROLE, string(", ""
-        )
-        role_key = role_key.replace(")", "")
-        return self.lang_strings[role_key]
+    def get_role_string_for_consist(self, consist, badge_manager):
+        role_string_name = badge_manager.get_badge_by_label(consist.role_badge).name
+        return self.lang_strings[role_string_name]
 
-    def get_role_string_from_role(self, subrole):
-        # mangle on some boilerplate to get the nml string
+    def get_role_string_from_subrole(self, subrole, badge_manager):
+        # used in docs for headers, no consist available
         for role, subroles in global_constants.role_subrole_mapping.items():
             if subrole in subroles:
-                return self.lang_strings[
-                    global_constants.static_badges["role"]["sublabels"][role][
-                        "name"
-                    ]
-                ]
+                role_string_name = badge_manager.get_badge_by_label("role/" + role).name
+                return self.lang_strings[role_string_name]
 
     def get_replaced_by_name(self, replacement_consist_id, consists):
         for consist in consists:

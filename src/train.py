@@ -387,6 +387,12 @@ class Consist(object):
         return None
 
     @property
+    def role_badge(self):
+        if self.role is not None:
+            return "role/" + self.role
+        return None
+
+    @property
     def vehicle_family_badge(self):
         # stub only, over-ride in subclasses as appropriate
         return None
@@ -401,8 +407,8 @@ class Consist(object):
         # - badges explicitly added to _badges attr
         # - badges arising implicitly from consist type or properties
         result = list(set(self._badges))
-        if self.role is not None:
-            result.append("role/" + self.role)
+        if self.role_badge is not None:
+            result.append(self.role_badge)
         # badge for handling vehicle_family
         if self.vehicle_family_badge is not None:
             result.append(self.vehicle_family_badge)
@@ -1149,19 +1155,15 @@ class Consist(object):
         if self.buy_menu_additional_text_hint_wagons_add_power:
             result.append(self.buy_menu_additional_text_distributed_power_substring)
 
-        # engines will always show a role string
-        # !! this try/except is all wrong, I just want to JFDI to add buy menu strings to wagons which previously didn't support them, and can do regret later
-        # !! this may not be used / or required as of April 2021 - _buy_menu_additional_text_role_string is available instead
-        try:
-            result.append(self.buy_menu_additional_text_role_string)
-        except:
-            pass
-
         # livery variants comes after role string
         if unit_variant is not None:
             # as of May 2023 get_buy_menu_additional_text is never called with a variant in scope unless the variant requires this string
             # so no conditional checks needed - this may change
             result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS")
+
+        if len(result) == 0:
+            print("CABBAGE")
+            return "STR_EMPTY"
 
         if len(result) == 1:
             return (
@@ -1194,23 +1196,6 @@ class Consist(object):
             + ": "
             + str(len(result))
         )
-
-    @property
-    def buy_menu_additional_text_role_string(self):
-        if self._buy_menu_additional_text_role_string is not None:
-            return (
-                "STR_ROLE, string(" + self._buy_menu_additional_text_role_string + ")"
-            )
-        for role, subroles in global_constants.role_subrole_mapping.items():
-            if self.subrole in subroles:
-                return (
-                    "STR_ROLE, string("
-                    + global_constants.static_badges["role"]["sublabels"][role][
-                        "name"
-                    ]
-                    + ")"
-                )
-        raise Exception("no role string found for ", self.id)
 
     @property
     def cite(self):

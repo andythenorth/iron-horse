@@ -51,14 +51,16 @@ class BadgeManager(list):
     """
 
     def add_badge(self, label, **kwargs):
-        # don't add duplicate badges, it will cause unexpected behaviour
+        # if not a duplicate, add the badge
+        if self.get_badge_by_label(label) is None:
+            self.append(Badge(label, **kwargs))
+        # no return as of now, not needed
+
+    def get_badge_by_label(self, label):
         for badge in self:
             if badge.label == label:
-                # don't bother with any error handling as of Jan 2025, add some later if needed
-                return
-        # if not a duplicate, add the badge
-        self.append(Badge(label, **kwargs))
-
+                return badge
+        return None
 
 class RailTypeManager(list):
     """

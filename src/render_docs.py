@@ -58,6 +58,7 @@ def render_docs(
         doc = template(
             roster=roster,
             consists=consists,
+            iron_horse=iron_horse,
             global_constants=global_constants,
             command_line_args=command_line_args,
             git_info=git_info,
@@ -109,6 +110,7 @@ def render_docs_vehicle_details(docs_output_path, doc_helper, consists, template
             roster=roster,
             consist=consist,
             consists=consists,
+            iron_horse=iron_horse,
             global_constants=global_constants,
             command_line_args=command_line_args,
             git_info=git_info,
