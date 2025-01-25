@@ -83,9 +83,13 @@ class DocHelper(object):
                     for role_child_branch in self.get_role_child_branches(
                         consists, base_track_type_and_label[0], role
                     ):
-                        # special case to drop anything that shouldn't be in tech tree (e.g. TGV middle cars)
-                        # this relies on forcing child branch IDs up into 1000+ values (which is probably fine?)
-                        if (role_child_branch > 999) or (role_child_branch < -999):
+                        # special case to drop anything that shouldn't be in tech tree
+                        # e.g. wagons (child branch 0) or TGV middle cars (in the +/-1000 range)
+                        if (
+                            (role_child_branch == 0)
+                            or (role_child_branch > 999)
+                            or (role_child_branch < -999)
+                        ):
                             continue
                         # allowed cases
                         if not (simplified_gameplay and role_child_branch < 0):
@@ -99,11 +103,15 @@ class DocHelper(object):
                                 role_child_branches[role_child_branch][gen] = None
                     # get the engines matching this role and track type, and place them into the child branches
                     for consist in consists:
-                        if simplified_gameplay and consist.role_child_branch_num < 0:
-                            continue
-                        if (consist.role_child_branch_num > 999) or (
-                            consist.role_child_branch_num < -999
+                        # special case to drop anything that shouldn't be in tech tree
+                        # e.g. wagons (child branch 0) or TGV middle cars (in the +/-1000 range)
+                        if (
+                            (consist.role_child_branch_num == 0)
+                            or (consist.role_child_branch_num > 999)
+                            or (consist.role_child_branch_num < -999)
                         ):
+                            continue
+                        if simplified_gameplay and consist.role_child_branch_num < 0:
                             continue
                         if (
                             consist.base_track_type_name == base_track_type_and_label[0]
@@ -368,7 +376,9 @@ class DocHelper(object):
         for role_group, roles in global_constants.role_group_mapping.items():
             if role in roles:
                 return self.lang_strings[
-                    global_constants.static_badges["role"]["sublabels"][role_group]["name"]
+                    global_constants.static_badges["role"]["sublabels"][role_group][
+                        "name"
+                    ]
                 ]
 
     def get_replaced_by_name(self, replacement_consist_id, consists):

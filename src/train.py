@@ -162,7 +162,9 @@ class Consist(object):
         # role is e.g. Heavy Freight, Express etc, and is used to automatically set model life as well as in docs
         self.role = kwargs.get("role", None)
         # role child branch num places this vehicle on a specific child branch of the tech tree, where the role is the parent branch
-        # 1..n for branches with calculated replacements, -1..-n for jokers which are not automatically replaced in the tree, 0 reserved
+        # 0 = null, no branch (for wagons etc)
+        #  1..n for branches
+        # -1..-n for jokers
         self.role_child_branch_num = kwargs.get("role_child_branch_num", 0)
         # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get(
@@ -2175,6 +2177,7 @@ class TGVMiddleMailEngineConsist(TGVMiddleEngineConsistMixin, MailEngineConsist)
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # force the child branches apart for middle engines, based on cab ID
+        # as of Jan 2025, this is used by tech tree, and (I think) for calculating replacement
         if self.cab_consist.role_child_branch_num < 0:
             offset = -2000
         else:
@@ -2192,6 +2195,7 @@ class TGVMiddlePassengerEngineConsist(
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # force the child branches apart for middle engines, based on cab ID
+        # as of Jan 2025, this is used by tech tree, and (I think) for calculating replacement
         if self.cab_consist.role_child_branch_num < 0:
             offset = -1000
         else:
@@ -7236,6 +7240,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
+        self.role = "express"
         if self.base_track_type_name == "NG" and self.gen < 4:
             self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_GENERAL_PURPOSE"
         else:
