@@ -151,7 +151,7 @@ class RosterManager(list):
                 subroles = global_constants.role_subrole_mapping[
                     role
                 ]
-                if consist.role_cabbage in subroles:
+                if consist.subrole in subroles:
                     express_engine_ids.append(consist.id)
         return [(count, id) for count, id in enumerate(express_engine_ids)]
 

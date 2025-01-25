@@ -162,7 +162,7 @@ class Consist(object):
         self.roof_type = None
         # role is e.g. Heavy Freight, Express etc, and is used to automatically set model life as well as in docs
         print("CABBAGE")
-        self.role_cabbage = kwargs.get("role", None)
+        self.subrole = kwargs.get("role", None)
         # subrole child branch num places this vehicle on a specific child branch of the tech tree, where the subrole and role are the parent branches
         # 0 = null, no branch (for wagons etc)
         #  1..n for branches
@@ -392,8 +392,8 @@ class Consist(object):
         # - badges explicitly added to _badges attr
         # - badges arising implicitly from consist type or properties
         result = list(set(self._badges))
-        # if self.role_cabbage is not None:
-        # result.append("role/" + self.role_cabbage)
+        # if self.subrole is not None:
+        # result.append("role/" + self.subrole)
         # badge for handling vehicle_family
         if self.vehicle_family_badge is not None:
             result.append(self.vehicle_family_badge)
@@ -479,7 +479,7 @@ class Consist(object):
             return self._intro_year_days_offset
         else:
             for role, subroles in global_constants.role_subrole_mapping.items():
-                if self.role_cabbage in subroles:
+                if self.subrole in subroles:
                     group_key = role
                     continue
             if group_key in ["express", "freight"]:
@@ -537,7 +537,7 @@ class Consist(object):
             replacement_consist = None
             for consist in self.roster.engine_consists:
                 if (
-                    (consist.role_cabbage == self.role_cabbage)
+                    (consist.subrole == self.subrole)
                     and (
                         consist.subrole_child_branch_num
                         == self.subrole_child_branch_num
@@ -577,7 +577,7 @@ class Consist(object):
                 and (getattr(consist, "cab_id", None) is None)
             ):
                 if (
-                    (consist.role_cabbage == self.role_cabbage)
+                    (consist.subrole == self.subrole)
                     or (0 <= (consist.power - self.power) < 500)
                     or (0 <= (self.power - consist.power) < 500)
                 ):
@@ -780,7 +780,7 @@ class Consist(object):
             # !! this doesn't handle RAIL / ELRL correctly
             # could be fixed by checking a list of railtypes
             return self.get_speed_by_class(self.speed_class)
-        elif self.role_cabbage:
+        elif self.subrole:
             # first check for express roles, which are determined by multiple subroles
             for role in [
                 "express",
@@ -789,15 +789,15 @@ class Consist(object):
                 "high_power_railcar",
             ]:
                 subroles = global_constants.role_subrole_mapping[role]
-                if self.role_cabbage in subroles:
+                if self.subrole in subroles:
                     return self.get_speed_by_class("express")
             # then check other specific roles
             # !! this would be better determined by setting self.speed_class appropriately in the consist subclasses
-            if self.role_cabbage in ["mail_railcar", "pax_railcar", "pax_railbus"]:
+            if self.subrole in ["mail_railcar", "pax_railcar", "pax_railbus"]:
                 return self.get_speed_by_class("suburban")
-            elif self.role_cabbage in ["hst"]:
+            elif self.subrole in ["hst"]:
                 return self.get_speed_by_class("hst")
-            elif self.role_cabbage in ["very_high_speed"]:
+            elif self.subrole in ["very_high_speed"]:
                 return self.get_speed_by_class("very_high_speed")
             else:
                 return self.get_speed_by_class("standard")
@@ -820,12 +820,12 @@ class Consist(object):
             "high_power_railcar",
         ]:
             subroles = global_constants.role_subrole_mapping[role]
-            if self.role_cabbage in subroles:
+            if self.subrole in subroles:
                 return self.get_speed_by_class("express_on_lgv")
 
-        if self.role_cabbage in ["hst"]:
+        if self.subrole in ["hst"]:
             return self.get_speed_by_class("hst_on_lgv")
-        elif self.role_cabbage in ["very_high_speed"]:
+        elif self.subrole in ["very_high_speed"]:
             return self.get_speed_by_class("very_high_speed_on_lgv")
         else:
             return self.get_speed_by_class(self.speed_class + "_on_lgv")
@@ -1193,7 +1193,7 @@ class Consist(object):
                 "STR_ROLE, string(" + self._buy_menu_additional_text_role_string + ")"
             )
         for role, subroles in global_constants.role_subrole_mapping.items():
-            if self.role_cabbage in subroles:
+            if self.subrole in subroles:
                 return (
                     "STR_ROLE, string("
                     + global_constants.static_badges["role"]["sublabels"][role][
@@ -1421,7 +1421,7 @@ class EngineConsist(Consist):
 
         # !! this is an abuse of requires_electric_rails, but it's _probably_ fine :P
         if self.requires_electric_rails:
-            if "railcar" in self.role_cabbage:
+            if "railcar" in self.subrole:
                 # massive bonus to el railcars
                 power_factor = 0.33 * power_factor
             else:
@@ -1445,18 +1445,18 @@ class EngineConsist(Consist):
         run_cost = gen_multiplier * (fixed_run_cost_points + floating_run_cost_points)
         # freight engines get a run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
         # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
-        if self.role_cabbage in [
+        if self.subrole in [
             "heavy_freight",
             "super_heavy_freight",
         ]:  # smaller bonus for heavy_freight
             run_cost = 0.9 * run_cost
-        elif self.role_cabbage in [
+        elif self.subrole in [
             "branch_freight",
             "freight",
         ]:  # bigger bonus for other freight
             run_cost = 0.8 * run_cost
         # massive bonuses for NG and Gronks
-        elif self.role_cabbage == "gronk":
+        elif self.subrole == "gronk":
             run_cost = 0.66 * run_cost
         if is_NG:
             run_cost = 0.33 * run_cost
@@ -1481,7 +1481,7 @@ class AutoCoachCombineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.role_cabbage = "driving_cab_express_mixed"
+        self.subrole = "driving_cab_express_mixed"
         self.subrole_child_branch_num = -1  # driving cab cars are probably jokers?
         self.buy_menu_additional_text_hint_driving_cab = True
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
@@ -1568,7 +1568,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.role_cabbage = "driving_cab_express_mail"
+        self.subrole = "driving_cab_express_mail"
         self.buy_menu_additional_text_hint_driving_cab = True
         # report mail cab cars as pax cars for consist rulesets
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
@@ -1808,7 +1808,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.role_cabbage = "driving_cab_express_pax"
+        self.subrole = "driving_cab_express_pax"
         self.buy_menu_additional_text_hint_driving_cab = True
         # report cab cars as pax cars for consist rulesets
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
@@ -2037,7 +2037,7 @@ class SnowploughEngineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.role_cabbage = "snoughplough!"  # blame Pikka eh?
+        self.subrole = "snoughplough!"  # blame Pikka eh?
         self.subrole_child_branch_num = -1
         self.buy_menu_additional_text_hint_driving_cab = True
         # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
@@ -6265,7 +6265,7 @@ class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
         ]
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.role_cabbage)
+        print(self.subrole)
         self._buy_menu_additional_text_role_string = (
             "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
         )
@@ -6316,7 +6316,7 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.role_cabbage)
+        print(self.subrole)
         self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_INTERCITY_EXPRESS"
         # Graphics configuration
         # mail cars have consist cargo mappings for pax, mail (freight uses mail)
@@ -6362,7 +6362,7 @@ class MailHSTCarConsist(MailCarConsistBase):
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.role_cabbage)
+        print(self.subrole)
         self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_INTERCITY_EXPRESS"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
@@ -7268,7 +7268,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
-        self.role_cabbage = "express"
+        self.subrole = "express"
         if self.base_track_type_name == "NG" and self.gen < 4:
             self._buy_menu_additional_text_role_string = (
                 "STR_BADGE_ROLE_GENERAL_PURPOSE"
@@ -7316,7 +7316,7 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.role_cabbage)
+        print(self.subrole)
         self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_INTERCITY_EXPRESS"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
@@ -7349,7 +7349,7 @@ class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistB
         ]
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.role_cabbage)
+        print(self.subrole)
         self._buy_menu_additional_text_role_string = (
             "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
         )
@@ -7407,7 +7407,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.role_cabbage)
+        print(self.subrole)
         self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_INTERCITY_EXPRESS"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
@@ -7457,7 +7457,7 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
             "suburban_or_universal_railcar"
         ]
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.role_cabbage)
+        print(self.subrole)
         if self.base_track_type_name == "NG":
             # pony NG jank, railbus trailers directly set role buy menu string here, (don't set a different role as that confuses the tech tree etc)
             if self.gen == 4:
@@ -7507,7 +7507,7 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
             "suburban_or_universal_railcar"
         ]
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.role_cabbage)
+        print(self.subrole)
         self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_SUBURBAN"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for railcar trailers, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
@@ -7595,7 +7595,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         self.weight_factor = 0.33 if self.base_track_type_name == "NG" else 1
         self._joker = True
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.role_cabbage)
+        print(self.subrole)
         self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_SUBURBAN"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is

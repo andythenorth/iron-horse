@@ -115,7 +115,7 @@ class DocHelper(object):
                             continue
                         if (
                             consist.base_track_type_name == base_track_type_and_label[0]
-                        ) and (consist.role_cabbage == subrole):
+                        ) and (consist.subrole == subrole):
                             subrole_child_branches[consist.subrole_child_branch_num][
                                 consist.gen
                             ] = consist
@@ -145,7 +145,7 @@ class DocHelper(object):
             if (
                 consist.buy_menu_additional_text_hint_driving_cab
                 or consist.wagons_add_power
-                or consist.role_cabbage in ["pax_metro", "mail_metro", "metro", "gronk"]
+                or consist.subrole in ["pax_metro", "mail_metro", "metro", "gronk"]
                 or consist._buyable_variant_group_id is not None
             ):
                 result.append(consist)
@@ -275,7 +275,7 @@ class DocHelper(object):
         result = []
         for consist in consists:
             if consist.base_track_type_name == base_track_type_name:
-                if consist.role_cabbage is not None and consist.role_cabbage == role:
+                if consist.subrole is not None and consist.subrole == role:
                     result.append(consist.subrole_child_branch_num)
         return set(result)
 
@@ -387,7 +387,7 @@ class DocHelper(object):
                 return self.unpack_name_string(consist)
 
     def consist_has_direct_replacment(self, consist):
-        if consist.replacement_consist.role_cabbage != consist.role_cabbage:
+        if consist.replacement_consist.subrole != consist.subrole:
             return False
         elif (
             consist.replacement_consist.subrole_child_branch_num
@@ -430,8 +430,8 @@ class DocHelper(object):
                 result, "Vehicle Name", self.unpack_name_string(vehicle)
             )
             result = self.fetch_prop(result, "Gen", vehicle.gen)
-            if vehicle.role_cabbage is not None:
-                result = self.fetch_prop(result, "Subrole", vehicle.role_cabbage)
+            if vehicle.subrole is not None:
+                result = self.fetch_prop(result, "Subrole", vehicle.subrole)
             result = self.fetch_prop(result, "Railtype", vehicle.track_type)
             result = self.fetch_prop(result, "HP", int(vehicle.power))
             result = self.fetch_prop(result, "Speed (mph)", vehicle.speed)
