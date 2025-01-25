@@ -20,12 +20,6 @@ switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, [
                 ${global_constants.temp_storage_ids["name_substr_purchase_level_1_" + str(repeat.name_part.number)]}
             ),
         </tal:name_parts>
-        <tal:name_parts repeat="name_part consist.get_name_as_text_stack(context='autoreplace_lhs', unit_variant=unit_variant)">
-            STORE_TEMP(
-                ${name_part},
-                ${global_constants.temp_storage_ids["name_substr_autoreplace_lhs_" + str(repeat.name_part.number)]}
-            ),
-        </tal:name_parts>
         <!--! !!!!!!!!! vehicle.unit_variants[0] is a shim hack following move to consist not unit_variant scope;
             also this reuses the name property, no stack, as that's all we need in some cases -->
         STORE_TEMP(

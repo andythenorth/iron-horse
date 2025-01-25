@@ -2437,13 +2437,6 @@ class CarConsist(Consist):
             result = [
                 self.wagon_title_class_str,
             ]
-        elif context == "autoreplace_lhs":
-            result = [
-                self.wagon_title_class_str,
-            ]
-            result.extend(
-                self.get_wagon_title_optional_livery_suffix_stack(unit_variant)
-            )
         else:
             raise BaseException(
                 "get_name_parts called for wagon consist "
