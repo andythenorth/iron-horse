@@ -1141,10 +1141,6 @@ class Consist(object):
         except:
             pass
 
-        # driving cab hint comes after role string
-        if self.buy_menu_additional_text_hint_driving_cab:
-            result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB")
-
         # livery variants comes after role string
         if unit_variant is not None:
             # as of May 2023 get_buy_menu_additional_text is never called with a variant in scope unless the variant requires this string

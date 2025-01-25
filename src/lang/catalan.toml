@@ -195,9 +195,6 @@ base = "Potència (Distribuida): {GOLD}{POWER} per cada {STRING} unitat adjuntad
 [STR_WAGONS_ADD_POWER_MIDDLE]
 base = "Potència (Distribuida): {GOLD}{POWER} al adjuntar {STRING} unitat"
 
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB]
-base = "{BLACK}Adjuntar al davant o al darrera del tren, amb almenys una locomotora"
-
 [STR_SPRITES_COMPLETE]
 base = "{}Sprites Completats: {GOLD}Oh i tant"
 

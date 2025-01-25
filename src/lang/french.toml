@@ -698,9 +698,6 @@ base = "Puissance (distribuée){NBSP}: {GOLD}{POWER} par {STRING} voiture ou fou
 base = "Puissance (distribuée): {GOLD}{POWER} quand attaché à une locomotive {STRING}"
 
 # other buy menu hints
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB]
-base = "{BLACK}Placer à l’avant ou à l’arrière du train, avec au moins une autre locomotive"
-
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS]
 base = "{}{BLACK}Nuances de couleur{NBSP}: {GOLD}{STRING}"
 

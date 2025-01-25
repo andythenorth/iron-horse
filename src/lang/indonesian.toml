@@ -200,9 +200,6 @@ base = "Tenaga (Didistribusikan): {GOLD}{POWER} per {STRING} unit tersambung"
 [STR_WAGONS_ADD_POWER_MIDDLE]
 base = "Tenaga (Didistribusikan): {GOLD}{POWER} Ketika Di Sambung Dengan {STRING}"
 
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB]
-base = "{BLACK}Pasang Di Depan Atau Di Belakang Dari Kereta, Dengan Setidaknya satu lomomotiv Lainya"
-
 [STR_SPRITES_COMPLETE]
 base = "{}Sprite Terselesaikan: {GOLD}Ya"
 

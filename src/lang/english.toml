@@ -976,7 +976,7 @@ base = "(Trucks)"
 base = "{BLACK}Role: {GOLD}{STRING}"
 
 [STR_ROLE_DRIVING_CAB]
-base = "Driving Cab"
+base = "Driving Cab - {BLACK}attach to front or rear of train, with at least one other engine"
 
 [STR_ROLE_GENERAL_PURPOSE]
 base = "General Purpose"
@@ -1038,8 +1038,6 @@ base = "{BLACK}Power (Distributed): {GOLD}{POWER} per {STRING} passenger or mail
 base = "{BLACK}Power (Distributed): {GOLD}{POWER} when attached to {STRING} engine"
 
 # other buy menu hints
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB]
-base = "{BLACK}Attach to front or rear of train, with at least one other engine"
 
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS]
 base = "{}{BLACK}Colour mix: {GOLD}{STRING}"
