@@ -1,5 +1,3 @@
-from collections import OrderedDict
-
 # in buy menu order
 wagon_module_name_stems = [
     # """
@@ -217,74 +215,59 @@ PR_RUNNING_TRAIN_STEAM = -2
 PR_RUNNING_TRAIN_DIESEL = -4
 
 # generalised mapping of roles to groups
-# order is significant, so OrderedDict is used (this wouldn't be necessary for python >= 3.7, but at time of writing compile uses python 3.5)
-role_group_mapping = OrderedDict(
-    [
-        (
-            "express",
-            [
-                "branch_express",
-                "express",
-                "heavy_express",
-                "super_heavy_express",
-                "ultra_heavy_express",
-            ],
-        ),
-        (
-            "high_power_railcar",
-            [
-                "high_power_railcar",
-            ],
-        ),
-        (
-            "freight",
-            [
-                "branch_freight",
-                "freight",
-                "heavy_freight",
-                "super_heavy_freight",
-                "ultra_heavy_freight",
-            ],
-        ),
-        (
-            "universal",
-            ["universal"],
-        ),
-        # railcars get their own special cases due to high capacity, bit janky but eh
-        (
-            "suburban_or_universal_railcar",
-            ["pax_railbus", "pax_railcar", "pax_suburban_coach"],
-        ),
-        (
-            "mail_railcar",
-            ["mail_railcar"],
-        ),
-        ("express_railcar", ["express_pax_railcar", "express_mail_railcar"]),
-        ("hst", ["hst"]),
-        ("very_high_speed", ["very_high_speed"]),
-        (
-            "driving_cab",
-            [
-                "driving_cab_express_pax",
-                "driving_cab_express_mail",
-                "driving_cab_express_mixed",
-            ],
-        ),
-        (
-            "gronk!",
-            [
-                "gronk!",
-            ],
-        ),
-        (
-            "lolz",
-            [
-                "snoughplough!",
-            ],
-        ),
-        ("metro", ["pax_metro", "mail_metro", "metro"]),  # note pax before mail
-    ]
-)
+# order is significant
+role_group_mapping = {
+    "express": [
+        "branch_express",
+        "express",
+        "heavy_express",
+        "super_heavy_express",
+        "ultra_heavy_express",
+    ],
+    "high_power_railcar": [
+        "high_power_railcar",
+    ],
+    "freight": [
+        "branch_freight",
+        "freight",
+        "heavy_freight",
+        "super_heavy_freight",
+        "ultra_heavy_freight",
+    ],
+    "universal": [
+        "universal",
+    ],
+    # railcars get their own special cases due to high capacity, bit janky but eh
+    "suburban_or_universal_railcar": [
+        "pax_railbus", "pax_railcar", "pax_suburban_coach",
+    ],
+    "mail_railcar": [
+        "mail_railcar",
+    ],
+    "express_railcar": [
+        "express_pax_railcar", "express_mail_railcar",
+    ],
+    "hst": [
+        "hst",
+    ],
+    "very_high_speed": [
+        "very_high_speed",
+    ],
+    "driving_cab": [
+        "driving_cab_express_pax",
+        "driving_cab_express_mail",
+        "driving_cab_express_mixed",
+    ],
+    "gronk!": [
+        "gronk!",
+    ],
+    "lolz": [
+        "snoughplough!",
+    ],
+    "metro": [
+        "pax_metro", "mail_metro", "metro",  # note pax before mail
+    ],
+}
 
 # keep alphabetised, order not significant
 role_string_mapping = {
