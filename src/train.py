@@ -491,14 +491,14 @@ class Consist(object):
                 if self.subrole in subroles:
                     group_key = role
                     continue
-            if group_key in ["express", "freight"]:
+            if role in ["express", "freight"]:
                 # assume that we want child branch 1 to be grouped as 'core' in some cases
                 # !! not convinced this achieves much as of July 2022 but eh
                 if self.subrole_child_branch_num == 1:
-                    group_key = group_key + "_core"
+                    role = role + "_core"
                 else:
-                    group_key = group_key + "_non_core"
-            result = global_constants.intro_month_offsets_by_role[group_key]
+                    role = role + "_non_core"
+            result = global_constants.intro_month_offsets_by_role[role]
             if self.joker:
                 # force jokers away from vehicles in same subrole
                 # if further variation is wanted, give the joker a different intro year, automating that isn't wise
