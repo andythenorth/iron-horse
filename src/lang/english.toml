@@ -975,31 +975,31 @@ base = "(Trucks)"
 [STR_ROLE]
 base = "{BLACK}Role: {GOLD}{STRING}"
 
-[STR_ROLE_DRIVING_CAB]
+[STR_BADGE_ROLE_DRIVING_CAB]
 base = "Driving Cab - {BLACK}attach to front or rear of train, with at least one other engine"
 
-[STR_ROLE_GENERAL_PURPOSE]
+[STR_BADGE_ROLE_GENERAL_PURPOSE]
 base = "General Purpose"
 
-[STR_ROLE_GENERAL_PURPOSE_EXPRESS]
+[STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "General Purpose / Express"
 
-[STR_ROLE_GENERAL_PURPOSE_FREIGHT]
+[STR_BADGE_ROLE_GENERAL_PURPOSE_FREIGHT]
 base = "General Purpose / Freight"
 
-[STR_ROLE_GRONK]
+[STR_BADGE_ROLE_GRONK]
 base = "Gronk!"
 
-[STR_ROLE_INTERCITY_EXPRESS]
+[STR_BADGE_ROLE_INTERCITY_EXPRESS]
 base = "InterCity Express"
 
-[STR_ROLE_LOLZ]
+[STR_BADGE_ROLE_LOLZ]
 base = "Lolz"
 
-[STR_ROLE_METRO]
+[STR_BADGE_ROLE_METRO]
 base = "Very High Capacity Urban"
 
-[STR_ROLE_SUBURBAN]
+[STR_BADGE_ROLE_SUBURBAN]
 base = "General Purpose / High Capacity"
 
 [STR_POWER_BY_POWER_SOURCE_TWO_SOURCES]

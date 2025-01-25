@@ -104,19 +104,19 @@ base = "Torpedowagen"
 [STR_ROLE]
 base = "{BLACK}Rol: {GOLD}{STRING}"
 
-[STR_ROLE_GENERAL_PURPOSE]
+[STR_BADGE_ROLE_GENERAL_PURPOSE]
 base = "Algemeen gebruik"
 
-[STR_ROLE_GENERAL_PURPOSE_EXPRESS]
+[STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "Algemeen gebruik / expresse"
 
-[STR_ROLE_INTERCITY_EXPRESS]
+[STR_BADGE_ROLE_INTERCITY_EXPRESS]
 base = "Hoge snelheid"
 
-[STR_ROLE_METRO]
+[STR_BADGE_ROLE_METRO]
 base = "Hoge capaciteit stedelijk"
 
-[STR_ROLE_LOLZ]
+[STR_BADGE_ROLE_LOLZ]
 base = "Lolz"
 
 [STR_WAGONS_ADD_POWER_CAB]

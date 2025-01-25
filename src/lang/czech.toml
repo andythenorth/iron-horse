@@ -106,19 +106,19 @@ base = "Torpédový vůz"
 [STR_ROLE]
 base = "{BLACK}Role: {GOLD}{STRING}"
 
-[STR_ROLE_GENERAL_PURPOSE]
+[STR_BADGE_ROLE_GENERAL_PURPOSE]
 base = "Obecný účel"
 
-[STR_ROLE_GENERAL_PURPOSE_EXPRESS]
+[STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "Obecný účel /Expres"
 
-[STR_ROLE_INTERCITY_EXPRESS]
+[STR_BADGE_ROLE_INTERCITY_EXPRESS]
 base = "Vysoká rychlost"
 
-[STR_ROLE_METRO]
+[STR_BADGE_ROLE_METRO]
 base = "Vysoká městská kapacita"
 
-[STR_ROLE_LOLZ]
+[STR_BADGE_ROLE_LOLZ]
 base = "Lolz"
 
 [STR_WAGONS_ADD_POWER_CAB]

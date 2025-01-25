@@ -137,7 +137,7 @@ class DocHelper(object):
             if (
                 consist.buy_menu_additional_text_hint_driving_cab
                 or consist.wagons_add_power
-                or consist.role in ["pax_metro", "mail_metro", "metro", "gronk!"]
+                or consist.role in ["pax_metro", "mail_metro", "metro", "gronk"]
                 or consist._buyable_variant_group_id is not None
             ):
                 result.append(consist)
@@ -368,7 +368,7 @@ class DocHelper(object):
         for role_group, roles in global_constants.role_group_mapping.items():
             if role in roles:
                 return self.lang_strings[
-                    global_constants.role_string_mapping[role_group]
+                    global_constants.static_badges["role"]["sublabels"][role_group]["name"]
                 ]
 
     def get_replaced_by_name(self, replacement_consist_id, consists):

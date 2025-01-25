@@ -239,13 +239,16 @@ role_group_mapping = {
     ],
     # railcars get their own special cases due to high capacity, bit janky but eh
     "suburban_or_universal_railcar": [
-        "pax_railbus", "pax_railcar", "pax_suburban_coach",
+        "pax_railbus",
+        "pax_railcar",
+        "pax_suburban_coach",
     ],
     "mail_railcar": [
         "mail_railcar",
     ],
     "express_railcar": [
-        "express_pax_railcar", "express_mail_railcar",
+        "express_pax_railcar",
+        "express_mail_railcar",
     ],
     "hst": [
         "hst",
@@ -258,32 +261,17 @@ role_group_mapping = {
         "driving_cab_express_mail",
         "driving_cab_express_mixed",
     ],
-    "gronk!": [
-        "gronk!",
+    "gronk": [
+        "gronk",
     ],
     "lolz": [
         "snoughplough!",
     ],
     "metro": [
-        "pax_metro", "mail_metro", "metro",  # note pax before mail
+        "pax_metro",
+        "mail_metro",
+        "metro",  # note pax before mail
     ],
-}
-
-# keep alphabetised, order not significant
-role_string_mapping = {
-    "driving_cab": "STR_ROLE_DRIVING_CAB",
-    "express": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
-    "express_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
-    "freight": "STR_ROLE_GENERAL_PURPOSE_FREIGHT",
-    "gronk!": "STR_ROLE_GRONK",
-    "high_power_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
-    "hst": "STR_ROLE_INTERCITY_EXPRESS",
-    "lolz": "STR_ROLE_LOLZ",
-    "mail_railcar": "STR_ROLE_GENERAL_PURPOSE",
-    "metro": "STR_ROLE_METRO",
-    "suburban_or_universal_railcar": "STR_ROLE_SUBURBAN",
-    "universal": "STR_ROLE_GENERAL_PURPOSE",
-    "very_high_speed": "STR_ROLE_INTERCITY_EXPRESS",
 }
 
 # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
@@ -306,7 +294,7 @@ intro_month_offsets_by_role_group = {
     "very_high_speed": 8,
     "food_wagons": 9,
     "non_core_wagons": 10,
-    "gronk!": 11,
+    "gronk": 11,
     "lolz": 11,
 }
 
@@ -926,7 +914,20 @@ static_badges = {
     "role": {
         "name": "STR_BADGE_ROLE",
         "sublabels": {
+            "driving_cab": {"name": "STR_BADGE_ROLE_DRIVING_CAB"},
+            "express": {"name": "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"},
+            "express_railcar": {"name": "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"},
+            "freight": {"name": "STR_BADGE_ROLE_GENERAL_PURPOSE_FREIGHT"},
+            "gronk": {"name": "STR_BADGE_ROLE_GRONK"},
+            "high_power_railcar": {"name": "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"},
+            "hst": {"name": "STR_BADGE_ROLE_INTERCITY_EXPRESS"},
+            "lolz": {"name": "STR_BADGE_ROLE_LOLZ"},
+            "mail_railcar": {"name": "STR_BADGE_ROLE_GENERAL_PURPOSE"},
+            "metro": {"name": "STR_BADGE_ROLE_METRO"},
             "restaurant_car": {"name": "STR_BADGE_ROLE_RESTAURANT_CAR"},
+            "suburban_or_universal_railcar": {"name": "STR_BADGE_ROLE_SUBURBAN"},
+            "universal": {"name": "STR_BADGE_ROLE_GENERAL_PURPOSE"},
+            "very_high_speed": {"name": "STR_BADGE_ROLE_INTERCITY_EXPRESS"},
         },
     },
     "special_flags": {
@@ -936,6 +937,7 @@ static_badges = {
         },
     },
 }
+
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
 temp_storage_ids = dict(

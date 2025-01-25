@@ -91,7 +91,7 @@
                                         <li>Unpowered in real-life, but OpenTTD requires these to have some power so they can lead the train, so a low value is set</li>
                                     </ul>
                                 </div>
-                                <div tal:case="'gronk!'">
+                                <div tal:case="'gronk'">
                                     <h4>Gronk!</h4>
                                     <p>Slow engines that have limited gameplay use but look nice.</p>
                                 </div>

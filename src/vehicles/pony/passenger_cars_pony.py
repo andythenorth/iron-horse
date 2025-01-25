@@ -10,7 +10,7 @@ def main(roster_id, **kwargs):
         gen=1,
         subtype="A",
         base_track_type_name="NG",
-        buy_menu_additional_text_role_string="STR_ROLE_GENERAL_PURPOSE",
+        buy_menu_additional_text_role_string="STR_BADGE_ROLE_GENERAL_PURPOSE",
         sprites_complete=True,
     )
 
@@ -23,7 +23,7 @@ def main(roster_id, **kwargs):
         gen=1,
         subtype="B",
         base_track_type_name="NG",
-        buy_menu_additional_text_role_string="STR_ROLE_GENERAL_PURPOSE",
+        buy_menu_additional_text_role_string="STR_BADGE_ROLE_GENERAL_PURPOSE",
         sprites_complete=True,
     )
 
@@ -38,7 +38,7 @@ def main(roster_id, **kwargs):
         gen=3,
         subtype="A",
         base_track_type_name="NG",
-        buy_menu_additional_text_role_string="STR_ROLE_GENERAL_PURPOSE",
+        buy_menu_additional_text_role_string="STR_BADGE_ROLE_GENERAL_PURPOSE",
         sprites_complete=True,
     )
 
@@ -51,7 +51,7 @@ def main(roster_id, **kwargs):
         gen=3,
         subtype="B",
         base_track_type_name="NG",
-        buy_menu_additional_text_role_string="STR_ROLE_GENERAL_PURPOSE",
+        buy_menu_additional_text_role_string="STR_BADGE_ROLE_GENERAL_PURPOSE",
         sprites_complete=True,
     )
 

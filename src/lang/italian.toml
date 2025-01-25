@@ -94,13 +94,13 @@ base = "Carro telonato"
 [STR_ROLE]
 base = "Ruolo: {GOLD}{STRING}"
 
-[STR_ROLE_GENERAL_PURPOSE]
+[STR_BADGE_ROLE_GENERAL_PURPOSE]
 base = "Universale"
 
-[STR_ROLE_GENERAL_PURPOSE_EXPRESS]
+[STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "Merci leggere / Universale"
 
-[STR_ROLE_METRO]
+[STR_BADGE_ROLE_METRO]
 base = "Urbano ad alta capacità"
 
 [STR_SPRITES_COMPLETE]

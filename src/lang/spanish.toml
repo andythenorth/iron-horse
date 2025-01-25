@@ -171,22 +171,22 @@ base = "Vagón torpedo"
 [STR_ROLE]
 base = "{BLACK}Rol: {GOLD}{STRING}"
 
-[STR_ROLE_DRIVING_CAB]
+[STR_BADGE_ROLE_DRIVING_CAB]
 base = "Cabina de Conducción"
 
-[STR_ROLE_GENERAL_PURPOSE]
+[STR_BADGE_ROLE_GENERAL_PURPOSE]
 base = "Propósito General"
 
-[STR_ROLE_GENERAL_PURPOSE_EXPRESS]
+[STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS]
 base = "Propósito General / Express"
 
-[STR_ROLE_INTERCITY_EXPRESS]
+[STR_BADGE_ROLE_INTERCITY_EXPRESS]
 base = "Alta Velocidad"
 
-[STR_ROLE_LOLZ]
+[STR_BADGE_ROLE_LOLZ]
 base = "Gronk!"
 
-[STR_ROLE_METRO]
+[STR_BADGE_ROLE_METRO]
 base = "Urbano de Alta Capacidad"
 
 [STR_WAGONS_ADD_POWER_CAB]
