@@ -101,6 +101,9 @@
                         padding-top: 21px;
                         border-top-left-radius: 4px;
                     }
+                    table.vehicle-facts tr:first-of-type td {
+                        padding-top: 21px;
+                    }
                     table.vehicle-facts tr:last-of-type th {
                         padding-bottom: 21px;
                         border-bottom-left-radius: 4px;
