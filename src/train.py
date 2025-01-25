@@ -378,6 +378,15 @@ class Consist(object):
         return result
 
     @property
+    def role(self):
+        # returns first matched, assumption is consists only have one valid subrole
+        for role, subroles in global_constants.role_subrole_mapping.items():
+            if self.subrole in subroles:
+                return role
+        # role is optional
+        return None
+
+    @property
     def vehicle_family_badge(self):
         # stub only, over-ride in subclasses as appropriate
         return None
@@ -392,8 +401,8 @@ class Consist(object):
         # - badges explicitly added to _badges attr
         # - badges arising implicitly from consist type or properties
         result = list(set(self._badges))
-        # if self.subrole is not None:
-        # result.append("role/" + self.subrole)
+        if self.role is not None:
+            result.append("role/" + self.role)
         # badge for handling vehicle_family
         if self.vehicle_family_badge is not None:
             result.append(self.vehicle_family_badge)
