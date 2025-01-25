@@ -207,17 +207,17 @@ base = "Vapeur"
 base = "Remorque"
 
 # size suffixes
-[STR_NAME_SUFFIX_SMALL]
+[STR_BADGE_WAGON_LENGTH_SMALL]
 base = "petit"
 
-[STR_NAME_SUFFIX_MEDIUM]
+[STR_BADGE_WAGON_LENGTH_MEDIUM]
 base = "moyen"
 
-[STR_NAME_SUFFIX_LARGE]
+[STR_BADGE_WAGON_LENGTH_LARGE]
 base = "grand"
 
 # special feature suffixes
-[STR_NAME_SUFFIX_TWIN]
+[STR_BADGE_WAGON_LENGTH_TWIN]
 base = "jumeau"
 
 [STR_NAME_SUFFIX_RANDOMISED_WAGON]

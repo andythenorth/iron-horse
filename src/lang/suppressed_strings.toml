@@ -738,16 +738,16 @@ suppressed_rosters = ["moose"]
 [STR_NAME_SUFFIX_ELECTRODIESEL]
 suppressed_rosters = ["moose"]
 
-[STR_NAME_SUFFIX_SMALL]
+[STR_BADGE_WAGON_LENGTH_SMALL]
 suppressed_rosters = ["moose"]
 
-[STR_NAME_SUFFIX_MEDIUM]
+[STR_BADGE_WAGON_LENGTH_MEDIUM]
 suppressed_rosters = ["moose"]
 
-[STR_NAME_SUFFIX_LARGE]
+[STR_BADGE_WAGON_LENGTH_LARGE]
 suppressed_rosters = ["moose"]
 
-[STR_NAME_SUFFIX_TWIN]
+[STR_BADGE_WAGON_LENGTH_TWIN]
 suppressed_rosters = ["moose"]
 
 [STR_NAME_SUFFIX_RANDOMISED_WAGON]
