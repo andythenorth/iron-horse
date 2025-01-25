@@ -1041,9 +1041,6 @@ base = "{BLACK}Power (Distributed): {GOLD}{POWER} when attached to {STRING} engi
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB]
 base = "{BLACK}Attach to front or rear of train, with at least one other engine"
 
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LGV_CAPABLE]
-base = "{BLACK}Requires dedicated high speed rails to reach maximum speed"
-
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS]
 base = "{}{BLACK}Colour mix: {GOLD}{STRING}"
 

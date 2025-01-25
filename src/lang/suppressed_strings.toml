@@ -84,9 +84,6 @@ suppressed_rosters = ["pony", "moose"]
 [STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NEW_ENGINE_TEXT]
 suppressed_rosters = ["pony", "moose"]
 
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LGV_CAPABLE]
-suppressed_rosters = ["pony", "ibex", "moose"]
-
 [STR_WAGON_GROUP_BULKHEAD_FLAT_CARS]
 suppressed_rosters = ["pony", "ibex", "moose"]
 

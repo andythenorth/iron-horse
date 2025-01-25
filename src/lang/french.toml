@@ -701,9 +701,6 @@ base = "Puissance (distribuée): {GOLD}{POWER} quand attaché à une locomotive 
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_DRIVING_CAB]
 base = "{BLACK}Placer à l’avant ou à l’arrière du train, avec au moins une autre locomotive"
 
-[STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LGV_CAPABLE]
-base = "{BLACK}Requiert une ligne à grande vitesse dédiée pour atteindre sa vitesse maximale"
-
 [STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS]
 base = "{}{BLACK}Nuances de couleur{NBSP}: {GOLD}{STRING}"
 
