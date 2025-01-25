@@ -492,18 +492,15 @@ class Consist(object):
             # offset defined in class (probably a wagon)
             return self._intro_year_days_offset
         else:
-            for role, subroles in global_constants.role_subrole_mapping.items():
-                if self.subrole in subroles:
-                    group_key = role
-                    continue
-            if role in ["express", "freight"]:
+            role_key = self.role
+            if role_key in ["express", "freight"]:
                 # assume that we want child branch 1 to be grouped as 'core' in some cases
                 # !! not convinced this achieves much as of July 2022 but eh
                 if self.subrole_child_branch_num == 1:
-                    role = role + "_core"
+                    role_key = self.role + "_core"
                 else:
-                    role = role + "_non_core"
-            result = global_constants.intro_month_offsets_by_role[role]
+                    role_key = self.role + "_non_core"
+            result = global_constants.intro_month_offsets_by_role[role_key]
             if self.joker:
                 # force jokers away from vehicles in same subrole
                 # if further variation is wanted, give the joker a different intro year, automating that isn't wise
