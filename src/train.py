@@ -128,9 +128,6 @@ class Consist(object):
         self.easter_egg_haulage_speed_bonus = kwargs.get(
             "easter_egg_haulage_speed_bonus", False
         )
-        # engines will automatically detemine role string, but to force it on certain coach/wagon types use _buy_menu_additional_text_role_string
-        print("CABBAGE")
-        self._buy_menu_additional_text_role_string = None
         # simple buy menu hint flag for driving cabs
         self.buy_menu_additional_text_hint_driving_cab = False
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
@@ -1514,13 +1511,9 @@ class FixedFormationRailcarCombineConsist(EngineConsist):
         if self.base_track_type_name == "NG":
             # pony NG jank, to force a different role string for NG
             if self.gen == 4:
-                self._buy_menu_additional_text_role_string = (
-                    "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
-                )
+                self.subrole = "express"
             else:
-                self._buy_menu_additional_text_role_string = (
-                    "STR_BADGE_ROLE_GENERAL_PURPOSE"
-                )
+                self.subrole = "universal"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_fixed_formation_railcar.pynml",
@@ -1657,13 +1650,11 @@ class MailEngineRailcarConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        if self.base_track_type_name == "NG" and self.gen == 4:
+            # pony NG jank
+            self.subrole = "express"
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        if self.base_track_type_name == "NG" and self.gen == 4:
-            # pony NG jank, mail railcar directly set role buy menu string here, (don't set a different role as that confuses the tech tree etc)
-            self._buy_menu_additional_text_role_string = (
-                "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
-            )
         # non-standard cite
         if self.base_track_type_name == "NG":
             # give NG a bonus to align run cost with NG railbus
@@ -1940,15 +1931,11 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
                 kwargs["pax_car_capacity_type"]
             ]
         if self.base_track_type_name == "NG":
-            # pony NG jank, railbus trailers directly set role buy menu string here, (don't set a different role as that confuses the tech tree etc)
+            # pony NG jank
             if self.gen == 4:
-                self._buy_menu_additional_text_role_string = (
-                    "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
-                )
+                self.subrole = "express"
             else:
-                self._buy_menu_additional_text_role_string = (
-                    "STR_BADGE_ROLE_GENERAL_PURPOSE"
-                )
+                self.subrole = "universal"
         # non-standard cite
         self._cite = "Arabella Unit"
         # Graphics configuration
@@ -6169,6 +6156,7 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
         # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
+        self.subrole = self.cab_consist.subrole
         # get the intro year offset and life props from the cab, to ensure they're in sync
         self.intro_year_offset = self.cab_consist.intro_year_offset
         self._model_life = self.cab_consist.model_life
@@ -6205,6 +6193,11 @@ class MailCarConsist(MailCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "mail_car"
         super().__init__(**kwargs)
+        # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
+        if self.base_track_type_name == "NG" and self.gen < 4:
+            self.subrole = "universal"
+        else:
+            self.subrole = "express"
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
         self._badges.append(
             "ih_ruleset_flags/report_as_pax_car"
@@ -6254,11 +6247,6 @@ class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
             "express_non_core"
         ]
         self._joker = True
-        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.subrole)
-        self._buy_menu_additional_text_role_string = (
-            "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
-        )
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.66 if self.base_track_type_name == "NG" else 1.5
         # Graphics configuration
@@ -6294,6 +6282,7 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "high_speed_mail_car"
         super().__init__(**kwargs)
+        self.subrole = "very_high_speed"
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
         self._badges.append(
             "ih_ruleset_flags/report_as_pax_car"
@@ -6305,9 +6294,6 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
         self.floating_run_cost_multiplier = 4
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1
-        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.subrole)
-        self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_INTERCITY_EXPRESS"
         # Graphics configuration
         # mail cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
@@ -6335,15 +6321,15 @@ class MailHSTCarConsist(MailCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "hst_mail_car"
         super().__init__(**kwargs)
+        # cab_id must be passed, do not mask errors with .get()
+        self.cab_id = kwargs["cab_id"]
+        self._buyable_variant_group_id = self.cab_id
+        self.subrole = self.cab_consist.subrole
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
         self._badges.append(
             "ih_ruleset_flags/report_as_pax_car"
         )  # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
         self.speed_class = "hst"
-        # used to get insert the name of the parent into vehicle name
-        # cab_id must be passed, do not mask errors with .get()
-        self.cab_id = kwargs["cab_id"]
-        self._buyable_variant_group_id = self.cab_id
         self.buy_cost_adjustment_factor = 1.66
         # get the intro year offset and life props from the cab, to ensure they're in sync
         self.intro_year_offset = self.cab_consist.intro_year_offset
@@ -6351,9 +6337,6 @@ class MailHSTCarConsist(MailCarConsistBase):
         self._vehicle_life = self.cab_consist.vehicle_life
         # non-standard cite
         self._cite = "Dr Constance Speed"
-        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.subrole)
-        self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_INTERCITY_EXPRESS"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -7164,6 +7147,7 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
+        self.subrole = self.cab_consist.subrole
         # get the intro year offset and life props from the cab, to ensure they're in sync
         self.intro_year_offset = self.cab_consist.intro_year_offset
         self._model_life = self.cab_consist.model_life
@@ -7206,6 +7190,7 @@ class PanoramicCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "panoramic_car"
         super().__init__(**kwargs)
+        self.subrole = "express"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         """ # not working as expected, unwanted nesting of panoramic car, needs debugged
         # buyable variant groups are created post-hoc and can group across subclasses
@@ -7217,10 +7202,6 @@ class PanoramicCarConsist(PassengerCarConsistBase):
         self.floating_run_cost_multiplier = 3.33
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
-        # pony NG jank directly set role buy menu string here, JFDI to make it work, may not actually be needed
-        self._buy_menu_additional_text_role_string = (
-            "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
-        )
         # Graphics configuration
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
         liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
@@ -7246,6 +7227,11 @@ class PassengerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "passenger_car"
         super().__init__(**kwargs)
+        # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
+        if self.base_track_type_name == "NG" and self.gen < 4:
+            self.subrole = "universal"
+        else:
+            self.subrole = "express"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         """ # not working as expected, unwanted nesting of panoramic car, needs debugged
         # buyable variant groups are created post-hoc and can group across subclasses
@@ -7257,16 +7243,6 @@ class PassengerCarConsist(PassengerCarConsistBase):
         self.floating_run_cost_multiplier = 3.33
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
-        # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
-        self.subrole = "express"
-        if self.base_track_type_name == "NG" and self.gen < 4:
-            self._buy_menu_additional_text_role_string = (
-                "STR_BADGE_ROLE_GENERAL_PURPOSE"
-            )
-        else:
-            self._buy_menu_additional_text_role_string = (
-                "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
-            )
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -7298,6 +7274,7 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "high_speed_passenger_car"
         super().__init__(**kwargs)
+        self.subrole = "very_high_speed"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.lgv_capable = True
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
@@ -7305,9 +7282,6 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
         self.floating_run_cost_multiplier = 4
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1
-        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.subrole)
-        self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_INTERCITY_EXPRESS"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -7338,11 +7312,6 @@ class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistB
             "express_non_core"
         ]
         self._joker = True
-        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.subrole)
-        self._buy_menu_additional_text_role_string = (
-            "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
-        )
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.66 if self.base_track_type_name == "NG" else 1.5
         # Graphics configuration
@@ -7379,12 +7348,13 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "hst_passenger_car"
         super().__init__(**kwargs)
-        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.speed_class = "hst"
         # used to get insert the name of the parent into vehicle name
         # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
+        self.subrole = self.cab_consist.subrole
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33
@@ -7396,9 +7366,6 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1.6
         # non-standard cite
         self._cite = "Dr Constance Speed"
-        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.subrole)
-        self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_INTERCITY_EXPRESS"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -7446,18 +7413,6 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "suburban_or_universal_railcar"
         ]
-        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.subrole)
-        if self.base_track_type_name == "NG":
-            # pony NG jank, railbus trailers directly set role buy menu string here, (don't set a different role as that confuses the tech tree etc)
-            if self.gen == 4:
-                self._buy_menu_additional_text_role_string = (
-                    "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
-                )
-            else:
-                self._buy_menu_additional_text_role_string = (
-                    "STR_BADGE_ROLE_GENERAL_PURPOSE"
-                )
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # Graphics configuration
@@ -7496,9 +7451,6 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "suburban_or_universal_railcar"
         ]
-        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.subrole)
-        self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_SUBURBAN"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for railcar trailers, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
         self.weight_factor = 0.33 if self.base_track_type_name == "NG" else 1
@@ -7534,9 +7486,7 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "restaurant_car"
         super().__init__(**kwargs)
-        self._badges.append(
-            "role/restaurant_car"
-        )  # intended, used for pax car ruleset behaviour
+        self.subrole = "restaurant_car"
         self._badges.append(
             "ih_ruleset_flags/report_as_pax_car"
         )  # intended, used for pax car ruleset behaviour
@@ -7547,9 +7497,6 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         self._joker = True
-        self._buy_menu_additional_text_role_string = (
-            "STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS"
-        )
         # Graphics configuration
         # position based variants are not used for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 0, "special": 0}
@@ -7564,13 +7511,13 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
 class PassengerSuburbanCarConsist(PassengerCarConsistBase):
     """
     Suburban pax car.
-    Aggressive decay rate due to high capacity. Improved loading speed, lots of door space.
     Position-dependent sprites for brake car etc.
     """
 
     def __init__(self, **kwargs):
         self.base_id = "suburban_passenger_car"
         super().__init__(**kwargs)
+        self.subrole = "pax_suburban_coach"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # PassengerCarConsistBase sets 'express' speed, but suburban coaches should override this
         # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
@@ -7584,9 +7531,6 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
         self.weight_factor = 0.33 if self.base_track_type_name == "NG" else 1
         self._joker = True
-        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
-        print(self.subrole)
-        self._buy_menu_additional_text_role_string = "STR_BADGE_ROLE_SUBURBAN"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
