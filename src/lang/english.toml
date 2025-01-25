@@ -230,6 +230,12 @@ base = "Size Class"
 [STR_BADGE_ROLE_RESTAURANT_CAR]
 base = "Eliminates running costs for all Passenger Coaches or High Speed Coaches in the train"
 
+[STR_BADGE_SPECIAL_FLAGS]
+base = "Special Features"
+
+[STR_BADGE_SPECIAL_FLAG_TILT]
+base = "TILT CABBAGE"
+
 # keep these alphabetised, easier
 [STR_NAME_SUFFIX_BATTERY_HYBRID]
 base = "Battery Hybrid"

@@ -944,8 +944,14 @@ static_badges = {
         "name": "STR_BADGE_ROLE",
         "sublabels": {
             "restaurant_car": {"name": "STR_BADGE_ROLE_RESTAURANT_CAR"},
-        }
-    }
+        },
+    },
+    "special_flags": {
+        "name": "STR_BADGE_SPECIAL_FLAGS",
+        "sublabels": {
+            "tilt": {"name": "STR_BADGE_SPECIAL_FLAG_TILT"},
+        },
+    },
 }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions

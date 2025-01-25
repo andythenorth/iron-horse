@@ -391,8 +391,12 @@ class Consist(object):
         # badge for handling vehicle_family
         if self.vehicle_family_badge is not None:
             result.append(self.vehicle_family_badge)
+        # badge for handling wagon lengths
         if self.cabbage_subtype_badge is not None:
             result.append(self.cabbage_subtype_badge)
+        # badges for special behaviours
+        if self.tilt_bonus:
+            result.append("special_flags/tilt")
         return result
 
     def get_badges_for_nml(self, unit_variant):
