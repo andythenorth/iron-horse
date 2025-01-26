@@ -2351,28 +2351,6 @@ class CarConsist(Consist):
     def wagon_title_class_str(self):
         return "STR_NAME_SUFFIX_" + self.base_id.upper()
 
-    def get_wagon_title_optional_livery_suffix_stack(self, unit_variant):
-        if getattr(unit_variant, "uses_random_livery", False):
-            try:
-                optional_livery_suffix = (
-                    "STR_NAME_SUFFIX_LIVERY_MIX_"
-                    + unit_variant.buyable_variant.livery["colour_set"]
-                    .split("random_from_consist_liveries_")[1]
-                    .upper()
-                )
-            except:
-                raise BaseException(self.id)
-        else:
-            optional_livery_suffix = "STR_EMPTY"
-        result = [optional_livery_suffix]
-        # we _may_ need to put colours on the stack for the string
-        if (
-            optional_livery_suffix
-            == "STR_NAME_SUFFIX_LIVERY_MIX_COMPLEMENT_COMPANY_COLOUR"
-        ):
-            result.extend(unit_variant.get_name_as_text_stack_colour_suffixes())
-        return result
-
     @property
     def wagon_title_optional_randomised_suffix_str(self):
         if self.is_randomised_wagon_type or self.is_caboose:
@@ -2427,12 +2405,7 @@ class CarConsist(Consist):
                 # assume all level 1 groups have this fixed string as of May 2023
                 result = ["STR_WAGON_GROUP_MORE"]
             else:
-                result = [
-                    self.wagon_title_class_str,
-                ]
-                result.extend(
-                    self.get_wagon_title_optional_livery_suffix_stack(unit_variant)
-                )
+                result = default_result
         elif context == "purchase_level_2":
             result = [
                 self.wagon_title_class_str,
