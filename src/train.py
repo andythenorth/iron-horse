@@ -300,28 +300,28 @@ class Consist(object):
                     if "NULL" in self.power_by_power_source:
                         return None
                     elif "METRO" in self.power_by_power_source:
-                        return "STR_NAME_SUFFIX_METRO"
+                        return "STR_BADGE_POWER_SOURCE_METRO"
                     elif "DIESEL" in self.power_by_power_source:
-                        return "STR_NAME_SUFFIX_DIESEL"
+                        return "STR_BADGE_POWER_SOURCE_DIESEL"
                     elif "BATTERY_HYBRID" in self.power_by_power_source:
-                        return "STR_NAME_SUFFIX_BATTERY_HYBRID"
+                        return "STR_BADGE_POWER_SOURCE_BATTERY_HYBRID"
                     elif "STEAM" in self.power_by_power_source:
-                        return "STR_NAME_SUFFIX_STEAM"
+                        return "STR_BADGE_POWER_SOURCE_STEAM"
                     elif "AC" in self.power_by_power_source:
-                        return "STR_NAME_SUFFIX_ELECTRIC_AC"
+                        return "STR_BADGE_POWER_SOURCE_ELECTRIC_AC"
                     elif "DC" in self.power_by_power_source:
-                        return "STR_NAME_SUFFIX_ELECTRIC_DC"
+                        return "STR_BADGE_POWER_SOURCE_ELECTRIC_DC"
                 if len(self.power_by_power_source) == 2:
                     if (
                         "DIESEL" in self.power_by_power_source
                         and "AC" in self.power_by_power_source
                     ):
-                        return "STR_NAME_SUFFIX_ELECTRODIESEL"
+                        return "STR_BADGE_POWER_SOURCE_ELECTRODIESEL"
                     if (
                         "AC" in self.power_by_power_source
                         and "DC" in self.power_by_power_source
                     ):
-                        return "STR_NAME_SUFFIX_ELECTRIC_AC_DC"
+                        return "STR_BADGE_POWER_SOURCE_ELECTRIC_AC_DC"
             return None
 
     def get_name_parts(self, context, unit_variant):

@@ -24,10 +24,10 @@ suppressed_rosters = ["pony", "moose"]
 [STR_POWER_SOURCE_METRO]
 suppressed_rosters = ["pony", "ibex", "moose"]
 
-[STR_NAME_SUFFIX_ELECTRIC_DC]
+[STR_BADGE_POWER_SOURCE_ELECTRIC_DC]
 suppressed_rosters = ["pony", "moose"]
 
-[STR_NAME_SUFFIX_ELECTRIC_AC_DC]
+[STR_BADGE_POWER_SOURCE_ELECTRIC_AC_DC]
 suppressed_rosters = ["pony", "moose"]
 
 [STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NAME]
@@ -108,13 +108,13 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_NAME_SUFFIX_LIVERY_MIX_SULPHUR_STRAW]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_NAME_SUFFIX_BATTERY_HYBRID]
+[STR_BADGE_POWER_SOURCE_BATTERY_HYBRID]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_NAME_SUFFIX_METRO]
+[STR_BADGE_POWER_SOURCE_METRO]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_NAME_SUFFIX_STEAM]
+[STR_BADGE_POWER_SOURCE_STEAM]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_NAME_SUFFIX_TRAILER]
@@ -732,10 +732,10 @@ suppressed_rosters = ["moose"]
 [STR_NAME_SUFFIX_LIVERY_MIX_TEAL_PEWTER]
 suppressed_rosters = ["moose"]
 
-[STR_NAME_SUFFIX_ELECTRIC_AC]
+[STR_BADGE_POWER_SOURCE_ELECTRIC_AC]
 suppressed_rosters = ["moose"]
 
-[STR_NAME_SUFFIX_ELECTRODIESEL]
+[STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
 suppressed_rosters = ["moose"]
 
 [STR_BADGE_WAGON_LENGTH_SMALL]
