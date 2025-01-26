@@ -1152,10 +1152,6 @@ class Consist(object):
             # so no conditional checks needed - this may change
             result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS")
 
-        if len(result) == 0:
-            print("CABBAGE")
-            return "STR_EMPTY"
-
         if len(result) == 1:
             return (
                 "STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string("
@@ -1168,16 +1164,6 @@ class Consist(object):
                 + result[0]
                 + "), string("
                 + result[1]
-                + ")"
-            )
-        if len(result) == 3:
-            return (
-                "STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_THREE_SUBSTR, string("
-                + result[0]
-                + "), string("
-                + result[1]
-                + "), string("
-                + result[2]
                 + ")"
             )
         # should never be reached, extend this if we do
@@ -9095,8 +9081,9 @@ class UnitVariant(object):
 
     @property
     def uses_buy_menu_additional_text(self):
-        if self.unit.consist.power > 0:
-            return True
+        if self.unit.consist.power_by_power_source is not None:
+            if len(self.unit.consist.power_by_power_source) > 1:
+                return True
         if self.unit.consist.buy_menu_additional_text_hint_wagons_add_power:
             return True
         if self.uses_random_livery:
@@ -9119,12 +9106,10 @@ class UnitVariant(object):
                 return "lgv_capable_and_wagons_add_power"
             else:
                 return "lgv_capable"
-        elif self.unit.consist.buy_menu_additional_text_hint_driving_cab:
-            return "driving_cab"
         elif self.uses_random_livery:
             return "livery_variants"
         else:
-            return "default"
+            return None
 
     @property
     def all_candidate_livery_colour_sets_for_variant(self):

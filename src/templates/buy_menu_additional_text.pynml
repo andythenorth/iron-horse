@@ -62,18 +62,6 @@
             return string(${consist.get_buy_menu_additional_text(vehicle)});
         }
     </tal:lgv_capable_and_wagons_add_power>
-    <tal:driving_cab case="'driving_cab'">
-        <!--! just an explicit passthrough -->
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_buy_menu_additional_text, 1) {
-            return string(${consist.get_buy_menu_additional_text(vehicle)});
-        }
-    </tal:driving_cab>
-    <tal:restaurant_car case="'restaurant_car'">
-        <!--! just an explicit passthrough -->
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_buy_menu_additional_text, 1) {
-            return string(${consist.get_buy_menu_additional_text(vehicle)});
-        }
-    </tal:restaurant_car>
     <tal:livery_variants case="'livery_variants'">
         switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_buy_menu_additional_text, [
             <tal:text_stack repeat="value_pair unit_variant.get_buy_menu_hint_livery_variant_text_stack()">
@@ -87,9 +75,4 @@
             return string(${consist.get_buy_menu_additional_text(vehicle, unit_variant)});
         }
     </tal:livery_variants>
-    <tal:default case="'default'">
-        switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_buy_menu_additional_text, 1) {
-            return string(${consist.get_buy_menu_additional_text(vehicle)});
-        }
-    </tal:default>
 </tal:block>
