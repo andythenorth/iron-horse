@@ -143,9 +143,8 @@ class DocHelper(object):
         for consist in roster.engine_consists_excluding_clones:
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if (
-                consist.buy_menu_additional_text_hint_driving_cab
-                or consist.wagons_add_power
-                or consist.subrole in ["pax_metro", "mail_metro", "metro", "gronk"]
+                consist.wagons_add_power
+                or consist.role in ["driving_cab", "gronk", "lolz", "metro"]
                 or consist._buyable_variant_group_id is not None
             ):
                 result.append(consist)
@@ -402,6 +401,7 @@ class DocHelper(object):
         elif consist.power_by_power_source is not None:
             # crude assumption we can just walk over the keys and they'll be in the correct order (oof!)
             # !! we actually need to control the order somewhere - see vehicle_power_source_tree??
+            # !! could be global_constants.power_source
             result = []
             for power_data in consist.vehicle_power_source_tree:
                 power_source_name = self.lang_strings[

@@ -128,8 +128,6 @@ class Consist(object):
         self.easter_egg_haulage_speed_bonus = kwargs.get(
             "easter_egg_haulage_speed_bonus", False
         )
-        # simple buy menu hint flag for driving cabs
-        self.buy_menu_additional_text_hint_driving_cab = False
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
         self._str_name_suffix = None
         # random_reverse means (1) randomised flip of vehicle when built (2) player can also flip vehicle manually
@@ -1440,7 +1438,6 @@ class AutoCoachCombineConsist(EngineConsist):
         super().__init__(**kwargs)
         self.subrole = "driving_cab_express_mixed"
         self.subrole_child_branch_num = -1  # driving cab cars are probably jokers?
-        self.buy_menu_additional_text_hint_driving_cab = True
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
             "autocoach_combine"
         ]
@@ -1522,7 +1519,6 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.subrole = "driving_cab_express_mail"
-        self.buy_menu_additional_text_hint_driving_cab = True
         # report mail cab cars as pax cars for consist rulesets
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
@@ -1760,7 +1756,6 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.subrole = "driving_cab_express_pax"
-        self.buy_menu_additional_text_hint_driving_cab = True
         # report cab cars as pax cars for consist rulesets
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
@@ -1986,7 +1981,6 @@ class SnowploughEngineConsist(EngineConsist):
         super().__init__(**kwargs)
         self.subrole = "snoughplough!"  # blame Pikka eh?
         self.subrole_child_branch_num = -1
-        self.buy_menu_additional_text_hint_driving_cab = True
         # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
         self.power_by_power_source = {"NULL": 100}
         self.tractive_effort_coefficient = 0.1
