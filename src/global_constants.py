@@ -882,11 +882,6 @@ wagon_livery_mixes = {
 static_badges = {
     "power_source": {
         "name": "STR_POWER_SOURCE",
-        "sublabels": {
-            "steam": {"name": "STR_POWER_SOURCE_STEAM"},
-            "diesel": {"name": "STR_POWER_SOURCE_DIESEL"},
-            "electric": {"name": "STR_POWER_SOURCE_AC"},
-        },
     },
     "ih_ruleset_flags": {
         "sublabels": {
@@ -931,6 +926,14 @@ static_badges = {
     },
 }
 
+power_sources = {
+    "AC": {"suffix": "_ELECTRIFIED_AC"},
+    "DC": {"suffix": "_ELECTRIFIED_DC"},
+    "METRO": {},
+    "BATTERY_HYBRID": {},
+    "DIESEL": {},
+    "STEAM": {},
+}
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
 temp_storage_ids = dict(

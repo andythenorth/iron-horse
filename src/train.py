@@ -295,33 +295,6 @@ class Consist(object):
         if getattr(self, "_str_name_suffix", None) is not None:
             return self._str_name_suffix
         else:
-            if self.power_by_power_source is not None:
-                if len(self.power_by_power_source) == 1:
-                    if "NULL" in self.power_by_power_source:
-                        return None
-                    elif "METRO" in self.power_by_power_source:
-                        return "STR_BADGE_POWER_SOURCE_METRO"
-                    elif "DIESEL" in self.power_by_power_source:
-                        return "STR_BADGE_POWER_SOURCE_DIESEL"
-                    elif "BATTERY_HYBRID" in self.power_by_power_source:
-                        return "STR_BADGE_POWER_SOURCE_BATTERY_HYBRID"
-                    elif "STEAM" in self.power_by_power_source:
-                        return "STR_BADGE_POWER_SOURCE_STEAM"
-                    elif "AC" in self.power_by_power_source:
-                        return "STR_BADGE_POWER_SOURCE_ELECTRIC_AC"
-                    elif "DC" in self.power_by_power_source:
-                        return "STR_BADGE_POWER_SOURCE_ELECTRIC_DC"
-                if len(self.power_by_power_source) == 2:
-                    if (
-                        "DIESEL" in self.power_by_power_source
-                        and "AC" in self.power_by_power_source
-                    ):
-                        return "STR_BADGE_POWER_SOURCE_ELECTRODIESEL"
-                    if (
-                        "AC" in self.power_by_power_source
-                        and "DC" in self.power_by_power_source
-                    ):
-                        return "STR_BADGE_POWER_SOURCE_ELECTRIC_AC_DC"
             return None
 
     def get_name_parts(self, context, unit_variant):
@@ -331,14 +304,7 @@ class Consist(object):
         elif context == "default_name":
             result = [default_name]
         else:
-            if self.str_name_suffix is not None:
-                result = [
-                    "STR_NAME_" + self.id.upper(),
-                    "STR_PARENTHESES",
-                    self.str_name_suffix,
-                ]
-            else:
-                result = [default_name]
+            result = [default_name]
         return result
 
     def get_name_as_text_stack(self, context, unit_variant):
@@ -398,11 +364,43 @@ class Consist(object):
         # stub only, over-ride in subclasses as appropriate
         return None
 
+    @property
+    def cabbage_power_source_badges(self):
+        # note returns multiple badges, as engines support multiple power sources
+        result = []
+        if self.power_by_power_source is not None:
+            for power_source in self.power_by_power_source.keys():
+                # null is used for e.g. snowploughs etc where the power is only to enable the vehicle to lead the train
+                if power_source in ["NULL"]:
+                    continue
+                result.append("power_source/" + power_source.lower())
+
+        """
+        if self.power_by_power_source is not None:
+            if len(self.power_by_power_source) == 1:
+                if "NULL" in self.power_by_power_source:
+                    return None
+            if len(self.power_by_power_source) == 2:
+                if (
+                    "DIESEL" in self.power_by_power_source
+                    and "AC" in self.power_by_power_source
+                ):
+                    return "STR_BADGE_POWER_SOURCE_ELECTRODIESEL"
+                if (
+                    "AC" in self.power_by_power_source
+                    and "DC" in self.power_by_power_source
+                ):
+                    return "STR_BADGE_POWER_SOURCE_ELECTRIC_AC_DC"
+        """
+        return result
+
     def get_badges(self, unit_variant):
         # badges can be set on a vehicle for diverse reasons, including
         # - badges explicitly added to _badges attr
         # - badges arising implicitly from consist type or properties
         result = list(set(self._badges))
+        # power source badges - note that this returns a list, not a single badge
+        result.extend(self.cabbage_power_source_badges)
         if self.role_badge is not None:
             result.append(self.role_badge)
         # badge for handling vehicle_family

@@ -14,10 +14,8 @@ STR_GRF_DOCS_URL                                                :${utils.get_doc
 
 STR_EMPTY                                                       :
 
-STR_PARENTHESES                                                 :({STRING})
 STR_NAME_CONTAINER_1                                            :{STRING}
 STR_NAME_CONTAINER_2                                            :{STRING} {STRING}
-STR_NAME_CONTAINER_3                                            :{STRING} {STRING} {STRING}
 
 STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_1      :{STRING}
 STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2      :{STRING}, {STRING}
@@ -30,6 +28,3 @@ STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_7      :{STRING}, {STRI
 # buy menu wrappers
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
 STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
-
-STR_TEST_CABBAGE: Cabbage
-STR_TEST_FOOBAR: Foobar

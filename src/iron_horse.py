@@ -62,6 +62,7 @@ class BadgeManager(list):
                 return badge
         return None
 
+
 class RailTypeManager(list):
     """
     It's convenient to have a structure for working with railtypes.
@@ -150,9 +151,7 @@ class RosterManager(list):
                 "express_railcar",
                 "high_power_railcar",
             ]:
-                subroles = global_constants.role_subrole_mapping[
-                    role
-                ]
+                subroles = global_constants.role_subrole_mapping[role]
                 if consist.subrole in subroles:
                     express_engine_ids.append(consist.id)
         return [(count, id) for count, id in enumerate(express_engine_ids)]
@@ -210,7 +209,9 @@ def main():
     # badges, done after consists as badges can be either static (global), or dynamically created (for specific consists)
 
     if roster_manager.active_roster is not None:
-        badge_manager.add_badge("newgrf/" + utils.grfid_to_dword(roster_manager.active_roster.grfid))
+        badge_manager.add_badge(
+            "newgrf/" + utils.grfid_to_dword(roster_manager.active_roster.grfid)
+        )
 
     for (
         badge_class_label,
@@ -230,10 +231,15 @@ def main():
                 name=sublabel_properties.get("name", None),
             )
 
+    for power_source in global_constants.power_sources.keys():
+        badge_manager.add_badge(
+            label="power_source/" + power_source.lower(),
+            name="STR_BADGE_POWER_SOURCE_" + power_source,
+        )
+
     for roster in roster_manager:
         for consist in roster.consists_in_buy_menu_order:
             if consist.vehicle_family_badge is not None:
                 badge_manager.add_badge(
                     label=consist.vehicle_family_badge,
                 )
-
