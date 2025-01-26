@@ -683,18 +683,9 @@ class Consist(object):
         # extend this as necessary for different power sources, there's no magic pattern, it's manually declared mappings
         # NOTE that order is explicit - and assumes that power hierarchy is AC > DC > DIESEL
         # iff that assumption is wrong, result can be lambda sorted by actual vehicle power amounts before returning, but not necessary as of July 2022
-        if "AC" in self.power_by_power_source.keys():
-            result.append(["AC", self.base_track_type_name + "_ELECTRIFIED_AC"])
-        if "DC" in self.power_by_power_source.keys():
-            result.append(["DC", self.base_track_type_name + "_ELECTRIFIED_DC"])
-        if "METRO" in self.power_by_power_source.keys():
-            result.append(["METRO", self.base_track_type_name])
-        if "BATTERY_HYBRID" in self.power_by_power_source.keys():
-            result.append(["BATTERY_HYBRID", self.base_track_type_name])
-        if "DIESEL" in self.power_by_power_source.keys():
-            result.append(["DIESEL", self.base_track_type_name])
-        if "STEAM" in self.power_by_power_source.keys():
-            result.append(["STEAM", self.base_track_type_name])
+        for power_source, optional_props in global_constants.power_sources.items():
+            if power_source in self.power_by_power_source.keys():
+                result.append([power_source, self.base_track_type_name + optional_props.get("suffix", "")])
         # now append suffixes for switches - self and next, could be done in the template, but it's just neater to do here
         for counter, value in enumerate(result):
             value.append(counter)
@@ -742,6 +733,8 @@ class Consist(object):
         else:
             # this is to get the default value, used when only one value can be shown
             # cascade in controlled order through the available power sources
+            # !! this should probably be somehow delegated back to global_constants.power_sources
+            # !! but TMWFTLB as of Jan 2025
             if "NULL" in self.power_by_power_source:
                 # null is used for e.g. snowploughs etc where the power is only to enable the vehicle to lead the train
                 return self.power_by_power_source["NULL"]
