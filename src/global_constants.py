@@ -883,6 +883,12 @@ static_badges = {
     "power_source": {
         "name": "STR_POWER_SOURCE",
     },
+    "power_source_cabbage": {
+        "sublabels": {
+            "dual_voltage": {},
+            "electro_diesel": {},
+        },
+    },
     "ih_ruleset_flags": {
         "sublabels": {
             "report_as_pax_car": {},

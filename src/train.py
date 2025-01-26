@@ -374,24 +374,17 @@ class Consist(object):
                 if power_source in ["NULL"]:
                     continue
                 result.append("power_source/" + power_source.lower())
-
-        """
-        if self.power_by_power_source is not None:
-            if len(self.power_by_power_source) == 1:
-                if "NULL" in self.power_by_power_source:
-                    return None
-            if len(self.power_by_power_source) == 2:
-                if (
-                    "DIESEL" in self.power_by_power_source
-                    and "AC" in self.power_by_power_source
-                ):
-                    return "STR_BADGE_POWER_SOURCE_ELECTRODIESEL"
-                if (
-                    "AC" in self.power_by_power_source
-                    and "DC" in self.power_by_power_source
-                ):
-                    return "STR_BADGE_POWER_SOURCE_ELECTRIC_AC_DC"
-        """
+            # special cases
+            if (
+                "DIESEL" in self.power_by_power_source.keys()
+                and "AC" in self.power_by_power_source.keys()
+            ):
+                result.append("power_source_cabbage/electro_diesel")
+            if (
+                "AC" in self.power_by_power_source.keys()
+                and "DC" in self.power_by_power_source.keys()
+            ):
+                result.append("power_source_cabbage/dual_voltage")
         return result
 
     def get_badges(self, unit_variant):
