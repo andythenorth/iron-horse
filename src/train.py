@@ -385,6 +385,12 @@ class Consist(object):
                 result.append("power_source_cabbage/dual_voltage")
         return result
 
+    @property
+    def cabbage_colour_mix_badges(self):
+        # note returns multiple badges, as vehicles support multiple colours
+        result = []
+        return result
+
     def get_badges(self, unit_variant):
         # badges can be set on a vehicle for diverse reasons, including
         # - badges explicitly added to _badges attr
@@ -392,6 +398,8 @@ class Consist(object):
         result = list(set(self._badges))
         # power source badges - note that this returns a list, not a single badge
         result.extend(self.cabbage_power_source_badges)
+        # colour mix badges - note that this returns a list, not a single badge
+        result.extend(self.cabbage_colour_mix_badges)
         if self.role_badge is not None:
             result.append(self.role_badge)
         # badge for handling vehicle_family
@@ -9140,10 +9148,10 @@ class UnitVariant(object):
         # note the OR with 0xD000 to get correct string range
         for colour_name in variant_colour_set:
             if colour_name == "company_colour":
-                stack_values.append("switch_get_colour_name(company_colour1) | 0xD000")
+                stack_values.append("string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000")
             elif colour_name == "complement_company_colour":
                 stack_values.append(
-                    "switch_get_colour_name_complement_company_colour(company_colour1) | 0xD000"
+                    "string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000"
                 )
             else:
                 stack_values.append(
@@ -9152,45 +9160,6 @@ class UnitVariant(object):
                     + ") | 0xD000"
                 )
         return utils.convert_flat_list_to_pairs_of_tuples(stack_values)
-
-    def get_name_as_text_stack_colour_suffixes(self):
-        # get a pair of colours to put on the text stack to use in name suffix string if required
-        colour_name_switch_names = []
-        if self.uses_random_livery:
-            if self.buyable_variant.livery["colour_set"] in [
-                "random_from_consist_liveries_complement_company_colour"
-            ]:
-                for colour_name in self.all_candidate_livery_colour_sets_for_variant[
-                    0:2
-                ]:
-                    if colour_name == "company_colour":
-                        colour_name_switch_names.append(
-                            "switch_get_colour_name(company_colour1)"
-                        )
-                    elif colour_name == "complement_company_colour":
-                        colour_name_switch_names.append(
-                            "switch_get_colour_name_complement_company_colour(company_colour1)"
-                        )
-                    else:
-                        colour_name_switch_names.append(
-                            "switch_get_colour_name("
-                            + str(
-                                list(global_constants.colour_sets.keys()).index(
-                                    colour_name
-                                )
-                            )
-                            + ")"
-                        )
-                if len(colour_name_switch_names) < 2:
-                    raise BaseException(
-                        self.id
-                        + " has get_name_as_text_stack length < 2, which won't work - check what livery colour_set it's using"
-                    )
-        result = []
-        for colour_name_switch_name in colour_name_switch_names:
-            # OR with to get the correct string range
-            result.append("(" + colour_name_switch_name + " | 0xD000)")
-        return result
 
     def get_wagon_recolour_strategy_params(self, context=None):
         wagon_recolour_strategy_num = self.unit.consist.get_wagon_recolour_strategy_num(

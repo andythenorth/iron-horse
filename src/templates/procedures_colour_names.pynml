@@ -6,10 +6,3 @@ switch (FEAT_TRAINS, SELF, switch_get_colour_name, colour_num, colour_num) {
         ${repeat.colour_set.index}: string(STR_COLOUR_NAME_${colour_set[0].upper()});
     </tal:switch_by_company_colour>
 }
-
-<!--! for when we switch to a complementary colour based on current company colour - this doesn't use custom colours -->
-switch (FEAT_TRAINS, SELF, switch_get_colour_name_complement_company_colour, colour_num, colour_num) {
-    <tal:switch_by_company_colour repeat="colour_set global_constants.complements_to_company_colours.items()">
-        ${colour_set[0]}: string(STR_COLOUR_NAME_${colour_set[1]});
-    </tal:switch_by_company_colour>
-}
