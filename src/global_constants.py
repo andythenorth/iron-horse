@@ -879,14 +879,7 @@ wagon_livery_mixes = {
 }
 
 # badges can be predefined here, or created dynamically for specific consist types etc as needed
-# !! the format of this probably needs adjusting, classes might also need optional name property etc
 static_badges = {
-    "cabbage": {
-        "name": "STR_TEST_CABBAGE",
-        "sublabels": {
-            "foobar": {"name": "STR_TEST_FOOBAR"},
-        },
-    },
     "power_source": {
         "name": "STR_POWER_SOURCE",
         "sublabels": {
