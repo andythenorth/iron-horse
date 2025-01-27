@@ -299,13 +299,11 @@ class Consist(object):
         default_name = "STR_NAME_" + self.id.upper()
         if context == "purchase_level_1":
             result = [default_name]
-        elif context == "default_name":
-            result = [default_name]
         else:
             result = [default_name]
         return result
 
-    def get_name_as_text_stack(self, context, unit_variant):
+    def get_name_as_strings(self, context, unit_variant):
         stack_items = self.get_name_parts(context=context, unit_variant=unit_variant)
 
         # we need to know how many strings we have to handle, so that we can provide a container string with correct number of {STRING} entries
@@ -325,8 +323,17 @@ class Consist(object):
             else:
                 # otherwise pass through as is
                 result.append(stack_item)
+
+        # special case for when substrings need converting to parameters on first string
+        if len(result) > 1:
+            # assumes 2 items
+            if result[0] != 'string(STR_NAME_CONTAINER_2)':
+                raise Exception("stack_items first result should be 'string(STR_NAME_CONTAINER_2)'")
+
+            base_string = result[0][:-1]
+            parameters = result[1:]
+            result = [f"{base_string}, {', '.join(parameters)})"]
         return result
-        # return utils.convert_flat_list_to_pairs_of_tuples(result)
 
     def get_name_as_property(self, unit_variant):
         # text filter in buy menu needs name as prop as of June 2023
@@ -2346,7 +2353,7 @@ class CarConsist(Consist):
                 self.wagon_title_class_str,
                 self.wagon_title_optional_randomised_suffix_str,
             ]
-        elif context == "default_name":
+        elif context in ["default_name", "purchase_level_2"]:
             result = default_result
         elif context == "purchase_level_0":
             group = unit_variant.buyable_variant.buyable_variant_group
@@ -2378,10 +2385,6 @@ class CarConsist(Consist):
                 result = ["STR_WAGON_GROUP_MORE"]
             else:
                 result = default_result
-        elif context == "purchase_level_2":
-            result = [
-                self.wagon_title_class_str,
-            ]
         else:
             raise BaseException(
                 "get_name_parts called for wagon consist "

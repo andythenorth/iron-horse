@@ -24,7 +24,9 @@ switch (FEAT_TRAINS, SELF, switch_name_purchase_level_0, [
             | (LOAD_TEMP(${global_constants.temp_storage_ids["name_substr_purchase_level_0_4"]}) << 16),
             0x101
         ),
+        has_badge("role/express")
     ]) {
+    1: return string(STR_COMPANY_COLOUR_CABBAGE);
     return string(STR_NAME_CONTAINER_1);
 }
 switch (FEAT_TRAINS, SELF, switch_name_purchase_level_1, [
