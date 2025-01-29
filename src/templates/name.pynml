@@ -1,35 +1,54 @@
-switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, [
-        <!--! this does not first initialise all registers to empty string
-              that may give rise to unwanted side effects if any are not set due to varying numbers of substrings
-              but appears to be ok so far -->
-        <tal:name_parts repeat="name_part consist.get_name_as_strings(context='default_name', unit_variant=unit_variant)">
-            STORE_TEMP(
-                ${name_part},
-                ${global_constants.temp_storage_ids["name_substr_default_name_" + str(repeat.name_part.number)]}
-            ),
-        </tal:name_parts>
-        <tal:name_parts repeat="name_part consist.get_name_as_strings(context='purchase_level_0', unit_variant=unit_variant)">
-            STORE_TEMP(
-                ${name_part},
-                ${global_constants.temp_storage_ids["name_substr_purchase_level_0_" + str(repeat.name_part.number)]}
-            ),
-        </tal:name_parts>
-        <tal:name_parts repeat="name_part consist.get_name_as_strings(context='purchase_level_1', unit_variant=unit_variant)">
-            STORE_TEMP(
-                ${name_part},
-                ${global_constants.temp_storage_ids["name_substr_purchase_level_1_" + str(repeat.name_part.number)]}
-            ),
-        </tal:name_parts>
-        <!--! !!!!!!!!! vehicle.unit_variants[0] is a shim hack following move to consist not unit_variant scope;
-            also this reuses the name property, no stack, as that's all we need in some cases -->
+<!--! we use the text stack here to avoid over-consumption of D0xx which are limited. Using the text stack permits nml to move strings to DCxx range.
+      see https://github.com/OpenTTD/nml/pull/326 for further details
+-->
+
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_default, [
         STORE_TEMP(
-            ${consist.get_name_as_property(vehicle.unit_variants[0])},
-            ${global_constants.temp_storage_ids["name_substr_from_property"]}
+            ${consist.get_name_as_strings(context='default_name', unit_variant=unit_variant)}
+            <!--!| (LOAD_TEMP(${global_constants.temp_storage_ids["name_substr_default_name_2"]}) << 16)-->,
+            0x100
         ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            ${consist.get_name_as_strings(context='purchase_level_0', unit_variant=unit_variant)}
+            <!--!| (LOAD_TEMP(${global_constants.temp_storage_ids["name_substr_default_name_2"]}) << 16)-->,
+            0x100
+        ),
+        has_badge("role/express")
+    ]) {
+    1: return string(STR_COMPANY_COLOUR_CABBAGE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            ${consist.get_name_as_strings(context='purchase_level_1', unit_variant=unit_variant)}
+            <!--!| (LOAD_TEMP(${global_constants.temp_storage_ids["name_substr_default_name_2"]}) << 16)-->,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: ${unit_variant.id}_switch_name_purchase_level_0;
+    1: ${unit_variant.id}_switch_name_purchase_level_1;
+    <!--! more than 2 levels not required as of May 2023; can just return simple name here as there are no substrings -->
+    return ${unit_variant.id}_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: ${unit_variant.id}_switch_name_purchase_extra_bits;
+    return ${unit_variant.id}_switch_name_default;
+}
+
+switch (FEAT_TRAINS, SELF, ${unit_variant.id}_switch_name, [
         ${"param_vehicle_availability_wagons" if consist.is_general_purpose_true_wagon else "param_vehicle_availability_engines"}
     ]) {
     <!--! simplified gameplay uses minimal variant nesting, so just use default name -->
-    1: switch_name_purchase_default;
-    return switch_name_not_simplified_gameplay;
+    1: return ${unit_variant.id}_switch_name_default;
+    return ${unit_variant.id}_switch_name_not_simplified_gameplay;
 }
-

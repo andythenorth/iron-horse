@@ -304,35 +304,37 @@ class Consist(object):
         return result
 
     def get_name_as_strings(self, context, unit_variant):
-        stack_items = self.get_name_parts(context=context, unit_variant=unit_variant)
+        raw_strings = self.get_name_parts(context=context, unit_variant=unit_variant)
 
         # we need to know how many strings we have to handle, so that we can provide a container string with correct number of {STRING} entries
         # this is non-trivial as we might have non-string items for the stack (e.g. number or procedure results), used by a preceding substring
         string_counter = 0
-        for stack_item in stack_items:
-            if stack_item[0:4] == "STR_":
+        for raw_string in raw_strings:
+            if raw_string[0:4] == "STR_":
                 string_counter += 1
         if string_counter > 1:
-            stack_items.insert(0, "STR_NAME_CONTAINER_" + str(string_counter))
+            raw_strings.insert(0, "STR_NAME_CONTAINER_" + str(string_counter))
 
-        result = []
-        for stack_item in stack_items:
-            if stack_item[0:4] == "STR_":
+        formatted_strings = []
+        for raw_string in raw_strings:
+            if raw_string[0:4] == "STR_":
                 # possibly fragile wrapping of string() around strings, to avoid having to always specify them that way
-                result.append("string(" + stack_item + ")")
+                formatted_strings.append("string(" + raw_string + ")")
             else:
                 # otherwise pass through as is
-                result.append(stack_item)
+                formatted_strings.append(raw_string)
 
         # special case for when substrings need converting to parameters on first string
-        if len(result) > 1:
+        if len(formatted_strings) > 1:
             # assumes 2 items
-            if result[0] != 'string(STR_NAME_CONTAINER_2)':
-                raise Exception("stack_items first result should be 'string(STR_NAME_CONTAINER_2)'")
+            if formatted_strings[0] != 'string(STR_NAME_CONTAINER_2)':
+                raise Exception("formatted_strings first result should be 'string(STR_NAME_CONTAINER_2)'")
 
-            base_string = result[0][:-1]
-            parameters = result[1:]
-            result = [f"{base_string}, {', '.join(parameters)})"]
+            base_string = formatted_strings[0][:-1]
+            parameters = formatted_strings[1:]
+            result = f"{base_string}, {', '.join(parameters)})"
+        else:
+            result = formatted_strings[0] # we just want the first string from the list
         return result
 
     def get_name_as_property(self, unit_variant):
