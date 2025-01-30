@@ -28,12 +28,11 @@
     <tal:include metal:use-macro="load: articulated_parts.pynml" />
 </tal:articulated_parts>
 
+<tal:name condition="vehicle.is_lead_unit_of_consist">
+    <tal:include metal:use-macro="load: name.pynml" />
+</tal:name>
+
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-
-    <tal:name condition="vehicle.is_lead_unit_of_consist">
-        <tal:include metal:use-macro="load: name.pynml" />
-    </tal:name>
-
     <tal:buy_menu_additional_text condition="vehicle.is_lead_unit_of_consist and unit_variant.uses_buy_menu_additional_text">
         <tal:include metal:use-macro="load: buy_menu_additional_text.pynml" />
     </tal:buy_menu_additional_text>
@@ -41,7 +40,7 @@
     item(FEAT_TRAINS, ${unit_variant.id}, ${unit_variant.numeric_id}) {
         property {
             <!--! name static prop used for buy menu search only -->
-            name:                           ${consist.get_name_as_property(unit_variant=unit_variant)};
+            name:                           ${consist.get_name_as_property()};
             climates_available:             NO_CLIMATE; // nml constant
             badges:                         ${consist.get_badges_for_nml(unit_variant)};
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
@@ -97,7 +96,7 @@
             default:                        ${vehicle.id}_switch_graphics;
             purchase:                       ${vehicle.id}_switch_graphics_purchase;
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
-                name:                           ${unit_variant.id}_switch_name;
+                name:                           ${consist.id}_switch_name;
                 <!--! certain callbacks should not be handled for trailing parts of articulated consists -->
                 cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
                 <tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">

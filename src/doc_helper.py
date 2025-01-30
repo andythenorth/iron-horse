@@ -354,7 +354,7 @@ class DocHelper(object):
         if consist._name is not None:
             return consist._name
         else:
-            name_parts = consist.get_name_parts(context="docs", unit_variant=None)
+            name_parts = consist.get_name_parts(context="docs")
             result = []
             for name_part in name_parts:
                 if name_part is not None:

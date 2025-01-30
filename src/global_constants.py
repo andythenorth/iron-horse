@@ -905,6 +905,12 @@ static_badges = {
             "u": {"name": "STR_EMPTY"},
         },
     },
+    "ih_variants_cabbage": {
+        "sublabels": {
+            "cabbage_level_0_has_children": {},
+            "cabbage_level_1_has_children": {},
+        }
+    },
     "role": {
         "name": "STR_BADGE_ROLE",
         "sublabels": {

@@ -295,7 +295,7 @@ class Consist(object):
         else:
             return None
 
-    def get_name_parts(self, context, unit_variant):
+    def get_name_parts(self, context):
         default_name = "STR_NAME_" + self.id.upper()
         if context == "purchase_level_1":
             result = [default_name]
@@ -303,8 +303,11 @@ class Consist(object):
             result = [default_name]
         return result
 
-    def get_name_as_strings(self, context, unit_variant):
-        raw_strings = self.get_name_parts(context=context, unit_variant=unit_variant)
+    def get_name_as_strings(self, context):
+        raw_strings = self.get_name_parts(context=context)
+
+        if raw_strings == None:
+            return 0
 
         # we need to know how many strings we have to handle, so that we can provide a container string with correct number of {STRING} entries
         # this is non-trivial as we might have non-string items for the stack (e.g. number or procedure results), used by a preceding substring
@@ -337,11 +340,11 @@ class Consist(object):
             result = formatted_strings[0] # we just want the first string from the list
         return result
 
-    def get_name_as_property(self, unit_variant):
+    def get_name_as_property(self):
         # text filter in buy menu needs name as prop as of June 2023
         # this is very rudimentary and doesn't include all the parts of the name
         name_parts = self.get_name_parts(
-            context="default_name", unit_variant=unit_variant
+            context="default_name"
         )
         result = "string(" + name_parts[0] + ")"
         return result
@@ -400,6 +403,19 @@ class Consist(object):
         result = []
         return result
 
+    def get_cabbage_variant_handling_badges(self, unit_variant):
+        result = []
+        if (
+            len(unit_variant.buyable_variant.buyable_variant_group.buyable_variants) > 1
+        ):
+            result.append("ih_variants_cabbage/cabbage_level_0_has_children")
+        if (
+            unit_variant.buyable_variant.buyable_variant_group.parent_group
+            is not None
+        ):
+            result.append("ih_variants_cabbage/cabbage_level_1_has_children")
+        return result
+
     def get_badges(self, unit_variant):
         # badges can be set on a vehicle for diverse reasons, including
         # - badges explicitly added to _badges attr
@@ -409,6 +425,8 @@ class Consist(object):
         result.extend(self.cabbage_power_source_badges)
         # colour mix badges - note that this returns a list, not a single badge
         result.extend(self.cabbage_colour_mix_badges)
+        # special variant handling badges
+        result.extend(self.get_cabbage_variant_handling_badges(unit_variant))
         if self.role_badge is not None:
             result.append(self.role_badge)
         # badge for handling vehicle_family
@@ -2339,7 +2357,7 @@ class CarConsist(Consist):
         else:
             return None
 
-    def get_name_parts(self, context, unit_variant):
+    def get_name_parts(self, context):
         if self.wagon_title_optional_randomised_suffix_str is not None:
             default_result = [
                 self.wagon_title_class_str,
@@ -2355,38 +2373,28 @@ class CarConsist(Consist):
                 self.wagon_title_class_str,
                 self.wagon_title_optional_randomised_suffix_str,
             ]
-        elif context in ["default_name", "purchase_level_2"]:
+        elif context in ["default_name", "purchase_level_1", "purchase_level_2"]:
             result = default_result
         elif context == "purchase_level_0":
-            group = unit_variant.buyable_variant.buyable_variant_group
-            if group.parent_consist.use_named_buyable_variant_group != None:
+            if self.use_named_buyable_variant_group != None:
                 try:
                     result = [
                         "STR_"
-                        + group.parent_consist.use_named_buyable_variant_group.upper(),
+                        + self.use_named_buyable_variant_group.upper(),
                     ]
                 except:
-                    raise BaseException(group.parent_vehicle.id)
+                    raise BaseException(self.id)
+            # some dubious special-casing to make wagon names plural if there are variants, and a named variant group is *not* already used
+            # !! this might fail for composite groups where the group has multiple variants from multiple consists, but this specific consist has only one variant
+            elif len(self.buyable_variants) > 1:
+                result = default_result.copy()
+                result[0] = result[0].replace("_CAR", "_CARS")
+                result[0] = result[0].replace(
+                    "STR_NAME_SUFFIX_", "STR_WAGON_GROUP_"
+                )
             else:
-                # some dubious special-casing to make wagon names plural if there are variants, and a named variant group is *not* already used
-                if len(group.buyable_variants) > 1:
-                    result = default_result.copy()
-                    result[0] = result[0].replace("_CAR", "_CARS")
-                    result[0] = result[0].replace(
-                        "STR_NAME_SUFFIX_", "STR_WAGON_GROUP_"
-                    )
-                else:
-                    result = default_result
-        elif context == "purchase_level_1":
-            # if a level 1 group has a parent, then it is also the parent of a group of level 2 vehicles
-            if (
-                unit_variant.buyable_variant.buyable_variant_group.parent_group
-                is not None
-            ):
-                # assume all level 1 groups have this fixed string as of May 2023
-                result = ["STR_WAGON_GROUP_MORE"]
-            else:
-                result = default_result
+                # no string needed, the name switch will handle using the default name
+                result = None
         else:
             raise BaseException(
                 "get_name_parts called for wagon consist "
@@ -6119,7 +6127,7 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
     def vehicle_family_badge(self):
         return "vehicle_family/" + self._buyable_variant_group_id
 
-    def get_name_parts(self, context, unit_variant):
+    def get_name_parts(self, context):
         # special name handling to use the cab name
         result = [
             "STR_NAME_" + self.cab_id.upper(),
@@ -6294,7 +6302,7 @@ class MailHSTCarConsist(MailCarConsistBase):
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
 
-    def get_name_parts(self, context, unit_variant):
+    def get_name_parts(self, context):
         # special name handling to use the cab name
         result = [
             "STR_NAME_" + self.cab_id.upper(),
@@ -7106,7 +7114,7 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
 
-    def get_name_parts(self, context, unit_variant):
+    def get_name_parts(self, context):
         # special name handling to use the cab name
         result = [
             "STR_NAME_" + self.cab_id.upper(),
@@ -7323,7 +7331,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
 
-    def get_name_parts(self, context, unit_variant):
+    def get_name_parts(self, context):
         # special name handling to use the cab name
         result = [
             "STR_NAME_" + self.cab_id.upper(),
