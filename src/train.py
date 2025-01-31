@@ -45,7 +45,7 @@ class ConsistFactory(object):
         self.class_name = class_name
         self.kwargs = kwargs
         self.unit_factories = []
-        self.clone_factories = [] # temp hax
+        self.clone_factories = []  # temp hax
 
     def add_unit(self, class_name, **kwargs):
         # !! CABBAGE not actually a UnitFactory yet
@@ -59,8 +59,8 @@ class ConsistFactory(object):
     def init_consist(self):
         consist_cls = getattr(sys.modules[__name__], self.class_name)
         consist = consist_cls(**self.kwargs)
-        consist.description = self.description # shim
-        consist.foamer_facts = self.foamer_facts # shim
+        consist.description = self.description  # shim
+        consist.foamer_facts = self.foamer_facts  # shim
 
         # !! CABBAGE
         for unit_factory in self.unit_factories:
@@ -95,7 +95,9 @@ class Consist(object):
     """
 
     def __init__(self, **kwargs):
-        self.consist_factory = kwargs.get("consist_factory", ConsistFactory(self.__class__.__name__, **kwargs))
+        self.consist_factory = kwargs.get(
+            "consist_factory", ConsistFactory(self.__class__.__name__, **kwargs)
+        )
         self.id = kwargs.get("id", None)
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         # private var, used to store a name substr for engines, composed into name with other strings as needed
@@ -383,22 +385,22 @@ class Consist(object):
         # special case for when substrings need converting to parameters on first string
         if len(formatted_strings) > 1:
             # assumes 2 items
-            if formatted_strings[0] != 'string(STR_NAME_CONTAINER_2)':
-                raise Exception("formatted_strings first result should be 'string(STR_NAME_CONTAINER_2)'")
+            if formatted_strings[0] != "string(STR_NAME_CONTAINER_2)":
+                raise Exception(
+                    "formatted_strings first result should be 'string(STR_NAME_CONTAINER_2)'"
+                )
 
             base_string = formatted_strings[0][:-1]
             parameters = formatted_strings[1:]
             result = f"{base_string}, {', '.join(parameters)})"
         else:
-            result = formatted_strings[0] # we just want the first string from the list
+            result = formatted_strings[0]  # we just want the first string from the list
         return result
 
     def get_name_as_property(self):
         # text filter in buy menu needs name as prop as of June 2023
         # this is very rudimentary and doesn't include all the parts of the name
-        name_parts = self.get_name_parts(
-            context="default_name"
-        )
+        name_parts = self.get_name_parts(context="default_name")
         result = "string(" + name_parts[0] + ")"
         return result
 
@@ -458,14 +460,9 @@ class Consist(object):
 
     def get_cabbage_variant_handling_badges(self, unit_variant):
         result = []
-        if (
-            len(unit_variant.buyable_variant.buyable_variant_group.buyable_variants) > 1
-        ):
+        if len(unit_variant.buyable_variant.buyable_variant_group.buyable_variants) > 1:
             result.append("ih_variants_cabbage/cabbage_level_0_has_children")
-        if (
-            unit_variant.buyable_variant.buyable_variant_group.parent_group
-            is not None
-        ):
+        if unit_variant.buyable_variant.buyable_variant_group.parent_group is not None:
             result.append("ih_variants_cabbage/cabbage_level_1_has_children")
         return result
 
@@ -771,7 +768,12 @@ class Consist(object):
         # iff that assumption is wrong, result can be lambda sorted by actual vehicle power amounts before returning, but not necessary as of July 2022
         for power_source, optional_props in global_constants.power_sources.items():
             if power_source in self.power_by_power_source.keys():
-                result.append([power_source, self.base_track_type_name + optional_props.get("suffix", "")])
+                result.append(
+                    [
+                        power_source,
+                        self.base_track_type_name + optional_props.get("suffix", ""),
+                    ]
+                )
         # now append suffixes for switches - self and next, could be done in the template, but it's just neater to do here
         for counter, value in enumerate(result):
             value.append(counter)
@@ -2432,8 +2434,7 @@ class CarConsist(Consist):
             if self.use_named_buyable_variant_group != None:
                 try:
                     result = [
-                        "STR_"
-                        + self.use_named_buyable_variant_group.upper(),
+                        "STR_" + self.use_named_buyable_variant_group.upper(),
                     ]
                 except:
                     raise BaseException(self.id)
@@ -2442,9 +2443,7 @@ class CarConsist(Consist):
             elif len(self.buyable_variants) > 1:
                 result = default_result.copy()
                 result[0] = result[0].replace("_CAR", "_CARS")
-                result[0] = result[0].replace(
-                    "STR_NAME_SUFFIX_", "STR_WAGON_GROUP_"
-                )
+                result[0] = result[0].replace("STR_NAME_SUFFIX_", "STR_WAGON_GROUP_")
             else:
                 # no string needed, the name switch will handle using the default name
                 result = None
@@ -9216,9 +9215,7 @@ class UnitVariant(object):
             if colour_name == "company_colour":
                 stack_values.append("string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000")
             elif colour_name == "complement_company_colour":
-                stack_values.append(
-                    "string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000"
-                )
+                stack_values.append("string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000")
             else:
                 stack_values.append(
                     "switch_get_colour_name("
