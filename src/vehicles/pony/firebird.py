@@ -1,8 +1,9 @@
-from train import PassengerHSTCabEngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerHSTCabEngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerHSTCabEngineConsist",
         roster_id=roster_id,
         id="firebird",
         base_numeric_id=21500,
@@ -18,8 +19,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit",
         weight=68,
         vehicle_length=8,
         capacity=16,
@@ -28,7 +29,7 @@ def main(roster_id, **kwargs):
         tail_light="hst_32px_1",
     )
 
-    consist.description = """The Train of Today."""
-    consist.foamer_facts = """BR <i>Blue Pullman</i>"""
+    consist_factory.description = """The Train of Today."""
+    consist_factory.foamer_facts = """BR <i>Blue Pullman</i>"""
 
-    return consist
+    return consist_factory
