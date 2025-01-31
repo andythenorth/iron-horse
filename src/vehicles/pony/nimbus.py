@@ -1,11 +1,9 @@
-from train import (
-    PassengerEngineExpressRailcarConsist,
-    ElectroDieselExpressRailcarPaxUnit,
-)
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineExpressRailcarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineExpressRailcarConsist",
         roster_id=roster_id,
         id="nimbus",
         base_numeric_id=940,
@@ -24,8 +22,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=ElectroDieselExpressRailcarPaxUnit,
+    consist_factory.add_unit(
+        class_name="ElectroDieselExpressRailcarPaxUnit",
         weight=60,
         capacity=24,
         chassis="railcar_32px",
@@ -34,7 +32,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist.description = """Bridging realms of power. Diesel heart and electric soul. Whispers through dawn's light."""
-    consist.foamer_facts = """Bombardier Class 221 <i>Super Voyager</i>, Hitachi Class 800 <i>Intercity Express Train</i>"""
+    consist_factory.description = """Bridging realms of power. Diesel heart and electric soul. Whispers through dawn's light."""
+    consist_factory.foamer_facts = """Bombardier Class 221 <i>Super Voyager</i>, Hitachi Class 800 <i>Intercity Express Train</i>"""
 
-    return consist
+    return consist_factory

@@ -1,7 +1,8 @@
-from train import FixedFormationRailcarCombineConsist, DieselRailcarCombineUnitMail, DieselRailcarCombineUnitPax
+from train import ConsistFactory
 
 def main(roster_id, **kwargs):
-    consist = FixedFormationRailcarCombineConsist(
+    consist_factory = ConsistFactory(
+        class_name="FixedFormationRailcarCombineConsist",
         roster_id=roster_id,
         id="golfinho",
         base_numeric_id=970,
@@ -15,12 +16,12 @@ def main(roster_id, **kwargs):
         gen=4,
         fixed_run_cost_points=20, # balance against Snapper
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        pax_car_capacity_type="railbus_combine_ng_2",  # specific to combined mail + pax consist
+        pax_car_capacity_type="railbus_combine_ng_2",  # specific to combined mail + pax consist_factory
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselRailcarCombineUnitPax,
+    consist_factory.add_unit(
+        class_name="DieselRailcarCombineUnitPax",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
@@ -28,16 +29,16 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
     )
 
-    consist.add_unit(
-        type=DieselRailcarCombineUnitPax,
+    consist_factory.add_unit(
+        class_name="DieselRailcarCombineUnitPax",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_24px",
         spriterow_num=1,
     )
 
-    consist.add_unit(
-        type=DieselRailcarCombineUnitMail,
+    consist_factory.add_unit(
+        class_name="DieselRailcarCombineUnitMail",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
@@ -46,7 +47,7 @@ def main(roster_id, **kwargs):
         reverse_sprite_template=True,
     )
 
-    consist.description = """Efficiently whisking passengers about in the most modern ways. Goats remain, at this time, disallowed."""
-    consist.foamer_facts = """Stadler SPATZ"""
+    consist_factory.description = """Efficiently whisking passengers about in the most modern ways. Goats remain, at this time, disallowed."""
+    consist_factory.foamer_facts = """Stadler SPATZ"""
 
-    return consist
+    return consist_factory

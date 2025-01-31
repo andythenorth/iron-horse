@@ -1,8 +1,9 @@
-from train import PassengerEngineExpressRailcarConsist, ElectricExpressRailcarPaxUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineExpressRailcarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineExpressRailcarConsist",
         roster_id=roster_id,
         id="olympic",
         base_numeric_id=900,
@@ -19,15 +20,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=ElectricExpressRailcarPaxUnit,
+    consist_factory.add_unit(
+        class_name="ElectricExpressRailcarPaxUnit",
         weight=46,
         chassis="railcar_32px",
         tail_light="railcar_32px_3",
         repeat=2,
     )
 
-    consist.description = """Faster with control. Always faster. Always control."""
-    consist.foamer_facts = """BR Class 442 <i>Wessex Express</i>"""
+    consist_factory.description = """Faster with control. Always faster. Always control."""
+    consist_factory.foamer_facts = """BR Class 442 <i>Wessex Express</i>"""
 
-    return consist
+    return consist_factory

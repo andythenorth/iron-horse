@@ -6,7 +6,7 @@ from train import MailEngineCargoSprinterEngineConsist, DieselRailcarMailUnit
 
 
 def main(roster_id, **kwargs):
-    consist = MailEngineCargoSprinterEngineConsist(
+    consist_factory = MailEngineCargoSprinterEngineConsist(
         roster_id=roster_id,
         id="cargo_sprinter",
         base_numeric_id=25840,
@@ -21,7 +21,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=DieselRailcarMailUnit,
         weight=32,
         spriterow_num=0,
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
         tail_light="railcar_32px_4",
     )
 
-    consist.description = """Runs like the wind."""
-    consist.foamer_facts = """Windhoff MPV"""
+    consist_factory.description = """Runs like the wind."""
+    consist_factory.foamer_facts = """Windhoff MPV"""
 
-    return consist
+    return consist_factory
