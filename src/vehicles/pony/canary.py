@@ -1,8 +1,9 @@
-from train import PassengerEngineMetroConsist, MetroUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineMetroConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineMetroConsist",
         roster_id=roster_id,
         id="canary",
         base_numeric_id=960,
@@ -17,8 +18,8 @@ def main(roster_id, **kwargs):
     )
 
     # should be 4 short units, not 2 long but eh
-    consist.add_unit(
-        type=MetroUnit,
+    consist_factory.add_unit(
+        class_name="MetroUnit",
         weight=36,
         capacity=200,
         chassis="metro_heavy_32px",
@@ -26,7 +27,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist.description = """Do Mondays go on slow-time?"""
-    consist.foamer_facts = """London Underground S Stock"""
+    consist_factory.description = """Do Mondays go on slow-time?"""
+    consist_factory.foamer_facts = """London Underground S Stock"""
 
-    return consist
+    return consist_factory

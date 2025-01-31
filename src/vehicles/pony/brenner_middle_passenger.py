@@ -1,8 +1,9 @@
-from train import TGVMiddlePassengerEngineConsist, ElectricHighSpeedPaxUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = TGVMiddlePassengerEngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="TGVMiddlePassengerEngineConsist",
         roster_id=roster_id,
         id="brenner_middle_passenger",
         base_numeric_id=2880,
@@ -17,8 +18,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=ElectricHighSpeedPaxUnit,
+    consist_factory.add_unit(
+        class_name="ElectricHighSpeedPaxUnit",
         weight=52,
         spriterow_num=0,
         chassis="jacobs_solid_express_32px",
@@ -26,7 +27,7 @@ def main(roster_id, **kwargs):
         effects={}, # suppress visual effects
     )
 
-    consist.description = """And you shall know this velocity."""
-    consist.foamer_facts = """Alstom Class 390 <i>Pendolino</i>"""
+    consist_factory.description = """And you shall know this velocity."""
+    consist_factory.foamer_facts = """Alstom Class 390 <i>Pendolino</i>"""
 
-    return consist
+    return consist_factory

@@ -1,8 +1,9 @@
-from train import PassengerEngineMetroConsist, MetroUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineMetroConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineMetroConsist",
         roster_id=roster_id,
         id="serpentine",
         base_numeric_id=460,
@@ -16,8 +17,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=MetroUnit,
+    consist_factory.add_unit(
+        class_name="MetroUnit",
         weight=33,
         capacity=120,
         chassis="metro_low_floor_32px",
@@ -25,7 +26,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist.description = """Does the money feel good? Do you like your life well."""
-    consist.foamer_facts = """London Underground 'Gate' Stock, Standard Stock"""
+    consist_factory.description = """Does the money feel good? Do you like your life well."""
+    consist_factory.foamer_facts = """London Underground 'Gate' Stock, Standard Stock"""
 
-    return consist
+    return consist_factory

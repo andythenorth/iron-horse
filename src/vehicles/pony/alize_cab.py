@@ -1,8 +1,9 @@
-from train import TGVCabEngineConsist, ElectricEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = TGVCabEngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="TGVCabEngineConsist",
         roster_id=roster_id,
         id="alize_cab",
         base_numeric_id=17100,
@@ -23,8 +24,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=ElectricEngineUnit,
+    consist_factory.add_unit(
+        class_name="ElectricEngineUnit",
         weight=76,
         # no pax capacity on Helm Wind cabs
         capacity=0,
@@ -33,7 +34,7 @@ def main(roster_id, **kwargs):
         tail_light="very_high_speed_32px_3",
     )
 
-    consist.description = """Whispers in the wind. Graceful as she slices air. Swift, pure, and untamed."""
-    consist.foamer_facts = """TGV Sud-Est, with TGV 001-style distributed traction"""
+    consist_factory.description = """Whispers in the wind. Graceful as she slices air. Swift, pure, and untamed."""
+    consist_factory.foamer_facts = """TGV Sud-Est, with TGV 001-style distributed traction"""
 
-    return consist
+    return consist_factory

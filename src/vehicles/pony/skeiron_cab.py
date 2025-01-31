@@ -1,10 +1,11 @@
-from train import TGVCabEngineConsist, ElectricEngineUnit
+from train import ConsistFactory
 
 # skeiron does not have pax capacity, so it can be used for pure mail consists
 
 
 def main(roster_id, **kwargs):
-    consist = TGVCabEngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="TGVCabEngineConsist",
         roster_id=roster_id,
         id="skeiron_cab",
         base_numeric_id=25120,
@@ -22,17 +23,17 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=ElectricEngineUnit,
+    consist_factory.add_unit(
+        class_name="ElectricEngineUnit",
         weight=54,
         spriterow_num=0,
         chassis="4_axle_solid_express_32px",
         tail_light="very_high_speed_32px_3",
     )
 
-    consist.description = (
+    consist_factory.description = (
         """Myth in motion, swift. Continents woven in speed. Elegance entwined."""
     )
-    consist.foamer_facts = """Alstom Class 373 <i>Eurostar</i>"""
+    consist_factory.foamer_facts = """Alstom Class 373 <i>Eurostar</i>"""
 
-    return consist
+    return consist_factory

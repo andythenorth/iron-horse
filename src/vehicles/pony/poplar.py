@@ -1,8 +1,9 @@
-from train import PassengerEngineMetroConsist, MetroUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineMetroConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineMetroConsist",
         roster_id=roster_id,
         id="poplar",
         base_numeric_id=1930,
@@ -16,8 +17,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=MetroUnit,
+    consist_factory.add_unit(
+        class_name="MetroUnit",
         weight=36,
         capacity=120,
         chassis="metro_heavy_32px",
@@ -25,7 +26,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist.description = """Do dreams fade in the dawn? Lost in the city's waking."""
-    consist.foamer_facts = """Metropolitan Railway electric multiple units"""
+    consist_factory.description = """Do dreams fade in the dawn? Lost in the city's waking."""
+    consist_factory.foamer_facts = """Metropolitan Railway electric multiple units"""
 
-    return consist
+    return consist_factory

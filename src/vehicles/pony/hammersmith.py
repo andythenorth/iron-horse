@@ -1,8 +1,9 @@
-from train import PassengerEngineMetroConsist, MetroUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineMetroConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineMetroConsist",
         roster_id=roster_id,
         id="hammersmith",
         base_numeric_id=1890,
@@ -16,8 +17,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=MetroUnit,
+    consist_factory.add_unit(
+        class_name="MetroUnit",
         weight=36,
         capacity=160,
         chassis="metro_heavy_32px",
@@ -25,7 +26,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist.description = """Do pigeons roost on rooftops? Do they watch us pass by?"""
-    consist.foamer_facts = """London Underground R Stock"""
+    consist_factory.description = """Do pigeons roost on rooftops? Do they watch us pass by?"""
+    consist_factory.foamer_facts = """London Underground R Stock"""
 
-    return consist
+    return consist_factory
