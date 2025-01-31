@@ -1,12 +1,9 @@
-from train import (
-    PassengerEngineRailbusConsist,
-    DieselRailcarCombineUnitPax,
-    DieselRailcarCombineUnitMail,
-)
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineRailbusConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineRailbusConsist",
         roster_id=roster_id,
         id="clipper",
         base_numeric_id=250,
@@ -19,27 +16,27 @@ def main(roster_id, **kwargs):
         gen=4,
         # introduce early by design
         intro_year_offset=-4,
-        pax_car_capacity_type="railbus_combine",  # specific to combined mail + pax consist
+        pax_car_capacity_type="railbus_combine",  # specific to combined mail + pax consist_factory
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselRailcarCombineUnitMail,
+    consist_factory.add_unit(
+        class_name="DieselRailcarCombineUnitMail",
         weight=18,
         chassis="railbus_swb_20px",
         tail_light="railcar_20px_1",
     )
 
-    consist.add_unit(
-        type=DieselRailcarCombineUnitPax,
+    consist_factory.add_unit(
+        class_name="DieselRailcarCombineUnitPax",
         weight=18,
         chassis="railbus_swb_20px",
         tail_light="railcar_20px_1",
     )
 
-    consist.description = (
+    consist_factory.description = (
         """The horses of hope gallop, but the donkeys of experience go slowly."""
     )
-    consist.foamer_facts = """BR 1st generation AC Cars/Wickham/Waggon-und Maschinenbau and similar railbuses"""
+    consist_factory.foamer_facts = """BR 1st generation AC Cars/Wickham/Waggon-und Maschinenbau and similar railbuses"""
 
-    return consist
+    return consist_factory

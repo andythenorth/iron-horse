@@ -1,8 +1,8 @@
-from train import PassengerEngineRailcarConsist, DieselRailcarPaxUnit
-
+from train import ConsistFactory
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineRailcarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineRailcarConsist",
         roster_id=roster_id,
         id="deasil",
         base_numeric_id=21240,
@@ -17,16 +17,16 @@ def main(roster_id, **kwargs):
         intro_year_offset=-5,
     )  # introduce early by design
 
-    consist.add_unit(
-        type=DieselRailcarPaxUnit,
+    consist_factory.add_unit(
+        class_name="DieselRailcarPaxUnit",
         weight=30,
         chassis="railcar_32px",
         tail_light="railcar_32px_1",
     )
 
-    consist.description = (
+    consist_factory.description = (
         """Fast quiet trains for a new era. No more noisy steam engines."""
     )
-    consist.foamer_facts = """LNER / Armstrong-Whitworth Railcars"""
+    consist_factory.foamer_facts = """LNER / Armstrong-Whitworth Railcars"""
 
-    return consist
+    return consist_factory

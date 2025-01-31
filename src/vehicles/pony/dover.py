@@ -1,8 +1,9 @@
-from train import MailEngineRailcarConsist, ElectricRailcarMailUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = MailEngineRailcarConsist(
+    consist_factory = ConsistFactory(
+        class_name="MailEngineRailcarConsist",
         roster_id=roster_id,
         id="dover",
         base_numeric_id=21150,
@@ -20,14 +21,14 @@ def main(roster_id, **kwargs):
         intro_year_offset=-3,
     )  # introduce early by design
 
-    consist.add_unit(
-        type=ElectricRailcarMailUnit,
+    consist_factory.add_unit(
+        class_name="ElectricRailcarMailUnit",
         weight=35,
         chassis="railcar_32px",
         tail_light="railcar_32px_2",
     )
 
-    consist.description = """A useful motor van for mail and express freight."""
-    consist.foamer_facts = """BR Class 419 MLV, Class 489 GLV"""
+    consist_factory.description = """A useful motor van for mail and express freight."""
+    consist_factory.foamer_facts = """BR Class 419 MLV, Class 489 GLV"""
 
-    return consist
+    return consist_factory

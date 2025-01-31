@@ -1,12 +1,9 @@
-from train import (
-    PassengerEngineRailbusConsist,
-    DieselRailcarCombineUnitPax,
-    DieselRailcarCombineUnitMail,
-)
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineRailbusConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineRailbusConsist",
         roster_id=roster_id,
         id="mumble",
         base_numeric_id=830,
@@ -19,27 +16,27 @@ def main(roster_id, **kwargs):
         },
         gen=3,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        pax_car_capacity_type="railbus_combine_ng_1",  # specific to combined mail + pax consist
+        pax_car_capacity_type="railbus_combine_ng_1",  # specific to combined mail + pax consist_factory
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselRailcarCombineUnitMail,
+    consist_factory.add_unit(
+        class_name="DieselRailcarCombineUnitMail",
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
         tail_light="railcar_20px_1",
     )
 
-    consist.add_unit(
-        type=DieselRailcarCombineUnitPax,
+    consist_factory.add_unit(
+        class_name="DieselRailcarCombineUnitPax",
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
         tail_light="railcar_20px_1",
     )
 
-    consist.description = """Vitesse. Confort. Exactitude. This railcar has none of those. But it is cheap to run."""
-    consist.foamer_facts = """Corsican CFC Autorail Billard, CFC X2000/X5000"""
+    consist_factory.description = """Vitesse. Confort. Exactitude. This railcar has none of those. But it is cheap to run."""
+    consist_factory.foamer_facts = """Corsican CFC Autorail Billard, CFC X2000/X5000"""
 
-    return consist
+    return consist_factory

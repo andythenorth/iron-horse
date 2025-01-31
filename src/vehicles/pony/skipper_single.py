@@ -1,8 +1,9 @@
-from train import PassengerEngineRailbusConsist, DieselRailcarPaxUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineRailbusConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineRailbusConsist",
         roster_id=roster_id,
         id="skipper_single",
         base_numeric_id=25260,
@@ -19,14 +20,14 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselRailcarPaxUnit,
+    consist_factory.add_unit(
+        class_name="DieselRailcarPaxUnit",
         weight=24,
         chassis="railbus_lwb_24px",
         tail_light="railcar_24px_1",
     )
 
-    consist.description = """Patience is the virtue of the donkeys."""
-    consist.foamer_facts = """BR Class 141/142/143/144 <i>Pacers</i>"""
+    consist_factory.description = """Patience is the virtue of the donkeys."""
+    consist_factory.foamer_facts = """BR Class 141/142/143/144 <i>Pacers</i>"""
 
-    return consist
+    return consist_factory

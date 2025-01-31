@@ -1,11 +1,9 @@
-from train import (
-    MailEngineExpressRailcarConsist,
-    ElectricRailcarMailUnit,
-)
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = MailEngineExpressRailcarConsist(
+    consist = ConsistFactory(
+        class_name="MailEngineExpressRailcarConsist",
         roster_id=roster_id,
         id="chronos",
         base_numeric_id=950,
@@ -21,7 +19,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(
-        type=ElectricRailcarMailUnit,
+        class_name="ElectricRailcarMailUnit",
         weight=40,
         chassis="railcar_32px",
         tail_light="railcar_32px_3",

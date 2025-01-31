@@ -1,8 +1,9 @@
-from train import MailEngineRailcarConsist, DieselRailcarMailUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = MailEngineRailcarConsist(
+    consist_factory = ConsistFactory(
+        class_name="MailEngineRailcarConsist",
         roster_id=roster_id,
         id="zorro",
         base_numeric_id=21030,
@@ -18,15 +19,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselRailcarMailUnit,
+    consist_factory.add_unit(
+        class_name="DieselRailcarMailUnit",
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_24px",
         tail_light="railcar_24px_1",
     )
 
-    consist.description = """A reliable way to move mail, supplies and express freight. Goats are not however, at this time, permitted."""
-    consist.foamer_facts = """CFC Autorail Billard, CFC X2000/X5000"""
+    consist_factory.description = """A reliable way to move mail, supplies and express freight. Goats are not however, at this time, permitted."""
+    consist_factory.foamer_facts = """CFC Autorail Billard, CFC X2000/X5000"""
 
-    return consist
+    return consist_factory

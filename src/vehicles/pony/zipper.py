@@ -1,12 +1,9 @@
-from train import (
-    PassengerEngineRailbusConsist,
-    DieselRailcarCombineUnitPax,
-    DieselRailcarCombineUnitMail,
-)
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineRailbusConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineRailbusConsist",
         roster_id=roster_id,
         id="zipper",
         base_numeric_id=260,
@@ -19,25 +16,25 @@ def main(roster_id, **kwargs):
         gen=6,
         # introduce early by design
         intro_year_offset=-4,
-        pax_car_capacity_type="railbus_combine",  # specific to combined mail + pax consist
+        pax_car_capacity_type="railbus_combine",  # specific to combined mail + pax consist_factory
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselRailcarCombineUnitMail,
+    consist_factory.add_unit(
+        class_name="DieselRailcarCombineUnitMail",
         weight=21,
         chassis="railbus_lwb_20px",
         tail_light="railcar_20px_1",
     )
 
-    consist.add_unit(
-        type=DieselRailcarCombineUnitPax,
+    consist_factory.add_unit(
+        class_name="DieselRailcarCombineUnitPax",
         weight=21,
         chassis="railbus_lwb_20px",
         tail_light="railcar_20px_1",
     )
 
-    consist.description = """It's the same donkey, but with a new saddle."""
-    consist.foamer_facts = """BR Class 144e <i>Pacer</i>, Vivarail D-Train"""
+    consist_factory.description = """It's the same donkey, but with a new saddle."""
+    consist_factory.foamer_facts = """BR Class 144e <i>Pacer</i>, Vivarail D-Train"""
 
-    return consist
+    return consist_factory
