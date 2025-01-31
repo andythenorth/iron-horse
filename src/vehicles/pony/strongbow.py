@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="strongbow",
         base_numeric_id=4320,
@@ -20,13 +21,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SteamEngineUnit, weight=96, vehicle_length=6, spriterow_num=0)
+    consist_factory.add_unit(class_name="SteamEngineUnit", weight=96, vehicle_length=6, spriterow_num=0)
 
-    consist.add_unit(
-        type=SteamEngineTenderUnit, weight=34, vehicle_length=4, spriterow_num=1
+    consist_factory.add_unit(
+        class_name="SteamEngineTenderUnit", weight=34, vehicle_length=4, spriterow_num=1
     )
 
-    consist.description = """Got this one off Mr. Stanier.  It'll go anywhere, do anything, for not too much brass."""
-    consist.foamer_facts = """LMS Jubilee Class, original TTD Chaney 'Jubilee'"""
+    consist_factory.description = """Got this one off Mr. Stanier.  It'll go anywhere, do anything, for not too much brass."""
+    consist_factory.foamer_facts = """LMS Jubilee Class, original TTD Chaney 'Jubilee'"""
 
-    return consist
+    return consist_factory

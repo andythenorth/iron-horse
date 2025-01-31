@@ -1,8 +1,9 @@
-from train import EngineConsist, ElectricEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="stalwart",
         base_numeric_id=21380,
@@ -33,13 +34,13 @@ def main(roster_id, **kwargs):
         sprites_additional_liveries_potential=True,  # unfinished livery with yellow stripe
     )
 
-    consist.add_unit(
-        type=ElectricEngineUnit, weight=115, vehicle_length=8, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="ElectricEngineUnit", weight=115, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """They really pushed the boat out for this one."""
-    consist.foamer_facts = (
+    consist_factory.description = """They really pushed the boat out for this one."""
+    consist_factory.foamer_facts = (
         """Metropolitan-Vickers 46 Class exported from UK to New South Wales"""
     )
 
-    return consist
+    return consist_factory

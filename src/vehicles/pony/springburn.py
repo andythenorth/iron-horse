@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="springburn",
         base_numeric_id=10830,
@@ -13,8 +14,8 @@ def main(roster_id, **kwargs):
         intro_year=1950,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit, weight=80, vehicle_length=6, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=0
     )
 
-    return consist
+    return consist_factory

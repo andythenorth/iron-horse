@@ -1,11 +1,9 @@
-from train import (
-    PassengerEngineExpressRailcarConsist,
-    DieselExpressRailcarPaxUnit,
-)
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineExpressRailcarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineExpressRailcarConsist",
         roster_id=roster_id,
         id="stratos",
         base_numeric_id=390,
@@ -23,8 +21,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselExpressRailcarPaxUnit,
+    consist_factory.add_unit(
+        class_name="DieselExpressRailcarPaxUnit",
         weight=50,
         capacity=24,
         chassis="railcar_ng_32px",
@@ -33,7 +31,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist.description = """Every journey becomes a panorama."""
-    consist.foamer_facts = """Corsican AMG 800"""
+    consist_factory.description = """Every journey becomes a panorama."""
+    consist_factory.foamer_facts = """Corsican AMG 800"""
 
-    return consist
+    return consist_factory

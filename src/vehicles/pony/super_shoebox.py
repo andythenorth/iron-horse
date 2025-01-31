@@ -1,8 +1,9 @@
-from train import EngineConsist, ElectroDieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="super_shoebox",
         base_numeric_id=9920,
@@ -33,15 +34,15 @@ def main(roster_id, **kwargs):
         sprites_additional_liveries_potential=True,
     )
 
-    consist.add_unit(
-        type=ElectroDieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="ElectroDieselEngineUnit",
         weight=82,
         vehicle_length=8,
         effect_offsets=[(2, 0)],
         spriterow_num=0,
     )
 
-    consist.description = """It's a bigger Shoebox. Well not bigger. But more power in it. Right new paint too."""
-    consist.foamer_facts = """BR Class 73, Class 71/74, proposed Class 75"""
+    consist_factory.description = """It's a bigger Shoebox. Well not bigger. But more power in it. Right new paint too."""
+    consist_factory.foamer_facts = """BR Class 73, Class 71/74, proposed Class 75"""
 
-    return consist
+    return consist_factory

@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="solano",
         base_numeric_id=21810,
@@ -21,18 +22,18 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit",
         weight=42,
         vehicle_length=6,
         effect_z_offset=10,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,
     )
 
-    consist.description = """Let a bit of sun in, I say."""
+    consist_factory.description = """Let a bit of sun in, I say."""
     # https://en.wikipedia.org/wiki/New_Zealand_DE_class_locomotive, also NZ Di class
     # nah it's CP_Class_9020 now, and rename from Silverfern
     # see also https://trainspo.com/photo/98083/
-    consist.foamer_facts = """ Portugese CP Class 9020 (Alstom AD 12 B)"""
+    consist_factory.foamer_facts = """ Portugese CP Class 9020 (Alstom AD 12 B)"""
 
-    return consist
+    return consist_factory

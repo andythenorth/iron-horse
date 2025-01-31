@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="tenacious",
         base_numeric_id=17180,
@@ -23,14 +24,14 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit",
         weight=80,  # significant bonus over other of same power band
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    consist.description = """It's rapid, sprightly, and formidable all at once."""
-    consist.foamer_facts = """BR Class 42/43 <i>Warship</i>"""
+    consist_factory.description = """It's rapid, sprightly, and formidable all at once."""
+    consist_factory.foamer_facts = """BR Class 42/43 <i>Warship</i>"""
 
-    return consist
+    return consist_factory

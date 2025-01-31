@@ -36,6 +36,32 @@ import iron_horse
 import spritelayer_cargos
 
 
+class ConsistFactory(object):
+    """
+    CABBAGE
+    """
+
+    def __init__(self, class_name, **kwargs):
+        # nothing
+        self.class_name = class_name
+        self.kwargs = kwargs
+        self.unit_factories = []
+
+    def add_unit(self, **kwargs):
+        # !! CABBAGE not actually a UnitFactory yet
+        self.unit_factories.append(kwargs)
+
+    def init_consist(self):
+        consist_cls = getattr(sys.modules[__name__], self.class_name)
+        consist = consist_cls(**self.kwargs)
+        consist.description = self.description # shim
+        consist.foamer_facts = self.foamer_facts # shim
+        # !! CABBAGE
+        for unit_factory in self.unit_factories:
+            unit_cls = getattr(sys.modules[__name__], unit_factory["class_name"])
+            consist.add_unit(unit_cls, **unit_factory)
+        return consist
+
 class Consist(object):
     """
     'Vehicles' (appearing in buy menu) are composed as articulated consists.
@@ -43,6 +69,7 @@ class Consist(object):
     """
 
     def __init__(self, **kwargs):
+        self.consist_factory = kwargs.get("consist_factory", ConsistFactory(self.__class__.__name__, **kwargs))
         self.id = kwargs.get("id", None)
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         # private var, used to store a name substr for engines, composed into name with other strings as needed

@@ -1,8 +1,9 @@
-from train import PassengerEngineRailbusConsist, DieselRailcarPaxUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineRailbusConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineRailbusConsist",
         roster_id=roster_id,
         id="snapper_single",
         base_numeric_id=35850,
@@ -19,15 +20,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselRailcarPaxUnit,
+    consist_factory.add_unit(
+        class_name="DieselRailcarPaxUnit",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_24px",
         tail_light="railcar_24px_1",
     )
 
-    consist.description = """Vitesse. Confort. Exactitude. This railcar has none of those. But it is cheap to run."""
-    consist.foamer_facts = """Corsican CFC X2000/X5000, CFD Autorails"""
+    consist_factory.description = """Vitesse. Confort. Exactitude. This railcar has none of those. But it is cheap to run."""
+    consist_factory.foamer_facts = """Corsican CFC X2000/X5000, CFD Autorails"""
 
-    return consist
+    return consist_factory
