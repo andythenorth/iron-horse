@@ -1,8 +1,9 @@
-from train import MailEngineMetroConsist, MetroUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = MailEngineMetroConsist(
+    consist_factory = ConsistFactory(
+        class_name="MailEngineMetroConsist",
         roster_id=roster_id,
         id="wandle",
         base_numeric_id=1900,
@@ -16,8 +17,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=MetroUnit,
+    consist_factory.add_unit(
+        class_name="MetroUnit",
         weight=32,
         # set capacity for freight; mail will be automatically calculated
         capacity=27,
@@ -26,7 +27,7 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist.description = """Is the underground a sanctuary? Refuge for the lost."""
-    consist.foamer_facts = """London Underground R Stock"""
+    consist_factory.description = """Is the underground a sanctuary? Refuge for the lost."""
+    consist_factory.foamer_facts = """London Underground R Stock"""
 
-    return consist
+    return consist_factory
