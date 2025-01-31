@@ -1,4 +1,4 @@
-from train import MailEngineCargoSprinterEngineConsist, DieselRailcarMailUnit
+from train import ConsistFactory
 
 # implemented as dual headed, it really is just the nicer way to build these units (esp. when adding container wagons)
 
@@ -6,7 +6,8 @@ from train import MailEngineCargoSprinterEngineConsist, DieselRailcarMailUnit
 
 
 def main(roster_id, **kwargs):
-    consist_factory = MailEngineCargoSprinterEngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="MailEngineCargoSprinterEngineConsist",
         roster_id=roster_id,
         id="cargo_sprinter",
         base_numeric_id=25840,
@@ -22,7 +23,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=DieselRailcarMailUnit,
+        class_name="DieselRailcarMailUnit",
         weight=32,
         spriterow_num=0,
         chassis="4_axle_solid_express_32px",

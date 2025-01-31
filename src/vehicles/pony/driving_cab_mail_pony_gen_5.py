@@ -1,8 +1,9 @@
-from train import MailEngineCabbageDVTConsist, CabbageDVTUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = MailEngineCabbageDVTConsist(
+    consist_factory = ConsistFactory(
+        class_name="MailEngineCabbageDVTConsist",
         roster_id=roster_id,
         id="driving_cab_mail_pony_gen_5",
         base_numeric_id=19970,
@@ -13,11 +14,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=CabbageDVTUnit, weight=32, chassis="railcar_32px")
+    consist_factory.add_unit(class_name="CabbageDVTUnit", weight=32, chassis="railcar_32px")
 
-    consist.description = """Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Clever idea we had eh?"""
-    consist.foamer_facts = (
+    consist_factory.description = """Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Clever idea we had eh?"""
+    consist_factory.foamer_facts = (
         """BR parcels Propelling Control Vehicle (PCV) with added generator"""
     )
 
-    return consist
+    return consist_factory

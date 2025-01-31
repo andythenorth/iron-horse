@@ -1,8 +1,4 @@
-from train import (
-    AutoCoachCombineConsist,
-    AutoCoachCombineUnitMail,
-    AutoCoachCombineUnitPax,
-)
+from train import ConsistFactory
 
 # only one autocoach, as autoreplace cannot handle mixed cargo articulated consists
 # this means that gen 3 engines will be speed-limited by this unit
@@ -10,7 +6,8 @@ from train import (
 
 
 def main(roster_id, **kwargs):
-    consist = AutoCoachCombineConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutoCoachCombineConsist",
         roster_id=roster_id,
         id="auto_coach_pony_gen_2",
         base_numeric_id=4690,
@@ -20,23 +17,23 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=AutoCoachCombineUnitMail,
+    consist_factory.add_unit(
+        class_name="AutoCoachCombineUnitMail",
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
         tail_light="railcar_20px_4",
     )
 
-    consist.add_unit(
-        type=AutoCoachCombineUnitPax,
+    consist_factory.add_unit(
+        class_name="AutoCoachCombineUnitPax",
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
         tail_light="railcar_20px_4",
     )
 
-    consist.description = (
+    consist_factory.description = (
         """A coach that you can drive the engine from?  Eee, it's magic."""
     )
-    consist.foamer_facts = """SR and LMS autocoach sets, LNER articulated coach sets"""
+    consist_factory.foamer_facts = """SR and LMS autocoach sets, LNER articulated coach sets"""
 
-    return consist
+    return consist_factory

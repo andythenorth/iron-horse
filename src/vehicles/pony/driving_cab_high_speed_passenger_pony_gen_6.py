@@ -1,8 +1,9 @@
-from train import PassengerEngineCabControlCarConsist, CabControlPaxCarUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineCabControlCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineCabControlCarConsist",
         roster_id=roster_id,
         id="driving_cab_high_speed_passenger_pony_gen_6",
         base_numeric_id=19920,
@@ -13,9 +14,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=CabControlPaxCarUnit, weight=32, chassis="railcar_32px")
+    consist_factory.add_unit(class_name="CabControlPaxCarUnit", weight=32, chassis="railcar_32px")
 
-    consist.description = """Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Clever idea we had eh?"""
-    consist.foamer_facts = """CAF MK5A Driving Trailer (DT) with added generator"""
+    consist_factory.description = """Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Clever idea we had eh?"""
+    consist_factory.foamer_facts = """CAF MK5A Driving Trailer (DT) with added generator"""
 
-    return consist
+    return consist_factory

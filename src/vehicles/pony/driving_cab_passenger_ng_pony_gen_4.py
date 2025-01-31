@@ -1,8 +1,9 @@
-from train import PassengerEngineCabControlCarConsist, CabControlPaxCarUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineCabControlCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineCabControlCarConsist",
         roster_id=roster_id,
         id="driving_cab_passenger_ng_pony_gen_4",
         base_numeric_id=23260,
@@ -14,13 +15,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=CabControlPaxCarUnit, weight=32, chassis="4_axle_ng_32px")
+    consist_factory.add_unit(class_name="CabControlPaxCarUnit", weight=32, chassis="4_axle_ng_32px")
 
-    consist.description = (
+    consist_factory.description = (
         """Now, a driving cab for the smaller trains. But not for goats."""
     )
-    consist.foamer_facts = (
+    consist_factory.foamer_facts = (
         """KiwiRail SRV driving cab conversion of British Rail MK2 carriage"""
     )
 
-    return consist
+    return consist_factory

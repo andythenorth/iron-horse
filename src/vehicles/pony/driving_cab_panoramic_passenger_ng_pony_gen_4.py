@@ -1,8 +1,9 @@
-from train import PassengerEngineCabControlCarConsist, CabControlPaxCarUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineCabControlCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineCabControlCarConsist",
         roster_id=roster_id,
         id="driving_cab_panoramic_passenger_ng_pony_gen_4",
         base_numeric_id=23510,
@@ -14,15 +15,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=CabControlPaxCarUnit,
+    consist_factory.add_unit(
+        class_name="CabControlPaxCarUnit",
         weight=32,
         chassis="railcar_ng_32px",
         tail_light="railcar_32px_6",
         suppress_roof_sprite=True,
     )
 
-    consist.description = """For a view most spectacular."""
-    consist.foamer_facts = """Generic panoramic coaches"""
+    consist_factory.description = """For a view most spectacular."""
+    consist_factory.foamer_facts = """Generic panoramic coaches"""
 
-    return consist
+    return consist_factory

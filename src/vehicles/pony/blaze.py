@@ -1,8 +1,9 @@
-from train import PassengerHSTCabEngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerHSTCabEngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerHSTCabEngineConsist",
         roster_id=roster_id,
         id="blaze",
         base_numeric_id=21640,
@@ -25,8 +26,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit",
         weight=70,
         vehicle_length=8,
         effect_offsets=[(0, 1), (0, -1)],  # double the smoke eh?
@@ -34,7 +35,7 @@ def main(roster_id, **kwargs):
         tail_light="hst_32px_1",
     )
 
-    consist.description = """Power is of the essence. Faster is everything."""
-    consist.foamer_facts = """BR Class 43 (High Speed Train)"""
+    consist_factory.description = """Power is of the essence. Faster is everything."""
+    consist_factory.foamer_facts = """BR Class 43 (High Speed Train)"""
 
-    return consist
+    return consist_factory
