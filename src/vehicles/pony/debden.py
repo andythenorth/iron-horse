@@ -1,8 +1,9 @@
-from train import EngineConsist, MetroUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="debden",
         base_numeric_id=24440,
@@ -21,13 +22,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=MetroUnit, weight=46, vehicle_length=8, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="MetroUnit", weight=46, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = (
+    consist_factory.description = (
         """Is this London calling to the underworld?"""
     )
-    consist.foamer_facts = """London Underground L11 battery-electric locomotive"""
+    consist_factory.foamer_facts = """London Underground L11 battery-electric locomotive"""
 
-    return consist
+    return consist_factory

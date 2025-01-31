@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="relentless",
         base_numeric_id=21460,
@@ -22,13 +23,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit, weight=112, vehicle_length=8, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit", weight=112, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """Solid piece of kit these."""
-    consist.foamer_facts = (
+    consist_factory.description = """Solid piece of kit these."""
+    consist_factory.foamer_facts = (
         """Newag Griffin, Bombardier Traxx 2, Stadler Euro 4001, Siemens EuroRunner"""
     )
 
-    return consist
+    return consist_factory

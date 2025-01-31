@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="higuma",
         base_numeric_id=30870,
@@ -21,8 +22,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit",
         weight=60,
         vehicle_length=8,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -31,9 +32,9 @@ def main(roster_id, **kwargs):
 
     # https://en.wikipedia.org/wiki/New_Zealand_DL_class_locomotive
     # https://en.wikipedia.org/wiki/New_Zealand_DM_class_locomotive
-    consist.description = (
+    consist_factory.description = (
         """A tiny mighty bear."""
     )
-    consist.foamer_facts = """KiwiRail Stadler SALi locomotives, Kawasaki (Japan) Class DF200-7000 bo-bo-bo (dedicated locomotive for JR Kysushu <i>Seven Stars in Kyushu</i> luxury train)"""
+    consist_factory.foamer_facts = """KiwiRail Stadler SALi locomotives, Kawasaki (Japan) Class DF200-7000 bo-bo-bo (dedicated locomotive for JR Kysushu <i>Seven Stars in Kyushu</i> luxury train)"""
 
-    return consist
+    return consist_factory

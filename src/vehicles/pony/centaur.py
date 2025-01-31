@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="centaur",
         base_numeric_id=17080,
@@ -38,11 +39,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit, weight=90, vehicle_length=8, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit", weight=90, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """Technically, we're all half centaur."""
-    consist.foamer_facts = """proposed BR Class 38 (Class 37 replacement), body shape derived from SNCF <i>Nez Cassés</i> ('broken nose') locomotive and originally proposed for BR Class 60; also Portugese CP Class 1930"""
+    consist_factory.description = """Technically, we're all half centaur."""
+    consist_factory.foamer_facts = """proposed BR Class 38 (Class 37 replacement), body shape derived from SNCF <i>Nez Cassés</i> ('broken nose') locomotive and originally proposed for BR Class 60; also Portugese CP Class 1930"""
 
-    return consist
+    return consist_factory

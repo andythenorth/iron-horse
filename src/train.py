@@ -58,7 +58,10 @@ class ConsistFactory(object):
         consist.foamer_facts = self.foamer_facts # shim
         # !! CABBAGE
         for unit_factory in self.unit_factories:
-            unit_cls = getattr(sys.modules[__name__], unit_factory["class_name"])
+            try:
+                unit_cls = getattr(sys.modules[__name__], unit_factory["class_name"])
+            except:
+                raise Exception("class_name not found for " + consist.id)
             consist.add_unit(unit_cls, **unit_factory)
         return consist
 

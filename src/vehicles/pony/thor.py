@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="thor",
         base_numeric_id=21330,
@@ -22,8 +23,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=SteamEngineUnit,
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit",
         weight=30,
         vehicle_length=6,
         effect_offsets=[(-3, 0), (1, 0)],  # double the smoke eh?
@@ -31,9 +32,9 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
     )
 
-    consist.description = (
+    consist_factory.description = (
         """You could say it's twice the train. A god amongst engines."""
     )
-    consist.foamer_facts = """Fairlie locomotives"""
+    consist_factory.foamer_facts = """Fairlie locomotives"""
 
-    return consist
+    return consist_factory

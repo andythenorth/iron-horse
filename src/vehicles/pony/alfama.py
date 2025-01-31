@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="alfama",
         base_numeric_id=21670,
@@ -23,19 +24,19 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=SteamEngineUnit,
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit",
         weight=32,
         vehicle_length=6,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,
     )
 
-    consist.description = (
+    consist_factory.description = (
         """Dances with mid-power grace. Articulated finesse in every turn."""
     )
-    consist.foamer_facts = (
+    consist_factory.foamer_facts = (
         """Mallet locomotives used by Portugese narrow gauge railways"""
     )
 
-    return consist
+    return consist_factory

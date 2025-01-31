@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="xerxes",
         base_numeric_id=6760,
@@ -22,15 +23,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=SteamEngineUnit,
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit",
         weight=49,
         vehicle_length=5,
         spriterow_num=0,
         repeat=2,
     )
 
-    consist.description = """Not much to say about these two."""
-    consist.foamer_facts = """GWR pannier tanks, original TTD Kirby 'Paul'"""
+    consist_factory.description = """Not much to say about these two."""
+    consist_factory.foamer_facts = """GWR pannier tanks, original TTD Kirby 'Paul'"""
 
-    return consist
+    return consist_factory

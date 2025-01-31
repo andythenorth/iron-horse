@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="bone",
         base_numeric_id=21540,
@@ -31,18 +32,18 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit",
         weight=125,  # tiny nerf from Grid, because IRL reasons
         vehicle_length=8,
         effect_offsets=[(1, 0)],
         spriterow_num=0,
     )
 
-    consist.description = (
+    consist_factory.description = (
         """Rome wasn't built in a day. But I wasn't on that particular job."""
     )
     # IRL the quote is Brian Clough
-    consist.foamer_facts = """BR Class 58"""
+    consist_factory.foamer_facts = """BR Class 58"""
 
-    return consist
+    return consist_factory

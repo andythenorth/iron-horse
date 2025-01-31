@@ -343,6 +343,7 @@ class Roster(object):
     def init_engine_modules(self):
         package_name = "vehicles." + self.id
         # engines
+        consist_factory_unconverted_count = 0
         for engine_module_name in self.engine_module_names:
             engine_module_name = importlib.import_module(
                 "." + engine_module_name, package_name
@@ -352,6 +353,7 @@ class Roster(object):
             if hasattr(module_result, "consist_factory"):
                 # it's a consist
                 consist = module_result
+                consist_factory_unconverted_count += 1
             else:
                 # it's a consist factory
                 consist = module_result.init_consist()
@@ -359,6 +361,8 @@ class Roster(object):
             # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
             for cloned_consist in consist.clones:
                 self.engine_consists.append(cloned_consist)
+        print(self.id, "consist_factory_unconverted_count (engines)", consist_factory_unconverted_count)
+
 
     def init_wagon_modules(self):
         # wagons can be optionally reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module

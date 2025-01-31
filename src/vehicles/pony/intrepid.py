@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="intrepid",
         base_numeric_id=21520,
@@ -26,14 +27,14 @@ def main(roster_id, **kwargs):
         sprites_additional_liveries_potential=True,  # triple grey railfreight?
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit",
         weight=100,  # bonus over Wyvern, less than IRL as HP is nerfed
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    consist.description = """These are a bit duff, but they're a bit lighter than a Wyvern so we'll give em a go."""
-    consist.foamer_facts = """BR Class 47, prime mover downrated for reliability"""
+    consist_factory.description = """These are a bit duff, but they're a bit lighter than a Wyvern so we'll give em a go."""
+    consist_factory.foamer_facts = """BR Class 47, prime mover downrated for reliability"""
 
-    return consist
+    return consist_factory

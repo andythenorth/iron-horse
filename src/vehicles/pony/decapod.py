@@ -1,9 +1,10 @@
 # deprecated
-from train import EngineConsist, SteamEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="decapod",
         base_numeric_id=26080,
@@ -23,9 +24,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SteamEngineUnit, weight=54, vehicle_length=6, spriterow_num=0)
+    consist_factory.add_unit(class_name="SteamEngineUnit", weight=54, vehicle_length=6, spriterow_num=0)
 
-    consist.description = """Don't know what they were thinking, but they asked me to build it. Well, it's done."""
-    consist.foamer_facts = """GER Class A55 <i>Decapod</i>"""
+    consist_factory.description = """Don't know what they were thinking, but they asked me to build it. Well, it's done."""
+    consist_factory.foamer_facts = """GER Class A55 <i>Decapod</i>"""
 
-    return consist
+    return consist_factory

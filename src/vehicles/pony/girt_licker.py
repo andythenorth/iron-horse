@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="girt_licker",
         base_numeric_id=70,
@@ -21,15 +22,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=SteamEngineUnit, weight=100, vehicle_length=6, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit", weight=100, vehicle_length=6, spriterow_num=0
     )
 
-    consist.add_unit(
-        type=SteamEngineTenderUnit, weight=45, vehicle_length=4, spriterow_num=1
+    consist_factory.add_unit(
+        class_name="SteamEngineTenderUnit", weight=45, vehicle_length=4, spriterow_num=1
     )
 
-    consist.description = """Big ugly thing. Power in spades though."""
-    consist.foamer_facts = """Midland Railway 2290 'Big Bertha' Lickey Banker"""
+    consist_factory.description = """Big ugly thing. Power in spades though."""
+    consist_factory.foamer_facts = """Midland Railway 2290 'Big Bertha' Lickey Banker"""
 
-    return consist
+    return consist_factory

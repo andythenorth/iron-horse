@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="defiant",
         base_numeric_id=21830,
@@ -21,14 +22,14 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit",
         weight=95,  # notably low weight
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    consist.description = """Amazing what they can do these days isn't it?"""
-    consist.foamer_facts = """Vossloh Eurolight (DRS Class 68)"""
+    consist_factory.description = """Amazing what they can do these days isn't it?"""
+    consist_factory.foamer_facts = """Vossloh Eurolight (DRS Class 68)"""
 
-    return consist
+    return consist_factory

@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="yak",
         base_numeric_id=21260,
@@ -22,9 +23,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SteamEngineUnit, weight=70, vehicle_length=6, spriterow_num=0)
+    consist_factory.add_unit(class_name="SteamEngineUnit", weight=70, vehicle_length=6, spriterow_num=0)
 
-    consist.description = """We ought to do good to others as simply as a horse runs."""
-    consist.foamer_facts = """LNER Thompson Q1 Class tank engine"""
+    consist_factory.description = """We ought to do good to others as simply as a horse runs."""
+    consist_factory.foamer_facts = """LNER Thompson Q1 Class tank engine"""
 
-    return consist
+    return consist_factory

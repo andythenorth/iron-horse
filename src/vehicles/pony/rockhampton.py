@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="rockhampton",
         base_numeric_id=21290,
@@ -22,8 +23,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit",
         weight=55,
         vehicle_length=8,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -32,9 +33,9 @@ def main(roster_id, **kwargs):
 
     # various NZ / tasrail / QLD diesels
     # but could have been entirely different - https://en.wikipedia.org/wiki/Euskotren_TD2000_series
-    consist.description = (
+    consist_factory.description = (
         """From down under emerges a tiny colossus. Footsure, flexible and all grunt."""
     )
-    consist.foamer_facts = """New Zealand Railways DJ class (Mitsubishi bo-bo-bo)"""
+    consist_factory.foamer_facts = """New Zealand Railways DJ class (Mitsubishi bo-bo-bo)"""
 
-    return consist
+    return consist_factory

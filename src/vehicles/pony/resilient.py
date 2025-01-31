@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="resilient",
         base_numeric_id=21000,
@@ -33,15 +34,15 @@ def main(roster_id, **kwargs):
         sprites_additional_liveries_potential=True,  # add RfD Euro style triple grey?, Banger blue, but with black windows
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit",
         weight=103,
         vehicle_length=8,
         effect_offsets=[(2, 0)],
         spriterow_num=0,
     )
 
-    consist.description = """I've completely rebuilt some Intrepids."""
-    consist.foamer_facts = """BR Class 47, Brush Class 57, original TTD UU '47'"""
+    consist_factory.description = """I've completely rebuilt some Intrepids."""
+    consist_factory.foamer_facts = """BR Class 47, Brush Class 57, original TTD UU '47'"""
 
-    return consist
+    return consist_factory

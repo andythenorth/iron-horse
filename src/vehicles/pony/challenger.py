@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="challenger",
         base_numeric_id=14020,
@@ -15,19 +16,19 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=SteamEngineUnit, weight=60, vehicle_length=6, spriterow_num=0)
+    consist_factory.add_unit(class_name="SteamEngineUnit", weight=60, vehicle_length=6, spriterow_num=0)
 
-    consist.add_unit(
-        type=SteamEngineTenderUnit,
+    consist_factory.add_unit(
+        class_name="SteamEngineTenderUnit",
         weight=60,
         vehicle_length=6,
         effect_offsets=[(-3, 0), (-2, 0)],  # double the smoke eh?
         spriterow_num=1,
     )
 
-    consist.add_unit(type=SteamEngineUnit, weight=60, vehicle_length=6, spriterow_num=2)
+    consist_factory.add_unit(class_name="SteamEngineUnit", weight=60, vehicle_length=6, spriterow_num=2)
 
-    consist.description = """ """
-    consist.foamer_facts = """ """
+    consist_factory.description = """ """
+    consist_factory.foamer_facts = """ """
 
-    return consist
+    return consist_factory

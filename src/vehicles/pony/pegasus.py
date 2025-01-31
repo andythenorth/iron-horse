@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="pegasus",
         base_numeric_id=300,
@@ -20,21 +21,21 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=SteamEngineUnit,
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit",
         weight=110,
         vehicle_length=8,
         effect_offsets=[(-3, 0), (-2, 0)],  # double the smoke eh?
         spriterow_num=0,
     )
 
-    consist.add_unit(
-        type=SteamEngineTenderUnit, weight=40, vehicle_length=4, spriterow_num=1
+    consist_factory.add_unit(
+        class_name="SteamEngineTenderUnit", weight=40, vehicle_length=4, spriterow_num=1
     )
 
-    consist.description = (
+    consist_factory.description = (
         """A right big'un from Mr. Gresley. Put these in your pipe and smoke it."""
     )
-    consist.foamer_facts = """LNER P1, P2"""
+    consist_factory.foamer_facts = """LNER P1, P2"""
 
-    return consist
+    return consist_factory

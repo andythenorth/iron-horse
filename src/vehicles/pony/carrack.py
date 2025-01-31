@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="carrack",
         base_numeric_id=1040,
@@ -22,15 +23,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SteamEngineUnit, weight=60, vehicle_length=5, spriterow_num=0)
+    consist_factory.add_unit(class_name="SteamEngineUnit", weight=60, vehicle_length=5, spriterow_num=0)
 
-    consist.add_unit(
-        type=SteamEngineTenderUnit, weight=30, vehicle_length=3, spriterow_num=1
+    consist_factory.add_unit(
+        class_name="SteamEngineTenderUnit", weight=30, vehicle_length=3, spriterow_num=1
     )
 
-    consist.description = (
+    consist_factory.description = (
         """It's not the biggest, but there's nowt wrong wi this one."""
     )
-    consist.foamer_facts = """Midland Railway 483 Class, GWR <i>City</i> 3700 Class, generic 4-4-0 locomotives"""
+    consist_factory.foamer_facts = """Midland Railway 483 Class, GWR <i>City</i> 3700 Class, generic 4-4-0 locomotives"""
 
-    return consist
+    return consist_factory

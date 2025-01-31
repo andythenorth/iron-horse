@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="doubletide",
         base_numeric_id=220,
@@ -26,16 +27,16 @@ def main(roster_id, **kwargs):
     )
 
     # 2 separate units so that buy menu has reversed cabs
-    consist.add_unit(
-        type=DieselEngineUnit, weight=68, vehicle_length=5, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit", weight=68, vehicle_length=5, spriterow_num=0
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit, weight=68, vehicle_length=5, spriterow_num=1
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit", weight=68, vehicle_length=5, spriterow_num=1
     )
 
     #  guess the quote?
-    consist.description = """And ruined love when it is built anew grows fairer than at first, more strong, far greater."""
-    consist.foamer_facts = """Re-engineered BR Class 15, BR Class 16"""
+    consist_factory.description = """And ruined love when it is built anew grows fairer than at first, more strong, far greater."""
+    consist_factory.foamer_facts = """Re-engineered BR Class 15, BR Class 16"""
 
-    return consist
+    return consist_factory

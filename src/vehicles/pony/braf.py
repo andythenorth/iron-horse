@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="braf",
         base_numeric_id=0,
@@ -21,13 +22,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SteamEngineUnit, weight=65, vehicle_length=5, spriterow_num=0)
+    consist_factory.add_unit(class_name="SteamEngineUnit", weight=65, vehicle_length=5, spriterow_num=0)
 
-    consist.add_unit(
-        type=SteamEngineTenderUnit, weight=29, vehicle_length=3, spriterow_num=1
+    consist_factory.add_unit(
+        class_name="SteamEngineTenderUnit", weight=29, vehicle_length=3, spriterow_num=1
     )
 
-    consist.description = """Solid little number these. No bother."""
-    consist.foamer_facts = """GWR 4300 Class, LBSCR K Class"""
+    consist_factory.description = """Solid little number these. No bother."""
+    consist_factory.foamer_facts = """GWR 4300 Class, LBSCR K Class"""
 
-    return consist
+    return consist_factory

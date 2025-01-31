@@ -1,8 +1,9 @@
-from train import EngineConsist, ElectroDieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="revolution",
         base_numeric_id=21610,
@@ -24,13 +25,13 @@ def main(roster_id, **kwargs):
         sprites_additional_liveries_potential=True,  # banger blue?
     )
 
-    consist.add_unit(
-        type=ElectroDieselEngineUnit, weight=95, vehicle_length=8, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="ElectroDieselEngineUnit", weight=95, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = (
+    consist_factory.description = (
         """Bobby-dazzlers these are. How they fit it all in amazes me."""
     )
-    consist.foamer_facts = """Vossloh Euro Dual (DRS Class 88, ROG Class 93)"""
+    consist_factory.foamer_facts = """Vossloh Euro Dual (DRS Class 88, ROG Class 93)"""
 
-    return consist
+    return consist_factory

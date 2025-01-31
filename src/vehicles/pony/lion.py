@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="lion",
         base_numeric_id=20960,
@@ -21,16 +22,16 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit",
         weight=132,
         vehicle_length=8,
         effect_offsets=[(0, 1), (0, -1)],  # double the smoke eh?
     )
 
-    consist.description = """Good horses make short miles."""
-    consist.foamer_facts = (
+    consist_factory.description = """Good horses make short miles."""
+    consist_factory.foamer_facts = (
         """BRCW / BR D0260 Lion prototype, Brush HS4000 Kestrel prototype"""
     )
 
-    return consist
+    return consist_factory

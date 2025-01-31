@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="tyrconnell",
         base_numeric_id=930,
@@ -22,15 +23,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SteamEngineUnit, weight=45, vehicle_length=5, spriterow_num=0)
+    consist_factory.add_unit(class_name="SteamEngineUnit", weight=45, vehicle_length=5, spriterow_num=0)
 
-    consist.add_unit(
-        type=SteamEngineTenderUnit, weight=19, vehicle_length=3, spriterow_num=1
+    consist_factory.add_unit(
+        class_name="SteamEngineTenderUnit", weight=19, vehicle_length=3, spriterow_num=1
     )
 
-    consist.description = """A titan from the North. Steadfast and stout."""
-    consist.foamer_facts = (
+    consist_factory.description = """A titan from the North. Steadfast and stout."""
+    consist_factory.foamer_facts = (
         """Londonderry and Lough Swilly Railway Company 4-8-0 locomotives"""
     )
 
-    return consist
+    return consist_factory

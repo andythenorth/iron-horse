@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="little_bear",
         base_numeric_id=21220,
@@ -25,12 +26,12 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit, weight=68, vehicle_length=6, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit", weight=68, vehicle_length=6, spriterow_num=0
     )
 
-    consist.description = """I want no epitaphs of profound history and all that type of thing. I contributed - I would hope they would say that, and I would hope somebody liked me."""
+    consist_factory.description = """I want no epitaphs of profound history and all that type of thing. I contributed - I would hope they would say that, and I would hope somebody liked me."""
     # IRL the quote is Brian Clough
-    consist.foamer_facts = """BR Class 14, Clayton DHP1 prototype"""
+    consist_factory.foamer_facts = """BR Class 14, Clayton DHP1 prototype"""
 
-    return consist
+    return consist_factory

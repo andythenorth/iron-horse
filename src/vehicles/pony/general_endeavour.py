@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="general_endeavour",
         base_numeric_id=20980,
@@ -21,15 +22,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit, weight=70, vehicle_length=6, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit", weight=70, vehicle_length=6, spriterow_num=0
     )
 
-    consist.description = (
+    consist_factory.description = (
         """I can make a General in five minutes, but a good horse is hard to replace."""
     )
-    consist.foamer_facts = (
+    consist_factory.foamer_facts = (
         """Upgraded Alco S1, EMD switchers, Brush Bagnall steelworks locos"""
     )
 
-    return consist
+    return consist_factory

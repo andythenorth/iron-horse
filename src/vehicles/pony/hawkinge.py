@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="hawkinge",
         base_numeric_id=6410,
@@ -21,21 +22,21 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=SteamEngineUnit,
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit",
         weight=124,
         vehicle_length=8,
         effect_offsets=[(-3, 0), (-2, 0)],  # double the smoke eh?
         spriterow_num=0,
     )
 
-    consist.add_unit(
-        type=SteamEngineTenderUnit, weight=32, vehicle_length=4, spriterow_num=1
+    consist_factory.add_unit(
+        class_name="SteamEngineTenderUnit", weight=32, vehicle_length=4, spriterow_num=1
     )
 
-    consist.description = """Mr. Bulleid designed these. Do you like 'em?"""
-    consist.foamer_facts = (
+    consist_factory.description = """Mr. Bulleid designed these. Do you like 'em?"""
+    consist_factory.foamer_facts = (
         """SR Merchant Navy / West Country / Battle of Britain classes"""
     )
 
-    return consist
+    return consist_factory

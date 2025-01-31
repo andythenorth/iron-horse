@@ -1,8 +1,9 @@
-from train import EngineConsist, ElectricEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="cyclone",
         base_numeric_id=27870,
@@ -27,11 +28,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=ElectricEngineUnit, weight=92, vehicle_length=8, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="ElectricEngineUnit", weight=92, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """Nippy as a whippet, eats miles like hot dinners. Proper electric workhorse, that one."""
-    consist.foamer_facts = """Austrian Federal Railways (ÖBB) 1163 class"""
+    consist_factory.description = """Nippy as a whippet, eats miles like hot dinners. Proper electric workhorse, that one."""
+    consist_factory.foamer_facts = """Austrian Federal Railways (ÖBB) 1163 class"""
 
-    return consist
+    return consist_factory

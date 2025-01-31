@@ -1,8 +1,9 @@
-from train import EngineConsist, SteamEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="nile",
         base_numeric_id=21820,
@@ -23,8 +24,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=SteamEngineUnit,
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit",
         weight=65,
         vehicle_length=8,
         effect_offsets=[(-1, 0)],  # non-standard smoke position
@@ -32,7 +33,7 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
     )
 
-    consist.description = """Is twice as nice."""
-    consist.foamer_facts = """Victorian Railways G class Garratt locomotives"""
+    consist_factory.description = """Is twice as nice."""
+    consist_factory.foamer_facts = """Victorian Railways G class Garratt locomotives"""
 
-    return consist
+    return consist_factory

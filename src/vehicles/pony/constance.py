@@ -1,8 +1,9 @@
-from train import EngineConsist, ElectroDieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="constance",
         base_numeric_id=20950,
@@ -24,11 +25,11 @@ def main(roster_id, **kwargs):
         sprites_additional_liveries_potential=True,
     )
 
-    consist.add_unit(
-        type=ElectroDieselEngineUnit, weight=95, vehicle_length=8, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="ElectroDieselEngineUnit", weight=95, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """Runs like a Swiss watch."""
-    consist.foamer_facts = """Siemens Vectron Dual Mode"""
+    consist_factory.description = """Runs like a Swiss watch."""
+    consist_factory.foamer_facts = """Siemens Vectron Dual Mode"""
 
-    return consist
+    return consist_factory

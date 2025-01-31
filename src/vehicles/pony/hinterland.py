@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="hinterland",
         base_numeric_id=21740,
@@ -22,15 +23,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit,
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit",
         weight=58,
         vehicle_length=8,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         spriterow_num=0,
     )
 
-    consist.description = """Our pride, a force from overseas. Thrives in the solitude of the frontier or the clamor of the mills."""
-    consist.foamer_facts = """Alco RSD8 / DL351"""
+    consist_factory.description = """Our pride, a force from overseas. Thrives in the solitude of the frontier or the clamor of the mills."""
+    consist_factory.foamer_facts = """Alco RSD8 / DL351"""
 
-    return consist
+    return consist_factory

@@ -1,8 +1,9 @@
-from train import PassengerEngineRailbusConsist, DieselRailcarPaxUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = PassengerEngineRailbusConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerEngineRailbusConsist",
         roster_id=roster_id,
         id="clipper_single",
         base_numeric_id=25250,
@@ -19,16 +20,16 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselRailcarPaxUnit,
+    consist_factory.add_unit(
+        class_name="DieselRailcarPaxUnit",
         weight=22,
         chassis="railbus_swb_24px",
         tail_light="railcar_24px_1",
     )
 
-    consist.description = (
+    consist_factory.description = (
         """The horses of hope gallop, but the donkeys of experience go slowly."""
     )
-    consist.foamer_facts = """BR 1st generation AC Cars/Wickham/Waggon-und Maschinenbau and similar railbuses"""
+    consist_factory.foamer_facts = """BR 1st generation AC Cars/Wickham/Waggon-und Maschinenbau and similar railbuses"""
 
-    return consist
+    return consist_factory
