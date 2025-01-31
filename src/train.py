@@ -42,15 +42,14 @@ class ConsistFactory(object):
     """
 
     def __init__(self, class_name, **kwargs):
-        # nothing
         self.class_name = class_name
         self.kwargs = kwargs
         self.unit_factories = []
         self.clone_factories = [] # temp hax
 
-    def add_unit(self, **kwargs):
+    def add_unit(self, class_name, **kwargs):
         # !! CABBAGE not actually a UnitFactory yet
-        self.unit_factories.append(kwargs)
+        self.unit_factories.append(UnitFactory(class_name, **kwargs))
 
     def add_clone(self, **kwargs):
         # !! CABBAGE not actually a CloneFactory yet
@@ -66,16 +65,28 @@ class ConsistFactory(object):
         # !! CABBAGE
         for unit_factory in self.unit_factories:
             try:
-                unit_cls = getattr(sys.modules[__name__], unit_factory["class_name"])
+                unit_cls = getattr(sys.modules[__name__], unit_factory.class_name)
             except:
                 raise Exception("class_name not found for " + consist.id)
-            consist.add_unit(unit_cls, **unit_factory)
+            # very JFDI, this should probably be calling a method on UnitFactory
+            consist.add_unit(unit_cls, **unit_factory.kwargs)
 
         # !! CABBAGE
         for clone_factory in self.clone_factories:
             consist.clone(**clone_factory)
 
         return consist
+
+
+class UnitFactory(object):
+    """
+    CABBAGE
+    """
+
+    def __init__(self, class_name, **kwargs):
+        self.class_name = class_name
+        self.kwargs = kwargs
+
 
 class Consist(object):
     """
