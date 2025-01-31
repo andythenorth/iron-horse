@@ -46,16 +46,23 @@ class ConsistFactory(object):
         self.class_name = class_name
         self.kwargs = kwargs
         self.unit_factories = []
+        self.clone_factories = [] # temp hax
 
     def add_unit(self, **kwargs):
         # !! CABBAGE not actually a UnitFactory yet
         self.unit_factories.append(kwargs)
+
+    def add_clone(self, **kwargs):
+        # !! CABBAGE not actually a CloneFactory yet
+        # !! clones might be done in the roster version
+        self.clone_factories.append(kwargs)
 
     def init_consist(self):
         consist_cls = getattr(sys.modules[__name__], self.class_name)
         consist = consist_cls(**self.kwargs)
         consist.description = self.description # shim
         consist.foamer_facts = self.foamer_facts # shim
+
         # !! CABBAGE
         for unit_factory in self.unit_factories:
             try:
@@ -63,6 +70,11 @@ class ConsistFactory(object):
             except:
                 raise Exception("class_name not found for " + consist.id)
             consist.add_unit(unit_cls, **unit_factory)
+
+        # !! CABBAGE
+        for clone_factory in self.clone_factories:
+            consist.clone(**clone_factory)
+
         return consist
 
 class Consist(object):

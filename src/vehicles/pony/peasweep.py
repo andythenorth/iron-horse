@@ -1,8 +1,9 @@
-from train import EngineConsist, ElectricEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="peasweep",
         base_numeric_id=1750,
@@ -23,15 +24,15 @@ def main(roster_id, **kwargs):
         sprites_additional_liveries_potential=True,  # nightshade / nighthawk?
     )
 
-    consist.add_unit(
-        type=ElectricEngineUnit, weight=75, vehicle_length=6, spriterow_num=0, repeat=2
+    consist_factory.add_unit(
+        class_name="ElectricEngineUnit", weight=75, vehicle_length=6, spriterow_num=0, repeat=2
     )
 
-    consist.description = (
+    consist_factory.description = (
         """What we like about these is no fuss, no mess. Get in and off they go."""
     )
-    consist.foamer_facts = """LNER EM1 (BR Class 76)"""
+    consist_factory.foamer_facts = """LNER EM1 (BR Class 76)"""
 
-    consist.clone(base_numeric_id=34940, clone_units=[1, 0])
+    consist_factory.add_clone(base_numeric_id=34940, clone_units=[1, 0])
 
-    return consist
+    return consist_factory

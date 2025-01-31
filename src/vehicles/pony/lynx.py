@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="lynx",
         base_numeric_id=26810,
@@ -21,26 +22,28 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit, weight=72, vehicle_length=6, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit", weight=72, vehicle_length=6, spriterow_num=0
     )
 
-    consist.description = (
+    consist_factory.description = (
         """Old dog, new tricks. I've built these out of old Chinooks."""
     )
-    consist.foamer_facts = """DRS Class 20/3 (re-engineered)"""
+    consist_factory.foamer_facts = """DRS Class 20/3 (re-engineered)"""
 
-    consist.clone(base_numeric_id=820, clone_units=[1])
+    print("cabbage 939", consist_factory.kwargs["id"])
+    """
+    consist_factory.add_clone(base_numeric_id=820, clone_units=[1])
 
     # this is a JFDI thing, the Lynx 2-unit version needs a reversed sprite, but the buy menu compositor does not support that as of Jan 2024, so hax
-    consist.clones[0].add_unit(
-        type=DieselEngineUnit, weight=72, vehicle_length=6, spriterow_num=1
+    consist_factory.clones[0].add_unit(
+        class_name="DieselEngineUnit", weight=72, vehicle_length=6, spriterow_num=1
     )
 
     # JFDI recalculate power to account for 2 units
-    consist.clones[0].set_clone_power_from_clone_source()
+    consist_factory.clones[0].set_clone_power_from_clone_source()
 
     # also JFDI, the default single unit should randomly reverse, the 2-unit version should not, so hax
-    consist.clones[0].random_reverse = False
-
-    return consist
+    consist_factory.clones[0].random_reverse = False
+    """
+    return consist_factory

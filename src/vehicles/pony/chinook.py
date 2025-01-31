@@ -1,8 +1,9 @@
-from train import EngineConsist, DieselEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="chinook",
         base_numeric_id=120,
@@ -24,19 +25,21 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit, weight=80, vehicle_length=6, spriterow_num=0
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=0
     )
 
-    consist.add_unit(
-        type=DieselEngineUnit, weight=80, vehicle_length=6, spriterow_num=1
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=1
     )
 
-    consist.description = """I send these out in twos."""
-    consist.foamer_facts = """BR Class 20, uprated EE 8CSVT prime mover"""
+    consist_factory.description = """I send these out in twos."""
+    consist_factory.foamer_facts = """BR Class 20, uprated EE 8CSVT prime mover"""
 
-    consist.clone(base_numeric_id=34900, clone_units=[1, 0])
+    consist_factory.add_clone(base_numeric_id=34900, clone_units=[1, 0])
+    print("cabbage 939", consist_factory.kwargs["id"])
+    """
     # also JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
-    consist.clones[0].random_reverse = True
-
-    return consist
+    consist_factory.clones[0].random_reverse = True
+    """
+    return consist_factory

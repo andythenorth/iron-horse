@@ -1,8 +1,9 @@
-from train import EngineConsist, ElectricEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="flindermouse",
         base_numeric_id=790,
@@ -24,13 +25,13 @@ def main(roster_id, **kwargs):
         sprites_additional_liveries_potential=True,  # nightshade / nighthawk?
     )
 
-    consist.add_unit(
-        type=ElectricEngineUnit, weight=65, vehicle_length=6, spriterow_num=0, repeat=2
+    consist_factory.add_unit(
+        class_name="ElectricEngineUnit", weight=65, vehicle_length=6, spriterow_num=0, repeat=2
     )
 
-    consist.description = """We're giving electrics a go for freight.  Don't right know if they'll catch on, but they can pull, I give em that."""
-    consist.foamer_facts = """NER EF1"""
+    consist_factory.description = """We're giving electrics a go for freight.  Don't right know if they'll catch on, but they can pull, I give em that."""
+    consist_factory.foamer_facts = """NER EF1"""
 
-    consist.clone(base_numeric_id=34920, clone_units=[1, 0])
+    consist_factory.add_clone(base_numeric_id=34920, clone_units=[1, 0])
 
-    return consist
+    return consist_factory

@@ -1,8 +1,9 @@
-from train import EngineConsist, ElectricEngineUnit
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="tincans",
         base_numeric_id=370,
@@ -23,13 +24,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
-        type=ElectricEngineUnit, weight=70, vehicle_length=6, spriterow_num=0, repeat=2
+    consist_factory.add_unit(
+        class_name="ElectricEngineUnit", weight=70, vehicle_length=6, spriterow_num=0, repeat=2
     )
 
-    consist.description = """“I would not wish any companion in the world but you.”"""
-    consist.foamer_facts = """Polish PKP EU07 (derived from UK Class 83 design)"""
+    consist_factory.description = """“I would not wish any companion in the world but you.”"""
+    consist_factory.foamer_facts = """Polish PKP EU07 (derived from UK Class 83 design)"""
 
-    consist.clone(base_numeric_id=34950, clone_units=[1, 0])
+    consist_factory.add_clone(base_numeric_id=34950, clone_units=[1, 0])
 
-    return consist
+    return consist_factory
