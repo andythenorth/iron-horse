@@ -43,6 +43,8 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.description = """I've completely rebuilt some Intrepids."""
-    consist_factory.foamer_facts = """BR Class 47, Brush Class 57, original TTD UU '47'"""
+    consist_factory.foamer_facts = (
+        """BR Class 47, Brush Class 57, original TTD UU '47'"""
+    )
 
     return consist_factory

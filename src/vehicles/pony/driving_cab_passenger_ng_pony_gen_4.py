@@ -15,7 +15,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="CabControlPaxCarUnit", weight=32, chassis="4_axle_ng_32px")
+    consist_factory.add_unit(
+        class_name="CabControlPaxCarUnit", weight=32, chassis="4_axle_ng_32px"
+    )
 
     consist_factory.description = (
         """Now, a driving cab for the smaller trains. But not for goats."""

@@ -26,9 +26,9 @@ def main(roster_id, **kwargs):
         class_name="MetroUnit", weight=46, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = (
-        """Is this London calling to the underworld?"""
+    consist_factory.description = """Is this London calling to the underworld?"""
+    consist_factory.foamer_facts = (
+        """London Underground L11 battery-electric locomotive"""
     )
-    consist_factory.foamer_facts = """London Underground L11 battery-electric locomotive"""
 
     return consist_factory

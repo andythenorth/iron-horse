@@ -31,7 +31,9 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """It's rapid, sprightly, and formidable all at once."""
+    consist_factory.description = (
+        """It's rapid, sprightly, and formidable all at once."""
+    )
     consist_factory.foamer_facts = """BR Class 42/43 <i>Warship</i>"""
 
     return consist_factory

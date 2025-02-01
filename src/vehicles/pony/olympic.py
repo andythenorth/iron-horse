@@ -28,7 +28,9 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Faster with control. Always faster. Always control."""
+    consist_factory.description = (
+        """Faster with control. Always faster. Always control."""
+    )
     consist_factory.foamer_facts = """BR Class 442 <i>Wessex Express</i>"""
 
     return consist_factory

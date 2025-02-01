@@ -85,4 +85,3 @@ def main(roster_id, **kwargs):
     result.append(consist_factory)
 
     return result
-

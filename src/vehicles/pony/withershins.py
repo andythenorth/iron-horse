@@ -26,7 +26,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="DieselEngineUnit", weight=82, vehicle_length=6, repeat=2)
+    consist_factory.add_unit(
+        class_name="DieselEngineUnit", weight=82, vehicle_length=6, repeat=2
+    )
 
     consist_factory.description = """It's a rat pack. What more do you want?"""
     consist_factory.foamer_facts = """BR Class 24, BR Class 25"""

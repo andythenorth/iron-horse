@@ -31,8 +31,12 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """This diesel engine modernises our narrow gauge lines."""
-    consist_factory.foamer_facts = """FAUR L45H B-B, generic narrow-gauge diesel locomotives"""
+    consist_factory.description = (
+        """This diesel engine modernises our narrow gauge lines."""
+    )
+    consist_factory.foamer_facts = (
+        """FAUR L45H B-B, generic narrow-gauge diesel locomotives"""
+    )
 
     print("cabbage 939", consist_factory.kwargs["id"])
     """

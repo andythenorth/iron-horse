@@ -4,7 +4,6 @@ from train import ExpressFoodTankCarConsistType1, ExpressCar, FreightCar
 def main(roster_id, **kwargs):
     result = []
 
-
     # --------------- narrow gauge -----------------------------------------------------------------
 
     # note that NG uses FreightCar not ExpressCar, as there is no adjustment of capacity for higher speed

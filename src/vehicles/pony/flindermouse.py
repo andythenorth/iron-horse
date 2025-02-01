@@ -26,7 +26,11 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        class_name="ElectricEngineUnit", weight=65, vehicle_length=6, spriterow_num=0, repeat=2
+        class_name="ElectricEngineUnit",
+        weight=65,
+        vehicle_length=6,
+        spriterow_num=0,
+        repeat=2,
     )
 
     consist_factory.description = """We're giving electrics a go for freight.  Don't right know if they'll catch on, but they can pull, I give em that."""

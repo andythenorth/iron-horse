@@ -25,11 +25,19 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        class_name="ElectricEngineUnit", weight=70, vehicle_length=6, spriterow_num=0, repeat=2
+        class_name="ElectricEngineUnit",
+        weight=70,
+        vehicle_length=6,
+        spriterow_num=0,
+        repeat=2,
     )
 
-    consist_factory.description = """“I would not wish any companion in the world but you.”"""
-    consist_factory.foamer_facts = """Polish PKP EU07 (derived from UK Class 83 design)"""
+    consist_factory.description = (
+        """“I would not wish any companion in the world but you.”"""
+    )
+    consist_factory.foamer_facts = (
+        """Polish PKP EU07 (derived from UK Class 83 design)"""
+    )
 
     consist_factory.add_clone(base_numeric_id=34950, clone_units=[1, 0])
 

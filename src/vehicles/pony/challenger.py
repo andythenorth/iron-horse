@@ -16,7 +16,9 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(class_name="SteamEngineUnit", weight=60, vehicle_length=6, spriterow_num=0)
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit", weight=60, vehicle_length=6, spriterow_num=0
+    )
 
     consist_factory.add_unit(
         class_name="SteamEngineTenderUnit",
@@ -26,7 +28,9 @@ def main(roster_id, **kwargs):
         spriterow_num=1,
     )
 
-    consist_factory.add_unit(class_name="SteamEngineUnit", weight=60, vehicle_length=6, spriterow_num=2)
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit", weight=60, vehicle_length=6, spriterow_num=2
+    )
 
     consist_factory.description = """ """
     consist_factory.foamer_facts = """ """

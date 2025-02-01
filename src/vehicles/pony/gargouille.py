@@ -31,7 +31,11 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """Le petit train du jour. I've imported a few of these."""
-    consist_factory.foamer_facts = """Corsican CFD Locotracteur BB-400, New Zealand DSG class"""
+    consist_factory.description = (
+        """Le petit train du jour. I've imported a few of these."""
+    )
+    consist_factory.foamer_facts = (
+        """Corsican CFD Locotracteur BB-400, New Zealand DSG class"""
+    )
 
     return consist_factory

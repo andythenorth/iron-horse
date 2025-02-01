@@ -35,6 +35,8 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.description = """Whispers in the wind. Graceful as she slices air. Swift, pure, and untamed."""
-    consist_factory.foamer_facts = """TGV Sud-Est, with TGV 001-style distributed traction"""
+    consist_factory.foamer_facts = (
+        """TGV Sud-Est, with TGV 001-style distributed traction"""
+    )
 
     return consist_factory

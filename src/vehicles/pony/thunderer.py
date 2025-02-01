@@ -22,13 +22,17 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="SteamEngineUnit", weight=82, vehicle_length=6, spriterow_num=0)
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit", weight=82, vehicle_length=6, spriterow_num=0
+    )
 
     consist_factory.add_unit(
         class_name="SteamEngineTenderUnit", weight=30, vehicle_length=4, spriterow_num=1
     )
 
     consist_factory.description = """Bit of an odd beast this one.  It's quite happy on passengers and mail or you can put it on freight.  Right long-lived too."""
-    consist_factory.foamer_facts = """GWR 2900 <i>Saint</i> Class, GWR 4000 <i>Star</i> Class"""
+    consist_factory.foamer_facts = (
+        """GWR 2900 <i>Saint</i> Class, GWR 4000 <i>Star</i> Class"""
+    )
 
     return consist_factory

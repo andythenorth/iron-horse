@@ -1,5 +1,6 @@
 from train import ConsistFactory
 
+
 def main(roster_id, **kwargs):
     consist_factory = ConsistFactory(
         class_name="FixedFormationRailcarCombineConsist",
@@ -14,7 +15,7 @@ def main(roster_id, **kwargs):
             "DIESEL": 900,
         },
         gen=4,
-        fixed_run_cost_points=20, # balance against Snapper
+        fixed_run_cost_points=20,  # balance against Snapper
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         pax_car_capacity_type="railbus_combine_ng_2",  # specific to combined mail + pax consist_factory
         sprites_complete=True,

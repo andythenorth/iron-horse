@@ -49,7 +49,7 @@ def main(roster_id, **kwargs):
 
     consist_factory = MailCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30030,
         gen=4,
         subtype="A",

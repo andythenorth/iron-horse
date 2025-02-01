@@ -23,12 +23,14 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        class_name="MetroUnit", weight=28, vehicle_length=4, spriterow_num=0, repeat=2,
+        class_name="MetroUnit",
+        weight=28,
+        vehicle_length=4,
+        spriterow_num=0,
+        repeat=2,
     )
 
-    consist_factory.description = (
-        """Are these glazed and dirty steps?"""
-    )
+    consist_factory.description = """Are these glazed and dirty steps?"""
     consist_factory.foamer_facts = """District Railway electric locos"""
 
     return consist_factory

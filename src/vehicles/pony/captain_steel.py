@@ -27,6 +27,8 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.description = """Imported job. No fuss, no bother."""
-    consist_factory.foamer_facts = """Alco S1, EMD switchers, Brush Bagnall steelworks locos"""
+    consist_factory.foamer_facts = (
+        """Alco S1, EMD switchers, Brush Bagnall steelworks locos"""
+    )
 
     return consist_factory

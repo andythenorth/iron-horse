@@ -18,7 +18,6 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(type=FreightCar, chassis="2_axle_metro_16px", repeat=2)
 
-
     consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
@@ -30,7 +29,6 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(type=FreightCar, chassis="4_axle_metro_32px")
-
 
     consist_factory = OpenCarConsist(
         roster_id=roster_id,

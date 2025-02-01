@@ -23,7 +23,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="SteamEngineUnit", weight=57, vehicle_length=6, spriterow_num=0)
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit", weight=57, vehicle_length=6, spriterow_num=0
+    )
 
     consist_factory.description = (
         """For when you need proper engine at proper price. Proper Job."""

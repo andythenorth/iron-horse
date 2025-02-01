@@ -26,7 +26,9 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Do pigeons roost on rooftops? Do they watch us pass by?"""
+    consist_factory.description = (
+        """Do pigeons roost on rooftops? Do they watch us pass by?"""
+    )
     consist_factory.foamer_facts = """London Underground R Stock"""
 
     return consist_factory

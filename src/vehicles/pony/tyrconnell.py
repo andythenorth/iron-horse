@@ -23,7 +23,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="SteamEngineUnit", weight=45, vehicle_length=5, spriterow_num=0)
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit", weight=45, vehicle_length=5, spriterow_num=0
+    )
 
     consist_factory.add_unit(
         class_name="SteamEngineTenderUnit", weight=19, vehicle_length=3, spriterow_num=1

@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         # note that livery names are metadata only and can repeat for different spriterows
-        #additional_liveries=["SWOOSH", "INDUSTRIAL_YELLOW"],
+        # additional_liveries=["SWOOSH", "INDUSTRIAL_YELLOW"],
         sprites_complete=True,
     )
 

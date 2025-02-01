@@ -1,5 +1,6 @@
 from train import ConsistFactory
 
+
 def main(roster_id, **kwargs):
     consist_factory = ConsistFactory(
         class_name="SnowploughEngineConsist",

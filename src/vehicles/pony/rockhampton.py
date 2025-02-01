@@ -36,6 +36,8 @@ def main(roster_id, **kwargs):
     consist_factory.description = (
         """From down under emerges a tiny colossus. Footsure, flexible and all grunt."""
     )
-    consist_factory.foamer_facts = """New Zealand Railways DJ class (Mitsubishi bo-bo-bo)"""
+    consist_factory.foamer_facts = (
+        """New Zealand Railways DJ class (Mitsubishi bo-bo-bo)"""
+    )
 
     return consist_factory

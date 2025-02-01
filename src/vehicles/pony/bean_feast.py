@@ -30,7 +30,9 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """Great power and small size. We tested it in the field."""
+    consist_factory.description = (
+        """Great power and small size. We tested it in the field."""
+    )
     consist_factory.foamer_facts = """generic narrow-gauge steam locomotives"""
 
     return consist_factory

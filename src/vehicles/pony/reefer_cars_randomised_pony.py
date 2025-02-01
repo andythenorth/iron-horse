@@ -4,7 +4,6 @@ from train import ReeferCarRandomisedConsist, FreightCar
 def main(roster_id, **kwargs):
     result = []
 
-
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist_factory = ReeferCarRandomisedConsist(
@@ -30,7 +29,6 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(type=FreightCar, chassis="empty_24px")
-
 
     consist_factory = ReeferCarRandomisedConsist(
         roster_id=roster_id,

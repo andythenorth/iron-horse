@@ -27,7 +27,9 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Is the underground a sanctuary? Refuge for the lost."""
+    consist_factory.description = (
+        """Is the underground a sanctuary? Refuge for the lost."""
+    )
     consist_factory.foamer_facts = """London Underground R Stock"""
 
     return consist_factory

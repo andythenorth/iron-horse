@@ -30,6 +30,8 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.description = """Punchy little number."""
-    consist_factory.foamer_facts = """GEC <i>Stephenson</i> industrial shunters, BR Class 07"""
+    consist_factory.foamer_facts = (
+        """GEC <i>Stephenson</i> industrial shunters, BR Class 07"""
+    )
 
     return consist_factory

@@ -25,7 +25,9 @@ def main(roster_id, **kwargs):
         tail_light="railcar_32px_2",
     )
 
-    consist_factory.description = """A more modern way to move mail and other parcels."""
+    consist_factory.description = (
+        """A more modern way to move mail and other parcels."""
+    )
     consist_factory.foamer_facts = """BR Class 128/130"""
 
     return consist_factory

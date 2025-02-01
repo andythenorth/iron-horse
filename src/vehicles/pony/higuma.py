@@ -12,7 +12,7 @@ def main(roster_id, **kwargs):
         subrole_child_branch_num=-2,
         base_track_type_name="NG",
         power_by_power_source={
-            "DIESEL": 1600, # breaks the 300 hp step size, but eh, lots of precedent  1800 hp would be too much?
+            "DIESEL": 1600,  # breaks the 300 hp step size, but eh, lots of precedent  1800 hp would be too much?
         },
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
@@ -32,9 +32,7 @@ def main(roster_id, **kwargs):
 
     # https://en.wikipedia.org/wiki/New_Zealand_DL_class_locomotive
     # https://en.wikipedia.org/wiki/New_Zealand_DM_class_locomotive
-    consist_factory.description = (
-        """A tiny mighty bear."""
-    )
+    consist_factory.description = """A tiny mighty bear."""
     consist_factory.foamer_facts = """KiwiRail Stadler SALi locomotives, Kawasaki (Japan) Class DF200-7000 bo-bo-bo (dedicated locomotive for JR Kysushu <i>Seven Stars in Kyushu</i> luxury train)"""
 
     return consist_factory

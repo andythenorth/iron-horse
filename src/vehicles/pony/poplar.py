@@ -26,7 +26,9 @@ def main(roster_id, **kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Do dreams fade in the dawn? Lost in the city's waking."""
+    consist_factory.description = (
+        """Do dreams fade in the dawn? Lost in the city's waking."""
+    )
     consist_factory.foamer_facts = """Metropolitan Railway electric multiple units"""
 
     return consist_factory

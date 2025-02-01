@@ -23,7 +23,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="SteamEngineUnit", weight=60, vehicle_length=6, spriterow_num=0)
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit", weight=60, vehicle_length=6, spriterow_num=0
+    )
 
     consist_factory.description = """Not the biggest, but quite a beast all the same."""
     consist_factory.foamer_facts = (

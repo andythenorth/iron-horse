@@ -36,7 +36,9 @@ def main(roster_id, **kwargs):
         tail_light="railcar_20px_1",
     )
 
-    consist_factory.description = """A better railcar, for a new narrow-gauge century."""
+    consist_factory.description = (
+        """A better railcar, for a new narrow-gauge century."""
+    )
     consist_factory.foamer_facts = """Corsican CFC X2000/X5000, CFD Autorails"""
 
     return consist_factory

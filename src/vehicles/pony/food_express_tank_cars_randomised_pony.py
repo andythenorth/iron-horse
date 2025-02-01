@@ -4,9 +4,7 @@ from train import ExpressFoodTankCarRandomisedConsist, FreightCar
 def main(roster_id, **kwargs):
     result = []
 
-
     # --------------- standard gauge ---------------------------------------------------------------
-
 
     consist_factory = ExpressFoodTankCarRandomisedConsist(
         roster_id=roster_id,

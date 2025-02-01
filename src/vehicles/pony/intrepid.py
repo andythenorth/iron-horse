@@ -35,6 +35,8 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.description = """These are a bit duff, but they're a bit lighter than a Wyvern so we'll give em a go."""
-    consist_factory.foamer_facts = """BR Class 47, prime mover downrated for reliability"""
+    consist_factory.foamer_facts = (
+        """BR Class 47, prime mover downrated for reliability"""
+    )
 
     return consist_factory

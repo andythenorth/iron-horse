@@ -18,7 +18,12 @@ def main(roster_id, **kwargs):
         gen=5,  # not replaced by anything (?)
         caboose_family="railfreight_2",
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["RAILFREIGHT_TRIPLE_GREY", "RAILFREIGHT_TRIPLE_GREY_COAL", "DB_SCHENKER", "BANGER_BLUE"],
+        additional_liveries=[
+            "RAILFREIGHT_TRIPLE_GREY",
+            "RAILFREIGHT_TRIPLE_GREY_COAL",
+            "DB_SCHENKER",
+            "BANGER_BLUE",
+        ],
         default_livery_extra_docs_examples=[
             ("COLOUR_GREY", "COLOUR_YELLOW"),
             ("COLOUR_WHITE", "COLOUR_GREY"),
@@ -34,7 +39,9 @@ def main(roster_id, **kwargs):
         class_name="DieselEngineUnit", weight=74, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.description = """Kelpie were right good, this is the rebuilt version."""
+    consist_factory.description = (
+        """Kelpie were right good, this is the rebuilt version."""
+    )
     consist_factory.foamer_facts = """BR Class 33"""
 
     consist_factory.add_clone(base_numeric_id=800, clone_units=[2])

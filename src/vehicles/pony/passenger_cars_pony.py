@@ -67,7 +67,7 @@ def main(roster_id, **kwargs):
 
     consist_factory = PassengerCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26690,
         gen=3,
         subtype="C",
@@ -81,7 +81,7 @@ def main(roster_id, **kwargs):
 
     consist_factory = PassengerCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34220,
         gen=4,
         subtype="B",
@@ -95,7 +95,7 @@ def main(roster_id, **kwargs):
 
     consist_factory = PassengerCarConsist(
         roster_id=roster_id,
-        roster_id_providing_module = kwargs["roster_id_providing_module"],
+        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25550,
         gen=4,
         subtype="C",

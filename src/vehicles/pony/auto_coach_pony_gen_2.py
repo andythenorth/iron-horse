@@ -34,6 +34,8 @@ def main(roster_id, **kwargs):
     consist_factory.description = (
         """A coach that you can drive the engine from?  Eee, it's magic."""
     )
-    consist_factory.foamer_facts = """SR and LMS autocoach sets, LNER articulated coach sets"""
+    consist_factory.foamer_facts = (
+        """SR and LMS autocoach sets, LNER articulated coach sets"""
+    )
 
     return consist_factory

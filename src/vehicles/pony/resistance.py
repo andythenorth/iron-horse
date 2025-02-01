@@ -37,6 +37,8 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.description = """A hard-charging bag of bones."""
-    consist_factory.foamer_facts = """Proposed BR Class 88, derived from Class 58 design"""
+    consist_factory.foamer_facts = (
+        """Proposed BR Class 88, derived from Class 58 design"""
+    )
 
     return consist_factory

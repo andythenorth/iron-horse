@@ -21,11 +21,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="SteamEngineUnit", weight=90, vehicle_length=8, spriterow_num=0)
-
-    consist_factory.description = (
-        """Bob on."""
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit", weight=90, vehicle_length=8, spriterow_num=0
     )
-    consist_factory.foamer_facts = """LB&SCR L Class, L&YR Hughes <i>Dreadnought tanks</i>"""
+
+    consist_factory.description = """Bob on."""
+    consist_factory.foamer_facts = (
+        """LB&SCR L Class, L&YR Hughes <i>Dreadnought tanks</i>"""
+    )
 
     return consist_factory

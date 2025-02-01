@@ -22,7 +22,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="SteamEngineUnit", weight=35, vehicle_length=6, spriterow_num=0)
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit", weight=35, vehicle_length=6, spriterow_num=0
+    )
 
     consist_factory.description = """These'll do right nicely for small lines.  I stole the design from Mr. Adams, but I won't tell him if you won't."""
     consist_factory.foamer_facts = """LSWR 415 Class <i>Radial Tank</i>"""

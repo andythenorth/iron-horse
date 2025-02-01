@@ -26,9 +26,7 @@ def main(roster_id, **kwargs):
         class_name="MetroUnit", weight=48, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = (
-        """Engines stop running, do I have no fear?"""
-    )
+    consist_factory.description = """Engines stop running, do I have no fear?"""
     consist_factory.foamer_facts = """London Underground battery-electric locos"""
 
     return consist_factory

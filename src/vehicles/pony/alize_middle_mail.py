@@ -24,10 +24,12 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
         chassis="jacobs_solid_express_32px",
         repeat=2,
-        effects={}, # suppress visual effects
+        effects={},  # suppress visual effects
     )
 
     consist_factory.description = """"""
-    consist_factory.foamer_facts = """TGV Sud-Est, with TGV 001-style distributed traction"""
+    consist_factory.foamer_facts = (
+        """TGV Sud-Est, with TGV 001-style distributed traction"""
+    )
 
     return consist_factory

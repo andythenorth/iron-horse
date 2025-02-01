@@ -24,7 +24,7 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
         chassis="4_axle_solid_express_32px",
         repeat=2,
-        effects={}, # suppress visual effects
+        effects={},  # suppress visual effects
     )
 
     consist_factory.description = """Can we get there faster? That's what drives me."""

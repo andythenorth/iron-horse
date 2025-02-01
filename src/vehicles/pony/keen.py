@@ -31,6 +31,8 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.description = """Gallop apace, you fiery-footed steeds."""
-    consist_factory.foamer_facts = """18in Hunslet tanks, Austerity tanks, LNER J94 Class"""
+    consist_factory.foamer_facts = (
+        """18in Hunslet tanks, Austerity tanks, LNER J94 Class"""
+    )
 
     return consist_factory

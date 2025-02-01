@@ -15,7 +15,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, suppress_roof_sprite=True, chassis="4_axle_ng_24px")
+    consist_factory.add_unit(
+        type=PaxCar, suppress_roof_sprite=True, chassis="4_axle_ng_24px"
+    )
 
     result.append(consist_factory)
 
@@ -29,7 +31,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, suppress_roof_sprite=True, chassis="4_axle_ng_32px")
+    consist_factory.add_unit(
+        type=PaxCar, suppress_roof_sprite=True, chassis="4_axle_ng_32px"
+    )
 
     result.append(consist_factory)
 

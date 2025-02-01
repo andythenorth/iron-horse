@@ -4,7 +4,6 @@ from train import TankCarVolatilesConsistType1, FreightCar
 def main(roster_id, **kwargs):
     result = []
 
-
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist_factory = TankCarVolatilesConsistType1(

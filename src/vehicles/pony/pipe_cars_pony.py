@@ -4,7 +4,6 @@ from train import PipeCarConsist, FreightCar
 def main(roster_id, **kwargs):
     result = []
 
-
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist_factory = PipeCarConsist(

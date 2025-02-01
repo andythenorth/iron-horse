@@ -26,7 +26,10 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        class_name="ElectroDieselEngineUnit", weight=95, vehicle_length=8, spriterow_num=0
+        class_name="ElectroDieselEngineUnit",
+        weight=95,
+        vehicle_length=8,
+        spriterow_num=0,
     )
 
     consist_factory.description = (

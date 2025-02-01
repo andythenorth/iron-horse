@@ -52,7 +52,7 @@ def main(roster_id, **kwargs):
         type=FreightCar,
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
-        force_spriterow_group_in_output_spritesheet=1, # special case
+        force_spriterow_group_in_output_spritesheet=1,  # special case
     )
 
     result.append(consist_factory)

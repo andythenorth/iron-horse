@@ -27,7 +27,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="SteamEngineUnit", weight=35, vehicle_length=4, spriterow_num=0)
+    consist_factory.add_unit(
+        class_name="SteamEngineUnit", weight=35, vehicle_length=4, spriterow_num=0
+    )
 
     consist_factory.description = """Your typical pint-sized workhorse."""
     consist_factory.foamer_facts = """GWR 1366 Class pannier tanks"""

@@ -30,6 +30,8 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.description = """No prizes for speed, but it gets a job done."""
-    consist_factory.foamer_facts = """Thomas Hill <i>Steelman</i>, miscellaneous industrial diesel shunters"""
+    consist_factory.foamer_facts = (
+        """Thomas Hill <i>Steelman</i>, miscellaneous industrial diesel shunters"""
+    )
 
     return consist_factory
