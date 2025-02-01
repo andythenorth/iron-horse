@@ -2,13 +2,15 @@ from train import AutomobileCarConsist, AutomobileCarSymmetric
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
 
     # no gen 1, straight to gen 2
 
     # !! 16px version needs spritelayer cargo support finishing for 16px cargo sprites
     """
-    consist = AutomobileCarConsist(
+    consist_factory = AutomobileCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=22570,
@@ -17,9 +19,9 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=AutomobileCarSymmetric, chassis="2_axle_solid_express_16px")
+    consist_factory.add_unit(type=AutomobileCarSymmetric, chassis="2_axle_solid_express_16px")
     """
-    consist = AutomobileCarConsist(
+    consist_factory = AutomobileCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=22540,
@@ -28,9 +30,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarSymmetric, chassis="3_axle_solid_express_24px")
+    consist_factory.add_unit(type=AutomobileCarSymmetric, chassis="3_axle_solid_express_24px")
 
-    consist = AutomobileCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AutomobileCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24800,
@@ -39,9 +43,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_solid_express_32px")
 
-    consist = AutomobileCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AutomobileCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=22550,
@@ -50,9 +56,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarSymmetric, chassis="2_axle_filled_24px")
+    consist_factory.add_unit(type=AutomobileCarSymmetric, chassis="2_axle_filled_24px")
 
-    consist = AutomobileCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AutomobileCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24770,
@@ -61,9 +69,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_solid_express_32px")
 
-    consist = AutomobileCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AutomobileCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=22560,
@@ -72,9 +82,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarSymmetric, chassis="2_axle_filled_greebled_24px")
+    consist_factory.add_unit(type=AutomobileCarSymmetric, chassis="2_axle_filled_greebled_24px")
 
-    consist = AutomobileCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AutomobileCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24760,
@@ -83,4 +95,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_filled_greebled_32px")
+    consist_factory.add_unit(type=AutomobileCarSymmetric, chassis="4_axle_filled_greebled_32px")
+
+    result.append(consist_factory)
+
+    return result

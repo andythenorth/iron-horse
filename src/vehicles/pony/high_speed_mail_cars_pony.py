@@ -2,7 +2,9 @@ from train import MailHighSpeedCarConsist, ExpressMailCar
 
 
 def main(roster_id, **kwargs):
-    consist = MailHighSpeedCarConsist(
+    result = []
+
+    consist_factory = MailHighSpeedCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30690,
@@ -12,4 +14,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressMailCar, chassis="high_speed_32px")
+    consist_factory.add_unit(type=ExpressMailCar, chassis="high_speed_32px")
+
+    result.append(consist_factory)
+
+    return result

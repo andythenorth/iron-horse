@@ -2,9 +2,11 @@ from train import HopperCarSkipConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = HopperCarSkipConsist(
+    consist_factory = HopperCarSkipConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6120,
@@ -15,6 +17,10 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_8px", repeat=2)
+    consist_factory.add_unit(type=FreightCar, chassis="empty_8px", repeat=2)
 
-    # consist.add_unit(type=FreightCar, chassis="empty_8px")
+    # consist_factory.add_unit(type=FreightCar, chassis="empty_8px")
+
+    result.append(consist_factory)
+
+    return result

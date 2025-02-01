@@ -2,9 +2,11 @@ from train import HopperCarAggregateConsistType2, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = HopperCarAggregateConsistType2(
+    consist_factory = HopperCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16730,
@@ -14,9 +16,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = HopperCarAggregateConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20050,
@@ -26,9 +30,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = HopperCarAggregateConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18070,
@@ -38,11 +44,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = HopperCarAggregateConsistType2(
+    consist_factory = HopperCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20070,
@@ -51,9 +57,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = HopperCarAggregateConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20190,
@@ -62,9 +70,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = HopperCarAggregateConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19880,
@@ -73,9 +83,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = HopperCarAggregateConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20090,
@@ -84,9 +96,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = HopperCarAggregateConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20110,
@@ -95,9 +109,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = HopperCarAggregateConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20210,
@@ -106,9 +122,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
 
-    consist = HopperCarAggregateConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20130,
@@ -117,9 +135,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = HopperCarAggregateConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20150,
@@ -128,9 +148,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_alt_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_alt_24px")
 
-    consist = HopperCarAggregateConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20170,
@@ -139,4 +161,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_alt_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_alt_32px")
+
+    result.append(consist_factory)
+
+    return result

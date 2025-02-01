@@ -2,10 +2,12 @@ from train import ExpressFoodCarRandomisedConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = ExpressFoodCarRandomisedConsist(
+    consist_factory = ExpressFoodCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31380,
@@ -14,9 +16,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = ExpressFoodCarRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31950,
@@ -25,9 +29,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = ExpressFoodCarRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31960,
@@ -36,10 +42,10 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_24px")
 
 
-    consist = ExpressFoodCarRandomisedConsist(
+    consist_factory = ExpressFoodCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31970,
@@ -48,9 +54,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = ExpressFoodCarRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31980,
@@ -59,9 +67,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = ExpressFoodCarRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31990,
@@ -70,9 +80,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_32px")
 
-    consist = ExpressFoodCarRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32000,
@@ -81,9 +93,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = ExpressFoodCarRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodCarRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32010,
@@ -92,4 +106,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_32px")
+
+    result.append(consist_factory)
+
+    return result

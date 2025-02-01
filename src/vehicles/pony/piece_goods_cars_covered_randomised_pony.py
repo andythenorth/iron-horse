@@ -2,9 +2,11 @@ from train import PieceGoodsCarCoveredRandomisedConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- pony NG -------------------------------------------------------------------
 
-    consist = PieceGoodsCarCoveredRandomisedConsist(
+    consist_factory = PieceGoodsCarCoveredRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26420,
@@ -14,9 +16,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = PieceGoodsCarCoveredRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = PieceGoodsCarCoveredRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26430,
@@ -26,11 +30,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_24px")
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = PieceGoodsCarCoveredRandomisedConsist(
+    consist_factory = PieceGoodsCarCoveredRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26440,
@@ -39,11 +43,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_16px")
 
     # no new type A for gen 2, gen 1 type A continues
 
-    consist = PieceGoodsCarCoveredRandomisedConsist(
+    consist_factory = PieceGoodsCarCoveredRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26460,
@@ -52,9 +56,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = PieceGoodsCarCoveredRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = PieceGoodsCarCoveredRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26470,
@@ -63,9 +69,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = PieceGoodsCarCoveredRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = PieceGoodsCarCoveredRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26480,
@@ -74,9 +82,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_16px")
 
-    consist = PieceGoodsCarCoveredRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = PieceGoodsCarCoveredRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26490,
@@ -85,9 +95,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = PieceGoodsCarCoveredRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = PieceGoodsCarCoveredRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26500,
@@ -96,9 +108,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_32px")
 
-    consist = PieceGoodsCarCoveredRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = PieceGoodsCarCoveredRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26510,
@@ -107,9 +121,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = PieceGoodsCarCoveredRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = PieceGoodsCarCoveredRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26520,
@@ -118,4 +134,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_32px")
+
+    result.append(consist_factory)
+
+    return result

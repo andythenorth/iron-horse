@@ -5,6 +5,8 @@ from train import (
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- pony NG----------------------------------------------------------------------
 
     # Pony NG uses railbus trailers, not railcar
@@ -12,7 +14,7 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # gen 3 could be added but needs the engine grilles replacing with pax car pixels
 
-    consist = PassengerRailcarTrailerCarConsist(
+    consist_factory = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17130,
@@ -22,13 +24,15 @@ def main(roster_id, **kwargs):
         cab_id="slammer",
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
 
-    consist = PassengerRailcarTrailerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26060,
@@ -38,13 +42,15 @@ def main(roster_id, **kwargs):
         cab_id="geronimo",
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
 
-    consist = PassengerRailcarTrailerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27170,
@@ -54,13 +60,15 @@ def main(roster_id, **kwargs):
         cab_id="tin_rocket",
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
 
-    consist = PassengerRailcarTrailerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25140,
@@ -70,13 +78,15 @@ def main(roster_id, **kwargs):
         cab_id="breeze",
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
 
-    consist = PassengerRailcarTrailerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25580,
@@ -86,13 +96,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
 
-    consist = PassengerRailcarTrailerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25400,
@@ -102,8 +114,12 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
+
+    result.append(consist_factory)
+
+    return result

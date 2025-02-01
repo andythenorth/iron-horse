@@ -2,9 +2,11 @@ from train import BolsterCarConsistRandomisedConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = BolsterCarConsistRandomisedConsist(
+    consist_factory = BolsterCarConsistRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36600,
@@ -13,9 +15,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = BolsterCarConsistRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = BolsterCarConsistRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31080,
@@ -24,13 +28,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=FreightCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="empty_32px",
     )
 
-    consist = BolsterCarConsistRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = BolsterCarConsistRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31090,
@@ -39,9 +45,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_24px")
 
-    consist = BolsterCarConsistRandomisedConsist(
+    result.append(consist_factory)
+
+    consist_factory = BolsterCarConsistRandomisedConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31100,
@@ -50,4 +58,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="empty_32px")
+
+    result.append(consist_factory)
+
+    return result

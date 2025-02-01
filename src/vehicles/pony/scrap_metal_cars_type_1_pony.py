@@ -2,9 +2,11 @@ from train import BulkOpenCarScrapMetalConsistType1, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- narrow gauge -----------------------------------------------------------------
     # gen 2 start eh?
-    consist = BulkOpenCarScrapMetalConsistType1(
+    consist_factory = BulkOpenCarScrapMetalConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19070,
@@ -14,9 +16,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = BulkOpenCarScrapMetalConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BulkOpenCarScrapMetalConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19090,
@@ -26,9 +30,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = BulkOpenCarScrapMetalConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BulkOpenCarScrapMetalConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19110,
@@ -38,11 +44,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = BulkOpenCarScrapMetalConsistType1(
+    consist_factory = BulkOpenCarScrapMetalConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19130,
@@ -51,9 +57,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = BulkOpenCarScrapMetalConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BulkOpenCarScrapMetalConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19150,
@@ -62,9 +70,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = BulkOpenCarScrapMetalConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BulkOpenCarScrapMetalConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19170,
@@ -73,9 +83,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = BulkOpenCarScrapMetalConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BulkOpenCarScrapMetalConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19190,
@@ -84,9 +96,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
 
-    consist = BulkOpenCarScrapMetalConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BulkOpenCarScrapMetalConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19210,
@@ -95,9 +109,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
-    consist = BulkOpenCarScrapMetalConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BulkOpenCarScrapMetalConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19230,
@@ -106,9 +122,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
 
-    consist = BulkOpenCarScrapMetalConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BulkOpenCarScrapMetalConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19250,
@@ -117,4 +135,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_32px")
+
+    result.append(consist_factory)
+
+    return result

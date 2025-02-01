@@ -2,10 +2,12 @@ from train import HopperCarMGRConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
     # just type gen 4 and 5
 
-    consist = HopperCarMGRConsist(
+    consist_factory = HopperCarMGRConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30240,
@@ -14,9 +16,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = HopperCarMGRConsist(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarMGRConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16600,
@@ -25,9 +29,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
 
-    consist = HopperCarMGRConsist(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarMGRConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36260,
@@ -36,9 +42,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
-    consist = HopperCarMGRConsist(
+    result.append(consist_factory)
+
+    consist_factory = HopperCarMGRConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16640,
@@ -47,6 +55,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
 
     # no gen 6 don't bother
+
+    return result

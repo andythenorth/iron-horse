@@ -2,10 +2,12 @@ from train import BoxCarSlidingWallConsistType1, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = BoxCarSlidingWallConsistType1(
+    consist_factory = BoxCarSlidingWallConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26980,
@@ -16,9 +18,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = BoxCarSlidingWallConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BoxCarSlidingWallConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22080,
@@ -29,12 +33,12 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
 
     # --------------- standard gauge ---------------------------------------------------------------
     # starts gen 4, B and C only
 
-    consist = BoxCarSlidingWallConsistType1(
+    consist_factory = BoxCarSlidingWallConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27000,
@@ -44,9 +48,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_24px")
 
-    consist = BoxCarSlidingWallConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BoxCarSlidingWallConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22100,
@@ -56,13 +62,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=FreightCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
     )
 
-    consist = BoxCarSlidingWallConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BoxCarSlidingWallConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27020,
@@ -71,13 +79,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=FreightCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_24px",
     )
 
-    consist = BoxCarSlidingWallConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BoxCarSlidingWallConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22120,
@@ -86,13 +96,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=FreightCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
     )
 
-    consist = BoxCarSlidingWallConsistType1(
+    result.append(consist_factory)
+
+    consist_factory = BoxCarSlidingWallConsistType1(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=5190,
@@ -101,7 +113,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=FreightCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_20px",
@@ -109,10 +121,14 @@ def main(roster_id, **kwargs):
         spriterow_num=0,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=FreightCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
         spriterow_num=4,
     )
+
+    result.append(consist_factory)
+
+    return result

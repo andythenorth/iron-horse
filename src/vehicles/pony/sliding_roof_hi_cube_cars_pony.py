@@ -2,9 +2,11 @@ from train import SlidingRoofCarConsistHiCube, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = SlidingRoofCarConsistHiCube(
+    consist_factory = SlidingRoofCarConsistHiCube(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30730,
@@ -13,9 +15,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = SlidingRoofCarConsistHiCube(
+    result.append(consist_factory)
+
+    consist_factory = SlidingRoofCarConsistHiCube(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18520,
@@ -24,9 +28,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_filled_32px")
 
-    consist = SlidingRoofCarConsistHiCube(
+    result.append(consist_factory)
+
+    consist_factory = SlidingRoofCarConsistHiCube(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=840,
@@ -35,16 +41,20 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=FreightCar,
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
         spriterow_num=0,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=FreightCar,
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
         force_spriterow_group_in_output_spritesheet=1, # special case
     )
+
+    result.append(consist_factory)
+
+    return result

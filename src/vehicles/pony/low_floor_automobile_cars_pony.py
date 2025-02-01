@@ -2,10 +2,12 @@ from train import AutomobileLowFloorCarConsist, AutomobileCarAsymmetric
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
     # intro gen 4
 
-    consist = AutomobileLowFloorCarConsist(
+    consist_factory = AutomobileLowFloorCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26720,
@@ -14,11 +16,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=AutomobileCarAsymmetric, chassis="2_axle_lwb_filled_24px"
     )
 
-    consist = AutomobileLowFloorCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AutomobileLowFloorCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26730,
@@ -27,11 +31,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px"
     )
 
-    consist = AutomobileLowFloorCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AutomobileLowFloorCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26740,
@@ -40,11 +46,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=AutomobileCarAsymmetric, chassis="2_axle_lwb_filled_24px"
     )
 
-    consist = AutomobileLowFloorCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AutomobileLowFloorCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26750,
@@ -53,6 +61,10 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px"
     )
+
+    result.append(consist_factory)
+
+    return result

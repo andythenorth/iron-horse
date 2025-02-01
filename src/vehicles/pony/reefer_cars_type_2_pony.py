@@ -2,9 +2,11 @@ from train import ReeferCarConsistType2, ExpressCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = ReeferCarConsistType2(
+    consist_factory = ReeferCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34790,
@@ -13,13 +15,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=ExpressCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
 
-    consist = ReeferCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ReeferCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31880,
@@ -28,13 +32,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=ExpressCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
 
-    consist = ReeferCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ReeferCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31890,
@@ -43,13 +49,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=ExpressCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="3_axle_solid_express_24px",
     )
 
-    consist = ReeferCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ReeferCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36940,
@@ -58,13 +66,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=ExpressCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
 
-    consist = ReeferCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ReeferCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28110,
@@ -73,13 +83,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=ExpressCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_24px",
     )
 
-    consist = ReeferCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ReeferCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31320,
@@ -88,13 +100,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=ExpressCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_filled_32px",
     )
 
-    consist = ReeferCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ReeferCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32610,
@@ -103,13 +117,15 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=ExpressCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_24px",
     )
 
-    consist = ReeferCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ReeferCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32620,
@@ -118,8 +134,12 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=ExpressCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
     )
+
+    result.append(consist_factory)
+
+    return result

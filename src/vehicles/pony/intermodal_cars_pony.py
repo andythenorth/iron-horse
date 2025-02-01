@@ -2,8 +2,10 @@ from train import IntermodalCarConsist, IntermodalCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- narrow gauge -----------------------------------------------------------------
-    consist = IntermodalCarConsist(
+    consist_factory = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28350,
@@ -14,9 +16,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=IntermodalCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(type=IntermodalCar, chassis="4_axle_ng_16px")
 
-    consist = IntermodalCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28360,
@@ -27,11 +31,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=IntermodalCar, chassis="4_axle_ng_24px")
+    consist_factory.add_unit(type=IntermodalCar, chassis="4_axle_ng_24px")
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = IntermodalCarConsist(
+    consist_factory = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28370,
@@ -40,9 +44,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=IntermodalCar, chassis="2_axle_filled_16px")
+    consist_factory.add_unit(type=IntermodalCar, chassis="2_axle_filled_16px")
 
-    consist = IntermodalCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28380,
@@ -51,9 +57,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=IntermodalCar, chassis="4_axle_gapped_24px")
+    consist_factory.add_unit(type=IntermodalCar, chassis="4_axle_gapped_24px")
 
-    consist = IntermodalCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28390,
@@ -62,9 +70,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=IntermodalCar, chassis="4_axle_gapped_32px")
+    consist_factory.add_unit(type=IntermodalCar, chassis="4_axle_gapped_32px")
 
-    consist = IntermodalCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28400,
@@ -73,9 +83,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=IntermodalCar, chassis="2_axle_1cc_filled_16px")
+    consist_factory.add_unit(type=IntermodalCar, chassis="2_axle_1cc_filled_16px")
 
-    consist = IntermodalCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28410,
@@ -84,9 +96,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=IntermodalCar, chassis="4_axle_1cc_filled_24px")
+    consist_factory.add_unit(type=IntermodalCar, chassis="4_axle_1cc_filled_24px")
 
-    consist = IntermodalCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = IntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28420,
@@ -95,4 +109,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=IntermodalCar, chassis="4_axle_1cc_filled_32px")
+    consist_factory.add_unit(type=IntermodalCar, chassis="4_axle_1cc_filled_32px")
+
+    result.append(consist_factory)
+
+    return result

@@ -2,9 +2,11 @@ from train import IngotCarConsist, IngotCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = IngotCarConsist(
+    consist_factory = IngotCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=5150,
@@ -15,11 +17,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=IngotCar, chassis="empty_8px", repeat=2)
+    consist_factory.add_unit(type=IngotCar, chassis="empty_8px", repeat=2)
 
     # --------------- pony -------------------------------------------------------------------------
 
-    consist = IngotCarConsist(
+    consist_factory = IngotCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=80,
@@ -29,9 +31,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=IngotCar, chassis="empty_8px", repeat=2)
+    consist_factory.add_unit(type=IngotCar, chassis="empty_8px", repeat=2)
 
-    consist = IngotCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = IngotCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=60,
@@ -41,4 +45,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=IngotCar, chassis="empty_8px", repeat=2)
+    consist_factory.add_unit(type=IngotCar, chassis="empty_8px", repeat=2)
+
+    result.append(consist_factory)
+
+    return result

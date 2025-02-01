@@ -2,9 +2,11 @@ from train import SiloCarCementConsistType3, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = SiloCarCementConsistType3(
+    consist_factory = SiloCarCementConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22170,
@@ -13,9 +15,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = SiloCarCementConsistType3(
+    result.append(consist_factory)
+
+    consist_factory = SiloCarCementConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22180,
@@ -24,9 +28,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = SiloCarCementConsistType3(
+    result.append(consist_factory)
+
+    consist_factory = SiloCarCementConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22190,
@@ -35,9 +41,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
 
-    consist = SiloCarCementConsistType3(
+    result.append(consist_factory)
+
+    consist_factory = SiloCarCementConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22200,
@@ -46,9 +54,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
-    consist = SiloCarCementConsistType3(
+    result.append(consist_factory)
+
+    consist_factory = SiloCarCementConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22210,
@@ -57,9 +67,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hopppers_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hopppers_24px")
 
-    consist = SiloCarCementConsistType3(
+    result.append(consist_factory)
+
+    consist_factory = SiloCarCementConsistType3(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22220,
@@ -68,4 +80,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hoppers_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hoppers_32px")
+
+    result.append(consist_factory)
+
+    return result

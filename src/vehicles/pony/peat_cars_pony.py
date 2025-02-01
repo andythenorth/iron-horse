@@ -2,10 +2,12 @@ from train import PeatCarConsist, BinCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- narrow gauge -----------------------------------------------------------------
 
 
-    consist = PeatCarConsist(
+    consist_factory = PeatCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=15170,
@@ -16,7 +18,10 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=BinCar, chassis="empty_8px")
+    consist_factory.add_unit(type=BinCar, chassis="empty_8px")
 
-    consist.add_unit(type=BinCar, chassis="empty_8px")
+    consist_factory.add_unit(type=BinCar, chassis="empty_8px")
 
+    result.append(consist_factory)
+
+    return result

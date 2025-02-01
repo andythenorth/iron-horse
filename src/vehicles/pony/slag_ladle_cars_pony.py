@@ -2,9 +2,11 @@ from train import SlagLadleCarConsist, SlagLadleCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist = SlagLadleCarConsist(
+    consist_factory = SlagLadleCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24030,
@@ -15,11 +17,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SlagLadleCar, chassis="buffers_only_16px")
+    consist_factory.add_unit(type=SlagLadleCar, chassis="buffers_only_16px")
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = SlagLadleCarConsist(
+    consist_factory = SlagLadleCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23410,
@@ -29,9 +31,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SlagLadleCar, chassis="buffers_only_16px")
+    consist_factory.add_unit(type=SlagLadleCar, chassis="buffers_only_16px")
 
-    consist = SlagLadleCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = SlagLadleCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23420,
@@ -41,4 +45,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SlagLadleCar, chassis="buffers_only_16px")
+    consist_factory.add_unit(type=SlagLadleCar, chassis="buffers_only_16px")
+
+    result.append(consist_factory)
+
+    return result

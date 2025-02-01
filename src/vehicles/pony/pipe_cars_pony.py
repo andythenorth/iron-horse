@@ -2,10 +2,12 @@ from train import PipeCarConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = PipeCarConsist(
+    consist_factory = PipeCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20010,
@@ -14,9 +16,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = PipeCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PipeCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28490,
@@ -25,9 +29,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
 
-    consist = PipeCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PipeCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35590,
@@ -36,9 +42,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_24px")
 
-    consist = PipeCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PipeCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34830,
@@ -47,4 +55,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+
+    result.append(consist_factory)
+
+    return result

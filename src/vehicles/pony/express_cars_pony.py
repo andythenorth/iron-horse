@@ -2,13 +2,15 @@ from train import ExpressCarConsist, ExpressCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- narrow gauge -----------------------------------------------------------------
 
     # no NG express cars in pony, use mail car
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = ExpressCarConsist(
+    consist_factory = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17900,
@@ -17,9 +19,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="3_axle_solid_express_16px")
+    consist_factory.add_unit(type=ExpressCar, chassis="3_axle_solid_express_16px")
 
-    consist = ExpressCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18100,
@@ -28,9 +32,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="3_axle_solid_express_16px")
+    consist_factory.add_unit(type=ExpressCar, chassis="3_axle_solid_express_16px")
 
-    consist = ExpressCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30360,
@@ -39,9 +45,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_solid_express_24px")
 
-    consist = ExpressCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17920,
@@ -50,9 +58,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="3_axle_solid_express_16px")
+    consist_factory.add_unit(type=ExpressCar, chassis="3_axle_solid_express_16px")
 
-    consist = ExpressCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18120,
@@ -61,9 +71,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_solid_express_24px")
 
-    consist = ExpressCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34710,
@@ -72,9 +84,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_solid_express_32px")
 
-    consist = ExpressCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30600,
@@ -83,9 +97,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="2_axle_solid_express_16px")
+    consist_factory.add_unit(type=ExpressCar, chassis="2_axle_solid_express_16px")
 
-    consist = ExpressCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17940,
@@ -94,9 +110,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_solid_express_24px")
 
-    consist = ExpressCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30660,
@@ -105,9 +123,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_solid_express_32px")
 
-    consist = ExpressCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24290,
@@ -116,9 +136,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="2_axle_solid_express_16px")
+    consist_factory.add_unit(type=ExpressCar, chassis="2_axle_solid_express_16px")
 
-    consist = ExpressCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18020,
@@ -127,9 +149,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_solid_express_24px")
 
-    consist = ExpressCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18040,
@@ -138,4 +162,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_solid_express_32px")
+
+    result.append(consist_factory)
+
+    return result

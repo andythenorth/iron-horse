@@ -2,9 +2,11 @@ from train import IntermodalLowFloorCarConsist, IntermodalCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = IntermodalLowFloorCarConsist(
+    consist_factory = IntermodalLowFloorCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24450,
@@ -14,9 +16,11 @@ def main(roster_id, **kwargs):
         consist_ruleset="1_unit_sets",  # special case for single unit low-floor intermodals (they're PFAs eh)
     )
 
-    consist.add_unit(type=IntermodalCar, chassis="2_axle_1cc_low_floor_16px")
+    consist_factory.add_unit(type=IntermodalCar, chassis="2_axle_1cc_low_floor_16px")
 
-    consist = IntermodalLowFloorCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = IntermodalLowFloorCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24460,
@@ -25,9 +29,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
         consist_ruleset="2_unit_sets",  # special case for 2 unit low-floor intermodals (they're FLAs eh)
     )
-    consist.add_unit(type=IntermodalCar, chassis="4_axle_1cc_low_floor_24px")
+    consist_factory.add_unit(type=IntermodalCar, chassis="4_axle_1cc_low_floor_24px")
 
-    consist = IntermodalLowFloorCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = IntermodalLowFloorCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24470,
@@ -36,4 +42,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=IntermodalCar, chassis="4_axle_1cc_low_floor_32px")
+    consist_factory.add_unit(type=IntermodalCar, chassis="4_axle_1cc_low_floor_32px")
+
+    result.append(consist_factory)
+
+    return result

@@ -2,9 +2,11 @@ from train import OpenCarConsist, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- metro -----------------------------------------------------------------
 
-    consist = OpenCarConsist(
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=980,
@@ -14,10 +16,10 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_metro_16px", repeat=2)
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_metro_16px", repeat=2)
 
 
-    consist = OpenCarConsist(
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20370,
@@ -27,10 +29,10 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_metro_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_metro_32px")
 
 
-    consist = OpenCarConsist(
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20270,
@@ -40,10 +42,10 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_metro_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_metro_32px")
 
     # --------------- narrow gauge -----------------------------------------------------------------
-    consist = OpenCarConsist(
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29890,
@@ -53,11 +55,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
     # no gen 2 for NG, straight to gen 3
 
-    consist = OpenCarConsist(
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26090,
@@ -67,9 +69,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = OpenCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26100,
@@ -79,12 +83,12 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_ng_24px")
 
     # --------------- standard gauge ---------------------------------------------------------------
     # only type A for gen 1
 
-    consist = OpenCarConsist(
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29860,
@@ -93,11 +97,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
     # no new type A for gen 2, gen 1 type A continues
 
-    consist = OpenCarConsist(
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29870,
@@ -106,9 +110,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="3_axle_gapped_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="3_axle_gapped_24px")
 
-    consist = OpenCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29880,
@@ -117,9 +123,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = OpenCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26110,
@@ -128,9 +136,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = OpenCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26120,
@@ -139,9 +149,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = OpenCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26130,
@@ -150,9 +162,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
 
-    consist = OpenCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26140,
@@ -161,9 +175,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_filled_32px")
 
-    consist = OpenCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26150,
@@ -172,9 +188,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = OpenCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26160,
@@ -183,9 +201,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
-    consist = OpenCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = OpenCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26170,
@@ -194,5 +214,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
 
+    result.append(consist_factory)
+
+    return result

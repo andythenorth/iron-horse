@@ -2,9 +2,11 @@ from train import BulkOpenCarAggregateConsistType2, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = BulkOpenCarAggregateConsistType2(
+    consist_factory = BulkOpenCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28500,
@@ -13,9 +15,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
 
-    consist = BulkOpenCarAggregateConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = BulkOpenCarAggregateConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28510,
@@ -24,4 +28,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
+    consist_factory.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
+
+    result.append(consist_factory)
+
+    return result

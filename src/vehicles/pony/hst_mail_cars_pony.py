@@ -2,9 +2,11 @@ from train import MailHSTCarConsist, ExpressMailCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = MailHSTCarConsist(
+    consist_factory = MailHSTCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16880,
@@ -15,9 +17,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressMailCar, chassis="high_speed_32px")
+    consist_factory.add_unit(type=ExpressMailCar, chassis="high_speed_32px")
 
-    consist = MailHSTCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = MailHSTCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26180,
@@ -29,4 +33,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressMailCar, chassis="high_speed_32px")
+    consist_factory.add_unit(type=ExpressMailCar, chassis="high_speed_32px")
+
+    result.append(consist_factory)
+
+    return result

@@ -2,9 +2,11 @@ from train import AlignmentCarConsist, AlignmentCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = AlignmentCarConsist(
+    consist_factory = AlignmentCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=9060,
@@ -13,11 +15,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=AlignmentCar, vehicle_length=4, chassis="2_axle_solid_express_16px"
     )
 
-    consist = AlignmentCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AlignmentCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=9070,
@@ -26,11 +30,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=AlignmentCar, vehicle_length=6, chassis="4_axle_solid_express_24px"
     )
 
-    consist = AlignmentCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AlignmentCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=9080,
@@ -39,6 +45,10 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=AlignmentCar, vehicle_length=8, chassis="4_axle_solid_express_32px"
     )
+
+    result.append(consist_factory)
+
+    return result

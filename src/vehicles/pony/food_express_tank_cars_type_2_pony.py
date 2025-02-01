@@ -2,11 +2,13 @@ from train import ExpressFoodTankCarConsistType2, ExpressCar, FreightCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
 
     # --------------- standard gauge ---------------------------------------------------------------
     # no gen 1 for food tank cars - straight to gen 2
     """
-    consist = ExpressFoodTankCarConsistType2(
+    consist_factory = ExpressFoodTankCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17200,
@@ -15,9 +17,11 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="2_axle_filled_16px")
+    consist_factory.add_unit(type=ExpressCar, chassis="2_axle_filled_16px")
 
-    consist = ExpressFoodTankCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodTankCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17210,
@@ -26,9 +30,11 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="3_axle_filled_16px")
+    consist_factory.add_unit(type=ExpressCar, chassis="3_axle_filled_16px")
 
-    consist = ExpressFoodTankCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodTankCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17220,
@@ -37,9 +43,11 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="3_axle_filled_16px")
+    consist_factory.add_unit(type=ExpressCar, chassis="3_axle_filled_16px")
 
-    consist = ExpressFoodTankCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodTankCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17230,
@@ -48,9 +56,11 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_sparse_24px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_sparse_24px")
 
-    consist = ExpressFoodTankCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodTankCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28190,
@@ -59,9 +69,11 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_sparse_32px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_sparse_32px")
 
-    consist = ExpressFoodTankCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodTankCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28440,
@@ -70,9 +82,11 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="3_axle_filled_16px")
+    consist_factory.add_unit(type=ExpressCar, chassis="3_axle_filled_16px")
 
-    consist = ExpressFoodTankCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodTankCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16970,
@@ -81,9 +95,11 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_sparse_24px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_sparse_24px")
 
-    consist = ExpressFoodTankCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodTankCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28180,
@@ -92,12 +108,12 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_sparse_32px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_sparse_32px")
 
     # gen 6A not included - could add?
     """
 
-    consist = ExpressFoodTankCarConsistType2(
+    consist_factory = ExpressFoodTankCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20380,
@@ -106,9 +122,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_sparse_24px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_sparse_24px")
 
-    consist = ExpressFoodTankCarConsistType2(
+    result.append(consist_factory)
+
+    consist_factory = ExpressFoodTankCarConsistType2(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20390,
@@ -117,4 +135,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_sparse_32px")
+    consist_factory.add_unit(type=ExpressCar, chassis="4_axle_sparse_32px")
+
+    result.append(consist_factory)
+
+    return result

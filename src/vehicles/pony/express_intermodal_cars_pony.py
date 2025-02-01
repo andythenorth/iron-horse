@@ -2,10 +2,12 @@ from train import ExpressIntermodalCarConsist, ExpressIntermodalCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
     # only gen 5 and 6 eh
 
-    consist = ExpressIntermodalCarConsist(
+    consist_factory = ExpressIntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22960,
@@ -14,9 +16,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressIntermodalCar, chassis="2_axle_1cc_filled_24px")
+    consist_factory.add_unit(type=ExpressIntermodalCar, chassis="2_axle_1cc_filled_24px")
 
-    consist = ExpressIntermodalCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = ExpressIntermodalCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22970,
@@ -25,4 +29,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=ExpressIntermodalCar, chassis="4_axle_1cc_filled_32px")
+    consist_factory.add_unit(type=ExpressIntermodalCar, chassis="4_axle_1cc_filled_32px")
+
+    result.append(consist_factory)
+
+    return result

@@ -5,9 +5,11 @@ from train import (
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- pony NG----------------------------------------------------------------------
 
-    consist = PassengerRailbusTrailerCarConsist(
+    consist_factory = PassengerRailbusTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28150,
@@ -19,11 +21,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=PaxRailcarTrailerCar, chassis="4_axle_ng_24px", tail_light="railcar_24px_1"
     )
 
-    consist = PassengerRailbusTrailerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerRailbusTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26190,
@@ -35,6 +39,10 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=PaxRailcarTrailerCar, chassis="4_axle_ng_24px", tail_light="railcar_24px_1"
     )
+
+    result.append(consist_factory)
+
+    return result

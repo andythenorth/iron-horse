@@ -2,9 +2,11 @@ from train import AutomobileDoubleDeckCarConsist, AutomobileCarAsymmetric
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------    # intro gen 4
 
-    consist = AutomobileDoubleDeckCarConsist(
+    consist_factory = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=26760,
@@ -13,9 +15,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarAsymmetric, chassis="2_axle_lwb_filled_24px")
+    consist_factory.add_unit(type=AutomobileCarAsymmetric, chassis="2_axle_lwb_filled_24px")
 
-    consist = AutomobileDoubleDeckCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30890,
@@ -24,11 +28,13 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px"
     )
 
-    consist = AutomobileDoubleDeckCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=26770,
@@ -37,9 +43,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=AutomobileCarAsymmetric, chassis="2_axle_lwb_filled_24px")
+    consist_factory.add_unit(type=AutomobileCarAsymmetric, chassis="2_axle_lwb_filled_24px")
 
-    consist = AutomobileDoubleDeckCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17330,
@@ -48,11 +56,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px"
     )
     """
-    consist = AutomobileDoubleDeckCarConsist(
+    consist_factory = AutomobileDoubleDeckCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=5830,
@@ -61,15 +69,17 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=AutomobileCarAsymmetric,
         chassis="2_axle_running_gear_only_20px",
         spriterow_num=0,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=AutomobileCarAsymmetric,
         chassis="2_axle_running_gear_only_20px",
         spriterow_num=1,
     )
     """
+
+    return result

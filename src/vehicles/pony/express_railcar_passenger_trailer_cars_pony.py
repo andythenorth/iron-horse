@@ -2,9 +2,11 @@ from train import PassengerExpressRailcarTrailerCarConsist, PaxRailcarTrailerCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = PassengerExpressRailcarTrailerCarConsist(
+    consist_factory = PassengerExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6750,
@@ -14,14 +16,16 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
         repeat=2,
     )
 
-    consist = PassengerExpressRailcarTrailerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6770,
@@ -31,14 +35,16 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
         repeat=2,
     )
 
-    consist = PassengerExpressRailcarTrailerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30,
@@ -48,14 +54,16 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
         repeat=2,
     )
 
-    consist = PassengerExpressRailcarTrailerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerExpressRailcarTrailerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6380,
@@ -66,10 +74,14 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         type=PaxRailcarTrailerCar,
         chassis="high_speed_32px",
         tail_light="railcar_32px_5",
         suppress_roof_sprite=True,
         repeat=2,
     )
+
+    result.append(consist_factory)
+
+    return result

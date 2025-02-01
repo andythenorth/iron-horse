@@ -2,6 +2,8 @@ from train import CabooseCarConsist, CabooseCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- narrow gauge -----------------------------------------------------------------
     # caboose names map to labelled spriterows, as defined in the vehicle files
     # note that spriterow mapping will need redefined for each roster and base track type
@@ -55,7 +57,7 @@ def main(roster_id, **kwargs):
         ("cc_enclosed_3", "brown_enclosed_3"),
     ]
 
-    consist = CabooseCarConsist(
+    consist_factory = CabooseCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23690,
@@ -68,9 +70,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=CabooseCar, chassis="2_axle_ng_8px")
+    consist_factory.add_unit(type=CabooseCar, chassis="2_axle_ng_8px")
 
-    consist = CabooseCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = CabooseCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26270,
@@ -83,7 +87,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=CabooseCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(type=CabooseCar, chassis="4_axle_ng_16px")
 
     # --------------- standard gauge ---------------------------------------------------------------    # caboose names map to labelled spriterows, as defined in the vehicle files
     # note that spriterow mapping will need redefined for each roster and base track type
@@ -197,7 +201,7 @@ def main(roster_id, **kwargs):
         ("cc_enclosed_6", "cc_open_1"),
     ]
 
-    consist = CabooseCarConsist(
+    consist_factory = CabooseCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23270,
@@ -210,9 +214,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=CabooseCar, chassis="2_axle_caboose_16px")
+    consist_factory.add_unit(type=CabooseCar, chassis="2_axle_caboose_16px")
 
-    consist = CabooseCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = CabooseCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23280,
@@ -225,4 +231,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=CabooseCar, chassis="4_axle_caboose_24px")
+    consist_factory.add_unit(type=CabooseCar, chassis="4_axle_caboose_24px")
+
+    result.append(consist_factory)
+
+    return result

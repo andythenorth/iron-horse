@@ -2,8 +2,10 @@ from train import PassengerCarConsist, PaxCar
 
 
 def main(roster_id, **kwargs):
+    result = []
+
     # --------------- narrow gauge -----------------------------------------------------------------
-    consist = PassengerCarConsist(
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25330,
@@ -14,9 +16,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_ng_16px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24090,
@@ -27,11 +31,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
 
     # no gen 2 for NG, straight to gen 3
 
-    consist = PassengerCarConsist(
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25000,
@@ -42,9 +46,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_ng_16px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25010,
@@ -55,9 +61,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=26690,
@@ -67,11 +75,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_ng_32px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_ng_32px")
 
     # no gen 4A NG coach
 
-    consist = PassengerCarConsist(
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=34220,
@@ -81,9 +89,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=25550,
@@ -93,11 +103,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_ng_32px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_ng_32px")
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist = PassengerCarConsist(
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34620,
@@ -106,9 +116,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="2_axle_solid_express_16px")
+    consist_factory.add_unit(type=PaxCar, chassis="2_axle_solid_express_16px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34630,
@@ -117,9 +129,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30410,
@@ -128,9 +142,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="6_axle_solid_express_32px")
+    consist_factory.add_unit(type=PaxCar, chassis="6_axle_solid_express_32px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34640,
@@ -139,9 +155,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="2_axle_solid_express_16px")
+    consist_factory.add_unit(type=PaxCar, chassis="2_axle_solid_express_16px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34650,
@@ -150,8 +168,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
-    consist = PassengerCarConsist(
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30420,
@@ -160,9 +178,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="6_axle_solid_express_32px")
+    consist_factory.add_unit(type=PaxCar, chassis="6_axle_solid_express_32px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34660,
@@ -171,9 +191,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="3_axle_solid_express_16px")
+    consist_factory.add_unit(type=PaxCar, chassis="3_axle_solid_express_16px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34670,
@@ -182,9 +204,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30430,
@@ -193,9 +217,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34680,
@@ -204,9 +230,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25300,
@@ -215,9 +243,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25310,
@@ -227,9 +257,11 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
 
-    consist = PassengerCarConsist(
+    result.append(consist_factory)
+
+    consist_factory = PassengerCarConsist(
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25320,
@@ -239,4 +271,8 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
+
+    result.append(consist_factory)
+
+    return result

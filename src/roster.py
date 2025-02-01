@@ -378,6 +378,8 @@ class Roster(object):
                     + wagon_module_name_stem
                     + " not found in global_constants.wagon_module_name_stems"
                 )
+
+        consist_factory_unconverted_modules = []
         for wagon_module_name_stem in global_constants.wagon_module_name_stems:
             if wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
                 roster_id_providing_module = self.wagon_module_names_with_roster_ids[
@@ -391,9 +393,11 @@ class Roster(object):
                     wagon_module = importlib.import_module(
                         "." + wagon_module_name, package_name
                     )
-                    wagon_module.main(
+                    module_result = wagon_module.main(
                         self.id, roster_id_providing_module=roster_id_providing_module
                     )
+                    if module_result == None:
+                        consist_factory_unconverted_modules.append(wagon_module_name)
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name
@@ -405,6 +409,8 @@ class Roster(object):
                     )
                 except Exception:
                     raise
+        print(self.id, "consist_factory_unconverted_ids (wagons)", len(consist_factory_unconverted_modules), str(consist_factory_unconverted_modules))
+
 
     def init_wagon_recolour_colour_sets(self):
         # wagon recolour liveries can be randomised across multiple colour sets
