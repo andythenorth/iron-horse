@@ -1,4 +1,4 @@
-from train import FlatCarDropEndConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = FlatCarDropEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarDropEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26310,
@@ -17,9 +18,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
 
+    result.append(consist_factory)
+
     # no gen 2A, gen 1A continues in pony
 
-    consist_factory = FlatCarDropEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarDropEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26320,
@@ -32,7 +36,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FlatCarDropEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarDropEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26330,
@@ -45,7 +50,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FlatCarDropEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarDropEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26340,
@@ -58,7 +64,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FlatCarDropEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarDropEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26350,
@@ -71,7 +78,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FlatCarDropEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarDropEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26360,
@@ -84,7 +92,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FlatCarDropEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarDropEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26370,
@@ -97,7 +106,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FlatCarDropEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarDropEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26380,
@@ -110,7 +120,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FlatCarDropEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarDropEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26390,
@@ -125,7 +136,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FlatCarDropEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarDropEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24330,

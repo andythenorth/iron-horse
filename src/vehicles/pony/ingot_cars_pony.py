@@ -1,4 +1,4 @@
-from train import IngotCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = IngotCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="IngotCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=5150,
@@ -19,9 +20,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
 
+    result.append(consist_factory)
+
     # --------------- pony -------------------------------------------------------------------------
 
-    consist_factory = IngotCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="IngotCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=80,
@@ -35,7 +39,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = IngotCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="IngotCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=60,

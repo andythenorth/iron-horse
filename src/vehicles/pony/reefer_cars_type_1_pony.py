@@ -1,4 +1,4 @@
-from train import ReeferCarConsistType1
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------    # no gen 1 reefer - straight to gen 2
 
-    consist_factory = ReeferCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="ReeferCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24180,
@@ -23,7 +24,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ReeferCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="ReeferCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24190,
@@ -40,7 +42,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ReeferCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="ReeferCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16430,
@@ -57,7 +60,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ReeferCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="ReeferCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24200,
@@ -74,7 +78,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ReeferCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="ReeferCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24210,
@@ -91,7 +96,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ReeferCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="ReeferCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24220,
@@ -108,7 +114,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ReeferCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="ReeferCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24230,
@@ -125,7 +132,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ReeferCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="ReeferCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24240,

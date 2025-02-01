@@ -1,4 +1,4 @@
-from train import TankCarAcidConsistType1
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = TankCarAcidConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="TankCarAcidConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25090,
@@ -21,7 +22,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarAcidConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="TankCarAcidConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26820,
@@ -35,7 +37,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarAcidConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="TankCarAcidConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25910,
@@ -47,9 +50,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_sparse_24px")
 
+    result.append(consist_factory)
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = TankCarAcidConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="TankCarAcidConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25170,
@@ -63,7 +69,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarAcidConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="TankCarAcidConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26250,
@@ -76,7 +83,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarAcidConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="TankCarAcidConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25190,
@@ -89,7 +97,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarAcidConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="TankCarAcidConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25210,
@@ -102,7 +111,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarAcidConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="TankCarAcidConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23520,
@@ -117,7 +127,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarAcidConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="TankCarAcidConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25340,
@@ -132,7 +143,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarAcidConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="TankCarAcidConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25590,
@@ -147,7 +159,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarAcidConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="TankCarAcidConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25280,
@@ -162,7 +175,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarAcidConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="TankCarAcidConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25370,

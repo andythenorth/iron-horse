@@ -1,4 +1,4 @@
-from train import MineralCoveredHopperCarLimeRandomisedConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = MineralCoveredHopperCarLimeRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarLimeRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24750,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MineralCoveredHopperCarLimeRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarLimeRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26610,
@@ -32,7 +34,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MineralCoveredHopperCarLimeRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarLimeRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26620,
@@ -45,7 +48,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MineralCoveredHopperCarLimeRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarLimeRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26630,
@@ -58,7 +62,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MineralCoveredHopperCarLimeRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarLimeRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26640,

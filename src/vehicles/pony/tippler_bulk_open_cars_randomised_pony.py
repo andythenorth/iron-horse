@@ -1,4 +1,4 @@
-from train import BulkOpenCarTipplerRandomisedConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = BulkOpenCarTipplerRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarTipplerRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28470,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarTipplerRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarTipplerRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24590,
@@ -32,7 +34,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarTipplerRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarTipplerRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34180,
@@ -45,7 +48,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarTipplerRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarTipplerRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26570,
@@ -58,7 +62,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarTipplerRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarTipplerRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32080,
@@ -71,7 +76,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarTipplerRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarTipplerRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32100,

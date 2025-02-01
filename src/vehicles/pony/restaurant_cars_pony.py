@@ -1,4 +1,4 @@
-from train import PassengerRestaurantCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = PassengerRestaurantCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerRestaurantCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34560,
@@ -21,7 +22,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PassengerRestaurantCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerRestaurantCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34570,
@@ -36,7 +38,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PassengerRestaurantCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerRestaurantCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34580,
@@ -51,7 +54,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PassengerRestaurantCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerRestaurantCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34590,
@@ -66,7 +70,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PassengerRestaurantCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerRestaurantCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34600,

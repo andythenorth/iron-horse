@@ -1,4 +1,4 @@
-from train import OpenCarRandomisedConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = OpenCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25560,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25570,
@@ -34,7 +36,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19950,
@@ -46,9 +49,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="empty_24px")
 
+    result.append(consist_factory)
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = OpenCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19930,
@@ -59,9 +65,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="empty_16px")
 
+    result.append(consist_factory)
+
     # no new type A for gen 2, gen 1 type A continues
 
-    consist_factory = OpenCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16990,
@@ -74,7 +83,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17000,
@@ -87,7 +97,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17010,
@@ -100,7 +111,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17020,
@@ -113,7 +125,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17040,
@@ -126,7 +139,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17050,

@@ -1,4 +1,4 @@
-from train import OpenCarHoodConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -7,7 +7,8 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # only type A for gen 1
 
-    consist_factory = OpenCarHoodConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHoodConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16520,
@@ -18,9 +19,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
 
+    result.append(consist_factory)
+
     # no type A for gen 2, gen 1 type A continues, also no gen 2 type B
 
-    consist_factory = OpenCarHoodConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHoodConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16540,
@@ -33,7 +37,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarHoodConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHoodConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16550,
@@ -46,7 +51,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarHoodConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHoodConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16560,
@@ -59,7 +65,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarHoodConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHoodConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16570,
@@ -72,7 +79,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarHoodConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHoodConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16580,
@@ -87,7 +95,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarHoodConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHoodConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16590,

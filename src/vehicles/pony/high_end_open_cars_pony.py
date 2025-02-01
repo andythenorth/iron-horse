@@ -1,4 +1,4 @@
-from train import OpenCarHighEndConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = OpenCarHighEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHighEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23590,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarHighEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHighEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23600,
@@ -34,7 +36,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarHighEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHighEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23610,
@@ -46,9 +49,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
+    result.append(consist_factory)
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = OpenCarHighEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHighEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23620,
@@ -61,7 +67,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarHighEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHighEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23630,
@@ -74,7 +81,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarHighEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHighEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23640,
@@ -89,7 +97,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarHighEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHighEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23650,
@@ -104,7 +113,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = OpenCarHighEndConsist(
+    consist_factory = ConsistFactory(
+        class_name="OpenCarHighEndConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23660,

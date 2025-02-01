@@ -1,4 +1,4 @@
-from train import AutomobileDoubleDeckCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------    # intro gen 4
 
-    consist_factory = AutomobileDoubleDeckCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileDoubleDeckCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26760,
@@ -21,7 +22,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileDoubleDeckCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileDoubleDeckCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30890,
@@ -36,7 +38,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileDoubleDeckCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileDoubleDeckCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26770,
@@ -51,7 +54,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileDoubleDeckCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileDoubleDeckCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17330,
@@ -63,8 +67,11 @@ def main(roster_id, **kwargs):
     consist_factory.add_unit(
         class_name="AutomobileCarAsymmetric", chassis="4_axle_running_gear_only_32px"
     )
+
+    result.append(consist_factory)
     """
-    consist_factory = AutomobileDoubleDeckCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileDoubleDeckCarConsist",
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=5830,
@@ -84,6 +91,8 @@ def main(roster_id, **kwargs):
         chassis="2_axle_running_gear_only_20px",
         spriterow_num=1,
     )
+
+    result.append(consist_factory)
     """
 
     return result

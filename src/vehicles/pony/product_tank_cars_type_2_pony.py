@@ -1,4 +1,4 @@
-from train import TankCarProductConsistType2
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = TankCarProductConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarProductConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33070,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarProductConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarProductConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35370,
@@ -33,7 +35,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarProductConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarProductConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33090,
@@ -46,7 +49,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarProductConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarProductConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33110,
@@ -59,7 +63,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarProductConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarProductConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33130,
@@ -72,7 +77,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarProductConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarProductConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33150,
@@ -87,7 +93,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarProductConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarProductConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33170,
@@ -102,7 +109,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarProductConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarProductConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33190,
@@ -117,7 +125,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarProductConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarProductConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33210,
@@ -132,7 +141,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarProductConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarProductConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33230,
@@ -147,7 +157,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarProductConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarProductConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33250,

@@ -1,4 +1,4 @@
-from train import ExpressCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -10,7 +10,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = ExpressCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="ExpressCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17900,
@@ -25,7 +26,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="ExpressCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18100,
@@ -40,7 +42,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="ExpressCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30360,
@@ -55,7 +58,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="ExpressCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17920,
@@ -70,7 +74,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="ExpressCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18120,
@@ -85,7 +90,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="ExpressCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34710,
@@ -100,7 +106,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="ExpressCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30600,
@@ -115,7 +122,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="ExpressCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17940,
@@ -130,7 +138,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="ExpressCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30660,
@@ -145,7 +154,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="ExpressCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24290,
@@ -160,7 +170,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="ExpressCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18020,
@@ -175,7 +186,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="ExpressCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18040,

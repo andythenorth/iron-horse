@@ -1,4 +1,4 @@
-from train import SiloCarConsistType1
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = SiloCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="SiloCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32720,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = SiloCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="SiloCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17390,
@@ -32,7 +34,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = SiloCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="SiloCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17430,
@@ -47,7 +50,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = SiloCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="SiloCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32660,
@@ -62,7 +66,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = SiloCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="SiloCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17410,
@@ -77,7 +82,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = SiloCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="SiloCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32680,

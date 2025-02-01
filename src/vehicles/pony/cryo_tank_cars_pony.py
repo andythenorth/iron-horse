@@ -1,4 +1,4 @@
-from train import GasTankCarCryoConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = GasTankCarCryoConsist(
+    consist_factory = ConsistFactory(
+        class_name="GasTankCarCryoConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20730,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = GasTankCarCryoConsist(
+    consist_factory = ConsistFactory(
+        class_name="GasTankCarCryoConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20740,
@@ -34,7 +36,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = GasTankCarCryoConsist(
+    consist_factory = ConsistFactory(
+        class_name="GasTankCarCryoConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20750,
@@ -47,7 +50,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = GasTankCarCryoConsist(
+    consist_factory = ConsistFactory(
+        class_name="GasTankCarCryoConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20760,
@@ -62,7 +66,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = GasTankCarCryoConsist(
+    consist_factory = ConsistFactory(
+        class_name="GasTankCarCryoConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20770,
@@ -77,7 +82,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = GasTankCarCryoConsist(
+    consist_factory = ConsistFactory(
+        class_name="GasTankCarCryoConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20780,

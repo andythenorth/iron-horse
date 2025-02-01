@@ -1,4 +1,4 @@
-from train import PassengerExpressRailcarTrailerCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = PassengerExpressRailcarTrailerCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerExpressRailcarTrailerCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6750,
@@ -25,7 +26,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PassengerExpressRailcarTrailerCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerExpressRailcarTrailerCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6770,
@@ -44,7 +46,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PassengerExpressRailcarTrailerCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerExpressRailcarTrailerCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30,
@@ -63,7 +66,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PassengerExpressRailcarTrailerCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerExpressRailcarTrailerCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6380,

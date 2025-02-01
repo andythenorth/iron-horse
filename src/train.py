@@ -59,8 +59,11 @@ class ConsistFactory(object):
     def init_consist(self):
         consist_cls = getattr(sys.modules[__name__], self.class_name)
         consist = consist_cls(**self.kwargs)
-        consist.description = self.description  # shim
-        consist.foamer_facts = self.foamer_facts  # shim
+        # shim hax
+        if getattr(self, "description", None) is not None:
+            consist.description = self.description
+        if getattr(self, "foamer_facts", None) is not None:
+            consist.foamer_facts = self.foamer_facts
 
         # !! CABBAGE
         for unit_factory in self.unit_factories:

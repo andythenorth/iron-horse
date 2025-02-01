@@ -1,4 +1,4 @@
-from train import KaolinHopperCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = KaolinHopperCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="KaolinHopperCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26230,
@@ -21,7 +22,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = KaolinHopperCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="KaolinHopperCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26240,

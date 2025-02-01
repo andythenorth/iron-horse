@@ -1,4 +1,4 @@
-from train import SlidingRoofCarConsistHiCube
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = SlidingRoofCarConsistHiCube(
+    consist_factory = ConsistFactory(
+        class_name="SlidingRoofCarConsistHiCube",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30730,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = SlidingRoofCarConsistHiCube(
+    consist_factory = ConsistFactory(
+        class_name="SlidingRoofCarConsistHiCube",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18520,
@@ -32,7 +34,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = SlidingRoofCarConsistHiCube(
+    consist_factory = ConsistFactory(
+        class_name="SlidingRoofCarConsistHiCube",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=840,

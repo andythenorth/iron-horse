@@ -1,4 +1,4 @@
-from train import ExpressFoodTankCarConsistType2
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -7,7 +7,8 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # no gen 1 for food tank cars - straight to gen 2
     """
-    consist_factory = ExpressFoodTankCarConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="ExpressFoodTankCarConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17200,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressFoodTankCarConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="ExpressFoodTankCarConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17210,
@@ -33,7 +35,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressFoodTankCarConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="ExpressFoodTankCarConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17220,
@@ -46,7 +49,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressFoodTankCarConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="ExpressFoodTankCarConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17230,
@@ -59,7 +63,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressFoodTankCarConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="ExpressFoodTankCarConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28190,
@@ -72,7 +77,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressFoodTankCarConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="ExpressFoodTankCarConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28440,
@@ -85,7 +91,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressFoodTankCarConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="ExpressFoodTankCarConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16970,
@@ -98,7 +105,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressFoodTankCarConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="ExpressFoodTankCarConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28180,
@@ -109,10 +117,13 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="ExpressCar", chassis="4_axle_sparse_32px")
 
+    result.append(consist_factory)
+
     # gen 6A not included - could add?
     """
 
-    consist_factory = ExpressFoodTankCarConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="ExpressFoodTankCarConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20380,
@@ -125,7 +136,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = ExpressFoodTankCarConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="ExpressFoodTankCarConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20390,

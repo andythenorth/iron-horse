@@ -1,4 +1,4 @@
-from train import BulkOpenCarScrapMetalConsistType1
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
     # gen 2 start eh?
-    consist_factory = BulkOpenCarScrapMetalConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarScrapMetalConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19070,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarScrapMetalConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarScrapMetalConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19090,
@@ -34,7 +36,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarScrapMetalConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarScrapMetalConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19110,
@@ -46,9 +49,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
+    result.append(consist_factory)
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = BulkOpenCarScrapMetalConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarScrapMetalConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19130,
@@ -61,7 +67,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarScrapMetalConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarScrapMetalConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19150,
@@ -74,7 +81,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarScrapMetalConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarScrapMetalConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19170,
@@ -87,7 +95,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarScrapMetalConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarScrapMetalConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19190,
@@ -100,7 +109,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarScrapMetalConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarScrapMetalConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19210,
@@ -115,7 +125,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarScrapMetalConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarScrapMetalConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19230,
@@ -130,7 +141,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarScrapMetalConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarScrapMetalConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19250,

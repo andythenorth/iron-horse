@@ -1,4 +1,4 @@
-from train import BulkOpenCarMineralLowSideConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = BulkOpenCarMineralLowSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarMineralLowSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31510,
@@ -17,9 +18,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
 
+    result.append(consist_factory)
+
     # gen 1 also covers gen 2
 
-    consist_factory = BulkOpenCarMineralLowSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarMineralLowSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31530,
@@ -32,7 +36,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarMineralLowSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarMineralLowSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31550,
@@ -45,7 +50,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarMineralLowSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarMineralLowSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31570,
@@ -58,7 +64,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarMineralLowSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarMineralLowSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31590,
@@ -71,7 +78,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarMineralLowSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarMineralLowSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31410,
@@ -86,7 +94,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarMineralLowSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarMineralLowSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31470,
@@ -101,7 +110,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarMineralLowSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarMineralLowSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31490,

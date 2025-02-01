@@ -1,4 +1,4 @@
-from train import FlatCarHeavyDutyConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = FlatCarHeavyDutyConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarHeavyDutyConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=21920,
@@ -19,9 +20,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="HeavyDutyCar", chassis="4_axle_ng_16px")
 
+    result.append(consist_factory)
+
     # --------------- pony -------------------------------------------------------------------------
 
-    consist_factory = FlatCarHeavyDutyConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarHeavyDutyConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=21930,
@@ -35,7 +39,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FlatCarHeavyDutyConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarHeavyDutyConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=21940,
@@ -49,7 +54,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FlatCarHeavyDutyConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarHeavyDutyConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=21950,
@@ -63,7 +69,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FlatCarHeavyDutyConsist(
+    consist_factory = ConsistFactory(
+        class_name="FlatCarHeavyDutyConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=21960,

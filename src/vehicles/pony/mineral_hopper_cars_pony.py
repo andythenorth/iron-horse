@@ -1,4 +1,4 @@
-from train import HopperCarMineralConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = HopperCarMineralConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMineralConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6780,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMineralConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMineralConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6790,
@@ -32,7 +34,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMineralConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMineralConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6800,
@@ -45,7 +48,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMineralConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMineralConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6810,
@@ -58,7 +62,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMineralConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMineralConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6820,
@@ -71,7 +76,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMineralConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMineralConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6830,
@@ -86,7 +92,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMineralConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMineralConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6840,
@@ -99,7 +106,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMineralConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMineralConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6850,
@@ -112,7 +120,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMineralConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMineralConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6860,
@@ -127,7 +136,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMineralConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMineralConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6870,
@@ -142,7 +152,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMineralConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMineralConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6880,

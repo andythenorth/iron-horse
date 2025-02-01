@@ -1,11 +1,12 @@
-from train import FarmProductsBoxCarConsistType1
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
-    consist_factory = FarmProductsBoxCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FarmProductsBoxCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30350,
@@ -17,9 +18,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
+    result.append(consist_factory)
+
     # no gen 2 for NG, straight to gen 3
 
-    consist_factory = FarmProductsBoxCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FarmProductsBoxCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30400,
@@ -33,7 +37,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FarmProductsBoxCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FarmProductsBoxCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19940,
@@ -45,8 +50,11 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
+    result.append(consist_factory)
+
     # --------------- pony --------------------------------------------------------------------------
-    consist_factory = FarmProductsBoxCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FarmProductsBoxCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25390,
@@ -59,7 +67,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FarmProductsBoxCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FarmProductsBoxCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25360,
@@ -72,7 +81,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FarmProductsBoxCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FarmProductsBoxCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25230,
@@ -85,7 +95,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FarmProductsBoxCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FarmProductsBoxCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25160,
@@ -98,7 +109,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FarmProductsBoxCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FarmProductsBoxCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25110,
@@ -111,7 +123,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FarmProductsBoxCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FarmProductsBoxCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25080,
@@ -124,7 +137,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FarmProductsBoxCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FarmProductsBoxCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23720,
@@ -141,7 +155,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FarmProductsBoxCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FarmProductsBoxCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23700,
@@ -156,7 +171,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FarmProductsBoxCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FarmProductsBoxCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23540,

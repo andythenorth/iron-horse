@@ -1,4 +1,4 @@
-from train import HopperCarMGRTopHoodConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -7,7 +7,8 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # just type gen 4 and 5
 
-    consist_factory = HopperCarMGRTopHoodConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMGRTopHoodConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20230,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMGRTopHoodConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMGRTopHoodConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36280,
@@ -33,7 +35,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMGRTopHoodConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMGRTopHoodConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20250,
@@ -48,7 +51,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMGRTopHoodConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMGRTopHoodConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36300,

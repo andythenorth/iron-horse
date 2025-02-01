@@ -1,4 +1,4 @@
-from train import FoodHopperCarRandomisedConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
     """
-    consist_factory = FoodHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19870,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FoodHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30320,
@@ -32,7 +34,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FoodHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16980,
@@ -45,7 +48,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FoodHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30290,
@@ -58,7 +62,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FoodHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17280,
@@ -71,7 +76,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FoodHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17360,
@@ -81,8 +87,11 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(class_name="FreightCar", chassis="empty_24px")
+
+    result.append(consist_factory)
     """
-    consist_factory = FoodHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33000,
@@ -95,7 +104,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FoodHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32980,

@@ -1,4 +1,4 @@
-from train import FoodHopperCarConsistType1
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = FoodHopperCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33830,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FoodHopperCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35080,
@@ -32,7 +34,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FoodHopperCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31150,
@@ -45,7 +48,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FoodHopperCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32300,
@@ -58,7 +62,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FoodHopperCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35330,
@@ -73,7 +78,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = FoodHopperCarConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="FoodHopperCarConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35340,

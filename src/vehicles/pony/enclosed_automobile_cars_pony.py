@@ -1,11 +1,12 @@
-from train import AutomobileEnclosedCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
-    consist_factory = AutomobileEnclosedCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileEnclosedCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34410,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileEnclosedCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileEnclosedCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18000,
@@ -35,7 +37,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileEnclosedCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileEnclosedCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34420,
@@ -50,7 +53,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileEnclosedCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileEnclosedCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18010,
@@ -65,7 +69,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileEnclosedCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileEnclosedCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34430,
@@ -80,7 +85,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileEnclosedCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileEnclosedCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18060,

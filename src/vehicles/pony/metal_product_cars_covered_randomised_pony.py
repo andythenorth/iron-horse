@@ -1,4 +1,4 @@
-from train import MetalProductCarCoveredRandomisedConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
     """
-    consist_factory = MetalProductCarCoveredRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MetalProductCarCoveredRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25670,
@@ -20,8 +21,12 @@ def main(roster_id, **kwargs):
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="empty_32px",
     )
+
+    result.append(consist_factory)
+
     """
-    consist_factory = MetalProductCarCoveredRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MetalProductCarCoveredRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25680,
@@ -34,7 +39,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MetalProductCarCoveredRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MetalProductCarCoveredRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25690,

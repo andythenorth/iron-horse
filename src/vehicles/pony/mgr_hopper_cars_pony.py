@@ -1,4 +1,4 @@
-from train import HopperCarMGRConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -7,7 +7,8 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # just type gen 4 and 5
 
-    consist_factory = HopperCarMGRConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMGRConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30240,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMGRConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMGRConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16600,
@@ -33,7 +35,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMGRConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMGRConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36260,
@@ -48,7 +51,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarMGRConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarMGRConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16640,
@@ -60,6 +64,8 @@ def main(roster_id, **kwargs):
     consist_factory.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_greebled_24px"
     )
+
+    result.append(consist_factory)
 
     # no gen 6 don't bother
 

@@ -1,4 +1,4 @@
-from train import TorpedoCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = TorpedoCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="TorpedoCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=4140,
@@ -23,7 +24,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TorpedoCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="TorpedoCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=4060,
@@ -40,7 +42,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TorpedoCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="TorpedoCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=4170,
@@ -57,7 +60,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TorpedoCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="TorpedoCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=4090,

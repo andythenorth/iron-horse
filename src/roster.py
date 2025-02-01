@@ -392,6 +392,11 @@ class Roster(object):
                     module_result = wagon_module.main(
                         self.id, roster_id_providing_module=roster_id_providing_module
                     )
+                    for cabbage_consist_factory in module_result:
+                        if type(cabbage_consist_factory).__name__ == "ConsistFactory":
+                            cabbage_consist_factory.init_consist()
+                        else:
+                            print(type(cabbage_consist_factory).__name__)
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name

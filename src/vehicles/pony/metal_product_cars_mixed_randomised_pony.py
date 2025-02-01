@@ -1,4 +1,4 @@
-from train import MetalProductCarMixedRandomisedConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = MetalProductCarMixedRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MetalProductCarMixedRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16750,
@@ -17,9 +18,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="empty_16px")
 
+    result.append(consist_factory)
+
     # no new type A for gen 2, gen 1 type A continues
 
-    consist_factory = MetalProductCarMixedRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MetalProductCarMixedRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16760,
@@ -32,7 +36,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MetalProductCarMixedRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MetalProductCarMixedRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16770,
@@ -45,7 +50,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MetalProductCarMixedRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MetalProductCarMixedRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16780,
@@ -58,7 +64,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MetalProductCarMixedRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MetalProductCarMixedRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16790,
@@ -71,7 +78,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MetalProductCarMixedRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MetalProductCarMixedRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16800,
@@ -84,7 +92,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MetalProductCarMixedRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MetalProductCarMixedRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16810,
@@ -101,7 +110,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MetalProductCarMixedRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MetalProductCarMixedRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16820,
@@ -114,7 +124,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MetalProductCarMixedRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="MetalProductCarMixedRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16830,

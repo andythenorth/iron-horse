@@ -1,4 +1,4 @@
-from train import BoxCarCurtainSideConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = BoxCarCurtainSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarCurtainSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18650,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BoxCarCurtainSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarCurtainSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28130,
@@ -32,9 +34,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
+    result.append(consist_factory)
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = BoxCarCurtainSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarCurtainSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18630,
@@ -47,7 +52,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BoxCarCurtainSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarCurtainSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18550,
@@ -60,7 +66,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BoxCarCurtainSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarCurtainSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18570,
@@ -77,7 +84,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BoxCarCurtainSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarCurtainSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18590,
@@ -92,7 +100,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BoxCarCurtainSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarCurtainSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18610,

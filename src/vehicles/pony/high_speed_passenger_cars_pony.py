@@ -1,10 +1,11 @@
-from train import PassengerHighSpeedCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
     result = []
 
-    consist_factory = PassengerHighSpeedCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerHighSpeedCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30680,

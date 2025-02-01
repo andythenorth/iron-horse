@@ -1,4 +1,4 @@
-from train import AutomobileLowFloorCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -7,7 +7,8 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # intro gen 4
 
-    consist_factory = AutomobileLowFloorCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileLowFloorCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26720,
@@ -22,7 +23,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileLowFloorCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileLowFloorCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26730,
@@ -37,7 +39,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileLowFloorCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileLowFloorCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26740,
@@ -52,7 +55,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileLowFloorCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileLowFloorCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26750,

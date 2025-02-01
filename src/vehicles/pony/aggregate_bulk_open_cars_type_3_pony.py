@@ -1,4 +1,4 @@
-from train import BulkOpenCarAggregateConsistType3
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = BulkOpenCarAggregateConsistType3(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarAggregateConsistType3",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32060,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarAggregateConsistType3(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarAggregateConsistType3",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32070,

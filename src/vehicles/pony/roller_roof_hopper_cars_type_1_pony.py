@@ -1,4 +1,4 @@
-from train import MineralCoveredHopperCarRollerRoofConsistType1
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge -----------------------------------------------------------------
 
-    consist_factory = MineralCoveredHopperCarRollerRoofConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarRollerRoofConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23670,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MineralCoveredHopperCarRollerRoofConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarRollerRoofConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16840,
@@ -32,7 +34,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MineralCoveredHopperCarRollerRoofConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarRollerRoofConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23730,
@@ -47,7 +50,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MineralCoveredHopperCarRollerRoofConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarRollerRoofConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17160,

@@ -1,11 +1,12 @@
-from train import PanoramicCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
-    consist_factory = PanoramicCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PanoramicCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35130,
@@ -21,7 +22,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PanoramicCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PanoramicCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35140,

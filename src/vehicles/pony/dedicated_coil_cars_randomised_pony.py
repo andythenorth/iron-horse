@@ -1,4 +1,4 @@
-from train import DedicatedCoilCarRandomisedConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = DedicatedCoilCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="DedicatedCoilCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25860,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = DedicatedCoilCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="DedicatedCoilCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25870,
@@ -32,7 +34,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = DedicatedCoilCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="DedicatedCoilCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25880,
@@ -49,7 +52,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = DedicatedCoilCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="DedicatedCoilCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25890,
@@ -62,7 +66,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = DedicatedCoilCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="DedicatedCoilCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25900,

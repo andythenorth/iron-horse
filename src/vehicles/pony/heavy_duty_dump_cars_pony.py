@@ -1,4 +1,4 @@
-from train import BulkOpenCarHeavyDutyConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = BulkOpenCarHeavyDutyConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarHeavyDutyConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17110,
@@ -19,9 +20,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="HeavyDutyCar", chassis="4_axle_ng_16px")
 
+    result.append(consist_factory)
+
     # --------------- pony -------------------------------------------------------------------------
 
-    consist_factory = BulkOpenCarHeavyDutyConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarHeavyDutyConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17120,
@@ -35,7 +39,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarHeavyDutyConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarHeavyDutyConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16630,
@@ -49,7 +54,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarHeavyDutyConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarHeavyDutyConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16530,
@@ -63,7 +69,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarHeavyDutyConsist(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarHeavyDutyConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30640,

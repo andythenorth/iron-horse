@@ -1,11 +1,12 @@
-from train import TarpaulinCarRandomisedConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
-    consist_factory = TarpaulinCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="TarpaulinCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24870,
@@ -18,7 +19,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TarpaulinCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="TarpaulinCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28520,

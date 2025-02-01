@@ -1,4 +1,4 @@
-from train import CoveredHopperCarRandomisedConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -7,7 +7,8 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # gen 2 start
 
-    consist_factory = CoveredHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoveredHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17240,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CoveredHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoveredHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17250,
@@ -33,7 +35,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CoveredHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoveredHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35830,
@@ -46,7 +49,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CoveredHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoveredHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35840,
@@ -59,7 +63,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CoveredHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoveredHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35860,
@@ -72,7 +77,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CoveredHopperCarRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoveredHopperCarRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35870,

@@ -1,4 +1,4 @@
-from train import TarpaulinCarConsistType3
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -7,7 +7,8 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # gen 5 start, only B and C lengths
 
-    consist_factory = TarpaulinCarConsistType3(
+    consist_factory = ConsistFactory(
+        class_name="TarpaulinCarConsistType3",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25750,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TarpaulinCarConsistType3(
+    consist_factory = ConsistFactory(
+        class_name="TarpaulinCarConsistType3",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27230,

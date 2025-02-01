@@ -1,4 +1,4 @@
-from train import BulkOpenCarTipplerRotaryConsistType1
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = BulkOpenCarTipplerRotaryConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarTipplerRotaryConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26650,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarTipplerRotaryConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarTipplerRotaryConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26670,
@@ -32,9 +34,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="OreDumpCar", chassis="4_axle_ng_sparse_24px")
 
+    result.append(consist_factory)
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = BulkOpenCarTipplerRotaryConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarTipplerRotaryConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35550,
@@ -47,7 +52,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarTipplerRotaryConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarTipplerRotaryConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32260,
@@ -58,9 +64,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="OreDumpCar", chassis="4_axle_sparse_24px")
 
+    result.append(consist_factory)
+
     # no gen 5A or 6A
 
-    consist_factory = BulkOpenCarTipplerRotaryConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarTipplerRotaryConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35570,
@@ -75,7 +84,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BulkOpenCarTipplerRotaryConsistType1(
+    consist_factory = ConsistFactory(
+        class_name="BulkOpenCarTipplerRotaryConsistType1",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32280,

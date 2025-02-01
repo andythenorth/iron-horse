@@ -1,4 +1,4 @@
-from train import TankCarStandardRandomisedConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
     """
-    consist_factory = TankCarStandardRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="TankCarStandardRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=37020,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarStandardRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="TankCarStandardRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32900,
@@ -33,7 +35,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarStandardRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="TankCarStandardRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32940,
@@ -46,7 +49,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarStandardRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="TankCarStandardRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35900,
@@ -59,7 +63,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarStandardRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="TankCarStandardRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35920,
@@ -72,7 +77,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarStandardRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="TankCarStandardRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35940,
@@ -82,8 +88,11 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(class_name="FreightCar", chassis="empty_32px")
+
+    result.append(consist_factory)
     """
-    consist_factory = TankCarStandardRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="TankCarStandardRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35960,
@@ -96,7 +105,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarStandardRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="TankCarStandardRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35980,
@@ -109,7 +119,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarStandardRandomisedConsist(
+    consist_factory = ConsistFactory(
+        class_name="TankCarStandardRandomisedConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35280,

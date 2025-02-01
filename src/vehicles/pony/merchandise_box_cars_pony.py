@@ -1,4 +1,4 @@
-from train import BoxCarMerchandiseConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = BoxCarMerchandiseConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarMerchandiseConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24370,
@@ -18,9 +19,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
+    result.append(consist_factory)
+
     # no gen 2 for NG, straight to gen 3
 
-    consist_factory = BoxCarMerchandiseConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarMerchandiseConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24390,
@@ -34,7 +38,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BoxCarMerchandiseConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarMerchandiseConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24410,
@@ -46,9 +51,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
+    result.append(consist_factory)
+
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = BoxCarMerchandiseConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarMerchandiseConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16480,
@@ -61,7 +69,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BoxCarMerchandiseConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarMerchandiseConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25610,
@@ -74,7 +83,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BoxCarMerchandiseConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarMerchandiseConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24830,
@@ -87,7 +97,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BoxCarMerchandiseConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarMerchandiseConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25630,
@@ -100,7 +111,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BoxCarMerchandiseConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarMerchandiseConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16450,
@@ -116,7 +128,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BoxCarMerchandiseConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarMerchandiseConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25650,
@@ -132,7 +145,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = BoxCarMerchandiseConsist(
+    consist_factory = ConsistFactory(
+        class_name="BoxCarMerchandiseConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24810,

@@ -1,4 +1,4 @@
-from train import MineralCoveredHopperCarLimeConsistType3
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = MineralCoveredHopperCarLimeConsistType3(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarLimeConsistType3",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34840,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MineralCoveredHopperCarLimeConsistType3(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarLimeConsistType3",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33820,
@@ -32,7 +34,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MineralCoveredHopperCarLimeConsistType3(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarLimeConsistType3",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33030,
@@ -47,7 +50,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MineralCoveredHopperCarLimeConsistType3(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarLimeConsistType3",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34850,
@@ -62,7 +66,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = MineralCoveredHopperCarLimeConsistType3(
+    consist_factory = ConsistFactory(
+        class_name="MineralCoveredHopperCarLimeConsistType3",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36340,

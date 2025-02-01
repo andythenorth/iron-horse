@@ -1,4 +1,4 @@
-from train import HopperCarHighSideConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = HopperCarHighSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarHighSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19750,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarHighSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarHighSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19770,
@@ -34,7 +36,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarHighSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarHighSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19790,
@@ -46,10 +49,13 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
+    result.append(consist_factory)
+
     # --------------- standard gauge ---------------------------------------------------------------
     # also just type A for gen 1, 2 and 3
 
-    consist_factory = HopperCarHighSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarHighSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19570,
@@ -60,9 +66,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_gapped_16px")
 
+    result.append(consist_factory)
+
     # gen 1A also covers gen 2
 
-    consist_factory = HopperCarHighSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarHighSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19590,
@@ -75,7 +84,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarHighSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarHighSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19610,
@@ -88,7 +98,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarHighSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarHighSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19630,
@@ -101,7 +112,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarHighSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarHighSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19650,
@@ -114,7 +126,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarHighSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarHighSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19670,
@@ -127,7 +140,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarHighSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarHighSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19690,
@@ -140,7 +154,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarHighSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarHighSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19710,
@@ -155,7 +170,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = HopperCarHighSideConsist(
+    consist_factory = ConsistFactory(
+        class_name="HopperCarHighSideConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=19730,

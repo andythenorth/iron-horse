@@ -1,4 +1,4 @@
-from train import CoveredHopperCarSwingRoofConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = CoveredHopperCarSwingRoofConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoveredHopperCarSwingRoofConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26200,
@@ -21,7 +22,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CoveredHopperCarSwingRoofConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoveredHopperCarSwingRoofConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16660,

@@ -1,6 +1,4 @@
-from train import (
-    PassengerRailcarTrailerCarConsist,
-)
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -13,7 +11,8 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # gen 3 could be added but needs the engine grilles replacing with pax car pixels
 
-    consist_factory = PassengerRailcarTrailerCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerRailcarTrailerCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17130,
@@ -31,7 +30,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PassengerRailcarTrailerCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerRailcarTrailerCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26060,
@@ -49,7 +49,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PassengerRailcarTrailerCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerRailcarTrailerCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27170,
@@ -67,7 +68,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PassengerRailcarTrailerCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerRailcarTrailerCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25140,
@@ -85,7 +87,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PassengerRailcarTrailerCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerRailcarTrailerCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25580,
@@ -103,7 +106,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = PassengerRailcarTrailerCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="PassengerRailcarTrailerCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25400,

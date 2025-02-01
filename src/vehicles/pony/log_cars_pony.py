@@ -1,11 +1,12 @@
-from train import LogCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
-    consist_factory = LogCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="LogCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36220,
@@ -17,9 +18,12 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_spine_16px")
 
+    result.append(consist_factory)
+
     # no gen 2 for NG, straight to gen 3
 
-    consist_factory = LogCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="LogCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36230,
@@ -31,8 +35,11 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_spine_16px")
 
+    result.append(consist_factory)
+
     """ # restore in next version
-    consist_factory = LogCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="LogCarConsist",
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=36240,
@@ -43,10 +50,13 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_spine_16px")
+
+    result.append(consist_factory)
     """
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = LogCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="LogCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31780,
@@ -59,7 +69,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = LogCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="LogCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31770,
@@ -72,7 +83,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = LogCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="LogCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31790,
@@ -85,7 +97,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = LogCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="LogCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30750,
@@ -98,7 +111,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = LogCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="LogCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31800,
@@ -111,7 +125,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = LogCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="LogCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30970,
@@ -124,7 +139,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = LogCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="LogCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31810,
@@ -139,7 +155,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = LogCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="LogCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26050,

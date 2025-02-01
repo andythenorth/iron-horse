@@ -1,4 +1,4 @@
-from train import CarbonBlackHopperCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = CarbonBlackHopperCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="CarbonBlackHopperCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=21870,
@@ -19,7 +20,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CarbonBlackHopperCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="CarbonBlackHopperCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=21880,
@@ -32,7 +34,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CarbonBlackHopperCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="CarbonBlackHopperCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=21890,
@@ -45,7 +48,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CarbonBlackHopperCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="CarbonBlackHopperCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=21900,
@@ -60,7 +64,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CarbonBlackHopperCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="CarbonBlackHopperCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=21910,

@@ -1,4 +1,4 @@
-from train import CabooseCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -57,7 +57,8 @@ def main(roster_id, **kwargs):
         ("cc_enclosed_3", "brown_enclosed_3"),
     ]
 
-    consist_factory = CabooseCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="CabooseCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23690,
@@ -74,7 +75,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CabooseCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="CabooseCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26270,
@@ -89,7 +91,10 @@ def main(roster_id, **kwargs):
 
     consist_factory.add_unit(class_name="CabooseCar", chassis="4_axle_ng_16px")
 
-    # --------------- standard gauge ---------------------------------------------------------------    # caboose names map to labelled spriterows, as defined in the vehicle files
+    result.append(consist_factory)
+
+    # --------------- standard gauge ---------------------------------------------------------------
+    # caboose names map to labelled spriterows, as defined in the vehicle files
     # note that spriterow mapping will need redefined for each roster and base track type
     # names are arbitrary strings, except for 'default_1', 'default_2', etc which must match the number of generations for this base track type in the roster
     spriterow_labels = [
@@ -201,7 +206,8 @@ def main(roster_id, **kwargs):
         ("cc_enclosed_6", "cc_open_1"),
     ]
 
-    consist_factory = CabooseCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="CabooseCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23270,
@@ -218,7 +224,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CabooseCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="CabooseCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23280,

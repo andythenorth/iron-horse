@@ -1,4 +1,4 @@
-from train import TankCarStandardConsistType2
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = TankCarStandardConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarStandardConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35100,
@@ -21,7 +22,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarStandardConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarStandardConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33050,
@@ -36,7 +38,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = TankCarStandardConsistType2(
+    consist_factory = ConsistFactory(
+        class_name="TankCarStandardConsistType2",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=37000,

@@ -1,4 +1,4 @@
-from train import AutomobileCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -10,7 +10,8 @@ def main(roster_id, **kwargs):
 
     # !! 16px version needs spritelayer cargo support finishing for 16px cargo sprites
     """
-    consist_factory = AutomobileCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileCarConsist",
         roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=22570,
@@ -20,8 +21,11 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(class_name="AutomobileCarSymmetric", chassis="2_axle_solid_express_16px")
+
+    result.append(consist_factory)
     """
-    consist_factory = AutomobileCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22540,
@@ -36,7 +40,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24800,
@@ -51,7 +56,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22550,
@@ -66,7 +72,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24770,
@@ -81,7 +88,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22560,
@@ -96,7 +104,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = AutomobileCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="AutomobileCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24760,

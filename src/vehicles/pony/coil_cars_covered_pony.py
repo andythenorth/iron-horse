@@ -1,4 +1,4 @@
-from train import CoilCarCoveredConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -7,7 +7,8 @@ def main(roster_id, **kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # start gen 4
 
-    consist_factory = CoilCarCoveredConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoilCarCoveredConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30190,
@@ -20,7 +21,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CoilCarCoveredConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoilCarCoveredConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30200,
@@ -33,7 +35,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CoilCarCoveredConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoilCarCoveredConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30210,
@@ -46,7 +49,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CoilCarCoveredConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoilCarCoveredConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30220,
@@ -59,7 +63,8 @@ def main(roster_id, **kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = CoilCarCoveredConsist(
+    consist_factory = ConsistFactory(
+        class_name="CoilCarCoveredConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30230,

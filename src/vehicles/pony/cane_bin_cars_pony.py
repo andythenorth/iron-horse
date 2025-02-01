@@ -1,4 +1,4 @@
-from train import CaneBinCarConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
@@ -6,7 +6,8 @@ def main(roster_id, **kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = CaneBinCarConsist(
+    consist_factory = ConsistFactory(
+        class_name="CaneBinCarConsist",
         roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=1020,
