@@ -1,4 +1,4 @@
-from train import FlatCarMillRandomisedConsist, FreightCar
+from train import FlatCarMillRandomisedConsist
 
 
 def main(roster_id, **kwargs):

@@ -1,4 +1,4 @@
-from train import PeatCarConsist, BinCar
+from train import PeatCarConsist
 
 
 def main(roster_id, **kwargs):

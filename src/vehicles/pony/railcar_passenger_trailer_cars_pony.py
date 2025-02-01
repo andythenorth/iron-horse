@@ -1,6 +1,5 @@
 from train import (
     PassengerRailcarTrailerCarConsist,
-    PaxRailcarTrailerCar,
 )
 
 

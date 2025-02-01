@@ -69,7 +69,7 @@ class ConsistFactory(object):
             except:
                 raise Exception("class_name not found for " + consist.id)
             # very JFDI, this should probably be calling a method on UnitFactory
-            consist.add_unit(unit_cls, **unit_factory.kwargs)
+            consist.add_unit(unit_cls, factory_cabbage=True, **unit_factory.kwargs)
 
         # !! CABBAGE
         for clone_factory in self.clone_factories:
@@ -292,7 +292,7 @@ class Consist(object):
             # we don't need to know the actual livery here, we rely on matching them up later by indexes, which is fine
             self.buyable_variants.append(BuyableVariant(self, livery=livery))
 
-    def add_unit(self, class_name, repeat=1, **kwargs):
+    def add_unit(self, class_name, factory_cabbage=False, repeat=1, **kwargs):
         # we have add_unit create the variants when needed, which means we avoid sequencing problems with gestalt_graphics initialisation
         if len(self.buyable_variants) == 0:
             self.resolve_buyable_variants()
@@ -304,7 +304,8 @@ class Consist(object):
             except:
                 raise Exception("class_name not found for " + consist.id)
         else:
-            print(class_name)
+            if factory_cabbage == False:
+                print(self.id, class_name)
             unit_cls = class_name
         unit = unit_cls(consist=self, **kwargs)
         for repeat_num in range(repeat):

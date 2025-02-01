@@ -1,4 +1,4 @@
-from train import PassengerRestaurantCarConsist, PaxRestaurantCar
+from train import PassengerRestaurantCarConsist
 
 
 def main(roster_id, **kwargs):
@@ -15,7 +15,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="PaxRestaurantCar", chassis="6_axle_solid_express_32px")
+    consist_factory.add_unit(
+        class_name="PaxRestaurantCar", chassis="6_axle_solid_express_32px"
+    )
 
     result.append(consist_factory)
 
@@ -28,7 +30,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="PaxRestaurantCar", chassis="6_axle_solid_express_32px")
+    consist_factory.add_unit(
+        class_name="PaxRestaurantCar", chassis="6_axle_solid_express_32px"
+    )
 
     result.append(consist_factory)
 
@@ -41,7 +45,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="PaxRestaurantCar", chassis="6_axle_solid_express_32px")
+    consist_factory.add_unit(
+        class_name="PaxRestaurantCar", chassis="6_axle_solid_express_32px"
+    )
 
     result.append(consist_factory)
 
@@ -54,7 +60,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="PaxRestaurantCar", chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(
+        class_name="PaxRestaurantCar", chassis="4_axle_solid_express_32px"
+    )
 
     result.append(consist_factory)
 
@@ -69,7 +77,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="PaxRestaurantCar", chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(
+        class_name="PaxRestaurantCar", chassis="4_axle_solid_express_32px"
+    )
 
     result.append(consist_factory)
 

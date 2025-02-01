@@ -1,4 +1,4 @@
-from train import BulkOpenCarAggregateConsistType3, FreightCar
+from train import BulkOpenCarAggregateConsistType3
 
 
 def main(roster_id, **kwargs):

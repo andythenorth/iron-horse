@@ -1,4 +1,4 @@
-from train import PassengerEngineRailcarConsist, ElectricRailcarPaxUnit
+from train import PassengerEngineRailcarConsist
 
 
 def main(roster_id, **kwargs):
@@ -20,7 +20,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(
-        class_name=ElectricRailcarPaxUnit,
+        class_name="ElectricRailcarPaxUnit",
         weight=28,
         chassis="railcar_32px",
         tail_light="railcar_32px_1",

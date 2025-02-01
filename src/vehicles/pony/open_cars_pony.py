@@ -1,4 +1,4 @@
-from train import OpenCarConsist, FreightCar
+from train import OpenCarConsist
 
 
 def main(roster_id, **kwargs):
@@ -16,7 +16,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_metro_16px", repeat=2)
+    consist_factory.add_unit(
+        class_name="FreightCar", chassis="2_axle_metro_16px", repeat=2
+    )
 
     consist_factory = OpenCarConsist(
         roster_id=roster_id,
@@ -199,7 +201,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_filled_greebled_24px")
+    consist_factory.add_unit(
+        class_name="FreightCar", chassis="2_axle_filled_greebled_24px"
+    )
 
     result.append(consist_factory)
 

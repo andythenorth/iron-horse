@@ -1,4 +1,4 @@
-from train import SlagLadleCarConsist, SlagLadleCar
+from train import SlagLadleCarConsist
 
 
 def main(roster_id, **kwargs):

@@ -1,4 +1,4 @@
-from train import IntermodalCarConsist, IntermodalCar
+from train import IntermodalCarConsist
 
 
 def main(roster_id, **kwargs):
@@ -83,7 +83,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="IntermodalCar", chassis="2_axle_1cc_filled_16px")
+    consist_factory.add_unit(
+        class_name="IntermodalCar", chassis="2_axle_1cc_filled_16px"
+    )
 
     result.append(consist_factory)
 
@@ -96,7 +98,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="IntermodalCar", chassis="4_axle_1cc_filled_24px")
+    consist_factory.add_unit(
+        class_name="IntermodalCar", chassis="4_axle_1cc_filled_24px"
+    )
 
     result.append(consist_factory)
 
@@ -109,7 +113,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="IntermodalCar", chassis="4_axle_1cc_filled_32px")
+    consist_factory.add_unit(
+        class_name="IntermodalCar", chassis="4_axle_1cc_filled_32px"
+    )
 
     result.append(consist_factory)
 

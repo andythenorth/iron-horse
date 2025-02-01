@@ -1,4 +1,4 @@
-from train import EngineConsist, ElectricEngineUnit
+from train import EngineConsist
 
 
 def main(roster_id, **kwargs):
@@ -26,7 +26,7 @@ def main(roster_id, **kwargs):
     # !!! these are only 60 foot long IRL so 2x 4/8 units
 
     consist.add_unit(
-        class_name=ElectricEngineUnit, weight=105, vehicle_length=4, spriterow_num=0, repeat=2
+        class_name="ElectricEngineUnit", weight=105, vehicle_length=4, spriterow_num=0, repeat=2
     )
 
     consist.description = """ """

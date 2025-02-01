@@ -1,4 +1,4 @@
-from train import TGVCabEngineConsist, ElectricEngineUnit
+from train import TGVCabEngineConsist
 
 
 def main(roster_id, **kwargs):
@@ -24,7 +24,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(
-        class_name=ElectricEngineUnit,
+        class_name="ElectricEngineUnit",
         weight=76,
         # no pax capacity on Helm Wind cabs
         capacity=0,

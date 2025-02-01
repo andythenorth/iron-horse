@@ -1,4 +1,4 @@
-from train import CaneBinCarConsist, BinCar
+from train import CaneBinCarConsist
 
 
 def main(roster_id, **kwargs):

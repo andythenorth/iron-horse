@@ -1,4 +1,4 @@
-from train import AutomobileLowFloorCarConsist, AutomobileCarAsymmetric
+from train import AutomobileLowFloorCarConsist
 
 
 def main(roster_id, **kwargs):

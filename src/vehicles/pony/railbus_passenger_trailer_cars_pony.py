@@ -1,6 +1,5 @@
 from train import (
     PassengerRailbusTrailerCarConsist,
-    PaxRailcarTrailerCar,
 )
 
 
@@ -22,7 +21,9 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        class_name="PaxRailcarTrailerCar", chassis="4_axle_ng_24px", tail_light="railcar_24px_1"
+        class_name="PaxRailcarTrailerCar",
+        chassis="4_axle_ng_24px",
+        tail_light="railcar_24px_1",
     )
 
     result.append(consist_factory)
@@ -40,7 +41,9 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        class_name="PaxRailcarTrailerCar", chassis="4_axle_ng_24px", tail_light="railcar_24px_1"
+        class_name="PaxRailcarTrailerCar",
+        chassis="4_axle_ng_24px",
+        tail_light="railcar_24px_1",
     )
 
     result.append(consist_factory)

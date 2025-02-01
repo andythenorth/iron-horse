@@ -1,4 +1,4 @@
-from train import IngotCarConsist, IngotCar
+from train import IngotCarConsist
 
 
 def main(roster_id, **kwargs):

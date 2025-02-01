@@ -1,4 +1,4 @@
-from train import ReeferCarConsistType2, ExpressCar
+from train import ReeferCarConsistType2
 
 
 def main(roster_id, **kwargs):

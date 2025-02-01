@@ -1,4 +1,4 @@
-from train import MailHighSpeedCarConsist, ExpressMailCar
+from train import MailHighSpeedCarConsist
 
 
 def main(roster_id, **kwargs):

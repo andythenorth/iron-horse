@@ -1,4 +1,4 @@
-from train import ExpressCarConsist, ExpressCar
+from train import ExpressCarConsist
 
 
 def main(roster_id, **kwargs):
@@ -19,7 +19,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="ExpressCar", chassis="3_axle_solid_express_16px")
+    consist_factory.add_unit(
+        class_name="ExpressCar", chassis="3_axle_solid_express_16px"
+    )
 
     result.append(consist_factory)
 
@@ -32,7 +34,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="ExpressCar", chassis="3_axle_solid_express_16px")
+    consist_factory.add_unit(
+        class_name="ExpressCar", chassis="3_axle_solid_express_16px"
+    )
 
     result.append(consist_factory)
 
@@ -45,7 +49,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="ExpressCar", chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(
+        class_name="ExpressCar", chassis="4_axle_solid_express_24px"
+    )
 
     result.append(consist_factory)
 
@@ -58,7 +64,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="ExpressCar", chassis="3_axle_solid_express_16px")
+    consist_factory.add_unit(
+        class_name="ExpressCar", chassis="3_axle_solid_express_16px"
+    )
 
     result.append(consist_factory)
 
@@ -71,7 +79,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="ExpressCar", chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(
+        class_name="ExpressCar", chassis="4_axle_solid_express_24px"
+    )
 
     result.append(consist_factory)
 
@@ -84,7 +94,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="ExpressCar", chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(
+        class_name="ExpressCar", chassis="4_axle_solid_express_32px"
+    )
 
     result.append(consist_factory)
 
@@ -97,7 +109,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="ExpressCar", chassis="2_axle_solid_express_16px")
+    consist_factory.add_unit(
+        class_name="ExpressCar", chassis="2_axle_solid_express_16px"
+    )
 
     result.append(consist_factory)
 
@@ -110,7 +124,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="ExpressCar", chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(
+        class_name="ExpressCar", chassis="4_axle_solid_express_24px"
+    )
 
     result.append(consist_factory)
 
@@ -123,7 +139,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="ExpressCar", chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(
+        class_name="ExpressCar", chassis="4_axle_solid_express_32px"
+    )
 
     result.append(consist_factory)
 
@@ -136,7 +154,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="ExpressCar", chassis="2_axle_solid_express_16px")
+    consist_factory.add_unit(
+        class_name="ExpressCar", chassis="2_axle_solid_express_16px"
+    )
 
     result.append(consist_factory)
 
@@ -149,7 +169,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="ExpressCar", chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(
+        class_name="ExpressCar", chassis="4_axle_solid_express_24px"
+    )
 
     result.append(consist_factory)
 
@@ -162,7 +184,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="ExpressCar", chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(
+        class_name="ExpressCar", chassis="4_axle_solid_express_32px"
+    )
 
     result.append(consist_factory)
 

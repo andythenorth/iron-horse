@@ -1,4 +1,4 @@
-from train import PassengerCarConsist, PaxCar
+from train import PassengerCarConsist
 
 
 def main(roster_id, **kwargs):

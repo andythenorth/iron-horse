@@ -1,4 +1,4 @@
-from train import BulkOpenCarMineralHighSideConsist, FreightCar
+from train import BulkOpenCarMineralHighSideConsist
 
 
 def main(roster_id, **kwargs):
@@ -122,7 +122,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_gapped_greebled_16px")
+    consist_factory.add_unit(
+        class_name="FreightCar", chassis="2_axle_gapped_greebled_16px"
+    )
 
     result.append(consist_factory)
 
@@ -135,7 +137,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_gapped_greebled_24px")
+    consist_factory.add_unit(
+        class_name="FreightCar", chassis="2_axle_gapped_greebled_24px"
+    )
 
     result.append(consist_factory)
 
@@ -148,7 +152,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_gapped_greebled_32px")
+    consist_factory.add_unit(
+        class_name="FreightCar", chassis="4_axle_gapped_greebled_32px"
+    )
 
     result.append(consist_factory)
 

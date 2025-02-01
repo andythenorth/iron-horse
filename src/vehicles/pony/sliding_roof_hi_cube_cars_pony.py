@@ -1,4 +1,4 @@
-from train import SlidingRoofCarConsistHiCube, FreightCar
+from train import SlidingRoofCarConsistHiCube
 
 
 def main(roster_id, **kwargs):

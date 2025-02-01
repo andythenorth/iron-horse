@@ -1,4 +1,4 @@
-from train import MineralCoveredHopperCarSaltSwingRoofConsist, FreightCar
+from train import MineralCoveredHopperCarSaltSwingRoofConsist
 
 
 def main(roster_id, **kwargs):
@@ -15,7 +15,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_1cc_filled_hoppers_24px")
+    consist_factory.add_unit(
+        class_name="FreightCar", chassis="2_axle_1cc_filled_hoppers_24px"
+    )
 
     result.append(consist_factory)
 
@@ -28,7 +30,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_1cc_filled_hoppers_32px")
+    consist_factory.add_unit(
+        class_name="FreightCar", chassis="4_axle_1cc_filled_hoppers_32px"
+    )
 
     result.append(consist_factory)
 

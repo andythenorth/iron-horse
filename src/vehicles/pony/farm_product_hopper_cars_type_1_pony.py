@@ -1,4 +1,4 @@
-from train import FarmProductsHopperCarConsistType1, FreightCar
+from train import FarmProductsHopperCarConsistType1
 
 
 def main(roster_id, **kwargs):
@@ -134,7 +134,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_chute_greebled_24px")
+    consist_factory.add_unit(
+        class_name="FreightCar", chassis="2_axle_chute_greebled_24px"
+    )
 
     result.append(consist_factory)
 
@@ -147,7 +149,9 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_chute_greebled_alt_32px")
+    consist_factory.add_unit(
+        class_name="FreightCar", chassis="4_axle_chute_greebled_alt_32px"
+    )
 
     result.append(consist_factory)
 

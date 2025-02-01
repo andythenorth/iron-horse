@@ -1,4 +1,4 @@
-from train import PieceGoodsCarManufacturingPartsRandomisedConsist, FreightCar
+from train import PieceGoodsCarManufacturingPartsRandomisedConsist
 
 
 def main(roster_id, **kwargs):

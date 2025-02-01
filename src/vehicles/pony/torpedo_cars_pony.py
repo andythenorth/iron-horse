@@ -1,4 +1,4 @@
-from train import TorpedoCarConsist, TorpedoCar
+from train import TorpedoCarConsist
 
 
 def main(roster_id, **kwargs):

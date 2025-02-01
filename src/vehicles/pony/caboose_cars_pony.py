@@ -1,4 +1,4 @@
-from train import CabooseCarConsist, CabooseCar
+from train import CabooseCarConsist
 
 
 def main(roster_id, **kwargs):

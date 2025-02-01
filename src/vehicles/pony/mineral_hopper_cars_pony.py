@@ -1,4 +1,4 @@
-from train import HopperCarMineralConsist, FreightCar
+from train import HopperCarMineralConsist
 
 
 def main(roster_id, **kwargs):
@@ -136,7 +136,9 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_filled_greebled_24px")
+    consist_factory.add_unit(
+        class_name="FreightCar", chassis="2_axle_filled_greebled_24px"
+    )
 
     result.append(consist_factory)
 
@@ -149,7 +151,9 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_filled_greebled_32px")
+    consist_factory.add_unit(
+        class_name="FreightCar", chassis="4_axle_filled_greebled_32px"
+    )
 
     result.append(consist_factory)
 

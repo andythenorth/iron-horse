@@ -1,4 +1,4 @@
-from train import HopperCarSkipConsist, FreightCar
+from train import HopperCarSkipConsist
 
 
 def main(roster_id, **kwargs):

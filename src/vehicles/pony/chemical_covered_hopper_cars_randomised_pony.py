@@ -1,4 +1,4 @@
-from train import MineralCoveredHopperCarSaltRandomisedConsist, FreightCar
+from train import MineralCoveredHopperCarSaltRandomisedConsist
 
 
 def main(roster_id, **kwargs):
