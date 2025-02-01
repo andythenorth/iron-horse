@@ -42,4 +42,8 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
+    consist_factory = consist_factory.clone(base_numeric_id=34940)
+
+    result.append(consist_factory)
+
     return result

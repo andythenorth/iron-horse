@@ -348,10 +348,13 @@ class Roster(object):
             engine_module_name = importlib.import_module(
                 "." + engine_module_name, package_name
             )
-            module_result = engine_module_name.main()
-            for cabbage_consist_factory in module_result:
-                cabbage_consist_factory.set_roster_ids(self.id, roster_id_providing_module)
-                consist = cabbage_consist_factory.init_consist()
+            for consist_factory in engine_module_name.main():
+                if consist_factory.cloned_from_consist_factory is not None:
+                    # TEMP UNTIL CLONES WORK
+                    print("CABBAGE 3810 - FOUND CLONE of", consist_factory.kwargs["id"])
+                    continue
+                consist_factory.set_roster_ids(self.id, roster_id_providing_module)
+                consist = consist_factory.init_consist()
                 self.engine_consists.append(consist)
                 # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
                 for cloned_consist in consist.clones:
@@ -385,12 +388,11 @@ class Roster(object):
                     wagon_module = importlib.import_module(
                         "." + wagon_module_name, package_name
                     )
-                    module_result = wagon_module.main()
-                    for cabbage_consist_factory in module_result:
-                        cabbage_consist_factory.set_roster_ids(
+                    for consist_factory in wagon_module.main():
+                        consist_factory.set_roster_ids(
                             self.id, roster_id_providing_module
                         )
-                        cabbage_consist_factory.init_consist()
+                        consist_factory.init_consist()
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name
