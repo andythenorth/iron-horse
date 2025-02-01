@@ -1,8 +1,9 @@
-from train import TGVMiddleMailEngineConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = TGVMiddleMailEngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="TGVMiddleMailEngineConsist",
         roster_id=roster_id,
         id="rapide_middle_mail",
         base_numeric_id=6400,
@@ -17,7 +18,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         class_name="ElectricHighSpeedMailUnit",
         weight=42,
         spriterow_num=0,
@@ -26,7 +27,7 @@ def main(roster_id, **kwargs):
         effects={}, # suppress visual effects
     )
 
-    consist.description = """"""
-    consist.foamer_facts = """TGV Sud-Est, with TGV 001-style distributed traction"""
+    consist_factory.description = """"""
+    consist_factory.foamer_facts = """TGV Sud-Est, with TGV 001-style distributed traction"""
 
-    return consist
+    return consist_factory

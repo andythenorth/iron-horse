@@ -2,7 +2,7 @@ from train import SnowploughEngineConsist
 
 
 def main(roster_id, **kwargs):
-    consist = SnowploughEngineConsist(
+    consist_factory = SnowploughEngineConsist(
         roster_id=roster_id,
         id="snowplough_ibex_gen_2",
         base_numeric_id=9020,
@@ -12,9 +12,9 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(class_name="SnowploughUnit", weight=50, vehicle_length=4)
+    consist_factory.add_unit(class_name="SnowploughUnit", weight=50, vehicle_length=4)
 
-    consist.description = """"""
-    consist.foamer_facts = """"""
+    consist_factory.description = """"""
+    consist_factory.foamer_facts = """"""
 
-    return consist
+    return consist_factory

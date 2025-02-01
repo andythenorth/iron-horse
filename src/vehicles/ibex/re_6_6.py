@@ -1,8 +1,9 @@
-from train import EngineConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="re_6_6",
         base_numeric_id=40,
@@ -19,14 +20,14 @@ def main(roster_id, **kwargs):
     )
 
     # !! Re 6/6 is only 63ft IRL, so 8/8, but that's weird because 10k HP in 8/8 is weird, so lengthen and articulate
-    consist.add_unit(
+    consist_factory.add_unit(
         class_name="ElectricEngineUnit", weight=75, vehicle_length=5, spriterow_num=0
     )
-    consist.add_unit(
+    consist_factory.add_unit(
         class_name="ElectricEngineUnit", weight=75, vehicle_length=5, spriterow_num=1
     )
 
-    consist.description = """ """
-    consist.foamer_facts = """SBB Re 6/6"""
+    consist_factory.description = """ """
+    consist_factory.foamer_facts = """SBB Re 6/6"""
 
-    return consist
+    return consist_factory

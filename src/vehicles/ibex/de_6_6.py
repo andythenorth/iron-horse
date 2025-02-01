@@ -1,8 +1,9 @@
-from train import EngineConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="de_6_6",
         base_numeric_id=34760,
@@ -26,11 +27,11 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         class_name="ElectricEngineUnit", weight=105, vehicle_length=6, spriterow_num=0
     )
 
-    consist.description = """ """
-    consist.foamer_facts = """SBB De 6/6 <i>Seetal Krokodil</i>"""
+    consist_factory.description = """ """
+    consist_factory.foamer_facts = """SBB De 6/6 <i>Seetal Krokodil</i>"""
 
-    return consist
+    return consist_factory

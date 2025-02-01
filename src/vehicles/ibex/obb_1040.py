@@ -1,8 +1,9 @@
-from train import EngineConsist
+from train import ConsistFactory
 
 
 def main(roster_id, **kwargs):
-    consist = EngineConsist(
+    consist_factory = ConsistFactory(
+        class_name="EngineConsist",
         roster_id=roster_id,
         id="obb_1040",
         base_numeric_id=17260,
@@ -26,11 +27,11 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         class_name="ElectricEngineUnit", weight=105, vehicle_length=6, spriterow_num=0
     )
 
-    consist.description = """ """
-    consist.foamer_facts = """OBB 1040"""
+    consist_factory.description = """ """
+    consist_factory.foamer_facts = """OBB 1040"""
 
-    return consist
+    return consist_factory
