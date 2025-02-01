@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="MailEngineCabbageDVTConsist",
         id="driving_cab_high_speed_mail_pony_gen_5",
@@ -25,4 +27,6 @@ def main(**kwargs):
         """BR MK3 Driving Van Trailer (DVT) with added generator"""
     )
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

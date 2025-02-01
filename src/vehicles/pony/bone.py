@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="bone",
@@ -45,4 +47,6 @@ def main(**kwargs):
     # IRL the quote is Brian Clough
     consist_factory.add_foamer_facts("""BR Class 58""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

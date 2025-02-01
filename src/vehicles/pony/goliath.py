@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="goliath",
@@ -30,4 +32,6 @@ def main(**kwargs):
     consist_factory.add_description("""It gets the job done either way.""")
     consist_factory.add_foamer_facts("""YEC <i>Janus</i>, Corus <i>Trojan</i>""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

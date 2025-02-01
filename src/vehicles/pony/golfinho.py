@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="FixedFormationRailcarCombineConsist",
         id="golfinho",
@@ -52,4 +54,6 @@ def main(**kwargs):
     )
     consist_factory.add_foamer_facts("""Stadler SPATZ""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

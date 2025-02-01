@@ -5,6 +5,7 @@ def main(**kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
+
     consist_factory = ConsistFactory(
         class_name="FarmProductsBoxCarConsistType1",
         base_numeric_id=30350,
@@ -47,6 +48,7 @@ def main(**kwargs):
     result.append(consist_factory)
 
     # --------------- pony --------------------------------------------------------------------------
+
     consist_factory = ConsistFactory(
         class_name="FarmProductsBoxCarConsistType1",
         base_numeric_id=25390,

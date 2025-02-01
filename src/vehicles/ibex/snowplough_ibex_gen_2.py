@@ -1,8 +1,11 @@
-from train import SnowploughEngineConsist
+from train import ConsistFactory
 
 
 def main(**kwargs):
-    consist_factory = SnowploughEngineConsist(
+    result = []
+
+    consist_factory = ConsistFactory(
+        class_name="SnowploughEngineConsist",
         id="snowplough_ibex_gen_2",
         base_numeric_id=9020,
         name="Snowplough",
@@ -16,4 +19,6 @@ def main(**kwargs):
     consist_factory.add_description("""""")
     consist_factory.add_foamer_facts("""""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

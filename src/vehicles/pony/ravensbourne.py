@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="MailEngineMetroConsist",
         id="ravensbourne",
@@ -29,4 +31,6 @@ def main(**kwargs):
     consist_factory.add_description("""Is that lamp light blinking?""")
     consist_factory.add_foamer_facts("""Metropolitan Railway electric multiple units""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

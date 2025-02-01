@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="PassengerEngineRailbusConsist",
         id="mumble_single",
@@ -34,4 +36,6 @@ def main(**kwargs):
         """Corsican CFC Autorail Billard, CFC X2000/X5000"""
     )
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

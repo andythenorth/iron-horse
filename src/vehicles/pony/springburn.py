@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="springburn",
@@ -17,4 +19,6 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=0
     )
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

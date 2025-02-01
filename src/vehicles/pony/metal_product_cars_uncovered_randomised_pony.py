@@ -5,6 +5,7 @@ def main(**kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
+
     consist_factory = ConsistFactory(
         class_name="MetalProductCarUncoveredRandomisedConsist",
         base_numeric_id=23180,

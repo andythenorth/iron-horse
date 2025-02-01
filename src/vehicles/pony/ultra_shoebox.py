@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="ultra_shoebox",
@@ -45,4 +47,6 @@ def main(**kwargs):
         """Network Rail / GBRF Class 73/9 (re-engineered), BR Class 74, proposed Class 75"""
     )
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

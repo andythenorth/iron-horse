@@ -5,6 +5,7 @@ def main(**kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
+
     consist_factory = ConsistFactory(
         class_name="LogCarConsist",
         base_numeric_id=36220,
@@ -34,6 +35,7 @@ def main(**kwargs):
     result.append(consist_factory)
 
     """ # restore in next version
+
     consist_factory = ConsistFactory(
         class_name="LogCarConsist",
         roster_id_providing_module = kwargs["roster_id_providing_module"],

@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="PassengerEngineCabControlCarConsist",
         id="driving_cab_passenger_ng_pony_gen_4",
@@ -25,4 +27,6 @@ def main(**kwargs):
         """KiwiRail SRV driving cab conversion of British Rail MK2 carriage"""
     )
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

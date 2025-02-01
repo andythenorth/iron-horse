@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="vectron_dual_mode",
@@ -36,4 +38,6 @@ def main(**kwargs):
     consist_factory.add_description(""" """)
     consist_factory.add_foamer_facts("""Siemens Vectron Dual-Mode""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="pikel",
@@ -49,4 +51,6 @@ def main(**kwargs):
     # JFDI recalculate power to account for 2 units
     consist_factory.clones[0].set_clone_power_from_clone_source()
     """
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

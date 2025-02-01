@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="gargouille",
@@ -37,4 +39,6 @@ def main(**kwargs):
         """Corsican CFD Locotracteur BB-400, New Zealand DSG class"""
     )
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

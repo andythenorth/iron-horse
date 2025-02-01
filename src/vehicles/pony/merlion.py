@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="merlion",
@@ -46,4 +48,6 @@ def main(**kwargs):
     )
     consist_factory.add_foamer_facts("""BR Class 31, uprated EE 12CSVT prime mover""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

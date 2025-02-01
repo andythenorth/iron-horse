@@ -6,6 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
     """
+
     consist_factory = ConsistFactory(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=37020,
@@ -19,6 +20,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
+
     consist_factory = ConsistFactory(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=32900,
@@ -30,6 +32,7 @@ def main(**kwargs):
     consist_factory.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(consist_factory)
+
 
     consist_factory = ConsistFactory(
         class_name="TankCarStandardRandomisedConsist",
@@ -43,6 +46,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
+
     consist_factory = ConsistFactory(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=35900,
@@ -54,6 +58,7 @@ def main(**kwargs):
     consist_factory.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(consist_factory)
+
 
     consist_factory = ConsistFactory(
         class_name="TankCarStandardRandomisedConsist",
@@ -67,6 +72,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
+
     consist_factory = ConsistFactory(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=35940,
@@ -79,6 +85,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
     """
+
     consist_factory = ConsistFactory(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=35960,

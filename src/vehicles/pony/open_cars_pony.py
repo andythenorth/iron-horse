@@ -48,6 +48,7 @@ def main(**kwargs):
     result.append(consist_factory)
 
     # --------------- narrow gauge -----------------------------------------------------------------
+
     consist_factory = ConsistFactory(
         class_name="OpenCarConsist",
         base_numeric_id=29890,

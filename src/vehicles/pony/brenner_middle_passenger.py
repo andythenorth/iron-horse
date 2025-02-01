@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="TGVMiddlePassengerEngineConsist",
         id="brenner_middle_passenger",
@@ -29,4 +31,6 @@ def main(**kwargs):
     consist_factory.add_description("""And you shall know this velocity.""")
     consist_factory.add_foamer_facts("""Alstom Class 390 <i>Pendolino</i>""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

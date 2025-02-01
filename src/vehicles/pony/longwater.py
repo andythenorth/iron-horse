@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="MailEngineMetroConsist",
         id="longwater",
@@ -31,4 +33,6 @@ def main(**kwargs):
         """London Underground 'Gate' Stock, Standard Stock"""
     )
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

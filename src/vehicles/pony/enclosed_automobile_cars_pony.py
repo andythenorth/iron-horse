@@ -5,6 +5,7 @@ def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
+
     consist_factory = ConsistFactory(
         class_name="AutomobileEnclosedCarConsist",
         base_numeric_id=34410,

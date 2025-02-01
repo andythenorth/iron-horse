@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="TGVCabEngineConsist",
         id="helm_wind_cab",
@@ -37,4 +39,6 @@ def main(**kwargs):
         """BR InterCity 225 (Class 91), BR APT-P, Shinkansen-style distributed traction"""
     )
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

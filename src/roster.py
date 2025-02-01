@@ -348,13 +348,14 @@ class Roster(object):
             engine_module_name = importlib.import_module(
                 "." + engine_module_name, package_name
             )
-            cabbage_consist_factory = engine_module_name.main()
-            cabbage_consist_factory.set_roster_ids(self.id, roster_id_providing_module)
-            consist = cabbage_consist_factory.init_consist()
-            self.engine_consists.append(consist)
-            # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
-            for cloned_consist in consist.clones:
-                self.engine_consists.append(cloned_consist)
+            module_result = engine_module_name.main()
+            for cabbage_consist_factory in module_result:
+                cabbage_consist_factory.set_roster_ids(self.id, roster_id_providing_module)
+                consist = cabbage_consist_factory.init_consist()
+                self.engine_consists.append(consist)
+                # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
+                for cloned_consist in consist.clones:
+                    self.engine_consists.append(cloned_consist)
 
     def init_wagon_modules(self):
         # wagons can be optionally reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module

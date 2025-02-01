@@ -6,6 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
     """
+
     consist_factory = ConsistFactory(
         class_name="BolsterCarHighEndConsist",
         base_numeric_id=30900,
@@ -18,6 +19,7 @@ def main(**kwargs):
     consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
     result.append(consist_factory)
+
 
     consist_factory = ConsistFactory(
         class_name="BolsterCarHighEndConsist",

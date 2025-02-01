@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="defiant",
@@ -31,4 +33,6 @@ def main(**kwargs):
     consist_factory.add_description("""Amazing what they can do these days isn't it?""")
     consist_factory.add_foamer_facts("""Vossloh Eurolight (DRS Class 68)""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

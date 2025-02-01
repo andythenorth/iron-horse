@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="PassengerEngineRailbusConsist",
         id="zipper",
@@ -36,4 +38,6 @@ def main(**kwargs):
     consist_factory.add_description("""It's the same donkey, but with a new saddle.""")
     consist_factory.add_foamer_facts("""BR Class 144e <i>Pacer</i>, Vivarail D-Train""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

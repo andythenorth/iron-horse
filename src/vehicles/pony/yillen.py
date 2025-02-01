@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="yillen",
@@ -36,4 +38,6 @@ def main(**kwargs):
     consist_factory.add_description("""The universe is asymmetric. And so are these.""")
     consist_factory.add_foamer_facts("""BR Class 15, BR Class 16""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

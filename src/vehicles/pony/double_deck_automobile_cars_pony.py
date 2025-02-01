@@ -62,6 +62,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
     """
+
     consist_factory = ConsistFactory(
         class_name="AutomobileDoubleDeckCarConsist",
         roster_id_providing_module = kwargs["roster_id_providing_module"],

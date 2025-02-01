@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="PassengerEngineCabControlCarConsist",
         id="driving_cab_high_speed_passenger_pony_gen_6",
@@ -24,4 +26,6 @@ def main(**kwargs):
         """CAF MK5A Driving Trailer (DT) with added generator"""
     )
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

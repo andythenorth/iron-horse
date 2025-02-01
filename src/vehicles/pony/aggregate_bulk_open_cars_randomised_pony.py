@@ -6,6 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
     """
+
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34810,
@@ -17,6 +18,7 @@ def main(**kwargs):
     consist_factory.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(consist_factory)
+
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
@@ -30,6 +32,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
+
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34460,
@@ -41,6 +44,7 @@ def main(**kwargs):
     consist_factory.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(consist_factory)
+
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
@@ -54,6 +58,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
+
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34440,
@@ -65,6 +70,7 @@ def main(**kwargs):
     consist_factory.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(consist_factory)
+
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",

@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="centaur",
@@ -47,4 +49,6 @@ def main(**kwargs):
         """proposed BR Class 38 (Class 37 replacement), body shape derived from SNCF <i>Nez Cassés</i> ('broken nose') locomotive and originally proposed for BR Class 60; also Portugese CP Class 1930"""
     )
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

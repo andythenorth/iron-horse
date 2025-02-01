@@ -7,6 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # no gen 1 for food tank cars - straight to gen 2
     """
+
     consist_factory = ConsistFactory(
         class_name="ExpressFoodTankCarConsistType2",
         base_numeric_id=17200,
@@ -18,6 +19,7 @@ def main(**kwargs):
     consist_factory.add_unit(class_name="ExpressCar", chassis="2_axle_filled_16px")
 
     result.append(consist_factory)
+
 
     consist_factory = ConsistFactory(
         class_name="ExpressFoodTankCarConsistType2",
@@ -31,6 +33,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
+
     consist_factory = ConsistFactory(
         class_name="ExpressFoodTankCarConsistType2",
         base_numeric_id=17220,
@@ -42,6 +45,7 @@ def main(**kwargs):
     consist_factory.add_unit(class_name="ExpressCar", chassis="3_axle_filled_16px")
 
     result.append(consist_factory)
+
 
     consist_factory = ConsistFactory(
         class_name="ExpressFoodTankCarConsistType2",
@@ -55,6 +59,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
+
     consist_factory = ConsistFactory(
         class_name="ExpressFoodTankCarConsistType2",
         base_numeric_id=28190,
@@ -66,6 +71,7 @@ def main(**kwargs):
     consist_factory.add_unit(class_name="ExpressCar", chassis="4_axle_sparse_32px")
 
     result.append(consist_factory)
+
 
     consist_factory = ConsistFactory(
         class_name="ExpressFoodTankCarConsistType2",
@@ -79,6 +85,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
+
     consist_factory = ConsistFactory(
         class_name="ExpressFoodTankCarConsistType2",
         base_numeric_id=16970,
@@ -90,6 +97,7 @@ def main(**kwargs):
     consist_factory.add_unit(class_name="ExpressCar", chassis="4_axle_sparse_24px")
 
     result.append(consist_factory)
+
 
     consist_factory = ConsistFactory(
         class_name="ExpressFoodTankCarConsistType2",

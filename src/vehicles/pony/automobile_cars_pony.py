@@ -10,6 +10,7 @@ def main(**kwargs):
 
     # !! 16px version needs spritelayer cargo support finishing for 16px cargo sprites
     """
+
     consist_factory = ConsistFactory(
         class_name="AutomobileCarConsist",
         roster_id_providing_module = kwargs["roster_id_providing_module"],
@@ -23,6 +24,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
     """
+
     consist_factory = ConsistFactory(
         class_name="AutomobileCarConsist",
         base_numeric_id=22540,

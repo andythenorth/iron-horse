@@ -6,6 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
     """
+
     consist_factory = ConsistFactory(
         class_name="MetalProductCarCoveredRandomisedConsist",
         base_numeric_id=25670,
@@ -23,6 +24,7 @@ def main(**kwargs):
     result.append(consist_factory)
 
     """
+
     consist_factory = ConsistFactory(
         class_name="MetalProductCarCoveredRandomisedConsist",
         base_numeric_id=25680,

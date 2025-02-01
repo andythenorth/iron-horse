@@ -75,6 +75,7 @@ class ConsistFactory(object):
         consist_cls = getattr(sys.modules[__name__], self.class_name)
         consist = consist_cls(consist_factory=self, **self.kwargs)
         # !! CABBAGE
+        # !! these aren't actually unit factories yet
         for unit_factory in self.unit_factories:
             try:
                 unit_cls = getattr(sys.modules[__name__], unit_factory.class_name)
@@ -84,6 +85,8 @@ class ConsistFactory(object):
             consist.add_unit(unit_cls, factory_cabbage=True, **unit_factory.kwargs)
 
         # !! CABBAGE
+        # !! these aren't actually clone factories yet
+        # !! do we want clones, or do we want to add more consist factories in the engine module, similar to wagons?
         for clone_factory in self.clone_factories:
             consist.clone(**clone_factory)
 

@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="revolution",
@@ -38,4 +40,6 @@ def main(**kwargs):
         """Vossloh Euro Dual (DRS Class 88, ROG Class 93)"""
     )
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

@@ -6,6 +6,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="AutoCoachCombineConsist",
         id="auto_coach_pony_gen_2",
@@ -37,4 +39,6 @@ def main(**kwargs):
         """SR and LMS autocoach sets, LNER articulated coach sets"""
     )
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

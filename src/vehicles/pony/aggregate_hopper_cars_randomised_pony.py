@@ -5,6 +5,7 @@ def main(**kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
+
     consist_factory = ConsistFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=35230,
@@ -45,6 +46,7 @@ def main(**kwargs):
     result.append(consist_factory)
 
     # --------------- standard gauge ---------------------------------------------------------------
+
     consist_factory = ConsistFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=34810,

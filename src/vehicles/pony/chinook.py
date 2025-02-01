@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="chinook",
@@ -41,4 +43,6 @@ def main(**kwargs):
     # also JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
     consist_factory.clones[0].random_reverse = True
     """
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

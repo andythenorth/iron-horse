@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="foxhound",
@@ -30,4 +32,6 @@ def main(**kwargs):
 
     consist_factory.add_clone(base_numeric_id=810, clone_units=[2])
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

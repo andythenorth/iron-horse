@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="solano",
@@ -35,4 +37,6 @@ def main(**kwargs):
     # see also https://trainspo.com/photo/98083/
     consist_factory.add_foamer_facts(""" Portugese CP Class 9020 (Alstom AD 12 B)""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result

@@ -6,6 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
     # gen 2 start eh?
+
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarScrapMetalConsistType1",
         base_numeric_id=19070,

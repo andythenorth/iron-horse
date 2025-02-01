@@ -6,6 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
     """
+
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarConsistType3",
         base_numeric_id=24010,
@@ -17,6 +18,7 @@ def main(**kwargs):
     consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_gapped_16px")
 
     result.append(consist_factory)
+
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarConsistType3",
@@ -30,6 +32,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
     """
+
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarConsistType3",
         base_numeric_id=34860,

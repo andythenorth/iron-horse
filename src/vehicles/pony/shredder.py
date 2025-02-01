@@ -2,6 +2,8 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
+    result = []
+
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
         id="shredder",
@@ -29,4 +31,6 @@ def main(**kwargs):
     )
     consist_factory.add_foamer_facts("""EMD JT42HW-HS (Class 67)""")
 
-    return consist_factory
+    result.append(consist_factory)
+
+    return result
