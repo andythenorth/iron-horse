@@ -108,15 +108,6 @@ suppressed_rosters = ["moose", "ibex"]
 [STR_NAME_SUFFIX_LIVERY_MIX_SULPHUR_STRAW]
 suppressed_rosters = ["moose", "ibex"]
 
-[STR_BADGE_POWER_SOURCE_BATTERY_HYBRID]
-suppressed_rosters = ["moose", "ibex"]
-
-[STR_BADGE_POWER_SOURCE_METRO]
-suppressed_rosters = ["moose", "ibex"]
-
-[STR_BADGE_POWER_SOURCE_STEAM]
-suppressed_rosters = ["moose", "ibex"]
-
 [STR_NAME_SUFFIX_TRAILER]
 suppressed_rosters = ["moose", "ibex"]
 
@@ -136,7 +127,7 @@ suppressed_rosters = ["moose", "ibex"]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_GROUP_CEMENT_SILO_CARS]
-suppressed_rosters = ["moose", "ibex"]
+suppressed_rosters = ["moose"]
 
 [STR_WAGON_GROUP_CHEMICAL_TANK_CARS_RANDOMISED]
 suppressed_rosters = ["moose", "ibex"]
@@ -217,7 +208,7 @@ suppressed_rosters = ["moose", "ibex"]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_GROUP_PRODUCT_TANK_CARS]
-suppressed_rosters = ["moose", "ibex"]
+suppressed_rosters = ["moose"]
 
 [STR_WAGON_GROUP_RESTAURANT_CARS]
 suppressed_rosters = ["moose", "ibex"]
@@ -250,7 +241,7 @@ suppressed_rosters = ["moose", "ibex"]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_WAGON_GROUP_TANK_CARS]
-suppressed_rosters = ["moose", "ibex"]
+suppressed_rosters = ["moose"]
 
 [STR_WAGON_GROUP_TIPPLER_BULK_OPEN_CARS]
 suppressed_rosters = ["moose", "ibex"]
@@ -322,7 +313,7 @@ suppressed_rosters = ["moose", "ibex"]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_NAME_SUFFIX_CEMENT_SILO_CAR_TYPE_1]
-suppressed_rosters = ["moose", "ibex"]
+suppressed_rosters = ["moose"]
 
 [STR_NAME_SUFFIX_CEMENT_SILO_CAR_TYPE_2]
 suppressed_rosters = ["moose", "ibex"]
@@ -526,7 +517,7 @@ suppressed_rosters = ["moose", "ibex"]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_1]
-suppressed_rosters = ["moose", "ibex"]
+suppressed_rosters = ["moose"]
 
 [STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_2]
 suppressed_rosters = ["moose", "ibex"]
@@ -592,7 +583,7 @@ suppressed_rosters = ["moose", "ibex"]
 suppressed_rosters = ["moose", "ibex"]
 
 [STR_NAME_SUFFIX_TANK_CAR_TYPE_1]
-suppressed_rosters = ["moose", "ibex"]
+suppressed_rosters = ["moose"]
 
 [STR_NAME_SUFFIX_TANK_CAR_TYPE_2]
 suppressed_rosters = ["moose", "ibex"]
@@ -738,18 +729,6 @@ suppressed_rosters = ["moose"]
 [STR_BADGE_POWER_SOURCE_ELECTRODIESEL]
 suppressed_rosters = ["moose"]
 
-[STR_BADGE_WAGON_LENGTH_SMALL]
-suppressed_rosters = ["moose"]
-
-[STR_BADGE_WAGON_LENGTH_MEDIUM]
-suppressed_rosters = ["moose"]
-
-[STR_BADGE_WAGON_LENGTH_LARGE]
-suppressed_rosters = ["moose"]
-
-[STR_BADGE_WAGON_LENGTH_TWIN]
-suppressed_rosters = ["moose"]
-
 [STR_NAME_SUFFIX_RANDOMISED_WAGON]
 suppressed_rosters = ["moose"]
 
@@ -778,9 +757,6 @@ suppressed_rosters = ["moose"]
 suppressed_rosters = ["moose"]
 
 [STR_WAGON_GROUP_MERCHANDISE_BOX_CARS]
-suppressed_rosters = ["moose"]
-
-[STR_WAGON_GROUP_MORE]
 suppressed_rosters = ["moose"]
 
 [STR_WAGON_GROUP_PIPE_CARS]
@@ -922,12 +898,6 @@ suppressed_rosters = ["moose"]
 suppressed_rosters = ["moose"]
 
 [STR_NAME_SUFFIX_TORPEDO_CAR]
-suppressed_rosters = ["moose"]
-
-[STR_BADGE_ROLE_INTERCITY_EXPRESS]
-suppressed_rosters = ["moose"]
-
-[STR_BADGE_ROLE_SUBURBAN]
 suppressed_rosters = ["moose"]
 
 [STR_POWER_BY_POWER_SOURCE_TWO_SOURCES]
