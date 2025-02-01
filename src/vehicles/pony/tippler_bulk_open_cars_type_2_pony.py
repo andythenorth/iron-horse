@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35900,
         gen=3,
         subtype="A",
@@ -22,7 +21,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35920,
         gen=3,
         subtype="B",
@@ -38,7 +36,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27290,
         gen=3,
         subtype="A",
@@ -51,7 +48,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27310,
         gen=3,
         subtype="B",
@@ -64,7 +60,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27330,
         gen=4,
         subtype="A",
@@ -77,7 +72,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27350,
         gen=4,
         subtype="B",
@@ -92,7 +86,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27370,
         gen=5,
         subtype="B",
@@ -107,7 +100,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27390,
         gen=5,
         subtype="C",

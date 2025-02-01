@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="DedicatedCoilCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25860,
         gen=4,
         subtype="A",
@@ -21,7 +20,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="DedicatedCoilCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25870,
         gen=4,
         subtype="B",
@@ -34,7 +32,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="DedicatedCoilCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25880,
         gen=4,
         subtype="C",
@@ -51,7 +48,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="DedicatedCoilCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25890,
         gen=5,
         subtype="B",
@@ -64,7 +60,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="DedicatedCoilCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25900,
         gen=5,
         subtype="C",

@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralLowSideConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31510,
         gen=1,
         subtype="A",
@@ -23,7 +22,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralLowSideConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31530,
         gen=3,
         subtype="A",
@@ -36,7 +34,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralLowSideConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31550,
         gen=3,
         subtype="B",
@@ -49,7 +46,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralLowSideConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31570,
         gen=4,
         subtype="A",
@@ -62,7 +58,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralLowSideConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31590,
         gen=4,
         subtype="B",
@@ -75,7 +70,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralLowSideConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31410,
         gen=5,
         subtype="A",
@@ -90,7 +84,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralLowSideConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31470,
         gen=5,
         subtype="B",
@@ -105,7 +98,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralLowSideConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31490,
         gen=5,
         subtype="C",

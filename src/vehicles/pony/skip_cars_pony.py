@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="HopperCarSkipConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=6120,
         gen=1,
         subtype="U",

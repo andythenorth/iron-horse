@@ -9,7 +9,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17240,
         gen=2,
         subtype="A",
@@ -22,7 +21,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17250,
         gen=3,
         subtype="A",
@@ -35,7 +33,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35830,
         gen=4,
         subtype="A",
@@ -48,7 +45,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35840,
         gen=4,
         subtype="B",
@@ -61,7 +57,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35860,
         gen=5,
         subtype="B",
@@ -74,7 +69,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35870,
         gen=5,
         subtype="C",

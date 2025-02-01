@@ -8,7 +8,6 @@ def main(**kwargs):
     """
     consist_factory = ConsistFactory(
         class_name="HopperCarAggregateConsistType3",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34300,
         gen=3,
         intro_year_offset=20,  # let's be a little bit later for this one
@@ -23,7 +22,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="HopperCarAggregateConsistType3",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32850,
         gen=3,
         intro_year_offset=20,  # let's be a little bit later for this one
@@ -40,7 +38,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="HopperCarAggregateConsistType3",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20280,
         gen=5,
         subtype="A",
@@ -53,7 +50,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="HopperCarAggregateConsistType3",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22980,
         gen=5,
         subtype="B",
@@ -66,7 +62,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="HopperCarAggregateConsistType3",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=20300,
         gen=5,
         subtype="C",

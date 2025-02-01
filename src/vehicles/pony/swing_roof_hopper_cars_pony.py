@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarSwingRoofConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26200,
         gen=5,
         subtype="B",
@@ -23,7 +22,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarSwingRoofConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16660,
         gen=5,
         subtype="C",

@@ -7,7 +7,6 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
     consist_factory = ConsistFactory(
         class_name="PanoramicCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35130,
         gen=4,
         subtype="B",
@@ -23,7 +22,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PanoramicCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35140,
         gen=4,
         subtype="C",

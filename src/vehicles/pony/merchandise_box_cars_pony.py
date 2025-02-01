@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarMerchandiseConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24370,
         gen=1,
         subtype="A",
@@ -24,7 +23,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarMerchandiseConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24390,
         gen=3,
         subtype="A",
@@ -38,7 +36,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarMerchandiseConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24410,
         gen=3,
         subtype="B",
@@ -54,7 +51,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarMerchandiseConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16480,
         gen=3,
         subtype="A",
@@ -67,7 +63,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarMerchandiseConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25610,
         gen=3,
         subtype="B",
@@ -80,7 +75,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarMerchandiseConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24830,
         gen=4,
         subtype="A",
@@ -93,7 +87,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarMerchandiseConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25630,
         gen=4,
         subtype="B",
@@ -106,7 +99,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarMerchandiseConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16450,
         gen=4,
         subtype="C",
@@ -122,7 +114,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarMerchandiseConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25650,
         gen=5,
         subtype="B",
@@ -138,7 +129,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarMerchandiseConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24810,
         gen=5,
         subtype="C",

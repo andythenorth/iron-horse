@@ -9,7 +9,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileLowFloorCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26720,
         gen=4,
         subtype="B",
@@ -24,7 +23,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileLowFloorCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26730,
         gen=4,
         subtype="C",
@@ -39,7 +37,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileLowFloorCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26740,
         gen=5,
         subtype="B",
@@ -54,7 +51,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileLowFloorCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26750,
         gen=5,
         subtype="C",

@@ -7,7 +7,6 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     consist_factory = ConsistFactory(
         class_name="AutomobileEnclosedCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34410,
         gen=3,
         subtype="B",
@@ -22,7 +21,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileEnclosedCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18000,
         gen=3,
         subtype="C",
@@ -37,7 +35,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileEnclosedCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34420,
         gen=4,
         subtype="B",
@@ -52,7 +49,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileEnclosedCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18010,
         gen=4,
         subtype="C",
@@ -67,7 +63,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileEnclosedCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34430,
         gen=5,
         subtype="B",
@@ -82,7 +77,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileEnclosedCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=18060,
         gen=5,
         subtype="C",

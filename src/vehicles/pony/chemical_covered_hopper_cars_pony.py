@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarSaltConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26840,
         gen=2,
         subtype="A",
@@ -22,7 +21,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarSaltConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=37850,
         gen=3,
         subtype="A",
@@ -36,7 +34,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarSaltConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26860,
         gen=3,
         subtype="B",
@@ -52,7 +49,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarSaltConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=39870,
         gen=2,
         subtype="A",
@@ -65,7 +61,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarSaltConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36880,
         gen=3,
         subtype="A",
@@ -78,7 +73,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarSaltConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26890,
         gen=4,
         subtype="A",
@@ -91,7 +85,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarSaltConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36900,
         gen=4,
         subtype="B",
@@ -104,7 +97,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarSaltConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17340,
         gen=5,
         subtype="A",
@@ -119,7 +111,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarSaltConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26910,
         gen=5,
         subtype="B",
@@ -134,7 +125,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarSaltConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36920,
         gen=5,
         subtype="C",

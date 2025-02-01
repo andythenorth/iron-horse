@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SiloCarCementConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30270,
         gen=4,
         subtype="A",
@@ -21,7 +20,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SiloCarCementConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30280,
         gen=4,
         subtype="B",
@@ -34,7 +32,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SiloCarCementConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30300,
         gen=4,
         subtype="C",
@@ -49,7 +46,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SiloCarCementConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30310,
         gen=5,
         subtype="A",
@@ -64,7 +60,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SiloCarCementConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30380,
         gen=5,
         subtype="B",
@@ -79,7 +74,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SiloCarCementConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30980,
         gen=5,
         subtype="C",

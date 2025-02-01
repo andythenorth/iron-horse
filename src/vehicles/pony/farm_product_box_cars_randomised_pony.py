@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsBoxCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36020,
         gen=2,
         subtype="A",
@@ -21,7 +20,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsBoxCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36030,
         gen=2,
         subtype="B",
@@ -34,7 +32,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsBoxCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36040,
         gen=3,
         subtype="A",
@@ -47,7 +44,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsBoxCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36050,
         gen=3,
         subtype="B",
@@ -60,7 +56,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsBoxCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35940,
         gen=4,
         subtype="A",
@@ -73,7 +68,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsBoxCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=35950,
         gen=4,
         subtype="B",
@@ -86,7 +80,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsBoxCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36000,
         gen=5,
         subtype="B",
@@ -99,7 +92,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsBoxCarRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36010,
         gen=5,
         subtype="C",

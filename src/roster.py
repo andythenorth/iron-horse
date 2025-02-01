@@ -342,18 +342,19 @@ class Roster(object):
 
     def init_engine_modules(self):
         package_name = "vehicles." + self.id
+        roster_id_providing_module = self.id
         # engines
         for engine_module_name in self.engine_module_names:
             engine_module_name = importlib.import_module(
                 "." + engine_module_name, package_name
             )
-            module_result = engine_module_name.main()
-            consist = module_result.init_consist(roster_id=self.id)
+            cabbage_consist_factory = engine_module_name.main()
+            cabbage_consist_factory.set_roster_ids(self.id, roster_id_providing_module)
+            consist = cabbage_consist_factory.init_consist()
             self.engine_consists.append(consist)
             # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
             for cloned_consist in consist.clones:
                 self.engine_consists.append(cloned_consist)
-
 
     def init_wagon_modules(self):
         # wagons can be optionally reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module
@@ -383,11 +384,12 @@ class Roster(object):
                     wagon_module = importlib.import_module(
                         "." + wagon_module_name, package_name
                     )
-                    module_result = wagon_module.main(
-                        roster_id_providing_module=roster_id_providing_module
-                    )
+                    module_result = wagon_module.main()
                     for cabbage_consist_factory in module_result:
-                        cabbage_consist_factory.init_consist(roster_id=self.id)
+                        cabbage_consist_factory.set_roster_ids(
+                            self.id, roster_id_providing_module
+                        )
+                        cabbage_consist_factory.init_consist()
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name
@@ -399,7 +401,6 @@ class Roster(object):
                     )
                 except Exception:
                     raise
-
 
     def init_wagon_recolour_colour_sets(self):
         # wagon recolour liveries can be randomised across multiple colour sets

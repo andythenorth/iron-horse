@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28470,
         gen=3,
         subtype="A",
@@ -21,7 +20,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24590,
         gen=3,
         subtype="B",
@@ -34,7 +32,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34180,
         gen=4,
         subtype="A",
@@ -47,7 +44,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26570,
         gen=4,
         subtype="B",
@@ -60,7 +56,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32080,
         gen=5,
         subtype="B",
@@ -73,7 +68,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarTipplerRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32100,
         gen=5,
         subtype="C",

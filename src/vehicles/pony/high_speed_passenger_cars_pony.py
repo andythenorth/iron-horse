@@ -6,7 +6,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerHighSpeedCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30680,
         gen=5,
         subtype="U",

@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SlagLadleCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24030,
         gen=1,
         subtype="U",
@@ -25,7 +24,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SlagLadleCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23410,
         gen=1,
         subtype="U",
@@ -39,7 +37,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SlagLadleCarConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23420,
         gen=4,
         subtype="U",

@@ -38,7 +38,15 @@ import spritelayer_cargos
 
 class ConsistFactory(object):
     """
-    CABBAGE
+    ConsistFactory instances:
+    - store roster_id
+    - have a list of consists they can make, based on a stored recipe (kwargs)
+    - create a structure of
+        - consist 1
+            - unit(s)
+        - consist n
+            - unit(s)
+    ConsistFactory avoids knowing too much about specific consist types.
     """
 
     def __init__(self, class_name, **kwargs):
@@ -46,6 +54,13 @@ class ConsistFactory(object):
         self.kwargs = kwargs
         self.unit_factories = []
         self.clone_factories = []  # temp hax
+
+    def set_roster_ids(self, roster_id, roster_id_providing_module):
+        # rosters can optionally init consist factories from other rosters
+        # store the roster that inited the consist factory, and the roster that the consist factory module is in the filesystem path for
+        # we don't store the roster object directly as it can fail to pickle with multiprocessing
+        self.roster_id = roster_id
+        self.roster_id_providing_module = roster_id_providing_module
 
     def add_unit(self, class_name, **kwargs):
         # !! CABBAGE not actually a UnitFactory yet
@@ -56,10 +71,12 @@ class ConsistFactory(object):
         # !! clones might be done in the roster version
         self.clone_factories.append(kwargs)
 
-    def init_consist(self, roster_id):
+    def init_consist(self):
         consist_cls = getattr(sys.modules[__name__], self.class_name)
-        consist = consist_cls(consist_factory=self, roster_id=roster_id, **self.kwargs)
+        consist = consist_cls(consist_factory=self, **self.kwargs)
         # shim hax
+        # CABBAGE, these should not be stored in ConsistFactory directly, they should be in kwargs to the consist
+        # they should be added by specific methods
         if getattr(self, "description", None) is not None:
             consist.description = self.description
         if getattr(self, "foamer_facts", None) is not None:
@@ -80,6 +97,29 @@ class ConsistFactory(object):
 
         return consist
 
+    def get_wagon_id(self, base_id, **kwargs):
+        # auto id creator, used for wagons not locos
+        # handled by consist factory not consist, better this way
+        substrings = []
+        # prepend cab_id if present, used for e.g. railcar trailers, HST coaches etc where the wagon matches a specific 'cab' engine
+        if kwargs.get("cab_id", None) is not None:
+            substrings.append(kwargs["cab_id"])
+        # special case NG - extend this for other track_types as needed
+        # 'normal' rail and 'elrail' doesn't require an id modifier
+        if kwargs.get("base_track_type_name", None) == "NG":
+            base_id = base_id + "_ng"
+        if kwargs.get("base_track_type_name", None) == "METRO":
+            base_id = base_id + "_metro"
+        substrings.append(base_id)
+        try:
+            substrings.append(self.roster_id)
+        except:
+            raise Exception(base_id + str(kwargs))
+        substrings.append("gen")
+        substrings.append(str(kwargs["gen"]) + str(kwargs["subtype"]))
+        result = "_".join(substrings)
+        return result
+
 
 class UnitFactory(object):
     """
@@ -97,20 +137,13 @@ class Consist(object):
     Each consist comprises one or more 'units' (visible).
     """
 
-    def __init__(self, consist_factory, **kwargs):
-        self.consist_factory = consist_factory
+    def __init__(self, **kwargs):
+        self.consist_factory = kwargs["consist_factory"]  # mandatory, fail if missing
         self.id = kwargs.get("id", None)
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         # private var, used to store a name substr for engines, composed into name with other strings as needed
         self._name = kwargs.get("name", None)
         self.base_numeric_id = kwargs.get("base_numeric_id", None)
-        # roster is set when the vehicle is registered to a roster, only one roster per vehicle
-        # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
-        self.roster_id = kwargs.get("roster_id")  # just fail if there's no roster
-        # rosters can optionally reuse wagon modules from other rosters, if so, store the roster_id of the origin module (otherwise roster_id is same)
-        self.roster_id_providing_module = kwargs.get(
-            "roster_id_providing_module", self.roster_id
-        )
         # create a structure to hold buyable variants - the method can be over-ridden in consist subclasses to provide specific rules for buyable variants
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
         # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem
@@ -237,6 +270,16 @@ class Consist(object):
             "sprites_additional_liveries_potential", False
         )
 
+    @property
+    def roster_id(self):
+        # just a pass through for convenience
+        return self.consist_factory.roster_id
+
+    @property
+    def roster_id_providing_module(self):
+        # just a pass through for convenience
+        return self.consist_factory.roster_id_providing_module
+
     def clone(self, **kwargs):
         # consists have support for optional clones, which are used to provide variants of different lengths
         # e.g. diesels with 1 or 2 units, and similar
@@ -264,7 +307,9 @@ class Consist(object):
                 "consist"
             ]  # drop this, it's re-added to kwargs later by add_unit, which will cause an error to be thrown
             cloned_consist.add_unit(
-                type(unit).__name__, repeat=kwargs["clone_units"][counter], **unit_kwargs
+                type(unit).__name__,
+                repeat=kwargs["clone_units"][counter],
+                **unit_kwargs,
             )
         cloned_consist.set_clone_power_from_clone_source()
         self.clones.append(cloned_consist)
@@ -2267,10 +2312,10 @@ class CarConsist(Consist):
 
     def __init__(self, speedy=False, **kwargs):
         # self.base_id = '' # provide in subclass
-        id = self.get_wagon_id(self.base_id, **kwargs)
-        kwargs["id"] = id
+        # we can't called super yet, because we need the id
+        # but we need to call the consist factory to get the id, so duplicate the assignment here (Consist will also set it)
+        kwargs["id"] = kwargs["consist_factory"].get_wagon_id(self.base_id, **kwargs)
         super().__init__(**kwargs)
-        self.roster_id_providing_module = kwargs["roster_id_providing_module"]
         self.roster.register_wagon_consist(self)
 
         self._joker = False  # override this in subclass as needed
@@ -2373,25 +2418,6 @@ class CarConsist(Consist):
         ]
         return next_gen_intro_year - self.intro_year
 
-    def get_wagon_id(self, base_id, **kwargs):
-        # auto id creator, used for wagons not locos
-        substrings = []
-        # prepend cab_id if present, used for e.g. railcar trailers, HST coaches etc where the wagon matches a specific 'cab' engine
-        if kwargs.get("cab_id", None) is not None:
-            substrings.append(kwargs["cab_id"])
-        # special case NG - extend this for other track_types as needed
-        # 'normal' rail and 'elrail' doesn't require an id modifier
-        if kwargs.get("base_track_type_name", None) == "NG":
-            base_id = base_id + "_ng"
-        if kwargs.get("base_track_type_name", None) == "METRO":
-            base_id = base_id + "_metro"
-        substrings.append(base_id)
-        substrings.append(kwargs["roster_id"])
-        substrings.append("gen")
-        substrings.append(str(kwargs["gen"]) + str(kwargs["subtype"]))
-        result = "_".join(substrings)
-        return result
-
     def get_input_spritesheet_delegate_id_wagon(
         self, input_spritesheet_delegate_base_id
     ):
@@ -2400,9 +2426,8 @@ class CarConsist(Consist):
                 input_spritesheet_delegate_base_id + "_ng"
             )
 
-        input_spritesheet_delegate_id = self.get_wagon_id(
+        input_spritesheet_delegate_id = self.consist_factory.get_wagon_id(
             base_id=input_spritesheet_delegate_base_id,
-            roster_id=self.roster_id,
             gen=self.gen,
             subtype=self.subtype,
         )

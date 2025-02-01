@@ -7,7 +7,6 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
     consist_factory = ConsistFactory(
         class_name="FarmProductsHopperCarConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31350,
         gen=2,
         subtype="A",
@@ -23,7 +22,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsHopperCarConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31360,
         gen=3,
         subtype="A",
@@ -37,7 +35,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsHopperCarConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31370,
         gen=3,
         subtype="B",
@@ -53,7 +50,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsHopperCarConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23480,
         gen=2,
         subtype="A",
@@ -66,7 +62,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsHopperCarConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23770,
         gen=2,
         subtype="B",
@@ -79,7 +74,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsHopperCarConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24000,
         gen=3,
         subtype="A",
@@ -92,7 +86,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsHopperCarConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23430,
         gen=3,
         subtype="B",
@@ -105,7 +98,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsHopperCarConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23440,
         gen=4,
         subtype="A",
@@ -118,7 +110,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsHopperCarConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23450,
         gen=4,
         subtype="B",
@@ -131,7 +122,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsHopperCarConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23460,
         gen=5,
         subtype="B",
@@ -146,7 +136,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FarmProductsHopperCarConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23470,
         gen=5,
         subtype="C",

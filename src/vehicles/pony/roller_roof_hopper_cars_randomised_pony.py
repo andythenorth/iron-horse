@@ -7,7 +7,6 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarRollerRoofRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24650,
         gen=4,
         subtype="A",
@@ -20,7 +19,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarRollerRoofRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24670,
         gen=4,
         subtype="B",
@@ -33,7 +31,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarRollerRoofRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24690,
         gen=5,
         subtype="A",
@@ -46,7 +43,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarRollerRoofRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24710,
         gen=5,
         subtype="B",

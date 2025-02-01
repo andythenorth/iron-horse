@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BolsterCarConsistRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36600,
         gen=4,
         subtype="B",
@@ -21,7 +20,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BolsterCarConsistRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31080,
         gen=4,
         subtype="C",
@@ -38,7 +36,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BolsterCarConsistRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31090,
         gen=5,
         subtype="B",
@@ -51,7 +48,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BolsterCarConsistRandomisedConsist",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31100,
         gen=5,
         subtype="C",

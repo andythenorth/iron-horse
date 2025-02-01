@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ReeferCarConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34790,
         gen=2,
         subtype="A",
@@ -25,7 +24,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ReeferCarConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31880,
         gen=3,
         subtype="A",
@@ -42,7 +40,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ReeferCarConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31890,
         gen=3,
         subtype="B",
@@ -59,7 +56,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ReeferCarConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36940,
         gen=4,
         subtype="A",
@@ -76,7 +72,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ReeferCarConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28110,
         gen=4,
         subtype="B",
@@ -93,7 +88,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ReeferCarConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31320,
         gen=4,
         subtype="C",
@@ -110,7 +104,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ReeferCarConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32610,
         gen=5,
         subtype="B",
@@ -127,7 +120,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ReeferCarConsistType2",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32620,
         gen=5,
         subtype="C",

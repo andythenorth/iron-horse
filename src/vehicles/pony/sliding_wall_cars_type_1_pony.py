@@ -8,7 +8,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarSlidingWallConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26980,
         gen=3,
         intro_year_offset=15,  # let's be a little bit later for this one
@@ -23,7 +22,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarSlidingWallConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22080,
         gen=3,
         intro_year_offset=15,  # let's be a little bit later for this one
@@ -41,7 +39,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarSlidingWallConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27000,
         gen=4,
         subtype="B",
@@ -55,7 +52,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarSlidingWallConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22100,
         gen=4,
         subtype="C",
@@ -73,7 +69,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarSlidingWallConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27020,
         gen=5,
         subtype="B",
@@ -90,7 +85,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarSlidingWallConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22120,
         gen=5,
         subtype="C",
@@ -107,7 +101,6 @@ def main(**kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarSlidingWallConsistType1",
-        roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=5190,
         gen=5,
         subtype="D",
