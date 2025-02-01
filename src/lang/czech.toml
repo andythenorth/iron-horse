@@ -103,7 +103,7 @@ base = "Plachtový vůz"
 [STR_NAME_SUFFIX_TORPEDO_CAR]
 base = "Torpédový vůz"
 
-[STR_ROLE]
+[STR_BADGE_ROLE]
 base = "{BLACK}Role: {GOLD}{STRING}"
 
 [STR_BADGE_ROLE_GENERAL_PURPOSE]

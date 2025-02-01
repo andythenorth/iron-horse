@@ -91,7 +91,7 @@ base = "Carro cisterna"
 [STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1]
 base = "Carro telonato"
 
-[STR_ROLE]
+[STR_BADGE_ROLE]
 base = "Ruolo: {GOLD}{STRING}"
 
 [STR_BADGE_ROLE_GENERAL_PURPOSE]

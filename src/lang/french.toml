@@ -635,7 +635,7 @@ base = "(voitures)"
 base = "(camions)"
 
 # role information for buy menu
-[STR_ROLE]
+[STR_BADGE_ROLE]
 base = "{BLACK}Rôle{NBSP}: {GOLD}{STRING}"
 
 [STR_BADGE_ROLE_DRIVING_CAB]

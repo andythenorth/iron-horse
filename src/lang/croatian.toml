@@ -100,7 +100,7 @@ base = "Vagon sa ceradom"
 [STR_NAME_SUFFIX_TORPEDO_CAR]
 base = "Vagon-torpedo"
 
-[STR_ROLE]
+[STR_BADGE_ROLE]
 base = "{BLACK}Uloga: {GOLD}{STRING}"
 
 [STR_BADGE_ROLE_GENERAL_PURPOSE]

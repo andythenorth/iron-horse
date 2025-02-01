@@ -168,7 +168,7 @@ base = "Cotxe de lona"
 [STR_NAME_SUFFIX_TORPEDO_CAR]
 base = "Cotxe torpedo"
 
-[STR_ROLE]
+[STR_BADGE_ROLE]
 base = "{BLACK}Rol: {GOLD}{STRING}"
 
 [STR_BADGE_ROLE_DRIVING_CAB]

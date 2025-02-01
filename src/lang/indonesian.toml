@@ -170,7 +170,7 @@ base = "Gerbong Terpal"
 [STR_NAME_SUFFIX_TORPEDO_CAR]
 base = "Gerbong Torpedo"
 
-[STR_ROLE]
+[STR_BADGE_ROLE]
 base = "{BLACK}Role: {GOLD}{STRING}"
 
 [STR_BADGE_ROLE_DRIVING_CAB]

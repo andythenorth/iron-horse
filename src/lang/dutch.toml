@@ -101,7 +101,7 @@ base = "Wagon met dekzeil"
 [STR_NAME_SUFFIX_TORPEDO_CAR]
 base = "Torpedowagen"
 
-[STR_ROLE]
+[STR_BADGE_ROLE]
 base = "{BLACK}Rol: {GOLD}{STRING}"
 
 [STR_BADGE_ROLE_GENERAL_PURPOSE]
