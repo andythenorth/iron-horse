@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(
-        type=ElectricHighSpeedMailUnit,
+        class_name=ElectricHighSpeedMailUnit,
         weight=42,
         spriterow_num=0,
         chassis="jacobs_solid_express_32px",

@@ -20,7 +20,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(
-        type=ElectricRailcarPaxUnit,
+        class_name=ElectricRailcarPaxUnit,
         weight=28,
         chassis="railcar_32px",
         tail_light="railcar_32px_1",

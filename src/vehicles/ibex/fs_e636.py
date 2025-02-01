@@ -26,10 +26,10 @@ def main(roster_id, **kwargs):
     # !!! these are only 60 foot long IRL so 2x 4/8 units
 
     consist.add_unit(
-        type=ElectricEngineUnit, weight=105, vehicle_length=4, spriterow_num=0
+        class_name=ElectricEngineUnit, weight=105, vehicle_length=4, spriterow_num=0
     )
     consist.add_unit(
-        type=ElectricEngineUnit, weight=105, vehicle_length=4, spriterow_num=1
+        class_name=ElectricEngineUnit, weight=105, vehicle_length=4, spriterow_num=1
     )
 
     consist.description = """ """

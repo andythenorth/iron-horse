@@ -292,12 +292,21 @@ class Consist(object):
             # we don't need to know the actual livery here, we rely on matching them up later by indexes, which is fine
             self.buyable_variants.append(BuyableVariant(self, livery=livery))
 
-    def add_unit(self, type, repeat=1, **kwargs):
+    def add_unit(self, class_name, repeat=1, **kwargs):
         # we have add_unit create the variants when needed, which means we avoid sequencing problems with gestalt_graphics initialisation
         if len(self.buyable_variants) == 0:
             self.resolve_buyable_variants()
         # now add the units
-        unit = type(consist=self, **kwargs)
+        # CABBAGE SHIM TO ENABLE ADDITION OF CONSISTFACTORY
+        if isinstance(class_name, str):
+            try:
+                unit_cls = getattr(sys.modules[__name__], class_name)
+            except:
+                raise Exception("class_name not found for " + consist.id)
+        else:
+            print(class_name)
+            unit_cls = class_name
+        unit = unit_cls(consist=self, **kwargs)
         for repeat_num in range(repeat):
             self.units.append(unit)
         # append the unit variants after adding the unit to consist.units, as we want to be able to simply increment numeric IDs based on the number of units added so far

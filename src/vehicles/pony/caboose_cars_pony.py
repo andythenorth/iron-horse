@@ -70,7 +70,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=CabooseCar, chassis="2_axle_ng_8px")
+    consist_factory.add_unit(class_name="CabooseCar", chassis="2_axle_ng_8px")
 
     result.append(consist_factory)
 
@@ -87,7 +87,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=CabooseCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(class_name="CabooseCar", chassis="4_axle_ng_16px")
 
     # --------------- standard gauge ---------------------------------------------------------------    # caboose names map to labelled spriterows, as defined in the vehicle files
     # note that spriterow mapping will need redefined for each roster and base track type
@@ -214,7 +214,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=CabooseCar, chassis="2_axle_caboose_16px")
+    consist_factory.add_unit(class_name="CabooseCar", chassis="2_axle_caboose_16px")
 
     result.append(consist_factory)
 
@@ -231,7 +231,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=CabooseCar, chassis="4_axle_caboose_24px")
+    consist_factory.add_unit(class_name="CabooseCar", chassis="4_axle_caboose_24px")
 
     result.append(consist_factory)
 

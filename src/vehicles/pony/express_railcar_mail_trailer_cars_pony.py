@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=MailRailcarTrailerCar,
+        class_name=MailRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
         repeat=2,

@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=ExpressIntermodalCar, chassis="2_axle_1cc_filled_24px"
+        class_name="ExpressIntermodalCar", chassis="2_axle_1cc_filled_24px"
     )
 
     result.append(consist_factory)
@@ -32,7 +32,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=ExpressIntermodalCar, chassis="4_axle_1cc_filled_32px"
+        class_name="ExpressIntermodalCar", chassis="4_axle_1cc_filled_32px"
     )
 
     result.append(consist_factory)

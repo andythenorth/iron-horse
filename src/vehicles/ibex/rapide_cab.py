@@ -24,7 +24,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(
-        type=ElectricEngineUnit,
+        class_name=ElectricEngineUnit,
         weight=76,
         # no pax capacity on Helm Wind cabs
         capacity=0,

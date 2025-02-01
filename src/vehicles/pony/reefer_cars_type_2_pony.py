@@ -16,7 +16,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=ExpressCar,
+        class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
@@ -33,7 +33,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=ExpressCar,
+        class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
@@ -50,7 +50,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=ExpressCar,
+        class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="3_axle_solid_express_24px",
     )
@@ -67,7 +67,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=ExpressCar,
+        class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
@@ -84,7 +84,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=ExpressCar,
+        class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_24px",
     )
@@ -101,7 +101,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=ExpressCar,
+        class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_filled_32px",
     )
@@ -118,7 +118,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=ExpressCar,
+        class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_24px",
     )
@@ -135,7 +135,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=ExpressCar,
+        class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
     )

@@ -20,7 +20,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, chassis="3_axle_solid_express_16px")
+    consist_factory.add_unit(class_name="PaxCar", chassis="3_axle_solid_express_16px")
 
     result.append(consist_factory)
 
@@ -33,7 +33,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(class_name="PaxCar", chassis="4_axle_solid_express_24px")
 
     result.append(consist_factory)
 
@@ -46,7 +46,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, chassis="3_axle_solid_express_16px")
+    consist_factory.add_unit(class_name="PaxCar", chassis="3_axle_solid_express_16px")
 
     result.append(consist_factory)
 
@@ -59,7 +59,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(class_name="PaxCar", chassis="4_axle_solid_express_24px")
 
     result.append(consist_factory)
 
@@ -72,7 +72,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, chassis="6_axle_solid_express_32px")
+    consist_factory.add_unit(class_name="PaxCar", chassis="6_axle_solid_express_32px")
 
     result.append(consist_factory)
 
@@ -85,7 +85,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(class_name="PaxCar", chassis="4_axle_solid_express_24px")
 
     result.append(consist_factory)
 
@@ -98,7 +98,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(class_name="PaxCar", chassis="4_axle_solid_express_32px")
 
     result.append(consist_factory)
 
@@ -111,7 +111,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(class_name="PaxCar", chassis="4_axle_solid_express_24px")
 
     result.append(consist_factory)
 
@@ -124,7 +124,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(class_name="PaxCar", chassis="4_axle_solid_express_32px")
 
     # gen 6 broadly same as gen 5, but new liveries (any other difference?)
 
@@ -139,7 +139,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(class_name="PaxCar", chassis="4_axle_solid_express_24px")
 
     result.append(consist_factory)
 
@@ -152,7 +152,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(class_name="PaxCar", chassis="4_axle_solid_express_32px")
 
     result.append(consist_factory)
 

@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_ng_16px")
 
     # no gen 2 for NG, straight to gen 3
 
@@ -29,7 +29,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_ng_16px")
 
     result.append(consist_factory)
 
@@ -43,7 +43,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_ng_24px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_ng_24px")
 
     result.append(consist_factory)
 
@@ -57,7 +57,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_ng_16px")
 
     result.append(consist_factory)
 
@@ -71,7 +71,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_ng_24px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_ng_24px")
 
     # --------------- standard gauge ---------------------------------------------------------------
 
@@ -84,7 +84,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="3_axle_solid_express_16px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="3_axle_solid_express_16px")
 
     result.append(consist_factory)
 
@@ -97,7 +97,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_solid_express_24px")
 
     result.append(consist_factory)
 
@@ -110,7 +110,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="3_axle_solid_express_16px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="3_axle_solid_express_16px")
 
     result.append(consist_factory)
 
@@ -123,7 +123,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_solid_express_24px")
 
     result.append(consist_factory)
 
@@ -136,7 +136,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="3_axle_solid_express_16px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="3_axle_solid_express_16px")
 
     result.append(consist_factory)
 
@@ -149,7 +149,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_solid_express_24px")
 
     result.append(consist_factory)
 
@@ -162,7 +162,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_solid_express_32px")
 
     result.append(consist_factory)
 
@@ -175,7 +175,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="2_axle_solid_express_16px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="2_axle_solid_express_16px")
 
     result.append(consist_factory)
 
@@ -188,7 +188,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_solid_express_24px")
 
     result.append(consist_factory)
 
@@ -201,7 +201,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_solid_express_32px")
 
     result.append(consist_factory)
 
@@ -215,7 +215,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="2_axle_solid_express_16px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="2_axle_solid_express_16px")
 
     result.append(consist_factory)
 
@@ -229,7 +229,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_solid_express_24px")
 
     result.append(consist_factory)
 
@@ -243,7 +243,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="4_axle_solid_express_32px")
 
     result.append(consist_factory)
 

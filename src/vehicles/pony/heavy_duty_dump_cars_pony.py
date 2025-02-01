@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=HeavyDutyCar, chassis="4_axle_ng_16px")
+    consist_factory.add_unit(class_name="HeavyDutyCar", chassis="4_axle_ng_16px")
 
     # --------------- pony -------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_16px")
+    consist_factory.add_unit(class_name="HeavyDutyCar", chassis="4_axle_filled_16px")
 
     result.append(consist_factory)
 
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_24px")
+    consist_factory.add_unit(class_name="HeavyDutyCar", chassis="4_axle_filled_24px")
 
     result.append(consist_factory)
 
@@ -59,7 +59,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_16px")
+    consist_factory.add_unit(class_name="HeavyDutyCar", chassis="4_axle_filled_16px")
 
     result.append(consist_factory)
 
@@ -73,7 +73,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=HeavyDutyCar, chassis="4_axle_filled_24px")
+    consist_factory.add_unit(class_name="HeavyDutyCar", chassis="4_axle_filled_24px")
 
     result.append(consist_factory)
 

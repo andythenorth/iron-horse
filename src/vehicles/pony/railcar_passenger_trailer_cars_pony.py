@@ -25,7 +25,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=PaxRailcarTrailerCar,
+        class_name="PaxRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
@@ -43,7 +43,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=PaxRailcarTrailerCar,
+        class_name="PaxRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
@@ -61,7 +61,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=PaxRailcarTrailerCar,
+        class_name="PaxRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
@@ -79,7 +79,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=PaxRailcarTrailerCar,
+        class_name="PaxRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
@@ -97,7 +97,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=PaxRailcarTrailerCar,
+        class_name="PaxRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
@@ -115,7 +115,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=PaxRailcarTrailerCar,
+        class_name="PaxRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )

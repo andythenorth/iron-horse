@@ -20,7 +20,7 @@ def main(roster_id, **kwargs):
 
     # 63ft IRL is 8/8, surprisingly short
     consist.add_unit(
-        type=ElectricEngineUnit, weight=75, vehicle_length=8, spriterow_num=0
+        class_name=ElectricEngineUnit, weight=75, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = """ """

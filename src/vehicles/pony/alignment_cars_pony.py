@@ -16,7 +16,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=AlignmentCar, vehicle_length=4, chassis="2_axle_solid_express_16px"
+        class_name=AlignmentCar, vehicle_length=4, chassis="2_axle_solid_express_16px"
     )
 
     result.append(consist_factory)
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=AlignmentCar, vehicle_length=6, chassis="4_axle_solid_express_24px"
+        class_name=AlignmentCar, vehicle_length=6, chassis="4_axle_solid_express_24px"
     )
 
     result.append(consist_factory)
@@ -46,7 +46,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=AlignmentCar, vehicle_length=8, chassis="4_axle_solid_express_32px"
+        class_name=AlignmentCar, vehicle_length=8, chassis="4_axle_solid_express_32px"
     )
 
     result.append(consist_factory)

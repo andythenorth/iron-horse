@@ -17,7 +17,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=SlagLadleCar, chassis="buffers_only_16px")
+    consist_factory.add_unit(class_name="SlagLadleCar", chassis="buffers_only_16px")
 
     # --------------- standard gauge ---------------------------------------------------------------
 
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=SlagLadleCar, chassis="buffers_only_16px")
+    consist_factory.add_unit(class_name="SlagLadleCar", chassis="buffers_only_16px")
 
     result.append(consist_factory)
 
@@ -45,7 +45,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=SlagLadleCar, chassis="buffers_only_16px")
+    consist_factory.add_unit(class_name="SlagLadleCar", chassis="buffers_only_16px")
 
     result.append(consist_factory)
 

@@ -16,7 +16,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=AutomobileCarAsymmetric, chassis="2_axle_lwb_filled_24px"
+        class_name="AutomobileCarAsymmetric", chassis="2_axle_lwb_filled_24px"
     )
 
     result.append(consist_factory)
@@ -31,7 +31,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px"
+        class_name="AutomobileCarAsymmetric", chassis="4_axle_running_gear_only_32px"
     )
 
     result.append(consist_factory)
@@ -46,7 +46,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=AutomobileCarAsymmetric, chassis="2_axle_lwb_filled_24px"
+        class_name="AutomobileCarAsymmetric", chassis="2_axle_lwb_filled_24px"
     )
 
     result.append(consist_factory)
@@ -61,7 +61,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=AutomobileCarAsymmetric, chassis="4_axle_running_gear_only_32px"
+        class_name="AutomobileCarAsymmetric", chassis="4_axle_running_gear_only_32px"
     )
     """
     consist_factory = AutomobileDoubleDeckCarConsist(
@@ -74,13 +74,13 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=AutomobileCarAsymmetric,
+        class_name="AutomobileCarAsymmetric",
         chassis="2_axle_running_gear_only_20px",
         spriterow_num=0,
     )
 
     consist_factory.add_unit(
-        type=AutomobileCarAsymmetric,
+        class_name="AutomobileCarAsymmetric",
         chassis="2_axle_running_gear_only_20px",
         spriterow_num=1,
     )

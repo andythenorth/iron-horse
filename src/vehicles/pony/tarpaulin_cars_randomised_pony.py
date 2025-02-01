@@ -14,7 +14,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=FreightCar, chassis="empty_24px")
+    consist_factory.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(consist_factory)
 
@@ -27,7 +27,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=FreightCar, chassis="empty_32px")
+    consist_factory.add_unit(class_name="FreightCar", chassis="empty_32px")
 
     result.append(consist_factory)
 

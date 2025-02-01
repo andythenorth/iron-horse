@@ -15,7 +15,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_gapped_16px")
 
     result.append(consist_factory)
 
@@ -28,7 +28,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_gapped_16px")
 
     result.append(consist_factory)
 
@@ -41,7 +41,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
+    consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_gapped_24px")
 
     result.append(consist_factory)
 
@@ -54,7 +54,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_gapped_16px")
 
     result.append(consist_factory)
 
@@ -67,7 +67,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
+    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_gapped_24px")
 
     result.append(consist_factory)
 
@@ -81,7 +81,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=FreightCar, chassis="4_axle_half_filled_greebled_32px"
+        class_name="FreightCar", chassis="4_axle_half_filled_greebled_32px"
     )
 
     result.append(consist_factory)
@@ -95,7 +95,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_gapped_16px")
 
     result.append(consist_factory)
 
@@ -108,7 +108,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
+    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_gapped_24px")
 
     result.append(consist_factory)
 
@@ -122,7 +122,7 @@ def main(roster_id, **kwargs):
     )
 
     consist_factory.add_unit(
-        type=FreightCar, chassis="4_axle_half_filled_greebled_32px"
+        class_name="FreightCar", chassis="4_axle_half_filled_greebled_32px"
     )
 
     result.append(consist_factory)
@@ -136,7 +136,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
+    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_filled_greebled_24px")
 
     result.append(consist_factory)
 
@@ -149,7 +149,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
+    consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_filled_greebled_32px")
 
     result.append(consist_factory)
 

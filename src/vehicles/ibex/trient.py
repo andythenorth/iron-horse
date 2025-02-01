@@ -27,7 +27,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(
-        type=DieselEngineUnit,
+        class_name=DieselEngineUnit,
         weight=125,
         vehicle_length=8,
         effect_offsets=[(1, 0)],

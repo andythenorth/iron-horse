@@ -14,7 +14,7 @@ def main(roster_id, **kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(type=ExpressMailCar, chassis="high_speed_32px")
+    consist_factory.add_unit(class_name="ExpressMailCar", chassis="high_speed_32px")
 
     result.append(consist_factory)
 

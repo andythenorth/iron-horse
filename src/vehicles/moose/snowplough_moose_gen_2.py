@@ -12,7 +12,7 @@ def main(roster_id, **kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=SnowploughUnit, weight=50, vehicle_length=4)
+    consist.add_unit(class_name=SnowploughUnit, weight=50, vehicle_length=4)
 
     consist.description = """MOOSE."""
     consist.foamer_facts = """MOOSE"""

@@ -24,7 +24,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(
-        type=ElectricEngineUnit, weight=105, vehicle_length=8, spriterow_num=0
+        class_name=ElectricEngineUnit, weight=105, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = """ """
