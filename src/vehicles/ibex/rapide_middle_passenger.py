@@ -1,4 +1,4 @@
-from train import TGVMiddlePassengerEngineConsist, ElectricHighSpeedPaxUnit
+from train import TGVMiddlePassengerEngineConsist
 
 
 def main(roster_id, **kwargs):
@@ -18,7 +18,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(
-        class_name=ElectricHighSpeedPaxUnit,
+        class_name="ElectricHighSpeedPaxUnit",
         weight=42,
         spriterow_num=0,
         chassis="jacobs_solid_express_32px",

@@ -263,7 +263,7 @@ class Consist(object):
                 "consist"
             ]  # drop this, it's re-added to kwargs later by add_unit, which will cause an error to be thrown
             cloned_consist.add_unit(
-                type(unit), repeat=kwargs["clone_units"][counter], **unit_kwargs
+                type(unit).__name__, repeat=kwargs["clone_units"][counter], **unit_kwargs
             )
         cloned_consist.set_clone_power_from_clone_source()
         self.clones.append(cloned_consist)

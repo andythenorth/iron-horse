@@ -1,4 +1,4 @@
-from train import EngineConsist, ElectroDieselEngineUnit
+from train import EngineConsist
 
 
 def main(roster_id, **kwargs):
@@ -27,7 +27,7 @@ def main(roster_id, **kwargs):
     )
 
     consist.add_unit(
-        class_name=ElectroDieselEngineUnit, weight=105, vehicle_length=8, spriterow_num=0
+        class_name="ElectroDieselEngineUnit", weight=105, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = """ """
