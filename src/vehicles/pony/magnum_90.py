@@ -32,7 +32,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """Even Gronks don't last forever."""
-    consist_factory.foamer_facts = """Clayton CBD90"""
+    consist_factory.add_description("""Even Gronks don't last forever.""")
+    consist_factory.add_foamer_facts("""Clayton CBD90""")
 
     return consist_factory

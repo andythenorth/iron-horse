@@ -32,8 +32,8 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=1
     )
 
-    consist_factory.description = """I send these out in twos."""
-    consist_factory.foamer_facts = """BR Class 20, uprated EE 8CSVT prime mover"""
+    consist_factory.add_description("""I send these out in twos.""")
+    consist_factory.add_foamer_facts("""BR Class 20, uprated EE 8CSVT prime mover""")
 
     consist_factory.add_clone(base_numeric_id=34900, clone_units=[1, 0])
     print("cabbage 939", consist_factory.kwargs["id"])

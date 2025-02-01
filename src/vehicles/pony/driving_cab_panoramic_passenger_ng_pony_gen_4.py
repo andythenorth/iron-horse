@@ -22,7 +22,7 @@ def main(**kwargs):
         suppress_roof_sprite=True,
     )
 
-    consist_factory.description = """For a view most spectacular."""
-    consist_factory.foamer_facts = """Generic panoramic coaches"""
+    consist_factory.add_description("""For a view most spectacular.""")
+    consist_factory.add_foamer_facts("""Generic panoramic coaches""")
 
     return consist_factory

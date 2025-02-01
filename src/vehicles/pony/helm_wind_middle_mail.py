@@ -26,8 +26,10 @@ def main(**kwargs):
         effects={},  # suppress visual effects
     )
 
-    consist_factory.description = """Can we get there faster? That's what drives me."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description(
+        """Can we get there faster? That's what drives me."""
+    )
+    consist_factory.add_foamer_facts(
         """BR InterCity 225 (Mk4 Coaches)), Shinkansen-style distributed traction"""
     )
 

@@ -34,7 +34,9 @@ def main(**kwargs):
         tail_light="hst_32px_1",
     )
 
-    consist_factory.description = """Power is of the essence. Faster is everything."""
-    consist_factory.foamer_facts = """BR Class 43 (High Speed Train)"""
+    consist_factory.add_description(
+        """Power is of the essence. Faster is everything."""
+    )
+    consist_factory.add_foamer_facts("""BR Class 43 (High Speed Train)""")
 
     return consist_factory

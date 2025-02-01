@@ -29,8 +29,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """This is a big small cat."""
-    consist_factory.foamer_facts = """Corsican CFD Locotracteur BB-400, South African 'Funkey' diesels, FAUR L45H B-B"""
+    consist_factory.add_description("""This is a big small cat.""")
+    consist_factory.add_foamer_facts(
+        """Corsican CFD Locotracteur BB-400, South African 'Funkey' diesels, FAUR L45H B-B"""
+    )
 
     print("cabbage 939", consist_factory.kwargs["id"])
     """

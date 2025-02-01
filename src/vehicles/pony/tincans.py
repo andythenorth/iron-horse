@@ -31,10 +31,10 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """“I would not wish any companion in the world but you.”"""
     )
-    consist_factory.foamer_facts = (
+    consist_factory.add_foamer_facts(
         """Polish PKP EU07 (derived from UK Class 83 design)"""
     )
 

@@ -28,8 +28,8 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=48, vehicle_length=4, spriterow_num=0
     )
 
-    consist_factory.description = """No prizes for speed, but it gets a job done."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description("""No prizes for speed, but it gets a job done.""")
+    consist_factory.add_foamer_facts(
         """Thomas Hill <i>Steelman</i>, miscellaneous industrial diesel shunters"""
     )
 

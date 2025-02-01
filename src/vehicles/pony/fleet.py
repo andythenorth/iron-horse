@@ -30,7 +30,9 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Was the train door jammed? Was the time right?"""
-    consist_factory.foamer_facts = """London Underground 1996 Stock"""
+    consist_factory.add_description(
+        """Was the train door jammed? Was the time right?"""
+    )
+    consist_factory.add_foamer_facts("""London Underground 1996 Stock""")
 
     return consist_factory

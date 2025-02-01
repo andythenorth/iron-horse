@@ -31,9 +31,11 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Bobby-dazzlers these are. How they fit it all in amazes me."""
     )
-    consist_factory.foamer_facts = """Vossloh Euro Dual (DRS Class 88, ROG Class 93)"""
+    consist_factory.add_foamer_facts(
+        """Vossloh Euro Dual (DRS Class 88, ROG Class 93)"""
+    )
 
     return consist_factory

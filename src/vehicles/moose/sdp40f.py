@@ -10,7 +10,7 @@ def main(**kwargs):
         subrole="heavy_express",
         subrole_child_branch_num=-2,
         power_by_power_source={
-            "DIESEL": 2800, # nerfed to account for HEP
+            "DIESEL": 2800,  # nerfed to account for HEP
         },
         random_reverse=True,
         gen=4,
@@ -25,9 +25,7 @@ def main(**kwargs):
         vehicle_length=8,
     )
 
-    consist_factory.description = """"""
-    consist_factory.foamer_facts = (
-        """"""
-    )
+    consist_factory.add_description("""""")
+    consist_factory.add_foamer_facts("""""")
 
     return consist_factory

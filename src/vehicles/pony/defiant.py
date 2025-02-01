@@ -28,7 +28,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """Amazing what they can do these days isn't it?"""
-    consist_factory.foamer_facts = """Vossloh Eurolight (DRS Class 68)"""
+    consist_factory.add_description("""Amazing what they can do these days isn't it?""")
+    consist_factory.add_foamer_facts("""Vossloh Eurolight (DRS Class 68)""")
 
     return consist_factory

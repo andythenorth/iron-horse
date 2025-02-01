@@ -33,8 +33,10 @@ def main(**kwargs):
         tail_light="very_high_speed_32px_3",
     )
 
-    consist_factory.description = """Whispers in the wind. Graceful as she slices air. Swift, pure, and untamed."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description(
+        """Whispers in the wind. Graceful as she slices air. Swift, pure, and untamed."""
+    )
+    consist_factory.add_foamer_facts(
         """TGV Sud-Est, with TGV 001-style distributed traction"""
     )
 

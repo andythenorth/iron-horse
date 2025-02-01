@@ -30,10 +30,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Le petit train du jour. I've imported a few of these."""
     )
-    consist_factory.foamer_facts = (
+    consist_factory.add_foamer_facts(
         """Corsican CFD Locotracteur BB-400, New Zealand DSG class"""
     )
 

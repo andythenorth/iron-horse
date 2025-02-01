@@ -27,7 +27,11 @@ def main(**kwargs):
         class_name="ElectricEngineUnit", weight=82, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = """Looks like a cheese to me, goes alright though."""
-    consist_factory.foamer_facts = """proposed Bombardier Traxx P200, various electric locomotives from Stadler, Siemens, Adtranz"""
+    consist_factory.add_description(
+        """Looks like a cheese to me, goes alright though."""
+    )
+    consist_factory.add_foamer_facts(
+        """proposed Bombardier Traxx P200, various electric locomotives from Stadler, Siemens, Adtranz"""
+    )
 
     return consist_factory

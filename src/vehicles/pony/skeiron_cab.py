@@ -30,9 +30,9 @@ def main(**kwargs):
         tail_light="very_high_speed_32px_3",
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Myth in motion, swift. Continents woven in speed. Elegance entwined."""
     )
-    consist_factory.foamer_facts = """Alstom Class 373 <i>Eurostar</i>"""
+    consist_factory.add_foamer_facts("""Alstom Class 373 <i>Eurostar</i>""")
 
     return consist_factory

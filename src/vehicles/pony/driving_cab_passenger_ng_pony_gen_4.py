@@ -18,10 +18,10 @@ def main(**kwargs):
         class_name="CabControlPaxCarUnit", weight=32, chassis="4_axle_ng_32px"
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Now, a driving cab for the smaller trains. But not for goats."""
     )
-    consist_factory.foamer_facts = (
+    consist_factory.add_foamer_facts(
         """KiwiRail SRV driving cab conversion of British Rail MK2 carriage"""
     )
 

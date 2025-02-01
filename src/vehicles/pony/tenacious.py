@@ -30,9 +30,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """It's rapid, sprightly, and formidable all at once."""
     )
-    consist_factory.foamer_facts = """BR Class 42/43 <i>Warship</i>"""
+    consist_factory.add_foamer_facts("""BR Class 42/43 <i>Warship</i>""")
 
     return consist_factory

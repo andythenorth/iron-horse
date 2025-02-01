@@ -25,7 +25,9 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=30, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.description = """If we do each thing calmly and carefully we will get it done quicker and with much less fuss."""
-    consist_factory.foamer_facts = """LNER Q2 Class"""
+    consist_factory.add_description(
+        """If we do each thing calmly and carefully we will get it done quicker and with much less fuss."""
+    )
+    consist_factory.add_foamer_facts("""LNER Q2 Class""")
 
     return consist_factory

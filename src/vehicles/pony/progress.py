@@ -28,8 +28,8 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=48, vehicle_length=4, spriterow_num=0
     )
 
-    consist_factory.description = """Punchy little number."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description("""Punchy little number.""")
+    consist_factory.add_foamer_facts(
         """GEC <i>Stephenson</i> industrial shunters, BR Class 07"""
     )
 

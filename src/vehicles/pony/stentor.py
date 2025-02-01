@@ -37,7 +37,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """This one is loud, and packed with technology."""
-    consist_factory.foamer_facts = """BR Class 60 design mockups"""
+    consist_factory.add_description("""This one is loud, and packed with technology.""")
+    consist_factory.add_foamer_facts("""BR Class 60 design mockups""")
 
     return consist_factory

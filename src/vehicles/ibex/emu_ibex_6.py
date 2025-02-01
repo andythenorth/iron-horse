@@ -26,7 +26,7 @@ def main(**kwargs):
         tail_light="railcar_32px_1",
     )
 
-    consist_factory.description = """ """
-    consist_factory.foamer_facts = """Stadler FLIRT"""
+    consist_factory.add_description(""" """)
+    consist_factory.add_foamer_facts("""Stadler FLIRT""")
 
     return consist_factory

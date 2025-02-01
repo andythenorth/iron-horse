@@ -31,7 +31,9 @@ def main(**kwargs):
         class_name="ElectricEngineUnit", weight=92, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = """Nippy as a whippet, eats miles like hot dinners. Proper electric workhorse, that one."""
-    consist_factory.foamer_facts = """Austrian Federal Railways (ÖBB) 1163 class"""
+    consist_factory.add_description(
+        """Nippy as a whippet, eats miles like hot dinners. Proper electric workhorse, that one."""
+    )
+    consist_factory.add_foamer_facts("""Austrian Federal Railways (ÖBB) 1163 class""")
 
     return consist_factory

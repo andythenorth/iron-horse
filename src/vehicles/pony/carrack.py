@@ -30,9 +30,11 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=30, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """It's not the biggest, but there's nowt wrong wi this one."""
     )
-    consist_factory.foamer_facts = """Midland Railway 483 Class, GWR <i>City</i> 3700 Class, generic 4-4-0 locomotives"""
+    consist_factory.add_foamer_facts(
+        """Midland Railway 483 Class, GWR <i>City</i> 3700 Class, generic 4-4-0 locomotives"""
+    )
 
     return consist_factory

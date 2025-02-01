@@ -24,7 +24,7 @@ def main(**kwargs):
         tail_light="railcar_32px_1",
     )
 
-    consist_factory.description = """A modern way to move mail and other parcels."""
-    consist_factory.foamer_facts = """LNER / Armstrong-Whitworth Railcars"""
+    consist_factory.add_description("""A modern way to move mail and other parcels.""")
+    consist_factory.add_foamer_facts("""LNER / Armstrong-Whitworth Railcars""")
 
     return consist_factory

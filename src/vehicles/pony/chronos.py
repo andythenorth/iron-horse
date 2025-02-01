@@ -2,7 +2,7 @@ from train import ConsistFactory
 
 
 def main(**kwargs):
-    consist = ConsistFactory(
+    consist_factory = ConsistFactory(
         class_name="MailEngineExpressRailcarConsist",
         id="chronos",
         base_numeric_id=950,
@@ -17,7 +17,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist.add_unit(
+    consist_factory.add_unit(
         class_name="ElectricRailcarMailUnit",
         weight=40,
         chassis="railcar_32px",
@@ -25,7 +25,9 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist.description = """Time's courier swift. Chronos weaves through night and day. Posts haste, never late."""
-    consist.foamer_facts = """BR Class 325 mail/parcels EMU"""
+    consist_factory.add_description(
+        """Time's courier swift. Chronos weaves through night and day. Posts haste, never late."""
+    )
+    consist_factory.add_foamer_facts("""BR Class 325 mail/parcels EMU""")
 
-    return consist
+    return consist_factory

@@ -28,8 +28,10 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=34, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.description = """Got this one off Mr. Stanier.  It'll go anywhere, do anything, for not too much brass."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description(
+        """Got this one off Mr. Stanier.  It'll go anywhere, do anything, for not too much brass."""
+    )
+    consist_factory.add_foamer_facts(
         """LMS Jubilee Class, original TTD Chaney 'Jubilee'"""
     )
 

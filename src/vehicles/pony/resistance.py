@@ -35,8 +35,8 @@ def main(**kwargs):
         class_name="ElectricEngineUnit", weight=120, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = """A hard-charging bag of bones."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description("""A hard-charging bag of bones.""")
+    consist_factory.add_foamer_facts(
         """Proposed BR Class 88, derived from Class 58 design"""
     )
 

@@ -26,7 +26,7 @@ def main(**kwargs):
         tail_light="railcar_32px_3",
     )
 
-    consist_factory.description = """So Swiftly Home"""
-    consist_factory.foamer_facts = """BR Class 319, Class 455"""
+    consist_factory.add_description("""So Swiftly Home""")
+    consist_factory.add_foamer_facts("""BR Class 319, Class 455""")
 
     return consist_factory

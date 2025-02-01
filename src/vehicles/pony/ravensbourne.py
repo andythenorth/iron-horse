@@ -26,7 +26,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Is that lamp light blinking?"""
-    consist_factory.foamer_facts = """Metropolitan Railway electric multiple units"""
+    consist_factory.add_description("""Is that lamp light blinking?""")
+    consist_factory.add_foamer_facts("""Metropolitan Railway electric multiple units""")
 
     return consist_factory

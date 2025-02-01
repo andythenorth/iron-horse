@@ -30,7 +30,7 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=100, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = """Sounds like a tractor, pulls like a train."""
-    consist_factory.foamer_facts = """BR Class 37, original TTD UU '37'"""
+    consist_factory.add_description("""Sounds like a tractor, pulls like a train.""")
+    consist_factory.add_foamer_facts("""BR Class 37, original TTD UU '37'""")
 
     return consist_factory

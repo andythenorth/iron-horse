@@ -25,7 +25,7 @@ def main(**kwargs):
         effects={},  # suppress visual effects
     )
 
-    consist_factory.description = """."""
-    consist_factory.foamer_facts = """ """
+    consist_factory.add_description(""".""")
+    consist_factory.add_foamer_facts(""" """)
 
     return consist_factory

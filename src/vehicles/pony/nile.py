@@ -32,7 +32,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """Is twice as nice."""
-    consist_factory.foamer_facts = """Victorian Railways G class Garratt locomotives"""
+    consist_factory.add_description("""Is twice as nice.""")
+    consist_factory.add_foamer_facts(
+        """Victorian Railways G class Garratt locomotives"""
+    )
 
     return consist_factory

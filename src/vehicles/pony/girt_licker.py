@@ -29,7 +29,9 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=45, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.description = """Big ugly thing. Power in spades though."""
-    consist_factory.foamer_facts = """Midland Railway 2290 'Big Bertha' Lickey Banker"""
+    consist_factory.add_description("""Big ugly thing. Power in spades though.""")
+    consist_factory.add_foamer_facts(
+        """Midland Railway 2290 'Big Bertha' Lickey Banker"""
+    )
 
     return consist_factory

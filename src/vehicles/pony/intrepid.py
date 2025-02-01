@@ -33,8 +33,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """These are a bit duff, but they're a bit lighter than a Wyvern so we'll give em a go."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description(
+        """These are a bit duff, but they're a bit lighter than a Wyvern so we'll give em a go."""
+    )
+    consist_factory.add_foamer_facts(
         """BR Class 47, prime mover downrated for reliability"""
     )
 

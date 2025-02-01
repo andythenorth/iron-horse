@@ -27,10 +27,10 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=30, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Cheap to build, cheap to run.  I'll take a dozen at once."""
     )
-    consist_factory.foamer_facts = (
+    consist_factory.add_foamer_facts(
         """GWR 2301 Dean Goods Class, generic 0-6-0 freight locomotives"""
     )
 

@@ -26,7 +26,7 @@ def main(**kwargs):
         tail_light="railcar_24px_1",
     )
 
-    consist_factory.description = """Patience is the virtue of the donkeys."""
-    consist_factory.foamer_facts = """BR Class 141/142/143/144 <i>Pacers</i>"""
+    consist_factory.add_description("""Patience is the virtue of the donkeys.""")
+    consist_factory.add_foamer_facts("""BR Class 141/142/143/144 <i>Pacers</i>""")
 
     return consist_factory

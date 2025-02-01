@@ -35,7 +35,9 @@ def main(**kwargs):
     )
 
     #  guess the quote?
-    consist_factory.description = """And ruined love when it is built anew grows fairer than at first, more strong, far greater."""
-    consist_factory.foamer_facts = """Re-engineered BR Class 15, BR Class 16"""
+    consist_factory.add_description(
+        """And ruined love when it is built anew grows fairer than at first, more strong, far greater."""
+    )
+    consist_factory.add_foamer_facts("""Re-engineered BR Class 15, BR Class 16""")
 
     return consist_factory

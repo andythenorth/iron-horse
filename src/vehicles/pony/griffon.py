@@ -38,10 +38,10 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=74, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Kelpie were right good, this is the rebuilt version."""
     )
-    consist_factory.foamer_facts = """BR Class 33"""
+    consist_factory.add_foamer_facts("""BR Class 33""")
 
     consist_factory.add_clone(base_numeric_id=800, clone_units=[2])
 

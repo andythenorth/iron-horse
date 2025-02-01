@@ -29,8 +29,8 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=36, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.description = """Right happy with the look of these."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description("""Right happy with the look of these.""")
+    consist_factory.add_foamer_facts(
         """LMS <i>Hughes Crab</i>, BR Standard Class 4 2-6-0"""
     )
 

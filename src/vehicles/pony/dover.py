@@ -27,7 +27,9 @@ def main(**kwargs):
         tail_light="railcar_32px_2",
     )
 
-    consist_factory.description = """A useful motor van for mail and express freight."""
-    consist_factory.foamer_facts = """BR Class 419 MLV, Class 489 GLV"""
+    consist_factory.add_description(
+        """A useful motor van for mail and express freight."""
+    )
+    consist_factory.add_foamer_facts("""BR Class 419 MLV, Class 489 GLV""")
 
     return consist_factory

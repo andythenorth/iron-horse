@@ -29,8 +29,8 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Gallop apace, you fiery-footed steeds."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description("""Gallop apace, you fiery-footed steeds.""")
+    consist_factory.add_foamer_facts(
         """18in Hunslet tanks, Austerity tanks, LNER J94 Class"""
     )
 

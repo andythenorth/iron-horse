@@ -39,10 +39,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Rome wasn't built in a day. But I wasn't on that particular job."""
     )
     # IRL the quote is Brian Clough
-    consist_factory.foamer_facts = """BR Class 58"""
+    consist_factory.add_foamer_facts("""BR Class 58""")
 
     return consist_factory

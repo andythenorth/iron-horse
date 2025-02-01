@@ -29,8 +29,8 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=82, vehicle_length=6, repeat=2
     )
 
-    consist_factory.description = """It's a rat pack. What more do you want?"""
-    consist_factory.foamer_facts = """BR Class 24, BR Class 25"""
+    consist_factory.add_description("""It's a rat pack. What more do you want?""")
+    consist_factory.add_foamer_facts("""BR Class 24, BR Class 25""")
 
     consist_factory.add_clone(base_numeric_id=34910, clone_units=[1, 0])
 

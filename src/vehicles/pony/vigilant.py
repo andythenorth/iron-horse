@@ -28,9 +28,9 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=40, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """It's a big engine, it cost a lot of brass, get it to work."""
     )
-    consist_factory.foamer_facts = """GCR Class 8K / ROD 2-8-0, GWR 2800 Class"""
+    consist_factory.add_foamer_facts("""GCR Class 8K / ROD 2-8-0, GWR 2800 Class""")
 
     return consist_factory

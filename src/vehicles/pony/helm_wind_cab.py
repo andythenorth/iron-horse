@@ -30,7 +30,11 @@ def main(**kwargs):
         tail_light="very_high_speed_32px_1",
     )
 
-    consist_factory.description = """Can we get there faster? That's what drives me."""
-    consist_factory.foamer_facts = """BR InterCity 225 (Class 91), BR APT-P, Shinkansen-style distributed traction"""
+    consist_factory.add_description(
+        """Can we get there faster? That's what drives me."""
+    )
+    consist_factory.add_foamer_facts(
+        """BR InterCity 225 (Class 91), BR APT-P, Shinkansen-style distributed traction"""
+    )
 
     return consist_factory

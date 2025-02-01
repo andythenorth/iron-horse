@@ -26,9 +26,11 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Better three hours too soon than a minute too late."""  # Shakespeare
     )
-    consist_factory.foamer_facts = """BR Class 309 <i>Clacton Express</i>, BR 4-REP"""
+    consist_factory.add_foamer_facts(
+        """BR Class 309 <i>Clacton Express</i>, BR 4-REP"""
+    )
 
     return consist_factory

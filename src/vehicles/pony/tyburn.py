@@ -26,9 +26,9 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Do moles live in holes underground? Can they be found?"""
     )
-    consist_factory.foamer_facts = """London Underground 1938/1949 Stock"""
+    consist_factory.add_foamer_facts("""London Underground 1938/1949 Stock""")
 
     return consist_factory

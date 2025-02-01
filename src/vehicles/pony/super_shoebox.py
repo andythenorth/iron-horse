@@ -41,7 +41,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """It's a bigger Shoebox. Well not bigger. But more power in it. Right new paint too."""
-    consist_factory.foamer_facts = """BR Class 73, Class 71/74, proposed Class 75"""
+    consist_factory.add_description(
+        """It's a bigger Shoebox. Well not bigger. But more power in it. Right new paint too."""
+    )
+    consist_factory.add_foamer_facts("""BR Class 73, Class 71/74, proposed Class 75""")
 
     return consist_factory

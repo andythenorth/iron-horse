@@ -32,8 +32,10 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=50, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.description = """I'm not saying I'm the best engine builder in the business, but I'd be in the top one."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description(
+        """I'm not saying I'm the best engine builder in the business, but I'd be in the top one."""
+    )
+    consist_factory.add_foamer_facts(
         """proposed LMS 'Lemon 4-8-0' freight locomotive, BR Standard Class 9F"""
     )
 

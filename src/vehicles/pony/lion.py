@@ -28,8 +28,8 @@ def main(**kwargs):
         effect_offsets=[(0, 1), (0, -1)],  # double the smoke eh?
     )
 
-    consist_factory.description = """Good horses make short miles."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description("""Good horses make short miles.""")
+    consist_factory.add_foamer_facts(
         """BRCW / BR D0260 Lion prototype, Brush HS4000 Kestrel prototype"""
     )
 

@@ -29,8 +29,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """It'll get there and back again, in any weather."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description(
+        """It'll get there and back again, in any weather."""
+    )
+    consist_factory.add_foamer_facts(
         """GBRF Class 99, Stadler Eurodual, Newag Dragon, CAF Bitrac"""
     )
 

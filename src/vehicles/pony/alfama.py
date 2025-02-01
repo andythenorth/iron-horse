@@ -31,10 +31,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Dances with mid-power grace. Articulated finesse in every turn."""
     )
-    consist_factory.foamer_facts = (
+    consist_factory.add_foamer_facts(
         """Mallet locomotives used by Portugese narrow gauge railways"""
     )
 

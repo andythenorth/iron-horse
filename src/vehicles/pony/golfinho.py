@@ -47,7 +47,9 @@ def main(**kwargs):
         reverse_sprite_template=True,
     )
 
-    consist_factory.description = """Efficiently whisking passengers about in the most modern ways. Goats remain, at this time, disallowed."""
-    consist_factory.foamer_facts = """Stadler SPATZ"""
+    consist_factory.add_description(
+        """Efficiently whisking passengers about in the most modern ways. Goats remain, at this time, disallowed."""
+    )
+    consist_factory.add_foamer_facts("""Stadler SPATZ""")
 
     return consist_factory

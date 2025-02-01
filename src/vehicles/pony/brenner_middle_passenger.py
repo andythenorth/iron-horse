@@ -26,7 +26,7 @@ def main(**kwargs):
         effects={},  # suppress visual effects
     )
 
-    consist_factory.description = """And you shall know this velocity."""
-    consist_factory.foamer_facts = """Alstom Class 390 <i>Pendolino</i>"""
+    consist_factory.add_description("""And you shall know this velocity.""")
+    consist_factory.add_foamer_facts("""Alstom Class 390 <i>Pendolino</i>""")
 
     return consist_factory

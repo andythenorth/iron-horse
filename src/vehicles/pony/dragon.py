@@ -35,7 +35,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """A right big fast diesel hydraulic this one is."""
-    consist_factory.foamer_facts = """BR Class 52 <i>Western</i>"""
+    consist_factory.add_description(
+        """A right big fast diesel hydraulic this one is."""
+    )
+    consist_factory.add_foamer_facts("""BR Class 52 <i>Western</i>""")
 
     return consist_factory

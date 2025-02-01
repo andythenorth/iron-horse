@@ -25,10 +25,10 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=72, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Old dog, new tricks. I've built these out of old Chinooks."""
     )
-    consist_factory.foamer_facts = """DRS Class 20/3 (re-engineered)"""
+    consist_factory.add_foamer_facts("""DRS Class 20/3 (re-engineered)""")
 
     print("cabbage 939", consist_factory.kwargs["id"])
     """

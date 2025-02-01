@@ -28,7 +28,7 @@ def main(**kwargs):
         tail_light="hst_32px_1",
     )
 
-    consist_factory.description = """The Train of Today."""
-    consist_factory.foamer_facts = """BR <i>Blue Pullman</i>"""
+    consist_factory.add_description("""The Train of Today.""")
+    consist_factory.add_foamer_facts("""BR <i>Blue Pullman</i>""")
 
     return consist_factory

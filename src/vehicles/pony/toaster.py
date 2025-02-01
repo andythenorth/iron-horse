@@ -37,9 +37,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """I've heard these might catch fire, but we're getting them cheap."""
     )
-    consist_factory.foamer_facts = """GE Class 70 <i>Powerhaul</i>"""
+    consist_factory.add_foamer_facts("""GE Class 70 <i>Powerhaul</i>""")
 
     return consist_factory

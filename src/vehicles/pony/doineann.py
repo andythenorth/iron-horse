@@ -32,7 +32,7 @@ def main(**kwargs):
         vehicle_length=8,
     )
 
-    consist_factory.description = """Let there be some more test made of my metal."""
-    consist_factory.foamer_facts = """Northern Ireland Railways Class 111"""
+    consist_factory.add_description("""Let there be some more test made of my metal.""")
+    consist_factory.add_foamer_facts("""Northern Ireland Railways Class 111""")
 
     return consist_factory

@@ -26,7 +26,7 @@ def main(**kwargs):
         tail_light="railcar_24px_1",
     )
 
-    consist_factory.description = """It's the same donkey, but with a new saddle."""
-    consist_factory.foamer_facts = """BR Class 144e <i>Pacer</i>, Vivarail D-Train"""
+    consist_factory.add_description("""It's the same donkey, but with a new saddle.""")
+    consist_factory.add_foamer_facts("""BR Class 144e <i>Pacer</i>, Vivarail D-Train""")
 
     return consist_factory

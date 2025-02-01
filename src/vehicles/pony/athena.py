@@ -26,7 +26,7 @@ def main(**kwargs):
         tail_light="railcar_32px_1",
     )
 
-    consist_factory.description = """World's Greatest Suburban Electric"""
-    consist_factory.foamer_facts = """LNER <i>Tyneside Electrics</i>"""
+    consist_factory.add_description("""World's Greatest Suburban Electric""")
+    consist_factory.add_foamer_facts("""LNER <i>Tyneside Electrics</i>""")
 
     return consist_factory

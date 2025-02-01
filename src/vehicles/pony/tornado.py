@@ -27,9 +27,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """The Boosters needed a boost. Rebuilt, repainted, off to the races we go."""
     )
-    consist_factory.foamer_facts = """BR Class 74, Class 73"""
+    consist_factory.add_foamer_facts("""BR Class 74, Class 73""")
 
     return consist_factory

@@ -28,7 +28,9 @@ def main(**kwargs):
         class_name="ElectricEngineUnit", weight=54, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.description = """Solid unit."""
-    consist_factory.foamer_facts = """Modernised NER ES1, Metropolitan Railway camel-back and box-cab locomotives, Westoe Colliery electrics, generic steeple-cab locomotives"""
+    consist_factory.add_description("""Solid unit.""")
+    consist_factory.add_foamer_facts(
+        """Modernised NER ES1, Metropolitan Railway camel-back and box-cab locomotives, Westoe Colliery electrics, generic steeple-cab locomotives"""
+    )
 
     return consist_factory

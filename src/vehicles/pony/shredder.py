@@ -24,9 +24,9 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=76, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """I'm not saying I hate em. But they're not much to love are they?"""
     )
-    consist_factory.foamer_facts = """EMD JT42HW-HS (Class 67)"""
+    consist_factory.add_foamer_facts("""EMD JT42HW-HS (Class 67)""")
 
     return consist_factory

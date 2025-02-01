@@ -26,7 +26,7 @@ def main(**kwargs):
         tail_light="railcar_32px_2",
     )
 
-    consist_factory.description = """Gets you from A to Z and back."""
-    consist_factory.foamer_facts = """BR Class 365 <i>Networker Express</i>"""
+    consist_factory.add_description("""Gets you from A to Z and back.""")
+    consist_factory.add_foamer_facts("""BR Class 365 <i>Networker Express</i>""")
 
     return consist_factory

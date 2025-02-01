@@ -25,7 +25,7 @@ def main(**kwargs):
         tail_light="railcar_32px_2",
     )
 
-    consist_factory.description = """The last word in mail-by-rail."""
-    consist_factory.foamer_facts = """Orion Class 769 <i>FLEX</i>"""
+    consist_factory.add_description("""The last word in mail-by-rail.""")
+    consist_factory.add_foamer_facts("""Orion Class 769 <i>FLEX</i>""")
 
     return consist_factory

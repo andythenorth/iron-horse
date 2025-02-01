@@ -30,7 +30,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """Our pride, a force from overseas. Thrives in the solitude of the frontier or the clamor of the mills."""
-    consist_factory.foamer_facts = """Alco RSD8 / DL351"""
+    consist_factory.add_description(
+        """Our pride, a force from overseas. Thrives in the solitude of the frontier or the clamor of the mills."""
+    )
+    consist_factory.add_foamer_facts("""Alco RSD8 / DL351""")
 
     return consist_factory

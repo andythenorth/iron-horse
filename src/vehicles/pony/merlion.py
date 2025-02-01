@@ -41,9 +41,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """I don't like the looks of it right much, but I suppose it will do."""
     )
-    consist_factory.foamer_facts = """BR Class 31, uprated EE 12CSVT prime mover"""
+    consist_factory.add_foamer_facts("""BR Class 31, uprated EE 12CSVT prime mover""")
 
     return consist_factory

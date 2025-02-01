@@ -30,10 +30,10 @@ def main(**kwargs):
         tail_light="railcar_20px_4",
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """A coach that you can drive the engine from?  Eee, it's magic."""
     )
-    consist_factory.foamer_facts = (
+    consist_factory.add_foamer_facts(
         """SR and LMS autocoach sets, LNER articulated coach sets"""
     )
 

@@ -32,9 +32,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """These aren't bad at all. Clever electronics they tell me."""
     )
-    consist_factory.foamer_facts = """English Electric DP2 prototype"""
+    consist_factory.add_foamer_facts("""English Electric DP2 prototype""")
 
     return consist_factory

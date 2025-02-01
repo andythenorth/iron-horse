@@ -26,7 +26,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Do they whisper occasionally?"""
-    consist_factory.foamer_facts = """London Underground 1996 Stock"""
+    consist_factory.add_description("""Do they whisper occasionally?""")
+    consist_factory.add_foamer_facts("""London Underground 1996 Stock""")
 
     return consist_factory

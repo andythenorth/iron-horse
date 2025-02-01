@@ -30,10 +30,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """This diesel engine modernises our narrow gauge lines."""
     )
-    consist_factory.foamer_facts = (
+    consist_factory.add_foamer_facts(
         """FAUR L45H B-B, generic narrow-gauge diesel locomotives"""
     )
 

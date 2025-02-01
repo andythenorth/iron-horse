@@ -27,10 +27,13 @@ def main(**kwargs):
     )
 
     consist_factory.add_unit(
-        class_name="ElectroDieselEngineUnit", weight=105, vehicle_length=6, spriterow_num=0
+        class_name="ElectroDieselEngineUnit",
+        weight=105,
+        vehicle_length=6,
+        spriterow_num=0,
     )
 
-    consist_factory.description = """ """
-    consist_factory.foamer_facts = """DR E 21 51"""
+    consist_factory.add_description(""" """)
+    consist_factory.add_foamer_facts("""DR E 21 51""")
 
     return consist_factory

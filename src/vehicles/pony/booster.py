@@ -26,7 +26,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """I've rebuilt some of the Argus fleet to be more handy. Now we're sucking diesel."""
-    consist_factory.foamer_facts = """BR Class 71/74, Class 73"""
+    consist_factory.add_description(
+        """I've rebuilt some of the Argus fleet to be more handy. Now we're sucking diesel."""
+    )
+    consist_factory.add_foamer_facts("""BR Class 71/74, Class 73""")
 
     return consist_factory

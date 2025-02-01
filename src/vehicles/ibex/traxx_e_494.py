@@ -28,7 +28,9 @@ def main(**kwargs):
         class_name="ElectricEngineUnit", weight=105, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = """ """
-    consist_factory.foamer_facts = """Captrain Italia E.494 Traxx 3 FS 140 DC Last Mile"""
+    consist_factory.add_description(""" """)
+    consist_factory.add_foamer_facts(
+        """Captrain Italia E.494 Traxx 3 FS 140 DC Last Mile"""
+    )
 
     return consist_factory

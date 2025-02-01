@@ -25,7 +25,9 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=130, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = """Turn the key and it goes.  It's right heavy for what it is, but you can't argue with progress."""
-    consist_factory.foamer_facts = """BR Class 40 and Class 44/45/46 <i>Peaks</i>"""
+    consist_factory.add_description(
+        """Turn the key and it goes.  It's right heavy for what it is, but you can't argue with progress."""
+    )
+    consist_factory.add_foamer_facts("""BR Class 40 and Class 44/45/46 <i>Peaks</i>""")
 
     return consist_factory

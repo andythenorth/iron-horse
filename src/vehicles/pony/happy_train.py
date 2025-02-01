@@ -25,9 +25,9 @@ def main(**kwargs):
         tail_light="railcar_32px_2",
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Fast quiet trains for a new era. No more life-expired Tin Rockets."""
     )
-    consist_factory.foamer_facts = """Siemens <i>Desiro</i>"""
+    consist_factory.add_foamer_facts("""Siemens <i>Desiro</i>""")
 
     return consist_factory

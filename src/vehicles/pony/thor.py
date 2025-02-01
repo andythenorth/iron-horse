@@ -31,9 +31,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """You could say it's twice the train. A god amongst engines."""
     )
-    consist_factory.foamer_facts = """Fairlie locomotives"""
+    consist_factory.add_foamer_facts("""Fairlie locomotives""")
 
     return consist_factory

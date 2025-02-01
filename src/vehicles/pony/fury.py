@@ -31,9 +31,9 @@ def main(**kwargs):
         class_name="ElectricEngineUnit", weight=82, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Rebuilt the Roarers. Very sound these are, last a long time they will."""
     )
-    consist_factory.foamer_facts = """rebuilt BR 'AL' Classes 81-85"""
+    consist_factory.add_foamer_facts("""rebuilt BR 'AL' Classes 81-85""")
 
     return consist_factory

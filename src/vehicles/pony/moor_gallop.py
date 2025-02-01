@@ -32,9 +32,9 @@ def main(**kwargs):
         class_name="ElectricEngineUnit", weight=105, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """It's not so hurly-burly, but it's a nice new electric engine for you."""
     )
-    consist_factory.foamer_facts = """LNER EM2 (BR Class 77)"""
+    consist_factory.add_foamer_facts("""LNER EM2 (BR Class 77)""")
 
     return consist_factory

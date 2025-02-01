@@ -26,7 +26,9 @@ def main(**kwargs):
         class_name="SteamEngineUnit", weight=65, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.description = """I didn't do these, we've shipped them in. On ships like. On the sea. They pull well mind you."""
-    consist_factory.foamer_facts = """SR Z class, SR USA class (USATC S100 Class)"""
+    consist_factory.add_description(
+        """I didn't do these, we've shipped them in. On ships like. On the sea. They pull well mind you."""
+    )
+    consist_factory.add_foamer_facts("""SR Z class, SR USA class (USATC S100 Class)""")
 
     return consist_factory

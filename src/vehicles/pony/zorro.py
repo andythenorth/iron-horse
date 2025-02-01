@@ -26,7 +26,9 @@ def main(**kwargs):
         tail_light="railcar_24px_1",
     )
 
-    consist_factory.description = """A reliable way to move mail, supplies and express freight. Goats are not however, at this time, permitted."""
-    consist_factory.foamer_facts = """CFC Autorail Billard, CFC X2000/X5000"""
+    consist_factory.add_description(
+        """A reliable way to move mail, supplies and express freight. Goats are not however, at this time, permitted."""
+    )
+    consist_factory.add_foamer_facts("""CFC Autorail Billard, CFC X2000/X5000""")
 
     return consist_factory

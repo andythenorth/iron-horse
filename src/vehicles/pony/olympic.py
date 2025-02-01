@@ -27,9 +27,9 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Faster with control. Always faster. Always control."""
     )
-    consist_factory.foamer_facts = """BR Class 442 <i>Wessex Express</i>"""
+    consist_factory.add_foamer_facts("""BR Class 442 <i>Wessex Express</i>""")
 
     return consist_factory

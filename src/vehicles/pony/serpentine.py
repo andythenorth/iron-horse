@@ -25,9 +25,11 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Does the money feel good? Do you like your life well."""
     )
-    consist_factory.foamer_facts = """London Underground 'Gate' Stock, Standard Stock"""
+    consist_factory.add_foamer_facts(
+        """London Underground 'Gate' Stock, Standard Stock"""
+    )
 
     return consist_factory

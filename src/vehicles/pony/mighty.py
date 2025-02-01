@@ -33,7 +33,7 @@ def main(**kwargs):
     # Irish Rail 141 / 181
     # see also https://es.wikipedia.org/wiki/Serie_1600_de_Renfe
     # see also https://en.wikipedia.org/wiki/FGC_254_Series
-    consist_factory.description = """"""
-    consist_factory.foamer_facts = """"""
+    consist_factory.add_description("""""")
+    consist_factory.add_foamer_facts("""""")
 
     return consist_factory

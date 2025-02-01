@@ -17,8 +17,10 @@ def main(**kwargs):
         class_name="CabbageDVTUnit", weight=32, chassis="railcar_32px"
     )
 
-    consist_factory.description = """Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Clever idea we had eh?"""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description(
+        """Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Clever idea we had eh?"""
+    )
+    consist_factory.add_foamer_facts(
         """BR parcels Propelling Control Vehicle (PCV) with added generator"""
     )
 

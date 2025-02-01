@@ -31,7 +31,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """Fast and light, right good."""
-    consist_factory.foamer_facts = """BR Class 35 <i>Hymek</i>"""
+    consist_factory.add_description("""Fast and light, right good.""")
+    consist_factory.add_foamer_facts("""BR Class 35 <i>Hymek</i>""")
 
     return consist_factory

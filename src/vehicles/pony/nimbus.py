@@ -31,7 +31,11 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Bridging realms of power. Diesel heart and electric soul. Whispers through dawn's light."""
-    consist_factory.foamer_facts = """Bombardier Class 221 <i>Super Voyager</i>, Hitachi Class 800 <i>Intercity Express Train</i>"""
+    consist_factory.add_description(
+        """Bridging realms of power. Diesel heart and electric soul. Whispers through dawn's light."""
+    )
+    consist_factory.add_foamer_facts(
+        """Bombardier Class 221 <i>Super Voyager</i>, Hitachi Class 800 <i>Intercity Express Train</i>"""
+    )
 
     return consist_factory

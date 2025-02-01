@@ -33,7 +33,9 @@ def main(**kwargs):
         tail_light="very_high_speed_32px_3",
     )
 
-    consist_factory.description = """"""
-    consist_factory.foamer_facts = """TGV Sud-Est, with TGV 001-style distributed traction"""
+    consist_factory.add_description("""""")
+    consist_factory.add_foamer_facts(
+        """TGV Sud-Est, with TGV 001-style distributed traction"""
+    )
 
     return consist_factory

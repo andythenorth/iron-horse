@@ -74,14 +74,6 @@ class ConsistFactory(object):
     def init_consist(self):
         consist_cls = getattr(sys.modules[__name__], self.class_name)
         consist = consist_cls(consist_factory=self, **self.kwargs)
-        # shim hax
-        # CABBAGE, these should not be stored in ConsistFactory directly, they should be in kwargs to the consist
-        # they should be added by specific methods
-        if getattr(self, "description", None) is not None:
-            consist.description = self.description
-        if getattr(self, "foamer_facts", None) is not None:
-            consist.foamer_facts = self.foamer_facts
-
         # !! CABBAGE
         for unit_factory in self.unit_factories:
             try:
@@ -96,6 +88,14 @@ class ConsistFactory(object):
             consist.clone(**clone_factory)
 
         return consist
+
+    def add_description(self, description):
+        # note we store in kwargs, as the 'recipe' for the consist
+        self.kwargs["description"] = description
+
+    def add_foamer_facts(self, foamer_facts):
+        # note we store in kwargs, as the 'recipe' for the consist
+        self.kwargs["foamer_facts"] = foamer_facts
 
     def get_wagon_id(self, base_id, **kwargs):
         # auto id creator, used for wagons not locos
@@ -1426,6 +1426,8 @@ class EngineConsist(Consist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.description = kwargs["description"]  # required
+        self.foamer_facts = kwargs["foamer_facts"]  # required
         # arbitrary multiplier to floating run costs (factors are speed, power, weight)
         # adjust per subtype as needed
         self.floating_run_cost_multiplier = 8.5

@@ -28,7 +28,7 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=50, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.description = """Bombproof."""
-    consist_factory.foamer_facts = """WD Austerity 2-8-0, USRA S160 Class 2-8-0"""
+    consist_factory.add_description("""Bombproof.""")
+    consist_factory.add_foamer_facts("""WD Austerity 2-8-0, USRA S160 Class 2-8-0""")
 
     return consist_factory

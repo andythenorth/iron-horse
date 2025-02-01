@@ -41,9 +41,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """This one can go on electric or diesel. Madder than a box of frogs."""
     )
-    consist_factory.foamer_facts = """BR Class 73, Class 71/74, proposed Class 75"""
+    consist_factory.add_foamer_facts("""BR Class 73, Class 71/74, proposed Class 75""")
 
     return consist_factory

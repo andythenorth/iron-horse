@@ -41,8 +41,8 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """I've completely rebuilt some Intrepids."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description("""I've completely rebuilt some Intrepids.""")
+    consist_factory.add_foamer_facts(
         """BR Class 47, Brush Class 57, original TTD UU '47'"""
     )
 

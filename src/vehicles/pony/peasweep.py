@@ -31,10 +31,10 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """What we like about these is no fuss, no mess. Get in and off they go."""
     )
-    consist_factory.foamer_facts = """LNER EM1 (BR Class 76)"""
+    consist_factory.add_foamer_facts("""LNER EM1 (BR Class 76)""")
 
     consist_factory.add_clone(base_numeric_id=34940, clone_units=[1, 0])
 

@@ -26,9 +26,11 @@ def main(**kwargs):
         tail_light="railcar_24px_1",
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """The horses of hope gallop, but the donkeys of experience go slowly."""
     )
-    consist_factory.foamer_facts = """BR 1st generation AC Cars/Wickham/Waggon-und Maschinenbau and similar railbuses"""
+    consist_factory.add_foamer_facts(
+        """BR 1st generation AC Cars/Wickham/Waggon-und Maschinenbau and similar railbuses"""
+    )
 
     return consist_factory

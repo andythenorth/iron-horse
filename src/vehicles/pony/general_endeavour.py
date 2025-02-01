@@ -25,10 +25,10 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=70, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """I can make a General in five minutes, but a good horse is hard to replace."""
     )
-    consist_factory.foamer_facts = (
+    consist_factory.add_foamer_facts(
         """Upgraded Alco S1, EMD switchers, Brush Bagnall steelworks locos"""
     )
 

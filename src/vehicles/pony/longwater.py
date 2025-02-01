@@ -26,7 +26,9 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Do they bury themselves? Hidden from society?"""
-    consist_factory.foamer_facts = """London Underground 'Gate' Stock, Standard Stock"""
+    consist_factory.add_description("""Do they bury themselves? Hidden from society?""")
+    consist_factory.add_foamer_facts(
+        """London Underground 'Gate' Stock, Standard Stock"""
+    )
 
     return consist_factory

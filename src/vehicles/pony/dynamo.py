@@ -32,7 +32,9 @@ def main(**kwargs):
         class_name="ElectricEngineUnit", weight=92, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = """Nowt to fuss about with this one."""
-    consist_factory.foamer_facts = """SR CC1/CC2 locomotives, English Electric Class EP01 exported from UK to Poland"""
+    consist_factory.add_description("""Nowt to fuss about with this one.""")
+    consist_factory.add_foamer_facts(
+        """SR CC1/CC2 locomotives, English Electric Class EP01 exported from UK to Poland"""
+    )
 
     return consist_factory

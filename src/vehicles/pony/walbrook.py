@@ -29,7 +29,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Are these glazed and dirty steps?"""
-    consist_factory.foamer_facts = """District Railway electric locos"""
+    consist_factory.add_description("""Are these glazed and dirty steps?""")
+    consist_factory.add_foamer_facts("""District Railway electric locos""")
 
     return consist_factory

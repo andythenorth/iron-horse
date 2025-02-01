@@ -38,9 +38,11 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Top to bottom, it's an old Shoebox made new. Right powerful small engines."""
     )
-    consist_factory.foamer_facts = """Network Rail / GBRF Class 73/9 (re-engineered), BR Class 74, proposed Class 75"""
+    consist_factory.add_foamer_facts(
+        """Network Rail / GBRF Class 73/9 (re-engineered), BR Class 74, proposed Class 75"""
+    )
 
     return consist_factory

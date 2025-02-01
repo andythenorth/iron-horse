@@ -31,7 +31,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """Runs like a Swiss watch."""
-    consist_factory.foamer_facts = """Siemens Vectron Dual Mode"""
+    consist_factory.add_description("""Runs like a Swiss watch.""")
+    consist_factory.add_foamer_facts("""Siemens Vectron Dual Mode""")
 
     return consist_factory

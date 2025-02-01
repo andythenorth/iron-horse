@@ -29,7 +29,7 @@ def main(**kwargs):
         tail_light="railcar_32px_4",
     )
 
-    consist_factory.description = """Runs like the wind."""
-    consist_factory.foamer_facts = """Windhoff MPV"""
+    consist_factory.add_description("""Runs like the wind.""")
+    consist_factory.add_foamer_facts("""Windhoff MPV""")
 
     return consist_factory

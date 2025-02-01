@@ -32,7 +32,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """This one, it does go some."""
-    consist_factory.foamer_facts = """Porterbrook Leasing Class 55 <i>Deltic</i>'"""
+    consist_factory.add_description("""This one, it does go some.""")
+    consist_factory.add_foamer_facts("""Porterbrook Leasing Class 55 <i>Deltic</i>'""")
 
     return consist_factory

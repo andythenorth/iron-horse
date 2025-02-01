@@ -29,9 +29,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """Are we going back to Romford?"""
+    consist_factory.add_description("""Are we going back to Romford?""")
     # https://www.checkerboardhill.com/2020/01/mtr-zer4-battery-electric-locomotives/
-    consist_factory.foamer_facts = (
+    consist_factory.add_foamer_facts(
         """CRRC ZER4 battery-electric locos for MTR (Hong Kong metro)"""
     )
 

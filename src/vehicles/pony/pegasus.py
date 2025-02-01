@@ -32,9 +32,9 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=40, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """A right big'un from Mr. Gresley. Put these in your pipe and smoke it."""
     )
-    consist_factory.foamer_facts = """LNER P1, P2"""
+    consist_factory.add_foamer_facts("""LNER P1, P2""")
 
     return consist_factory

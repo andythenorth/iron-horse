@@ -29,10 +29,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """Let a bit of sun in, I say."""
+    consist_factory.add_description("""Let a bit of sun in, I say.""")
     # https://en.wikipedia.org/wiki/New_Zealand_DE_class_locomotive, also NZ Di class
     # nah it's CP_Class_9020 now, and rename from Silverfern
     # see also https://trainspo.com/photo/98083/
-    consist_factory.foamer_facts = """ Portugese CP Class 9020 (Alstom AD 12 B)"""
+    consist_factory.add_foamer_facts(""" Portugese CP Class 9020 (Alstom AD 12 B)""")
 
     return consist_factory

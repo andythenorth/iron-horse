@@ -24,8 +24,8 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=95, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = """Steel yourself, this one's on the move."""
-    consist_factory.foamer_facts = (
+    consist_factory.add_description("""Steel yourself, this one's on the move.""")
+    consist_factory.add_foamer_facts(
         """GEC Stephenson steel mill locomotives, Alco RSD-1 export switcher"""
     )
 

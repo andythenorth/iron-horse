@@ -14,7 +14,7 @@ def main(**kwargs):
 
     consist_factory.add_unit(class_name="SnowploughUnit", weight=50, vehicle_length=4)
 
-    consist_factory.description = """MOOSE."""
-    consist_factory.foamer_facts = """MOOSE"""
+    consist_factory.add_description("""MOOSE.""")
+    consist_factory.add_foamer_facts("""MOOSE""")
 
     return consist_factory

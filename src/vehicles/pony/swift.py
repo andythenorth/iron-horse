@@ -27,7 +27,9 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=35, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.description = """Eh it's the right big engine I said they needed. Mr. Raven helped me out a treat with this one."""
-    consist_factory.foamer_facts = """GNR Class C1, Class C2 <i>Klondike</i>"""
+    consist_factory.add_description(
+        """Eh it's the right big engine I said they needed. Mr. Raven helped me out a treat with this one."""
+    )
+    consist_factory.add_foamer_facts("""GNR Class C1, Class C2 <i>Klondike</i>""")
 
     return consist_factory

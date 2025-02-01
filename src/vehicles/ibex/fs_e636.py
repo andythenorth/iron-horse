@@ -32,7 +32,7 @@ def main(**kwargs):
         class_name="ElectricEngineUnit", weight=105, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.description = """ """
-    consist_factory.foamer_facts = """FS E.636"""
+    consist_factory.add_description(""" """)
+    consist_factory.add_foamer_facts("""FS E.636""")
 
     return consist_factory

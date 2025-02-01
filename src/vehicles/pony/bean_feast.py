@@ -29,9 +29,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """Great power and small size. We tested it in the field."""
     )
-    consist_factory.foamer_facts = """generic narrow-gauge steam locomotives"""
+    consist_factory.add_foamer_facts("""generic narrow-gauge steam locomotives""")
 
     return consist_factory

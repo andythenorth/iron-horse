@@ -26,9 +26,9 @@ def main(**kwargs):
         class_name="SteamEngineUnit", weight=70, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """We ought to do good to others as simply as a horse runs."""
     )
-    consist_factory.foamer_facts = """LNER Thompson Q1 Class tank engine"""
+    consist_factory.add_foamer_facts("""LNER Thompson Q1 Class tank engine""")
 
     return consist_factory

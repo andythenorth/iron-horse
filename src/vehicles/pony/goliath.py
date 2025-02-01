@@ -27,7 +27,7 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=71, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.description = """It gets the job done either way."""
-    consist_factory.foamer_facts = """YEC <i>Janus</i>, Corus <i>Trojan</i>"""
+    consist_factory.add_description("""It gets the job done either way.""")
+    consist_factory.add_foamer_facts("""YEC <i>Janus</i>, Corus <i>Trojan</i>""")
 
     return consist_factory

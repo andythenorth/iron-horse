@@ -35,7 +35,9 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """The big bird. Twin engines. Takes on anything."""
-    consist_factory.foamer_facts = """Brush / BR Class 53 <i>Falcon</i> prototype"""
+    consist_factory.add_description(
+        """The big bird. Twin engines. Takes on anything."""
+    )
+    consist_factory.add_foamer_facts("""Brush / BR Class 53 <i>Falcon</i> prototype""")
 
     return consist_factory

@@ -29,7 +29,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.description = """For new times. This is the zippy one."""
-    consist_factory.foamer_facts = """Euskotren TD 2000 Series"""
+    consist_factory.add_description("""For new times. This is the zippy one.""")
+    consist_factory.add_foamer_facts("""Euskotren TD 2000 Series""")
 
     return consist_factory

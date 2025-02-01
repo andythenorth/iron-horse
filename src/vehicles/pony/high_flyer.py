@@ -26,7 +26,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """All Pullman Electric Express."""
-    consist_factory.foamer_facts = """SR 5-BEL <i>Brighton Belle</i>"""
+    consist_factory.add_description("""All Pullman Electric Express.""")
+    consist_factory.add_foamer_facts("""SR 5-BEL <i>Brighton Belle</i>""")
 
     return consist_factory

@@ -27,7 +27,7 @@ def main(**kwargs):
         class_name="ElectricEngineUnit", weight=105, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.description = """ """
-    consist_factory.foamer_facts = """SNCF BB 22200 !! multisystem !! upgraded"""
+    consist_factory.add_description(""" """)
+    consist_factory.add_foamer_facts("""SNCF BB 22200 !! multisystem !! upgraded""")
 
     return consist_factory

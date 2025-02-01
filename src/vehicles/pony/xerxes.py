@@ -30,7 +30,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Not much to say about these two."""
-    consist_factory.foamer_facts = """GWR pannier tanks, original TTD Kirby 'Paul'"""
+    consist_factory.add_description("""Not much to say about these two.""")
+    consist_factory.add_foamer_facts("""GWR pannier tanks, original TTD Kirby 'Paul'""")
 
     return consist_factory

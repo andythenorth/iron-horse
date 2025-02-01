@@ -28,7 +28,7 @@ def main(**kwargs):
         class_name="SteamEngineUnit", weight=36, vehicle_length=4, spriterow_num=0
     )
 
-    consist_factory.description = """It's for your little jobs, farms and that."""
-    consist_factory.foamer_facts = """GER G15/C53 tramway locomotives"""
+    consist_factory.add_description("""It's for your little jobs, farms and that.""")
+    consist_factory.add_foamer_facts("""GER G15/C53 tramway locomotives""")
 
     return consist_factory

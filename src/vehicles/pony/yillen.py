@@ -33,7 +33,7 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=67, vehicle_length=5, spriterow_num=1
     )
 
-    consist_factory.description = """The universe is asymmetric. And so are these."""
-    consist_factory.foamer_facts = """BR Class 15, BR Class 16"""
+    consist_factory.add_description("""The universe is asymmetric. And so are these.""")
+    consist_factory.add_foamer_facts("""BR Class 15, BR Class 16""")
 
     return consist_factory

@@ -30,10 +30,10 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = (
+    consist_factory.add_description(
         """He paws fiercely, rejoicing in his strength, and charges into the fray."""
     )
-    consist_factory.foamer_facts = (
+    consist_factory.add_foamer_facts(
         """SR CC1/CC2 locomotives, English Electric export boxcab locomotives"""
     )
 

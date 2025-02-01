@@ -30,7 +30,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.description = """Every journey becomes a panorama."""
-    consist_factory.foamer_facts = """Corsican AMG 800"""
+    consist_factory.add_description("""Every journey becomes a panorama.""")
+    consist_factory.add_foamer_facts("""Corsican AMG 800""")
 
     return consist_factory
