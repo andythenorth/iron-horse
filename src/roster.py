@@ -343,7 +343,6 @@ class Roster(object):
     def init_engine_modules(self):
         package_name = "vehicles." + self.id
         # engines
-        consist_factory_unconverted_ids = []
         for engine_module_name in self.engine_module_names:
             engine_module_name = importlib.import_module(
                 "." + engine_module_name, package_name
@@ -353,7 +352,6 @@ class Roster(object):
             if hasattr(module_result, "consist_factory"):
                 # it's a consist
                 consist = module_result
-                consist_factory_unconverted_ids.append(consist.id)
             else:
                 # it's a consist factory
                 consist = module_result.init_consist()
@@ -361,7 +359,6 @@ class Roster(object):
             # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
             for cloned_consist in consist.clones:
                 self.engine_consists.append(cloned_consist)
-        print(self.id, "consist_factory_unconverted_ids (engines)", len(consist_factory_unconverted_ids), str(consist_factory_unconverted_ids))
 
 
     def init_wagon_modules(self):
@@ -379,7 +376,6 @@ class Roster(object):
                     + " not found in global_constants.wagon_module_name_stems"
                 )
 
-        consist_factory_unconverted_modules = []
         for wagon_module_name_stem in global_constants.wagon_module_name_stems:
             if wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
                 roster_id_providing_module = self.wagon_module_names_with_roster_ids[
@@ -396,8 +392,6 @@ class Roster(object):
                     module_result = wagon_module.main(
                         self.id, roster_id_providing_module=roster_id_providing_module
                     )
-                    if module_result == None:
-                        consist_factory_unconverted_modules.append(wagon_module_name)
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name
@@ -409,7 +403,6 @@ class Roster(object):
                     )
                 except Exception:
                     raise
-        print(self.id, "consist_factory_unconverted_ids (wagons)", len(consist_factory_unconverted_modules), str(consist_factory_unconverted_modules))
 
 
     def init_wagon_recolour_colour_sets(self):
