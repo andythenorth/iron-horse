@@ -1,9 +1,8 @@
 from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist = EngineConsist(
-        roster_id=roster_id,
         id="drakensberg",
         # !! This vehicle needs more than one id range due to length
         base_numeric_id=10840,

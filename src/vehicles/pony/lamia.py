@@ -1,10 +1,9 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
-        roster_id=roster_id,
         id="lamia",
         base_numeric_id=21730,
         name="0-6-0 Lamia",  # the name is the Basque mythical creature, not the Greek https://en.wikipedia.org/wiki/Lamia_(Basque_mythology)

@@ -1,13 +1,12 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
     consist_factory = ConsistFactory(
         class_name="BoxCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31330,
         gen=3,
@@ -22,7 +21,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31340,
         gen=3,
@@ -39,7 +37,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16680,
         gen=4,
@@ -53,7 +50,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16690,
         gen=4,
@@ -67,7 +63,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16700,
         gen=4,
@@ -85,7 +80,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16710,
         gen=5,
@@ -99,7 +93,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BoxCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16720,
         gen=5,

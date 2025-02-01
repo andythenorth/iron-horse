@@ -1,9 +1,8 @@
 from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist = EngineConsist(
-        roster_id=roster_id,
         id="kwa_falls",
         base_numeric_id=11010,
         name="2-8-2 Kwa Falls",

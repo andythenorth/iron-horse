@@ -1,14 +1,13 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist_factory = ConsistFactory(
         class_name="GasTankCarPressureConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25410,
         gen=2,
@@ -23,7 +22,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="GasTankCarPressureConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25420,
         gen=3,
@@ -38,7 +36,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="GasTankCarPressureConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25430,
         gen=3,
@@ -55,7 +52,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="GasTankCarPressureConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25440,
         gen=2,
@@ -69,7 +65,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="GasTankCarPressureConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25450,
         gen=3,
@@ -83,7 +78,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="GasTankCarPressureConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25460,
         gen=3,
@@ -97,7 +91,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="GasTankCarPressureConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25470,
         gen=4,
@@ -111,7 +104,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="GasTankCarPressureConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25480,
         gen=4,
@@ -127,7 +119,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="GasTankCarPressureConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25490,
         gen=4,
@@ -141,7 +132,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="GasTankCarPressureConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25500,
         gen=5,
@@ -157,7 +147,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="GasTankCarPressureConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25510,
         gen=5,
@@ -173,7 +162,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="GasTankCarPressureConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=25520,
         gen=5,

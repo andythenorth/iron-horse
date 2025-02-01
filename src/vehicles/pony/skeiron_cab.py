@@ -3,10 +3,9 @@ from train import ConsistFactory
 # skeiron does not have pax capacity, so it can be used for pure mail consists
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist_factory = ConsistFactory(
         class_name="TGVCabEngineConsist",
-        roster_id=roster_id,
         id="skeiron_cab",
         base_numeric_id=25120,
         name="Skeiron",

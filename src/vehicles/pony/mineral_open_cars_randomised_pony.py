@@ -1,14 +1,13 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31690,
         gen=1,
@@ -23,7 +22,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31710,
         gen=3,
@@ -38,7 +36,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31730,
         gen=3,
@@ -55,7 +52,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27190,
         gen=1,
@@ -71,7 +67,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=27210,
         gen=3,
@@ -85,7 +80,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31630,
         gen=3,
@@ -99,7 +93,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31610,
         gen=4,
@@ -113,7 +106,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31670,
         gen=4,
@@ -127,7 +119,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28200,
         gen=5,
@@ -141,7 +132,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28450,
         gen=5,
@@ -155,7 +145,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="BulkOpenCarMineralRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31650,
         gen=5,

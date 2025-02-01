@@ -1,9 +1,8 @@
 from train import SnowploughEngineConsist
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist_factory = SnowploughEngineConsist(
-        roster_id=roster_id,
         id="snowplough_ibex_gen_2",
         base_numeric_id=9020,
         name="Snowplough",

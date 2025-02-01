@@ -1,14 +1,13 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarConsistType2",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24010,
         gen=2,
@@ -22,7 +21,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarConsistType2",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17800,
         gen=3,
@@ -36,7 +34,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarConsistType2",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23240,
         gen=4,
@@ -50,7 +47,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarConsistType2",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17820,
         gen=4,
@@ -64,7 +60,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarConsistType2",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=37070,
         gen=5,
@@ -80,7 +75,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarConsistType2",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=36320,
         gen=5,
@@ -96,7 +90,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CoveredHopperCarConsistType2",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17840,
         gen=5,

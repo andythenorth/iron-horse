@@ -1,14 +1,13 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist_factory = ConsistFactory(
         class_name="ExpressFoodCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31380,
         gen=2,
@@ -22,7 +21,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ExpressFoodCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31950,
         gen=3,
@@ -36,7 +34,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ExpressFoodCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31960,
         gen=3,
@@ -50,7 +47,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ExpressFoodCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31970,
         gen=4,
@@ -64,7 +60,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ExpressFoodCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31980,
         gen=4,
@@ -78,7 +73,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ExpressFoodCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=31990,
         gen=4,
@@ -92,7 +86,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ExpressFoodCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32000,
         gen=5,
@@ -106,7 +99,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="ExpressFoodCarRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32010,
         gen=5,

@@ -1,14 +1,13 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist_factory = ConsistFactory(
         class_name="SiloCarConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32720,
         gen=4,
@@ -22,7 +21,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SiloCarConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17390,
         gen=4,
@@ -36,7 +34,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SiloCarConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17430,
         gen=4,
@@ -52,7 +49,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SiloCarConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32660,
         gen=5,
@@ -68,7 +64,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SiloCarConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=17410,
         gen=5,
@@ -84,7 +79,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="SiloCarConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32680,
         gen=5,

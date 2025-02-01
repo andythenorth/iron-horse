@@ -5,10 +5,9 @@ from train import ConsistFactory
 # but speed still compares favourably with equivalent era railcars, and there's a capacity bonus also
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist_factory = ConsistFactory(
         class_name="AutoCoachCombineConsist",
-        roster_id=roster_id,
         id="auto_coach_pony_gen_2",
         base_numeric_id=4690,
         name="Autocoach Set",

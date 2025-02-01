@@ -1,14 +1,13 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32900,
         gen=1,
@@ -25,7 +24,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32920,
         gen=3,
@@ -40,7 +38,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32940,
         gen=3,
@@ -57,7 +54,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22260,
         gen=1,
@@ -71,7 +67,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22400,
         gen=2,
@@ -85,7 +80,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22280,
         gen=3,
@@ -99,7 +93,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22420,
         gen=3,
@@ -113,7 +106,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22300,
         gen=3,
@@ -127,7 +119,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22480,
         gen=4,
@@ -143,7 +134,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22320,
         gen=4,
@@ -159,7 +149,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22440,
         gen=4,
@@ -175,7 +164,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22340,
         gen=5,
@@ -191,7 +179,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22460,
         gen=5,
@@ -207,7 +194,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="TankCarVolatilesConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=37870,
         gen=5,

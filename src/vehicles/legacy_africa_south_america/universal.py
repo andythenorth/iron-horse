@@ -1,7 +1,7 @@
 from train import EngineConsist, DieselEngineUnit
 
 
-def main(roster_id, **kwargs):  # for rest of stats, look up GE Export models U5B-U8B
+def main(**kwargs):  # for rest of stats, look up GE Export models U5B-U8B
     consist = EngineConsist(
         id="universal",
         base_numeric_id=9580,

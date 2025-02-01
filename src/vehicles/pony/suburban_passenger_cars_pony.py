@@ -1,7 +1,7 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- pony NG----------------------------------------------------------------------
@@ -13,7 +13,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerSuburbanCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29900,
         gen=2,
@@ -27,7 +26,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerSuburbanCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29910,
         gen=2,
@@ -41,7 +39,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerSuburbanCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29920,
         gen=3,
@@ -55,7 +52,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerSuburbanCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29930,
         gen=3,
@@ -69,7 +65,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerSuburbanCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29940,
         gen=3,
@@ -83,7 +78,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerSuburbanCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29950,
         gen=4,
@@ -97,7 +91,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerSuburbanCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29960,
         gen=4,
@@ -111,7 +104,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerSuburbanCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29970,
         gen=5,
@@ -125,7 +117,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerSuburbanCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29980,
         gen=5,
@@ -141,7 +132,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerSuburbanCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=29990,
         gen=6,
@@ -155,7 +145,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerSuburbanCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30120,
         gen=6,

@@ -1,10 +1,9 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist_factory = ConsistFactory(
         class_name="PassengerEngineCabControlCarConsist",
-        roster_id=roster_id,
         id="driving_cab_panoramic_passenger_ng_pony_gen_4",
         base_numeric_id=23510,
         name="Panoramic Driving Trailer",

@@ -1,14 +1,13 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHighEndConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23590,
         gen=1,
@@ -23,7 +22,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHighEndConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23600,
         gen=3,
@@ -38,7 +36,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHighEndConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23610,
         gen=3,
@@ -55,7 +52,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHighEndConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23620,
         gen=4,
@@ -69,7 +65,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHighEndConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23630,
         gen=4,
@@ -83,7 +78,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHighEndConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23640,
         gen=5,
@@ -99,7 +93,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHighEndConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23650,
         gen=5,
@@ -115,7 +108,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHighEndConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23660,
         gen=5,

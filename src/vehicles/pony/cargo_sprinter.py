@@ -5,10 +5,9 @@ from train import ConsistFactory
 # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist_factory = ConsistFactory(
         class_name="MailEngineCargoSprinterEngineConsist",
-        roster_id=roster_id,
         id="cargo_sprinter",
         base_numeric_id=25840,
         name="Cargo Sprinter",

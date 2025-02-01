@@ -1,14 +1,13 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- pony NG----------------------------------------------------------------------
 
     consist_factory = ConsistFactory(
         class_name="PassengerRailbusTrailerCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=28150,
         gen=3,
@@ -29,7 +28,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="PassengerRailbusTrailerCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26190,
         gen=4,

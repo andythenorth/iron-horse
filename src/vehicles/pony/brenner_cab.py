@@ -3,10 +3,9 @@ from train import ConsistFactory
 # pax capacity on these limits use for 100% mail consists - use the Skeiron for that?
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist_factory = ConsistFactory(
         class_name="TGVCabEngineConsist",
-        roster_id=roster_id,
         id="brenner_cab",
         base_numeric_id=17090,
         name="Brenner",

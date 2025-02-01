@@ -56,9 +56,9 @@ class ConsistFactory(object):
         # !! clones might be done in the roster version
         self.clone_factories.append(kwargs)
 
-    def init_consist(self):
+    def init_consist(self, roster_id):
         consist_cls = getattr(sys.modules[__name__], self.class_name)
-        consist = consist_cls(**self.kwargs)
+        consist = consist_cls(consist_factory=self, roster_id=roster_id, **self.kwargs)
         # shim hax
         if getattr(self, "description", None) is not None:
             consist.description = self.description
@@ -97,10 +97,8 @@ class Consist(object):
     Each consist comprises one or more 'units' (visible).
     """
 
-    def __init__(self, **kwargs):
-        self.consist_factory = kwargs.get(
-            "consist_factory", ConsistFactory(self.__class__.__name__, **kwargs)
-        )
+    def __init__(self, consist_factory, **kwargs):
+        self.consist_factory = consist_factory
         self.id = kwargs.get("id", None)
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         # private var, used to store a name substr for engines, composed into name with other strings as needed

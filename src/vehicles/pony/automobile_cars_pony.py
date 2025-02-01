@@ -1,7 +1,7 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
@@ -12,7 +12,6 @@ def main(roster_id, **kwargs):
     """
     consist_factory = ConsistFactory(
         class_name="AutomobileCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=22570,
         gen=2,
@@ -26,7 +25,6 @@ def main(roster_id, **kwargs):
     """
     consist_factory = ConsistFactory(
         class_name="AutomobileCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22540,
         gen=3,
@@ -42,7 +40,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24800,
         gen=3,
@@ -58,7 +55,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22550,
         gen=4,
@@ -74,7 +70,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24770,
         gen=4,
@@ -90,7 +85,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=22560,
         gen=5,
@@ -106,7 +100,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="AutomobileCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24760,
         gen=5,

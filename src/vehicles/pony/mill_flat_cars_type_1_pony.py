@@ -1,14 +1,13 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
     consist_factory = ConsistFactory(
         class_name="FlatCarMillConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34160,
         gen=2,
@@ -24,7 +23,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FlatCarMillConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=34170,
         gen=3,
@@ -39,7 +37,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FlatCarMillConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=32600,
         gen=3,
@@ -56,7 +53,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FlatCarMillConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33740,
         gen=3,
@@ -70,7 +66,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FlatCarMillConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33750,
         gen=3,
@@ -84,7 +79,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FlatCarMillConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33760,
         gen=3,
@@ -98,7 +92,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FlatCarMillConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33770,
         gen=4,
@@ -112,7 +105,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FlatCarMillConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33780,
         gen=4,
@@ -126,7 +118,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FlatCarMillConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33790,
         gen=4,
@@ -140,7 +131,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FlatCarMillConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33800,
         gen=5,
@@ -154,7 +144,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="FlatCarMillConsistType1",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=33810,
         gen=5,

@@ -1,10 +1,9 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
-        roster_id=roster_id,
         id="thunderer",
         base_numeric_id=4830,
         name="4-6-0 Thunderer",  # shorter 2-6-0 version was tried, but doesn't fit a power band gap in the mixed traffic roster

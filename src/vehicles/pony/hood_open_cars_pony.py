@@ -1,7 +1,7 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
@@ -9,7 +9,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHoodConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16520,
         gen=1,
@@ -25,7 +24,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHoodConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16540,
         gen=3,
@@ -39,7 +37,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHoodConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16550,
         gen=3,
@@ -53,7 +50,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHoodConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16560,
         gen=4,
@@ -67,7 +63,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHoodConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16570,
         gen=4,
@@ -81,7 +76,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHoodConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16580,
         gen=5,
@@ -97,7 +91,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="OpenCarHoodConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16590,
         gen=5,

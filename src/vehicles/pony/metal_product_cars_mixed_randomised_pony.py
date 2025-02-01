@@ -1,14 +1,13 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
 
     consist_factory = ConsistFactory(
         class_name="MetalProductCarMixedRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16750,
         gen=1,
@@ -24,7 +23,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MetalProductCarMixedRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16760,
         gen=2,
@@ -38,7 +36,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MetalProductCarMixedRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16770,
         gen=3,
@@ -52,7 +49,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MetalProductCarMixedRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16780,
         gen=3,
@@ -66,7 +62,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MetalProductCarMixedRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16790,
         gen=4,
@@ -80,7 +75,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MetalProductCarMixedRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16800,
         gen=4,
@@ -94,7 +88,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MetalProductCarMixedRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16810,
         gen=4,
@@ -112,7 +105,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MetalProductCarMixedRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16820,
         gen=5,
@@ -126,7 +118,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MetalProductCarMixedRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=16830,
         gen=5,

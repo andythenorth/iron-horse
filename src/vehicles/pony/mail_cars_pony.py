@@ -1,13 +1,12 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30000,
         gen=1,
@@ -24,7 +23,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30010,
         gen=3,
@@ -39,7 +37,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30020,
         gen=3,
@@ -54,7 +51,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30030,
         gen=4,
@@ -69,7 +65,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30260,
         gen=4,
@@ -86,7 +81,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30040,
         gen=1,
@@ -102,7 +96,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30050,
         gen=1,
@@ -118,7 +111,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30060,
         gen=2,
@@ -134,7 +126,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30070,
         gen=2,
@@ -150,7 +141,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30080,
         gen=3,
@@ -166,7 +156,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30090,
         gen=3,
@@ -182,7 +171,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30100,
         gen=3,
@@ -198,7 +186,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30110,
         gen=4,
@@ -214,7 +201,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30140,
         gen=4,
@@ -230,7 +216,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30150,
         gen=4,
@@ -246,7 +231,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30160,
         gen=5,
@@ -263,7 +247,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30170,
         gen=5,
@@ -280,7 +263,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MailCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=30180,
         gen=5,

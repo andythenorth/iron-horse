@@ -1,7 +1,7 @@
 from train import EngineConsist, DieselEngineUnit
 
 
-def main(roster_id, **kwargs):  # for rest of stats, look up EMD G22CW
+def main(**kwargs):  # for rest of stats, look up EMD G22CW
     consist = EngineConsist(
         id="astarsa", base_numeric_id=9090, name="Astarsa", power=1600, intro_year=1969
     )

@@ -4,10 +4,9 @@ from train import ConsistFactory
 # !! actually a predecessor of Traxx
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
-        roster_id=roster_id,
         id="mthb_re_486",
         base_numeric_id=34750,
         name="MTHB Re 486",

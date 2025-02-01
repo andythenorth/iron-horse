@@ -2,10 +2,9 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist_factory = ConsistFactory(
         class_name="EngineConsist",
-        roster_id=roster_id,
         id="stag",
         base_numeric_id=17870,
         name="0-6-4 Stag",

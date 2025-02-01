@@ -1,7 +1,7 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- narrow gauge -----------------------------------------------------------------
@@ -59,7 +59,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CabooseCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23690,
         gen=1,
@@ -77,7 +76,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CabooseCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=26270,
         gen=1,
@@ -208,7 +206,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CabooseCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23270,
         gen=1,
@@ -226,7 +223,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="CabooseCarConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=23280,
         gen=1,

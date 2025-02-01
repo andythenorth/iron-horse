@@ -1,13 +1,12 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     result = []
 
     # --------------- standard gauge ---------------------------------------------------------------
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarRollerRoofRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24650,
         gen=4,
@@ -21,7 +20,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarRollerRoofRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24670,
         gen=4,
@@ -35,7 +33,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarRollerRoofRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24690,
         gen=5,
@@ -49,7 +46,6 @@ def main(roster_id, **kwargs):
 
     consist_factory = ConsistFactory(
         class_name="MineralCoveredHopperCarRollerRoofRandomisedConsist",
-        roster_id=roster_id,
         roster_id_providing_module=kwargs["roster_id_providing_module"],
         base_numeric_id=24710,
         gen=5,

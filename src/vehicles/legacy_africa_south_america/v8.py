@@ -1,9 +1,8 @@
 from train import EngineConsist, ElectricEngineUnit
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist = EngineConsist(
-        roster_id=roster_id,
         id="v8",
         base_numeric_id=9450,
         name="V8 2-C+C-2",

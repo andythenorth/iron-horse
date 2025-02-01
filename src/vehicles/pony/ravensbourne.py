@@ -1,10 +1,9 @@
 from train import ConsistFactory
 
 
-def main(roster_id, **kwargs):
+def main(**kwargs):
     consist_factory = ConsistFactory(
         class_name="MailEngineMetroConsist",
-        roster_id=roster_id,
         id="ravensbourne",
         base_numeric_id=1910,
         name="Ravensbourne",

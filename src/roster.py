@@ -347,14 +347,8 @@ class Roster(object):
             engine_module_name = importlib.import_module(
                 "." + engine_module_name, package_name
             )
-            module_result = engine_module_name.main(self.id)
-            # !!!! CABBAGE 9000
-            if hasattr(module_result, "consist_factory"):
-                # it's a consist
-                consist = module_result
-            else:
-                # it's a consist factory
-                consist = module_result.init_consist()
+            module_result = engine_module_name.main()
+            consist = module_result.init_consist(roster_id=self.id)
             self.engine_consists.append(consist)
             # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
             for cloned_consist in consist.clones:
@@ -390,13 +384,10 @@ class Roster(object):
                         "." + wagon_module_name, package_name
                     )
                     module_result = wagon_module.main(
-                        self.id, roster_id_providing_module=roster_id_providing_module
+                        roster_id_providing_module=roster_id_providing_module
                     )
                     for cabbage_consist_factory in module_result:
-                        if type(cabbage_consist_factory).__name__ == "ConsistFactory":
-                            cabbage_consist_factory.init_consist()
-                        else:
-                            print(type(cabbage_consist_factory).__name__)
+                        cabbage_consist_factory.init_consist(roster_id=self.id)
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name

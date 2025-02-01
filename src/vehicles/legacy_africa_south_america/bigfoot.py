@@ -1,7 +1,7 @@
 from train import EngineConsist, DieselEngineUnit
 
 
-def main(roster_id, **kwargs):  # roughly an SAR 91-000 class
+def main(**kwargs):  # roughly an SAR 91-000 class
     consist = EngineConsist(
         id="bigfoot",
         base_numeric_id=10660,
