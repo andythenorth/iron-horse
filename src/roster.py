@@ -350,8 +350,6 @@ class Roster(object):
                 "." + engine_module_name, package_name
             )
             for consist_factory in engine_module_name.main():
-                if consist_factory.cloned_from_consist_factory is not None:
-                    print("CABBAGE 3810 - FOUND CLONE of", consist_factory.kwargs["id"])
                 consist_factory.set_roster_ids(self.id, roster_id_providing_module)
                 consist = consist_factory.produce()
                 self.engine_consists.append(consist)
