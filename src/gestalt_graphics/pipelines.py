@@ -33,32 +33,8 @@ class Pipeline(object):
 
     @property
     def vehicle_source_input_path(self):
-        # convenience method to get the vehicle template image
         # I considered having this return the Image, not just the path, but it's not saving much, and is less obvious what it does when used
-        # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
-
-        if self.consist.gestalt_graphics.input_spritesheet_delegate_id is not None:
-            # we never get a delegate from anywhere other than current consist, that's the rules
-            consist_filename_stem = (
-                self.consist.gestalt_graphics.input_spritesheet_delegate_id
-            )
-        else:
-            # handle cloned cases by referring to the original consist factory for the path
-            # !! arguably this could be handled in the consist as a method, but should consists know about the graphics filenames? Maybe they should...
-            # !! yes this knows too much about consist internals, and factories; it shouldn't
-            # !! won't work for wagons, which use wagon_id; this wasn't relevant as of Feb 2025, but eh
-            # !! CABBAGE possibly delegate a method on consist_factory to get a base_id or default_id for consists
-            if self.consist.consist_factory.cloned_from_consist_factory is not None:
-                consist_filename_stem = self.consist.consist_factory.cloned_from_consist_factory.kwargs["id"]
-            else:
-                # CABBAGE JFDI hax, see above
-                consist_filename_stem = self.consist.id
-
-        # the consist id might have the consist's roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
-        # this will have a null effect (which is fine) if the roster_id consist is the same as the module providing the graphics gile
-        consist_filename_stem = consist_filename_stem.replace(
-            self.consist.roster_id, self.consist.roster_id_providing_module
-        )
+        # the consist resolves what the spritesheet should be used as consists can delegate to other consists if required
 
         return os.path.join(
             currentdir,
@@ -66,7 +42,7 @@ class Pipeline(object):
             "graphics",
             # roster_id providing module will always give us the correct filesystem path to the graphics file, which might differ from the current roster_id
             self.consist.roster_id_providing_module,
-            consist_filename_stem + ".png",
+            self.consist.input_spritesheet_name_stem + ".png",
         )
 
     @property
@@ -635,7 +611,6 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
 
         # take the first and last candidates;
         # note that we have to call set here, due to the way random candidates are padded out to make power of 2 list lengths for random bits
-        # we have to use frozen_roster_items as the roster object won't pickle for multiprocessing use (never figured out why)
         if len(self.consist.units) > 1:
             raise BaseException(
                 "GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline won't work with articulated consists - called by "

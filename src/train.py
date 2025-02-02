@@ -1096,6 +1096,31 @@ class Consist(object):
         return result
 
     @property
+    def input_spritesheet_name_stem(self):
+        # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
+        if self.gestalt_graphics.input_spritesheet_delegate_id is not None:
+            # we never get a delegate of this type from anywhere other than current consist, that's the rules
+            input_spritesheet_name_stem = (
+                self.gestalt_graphics.input_spritesheet_delegate_id
+            )
+        else:
+            # handle cloned cases by referring to the original consist factory for the path
+            if self.consist_factory.cloned_from_consist_factory is not None:
+                # this will get a default consist from the source factory, mapping this consist to the source spritesheet
+                input_spritesheet_name_stem = (
+                    self.consist_factory.cloned_from_consist_factory.kwargs["id"]
+                )
+            else:
+                input_spritesheet_name_stem = self.id
+
+        # the consist id might have the consist's roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
+        # this will have a null effect (which is fine) if the roster_id consist is the same as the module providing the graphics gile
+        input_spritesheet_name_stem = input_spritesheet_name_stem.replace(
+            self.roster_id, self.roster_id_providing_module
+        )
+        return input_spritesheet_name_stem
+
+    @property
     def requires_custom_buy_menu_sprite(self):
         # boolean check for whether we'll need a custom buy menu sprite, or if we can default to just using 6th angle of vehicle
         if len(self.units) > 1:
