@@ -57,6 +57,8 @@ class ConsistFactory(object):
         # used for clone book-keeping
         self.cloned_from_consist_factory = None
         self.clones = []
+        # used for book-keeping related consists, does not define consists in roster
+        self.produced_consists = []
 
     def set_roster_ids(self, roster_id, roster_id_providing_module):
         # rosters can optionally init consist factories from other rosters
@@ -97,6 +99,7 @@ class ConsistFactory(object):
             )  # !! might need consist passing?  For IDs etc, again consist knows too much currently
             consist.add_unit(unit_cls, **unit_factory.kwargs)
 
+        self.produced_consists.append(consist)
         return consist
 
     def get_wagon_id(self, base_id, **kwargs):
