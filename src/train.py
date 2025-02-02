@@ -128,10 +128,16 @@ class ConsistFactory(object):
         return result
 
     def clone(self, base_numeric_id, **kwargs):
-        print("ConsistFactory.clone() not fully implemented yet - called by ", self.kwargs["id"])
+        print(
+            "ConsistFactory.clone() not fully implemented yet - called by ",
+            self.kwargs["id"],
+        )
         if self.cloned_from_consist_factory is not None:
             # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
-            raise Exception("Don't clone a consist factory that is itself a clone, it won't work as expected. \nClone the original consist factory. \nConsist is: " + self.kwargs["id"])
+            raise Exception(
+                "Don't clone a consist factory that is itself a clone, it won't work as expected. \nClone the original consist factory. \nConsist is: "
+                + self.kwargs["id"]
+            )
         cloned_consist_factory = copy.deepcopy(self)
         # cloned consist factory may need to reference original source
         cloned_consist_factory.cloned_from_consist_factory = self
@@ -140,9 +146,12 @@ class ConsistFactory(object):
 
         cloned_consist_factory.kwargs["base_numeric_id"] = base_numeric_id
         # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
-        cloned_consist_factory.kwargs["id"] = self.kwargs["id"] + "_clone_" + str(len(self.clones))
+        cloned_consist_factory.kwargs["id"] = (
+            self.kwargs["id"] + "_clone_" + str(len(self.clones))
+        )
 
         return cloned_consist_factory
+
 
 class UnitFactory(object):
     """
