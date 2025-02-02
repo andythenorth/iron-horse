@@ -32,24 +32,21 @@ def main(**kwargs):
     )
     consist_factory.define_foamer_facts("""DRS Class 20/3 (re-engineered)""")
 
+    result.append(consist_factory)
+
     print("cabbage 939", consist_factory.kwargs["id"])
-    """
-    consist_factory.add_clone(base_numeric_id=820, clone_units=[1])
+
+    consist_factory = consist_factory.begin_clone(base_numeric_id=820, unit_repeats=[1])
 
     # this is a JFDI thing, the Lynx 2-unit version needs a reversed sprite, but the buy menu compositor does not support that as of Jan 2024, so hax
-    consist_factory.clones[0].add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=72, vehicle_length=6, spriterow_num=1
     )
 
-    # JFDI recalculate power to account for 2 units
-    consist_factory.clones[0].set_clone_power_from_clone_source()
+    # JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
+    consist_factory.kwargs["random_reverse"] = False
 
-    # also JFDI, the default single unit should randomly reverse, the 2-unit version should not, so hax
-    consist_factory.clones[0].random_reverse = False
-    """
-    result.append(consist_factory)
-
-    consist_factory = consist_factory.clone(base_numeric_id=820, unit_counts=[2])
+    consist_factory.complete_clone()
 
     result.append(consist_factory)
 

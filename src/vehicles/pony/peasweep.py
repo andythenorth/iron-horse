@@ -40,11 +40,11 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = consist_factory.clone(base_numeric_id=34940, unit_counts=[1, 0])
+    consist_factory = consist_factory.begin_clone(base_numeric_id=34940, unit_repeats=[1])
 
     print("cabbage 939", consist_factory.kwargs["id"])
-    # HAX
-    consist_factory.unit_factories[0].kwargs["repeat"] = 1
+
+    consist_factory.complete_clone()
 
     result.append(consist_factory)
 

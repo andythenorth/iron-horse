@@ -37,14 +37,15 @@ def main(**kwargs):
     consist_factory.define_description("""I send these out in twos.""")
     consist_factory.define_foamer_facts("""BR Class 20, uprated EE 8CSVT prime mover""")
 
-    print("cabbage 939", consist_factory.kwargs["id"])
-    """
-    # also JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
-    consist_factory.clones[0].random_reverse = True
-    """
     result.append(consist_factory)
 
-    consist_factory = consist_factory.clone(base_numeric_id=34900, unit_counts=[1, 0])
+    consist_factory = consist_factory.begin_clone(base_numeric_id=34900, unit_repeats=[1, 0])
+    print("cabbage 939", consist_factory.kwargs["id"])
+
+    # JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
+    consist_factory.kwargs["random_reverse"] = True
+
+    consist_factory.complete_clone()
 
     result.append(consist_factory)
 

@@ -39,7 +39,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = consist_factory.clone(base_numeric_id=910, unit_counts=[1])
+    consist_factory = consist_factory.begin_clone(base_numeric_id=910, unit_repeats=[1])
 
     print("cabbage 939", consist_factory.kwargs["id"])
     # this is a JFDI thing, the 2-unit version varies sprites per unit position, which is generally supported
@@ -49,10 +49,7 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=23, vehicle_length=4, spriterow_num=0
     )
 
-    """
-    # JFDI recalculate power to account for 2 units
-    consist_factory.clones[0].set_clone_power_from_clone_source()
-    """
+    consist_factory.complete_clone()
 
     result.append(consist_factory)
 

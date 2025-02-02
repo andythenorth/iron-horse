@@ -47,7 +47,9 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = consist_factory.clone(base_numeric_id=800, unit_counts=[2])
+    consist_factory = consist_factory.begin_clone(base_numeric_id=800, unit_repeats=[2])
+
+    consist_factory.complete_clone()
 
     result.append(consist_factory)
 

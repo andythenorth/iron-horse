@@ -54,7 +54,6 @@ class ConsistFactory(object):
         # we store kwargs for reuse later, seems to be a factory pattern convention to just store them as 'kwargs' and not 'recipe' or something
         self.kwargs = kwargs
         self.unit_factories = []
-        self.clone_factories = []  # temp hax CABBAGE REMOVE
         # used for clone book-keeping
         self.cloned_from_consist_factory = None
         self.clones = []
@@ -69,7 +68,9 @@ class ConsistFactory(object):
     def define_unit(self, class_name, **kwargs):
         # named define_unit, not add_unit_factory, as the unit factory is an internal implemenation detail
         # units will be made by unit factory instances (implementation detail of consist factory)
-        self.unit_factories.append(UnitFactory(consist_factory=self, class_name=class_name, **kwargs))
+        self.unit_factories.append(
+            UnitFactory(consist_factory=self, class_name=class_name, **kwargs)
+        )
 
     def define_description(self, description):
         # note we store in kwargs, as the 'recipe' for the consist
@@ -79,28 +80,22 @@ class ConsistFactory(object):
         # note we store in kwargs, as the 'recipe' for the consist
         self.kwargs["foamer_facts"] = foamer_facts
 
-    def add_clone(self, **kwargs):
-        # # temp hax CABBAGE REMOVE
-        # !! CABBAGE not actually a CloneFactory yet
-        # !! clones might be done in the roster version
-        self.clone_factories.append(kwargs)
+    def produce(self, livery=None):
+        if livery == None:
+            # just do the default livery, this means that calling ConsistFactory.produce() without params will always just return a default consist, which is useful
+            # ASSIGN LIVERY HERE
+            pass
 
-    def produce(self):
         consist_cls = getattr(sys.modules[__name__], self.class_name)
         consist = consist_cls(consist_factory=self, **self.kwargs)
 
         # orchestrate addition of units
         for unit_factory in self.unit_factories:
             # CABBAGE - this is delegating to consist currently, by passing unit classes, we want to pass actual units from here, consist knows too much
-            unit_cls = unit_factory.produce() # !! might need consist passing?  For IDs etc, again consist knows too much currently
+            unit_cls = (
+                unit_factory.produce()
+            )  # !! might need consist passing?  For IDs etc, again consist knows too much currently
             consist.add_unit(unit_cls, factory_cabbage=True, **unit_factory.kwargs)
-
-        # !! CABBAGE
-        # !! these aren't actually clone factories yet
-        # !! do we want clones, or do we want to add more consist factories in the engine module, similar to wagons?
-        # !! for example by have a clone method on the actual factory
-        for clone_factory in self.clone_factories:
-            consist.clone(**clone_factory)
 
         return consist
 
@@ -127,11 +122,14 @@ class ConsistFactory(object):
         result = "_".join(substrings)
         return result
 
-    def clone(self, base_numeric_id, unit_counts, **kwargs):
-        print(
-            "ConsistFactory.clone() not fully implemented yet - called by ",
-            self.kwargs["id"],
+    @property
+    def produced_unit_total(self):
+        # convenience way to find out how many units will be produced by unit factories
+        return sum(
+            unit_factory.kwargs["repeat"] for unit_factory in self.unit_factories
         )
+
+    def begin_clone(self, base_numeric_id, unit_repeats, **kwargs):
         if self.cloned_from_consist_factory is not None:
             # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
             raise Exception(
@@ -143,27 +141,53 @@ class ConsistFactory(object):
         cloned_consist_factory.cloned_from_consist_factory = self
         # keep a reference locally for book-keeping
         self.clones.append(cloned_consist_factory)
+        # deepcopy will have created new unit factory instances, but we might want to modify the sequence for the cloned consist factory
+        # the format is unit_repeats=[x, y z]
+        # for each existing unit factory, this will specify which unit factories to copy, and what their repeat values are
+        # e.g. [1, 0] will keep the first and drop the second
+        # [2, 1] will repeat the first unit twice
+        # [0, 2] will drop the first unit and repeat the second twice
+        unit_factories_old = cloned_consist_factory.unit_factories.copy()
+        cloned_consist_factory.unit_factories = []  # clear, we'll rebuild from clean
+        for counter, unit_factory in enumerate(unit_factories_old):
+            # don't use unit_factory if repeat is 0
+            if unit_repeats[counter] > 0:
+                cloned_consist_factory.unit_factories.append(unit_factory)
+                unit_factory.kwargs["repeat"] = unit_repeats[counter]
 
         cloned_consist_factory.kwargs["base_numeric_id"] = base_numeric_id
         # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
         cloned_consist_factory.kwargs["id"] = (
             self.kwargs["id"] + "_clone_" + str(len(self.clones))
         )
-
-        # deepcopy will have created new unit factory instances, but we might want to modify the sequence for the cloned consist factory
-        # the format is unit_counts=[x, y z]
-        # for each existing unit factory, this will specify how many copies to create,
-        # e.g. [1, 0] will keep the first and drop the second
-        # [2, 1] will repeat the first unit twice
-        # [0, 2] will drop the first unit and repeat the second twice
-        # CABBAGE !! this might need to consider setting repeat=n rather than repeating the insertions of unit factories, buy menu might not work with this?
-        unit_factories_old = cloned_consist_factory.unit_factories.copy()
-        cloned_consist_factory.unit_factories = [] # clear, we'll rebuild from clean
-        for counter, unit_factory in enumerate(unit_factories_old):
-            for i in range(unit_counts[counter]):
-                cloned_consist_factory.unit_factories.append(unit_factory)
-
+        cloned_consist_factory.kwargs["_buyable_variant_group_id"] = self.kwargs["id"]
         return cloned_consist_factory
+
+    def complete_clone(self):
+        # book-keeping and adjustments after all changes are made to a cloned consist factory
+        self.kwargs["power_by_power_source"] = self.clone_adjust_power_by_power_source()
+        # purchase menu variant decor isn't supported if the consist is articulated, so just forcibly clear this property
+        if self.produced_unit_total > 1:
+            self.kwargs["show_decor_in_purchase_for_variants"] = []
+
+    @property
+    def clone_stats_adjustment_factor(self):
+        # clones need to adjust some stats, e.g. power, running_cost etc, we do this by inferring a multiple by comparing number of units that will be produced
+        # call on clone, not source, will except (correctly) if called on source
+        source_unit_count = self.cloned_from_consist_factory.produced_unit_total
+        clone_unit_count = self.produced_unit_total
+        result = clone_unit_count / source_unit_count
+        return result
+
+    def clone_adjust_power_by_power_source(self):
+        # recalculate power in 'recipe' for a cloned consist factory
+        result = {}
+        for (
+            power_type,
+            power_value,
+        ) in self.kwargs["power_by_power_source"].items():
+            result[power_type] = int(power_value * self.clone_stats_adjustment_factor)
+        return result
 
 
 class UnitFactory(object):
@@ -175,14 +199,21 @@ class UnitFactory(object):
         self.consist_factory = consist_factory
         self.class_name = class_name
         self.kwargs = kwargs
+        # where useful, set defaults for values that are otherwise optional
+        if "repeat" not in self.kwargs:
+            self.kwargs["repeat"] = 1
 
     def produce(self):
         # CABBAGE, THIS CURRENTLY RETURNS unit_cls, as the consist handles unit instance creation; that needs changing, this should return unit instances
+        # should it actually return a list using repeat, or should that be orchestrated by the ConsistFactory, when appending?
         try:
             unit_cls = getattr(sys.modules[__name__], self.class_name)
         except:
-            raise Exception("class_name not found for " + self.consist_factory.kwargs["id"])
+            raise Exception(
+                "class_name not found for " + self.consist_factory.kwargs["id"]
+            )
         return unit_cls
+
 
 class Consist(object):
     """
@@ -209,11 +240,6 @@ class Consist(object):
         self.use_named_buyable_variant_group = None
         # create a structure to hold the units
         self.units = []
-        # we clone some consists to make alternate length variants, we need to track that
-        self.clones = []
-        # store the consist this was cloned from, may also be used to determine if this is a clone or not
-        # CABBAGE cloned_from_consist
-        self.cloned_from_consist = None
         # either gen xor intro_year is required, don't set both, one will be interpolated from the other
         self._intro_year = kwargs.get("intro_year", None)
         self._gen = kwargs.get("gen", None)
@@ -333,60 +359,6 @@ class Consist(object):
     def roster_id_providing_module(self):
         # just a pass through for convenience
         return self.consist_factory.roster_id_providing_module
-
-    def clone(self, **kwargs):
-        # consists have support for optional clones, which are used to provide variants of different lengths
-        # e.g. diesels with 1 or 2 units, and similar
-        # a consist can have more than one clone variant
-        # parameters
-        # - base_numeric_id: (int) used for the cloned consist
-        # - clone_units: [repeat=n1, repeat=n2] etc for each unit defined in the original consist
-        # so to extend a 1 unit consist to a 2 unit variant: clone_units=[2]
-        # to shorten a 2 unit consist to a 1 unit variant: clone_units=[1, 0]
-
-        # we clone the consist by copying the current consist, this is the simplest way to not get caught out by any properties in subclasses
-        cloned_consist = copy.deepcopy(self)
-        # CABBAGE cloned_from_consist
-        cloned_consist.cloned_from_consist = self
-        cloned_consist.id = self.id + "_clone_" + str(len(self.clones))
-        cloned_consist.base_numeric_id = kwargs["base_numeric_id"]
-        cloned_consist._buyable_variant_group_id = self.id
-        # CABBAGE purchase menu variant decor isn't supported if the consist is articulated, so just forcibly clear this property
-        cloned_consist.show_decor_in_purchase_for_variants = []
-        # we have to recreate the units from scratch using the original classes and kwargs stored when they were inited
-        # this is faff, but is the simplest available method due to the way the structure for units + buyable_variants is constructed and unit_variant IDs assigned
-        cloned_consist.units = []
-        for counter, unit in enumerate(self.units):
-            unit_kwargs = unit.kwargs_for_optional_consist_cloning_later.copy()
-            del unit_kwargs[
-                "consist"
-            ]  # drop this, it's re-added to kwargs later by add_unit, which will cause an error to be thrown
-            cloned_consist.add_unit(
-                type(unit).__name__,
-                repeat=kwargs["clone_units"][counter],
-                **unit_kwargs,
-            )
-        cloned_consist.set_clone_power_from_clone_source()
-        self.clones.append(cloned_consist)
-        # no return needed
-
-    @property
-    def clone_stats_adjustment_factor(self):
-        # CABBAGE clone_stats_adjustment_factor
-        # clones need to adjust some stats, e.g. power, running_cost etc
-        return len(self.units) / len(self.cloned_from_consist.units)
-
-    def set_clone_power_from_clone_source(self):
-        # CABBAGE set_clone_power_from_clone_source
-        # recalculate power for a clone, adjusting by num units or other factor
-        for (
-            power_type,
-            power_value,
-        ) in self.cloned_from_consist.power_by_power_source.items():
-            self.power_by_power_source[power_type] = int(
-                power_value * self.clone_stats_adjustment_factor
-            )
-        # no return needed
 
     def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed
@@ -1520,11 +1492,14 @@ class EngineConsist(Consist):
 
     @property
     def buy_cost(self):
-        # first check if we're simply a clone, because then we just take the costs from the clone source vehicle, and adjust them to account for differing number of units
-        # CABBAGE cloned_from_consist
-        if self.cloned_from_consist is not None:
+        # first check if this is a clone, because then we just take the costs from the clone source
+        # and adjust them to account for differing number of units
+        if self.consist_factory.cloned_from_consist_factory is not None:
+            # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
+            temp_consist = self.consist_factory.cloned_from_consist_factory.produce()
             return int(
-                self.cloned_from_consist.buy_cost * self.clone_stats_adjustment_factor
+                temp_consist.buy_cost
+                * self.consist_factory.clone_stats_adjustment_factor
             )
 
         # max speed = 200mph by design - see assert_speed()
@@ -1561,12 +1536,14 @@ class EngineConsist(Consist):
         # algorithmic calculation of engine run costs
         # as of Feb 2019, it's fixed cost (set by subtype) + floating costs (derived from power, speed, weight)
 
-        # first check if we're simply a clone, because then we just take the costs from the clone source vehicle, and adjust them to account for differing number of units
-        # CABBAGE cloned_from_consist
-        if self.cloned_from_consist is not None:
+        # first check if this is a clone, because then we just take the costs from the clone source
+        # and adjust them to account for differing number of units
+        if self.consist_factory.cloned_from_consist_factory is not None:
+            # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
+            temp_consist = self.consist_factory.cloned_from_consist_factory.produce()
             return int(
-                self.cloned_from_consist.running_cost
-                * self.clone_stats_adjustment_factor
+                temp_consist.running_cost
+                * self.consist_factory.clone_stats_adjustment_factor
             )
 
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
@@ -1610,12 +1587,13 @@ class EngineConsist(Consist):
         if self.subrole in [
             "heavy_freight",
             "super_heavy_freight",
-        ]:  # smaller bonus for heavy_freight
+            "ultra_heavy_freight",
+        ]:
             run_cost = 0.9 * run_cost
         elif self.subrole in [
             "branch_freight",
             "freight",
-        ]:  # bigger bonus for other freight
+        ]:
             run_cost = 0.8 * run_cost
         # massive bonuses for NG and Gronks
         elif self.subrole == "gronk":

@@ -38,7 +38,7 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = consist_factory.clone(base_numeric_id=990, unit_counts=[1])
+    consist_factory = consist_factory.begin_clone(base_numeric_id=990, unit_repeats=[1])
 
     print("cabbage 939", consist_factory.kwargs["id"])
     # this is a JFDI thing, the 2-unit version varies sprites per unit position, which is generally supported
@@ -49,11 +49,11 @@ def main(**kwargs):
     )
 
     """
-    # JFDI recalculate power to account for 2 units
-    consist_factory.clones[0].set_clone_power_from_clone_source()
     # also JFDI, the default single unit should randomly reverse, the 2-unit version should not, so hax
     consist_factory.clones[0].random_reverse = False
     """
+
+    consist_factory.complete_clone()
 
     result.append(consist_factory)
 
