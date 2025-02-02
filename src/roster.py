@@ -59,11 +59,10 @@ class Roster(object):
     def engine_consists_excluding_clones(self):
         # we don't always want clones in the engine list (e.g. when generating tech tree in docs and similar cases)
         # this is a convenience wrapper to knock out any clones from engine list
-        # CABBAGE cloned_from_consist
         return [
             engine_consist
             for engine_consist in self.engine_consists
-            if engine_consist.cloned_from_consist is None
+            if engine_consist.consist_factory.cloned_from_consist_factory is None
         ]
 
     @property

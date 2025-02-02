@@ -38,10 +38,14 @@ class Pipeline(object):
         # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
 
         if self.consist.gestalt_graphics.input_spritesheet_delegate_id is not None:
+            # we never get a delegate from anywhere other than current consist, that's the rules
             consist_filename_stem = (
                 self.consist.gestalt_graphics.input_spritesheet_delegate_id
             )
         else:
+            # handle cloned cases by referring to the original consist factory for the path
+            # !! arguably this could be handled in the consist as a method, but should consists know about the graphics filenames? Maybe they should...
+            # !! yes this knows too much about consist internals, and factories; it shouldn't
             # !! won't work for wagons, which use wagon_id; this wasn't relevant as of Feb 2025, but eh
             # !! CABBAGE possibly delegate a method on consist_factory to get a base_id or default_id for consists
             if self.consist.consist_factory.cloned_from_consist_factory is not None:

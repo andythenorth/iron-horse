@@ -762,14 +762,13 @@ class Consist(object):
     @property
     def similar_consists(self):
         # quite a crude guess at similar engines by subrole
-        # CABBAGE cloned_from_consist
         result = []
         for consist in self.roster.engine_consists:
             if (
                 (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.gen == self.gen)
                 and (consist != self)
-                and (consist.cloned_from_consist is None)
+                and (consist.consist_factory.cloned_from_consist_factory is None)
                 and (getattr(consist, "cab_id", None) is None)
             ):
                 if (
@@ -1522,6 +1521,7 @@ class EngineConsist(Consist):
     @property
     def buy_cost(self):
         # first check if we're simply a clone, because then we just take the costs from the clone source vehicle, and adjust them to account for differing number of units
+        # CABBAGE cloned_from_consist
         if self.cloned_from_consist is not None:
             return int(
                 self.cloned_from_consist.buy_cost * self.clone_stats_adjustment_factor
@@ -1562,6 +1562,7 @@ class EngineConsist(Consist):
         # as of Feb 2019, it's fixed cost (set by subtype) + floating costs (derived from power, speed, weight)
 
         # first check if we're simply a clone, because then we just take the costs from the clone source vehicle, and adjust them to account for differing number of units
+        # CABBAGE cloned_from_consist
         if self.cloned_from_consist is not None:
             return int(
                 self.cloned_from_consist.running_cost
@@ -1628,7 +1629,7 @@ class EngineConsist(Consist):
     def joker(self):
         # jokers are bonus vehicles (mostly) engines which are excluded from simplified game mode
         # all clones are automatically jokers and excluded
-        if self.cloned_from_consist is not None:
+        if self.consist_factory.cloned_from_consist_factory is not None:
             return True
         # for engines, jokers use -ve value for subrole_child_branch_num, tech tree vehicles use +ve
         return self.subrole_child_branch_num < 0
