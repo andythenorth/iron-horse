@@ -40,9 +40,9 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = consist_factory.begin_clone(base_numeric_id=34940, unit_repeats=[1])
-
-    print("cabbage 939", consist_factory.kwargs["id"])
+    consist_factory = consist_factory.begin_clone(
+        base_numeric_id=34940, unit_repeats=[1]
+    )
 
     consist_factory.complete_clone()
 

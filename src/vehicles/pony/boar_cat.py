@@ -36,12 +36,10 @@ def main(**kwargs):
         """Corsican CFD Locotracteur BB-400, South African 'Funkey' diesels, FAUR L45H B-B"""
     )
 
-
     result.append(consist_factory)
 
     consist_factory = consist_factory.begin_clone(base_numeric_id=910, unit_repeats=[1])
 
-    print("cabbage 939", consist_factory.kwargs["id"])
     # this is a JFDI thing, the 2-unit version varies sprites per unit position, which is generally supported
     # but the *buy menu* compositor does not support that as of Jan 2024, so hax
     consist_factory.unit_factories[0].kwargs["spriterow_num"] = 1

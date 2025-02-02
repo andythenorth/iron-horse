@@ -40,7 +40,6 @@ def main(**kwargs):
 
     consist_factory = consist_factory.begin_clone(base_numeric_id=990, unit_repeats=[1])
 
-    print("cabbage 939", consist_factory.kwargs["id"])
     # this is a JFDI thing, the 2-unit version varies sprites per unit position, which is generally supported
     # but the *buy menu* compositor does not support that as of Jan 2024, so hax
     consist_factory.unit_factories[0].kwargs["spriterow_num"] = 1
@@ -48,10 +47,8 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=55, vehicle_length=4, spriterow_num=0
     )
 
-    """
-    # also JFDI, the default single unit should randomly reverse, the 2-unit version should not, so hax
-    consist_factory.clones[0].random_reverse = False
-    """
+    # JFDI, the single unit should randomly reverse, the 2-unit version should not, so hax
+    consist_factory.kwargs["random_reverse"] = False
 
     consist_factory.complete_clone()
 

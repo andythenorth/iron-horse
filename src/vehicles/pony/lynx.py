@@ -34,8 +34,6 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
-    print("cabbage 939", consist_factory.kwargs["id"])
-
     consist_factory = consist_factory.begin_clone(base_numeric_id=820, unit_repeats=[1])
 
     # this is a JFDI thing, the Lynx 2-unit version needs a reversed sprite, but the buy menu compositor does not support that as of Jan 2024, so hax
@@ -43,7 +41,7 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=72, vehicle_length=6, spriterow_num=1
     )
 
-    # JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
+    # JFDI, the single unit should randomly reverse, the 2-unit version should not, so hax
     consist_factory.kwargs["random_reverse"] = False
 
     consist_factory.complete_clone()

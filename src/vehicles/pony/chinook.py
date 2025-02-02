@@ -39,8 +39,9 @@ def main(**kwargs):
 
     result.append(consist_factory)
 
-    consist_factory = consist_factory.begin_clone(base_numeric_id=34900, unit_repeats=[1, 0])
-    print("cabbage 939", consist_factory.kwargs["id"])
+    consist_factory = consist_factory.begin_clone(
+        base_numeric_id=34900, unit_repeats=[1, 0]
+    )
 
     # JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
     consist_factory.kwargs["random_reverse"] = True
