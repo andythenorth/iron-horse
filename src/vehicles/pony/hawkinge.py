@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit",
         weight=124,
         vehicle_length=8,
@@ -31,12 +31,14 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=32, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.add_description("""Mr. Bulleid designed these. Do you like 'em?""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description(
+        """Mr. Bulleid designed these. Do you like 'em?"""
+    )
+    consist_factory.define_foamer_facts(
         """SR Merchant Navy / West Country / Battle of Britain classes"""
     )
 

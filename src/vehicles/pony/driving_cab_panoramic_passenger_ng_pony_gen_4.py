@@ -16,7 +16,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="CabControlPaxCarUnit",
         weight=32,
         chassis="railcar_ng_32px",
@@ -24,8 +24,8 @@ def main(**kwargs):
         suppress_roof_sprite=True,
     )
 
-    consist_factory.add_description("""For a view most spectacular.""")
-    consist_factory.add_foamer_facts("""Generic panoramic coaches""")
+    consist_factory.define_description("""For a view most spectacular.""")
+    consist_factory.define_foamer_facts("""Generic panoramic coaches""")
 
     result.append(consist_factory)
 

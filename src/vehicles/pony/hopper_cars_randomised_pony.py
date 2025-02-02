@@ -15,7 +15,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="empty_16px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(consist_factory)
 
@@ -28,7 +28,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="empty_16px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(consist_factory)
 
@@ -41,7 +41,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="empty_24px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(consist_factory)
 
@@ -55,7 +55,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="empty_16px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(consist_factory)
 
@@ -69,7 +69,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="empty_24px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(consist_factory)
 
@@ -81,7 +81,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="empty_16px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(consist_factory)
 
@@ -93,7 +93,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="empty_24px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(consist_factory)
 
@@ -105,7 +105,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="empty_16px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(consist_factory)
 
@@ -117,7 +117,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="empty_24px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(consist_factory)
 
@@ -129,7 +129,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="empty_16px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(consist_factory)
 
@@ -141,7 +141,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="empty_24px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(consist_factory)
 
@@ -153,7 +153,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="empty_32px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="empty_32px")
 
     result.append(consist_factory)
 

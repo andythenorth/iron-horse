@@ -22,17 +22,17 @@ def main(**kwargs):
         intro_year_offset=-3,
     )  # introduce early by design
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricRailcarMailUnit",
         weight=35,
         chassis="railcar_32px",
         tail_light="railcar_32px_2",
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """A useful motor van for mail and express freight."""
     )
-    consist_factory.add_foamer_facts("""BR Class 419 MLV, Class 489 GLV""")
+    consist_factory.define_foamer_facts("""BR Class 419 MLV, Class 489 GLV""")
 
     result.append(consist_factory)
 

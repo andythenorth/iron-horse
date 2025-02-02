@@ -28,19 +28,19 @@ def main(**kwargs):
     )
 
     # 2 separate units so that buy menu has reversed cabs
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=68, vehicle_length=5, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=68, vehicle_length=5, spriterow_num=1
     )
 
     #  guess the quote?
-    consist_factory.add_description(
+    consist_factory.define_description(
         """And ruined love when it is built anew grows fairer than at first, more strong, far greater."""
     )
-    consist_factory.add_foamer_facts("""Re-engineered BR Class 15, BR Class 16""")
+    consist_factory.define_foamer_facts("""Re-engineered BR Class 15, BR Class 16""")
 
     result.append(consist_factory)
 

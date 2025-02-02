@@ -22,14 +22,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=76, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """I'm not saying I hate em. But they're not much to love are they?"""
     )
-    consist_factory.add_foamer_facts("""EMD JT42HW-HS (Class 67)""")
+    consist_factory.define_foamer_facts("""EMD JT42HW-HS (Class 67)""")
 
     result.append(consist_factory)
 

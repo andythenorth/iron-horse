@@ -35,7 +35,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectroDieselEngineUnit",
         weight=80,
         vehicle_length=8,
@@ -43,10 +43,12 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """This one can go on electric or diesel. Madder than a box of frogs."""
     )
-    consist_factory.add_foamer_facts("""BR Class 73, Class 71/74, proposed Class 75""")
+    consist_factory.define_foamer_facts(
+        """BR Class 73, Class 71/74, proposed Class 75"""
+    )
 
     result.append(consist_factory)
 

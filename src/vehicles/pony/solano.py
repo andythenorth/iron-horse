@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=42,
         vehicle_length=6,
@@ -31,11 +31,11 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description("""Let a bit of sun in, I say.""")
+    consist_factory.define_description("""Let a bit of sun in, I say.""")
     # https://en.wikipedia.org/wiki/New_Zealand_DE_class_locomotive, also NZ Di class
     # nah it's CP_Class_9020 now, and rename from Silverfern
     # see also https://trainspo.com/photo/98083/
-    consist_factory.add_foamer_facts(""" Portugese CP Class 9020 (Alstom AD 12 B)""")
+    consist_factory.define_foamer_facts(""" Portugese CP Class 9020 (Alstom AD 12 B)""")
 
     result.append(consist_factory)
 

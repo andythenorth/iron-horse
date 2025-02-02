@@ -15,7 +15,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="AutomobileCarAsymmetric", chassis="2_axle_lwb_filled_24px"
     )
 
@@ -29,7 +29,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="AutomobileCarAsymmetric", chassis="4_axle_running_gear_only_32px"
     )
 
@@ -43,7 +43,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="AutomobileCarAsymmetric", chassis="2_axle_lwb_filled_24px"
     )
 
@@ -57,7 +57,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="AutomobileCarAsymmetric", chassis="4_axle_running_gear_only_32px"
     )
 

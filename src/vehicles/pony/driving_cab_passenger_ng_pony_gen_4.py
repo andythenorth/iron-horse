@@ -16,14 +16,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="CabControlPaxCarUnit", weight=32, chassis="4_axle_ng_32px"
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Now, a driving cab for the smaller trains. But not for goats."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """KiwiRail SRV driving cab conversion of British Rail MK2 carriage"""
     )
 

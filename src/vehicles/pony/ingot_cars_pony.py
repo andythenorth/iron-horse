@@ -16,7 +16,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
+    consist_factory.define_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
 
     result.append(consist_factory)
 
@@ -31,7 +31,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
+    consist_factory.define_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
 
     result.append(consist_factory)
 
@@ -44,7 +44,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
+    consist_factory.define_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
 
     result.append(consist_factory)
 

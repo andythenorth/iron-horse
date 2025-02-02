@@ -27,12 +27,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=35, vehicle_length=4, spriterow_num=0
     )
 
-    consist_factory.add_description("""Nice little engine this one.""")
-    consist_factory.add_foamer_facts("""Bagnall saddle tanks""")
+    consist_factory.define_description("""Nice little engine this one.""")
+    consist_factory.define_foamer_facts("""Bagnall saddle tanks""")
 
     result.append(consist_factory)
 

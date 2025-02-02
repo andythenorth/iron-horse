@@ -21,22 +21,22 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarCombineUnitMail",
         weight=20,
         chassis="railbus_lwb_20px",
         tail_light="railcar_20px_1",
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=20,
         chassis="railbus_lwb_20px",
         tail_light="railcar_20px_2",
     )
 
-    consist_factory.add_description("""Patience is the virtue of the donkeys.""")
-    consist_factory.add_foamer_facts("""BR Class 141/142/143/144 <i>Pacers</i>""")
+    consist_factory.define_description("""Patience is the virtue of the donkeys.""")
+    consist_factory.define_foamer_facts("""BR Class 141/142/143/144 <i>Pacers</i>""")
 
     result.append(consist_factory)
 

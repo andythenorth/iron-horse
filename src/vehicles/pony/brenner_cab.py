@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit",
         weight=52,
         capacity=24,
@@ -32,8 +32,8 @@ def main(**kwargs):
         tail_light="very_high_speed_32px_2",
     )
 
-    consist_factory.add_description("""And you shall know this velocity.""")
-    consist_factory.add_foamer_facts("""Alstom Class 390 <i>Pendolino</i>""")
+    consist_factory.define_description("""And you shall know this velocity.""")
+    consist_factory.define_foamer_facts("""Alstom Class 390 <i>Pendolino</i>""")
 
     result.append(consist_factory)
 

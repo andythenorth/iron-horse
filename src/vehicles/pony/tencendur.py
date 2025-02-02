@@ -22,16 +22,16 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=70, vehicle_length=5, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=40, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.add_description("""Tidy, fast, nowt wrong with these.""")
-    consist_factory.add_foamer_facts("""SR V <i>Schools</i> Class""")
+    consist_factory.define_description("""Tidy, fast, nowt wrong with these.""")
+    consist_factory.define_foamer_facts("""SR V <i>Schools</i> Class""")
 
     result.append(consist_factory)
 

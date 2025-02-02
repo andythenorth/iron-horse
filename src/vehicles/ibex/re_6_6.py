@@ -21,15 +21,15 @@ def main(**kwargs):
     )
 
     # !! Re 6/6 is only 63ft IRL, so 8/8, but that's weird because 10k HP in 8/8 is weird, so lengthen and articulate
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit", weight=75, vehicle_length=5, spriterow_num=0
     )
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit", weight=75, vehicle_length=5, spriterow_num=1
     )
 
-    consist_factory.add_description(""" """)
-    consist_factory.add_foamer_facts("""SBB Re 6/6""")
+    consist_factory.define_description(""" """)
+    consist_factory.define_foamer_facts("""SBB Re 6/6""")
 
     result.append(consist_factory)
 

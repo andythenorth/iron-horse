@@ -18,24 +18,24 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="AutoCoachCombineUnitMail",
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
         tail_light="railcar_20px_4",
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="AutoCoachCombineUnitPax",
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
         tail_light="railcar_20px_4",
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """A coach that you can drive the engine from?  Eee, it's magic."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """SR and LMS autocoach sets, LNER articulated coach sets"""
     )
 

@@ -14,10 +14,12 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(class_name="SnowploughUnit", weight=50, vehicle_length=4)
+    consist_factory.define_unit(
+        class_name="SnowploughUnit", weight=50, vehicle_length=4
+    )
 
-    consist_factory.add_description("""""")
-    consist_factory.add_foamer_facts("""""")
+    consist_factory.define_description("""""")
+    consist_factory.define_foamer_facts("""""")
 
     result.append(consist_factory)
 

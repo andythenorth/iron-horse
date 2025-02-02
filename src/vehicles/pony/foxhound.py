@@ -23,12 +23,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=70, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_description("""This one gets after it, no doubts at all.""")
-    consist_factory.add_foamer_facts("""BR Class 21/22/29""")
+    consist_factory.define_description("""This one gets after it, no doubts at all.""")
+    consist_factory.define_foamer_facts("""BR Class 21/22/29""")
 
     consist_factory.add_clone(base_numeric_id=810, clone_units=[2])
 

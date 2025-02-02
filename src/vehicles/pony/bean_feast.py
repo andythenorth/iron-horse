@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit",
         weight=20,
         vehicle_length=4,
@@ -31,10 +31,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Great power and small size. We tested it in the field."""
     )
-    consist_factory.add_foamer_facts("""generic narrow-gauge steam locomotives""")
+    consist_factory.define_foamer_facts("""generic narrow-gauge steam locomotives""")
 
     result.append(consist_factory)
 

@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=48,
         vehicle_length=6,
@@ -35,8 +35,8 @@ def main(**kwargs):
     # Irish Rail 141 / 181
     # see also https://es.wikipedia.org/wiki/Serie_1600_de_Renfe
     # see also https://en.wikipedia.org/wiki/FGC_254_Series
-    consist_factory.add_description("""""")
-    consist_factory.add_foamer_facts("""""")
+    consist_factory.define_description("""""")
+    consist_factory.define_foamer_facts("""""")
 
     result.append(consist_factory)
 

@@ -18,7 +18,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="MetroUnit",
         weight=36,
         capacity=160,
@@ -27,10 +27,10 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Do pigeons roost on rooftops? Do they watch us pass by?"""
     )
-    consist_factory.add_foamer_facts("""London Underground R Stock""")
+    consist_factory.define_foamer_facts("""London Underground R Stock""")
 
     result.append(consist_factory)
 

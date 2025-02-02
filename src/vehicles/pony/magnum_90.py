@@ -27,15 +27,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="BatteryHybridEngineUnit",
         weight=90,
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    consist_factory.add_description("""Even Gronks don't last forever.""")
-    consist_factory.add_foamer_facts("""Clayton CBD90""")
+    consist_factory.define_description("""Even Gronks don't last forever.""")
+    consist_factory.define_foamer_facts("""Clayton CBD90""")
 
     result.append(consist_factory)
 

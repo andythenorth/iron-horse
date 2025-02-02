@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=22,
         vehicle_length=4,
@@ -32,10 +32,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """This diesel engine modernises our narrow gauge lines."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """FAUR L45H B-B, generic narrow-gauge diesel locomotives"""
     )
 

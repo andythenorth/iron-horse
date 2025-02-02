@@ -26,7 +26,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=105,
         vehicle_length=8,
@@ -34,10 +34,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """These aren't bad at all. Clever electronics they tell me."""
     )
-    consist_factory.add_foamer_facts("""English Electric DP2 prototype""")
+    consist_factory.define_foamer_facts("""English Electric DP2 prototype""")
 
     result.append(consist_factory)
 

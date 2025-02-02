@@ -27,16 +27,18 @@ def main(**kwargs):
     )
 
     # 2 separate units so that buy menu has reversed cabs
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=67, vehicle_length=5, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=67, vehicle_length=5, spriterow_num=1
     )
 
-    consist_factory.add_description("""The universe is asymmetric. And so are these.""")
-    consist_factory.add_foamer_facts("""BR Class 15, BR Class 16""")
+    consist_factory.define_description(
+        """The universe is asymmetric. And so are these."""
+    )
+    consist_factory.define_foamer_facts("""BR Class 15, BR Class 16""")
 
     result.append(consist_factory)
 

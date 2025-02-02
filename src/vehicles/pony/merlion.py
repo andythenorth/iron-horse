@@ -35,7 +35,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=97,
         vehicle_length=8,
@@ -43,10 +43,12 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """I don't like the looks of it right much, but I suppose it will do."""
     )
-    consist_factory.add_foamer_facts("""BR Class 31, uprated EE 12CSVT prime mover""")
+    consist_factory.define_foamer_facts(
+        """BR Class 31, uprated EE 12CSVT prime mover"""
+    )
 
     result.append(consist_factory)
 

@@ -35,14 +35,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=110, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """We made these by uprating the Growler engine.  New paint too, don't spoil it."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """refurbished BR Class 37, with new alternator and uprated engine (per 2,000hp 37292)"""
     )
 

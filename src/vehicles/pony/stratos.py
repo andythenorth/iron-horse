@@ -22,7 +22,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselExpressRailcarPaxUnit",
         weight=50,
         capacity=24,
@@ -32,8 +32,8 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description("""Every journey becomes a panorama.""")
-    consist_factory.add_foamer_facts("""Corsican AMG 800""")
+    consist_factory.define_description("""Every journey becomes a panorama.""")
+    consist_factory.define_foamer_facts("""Corsican AMG 800""")
 
     result.append(consist_factory)
 

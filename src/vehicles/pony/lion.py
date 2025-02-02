@@ -23,15 +23,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=132,
         vehicle_length=8,
         effect_offsets=[(0, 1), (0, -1)],  # double the smoke eh?
     )
 
-    consist_factory.add_description("""Good horses make short miles.""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description("""Good horses make short miles.""")
+    consist_factory.define_foamer_facts(
         """BRCW / BR D0260 Lion prototype, Brush HS4000 Kestrel prototype"""
     )
 

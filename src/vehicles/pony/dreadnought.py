@@ -26,7 +26,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=102,
         vehicle_length=8,
@@ -34,8 +34,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description("""This one, it does go some.""")
-    consist_factory.add_foamer_facts("""Porterbrook Leasing Class 55 <i>Deltic</i>'""")
+    consist_factory.define_description("""This one, it does go some.""")
+    consist_factory.define_foamer_facts(
+        """Porterbrook Leasing Class 55 <i>Deltic</i>'"""
+    )
 
     result.append(consist_factory)
 

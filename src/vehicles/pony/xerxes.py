@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit",
         weight=49,
         vehicle_length=5,
@@ -32,8 +32,10 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description("""Not much to say about these two.""")
-    consist_factory.add_foamer_facts("""GWR pannier tanks, original TTD Kirby 'Paul'""")
+    consist_factory.define_description("""Not much to say about these two.""")
+    consist_factory.define_foamer_facts(
+        """GWR pannier tanks, original TTD Kirby 'Paul'"""
+    )
 
     result.append(consist_factory)
 

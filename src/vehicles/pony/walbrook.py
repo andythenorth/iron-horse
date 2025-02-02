@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="MetroUnit",
         weight=28,
         vehicle_length=4,
@@ -31,8 +31,8 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description("""Are these glazed and dirty steps?""")
-    consist_factory.add_foamer_facts("""District Railway electric locos""")
+    consist_factory.define_description("""Are these glazed and dirty steps?""")
+    consist_factory.define_foamer_facts("""District Railway electric locos""")
 
     result.append(consist_factory)
 

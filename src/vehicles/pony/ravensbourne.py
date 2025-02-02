@@ -18,7 +18,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="MetroUnit",
         weight=32,
         # set capacity for freight; mail will be automatically calculated
@@ -28,8 +28,10 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description("""Is that lamp light blinking?""")
-    consist_factory.add_foamer_facts("""Metropolitan Railway electric multiple units""")
+    consist_factory.define_description("""Is that lamp light blinking?""")
+    consist_factory.define_foamer_facts(
+        """Metropolitan Railway electric multiple units"""
+    )
 
     result.append(consist_factory)
 

@@ -32,7 +32,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # banger blue, yellow? - unused banger blue from Super Shoebox also?  Freightliner swoosh?
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectroDieselEngineUnit",
         weight=84,
         vehicle_length=8,
@@ -40,10 +40,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Top to bottom, it's an old Shoebox made new. Right powerful small engines."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """Network Rail / GBRF Class 73/9 (re-engineered), BR Class 74, proposed Class 75"""
     )
 

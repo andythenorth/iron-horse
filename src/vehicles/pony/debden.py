@@ -23,12 +23,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="MetroUnit", weight=46, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description("""Is this London calling to the underworld?""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description("""Is this London calling to the underworld?""")
+    consist_factory.define_foamer_facts(
         """London Underground L11 battery-electric locomotive"""
     )
 

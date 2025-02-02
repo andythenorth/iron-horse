@@ -22,7 +22,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit",
         weight=115,
         vehicle_length=8,
@@ -30,14 +30,14 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=50, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """I'm not saying I'm the best engine builder in the business, but I'd be in the top one."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """proposed LMS 'Lemon 4-8-0' freight locomotive, BR Standard Class 9F"""
     )
 

@@ -25,7 +25,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # nightshade / nighthawk?
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit",
         weight=75,
         vehicle_length=6,
@@ -33,10 +33,10 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """What we like about these is no fuss, no mess. Get in and off they go."""
     )
-    consist_factory.add_foamer_facts("""LNER EM1 (BR Class 76)""")
+    consist_factory.define_foamer_facts("""LNER EM1 (BR Class 76)""")
 
     consist_factory.add_clone(base_numeric_id=34940, clone_units=[1, 0])
 

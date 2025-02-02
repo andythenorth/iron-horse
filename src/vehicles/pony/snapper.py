@@ -21,7 +21,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarCombineUnitMail",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -29,7 +29,7 @@ def main(**kwargs):
         tail_light="railcar_20px_1",
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -37,10 +37,10 @@ def main(**kwargs):
         tail_light="railcar_20px_1",
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """A better railcar, for a new narrow-gauge century."""
     )
-    consist_factory.add_foamer_facts("""Corsican CFC X2000/X5000, CFD Autorails""")
+    consist_factory.define_foamer_facts("""Corsican CFC X2000/X5000, CFD Autorails""")
 
     result.append(consist_factory)
 

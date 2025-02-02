@@ -21,24 +21,24 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarCombineUnitMail",
         weight=18,
         chassis="railbus_swb_20px",
         tail_light="railcar_20px_1",
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=18,
         chassis="railbus_swb_20px",
         tail_light="railcar_20px_1",
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """The horses of hope gallop, but the donkeys of experience go slowly."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """BR 1st generation AC Cars/Wickham/Waggon-und Maschinenbau and similar railbuses"""
     )
 

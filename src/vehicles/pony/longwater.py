@@ -18,7 +18,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="MetroUnit",
         weight=29,
         # set capacity for freight; mail will be automatically calculated
@@ -28,8 +28,10 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description("""Do they bury themselves? Hidden from society?""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description(
+        """Do they bury themselves? Hidden from society?"""
+    )
+    consist_factory.define_foamer_facts(
         """London Underground 'Gate' Stock, Standard Stock"""
     )
 

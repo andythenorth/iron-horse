@@ -27,14 +27,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=55, vehicle_length=4, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """The universal shunter.  Goes everywhere&hellip;slowly."""
     )
-    consist_factory.add_foamer_facts("""BR Class 08/09""")
+    consist_factory.define_foamer_facts("""BR Class 08/09""")
 
     print("cabbage 939", consist_factory.kwargs["id"])
     """

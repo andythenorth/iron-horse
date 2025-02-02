@@ -22,16 +22,16 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=96, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=50, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.add_description("""Bombproof.""")
-    consist_factory.add_foamer_facts("""WD Austerity 2-8-0, USRA S160 Class 2-8-0""")
+    consist_factory.define_description("""Bombproof.""")
+    consist_factory.define_foamer_facts("""WD Austerity 2-8-0, USRA S160 Class 2-8-0""")
 
     result.append(consist_factory)
 

@@ -24,14 +24,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=57, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """For when you need proper engine at proper price. Proper Job."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """BR Standard Class 3, LMS Ivatt Class 2 and GWR 5101/6100 Class <i>Prairie Tanks</i>"""
     )
 

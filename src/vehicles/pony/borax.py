@@ -24,14 +24,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="MetroUnit", weight=60, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Is London drowning? Because I live by the river."""
     )
-    consist_factory.add_foamer_facts("""Metropolitan Railway electric locos""")
+    consist_factory.define_foamer_facts("""Metropolitan Railway electric locos""")
 
     result.append(consist_factory)
 

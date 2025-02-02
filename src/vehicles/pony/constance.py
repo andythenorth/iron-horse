@@ -26,15 +26,15 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectroDieselEngineUnit",
         weight=95,
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    consist_factory.add_description("""Runs like a Swiss watch.""")
-    consist_factory.add_foamer_facts("""Siemens Vectron Dual Mode""")
+    consist_factory.define_description("""Runs like a Swiss watch.""")
+    consist_factory.define_foamer_facts("""Siemens Vectron Dual Mode""")
 
     result.append(consist_factory)
 

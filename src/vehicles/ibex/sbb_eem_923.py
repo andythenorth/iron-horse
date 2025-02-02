@@ -28,15 +28,15 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectroDieselEngineUnit",
         weight=105,
         vehicle_length=6,
         spriterow_num=0,
     )
 
-    consist_factory.add_description(""" """)
-    consist_factory.add_foamer_facts("""DR E 21 51""")
+    consist_factory.define_description(""" """)
+    consist_factory.define_foamer_facts("""DR E 21 51""")
 
     result.append(consist_factory)
 

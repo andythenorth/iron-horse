@@ -20,17 +20,17 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarPaxUnit",
         weight=37,
         chassis="railcar_32px",
         tail_light="railcar_32px_2",
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Fast quiet trains for a new era. No more lurching Deasils."""
     )
-    consist_factory.add_foamer_facts("""BR Class 108/117/121 and similar units""")
+    consist_factory.define_foamer_facts("""BR Class 108/117/121 and similar units""")
 
     result.append(consist_factory)
 

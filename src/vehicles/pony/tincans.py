@@ -25,7 +25,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit",
         weight=70,
         vehicle_length=6,
@@ -33,10 +33,10 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """“I would not wish any companion in the world but you.”"""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """Polish PKP EU07 (derived from UK Class 83 design)"""
     )
 

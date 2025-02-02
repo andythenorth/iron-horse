@@ -24,12 +24,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=112, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description("""Solid piece of kit these.""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description("""Solid piece of kit these.""")
+    consist_factory.define_foamer_facts(
         """Newag Griffin, Bombardier Traxx 2, Stadler Euro 4001, Siemens EuroRunner"""
     )
 

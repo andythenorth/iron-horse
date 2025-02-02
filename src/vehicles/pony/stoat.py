@@ -26,12 +26,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit", weight=54, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_description("""Nippy little bugger.""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description("""Nippy little bugger.""")
+    consist_factory.define_foamer_facts(
         """NER ES1, Metropolitan Railway camel-back and box-cab locomotives, Westoe Colliery electrics, generic steeple-cab locomotives"""
     )
 

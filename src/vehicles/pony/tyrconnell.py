@@ -24,16 +24,18 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=45, vehicle_length=5, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=19, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.add_description("""A titan from the North. Steadfast and stout.""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description(
+        """A titan from the North. Steadfast and stout."""
+    )
+    consist_factory.define_foamer_facts(
         """Londonderry and Lough Swilly Railway Company 4-8-0 locomotives"""
     )
 

@@ -15,7 +15,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="PaxCar", suppress_roof_sprite=True, chassis="4_axle_ng_24px"
     )
 
@@ -30,7 +30,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="PaxCar", suppress_roof_sprite=True, chassis="4_axle_ng_32px"
     )
 

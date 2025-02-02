@@ -22,18 +22,18 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=48, vehicle_length=5, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=30, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """I told them they need a big engine, not big wheels.  But they pay the piper, so they call the tune.  It does go fast, I'll give it that."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """Midland Railway 115 Class <i>Spinner</i>, GNR <i>Stirling Single</i>"""
     )
 

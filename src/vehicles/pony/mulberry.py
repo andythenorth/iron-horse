@@ -23,12 +23,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="MetroUnit", weight=48, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description("""Born slippy? Mega mega mega.""")
-    consist_factory.add_foamer_facts("""London Underground battery-electric locos""")
+    consist_factory.define_description("""Born slippy? Mega mega mega.""")
+    consist_factory.define_foamer_facts("""London Underground battery-electric locos""")
 
     result.append(consist_factory)
 

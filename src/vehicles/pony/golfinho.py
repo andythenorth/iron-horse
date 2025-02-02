@@ -22,7 +22,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -31,7 +31,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -39,7 +39,7 @@ def main(**kwargs):
         spriterow_num=1,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarCombineUnitMail",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -49,10 +49,10 @@ def main(**kwargs):
         reverse_sprite_template=True,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Efficiently whisking passengers about in the most modern ways. Goats remain, at this time, disallowed."""
     )
-    consist_factory.add_foamer_facts("""Stadler SPATZ""")
+    consist_factory.define_foamer_facts("""Stadler SPATZ""")
 
     result.append(consist_factory)
 

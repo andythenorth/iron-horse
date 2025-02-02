@@ -25,14 +25,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=54, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Don't know what they were thinking, but they asked me to build it. Well, it's done."""
     )
-    consist_factory.add_foamer_facts("""GER Class A55 <i>Decapod</i>""")
+    consist_factory.define_foamer_facts("""GER Class A55 <i>Decapod</i>""")
 
     result.append(consist_factory)
 

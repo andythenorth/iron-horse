@@ -25,7 +25,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit",
         weight=76,
         # no pax capacity on Helm Wind cabs
@@ -35,8 +35,8 @@ def main(**kwargs):
         tail_light="very_high_speed_32px_3",
     )
 
-    consist_factory.add_description("""""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description("""""")
+    consist_factory.define_foamer_facts(
         """TGV Sud-Est, with TGV 001-style distributed traction"""
     )
 

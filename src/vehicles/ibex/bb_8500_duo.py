@@ -18,7 +18,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit",
         weight=105,
         vehicle_length=6,
@@ -26,8 +26,8 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description(""" """)
-    consist_factory.add_foamer_facts("""SNCF BB 8500 / 16000 (duo)""")
+    consist_factory.define_description(""" """)
+    consist_factory.define_foamer_facts("""SNCF BB 8500 / 16000 (duo)""")
 
     result.append(consist_factory)
 

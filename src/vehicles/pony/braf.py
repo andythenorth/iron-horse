@@ -23,16 +23,16 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=65, vehicle_length=5, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=29, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.add_description("""Solid little number these. No bother.""")
-    consist_factory.add_foamer_facts("""GWR 4300 Class, LBSCR K Class""")
+    consist_factory.define_description("""Solid little number these. No bother.""")
+    consist_factory.define_foamer_facts("""GWR 4300 Class, LBSCR K Class""")
 
     result.append(consist_factory)
 

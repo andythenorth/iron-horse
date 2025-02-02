@@ -25,7 +25,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit",
         weight=105,
         vehicle_length=8,
@@ -33,8 +33,8 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description(""" """)
-    consist_factory.add_foamer_facts("""PLM 2CC2 3400""")
+    consist_factory.define_description(""" """)
+    consist_factory.define_foamer_facts("""PLM 2CC2 3400""")
 
     result.append(consist_factory)
 

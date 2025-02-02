@@ -19,18 +19,18 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=70, vehicle_length=5, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=30, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """If we do each thing calmly and carefully we will get it done quicker and with much less fuss."""
     )
-    consist_factory.add_foamer_facts("""LNER Q2 Class""")
+    consist_factory.define_foamer_facts("""LNER Q2 Class""")
 
     result.append(consist_factory)
 

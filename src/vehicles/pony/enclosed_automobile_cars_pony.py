@@ -14,7 +14,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ExpressCar", chassis="4_axle_solid_express_24px"
     )
 
@@ -28,7 +28,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ExpressCar", chassis="4_axle_solid_express_32px"
     )
 
@@ -42,7 +42,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ExpressCar", chassis="4_axle_solid_express_24px"
     )
 
@@ -56,7 +56,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ExpressCar", chassis="4_axle_solid_express_32px"
     )
 
@@ -70,7 +70,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ExpressCar", chassis="4_axle_filled_greebled_24px"
     )
 
@@ -84,7 +84,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ExpressCar", chassis="4_axle_filled_greebled_32px"
     )
 

@@ -20,7 +20,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricExpressRailcarPaxUnit",
         weight=45,
         chassis="railcar_32px",
@@ -28,10 +28,10 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Better three hours too soon than a minute too late."""  # Shakespeare
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """BR Class 309 <i>Clacton Express</i>, BR 4-REP"""
     )
 

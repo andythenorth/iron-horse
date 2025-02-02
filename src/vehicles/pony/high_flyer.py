@@ -20,7 +20,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricExpressRailcarPaxUnit",
         weight=48,
         chassis="railcar_32px",
@@ -28,8 +28,8 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description("""All Pullman Electric Express.""")
-    consist_factory.add_foamer_facts("""SR 5-BEL <i>Brighton Belle</i>""")
+    consist_factory.define_description("""All Pullman Electric Express.""")
+    consist_factory.define_foamer_facts("""SR 5-BEL <i>Brighton Belle</i>""")
 
     result.append(consist_factory)
 

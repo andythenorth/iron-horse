@@ -28,14 +28,16 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=110,
         vehicle_length=8,
     )
 
-    consist_factory.add_description("""Let there be some more test made of my metal.""")
-    consist_factory.add_foamer_facts("""Northern Ireland Railways Class 111""")
+    consist_factory.define_description(
+        """Let there be some more test made of my metal."""
+    )
+    consist_factory.define_foamer_facts("""Northern Ireland Railways Class 111""")
 
     result.append(consist_factory)
 

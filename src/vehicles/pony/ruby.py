@@ -20,7 +20,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarMailUnit",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -28,10 +28,10 @@ def main(**kwargs):
         tail_light="railcar_24px_1",
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """A modern way to move mail and other packages. I must regret, we have not yet accommodated goats."""
     )
-    consist_factory.add_foamer_facts("""CFC Autorail Billard, CFC X2000/X5000""")
+    consist_factory.define_foamer_facts("""CFC Autorail Billard, CFC X2000/X5000""")
 
     result.append(consist_factory)
 

@@ -22,7 +22,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit",
         weight=76,
         # no pax capacity on Helm Wind cabs
@@ -32,10 +32,10 @@ def main(**kwargs):
         tail_light="very_high_speed_32px_1",
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Can we get there faster? That's what drives me."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """BR InterCity 225 (Class 91), BR APT-P, Shinkansen-style distributed traction"""
     )
 

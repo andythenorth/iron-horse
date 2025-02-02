@@ -27,15 +27,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=68, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """I want no epitaphs of profound history and all that type of thing. I contributed - I would hope they would say that, and I would hope somebody liked me."""
     )
     # IRL the quote is Brian Clough
-    consist_factory.add_foamer_facts("""BR Class 14, Clayton DHP1 prototype""")
+    consist_factory.define_foamer_facts("""BR Class 14, Clayton DHP1 prototype""")
 
     result.append(consist_factory)
 

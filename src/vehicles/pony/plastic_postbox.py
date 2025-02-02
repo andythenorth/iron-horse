@@ -20,17 +20,17 @@ def main(**kwargs):
         intro_year_offset=-5,
     )  # introduce early by design
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarMailUnit",
         weight=37,
         chassis="railcar_32px",
         tail_light="railcar_32px_3",
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """The most modern way to move mail and other parcels."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """BR Class 128/130, BR Class 153/155/156/158 <i>Sprinters</i>"""
     )
 

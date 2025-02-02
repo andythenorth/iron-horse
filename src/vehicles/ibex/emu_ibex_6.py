@@ -21,15 +21,15 @@ def main(**kwargs):
         # intro_year_offset=-3,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricRailcarPaxUnit",
         weight=28,
         chassis="railcar_32px",
         tail_light="railcar_32px_1",
     )
 
-    consist_factory.add_description(""" """)
-    consist_factory.add_foamer_facts("""Stadler FLIRT""")
+    consist_factory.define_description(""" """)
+    consist_factory.define_foamer_facts("""Stadler FLIRT""")
 
     result.append(consist_factory)
 

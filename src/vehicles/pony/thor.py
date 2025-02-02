@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit",
         weight=30,
         vehicle_length=6,
@@ -33,10 +33,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """You could say it's twice the train. A god amongst engines."""
     )
-    consist_factory.add_foamer_facts("""Fairlie locomotives""")
+    consist_factory.define_foamer_facts("""Fairlie locomotives""")
 
     result.append(consist_factory)
 

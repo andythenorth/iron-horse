@@ -30,14 +30,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit", weight=99, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """By eck, it's a big electric.  Better put some pennies in the meter."""
     )
-    consist_factory.add_foamer_facts("""NER Class EE1""")
+    consist_factory.define_foamer_facts("""NER Class EE1""")
 
     result.append(consist_factory)
 

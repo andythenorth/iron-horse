@@ -23,15 +23,17 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=95,  # notably low weight
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    consist_factory.add_description("""Amazing what they can do these days isn't it?""")
-    consist_factory.add_foamer_facts("""Vossloh Eurolight (DRS Class 68)""")
+    consist_factory.define_description(
+        """Amazing what they can do these days isn't it?"""
+    )
+    consist_factory.define_foamer_facts("""Vossloh Eurolight (DRS Class 68)""")
 
     result.append(consist_factory)
 

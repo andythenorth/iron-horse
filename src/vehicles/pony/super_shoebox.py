@@ -35,7 +35,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectroDieselEngineUnit",
         weight=82,
         vehicle_length=8,
@@ -43,10 +43,12 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """It's a bigger Shoebox. Well not bigger. But more power in it. Right new paint too."""
     )
-    consist_factory.add_foamer_facts("""BR Class 73, Class 71/74, proposed Class 75""")
+    consist_factory.define_foamer_facts(
+        """BR Class 73, Class 71/74, proposed Class 75"""
+    )
 
     result.append(consist_factory)
 

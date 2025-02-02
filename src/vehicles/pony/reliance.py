@@ -23,16 +23,18 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=56, vehicle_length=5, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=30, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.add_description("""Lots of these about, but ours are best uns.""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description(
+        """Lots of these about, but ours are best uns."""
+    )
+    consist_factory.define_foamer_facts(
         """GWR 3201 <i>Stella</i> Class, generic 2-4-0 locomotives"""
     )
 

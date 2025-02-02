@@ -26,7 +26,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit",
         weight=96,
         vehicle_length=7,
@@ -34,14 +34,14 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=44, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Passengers, mail, fish, coal, steel, grain, this one'll haul anything and do it well."""
     )
-    consist_factory.add_foamer_facts("""LNER V2""")
+    consist_factory.define_foamer_facts("""LNER V2""")
 
     result.append(consist_factory)
 

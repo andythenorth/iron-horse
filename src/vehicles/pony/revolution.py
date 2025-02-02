@@ -26,17 +26,17 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # banger blue?
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectroDieselEngineUnit",
         weight=95,
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Bobby-dazzlers these are. How they fit it all in amazes me."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """Vossloh Euro Dual (DRS Class 88, ROG Class 93)"""
     )
 

@@ -24,14 +24,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=60, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Not the biggest, but quite a beast all the same."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """Metropolitan Railway G Class (LNER M2), GCR Class D (LNER M1)"""
     )
 

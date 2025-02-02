@@ -21,18 +21,18 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=70, vehicle_length=5, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=40, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """This is right ugly, but the shed likes them. Easy to maintain. They'll do."""
     )
-    consist_factory.add_foamer_facts("""SR Q1 Class, LMS Class 7F""")
+    consist_factory.define_foamer_facts("""SR Q1 Class, LMS Class 7F""")
 
     result.append(consist_factory)
 

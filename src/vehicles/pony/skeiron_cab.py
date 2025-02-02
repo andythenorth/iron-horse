@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit",
         weight=54,
         spriterow_num=0,
@@ -32,10 +32,10 @@ def main(**kwargs):
         tail_light="very_high_speed_32px_3",
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Myth in motion, swift. Continents woven in speed. Elegance entwined."""
     )
-    consist_factory.add_foamer_facts("""Alstom Class 373 <i>Eurostar</i>""")
+    consist_factory.define_foamer_facts("""Alstom Class 373 <i>Eurostar</i>""")
 
     result.append(consist_factory)
 

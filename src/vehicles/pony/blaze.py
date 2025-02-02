@@ -27,7 +27,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=70,
         vehicle_length=8,
@@ -36,10 +36,10 @@ def main(**kwargs):
         tail_light="hst_32px_1",
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Power is of the essence. Faster is everything."""
     )
-    consist_factory.add_foamer_facts("""BR Class 43 (High Speed Train)""")
+    consist_factory.define_foamer_facts("""BR Class 43 (High Speed Train)""")
 
     result.append(consist_factory)
 

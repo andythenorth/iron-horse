@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=58,
         vehicle_length=8,
@@ -32,10 +32,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Our pride, a force from overseas. Thrives in the solitude of the frontier or the clamor of the mills."""
     )
-    consist_factory.add_foamer_facts("""Alco RSD8 / DL351""")
+    consist_factory.define_foamer_facts("""Alco RSD8 / DL351""")
 
     result.append(consist_factory)
 

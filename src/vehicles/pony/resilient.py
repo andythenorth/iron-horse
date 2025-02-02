@@ -35,7 +35,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # add RfD Euro style triple grey?, Banger blue, but with black windows
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=103,
         vehicle_length=8,
@@ -43,8 +43,8 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description("""I've completely rebuilt some Intrepids.""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description("""I've completely rebuilt some Intrepids.""")
+    consist_factory.define_foamer_facts(
         """BR Class 47, Brush Class 57, original TTD UU '47'"""
     )
 

@@ -27,14 +27,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit", weight=80, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """They're right loud these are, but we've got the power right up on em too."""
     )
-    consist_factory.add_foamer_facts("""BR 'AL' Classes 81-85""")
+    consist_factory.define_foamer_facts("""BR 'AL' Classes 81-85""")
 
     result.append(consist_factory)
 

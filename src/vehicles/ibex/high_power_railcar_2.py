@@ -27,12 +27,12 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit", weight=105, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description(""" """)
-    consist_factory.add_foamer_facts("""BT BCFe 2/4, SBB Ce 4/6""")
+    consist_factory.define_description(""" """)
+    consist_factory.define_foamer_facts("""BT BCFe 2/4, SBB Ce 4/6""")
 
     result.append(consist_factory)
 

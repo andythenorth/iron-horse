@@ -29,7 +29,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=115,
         vehicle_length=8,
@@ -37,10 +37,12 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """The big bird. Twin engines. Takes on anything."""
     )
-    consist_factory.add_foamer_facts("""Brush / BR Class 53 <i>Falcon</i> prototype""")
+    consist_factory.define_foamer_facts(
+        """Brush / BR Class 53 <i>Falcon</i> prototype"""
+    )
 
     result.append(consist_factory)
 

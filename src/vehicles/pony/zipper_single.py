@@ -21,15 +21,19 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarPaxUnit",
         weight=25,
         chassis="railbus_lwb_24px",
         tail_light="railcar_24px_1",
     )
 
-    consist_factory.add_description("""It's the same donkey, but with a new saddle.""")
-    consist_factory.add_foamer_facts("""BR Class 144e <i>Pacer</i>, Vivarail D-Train""")
+    consist_factory.define_description(
+        """It's the same donkey, but with a new saddle."""
+    )
+    consist_factory.define_foamer_facts(
+        """BR Class 144e <i>Pacer</i>, Vivarail D-Train"""
+    )
 
     result.append(consist_factory)
 

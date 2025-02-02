@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=23,
         vehicle_length=4,
@@ -31,8 +31,8 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description("""This is a big small cat.""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description("""This is a big small cat.""")
+    consist_factory.define_foamer_facts(
         """Corsican CFD Locotracteur BB-400, South African 'Funkey' diesels, FAUR L45H B-B"""
     )
 

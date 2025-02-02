@@ -14,11 +14,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    consist_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
-    consist_factory.add_unit(class_name="TorpedoCar", vehicle_length=6)
+    consist_factory.define_unit(class_name="TorpedoCar", vehicle_length=6)
 
-    consist_factory.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    consist_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
     result.append(consist_factory)
 
@@ -30,11 +30,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    consist_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
-    consist_factory.add_unit(class_name="TorpedoCar", vehicle_length=6)
+    consist_factory.define_unit(class_name="TorpedoCar", vehicle_length=6)
 
-    consist_factory.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    consist_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
     result.append(consist_factory)
 
@@ -46,11 +46,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    consist_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
-    consist_factory.add_unit(class_name="TorpedoCar", vehicle_length=6)
+    consist_factory.define_unit(class_name="TorpedoCar", vehicle_length=6)
 
-    consist_factory.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    consist_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
     result.append(consist_factory)
 
@@ -62,11 +62,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    consist_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
-    consist_factory.add_unit(class_name="TorpedoCar", vehicle_length=6)
+    consist_factory.define_unit(class_name="TorpedoCar", vehicle_length=6)
 
-    consist_factory.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    consist_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
     result.append(consist_factory)
 

@@ -20,7 +20,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=68,
         vehicle_length=8,
@@ -30,8 +30,8 @@ def main(**kwargs):
         tail_light="hst_32px_1",
     )
 
-    consist_factory.add_description("""The Train of Today.""")
-    consist_factory.add_foamer_facts("""BR <i>Blue Pullman</i>""")
+    consist_factory.define_description("""The Train of Today.""")
+    consist_factory.define_foamer_facts("""BR <i>Blue Pullman</i>""")
 
     result.append(consist_factory)
 

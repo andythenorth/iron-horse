@@ -24,14 +24,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=70, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """We ought to do good to others as simply as a horse runs."""
     )
-    consist_factory.add_foamer_facts("""LNER Thompson Q1 Class tank engine""")
+    consist_factory.define_foamer_facts("""LNER Thompson Q1 Class tank engine""")
 
     result.append(consist_factory)
 

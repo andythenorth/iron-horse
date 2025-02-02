@@ -16,7 +16,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="CoilBuggyCar", chassis="empty_8px", repeat=2)
+    consist_factory.define_unit(
+        class_name="CoilBuggyCar", chassis="empty_8px", repeat=2
+    )
 
     result.append(consist_factory)
 

@@ -29,14 +29,16 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit", weight=92, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Nippy as a whippet, eats miles like hot dinners. Proper electric workhorse, that one."""
     )
-    consist_factory.add_foamer_facts("""Austrian Federal Railways (ÖBB) 1163 class""")
+    consist_factory.define_foamer_facts(
+        """Austrian Federal Railways (ÖBB) 1163 class"""
+    )
 
     result.append(consist_factory)
 

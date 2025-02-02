@@ -26,15 +26,15 @@ def main(**kwargs):
     )
 
     # !!! these are only 60 foot long IRL so 2x 4/8 units
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit", weight=105, vehicle_length=4, spriterow_num=0
     )
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit", weight=105, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.add_description(""" """)
-    consist_factory.add_foamer_facts("""FS E.646""")
+    consist_factory.define_description(""" """)
+    consist_factory.define_foamer_facts("""FS E.646""")
 
     result.append(consist_factory)
 

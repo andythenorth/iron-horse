@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=52,
         vehicle_length=6,
@@ -31,8 +31,8 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description("""For new times. This is the zippy one.""")
-    consist_factory.add_foamer_facts("""Euskotren TD 2000 Series""")
+    consist_factory.define_description("""For new times. This is the zippy one.""")
+    consist_factory.define_foamer_facts("""Euskotren TD 2000 Series""")
 
     result.append(consist_factory)
 

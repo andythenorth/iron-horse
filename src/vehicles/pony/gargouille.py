@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=40,
         vehicle_length=6,
@@ -32,10 +32,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Le petit train du jour. I've imported a few of these."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """Corsican CFD Locotracteur BB-400, New Zealand DSG class"""
     )
 

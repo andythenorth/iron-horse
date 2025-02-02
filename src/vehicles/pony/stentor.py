@@ -31,7 +31,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=128,
         vehicle_length=8,
@@ -39,8 +39,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description("""This one is loud, and packed with technology.""")
-    consist_factory.add_foamer_facts("""BR Class 60 design mockups""")
+    consist_factory.define_description(
+        """This one is loud, and packed with technology."""
+    )
+    consist_factory.define_foamer_facts("""BR Class 60 design mockups""")
 
     result.append(consist_factory)
 

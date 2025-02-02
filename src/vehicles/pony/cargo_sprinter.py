@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselRailcarMailUnit",
         weight=32,
         spriterow_num=0,
@@ -31,8 +31,8 @@ def main(**kwargs):
         tail_light="railcar_32px_4",
     )
 
-    consist_factory.add_description("""Runs like the wind.""")
-    consist_factory.add_foamer_facts("""Windhoff MPV""")
+    consist_factory.define_description("""Runs like the wind.""")
+    consist_factory.define_foamer_facts("""Windhoff MPV""")
 
     result.append(consist_factory)
 

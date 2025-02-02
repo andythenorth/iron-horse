@@ -21,12 +21,12 @@ def main(**kwargs):
     )
 
     # 63ft IRL is 8/8, surprisingly short
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit", weight=75, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description(""" """)
-    consist_factory.add_foamer_facts("""SBB Ee 6/6 ii""")
+    consist_factory.define_description(""" """)
+    consist_factory.define_foamer_facts("""SBB Ee 6/6 ii""")
 
     result.append(consist_factory)
 

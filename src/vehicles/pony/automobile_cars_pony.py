@@ -20,7 +20,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.add_unit(class_name="AutomobileCarSymmetric", chassis="2_axle_solid_express_16px")
+    consist_factory.define_unit(class_name="AutomobileCarSymmetric", chassis="2_axle_solid_express_16px")
 
     result.append(consist_factory)
     """
@@ -33,7 +33,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="AutomobileCarSymmetric", chassis="3_axle_solid_express_24px"
     )
 
@@ -47,7 +47,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="AutomobileCarSymmetric", chassis="4_axle_solid_express_32px"
     )
 
@@ -61,7 +61,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="AutomobileCarSymmetric", chassis="2_axle_filled_24px"
     )
 
@@ -75,7 +75,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="AutomobileCarSymmetric", chassis="4_axle_solid_express_32px"
     )
 
@@ -89,7 +89,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="AutomobileCarSymmetric", chassis="2_axle_filled_greebled_24px"
     )
 
@@ -103,7 +103,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="AutomobileCarSymmetric", chassis="4_axle_filled_greebled_32px"
     )
 

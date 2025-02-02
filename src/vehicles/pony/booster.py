@@ -21,17 +21,17 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectroDieselEngineUnit",
         weight=70,
         vehicle_length=6,
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """I've rebuilt some of the Argus fleet to be more handy. Now we're sucking diesel."""
     )
-    consist_factory.add_foamer_facts("""BR Class 71/74, Class 73""")
+    consist_factory.define_foamer_facts("""BR Class 71/74, Class 73""")
 
     result.append(consist_factory)
 

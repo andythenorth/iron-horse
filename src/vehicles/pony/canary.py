@@ -19,7 +19,7 @@ def main(**kwargs):
     )
 
     # should be 4 short units, not 2 long but eh
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="MetroUnit",
         weight=36,
         capacity=200,
@@ -28,8 +28,8 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description("""Do Mondays go on slow-time?""")
-    consist_factory.add_foamer_facts("""London Underground S Stock""")
+    consist_factory.define_description("""Do Mondays go on slow-time?""")
+    consist_factory.define_foamer_facts("""London Underground S Stock""")
 
     result.append(consist_factory)
 

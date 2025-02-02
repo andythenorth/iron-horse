@@ -15,7 +15,7 @@ def main(**kwargs):
         intro_year=1950,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=0
     )
 

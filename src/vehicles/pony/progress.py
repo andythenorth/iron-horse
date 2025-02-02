@@ -26,12 +26,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=48, vehicle_length=4, spriterow_num=0
     )
 
-    consist_factory.add_description("""Punchy little number.""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description("""Punchy little number.""")
+    consist_factory.define_foamer_facts(
         """GEC <i>Stephenson</i> industrial shunters, BR Class 07"""
     )
 

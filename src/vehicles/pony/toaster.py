@@ -31,7 +31,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=130,
         vehicle_length=8,
@@ -39,10 +39,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """I've heard these might catch fire, but we're getting them cheap."""
     )
-    consist_factory.add_foamer_facts("""GE Class 70 <i>Powerhaul</i>""")
+    consist_factory.define_foamer_facts("""GE Class 70 <i>Powerhaul</i>""")
 
     result.append(consist_factory)
 

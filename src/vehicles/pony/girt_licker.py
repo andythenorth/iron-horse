@@ -23,16 +23,16 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=100, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=45, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.add_description("""Big ugly thing. Power in spades though.""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description("""Big ugly thing. Power in spades though.""")
+    consist_factory.define_foamer_facts(
         """Midland Railway 2290 'Big Bertha' Lickey Banker"""
     )
 

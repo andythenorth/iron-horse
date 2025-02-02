@@ -25,14 +25,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=105, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """They said they wanted these for a freight engine.  No I said.  We need a general purpose engine I said.  We talked about it for twenty minutes then we decided I was right."""
     )
-    consist_factory.add_foamer_facts("""proposed BR Class 41/48, NIR 201 Class""")
+    consist_factory.define_foamer_facts("""proposed BR Class 41/48, NIR 201 Class""")
 
     result.append(consist_factory)
 

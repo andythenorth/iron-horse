@@ -19,7 +19,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricHighSpeedMailUnit",
         weight=42,
         spriterow_num=0,
@@ -28,10 +28,10 @@ def main(**kwargs):
         effects={},  # suppress visual effects
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Can we get there faster? That's what drives me."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """BR InterCity 225 (Mk4 Coaches)), Shinkansen-style distributed traction"""
     )
 

@@ -14,7 +14,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name=AlignmentCar, vehicle_length=4, chassis="2_axle_solid_express_16px"
     )
 
@@ -28,7 +28,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name=AlignmentCar, vehicle_length=6, chassis="4_axle_solid_express_24px"
     )
 
@@ -42,7 +42,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name=AlignmentCar, vehicle_length=8, chassis="4_axle_solid_express_32px"
     )
 

@@ -25,12 +25,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=71, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_description("""It gets the job done either way.""")
-    consist_factory.add_foamer_facts("""YEC <i>Janus</i>, Corus <i>Trojan</i>""")
+    consist_factory.define_description("""It gets the job done either way.""")
+    consist_factory.define_foamer_facts("""YEC <i>Janus</i>, Corus <i>Trojan</i>""")
 
     result.append(consist_factory)
 

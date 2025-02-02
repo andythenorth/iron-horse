@@ -25,14 +25,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit", weight=82, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Looks like a cheese to me, goes alright though."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """proposed Bombardier Traxx P200, various electric locomotives from Stadler, Siemens, Adtranz"""
     )
 

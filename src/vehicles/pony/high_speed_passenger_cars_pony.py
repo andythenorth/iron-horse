@@ -13,7 +13,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="PaxCar", chassis="high_speed_32px")
+    consist_factory.define_unit(class_name="PaxCar", chassis="high_speed_32px")
 
     result.append(consist_factory)
 

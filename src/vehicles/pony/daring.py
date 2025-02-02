@@ -25,7 +25,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=75,
         vehicle_length=8,
@@ -33,8 +33,8 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description("""Fast and light, right good.""")
-    consist_factory.add_foamer_facts("""BR Class 35 <i>Hymek</i>""")
+    consist_factory.define_description("""Fast and light, right good.""")
+    consist_factory.define_foamer_facts("""BR Class 35 <i>Hymek</i>""")
 
     result.append(consist_factory)
 

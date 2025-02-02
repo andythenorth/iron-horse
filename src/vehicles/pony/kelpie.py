@@ -26,12 +26,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit", weight=72, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_description("""Neat these are, to my mind.""")
-    consist_factory.add_foamer_facts("""BR Class 26/27/33""")
+    consist_factory.define_description("""Neat these are, to my mind.""")
+    consist_factory.define_foamer_facts("""BR Class 26/27/33""")
 
     consist_factory.add_clone(base_numeric_id=450, clone_units=[2])
 

@@ -24,16 +24,16 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="MetroUnit",
         weight=60,
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    consist_factory.add_description("""Are we going back to Romford?""")
+    consist_factory.define_description("""Are we going back to Romford?""")
     # https://www.checkerboardhill.com/2020/01/mtr-zer4-battery-electric-locomotives/
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """CRRC ZER4 battery-electric locos for MTR (Hong Kong metro)"""
     )
 

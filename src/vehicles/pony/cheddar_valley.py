@@ -30,7 +30,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=125,
         vehicle_length=8,
@@ -38,10 +38,10 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """I shipped these in from overseas.  Pull you backwards through a wall this one will.  Right proper engine."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """GMD  / EMD Class 59, uprated GMD / EMD 710 series prime mover"""
     )
 

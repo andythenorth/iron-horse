@@ -15,7 +15,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
     result.append(consist_factory)
 
@@ -28,7 +28,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
     result.append(consist_factory)
 
@@ -41,7 +41,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
     result.append(consist_factory)
 
@@ -55,7 +55,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
 
     result.append(consist_factory)
 
@@ -67,7 +67,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(class_name="FreightCar", chassis="2_axle_filled_24px")
+    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_24px")
 
     result.append(consist_factory)
 
@@ -79,7 +79,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="FreightCar", chassis="2_axle_filled_greebled_16px"
     )
 
@@ -93,7 +93,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="FreightCar", chassis="2_axle_filled_greebled_24px"
     )
 
@@ -107,7 +107,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="FreightCar", chassis="4_axle_filled_greebled_32px"
     )
 

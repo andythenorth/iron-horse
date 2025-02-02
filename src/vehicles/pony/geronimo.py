@@ -21,15 +21,15 @@ def main(**kwargs):
         intro_year_offset=-3,
     )  # introduce early by design
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricRailcarPaxUnit",
         weight=35,
         chassis="railcar_32px",
         tail_light="railcar_32px_2",
     )
 
-    consist_factory.add_description("""More Speed. More Comfort. More Trains.""")
-    consist_factory.add_foamer_facts("""BR 2-HAP, 4EPB, Class 302""")
+    consist_factory.define_description("""More Speed. More Comfort. More Trains.""")
+    consist_factory.define_foamer_facts("""BR 2-HAP, 4EPB, Class 302""")
 
     result.append(consist_factory)
 

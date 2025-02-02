@@ -65,8 +65,8 @@ class ConsistFactory(object):
         self.roster_id = roster_id
         self.roster_id_providing_module = roster_id_providing_module
 
-    def add_unit(self, class_name, **kwargs):
-        # !! CABBAGE not actually a UnitFactory yet
+    def define_unit(self, class_name, **kwargs):
+        # named define_unit, not add_unit_factory, as the unit factory is an internal implemenation detail
         self.unit_factories.append(UnitFactory(class_name, **kwargs))
 
     def add_clone(self, **kwargs):
@@ -96,11 +96,11 @@ class ConsistFactory(object):
 
         return consist
 
-    def add_description(self, description):
+    def define_description(self, description):
         # note we store in kwargs, as the 'recipe' for the consist
         self.kwargs["description"] = description
 
-    def add_foamer_facts(self, foamer_facts):
+    def define_foamer_facts(self, foamer_facts):
         # note we store in kwargs, as the 'recipe' for the consist
         self.kwargs["foamer_facts"] = foamer_facts
 

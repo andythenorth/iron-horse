@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectricEngineUnit",
         weight=70,
         vehicle_length=6,
@@ -32,10 +32,10 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """He paws fiercely, rejoicing in his strength, and charges into the fray."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """SR CC1/CC2 locomotives, English Electric export boxcab locomotives"""
     )
 

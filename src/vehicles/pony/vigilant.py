@@ -22,18 +22,18 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=92, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=40, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """It's a big engine, it cost a lot of brass, get it to work."""
     )
-    consist_factory.add_foamer_facts("""GCR Class 8K / ROD 2-8-0, GWR 2800 Class""")
+    consist_factory.define_foamer_facts("""GCR Class 8K / ROD 2-8-0, GWR 2800 Class""")
 
     result.append(consist_factory)
 

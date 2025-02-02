@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=60,
         vehicle_length=8,
@@ -33,8 +33,8 @@ def main(**kwargs):
 
     # https://en.wikipedia.org/wiki/New_Zealand_DL_class_locomotive
     # https://en.wikipedia.org/wiki/New_Zealand_DM_class_locomotive
-    consist_factory.add_description("""A tiny mighty bear.""")
-    consist_factory.add_foamer_facts(
+    consist_factory.define_description("""A tiny mighty bear.""")
+    consist_factory.define_foamer_facts(
         """KiwiRail Stadler SALi locomotives, Kawasaki (Japan) Class DF200-7000 bo-bo-bo (dedicated locomotive for JR Kysushu <i>Seven Stars in Kyushu</i> luxury train)"""
     )
 

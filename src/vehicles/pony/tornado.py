@@ -22,17 +22,17 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # banger blue, industrial?
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="ElectroDieselEngineUnit",
         weight=70,
         vehicle_length=6,
         spriterow_num=0,
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """The Boosters needed a boost. Rebuilt, repainted, off to the races we go."""
     )
-    consist_factory.add_foamer_facts("""BR Class 74, Class 73""")
+    consist_factory.define_foamer_facts("""BR Class 74, Class 73""")
 
     result.append(consist_factory)
 

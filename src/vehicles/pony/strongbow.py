@@ -22,18 +22,18 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineUnit", weight=96, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.add_unit(
+    consist_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=34, vehicle_length=4, spriterow_num=1
     )
 
-    consist_factory.add_description(
+    consist_factory.define_description(
         """Got this one off Mr. Stanier.  It'll go anywhere, do anything, for not too much brass."""
     )
-    consist_factory.add_foamer_facts(
+    consist_factory.define_foamer_facts(
         """LMS Jubilee Class, original TTD Chaney 'Jubilee'"""
     )
 
