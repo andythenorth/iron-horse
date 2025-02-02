@@ -39,21 +39,22 @@ def main(**kwargs):
         """FAUR L45H B-B, generic narrow-gauge diesel locomotives"""
     )
 
-    print("cabbage 939", consist_factory.kwargs["id"])
-    """
-    consist_factory.add_clone(base_numeric_id=920, clone_units=[1])
+    result.append(consist_factory)
 
-    # this is a JFDI thing, the 2-unit version varies sprites per unit position, which is generally supported, but the *buy menu* compositor does not support that as of Jan 2024, so hax
-    consist_factory.clones[0].add_unit(
-        class_name="DieselEngineUnit", weight=22, vehicle_length=4, spriterow_num=1
+    consist_factory = consist_factory.clone(base_numeric_id=920, unit_counts=[1])
+
+    print("cabbage 939", consist_factory.kwargs["id"])
+    # this is a JFDI thing, the 2-unit version varies sprites per unit position, which is generally supported
+    # but the *buy menu* compositor does not support that as of Jan 2024, so hax
+    consist_factory.unit_factories[0].kwargs["spriterow_num"] = 1
+    consist_factory.define_unit(
+        class_name="DieselEngineUnit", weight=22, vehicle_length=4, spriterow_num=0
     )
 
+    """
     # JFDI recalculate power to account for 2 units
     consist_factory.clones[0].set_clone_power_from_clone_source()
     """
-    result.append(consist_factory)
-
-    consist_factory = consist_factory.clone(base_numeric_id=920)
 
     result.append(consist_factory)
 

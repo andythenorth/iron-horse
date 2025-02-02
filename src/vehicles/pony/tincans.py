@@ -40,11 +40,13 @@ def main(**kwargs):
         """Polish PKP EU07 (derived from UK Class 83 design)"""
     )
 
-    consist_factory.add_clone(base_numeric_id=34950, clone_units=[1, 0])
-
     result.append(consist_factory)
 
-    consist_factory = consist_factory.clone(base_numeric_id=34950)
+    consist_factory = consist_factory.clone(base_numeric_id=34950, unit_counts=[1, 0])
+
+    print("cabbage 939", consist_factory.kwargs["id"])
+    # HAX
+    consist_factory.unit_factories[0].kwargs["repeat"] = 1
 
     result.append(consist_factory)
 

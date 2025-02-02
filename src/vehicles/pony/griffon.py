@@ -45,11 +45,9 @@ def main(**kwargs):
     )
     consist_factory.define_foamer_facts("""BR Class 33""")
 
-    consist_factory.add_clone(base_numeric_id=800, clone_units=[2])
-
     result.append(consist_factory)
 
-    consist_factory = consist_factory.clone(base_numeric_id=800)
+    consist_factory = consist_factory.clone(base_numeric_id=800, unit_counts=[2])
 
     result.append(consist_factory)
 

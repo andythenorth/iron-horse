@@ -35,23 +35,25 @@ class Pipeline(object):
     def vehicle_source_input_path(self):
         # convenience method to get the vehicle template image
         # I considered having this return the Image, not just the path, but it's not saving much, and is less obvious what it does when used
-        if self.consist.cloned_from_consist is not None:
-            source_consist = self.consist.cloned_from_consist
-        else:
-            source_consist = self.consist
-
         # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
-        if source_consist.gestalt_graphics.input_spritesheet_delegate_id is not None:
+
+        if self.consist.gestalt_graphics.input_spritesheet_delegate_id is not None:
             consist_filename_stem = (
                 self.consist.gestalt_graphics.input_spritesheet_delegate_id
             )
         else:
-            consist_filename_stem = source_consist.id
+            # !! won't work for wagons, which use wagon_id; this wasn't relevant as of Feb 2025, but eh
+            # !! CABBAGE possibly delegate a method on consist_factory to get a base_id or default_id for consists
+            if self.consist.consist_factory.cloned_from_consist_factory is not None:
+                consist_filename_stem = self.consist.consist_factory.cloned_from_consist_factory.kwargs["id"]
+            else:
+                # CABBAGE JFDI hax, see above
+                consist_filename_stem = self.consist.id
 
         # the consist id might have the consist's roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
         # this will have a null effect (which is fine) if the roster_id consist is the same as the module providing the graphics gile
         consist_filename_stem = consist_filename_stem.replace(
-            source_consist.roster_id, source_consist.roster_id_providing_module
+            self.consist.roster_id, self.consist.roster_id_providing_module
         )
 
         return os.path.join(
@@ -59,7 +61,7 @@ class Pipeline(object):
             "src",
             "graphics",
             # roster_id providing module will always give us the correct filesystem path to the graphics file, which might differ from the current roster_id
-            source_consist.roster_id_providing_module,
+            self.consist.roster_id_providing_module,
             consist_filename_stem + ".png",
         )
 

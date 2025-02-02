@@ -340,6 +340,7 @@ def main():
     static_dir_dst = os.path.join(html_docs_output_path, "static")
     shutil.copytree(static_dir_src, static_dir_dst)
 
+    # CABBAGE cloned_from_consist
     # note we remove any consists that are clones, we don't need them in docs
     consists = [
         consist

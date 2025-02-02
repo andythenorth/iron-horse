@@ -49,7 +49,7 @@ def main(**kwargs):
     """
     result.append(consist_factory)
 
-    consist_factory = consist_factory.clone(base_numeric_id=820)
+    consist_factory = consist_factory.clone(base_numeric_id=820, unit_counts=[2])
 
     result.append(consist_factory)
 

@@ -127,7 +127,7 @@ class ConsistFactory(object):
         result = "_".join(substrings)
         return result
 
-    def clone(self, base_numeric_id, **kwargs):
+    def clone(self, base_numeric_id, unit_counts, **kwargs):
         print(
             "ConsistFactory.clone() not fully implemented yet - called by ",
             self.kwargs["id"],
@@ -149,6 +149,19 @@ class ConsistFactory(object):
         cloned_consist_factory.kwargs["id"] = (
             self.kwargs["id"] + "_clone_" + str(len(self.clones))
         )
+
+        # deepcopy will have created new unit factory instances, but we might want to modify the sequence for the cloned consist factory
+        # the format is unit_counts=[x, y z]
+        # for each existing unit factory, this will specify how many copies to create,
+        # e.g. [1, 0] will keep the first and drop the second
+        # [2, 1] will repeat the first unit twice
+        # [0, 2] will drop the first unit and repeat the second twice
+        # CABBAGE !! this might need to consider setting repeat=n rather than repeating the insertions of unit factories, buy menu might not work with this?
+        unit_factories_old = cloned_consist_factory.unit_factories.copy()
+        cloned_consist_factory.unit_factories = [] # clear, we'll rebuild from clean
+        for counter, unit_factory in enumerate(unit_factories_old):
+            for i in range(unit_counts[counter]):
+                cloned_consist_factory.unit_factories.append(unit_factory)
 
         return cloned_consist_factory
 
@@ -199,6 +212,7 @@ class Consist(object):
         # we clone some consists to make alternate length variants, we need to track that
         self.clones = []
         # store the consist this was cloned from, may also be used to determine if this is a clone or not
+        # CABBAGE cloned_from_consist
         self.cloned_from_consist = None
         # either gen xor intro_year is required, don't set both, one will be interpolated from the other
         self._intro_year = kwargs.get("intro_year", None)
@@ -332,11 +346,12 @@ class Consist(object):
 
         # we clone the consist by copying the current consist, this is the simplest way to not get caught out by any properties in subclasses
         cloned_consist = copy.deepcopy(self)
+        # CABBAGE cloned_from_consist
         cloned_consist.cloned_from_consist = self
         cloned_consist.id = self.id + "_clone_" + str(len(self.clones))
         cloned_consist.base_numeric_id = kwargs["base_numeric_id"]
         cloned_consist._buyable_variant_group_id = self.id
-        # purchase menu variant decor isn't supported if the consist is articulated, so just forcibly clear this property
+        # CABBAGE purchase menu variant decor isn't supported if the consist is articulated, so just forcibly clear this property
         cloned_consist.show_decor_in_purchase_for_variants = []
         # we have to recreate the units from scratch using the original classes and kwargs stored when they were inited
         # this is faff, but is the simplest available method due to the way the structure for units + buyable_variants is constructed and unit_variant IDs assigned
@@ -357,10 +372,12 @@ class Consist(object):
 
     @property
     def clone_stats_adjustment_factor(self):
+        # CABBAGE clone_stats_adjustment_factor
         # clones need to adjust some stats, e.g. power, running_cost etc
         return len(self.units) / len(self.cloned_from_consist.units)
 
     def set_clone_power_from_clone_source(self):
+        # CABBAGE set_clone_power_from_clone_source
         # recalculate power for a clone, adjusting by num units or other factor
         for (
             power_type,
@@ -745,6 +762,7 @@ class Consist(object):
     @property
     def similar_consists(self):
         # quite a crude guess at similar engines by subrole
+        # CABBAGE cloned_from_consist
         result = []
         for consist in self.roster.engine_consists:
             if (

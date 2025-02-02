@@ -59,6 +59,7 @@ class Roster(object):
     def engine_consists_excluding_clones(self):
         # we don't always want clones in the engine list (e.g. when generating tech tree in docs and similar cases)
         # this is a convenience wrapper to knock out any clones from engine list
+        # CABBAGE cloned_from_consist
         return [
             engine_consist
             for engine_consist in self.engine_consists
@@ -303,7 +304,8 @@ class Roster(object):
                             + str(numeric_id)
                             + " which is part of an articulated vehicle, and needs a numeric_id smaller than "
                             + str(global_constants.max_articulated_id)
-                            + " - use a lower consist base_numeric_id"
+                            + "\nUse a lower consist base_numeric_id\n"
+                            + str(consist.units)
                         )
             for numeric_id in consist.unique_numeric_ids:
                 if numeric_id in numeric_id_defender:
@@ -350,15 +352,10 @@ class Roster(object):
             )
             for consist_factory in engine_module_name.main():
                 if consist_factory.cloned_from_consist_factory is not None:
-                    # TEMP UNTIL CLONES WORK
                     print("CABBAGE 3810 - FOUND CLONE of", consist_factory.kwargs["id"])
-                    continue
                 consist_factory.set_roster_ids(self.id, roster_id_providing_module)
                 consist = consist_factory.produce()
                 self.engine_consists.append(consist)
-                # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
-                for cloned_consist in consist.clones:
-                    self.engine_consists.append(cloned_consist)
 
     def init_wagon_modules(self):
         # wagons can be optionally reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module

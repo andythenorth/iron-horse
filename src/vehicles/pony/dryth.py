@@ -39,11 +39,13 @@ def main(**kwargs):
         """SR CC1/CC2 locomotives, English Electric export boxcab locomotives"""
     )
 
-    consist_factory.add_clone(base_numeric_id=34930, clone_units=[1, 0])
-
     result.append(consist_factory)
 
-    consist_factory = consist_factory.clone(base_numeric_id=34930)
+    consist_factory = consist_factory.clone(base_numeric_id=34930, unit_counts=[1, 0])
+
+    print("cabbage 939", consist_factory.kwargs["id"])
+    # HAX
+    consist_factory.unit_factories[0].kwargs["repeat"] = 1
 
     result.append(consist_factory)
 

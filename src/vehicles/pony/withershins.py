@@ -34,11 +34,13 @@ def main(**kwargs):
     consist_factory.define_description("""It's a rat pack. What more do you want?""")
     consist_factory.define_foamer_facts("""BR Class 24, BR Class 25""")
 
-    consist_factory.add_clone(base_numeric_id=34910, clone_units=[1, 0])
-
     result.append(consist_factory)
 
-    consist_factory = consist_factory.clone(base_numeric_id=34910)
+    consist_factory = consist_factory.clone(base_numeric_id=34910, unit_counts=[1, 0])
+
+    print("cabbage 939", consist_factory.kwargs["id"])
+    # HAX
+    consist_factory.unit_factories[0].kwargs["repeat"] = 1
 
     result.append(consist_factory)
 
