@@ -160,7 +160,7 @@ class ConsistFactory(object):
         cloned_consist_factory.kwargs["id"] = (
             self.kwargs["id"] + "_clone_" + str(len(self.clones))
         )
-        cloned_consist_factory.kwargs["_buyable_variant_group_id"] = self.kwargs["id"]
+        cloned_consist_factory.kwargs["buyable_variant_group_id"] = self.kwargs["id"]
         return cloned_consist_factory
 
     def complete_clone(self):
