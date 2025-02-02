@@ -354,7 +354,7 @@ class Roster(object):
                     print("CABBAGE 3810 - FOUND CLONE of", consist_factory.kwargs["id"])
                     continue
                 consist_factory.set_roster_ids(self.id, roster_id_providing_module)
-                consist = consist_factory.init_consist()
+                consist = consist_factory.produce()
                 self.engine_consists.append(consist)
                 # clone consists are used to handle articulated engines of with length variants, e.g. diesels with variants of 1 or 2 units; more than one clone is supported
                 for cloned_consist in consist.clones:
@@ -392,7 +392,7 @@ class Roster(object):
                         consist_factory.set_roster_ids(
                             self.id, roster_id_providing_module
                         )
-                        consist_factory.init_consist()
+                        consist_factory.produce()
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name

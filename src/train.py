@@ -51,9 +51,10 @@ class ConsistFactory(object):
 
     def __init__(self, class_name, **kwargs):
         self.class_name = class_name
+        # we store kwargs for reuse later, seems to be a factory pattern convention to just store them as 'kwargs' and not 'recipe' or something
         self.kwargs = kwargs
         self.unit_factories = []
-        self.clone_factories = []  # temp hax
+        self.clone_factories = []  # temp hax CABBAGE REMOVE
         # used for clone book-keeping
         self.cloned_from_consist_factory = None
         self.clones = []
@@ -67,24 +68,31 @@ class ConsistFactory(object):
 
     def define_unit(self, class_name, **kwargs):
         # named define_unit, not add_unit_factory, as the unit factory is an internal implemenation detail
-        self.unit_factories.append(UnitFactory(class_name, **kwargs))
+        # units will be made by unit factory instances (implementation detail of consist factory)
+        self.unit_factories.append(UnitFactory(consist_factory=self, class_name=class_name, **kwargs))
+
+    def define_description(self, description):
+        # note we store in kwargs, as the 'recipe' for the consist
+        self.kwargs["description"] = description
+
+    def define_foamer_facts(self, foamer_facts):
+        # note we store in kwargs, as the 'recipe' for the consist
+        self.kwargs["foamer_facts"] = foamer_facts
 
     def add_clone(self, **kwargs):
+        # # temp hax CABBAGE REMOVE
         # !! CABBAGE not actually a CloneFactory yet
         # !! clones might be done in the roster version
         self.clone_factories.append(kwargs)
 
-    def init_consist(self):
+    def produce(self):
         consist_cls = getattr(sys.modules[__name__], self.class_name)
         consist = consist_cls(consist_factory=self, **self.kwargs)
-        # !! CABBAGE
-        # !! these aren't actually unit factories yet
+
+        # orchestrate addition of units
         for unit_factory in self.unit_factories:
-            try:
-                unit_cls = getattr(sys.modules[__name__], unit_factory.class_name)
-            except:
-                raise Exception("class_name not found for " + consist.id)
-            # very JFDI, this should probably be calling a method on UnitFactory
+            # CABBAGE - this is delegating to consist currently, by passing unit classes, we want to pass actual units from here, consist knows too much
+            unit_cls = unit_factory.produce() # !! might need consist passing?  For IDs etc, again consist knows too much currently
             consist.add_unit(unit_cls, factory_cabbage=True, **unit_factory.kwargs)
 
         # !! CABBAGE
@@ -95,14 +103,6 @@ class ConsistFactory(object):
             consist.clone(**clone_factory)
 
         return consist
-
-    def define_description(self, description):
-        # note we store in kwargs, as the 'recipe' for the consist
-        self.kwargs["description"] = description
-
-    def define_foamer_facts(self, foamer_facts):
-        # note we store in kwargs, as the 'recipe' for the consist
-        self.kwargs["foamer_facts"] = foamer_facts
 
     def get_wagon_id(self, base_id, **kwargs):
         # auto id creator, used for wagons not locos
@@ -155,13 +155,21 @@ class ConsistFactory(object):
 
 class UnitFactory(object):
     """
-    CABBAGE
+    Helper to ConsistFactory, generates Unit instances from a stored recipe.
     """
 
-    def __init__(self, class_name, **kwargs):
+    def __init__(self, consist_factory, class_name, **kwargs):
+        self.consist_factory = consist_factory
         self.class_name = class_name
         self.kwargs = kwargs
 
+    def produce(self):
+        # CABBAGE, THIS CURRENTLY RETURNS unit_cls, as the consist handles unit instance creation; that needs changing, this should return unit instances
+        try:
+            unit_cls = getattr(sys.modules[__name__], self.class_name)
+        except:
+            raise Exception("class_name not found for " + self.consist_factory.kwargs["id"])
+        return unit_cls
 
 class Consist(object):
     """
