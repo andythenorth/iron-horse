@@ -2645,13 +2645,13 @@ class AutomobileCarConsistBase(CarConsist):
             consist_ruleset = "articulated_permanent_twin_sets"
         else:
             consist_ruleset = self._consist_ruleset
+        # automobile cars can't use random colour swaps on the wagons...
+        # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
+        # ...wouldn't be desirable anyway because they are pseudo-articulated units
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
             consist_ruleset=consist_ruleset,
             liveries=[
-                # automobile cars can't use random colour swaps on the wagons...
-                # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
-                # ...wouldn't be desirable anyway because they are pseudo-articulated units
                 global_constants.freight_wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"],
                 global_constants.freight_wagon_liveries[
                     "FREIGHT_BAUXITE_NO_WEATHERING"
@@ -2909,6 +2909,7 @@ class BoxCarConsistType1(BoxCarConsistBase):
         weathered_variants = {
             "unweathered": graphics_constants.box_livery_recolour_map,
         }
+        # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             liveries=[
@@ -2937,7 +2938,6 @@ class BoxCarConsistType1(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
@@ -3014,6 +3014,7 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         weathered_variants = {
             "unweathered": graphics_constants.curtain_side_livery_recolour_map,
         }
+        # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             liveries=[
@@ -3039,7 +3040,6 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
@@ -3068,6 +3068,7 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
         weathered_variants = {
             "unweathered": graphics_constants.body_recolour_CC1,
         }
+        # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             liveries=[
@@ -3106,7 +3107,6 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries["FREIGHT_GREMLIN_GREEN"],
                 global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SAND"],
-                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
@@ -3186,6 +3186,9 @@ class BoxCarSlidingWallConsistType1(BoxCarSlidingWallConsistBase):
             "unweathered": graphics_constants.sliding_wall_livery_recolour_map,
             "weathered": graphics_constants.sliding_wall_livery_recolour_map_weathered,
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+        # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             liveries=[
@@ -3207,12 +3210,9 @@ class BoxCarSlidingWallConsistType1(BoxCarSlidingWallConsistBase):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
-                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
@@ -3238,6 +3238,9 @@ class BoxCarSlidingWallConsistType2(BoxCarSlidingWallConsistBase):
         weathered_variants = {
             "unweathered": graphics_constants.box_livery_recolour_map,
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+        # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             liveries=[
@@ -3262,12 +3265,9 @@ class BoxCarSlidingWallConsistType2(BoxCarSlidingWallConsistBase):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
@@ -3299,6 +3299,9 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
         weathered_variants = {
             "unweathered": graphics_constants.box_livery_recolour_map,
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+        # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             liveries=[
@@ -3320,12 +3323,9 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
-                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
@@ -4365,6 +4365,8 @@ class CoveredHopperCarConsistBase(CarConsist):
         weathered_variants = {
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
@@ -4395,8 +4397,6 @@ class CoveredHopperCarConsistBase(CarConsist):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
@@ -4510,6 +4510,9 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
         weathered_variants = {
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+        # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
@@ -4537,13 +4540,10 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
@@ -4786,11 +4786,11 @@ class ExpressIntermodalCarConsist(CarConsist):
         self.use_colour_randomisation_strategies = False
         # Graphics configuration
         # !! note to future, if e.g. NA Horse needs longer express intermodal sets, set the consist_ruleset conditionally by checking roster
+        # intermodal container wagons can't use random colour swaps on the wagons...
+        # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             consist_ruleset="2_unit_sets",
             liveries=[
-                # intermodal container wagons can't use random colour swaps on the wagons...
-                # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
                 global_constants.freight_wagon_liveries["SWOOSH"],
             ],
         )
@@ -5759,6 +5759,9 @@ class HopperCarMGRConsistBase(HopperCarConsistBase):
             "unweathered": graphics_constants.mgr_hopper_body_recolour_map,
             "weathered": graphics_constants.mgr_hopper_body_recolour_map_weathered,
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+        # player choice, various others tried, not needed
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             weathered_variants=weathered_variants,
@@ -5784,14 +5787,11 @@ class HopperCarMGRConsistBase(HopperCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_SULPHUR"],
                 global_constants.freight_wagon_liveries["FREIGHT_STRAW"],
-                # player choice, various others tried, not needed
             ],
         )
 
@@ -6117,13 +6117,13 @@ class KaolinHopperCarConsist(CarConsist):
             "unweathered": graphics_constants.kaolin_hopper_car_livery_recolour_map,
             "weathered": graphics_constants.kaolin_hopper_car_livery_recolour_map_weathered,
         }
+        # tried more liveries, doesn't add anything
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
                 global_constants.freight_wagon_liveries[
                     "COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # tried more, doesn't add anything
             ],
         )
 
@@ -6152,6 +6152,8 @@ class LivestockCarConsist(CarConsist):
         weathered_variants = {
             "unweathered": graphics_constants.livestock_livery_recolour_map,
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             liveries=[
@@ -6176,8 +6178,6 @@ class LivestockCarConsist(CarConsist):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
@@ -6569,6 +6569,8 @@ class MineralCoveredHopperCarConsistBase(CarConsist):
         weathered_variants = {
             "unweathered": graphics_constants.covered_hopper_car_livery_recolour_map
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
@@ -6599,8 +6601,6 @@ class MineralCoveredHopperCarConsistBase(CarConsist):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
@@ -6727,6 +6727,8 @@ class MineralCoveredHopperCarRandomisedConsist(
         self.base_id = "covered_bulk_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=3,
@@ -6752,8 +6754,6 @@ class MineralCoveredHopperCarRandomisedConsist(
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
@@ -6786,6 +6786,8 @@ class MineralCoveredHopperCarRollerRoofConsistBase(MineralCoveredHopperCarConsis
             "unweathered": graphics_constants.roller_roof_hopper_body_recolour_map,
             "weathered": graphics_constants.roller_roof_hopper_body_recolour_map_weathered,
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
@@ -6810,8 +6812,6 @@ class MineralCoveredHopperCarRollerRoofConsistBase(MineralCoveredHopperCarConsis
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
@@ -6890,6 +6890,8 @@ class MineralCoveredHopperCarSaltConsistBase(MineralCoveredHopperCarConsistBase)
         weathered_variants = {
             "unweathered": graphics_constants.chemical_covered_hopper_car_livery_recolour_map,
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
@@ -6920,8 +6922,6 @@ class MineralCoveredHopperCarSaltConsistBase(MineralCoveredHopperCarConsistBase)
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
@@ -8263,9 +8263,10 @@ class SlidingRoofCarConsist(BoxCarConsistBase):
             "unweathered": graphics_constants.sliding_roof_car_body_recolour_map,
             "weathered": graphics_constants.sliding_roof_car_body_recolour_map_weathered,
         }
+        # these make little difference visually for this wagon, but are needed to make this wagon a candidate for relevant randomised wagons
+        # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            # these make little difference visually for this wagon, but are needed to make this wagon a candidate for relevant randomised wagons
             liveries=[
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
@@ -8287,7 +8288,6 @@ class SlidingRoofCarConsist(BoxCarConsistBase):
                 ],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
@@ -8727,6 +8727,9 @@ class TankCarStandardConsistBase(TankCarConsistBase):
         weathered_variants = {
             "unweathered": graphics_constants.tank_car_livery_recolour_map,
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+        # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
@@ -8754,13 +8757,10 @@ class TankCarStandardConsistBase(TankCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                # # teal before pewter for buy menu appearance reasons
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
                 global_constants.freight_wagon_liveries["FREIGHT_SULPHUR"],
@@ -8840,6 +8840,8 @@ class TankCarVolatilesConsistBase(TankCarConsistBase):
             "unweathered": graphics_constants.silver_grey_tank_car_livery_recolour_map,
             "weathered": graphics_constants.silver_grey_tank_car_livery_recolour_map_weathered,
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
@@ -8868,8 +8870,6 @@ class TankCarVolatilesConsistBase(TankCarConsistBase):
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.freight_wagon_liveries["FREIGHT_RED"],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
@@ -8914,6 +8914,9 @@ class TarpaulinCarConsistBase(BoxCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_tarpaulin_cars"
         # Graphics configuration
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+        # teal before pewter and nightshade to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
             has_cover=True,
@@ -8943,13 +8946,10 @@ class TarpaulinCarConsistBase(BoxCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
-                # teal before pewter and nightshade to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
@@ -8992,6 +8992,8 @@ class TarpaulinCarConsistType3(TarpaulinCarConsistBase):
             "unweathered": graphics_constants.tarpaulin_car_body_recolour_maps,
             "weathered": graphics_constants.tarpaulin_car_body_recolour_maps_weathered,
         }
+        # we use TEAL_NIGHTSHADE here not TEAL_PEWTER to improve contrast, as the wagon hood is white
+        # reduced set of liveries here
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
             has_cover=True,
@@ -9003,7 +9005,6 @@ class TarpaulinCarConsistType3(TarpaulinCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
                 ],
-                # we use TEAL_NIGHTSHADE here not TEAL_PEWTER to improve contrast, as the wagon hood is white
                 global_constants.freight_wagon_liveries[
                     "RANDOM_FROM_CONSIST_LIVERIES_TEAL_NIGHTSHADE"
                 ],
@@ -9013,7 +9014,6 @@ class TarpaulinCarConsistType3(TarpaulinCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # reduced set of liveries here
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
