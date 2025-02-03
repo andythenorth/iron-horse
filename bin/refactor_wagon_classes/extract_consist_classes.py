@@ -59,10 +59,16 @@ def extract_and_save_classes():
     print(f"✅ Extraction complete. Classes saved to {OUTPUT_DIR}")
 
 def save_class_to_file(class_name, class_lines):
-    """Writes a single class definition to a separate file."""
+    """Writes a single class definition to a separate file, preserving comments and blank lines."""
     output_path = os.path.join(OUTPUT_DIR, f"{class_name}.py")
+
+    # Ensure extracted class ends with at least one blank line
+    if class_lines[-1].strip():  # Last line is not blank
+        class_lines.append("\n")
+
     with open(output_path, "w", encoding="utf-8") as f:
         f.writelines(class_lines)
+
     print(f"✅ Extracted {class_name} to {output_path}")
 
 if __name__ == "__main__":
