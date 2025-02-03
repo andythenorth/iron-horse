@@ -1474,8 +1474,10 @@ class EngineConsist(Consist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.description = kwargs["description"]  # required
-        self.foamer_facts = kwargs["foamer_facts"]  # required
+        # required
+        self.description = kwargs["description"]
+        # required
+        self.foamer_facts = kwargs["foamer_facts"]
         # arbitrary multiplier to floating run costs (factors are speed, power, weight)
         # adjust per subtype as needed
         self.floating_run_cost_multiplier = 8.5
@@ -1531,10 +1533,10 @@ class EngineConsist(Consist):
             power_factor = self.power / 800
         # malus for complex electro-diesels, ~33% higher equipment costs, based on elrl power
         # this sometimes causes a steep jump from non-electro-diesels in a tech tree (due to power jump), but eh, fine
+        # !! assumption of AC !!
         elif self.electro_diesel_buy_cost_malus is not None:
             power_factor = (
-                self.electro_diesel_buy_cost_malus
-                * self.power_by_power_source["AC"]  # !! assumption of AC !!
+                self.electro_diesel_buy_cost_malus * self.power_by_power_source["AC"]
             ) / 750
         # multiplier for non-electric power, max value will be 10
         else:
@@ -1641,26 +1643,26 @@ class AutoCoachCombineConsist(EngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.subrole = "driving_cab_express_mixed"
-        self.subrole_child_branch_num = -1  # driving cab cars are probably jokers?
+        # driving cab cars are probably jokers?
+        self.subrole_child_branch_num = -1
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
             "autocoach_combine"
         ]
         # confer tiny power value to make this one an engine so it can lead.
-        self.power_by_power_source = {
-            "NULL": 10
-        }  # use 10 not 1, because 1 looks weird when added to engine HP
+        # use 10 not 1, because 1 looks weird when added to engine HP
+        self.power_by_power_source = {"NULL": 10}
         # nerf TE down to minimal value
         self.tractive_effort_coefficient = 0
         # ....buy costs adjusted to match equivalent gen 2 + 3 pax / mail cars
-        self.fixed_buy_cost_points = 6  # to reduce it from engine factor
+        self.fixed_buy_cost_points = 6
         # ....run costs nerfed down to match equivalent gen 2 + 3 pax / mail cars
         self.fixed_run_cost_points = 43
         # Graphics configuration
+        # inserts the default liveries for docs examples
+        liveries = self.roster.get_liveries_by_name([])
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_autocoach.pynml",
-            liveries=self.roster.get_liveries_by_name(
-                []
-            ),  # inserts the default liveries for docs examples
+            liveries=liveries,
         )
 
     @property
@@ -1686,16 +1688,17 @@ class FixedFormationRailcarCombineConsist(EngineConsist):
             else:
                 self.subrole = "universal"
         # Graphics configuration
+        # inserts the default liveries for docs examples
+        liveries = self.roster.get_liveries_by_name([])
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_fixed_formation_railcar.pynml",
-            liveries=self.roster.get_liveries_by_name(
-                []
-            ),  # inserts the default liveries for docs examples
+            liveries=self.roster.get_liveries_by_name([]),
         )
 
     @property
     def loading_speed_multiplier(self):
-        return self.pax_car_capacity_type["loading_speed_multiplier"]  # !!!!!!!!!!!!!!!
+        # !!!!!!!!!!!!!!!
+        return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
 class MailEngineConsist(EngineConsist):
@@ -1968,7 +1971,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         # nerf TE down to minimal value
         self.tractive_effort_coefficient = 0.1
         # ....buy costs reduced from base to make it close to mail cars
-        self.fixed_buy_cost_points = 1  # to reduce it from engine factor
+        self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
         # ....run costs reduced from base to make it close to mail cars
         self.fixed_run_cost_points = 68
@@ -2195,8 +2198,8 @@ class SnowploughEngineConsist(EngineConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = ["TOUR"]
         self.default_cargos = polar_fox.constants.default_cargos["mail"]
-        # ....buy costs reduced from base to make it close to mail cars
-        self.fixed_buy_cost_points = 1  # to reduce it from engine factor
+        # to reduce it from engine factor
+        self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
         # ....run costs reduced from base to make it close to mail cars
         self.fixed_run_cost_points = 68
@@ -5425,7 +5428,8 @@ class HopperCarConsistBase(CarConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = ["dump_freight"]
-        self.label_refits_allowed = []  # none needed
+        # none needed
+        self.label_refits_allowed = []
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "non_dump_bulk"
         ]
@@ -6404,9 +6408,8 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
         super().__init__(**kwargs)
         self.subrole = "very_high_speed"
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
-        self._badges.append(
-            "ih_ruleset_flags/report_as_pax_car"
-        )  # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
+        # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.speed_class = "express"
         self.lgv_capable = True
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
@@ -7355,7 +7358,8 @@ class PassengerCarConsist(PassengerCarConsistBase):
         else:
             self.subrole = "express"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
-        """ # not working as expected, unwanted nesting of panoramic car, needs debugged
+        """
+        # not working as expected, unwanted nesting of panoramic car, needs debugged
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_passenger_cars"
@@ -7970,6 +7974,7 @@ class SiloCarConsistBase(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ["silo_powders"]
         # labels are for legacy support, prior to CC_GAS class; this left in place as of Oct 2024
+        # move to Polar Fox (maybe??)
         self.label_refits_allowed = [
             "SUGR",
             "FMSP",
@@ -7981,7 +7986,7 @@ class SiloCarConsistBase(CarConsist):
             "CBLK",
             "SAND",
             "SOAP",
-        ]  # move to Polar Fox (maybe??)
+        ]
         self.label_refits_disallowed = []
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
@@ -7993,6 +7998,8 @@ class SiloCarConsistBase(CarConsist):
         weathered_variants = {
             "unweathered": graphics_constants.v_barrel_silo_car_livery_recolour_map,
         }
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
@@ -8024,8 +8031,6 @@ class SiloCarConsistBase(CarConsist):
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
                 global_constants.freight_wagon_liveries["FREIGHT_VIOLET"],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
@@ -8299,9 +8304,8 @@ class SlidingRoofCarConsistHiCube(BoxCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "sliding_roof_hi_cube_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos[
-            "box_vehicle_parts"
-        ]  # minor abuse of existing list
+        # minor abuse of existing list
+        self.default_cargos = polar_fox.constants.default_cargos["box_vehicle_parts"]
         self.buy_cost_adjustment_factor = 1.2
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "non_core_wagons"
@@ -8314,6 +8318,7 @@ class SlidingRoofCarConsistHiCube(BoxCarConsistBase):
         weathered_variants = {
             "unweathered": graphics_constants.body_recolour_CC1,
         }
+        # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
             liveries=[
@@ -8340,7 +8345,6 @@ class SlidingRoofCarConsistHiCube(BoxCarConsistBase):
                 ],
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-                # teal before pewter to ensure it appears in buy menu order for mixed version
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
