@@ -1731,7 +1731,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         # nerf TE down to minimal value
         self.tractive_effort_coefficient = 0.1
         # ....buy costs reduced from base to make it close to mail cars
-        self.fixed_buy_cost_points = 1  # to reduce it from engine factor
+        self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
         # ....run costs reduced from base to make it close to mail cars
         self.fixed_run_cost_points = 68
@@ -2018,9 +2018,8 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         if self.base_track_type_name == "NG":
             # special case to knock costs on NG versions of these down similar to other railcars
             self.fixed_run_cost_points = 120
-            self.floating_run_cost_multiplier = (
-                4  # cleanest way to compress run cost down sufficiently
-            )
+            # cleanest way to compress run cost down sufficiently
+            self.floating_run_cost_multiplier = 4
         else:
             # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
             self.fixed_run_cost_points = 155
@@ -4055,7 +4054,8 @@ class CoilBuggyCarConsist(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos["coil"]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
-        self.weight_factor = 2  # double the default weight
+        # double the default weight
+        self.weight_factor = 2
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "freight_core"
         ]
@@ -4315,7 +4315,8 @@ class DedicatedCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBa
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_coil_cars"
         self._joker = True
-        self.random_reverse = True  # because the asymmetric covered wagons can reverse
+        # because the asymmetric covered wagons can reverse
+        self.random_reverse = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
@@ -6437,9 +6438,8 @@ class MailHSTCarConsist(MailCarConsistBase):
         self._buyable_variant_group_id = self.cab_id
         self.subrole = self.cab_consist.subrole
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
-        self._badges.append(
-            "ih_ruleset_flags/report_as_pax_car"
-        )  # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
+        # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.speed_class = "hst"
         self.buy_cost_adjustment_factor = 1.66
         # get the intro year offset and life props from the cab, to ensure they're in sync
@@ -8585,7 +8585,13 @@ class TankCarProductConsistBase(TankCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_product_tank_cars"
         self._joker = True
         # Graphics configuration
-        weathered_variants = {}  # set in variant subclasses
+
+        # set in variant subclasses
+        weathered_variants = {}
+
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+        # # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
@@ -8619,15 +8625,12 @@ class TankCarProductConsistBase(TankCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-                # # teal before pewter for buy menu appearance reasons
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
                 global_constants.freight_wagon_liveries["FREIGHT_SULPHUR"],
