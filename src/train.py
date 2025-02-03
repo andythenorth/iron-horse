@@ -2183,7 +2183,8 @@ class SnowploughEngineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.subrole = "snoughplough!"  # blame Pikka eh?
+        # blame Pikka for the spelling eh? :)
+        self.subrole = "snoughplough!"
         self.subrole_child_branch_num = -1
         # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
         self.power_by_power_source = {"NULL": 100}
@@ -2200,11 +2201,12 @@ class SnowploughEngineConsist(EngineConsist):
         # ....run costs reduced from base to make it close to mail cars
         self.fixed_run_cost_points = 68
         # Graphics configuration
+
+        # inserts the default liveries for docs examples
+        liveries = self.roster.get_liveries_by_name([])
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_snowplough.pynml",
-            liveries=self.roster.get_liveries_by_name(
-                []
-            ),  # inserts the default liveries for docs examples
+            liveries=liveries,
         )
 
 
@@ -2605,12 +2607,14 @@ class AlignmentCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = "alignment_car"
         super().__init__(**kwargs)
-        self.speed_class = None  # no speed limit
+        # no speed limit
+        self.speed_class = None
         # refit nothing
         self.class_refit_groups = []
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
-        self.buy_cost_adjustment_factor = 0  # free
+        # free
+        self.buy_cost_adjustment_factor = 0
         # no random CC, no flip
         self.use_colour_randomisation_strategies = False
 
@@ -3463,7 +3467,8 @@ class BulkOpenCarHeavyDutyConsist(BulkOpenCarConsistBase):
         super().__init__(**kwargs)
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
-        self.weight_factor = 2  # double the default weight
+        # double the default weight
+        self.weight_factor = 2
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics.liveries = [
@@ -3924,16 +3929,16 @@ class CabooseCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = "caboose_car"
         super().__init__(**kwargs)
-        self.speed_class = None  # no speed limit
+        # no speed limit
+        self.speed_class = None
         # refit nothing, don't mess with this, it breaks auto-replace
         self.class_refit_groups = []
         # label refits are just to get caboose to use freight car livery group
         # try to catch enough common cargos otherwise the vehicle will be hidden; don't use MAIL as that forces pax colour group
         self.label_refits_allowed = ["ENSP", "GOOD", "COAL", "WOOD", "OIL_"]
         self.label_refits_disallowed = []
-        self.buy_cost_adjustment_factor = (
-            0.75  # chop down caboose costs, they're just eye candy eh
-        )
+        # chop down caboose costs, they're just eye candy eh
+        self.buy_cost_adjustment_factor = 0.75
         self.use_colour_randomisation_strategies = True
         self.random_reverse = True
         # Graphics configuration
@@ -4974,12 +4979,11 @@ class FoodHopperCarConsistBase(FarmProductsHopperCarConsistBase):
             "unweathered": graphics_constants.refrigerated_livery_recolour_map,
             "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
         }
+        # company colour not used on these wagons, so use SWOOSH as JFDI
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
-                global_constants.freight_wagon_liveries[
-                    "SWOOSH"
-                ],  # company colour not used on these wagons
+                global_constants.freight_wagon_liveries["SWOOSH"],
             ],
         )
 
@@ -5240,7 +5244,8 @@ class FlatCarHeavyDutyConsist(FlatCarConsistBase):
         super().__init__(**kwargs)
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
-        self.weight_factor = 2  # double the default weight
+        # double the default weight
+        self.weight_factor = 2
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
@@ -5962,7 +5967,8 @@ class IngotCarConsist(CarConsist):
         self.default_cargos = ["IRON"]
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
-        self.weight_factor = 2  # double the default weight
+        # double the default weight
+        self.weight_factor = 2
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "freight_core"
         ]
@@ -5970,6 +5976,9 @@ class IngotCarConsist(CarConsist):
         self.suppress_animated_pixel_warnings = True
         # Graphics configuration
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
+
+        # leave cargo_row_map blank, all default to same
+        cargo_row_map = {}
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
             liveries=[
@@ -5992,7 +6001,7 @@ class IngotCarConsist(CarConsist):
                 global_constants.freight_wagon_liveries["FREIGHT_GREY"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
             ],
-            cargo_row_map={},  # leave blank, all default to same
+            cargo_row_map=cargo_row_map,
             generic_rows=[0],
             unique_spritesets=[
                 ["empty_unweathered", 10],
@@ -6311,9 +6320,8 @@ class MailCarConsist(MailCarConsistBase):
         else:
             self.subrole = "express"
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
-        self._badges.append(
-            "ih_ruleset_flags/report_as_pax_car"
-        )  # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
+        # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
+        self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.speed_class = "express"
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
@@ -6482,7 +6490,8 @@ class MetalProductCarRandomisedConsistBase(RandomisedConsistMixin, CoilCarConsis
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.random_reverse = True  # because the asymmetric covered wagons can reverse
+        # because the asymmetric covered wagons can reverse
+        self.random_reverse = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = (
@@ -7304,7 +7313,8 @@ class PanoramicCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         self.subrole = "express"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
-        """ # not working as expected, unwanted nesting of panoramic car, needs debugged
+        """
+        # not working as expected, unwanted nesting of panoramic car, needs debugged
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_passenger_cars"
@@ -8357,7 +8367,8 @@ class SlagLadleCarConsist(CarConsist):
         self.default_cargos = ["SLAG"]
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        self.weight_factor = 2  # double the default weight
+        # double the default weight
+        self.weight_factor = 2
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "freight_core"
         ]
@@ -8436,7 +8447,13 @@ class TankCarAcidConsistBase(TankCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_acid_tank_cars"
         self._joker = True
         # Graphics configuration
-        weathered_variants = {}  # empty, set in subclasses
+
+        # empty, set in subclasses
+        weathered_variants = {}
+
+        # ruby before bauxite to ensure it appears in buy menu order for mixed version
+        # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
+        # # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             liveries=[
@@ -8464,15 +8481,12 @@ class TankCarAcidConsistBase(TankCarConsistBase):
                 global_constants.freight_wagon_liveries[
                     "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
                 ],
-                # ruby before bauxite to ensure it appears in buy menu order for mixed version
-                # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
                 global_constants.freight_wagon_liveries["FREIGHT_RUBY"],
                 global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SULPHUR"],
                 global_constants.freight_wagon_liveries["FREIGHT_OCHRE"],
                 global_constants.freight_wagon_liveries["FREIGHT_SILVER"],
                 global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
-                # # teal before pewter for buy menu appearance reasons
                 global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
                 global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
             ],
@@ -9056,7 +9070,8 @@ class TorpedoCarConsist(CarConsist):
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self.floating_run_cost_multiplier = 1.33
-        self.weight_factor = 2  # double the default weight
+        # double the default weight
+        self.weight_factor = 2
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "freight_core"
         ]
