@@ -3805,41 +3805,34 @@ class BulkCarBoxRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBase
     Random choice of bulk car sprite, from available dump / box open cars.
     """
 
+    liveries = [
+        global_constants.freight_wagon_liveries[
+            "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
+        ],
+        global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_VARIETY"],
+        global_constants.freight_wagon_liveries[
+            "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
+        ],
+        global_constants.freight_wagon_liveries[
+            "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
+        ],
+        global_constants.freight_wagon_liveries[
+            "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
+        ],
+        global_constants.freight_wagon_liveries[
+            "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
+        ],
+    ]
+
     def __init__(self, **kwargs):
         self.base_id = "bulk_car_box_randomised"
         super().__init__(**kwargs)
-        # buyable variant groups are created post-hoc and can group across subclasses
-        # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_bulk_cars_randomised"
-        # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
-            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",  # random checked ok
+            random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            liveries=[
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_VARIETY"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_RUBY_BAUXITE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_OCHRE_SAND"
-                ],
-                global_constants.freight_wagon_liveries[
-                    "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER"
-                ],
-            ],
+            liveries=self.liveries,
         )
-
-
-# not in alphabetical order as it depends on subclassing BulkOpenCarConsistBase
-# for now we use BulkOpenCarConsistBase base class here not hopper, as it keeps the BulkCarRandomised classes together
 class BulkCarHopperRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBase):
     """
     Random choice of bulk car sprite, from available dump / hopper cars.
