@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerEngineRailcarConsist",
         id="emu_ibex_4",
         base_numeric_id=34530,
@@ -21,16 +21,16 @@ def main(**kwargs):
         # intro_year_offset=-3,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectricRailcarPaxUnit",
         weight=28,
         chassis="railcar_32px",
         tail_light="railcar_32px_1",
     )
 
-    consist_factory.define_description(""" """)
-    consist_factory.define_foamer_facts("""SBB RABDe 12/12""")
+    model_type_factory.define_description(""" """)
+    model_type_factory.define_foamer_facts("""SBB RABDe 12/12""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

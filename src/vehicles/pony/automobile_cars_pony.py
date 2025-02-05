@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
@@ -11,7 +11,7 @@ def main(**kwargs):
     # !! 16px version needs spritelayer cargo support finishing for 16px cargo sprites
     """
 
-    consist_factory = ConsistFactory(
+    model_type_factory =ModelTypeFactory(
         class_name="AutomobileCarConsist",
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=22570,
@@ -20,12 +20,12 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.define_unit(class_name="AutomobileCarSymmetric", chassis="2_axle_solid_express_16px")
+    model_type_factory.define_unit(class_name="AutomobileCarSymmetric", chassis="2_axle_solid_express_16px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
     """
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="AutomobileCarConsist",
         base_numeric_id=22540,
         gen=3,
@@ -33,13 +33,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="AutomobileCarSymmetric", chassis="3_axle_solid_express_24px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="AutomobileCarConsist",
         base_numeric_id=24800,
         gen=3,
@@ -47,13 +47,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="AutomobileCarSymmetric", chassis="4_axle_solid_express_32px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="AutomobileCarConsist",
         base_numeric_id=22550,
         gen=4,
@@ -61,13 +61,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="AutomobileCarSymmetric", chassis="2_axle_filled_24px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="AutomobileCarConsist",
         base_numeric_id=24770,
         gen=4,
@@ -75,13 +75,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="AutomobileCarSymmetric", chassis="4_axle_solid_express_32px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="AutomobileCarConsist",
         base_numeric_id=22560,
         gen=5,
@@ -89,13 +89,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="AutomobileCarSymmetric", chassis="2_axle_filled_greebled_24px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="AutomobileCarConsist",
         base_numeric_id=24760,
         gen=5,
@@ -103,10 +103,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="AutomobileCarSymmetric", chassis="4_axle_filled_greebled_32px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="fury",
         base_numeric_id=19910,
@@ -29,15 +29,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectricEngineUnit", weight=82, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """Rebuilt the Roarers. Very sound these are, last a long time they will."""
     )
-    consist_factory.define_foamer_facts("""rebuilt BR 'AL' Classes 81-85""")
+    model_type_factory.define_foamer_facts("""rebuilt BR 'AL' Classes 81-85""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

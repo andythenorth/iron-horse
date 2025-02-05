@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="angerstein",
         base_numeric_id=24790,
@@ -24,19 +24,19 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="MetroUnit",
         weight=60,
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    consist_factory.define_description("""Are we going back to Romford?""")
+    model_type_factory.define_description("""Are we going back to Romford?""")
     # https://www.checkerboardhill.com/2020/01/mtr-zer4-battery-electric-locomotives/
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """CRRC ZER4 battery-electric locos for MTR (Hong Kong metro)"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

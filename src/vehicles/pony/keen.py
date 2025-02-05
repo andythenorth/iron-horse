@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="keen",
         base_numeric_id=470,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="SteamEngineUnit",
         weight=58,
         vehicle_length=5,
@@ -31,11 +31,11 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.define_description("""Gallop apace, you fiery-footed steeds.""")
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_description("""Gallop apace, you fiery-footed steeds.""")
+    model_type_factory.define_foamer_facts(
         """18in Hunslet tanks, Austerity tanks, LNER J94 Class"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="MailEngineExpressRailcarConsist",
         id="chronos",
         base_numeric_id=950,
@@ -19,7 +19,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectricRailcarMailUnit",
         weight=40,
         chassis="railcar_32px",
@@ -27,11 +27,11 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """Time's courier swift. Chronos weaves through night and day. Posts haste, never late."""
     )
-    consist_factory.define_foamer_facts("""BR Class 325 mail/parcels EMU""")
+    model_type_factory.define_foamer_facts("""BR Class 325 mail/parcels EMU""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerEngineRailbusConsist",
         id="skipper",
         base_numeric_id=240,
@@ -17,27 +17,27 @@ def main(**kwargs):
         gen=5,
         # introduce early by design
         intro_year_offset=-4,
-        pax_car_capacity_type="railbus_combine",  # specific to combined mail + pax consist_factory
+        pax_car_capacity_type="railbus_combine",  # specific to combined mail + pax model type
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselRailcarCombineUnitMail",
         weight=20,
         chassis="railbus_lwb_20px",
         tail_light="railcar_20px_1",
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=20,
         chassis="railbus_lwb_20px",
         tail_light="railcar_20px_2",
     )
 
-    consist_factory.define_description("""Patience is the virtue of the donkeys.""")
-    consist_factory.define_foamer_facts("""BR Class 141/142/143/144 <i>Pacers</i>""")
+    model_type_factory.define_description("""Patience is the virtue of the donkeys.""")
+    model_type_factory.define_foamer_facts("""BR Class 141/142/143/144 <i>Pacers</i>""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

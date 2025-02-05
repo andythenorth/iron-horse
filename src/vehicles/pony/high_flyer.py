@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerEngineExpressRailcarConsist",
         id="high_flyer",
         base_numeric_id=4120,
@@ -20,7 +20,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectricExpressRailcarPaxUnit",
         weight=48,
         chassis="railcar_32px",
@@ -28,9 +28,9 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.define_description("""All Pullman Electric Express.""")
-    consist_factory.define_foamer_facts("""SR 5-BEL <i>Brighton Belle</i>""")
+    model_type_factory.define_description("""All Pullman Electric Express.""")
+    model_type_factory.define_foamer_facts("""SR 5-BEL <i>Brighton Belle</i>""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="TGVMiddleMailEngineConsist",
         id="skeiron_middle_mail",
         base_numeric_id=430,
@@ -18,7 +18,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectricHighSpeedMailUnit",
         weight=54,
         spriterow_num=0,
@@ -27,9 +27,9 @@ def main(**kwargs):
         effects={},  # suppress visual effects
     )
 
-    consist_factory.define_description(""".""")
-    consist_factory.define_foamer_facts(""" """)
+    model_type_factory.define_description(""".""")
+    model_type_factory.define_foamer_facts(""" """)
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

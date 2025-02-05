@@ -36,9 +36,9 @@ import iron_horse
 import spritelayer_cargos
 
 
-class ConsistFactory(object):
+class ModelTypeFactory(object):
     """
-    ConsistFactory instances:
+    ModelTypeFactory instances:
     - store roster_id
     - have a list of consists they can make, based on a stored recipe (kwargs)
     - create a structure of
@@ -46,7 +46,7 @@ class ConsistFactory(object):
             - unit(s)
         - consist n
             - unit(s)
-    ConsistFactory avoids knowing too much about specific consist types.
+    ModelTypeFactory avoids knowing too much about specific consist types.
     """
 
     def __init__(self, class_name, **kwargs):
@@ -71,7 +71,7 @@ class ConsistFactory(object):
         # named define_unit, not add_unit_factory, as the unit factory is an internal implemenation detail
         # units will be made by unit factory instances (implementation detail of consist factory)
         self.unit_factories.append(
-            UnitFactory(consist_factory=self, class_name=class_name, **kwargs)
+            UnitFactory(model_type_factory=self, class_name=class_name, **kwargs)
         )
 
     def define_description(self, description):
@@ -84,12 +84,17 @@ class ConsistFactory(object):
 
     def produce(self, livery=None):
         if livery == None:
-            # just do the default livery, this means that calling ConsistFactory.produce() without params will always just return a default consist, which is useful
+            # just do the default livery, this means that calling ModelTypeFactory.produce() without params will always just return a default consist, which is useful
             # ASSIGN LIVERY HERE
             pass
 
         consist_cls = getattr(sys.modules[__name__], self.class_name)
-        consist = consist_cls(consist_factory=self, **self.kwargs)
+        consist = consist_cls(model_type_factory=self, **self.kwargs)
+
+        if hasattr(consist_cls, "liveries"):
+            print(consist_cls, len(consist_cls.liveries))
+        if self.kwargs.get("additional_liveries", None) != None:
+            print(consist_cls, self.kwargs["additional_liveries"])
 
         # orchestrate addition of units
         for unit_factory in self.unit_factories:
@@ -195,11 +200,11 @@ class ConsistFactory(object):
 
 class UnitFactory(object):
     """
-    Helper to ConsistFactory, generates Unit instances from a stored recipe.
+    Helper to ModelTypeFactory, generates Unit instances from a stored recipe.
     """
 
-    def __init__(self, consist_factory, class_name, **kwargs):
-        self.consist_factory = consist_factory
+    def __init__(self, model_type_factory, class_name, **kwargs):
+        self.model_type_factory = model_type_factory
         self.class_name = class_name
         self.kwargs = kwargs
         # where useful, set defaults for values that are otherwise optional
@@ -208,12 +213,12 @@ class UnitFactory(object):
 
     def produce(self):
         # CABBAGE, THIS CURRENTLY RETURNS unit_cls, as the consist handles unit instance creation; that needs changing, this should return unit instances
-        # should it actually return a list using repeat, or should that be orchestrated by the ConsistFactory, when appending?
+        # should it actually return a list using repeat, or should that be orchestrated by the ModelTypeFactory, when appending?
         try:
             unit_cls = getattr(sys.modules[__name__], self.class_name)
         except:
             raise Exception(
-                "class_name not found for " + self.consist_factory.kwargs["id"]
+                "class_name not found for " + self.model_type_factory.kwargs["id"]
             )
         return unit_cls
 
@@ -225,7 +230,7 @@ class Consist(object):
     """
 
     def __init__(self, **kwargs):
-        self.consist_factory = kwargs["consist_factory"]  # mandatory, fail if missing
+        self.model_type_factory =kwargs["model_type_factory"]  # mandatory, fail if missing
         self.id = kwargs.get("id", None)
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         # private var, used to store a name substr for engines, composed into name with other strings as needed
@@ -356,12 +361,12 @@ class Consist(object):
     @property
     def roster_id(self):
         # just a pass through for convenience
-        return self.consist_factory.roster_id
+        return self.model_type_factory.roster_id
 
     @property
     def roster_id_providing_module(self):
         # just a pass through for convenience
-        return self.consist_factory.roster_id_providing_module
+        return self.model_type_factory.roster_id_providing_module
 
     def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed
@@ -734,7 +739,7 @@ class Consist(object):
                 (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.gen == self.gen)
                 and (consist != self)
-                and (consist.consist_factory.cloned_from_consist_factory is None)
+                and (consist.model_type_factory.cloned_from_consist_factory is None)
                 and (getattr(consist, "cab_id", None) is None)
             ):
                 if (
@@ -1099,10 +1104,10 @@ class Consist(object):
             )
         else:
             # handle cloned cases by referring to the original consist factory for the path
-            if self.consist_factory.cloned_from_consist_factory is not None:
+            if self.model_type_factory.cloned_from_consist_factory is not None:
                 # this will get a default consist from the source factory, mapping this consist to the source spritesheet
                 input_spritesheet_name_stem = (
-                    self.consist_factory.cloned_from_consist_factory.kwargs["id"]
+                    self.model_type_factory.cloned_from_consist_factory.kwargs["id"]
                 )
             else:
                 input_spritesheet_name_stem = self.id
@@ -1515,12 +1520,12 @@ class EngineConsist(Consist):
     def buy_cost(self):
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
-        if self.consist_factory.cloned_from_consist_factory is not None:
+        if self.model_type_factory.cloned_from_consist_factory is not None:
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
-            temp_consist = self.consist_factory.cloned_from_consist_factory.produce()
+            temp_consist = self.model_type_factory.cloned_from_consist_factory.produce()
             return int(
                 temp_consist.buy_cost
-                * self.consist_factory.clone_stats_adjustment_factor
+                * self.model_type_factory.clone_stats_adjustment_factor
             )
 
         # max speed = 200mph by design - see assert_speed()
@@ -1559,12 +1564,12 @@ class EngineConsist(Consist):
 
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
-        if self.consist_factory.cloned_from_consist_factory is not None:
+        if self.model_type_factory.cloned_from_consist_factory is not None:
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
-            temp_consist = self.consist_factory.cloned_from_consist_factory.produce()
+            temp_consist = self.model_type_factory.cloned_from_consist_factory.produce()
             return int(
                 temp_consist.running_cost
-                * self.consist_factory.clone_stats_adjustment_factor
+                * self.model_type_factory.clone_stats_adjustment_factor
             )
 
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
@@ -1628,7 +1633,7 @@ class EngineConsist(Consist):
     def joker(self):
         # jokers are bonus vehicles (mostly) engines which are excluded from simplified game mode
         # all clones are automatically jokers and excluded
-        if self.consist_factory.cloned_from_consist_factory is not None:
+        if self.model_type_factory.cloned_from_consist_factory is not None:
             return True
         # for engines, jokers use -ve value for subrole_child_branch_num, tech tree vehicles use +ve
         return self.subrole_child_branch_num < 0
@@ -2377,7 +2382,7 @@ class CarConsist(Consist):
         # self.base_id = '' # provide in subclass
         # we can't called super yet, because we need the id
         # but we need to call the consist factory to get the id, so duplicate the assignment here (Consist will also set it)
-        kwargs["id"] = kwargs["consist_factory"].get_wagon_id(self.base_id, **kwargs)
+        kwargs["id"] = kwargs["model_type_factory"].get_wagon_id(self.base_id, **kwargs)
         super().__init__(**kwargs)
         self.roster.register_wagon_consist(self)
 
@@ -2489,7 +2494,7 @@ class CarConsist(Consist):
                 input_spritesheet_delegate_base_id + "_ng"
             )
 
-        input_spritesheet_delegate_id = self.consist_factory.get_wagon_id(
+        input_spritesheet_delegate_id = self.model_type_factory.get_wagon_id(
             base_id=input_spritesheet_delegate_base_id,
             gen=self.gen,
             subtype=self.subtype,

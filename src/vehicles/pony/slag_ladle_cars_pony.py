@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="SlagLadleCarConsist",
         base_numeric_id=24030,
         gen=1,
@@ -16,13 +16,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="SlagLadleCar", chassis="buffers_only_16px")
+    model_type_factory.define_unit(
+        class_name="SlagLadleCar", chassis="buffers_only_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="SlagLadleCarConsist",
         base_numeric_id=23410,
         gen=1,
@@ -31,11 +33,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="SlagLadleCar", chassis="buffers_only_16px")
+    model_type_factory.define_unit(
+        class_name="SlagLadleCar", chassis="buffers_only_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="SlagLadleCarConsist",
         base_numeric_id=23420,
         gen=4,
@@ -44,8 +48,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="SlagLadleCar", chassis="buffers_only_16px")
+    model_type_factory.define_unit(
+        class_name="SlagLadleCar", chassis="buffers_only_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LogCarConsist",
         base_numeric_id=36220,
         gen=1,
@@ -15,13 +15,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_spine_16px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="4_axle_ng_spine_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     # no gen 2 for NG, straight to gen 3
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LogCarConsist",
         base_numeric_id=36230,
         gen=3,
@@ -30,13 +32,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_spine_16px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="4_axle_ng_spine_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     """ # restore in next version
 
-    consist_factory = ConsistFactory(
+    model_type_factory =ModelTypeFactory(
         class_name="LogCarConsist",
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=36240,
@@ -46,13 +50,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_spine_16px")
+    model_type_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_spine_16px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
     """
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LogCarConsist",
         base_numeric_id=31780,
         gen=2,
@@ -60,11 +64,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="2_axle_filled_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LogCarConsist",
         base_numeric_id=31770,
         gen=3,
@@ -72,11 +78,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="2_axle_filled_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LogCarConsist",
         base_numeric_id=31790,
         gen=3,
@@ -84,11 +92,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_filled_24px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="4_axle_filled_24px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LogCarConsist",
         base_numeric_id=30750,
         gen=4,
@@ -96,11 +106,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="2_axle_filled_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LogCarConsist",
         base_numeric_id=31800,
         gen=4,
@@ -108,11 +120,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_filled_24px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="4_axle_filled_24px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LogCarConsist",
         base_numeric_id=30970,
         gen=4,
@@ -120,11 +134,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_gapped_32px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="4_axle_gapped_32px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LogCarConsist",
         base_numeric_id=31810,
         gen=5,
@@ -132,13 +148,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="FreightCar", chassis="2_axle_filled_greebled_24px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LogCarConsist",
         base_numeric_id=26050,
         gen=5,
@@ -146,10 +162,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="FreightCar", chassis="4_axle_1cc_filled_32px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

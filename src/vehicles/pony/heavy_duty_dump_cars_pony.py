@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="BulkOpenCarHeavyDutyConsist",
         base_numeric_id=17110,
         gen=1,
@@ -16,13 +16,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="HeavyDutyCar", chassis="4_axle_ng_16px")
+    model_type_factory.define_unit(class_name="HeavyDutyCar", chassis="4_axle_ng_16px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     # --------------- pony -------------------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="BulkOpenCarHeavyDutyConsist",
         base_numeric_id=17120,
         gen=1,
@@ -31,11 +31,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="HeavyDutyCar", chassis="4_axle_filled_16px")
+    model_type_factory.define_unit(
+        class_name="HeavyDutyCar", chassis="4_axle_filled_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="BulkOpenCarHeavyDutyConsist",
         base_numeric_id=16630,
         gen=2,
@@ -44,11 +46,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="HeavyDutyCar", chassis="4_axle_filled_24px")
+    model_type_factory.define_unit(
+        class_name="HeavyDutyCar", chassis="4_axle_filled_24px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="BulkOpenCarHeavyDutyConsist",
         base_numeric_id=16530,
         gen=4,
@@ -57,11 +61,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="HeavyDutyCar", chassis="4_axle_filled_16px")
+    model_type_factory.define_unit(
+        class_name="HeavyDutyCar", chassis="4_axle_filled_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="BulkOpenCarHeavyDutyConsist",
         base_numeric_id=30640,
         gen=4,
@@ -70,8 +76,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="HeavyDutyCar", chassis="4_axle_filled_24px")
+    model_type_factory.define_unit(
+        class_name="HeavyDutyCar", chassis="4_axle_filled_24px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

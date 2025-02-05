@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="mighty",
         base_numeric_id=14150,
@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=48,
         vehicle_length=6,
@@ -35,9 +35,9 @@ def main(**kwargs):
     # Irish Rail 141 / 181
     # see also https://es.wikipedia.org/wiki/Serie_1600_de_Renfe
     # see also https://en.wikipedia.org/wiki/FGC_254_Series
-    consist_factory.define_description("""""")
-    consist_factory.define_foamer_facts("""""")
+    model_type_factory.define_description("""""")
+    model_type_factory.define_foamer_facts("""""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

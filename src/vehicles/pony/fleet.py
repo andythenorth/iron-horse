@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerEngineMetroConsist",
         id="fleet",
         base_numeric_id=210,
@@ -23,7 +23,7 @@ def main(**kwargs):
     )
 
     # should be 4 short units, not 2 long but eh
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="MetroUnit",
         weight=33,
         capacity=200,
@@ -32,11 +32,11 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """Was the train door jammed? Was the time right?"""
     )
-    consist_factory.define_foamer_facts("""London Underground 1996 Stock""")
+    model_type_factory.define_foamer_facts("""London Underground 1996 Stock""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

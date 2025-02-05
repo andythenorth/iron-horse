@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="centaur",
         base_numeric_id=17080,
@@ -40,15 +40,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit", weight=90, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.define_description("""Technically, we're all half centaur.""")
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_description("""Technically, we're all half centaur.""")
+    model_type_factory.define_foamer_facts(
         """proposed BR Class 38 (Class 37 replacement), body shape derived from SNCF <i>Nez Cassés</i> ('broken nose') locomotive and originally proposed for BR Class 60; also Portugese CP Class 1930"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

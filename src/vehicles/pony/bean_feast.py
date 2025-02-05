@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="bean_feast",
         base_numeric_id=21040,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="SteamEngineUnit",
         weight=20,
         vehicle_length=4,
@@ -31,11 +31,11 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """Great power and small size. We tested it in the field."""
     )
-    consist_factory.define_foamer_facts("""generic narrow-gauge steam locomotives""")
+    model_type_factory.define_foamer_facts("""generic narrow-gauge steam locomotives""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

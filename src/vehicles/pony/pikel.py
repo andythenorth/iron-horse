@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="pikel",
         base_numeric_id=21100,
@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=22,
         vehicle_length=4,
@@ -32,26 +32,28 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """This diesel engine modernises our narrow gauge lines."""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """FAUR L45H B-B, generic narrow-gauge diesel locomotives"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = consist_factory.begin_clone(base_numeric_id=920, unit_repeats=[1])
+    model_type_factory = model_type_factory.begin_clone(
+        base_numeric_id=920, unit_repeats=[1]
+    )
 
     # this is a JFDI thing, the 2-unit version varies sprites per unit position, which is generally supported
     # but the *buy menu* compositor does not support that as of Jan 2024, so hax
-    consist_factory.unit_factories[0].kwargs["spriterow_num"] = 1
-    consist_factory.define_unit(
+    model_type_factory.unit_factories[0].kwargs["spriterow_num"] = 1
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit", weight=22, vehicle_length=4, spriterow_num=0
     )
 
-    consist_factory.complete_clone()
+    model_type_factory.complete_clone()
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

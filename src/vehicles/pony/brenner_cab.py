@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 # pax capacity on these limits use for 100% mail consists - use the Skeiron for that?
 
@@ -6,7 +6,7 @@ from train import ConsistFactory
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="TGVCabEngineConsist",
         id="brenner_cab",
         base_numeric_id=17090,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectricEngineUnit",
         weight=52,
         capacity=24,
@@ -32,9 +32,9 @@ def main(**kwargs):
         tail_light="very_high_speed_32px_2",
     )
 
-    consist_factory.define_description("""And you shall know this velocity.""")
-    consist_factory.define_foamer_facts("""Alstom Class 390 <i>Pendolino</i>""")
+    model_type_factory.define_description("""And you shall know this velocity.""")
+    model_type_factory.define_foamer_facts("""Alstom Class 390 <i>Pendolino</i>""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

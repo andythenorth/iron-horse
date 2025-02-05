@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # only type A for gen 1
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="OpenCarHoodConsist",
         base_numeric_id=16520,
         gen=1,
@@ -15,13 +15,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="2_axle_filled_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     # no type A for gen 2, gen 1 type A continues, also no gen 2 type B
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="OpenCarHoodConsist",
         base_numeric_id=16540,
         gen=3,
@@ -29,11 +31,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="2_axle_filled_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="OpenCarHoodConsist",
         base_numeric_id=16550,
         gen=3,
@@ -41,11 +45,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_gapped_24px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="4_axle_gapped_24px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="OpenCarHoodConsist",
         base_numeric_id=16560,
         gen=4,
@@ -53,11 +59,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="2_axle_filled_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="OpenCarHoodConsist",
         base_numeric_id=16570,
         gen=4,
@@ -65,11 +73,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_24px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="2_axle_filled_24px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="OpenCarHoodConsist",
         base_numeric_id=16580,
         gen=5,
@@ -77,13 +87,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="FreightCar", chassis="2_axle_filled_greebled_24px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="OpenCarHoodConsist",
         base_numeric_id=16590,
         gen=5,
@@ -91,10 +101,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="FreightCar", chassis="4_axle_1cc_filled_32px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

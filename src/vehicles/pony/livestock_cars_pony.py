@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LivestockCarConsist",
         base_numeric_id=18160,
         gen=1,
@@ -15,13 +15,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_type_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     # no gen 2 for NG, straight to gen 3
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LivestockCarConsist",
         base_numeric_id=18180,
         gen=3,
@@ -30,11 +30,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_type_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LivestockCarConsist",
         base_numeric_id=18200,
         gen=3,
@@ -43,13 +43,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
+    model_type_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LivestockCarConsist",
         base_numeric_id=18220,
         gen=1,
@@ -57,11 +57,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="2_axle_filled_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LivestockCarConsist",
         base_numeric_id=18140,
         gen=2,
@@ -69,13 +71,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="FreightCar", chassis="3_axle_solid_express_24px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LivestockCarConsist",
         base_numeric_id=18240,
         gen=3,
@@ -83,11 +85,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="2_axle_filled_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LivestockCarConsist",
         base_numeric_id=18670,
         gen=3,
@@ -95,13 +99,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="FreightCar", chassis="3_axle_solid_express_24px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LivestockCarConsist",
         base_numeric_id=18260,
         gen=4,
@@ -109,11 +113,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="2_axle_filled_16px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LivestockCarConsist",
         base_numeric_id=30710,
         gen=4,
@@ -121,11 +127,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="2_axle_filled_24px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="2_axle_filled_24px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LivestockCarConsist",
         base_numeric_id=18280,
         gen=5,
@@ -133,13 +141,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="FreightCar", chassis="4_axle_1cc_filled_32px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="LivestockCarConsist",
         base_numeric_id=7160,
         gen=5,
@@ -147,20 +155,20 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="FreightCar",
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
         spriterow_num=0,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="FreightCar",
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
         spriterow_num=2,
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

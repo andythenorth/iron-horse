@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="little_bear",
         base_numeric_id=21220,
@@ -27,16 +27,16 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit", weight=68, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """I want no epitaphs of profound history and all that type of thing. I contributed - I would hope they would say that, and I would hope somebody liked me."""
     )
     # IRL the quote is Brian Clough
-    consist_factory.define_foamer_facts("""BR Class 14, Clayton DHP1 prototype""")
+    model_type_factory.define_foamer_facts("""BR Class 14, Clayton DHP1 prototype""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerEngineRailbusConsist",
         id="snapper",
         base_numeric_id=9350,
@@ -17,11 +17,11 @@ def main(**kwargs):
         },
         gen=4,
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        pax_car_capacity_type="railbus_combine_ng_1",  # specific to combined mail + pax consist_factory
+        pax_car_capacity_type="railbus_combine_ng_1",  # specific to combined mail + pax model type
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselRailcarCombineUnitMail",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -29,7 +29,7 @@ def main(**kwargs):
         tail_light="railcar_20px_1",
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -37,11 +37,13 @@ def main(**kwargs):
         tail_light="railcar_20px_1",
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """A better railcar, for a new narrow-gauge century."""
     )
-    consist_factory.define_foamer_facts("""Corsican CFC X2000/X5000, CFD Autorails""")
+    model_type_factory.define_foamer_facts(
+        """Corsican CFC X2000/X5000, CFD Autorails"""
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

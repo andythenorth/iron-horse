@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="TGVMiddlePassengerEngineConsist",
         id="helm_wind_middle_passenger",
         base_numeric_id=2890,
@@ -19,7 +19,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectricHighSpeedPaxUnit",
         weight=42,
         spriterow_num=0,
@@ -28,13 +28,13 @@ def main(**kwargs):
         effects={},  # suppress visual effects
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """Can we get there faster? That's what drives me."""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """BR InterCity 225 (Mk4 Coaches)), Shinkansen-style distributed traction"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

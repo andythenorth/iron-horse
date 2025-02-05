@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="springburn",
         base_numeric_id=10830,
@@ -15,10 +15,10 @@ def main(**kwargs):
         intro_year=1950,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=0
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

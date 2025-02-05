@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="TGVMiddleMailEngineConsist",
         id="brenner_middle_mail",
         base_numeric_id=6780,
@@ -19,7 +19,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectricHighSpeedMailUnit",
         weight=52,
         spriterow_num=0,
@@ -28,9 +28,9 @@ def main(**kwargs):
         effects={},  # suppress visual effects
     )
 
-    consist_factory.define_description("""And you shall know this velocity.""")
-    consist_factory.define_foamer_facts("""Alstom Class 390 <i>Pendolino</i>""")
+    model_type_factory.define_description("""And you shall know this velocity.""")
+    model_type_factory.define_foamer_facts("""Alstom Class 390 <i>Pendolino</i>""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

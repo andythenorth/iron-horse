@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="re_6_6",
         base_numeric_id=40,
@@ -21,16 +21,16 @@ def main(**kwargs):
     )
 
     # !! Re 6/6 is only 63ft IRL, so 8/8, but that's weird because 10k HP in 8/8 is weird, so lengthen and articulate
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectricEngineUnit", weight=75, vehicle_length=5, spriterow_num=0
     )
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectricEngineUnit", weight=75, vehicle_length=5, spriterow_num=1
     )
 
-    consist_factory.define_description(""" """)
-    consist_factory.define_foamer_facts("""SBB Re 6/6""")
+    model_type_factory.define_description(""" """)
+    model_type_factory.define_foamer_facts("""SBB Re 6/6""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

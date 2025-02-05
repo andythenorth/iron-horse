@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="HopperCarRockConsist",
         base_numeric_id=27060,
         gen=3,
@@ -15,13 +15,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="FreightCar", chassis="4_axle_ng_sparse_16px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="HopperCarRockConsist",
         base_numeric_id=21990,
         gen=3,
@@ -30,15 +30,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="FreightCar", chassis="4_axle_ng_sparse_24px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="HopperCarRockConsist",
         base_numeric_id=24100,
         gen=4,
@@ -47,11 +47,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_sparse_24px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="4_axle_sparse_24px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="HopperCarRockConsist",
         base_numeric_id=24120,
         gen=4,
@@ -60,11 +62,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_sparse_32px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="4_axle_sparse_32px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="HopperCarRockConsist",
         base_numeric_id=24140,
         gen=5,
@@ -72,11 +76,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_sparse_24px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="4_axle_sparse_24px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="HopperCarRockConsist",
         base_numeric_id=24160,
         gen=5,
@@ -84,8 +90,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="4_axle_sparse_32px")
+    model_type_factory.define_unit(
+        class_name="FreightCar", chassis="4_axle_sparse_32px"
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

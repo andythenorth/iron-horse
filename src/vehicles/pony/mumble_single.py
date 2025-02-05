@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerEngineRailbusConsist",
         id="mumble_single",
         base_numeric_id=17140,
@@ -21,7 +21,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselRailcarPaxUnit",
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -29,13 +29,13 @@ def main(**kwargs):
         tail_light="railcar_24px_1",
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """Vitesse. Confort. Exactitude. This railcar has none of those. But it is cheap to run."""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """Corsican CFC Autorail Billard, CFC X2000/X5000"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

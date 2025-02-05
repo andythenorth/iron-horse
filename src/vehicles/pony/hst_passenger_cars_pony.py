@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerHSTCarConsist",
         base_numeric_id=30330,
         gen=4,
@@ -16,11 +16,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="PaxCar", chassis="high_speed_32px")
+    model_type_factory.define_unit(class_name="PaxCar", chassis="high_speed_32px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerHSTCarConsist",
         base_numeric_id=30340,
         gen=5,
@@ -31,8 +31,8 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="PaxCar", chassis="high_speed_32px")
+    model_type_factory.define_unit(class_name="PaxCar", chassis="high_speed_32px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

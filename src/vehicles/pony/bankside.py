@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="MailEngineMetroConsist",
         id="bankside",
         base_numeric_id=1920,
@@ -19,7 +19,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="MetroUnit",
         weight=32,
         # set capacity for freight; mail will be automatically calculated
@@ -29,9 +29,9 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.define_description("""Is it the screech of brakes?""")
-    consist_factory.define_foamer_facts("""London Underground S Stock""")
+    model_type_factory.define_description("""Is it the screech of brakes?""")
+    model_type_factory.define_foamer_facts("""London Underground S Stock""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

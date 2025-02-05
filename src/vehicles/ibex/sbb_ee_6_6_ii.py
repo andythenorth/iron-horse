@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="sbb_ee_6_6_ii",
         base_numeric_id=35220,
@@ -21,13 +21,13 @@ def main(**kwargs):
     )
 
     # 63ft IRL is 8/8, surprisingly short
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectricEngineUnit", weight=75, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.define_description(""" """)
-    consist_factory.define_foamer_facts("""SBB Ee 6/6 ii""")
+    model_type_factory.define_description(""" """)
+    model_type_factory.define_foamer_facts("""SBB Ee 6/6 ii""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

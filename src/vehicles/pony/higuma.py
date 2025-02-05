@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="higuma",
         base_numeric_id=30870,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=60,
         vehicle_length=8,
@@ -33,11 +33,11 @@ def main(**kwargs):
 
     # https://en.wikipedia.org/wiki/New_Zealand_DL_class_locomotive
     # https://en.wikipedia.org/wiki/New_Zealand_DM_class_locomotive
-    consist_factory.define_description("""A tiny mighty bear.""")
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_description("""A tiny mighty bear.""")
+    model_type_factory.define_foamer_facts(
         """KiwiRail Stadler SALi locomotives, Kawasaki (Japan) Class DF200-7000 bo-bo-bo (dedicated locomotive for JR Kysushu <i>Seven Stars in Kyushu</i> luxury train)"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

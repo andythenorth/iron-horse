@@ -1,4 +1,4 @@
-from train import ConsistFactory, AlignmentCar
+from train import ModelTypeFactory, AlignmentCar
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="AlignmentCarConsist",
         base_numeric_id=9060,
         gen=1,
@@ -14,13 +14,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name=AlignmentCar, vehicle_length=4, chassis="2_axle_solid_express_16px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="AlignmentCarConsist",
         base_numeric_id=9070,
         gen=1,
@@ -28,13 +28,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name=AlignmentCar, vehicle_length=6, chassis="4_axle_solid_express_24px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="AlignmentCarConsist",
         base_numeric_id=9080,
         gen=1,
@@ -42,10 +42,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name=AlignmentCar, vehicle_length=8, chassis="4_axle_solid_express_32px"
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

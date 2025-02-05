@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="constance",
         base_numeric_id=20950,
@@ -26,16 +26,16 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectroDieselEngineUnit",
         weight=95,
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    consist_factory.define_description("""Runs like a Swiss watch.""")
-    consist_factory.define_foamer_facts("""Siemens Vectron Dual Mode""")
+    model_type_factory.define_description("""Runs like a Swiss watch.""")
+    model_type_factory.define_foamer_facts("""Siemens Vectron Dual Mode""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="MailEngineRailcarConsist",
         id="plastic_postbox",
         base_numeric_id=21420,
@@ -20,20 +20,20 @@ def main(**kwargs):
         intro_year_offset=-5,
     )  # introduce early by design
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselRailcarMailUnit",
         weight=37,
         chassis="railcar_32px",
         tail_light="railcar_32px_3",
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """The most modern way to move mail and other parcels."""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """BR Class 128/130, BR Class 153/155/156/158 <i>Sprinters</i>"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

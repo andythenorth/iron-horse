@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerHighSpeedCarConsist",
         base_numeric_id=30680,
         gen=5,
@@ -13,8 +13,8 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="PaxCar", chassis="high_speed_32px")
+    model_type_factory.define_unit(class_name="PaxCar", chassis="high_speed_32px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

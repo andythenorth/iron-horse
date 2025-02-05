@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerEngineCabControlCarConsist",
         id="driving_cab_panoramic_passenger_ng_pony_gen_4",
         base_numeric_id=23510,
@@ -16,7 +16,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="CabControlPaxCarUnit",
         weight=32,
         chassis="railcar_ng_32px",
@@ -24,9 +24,9 @@ def main(**kwargs):
         suppress_roof_sprite=True,
     )
 
-    consist_factory.define_description("""For a view most spectacular.""")
-    consist_factory.define_foamer_facts("""Generic panoramic coaches""")
+    model_type_factory.define_description("""For a view most spectacular.""")
+    model_type_factory.define_foamer_facts("""Generic panoramic coaches""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

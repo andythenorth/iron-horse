@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="FixedFormationRailcarCombineConsist",
         id="golfinho",
         base_numeric_id=970,
@@ -18,11 +18,11 @@ def main(**kwargs):
         gen=4,
         fixed_run_cost_points=20,  # balance against Snapper
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        pax_car_capacity_type="railbus_combine_ng_2",  # specific to combined mail + pax consist_factory
+        pax_car_capacity_type="railbus_combine_ng_2",  # specific to combined mail + pax model type
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -31,7 +31,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -39,7 +39,7 @@ def main(**kwargs):
         spriterow_num=1,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselRailcarCombineUnitMail",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -49,11 +49,11 @@ def main(**kwargs):
         reverse_sprite_template=True,
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """Efficiently whisking passengers about in the most modern ways. Goats remain, at this time, disallowed."""
     )
-    consist_factory.define_foamer_facts("""Stadler SPATZ""")
+    model_type_factory.define_foamer_facts("""Stadler SPATZ""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

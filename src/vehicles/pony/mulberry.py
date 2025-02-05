@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="mulberry",
         base_numeric_id=24430,
@@ -23,13 +23,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="MetroUnit", weight=48, vehicle_length=8, spriterow_num=0
     )
 
-    consist_factory.define_description("""Born slippy? Mega mega mega.""")
-    consist_factory.define_foamer_facts("""London Underground battery-electric locos""")
+    model_type_factory.define_description("""Born slippy? Mega mega mega.""")
+    model_type_factory.define_foamer_facts(
+        """London Underground battery-electric locos"""
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

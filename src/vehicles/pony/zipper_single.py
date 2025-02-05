@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerEngineRailbusConsist",
         id="zipper_single",
         base_numeric_id=25270,
@@ -21,20 +21,20 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselRailcarPaxUnit",
         weight=25,
         chassis="railbus_lwb_24px",
         tail_light="railcar_24px_1",
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """It's the same donkey, but with a new saddle."""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """BR Class 144e <i>Pacer</i>, Vivarail D-Train"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

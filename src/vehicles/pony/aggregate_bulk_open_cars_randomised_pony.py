@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     """
 
-    consist_factory = ConsistFactory(
+    model_type_factory =ModelTypeFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34810,
         gen=2,
@@ -15,12 +15,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
 
-    consist_factory = ConsistFactory(
+    model_type_factory =ModelTypeFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34300,
         gen=3,
@@ -28,12 +28,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
 
-    consist_factory = ConsistFactory(
+    model_type_factory =ModelTypeFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34460,
         gen=3,
@@ -41,12 +41,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
 
-    consist_factory = ConsistFactory(
+    model_type_factory =ModelTypeFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34270,
         gen=4,
@@ -54,12 +54,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
 
-    consist_factory = ConsistFactory(
+    model_type_factory =ModelTypeFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34440,
         gen=4,
@@ -67,12 +67,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
 
-    consist_factory = ConsistFactory(
+    model_type_factory =ModelTypeFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34250,
         gen=4,
@@ -80,15 +80,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="FreightCar",
         chassis="empty_32px",
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
     """
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=32040,
         gen=5,
@@ -96,11 +96,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=32050,
         gen=5,
@@ -108,8 +108,8 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(class_name="FreightCar", chassis="empty_32px")
+    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_32px")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

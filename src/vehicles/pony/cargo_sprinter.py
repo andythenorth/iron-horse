@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 # implemented as dual headed, it really is just the nicer way to build these units (esp. when adding container wagons)
 
@@ -8,7 +8,7 @@ from train import ConsistFactory
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="MailEngineCargoSprinterEngineConsist",
         id="cargo_sprinter",
         base_numeric_id=25840,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselRailcarMailUnit",
         weight=32,
         spriterow_num=0,
@@ -31,9 +31,9 @@ def main(**kwargs):
         tail_light="railcar_32px_4",
     )
 
-    consist_factory.define_description("""Runs like the wind.""")
-    consist_factory.define_foamer_facts("""Windhoff MPV""")
+    model_type_factory.define_description("""Runs like the wind.""")
+    model_type_factory.define_foamer_facts("""Windhoff MPV""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

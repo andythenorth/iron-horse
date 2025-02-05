@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 # only one autocoach, as autoreplace cannot handle mixed cargo articulated consists
 # this means that gen 3 engines will be speed-limited by this unit
@@ -8,7 +8,7 @@ from train import ConsistFactory
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="AutoCoachCombineConsist",
         id="auto_coach_pony_gen_2",
         base_numeric_id=4690,
@@ -18,27 +18,27 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="AutoCoachCombineUnitMail",
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
         tail_light="railcar_20px_4",
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="AutoCoachCombineUnitPax",
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
         tail_light="railcar_20px_4",
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """A coach that you can drive the engine from?  Eee, it's magic."""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """SR and LMS autocoach sets, LNER articulated coach sets"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="bone",
         base_numeric_id=21540,
@@ -33,7 +33,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=125,  # tiny nerf from Grid, because IRL reasons
         vehicle_length=8,
@@ -41,12 +41,12 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """Rome wasn't built in a day. But I wasn't on that particular job."""
     )
     # IRL the quote is Brian Clough
-    consist_factory.define_foamer_facts("""BR Class 58""")
+    model_type_factory.define_foamer_facts("""BR Class 58""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="super_shoebox",
         base_numeric_id=9920,
@@ -35,7 +35,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectroDieselEngineUnit",
         weight=82,
         vehicle_length=8,
@@ -43,13 +43,13 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """It's a bigger Shoebox. Well not bigger. But more power in it. Right new paint too."""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """BR Class 73, Class 71/74, proposed Class 75"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

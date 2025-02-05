@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="solano",
         base_numeric_id=21810,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=42,
         vehicle_length=6,
@@ -31,12 +31,14 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.define_description("""Let a bit of sun in, I say.""")
+    model_type_factory.define_description("""Let a bit of sun in, I say.""")
     # https://en.wikipedia.org/wiki/New_Zealand_DE_class_locomotive, also NZ Di class
     # nah it's CP_Class_9020 now, and rename from Silverfern
     # see also https://trainspo.com/photo/98083/
-    consist_factory.define_foamer_facts(""" Portugese CP Class 9020 (Alstom AD 12 B)""")
+    model_type_factory.define_foamer_facts(
+        """ Portugese CP Class 9020 (Alstom AD 12 B)"""
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

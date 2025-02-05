@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="gronk",
         base_numeric_id=21490,
@@ -27,31 +27,33 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit", weight=55, vehicle_length=4, spriterow_num=0
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """The universal shunter.  Goes everywhere&hellip;slowly."""
     )
-    consist_factory.define_foamer_facts("""BR Class 08/09""")
+    model_type_factory.define_foamer_facts("""BR Class 08/09""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = consist_factory.begin_clone(base_numeric_id=990, unit_repeats=[1])
+    model_type_factory = model_type_factory.begin_clone(
+        base_numeric_id=990, unit_repeats=[1]
+    )
 
     # this is a JFDI thing, the 2-unit version varies sprites per unit position, which is generally supported
     # but the *buy menu* compositor does not support that as of Jan 2024, so hax
-    consist_factory.unit_factories[0].kwargs["spriterow_num"] = 1
-    consist_factory.define_unit(
+    model_type_factory.unit_factories[0].kwargs["spriterow_num"] = 1
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit", weight=55, vehicle_length=4, spriterow_num=0
     )
 
     # JFDI, the single unit should randomly reverse, the 2-unit version should not, so hax
-    consist_factory.kwargs["random_reverse"] = False
+    model_type_factory.kwargs["random_reverse"] = False
 
-    consist_factory.complete_clone()
+    model_type_factory.complete_clone()
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

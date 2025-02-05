@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="lion",
         base_numeric_id=20960,
@@ -23,18 +23,18 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=132,
         vehicle_length=8,
         effect_offsets=[(0, 1), (0, -1)],  # double the smoke eh?
     )
 
-    consist_factory.define_description("""Good horses make short miles.""")
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_description("""Good horses make short miles.""")
+    model_type_factory.define_foamer_facts(
         """BRCW / BR D0260 Lion prototype, Brush HS4000 Kestrel prototype"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

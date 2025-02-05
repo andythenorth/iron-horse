@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="rockhampton",
         base_numeric_id=21290,
@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=55,
         vehicle_length=8,
@@ -34,13 +34,13 @@ def main(**kwargs):
 
     # various NZ / tasrail / QLD diesels
     # but could have been entirely different - https://en.wikipedia.org/wiki/Euskotren_TD2000_series
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """From down under emerges a tiny colossus. Footsure, flexible and all grunt."""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """New Zealand Railways DJ class (Mitsubishi bo-bo-bo)"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

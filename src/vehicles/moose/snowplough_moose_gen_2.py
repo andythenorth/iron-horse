@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="SnowploughEngineConsist",
         id="snowplough_moose_gen_2",
         base_numeric_id=34890,
@@ -14,13 +14,13 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="SnowploughUnit", weight=50, vehicle_length=4
     )
 
-    consist_factory.define_description("""MOOSE.""")
-    consist_factory.define_foamer_facts("""MOOSE""")
+    model_type_factory.define_description("""MOOSE.""")
+    model_type_factory.define_foamer_facts("""MOOSE""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

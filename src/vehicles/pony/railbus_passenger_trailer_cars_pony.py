@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- pony NG----------------------------------------------------------------------
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerRailbusTrailerCarConsist",
         base_numeric_id=28150,
         gen=3,
@@ -17,15 +17,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_ng_24px",
         tail_light="railcar_24px_1",
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerRailbusTrailerCarConsist",
         base_numeric_id=26190,
         gen=4,
@@ -36,12 +36,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_ng_24px",
         tail_light="railcar_24px_1",
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

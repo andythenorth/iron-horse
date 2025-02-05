@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="doubletide",
         base_numeric_id=220,
@@ -28,20 +28,20 @@ def main(**kwargs):
     )
 
     # 2 separate units so that buy menu has reversed cabs
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit", weight=68, vehicle_length=5, spriterow_num=0
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit", weight=68, vehicle_length=5, spriterow_num=1
     )
 
     #  guess the quote?
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """And ruined love when it is built anew grows fairer than at first, more strong, far greater."""
     )
-    consist_factory.define_foamer_facts("""Re-engineered BR Class 15, BR Class 16""")
+    model_type_factory.define_foamer_facts("""Re-engineered BR Class 15, BR Class 16""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

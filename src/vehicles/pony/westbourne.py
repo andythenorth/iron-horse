@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerEngineMetroConsist",
         id="westbourne",
         base_numeric_id=360,
@@ -18,7 +18,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="MetroUnit",
         weight=33,
         capacity=160,
@@ -27,9 +27,11 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.define_description("""Does the public want what the public gets?""")
-    consist_factory.define_foamer_facts("""London Underground 1938/1949 Stock""")
+    model_type_factory.define_description(
+        """Does the public want what the public gets?"""
+    )
+    model_type_factory.define_foamer_facts("""London Underground 1938/1949 Stock""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

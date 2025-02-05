@@ -62,7 +62,7 @@ class Roster(object):
         return [
             engine_consist
             for engine_consist in self.engine_consists
-            if engine_consist.consist_factory.cloned_from_consist_factory is None
+            if engine_consist.model_type_factory.cloned_from_consist_factory is None
         ]
 
     @property
@@ -349,9 +349,9 @@ class Roster(object):
             engine_module_name = importlib.import_module(
                 "." + engine_module_name, package_name
             )
-            for consist_factory in engine_module_name.main():
-                consist_factory.set_roster_ids(self.id, roster_id_providing_module)
-                consist = consist_factory.produce()
+            for model_type_factory in engine_module_name.main():
+                model_type_factory.set_roster_ids(self.id, roster_id_providing_module)
+                consist = model_type_factory.produce()
                 self.engine_consists.append(consist)
 
     def init_wagon_modules(self):
@@ -382,11 +382,11 @@ class Roster(object):
                     wagon_module = importlib.import_module(
                         "." + wagon_module_name, package_name
                     )
-                    for consist_factory in wagon_module.main():
-                        consist_factory.set_roster_ids(
+                    for model_type_factory in wagon_module.main():
+                        model_type_factory.set_roster_ids(
                             self.id, roster_id_providing_module
                         )
-                        consist_factory.produce()
+                        model_type_factory.produce()
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name

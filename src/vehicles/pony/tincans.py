@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="tincans",
         base_numeric_id=370,
@@ -25,7 +25,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectricEngineUnit",
         weight=70,
         vehicle_length=6,
@@ -33,21 +33,21 @@ def main(**kwargs):
         repeat=2,
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """“I would not wish any companion in the world but you.”"""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """Polish PKP EU07 (derived from UK Class 83 design)"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = consist_factory.begin_clone(
+    model_type_factory = model_type_factory.begin_clone(
         base_numeric_id=34950, unit_repeats=[1]
     )
 
-    consist_factory.complete_clone()
+    model_type_factory.complete_clone()
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

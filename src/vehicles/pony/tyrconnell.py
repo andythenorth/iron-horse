@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="tyrconnell",
         base_numeric_id=930,
@@ -24,21 +24,21 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="SteamEngineUnit", weight=45, vehicle_length=5, spriterow_num=0
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="SteamEngineTenderUnit", weight=19, vehicle_length=3, spriterow_num=1
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """A titan from the North. Steadfast and stout."""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """Londonderry and Lough Swilly Railway Company 4-8-0 locomotives"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

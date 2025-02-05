@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="resilient",
         base_numeric_id=21000,
@@ -35,7 +35,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # add RfD Euro style triple grey?, Banger blue, but with black windows
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=103,
         vehicle_length=8,
@@ -43,11 +43,11 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.define_description("""I've completely rebuilt some Intrepids.""")
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_description("""I've completely rebuilt some Intrepids.""")
+    model_type_factory.define_foamer_facts(
         """BR Class 47, Brush Class 57, original TTD UU '47'"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

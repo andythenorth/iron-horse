@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="cheddar_valley",
         base_numeric_id=21300,
@@ -30,7 +30,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=125,
         vehicle_length=8,
@@ -38,13 +38,13 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """I shipped these in from overseas.  Pull you backwards through a wall this one will.  Right proper engine."""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """GMD  / EMD Class 59, uprated GMD / EMD 710 series prime mover"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

@@ -1,4 +1,4 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
@@ -11,7 +11,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # gen 3 could be added but needs the engine grilles replacing with pax car pixels
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerRailcarTrailerCarConsist",
         base_numeric_id=17130,
         gen=4,
@@ -20,15 +20,15 @@ def main(**kwargs):
         cab_id="slammer",
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerRailcarTrailerCarConsist",
         base_numeric_id=26060,
         gen=4,
@@ -37,15 +37,15 @@ def main(**kwargs):
         cab_id="geronimo",
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerRailcarTrailerCarConsist",
         base_numeric_id=27170,
         gen=5,
@@ -54,15 +54,15 @@ def main(**kwargs):
         cab_id="tin_rocket",
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerRailcarTrailerCarConsist",
         base_numeric_id=25140,
         gen=5,
@@ -71,15 +71,15 @@ def main(**kwargs):
         cab_id="breeze",
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerRailcarTrailerCarConsist",
         base_numeric_id=25580,
         gen=6,
@@ -88,15 +88,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerRailcarTrailerCarConsist",
         base_numeric_id=25400,
         gen=6,
@@ -105,12 +105,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

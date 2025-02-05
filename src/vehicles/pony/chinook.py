@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="chinook",
         base_numeric_id=120,
@@ -26,28 +26,30 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=0
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=1
     )
 
-    consist_factory.define_description("""I send these out in twos.""")
-    consist_factory.define_foamer_facts("""BR Class 20, uprated EE 8CSVT prime mover""")
+    model_type_factory.define_description("""I send these out in twos.""")
+    model_type_factory.define_foamer_facts(
+        """BR Class 20, uprated EE 8CSVT prime mover"""
+    )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
-    consist_factory = consist_factory.begin_clone(
+    model_type_factory = model_type_factory.begin_clone(
         base_numeric_id=34900, unit_repeats=[1, 0]
     )
 
     # JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
-    consist_factory.kwargs["random_reverse"] = True
+    model_type_factory.kwargs["random_reverse"] = True
 
-    consist_factory.complete_clone()
+    model_type_factory.complete_clone()
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

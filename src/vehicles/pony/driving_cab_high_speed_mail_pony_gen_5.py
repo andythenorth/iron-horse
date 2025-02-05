@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="MailEngineCabbageDVTConsist",
         id="driving_cab_high_speed_mail_pony_gen_5",
         base_numeric_id=18090,
@@ -16,17 +16,17 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="CabbageDVTUnit", weight=32, chassis="railcar_32px"
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Clever idea we had eh?"""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """BR MK3 Driving Van Trailer (DVT) with added generator"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

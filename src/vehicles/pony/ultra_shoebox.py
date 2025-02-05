@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="EngineConsist",
         id="ultra_shoebox",
         base_numeric_id=21340,
@@ -32,7 +32,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # banger blue, yellow? - unused banger blue from Super Shoebox also?  Freightliner swoosh?
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="ElectroDieselEngineUnit",
         weight=84,
         vehicle_length=8,
@@ -40,13 +40,13 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """Top to bottom, it's an old Shoebox made new. Right powerful small engines."""
     )
-    consist_factory.define_foamer_facts(
+    model_type_factory.define_foamer_facts(
         """Network Rail / GBRF Class 73/9 (re-engineered), BR Class 74, proposed Class 75"""
     )
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result

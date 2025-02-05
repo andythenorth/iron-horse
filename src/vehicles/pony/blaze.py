@@ -1,10 +1,10 @@
-from train import ConsistFactory
+from train import ModelTypeFactory
 
 
 def main(**kwargs):
     result = []
 
-    consist_factory = ConsistFactory(
+    model_type_factory = ModelTypeFactory(
         class_name="PassengerHSTCabEngineConsist",
         id="blaze",
         base_numeric_id=21640,
@@ -27,7 +27,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    consist_factory.define_unit(
+    model_type_factory.define_unit(
         class_name="DieselEngineUnit",
         weight=70,
         vehicle_length=8,
@@ -36,11 +36,11 @@ def main(**kwargs):
         tail_light="hst_32px_1",
     )
 
-    consist_factory.define_description(
+    model_type_factory.define_description(
         """Power is of the essence. Faster is everything."""
     )
-    consist_factory.define_foamer_facts("""BR Class 43 (High Speed Train)""")
+    model_type_factory.define_foamer_facts("""BR Class 43 (High Speed Train)""")
 
-    result.append(consist_factory)
+    result.append(model_type_factory)
 
     return result
