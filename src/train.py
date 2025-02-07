@@ -86,7 +86,7 @@ class ModelTypeFactory(object):
         # named define_unit, not add_unit_factory, as the unit factory is an internal implemenation detail
         # units will be made by unit factory instances (implementation detail of consist factory)
         self.unit_factories.append(
-            UnitFactory(model_type_factory=self, class_name=class_name, **kwargs)
+            UnitTypeFactory(model_type_factory=self, class_name=class_name, **kwargs)
         )
 
     def define_description(self, description):
@@ -213,9 +213,12 @@ class ModelTypeFactory(object):
         return result
 
 
-class UnitFactory(object):
+class UnitTypeFactory(object):
     """
-    Helper to ModelTypeFactory, generates Unit instances from a stored recipe.
+    Helper for ModelTypeFactory:
+    - Generates UnitType instances for vehicle parts from a stored recipe.
+    - Produces the required instance(s) for each part (supports repeats).
+    - Encapsulates configuration parameters for the UnitType.
     """
 
     def __init__(self, model_type_factory, class_name, **kwargs):
