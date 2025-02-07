@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="solano",
         base_numeric_id=21810,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit",
         weight=42,
         vehicle_length=6,
@@ -31,14 +31,14 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    model_type_factory.define_description("""Let a bit of sun in, I say.""")
+    model_def.define_description("""Let a bit of sun in, I say.""")
     # https://en.wikipedia.org/wiki/New_Zealand_DE_class_locomotive, also NZ Di class
     # nah it's CP_Class_9020 now, and rename from Silverfern
     # see also https://trainspo.com/photo/98083/
-    model_type_factory.define_foamer_facts(
+    model_def.define_foamer_facts(
         """ Portugese CP Class 9020 (Alstom AD 12 B)"""
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

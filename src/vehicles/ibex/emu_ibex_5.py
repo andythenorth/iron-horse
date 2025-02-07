@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerEngineRailcarConsist",
         id="emu_ibex_5",
         base_numeric_id=34510,
@@ -21,16 +21,16 @@ def main(**kwargs):
         # intro_year_offset=-3,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ElectricRailcarPaxUnit",
         weight=28,
         chassis="railcar_32px",
         tail_light="railcar_32px_1",
     )
 
-    model_type_factory.define_description(""" """)
-    model_type_factory.define_foamer_facts("""SBB RBDe 4/4""")
+    model_def.define_description(""" """)
+    model_def.define_foamer_facts("""SBB RBDe 4/4""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

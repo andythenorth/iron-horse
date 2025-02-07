@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="SnowploughEngineConsist",
         id="snowplough_moose_gen_2",
         base_numeric_id=34890,
@@ -14,13 +14,13 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="SnowploughUnit", weight=50, vehicle_length=4
     )
 
-    model_type_factory.define_description("""MOOSE.""")
-    model_type_factory.define_foamer_facts("""MOOSE""")
+    model_def.define_description("""MOOSE.""")
+    model_def.define_foamer_facts("""MOOSE""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

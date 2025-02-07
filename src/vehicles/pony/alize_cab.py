@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="TGVCabEngineConsist",
         id="alize_cab",
         base_numeric_id=17100,
@@ -25,7 +25,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ElectricEngineUnit",
         weight=76,
         # no pax capacity on Helm Wind cabs
@@ -35,13 +35,13 @@ def main(**kwargs):
         tail_light="very_high_speed_32px_3",
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """Whispers in the wind. Graceful as she slices air. Swift, pure, and untamed."""
     )
-    model_type_factory.define_foamer_facts(
+    model_def.define_foamer_facts(
         """TGV Sud-Est, with TGV 001-style distributed traction"""
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

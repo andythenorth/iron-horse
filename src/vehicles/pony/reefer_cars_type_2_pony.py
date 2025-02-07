@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="ReeferCarConsistType2",
         base_numeric_id=34790,
         gen=2,
@@ -14,15 +14,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="ReeferCarConsistType2",
         base_numeric_id=31880,
         gen=3,
@@ -30,15 +30,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="ReeferCarConsistType2",
         base_numeric_id=31890,
         gen=3,
@@ -46,15 +46,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="3_axle_solid_express_24px",
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="ReeferCarConsistType2",
         base_numeric_id=36940,
         gen=4,
@@ -62,15 +62,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="ReeferCarConsistType2",
         base_numeric_id=28110,
         gen=4,
@@ -78,15 +78,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_24px",
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="ReeferCarConsistType2",
         base_numeric_id=31320,
         gen=4,
@@ -94,15 +94,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_filled_32px",
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="ReeferCarConsistType2",
         base_numeric_id=32610,
         gen=5,
@@ -110,15 +110,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_24px",
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="ReeferCarConsistType2",
         base_numeric_id=32620,
         gen=5,
@@ -126,12 +126,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

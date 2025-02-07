@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="magnum_90",
         base_numeric_id=21680,
@@ -27,16 +27,16 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="BatteryHybridEngineUnit",
         weight=90,
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    model_type_factory.define_description("""Even Gronks don't last forever.""")
-    model_type_factory.define_foamer_facts("""Clayton CBD90""")
+    model_def.define_description("""Even Gronks don't last forever.""")
+    model_def.define_foamer_facts("""Clayton CBD90""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

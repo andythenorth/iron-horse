@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge -----------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="MineralCoveredHopperCarRollerRoofConsistType2",
         base_numeric_id=24610,
         gen=4,
@@ -14,13 +14,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_16px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="MineralCoveredHopperCarRollerRoofConsistType2",
         base_numeric_id=24630,
         gen=4,
@@ -28,13 +28,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="MineralCoveredHopperCarRollerRoofConsistType2",
         base_numeric_id=34730,
         gen=5,
@@ -42,13 +42,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_greebled_16px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="MineralCoveredHopperCarRollerRoofConsistType2",
         base_numeric_id=33010,
         gen=5,
@@ -56,10 +56,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_greebled_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

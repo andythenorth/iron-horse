@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="AlignmentCarConsist",
         base_numeric_id=9060,
         gen=1,
@@ -14,13 +14,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name=AlignmentCar, vehicle_length=4, chassis="2_axle_solid_express_16px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="AlignmentCarConsist",
         base_numeric_id=9070,
         gen=1,
@@ -28,13 +28,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name=AlignmentCar, vehicle_length=6, chassis="4_axle_solid_express_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="AlignmentCarConsist",
         base_numeric_id=9080,
         gen=1,
@@ -42,10 +42,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name=AlignmentCar, vehicle_length=8, chassis="4_axle_solid_express_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

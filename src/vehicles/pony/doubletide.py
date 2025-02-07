@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="doubletide",
         base_numeric_id=220,
@@ -28,20 +28,20 @@ def main(**kwargs):
     )
 
     # 2 separate units so that buy menu has reversed cabs
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit", weight=68, vehicle_length=5, spriterow_num=0
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit", weight=68, vehicle_length=5, spriterow_num=1
     )
 
     #  guess the quote?
-    model_type_factory.define_description(
+    model_def.define_description(
         """And ruined love when it is built anew grows fairer than at first, more strong, far greater."""
     )
-    model_type_factory.define_foamer_facts("""Re-engineered BR Class 15, BR Class 16""")
+    model_def.define_foamer_facts("""Re-engineered BR Class 15, BR Class 16""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

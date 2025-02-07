@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="chinook",
         base_numeric_id=120,
@@ -26,30 +26,30 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=0
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=1
     )
 
-    model_type_factory.define_description("""I send these out in twos.""")
-    model_type_factory.define_foamer_facts(
+    model_def.define_description("""I send these out in twos.""")
+    model_def.define_foamer_facts(
         """BR Class 20, uprated EE 8CSVT prime mover"""
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = model_type_factory.begin_clone(
+    model_def = model_def.begin_clone(
         base_numeric_id=34900, unit_repeats=[1, 0]
     )
 
     # JFDI, the single unit should randomly reverse, the default 2-unit version should not, so hax
-    model_type_factory.kwargs["random_reverse"] = True
+    model_def.kwargs["random_reverse"] = True
 
-    model_type_factory.complete_clone()
+    model_def.complete_clone()
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

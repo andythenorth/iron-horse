@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkCarBoxRandomisedConsist",
         base_numeric_id=26410,
         gen=3,
@@ -14,11 +14,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkCarBoxRandomisedConsist",
         base_numeric_id=25740,
         gen=3,
@@ -26,11 +26,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkCarBoxRandomisedConsist",
         base_numeric_id=24510,
         gen=4,
@@ -38,11 +38,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkCarBoxRandomisedConsist",
         base_numeric_id=24520,
         gen=4,
@@ -50,11 +50,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkCarBoxRandomisedConsist",
         base_numeric_id=22160,
         gen=5,
@@ -62,11 +62,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkCarBoxRandomisedConsist",
         base_numeric_id=16500,
         gen=5,
@@ -74,11 +74,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkCarBoxRandomisedConsist",
         base_numeric_id=16470,
         gen=5,
@@ -86,8 +86,8 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_32px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_32px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

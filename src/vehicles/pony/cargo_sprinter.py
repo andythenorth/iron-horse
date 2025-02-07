@@ -8,7 +8,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="MailEngineCargoSprinterEngineConsist",
         id="cargo_sprinter",
         base_numeric_id=25840,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselRailcarMailUnit",
         weight=32,
         spriterow_num=0,
@@ -31,9 +31,9 @@ def main(**kwargs):
         tail_light="railcar_32px_4",
     )
 
-    model_type_factory.define_description("""Runs like the wind.""")
-    model_type_factory.define_foamer_facts("""Windhoff MPV""")
+    model_def.define_description("""Runs like the wind.""")
+    model_def.define_foamer_facts("""Windhoff MPV""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

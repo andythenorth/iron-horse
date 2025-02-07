@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="TGVMiddleMailEngineConsist",
         id="skeiron_middle_mail",
         base_numeric_id=430,
@@ -18,7 +18,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ElectricHighSpeedMailUnit",
         weight=54,
         spriterow_num=0,
@@ -27,9 +27,9 @@ def main(**kwargs):
         effects={},  # suppress visual effects
     )
 
-    model_type_factory.define_description(""".""")
-    model_type_factory.define_foamer_facts(""" """)
+    model_def.define_description(""".""")
+    model_def.define_foamer_facts(""" """)
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

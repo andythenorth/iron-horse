@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="MineralCoveredHopperCarLimeConsistType3",
         base_numeric_id=34840,
         gen=4,
@@ -14,13 +14,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_16px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="MineralCoveredHopperCarLimeConsistType3",
         base_numeric_id=33820,
         gen=4,
@@ -28,13 +28,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="MineralCoveredHopperCarLimeConsistType3",
         base_numeric_id=33030,
         gen=5,
@@ -42,13 +42,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_chute_greebled_16px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="MineralCoveredHopperCarLimeConsistType3",
         base_numeric_id=34850,
         gen=5,
@@ -56,13 +56,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_chute_greebled_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="MineralCoveredHopperCarLimeConsistType3",
         base_numeric_id=36340,
         gen=5,
@@ -70,10 +70,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="4_axle_filled_greebled_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerRestaurantCarConsist",
         base_numeric_id=34560,
         gen=1,
@@ -14,13 +14,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="PaxRestaurantCar", chassis="6_axle_solid_express_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerRestaurantCarConsist",
         base_numeric_id=34570,
         gen=2,
@@ -28,13 +28,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="PaxRestaurantCar", chassis="6_axle_solid_express_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerRestaurantCarConsist",
         base_numeric_id=34580,
         gen=3,
@@ -42,13 +42,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="PaxRestaurantCar", chassis="6_axle_solid_express_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerRestaurantCarConsist",
         base_numeric_id=34590,
         gen=4,
@@ -56,13 +56,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="PaxRestaurantCar", chassis="4_axle_solid_express_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerRestaurantCarConsist",
         base_numeric_id=34600,
         gen=5,
@@ -72,10 +72,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="PaxRestaurantCar", chassis="4_axle_solid_express_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

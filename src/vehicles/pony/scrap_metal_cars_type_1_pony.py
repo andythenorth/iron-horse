@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
     # gen 2 start eh?
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarScrapMetalConsistType1",
         base_numeric_id=19070,
         gen=2,
@@ -16,11 +16,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarScrapMetalConsistType1",
         base_numeric_id=19090,
         gen=3,
@@ -29,11 +29,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarScrapMetalConsistType1",
         base_numeric_id=19110,
         gen=3,
@@ -42,13 +42,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
+    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarScrapMetalConsistType1",
         base_numeric_id=19130,
         gen=3,
@@ -56,13 +56,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_16px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarScrapMetalConsistType1",
         base_numeric_id=19150,
         gen=3,
@@ -70,13 +70,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="4_axle_gapped_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarScrapMetalConsistType1",
         base_numeric_id=19170,
         gen=4,
@@ -84,13 +84,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_16px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarScrapMetalConsistType1",
         base_numeric_id=19190,
         gen=4,
@@ -98,13 +98,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="4_axle_sparse_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarScrapMetalConsistType1",
         base_numeric_id=19210,
         gen=5,
@@ -112,13 +112,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_greebled_16px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarScrapMetalConsistType1",
         base_numeric_id=19230,
         gen=5,
@@ -126,13 +126,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_greebled_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarScrapMetalConsistType1",
         base_numeric_id=19250,
         gen=5,
@@ -140,10 +140,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="4_axle_gapped_greebled_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

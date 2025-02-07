@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="FixedFormationRailcarCombineConsist",
         id="golfinho",
         base_numeric_id=970,
@@ -22,7 +22,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -31,7 +31,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -39,7 +39,7 @@ def main(**kwargs):
         spriterow_num=1,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselRailcarCombineUnitMail",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -49,11 +49,11 @@ def main(**kwargs):
         reverse_sprite_template=True,
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """Efficiently whisking passengers about in the most modern ways. Goats remain, at this time, disallowed."""
     )
-    model_type_factory.define_foamer_facts("""Stadler SPATZ""")
+    model_def.define_foamer_facts("""Stadler SPATZ""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

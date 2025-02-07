@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="CoilBuggyCarConsist",
         base_numeric_id=5160,
         gen=1,
@@ -16,10 +16,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="CoilBuggyCar", chassis="empty_8px", repeat=2
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

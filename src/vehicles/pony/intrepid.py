@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="intrepid",
         base_numeric_id=21520,
@@ -28,20 +28,20 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # triple grey railfreight?
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit",
         weight=100,  # bonus over Wyvern, less than IRL as HP is nerfed
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """These are a bit duff, but they're a bit lighter than a Wyvern so we'll give em a go."""
     )
-    model_type_factory.define_foamer_facts(
+    model_def.define_foamer_facts(
         """BR Class 47, prime mover downrated for reliability"""
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

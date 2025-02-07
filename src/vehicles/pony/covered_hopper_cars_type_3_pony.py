@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     """
 
-    model_type_factory =ModelTypeFactory(
+    model_def =ModelTypeFactory(
         class_name="CoveredHopperCarConsistType3",
         base_numeric_id=24010,
         gen=2,
@@ -15,12 +15,12 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="2_axle_gapped_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="2_axle_gapped_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
 
-    model_type_factory =ModelTypeFactory(
+    model_def =ModelTypeFactory(
         class_name="CoveredHopperCarConsistType3",
         base_numeric_id=17800,
         gen=3,
@@ -28,12 +28,12 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="2_axle_gapped_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="2_axle_gapped_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
     """
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="CoveredHopperCarConsistType3",
         base_numeric_id=34860,
         gen=4,
@@ -41,13 +41,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_16px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="CoveredHopperCarConsistType3",
         base_numeric_id=32880,
         gen=4,
@@ -55,13 +55,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="CoveredHopperCarConsistType3",
         base_numeric_id=36350,
         gen=5,
@@ -69,13 +69,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_chute_greebled_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="CoveredHopperCarConsistType3",
         base_numeric_id=35410,
         gen=5,
@@ -83,10 +83,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="4_axle_chute_greebled_alt_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

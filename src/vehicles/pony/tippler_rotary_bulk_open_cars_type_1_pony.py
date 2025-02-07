@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarTipplerRotaryConsistType1",
         base_numeric_id=26650,
         gen=3,
@@ -15,13 +15,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="OreDumpCar", chassis="4_axle_ng_sparse_16px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarTipplerRotaryConsistType1",
         base_numeric_id=26670,
         gen=3,
@@ -30,15 +30,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="OreDumpCar", chassis="4_axle_ng_sparse_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarTipplerRotaryConsistType1",
         base_numeric_id=35550,
         gen=4,
@@ -46,13 +46,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="OreDumpCar", chassis="2_axle_gapped_16px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarTipplerRotaryConsistType1",
         base_numeric_id=32260,
         gen=4,
@@ -60,15 +60,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="OreDumpCar", chassis="4_axle_sparse_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     # no gen 5A or 6A
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarTipplerRotaryConsistType1",
         base_numeric_id=35570,
         gen=5,
@@ -76,13 +76,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="OreDumpCar", chassis="4_axle_sparse_greebled_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BulkOpenCarTipplerRotaryConsistType1",
         base_numeric_id=32280,
         gen=5,
@@ -90,10 +90,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="OreDumpCar", chassis="4_axle_sparse_greebled_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

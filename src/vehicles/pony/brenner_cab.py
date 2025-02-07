@@ -6,7 +6,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="TGVCabEngineConsist",
         id="brenner_cab",
         base_numeric_id=17090,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ElectricEngineUnit",
         weight=52,
         capacity=24,
@@ -32,9 +32,9 @@ def main(**kwargs):
         tail_light="very_high_speed_32px_2",
     )
 
-    model_type_factory.define_description("""And you shall know this velocity.""")
-    model_type_factory.define_foamer_facts("""Alstom Class 390 <i>Pendolino</i>""")
+    model_def.define_description("""And you shall know this velocity.""")
+    model_def.define_foamer_facts("""Alstom Class 390 <i>Pendolino</i>""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="mighty",
         base_numeric_id=14150,
@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit",
         weight=48,
         vehicle_length=6,
@@ -35,9 +35,9 @@ def main(**kwargs):
     # Irish Rail 141 / 181
     # see also https://es.wikipedia.org/wiki/Serie_1600_de_Renfe
     # see also https://en.wikipedia.org/wiki/FGC_254_Series
-    model_type_factory.define_description("""""")
-    model_type_factory.define_foamer_facts("""""")
+    model_def.define_description("""""")
+    model_def.define_foamer_facts("""""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

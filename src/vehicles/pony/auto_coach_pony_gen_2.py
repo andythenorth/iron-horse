@@ -8,7 +8,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="AutoCoachCombineConsist",
         id="auto_coach_pony_gen_2",
         base_numeric_id=4690,
@@ -18,27 +18,27 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="AutoCoachCombineUnitMail",
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
         tail_light="railcar_20px_4",
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="AutoCoachCombineUnitPax",
         weight=16,  # capacity bonus vs similar era non-articulated vehicles
         chassis="empty_20px",
         tail_light="railcar_20px_4",
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """A coach that you can drive the engine from?  Eee, it's magic."""
     )
-    model_type_factory.define_foamer_facts(
+    model_def.define_foamer_facts(
         """SR and LMS autocoach sets, LNER articulated coach sets"""
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

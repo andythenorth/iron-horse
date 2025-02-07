@@ -57,7 +57,7 @@ def main(**kwargs):
         ("cc_enclosed_3", "brown_enclosed_3"),
     ]
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="CabooseCarConsist",
         base_numeric_id=23690,
         gen=1,
@@ -69,11 +69,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="CabooseCar", chassis="2_axle_ng_8px")
+    model_def.define_unit(class_name="CabooseCar", chassis="2_axle_ng_8px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="CabooseCarConsist",
         base_numeric_id=26270,
         gen=1,
@@ -85,9 +85,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="CabooseCar", chassis="4_axle_ng_16px")
+    model_def.define_unit(class_name="CabooseCar", chassis="4_axle_ng_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
     # caboose names map to labelled spriterows, as defined in the vehicle files
@@ -202,7 +202,7 @@ def main(**kwargs):
         ("cc_enclosed_6", "cc_open_1"),
     ]
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="CabooseCarConsist",
         base_numeric_id=23270,
         gen=1,
@@ -214,13 +214,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="CabooseCar", chassis="2_axle_caboose_16px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="CabooseCarConsist",
         base_numeric_id=23280,
         gen=1,
@@ -232,10 +232,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="CabooseCar", chassis="4_axle_caboose_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerHSTCabEngineConsist",
         id="blaze",
         base_numeric_id=21640,
@@ -27,7 +27,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit",
         weight=70,
         vehicle_length=8,
@@ -36,11 +36,11 @@ def main(**kwargs):
         tail_light="hst_32px_1",
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """Power is of the essence. Faster is everything."""
     )
-    model_type_factory.define_foamer_facts("""BR Class 43 (High Speed Train)""")
+    model_def.define_foamer_facts("""BR Class 43 (High Speed Train)""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

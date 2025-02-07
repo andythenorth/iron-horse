@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="lynx",
         base_numeric_id=26810,
@@ -23,31 +23,31 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit", weight=72, vehicle_length=6, spriterow_num=0
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """Old dog, new tricks. I've built these out of old Chinooks."""
     )
-    model_type_factory.define_foamer_facts("""DRS Class 20/3 (re-engineered)""")
+    model_def.define_foamer_facts("""DRS Class 20/3 (re-engineered)""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = model_type_factory.begin_clone(
+    model_def = model_def.begin_clone(
         base_numeric_id=820, unit_repeats=[1]
     )
 
     # this is a JFDI thing, the Lynx 2-unit version needs a reversed sprite, but the buy menu compositor does not support that as of Jan 2024, so hax
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit", weight=72, vehicle_length=6, spriterow_num=1
     )
 
     # JFDI, the single unit should randomly reverse, the 2-unit version should not, so hax
-    model_type_factory.kwargs["random_reverse"] = False
+    model_def.kwargs["random_reverse"] = False
 
-    model_type_factory.complete_clone()
+    model_def.complete_clone()
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

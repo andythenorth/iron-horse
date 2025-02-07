@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="TorpedoCarConsist",
         base_numeric_id=4140,
         gen=2,
@@ -14,15 +14,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
-    model_type_factory.define_unit(class_name="TorpedoCar", vehicle_length=6)
+    model_def.define_unit(class_name="TorpedoCar", vehicle_length=6)
 
-    model_type_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="TorpedoCarConsist",
         base_numeric_id=4060,
         gen=3,
@@ -30,15 +30,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
-    model_type_factory.define_unit(class_name="TorpedoCar", vehicle_length=6)
+    model_def.define_unit(class_name="TorpedoCar", vehicle_length=6)
 
-    model_type_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="TorpedoCarConsist",
         base_numeric_id=4170,
         gen=4,
@@ -46,15 +46,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
-    model_type_factory.define_unit(class_name="TorpedoCar", vehicle_length=6)
+    model_def.define_unit(class_name="TorpedoCar", vehicle_length=6)
 
-    model_type_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="TorpedoCarConsist",
         base_numeric_id=4090,
         gen=5,
@@ -62,12 +62,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
-    model_type_factory.define_unit(class_name="TorpedoCar", vehicle_length=6)
+    model_def.define_unit(class_name="TorpedoCar", vehicle_length=6)
 
-    model_type_factory.define_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.define_unit(class_name="TorpedoCar", vehicle_length=3)
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerEngineRailbusConsist",
         id="clipper_single",
         base_numeric_id=25250,
@@ -21,20 +21,20 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselRailcarPaxUnit",
         weight=22,
         chassis="railbus_swb_24px",
         tail_light="railcar_24px_1",
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """The horses of hope gallop, but the donkeys of experience go slowly."""
     )
-    model_type_factory.define_foamer_facts(
+    model_def.define_foamer_facts(
         """BR 1st generation AC Cars/Wickham/Waggon-und Maschinenbau and similar railbuses"""
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

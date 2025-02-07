@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="springburn",
         base_numeric_id=10830,
@@ -15,10 +15,10 @@ def main(**kwargs):
         intro_year=1950,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=0
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

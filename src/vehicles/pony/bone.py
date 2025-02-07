@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="bone",
         base_numeric_id=21540,
@@ -33,7 +33,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit",
         weight=125,  # tiny nerf from Grid, because IRL reasons
         vehicle_length=8,
@@ -41,12 +41,12 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """Rome wasn't built in a day. But I wasn't on that particular job."""
     )
     # IRL the quote is Brian Clough
-    model_type_factory.define_foamer_facts("""BR Class 58""")
+    model_def.define_foamer_facts("""BR Class 58""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

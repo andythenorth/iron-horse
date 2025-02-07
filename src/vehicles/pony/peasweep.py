@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="peasweep",
         base_numeric_id=1750,
@@ -25,7 +25,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # nightshade / nighthawk?
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ElectricEngineUnit",
         weight=75,
         vehicle_length=6,
@@ -33,19 +33,19 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """What we like about these is no fuss, no mess. Get in and off they go."""
     )
-    model_type_factory.define_foamer_facts("""LNER EM1 (BR Class 76)""")
+    model_def.define_foamer_facts("""LNER EM1 (BR Class 76)""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = model_type_factory.begin_clone(
+    model_def = model_def.begin_clone(
         base_numeric_id=34940, unit_repeats=[1]
     )
 
-    model_type_factory.complete_clone()
+    model_def.complete_clone()
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

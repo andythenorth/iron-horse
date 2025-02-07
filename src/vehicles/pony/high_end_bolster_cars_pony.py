@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
     """
 
-    model_type_factory =ModelTypeFactory(
+    model_def =ModelTypeFactory(
         class_name="BolsterCarHighEndConsist",
         base_numeric_id=30900,
         gen=3,
@@ -16,12 +16,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
 
-    model_type_factory =ModelTypeFactory(
+    model_def =ModelTypeFactory(
         class_name="BolsterCarHighEndConsist",
         base_numeric_id=34540,
         gen=3,
@@ -30,13 +30,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
+    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
     """
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BolsterCarHighEndConsist",
         base_numeric_id=28120,
         gen=4,
@@ -44,13 +44,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_gapped_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BolsterCarHighEndConsist",
         base_numeric_id=36580,
         gen=4,
@@ -58,13 +58,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="4_axle_gapped_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BolsterCarHighEndConsist",
         base_numeric_id=36590,
         gen=5,
@@ -72,13 +72,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="2_axle_filled_greebled_alt_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="BolsterCarHighEndConsist",
         base_numeric_id=31070,
         gen=5,
@@ -86,10 +86,10 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="4_axle_filled_greebled_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

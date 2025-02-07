@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerEngineCabControlCarConsist",
         id="driving_cab_passenger_ng_pony_gen_4",
         base_numeric_id=23260,
@@ -16,17 +16,17 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="CabControlPaxCarUnit", weight=32, chassis="4_axle_ng_32px"
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """Now, a driving cab for the smaller trains. But not for goats."""
     )
-    model_type_factory.define_foamer_facts(
+    model_def.define_foamer_facts(
         """KiwiRail SRV driving cab conversion of British Rail MK2 carriage"""
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

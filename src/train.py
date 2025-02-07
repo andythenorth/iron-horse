@@ -197,7 +197,10 @@ class ModelTypeFactory(object):
     def clone_stats_adjustment_factor(self):
         # clones need to adjust some stats, e.g. power, running_cost etc, we do this by inferring a multiple by comparing number of units that will be produced
         # call on clone, not source, will except (correctly) if called on source
-        source_unit_count = self.cloned_from_consist_factory.produced_unit_total
+        try:
+            source_unit_count = self.cloned_from_consist_factory.produced_unit_total
+        except:
+            raise Exception(self.kwargs)
         clone_unit_count = self.produced_unit_total
         result = clone_unit_count / source_unit_count
         return result

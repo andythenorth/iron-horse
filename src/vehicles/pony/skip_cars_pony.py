@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarSkipConsist",
         base_numeric_id=6120,
         gen=1,
@@ -16,12 +16,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar", chassis="empty_8px", repeat=2
     )
 
-    # model_type_factory.define_unit(class_name="FreightCar", chassis="empty_8px")
+    # model_def.define_unit(class_name="FreightCar", chassis="empty_8px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

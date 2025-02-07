@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="plm_2cc2_3400",
         base_numeric_id=150,
@@ -25,7 +25,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ElectricEngineUnit",
         weight=105,
         vehicle_length=8,
@@ -33,9 +33,9 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_type_factory.define_description(""" """)
-    model_type_factory.define_foamer_facts("""PLM 2CC2 3400""")
+    model_def.define_description(""" """)
+    model_def.define_foamer_facts("""PLM 2CC2 3400""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

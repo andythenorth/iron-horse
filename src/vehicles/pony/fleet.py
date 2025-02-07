@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerEngineMetroConsist",
         id="fleet",
         base_numeric_id=210,
@@ -23,7 +23,7 @@ def main(**kwargs):
     )
 
     # should be 4 short units, not 2 long but eh
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="MetroUnit",
         weight=33,
         capacity=200,
@@ -32,11 +32,11 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """Was the train door jammed? Was the time right?"""
     )
-    model_type_factory.define_foamer_facts("""London Underground 1996 Stock""")
+    model_def.define_foamer_facts("""London Underground 1996 Stock""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

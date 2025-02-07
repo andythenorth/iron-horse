@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerEngineCabControlCarConsist",
         id="driving_cab_panoramic_passenger_ng_pony_gen_4",
         base_numeric_id=23510,
@@ -16,7 +16,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="CabControlPaxCarUnit",
         weight=32,
         chassis="railcar_ng_32px",
@@ -24,9 +24,9 @@ def main(**kwargs):
         suppress_roof_sprite=True,
     )
 
-    model_type_factory.define_description("""For a view most spectacular.""")
-    model_type_factory.define_foamer_facts("""Generic panoramic coaches""")
+    model_def.define_description("""For a view most spectacular.""")
+    model_def.define_foamer_facts("""Generic panoramic coaches""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

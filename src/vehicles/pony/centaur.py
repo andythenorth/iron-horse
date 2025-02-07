@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="centaur",
         base_numeric_id=17080,
@@ -40,15 +40,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit", weight=90, vehicle_length=8, spriterow_num=0
     )
 
-    model_type_factory.define_description("""Technically, we're all half centaur.""")
-    model_type_factory.define_foamer_facts(
+    model_def.define_description("""Technically, we're all half centaur.""")
+    model_def.define_foamer_facts(
         """proposed BR Class 38 (Class 37 replacement), body shape derived from SNCF <i>Nez Cassés</i> ('broken nose') locomotive and originally proposed for BR Class 60; also Portugese CP Class 1930"""
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="cheese_bug",
         base_numeric_id=21060,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="SteamEngineUnit",
         weight=18,
         vehicle_length=4,
@@ -31,11 +31,11 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """I present you this trusty little engine."""
     )
-    model_type_factory.define_foamer_facts("""generic narrow-gauge steam locomotives""")
+    model_def.define_foamer_facts("""generic narrow-gauge steam locomotives""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

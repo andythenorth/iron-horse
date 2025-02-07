@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="TGVMiddleMailEngineConsist",
         id="brenner_middle_mail",
         base_numeric_id=6780,
@@ -19,7 +19,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ElectricHighSpeedMailUnit",
         weight=52,
         spriterow_num=0,
@@ -28,9 +28,9 @@ def main(**kwargs):
         effects={},  # suppress visual effects
     )
 
-    model_type_factory.define_description("""And you shall know this velocity.""")
-    model_type_factory.define_foamer_facts("""Alstom Class 390 <i>Pendolino</i>""")
+    model_def.define_description("""And you shall know this velocity.""")
+    model_def.define_foamer_facts("""Alstom Class 390 <i>Pendolino</i>""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

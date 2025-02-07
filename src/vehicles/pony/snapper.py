@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerEngineRailbusConsist",
         id="snapper",
         base_numeric_id=9350,
@@ -21,7 +21,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselRailcarCombineUnitMail",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -29,7 +29,7 @@ def main(**kwargs):
         tail_light="railcar_20px_1",
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -37,13 +37,13 @@ def main(**kwargs):
         tail_light="railcar_20px_1",
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """A better railcar, for a new narrow-gauge century."""
     )
-    model_type_factory.define_foamer_facts(
+    model_def.define_foamer_facts(
         """Corsican CFC X2000/X5000, CFD Autorails"""
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

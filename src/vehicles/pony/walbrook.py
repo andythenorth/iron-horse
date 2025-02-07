@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="walbrook",
         base_numeric_id=400,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="MetroUnit",
         weight=28,
         vehicle_length=4,
@@ -31,9 +31,9 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_type_factory.define_description("""Are these glazed and dirty steps?""")
-    model_type_factory.define_foamer_facts("""District Railway electric locos""")
+    model_def.define_description("""Are these glazed and dirty steps?""")
+    model_def.define_foamer_facts("""District Railway electric locos""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

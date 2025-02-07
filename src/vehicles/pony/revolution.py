@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="revolution",
         base_numeric_id=21610,
@@ -26,20 +26,20 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # banger blue?
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ElectroDieselEngineUnit",
         weight=95,
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """Bobby-dazzlers these are. How they fit it all in amazes me."""
     )
-    model_type_factory.define_foamer_facts(
+    model_def.define_foamer_facts(
         """Vossloh Euro Dual (DRS Class 88, ROG Class 93)"""
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

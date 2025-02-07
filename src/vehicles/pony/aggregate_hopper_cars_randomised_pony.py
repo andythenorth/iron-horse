@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=35230,
         gen=1,
@@ -15,11 +15,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=35050,
         gen=3,
@@ -28,11 +28,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=34480,
         gen=3,
@@ -41,13 +41,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=34810,
         gen=2,
@@ -55,11 +55,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=34300,
         gen=3,
@@ -67,11 +67,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=34460,
         gen=3,
@@ -79,11 +79,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=34270,
         gen=4,
@@ -91,11 +91,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=34440,
         gen=4,
@@ -103,11 +103,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=34250,
         gen=4,
@@ -115,14 +115,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="FreightCar",
         chassis="empty_32px",
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=34230,
         gen=5,
@@ -130,11 +130,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=20350,
         gen=5,
@@ -142,11 +142,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="HopperCarAggregateRandomisedConsist",
         base_numeric_id=21970,
         gen=5,
@@ -154,8 +154,8 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="FreightCar", chassis="empty_32px")
+    model_def.define_unit(class_name="FreightCar", chassis="empty_32px")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

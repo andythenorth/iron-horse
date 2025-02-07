@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="sbb_ee_6_6_ii",
         base_numeric_id=35220,
@@ -21,13 +21,13 @@ def main(**kwargs):
     )
 
     # 63ft IRL is 8/8, surprisingly short
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="ElectricEngineUnit", weight=75, vehicle_length=8, spriterow_num=0
     )
 
-    model_type_factory.define_description(""" """)
-    model_type_factory.define_foamer_facts("""SBB Ee 6/6 ii""")
+    model_def.define_description(""" """)
+    model_def.define_foamer_facts("""SBB Ee 6/6 ii""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

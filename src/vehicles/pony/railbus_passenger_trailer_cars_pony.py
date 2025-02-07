@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- pony NG----------------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerRailbusTrailerCarConsist",
         base_numeric_id=28150,
         gen=3,
@@ -17,15 +17,15 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_ng_24px",
         tail_light="railcar_24px_1",
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerRailbusTrailerCarConsist",
         base_numeric_id=26190,
         gen=4,
@@ -36,12 +36,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_ng_24px",
         tail_light="railcar_24px_1",
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

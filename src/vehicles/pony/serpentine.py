@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="PassengerEngineMetroConsist",
         id="serpentine",
         base_numeric_id=460,
@@ -18,7 +18,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="MetroUnit",
         weight=33,
         capacity=120,
@@ -27,13 +27,13 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """Does the money feel good? Do you like your life well."""
     )
-    model_type_factory.define_foamer_facts(
+    model_def.define_foamer_facts(
         """London Underground 'Gate' Stock, Standard Stock"""
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

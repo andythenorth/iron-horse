@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="tenacious",
         base_numeric_id=17180,
@@ -25,18 +25,18 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit",
         weight=80,  # significant bonus over other of same power band
         vehicle_length=8,
         spriterow_num=0,
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """It's rapid, sprightly, and formidable all at once."""
     )
-    model_type_factory.define_foamer_facts("""BR Class 42/43 <i>Warship</i>""")
+    model_def.define_foamer_facts("""BR Class 42/43 <i>Warship</i>""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="MailEngineMetroConsist",
         id="wandle",
         base_numeric_id=1900,
@@ -18,7 +18,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="MetroUnit",
         weight=32,
         # set capacity for freight; mail will be automatically calculated
@@ -28,11 +28,11 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """Is the underground a sanctuary? Refuge for the lost."""
     )
-    model_type_factory.define_foamer_facts("""London Underground R Stock""")
+    model_def.define_foamer_facts("""London Underground R Stock""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

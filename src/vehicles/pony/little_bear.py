@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="EngineConsist",
         id="little_bear",
         base_numeric_id=21220,
@@ -27,16 +27,16 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="DieselEngineUnit", weight=68, vehicle_length=6, spriterow_num=0
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """I want no epitaphs of profound history and all that type of thing. I contributed - I would hope they would say that, and I would hope somebody liked me."""
     )
     # IRL the quote is Brian Clough
-    model_type_factory.define_foamer_facts("""BR Class 14, Clayton DHP1 prototype""")
+    model_def.define_foamer_facts("""BR Class 14, Clayton DHP1 prototype""")
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

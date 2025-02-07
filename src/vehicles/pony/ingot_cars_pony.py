@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="IngotCarConsist",
         base_numeric_id=5150,
         gen=1,
@@ -16,13 +16,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
+    model_def.define_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     # --------------- pony -------------------------------------------------------------------------
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="IngotCarConsist",
         base_numeric_id=80,
         gen=1,
@@ -31,11 +31,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
+    model_def.define_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="IngotCarConsist",
         base_numeric_id=60,
         gen=4,
@@ -44,8 +44,8 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
+    model_def.define_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result

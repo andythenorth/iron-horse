@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------    # intro gen 4
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="AutomobileDoubleDeckCarConsist",
         base_numeric_id=26760,
         gen=4,
@@ -14,13 +14,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="AutomobileCarAsymmetric", chassis="2_axle_lwb_filled_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="AutomobileDoubleDeckCarConsist",
         base_numeric_id=30890,
         gen=4,
@@ -28,13 +28,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="AutomobileCarAsymmetric", chassis="4_axle_running_gear_only_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="AutomobileDoubleDeckCarConsist",
         base_numeric_id=26770,
         gen=5,
@@ -42,13 +42,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="AutomobileCarAsymmetric", chassis="2_axle_lwb_filled_24px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="AutomobileDoubleDeckCarConsist",
         base_numeric_id=17330,
         gen=5,
@@ -56,14 +56,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="AutomobileCarAsymmetric", chassis="4_axle_running_gear_only_32px"
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
     """
 
-    model_type_factory =ModelTypeFactory(
+    model_def =ModelTypeFactory(
         class_name="AutomobileDoubleDeckCarConsist",
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=5830,
@@ -72,19 +72,19 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="AutomobileCarAsymmetric",
         chassis="2_axle_running_gear_only_20px",
         spriterow_num=0,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="AutomobileCarAsymmetric",
         chassis="2_axle_running_gear_only_20px",
         spriterow_num=1,
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
     """
 
     return result

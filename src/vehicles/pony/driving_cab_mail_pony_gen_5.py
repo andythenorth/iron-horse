@@ -4,7 +4,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_type_factory = ModelTypeFactory(
+    model_def = ModelTypeFactory(
         class_name="MailEngineCabbageDVTConsist",
         id="driving_cab_mail_pony_gen_5",
         base_numeric_id=19970,
@@ -15,17 +15,17 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_type_factory.define_unit(
+    model_def.define_unit(
         class_name="CabbageDVTUnit", weight=32, chassis="railcar_32px"
     )
 
-    model_type_factory.define_description(
+    model_def.define_description(
         """Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Clever idea we had eh?"""
     )
-    model_type_factory.define_foamer_facts(
+    model_def.define_foamer_facts(
         """BR parcels Propelling Control Vehicle (PCV) with added generator"""
     )
 
-    result.append(model_type_factory)
+    result.append(model_def)
 
     return result
