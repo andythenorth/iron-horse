@@ -166,12 +166,8 @@ class ModelTypeFactory(object):
     def __init__(self, model_def):
         self.class_name = model_def.class_name
         self.model_def = model_def
-        # we store kwargs for reuse later, seems to be a factory pattern convention to just store them as 'kwargs' and not 'recipe' or something
-        self.kwargs = model_def.kwargs
         # used for book-keeping related consists, does not define consists in roster
         self.produced_consists = []
-        # !! CABBAGE
-        self.cloned_from_model_def = None
 
     def set_roster_ids(self, roster_id, roster_id_providing_module):
         # rosters can optionally init consist factories from other rosters
@@ -187,7 +183,7 @@ class ModelTypeFactory(object):
             pass
 
         consist_cls = getattr(sys.modules[__name__], self.class_name)
-        consist = consist_cls(model_type_factory=self, **self.kwargs)
+        consist = consist_cls(model_type_factory=self, **self.model_def.kwargs)
 
         """
         if hasattr(consist_cls, "liveries"):
@@ -376,6 +372,11 @@ class Consist(object):
         )
 
     @property
+    def model_def(self):
+        # just a pass through for convenience
+        return self.model_type_factory.model_def
+
+    @property
     def roster_id(self):
         # just a pass through for convenience
         return self.model_type_factory.roster_id
@@ -388,7 +389,7 @@ class Consist(object):
     @property
     def is_clone(self):
         # convenience boolean to avoid checking implementation details of cloning in callers
-        return self.model_type_factory.model_def.cloned_from_model_def is not None
+        return self.model_def.cloned_from_model_def is not None
 
     def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed
@@ -760,7 +761,7 @@ class Consist(object):
                 (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.gen == self.gen)
                 and (consist != self)
-                and (consist.model_type_factory.model_def.cloned_from_model_def is None)
+                and (consist.model_def.cloned_from_model_def is None)
                 and (getattr(consist, "cab_id", None) is None)
             ):
                 if (
@@ -1128,7 +1129,7 @@ class Consist(object):
             if self.is_clone:
                 # this will get a default consist from the source factory, mapping this consist to the source spritesheet
                 input_spritesheet_name_stem = (
-                    self.model_type_factory.model_def.cloned_from_model_def.kwargs["id"]
+                    self.model_def.cloned_from_model_def.kwargs["id"]
                 )
             else:
                 input_spritesheet_name_stem = self.id
@@ -1541,13 +1542,16 @@ class EngineConsist(Consist):
     def buy_cost(self):
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
-        if self.model_type_factory.cloned_from_model_def is not None:
+        if self.model_def.cloned_from_model_def is not None:
+            print("CABBAGE 547", "buy_cost, clone", self.id)
+            """
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
-            temp_consist = self.model_type_factory.cloned_from_model_def.produce()
+            temp_consist = self.model_def.cloned_from_model_def.produce()
             return int(
                 temp_consist.buy_cost
                 * self.model_type_factory.clone_stats_adjustment_factor
             )
+            """
 
         # max speed = 200mph by design - see assert_speed()
         # multiplier for speed, max value will be 25
@@ -1585,13 +1589,16 @@ class EngineConsist(Consist):
 
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
-        if self.model_type_factory.cloned_from_model_def is not None:
+        if self.model_def.cloned_from_model_def is not None:
+            print("CABBAGE 849", "running_cost, clone", self.id)
+            """
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
             temp_consist = self.model_type_factory.cloned_from_model_def.produce()
             return int(
                 temp_consist.running_cost
                 * self.model_type_factory.clone_stats_adjustment_factor
             )
+            """
 
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
         is_NG = True if self.base_track_type_name == "NG" else False
