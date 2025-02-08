@@ -34,9 +34,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def = model_def.begin_clone(
-        base_numeric_id=820, unit_repeats=[1]
-    )
+    model_def = model_def.begin_clone(base_numeric_id=820, unit_repeats=[1])
 
     # this is a JFDI thing, the Lynx 2-unit version needs a reversed sprite, but the buy menu compositor does not support that as of Jan 2024, so hax
     model_def.add_unit(

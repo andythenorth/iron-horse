@@ -33,9 +33,7 @@ def main(**kwargs):
     model_def.define_description(
         """It's a big engine, it cost a lot of brass, get it to work."""
     )
-    model_def.define_foamer_facts(
-        """GCR Class 8K / ROD 2-8-0, GWR 2800 Class"""
-    )
+    model_def.define_foamer_facts("""GCR Class 8K / ROD 2-8-0, GWR 2800 Class""")
 
     result.append(model_def)
 

@@ -30,9 +30,7 @@ def main(**kwargs):
     model_def.define_description(
         """Fast quiet trains for a new era. No more rattling Slammers."""
     )
-    model_def.define_foamer_facts(
-        """BR Class 153/155/156/158 <i>Sprinters</i>"""
-    )
+    model_def.define_foamer_facts("""BR Class 153/155/156/158 <i>Sprinters</i>""")
 
     result.append(model_def)
 

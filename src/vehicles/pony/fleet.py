@@ -32,9 +32,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_def.define_description(
-        """Was the train door jammed? Was the time right?"""
-    )
+    model_def.define_description("""Was the train door jammed? Was the time right?""")
     model_def.define_foamer_facts("""London Underground 1996 Stock""")
 
     result.append(model_def)

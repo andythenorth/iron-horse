@@ -26,9 +26,7 @@ def main(**kwargs):
         tail_light="railcar_32px_1",
     )
 
-    model_def.define_description(
-        """A modern way to move mail and other parcels."""
-    )
+    model_def.define_description("""A modern way to move mail and other parcels.""")
     model_def.define_foamer_facts("""LNER / Armstrong-Whitworth Railcars""")
 
     result.append(model_def)

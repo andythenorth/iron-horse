@@ -31,9 +31,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    model_def.define_description(
-        """It'll get there and back again, in any weather."""
-    )
+    model_def.define_description("""It'll get there and back again, in any weather.""")
     model_def.define_foamer_facts(
         """GBRF Class 99, Stadler Eurodual, Newag Dragon, CAF Bitrac"""
     )

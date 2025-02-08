@@ -32,9 +32,7 @@ def main(**kwargs):
         tail_light="very_high_speed_32px_1",
     )
 
-    model_def.define_description(
-        """Can we get there faster? That's what drives me."""
-    )
+    model_def.define_description("""Can we get there faster? That's what drives me.""")
     model_def.define_foamer_facts(
         """BR InterCity 225 (Class 91), BR APT-P, Shinkansen-style distributed traction"""
     )

@@ -27,9 +27,7 @@ def main(**kwargs):
         class_name="MetroUnit", weight=46, vehicle_length=8, spriterow_num=0
     )
 
-    model_def.define_description(
-        """Is this London calling to the underworld?"""
-    )
+    model_def.define_description("""Is this London calling to the underworld?""")
     model_def.define_foamer_facts(
         """London Underground L11 battery-electric locomotive"""
     )

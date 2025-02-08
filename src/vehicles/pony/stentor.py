@@ -39,9 +39,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    model_def.define_description(
-        """This one is loud, and packed with technology."""
-    )
+    model_def.define_description("""This one is loud, and packed with technology.""")
     model_def.define_foamer_facts("""BR Class 60 design mockups""")
 
     result.append(model_def)

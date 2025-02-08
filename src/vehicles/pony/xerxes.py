@@ -33,9 +33,7 @@ def main(**kwargs):
     )
 
     model_def.define_description("""Not much to say about these two.""")
-    model_def.define_foamer_facts(
-        """GWR pannier tanks, original TTD Kirby 'Paul'"""
-    )
+    model_def.define_foamer_facts("""GWR pannier tanks, original TTD Kirby 'Paul'""")
 
     result.append(model_def)
 

@@ -30,9 +30,7 @@ def main(**kwargs):
     )
 
     model_def.define_description(""" """)
-    model_def.define_foamer_facts(
-        """SNCF BB 26000 <i>Sybic</i> !! multisystem"""
-    )
+    model_def.define_foamer_facts("""SNCF BB 26000 <i>Sybic</i> !! multisystem""")
 
     result.append(model_def)
 

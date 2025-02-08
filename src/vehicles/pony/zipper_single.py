@@ -28,12 +28,8 @@ def main(**kwargs):
         tail_light="railcar_24px_1",
     )
 
-    model_def.define_description(
-        """It's the same donkey, but with a new saddle."""
-    )
-    model_def.define_foamer_facts(
-        """BR Class 144e <i>Pacer</i>, Vivarail D-Train"""
-    )
+    model_def.define_description("""It's the same donkey, but with a new saddle.""")
+    model_def.define_foamer_facts("""BR Class 144e <i>Pacer</i>, Vivarail D-Train""")
 
     result.append(model_def)
 

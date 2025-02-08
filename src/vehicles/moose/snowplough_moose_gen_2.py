@@ -14,9 +14,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit(
-        class_name="SnowploughUnit", weight=50, vehicle_length=4
-    )
+    model_def.add_unit(class_name="SnowploughUnit", weight=50, vehicle_length=4)
 
     model_def.define_description("""MOOSE.""")
     model_def.define_foamer_facts("""MOOSE""")

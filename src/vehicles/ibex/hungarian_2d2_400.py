@@ -32,9 +32,7 @@ def main(**kwargs):
     )
 
     model_def.define_description(""" """)
-    model_def.define_foamer_facts(
-        """PO <i>Hungarian</i> 2D2 400 (or 2-B-B-2)"""
-    )
+    model_def.define_foamer_facts("""PO <i>Hungarian</i> 2D2 400 (or 2-B-B-2)""")
 
     result.append(model_def)
 

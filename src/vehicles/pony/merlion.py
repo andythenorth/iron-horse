@@ -46,9 +46,7 @@ def main(**kwargs):
     model_def.define_description(
         """I don't like the looks of it right much, but I suppose it will do."""
     )
-    model_def.define_foamer_facts(
-        """BR Class 31, uprated EE 12CSVT prime mover"""
-    )
+    model_def.define_foamer_facts("""BR Class 31, uprated EE 12CSVT prime mover""")
 
     result.append(model_def)
 

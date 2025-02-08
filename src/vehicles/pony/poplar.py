@@ -30,9 +30,7 @@ def main(**kwargs):
     model_def.define_description(
         """Do dreams fade in the dawn? Lost in the city's waking."""
     )
-    model_def.define_foamer_facts(
-        """Metropolitan Railway electric multiple units"""
-    )
+    model_def.define_foamer_facts("""Metropolitan Railway electric multiple units""")
 
     result.append(model_def)
 

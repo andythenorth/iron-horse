@@ -32,9 +32,7 @@ def main(**kwargs):
     )
 
     model_def.define_description("""Big ugly thing. Power in spades though.""")
-    model_def.define_foamer_facts(
-        """Midland Railway 2290 'Big Bertha' Lickey Banker"""
-    )
+    model_def.define_foamer_facts("""Midland Railway 2290 'Big Bertha' Lickey Banker""")
 
     result.append(model_def)
 

@@ -36,9 +36,7 @@ def main(**kwargs):
     model_def.define_description(
         """Bobby-dazzlers these are. How they fit it all in amazes me."""
     )
-    model_def.define_foamer_facts(
-        """Vossloh Euro Dual (DRS Class 88, ROG Class 93)"""
-    )
+    model_def.define_foamer_facts("""Vossloh Euro Dual (DRS Class 88, ROG Class 93)""")
 
     result.append(model_def)
 

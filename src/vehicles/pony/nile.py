@@ -35,9 +35,7 @@ def main(**kwargs):
     )
 
     model_def.define_description("""Is twice as nice.""")
-    model_def.define_foamer_facts(
-        """Victorian Railways G class Garratt locomotives"""
-    )
+    model_def.define_foamer_facts("""Victorian Railways G class Garratt locomotives""")
 
     result.append(model_def)
 

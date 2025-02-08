@@ -46,9 +46,7 @@ def main(**kwargs):
     model_def.define_description(
         """This one can go on electric or diesel. Madder than a box of frogs."""
     )
-    model_def.define_foamer_facts(
-        """BR Class 73, Class 71/74, proposed Class 75"""
-    )
+    model_def.define_foamer_facts("""BR Class 73, Class 71/74, proposed Class 75""")
 
     result.append(model_def)
 

@@ -34,9 +34,7 @@ def main(**kwargs):
         vehicle_length=8,
     )
 
-    model_def.define_description(
-        """Let there be some more test made of my metal."""
-    )
+    model_def.define_description("""Let there be some more test made of my metal.""")
     model_def.define_foamer_facts("""Northern Ireland Railways Class 111""")
 
     result.append(model_def)

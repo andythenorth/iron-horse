@@ -30,9 +30,7 @@ def main(**kwargs):
     model_def.define_description(
         """Turn the key and it goes.  It's right heavy for what it is, but you can't argue with progress."""
     )
-    model_def.define_foamer_facts(
-        """BR Class 40 and Class 44/45/46 <i>Peaks</i>"""
-    )
+    model_def.define_foamer_facts("""BR Class 40 and Class 44/45/46 <i>Peaks</i>""")
 
     result.append(model_def)
 

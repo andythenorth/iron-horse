@@ -27,9 +27,7 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_def.define_description(
-        """Does the public want what the public gets?"""
-    )
+    model_def.define_description("""Does the public want what the public gets?""")
     model_def.define_foamer_facts("""London Underground 1938/1949 Stock""")
 
     result.append(model_def)

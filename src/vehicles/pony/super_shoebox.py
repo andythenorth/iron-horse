@@ -46,9 +46,7 @@ def main(**kwargs):
     model_def.define_description(
         """It's a bigger Shoebox. Well not bigger. But more power in it. Right new paint too."""
     )
-    model_def.define_foamer_facts(
-        """BR Class 73, Class 71/74, proposed Class 75"""
-    )
+    model_def.define_foamer_facts("""BR Class 73, Class 71/74, proposed Class 75""")
 
     result.append(model_def)
 

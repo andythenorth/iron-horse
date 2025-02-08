@@ -28,9 +28,7 @@ def main(**kwargs):
     )
 
     model_def.define_description("""Born slippy? Mega mega mega.""")
-    model_def.define_foamer_facts(
-        """London Underground battery-electric locos"""
-    )
+    model_def.define_foamer_facts("""London Underground battery-electric locos""")
 
     result.append(model_def)
 

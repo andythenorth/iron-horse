@@ -36,9 +36,7 @@ def main(**kwargs):
         tail_light="hst_32px_1",
     )
 
-    model_def.define_description(
-        """Power is of the essence. Faster is everything."""
-    )
+    model_def.define_description("""Power is of the essence. Faster is everything.""")
     model_def.define_foamer_facts("""BR Class 43 (High Speed Train)""")
 
     result.append(model_def)

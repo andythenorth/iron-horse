@@ -37,12 +37,8 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    model_def.define_description(
-        """The big bird. Twin engines. Takes on anything."""
-    )
-    model_def.define_foamer_facts(
-        """Brush / BR Class 53 <i>Falcon</i> prototype"""
-    )
+    model_def.define_description("""The big bird. Twin engines. Takes on anything.""")
+    model_def.define_foamer_facts("""Brush / BR Class 53 <i>Falcon</i> prototype""")
 
     result.append(model_def)
 

@@ -16,9 +16,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="SlagLadleCar", chassis="buffers_only_16px"
-    )
+    model_def.add_unit(class_name="SlagLadleCar", chassis="buffers_only_16px")
 
     result.append(model_def)
 
@@ -33,9 +31,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="SlagLadleCar", chassis="buffers_only_16px"
-    )
+    model_def.add_unit(class_name="SlagLadleCar", chassis="buffers_only_16px")
 
     result.append(model_def)
 
@@ -48,9 +44,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="SlagLadleCar", chassis="buffers_only_16px"
-    )
+    model_def.add_unit(class_name="SlagLadleCar", chassis="buffers_only_16px")
 
     result.append(model_def)
 

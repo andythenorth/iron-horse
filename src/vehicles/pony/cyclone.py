@@ -36,9 +36,7 @@ def main(**kwargs):
     model_def.define_description(
         """Nippy as a whippet, eats miles like hot dinners. Proper electric workhorse, that one."""
     )
-    model_def.define_foamer_facts(
-        """Austrian Federal Railways (ÖBB) 1163 class"""
-    )
+    model_def.define_foamer_facts("""Austrian Federal Railways (ÖBB) 1163 class""")
 
     result.append(model_def)
 

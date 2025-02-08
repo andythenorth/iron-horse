@@ -30,9 +30,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    model_def.define_description(
-        """Amazing what they can do these days isn't it?"""
-    )
+    model_def.define_description("""Amazing what they can do these days isn't it?""")
     model_def.define_foamer_facts("""Vossloh Eurolight (DRS Class 68)""")
 
     result.append(model_def)

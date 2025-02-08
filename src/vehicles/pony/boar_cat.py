@@ -38,9 +38,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def = model_def.begin_clone(
-        base_numeric_id=910, unit_repeats=[1]
-    )
+    model_def = model_def.begin_clone(base_numeric_id=910, unit_repeats=[1])
 
     # this is a JFDI thing, the 2-unit version varies sprites per unit position, which is generally supported
     # but the *buy menu* compositor does not support that as of Jan 2024, so hax

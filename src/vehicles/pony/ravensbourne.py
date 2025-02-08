@@ -29,9 +29,7 @@ def main(**kwargs):
     )
 
     model_def.define_description("""Is that lamp light blinking?""")
-    model_def.define_foamer_facts(
-        """Metropolitan Railway electric multiple units"""
-    )
+    model_def.define_foamer_facts("""Metropolitan Railway electric multiple units""")
 
     result.append(model_def)
 

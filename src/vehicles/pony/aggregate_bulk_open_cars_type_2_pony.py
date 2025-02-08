@@ -14,9 +14,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="FreightCar", chassis="4_axle_sparse_24px"
-    )
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_sparse_24px")
 
     result.append(model_def)
 
@@ -28,9 +26,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="FreightCar", chassis="4_axle_sparse_32px"
-    )
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_sparse_32px")
 
     result.append(model_def)
 

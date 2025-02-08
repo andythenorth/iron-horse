@@ -27,12 +27,8 @@ def main(**kwargs):
         class_name="MetroUnit", weight=48, vehicle_length=8, spriterow_num=0
     )
 
-    model_def.define_description(
-        """Engines stop running, do I have no fear?"""
-    )
-    model_def.define_foamer_facts(
-        """London Underground battery-electric locos"""
-    )
+    model_def.define_description("""Engines stop running, do I have no fear?""")
+    model_def.define_foamer_facts("""London Underground battery-electric locos""")
 
     result.append(model_def)
 

@@ -55,9 +55,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="FreightCar", chassis="2_axle_filled_16px"
-    )
+    model_def.add_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
 
     result.append(model_def)
 
@@ -71,9 +69,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="FreightCar", chassis="3_axle_gapped_24px"
-    )
+    model_def.add_unit(class_name="FreightCar", chassis="3_axle_gapped_24px")
 
     result.append(model_def)
 
@@ -85,9 +81,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="FreightCar", chassis="2_axle_filled_16px"
-    )
+    model_def.add_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
 
     result.append(model_def)
 
@@ -99,9 +93,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="FreightCar", chassis="4_axle_gapped_24px"
-    )
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_gapped_24px")
 
     result.append(model_def)
 
@@ -113,9 +105,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="FreightCar", chassis="4_axle_gapped_32px"
-    )
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_gapped_32px")
 
     result.append(model_def)
 
@@ -127,9 +117,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="FreightCar", chassis="2_axle_filled_16px"
-    )
+    model_def.add_unit(class_name="FreightCar", chassis="2_axle_filled_16px")
 
     result.append(model_def)
 
@@ -141,9 +129,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="FreightCar", chassis="2_axle_filled_24px"
-    )
+    model_def.add_unit(class_name="FreightCar", chassis="2_axle_filled_24px")
 
     result.append(model_def)
 
@@ -155,9 +141,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="FreightCar", chassis="4_axle_gapped_32px"
-    )
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_gapped_32px")
 
     result.append(model_def)
 
@@ -183,9 +167,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="FreightCar", chassis="4_axle_filled_greebled_32px"
-    )
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_filled_greebled_32px")
 
     result.append(model_def)
 

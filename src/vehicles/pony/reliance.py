@@ -31,9 +31,7 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=30, vehicle_length=3, spriterow_num=1
     )
 
-    model_def.define_description(
-        """Lots of these about, but ours are best uns."""
-    )
+    model_def.define_description("""Lots of these about, but ours are best uns.""")
     model_def.define_foamer_facts(
         """GWR 3201 <i>Stella</i> Class, generic 2-4-0 locomotives"""
     )

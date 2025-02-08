@@ -31,9 +31,7 @@ def main(**kwargs):
     model_def.define_description(
         """I didn't do these, we've shipped them in. On ships like. On the sea. They pull well mind you."""
     )
-    model_def.define_foamer_facts(
-        """SR Z class, SR USA class (USATC S100 Class)"""
-    )
+    model_def.define_foamer_facts("""SR Z class, SR USA class (USATC S100 Class)""")
 
     result.append(model_def)
 

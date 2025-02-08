@@ -14,9 +14,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
-        class_name="SnowploughUnit", weight=50, vehicle_length=4
-    )
+    model_def.add_unit(class_name="SnowploughUnit", weight=50, vehicle_length=4)
 
     model_def.define_description(
         """Does it ever snow here?  I wouldn't say, but these are waiting just in case."""

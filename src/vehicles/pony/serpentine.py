@@ -30,9 +30,7 @@ def main(**kwargs):
     model_def.define_description(
         """Does the money feel good? Do you like your life well."""
     )
-    model_def.define_foamer_facts(
-        """London Underground 'Gate' Stock, Standard Stock"""
-    )
+    model_def.define_foamer_facts("""London Underground 'Gate' Stock, Standard Stock""")
 
     result.append(model_def)
 

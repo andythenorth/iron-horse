@@ -35,9 +35,7 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=32, vehicle_length=4, spriterow_num=1
     )
 
-    model_def.define_description(
-        """Mr. Bulleid designed these. Do you like 'em?"""
-    )
+    model_def.define_description("""Mr. Bulleid designed these. Do you like 'em?""")
     model_def.define_foamer_facts(
         """SR Merchant Navy / West Country / Battle of Britain classes"""
     )

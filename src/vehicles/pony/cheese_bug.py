@@ -31,9 +31,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    model_def.define_description(
-        """I present you this trusty little engine."""
-    )
+    model_def.define_description("""I present you this trusty little engine.""")
     model_def.define_foamer_facts("""generic narrow-gauge steam locomotives""")
 
     result.append(model_def)

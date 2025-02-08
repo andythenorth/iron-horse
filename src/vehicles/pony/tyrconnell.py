@@ -32,9 +32,7 @@ def main(**kwargs):
         class_name="SteamEngineTenderUnit", weight=19, vehicle_length=3, spriterow_num=1
     )
 
-    model_def.define_description(
-        """A titan from the North. Steadfast and stout."""
-    )
+    model_def.define_description("""A titan from the North. Steadfast and stout.""")
     model_def.define_foamer_facts(
         """Londonderry and Lough Swilly Railway Company 4-8-0 locomotives"""
     )

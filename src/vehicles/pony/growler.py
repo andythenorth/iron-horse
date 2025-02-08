@@ -32,9 +32,7 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=100, vehicle_length=8, spriterow_num=0
     )
 
-    model_def.define_description(
-        """Sounds like a tractor, pulls like a train."""
-    )
+    model_def.define_description("""Sounds like a tractor, pulls like a train.""")
     model_def.define_foamer_facts("""BR Class 37, original TTD UU '37'""")
 
     result.append(model_def)

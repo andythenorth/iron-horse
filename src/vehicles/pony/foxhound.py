@@ -27,16 +27,12 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=70, vehicle_length=6, spriterow_num=0
     )
 
-    model_def.define_description(
-        """This one gets after it, no doubts at all."""
-    )
+    model_def.define_description("""This one gets after it, no doubts at all.""")
     model_def.define_foamer_facts("""BR Class 21/22/29""")
 
     result.append(model_def)
 
-    model_def = model_def.begin_clone(
-        base_numeric_id=810, unit_repeats=[2]
-    )
+    model_def = model_def.begin_clone(base_numeric_id=810, unit_repeats=[2])
 
     model_def.complete_clone()
 

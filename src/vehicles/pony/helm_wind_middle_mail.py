@@ -28,9 +28,7 @@ def main(**kwargs):
         effects={},  # suppress visual effects
     )
 
-    model_def.define_description(
-        """Can we get there faster? That's what drives me."""
-    )
+    model_def.define_description("""Can we get there faster? That's what drives me.""")
     model_def.define_foamer_facts(
         """BR InterCity 225 (Mk4 Coaches)), Shinkansen-style distributed traction"""
     )

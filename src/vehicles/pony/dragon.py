@@ -37,9 +37,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    model_def.define_description(
-        """A right big fast diesel hydraulic this one is."""
-    )
+    model_def.define_description("""A right big fast diesel hydraulic this one is.""")
     model_def.define_foamer_facts("""BR Class 52 <i>Western</i>""")
 
     result.append(model_def)

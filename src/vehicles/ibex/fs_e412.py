@@ -33,9 +33,7 @@ def main(**kwargs):
     )
 
     model_def.define_description(""" """)
-    model_def.define_foamer_facts(
-        """FS E.412 <i>Brenner</i> / OBB 1822 Brennerlok"""
-    )
+    model_def.define_foamer_facts("""FS E.412 <i>Brenner</i> / OBB 1822 Brennerlok""")
 
     result.append(model_def)
 

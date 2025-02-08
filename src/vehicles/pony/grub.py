@@ -30,9 +30,7 @@ def main(**kwargs):
         class_name="SteamEngineUnit", weight=36, vehicle_length=4, spriterow_num=0
     )
 
-    model_def.define_description(
-        """It's for your little jobs, farms and that."""
-    )
+    model_def.define_description("""It's for your little jobs, farms and that.""")
     model_def.define_foamer_facts("""GER G15/C53 tramway locomotives""")
 
     result.append(model_def)

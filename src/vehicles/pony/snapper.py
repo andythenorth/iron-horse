@@ -40,9 +40,7 @@ def main(**kwargs):
     model_def.define_description(
         """A better railcar, for a new narrow-gauge century."""
     )
-    model_def.define_foamer_facts(
-        """Corsican CFC X2000/X5000, CFD Autorails"""
-    )
+    model_def.define_foamer_facts("""Corsican CFC X2000/X5000, CFD Autorails""")
 
     result.append(model_def)
 

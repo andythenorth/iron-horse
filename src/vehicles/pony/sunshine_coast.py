@@ -31,9 +31,7 @@ def main(**kwargs):
     model_def.define_description(
         """Better three hours too soon than a minute too late."""  # Shakespeare
     )
-    model_def.define_foamer_facts(
-        """BR Class 309 <i>Clacton Express</i>, BR 4-REP"""
-    )
+    model_def.define_foamer_facts("""BR Class 309 <i>Clacton Express</i>, BR 4-REP""")
 
     result.append(model_def)
 

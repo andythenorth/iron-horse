@@ -30,9 +30,7 @@ def main(**kwargs):
         class_name="DieselEngineUnit", weight=48, vehicle_length=4, spriterow_num=0
     )
 
-    model_def.define_description(
-        """No prizes for speed, but it gets a job done."""
-    )
+    model_def.define_description("""No prizes for speed, but it gets a job done.""")
     model_def.define_foamer_facts(
         """Thomas Hill <i>Steelman</i>, miscellaneous industrial diesel shunters"""
     )

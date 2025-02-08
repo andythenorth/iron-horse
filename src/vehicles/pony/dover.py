@@ -29,9 +29,7 @@ def main(**kwargs):
         tail_light="railcar_32px_2",
     )
 
-    model_def.define_description(
-        """A useful motor van for mail and express freight."""
-    )
+    model_def.define_description("""A useful motor van for mail and express freight.""")
     model_def.define_foamer_facts("""BR Class 419 MLV, Class 489 GLV""")
 
     result.append(model_def)

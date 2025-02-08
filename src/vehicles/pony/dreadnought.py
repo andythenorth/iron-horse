@@ -35,9 +35,7 @@ def main(**kwargs):
     )
 
     model_def.define_description("""This one, it does go some.""")
-    model_def.define_foamer_facts(
-        """Porterbrook Leasing Class 55 <i>Deltic</i>'"""
-    )
+    model_def.define_foamer_facts("""Porterbrook Leasing Class 55 <i>Deltic</i>'""")
 
     result.append(model_def)
 

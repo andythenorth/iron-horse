@@ -31,9 +31,7 @@ def main(**kwargs):
     )
 
     model_def.define_description("""Bombproof.""")
-    model_def.define_foamer_facts(
-        """WD Austerity 2-8-0, USRA S160 Class 2-8-0"""
-    )
+    model_def.define_foamer_facts("""WD Austerity 2-8-0, USRA S160 Class 2-8-0""")
 
     result.append(model_def)
 

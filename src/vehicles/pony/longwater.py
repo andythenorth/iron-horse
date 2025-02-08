@@ -28,12 +28,8 @@ def main(**kwargs):
         repeat=2,
     )
 
-    model_def.define_description(
-        """Do they bury themselves? Hidden from society?"""
-    )
-    model_def.define_foamer_facts(
-        """London Underground 'Gate' Stock, Standard Stock"""
-    )
+    model_def.define_description("""Do they bury themselves? Hidden from society?""")
+    model_def.define_foamer_facts("""London Underground 'Gate' Stock, Standard Stock""")
 
     result.append(model_def)
 

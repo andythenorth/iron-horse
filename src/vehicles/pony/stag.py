@@ -28,9 +28,7 @@ def main(**kwargs):
         class_name="SteamEngineUnit", weight=60, vehicle_length=6, spriterow_num=0
     )
 
-    model_def.define_description(
-        """Not the biggest, but quite a beast all the same."""
-    )
+    model_def.define_description("""Not the biggest, but quite a beast all the same.""")
     model_def.define_foamer_facts(
         """Metropolitan Railway G Class (LNER M2), GCR Class D (LNER M1)"""
     )
