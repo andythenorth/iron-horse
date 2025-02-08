@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="MailHighSpeedCarConsist",
         base_numeric_id=30690,
         gen=5,
@@ -13,7 +13,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="ExpressMailCar", chassis="high_speed_32px"
     )
 

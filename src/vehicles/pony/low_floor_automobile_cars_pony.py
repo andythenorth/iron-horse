@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # intro gen 4
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="AutomobileLowFloorCarConsist",
         base_numeric_id=26720,
         gen=4,
@@ -15,13 +15,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="AutomobileCarAsymmetric", chassis="2_axle_lwb_filled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="AutomobileLowFloorCarConsist",
         base_numeric_id=26730,
         gen=4,
@@ -29,13 +29,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="AutomobileCarAsymmetric", chassis="4_axle_running_gear_only_32px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="AutomobileLowFloorCarConsist",
         base_numeric_id=26740,
         gen=5,
@@ -43,13 +43,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="AutomobileCarAsymmetric", chassis="2_axle_lwb_filled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="AutomobileLowFloorCarConsist",
         base_numeric_id=26750,
         gen=5,
@@ -57,7 +57,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="AutomobileCarAsymmetric", chassis="4_axle_running_gear_only_32px"
     )
 

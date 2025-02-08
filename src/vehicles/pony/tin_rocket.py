@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="PassengerEngineRailcarConsist",
         id="tin_rocket",
         base_numeric_id=21160,
@@ -20,7 +20,7 @@ def main(**kwargs):
         intro_year_offset=-5,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="DieselRailcarPaxUnit",
         weight=40,
         chassis="railcar_32px",

@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     """
 
-    model_def =ModelTypeFactory(
+    model_def =ModelDef(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=37020,
         gen=2,
@@ -16,12 +16,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
 
-    model_def =ModelTypeFactory(
+    model_def =ModelDef(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=32900,
         gen=3,
@@ -29,12 +29,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
 
-    model_def =ModelTypeFactory(
+    model_def =ModelDef(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=32940,
         gen=3,
@@ -42,12 +42,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
 
-    model_def =ModelTypeFactory(
+    model_def =ModelDef(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=35900,
         gen=4,
@@ -55,12 +55,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
 
-    model_def =ModelTypeFactory(
+    model_def =ModelDef(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=35920,
         gen=4,
@@ -68,12 +68,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
 
-    model_def =ModelTypeFactory(
+    model_def =ModelDef(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=35940,
         gen=4,
@@ -81,12 +81,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_32px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_32px")
 
     result.append(model_def)
     """
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=35960,
         gen=5,
@@ -94,11 +94,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=35980,
         gen=5,
@@ -106,11 +106,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarStandardRandomisedConsist",
         base_numeric_id=35280,
         gen=5,
@@ -118,7 +118,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_32px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_32px")
 
     result.append(model_def)
 

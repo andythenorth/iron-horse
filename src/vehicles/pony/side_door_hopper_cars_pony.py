@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarSideDoorConsist",
         base_numeric_id=22500,
         gen=3,
@@ -15,13 +15,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_ng_sparse_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarSideDoorConsist",
         base_numeric_id=22520,
         gen=3,
@@ -30,7 +30,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_ng_sparse_24px"
     )
 
@@ -38,7 +38,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarSideDoorConsist",
         base_numeric_id=31450,
         gen=3,
@@ -46,13 +46,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="3_axle_filled_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarSideDoorConsist",
         base_numeric_id=35250,
         gen=3,
@@ -60,13 +60,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_sparse_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarSideDoorConsist",
         base_numeric_id=35350,
         gen=4,
@@ -74,13 +74,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="3_axle_filled_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarSideDoorConsist",
         base_numeric_id=35880,
         gen=4,
@@ -88,13 +88,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_sparse_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarSideDoorConsist",
         base_numeric_id=32020,
         gen=5,
@@ -102,13 +102,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_sparse_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarSideDoorConsist",
         base_numeric_id=35390,
         gen=5,
@@ -116,7 +116,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_sparse_32px"
     )
 

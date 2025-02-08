@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarTipplerRandomisedConsist",
         base_numeric_id=28470,
         gen=3,
@@ -14,11 +14,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarTipplerRandomisedConsist",
         base_numeric_id=24590,
         gen=3,
@@ -26,11 +26,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarTipplerRandomisedConsist",
         base_numeric_id=34180,
         gen=4,
@@ -38,11 +38,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarTipplerRandomisedConsist",
         base_numeric_id=26570,
         gen=4,
@@ -50,11 +50,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarTipplerRandomisedConsist",
         base_numeric_id=32080,
         gen=5,
@@ -62,11 +62,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarTipplerRandomisedConsist",
         base_numeric_id=32100,
         gen=5,
@@ -74,7 +74,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_32px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_32px")
 
     result.append(model_def)
 

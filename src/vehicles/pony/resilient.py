@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="EngineConsist",
         id="resilient",
         base_numeric_id=21000,
@@ -35,7 +35,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # add RfD Euro style triple grey?, Banger blue, but with black windows
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="DieselEngineUnit",
         weight=103,
         vehicle_length=8,

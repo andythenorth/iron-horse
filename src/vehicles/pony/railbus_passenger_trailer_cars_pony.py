@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- pony NG----------------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="PassengerRailbusTrailerCarConsist",
         base_numeric_id=28150,
         gen=3,
@@ -17,7 +17,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_ng_24px",
         tail_light="railcar_24px_1",
@@ -25,7 +25,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="PassengerRailbusTrailerCarConsist",
         base_numeric_id=26190,
         gen=4,
@@ -36,7 +36,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_ng_24px",
         tail_light="railcar_24px_1",

@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="MailEngineRailcarConsist",
         id="ruby",
         base_numeric_id=28310,
@@ -20,7 +20,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="DieselRailcarMailUnit",
         weight=20,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height

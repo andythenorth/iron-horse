@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarSlidingWallConsistType1",
         base_numeric_id=26980,
         gen=3,
@@ -16,11 +16,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarSlidingWallConsistType1",
         base_numeric_id=22080,
         gen=3,
@@ -30,14 +30,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
     # starts gen 4, B and C only
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarSlidingWallConsistType1",
         base_numeric_id=27000,
         gen=4,
@@ -46,13 +46,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_1cc_filled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarSlidingWallConsistType1",
         base_numeric_id=22100,
         gen=4,
@@ -61,7 +61,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
@@ -69,7 +69,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarSlidingWallConsistType1",
         base_numeric_id=27020,
         gen=5,
@@ -77,7 +77,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_24px",
@@ -85,7 +85,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarSlidingWallConsistType1",
         base_numeric_id=22120,
         gen=5,
@@ -93,7 +93,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
@@ -101,7 +101,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarSlidingWallConsistType1",
         base_numeric_id=5190,
         gen=5,
@@ -109,7 +109,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_20px",
@@ -117,7 +117,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_20px",

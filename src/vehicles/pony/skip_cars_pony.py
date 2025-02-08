@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarSkipConsist",
         base_numeric_id=6120,
         gen=1,
@@ -16,11 +16,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="empty_8px", repeat=2
     )
 
-    # model_def.define_unit(class_name="FreightCar", chassis="empty_8px")
+    # model_def.add_unit(class_name="FreightCar", chassis="empty_8px")
 
     result.append(model_def)
 

@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarAcidConsistType2",
         base_numeric_id=32810,
         gen=2,
@@ -16,11 +16,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarAcidConsistType2",
         base_numeric_id=32830,
         gen=3,
@@ -29,13 +29,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_ng_sparse_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarAcidConsistType2",
         base_numeric_id=17570,
         gen=3,
@@ -44,7 +44,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_ng_sparse_24px"
     )
 
@@ -52,7 +52,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarAcidConsistType2",
         base_numeric_id=25780,
         gen=2,
@@ -61,13 +61,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_filled_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarAcidConsistType2",
         base_numeric_id=27850,
         gen=3,
@@ -75,13 +75,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="3_axle_filled_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarAcidConsistType2",
         base_numeric_id=25800,
         gen=3,
@@ -89,13 +89,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_gapped_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarAcidConsistType2",
         base_numeric_id=19270,
         gen=4,
@@ -103,13 +103,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarAcidConsistType2",
         base_numeric_id=19290,
         gen=4,
@@ -117,13 +117,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_greebled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarAcidConsistType2",
         base_numeric_id=19310,
         gen=4,
@@ -131,13 +131,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_gapped_greebled_alt_32px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarAcidConsistType2",
         base_numeric_id=19330,
         gen=5,
@@ -145,13 +145,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_greebled_alt_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarAcidConsistType2",
         base_numeric_id=19350,
         gen=5,
@@ -159,13 +159,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_greebled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TankCarAcidConsistType2",
         base_numeric_id=19370,
         gen=5,
@@ -173,7 +173,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_gapped_greebled_alt_32px"
     )
 

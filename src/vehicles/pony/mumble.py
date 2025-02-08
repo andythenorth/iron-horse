@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="PassengerEngineRailbusConsist",
         id="mumble",
         base_numeric_id=830,
@@ -21,7 +21,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="DieselRailcarCombineUnitMail",
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
@@ -29,7 +29,7 @@ def main(**kwargs):
         tail_light="railcar_20px_1",
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=18,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height

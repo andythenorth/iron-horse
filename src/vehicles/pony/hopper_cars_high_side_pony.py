@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarHighSideConsist",
         base_numeric_id=19750,
         gen=1,
@@ -15,11 +15,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarHighSideConsist",
         base_numeric_id=19770,
         gen=3,
@@ -28,11 +28,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarHighSideConsist",
         base_numeric_id=19790,
         gen=3,
@@ -41,14 +41,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
     # also just type A for gen 1, 2 and 3
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarHighSideConsist",
         base_numeric_id=19570,
         gen=1,
@@ -56,7 +56,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_16px"
     )
 
@@ -64,7 +64,7 @@ def main(**kwargs):
 
     # gen 1A also covers gen 2
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarHighSideConsist",
         base_numeric_id=19590,
         gen=2,
@@ -72,13 +72,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_gapped_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarHighSideConsist",
         base_numeric_id=19610,
         gen=3,
@@ -86,13 +86,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarHighSideConsist",
         base_numeric_id=19630,
         gen=3,
@@ -100,13 +100,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarHighSideConsist",
         base_numeric_id=19650,
         gen=4,
@@ -114,13 +114,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarHighSideConsist",
         base_numeric_id=19670,
         gen=4,
@@ -128,13 +128,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarHighSideConsist",
         base_numeric_id=19690,
         gen=5,
@@ -142,13 +142,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_filled_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarHighSideConsist",
         base_numeric_id=19710,
         gen=5,
@@ -156,13 +156,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_greebled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="HopperCarHighSideConsist",
         base_numeric_id=19730,
         gen=5,
@@ -170,7 +170,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_gapped_greebled_32px"
     )
 

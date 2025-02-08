@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="EngineConsist",
         id="lynx",
         base_numeric_id=26810,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="DieselEngineUnit", weight=72, vehicle_length=6, spriterow_num=0
     )
 
@@ -39,7 +39,7 @@ def main(**kwargs):
     )
 
     # this is a JFDI thing, the Lynx 2-unit version needs a reversed sprite, but the buy menu compositor does not support that as of Jan 2024, so hax
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="DieselEngineUnit", weight=72, vehicle_length=6, spriterow_num=1
     )
 

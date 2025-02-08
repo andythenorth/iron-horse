@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 # skeiron does not have pax capacity, so it can be used for pure mail consists
 
@@ -6,7 +6,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TGVCabEngineConsist",
         id="skeiron_cab",
         base_numeric_id=25120,
@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="ElectricEngineUnit",
         weight=54,
         spriterow_num=0,

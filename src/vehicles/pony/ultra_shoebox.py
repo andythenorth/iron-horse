@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="EngineConsist",
         id="ultra_shoebox",
         base_numeric_id=21340,
@@ -32,7 +32,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # banger blue, yellow? - unused banger blue from Super Shoebox also?  Freightliner swoosh?
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="ElectroDieselEngineUnit",
         weight=84,
         vehicle_length=8,

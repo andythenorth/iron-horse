@@ -36,6 +36,105 @@ import iron_horse
 import spritelayer_cargos
 
 
+class UnitDef(object):
+    """Simple wrapper obj to unpack/default required kwargs (the rest are arbitrary)"""
+
+    def __init__(self, class_name, repeat=1, **kwargs):
+        self.class_name = class_name
+        self.repeat = repeat
+        self.kwargs = kwargs
+
+
+class ModelDef(object):
+
+    def __init__(self, class_name, **kwargs):
+        self.class_name = class_name
+        self.kwargs = kwargs
+        self.units = []
+        # used for clone book-keeping
+        self.cloned_from_model_def = None
+        self.clones = []
+
+    def add_unit(self, **kwargs):
+        self.units.append(UnitDef(**kwargs))
+
+    def define_description(self, description):
+        # note we store in kwargs, as the 'recipe' for the consist
+        self.kwargs["description"] = description
+
+    def define_foamer_facts(self, foamer_facts):
+        # note we store in kwargs, as the 'recipe' for the consist
+        self.kwargs["foamer_facts"] = foamer_facts
+
+    def begin_clone(self, base_numeric_id, unit_repeats, **kwargs):
+        if self.cloned_from_model_def is not None:
+            # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
+            raise Exception(
+                "Don't clone a consist factory that is itself a clone, it won't work as expected. \nClone the original consist factory. \nConsist is: "
+                + self.kwargs["id"]
+            )
+        cloned_model_def = copy.deepcopy(self)
+        # cloned consist factory may need to reference original source
+        cloned_model_def.cloned_from_model_def = self
+        # keep a reference locally for book-keeping
+        self.clones.append(cloned_model_def)
+        # deepcopy will have created new unit factory instances, but we might want to modify the sequence for the cloned consist factory
+        # the format is unit_repeats=[x, y z]
+        # for each existing unit factory, this will specify which unit factories to copy, and what their repeat values are
+        # e.g. [1, 0] will keep the first and drop the second
+        # [2, 1] will repeat the first unit twice
+        # [0, 2] will drop the first unit and repeat the second twice
+        units_old = cloned_model_def.units.copy()
+        cloned_model_def.units = []  # clear, we'll rebuild from clean
+        for counter, unit in enumerate(units_old):
+            # don't use unit if repeat is 0
+            if unit_repeats[counter] > 0:
+                cloned_model_def.units.append(unit)
+                unit.repeat = unit_repeats[counter]
+
+        cloned_model_def.kwargs["base_numeric_id"] = base_numeric_id
+        # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
+        cloned_model_def.kwargs["id"] = (
+            self.kwargs["id"] + "_clone_" + str(len(self.clones))
+        )
+        cloned_model_def.kwargs["buyable_variant_group_id"] = self.kwargs["id"]
+        return cloned_model_def
+
+    def complete_clone(self):
+        # book-keeping and adjustments after all changes are made to a cloned consist factory
+        self.kwargs["power_by_power_source"] = self.clone_adjust_power_by_power_source()
+        # purchase menu variant decor isn't supported if the consist is articulated, so just forcibly clear this property
+        if self.produced_unit_total > 1:
+            self.kwargs["show_decor_in_purchase_for_variants"] = []
+
+    @property
+    def clone_stats_adjustment_factor(self):
+        # clones need to adjust some stats, e.g. power, running_cost etc, we do this by inferring a multiple by comparing number of units that will be produced
+        # call on clone, not source, will except (correctly) if called on source
+        try:
+            source_unit_count = self.cloned_from_model_def.produced_unit_total
+        except:
+            raise Exception("source_unit_count failed" + str(self.kwargs))
+        clone_unit_count = self.produced_unit_total
+        result = clone_unit_count / source_unit_count
+        return result
+
+    def clone_adjust_power_by_power_source(self):
+        # recalculate power in 'recipe' for a cloned consist factory
+        result = {}
+        for (
+            power_type,
+            power_value,
+        ) in self.kwargs["power_by_power_source"].items():
+            result[power_type] = int(power_value * self.clone_stats_adjustment_factor)
+        return result
+
+    @property
+    def produced_unit_total(self):
+        # convenience way to find out how many units in total this model def will produce
+        return sum(unit.repeat for unit in self.units)
+
+
 class ModelTypeFactory(object):
     """
     ModelTypeFactory instances:
@@ -64,16 +163,15 @@ class ModelTypeFactory(object):
             - model_variant.units = [<SteamEngineUnitType>, <SteamEngineTenderUnitType>]
     """
 
-    def __init__(self, class_name, **kwargs):
-        self.class_name = class_name
+    def __init__(self, model_def):
+        self.class_name = model_def.class_name
+        self.model_def = model_def
         # we store kwargs for reuse later, seems to be a factory pattern convention to just store them as 'kwargs' and not 'recipe' or something
-        self.kwargs = kwargs
-        self.unit_factories = []
-        # used for clone book-keeping
-        self.cloned_from_consist_factory = None
-        self.clones = []
+        self.kwargs = model_def.kwargs
         # used for book-keeping related consists, does not define consists in roster
         self.produced_consists = []
+        # !! CABBAGE
+        self.cloned_from_model_def = None
 
     def set_roster_ids(self, roster_id, roster_id_providing_module):
         # rosters can optionally init consist factories from other rosters
@@ -81,21 +179,6 @@ class ModelTypeFactory(object):
         # we don't store the roster object directly as it can fail to pickle with multiprocessing
         self.roster_id = roster_id
         self.roster_id_providing_module = roster_id_providing_module
-
-    def define_unit(self, class_name, **kwargs):
-        # named define_unit, not add_unit_factory, as the unit factory is an internal implemenation detail
-        # units will be made by unit factory instances (implementation detail of consist factory)
-        self.unit_factories.append(
-            UnitTypeFactory(model_type_factory=self, class_name=class_name, **kwargs)
-        )
-
-    def define_description(self, description):
-        # note we store in kwargs, as the 'recipe' for the consist
-        self.kwargs["description"] = description
-
-    def define_foamer_facts(self, foamer_facts):
-        # note we store in kwargs, as the 'recipe' for the consist
-        self.kwargs["foamer_facts"] = foamer_facts
 
     def produce(self, livery=None):
         if livery == None:
@@ -106,18 +189,27 @@ class ModelTypeFactory(object):
         consist_cls = getattr(sys.modules[__name__], self.class_name)
         consist = consist_cls(model_type_factory=self, **self.kwargs)
 
+        """
         if hasattr(consist_cls, "liveries"):
             print(consist_cls, len(consist_cls.liveries))
         if self.kwargs.get("additional_liveries", None) != None:
             print(consist_cls, self.kwargs["additional_liveries"])
+        """
 
         # orchestrate addition of units
-        for unit_factory in self.unit_factories:
+        for unit in self.model_def.units:
+            try:
+                unit_cls = getattr(sys.modules[__name__], unit.class_name)
+            except:
+                raise Exception(
+                    "class_name not found for "
+                    + self.model_def.kwargs["id"]
+                    + ", "
+                    + unit.class_name
+                )
             # CABBAGE - this is delegating to consist currently, by passing unit classes, we want to pass actual units from here, consist knows too much
-            unit_cls = (
-                unit_factory.produce()
-            )  # !! might need consist passing?  For IDs etc, again consist knows too much currently
-            consist.add_unit(unit_cls, **unit_factory.kwargs)
+            # print(unit_cls, unit)
+            consist.add_unit(unit_cls, unit.repeat, **unit.kwargs)
 
         self.produced_consists.append(consist)
         return consist
@@ -144,104 +236,6 @@ class ModelTypeFactory(object):
         substrings.append(str(kwargs["gen"]) + str(kwargs["subtype"]))
         result = "_".join(substrings)
         return result
-
-    @property
-    def produced_unit_total(self):
-        # convenience way to find out how many units will be produced by unit factories
-        return sum(
-            unit_factory.kwargs["repeat"] for unit_factory in self.unit_factories
-        )
-
-    def begin_clone(self, base_numeric_id, unit_repeats, **kwargs):
-        if self.cloned_from_consist_factory is not None:
-            # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
-            raise Exception(
-                "Don't clone a consist factory that is itself a clone, it won't work as expected. \nClone the original consist factory. \nConsist is: "
-                + self.kwargs["id"]
-            )
-        cloned_consist_factory = copy.deepcopy(self)
-        # cloned consist factory may need to reference original source
-        cloned_consist_factory.cloned_from_consist_factory = self
-        # keep a reference locally for book-keeping
-        self.clones.append(cloned_consist_factory)
-        # deepcopy will have created new unit factory instances, but we might want to modify the sequence for the cloned consist factory
-        # the format is unit_repeats=[x, y z]
-        # for each existing unit factory, this will specify which unit factories to copy, and what their repeat values are
-        # e.g. [1, 0] will keep the first and drop the second
-        # [2, 1] will repeat the first unit twice
-        # [0, 2] will drop the first unit and repeat the second twice
-        unit_factories_old = cloned_consist_factory.unit_factories.copy()
-        cloned_consist_factory.unit_factories = []  # clear, we'll rebuild from clean
-        for counter, unit_factory in enumerate(unit_factories_old):
-            # don't use unit_factory if repeat is 0
-            if unit_repeats[counter] > 0:
-                cloned_consist_factory.unit_factories.append(unit_factory)
-                unit_factory.kwargs["repeat"] = unit_repeats[counter]
-
-        cloned_consist_factory.kwargs["base_numeric_id"] = base_numeric_id
-        # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
-        cloned_consist_factory.kwargs["id"] = (
-            self.kwargs["id"] + "_clone_" + str(len(self.clones))
-        )
-        cloned_consist_factory.kwargs["buyable_variant_group_id"] = self.kwargs["id"]
-        return cloned_consist_factory
-
-    def complete_clone(self):
-        # book-keeping and adjustments after all changes are made to a cloned consist factory
-        self.kwargs["power_by_power_source"] = self.clone_adjust_power_by_power_source()
-        # purchase menu variant decor isn't supported if the consist is articulated, so just forcibly clear this property
-        if self.produced_unit_total > 1:
-            self.kwargs["show_decor_in_purchase_for_variants"] = []
-
-    @property
-    def clone_stats_adjustment_factor(self):
-        # clones need to adjust some stats, e.g. power, running_cost etc, we do this by inferring a multiple by comparing number of units that will be produced
-        # call on clone, not source, will except (correctly) if called on source
-        try:
-            source_unit_count = self.cloned_from_consist_factory.produced_unit_total
-        except:
-            raise Exception(self.kwargs)
-        clone_unit_count = self.produced_unit_total
-        result = clone_unit_count / source_unit_count
-        return result
-
-    def clone_adjust_power_by_power_source(self):
-        # recalculate power in 'recipe' for a cloned consist factory
-        result = {}
-        for (
-            power_type,
-            power_value,
-        ) in self.kwargs["power_by_power_source"].items():
-            result[power_type] = int(power_value * self.clone_stats_adjustment_factor)
-        return result
-
-
-class UnitTypeFactory(object):
-    """
-    Helper for ModelTypeFactory:
-    - Generates UnitType instances for vehicle parts from a stored recipe.
-    - Produces the required instance(s) for each part (supports repeats).
-    - Encapsulates configuration parameters for the UnitType.
-    """
-
-    def __init__(self, model_type_factory, class_name, **kwargs):
-        self.model_type_factory = model_type_factory
-        self.class_name = class_name
-        self.kwargs = kwargs
-        # where useful, set defaults for values that are otherwise optional
-        if "repeat" not in self.kwargs:
-            self.kwargs["repeat"] = 1
-
-    def produce(self):
-        # CABBAGE, THIS CURRENTLY RETURNS unit_cls, as the consist handles unit instance creation; that needs changing, this should return unit instances
-        # should it actually return a list using repeat, or should that be orchestrated by the ModelTypeFactory, when appending?
-        try:
-            unit_cls = getattr(sys.modules[__name__], self.class_name)
-        except:
-            raise Exception(
-                "class_name not found for " + self.model_type_factory.kwargs["id"]
-            )
-        return unit_cls
 
 
 class Consist(object):
@@ -391,6 +385,11 @@ class Consist(object):
         # just a pass through for convenience
         return self.model_type_factory.roster_id_providing_module
 
+    @property
+    def is_clone(self):
+        # convenience boolean to avoid checking implementation details of cloning in callers
+        return self.model_type_factory.model_def.cloned_from_model_def is not None
+
     def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed
         # the basic form of buyable variants is driven by liveries
@@ -398,12 +397,11 @@ class Consist(object):
             # we don't need to know the actual livery here, we rely on matching them up later by indexes, which is fine
             self.buyable_variants.append(BuyableVariant(self, livery=livery))
 
-    def add_unit(self, class_name, repeat=1, **kwargs):
+    def add_unit(self, unit_cls, repeat=1, **kwargs):
         # we have add_unit create the variants when needed, which means we avoid sequencing problems with gestalt_graphics initialisation
         if len(self.buyable_variants) == 0:
             self.resolve_buyable_variants()
         # now add the units
-        unit_cls = class_name
         unit = unit_cls(consist=self, **kwargs)
         for repeat_num in range(repeat):
             self.units.append(unit)
@@ -762,7 +760,7 @@ class Consist(object):
                 (consist.base_track_type_name == self.base_track_type_name)
                 and (consist.gen == self.gen)
                 and (consist != self)
-                and (consist.model_type_factory.cloned_from_consist_factory is None)
+                and (consist.model_type_factory.model_def.cloned_from_model_def is None)
                 and (getattr(consist, "cab_id", None) is None)
             ):
                 if (
@@ -1127,10 +1125,10 @@ class Consist(object):
             )
         else:
             # handle cloned cases by referring to the original consist factory for the path
-            if self.model_type_factory.cloned_from_consist_factory is not None:
+            if self.is_clone:
                 # this will get a default consist from the source factory, mapping this consist to the source spritesheet
                 input_spritesheet_name_stem = (
-                    self.model_type_factory.cloned_from_consist_factory.kwargs["id"]
+                    self.model_type_factory.model_def.cloned_from_model_def.kwargs["id"]
                 )
             else:
                 input_spritesheet_name_stem = self.id
@@ -1543,9 +1541,9 @@ class EngineConsist(Consist):
     def buy_cost(self):
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
-        if self.model_type_factory.cloned_from_consist_factory is not None:
+        if self.model_type_factory.cloned_from_model_def is not None:
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
-            temp_consist = self.model_type_factory.cloned_from_consist_factory.produce()
+            temp_consist = self.model_type_factory.cloned_from_model_def.produce()
             return int(
                 temp_consist.buy_cost
                 * self.model_type_factory.clone_stats_adjustment_factor
@@ -1587,9 +1585,9 @@ class EngineConsist(Consist):
 
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
-        if self.model_type_factory.cloned_from_consist_factory is not None:
+        if self.model_type_factory.cloned_from_model_def is not None:
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
-            temp_consist = self.model_type_factory.cloned_from_consist_factory.produce()
+            temp_consist = self.model_type_factory.cloned_from_model_def.produce()
             return int(
                 temp_consist.running_cost
                 * self.model_type_factory.clone_stats_adjustment_factor
@@ -1656,7 +1654,7 @@ class EngineConsist(Consist):
     def joker(self):
         # jokers are bonus vehicles (mostly) engines which are excluded from simplified game mode
         # all clones are automatically jokers and excluded
-        if self.model_type_factory.cloned_from_consist_factory is not None:
+        if self.is_clone:
             return True
         # for engines, jokers use -ve value for subrole_child_branch_num, tech tree vehicles use +ve
         return self.subrole_child_branch_num < 0

@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="MailEngineCabbageDVTConsist",
         id="driving_cab_mail_pony_gen_5",
         base_numeric_id=19970,
@@ -15,7 +15,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="CabbageDVTUnit", weight=32, chassis="railcar_32px"
     )
 

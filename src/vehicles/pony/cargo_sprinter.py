@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 # implemented as dual headed, it really is just the nicer way to build these units (esp. when adding container wagons)
 
@@ -8,7 +8,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="MailEngineCargoSprinterEngineConsist",
         id="cargo_sprinter",
         base_numeric_id=25840,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="DieselRailcarMailUnit",
         weight=32,
         spriterow_num=0,

@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TGVMiddlePassengerEngineConsist",
         id="alize_middle_passenger",
         base_numeric_id=350,
@@ -19,7 +19,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="ElectricHighSpeedPaxUnit",
         weight=42,
         spriterow_num=0,

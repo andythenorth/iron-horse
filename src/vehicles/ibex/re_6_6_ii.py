@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="EngineConsist",
         id="re_6_6_ii",
         base_numeric_id=50,
@@ -21,10 +21,10 @@ def main(**kwargs):
     )
 
     # !! Re 6/6 is only 63ft IRL, so 8/8, but that's weird because 10k HP in 8/8 is weird, so lengthen and articulate
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="ElectricEngineUnit", weight=75, vehicle_length=5, spriterow_num=0
     )
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="ElectricEngineUnit", weight=75, vehicle_length=5, spriterow_num=1
     )
 

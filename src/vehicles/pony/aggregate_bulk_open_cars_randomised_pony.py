@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     """
 
-    model_def =ModelTypeFactory(
+    model_def =ModelDef(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34810,
         gen=2,
@@ -15,12 +15,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
 
-    model_def =ModelTypeFactory(
+    model_def =ModelDef(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34300,
         gen=3,
@@ -28,12 +28,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
 
-    model_def =ModelTypeFactory(
+    model_def =ModelDef(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34460,
         gen=3,
@@ -41,12 +41,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
 
-    model_def =ModelTypeFactory(
+    model_def =ModelDef(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34270,
         gen=4,
@@ -54,12 +54,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
 
-    model_def =ModelTypeFactory(
+    model_def =ModelDef(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34440,
         gen=4,
@@ -67,12 +67,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
 
-    model_def =ModelTypeFactory(
+    model_def =ModelDef(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=34250,
         gen=4,
@@ -80,7 +80,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar",
         chassis="empty_32px",
     )
@@ -88,7 +88,7 @@ def main(**kwargs):
     result.append(model_def)
     """
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=32040,
         gen=5,
@@ -96,11 +96,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarAggregateRandomisedConsist",
         base_numeric_id=32050,
         gen=5,
@@ -108,7 +108,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_32px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_32px")
 
     result.append(model_def)
 

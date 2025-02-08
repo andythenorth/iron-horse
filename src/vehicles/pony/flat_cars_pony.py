@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=21210,
         gen=1,
@@ -15,13 +15,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
     # no gen 2 for NG, straight to gen 3
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=21170,
         gen=3,
@@ -30,11 +30,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=21180,
         gen=3,
@@ -43,13 +43,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=30460,
         gen=1,
@@ -57,7 +57,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_filled_16px"
     )
 
@@ -65,7 +65,7 @@ def main(**kwargs):
 
     # no gen 2A, gen 1A continues in pony
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=21190,
         gen=2,
@@ -73,13 +73,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="3_axle_gapped_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=21390,
         gen=3,
@@ -87,13 +87,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_filled_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=21200,
         gen=3,
@@ -101,13 +101,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_gapped_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=21590,
         gen=3,
@@ -115,13 +115,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_gapped_32px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=21600,
         gen=4,
@@ -129,13 +129,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_filled_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=21580,
         gen=4,
@@ -143,13 +143,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_filled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=21570,
         gen=4,
@@ -157,13 +157,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_gapped_32px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=21560,
         gen=5,
@@ -171,13 +171,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_1cc_filled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="FlatCarConsist",
         base_numeric_id=21550,
         gen=5,
@@ -185,7 +185,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_1cc_filled_32px"
     )
 

@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarMineralConsist",
         base_numeric_id=18690,
         gen=1,
@@ -15,11 +15,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarMineralConsist",
         base_numeric_id=18710,
         gen=3,
@@ -28,11 +28,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarMineralConsist",
         base_numeric_id=18730,
         gen=3,
@@ -41,13 +41,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="4_axle_ng_24px")
 
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarMineralConsist",
         base_numeric_id=18750,
         gen=1,
@@ -55,7 +55,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_filled_16px"
     )
 
@@ -63,7 +63,7 @@ def main(**kwargs):
 
     # gen 1 also covers gen 2
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarMineralConsist",
         base_numeric_id=18770,
         gen=3,
@@ -71,13 +71,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_filled_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarMineralConsist",
         base_numeric_id=18790,
         gen=3,
@@ -85,13 +85,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_filled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarMineralConsist",
         base_numeric_id=18810,
         gen=4,
@@ -99,13 +99,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarMineralConsist",
         base_numeric_id=18830,
         gen=4,
@@ -113,13 +113,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarMineralConsist",
         base_numeric_id=18850,
         gen=5,
@@ -127,13 +127,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_greebled_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarMineralConsist",
         base_numeric_id=18870,
         gen=5,
@@ -141,13 +141,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="2_axle_gapped_greebled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BulkOpenCarMineralConsist",
         base_numeric_id=18890,
         gen=5,
@@ -155,7 +155,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_gapped_greebled_32px"
     )
 

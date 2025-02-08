@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarRandomisedConsist",
         base_numeric_id=31330,
         gen=3,
@@ -15,11 +15,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarRandomisedConsist",
         base_numeric_id=31340,
         gen=3,
@@ -28,13 +28,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarRandomisedConsist",
         base_numeric_id=16680,
         gen=4,
@@ -42,11 +42,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarRandomisedConsist",
         base_numeric_id=16690,
         gen=4,
@@ -54,11 +54,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarRandomisedConsist",
         base_numeric_id=16700,
         gen=4,
@@ -66,7 +66,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="empty_32px",
@@ -74,7 +74,7 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarRandomisedConsist",
         base_numeric_id=16710,
         gen=5,
@@ -82,11 +82,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="BoxCarRandomisedConsist",
         base_numeric_id=16720,
         gen=5,
@@ -94,7 +94,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="FreightCar", chassis="empty_32px")
+    model_def.add_unit(class_name="FreightCar", chassis="empty_32px")
 
     result.append(model_def)
 

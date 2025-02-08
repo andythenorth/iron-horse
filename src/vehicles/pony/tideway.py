@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="MailEngineMetroConsist",
         id="tideway",
         base_numeric_id=2200,
@@ -18,7 +18,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="MetroUnit",
         weight=29,
         # set capacity for freight; mail will be automatically calculated

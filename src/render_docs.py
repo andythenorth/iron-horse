@@ -344,7 +344,7 @@ def main():
     consists = [
         consist
         for consist in roster.consists_in_buy_menu_order
-        if consist.model_type_factory.cloned_from_consist_factory == None
+        if consist.is_clone == False
     ]
     # default sort for docs is by intro year
     consists = sorted(consists, key=lambda consist: consist.intro_year)

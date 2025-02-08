@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 # !! based on MittelThurgauBahn MThB Re486 of 2000 - sold to SBB Cargo Re481, see also DB cargo 145
 # !! actually a predecessor of Traxx
@@ -7,7 +7,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="EngineConsist",
         id="mthb_re_486",
         base_numeric_id=34750,
@@ -31,7 +31,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="ElectricEngineUnit", weight=105, vehicle_length=8, spriterow_num=0
     )
 

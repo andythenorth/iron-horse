@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="EngineConsist",
         id="streamer",
         base_numeric_id=4840,
@@ -28,7 +28,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="SteamEngineUnit",
         weight=111,
         vehicle_length=8,
@@ -36,7 +36,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="SteamEngineTenderUnit", weight=39, vehicle_length=4, spriterow_num=1
     )
 

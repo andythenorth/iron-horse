@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="IngotCarConsist",
         base_numeric_id=5150,
         gen=1,
@@ -16,13 +16,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
+    model_def.add_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
 
     result.append(model_def)
 
     # --------------- pony -------------------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="IngotCarConsist",
         base_numeric_id=80,
         gen=1,
@@ -31,11 +31,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
+    model_def.add_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="IngotCarConsist",
         base_numeric_id=60,
         gen=4,
@@ -44,7 +44,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
+    model_def.add_unit(class_name="IngotCar", chassis="empty_8px", repeat=2)
 
     result.append(model_def)
 

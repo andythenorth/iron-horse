@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="SlidingRoofCarConsistHiCube",
         base_numeric_id=30730,
         gen=5,
@@ -14,13 +14,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_filled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="SlidingRoofCarConsistHiCube",
         base_numeric_id=18520,
         gen=5,
@@ -28,13 +28,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar", chassis="4_axle_filled_32px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="SlidingRoofCarConsistHiCube",
         base_numeric_id=840,
         gen=5,
@@ -42,14 +42,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar",
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
         spriterow_num=0,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="FreightCar",
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",

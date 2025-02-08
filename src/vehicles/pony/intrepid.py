@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="EngineConsist",
         id="intrepid",
         base_numeric_id=21520,
@@ -28,7 +28,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # triple grey railfreight?
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="DieselEngineUnit",
         weight=100,  # bonus over Wyvern, less than IRL as HP is nerfed
         vehicle_length=8,

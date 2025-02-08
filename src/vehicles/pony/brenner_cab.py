@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 # pax capacity on these limits use for 100% mail consists - use the Skeiron for that?
 
@@ -6,7 +6,7 @@ from train import ModelTypeFactory
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="TGVCabEngineConsist",
         id="brenner_cab",
         base_numeric_id=17090,
@@ -23,7 +23,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="ElectricEngineUnit",
         weight=52,
         capacity=24,

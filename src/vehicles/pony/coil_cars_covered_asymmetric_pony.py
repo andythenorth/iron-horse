@@ -1,4 +1,4 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
     # start gen 4
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="CoilCarCoveredAsymmetricConsist",
         base_numeric_id=23320,
         gen=4,
@@ -15,13 +15,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="CoilCarAsymmetric", chassis="4_axle_filled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="CoilCarCoveredAsymmetricConsist",
         base_numeric_id=23330,
         gen=4,
@@ -29,13 +29,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="CoilCarAsymmetric", chassis="4_axle_filled_32px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="CoilCarCoveredAsymmetricConsist",
         base_numeric_id=23340,
         gen=5,
@@ -43,13 +43,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="CoilCarAsymmetric", chassis="4_axle_1cc_filled_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="CoilCarCoveredAsymmetricConsist",
         base_numeric_id=23350,
         gen=5,
@@ -57,7 +57,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="CoilCarAsymmetric", chassis="4_axle_1cc_filled_32px"
     )
 

@@ -1,10 +1,10 @@
-from train import ModelTypeFactory
+from train import ModelDef
 
 
 def main(**kwargs):
     result = []
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="PassengerEngineRailbusConsist",
         id="zipper",
         base_numeric_id=260,
@@ -21,14 +21,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="DieselRailcarCombineUnitMail",
         weight=21,
         chassis="railbus_lwb_20px",
         tail_light="railcar_20px_1",
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name="DieselRailcarCombineUnitPax",
         weight=21,
         chassis="railbus_lwb_20px",

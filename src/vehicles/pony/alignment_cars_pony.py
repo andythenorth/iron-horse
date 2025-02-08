@@ -1,4 +1,4 @@
-from train import ModelTypeFactory, AlignmentCar
+from train import ModelDef, AlignmentCar
 
 
 def main(**kwargs):
@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- standard gauge ---------------------------------------------------------------
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="AlignmentCarConsist",
         base_numeric_id=9060,
         gen=1,
@@ -14,13 +14,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name=AlignmentCar, vehicle_length=4, chassis="2_axle_solid_express_16px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="AlignmentCarConsist",
         base_numeric_id=9070,
         gen=1,
@@ -28,13 +28,13 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name=AlignmentCar, vehicle_length=6, chassis="4_axle_solid_express_24px"
     )
 
     result.append(model_def)
 
-    model_def = ModelTypeFactory(
+    model_def = ModelDef(
         class_name="AlignmentCarConsist",
         base_numeric_id=9080,
         gen=1,
@@ -42,7 +42,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.define_unit(
+    model_def.add_unit(
         class_name=AlignmentCar, vehicle_length=8, chassis="4_axle_solid_express_32px"
     )
 
