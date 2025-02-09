@@ -217,9 +217,9 @@ class ModelTypeFactory(object):
 
         consist_cls = getattr(sys.modules[__name__], self.class_name)
 
-        print(self.base_id_resolver(consist_cls))
+        CABBAGE_KWARGS = {k: v for k, v in self.model_def.kwargs.items() if k != "id"}
 
-        consist = consist_cls(model_type_factory=self, **self.model_def.kwargs)
+        consist = consist_cls(model_type_factory=self, id=self.base_id_resolver(consist_cls), **CABBAGE_KWARGS)
 
         """
         for counter, livery in enumerate(["example", "cabbage_livery"]):
@@ -2462,10 +2462,6 @@ class CarConsist(Consist):
     # base_id = '' # provide in subclass
 
     def __init__(self, speedy=False, **kwargs):
-        # we can't called super yet, because we need the id
-        # but we need to call the consist factory to get the id, so duplicate the assignment here (Consist will also set it)
-        # CABBAGE model_def?
-        kwargs["id"] = kwargs["model_type_factory"].get_wagon_id(self.model_type_id_stem, kwargs["model_type_factory"].model_def)
         super().__init__(**kwargs)
         self.roster.register_wagon_consist(self)
 
