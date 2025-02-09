@@ -76,6 +76,10 @@ class ModelDef(object):
         self.gen = kwargs["gen"]
         # CABBAGE - need to port ModelDef instance params to base_id, not id
         self.base_id = kwargs.get("base_id", None)
+        # CABBAGE
+        self.base_track_type_name = kwargs.get("base_track_type_name", None)
+        self.subtype = kwargs.get("subtype", None)
+        self.cab_id = kwargs.get("cab_id", None)
         # CABBAGE SHIM
         if self.base_id is not None:
             self.kwargs["id"] = self.base_id
@@ -264,24 +268,21 @@ class ModelTypeFactory(object):
         # auto id creator, used for wagons not locos
         # handled by consist factory not consist, better this way
         base_id = model_type_id_stem
-        substrings = []
-        # prepend cab_id if present, used for e.g. railcar trailers, HST coaches etc where the wagon matches a specific 'cab' engine
-        if model_def.kwargs.get("cab_id", None) is not None:
-            substrings.append(model_def.kwargs["cab_id"])
         # special case NG - extend this for other track_types as needed
         # 'normal' rail and 'elrail' doesn't require an id modifier
-        if model_def.kwargs.get("base_track_type_name", None) == "NG":
+        if model_def.base_track_type_name == "NG":
             base_id = base_id + "_ng"
-        elif model_def.kwargs.get("base_track_type_name", None) == "METRO":
+        elif model_def.base_track_type_name == "METRO":
             base_id = base_id + "_metro"
-        print(model_type_id_stem, base_id)
+
+        substrings = []
+        # prepend cab_id if present, used for e.g. railcar trailers, HST coaches etc where the wagon matches a specific 'cab' engine
+        if model_def.cab_id is not None:
+            substrings.append(model_def.kwargs["cab_id"])
         substrings.append(base_id)
-        try:
-            substrings.append(self.roster_id)
-        except:
-            raise Exception(base_id + str(model_def.kwargs))
+        substrings.append(self.roster_id)
         substrings.append("gen")
-        substrings.append(str(model_def.kwargs["gen"]) + str(model_def.kwargs["subtype"]))
+        substrings.append(str(model_def.gen) + str(model_def.subtype))
         result = "_".join(substrings)
         return result
 
