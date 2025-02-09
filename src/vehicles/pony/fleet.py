@@ -23,7 +23,7 @@ def main(**kwargs):
     )
 
     # should be 4 short units, not 2 long but eh
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="MetroUnit",
         weight=33,
         capacity=200,

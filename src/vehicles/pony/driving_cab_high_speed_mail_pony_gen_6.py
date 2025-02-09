@@ -15,7 +15,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="CabbageDVTUnit", weight=34, chassis="railcar_32px")
+    model_def.add_unit_def(
+        class_name="CabbageDVTUnit", weight=34, chassis="railcar_32px"
+    )
 
     model_def.define_description(
         """Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Seems to work, so here's a new version."""

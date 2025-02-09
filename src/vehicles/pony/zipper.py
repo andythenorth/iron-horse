@@ -21,14 +21,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="DieselRailcarCombineUnitMail",
         weight=21,
         chassis="railbus_lwb_20px",
         tail_light="railcar_20px_1",
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="DieselRailcarCombineUnitPax",
         weight=21,
         chassis="railbus_lwb_20px",

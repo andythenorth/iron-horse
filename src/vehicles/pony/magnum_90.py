@@ -27,7 +27,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="BatteryHybridEngineUnit",
         weight=90,
         vehicle_length=8,

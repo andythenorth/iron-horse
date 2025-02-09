@@ -28,7 +28,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # triple grey railfreight?
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="DieselEngineUnit",
         weight=100,  # bonus over Wyvern, less than IRL as HP is nerfed
         vehicle_length=8,

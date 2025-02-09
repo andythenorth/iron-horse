@@ -16,9 +16,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="BinCar", chassis="empty_8px")
+    model_def.add_unit_def(class_name="BinCar", chassis="empty_8px")
 
-    model_def.add_unit(class_name="BinCar", chassis="empty_8px")
+    model_def.add_unit_def(class_name="BinCar", chassis="empty_8px")
 
     result.append(model_def)
 

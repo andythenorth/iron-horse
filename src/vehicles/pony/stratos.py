@@ -22,7 +22,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="DieselExpressRailcarPaxUnit",
         weight=50,
         capacity=24,

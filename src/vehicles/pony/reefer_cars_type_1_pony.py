@@ -14,7 +14,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
@@ -30,7 +30,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
@@ -46,7 +46,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="3_axle_solid_express_24px",
@@ -62,7 +62,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_16px",
@@ -78,7 +78,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_24px",
@@ -94,7 +94,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_filled_32px",
@@ -110,7 +110,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_filled_greebled_24px",
@@ -126,7 +126,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ExpressCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_filled_greebled_32px",

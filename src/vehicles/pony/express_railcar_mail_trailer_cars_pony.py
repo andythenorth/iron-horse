@@ -15,7 +15,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="MailRailcarTrailerCar",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",

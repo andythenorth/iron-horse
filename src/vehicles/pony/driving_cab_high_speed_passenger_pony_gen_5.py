@@ -16,7 +16,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="CabControlPaxCarUnit", weight=32, chassis="railcar_32px"
     )
 

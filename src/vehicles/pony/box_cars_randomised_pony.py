@@ -15,7 +15,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit_def(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
@@ -28,7 +28,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit_def(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
@@ -42,7 +42,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="FreightCar", chassis="empty_16px")
+    model_def.add_unit_def(class_name="FreightCar", chassis="empty_16px")
 
     result.append(model_def)
 
@@ -54,7 +54,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit_def(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
@@ -66,7 +66,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="FreightCar",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="empty_32px",
@@ -82,7 +82,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="FreightCar", chassis="empty_24px")
+    model_def.add_unit_def(class_name="FreightCar", chassis="empty_24px")
 
     result.append(model_def)
 
@@ -94,7 +94,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="FreightCar", chassis="empty_32px")
+    model_def.add_unit_def(class_name="FreightCar", chassis="empty_32px")
 
     result.append(model_def)
 

@@ -24,7 +24,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="DieselEngineUnit",
         weight=22,
         vehicle_length=4,
@@ -46,7 +46,7 @@ def main(**kwargs):
     # this is a JFDI thing, the 2-unit version varies sprites per unit position, which is generally supported
     # but the *buy menu* compositor does not support that as of Jan 2024, so hax
     model_def.unit_defs[0].spriterow_num = 1
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="DieselEngineUnit", weight=22, vehicle_length=4, spriterow_num=0
     )
 

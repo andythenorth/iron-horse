@@ -20,7 +20,7 @@ def main(**kwargs):
         intro_year_offset=-5,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="DieselRailcarPaxUnit",
         weight=40,
         chassis="railcar_32px",

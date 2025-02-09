@@ -75,7 +75,7 @@ class ModelDef(object):
         # unpack some keywords
         self.gen = kwargs["gen"]
 
-    def add_unit(self, **kwargs):
+    def add_unit_def(self, **kwargs):
         self.unit_defs.append(UnitDef(**kwargs))
 
     def define_description(self, description):

@@ -28,7 +28,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ElectroDieselEngineUnit",
         weight=105,
         vehicle_length=8,

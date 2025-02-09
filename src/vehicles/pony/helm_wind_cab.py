@@ -22,7 +22,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ElectricEngineUnit",
         weight=76,
         # no pax capacity on Helm Wind cabs

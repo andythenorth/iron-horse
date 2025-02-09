@@ -21,7 +21,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="DieselRailcarPaxUnit",
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height

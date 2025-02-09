@@ -35,7 +35,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # add RfD Euro style triple grey?, Banger blue, but with black windows
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="DieselEngineUnit",
         weight=103,
         vehicle_length=8,

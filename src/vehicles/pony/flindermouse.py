@@ -26,7 +26,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # nightshade / nighthawk?
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ElectricEngineUnit",
         weight=65,
         vehicle_length=6,

@@ -14,11 +14,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.add_unit_def(class_name="TorpedoCar", vehicle_length=3)
 
-    model_def.add_unit(class_name="TorpedoCar", vehicle_length=6)
+    model_def.add_unit_def(class_name="TorpedoCar", vehicle_length=6)
 
-    model_def.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.add_unit_def(class_name="TorpedoCar", vehicle_length=3)
 
     result.append(model_def)
 
@@ -30,11 +30,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.add_unit_def(class_name="TorpedoCar", vehicle_length=3)
 
-    model_def.add_unit(class_name="TorpedoCar", vehicle_length=6)
+    model_def.add_unit_def(class_name="TorpedoCar", vehicle_length=6)
 
-    model_def.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.add_unit_def(class_name="TorpedoCar", vehicle_length=3)
 
     result.append(model_def)
 
@@ -46,11 +46,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.add_unit_def(class_name="TorpedoCar", vehicle_length=3)
 
-    model_def.add_unit(class_name="TorpedoCar", vehicle_length=6)
+    model_def.add_unit_def(class_name="TorpedoCar", vehicle_length=6)
 
-    model_def.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.add_unit_def(class_name="TorpedoCar", vehicle_length=3)
 
     result.append(model_def)
 
@@ -62,11 +62,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.add_unit_def(class_name="TorpedoCar", vehicle_length=3)
 
-    model_def.add_unit(class_name="TorpedoCar", vehicle_length=6)
+    model_def.add_unit_def(class_name="TorpedoCar", vehicle_length=6)
 
-    model_def.add_unit(class_name="TorpedoCar", vehicle_length=3)
+    model_def.add_unit_def(class_name="TorpedoCar", vehicle_length=3)
 
     result.append(model_def)
 

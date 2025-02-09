@@ -69,7 +69,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="CabooseCar", chassis="2_axle_ng_8px")
+    model_def.add_unit_def(class_name="CabooseCar", chassis="2_axle_ng_8px")
 
     result.append(model_def)
 
@@ -85,7 +85,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="CabooseCar", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(class_name="CabooseCar", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
@@ -214,7 +214,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="CabooseCar", chassis="2_axle_caboose_16px")
+    model_def.add_unit_def(class_name="CabooseCar", chassis="2_axle_caboose_16px")
 
     result.append(model_def)
 
@@ -230,7 +230,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(class_name="CabooseCar", chassis="4_axle_caboose_24px")
+    model_def.add_unit_def(class_name="CabooseCar", chassis="4_axle_caboose_24px")
 
     result.append(model_def)
 

@@ -32,7 +32,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,  # banger blue, yellow? - unused banger blue from Super Shoebox also?  Freightliner swoosh?
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ElectroDieselEngineUnit",
         weight=84,
         vehicle_length=8,

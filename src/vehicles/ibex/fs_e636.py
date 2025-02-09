@@ -27,10 +27,10 @@ def main(**kwargs):
 
     # !!! these are only 60 foot long IRL so 2x 4/8 units
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ElectricEngineUnit", weight=105, vehicle_length=4, spriterow_num=0
     )
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ElectricEngineUnit", weight=105, vehicle_length=4, spriterow_num=1
     )
 

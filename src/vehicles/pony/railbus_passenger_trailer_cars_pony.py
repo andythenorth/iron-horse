@@ -17,7 +17,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_ng_24px",
         tail_light="railcar_24px_1",
@@ -36,7 +36,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="PaxRailcarTrailerCar",
         chassis="4_axle_ng_24px",
         tail_light="railcar_24px_1",

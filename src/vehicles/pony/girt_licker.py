@@ -23,11 +23,11 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="SteamEngineUnit", weight=100, vehicle_length=6, spriterow_num=0
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="SteamEngineTenderUnit", weight=45, vehicle_length=4, spriterow_num=1
     )
 

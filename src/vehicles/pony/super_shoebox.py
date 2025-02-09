@@ -35,7 +35,7 @@ def main(**kwargs):
         sprites_additional_liveries_potential=True,
     )
 
-    model_def.add_unit(
+    model_def.add_unit_def(
         class_name="ElectroDieselEngineUnit",
         weight=82,
         vehicle_length=8,
