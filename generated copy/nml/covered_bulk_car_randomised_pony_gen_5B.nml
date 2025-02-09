@@ -1,0 +1,1782 @@
+// buy menu graphics chain
+spriteset(covered_bulk_car_randomised_pony_gen_5B_ss_purchase, "generated/graphics/iron-horse/covered_bulk_car_randomised_pony_gen_5B.png") {
+    spriteset_template_purchase_default(360,10,48,-23,NOANIM)
+}
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                5: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                6: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 4;
+                1: return 4;
+                2: return 4;
+                3: return 4;
+                4: return 4;
+                5: return 4;
+                6: return 4;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                130
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    22
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+                7: 7;
+                8: 8;
+                9: 9;
+                10: 10;
+                11: 11;
+                12: 12;
+                13: 13;
+                14: 14;
+                15: 15;
+                16: 16;
+                17: 17;
+                18: 18;
+                19: 19;
+                20: 20;
+                21: 21;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                5: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                6: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                7: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                8: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                9: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                10: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                11: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                12: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                13: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                14: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                15: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                16: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                17: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                18: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                19: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                20: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                21: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 3;
+                1: return 3;
+                2: return 9;
+                3: return 16;
+                4: return 17;
+                5: return 93;
+                6: return 127;
+                7: return 82;
+                8: return 9;
+                9: return 16;
+                10: return 17;
+                11: return 93;
+                12: return 127;
+                13: return 82;
+                14: return 9;
+                15: return 16;
+                16: return 17;
+                17: return 93;
+                18: return 127;
+                19: return 82;
+                20: return 47;
+                21: return 47;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                43
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    10
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+                7: 7;
+                8: 8;
+                9: 9;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                5: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                6: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                7: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                8: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                9: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 38;
+                1: return 38;
+                2: return 109;
+                3: return 17;
+                4: return 109;
+                5: return 17;
+                6: return 109;
+                7: return 17;
+                8: return 38;
+                9: return 38;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                48
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    13
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+                7: 7;
+                8: 8;
+                9: 9;
+                10: 10;
+                11: 11;
+                12: 12;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                5: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                6: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                7: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                8: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                9: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                10: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                11: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                12: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 124;
+                1: return 124;
+                2: return 17;
+                3: return 93;
+                4: return 127;
+                5: return 17;
+                6: return 93;
+                7: return 127;
+                8: return 17;
+                9: return 93;
+                10: return 127;
+                11: return 124;
+                12: return 124;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                105
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    12
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+                7: 7;
+                8: 8;
+                9: 9;
+                10: 10;
+                11: 11;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                2: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                3: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                5: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                6: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                7: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                8: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                9: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                10: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                11: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 120;
+                1: return 82;
+                2: return 120;
+                3: return 82;
+                4: return 82;
+                5: return 120;
+                6: return 82;
+                7: return 120;
+                8: return 82;
+                9: return 120;
+                10: return 81;
+                11: return 81;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                1
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_5_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_5_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_5_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                5: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                6: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_5_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_5_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 9;
+                1: return 9;
+                2: return 9;
+                3: return 9;
+                4: return 9;
+                5: return 9;
+                6: return 9;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_5_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_5_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_5_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                75
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_6_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_6_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_6_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                5: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                6: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_6_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_6_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 16;
+                1: return 16;
+                2: return 16;
+                3: return 16;
+                4: return 16;
+                5: return 16;
+                6: return 16;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_6_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_6_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_6_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                126
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_7_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_7_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_7_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                5: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                6: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_7_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_7_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 109;
+                1: return 109;
+                2: return 109;
+                3: return 109;
+                4: return 109;
+                5: return 109;
+                6: return 109;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_7_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_7_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_7_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                116
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_8_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_8_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_8_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                5: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                6: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_8_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_8_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 17;
+                1: return 17;
+                2: return 17;
+                3: return 17;
+                4: return 17;
+                5: return 17;
+                6: return 17;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_8_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_8_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_8_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                110
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_9_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_9_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_9_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                5: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                6: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_9_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_9_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 93;
+                1: return 93;
+                2: return 93;
+                3: return 93;
+                4: return 93;
+                5: return 93;
+                6: return 93;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_9_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_9_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_9_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                90
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_10_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_10_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_10_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                5: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                6: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_10_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_10_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 127;
+                1: return 127;
+                2: return 127;
+                3: return 127;
+                4: return 127;
+                5: return 127;
+                6: return 127;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_10_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_10_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_10_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                60
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_11_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_11_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_11_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                5: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                6: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_11_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_11_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 39;
+                1: return 39;
+                2: return 39;
+                3: return 39;
+                4: return 39;
+                5: return 39;
+                6: return 39;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_11_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_11_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_11_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                72
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_12_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_12_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_12_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                5: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                6: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_12_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_12_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 82;
+                1: return 82;
+                2: return 82;
+                3: return 82;
+                4: return 82;
+                5: return 82;
+                6: return 82;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_12_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_12_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_12_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                87
+            );
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_13_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_mixed_train_one_car_type_more_common()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_13_switch_graphics_variant, covered_bulk_car_randomised_pony_gen_5B_variant_13_switch_graphics_variant_choose_randomised_wagon()) {
+                0: salt_covered_hopper_car_pony_gen_5B_switch_graphics;
+                1: salt_swing_roof_hopper_car_pony_gen_5B_switch_graphics;
+                2: lime_covered_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                3: lime_covered_hopper_car_type_2_pony_gen_5B_switch_graphics;
+                4: lime_covered_hopper_car_type_3_pony_gen_5B_switch_graphics;
+                5: roller_roof_hopper_car_type_1_pony_gen_5B_switch_graphics;
+                6: roller_roof_hopper_car_type_2_pony_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_13_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, covered_bulk_car_randomised_pony_gen_5B_variant_13_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 120;
+                1: return 120;
+                2: return 120;
+                3: return 120;
+                4: return 120;
+                5: return 120;
+                6: return 120;
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_13_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(covered_bulk_car_randomised_pony_gen_5B_variant_13_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_13_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                1
+            );
+        }
+switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_graphics, vehicle_type_id) {
+        24880: covered_bulk_car_randomised_pony_gen_5B_switch_graphics_variant;
+        24881: covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_graphics_variant;
+        24882: covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_graphics_variant;
+        24883: covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_graphics_variant;
+        24884: covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_graphics_variant;
+        24885: covered_bulk_car_randomised_pony_gen_5B_variant_5_switch_graphics_variant;
+        24886: covered_bulk_car_randomised_pony_gen_5B_variant_6_switch_graphics_variant;
+        24887: covered_bulk_car_randomised_pony_gen_5B_variant_7_switch_graphics_variant;
+        24888: covered_bulk_car_randomised_pony_gen_5B_variant_8_switch_graphics_variant;
+        24889: covered_bulk_car_randomised_pony_gen_5B_variant_9_switch_graphics_variant;
+        24890: covered_bulk_car_randomised_pony_gen_5B_variant_10_switch_graphics_variant;
+        24891: covered_bulk_car_randomised_pony_gen_5B_variant_11_switch_graphics_variant;
+        24892: covered_bulk_car_randomised_pony_gen_5B_variant_12_switch_graphics_variant;
+        24893: covered_bulk_car_randomised_pony_gen_5B_variant_13_switch_graphics_variant;
+}
+switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase, vehicle_type_id) {
+    covered_bulk_car_randomised_pony_gen_5B_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping, vehicle_type_id) {
+        24880: covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_variant;
+        24881: covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_colour_mapping_variant;
+        24882: covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_colour_mapping_variant;
+        24883: covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_colour_mapping_variant;
+        24884: covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_colour_mapping_variant;
+        24885: covered_bulk_car_randomised_pony_gen_5B_variant_5_switch_colour_mapping_variant;
+        24886: covered_bulk_car_randomised_pony_gen_5B_variant_6_switch_colour_mapping_variant;
+        24887: covered_bulk_car_randomised_pony_gen_5B_variant_7_switch_colour_mapping_variant;
+        24888: covered_bulk_car_randomised_pony_gen_5B_variant_8_switch_colour_mapping_variant;
+        24889: covered_bulk_car_randomised_pony_gen_5B_variant_9_switch_colour_mapping_variant;
+        24890: covered_bulk_car_randomised_pony_gen_5B_variant_10_switch_colour_mapping_variant;
+        24891: covered_bulk_car_randomised_pony_gen_5B_variant_11_switch_colour_mapping_variant;
+        24892: covered_bulk_car_randomised_pony_gen_5B_variant_12_switch_colour_mapping_variant;
+        24893: covered_bulk_car_randomised_pony_gen_5B_variant_13_switch_colour_mapping_variant;
+}
+switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase, vehicle_type_id) {
+        24880: covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_variant_purchase;
+        24881: covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_colour_mapping_variant_purchase;
+        24882: covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_colour_mapping_variant_purchase;
+        24883: covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_colour_mapping_variant_purchase;
+        24884: covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_colour_mapping_variant_purchase;
+        24885: covered_bulk_car_randomised_pony_gen_5B_variant_5_switch_colour_mapping_variant_purchase;
+        24886: covered_bulk_car_randomised_pony_gen_5B_variant_6_switch_colour_mapping_variant_purchase;
+        24887: covered_bulk_car_randomised_pony_gen_5B_variant_7_switch_colour_mapping_variant_purchase;
+        24888: covered_bulk_car_randomised_pony_gen_5B_variant_8_switch_colour_mapping_variant_purchase;
+        24889: covered_bulk_car_randomised_pony_gen_5B_variant_9_switch_colour_mapping_variant_purchase;
+        24890: covered_bulk_car_randomised_pony_gen_5B_variant_10_switch_colour_mapping_variant_purchase;
+        24891: covered_bulk_car_randomised_pony_gen_5B_variant_11_switch_colour_mapping_variant_purchase;
+        24892: covered_bulk_car_randomised_pony_gen_5B_variant_12_switch_colour_mapping_variant_purchase;
+        24893: covered_bulk_car_randomised_pony_gen_5B_variant_13_switch_colour_mapping_variant_purchase;
+}
+switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity,
+        [
+         STORE_TEMP(12, 0),
+         STORE_TEMP(25, 1),
+         STORE_TEMP(36, 2),
+         STORE_TEMP(48, 3),
+         STORE_TEMP(64, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_WAGON_GROUP_COVERED_BULK_CARS_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return covered_bulk_car_randomised_pony_gen_5B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: covered_bulk_car_randomised_pony_gen_5B_switch_name_purchase_level_0;
+    1: covered_bulk_car_randomised_pony_gen_5B_switch_name_purchase_level_1;
+    return covered_bulk_car_randomised_pony_gen_5B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: covered_bulk_car_randomised_pony_gen_5B_switch_name_purchase_extra_bits;
+    return covered_bulk_car_randomised_pony_gen_5B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return covered_bulk_car_randomised_pony_gen_5B_switch_name_default;
+    return covered_bulk_car_randomised_pony_gen_5B_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B, 24880) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                covered_bulk_car_randomised_pony_gen_5B_switch_buy_menu_additional_text;
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B, 24880) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B, 24880) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B, 24880) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_7))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x101
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((switch_get_colour_name(18) | 0xD000) << 16),
+                    0x102
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(21) | 0xD000)
+                    | ((switch_get_colour_name(19) | 0xD000) << 16),
+                    0x103
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_1, 24881) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                covered_bulk_car_randomised_pony_gen_5B_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_1, 24881) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_1, 24881) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_1, 24881) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(25) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(16) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_2, 24882) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                covered_bulk_car_randomised_pony_gen_5B_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_2, 24882) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_2, 24882) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_2, 24882) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_3))
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((switch_get_colour_name(18) | 0xD000) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_3, 24883) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                covered_bulk_car_randomised_pony_gen_5B_variant_3_switch_buy_menu_additional_text;
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_3, 24883) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_3, 24883) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_3, 24883) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(22) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(19) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_4, 24884) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                covered_bulk_car_randomised_pony_gen_5B_variant_4_switch_buy_menu_additional_text;
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_4, 24884) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_4, 24884) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_4, 24884) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_5, 24885) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_5, 24885) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_5, 24885) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_5, 24885) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_6, 24886) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_6, 24886) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_6, 24886) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_6, 24886) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_7, 24887) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_7, 24887) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_7, 24887) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_7, 24887) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_8, 24888) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_8, 24888) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_8, 24888) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_8, 24888) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_9, 24889) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_9, 24889) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_9, 24889) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_9, 24889) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_10, 24890) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_10, 24890) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_10, 24890) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_10, 24890) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_11, 24891) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_11, 24891) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_11, 24891) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_11, 24891) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_12, 24892) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_12, 24892) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_12, 24892) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_12, 24892) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_13, 24893) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  covered_bulk_car_randomised_pony_gen_5B_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        covered_bulk_car_randomised_pony_gen_5B_switch_graphics;
+            purchase:                       covered_bulk_car_randomised_pony_gen_5B_switch_graphics_purchase;
+                name:                           covered_bulk_car_randomised_pony_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        covered_bulk_car_randomised_pony_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        covered_bulk_car_randomised_pony_gen_5B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_13, 24893) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_13, 24893) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, covered_bulk_car_randomised_pony_gen_5B_variant_13, 24893) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

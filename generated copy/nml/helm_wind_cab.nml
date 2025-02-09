@@ -1,0 +1,291 @@
+    spriteset(helm_wind_cab_ss_0, "generated/graphics/iron-horse/helm_wind_cab.png") {
+        spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+    }
+    spriteset(helm_wind_cab_ss_1, "generated/graphics/iron-horse/helm_wind_cab.png") {
+        spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_graphics_livery, vehicle_type_id) {
+        25240: return helm_wind_cab_ss_0;
+        25241: return helm_wind_cab_ss_1;
+}
+        spriteset(helm_wind_cab_ss_pantographs_down, "generated/graphics/iron-horse/helm_wind_cab_pantographs_down.png") {
+            spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+        }
+        spriteset(helm_wind_cab_ss_pantographs_up, "generated/graphics/iron-horse/helm_wind_cab_pantographs_up.png") {
+            spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+        }
+    switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_graphics_pantographs, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC() || tile_powers_track_type_name_LGV_ELECTRIFIED_AC()]) {
+        1: return helm_wind_cab_ss_pantographs_up;
+        return helm_wind_cab_ss_pantographs_down;
+    }
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+        1: return helm_wind_cab_switch_graphics_pantographs;
+    return helm_wind_cab_switch_graphics_livery;
+}
+// buy menu graphics chain
+spriteset(helm_wind_cab_ss_vehicle_purchase_0, "generated/graphics/iron-horse/helm_wind_cab.png") {
+    spriteset_template_purchase_dual_headed(360,10,33,-16,NOANIM)
+}
+spriteset(helm_wind_cab_ss_vehicle_purchase_1, "generated/graphics/iron-horse/helm_wind_cab.png") {
+    spriteset_template_purchase_dual_headed(360,40,33,-16,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_graphics_vehicle_purchase_livery, vehicle_type_id) {
+        25240: return helm_wind_cab_ss_vehicle_purchase_0;
+        25241: return helm_wind_cab_ss_vehicle_purchase_1;
+}
+    spriteset(helm_wind_cab_ss_pantographs_purchase, "generated/graphics/iron-horse/helm_wind_cab_pantographs_down.png") {
+        spriteset_template_purchase_dual_headed(360,10,33,-16,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_graphics_purchase_base,
+        STORE_TEMP(
+                CB_FLAG_MORE_SPRITES |
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+                return helm_wind_cab_switch_graphics_vehicle_purchase_livery;
+    }
+    switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_graphics_purchase_pantographs,
+        STORE_TEMP(
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+                return helm_wind_cab_ss_pantographs_purchase;
+    }
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+        0: return helm_wind_cab_switch_graphics_purchase_base;
+        1: return helm_wind_cab_switch_graphics_purchase_pantographs;
+}
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return helm_wind_cab_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return helm_wind_cab_switch_set_layers_register_more_sprites;
+        1: return helm_wind_cab_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_very_high_speed_32px_1;
+}
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_colour_mapping, vehicle_type_id) {
+                    25240: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    25241: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+}
+        switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_ELECTRIC;
+        }
+        switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_create_effect_default, [STORE_TEMP(create_effect(EFFECT_SPRITE_ELECTRIC,0,0,12), 0x100)]) {
+            return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+        }
+        switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_create_effect_check_railtype, 1) {
+            return helm_wind_cab_switch_create_effect_default;
+        }
+    switch (FEAT_TRAINS, PARENT, helm_wind_cab_switch_speed_by_tile_railtype, [tile_is_railtype("IHAA") || tile_is_railtype("IHBA")]) {
+        1: return 249;
+        return 205;
+    }
+    switch (FEAT_TRAINS, PARENT, helm_wind_cab_switch_speed, [railtype_available("IHAA") && railtype_available("IHBA")]) {
+        1: return helm_wind_cab_switch_speed_by_tile_railtype;
+        return 249;
+    }
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_HELM_WIND_CAB)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_HELM_WIND_CAB)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return helm_wind_cab_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_HELM_WIND_CAB)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: helm_wind_cab_switch_name_purchase_level_0;
+    1: helm_wind_cab_switch_name_purchase_level_1;
+    return helm_wind_cab_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: helm_wind_cab_switch_name_purchase_extra_bits;
+    return helm_wind_cab_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_name, [
+        param_vehicle_availability_engines
+    ]) {
+    1: return helm_wind_cab_switch_name_default;
+    return helm_wind_cab_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, helm_wind_cab_switch_buy_menu_additional_text, [
+            STORE_TEMP(
+                249
+                | (205 << 16),
+                0x100
+            ),
+            STORE_TEMP(
+                (1900 | string(STR_NAME_HELM_WIND_CAB) << 16),
+                0x101
+            )
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR, string(STR_SPEED_BY_RAILTYPE_LGV_CAPABLE), string(STR_WAGONS_ADD_POWER_CAB));
+        }
+    item(FEAT_TRAINS, helm_wind_cab, 25240) {
+        property {
+            name:                           string(STR_NAME_HELM_WIND_CAB);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/ac","ih_variants_cabbage/cabbage_level_0_has_children","role/very_high_speed","special_flags/tilt"];
+                engine_class:                   ENGINE_CLASS_ELECTRIC;
+                introduction_date:              date(1987, 9, 1);
+                power:                          1900hp;
+                weight:                         76ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          128mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_TILT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    1;
+            length:                         8;
+            track_type:                     IHBA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        helm_wind_cab_switch_graphics;
+            purchase:                       helm_wind_cab_switch_graphics_purchase;
+                name:                           helm_wind_cab_switch_name;
+                cost_factor:                    87; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 3371;
+                purchase_running_cost_factor:   3371; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          helm_wind_cab_switch_speed;
+                    purchase_speed:                 205;
+                    additional_text:                helm_wind_cab_switch_buy_menu_additional_text;
+                    colour_mapping:                 helm_wind_cab_switch_colour_mapping;
+                    purchase_colour_mapping:        helm_wind_cab_switch_colour_mapping;
+                effect_spawn_model_and_powered: helm_wind_cab_switch_effect_spawn_model_and_powered;
+                create_effect:      helm_wind_cab_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, helm_wind_cab, 25240) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, helm_wind_cab, 25240) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, helm_wind_cab_variant_1_switch_buy_menu_additional_text, [
+            STORE_TEMP(
+                249
+                | (205 << 16),
+                0x100
+            ),
+            STORE_TEMP(
+                (1900 | string(STR_NAME_HELM_WIND_CAB) << 16),
+                0x101
+            )
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR, string(STR_SPEED_BY_RAILTYPE_LGV_CAPABLE), string(STR_WAGONS_ADD_POWER_CAB));
+        }
+    item(FEAT_TRAINS, helm_wind_cab_variant_1, 25241) {
+        property {
+            name:                           string(STR_NAME_HELM_WIND_CAB);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/ac","ih_variants_cabbage/cabbage_level_0_has_children","role/very_high_speed","special_flags/tilt"];
+                engine_class:                   ENGINE_CLASS_ELECTRIC;
+                introduction_date:              date(1987, 9, 1);
+                power:                          1900hp;
+                weight:                         76ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  helm_wind_cab;
+                speed:                          128mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_TILT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    1;
+            length:                         8;
+            track_type:                     IHBA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        helm_wind_cab_switch_graphics;
+            purchase:                       helm_wind_cab_switch_graphics_purchase;
+                name:                           helm_wind_cab_switch_name;
+                cost_factor:                    87; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 3371;
+                purchase_running_cost_factor:   3371; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          helm_wind_cab_switch_speed;
+                    purchase_speed:                 205;
+                    additional_text:                helm_wind_cab_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 helm_wind_cab_switch_colour_mapping;
+                    purchase_colour_mapping:        helm_wind_cab_switch_colour_mapping;
+                effect_spawn_model_and_powered: helm_wind_cab_switch_effect_spawn_model_and_powered;
+                create_effect:      helm_wind_cab_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, helm_wind_cab_variant_1, 25241) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, helm_wind_cab_variant_1, 25241) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, helm_wind_cab_variant_1, 25241) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

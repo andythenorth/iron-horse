@@ -1,0 +1,1798 @@
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_empty_unweathered, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(10,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_0, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(40,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_0, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(70,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_1, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(100,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_1, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(130,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_2, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(160,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_2, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(190,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_3, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(220,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_3, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(250,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_4, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(280,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_4, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(310,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_5, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(340,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_5, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(370,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_6, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(400,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_6, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(430,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_7, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(460,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_7, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(490,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_8, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(520,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_8, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(550,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_9, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(580,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_9, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(610,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_10, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(640,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_10, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(670,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_11, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(700,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_11, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(730,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_12, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(760,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_12, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(790,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_13, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(820,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_13, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(850,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_14, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(880,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_14, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(910,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_15, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(940,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_15, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(970,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_16, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1000,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_16, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1030,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_17, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1060,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_17, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1090,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_18, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1120,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_18, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1150,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_19, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1180,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_19, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1210,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_20, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1240,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_20, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1270,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_21, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1300,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_21, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1330,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_22, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1360,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_22, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1390,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_23, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1420,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_23, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1450,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loading_24, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1480,NOANIM)
+    }
+    spriteset(side_door_hopper_car_ibex_gen_4B_ss_loaded_24, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1510,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_cargo_loading, cargo_type_in_veh) {
+                    AORE: return side_door_hopper_car_ibex_gen_4B_ss_loading_0;
+                    CASS: return side_door_hopper_car_ibex_gen_4B_ss_loading_1;
+                    CLAY: return side_door_hopper_car_ibex_gen_4B_ss_loading_2;
+                    COAL: return side_door_hopper_car_ibex_gen_4B_ss_loading_3;
+                    COKE: return side_door_hopper_car_ibex_gen_4B_ss_loading_4;
+                    CORE: return side_door_hopper_car_ibex_gen_4B_ss_loading_5;
+                    GRVL: return side_door_hopper_car_ibex_gen_4B_ss_loading_6;
+                    IORE: return side_door_hopper_car_ibex_gen_4B_ss_loading_7;
+                    LIME: return side_door_hopper_car_ibex_gen_4B_ss_loading_8;
+                    KAOL: return side_door_hopper_car_ibex_gen_4B_ss_loading_9;
+                    MNO2: return side_door_hopper_car_ibex_gen_4B_ss_loading_10;
+                    NITR: return side_door_hopper_car_ibex_gen_4B_ss_loading_11;
+                    PEAT: return side_door_hopper_car_ibex_gen_4B_ss_loading_12;
+                    PHOS: return side_door_hopper_car_ibex_gen_4B_ss_loading_13;
+                    PORE: return side_door_hopper_car_ibex_gen_4B_ss_loading_14;
+                    POTA: return side_door_hopper_car_ibex_gen_4B_ss_loading_15;
+                    SALT: return side_door_hopper_car_ibex_gen_4B_ss_loading_16;
+                    SAND: return side_door_hopper_car_ibex_gen_4B_ss_loading_17;
+                    SASH: return side_door_hopper_car_ibex_gen_4B_ss_loading_18;
+                    SCMT: return side_door_hopper_car_ibex_gen_4B_ss_loading_19;
+                    SGBT: return side_door_hopper_car_ibex_gen_4B_ss_loading_20;
+                    SLAG: return side_door_hopper_car_ibex_gen_4B_ss_loading_21;
+                    SGCN: return side_door_hopper_car_ibex_gen_4B_ss_loading_22;
+                    SULP: return side_door_hopper_car_ibex_gen_4B_ss_loading_23;
+                    WDCH: return side_door_hopper_car_ibex_gen_4B_ss_loading_24;
+        return side_door_hopper_car_ibex_gen_4B_ss_loading_6;
+    }
+    switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_cargo_loaded, cargo_type_in_veh) {
+                    AORE: return side_door_hopper_car_ibex_gen_4B_ss_loaded_0;
+                    CASS: return side_door_hopper_car_ibex_gen_4B_ss_loaded_1;
+                    CLAY: return side_door_hopper_car_ibex_gen_4B_ss_loaded_2;
+                    COAL: return side_door_hopper_car_ibex_gen_4B_ss_loaded_3;
+                    COKE: return side_door_hopper_car_ibex_gen_4B_ss_loaded_4;
+                    CORE: return side_door_hopper_car_ibex_gen_4B_ss_loaded_5;
+                    GRVL: return side_door_hopper_car_ibex_gen_4B_ss_loaded_6;
+                    IORE: return side_door_hopper_car_ibex_gen_4B_ss_loaded_7;
+                    LIME: return side_door_hopper_car_ibex_gen_4B_ss_loaded_8;
+                    KAOL: return side_door_hopper_car_ibex_gen_4B_ss_loaded_9;
+                    MNO2: return side_door_hopper_car_ibex_gen_4B_ss_loaded_10;
+                    NITR: return side_door_hopper_car_ibex_gen_4B_ss_loaded_11;
+                    PEAT: return side_door_hopper_car_ibex_gen_4B_ss_loaded_12;
+                    PHOS: return side_door_hopper_car_ibex_gen_4B_ss_loaded_13;
+                    PORE: return side_door_hopper_car_ibex_gen_4B_ss_loaded_14;
+                    POTA: return side_door_hopper_car_ibex_gen_4B_ss_loaded_15;
+                    SALT: return side_door_hopper_car_ibex_gen_4B_ss_loaded_16;
+                    SAND: return side_door_hopper_car_ibex_gen_4B_ss_loaded_17;
+                    SASH: return side_door_hopper_car_ibex_gen_4B_ss_loaded_18;
+                    SCMT: return side_door_hopper_car_ibex_gen_4B_ss_loaded_19;
+                    SGBT: return side_door_hopper_car_ibex_gen_4B_ss_loaded_20;
+                    SLAG: return side_door_hopper_car_ibex_gen_4B_ss_loaded_21;
+                    SGCN: return side_door_hopper_car_ibex_gen_4B_ss_loaded_22;
+                    SULP: return side_door_hopper_car_ibex_gen_4B_ss_loaded_23;
+                    WDCH: return side_door_hopper_car_ibex_gen_4B_ss_loaded_24;
+        return side_door_hopper_car_ibex_gen_4B_ss_loaded_6;
+    }
+        switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_graphics_vehicle_check_state_unweathered, switch_graphics_visible_cargo_no_cover_percent_loaded()) {
+            0: return side_door_hopper_car_ibex_gen_4B_ss_empty_unweathered;
+            1: return side_door_hopper_car_ibex_gen_4B_switch_cargo_loading;
+            2: return side_door_hopper_car_ibex_gen_4B_switch_cargo_loaded;
+        }
+switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    side_door_hopper_car_ibex_gen_4B_switch_graphics_vehicle_check_state_unweathered;
+}
+// buy menu graphics chain
+spriteset(side_door_hopper_car_ibex_gen_4B_ss_purchase, "generated/graphics/iron-ibex/side_door_hopper_car_ibex_gen_4B.png") {
+    spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase, 1) {
+    return side_door_hopper_car_ibex_gen_4B_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return side_door_hopper_car_ibex_gen_4B_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return side_door_hopper_car_ibex_gen_4B_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_24px;
+}
+switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity,
+        [
+         STORE_TEMP(11, 0),
+         STORE_TEMP(23, 1),
+         STORE_TEMP(33, 2),
+         STORE_TEMP(44, 3),
+         STORE_TEMP(59, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_SIDE_DOOR_HOPPER_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return side_door_hopper_car_ibex_gen_4B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: side_door_hopper_car_ibex_gen_4B_switch_name_purchase_level_0;
+    1: side_door_hopper_car_ibex_gen_4B_switch_name_purchase_level_1;
+    return side_door_hopper_car_ibex_gen_4B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: side_door_hopper_car_ibex_gen_4B_switch_name_purchase_extra_bits;
+    return side_door_hopper_car_ibex_gen_4B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return side_door_hopper_car_ibex_gen_4B_switch_name_default;
+    return side_door_hopper_car_ibex_gen_4B_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B, 35880) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                side_door_hopper_car_ibex_gen_4B_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(81);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(33);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B, 35880) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B, 35880) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B, 35880) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_7))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x101
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((switch_get_colour_name(21) | 0xD000) << 16),
+                    0x102
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(18) | 0xD000)
+                    | ((switch_get_colour_name(19) | 0xD000) << 16),
+                    0x103
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_1, 35881) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                side_door_hopper_car_ibex_gen_4B_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(43);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(54);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_1, 35881) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_1, 35881) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_1, 35881) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(25) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(16) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_2, 35882) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                side_door_hopper_car_ibex_gen_4B_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(24);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(44);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_2, 35882) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_2, 35882) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_2, 35882) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_variant_3_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_3))
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((switch_get_colour_name(18) | 0xD000) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_3, 35883) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                side_door_hopper_car_ibex_gen_4B_variant_3_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(17);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(41);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_3, 35883) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_3, 35883) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_3, 35883) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_variant_4_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(21) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(22) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_4, 35884) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                side_door_hopper_car_ibex_gen_4B_variant_4_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(77);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(61);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_4, 35884) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_4, 35884) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_4, 35884) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_variant_5_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(26) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(18) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_5, 35885) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                side_door_hopper_car_ibex_gen_4B_variant_5_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(67);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(51);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_5, 35885) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_5, 35885) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_5, 35885) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_variant_6_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(28) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(29) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_6, 35886) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                side_door_hopper_car_ibex_gen_4B_variant_6_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(21);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(73);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_6, 35886) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_6, 35886) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_6, 35886) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, side_door_hopper_car_ibex_gen_4B_variant_7_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(19) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(22) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_7, 35887) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                side_door_hopper_car_ibex_gen_4B_variant_7_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(5);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(26);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_7, 35887) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_7, 35887) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_7, 35887) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_8, 35888) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(82);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(52);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_8, 35888) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_8, 35888) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_8, 35888) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_9, 35889) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B_variant_8;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(47);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(57);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_9, 35889) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_9, 35889) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_9, 35889) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_10, 35890) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B_variant_8;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(29);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(35);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_10, 35890) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_10, 35890) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_10, 35890) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_11, 35891) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B_variant_8;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(69);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(70);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_11, 35891) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_11, 35891) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_11, 35891) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_12, 35892) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B_variant_8;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(2);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(55);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_12, 35892) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_12, 35892) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_12, 35892) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_13, 35893) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B_variant_8;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(62);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(19);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_13, 35893) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_13, 35893) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_13, 35893) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_14, 35894) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B_variant_8;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(83);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(40);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_14, 35894) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_14, 35894) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_14, 35894) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_15, 35895) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B_variant_8;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(49);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(66);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_15, 35895) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_15, 35895) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_15, 35895) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_16, 35896) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B_variant_8;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(30);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(38);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_16, 35896) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_16, 35896) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_16, 35896) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_17, 35897) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B_variant_8;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(32);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(11);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_17, 35897) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_17, 35897) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_17, 35897) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_18, 35898) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B_variant_8;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(46);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(6);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_18, 35898) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_18, 35898) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_18, 35898) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_19, 35899) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1966, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  side_door_hopper_car_ibex_gen_4B_variant_8;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        side_door_hopper_car_ibex_gen_4B_switch_graphics;
+            purchase:                       side_door_hopper_car_ibex_gen_4B_switch_graphics_purchase;
+                name:                           side_door_hopper_car_ibex_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(74);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(15);
+                cargo_capacity:                 side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        side_door_hopper_car_ibex_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_19, 35899) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_19, 35899) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, side_door_hopper_car_ibex_gen_4B_variant_19, 35899) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

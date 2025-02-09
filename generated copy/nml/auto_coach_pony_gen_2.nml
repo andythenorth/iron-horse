@@ -1,0 +1,324 @@
+// default graphics chain
+    spriteset(auto_coach_pony_gen_2_ss_doors_closed_unreversed_0, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_unreversed_5_8(10,NOANIM)
+    }
+    spriteset(auto_coach_pony_gen_2_ss_doors_open_unreversed_0, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_unreversed_5_8(40,NOANIM)
+    }
+    spriteset(auto_coach_pony_gen_2_ss_doors_closed_unreversed_1, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_unreversed_5_8(70,NOANIM)
+    }
+    spriteset(auto_coach_pony_gen_2_ss_doors_open_unreversed_1, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_unreversed_5_8(100,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_graphics_check_doors_unreversed_0, switch_graphics_opening_doors()) {
+        0: return auto_coach_pony_gen_2_ss_doors_closed_unreversed_0;
+        1: return auto_coach_pony_gen_2_ss_doors_open_unreversed_0;
+    }
+    switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_graphics_check_doors_unreversed_1, switch_graphics_opening_doors()) {
+        0: return auto_coach_pony_gen_2_ss_doors_closed_unreversed_1;
+        1: return auto_coach_pony_gen_2_ss_doors_open_unreversed_1;
+    }
+    spriteset(auto_coach_pony_gen_2_ss_doors_closed_reversed_0, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_reversed_5_8(10,NOANIM)
+    }
+    spriteset(auto_coach_pony_gen_2_ss_doors_open_reversed_0, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_reversed_5_8(40,NOANIM)
+    }
+    spriteset(auto_coach_pony_gen_2_ss_doors_closed_reversed_1, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_reversed_5_8(70,NOANIM)
+    }
+    spriteset(auto_coach_pony_gen_2_ss_doors_open_reversed_1, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_reversed_5_8(100,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_graphics_check_doors_reversed_0, switch_graphics_opening_doors()) {
+        0: return auto_coach_pony_gen_2_ss_doors_closed_reversed_0;
+        1: return auto_coach_pony_gen_2_ss_doors_open_reversed_0;
+    }
+    switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_graphics_check_doors_reversed_1, switch_graphics_opening_doors()) {
+        0: return auto_coach_pony_gen_2_ss_doors_closed_reversed_1;
+        1: return auto_coach_pony_gen_2_ss_doors_open_reversed_1;
+    }
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_graphics_unit_0_check_last, position_in_consist_from_end) {
+    1: auto_coach_pony_gen_2_switch_graphics_check_doors_reversed_1;
+    return auto_coach_pony_gen_2_switch_graphics_check_doors_unreversed_0;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_graphics_unit_0, num_vehs_in_consist) {
+    1..2: auto_coach_pony_gen_2_switch_graphics_check_doors_unreversed_0;
+    return auto_coach_pony_gen_2_switch_graphics_unit_0_check_last;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_graphics_unit_1_check_last, position_in_consist_from_end) {
+    0: auto_coach_pony_gen_2_switch_graphics_check_doors_reversed_0;
+    return auto_coach_pony_gen_2_switch_graphics_check_doors_unreversed_1;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_graphics_unit_1, num_vehs_in_consist) {
+    1..2: auto_coach_pony_gen_2_switch_graphics_check_doors_unreversed_1;
+    return auto_coach_pony_gen_2_switch_graphics_unit_1_check_last;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_graphics_vehicle, position_in_articulated_veh) {
+    0: auto_coach_pony_gen_2_switch_graphics_unit_0;
+    return auto_coach_pony_gen_2_switch_graphics_unit_1;
+}
+// buy menu graphics chain
+spriteset(auto_coach_pony_gen_2_ss_purchase, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+    spriteset_template_purchase_default(360,10,41,-20,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_graphics_purchase, 0) {
+    return auto_coach_pony_gen_2_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return auto_coach_pony_gen_2_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return auto_coach_pony_gen_2_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_railcar_20px_4;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_cargo_capacity,
+        [
+         STORE_TEMP(3, 0),
+         STORE_TEMP(6, 1),
+         STORE_TEMP(8, 2),
+         STORE_TEMP(10, 3),
+         STORE_TEMP(14, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+    // add the units to articulated consist
+    switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_variant_0_articulated_cb_switch, extra_callback_info1) {
+            0: return auto_coach_pony_gen_2;
+            1: return auto_coach_pony_gen_2_unit_1_variant_0;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_AUTO_COACH_PONY_GEN_2)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_AUTO_COACH_PONY_GEN_2)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return auto_coach_pony_gen_2_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_AUTO_COACH_PONY_GEN_2)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: auto_coach_pony_gen_2_switch_name_purchase_level_0;
+    1: auto_coach_pony_gen_2_switch_name_purchase_level_1;
+    return auto_coach_pony_gen_2_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: auto_coach_pony_gen_2_switch_name_purchase_extra_bits;
+    return auto_coach_pony_gen_2_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_switch_name, [
+        param_vehicle_availability_engines
+    ]) {
+    1: return auto_coach_pony_gen_2_switch_name_default;
+    return auto_coach_pony_gen_2_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, auto_coach_pony_gen_2, 4690) {
+        property {
+            name:                           string(STR_NAME_AUTO_COACH_PONY_GEN_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["role/driving_cab"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1900, 9, 1);
+                power:                          10hp;
+                weight:                         32ton;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     56;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   60;
+                speed:                          75mph;
+            cargo_capacity:                 8;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        auto_coach_pony_gen_2_switch_graphics;
+            purchase:                       auto_coach_pony_gen_2_switch_graphics_purchase;
+                name:                           auto_coach_pony_gen_2_switch_name;
+                cost_factor:                    8; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 304;
+                purchase_running_cost_factor:   304; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: auto_coach_pony_gen_2_variant_0_articulated_cb_switch;
+                cargo_capacity:                 auto_coach_pony_gen_2_switch_cargo_capacity;
+                purchase_cargo_capacity:        auto_coach_pony_gen_2_switch_cargo_capacity;
+                loading_speed:                  8;
+        }
+    }
+        item(FEAT_TRAINS, auto_coach_pony_gen_2, 4690) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, auto_coach_pony_gen_2, 4690) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, auto_coach_pony_gen_2, 4690) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+// default graphics chain
+    spriteset(auto_coach_pony_gen_2_unit_1_ss_doors_closed_unreversed_0, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_unreversed_5_8(10,NOANIM)
+    }
+    spriteset(auto_coach_pony_gen_2_unit_1_ss_doors_open_unreversed_0, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_unreversed_5_8(40,NOANIM)
+    }
+    spriteset(auto_coach_pony_gen_2_unit_1_ss_doors_closed_unreversed_1, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_unreversed_5_8(70,NOANIM)
+    }
+    spriteset(auto_coach_pony_gen_2_unit_1_ss_doors_open_unreversed_1, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_unreversed_5_8(100,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_graphics_check_doors_unreversed_0, switch_graphics_opening_doors()) {
+        0: return auto_coach_pony_gen_2_unit_1_ss_doors_closed_unreversed_0;
+        1: return auto_coach_pony_gen_2_unit_1_ss_doors_open_unreversed_0;
+    }
+    switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_graphics_check_doors_unreversed_1, switch_graphics_opening_doors()) {
+        0: return auto_coach_pony_gen_2_unit_1_ss_doors_closed_unreversed_1;
+        1: return auto_coach_pony_gen_2_unit_1_ss_doors_open_unreversed_1;
+    }
+    spriteset(auto_coach_pony_gen_2_unit_1_ss_doors_closed_reversed_0, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_reversed_5_8(10,NOANIM)
+    }
+    spriteset(auto_coach_pony_gen_2_unit_1_ss_doors_open_reversed_0, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_reversed_5_8(40,NOANIM)
+    }
+    spriteset(auto_coach_pony_gen_2_unit_1_ss_doors_closed_reversed_1, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_reversed_5_8(70,NOANIM)
+    }
+    spriteset(auto_coach_pony_gen_2_unit_1_ss_doors_open_reversed_1, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+        spriteset_template_asymmetric_reversed_5_8(100,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_graphics_check_doors_reversed_0, switch_graphics_opening_doors()) {
+        0: return auto_coach_pony_gen_2_unit_1_ss_doors_closed_reversed_0;
+        1: return auto_coach_pony_gen_2_unit_1_ss_doors_open_reversed_0;
+    }
+    switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_graphics_check_doors_reversed_1, switch_graphics_opening_doors()) {
+        0: return auto_coach_pony_gen_2_unit_1_ss_doors_closed_reversed_1;
+        1: return auto_coach_pony_gen_2_unit_1_ss_doors_open_reversed_1;
+    }
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_graphics_unit_0_check_last, position_in_consist_from_end) {
+    1: auto_coach_pony_gen_2_unit_1_switch_graphics_check_doors_reversed_1;
+    return auto_coach_pony_gen_2_unit_1_switch_graphics_check_doors_unreversed_0;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_graphics_unit_0, num_vehs_in_consist) {
+    1..2: auto_coach_pony_gen_2_unit_1_switch_graphics_check_doors_unreversed_0;
+    return auto_coach_pony_gen_2_unit_1_switch_graphics_unit_0_check_last;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_graphics_unit_1_check_last, position_in_consist_from_end) {
+    0: auto_coach_pony_gen_2_unit_1_switch_graphics_check_doors_reversed_0;
+    return auto_coach_pony_gen_2_unit_1_switch_graphics_check_doors_unreversed_1;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_graphics_unit_1, num_vehs_in_consist) {
+    1..2: auto_coach_pony_gen_2_unit_1_switch_graphics_check_doors_unreversed_1;
+    return auto_coach_pony_gen_2_unit_1_switch_graphics_unit_1_check_last;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_graphics_vehicle, position_in_articulated_veh) {
+    0: auto_coach_pony_gen_2_unit_1_switch_graphics_unit_0;
+    return auto_coach_pony_gen_2_unit_1_switch_graphics_unit_1;
+}
+// buy menu graphics chain
+spriteset(auto_coach_pony_gen_2_unit_1_ss_purchase, "generated/graphics/iron-horse/auto_coach_pony_gen_2.png") {
+    spriteset_template_purchase_default(360,10,41,-20,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_graphics_purchase, 0) {
+    return auto_coach_pony_gen_2_unit_1_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return auto_coach_pony_gen_2_unit_1_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return auto_coach_pony_gen_2_unit_1_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_railcar_20px_4;
+}
+switch (FEAT_TRAINS, SELF, auto_coach_pony_gen_2_unit_1_switch_cargo_capacity,
+        [
+         STORE_TEMP(17, 0),
+         STORE_TEMP(34, 1),
+         STORE_TEMP(50, 2),
+         STORE_TEMP(67, 3),
+         STORE_TEMP(89, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+    item(FEAT_TRAINS, auto_coach_pony_gen_2_unit_1_variant_0, 4691) {
+        property {
+            name:                           string(STR_NAME_AUTO_COACH_PONY_GEN_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["role/driving_cab"];
+                power:                          1;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          75mph;
+            cargo_capacity:                 50;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        auto_coach_pony_gen_2_unit_1_switch_graphics;
+            purchase:                       auto_coach_pony_gen_2_unit_1_switch_graphics_purchase;
+                cargo_capacity:                 auto_coach_pony_gen_2_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        auto_coach_pony_gen_2_unit_1_switch_cargo_capacity;
+                loading_speed:                  8;
+        }
+    }

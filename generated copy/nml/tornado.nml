@@ -1,0 +1,488 @@
+    spriteset(tornado_ss_0, "generated/graphics/iron-horse/tornado.png") {
+        spriteset_template_asymmetric_unreversed_6_8(10,NOANIM)
+    }
+    spriteset(tornado_ss_1, "generated/graphics/iron-horse/tornado.png") {
+        spriteset_template_asymmetric_unreversed_6_8(40,NOANIM)
+    }
+    spriteset(tornado_ss_2, "generated/graphics/iron-horse/tornado.png") {
+        spriteset_template_asymmetric_unreversed_6_8(70,NOANIM)
+    }
+    spriteset(tornado_ss_3, "generated/graphics/iron-horse/tornado.png") {
+        spriteset_template_asymmetric_unreversed_6_8(100,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, tornado_switch_graphics_livery, vehicle_type_id) {
+        21750: return tornado_ss_0;
+        21751: return tornado_ss_1;
+        21752: return tornado_ss_2;
+        21753: return tornado_ss_3;
+}
+        spriteset(tornado_ss_pantographs_down, "generated/graphics/iron-horse/tornado_pantographs_down.png") {
+            spriteset_template_asymmetric_unreversed_6_8(10,NOANIM)
+        }
+        spriteset(tornado_ss_pantographs_up, "generated/graphics/iron-horse/tornado_pantographs_up.png") {
+            spriteset_template_asymmetric_unreversed_6_8(10,NOANIM)
+        }
+    switch (FEAT_TRAINS, SELF, tornado_switch_graphics_pantographs, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()]) {
+        1: return tornado_ss_pantographs_up;
+        return tornado_ss_pantographs_down;
+    }
+switch (FEAT_TRAINS, SELF, tornado_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+        1: return tornado_switch_graphics_pantographs;
+    return tornado_switch_graphics_livery;
+}
+// buy menu graphics chain
+spriteset(tornado_ss_vehicle_purchase_0, "generated/graphics/iron-horse/tornado.png") {
+    spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+}
+spriteset(tornado_ss_vehicle_purchase_1, "generated/graphics/iron-horse/tornado.png") {
+    spriteset_template_purchase_default(224,40,25,-12,NOANIM)
+}
+spriteset(tornado_ss_vehicle_purchase_2, "generated/graphics/iron-horse/tornado.png") {
+    spriteset_template_purchase_default(224,70,25,-12,NOANIM)
+}
+spriteset(tornado_ss_vehicle_purchase_3, "generated/graphics/iron-horse/tornado.png") {
+    spriteset_template_purchase_default(224,100,25,-12,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, tornado_switch_graphics_vehicle_purchase_livery, vehicle_type_id) {
+        21750: return tornado_ss_vehicle_purchase_0;
+        21751: return tornado_ss_vehicle_purchase_1;
+        21752: return tornado_ss_vehicle_purchase_2;
+        21753: return tornado_ss_vehicle_purchase_3;
+}
+    spriteset(tornado_ss_pantographs_purchase, "generated/graphics/iron-horse/tornado_pantographs_down.png") {
+        spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, tornado_switch_graphics_purchase_base,
+        STORE_TEMP(
+                CB_FLAG_MORE_SPRITES |
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+                return tornado_switch_graphics_vehicle_purchase_livery;
+    }
+    switch (FEAT_TRAINS, SELF, tornado_switch_graphics_purchase_pantographs,
+        STORE_TEMP(
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+                return tornado_ss_pantographs_purchase;
+    }
+switch (FEAT_TRAINS, SELF, tornado_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+        0: return tornado_switch_graphics_purchase_base;
+        1: return tornado_switch_graphics_purchase_pantographs;
+}
+switch (FEAT_TRAINS, SELF, tornado_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return tornado_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, tornado_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return tornado_switch_set_layers_register_more_sprites;
+        1: return tornado_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_empty;
+}
+switch (FEAT_TRAINS, SELF, tornado_switch_colour_mapping, vehicle_type_id) {
+                    21750: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    21751: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    21752: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    21753: palette_2cc(COLOUR_YELLOW, company_colour2);
+}
+        switch (FEAT_TRAINS, SELF, tornado_switch_effect_spawn_model_and_powered, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()]) {
+            1: return EFFECT_SPAWN_MODEL_ELECTRIC;
+            return EFFECT_SPAWN_MODEL_DIESEL;
+        }
+        switch (FEAT_TRAINS, SELF, tornado_switch_create_effect_default, [STORE_TEMP(create_effect(EFFECT_SPRITE_DIESEL,0,0,12), 0x100)]) {
+            return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+        }
+        switch (FEAT_TRAINS, SELF, tornado_switch_create_effect_electrified, [STORE_TEMP(create_effect(EFFECT_SPRITE_ELECTRIC,0,0,12), 0x100)]) {
+            return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+        }
+        switch (FEAT_TRAINS, SELF, tornado_switch_create_effect_check_railtype, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()]) {
+            1: return tornado_switch_create_effect_electrified;
+            return tornado_switch_create_effect_default;
+        }
+    // -- power varies by railtype -- //
+        switch (FEAT_TRAINS, SELF, tornado_switch_power_1, tile_powers_track_type_name_RAIL()) {
+            1: return 750;
+        }
+        switch (FEAT_TRAINS, SELF, tornado_switch_power_0, tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()) {
+            1: return 1900;
+                return tornado_switch_power_1;
+        }
+switch (FEAT_TRAINS, SELF, tornado_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_TORNADO)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, tornado_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_TORNADO)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return tornado_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, tornado_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_TORNADO)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, tornado_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: tornado_switch_name_purchase_level_0;
+    1: tornado_switch_name_purchase_level_1;
+    return tornado_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, tornado_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: tornado_switch_name_purchase_extra_bits;
+    return tornado_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, tornado_switch_name, [
+        param_vehicle_availability_engines
+    ]) {
+    1: return tornado_switch_name_default;
+    return tornado_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, tornado_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_DIESEL)
+                    | (750 << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_AC)
+                    | (1900 << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_POWER_BY_POWER_SOURCE_TWO_SOURCES));
+        }
+    item(FEAT_TRAINS, tornado, 21750) {
+        property {
+            name:                           string(STR_NAME_TORNADO);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","power_source/ac","power_source_cabbage/electro_diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/express"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1996, 3, 1);
+                power:                          750hp;
+                weight:                         70ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          120mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        tornado_switch_graphics;
+            purchase:                       tornado_switch_graphics_purchase;
+                name:                           tornado_switch_name;
+                cost_factor:                    91; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 1608;
+                purchase_running_cost_factor:   1608; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    power:                          tornado_switch_power_0;
+                    purchase_power:                 750;
+                    additional_text:                tornado_switch_buy_menu_additional_text;
+                    colour_mapping:                 tornado_switch_colour_mapping;
+                    purchase_colour_mapping:        tornado_switch_colour_mapping;
+                effect_spawn_model_and_powered: tornado_switch_effect_spawn_model_and_powered;
+                create_effect:      tornado_switch_create_effect_check_railtype;
+                reverse_build_probability: return 50 * param_vehicle_random_reverse_on_build;
+        }
+    }
+        item(FEAT_TRAINS, tornado, 21750) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, tornado, 21750) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, tornado_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_DIESEL)
+                    | (750 << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_AC)
+                    | (1900 << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_POWER_BY_POWER_SOURCE_TWO_SOURCES));
+        }
+    item(FEAT_TRAINS, tornado_variant_1, 21751) {
+        property {
+            name:                           string(STR_NAME_TORNADO);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","power_source/ac","power_source_cabbage/electro_diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/express"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1996, 3, 1);
+                power:                          750hp;
+                weight:                         70ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  tornado;
+                speed:                          120mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        tornado_switch_graphics;
+            purchase:                       tornado_switch_graphics_purchase;
+                name:                           tornado_switch_name;
+                cost_factor:                    91; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 1608;
+                purchase_running_cost_factor:   1608; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    power:                          tornado_switch_power_0;
+                    purchase_power:                 750;
+                    additional_text:                tornado_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 tornado_switch_colour_mapping;
+                    purchase_colour_mapping:        tornado_switch_colour_mapping;
+                effect_spawn_model_and_powered: tornado_switch_effect_spawn_model_and_powered;
+                create_effect:      tornado_switch_create_effect_check_railtype;
+                reverse_build_probability: return 50 * param_vehicle_random_reverse_on_build;
+        }
+    }
+        item(FEAT_TRAINS, tornado_variant_1, 21751) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, tornado_variant_1, 21751) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, tornado_variant_1, 21751) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, tornado_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_DIESEL)
+                    | (750 << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_AC)
+                    | (1900 << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_POWER_BY_POWER_SOURCE_TWO_SOURCES));
+        }
+    item(FEAT_TRAINS, tornado_variant_2, 21752) {
+        property {
+            name:                           string(STR_NAME_TORNADO);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","power_source/ac","power_source_cabbage/electro_diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/express"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1996, 3, 1);
+                power:                          750hp;
+                weight:                         70ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  tornado;
+                speed:                          120mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        tornado_switch_graphics;
+            purchase:                       tornado_switch_graphics_purchase;
+                name:                           tornado_switch_name;
+                cost_factor:                    91; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 1608;
+                purchase_running_cost_factor:   1608; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    power:                          tornado_switch_power_0;
+                    purchase_power:                 750;
+                    additional_text:                tornado_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 tornado_switch_colour_mapping;
+                    purchase_colour_mapping:        tornado_switch_colour_mapping;
+                effect_spawn_model_and_powered: tornado_switch_effect_spawn_model_and_powered;
+                create_effect:      tornado_switch_create_effect_check_railtype;
+                reverse_build_probability: return 50 * param_vehicle_random_reverse_on_build;
+        }
+    }
+        item(FEAT_TRAINS, tornado_variant_2, 21752) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, tornado_variant_2, 21752) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, tornado_variant_2, 21752) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, tornado_variant_3_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_DIESEL)
+                    | (750 << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    string(STR_POWER_SOURCE_AC)
+                    | (1900 << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_POWER_BY_POWER_SOURCE_TWO_SOURCES));
+        }
+    item(FEAT_TRAINS, tornado_variant_3, 21753) {
+        property {
+            name:                           string(STR_NAME_TORNADO);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","power_source/ac","power_source_cabbage/electro_diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/express"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1996, 3, 1);
+                power:                          750hp;
+                weight:                         70ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  tornado;
+                speed:                          120mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        tornado_switch_graphics;
+            purchase:                       tornado_switch_graphics_purchase;
+                name:                           tornado_switch_name;
+                cost_factor:                    91; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 1608;
+                purchase_running_cost_factor:   1608; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    power:                          tornado_switch_power_0;
+                    purchase_power:                 750;
+                    additional_text:                tornado_variant_3_switch_buy_menu_additional_text;
+                    colour_mapping:                 tornado_switch_colour_mapping;
+                    purchase_colour_mapping:        tornado_switch_colour_mapping;
+                effect_spawn_model_and_powered: tornado_switch_effect_spawn_model_and_powered;
+                create_effect:      tornado_switch_create_effect_check_railtype;
+                reverse_build_probability: return 50 * param_vehicle_random_reverse_on_build;
+        }
+    }
+        item(FEAT_TRAINS, tornado_variant_3, 21753) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, tornado_variant_3, 21753) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, tornado_variant_3, 21753) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

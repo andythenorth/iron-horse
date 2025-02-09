@@ -1,0 +1,625 @@
+    spriteset(gronk_clone_1_ss_0, "generated/graphics/iron-horse/gronk_clone_1.png") {
+        spriteset_template_asymmetric_unreversed_4_8(130,NOANIM)
+    }
+    spriteset(gronk_clone_1_ss_1, "generated/graphics/iron-horse/gronk_clone_1.png") {
+        spriteset_template_asymmetric_unreversed_4_8(160,NOANIM)
+    }
+    spriteset(gronk_clone_1_ss_2, "generated/graphics/iron-horse/gronk_clone_1.png") {
+        spriteset_template_asymmetric_unreversed_4_8(190,NOANIM)
+    }
+    spriteset(gronk_clone_1_ss_3, "generated/graphics/iron-horse/gronk_clone_1.png") {
+        spriteset_template_asymmetric_unreversed_4_8(220,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_graphics_livery, vehicle_type_id) {
+        990: return gronk_clone_1_ss_0;
+        991: return gronk_clone_1_ss_1;
+        992: return gronk_clone_1_ss_2;
+        993: return gronk_clone_1_ss_3;
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    return gronk_clone_1_switch_graphics_livery;
+}
+// buy menu graphics chain
+spriteset(gronk_clone_1_ss_vehicle_purchase_0, "generated/graphics/iron-horse/gronk_clone_1.png") {
+    spriteset_template_purchase_default(360,10,33,-16,NOANIM)
+}
+spriteset(gronk_clone_1_ss_vehicle_purchase_1, "generated/graphics/iron-horse/gronk_clone_1.png") {
+    spriteset_template_purchase_default(360,40,33,-16,NOANIM)
+}
+spriteset(gronk_clone_1_ss_vehicle_purchase_2, "generated/graphics/iron-horse/gronk_clone_1.png") {
+    spriteset_template_purchase_default(360,70,33,-16,NOANIM)
+}
+spriteset(gronk_clone_1_ss_vehicle_purchase_3, "generated/graphics/iron-horse/gronk_clone_1.png") {
+    spriteset_template_purchase_default(360,100,33,-16,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_graphics_vehicle_purchase_livery, vehicle_type_id) {
+        990: return gronk_clone_1_ss_vehicle_purchase_0;
+        991: return gronk_clone_1_ss_vehicle_purchase_1;
+        992: return gronk_clone_1_ss_vehicle_purchase_2;
+        993: return gronk_clone_1_ss_vehicle_purchase_3;
+}
+    switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_graphics_purchase_base,
+        STORE_TEMP(
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+                return gronk_clone_1_switch_graphics_vehicle_purchase_livery;
+    }
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+        0: return gronk_clone_1_switch_graphics_purchase_base;
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return gronk_clone_1_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return gronk_clone_1_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_empty;
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_colour_mapping, vehicle_type_id) {
+                    990: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    991: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    992: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    993: palette_2cc(COLOUR_YELLOW, company_colour2);
+}
+        switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_DIESEL;
+        }
+        switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_create_effect_default, [STORE_TEMP(create_effect(EFFECT_SPRITE_DIESEL,0,0,12), 0x100)]) {
+            return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+        }
+        switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_create_effect_check_railtype, 1) {
+            return gronk_clone_1_switch_create_effect_default;
+        }
+    // add the units to articulated consist
+    switch (FEAT_TRAINS, SELF, gronk_clone_1_variant_0_articulated_cb_switch, extra_callback_info1) {
+            0: return gronk_clone_1;
+            1: return gronk_clone_1_unit_1_variant_0;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, gronk_clone_1_variant_1_articulated_cb_switch, extra_callback_info1) {
+            0: return gronk_clone_1_variant_1;
+            1: return gronk_clone_1_unit_1_variant_1;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, gronk_clone_1_variant_2_articulated_cb_switch, extra_callback_info1) {
+            0: return gronk_clone_1_variant_2;
+            1: return gronk_clone_1_unit_1_variant_2;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, gronk_clone_1_variant_3_articulated_cb_switch, extra_callback_info1) {
+            0: return gronk_clone_1_variant_3;
+            1: return gronk_clone_1_unit_1_variant_3;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_GRONK_CLONE_1)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_GRONK_CLONE_1)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return gronk_clone_1_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_GRONK_CLONE_1)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: gronk_clone_1_switch_name_purchase_level_0;
+    1: gronk_clone_1_switch_name_purchase_level_1;
+    return gronk_clone_1_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: gronk_clone_1_switch_name_purchase_extra_bits;
+    return gronk_clone_1_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_switch_name, [
+        param_vehicle_availability_engines
+    ]) {
+    1: return gronk_clone_1_switch_name_default;
+    return gronk_clone_1_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, gronk_clone_1, 990) {
+        property {
+            name:                           string(STR_NAME_GRONK_CLONE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/gronk"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1951, 12, 1);
+                power:                          800hp;
+                weight:                         110ton;
+                tractive_effort_coefficient:    0.375;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   60;
+                    variant_group:                  gronk;
+                speed:                          35mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        gronk_clone_1_switch_graphics;
+            purchase:                       gronk_clone_1_switch_graphics_purchase;
+                name:                           gronk_clone_1_switch_name;
+                cost_factor:                    34; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 930;
+                purchase_running_cost_factor:   930; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: gronk_clone_1_variant_0_articulated_cb_switch;
+                    colour_mapping:                 gronk_clone_1_switch_colour_mapping;
+                    purchase_colour_mapping:        gronk_clone_1_switch_colour_mapping;
+                effect_spawn_model_and_powered: gronk_clone_1_switch_effect_spawn_model_and_powered;
+                create_effect:      gronk_clone_1_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, gronk_clone_1, 990) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, gronk_clone_1, 990) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, gronk_clone_1, 990) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, gronk_clone_1_variant_1, 991) {
+        property {
+            name:                           string(STR_NAME_GRONK_CLONE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/gronk"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1951, 12, 1);
+                power:                          800hp;
+                weight:                         110ton;
+                tractive_effort_coefficient:    0.375;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   60;
+                    variant_group:                  gronk;
+                speed:                          35mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        gronk_clone_1_switch_graphics;
+            purchase:                       gronk_clone_1_switch_graphics_purchase;
+                name:                           gronk_clone_1_switch_name;
+                cost_factor:                    34; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 930;
+                purchase_running_cost_factor:   930; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: gronk_clone_1_variant_1_articulated_cb_switch;
+                    colour_mapping:                 gronk_clone_1_switch_colour_mapping;
+                    purchase_colour_mapping:        gronk_clone_1_switch_colour_mapping;
+                effect_spawn_model_and_powered: gronk_clone_1_switch_effect_spawn_model_and_powered;
+                create_effect:      gronk_clone_1_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, gronk_clone_1_variant_1, 991) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, gronk_clone_1_variant_1, 991) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, gronk_clone_1_variant_1, 991) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, gronk_clone_1_variant_2, 992) {
+        property {
+            name:                           string(STR_NAME_GRONK_CLONE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/gronk"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1951, 12, 1);
+                power:                          800hp;
+                weight:                         110ton;
+                tractive_effort_coefficient:    0.375;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   60;
+                    variant_group:                  gronk;
+                speed:                          35mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        gronk_clone_1_switch_graphics;
+            purchase:                       gronk_clone_1_switch_graphics_purchase;
+                name:                           gronk_clone_1_switch_name;
+                cost_factor:                    34; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 930;
+                purchase_running_cost_factor:   930; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: gronk_clone_1_variant_2_articulated_cb_switch;
+                    colour_mapping:                 gronk_clone_1_switch_colour_mapping;
+                    purchase_colour_mapping:        gronk_clone_1_switch_colour_mapping;
+                effect_spawn_model_and_powered: gronk_clone_1_switch_effect_spawn_model_and_powered;
+                create_effect:      gronk_clone_1_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, gronk_clone_1_variant_2, 992) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, gronk_clone_1_variant_2, 992) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, gronk_clone_1_variant_2, 992) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, gronk_clone_1_variant_3, 993) {
+        property {
+            name:                           string(STR_NAME_GRONK_CLONE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/gronk"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1951, 12, 1);
+                power:                          800hp;
+                weight:                         110ton;
+                tractive_effort_coefficient:    0.375;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   60;
+                    variant_group:                  gronk;
+                speed:                          35mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        gronk_clone_1_switch_graphics;
+            purchase:                       gronk_clone_1_switch_graphics_purchase;
+                name:                           gronk_clone_1_switch_name;
+                cost_factor:                    34; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 930;
+                purchase_running_cost_factor:   930; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: gronk_clone_1_variant_3_articulated_cb_switch;
+                    colour_mapping:                 gronk_clone_1_switch_colour_mapping;
+                    purchase_colour_mapping:        gronk_clone_1_switch_colour_mapping;
+                effect_spawn_model_and_powered: gronk_clone_1_switch_effect_spawn_model_and_powered;
+                create_effect:      gronk_clone_1_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, gronk_clone_1_variant_3, 993) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, gronk_clone_1_variant_3, 993) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, gronk_clone_1_variant_3, 993) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    spriteset(gronk_clone_1_unit_1_ss_0, "generated/graphics/iron-horse/gronk_clone_1.png") {
+        spriteset_template_asymmetric_unreversed_4_8(10,NOANIM)
+    }
+    spriteset(gronk_clone_1_unit_1_ss_1, "generated/graphics/iron-horse/gronk_clone_1.png") {
+        spriteset_template_asymmetric_unreversed_4_8(40,NOANIM)
+    }
+    spriteset(gronk_clone_1_unit_1_ss_2, "generated/graphics/iron-horse/gronk_clone_1.png") {
+        spriteset_template_asymmetric_unreversed_4_8(70,NOANIM)
+    }
+    spriteset(gronk_clone_1_unit_1_ss_3, "generated/graphics/iron-horse/gronk_clone_1.png") {
+        spriteset_template_asymmetric_unreversed_4_8(100,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, gronk_clone_1_unit_1_switch_graphics_livery, vehicle_type_id) {
+        994: return gronk_clone_1_unit_1_ss_0;
+        995: return gronk_clone_1_unit_1_ss_1;
+        996: return gronk_clone_1_unit_1_ss_2;
+        997: return gronk_clone_1_unit_1_ss_3;
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_unit_1_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    return gronk_clone_1_unit_1_switch_graphics_livery;
+}
+// buy menu graphics chain
+spriteset(gronk_clone_1_unit_1_ss_vehicle_purchase_0, "generated/graphics/iron-horse/gronk_clone_1.png") {
+    spriteset_template_purchase_default(360,10,33,-16,NOANIM)
+}
+spriteset(gronk_clone_1_unit_1_ss_vehicle_purchase_1, "generated/graphics/iron-horse/gronk_clone_1.png") {
+    spriteset_template_purchase_default(360,40,33,-16,NOANIM)
+}
+spriteset(gronk_clone_1_unit_1_ss_vehicle_purchase_2, "generated/graphics/iron-horse/gronk_clone_1.png") {
+    spriteset_template_purchase_default(360,70,33,-16,NOANIM)
+}
+spriteset(gronk_clone_1_unit_1_ss_vehicle_purchase_3, "generated/graphics/iron-horse/gronk_clone_1.png") {
+    spriteset_template_purchase_default(360,100,33,-16,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_unit_1_switch_graphics_vehicle_purchase_livery, vehicle_type_id) {
+        994: return gronk_clone_1_unit_1_ss_vehicle_purchase_0;
+        995: return gronk_clone_1_unit_1_ss_vehicle_purchase_1;
+        996: return gronk_clone_1_unit_1_ss_vehicle_purchase_2;
+        997: return gronk_clone_1_unit_1_ss_vehicle_purchase_3;
+}
+    switch (FEAT_TRAINS, SELF, gronk_clone_1_unit_1_switch_graphics_purchase_base,
+        STORE_TEMP(
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+                return gronk_clone_1_unit_1_switch_graphics_vehicle_purchase_livery;
+    }
+switch (FEAT_TRAINS, SELF, gronk_clone_1_unit_1_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+        0: return gronk_clone_1_unit_1_switch_graphics_purchase_base;
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_unit_1_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return gronk_clone_1_unit_1_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_unit_1_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return gronk_clone_1_unit_1_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_empty;
+}
+switch (FEAT_TRAINS, SELF, gronk_clone_1_unit_1_switch_colour_mapping, vehicle_type_id) {
+                    994: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    995: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    996: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    997: palette_2cc(COLOUR_YELLOW, company_colour2);
+}
+        switch (FEAT_TRAINS, SELF, gronk_clone_1_unit_1_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_DIESEL;
+        }
+        switch (FEAT_TRAINS, SELF, gronk_clone_1_unit_1_switch_create_effect_default, [STORE_TEMP(create_effect(EFFECT_SPRITE_DIESEL,0,0,12), 0x100)]) {
+            return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+        }
+        switch (FEAT_TRAINS, SELF, gronk_clone_1_unit_1_switch_create_effect_check_railtype, 1) {
+            return gronk_clone_1_unit_1_switch_create_effect_default;
+        }
+    item(FEAT_TRAINS, gronk_clone_1_unit_1_variant_0, 994) {
+        property {
+            name:                           string(STR_NAME_GRONK_CLONE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/gronk"];
+                power:                          1;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          35mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        gronk_clone_1_unit_1_switch_graphics;
+            purchase:                       gronk_clone_1_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 gronk_clone_1_unit_1_switch_colour_mapping;
+                    purchase_colour_mapping:        gronk_clone_1_unit_1_switch_colour_mapping;
+                effect_spawn_model_and_powered: gronk_clone_1_unit_1_switch_effect_spawn_model_and_powered;
+                create_effect:      gronk_clone_1_unit_1_switch_create_effect_check_railtype;
+        }
+    }
+    item(FEAT_TRAINS, gronk_clone_1_unit_1_variant_1, 995) {
+        property {
+            name:                           string(STR_NAME_GRONK_CLONE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/gronk"];
+                power:                          1;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          35mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        gronk_clone_1_unit_1_switch_graphics;
+            purchase:                       gronk_clone_1_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 gronk_clone_1_unit_1_switch_colour_mapping;
+                    purchase_colour_mapping:        gronk_clone_1_unit_1_switch_colour_mapping;
+                effect_spawn_model_and_powered: gronk_clone_1_unit_1_switch_effect_spawn_model_and_powered;
+                create_effect:      gronk_clone_1_unit_1_switch_create_effect_check_railtype;
+        }
+    }
+    item(FEAT_TRAINS, gronk_clone_1_unit_1_variant_2, 996) {
+        property {
+            name:                           string(STR_NAME_GRONK_CLONE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/gronk"];
+                power:                          1;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          35mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        gronk_clone_1_unit_1_switch_graphics;
+            purchase:                       gronk_clone_1_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 gronk_clone_1_unit_1_switch_colour_mapping;
+                    purchase_colour_mapping:        gronk_clone_1_unit_1_switch_colour_mapping;
+                effect_spawn_model_and_powered: gronk_clone_1_unit_1_switch_effect_spawn_model_and_powered;
+                create_effect:      gronk_clone_1_unit_1_switch_create_effect_check_railtype;
+        }
+    }
+    item(FEAT_TRAINS, gronk_clone_1_unit_1_variant_3, 997) {
+        property {
+            name:                           string(STR_NAME_GRONK_CLONE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/gronk"];
+                power:                          1;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          35mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        gronk_clone_1_unit_1_switch_graphics;
+            purchase:                       gronk_clone_1_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 gronk_clone_1_unit_1_switch_colour_mapping;
+                    purchase_colour_mapping:        gronk_clone_1_unit_1_switch_colour_mapping;
+                effect_spawn_model_and_powered: gronk_clone_1_unit_1_switch_effect_spawn_model_and_powered;
+                create_effect:      gronk_clone_1_unit_1_switch_create_effect_check_railtype;
+        }
+    }

@@ -1,0 +1,590 @@
+##grflangid 1
+##plural 0
+STR_GRF_DESCRIPTION                                                 :License: {SILVER}GPL v2{}{BLACK}
+STR_PARAM_VEHICLE_AVAILABILITY_ENGINES                              :Engines
+STR_PARAM_VEHICLE_AVAILABILITY_ENGINES_DESC                         :Play with all engines, a simplified set of engines, or no engines at all. {}{}{SILVER}All: {BLACK}the full range of Iron Horse engines will be available. {}{}{SILVER}Simplified: {BLACK}there will be fewer Iron Horse engines available, and eye-candy trains like snowploughs, driving cab cars and very slow locomotives will not be available.{}{}{SILVER}None: {BLACK}no Iron Horse engines will be available. Use this to get a wagons-only version of Iron Horse (requires that engines are provided by another grf, otherwise wagons will not be available).
+STR_PARAM_VEHICLE_AVAILABILITY_WAGONS                               :Wagons
+STR_PARAM_VEHICLE_AVAILABILITY_WAGONS_DESC                          :Play with all wagons, a simplified set of wagons, or no wagons at all. {}{}{SILVER}All: {BLACK}the full range of Iron Horse wagons will be available. {}{}{SILVER}Simplified: {BLACK}there will be fewer Iron Horse wagons available. {}{}{SILVER}None: {BLACK}no Iron Horse wagons will be available.
+STR_PARAM_VEHICLE_AVAILABILITY_OPTION_0                             :All
+STR_PARAM_VEHICLE_AVAILABILITY_OPTION_1                             :Simplified
+STR_PARAM_VEHICLE_AVAILABILITY_OPTION_2                             :None
+STR_PARAM_ADD_RAILTYPES                                             :Iron Horse extra railtypes
+STR_PARAM_ADD_RAILTYPES_DESC                                        :Iron Horse includes trains that require extra railtypes, for example metro and narrow gauge.  These types can also be provided by alternative railtype grfs.  If alternative railtype grfs are used, the Iron Horse railtypes can be turned off with this parameter setting.
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                                   :Train capacity
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC                              :Adjust vehicle capacity for alternative gameplay styles.{}{}{SILVER}Nanoscopic: {BLACK}77% reduction{SILVER}{}Puny: {BLACK}33% reduction{SILVER}{}Marvellous: {BLACK}default{SILVER}{}Excessive: {BLACK}33% increase{SILVER}{}Outrageous: {BLACK}77% increase{BLACK}
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                          :Nanoscopic
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                          :Puny
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                          :Marvellous (default)
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                          :Excessive
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4                          :Outrageous
+STR_PARAM_WAGON_COLOUR_RANDOMISATION                                :Wagon colour fading
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC                  :Faded freight wagon colours add variety to trains (random chance each wagon is faded).
+STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD                           :Build some vehicles reversed
+STR_PARAM_VEHICLE_RANDOM_REVERSE_ON_BUILD_DESC                      :Iron Horse will randomly build some vehicles as reversed, for example steam tank engines or diesel engines that have cabs at both ends.  This feature can be turned off with this parameter setting.
+STR_ERROR_INFLATION_INCOMPATIBLE                                    :Iron Horse is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings.
+STR_ERROR_TERMITE_DEPRECATED                                        :Iron Horse now includes the railtypes from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks.
+STR_COLOUR_NAME_COLOUR_DARK_BLUE                                    :Dark Blue
+STR_COLOUR_NAME_COLOUR_PALE_GREEN                                   :Pale Green
+STR_COLOUR_NAME_COLOUR_PINK                                         :Pink
+STR_COLOUR_NAME_COLOUR_YELLOW                                       :Yellow
+STR_COLOUR_NAME_COLOUR_RED                                          :Red
+STR_COLOUR_NAME_COLOUR_LIGHT_BLUE                                   :Light Blue
+STR_COLOUR_NAME_COLOUR_GREEN                                        :Green
+STR_COLOUR_NAME_COLOUR_DARK_GREEN                                   :Dark Green
+STR_COLOUR_NAME_COLOUR_BLUE                                         :Blue
+STR_COLOUR_NAME_COLOUR_CREAM                                        :Cream
+STR_COLOUR_NAME_COLOUR_MAUVE                                        :Mauve
+STR_COLOUR_NAME_COLOUR_PURPLE                                       :Purple
+STR_COLOUR_NAME_COLOUR_ORANGE                                       :Orange
+STR_COLOUR_NAME_COLOUR_BROWN                                        :Brown
+STR_COLOUR_NAME_COLOUR_GREY                                         :Grey
+STR_COLOUR_NAME_COLOUR_WHITE                                        :White
+STR_COLOUR_NAME_CUSTOM_BAUXITE                                      :Brown
+STR_COLOUR_NAME_CUSTOM_DARK_GREY                                    :Grey
+STR_COLOUR_NAME_CUSTOM_GREMLIN_GREEN                                :Green
+STR_COLOUR_NAME_CUSTOM_NIGHTSHADE                                   :Black
+STR_COLOUR_NAME_CUSTOM_OCHRE                                        :Ochre
+STR_COLOUR_NAME_CUSTOM_OIL_BLACK                                    :Oil Black
+STR_COLOUR_NAME_CUSTOM_PEWTER                                       :Pewter
+STR_COLOUR_NAME_CUSTOM_RUBY                                         :Dark Red
+STR_COLOUR_NAME_CUSTOM_SILVER                                       :Silver
+STR_COLOUR_NAME_CUSTOM_SULPHUR                                      :Mustard
+STR_COLOUR_NAME_CUSTOM_TEAL                                         :Teal
+STR_COLOUR_NAME_CUSTOM_VIOLET                                       :Violet
+STR_NAME_SUFFIX_LIVERY_MIX_COMPLEMENT_COMPANY_COLOUR                :{STRING}/{STRING}
+STR_NAME_SUFFIX_LIVERY_MIX_VARIETY                                  :Variety
+STR_NAME_SUFFIX_LIVERY_MIX_BAUXITE_GREY_NIGHTSHADE                  :Rust/Shale
+STR_NAME_SUFFIX_LIVERY_MIX_TEAL_NIGHTSHADE                          :Teal/Nightshade
+STR_NAME_SUFFIX_LIVERY_MIX_TEAL_VIOLET                              :Amethyst/Seafoam
+STR_NAME_SUFFIX_LIVERY_MIX_SILVER_PEWTER                            :Silver/Pewter
+STR_NAME_SUFFIX_LIVERY_MIX_SULPHUR_OCHRE                            :Mustard/Ochre
+STR_NAME_SUFFIX_LIVERY_MIX_RED_RUBY                                 :Red/Ruby
+STR_NAME_SUFFIX_LIVERY_MIX_RUBY_BAUXITE                             :Ruby/Rust
+STR_NAME_SUFFIX_LIVERY_MIX_OIL_BLACK_NIGHTSHADE                     :Obsidian/Nightshade
+STR_NAME_SUFFIX_LIVERY_MIX_OCHRE_SAND                               :Ochre/Straw
+STR_NAME_SUFFIX_LIVERY_MIX_GREMLIN_GREEN_SILVER                     :Moss/Silver
+STR_NAME_SUFFIX_LIVERY_MIX_GREY_PEWTER                              :Grey/Pewter
+STR_NAME_SUFFIX_LIVERY_MIX_SULPHUR_STRAW                            :Mustard/Straw
+STR_NAME_SUFFIX_LIVERY_MIX_TEAL_PEWTER                              :Teal/Pewter
+STR_BADGE_ROLE                                                      :Role
+STR_BADGE_ROLE_DRIVING_CAB                                          :Driving Cab{BLACK} - attach to front or rear of train, with at least one other engine
+STR_BADGE_ROLE_GENERAL_PURPOSE                                      :General Purpose
+STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS                              :General Purpose / Express
+STR_BADGE_ROLE_GENERAL_PURPOSE_FREIGHT                              :General Purpose / Freight
+STR_BADGE_ROLE_GRONK                                                :Gronk!
+STR_BADGE_ROLE_INTERCITY_EXPRESS                                    :InterCity Express
+STR_BADGE_ROLE_LOLZ                                                 :Lolz
+STR_BADGE_ROLE_METRO                                                :Very High Capacity Urban
+STR_BADGE_ROLE_RESTAURANT_CAR                                       :Eliminates running costs for all Passenger Coaches or High Speed Coaches in the train
+STR_BADGE_ROLE_SUBURBAN                                             :General Purpose / High Capacity
+STR_BADGE_WAGON_LENGTH                                              :Size Class
+STR_BADGE_WAGON_LENGTH_SMALL                                        :Small
+STR_BADGE_WAGON_LENGTH_MEDIUM                                       :Medium
+STR_BADGE_WAGON_LENGTH_LARGE                                        :Large
+STR_BADGE_WAGON_LENGTH_TWIN                                         :Twin
+STR_BADGE_SPECIAL_FLAGS                                             :Special Features
+STR_BADGE_SPECIAL_FLAG_TILT                                         :TILT CABBAGE
+STR_BADGE_POWER_SOURCE_BATTERY_HYBRID                               :Battery Hybrid
+STR_BADGE_POWER_SOURCE_DIESEL                                       :Diesel
+STR_BADGE_POWER_SOURCE_ELECTRIC_AC                                  :AC Electric
+STR_BADGE_POWER_SOURCE_AC                                           :AC Electric
+STR_BADGE_POWER_SOURCE_DC                                           :DC Electric
+STR_BADGE_POWER_SOURCE_ELECTRODIESEL                                :Electro-Diesel
+STR_BADGE_POWER_SOURCE_METRO                                        :Metro
+STR_BADGE_POWER_SOURCE_STEAM                                        :Steam
+STR_NAME_SUFFIX_TRAILER                                             :Trailer
+STR_NAME_SUFFIX_RANDOMISED_WAGON                                    : - Random
+STR_WAGON_GROUP_ACID_TANK_CARS                                      :Acid Tankers
+STR_WAGON_GROUP_AGGREGATE_BULK_OPEN_CARS                            :Stone Wagons
+STR_WAGON_GROUP_AGGREGATE_HOPPER_CARS                               :Aggregate Hoppers
+STR_WAGON_GROUP_BOLSTER_CARS                                        :Bolster Wagons
+STR_WAGON_GROUP_BOX_CARS                                            :Box Vans
+STR_WAGON_GROUP_BULK_CARS_RANDOMISED                                :Bulk Cargo Combos
+STR_WAGON_GROUP_CEMENT_SILO_CARS                                    :Cement Wagons
+STR_WAGON_GROUP_CHEMICAL_TANK_CARS_RANDOMISED                       :Chemical Tanker Combos
+STR_WAGON_GROUP_COIL_BUGGY_CARS                                     :Coil Buggies
+STR_WAGON_GROUP_COIL_CARS                                           :Coil Carriers
+STR_WAGON_GROUP_COVERED_HOPPER_CARS                                 :Covered Hoppers
+STR_WAGON_GROUP_COVERED_BULK_CARS_RANDOMISED                        :Covered Bulk Cargo Combos
+STR_WAGON_GROUP_DOUBLE_DECK_AUTOMOBILE_CARS                         :Car Transporters
+STR_WAGON_GROUP_EXPRESS_CARS                                        :Express Vans
+STR_WAGON_GROUP_FARM_PRODUCT_BOX_CARS                               :Farm Product Vans
+STR_WAGON_GROUP_FARM_PRODUCT_HOPPER_CARS                            :Farm Product Hoppers
+STR_WAGON_GROUP_FLAT_CARS                                           :Flat Wagons
+STR_WAGON_GROUP_FOOD_HOPPER_CARS                                    :Food Hoppers
+STR_WAGON_GROUP_FOOD_EXPRESS_TANK_CARS                              :Express Food Tankers
+STR_WAGON_GROUP_HEAVY_DUTY_DUMP_CARS                                :Heavy Duty Bulk Wagons
+STR_WAGON_GROUP_HEAVY_DUTY_FLAT_CARS                                :Heavy Duty Flat Wagons
+STR_WAGON_GROUP_HIGH_SPEED_MAIL_CARS                                :High Speed Mail Vans
+STR_WAGON_GROUP_HIGH_SPEED_PASSENGER_CARS                           :High Speed Coaches
+STR_WAGON_GROUP_HOPPER_CARS                                         :Hoppers
+STR_WAGON_GROUP_INGOT_CARS                                          :Ingot Carriers
+STR_WAGON_GROUP_INTERMODAL_CARS                                     :Container Wagons
+STR_WAGON_GROUP_LIME_COVERED_HOPPER_CARS                            :Lime Hoppers
+STR_WAGON_GROUP_LIVESTOCK_CARS                                      :Livestock Wagons
+STR_WAGON_GROUP_LOG_CARS                                            :Log Carriers
+STR_WAGON_GROUP_MAIL_CARS                                           :Mail Vans
+STR_WAGON_GROUP_MERCHANDISE_BOX_CARS                                :Merchandise Vans
+STR_WAGON_GROUP_METAL_PRODUCT_CARS_RANDOMISED                       :Metal Cargo Combos
+STR_WAGON_GROUP_MINERAL_BULK_OPEN_CARS                              :Mineral Wagons
+STR_WAGON_GROUP_MGR_HOPPER_CARS                                     :MGR Hoppers
+STR_WAGON_GROUP_MILL_FLAT_CARS                                      :Mill Flat Wagons
+STR_WAGON_GROUP_MILL_OPEN_CARS                                      :Mill Open Wagons
+STR_WAGON_GROUP_MORE                                                :More...
+STR_WAGON_GROUP_OPEN_CARS                                           :Open Wagons
+STR_WAGON_GROUP_PANORAMIC_CARS                                      :Panoramic Coaches
+STR_WAGON_GROUP_PASSENGER_CARS                                      :Passenger Coaches
+STR_WAGON_GROUP_PEAT_CARS                                           :Peat Wagons
+STR_WAGON_GROUP_PIECE_GOODS_CARS_RANDOMISED                         :Goods Cargo Combos
+STR_WAGON_GROUP_PIPE_CARS                                           :Pipe Wagons
+STR_WAGON_GROUP_PRESSURE_TANK_CARS                                  :Pressurised Tankers
+STR_WAGON_GROUP_PRODUCT_TANK_CARS                                   :Product Tankers
+STR_WAGON_GROUP_REEFER_CARS                                         :Refrigerated Vans
+STR_WAGON_GROUP_RESTAURANT_CARS                                     :Restaurant Cars
+STR_WAGON_GROUP_ROCK_HOPPER_CARS                                    :Rock Hoppers
+STR_WAGON_GROUP_ROLLER_ROOF_HOPPER_CARS                             :Roller Roof Hoppers
+STR_WAGON_GROUP_SALT_COVERED_HOPPER_CARS                            :Salt Hoppers
+STR_WAGON_GROUP_SCRAP_METAL_CARS                                    :Scrap Wagons
+STR_WAGON_GROUP_SIDE_DOOR_HOPPER_CARS                               :Side Door Hoppers
+STR_WAGON_GROUP_SILO_CARS                                           :Silo Wagons
+STR_WAGON_GROUP_SKIP_CARS                                           :Skips
+STR_WAGON_GROUP_SLAG_LADLE_CARS                                     :Slag Ladle Wagons
+STR_WAGON_GROUP_SLIDING_ROOF_CARS                                   :Sliding Roof Wagons
+STR_WAGON_GROUP_SLIDING_ROOF_HI_CUBE_CARS                           :Cube Wagons
+STR_WAGON_GROUP_SLIDING_WALL_CARS                                   :Sliding Wall Vans
+STR_WAGON_GROUP_CANE_BIN_CARS                                       :Cane Bins
+STR_WAGON_GROUP_SUBURBAN_PASSENGER_CARS                             :Suburban Coaches
+STR_WAGON_GROUP_SWING_ROOF_HOPPER_CARS                              :Swing Roof Hoppers
+STR_WAGON_GROUP_TANK_CARS                                           :Tankers
+STR_WAGON_GROUP_TARPAULIN_CARS                                      :Tarpaulin Wagons
+STR_WAGON_GROUP_TIPPLER_BULK_OPEN_CARS                              :Tippler Wagons
+STR_WAGON_GROUP_TORPEDO_CARS                                        :Torpedo Wagons
+STR_WAGON_GROUP_VEHICLE_TRANSPORTER_CARS                            :Vehicle Transporters
+STR_WAGON_GROUP_VOLATILES_TANK_CARS                                 :Volatiles Tankers
+STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED                            :Acid Tanker
+STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_1                                :Acid Tanker
+STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2                                :Acid Tanker
+STR_NAME_SUFFIX_AGGREGATE_BULK_OPEN_CAR_RANDOMISED                  :Stone Wagon
+STR_NAME_SUFFIX_AGGREGATE_BULK_OPEN_CAR_TYPE_1                      :Stone Wagon
+STR_NAME_SUFFIX_AGGREGATE_BULK_OPEN_CAR_TYPE_2                      :Stone Wagon
+STR_NAME_SUFFIX_AGGREGATE_BULK_OPEN_CAR_TYPE_3                      :Stone Wagon
+STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_RANDOMISED                     :Aggregate Hopper
+STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_TYPE_1                         :Aggregate Hopper
+STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_TYPE_2                         :Aggregate Hopper
+STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR_TYPE_3                         :Aggregate Hopper
+STR_NAME_SUFFIX_AUTOMOBILE_CAR                                      :Vehicle Transporter
+STR_NAME_SUFFIX_BOLSTER_CAR                                         :Bolster Wagon
+STR_NAME_SUFFIX_BOLSTER_CAR_RANDOMISED                              :Bolster Wagon
+STR_NAME_SUFFIX_BOX_CAR_RANDOMISED                                  :Box Van
+STR_NAME_SUFFIX_BOX_CAR_TYPE_1                                      :Box Van
+STR_NAME_SUFFIX_BOX_CAR_TYPE_2                                      :Box Van
+STR_NAME_SUFFIX_BULK_CAR_BOX_RANDOMISED                             :Open Bulk Wagon
+STR_NAME_SUFFIX_BULK_CAR_HOPPER_RANDOMISED                          :Hopper Bulk Wagon
+STR_NAME_SUFFIX_BULK_CAR_MIXED_RANDOMISED                           :Mixed Bulk Wagon
+STR_NAME_SUFFIX_CABOOSE_CAR                                         :Brake Van
+STR_NAME_SUFFIX_CANE_BIN_CAR                                        :Cane Bin
+STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                             :Carbon Black Hopper
+STR_NAME_SUFFIX_CEMENT_SILO_CAR_RANDOMISED                          :Cement Wagon
+STR_NAME_SUFFIX_CEMENT_SILO_CAR_TYPE_1                              :Cement Wagon
+STR_NAME_SUFFIX_CEMENT_SILO_CAR_TYPE_2                              :Cement Wagon
+STR_NAME_SUFFIX_CEMENT_SILO_CAR_TYPE_3                              :Cement Wagon
+STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED                        :Chemical Tanker
+STR_NAME_SUFFIX_COIL_BUGGY_CAR                                      :Coil Buggies
+STR_NAME_SUFFIX_COIL_CAR_COVERED                                    :Covered Coil Carrier
+STR_NAME_SUFFIX_COIL_CAR_COVERED_ASYMMETRIC                         :Covered Coil Carrier
+STR_NAME_SUFFIX_COIL_CAR_TARPAULIN                                  :Covered Coil Carrier
+STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                                  :Coil Carrier
+STR_NAME_SUFFIX_COVERED_BULK_CAR_RANDOMISED                         :Covered Bulk Cargo Combos
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_1                           :Covered Hopper
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_2                           :Covered Hopper
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_TYPE_3                           :Covered Hopper
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_RANDOMISED                       :Covered Hopper
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                       :Cryo Tanker
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                                :Curtain Side Box Van
+STR_NAME_SUFFIX_DEDICATED_COIL_CAR_RANDOMISED                       :Coil Carrier
+STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR                          :Car Transporter
+STR_NAME_SUFFIX_DROP_END_FLAT_CAR                                   :Drop End Flat Wagon
+STR_NAME_SUFFIX_DROP_SIDE_FLAT_CAR                                  :Drop Side Flat Wagon
+STR_NAME_SUFFIX_ENCLOSED_AUTOMOBILE_CAR                             :Enclosed Vehicle Transporter
+STR_NAME_SUFFIX_EXPRESS_CAR                                         :Express Van
+STR_NAME_SUFFIX_EXPRESS_FOOD_CAR_RANDOMISED                         :Express Food Wagon
+STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                              :Express Container Wagon
+STR_NAME_SUFFIX_FARM_PRODUCT_BOX_CAR_RANDOMISED                     :Farm Product Van
+STR_NAME_SUFFIX_FARM_PRODUCT_BOX_CAR_TYPE_1                         :Farm Product Van
+STR_NAME_SUFFIX_FARM_PRODUCT_BOX_CAR_TYPE_2                         :Farm Product Van
+STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_RANDOMISED                  :Farm Product Hopper
+STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_TYPE_1                      :Farm Product Hopper
+STR_NAME_SUFFIX_FARM_PRODUCT_HOPPER_CAR_TYPE_2                      :Farm Product Hopper
+STR_NAME_SUFFIX_FLAT_CAR                                            :Flat Wagon
+STR_NAME_SUFFIX_FLAT_CAR_RANDOMISED                                 :Flatbed Wagon
+STR_NAME_SUFFIX_FOOD_HOPPER_CAR_RANDOMISED                          :Food Hopper
+STR_NAME_SUFFIX_FOOD_HOPPER_CAR_TYPE_1                              :Food Hopper
+STR_NAME_SUFFIX_FOOD_HOPPER_CAR_TYPE_2                              :Food Hopper
+STR_NAME_SUFFIX_FOOD_HOPPER_CAR_TYPE_3                              :Food Hopper
+STR_NAME_SUFFIX_FOOD_EXPRESS_TANK_CAR_RANDOMISED                    :Express Food Tanker
+STR_NAME_SUFFIX_FOOD_EXPRESS_TANK_CAR_TYPE_1                        :Express Food Tanker
+STR_NAME_SUFFIX_FOOD_EXPRESS_TANK_CAR_TYPE_2                        :Express Food Tanker
+STR_NAME_SUFFIX_HEAVY_DUTY_DUMP_CAR                                 :Heavy Duty Bulk Wagon
+STR_NAME_SUFFIX_HEAVY_DUTY_FLAT_CAR                                 :Heavy Duty Flat Wagon
+STR_NAME_SUFFIX_HIGH_END_BOLSTER_CAR                                :Bolster Wagon
+STR_NAME_SUFFIX_HIGH_END_OPEN_CAR                                   :Open Wagon
+STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                                 :High Speed Mail Van
+STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                            :High Speed Coach
+STR_NAME_SUFFIX_HOOD_OPEN_CAR                                       :Hood Open Wagon
+STR_NAME_SUFFIX_HOPPER_CAR                                          :Hopper
+STR_NAME_SUFFIX_HOPPER_CAR_HIGH_SIDE                                :High Side Hopper
+STR_NAME_SUFFIX_HOPPER_CAR_RANDOMISED                               :Hopper
+STR_NAME_SUFFIX_HST_MAIL_CAR                                        :Mail Van
+STR_NAME_SUFFIX_HST_PASSENGER_CAR                                   :Passenger Coach
+STR_NAME_SUFFIX_INGOT_CAR                                           :Ingot Carriers
+STR_NAME_SUFFIX_INTERMODAL_CAR                                      :Container Wagon
+STR_NAME_SUFFIX_KAOLIN_HOPPER_CAR                                   :China Clay Hopper
+STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_RANDOMISED                  :Lime Hopper
+STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1                      :Lime Hopper
+STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_2                      :Lime Hopper
+STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_3                      :Lime Hopper
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                       :Livestock Wagon
+STR_NAME_SUFFIX_LOG_CAR                                             :Log Carrier
+STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                            :Low-floor Vehicle Transporter
+STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                            :Low-floor Container Wagon
+STR_NAME_SUFFIX_MAIL_CAR                                            :Mail Van
+STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR                                 :Merchandise Van
+STR_NAME_SUFFIX_METAL_PRODUCT_CAR_COVERED_RANDOMISED                :Covered Metal Product Wagon
+STR_NAME_SUFFIX_METAL_PRODUCT_CAR_MIXED_RANDOMISED                  :Mixed Metal Product Wagon
+STR_NAME_SUFFIX_METAL_PRODUCT_CAR_UNCOVERED_RANDOMISED              :Uncovered Metal Product Wagon
+STR_NAME_SUFFIX_MINERAL_BULK_OPEN_CAR                               :Mineral Wagon
+STR_NAME_SUFFIX_MINERAL_BULK_OPEN_CAR_HIGH_SIDE                     :High Side Mineral Wagon
+STR_NAME_SUFFIX_MINERAL_BULK_OPEN_CAR_LOW_SIDE                      :Low Side Mineral Wagon
+STR_NAME_SUFFIX_MINERAL_BULK_OPEN_CAR_RANDOMISED                    :Mineral Wagon
+STR_NAME_SUFFIX_MGR_HOPPER_CAR                                      :MGR Hopper
+STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR                             :MGR Hood Hopper
+STR_NAME_SUFFIX_MILL_FLAT_CAR_RANDOMISED                            :Mill Flat Wagon
+STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_1                                :Mill Flat Wagon
+STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_2                                :Mill Flat Wagon
+STR_NAME_SUFFIX_MILL_OPEN_CAR                                       :Mill Open Wagon
+STR_NAME_SUFFIX_OPEN_CAR                                            :Open Wagon
+STR_NAME_SUFFIX_OPEN_CAR_RANDOMISED                                 :Open Wagon
+STR_NAME_SUFFIX_PANORAMIC_CAR                                       :Panoramic Coach
+STR_NAME_SUFFIX_PASSENGER_CAR                                       :Passenger Coach
+STR_NAME_SUFFIX_PEAT_CAR                                            :Peat Wagon
+STR_NAME_SUFFIX_PIECE_GOODS_CAR_COVERED_RANDOMISED                  :Covered Goods Wagon
+STR_NAME_SUFFIX_PIECE_GOODS_CAR_MANUFACTURING_PARTS_RANDOMISED      :Parts Cargo Wagon
+STR_NAME_SUFFIX_PIECE_GOODS_CAR_MIXED_RANDOMISED                    :Mixed Goods Wagon
+STR_NAME_SUFFIX_PIPE_CAR                                            :Pipe Wagon
+STR_NAME_SUFFIX_PRESSURE_TANK_CAR                                   :Pressure Tanker
+STR_NAME_SUFFIX_PRODUCT_TANK_CAR_RANDOMISED                         :Product Tanker
+STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_1                             :Product Tanker
+STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_2                             :Product Tanker
+STR_NAME_SUFFIX_REEFER_CAR_RANDOMISED                               :Refrigerated Van
+STR_NAME_SUFFIX_REEFER_CAR_TYPE_1                                   :Refrigerated Van
+STR_NAME_SUFFIX_REEFER_CAR_TYPE_2                                   :Refrigerated Van
+STR_NAME_SUFFIX_RESTAURANT_CAR                                      :Restaurant Car
+STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                     :Rock Hopper
+STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_TYPE_1                       :Roller Roof Hopper
+STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_TYPE_2                       :Roller Roof Hopper
+STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED                   :Roller Roof Hopper
+STR_NAME_SUFFIX_SALT_COVERED_HOPPER_CAR                             :Salt Hopper
+STR_NAME_SUFFIX_SALT_COVERED_HOPPER_CAR_RANDOMISED                  :Salt Hopper
+STR_NAME_SUFFIX_SALT_SWING_ROOF_HOPPER_CAR                          :Salt Hopper
+STR_NAME_SUFFIX_SCRAP_METAL_CAR_TYPE_1                              :Scrap Wagon
+STR_NAME_SUFFIX_SCRAP_METAL_CAR_TYPE_2                              :Scrap Wagon
+STR_NAME_SUFFIX_SCRAP_METAL_CAR_RANDOMISED                          :Scrap Wagon
+STR_NAME_SUFFIX_SIDE_DOOR_HOPPER_CAR                                :Side Door Hopper
+STR_NAME_SUFFIX_SILO_CAR_RANDOMISED                                 :Silo Wagon
+STR_NAME_SUFFIX_SILO_CAR_TYPE_1                                     :Silo Wagon
+STR_NAME_SUFFIX_SILO_CAR_TYPE_2                                     :Silo Wagon
+STR_NAME_SUFFIX_SILO_CAR_TYPE_3                                     :Silo Wagon
+STR_NAME_SUFFIX_SKIP_CAR                                            :Skips
+STR_NAME_SUFFIX_SLAG_LADLE_CAR                                      :Slag Ladle Wagon
+STR_NAME_SUFFIX_SLIDING_ROOF_CAR                                    :Sliding Roof Wagon
+STR_NAME_SUFFIX_SLIDING_ROOF_HI_CUBE_CAR                            :Cube Wagon
+STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1                             :Sliding Wall Van
+STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_2                             :Sliding Wall Van
+STR_NAME_SUFFIX_SUBURBAN_PASSENGER_CAR                              :Suburban Coach
+STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR                               :Swing Roof Hopper
+STR_NAME_SUFFIX_TANK_CAR_RANDOMISED                                 :Tanker
+STR_NAME_SUFFIX_TANK_CAR_TYPE_1                                     :Tanker
+STR_NAME_SUFFIX_TANK_CAR_TYPE_2                                     :Tanker
+STR_NAME_SUFFIX_TARPAULIN_CAR_RANDOMISED                            :Tarpaulin Wagon
+STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1                                :Tarpaulin Wagon
+STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_2                                :Tarpaulin Wagon
+STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_3                                :Tarpaulin Wagon
+STR_NAME_SUFFIX_TIPPLER_BULK_OPEN_CAR_TYPE_1                        :Tippler Wagon
+STR_NAME_SUFFIX_TIPPLER_BULK_OPEN_CAR_TYPE_2                        :Tippler Wagon
+STR_NAME_SUFFIX_TIPPLER_BULK_OPEN_CAR_RANDOMISED                    :Tippler Wagon
+STR_NAME_SUFFIX_TIPPLER_ROTARY_BULK_OPEN_CAR_TYPE_1                 :Rotary Tippler
+STR_NAME_SUFFIX_TORPEDO_CAR                                         :Torpedo Wagon
+STR_NAME_SUFFIX_VOLATILES_TANK_CAR_TYPE_1                           :Volatiles Tanker
+STR_POWER_BY_POWER_SOURCE_TWO_SOURCES                               :{BLACK}Power on {STRING}: {GOLD}{POWER} {}{BLACK}Power on {STRING}: {GOLD}{POWER}
+STR_POWER_SOURCE                                                    :Power Source
+STR_POWER_SOURCE_AC                                                 :Electric (AC)
+STR_POWER_SOURCE_DIESEL                                             :Diesel
+STR_POWER_SOURCE_STEAM                                              :Steam
+STR_SPEED_BY_RAILTYPE_LGV_CAPABLE                                   :{BLACK}Speed (Dedicated High Speed Rail): {GOLD}{VELOCITY} {}{BLACK}Speed (Normal Rail): {GOLD}{VELOCITY}
+STR_WAGONS_ADD_POWER_CAB                                            :{BLACK}Power (Distributed): {GOLD}{POWER} per {STRING} passenger or mail coach attached
+STR_WAGONS_ADD_POWER_MIDDLE                                         :{BLACK}Power (Distributed): {GOLD}{POWER} when attached to {STRING} engine
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS                   :{}{BLACK}Colour mix: {GOLD}{STRING}
+STR_RAILTYPE_LGV_NAME                                               :Dedicated High Speed Railway
+STR_RAILTYPE_LGV_TOOLBAR_CAPTION                                    :[unused]
+STR_RAILTYPE_LGV_MENU_TEXT                                          :[unused]
+STR_RAILTYPE_LGV_BUILD_WINDOW_CAPTION                               :New Dedicated High Speed Vehicles
+STR_RAILTYPE_LGV_AUTOREPLACE_TEXT                                   :Dedicated High Speed Vehicles
+STR_RAILTYPE_LGV_NEW_ENGINE_TEXT                                    :high speed rail vehicle
+STR_RAILTYPE_LGV_ELECTRIFIED_NAME                                   :Dedicated High Speed Railway
+STR_RAILTYPE_LGV_ELECTRIFIED_TOOLBAR_CAPTION                        :Dedicated High Speed Railway Construction
+STR_RAILTYPE_LGV_ELECTRIFIED_MENU_TEXT                              :Dedicated high speed railway construction
+STR_RAILTYPE_LGV_ELECTRIFIED_BUILD_WINDOW_CAPTION                   :New Dedicated High Speed Vehicles
+STR_RAILTYPE_LGV_ELECTRIFIED_AUTOREPLACE_TEXT                       :Dedicated High Speed Vehicles
+STR_RAILTYPE_LGV_ELECTRIFIED_NEW_ENGINE_TEXT                        :high speed rail vehicle
+STR_RAILTYPE_METRO_NAME                                             :Metro Railway
+STR_RAILTYPE_METRO_TOOLBAR_CAPTION                                  :Metro Railway Construction
+STR_RAILTYPE_METRO_MENU_TEXT                                        :Metro railway construction
+STR_RAILTYPE_METRO_BUILD_WINDOW_CAPTION                             :New Metro Vehicles
+STR_RAILTYPE_METRO_AUTOREPLACE_TEXT                                 :Metro Rail Vehicles
+STR_RAILTYPE_METRO_NEW_ENGINE_TEXT                                  :metro rail vehicle
+STR_RAILTYPE_NARROW_GAUGE_NAME                                      :Narrow Gauge Railway
+STR_RAILTYPE_NARROW_GAUGE_TOOLBAR_CAPTION                           :Narrow Gauge Railway Construction
+STR_RAILTYPE_NARROW_GAUGE_MENU_TEXT                                 :Narrow gauge railway construction
+STR_RAILTYPE_NARROW_GAUGE_BUILD_WINDOW_CAPTION                      :New Narrow Gauge Vehicles
+STR_RAILTYPE_NARROW_GAUGE_AUTOREPLACE_TEXT                          :Narrow Gauge Rail Vehicles
+STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT                           :narrow gauge rail vehicle
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NAME                               :High Clearance Railway
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_TOOLBAR_CAPTION                    :High Clearance Railway Construction
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_MENU_TEXT                          :high clearance railway construction
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_BUILD_WINDOW_CAPTION               :New High Clearance Vehicles
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_AUTOREPLACE_TEXT                   :High Clearance Vehicles
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NEW_ENGINE_TEXT                    :high clearance rail vehicle
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME                               :AC Electrified Railway
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_TOOLBAR_CAPTION                    :AC Electrified Railway Construction
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_MENU_TEXT                          :AC electrified railway construction
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION               :New AC Electrified Vehicles
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_AUTOREPLACE_TEXT                   :AC Electrified Vehicles
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT                    :AC electric rail vehicle
+STR_NAME_LARK                                                       :4-4-2 Lark
+STR_NAME_MERRYLEGS                                                  :2-6-2 Merrylegs
+STR_NAME_DECAPOD                                                    :0-10-0 Decapod
+STR_NAME_PROPER_JOB                                                 :2-6-2 Proper Job
+STR_NAME_STAG                                                       :0-6-4 Stag
+STR_NAME_KELPIE                                                     :Kelpie
+STR_NAME_KELPIE_CLONE_1                                             :Kelpie
+STR_NAME_FOXHOUND                                                   :Foxhound
+STR_NAME_FOXHOUND_CLONE_1                                           :Foxhound
+STR_NAME_GRIFFON                                                    :Griffon
+STR_NAME_GRIFFON_CLONE_1                                            :Griffon
+STR_NAME_LYNX                                                       :Lynx
+STR_NAME_LYNX_CLONE_1                                               :Lynx
+STR_NAME_PINHORSE                                                   :Pinhorse
+STR_NAME_ARGUS                                                      :Argus
+STR_NAME_BOOSTER                                                    :Booster
+STR_NAME_TORNADO                                                    :Tornado
+STR_NAME_RELIANCE                                                   :2-4-0 Reliance
+STR_NAME_SPINNER                                                    :4-2-2 Spinner
+STR_NAME_CARRACK                                                    :4-4-0 Carrack
+STR_NAME_BRAF                                                       :2-6-0 Braf
+STR_NAME_TENCENDUR                                                  :4-4-0 Tencendur
+STR_NAME_DIABLO                                                     :2-6-0 Diablo
+STR_NAME_SATYR                                                      :4-6-4 Satyr
+STR_NAME_THUNDERER                                                  :4-6-0 Thunderer
+STR_NAME_DARING                                                     :Daring
+STR_NAME_GROWLER                                                    :Growler
+STR_NAME_MERLION                                                    :Merlion
+STR_NAME_SHREDDER                                                   :Shredder
+STR_NAME_PHOENIX                                                    :Phoenix
+STR_NAME_CENTAUR                                                    :Centaur
+STR_NAME_SWIFT                                                      :4-4-2 Swift
+STR_NAME_STRONGBOW                                                  :4-6-0 Strongbow
+STR_NAME_ARROW                                                      :2-6-2 Arrow
+STR_NAME_WYVERN                                                     :Wyvern
+STR_NAME_TENACIOUS                                                  :Tenacious
+STR_NAME_INTREPID                                                   :Intrepid
+STR_NAME_RESILIENT                                                  :Resilient
+STR_NAME_RAPID                                                      :Rapid
+STR_NAME_PEGASUS                                                    :2-8-2 Pegasus
+STR_NAME_STREAMER                                                   :4-6-4 Streamer
+STR_NAME_HAWKINGE                                                   :4-8-2 Hawkinge
+STR_NAME_DRAGON                                                     :Dragon
+STR_NAME_VULCAN                                                     :Vulcan
+STR_NAME_FALCON                                                     :Falcon
+STR_NAME_ONSLAUGHT                                                  :Onslaught
+STR_NAME_DREADNOUGHT                                                :Dreadnought
+STR_NAME_DEFIANT                                                    :Defiant
+STR_NAME_RELENTLESS                                                 :Relentless
+STR_NAME_DYNAMO                                                     :Dynamo
+STR_NAME_CYCLONE                                                    :Cyclone
+STR_NAME_SHOEBOX                                                    :Shoebox
+STR_NAME_ULTRA_SHOEBOX                                              :Ultra Shoebox
+STR_NAME_HURLY_BURLY                                                :Hurly Burly
+STR_NAME_MOOR_GALLOP                                                :Moor Gallop
+STR_NAME_ROARER                                                     :Roarer
+STR_NAME_FURY                                                       :Fury
+STR_NAME_CONSTANCE                                                  :Constance
+STR_NAME_STALWART                                                   :Stalwart
+STR_NAME_ZEBEDEE                                                    :Zebedee
+STR_NAME_SCREAMER                                                   :Screamer
+STR_NAME_REVOLUTION                                                 :Revolution
+STR_NAME_AVENGER                                                    :Avenger
+STR_NAME_SIZZLER                                                    :Sizzler
+STR_NAME_BUFFALO                                                    :0-6-2 Buffalo
+STR_NAME_SAXON                                                      :0-8-0 Saxon
+STR_NAME_YAK                                                        :0-8-2 Yak
+STR_NAME_LITTLE_BEAR                                                :Little Bear
+STR_NAME_CAPTAIN_STEEL                                              :Captain Steel
+STR_NAME_GOLIATH                                                    :Goliath
+STR_NAME_GENERAL_ENDEAVOUR                                          :General Endeavour
+STR_NAME_STOAT                                                      :Stoat
+STR_NAME_ZEST                                                       :Zest
+STR_NAME_HERCULES                                                   :0-6-0 Hercules
+STR_NAME_EASTERN                                                    :0-8-0 Eastern
+STR_NAME_HAAR                                                       :0-8-0 Haar
+STR_NAME_TROJAN                                                     :Trojan
+STR_NAME_VIKING                                                     :Viking
+STR_NAME_XERXES                                                     :0-6-0+0-6-0 Xerxes
+STR_NAME_KEEN                                                       :0-6-0+0-6-0 Keen
+STR_NAME_VIGILANT                                                   :2-8-0 Vigilant
+STR_NAME_MAINSTAY                                                   :2-8-0 Mainstay
+STR_NAME_YILLEN                                                     :Yillen
+STR_NAME_MAELSTROM                                                  :Maelstrom
+STR_NAME_DOINEANN                                                   :Doineann
+STR_NAME_DOUBLETIDE                                                 :Doubletide
+STR_NAME_GIRT_LICKER                                                :0-10-0 Girt Licker
+STR_NAME_LEMON                                                      :4-8-0 Lemon
+STR_NAME_ESK                                                        :2-6-0+0-6-2 Esk
+STR_NAME_CHINOOK                                                    :Chinook
+STR_NAME_CHINOOK_CLONE_1                                            :Chinook
+STR_NAME_WITHERSHINS                                                :Withershins
+STR_NAME_WITHERSHINS_CLONE_1                                        :Withershins
+STR_NAME_LION                                                       :Lion
+STR_NAME_GRID                                                       :Grid
+STR_NAME_BONE                                                       :Bone
+STR_NAME_TOASTER                                                    :Toaster
+STR_NAME_CHEDDAR_VALLEY                                             :Cheddar Valley
+STR_NAME_STENTOR                                                    :Stentor
+STR_NAME_FLINDERMOUSE                                               :Flindermouse
+STR_NAME_FLINDERMOUSE_CLONE_1                                       :Flindermouse
+STR_NAME_DRYTH                                                      :Dryth
+STR_NAME_DRYTH_CLONE_1                                              :Dryth
+STR_NAME_PEASWEEP                                                   :Peasweep
+STR_NAME_PEASWEEP_CLONE_1                                           :Peasweep
+STR_NAME_RESISTANCE                                                 :Resistance
+STR_NAME_TINCANS                                                    :Tincans
+STR_NAME_TINCANS_CLONE_1                                            :Tincans
+STR_NAME_FLANDERS_STORM                                             :Flanders Storm
+STR_NAME_QUIETUS                                                    :Quietus
+STR_NAME_GRUB                                                       :Grub
+STR_NAME_LAMIA                                                      :0-6-0 Lamia
+STR_NAME_FIREBALL                                                   :0-6-0 Fireball
+STR_NAME_GRONK                                                      :Gronk
+STR_NAME_GRONK_CLONE_1                                              :Gronk
+STR_NAME_CHUGGYPIG                                                  :Chuggypig
+STR_NAME_PROGRESS                                                   :Progress
+STR_NAME_MAGNUM_90                                                  :Magnum 90
+STR_NAME_SNOWPLOUGH_PONY_GEN_2                                      :Snowplough
+STR_NAME_CARGO_SPRINTER                                             :Cargo Sprinter
+STR_NAME_AUTO_COACH_PONY_GEN_2                                      :Autocoach Set
+STR_NAME_CLIPPER                                                    :Clipper
+STR_NAME_CLIPPER_SINGLE                                             :Clipper
+STR_NAME_SKIPPER                                                    :Skipper
+STR_NAME_SKIPPER_SINGLE                                             :Skipper
+STR_NAME_ZIPPER                                                     :Zipper
+STR_NAME_ZIPPER_SINGLE                                              :Zipper
+STR_NAME_DEASIL                                                     :Deasil
+STR_NAME_SLAMMER                                                    :Slammer
+STR_NAME_TIN_ROCKET                                                 :Tin Rocket
+STR_NAME_HAPPY_TRAIN                                                :Happy Train
+STR_NAME_GOWSTY                                                     :Gowsty
+STR_NAME_SCOOBY                                                     :Scooby
+STR_NAME_PLASTIC_POSTBOX                                            :Plastic Postbox
+STR_NAME_ATHENA                                                     :Athena
+STR_NAME_GERONIMO                                                   :Geronimo
+STR_NAME_BREEZE                                                     :Breeze
+STR_NAME_ZEUS                                                       :Zeus
+STR_NAME_ARES                                                       :Ares
+STR_NAME_DOVER                                                      :Dover
+STR_NAME_JUPITER                                                    :Jupiter
+STR_NAME_PYLON                                                      :Pylon
+STR_NAME_HIGH_FLYER                                                 :High Flyer
+STR_NAME_SUNSHINE_COAST                                             :Sunshine Coast
+STR_NAME_OLYMPIC                                                    :Olympic
+STR_NAME_CHRONOS                                                    :Chronos
+STR_NAME_NIMBUS                                                     :Nimbus
+STR_NAME_FIREBIRD                                                   :Firebird
+STR_NAME_BLAZE                                                      :Blaze HST
+STR_NAME_HELM_WIND_CAB                                              :Helm Wind
+STR_NAME_HELM_WIND_MIDDLE_PASSENGER                                 :Helm Wind Passenger Coach
+STR_NAME_HELM_WIND_MIDDLE_MAIL                                      :Helm Wind Mail Van
+STR_NAME_ALIZE_CAB                                                  :Alizé
+STR_NAME_ALIZE_MIDDLE_PASSENGER                                     :Alizé Passenger Coach
+STR_NAME_ALIZE_MIDDLE_MAIL                                          :Alizé Mail Van
+STR_NAME_BRENNER_CAB                                                :Brenner
+STR_NAME_BRENNER_MIDDLE_PASSENGER                                   :Brenner Passenger Coach
+STR_NAME_BRENNER_MIDDLE_MAIL                                        :Brenner Mail Van
+STR_NAME_SKEIRON_CAB                                                :Skeiron
+STR_NAME_SKEIRON_MIDDLE_PASSENGER                                   :Skeiron Passenger Coach
+STR_NAME_SKEIRON_MIDDLE_MAIL                                        :Skeiron Mail Van
+STR_NAME_DRIVING_CAB_PASSENGER_PONY_GEN_4                           :Driving Trailer
+STR_NAME_DRIVING_CAB_PASSENGER_PONY_GEN_5                           :Driving Trailer
+STR_NAME_DRIVING_CAB_HIGH_SPEED_PASSENGER_PONY_GEN_5                :High Speed Driving Trailer
+STR_NAME_DRIVING_CAB_HIGH_SPEED_PASSENGER_PONY_GEN_6                :High Speed Driving Trailer
+STR_NAME_DRIVING_CAB_MAIL_PONY_GEN_5                                :Driving Van Trailer
+STR_NAME_DRIVING_CAB_HIGH_SPEED_MAIL_PONY_GEN_5                     :High Speed Driving Van Trailer
+STR_NAME_DRIVING_CAB_HIGH_SPEED_MAIL_PONY_GEN_6                     :High Speed Driving Van Trailer
+STR_NAME_SERPENTINE                                                 :Serpentine
+STR_NAME_POPLAR                                                     :Poplar
+STR_NAME_WESTBOURNE                                                 :Westbourne
+STR_NAME_HAMMERSMITH                                                :Hammersmith
+STR_NAME_FLEET                                                      :Fleet
+STR_NAME_CANARY                                                     :Canary
+STR_NAME_LONGWATER                                                  :Longwater
+STR_NAME_RAVENSBOURNE                                               :Ravensbourne
+STR_NAME_TYBURN                                                     :Tyburn
+STR_NAME_WANDLE                                                     :Wandle
+STR_NAME_TIDEWAY                                                    :Tideway
+STR_NAME_BANKSIDE                                                   :Bankside
+STR_NAME_DEBDEN                                                     :Debden
+STR_NAME_CRINGLE                                                    :Cringle
+STR_NAME_MULBERRY                                                   :Mulberry
+STR_NAME_WALBROOK                                                   :Walbrook
+STR_NAME_BORAX                                                      :Borax
+STR_NAME_ANGERSTEIN                                                 :Angerstein
+STR_NAME_CHEESE_BUG                                                 :2-6-2 Cheese Bug
+STR_NAME_BEAN_FEAST                                                 :2-6-4 Bean Feast
+STR_NAME_PIKEL                                                      :Pikel
+STR_NAME_PIKEL_CLONE_1                                              :Pikel
+STR_NAME_BOAR_CAT                                                   :Boar Cat
+STR_NAME_BOAR_CAT_CLONE_1                                           :Boar Cat
+STR_NAME_THOR                                                       :0-4-4-0 Thor
+STR_NAME_ALFAMA                                                     :0-4-4-0 Alfama
+STR_NAME_GARGOUILLE                                                 :Gargouille
+STR_NAME_SOLANO                                                     :Solano
+STR_NAME_LEBECHE                                                    :Lebeche
+STR_NAME_TYRCONNELL                                                 :4-8-0 Tyrconnell
+STR_NAME_NILE                                                       :2-6-0+0-6-2 Nile
+STR_NAME_HINTERLAND                                                 :Hinterland
+STR_NAME_ROCKHAMPTON                                                :Rockhampton
+STR_NAME_HIGUMA                                                     :Higuma
+STR_NAME_MUMBLE                                                     :Mumble
+STR_NAME_MUMBLE_SINGLE                                              :Mumble
+STR_NAME_SNAPPER                                                    :Snapper
+STR_NAME_SNAPPER_SINGLE                                             :Snapper
+STR_NAME_ZORRO                                                      :Zorro
+STR_NAME_RUBY                                                       :Ruby
+STR_NAME_GOLFINHO                                                   :Golfinho
+STR_NAME_STRATOS                                                    :Stratos
+STR_NAME_DRIVING_CAB_PASSENGER_NG_PONY_GEN_4                        :Driving Trailer
+STR_NAME_DRIVING_CAB_PANORAMIC_PASSENGER_NG_PONY_GEN_4              :Panoramic Driving Trailer
+STR_GRF_NAME_VERSIONED                                          :Iron Horse 3.37.0-101-gc2719c365
+STR_GRF_DOCS_URL                                                :https://grf.farm/iron-horse/index.html
+STR_EMPTY                                                       :
+STR_NAME_CONTAINER_1                                            :{STRING}
+STR_NAME_CONTAINER_2                                            :{STRING} {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_1      :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2      :{STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_3      :{STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_4      :{STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_5      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_6      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_7      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+# buy menu wrappers
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
+STR_COMPANY_COLOUR_CABBAGE                                      :CC CABBAGE

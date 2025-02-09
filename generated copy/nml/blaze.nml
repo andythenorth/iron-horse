@@ -1,0 +1,478 @@
+    spriteset(blaze_ss_0, "generated/graphics/iron-horse/blaze.png") {
+        spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+    }
+    spriteset(blaze_ss_1, "generated/graphics/iron-horse/blaze.png") {
+        spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+    }
+    spriteset(blaze_ss_2, "generated/graphics/iron-horse/blaze.png") {
+        spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+    }
+    spriteset(blaze_ss_3, "generated/graphics/iron-horse/blaze.png") {
+        spriteset_template_asymmetric_unreversed_8_8(100,NOANIM)
+    }
+    spriteset(blaze_ss_4, "generated/graphics/iron-horse/blaze.png") {
+        spriteset_template_asymmetric_unreversed_8_8(130,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, blaze_switch_graphics_livery, vehicle_type_id) {
+        21640: return blaze_ss_0;
+        21641: return blaze_ss_1;
+        21642: return blaze_ss_2;
+        21643: return blaze_ss_3;
+        21644: return blaze_ss_4;
+}
+switch (FEAT_TRAINS, SELF, blaze_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    return blaze_switch_graphics_livery;
+}
+// buy menu graphics chain
+spriteset(blaze_ss_vehicle_purchase_0, "generated/graphics/iron-horse/blaze.png") {
+    spriteset_template_purchase_dual_headed(360,10,33,-16,NOANIM)
+}
+spriteset(blaze_ss_vehicle_purchase_1, "generated/graphics/iron-horse/blaze.png") {
+    spriteset_template_purchase_dual_headed(360,40,33,-16,NOANIM)
+}
+spriteset(blaze_ss_vehicle_purchase_2, "generated/graphics/iron-horse/blaze.png") {
+    spriteset_template_purchase_dual_headed(360,70,33,-16,NOANIM)
+}
+spriteset(blaze_ss_vehicle_purchase_3, "generated/graphics/iron-horse/blaze.png") {
+    spriteset_template_purchase_dual_headed(360,100,33,-16,NOANIM)
+}
+spriteset(blaze_ss_vehicle_purchase_4, "generated/graphics/iron-horse/blaze.png") {
+    spriteset_template_purchase_dual_headed(360,130,33,-16,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, blaze_switch_graphics_vehicle_purchase_livery, vehicle_type_id) {
+        21640: return blaze_ss_vehicle_purchase_0;
+        21641: return blaze_ss_vehicle_purchase_1;
+        21642: return blaze_ss_vehicle_purchase_2;
+        21643: return blaze_ss_vehicle_purchase_3;
+        21644: return blaze_ss_vehicle_purchase_4;
+}
+    switch (FEAT_TRAINS, SELF, blaze_switch_graphics_purchase_base,
+        STORE_TEMP(
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+                return blaze_switch_graphics_vehicle_purchase_livery;
+    }
+switch (FEAT_TRAINS, SELF, blaze_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+        0: return blaze_switch_graphics_purchase_base;
+}
+switch (FEAT_TRAINS, SELF, blaze_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return blaze_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, blaze_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return blaze_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_hst_32px_1;
+}
+switch (FEAT_TRAINS, SELF, blaze_switch_colour_mapping, vehicle_type_id) {
+                    21640: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    21641: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    21642: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    21643: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    21644: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+}
+        switch (FEAT_TRAINS, SELF, blaze_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_DIESEL;
+        }
+        switch (FEAT_TRAINS, SELF, blaze_switch_create_effect_default, [STORE_TEMP(create_effect(EFFECT_SPRITE_DIESEL,0,1,12), 0x100),STORE_TEMP(create_effect(EFFECT_SPRITE_DIESEL,0,-1,12), 0x101)]) {
+            return 2 + CB_RESULT_CREATE_EFFECT_CENTER;
+        }
+        switch (FEAT_TRAINS, SELF, blaze_switch_create_effect_check_railtype, 1) {
+            return blaze_switch_create_effect_default;
+        }
+    switch (FEAT_TRAINS, PARENT, blaze_switch_speed_by_tile_railtype, [tile_is_railtype("IHAA") || tile_is_railtype("IHBA")]) {
+        1: return 225;
+        return 205;
+    }
+    switch (FEAT_TRAINS, PARENT, blaze_switch_speed, [railtype_available("IHAA") && railtype_available("IHBA")]) {
+        1: return blaze_switch_speed_by_tile_railtype;
+        return 225;
+    }
+switch (FEAT_TRAINS, SELF, blaze_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_BLAZE)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, blaze_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_BLAZE)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return blaze_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, blaze_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_BLAZE)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, blaze_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: blaze_switch_name_purchase_level_0;
+    1: blaze_switch_name_purchase_level_1;
+    return blaze_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, blaze_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: blaze_switch_name_purchase_extra_bits;
+    return blaze_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, blaze_switch_name, [
+        param_vehicle_availability_engines
+    ]) {
+    1: return blaze_switch_name_default;
+    return blaze_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, blaze, 21640) {
+        property {
+            name:                           string(STR_NAME_BLAZE);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/hst"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1980, 4, 1);
+                power:                          5000hp;
+                weight:                         70ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          128mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             PASS;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    1;
+            length:                         8;
+            track_type:                     IHAA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        blaze_switch_graphics;
+            purchase:                       blaze_switch_graphics_purchase;
+                name:                           blaze_switch_name;
+                cost_factor:                    207; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 5184;
+                purchase_running_cost_factor:   5184; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          blaze_switch_speed;
+                    purchase_speed:                 205;
+                    colour_mapping:                 blaze_switch_colour_mapping;
+                    purchase_colour_mapping:        blaze_switch_colour_mapping;
+                effect_spawn_model_and_powered: blaze_switch_effect_spawn_model_and_powered;
+                create_effect:      blaze_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, blaze, 21640) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, blaze, 21640) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, blaze_variant_1, 21641) {
+        property {
+            name:                           string(STR_NAME_BLAZE);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/hst"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1980, 4, 1);
+                power:                          5000hp;
+                weight:                         70ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  blaze;
+                speed:                          128mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             PASS;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    1;
+            length:                         8;
+            track_type:                     IHAA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        blaze_switch_graphics;
+            purchase:                       blaze_switch_graphics_purchase;
+                name:                           blaze_switch_name;
+                cost_factor:                    207; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 5184;
+                purchase_running_cost_factor:   5184; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          blaze_switch_speed;
+                    purchase_speed:                 205;
+                    colour_mapping:                 blaze_switch_colour_mapping;
+                    purchase_colour_mapping:        blaze_switch_colour_mapping;
+                effect_spawn_model_and_powered: blaze_switch_effect_spawn_model_and_powered;
+                create_effect:      blaze_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, blaze_variant_1, 21641) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, blaze_variant_1, 21641) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, blaze_variant_1, 21641) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, blaze_variant_2, 21642) {
+        property {
+            name:                           string(STR_NAME_BLAZE);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/hst"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1980, 4, 1);
+                power:                          5000hp;
+                weight:                         70ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  blaze;
+                speed:                          128mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             PASS;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    1;
+            length:                         8;
+            track_type:                     IHAA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        blaze_switch_graphics;
+            purchase:                       blaze_switch_graphics_purchase;
+                name:                           blaze_switch_name;
+                cost_factor:                    207; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 5184;
+                purchase_running_cost_factor:   5184; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          blaze_switch_speed;
+                    purchase_speed:                 205;
+                    colour_mapping:                 blaze_switch_colour_mapping;
+                    purchase_colour_mapping:        blaze_switch_colour_mapping;
+                effect_spawn_model_and_powered: blaze_switch_effect_spawn_model_and_powered;
+                create_effect:      blaze_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, blaze_variant_2, 21642) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, blaze_variant_2, 21642) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, blaze_variant_2, 21642) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, blaze_variant_3, 21643) {
+        property {
+            name:                           string(STR_NAME_BLAZE);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/hst"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1980, 4, 1);
+                power:                          5000hp;
+                weight:                         70ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  blaze;
+                speed:                          128mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             PASS;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    1;
+            length:                         8;
+            track_type:                     IHAA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        blaze_switch_graphics;
+            purchase:                       blaze_switch_graphics_purchase;
+                name:                           blaze_switch_name;
+                cost_factor:                    207; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 5184;
+                purchase_running_cost_factor:   5184; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          blaze_switch_speed;
+                    purchase_speed:                 205;
+                    colour_mapping:                 blaze_switch_colour_mapping;
+                    purchase_colour_mapping:        blaze_switch_colour_mapping;
+                effect_spawn_model_and_powered: blaze_switch_effect_spawn_model_and_powered;
+                create_effect:      blaze_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, blaze_variant_3, 21643) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, blaze_variant_3, 21643) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, blaze_variant_3, 21643) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, blaze_variant_4, 21644) {
+        property {
+            name:                           string(STR_NAME_BLAZE);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/hst"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1980, 4, 1);
+                power:                          5000hp;
+                weight:                         70ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  blaze;
+                speed:                          128mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             PASS;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    1;
+            length:                         8;
+            track_type:                     IHAA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        blaze_switch_graphics;
+            purchase:                       blaze_switch_graphics_purchase;
+                name:                           blaze_switch_name;
+                cost_factor:                    207; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 5184;
+                purchase_running_cost_factor:   5184; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          blaze_switch_speed;
+                    purchase_speed:                 205;
+                    colour_mapping:                 blaze_switch_colour_mapping;
+                    purchase_colour_mapping:        blaze_switch_colour_mapping;
+                effect_spawn_model_and_powered: blaze_switch_effect_spawn_model_and_powered;
+                create_effect:      blaze_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, blaze_variant_4, 21644) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, blaze_variant_4, 21644) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, blaze_variant_4, 21644) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

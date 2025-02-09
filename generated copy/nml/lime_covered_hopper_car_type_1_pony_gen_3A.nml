@@ -1,0 +1,791 @@
+    spriteset(lime_covered_hopper_car_type_1_pony_gen_3A_ss_unweathered, "generated/graphics/iron-horse/lime_covered_hopper_car_type_1_pony_gen_3A.png") {
+        spriteset_template_symmetric_unreversed_4_8(10,NOANIM)
+    }
+    spriteset(lime_covered_hopper_car_type_1_pony_gen_3A_ss_weathered, "generated/graphics/iron-horse/lime_covered_hopper_car_type_1_pony_gen_3A.png") {
+        spriteset_template_symmetric_unreversed_4_8(40,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
+        0: return lime_covered_hopper_car_type_1_pony_gen_3A_ss_unweathered;
+        1: return lime_covered_hopper_car_type_1_pony_gen_3A_ss_weathered;
+    return lime_covered_hopper_car_type_1_pony_gen_3A_ss_unweathered; 
+}
+switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_vehicle, param_wagon_colour_randomisation) {
+    0: lime_covered_hopper_car_type_1_pony_gen_3A_ss_unweathered; 
+    lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_vehicle_choose_weathered_variant;
+}
+switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return lime_covered_hopper_car_type_1_pony_gen_3A_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_16px;
+}
+// buy menu graphics chain
+spriteset(lime_covered_hopper_car_type_1_pony_gen_3A_ss_purchase, "generated/graphics/iron-horse/lime_covered_hopper_car_type_1_pony_gen_3A.png") {
+    spriteset_template_purchase_default(224,10,17,-8,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_purchase, 0) {
+    return lime_covered_hopper_car_type_1_pony_gen_3A_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity,
+        [
+         STORE_TEMP(7, 0),
+         STORE_TEMP(14, 1),
+         STORE_TEMP(20, 2),
+         STORE_TEMP(27, 3),
+         STORE_TEMP(36, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_LIME_COVERED_HOPPER_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_purchase_level_0;
+    1: lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_purchase_level_1;
+    return lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_purchase_extra_bits;
+    return lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_default;
+    return lime_covered_hopper_car_type_1_pony_gen_3A_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, lime_covered_hopper_car_type_1_pony_gen_3A_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A, 26000) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          60mph;
+            cargo_capacity:                 20;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("QLME")?QLME:cargotype_available("SALT")?SALT:cargotype_available("PHOS")?PHOS:cargotype_available("POTA")?POTA:cargotype_available("SAND")?SAND:cargotype_available("KAOL")?KAOL:NITR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics;
+            purchase:                       lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_purchase;
+                name:                           lime_covered_hopper_car_type_1_pony_gen_3A_switch_name;
+                cost_factor:                    59; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 127;
+                purchase_running_cost_factor:   127; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                lime_covered_hopper_car_type_1_pony_gen_3A_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(4);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(130);
+                cargo_capacity:                 lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                purchase_cargo_capacity:        lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A, 26000) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A, 26000) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A, 26000) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_1, 26001) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  lime_covered_hopper_car_type_1_pony_gen_3A;
+                speed:                          60mph;
+            cargo_capacity:                 20;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("QLME")?QLME:cargotype_available("SALT")?SALT:cargotype_available("PHOS")?PHOS:cargotype_available("POTA")?POTA:cargotype_available("SAND")?SAND:cargotype_available("KAOL")?KAOL:NITR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics;
+            purchase:                       lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_purchase;
+                name:                           lime_covered_hopper_car_type_1_pony_gen_3A_switch_name;
+                cost_factor:                    59; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 127;
+                purchase_running_cost_factor:   127; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(9);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(75);
+                cargo_capacity:                 lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                purchase_cargo_capacity:        lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_1, 26001) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_1, 26001) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_1, 26001) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_2, 26002) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  lime_covered_hopper_car_type_1_pony_gen_3A_variant_1;
+                speed:                          60mph;
+            cargo_capacity:                 20;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("QLME")?QLME:cargotype_available("SALT")?SALT:cargotype_available("PHOS")?PHOS:cargotype_available("POTA")?POTA:cargotype_available("SAND")?SAND:cargotype_available("KAOL")?KAOL:NITR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics;
+            purchase:                       lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_purchase;
+                name:                           lime_covered_hopper_car_type_1_pony_gen_3A_switch_name;
+                cost_factor:                    59; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 127;
+                purchase_running_cost_factor:   127; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(16);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(126);
+                cargo_capacity:                 lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                purchase_cargo_capacity:        lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_2, 26002) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_2, 26002) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_2, 26002) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_3, 26003) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  lime_covered_hopper_car_type_1_pony_gen_3A_variant_1;
+                speed:                          60mph;
+            cargo_capacity:                 20;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("QLME")?QLME:cargotype_available("SALT")?SALT:cargotype_available("PHOS")?PHOS:cargotype_available("POTA")?POTA:cargotype_available("SAND")?SAND:cargotype_available("KAOL")?KAOL:NITR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics;
+            purchase:                       lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_purchase;
+                name:                           lime_covered_hopper_car_type_1_pony_gen_3A_switch_name;
+                cost_factor:                    59; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 127;
+                purchase_running_cost_factor:   127; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(109);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(116);
+                cargo_capacity:                 lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                purchase_cargo_capacity:        lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_3, 26003) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_3, 26003) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_3, 26003) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_4, 26004) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  lime_covered_hopper_car_type_1_pony_gen_3A_variant_1;
+                speed:                          60mph;
+            cargo_capacity:                 20;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("QLME")?QLME:cargotype_available("SALT")?SALT:cargotype_available("PHOS")?PHOS:cargotype_available("POTA")?POTA:cargotype_available("SAND")?SAND:cargotype_available("KAOL")?KAOL:NITR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics;
+            purchase:                       lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_purchase;
+                name:                           lime_covered_hopper_car_type_1_pony_gen_3A_switch_name;
+                cost_factor:                    59; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 127;
+                purchase_running_cost_factor:   127; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(17);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(110);
+                cargo_capacity:                 lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                purchase_cargo_capacity:        lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_4, 26004) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_4, 26004) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_4, 26004) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_5, 26005) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  lime_covered_hopper_car_type_1_pony_gen_3A_variant_1;
+                speed:                          60mph;
+            cargo_capacity:                 20;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("QLME")?QLME:cargotype_available("SALT")?SALT:cargotype_available("PHOS")?PHOS:cargotype_available("POTA")?POTA:cargotype_available("SAND")?SAND:cargotype_available("KAOL")?KAOL:NITR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics;
+            purchase:                       lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_purchase;
+                name:                           lime_covered_hopper_car_type_1_pony_gen_3A_switch_name;
+                cost_factor:                    59; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 127;
+                purchase_running_cost_factor:   127; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(93);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(90);
+                cargo_capacity:                 lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                purchase_cargo_capacity:        lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_5, 26005) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_5, 26005) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_5, 26005) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_6, 26006) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  lime_covered_hopper_car_type_1_pony_gen_3A_variant_1;
+                speed:                          60mph;
+            cargo_capacity:                 20;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("QLME")?QLME:cargotype_available("SALT")?SALT:cargotype_available("PHOS")?PHOS:cargotype_available("POTA")?POTA:cargotype_available("SAND")?SAND:cargotype_available("KAOL")?KAOL:NITR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics;
+            purchase:                       lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_purchase;
+                name:                           lime_covered_hopper_car_type_1_pony_gen_3A_switch_name;
+                cost_factor:                    59; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 127;
+                purchase_running_cost_factor:   127; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(127);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(60);
+                cargo_capacity:                 lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                purchase_cargo_capacity:        lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_6, 26006) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_6, 26006) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_6, 26006) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_7, 26007) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  lime_covered_hopper_car_type_1_pony_gen_3A_variant_1;
+                speed:                          60mph;
+            cargo_capacity:                 20;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("QLME")?QLME:cargotype_available("SALT")?SALT:cargotype_available("PHOS")?PHOS:cargotype_available("POTA")?POTA:cargotype_available("SAND")?SAND:cargotype_available("KAOL")?KAOL:NITR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics;
+            purchase:                       lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_purchase;
+                name:                           lime_covered_hopper_car_type_1_pony_gen_3A_switch_name;
+                cost_factor:                    59; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 127;
+                purchase_running_cost_factor:   127; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(39);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(72);
+                cargo_capacity:                 lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                purchase_cargo_capacity:        lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_7, 26007) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_7, 26007) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_7, 26007) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_8, 26008) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  lime_covered_hopper_car_type_1_pony_gen_3A_variant_1;
+                speed:                          60mph;
+            cargo_capacity:                 20;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("QLME")?QLME:cargotype_available("SALT")?SALT:cargotype_available("PHOS")?PHOS:cargotype_available("POTA")?POTA:cargotype_available("SAND")?SAND:cargotype_available("KAOL")?KAOL:NITR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics;
+            purchase:                       lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_purchase;
+                name:                           lime_covered_hopper_car_type_1_pony_gen_3A_switch_name;
+                cost_factor:                    59; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 127;
+                purchase_running_cost_factor:   127; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(82);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(87);
+                cargo_capacity:                 lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                purchase_cargo_capacity:        lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_8, 26008) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_8, 26008) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_8, 26008) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_9, 26009) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIME_COVERED_HOPPER_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  lime_covered_hopper_car_type_1_pony_gen_3A_variant_1;
+                speed:                          60mph;
+            cargo_capacity:                 20;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("QLME")?QLME:cargotype_available("SALT")?SALT:cargotype_available("PHOS")?PHOS:cargotype_available("POTA")?POTA:cargotype_available("SAND")?SAND:cargotype_available("KAOL")?KAOL:NITR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics;
+            purchase:                       lime_covered_hopper_car_type_1_pony_gen_3A_switch_graphics_purchase;
+                name:                           lime_covered_hopper_car_type_1_pony_gen_3A_switch_name;
+                cost_factor:                    59; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 127;
+                purchase_running_cost_factor:   127; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(120);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(1);
+                cargo_capacity:                 lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                purchase_cargo_capacity:        lime_covered_hopper_car_type_1_pony_gen_3A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_9, 26009) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_9, 26009) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, lime_covered_hopper_car_type_1_pony_gen_3A_variant_9, 26009) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

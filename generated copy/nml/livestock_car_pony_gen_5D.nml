@@ -1,0 +1,1560 @@
+    // default graphics chain
+    spriteset(livestock_car_pony_gen_5D_ss_unweathered_doors_closed, "generated/graphics/iron-horse/livestock_car_pony_gen_5D.png") {
+        spriteset_template_asymmetric_unreversed_5_8(10,NOANIM)
+    }
+    spriteset(livestock_car_pony_gen_5D_ss_unweathered_doors_open, "generated/graphics/iron-horse/livestock_car_pony_gen_5D.png") {
+        spriteset_template_asymmetric_unreversed_5_8(40,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_graphics_vehicle_unweathered,
+            [switch_graphics_opening_doors()]) {
+        0: return livestock_car_pony_gen_5D_ss_unweathered_doors_closed;
+        1: return livestock_car_pony_gen_5D_ss_unweathered_doors_open;
+    }
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
+        0: return livestock_car_pony_gen_5D_switch_graphics_vehicle_unweathered;
+    return livestock_car_pony_gen_5D_switch_graphics_vehicle_unweathered; 
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_graphics_vehicle, param_wagon_colour_randomisation) {
+    0: livestock_car_pony_gen_5D_switch_graphics_vehicle_unweathered; 
+    livestock_car_pony_gen_5D_switch_graphics_vehicle_choose_weathered_variant;
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return livestock_car_pony_gen_5D_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return livestock_car_pony_gen_5D_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_20px;
+}
+// buy menu graphics chain
+spriteset(livestock_car_pony_gen_5D_ss_purchase, "generated/graphics/iron-horse/livestock_car_pony_gen_5D.png") {
+    spriteset_template_purchase_default(360,10,41,-20,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_graphics_purchase, 0) {
+    return livestock_car_pony_gen_5D_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_cargo_capacity,
+        [
+         STORE_TEMP(10, 0),
+         STORE_TEMP(21, 1),
+         STORE_TEMP(30, 2),
+         STORE_TEMP(40, 3),
+         STORE_TEMP(54, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+    // add the units to articulated consist
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_0_articulated_cb_switch, extra_callback_info1) {
+            0: return livestock_car_pony_gen_5D;
+            1: return livestock_car_pony_gen_5D_unit_1_variant_0;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_1_articulated_cb_switch, extra_callback_info1) {
+            0: return livestock_car_pony_gen_5D_variant_1;
+            1: return livestock_car_pony_gen_5D_unit_1_variant_1;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_2_articulated_cb_switch, extra_callback_info1) {
+            0: return livestock_car_pony_gen_5D_variant_2;
+            1: return livestock_car_pony_gen_5D_unit_1_variant_2;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_3_articulated_cb_switch, extra_callback_info1) {
+            0: return livestock_car_pony_gen_5D_variant_3;
+            1: return livestock_car_pony_gen_5D_unit_1_variant_3;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_4_articulated_cb_switch, extra_callback_info1) {
+            0: return livestock_car_pony_gen_5D_variant_4;
+            1: return livestock_car_pony_gen_5D_unit_1_variant_4;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_5_articulated_cb_switch, extra_callback_info1) {
+            0: return livestock_car_pony_gen_5D_variant_5;
+            1: return livestock_car_pony_gen_5D_unit_1_variant_5;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_6_articulated_cb_switch, extra_callback_info1) {
+            0: return livestock_car_pony_gen_5D_variant_6;
+            1: return livestock_car_pony_gen_5D_unit_1_variant_6;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_7_articulated_cb_switch, extra_callback_info1) {
+            0: return livestock_car_pony_gen_5D_variant_7;
+            1: return livestock_car_pony_gen_5D_unit_1_variant_7;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_8_articulated_cb_switch, extra_callback_info1) {
+            0: return livestock_car_pony_gen_5D_variant_8;
+            1: return livestock_car_pony_gen_5D_unit_1_variant_8;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_9_articulated_cb_switch, extra_callback_info1) {
+            0: return livestock_car_pony_gen_5D_variant_9;
+            1: return livestock_car_pony_gen_5D_unit_1_variant_9;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_10_articulated_cb_switch, extra_callback_info1) {
+            0: return livestock_car_pony_gen_5D_variant_10;
+            1: return livestock_car_pony_gen_5D_unit_1_variant_10;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_11_articulated_cb_switch, extra_callback_info1) {
+            0: return livestock_car_pony_gen_5D_variant_11;
+            1: return livestock_car_pony_gen_5D_unit_1_variant_11;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_LIVESTOCK_CAR)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_LIVESTOCK_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return livestock_car_pony_gen_5D_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_LIVESTOCK_CAR)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: livestock_car_pony_gen_5D_switch_name_purchase_level_0;
+    1: livestock_car_pony_gen_5D_switch_name_purchase_level_1;
+    return livestock_car_pony_gen_5D_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: livestock_car_pony_gen_5D_switch_name_purchase_extra_bits;
+    return livestock_car_pony_gen_5D_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return livestock_car_pony_gen_5D_switch_name_default;
+    return livestock_car_pony_gen_5D_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D, 7160) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/d"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         26ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_switch_graphics_purchase;
+                name:                           livestock_car_pony_gen_5D_switch_name;
+                cost_factor:                    216; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 496;
+                purchase_running_cost_factor:   496; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: livestock_car_pony_gen_5D_variant_0_articulated_cb_switch;
+                    additional_text:                livestock_car_pony_gen_5D_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(4);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(130);
+                cargo_capacity:                 livestock_car_pony_gen_5D_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, livestock_car_pony_gen_5D, 7160) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, livestock_car_pony_gen_5D, 7160) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, livestock_car_pony_gen_5D, 7160) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_5))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x101
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((switch_get_colour_name(21) | 0xD000) << 16),
+                    0x102
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_1, 7161) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/d"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         26ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  livestock_car_pony_gen_5D;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_switch_graphics_purchase;
+                name:                           livestock_car_pony_gen_5D_switch_name;
+                cost_factor:                    216; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 496;
+                purchase_running_cost_factor:   496; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: livestock_car_pony_gen_5D_variant_1_articulated_cb_switch;
+                    additional_text:                livestock_car_pony_gen_5D_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(22);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(131);
+                cargo_capacity:                 livestock_car_pony_gen_5D_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_1, 7161) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_1, 7161) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_1, 7161) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(25) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(16) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_2, 7162) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/d"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         26ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  livestock_car_pony_gen_5D;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_switch_graphics_purchase;
+                name:                           livestock_car_pony_gen_5D_switch_name;
+                cost_factor:                    216; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 496;
+                purchase_running_cost_factor:   496; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: livestock_car_pony_gen_5D_variant_2_articulated_cb_switch;
+                    additional_text:                livestock_car_pony_gen_5D_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(38);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(48);
+                cargo_capacity:                 livestock_car_pony_gen_5D_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_2, 7162) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_2, 7162) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_2, 7162) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_3_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_3, 7163) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/d"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         26ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  livestock_car_pony_gen_5D;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_switch_graphics_purchase;
+                name:                           livestock_car_pony_gen_5D_switch_name;
+                cost_factor:                    216; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 496;
+                purchase_running_cost_factor:   496; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: livestock_car_pony_gen_5D_variant_3_articulated_cb_switch;
+                    additional_text:                livestock_car_pony_gen_5D_variant_3_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(30);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(13);
+                cargo_capacity:                 livestock_car_pony_gen_5D_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_3, 7163) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_3, 7163) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_3, 7163) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_variant_4_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(21) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(22) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_4, 7164) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/d"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         26ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  livestock_car_pony_gen_5D;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_switch_graphics_purchase;
+                name:                           livestock_car_pony_gen_5D_switch_name;
+                cost_factor:                    216; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 496;
+                purchase_running_cost_factor:   496; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: livestock_car_pony_gen_5D_variant_4_articulated_cb_switch;
+                    additional_text:                livestock_car_pony_gen_5D_variant_4_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(14);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(65);
+                cargo_capacity:                 livestock_car_pony_gen_5D_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_4, 7164) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_4, 7164) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_4, 7164) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_5, 7165) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         26ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  livestock_car_pony_gen_5D;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_switch_graphics_purchase;
+                name:                           livestock_car_pony_gen_5D_switch_name;
+                cost_factor:                    216; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 496;
+                purchase_running_cost_factor:   496; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: livestock_car_pony_gen_5D_variant_5_articulated_cb_switch;
+                    colour_mapping:                 switch_wagon_recolour_sets(9);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(75);
+                cargo_capacity:                 livestock_car_pony_gen_5D_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_5, 7165) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_5, 7165) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_5, 7165) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_6, 7166) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         26ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  livestock_car_pony_gen_5D_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_switch_graphics_purchase;
+                name:                           livestock_car_pony_gen_5D_switch_name;
+                cost_factor:                    216; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 496;
+                purchase_running_cost_factor:   496; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: livestock_car_pony_gen_5D_variant_6_articulated_cb_switch;
+                    colour_mapping:                 switch_wagon_recolour_sets(16);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(126);
+                cargo_capacity:                 livestock_car_pony_gen_5D_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_6, 7166) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_6, 7166) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_6, 7166) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_7, 7167) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         26ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  livestock_car_pony_gen_5D_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_switch_graphics_purchase;
+                name:                           livestock_car_pony_gen_5D_switch_name;
+                cost_factor:                    216; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 496;
+                purchase_running_cost_factor:   496; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: livestock_car_pony_gen_5D_variant_7_articulated_cb_switch;
+                    colour_mapping:                 switch_wagon_recolour_sets(109);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(116);
+                cargo_capacity:                 livestock_car_pony_gen_5D_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_7, 7167) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_7, 7167) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_7, 7167) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_8, 7168) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         26ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  livestock_car_pony_gen_5D_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_switch_graphics_purchase;
+                name:                           livestock_car_pony_gen_5D_switch_name;
+                cost_factor:                    216; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 496;
+                purchase_running_cost_factor:   496; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: livestock_car_pony_gen_5D_variant_8_articulated_cb_switch;
+                    colour_mapping:                 switch_wagon_recolour_sets(17);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(110);
+                cargo_capacity:                 livestock_car_pony_gen_5D_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_8, 7168) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_8, 7168) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_8, 7168) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_9, 7169) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         26ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  livestock_car_pony_gen_5D_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_switch_graphics_purchase;
+                name:                           livestock_car_pony_gen_5D_switch_name;
+                cost_factor:                    216; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 496;
+                purchase_running_cost_factor:   496; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: livestock_car_pony_gen_5D_variant_9_articulated_cb_switch;
+                    colour_mapping:                 switch_wagon_recolour_sets(93);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(90);
+                cargo_capacity:                 livestock_car_pony_gen_5D_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_9, 7169) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_9, 7169) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_9, 7169) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_10, 7170) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         26ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  livestock_car_pony_gen_5D_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_switch_graphics_purchase;
+                name:                           livestock_car_pony_gen_5D_switch_name;
+                cost_factor:                    216; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 496;
+                purchase_running_cost_factor:   496; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: livestock_car_pony_gen_5D_variant_10_articulated_cb_switch;
+                    colour_mapping:                 switch_wagon_recolour_sets(8);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(63);
+                cargo_capacity:                 livestock_car_pony_gen_5D_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_10, 7170) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_10, 7170) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_10, 7170) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_11, 7171) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         26ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  livestock_car_pony_gen_5D_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_switch_graphics_purchase;
+                name:                           livestock_car_pony_gen_5D_switch_name;
+                cost_factor:                    216; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 496;
+                purchase_running_cost_factor:   496; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: livestock_car_pony_gen_5D_variant_11_articulated_cb_switch;
+                    colour_mapping:                 switch_wagon_recolour_sets(120);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(1);
+                cargo_capacity:                 livestock_car_pony_gen_5D_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_11, 7171) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_11, 7171) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, livestock_car_pony_gen_5D_variant_11, 7171) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    // default graphics chain
+    spriteset(livestock_car_pony_gen_5D_unit_1_ss_unweathered_doors_closed, "generated/graphics/iron-horse/livestock_car_pony_gen_5D.png") {
+        spriteset_template_asymmetric_unreversed_5_8(70,NOANIM)
+    }
+    spriteset(livestock_car_pony_gen_5D_unit_1_ss_unweathered_doors_open, "generated/graphics/iron-horse/livestock_car_pony_gen_5D.png") {
+        spriteset_template_asymmetric_unreversed_5_8(100,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_unit_1_switch_graphics_vehicle_unweathered,
+            [switch_graphics_opening_doors()]) {
+        0: return livestock_car_pony_gen_5D_unit_1_ss_unweathered_doors_closed;
+        1: return livestock_car_pony_gen_5D_unit_1_ss_unweathered_doors_open;
+    }
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_unit_1_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
+        0: return livestock_car_pony_gen_5D_unit_1_switch_graphics_vehicle_unweathered;
+    return livestock_car_pony_gen_5D_unit_1_switch_graphics_vehicle_unweathered; 
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_unit_1_switch_graphics_vehicle, param_wagon_colour_randomisation) {
+    0: livestock_car_pony_gen_5D_unit_1_switch_graphics_vehicle_unweathered; 
+    livestock_car_pony_gen_5D_unit_1_switch_graphics_vehicle_choose_weathered_variant;
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_unit_1_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return livestock_car_pony_gen_5D_unit_1_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_unit_1_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return livestock_car_pony_gen_5D_unit_1_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_20px;
+}
+// buy menu graphics chain
+spriteset(livestock_car_pony_gen_5D_unit_1_ss_purchase, "generated/graphics/iron-horse/livestock_car_pony_gen_5D.png") {
+    spriteset_template_purchase_default(360,10,41,-20,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase, 0) {
+    return livestock_car_pony_gen_5D_unit_1_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity,
+        [
+         STORE_TEMP(10, 0),
+         STORE_TEMP(21, 1),
+         STORE_TEMP(30, 2),
+         STORE_TEMP(40, 3),
+         STORE_TEMP(54, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_unit_1_variant_0, 7172) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/d"];
+                power:                          0;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_unit_1_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 switch_wagon_recolour_sets(4);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(130);
+                cargo_capacity:                 livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_unit_1_variant_1, 7173) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/d"];
+                power:                          0;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_unit_1_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 switch_wagon_recolour_sets(22);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(131);
+                cargo_capacity:                 livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_unit_1_variant_2, 7174) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/d"];
+                power:                          0;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_unit_1_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 switch_wagon_recolour_sets(38);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(48);
+                cargo_capacity:                 livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_unit_1_variant_3, 7175) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/d"];
+                power:                          0;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_unit_1_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 switch_wagon_recolour_sets(30);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(13);
+                cargo_capacity:                 livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_unit_1_variant_4, 7176) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/d"];
+                power:                          0;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_unit_1_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 switch_wagon_recolour_sets(14);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(65);
+                cargo_capacity:                 livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_unit_1_variant_5, 7177) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                power:                          0;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_unit_1_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 switch_wagon_recolour_sets(9);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(75);
+                cargo_capacity:                 livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_unit_1_variant_6, 7178) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                power:                          0;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_unit_1_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 switch_wagon_recolour_sets(16);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(126);
+                cargo_capacity:                 livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_unit_1_variant_7, 7179) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                power:                          0;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_unit_1_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 switch_wagon_recolour_sets(109);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(116);
+                cargo_capacity:                 livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_unit_1_variant_8, 7180) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                power:                          0;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_unit_1_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 switch_wagon_recolour_sets(17);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(110);
+                cargo_capacity:                 livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_unit_1_variant_9, 7181) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                power:                          0;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_unit_1_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 switch_wagon_recolour_sets(93);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(90);
+                cargo_capacity:                 livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_unit_1_variant_10, 7182) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                power:                          0;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_unit_1_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 switch_wagon_recolour_sets(8);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(63);
+                cargo_capacity:                 livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+    item(FEAT_TRAINS, livestock_car_pony_gen_5D_unit_1_variant_11, 7183) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_LIVESTOCK_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/d"];
+                power:                          0;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          87mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [LVST];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             LVST;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         5;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        livestock_car_pony_gen_5D_unit_1_switch_graphics;
+            purchase:                       livestock_car_pony_gen_5D_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 switch_wagon_recolour_sets(120);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(1);
+                cargo_capacity:                 livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                purchase_cargo_capacity:        livestock_car_pony_gen_5D_unit_1_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }

@@ -1,0 +1,156 @@
+    spriteset(food_hopper_car_type_2_pony_gen_2A_ss_unweathered, "generated/graphics/iron-horse/food_hopper_car_type_2_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(10,NOANIM)
+    }
+    spriteset(food_hopper_car_type_2_pony_gen_2A_ss_weathered, "generated/graphics/iron-horse/food_hopper_car_type_2_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(40,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, food_hopper_car_type_2_pony_gen_2A_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
+        0: return food_hopper_car_type_2_pony_gen_2A_ss_unweathered;
+        1: return food_hopper_car_type_2_pony_gen_2A_ss_weathered;
+    return food_hopper_car_type_2_pony_gen_2A_ss_unweathered; 
+}
+switch (FEAT_TRAINS, SELF, food_hopper_car_type_2_pony_gen_2A_switch_graphics_vehicle, param_wagon_colour_randomisation) {
+    0: food_hopper_car_type_2_pony_gen_2A_ss_unweathered; 
+    food_hopper_car_type_2_pony_gen_2A_switch_graphics_vehicle_choose_weathered_variant;
+}
+switch (FEAT_TRAINS, SELF, food_hopper_car_type_2_pony_gen_2A_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return food_hopper_car_type_2_pony_gen_2A_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, food_hopper_car_type_2_pony_gen_2A_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return food_hopper_car_type_2_pony_gen_2A_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_16px;
+}
+// buy menu graphics chain
+spriteset(food_hopper_car_type_2_pony_gen_2A_ss_purchase, "generated/graphics/iron-horse/food_hopper_car_type_2_pony_gen_2A.png") {
+    spriteset_template_purchase_default(224,10,17,-8,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, food_hopper_car_type_2_pony_gen_2A_switch_graphics_purchase, 0) {
+    return food_hopper_car_type_2_pony_gen_2A_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, food_hopper_car_type_2_pony_gen_2A_switch_cargo_capacity,
+        [
+         STORE_TEMP(6, 0),
+         STORE_TEMP(11, 1),
+         STORE_TEMP(16, 2),
+         STORE_TEMP(22, 3),
+         STORE_TEMP(29, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, food_hopper_car_type_2_pony_gen_2A_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_FOOD_HOPPER_CAR_TYPE_2)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, food_hopper_car_type_2_pony_gen_2A_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_FOOD_HOPPER_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return food_hopper_car_type_2_pony_gen_2A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, food_hopper_car_type_2_pony_gen_2A_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_FOOD_HOPPER_CAR_TYPE_2)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, food_hopper_car_type_2_pony_gen_2A_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: food_hopper_car_type_2_pony_gen_2A_switch_name_purchase_level_0;
+    1: food_hopper_car_type_2_pony_gen_2A_switch_name_purchase_level_1;
+    return food_hopper_car_type_2_pony_gen_2A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, food_hopper_car_type_2_pony_gen_2A_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: food_hopper_car_type_2_pony_gen_2A_switch_name_purchase_extra_bits;
+    return food_hopper_car_type_2_pony_gen_2A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, food_hopper_car_type_2_pony_gen_2A_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return food_hopper_car_type_2_pony_gen_2A_switch_name_default;
+    return food_hopper_car_type_2_pony_gen_2A_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, food_hopper_car_type_2_pony_gen_2A, 35090) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_FOOD_HOPPER_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1900, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  food_hopper_car_type_1_pony_gen_2A;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_NON_POTABLE);
+            cargo_allow_refit:              [BAKE,CERE,FERT,FMSP,FOOD,FRUT,GRAI,JAVA,MAIZ,NUTS,OLSD,SEED,SGBT,SUGR,TATO,WHEA];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("MAIZ")?MAIZ:cargotype_available("GRAI")?GRAI:cargotype_available("WHEA")?WHEA:cargotype_available("CERE")?CERE:cargotype_available("SGBT")?SGBT:cargotype_available("OLSD")?OLSD:cargotype_available("CASS")?CASS:cargotype_available("NUTS")?NUTS:FOOD;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        food_hopper_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       food_hopper_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           food_hopper_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(36);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(111);
+                cargo_capacity:                 food_hopper_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        food_hopper_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, food_hopper_car_type_2_pony_gen_2A, 35090) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, food_hopper_car_type_2_pony_gen_2A, 35090) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, food_hopper_car_type_2_pony_gen_2A, 35090) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

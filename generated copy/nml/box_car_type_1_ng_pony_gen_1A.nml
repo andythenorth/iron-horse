@@ -1,0 +1,1065 @@
+    // default graphics chain
+    spriteset(box_car_type_1_ng_pony_gen_1A_ss_unweathered_doors_closed, "generated/graphics/iron-horse/box_car_type_1_ng_pony_gen_1A.png") {
+        spriteset_template_symmetric_unreversed_4_8(10,NOANIM)
+    }
+    spriteset(box_car_type_1_ng_pony_gen_1A_ss_unweathered_doors_open, "generated/graphics/iron-horse/box_car_type_1_ng_pony_gen_1A.png") {
+        spriteset_template_symmetric_unreversed_4_8(40,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_graphics_vehicle_unweathered,
+            [switch_graphics_opening_doors()]) {
+        0: return box_car_type_1_ng_pony_gen_1A_ss_unweathered_doors_closed;
+        1: return box_car_type_1_ng_pony_gen_1A_ss_unweathered_doors_open;
+    }
+switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
+        0: return box_car_type_1_ng_pony_gen_1A_switch_graphics_vehicle_unweathered;
+    return box_car_type_1_ng_pony_gen_1A_switch_graphics_vehicle_unweathered; 
+}
+switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_graphics_vehicle, param_wagon_colour_randomisation) {
+    0: box_car_type_1_ng_pony_gen_1A_switch_graphics_vehicle_unweathered; 
+    box_car_type_1_ng_pony_gen_1A_switch_graphics_vehicle_choose_weathered_variant;
+}
+switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return box_car_type_1_ng_pony_gen_1A_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return box_car_type_1_ng_pony_gen_1A_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_16px;
+}
+// buy menu graphics chain
+spriteset(box_car_type_1_ng_pony_gen_1A_ss_purchase, "generated/graphics/iron-horse/box_car_type_1_ng_pony_gen_1A.png") {
+    spriteset_template_purchase_default(224,10,17,-8,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase, 0) {
+    return box_car_type_1_ng_pony_gen_1A_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity,
+        [
+         STORE_TEMP(4, 0),
+         STORE_TEMP(9, 1),
+         STORE_TEMP(12, 2),
+         STORE_TEMP(16, 3),
+         STORE_TEMP(22, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_BOX_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return box_car_type_1_ng_pony_gen_1A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: box_car_type_1_ng_pony_gen_1A_switch_name_purchase_level_0;
+    1: box_car_type_1_ng_pony_gen_1A_switch_name_purchase_level_1;
+    return box_car_type_1_ng_pony_gen_1A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: box_car_type_1_ng_pony_gen_1A_switch_name_purchase_extra_bits;
+    return box_car_type_1_ng_pony_gen_1A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return box_car_type_1_ng_pony_gen_1A_switch_name_default;
+    return box_car_type_1_ng_pony_gen_1A_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A, 18480) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                box_car_type_1_ng_pony_gen_1A_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(4);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(130);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A, 18480) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A, 18480) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_6))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x101
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((switch_get_colour_name(21) | 0xD000) << 16),
+                    0x102
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(19) | 0xD000)
+                    | ((0) << 16),
+                    0x103
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_1, 18481) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  box_car_type_1_ng_pony_gen_1A;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                box_car_type_1_ng_pony_gen_1A_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(89);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(104);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_1, 18481) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_1, 18481) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_1, 18481) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(25) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(16) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_2, 18482) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  box_car_type_1_ng_pony_gen_1A;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                box_car_type_1_ng_pony_gen_1A_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(38);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(48);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_2, 18482) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_2, 18482) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_2, 18482) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_variant_3_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_3, 18483) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  box_car_type_1_ng_pony_gen_1A;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                box_car_type_1_ng_pony_gen_1A_variant_3_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(30);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(13);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_3, 18483) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_3, 18483) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_3, 18483) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, box_car_type_1_ng_pony_gen_1A_variant_4_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(21) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(22) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_4, 18484) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  box_car_type_1_ng_pony_gen_1A;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                box_car_type_1_ng_pony_gen_1A_variant_4_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(14);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(65);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_4, 18484) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_4, 18484) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_4, 18484) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_5, 18485) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  box_car_type_1_ng_pony_gen_1A;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(9);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(75);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_5, 18485) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_5, 18485) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_5, 18485) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_6, 18486) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  box_car_type_1_ng_pony_gen_1A_variant_5;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(16);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(126);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_6, 18486) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_6, 18486) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_6, 18486) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_7, 18487) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  box_car_type_1_ng_pony_gen_1A_variant_5;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(109);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(116);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_7, 18487) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_7, 18487) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_7, 18487) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_8, 18488) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  box_car_type_1_ng_pony_gen_1A_variant_5;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(17);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(110);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_8, 18488) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_8, 18488) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_8, 18488) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_9, 18489) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  box_car_type_1_ng_pony_gen_1A_variant_5;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(93);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(90);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_9, 18489) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_9, 18489) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_9, 18489) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_10, 18490) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  box_car_type_1_ng_pony_gen_1A_variant_5;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(8);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(63);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_10, 18490) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_10, 18490) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_10, 18490) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_11, 18491) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  box_car_type_1_ng_pony_gen_1A_variant_5;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(82);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(87);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_11, 18491) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_11, 18491) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_11, 18491) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_12, 18492) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_BOX_CAR_TYPE_1);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     100;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  box_car_type_1_ng_pony_gen_1A_variant_5;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("TYRE")?TYRE:cargotype_available("GLAS")?GLAS:cargotype_available("VPTS")?VPTS:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        box_car_type_1_ng_pony_gen_1A_switch_graphics;
+            purchase:                       box_car_type_1_ng_pony_gen_1A_switch_graphics_purchase;
+                name:                           box_car_type_1_ng_pony_gen_1A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 19;
+                purchase_running_cost_factor:   19; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(120);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(1);
+                cargo_capacity:                 box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                purchase_cargo_capacity:        box_car_type_1_ng_pony_gen_1A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_12, 18492) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_12, 18492) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, box_car_type_1_ng_pony_gen_1A_variant_12, 18492) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

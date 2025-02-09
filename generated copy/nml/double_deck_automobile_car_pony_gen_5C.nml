@@ -1,0 +1,348 @@
+// graphics chain for vehicle platform and masked overlay
+    spriteset(double_deck_automobile_car_pony_gen_5C_ss_base_platform_default, "generated/graphics/iron-horse/double_deck_automobile_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+    }
+    spriteset(double_deck_automobile_car_pony_gen_5C_ss_masked_overlay_default, "generated/graphics/iron-horse/double_deck_automobile_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+    }
+    spriteset(double_deck_automobile_car_pony_gen_5C_ss_base_platform_first, "generated/graphics/iron-horse/double_deck_automobile_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+    }
+    spriteset(double_deck_automobile_car_pony_gen_5C_ss_masked_overlay_first, "generated/graphics/iron-horse/double_deck_automobile_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8(100,NOANIM)
+    }
+    spriteset(double_deck_automobile_car_pony_gen_5C_ss_base_platform_last, "generated/graphics/iron-horse/double_deck_automobile_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8(130,NOANIM)
+    }
+    spriteset(double_deck_automobile_car_pony_gen_5C_ss_masked_overlay_last, "generated/graphics/iron-horse/double_deck_automobile_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8(160,NOANIM)
+    }
+    spriteset(double_deck_automobile_car_pony_gen_5C_ss_base_platform_middle, "generated/graphics/iron-horse/double_deck_automobile_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8(190,NOANIM)
+    }
+    spriteset(double_deck_automobile_car_pony_gen_5C_ss_masked_overlay_middle, "generated/graphics/iron-horse/double_deck_automobile_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8(220,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_graphics_base_platform_position_in_consist_entry_point,
+        [
+            10 + switch_graphics_automobile_transporter_ruleset_4_unit_sets()
+        ]
+    ) {
+            10: double_deck_automobile_car_pony_gen_5C_ss_base_platform_default;
+            11: double_deck_automobile_car_pony_gen_5C_ss_base_platform_first;
+            12: double_deck_automobile_car_pony_gen_5C_ss_base_platform_last;
+            13: double_deck_automobile_car_pony_gen_5C_ss_base_platform_middle;
+    }
+    switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_graphics_masked_overlay_position_in_consist_entry_point,
+        [
+            10 + switch_graphics_automobile_transporter_ruleset_4_unit_sets()
+        ]
+    ) {
+            10: double_deck_automobile_car_pony_gen_5C_ss_masked_overlay_default;
+            11: double_deck_automobile_car_pony_gen_5C_ss_masked_overlay_first;
+            12: double_deck_automobile_car_pony_gen_5C_ss_masked_overlay_last;
+            13: double_deck_automobile_car_pony_gen_5C_ss_masked_overlay_middle;
+    }
+    switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_graphics_spritelayer_cargos_check_cargo_count_double_deck_lower, cargo_count) {
+            0: return ss_global_empty_vehicle;
+        return switch_spritelayer_cargos_automobiles_double_deck_lower_32px;
+    }
+    switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_graphics_spritelayer_cargos_double_deck_lower, [
+                         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), 
+                         STORE_TEMP(1, 22)
+                        ]) {
+        return double_deck_automobile_car_pony_gen_5C_switch_graphics_spritelayer_cargos_check_cargo_count_double_deck_lower;
+    }
+    switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_graphics_spritelayer_cargos_check_cargo_count_double_deck_upper, cargo_count) {
+            0: return ss_global_empty_vehicle;
+        return switch_spritelayer_cargos_automobiles_double_deck_upper_32px;
+    }
+    switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_graphics_spritelayer_cargos_double_deck_upper, [
+                         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), 
+                         STORE_TEMP(1, 22)
+                        ]) {
+        return double_deck_automobile_car_pony_gen_5C_switch_graphics_spritelayer_cargos_check_cargo_count_double_deck_upper;
+    }
+// switch layers: base platform / spritelayer cargo
+switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    0: return double_deck_automobile_car_pony_gen_5C_switch_graphics_base_platform_position_in_consist_entry_point;
+    1: return double_deck_automobile_car_pony_gen_5C_switch_graphics_spritelayer_cargos_double_deck_lower;
+        2: return double_deck_automobile_car_pony_gen_5C_switch_graphics_masked_overlay_position_in_consist_entry_point;
+        3: return double_deck_automobile_car_pony_gen_5C_switch_graphics_spritelayer_cargos_double_deck_upper;
+}
+// buy menu graphics chain
+spriteset(double_deck_automobile_car_pony_gen_5C_ss_vehicle_purchase, "generated/graphics/iron-horse/double_deck_automobile_car_pony_gen_5C.png") {
+    spriteset_template_purchase_default(224,10,33,-16,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_graphics_purchase, 0) {
+    0: return double_deck_automobile_car_pony_gen_5C_ss_vehicle_purchase;
+}
+switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return double_deck_automobile_car_pony_gen_5C_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return double_deck_automobile_car_pony_gen_5C_switch_set_layers_register_more_sprites;
+        1: return double_deck_automobile_car_pony_gen_5C_switch_set_layers_register_more_sprites;
+        2: return double_deck_automobile_car_pony_gen_5C_switch_set_layers_register_more_sprites;
+        3: return double_deck_automobile_car_pony_gen_5C_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_32px;
+}
+switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_cargo_capacity,
+        [
+         STORE_TEMP(8, 0),
+         STORE_TEMP(17, 1),
+         STORE_TEMP(24, 2),
+         STORE_TEMP(32, 3),
+         STORE_TEMP(43, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_DOUBLE_DECK_AUTOMOBILE_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return double_deck_automobile_car_pony_gen_5C_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: double_deck_automobile_car_pony_gen_5C_switch_name_purchase_level_0;
+    1: double_deck_automobile_car_pony_gen_5C_switch_name_purchase_level_1;
+    return double_deck_automobile_car_pony_gen_5C_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: double_deck_automobile_car_pony_gen_5C_switch_name_purchase_extra_bits;
+    return double_deck_automobile_car_pony_gen_5C_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, double_deck_automobile_car_pony_gen_5C_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return double_deck_automobile_car_pony_gen_5C_switch_name_default;
+    return double_deck_automobile_car_pony_gen_5C_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, double_deck_automobile_car_pony_gen_5C, 17330) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/c"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 11, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          120mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [PASS,VEHI];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             VEHI;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        double_deck_automobile_car_pony_gen_5C_switch_graphics;
+            purchase:                       double_deck_automobile_car_pony_gen_5C_switch_graphics_purchase;
+                name:                           double_deck_automobile_car_pony_gen_5C_switch_name;
+                cost_factor:                    199; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 425;
+                purchase_running_cost_factor:   425; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                random_trigger:                 double_deck_automobile_car_pony_gen_5C_switch_graphics_spritelayer_cargos_double_deck_lower;
+                    colour_mapping:                 switch_wagon_recolour_sets(36);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(111);
+                cargo_capacity:                 double_deck_automobile_car_pony_gen_5C_switch_cargo_capacity;
+                purchase_cargo_capacity:        double_deck_automobile_car_pony_gen_5C_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, double_deck_automobile_car_pony_gen_5C, 17330) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, double_deck_automobile_car_pony_gen_5C, 17330) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, double_deck_automobile_car_pony_gen_5C_variant_1, 17331) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/c"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 11, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  double_deck_automobile_car_pony_gen_5C;
+                speed:                          120mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [PASS,VEHI];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             VEHI;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        double_deck_automobile_car_pony_gen_5C_switch_graphics;
+            purchase:                       double_deck_automobile_car_pony_gen_5C_switch_graphics_purchase;
+                name:                           double_deck_automobile_car_pony_gen_5C_switch_name;
+                cost_factor:                    199; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 425;
+                purchase_running_cost_factor:   425; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                random_trigger:                 double_deck_automobile_car_pony_gen_5C_switch_graphics_spritelayer_cargos_double_deck_lower;
+                    colour_mapping:                 switch_wagon_recolour_sets(117);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(69);
+                cargo_capacity:                 double_deck_automobile_car_pony_gen_5C_switch_cargo_capacity;
+                purchase_cargo_capacity:        double_deck_automobile_car_pony_gen_5C_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, double_deck_automobile_car_pony_gen_5C_variant_1, 17331) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, double_deck_automobile_car_pony_gen_5C_variant_1, 17331) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, double_deck_automobile_car_pony_gen_5C_variant_1, 17331) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, double_deck_automobile_car_pony_gen_5C_variant_2, 17332) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/c"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 11, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  double_deck_automobile_car_pony_gen_5C;
+                speed:                          120mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [PASS,VEHI];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             VEHI;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        double_deck_automobile_car_pony_gen_5C_switch_graphics;
+            purchase:                       double_deck_automobile_car_pony_gen_5C_switch_graphics_purchase;
+                name:                           double_deck_automobile_car_pony_gen_5C_switch_name;
+                cost_factor:                    199; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 425;
+                purchase_running_cost_factor:   425; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                random_trigger:                 double_deck_automobile_car_pony_gen_5C_switch_graphics_spritelayer_cargos_double_deck_lower;
+                    colour_mapping:                 switch_wagon_recolour_sets(121);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(31);
+                cargo_capacity:                 double_deck_automobile_car_pony_gen_5C_switch_cargo_capacity;
+                purchase_cargo_capacity:        double_deck_automobile_car_pony_gen_5C_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, double_deck_automobile_car_pony_gen_5C_variant_2, 17332) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, double_deck_automobile_car_pony_gen_5C_variant_2, 17332) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, double_deck_automobile_car_pony_gen_5C_variant_2, 17332) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

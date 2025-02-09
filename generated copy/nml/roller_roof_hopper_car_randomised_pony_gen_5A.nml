@@ -1,0 +1,1500 @@
+// buy menu graphics chain
+spriteset(roller_roof_hopper_car_randomised_pony_gen_5A_ss_purchase, "generated/graphics/iron-horse/roller_roof_hopper_car_randomised_pony_gen_5A.png") {
+    spriteset_template_purchase_default(360,10,40,-19,NOANIM)
+}
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 4;
+                1: return 4;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                130
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 47;
+                1: return 47;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                37
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 38;
+                1: return 38;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                48
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 124;
+                1: return 124;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                105
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 81;
+                1: return 81;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                84
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_5_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_5_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_5_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_5_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_5_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 9;
+                1: return 9;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_5_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_5_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_5_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                75
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_6_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_6_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_6_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_6_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_6_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 16;
+                1: return 16;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_6_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_6_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_6_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                126
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_7_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_7_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_7_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_7_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_7_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 109;
+                1: return 109;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_7_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_7_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_7_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                116
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_8_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_8_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_8_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_8_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_8_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 17;
+                1: return 17;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_8_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_8_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_8_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                110
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_9_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_9_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_9_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_9_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_9_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 93;
+                1: return 93;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_9_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_9_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_9_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                90
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_10_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_10_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_10_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_10_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_10_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 127;
+                1: return 127;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_10_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_10_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_10_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                60
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_11_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_11_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_11_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_11_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_11_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 39;
+                1: return 39;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_11_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_11_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_11_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                72
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_12_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_12_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_12_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_12_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_12_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 82;
+                1: return 82;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_12_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_12_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_12_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                87
+            );
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_13_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_13_switch_graphics_variant, roller_roof_hopper_car_randomised_pony_gen_5A_variant_13_switch_graphics_variant_choose_randomised_wagon()) {
+                0: roller_roof_hopper_car_type_1_pony_gen_5A_switch_graphics;
+                1: roller_roof_hopper_car_type_2_pony_gen_5A_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_13_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, roller_roof_hopper_car_randomised_pony_gen_5A_variant_13_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 120;
+                1: return 120;
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_13_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(roller_roof_hopper_car_randomised_pony_gen_5A_variant_13_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_13_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                1
+            );
+        }
+switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics, vehicle_type_id) {
+        24690: roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_variant;
+        24691: roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_graphics_variant;
+        24692: roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_graphics_variant;
+        24693: roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_graphics_variant;
+        24694: roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_graphics_variant;
+        24695: roller_roof_hopper_car_randomised_pony_gen_5A_variant_5_switch_graphics_variant;
+        24696: roller_roof_hopper_car_randomised_pony_gen_5A_variant_6_switch_graphics_variant;
+        24697: roller_roof_hopper_car_randomised_pony_gen_5A_variant_7_switch_graphics_variant;
+        24698: roller_roof_hopper_car_randomised_pony_gen_5A_variant_8_switch_graphics_variant;
+        24699: roller_roof_hopper_car_randomised_pony_gen_5A_variant_9_switch_graphics_variant;
+        24700: roller_roof_hopper_car_randomised_pony_gen_5A_variant_10_switch_graphics_variant;
+        24701: roller_roof_hopper_car_randomised_pony_gen_5A_variant_11_switch_graphics_variant;
+        24702: roller_roof_hopper_car_randomised_pony_gen_5A_variant_12_switch_graphics_variant;
+        24703: roller_roof_hopper_car_randomised_pony_gen_5A_variant_13_switch_graphics_variant;
+}
+switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase, vehicle_type_id) {
+    roller_roof_hopper_car_randomised_pony_gen_5A_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping, vehicle_type_id) {
+        24690: roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_variant;
+        24691: roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_colour_mapping_variant;
+        24692: roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_colour_mapping_variant;
+        24693: roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_colour_mapping_variant;
+        24694: roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_colour_mapping_variant;
+        24695: roller_roof_hopper_car_randomised_pony_gen_5A_variant_5_switch_colour_mapping_variant;
+        24696: roller_roof_hopper_car_randomised_pony_gen_5A_variant_6_switch_colour_mapping_variant;
+        24697: roller_roof_hopper_car_randomised_pony_gen_5A_variant_7_switch_colour_mapping_variant;
+        24698: roller_roof_hopper_car_randomised_pony_gen_5A_variant_8_switch_colour_mapping_variant;
+        24699: roller_roof_hopper_car_randomised_pony_gen_5A_variant_9_switch_colour_mapping_variant;
+        24700: roller_roof_hopper_car_randomised_pony_gen_5A_variant_10_switch_colour_mapping_variant;
+        24701: roller_roof_hopper_car_randomised_pony_gen_5A_variant_11_switch_colour_mapping_variant;
+        24702: roller_roof_hopper_car_randomised_pony_gen_5A_variant_12_switch_colour_mapping_variant;
+        24703: roller_roof_hopper_car_randomised_pony_gen_5A_variant_13_switch_colour_mapping_variant;
+}
+switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase, vehicle_type_id) {
+        24690: roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_variant_purchase;
+        24691: roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_colour_mapping_variant_purchase;
+        24692: roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_colour_mapping_variant_purchase;
+        24693: roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_colour_mapping_variant_purchase;
+        24694: roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_colour_mapping_variant_purchase;
+        24695: roller_roof_hopper_car_randomised_pony_gen_5A_variant_5_switch_colour_mapping_variant_purchase;
+        24696: roller_roof_hopper_car_randomised_pony_gen_5A_variant_6_switch_colour_mapping_variant_purchase;
+        24697: roller_roof_hopper_car_randomised_pony_gen_5A_variant_7_switch_colour_mapping_variant_purchase;
+        24698: roller_roof_hopper_car_randomised_pony_gen_5A_variant_8_switch_colour_mapping_variant_purchase;
+        24699: roller_roof_hopper_car_randomised_pony_gen_5A_variant_9_switch_colour_mapping_variant_purchase;
+        24700: roller_roof_hopper_car_randomised_pony_gen_5A_variant_10_switch_colour_mapping_variant_purchase;
+        24701: roller_roof_hopper_car_randomised_pony_gen_5A_variant_11_switch_colour_mapping_variant_purchase;
+        24702: roller_roof_hopper_car_randomised_pony_gen_5A_variant_12_switch_colour_mapping_variant_purchase;
+        24703: roller_roof_hopper_car_randomised_pony_gen_5A_variant_13_switch_colour_mapping_variant_purchase;
+}
+switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity,
+        [
+         STORE_TEMP(8, 0),
+         STORE_TEMP(17, 1),
+         STORE_TEMP(24, 2),
+         STORE_TEMP(32, 3),
+         STORE_TEMP(43, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_ROLLER_ROOF_HOPPER_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_purchase_level_0;
+    1: roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_purchase_level_1;
+    return roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_purchase_extra_bits;
+    return roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_default;
+    return roller_roof_hopper_car_randomised_pony_gen_5A_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A, 24690) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                roller_roof_hopper_car_randomised_pony_gen_5A_switch_buy_menu_additional_text;
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A, 24690) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A, 24690) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A, 24690) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_6))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x101
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((switch_get_colour_name(18) | 0xD000) << 16),
+                    0x102
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(19) | 0xD000)
+                    | ((0) << 16),
+                    0x103
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_1, 24691) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                roller_roof_hopper_car_randomised_pony_gen_5A_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_1, 24691) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_1, 24691) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_1, 24691) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(25) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(16) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_2, 24692) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                roller_roof_hopper_car_randomised_pony_gen_5A_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_2, 24692) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_2, 24692) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_2, 24692) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_3))
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((switch_get_colour_name(18) | 0xD000) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_3, 24693) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                roller_roof_hopper_car_randomised_pony_gen_5A_variant_3_switch_buy_menu_additional_text;
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_3, 24693) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_3, 24693) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_3, 24693) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(19) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(22) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_4, 24694) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                roller_roof_hopper_car_randomised_pony_gen_5A_variant_4_switch_buy_menu_additional_text;
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_4, 24694) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_4, 24694) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_4, 24694) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_5, 24695) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_5, 24695) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_5, 24695) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_5, 24695) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_6, 24696) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_6, 24696) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_6, 24696) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_6, 24696) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_7, 24697) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_7, 24697) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_7, 24697) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_7, 24697) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_8, 24698) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_8, 24698) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_8, 24698) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_8, 24698) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_9, 24699) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_9, 24699) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_9, 24699) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_9, 24699) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_10, 24700) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_10, 24700) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_10, 24700) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_10, 24700) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_11, 24701) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_11, 24701) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_11, 24701) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_11, 24701) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_12, 24702) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_12, 24702) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_12, 24702) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_12, 24702) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_13, 24703) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1990, 5, 1);
+                power:                          0hp;
+                weight:                         10ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  roller_roof_hopper_car_type_1_pony_gen_5A_variant_5;
+                speed:                          87mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_COVERED_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [ALO_,BDMT,CLAY,CMNT,FERT,FMSP,KAOL,NITR,PHOS,POTA,QLME,RFPR,SALT,SAND,SASH];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("KAOL")?KAOL:cargotype_available("QLME")?QLME:SALT;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics;
+            purchase:                       roller_roof_hopper_car_randomised_pony_gen_5A_switch_graphics_purchase;
+                name:                           roller_roof_hopper_car_randomised_pony_gen_5A_switch_name;
+                cost_factor:                    86; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 180;
+                purchase_running_cost_factor:   180; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping;
+                    purchase_colour_mapping:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_colour_mapping_purchase;
+                cargo_capacity:                 roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                purchase_cargo_capacity:        roller_roof_hopper_car_randomised_pony_gen_5A_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_13, 24703) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_13, 24703) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, roller_roof_hopper_car_randomised_pony_gen_5A_variant_13, 24703) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

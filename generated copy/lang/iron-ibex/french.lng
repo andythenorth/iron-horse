@@ -1,0 +1,278 @@
+##grflangid 0x03
+##plural 2
+##gender m m2 f
+STR_GRF_DESCRIPTION                                           :Licence: {SILVER}GPL v2{}{BLACK}
+STR_PARAM_ADD_RAILTYPES                                       :Rails additionnels Iron Ibex
+STR_PARAM_ADD_RAILTYPES_DESC                                  :Iron Ibex inclut des trains nécessitant des types de rail additionnels, par exemple métro et faible écartement. Ces types peuvent aussi être fournis par des GRF alternatifs. Si ces derniers sont utilisés, les rails Iron Horse peuvent être désactivés avec ce paramètre.
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                             :Capacité des trains
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC                        :Ajuste la capacité des véhicules pour d'autres styles de jeu.{}{}Nanoscopique: {GOLD}-77%{BLACK}{}Dérisoire{NBSP}: {GOLD}-33%{BLACK}{}Merveilleuse{NBSP}: {GOLD}par défaut{BLACK}{}Démesurée{NBSP}: {GOLD}+33%{BLACK}{}Scandaleuse: {GOLD}+77%{BLACK}
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                    :Nanoscopique
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                    :Dérisoire
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                    :Merveilleuse (par défaut)
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                    :Démesurée
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4                    :Scandaleuse
+STR_PARAM_WAGON_COLOUR_RANDOMISATION                          :Couleur des wagons nuancée
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC            :Nuancer les couleurs des wagons de marchandises ajouter de la variété aux trains (chance aléatoire que chaque wagon soit nuancé).
+STR_ERROR_INFLATION_INCOMPATIBLE                              :Iron Ibex n’est pas compatible avec l’inflation d’OpenTTD. Veuillez désactiver l’inflation dans les paramètre d’OpenTTD.
+STR_ERROR_TERMITE_DEPRECATED                                  :Iron Ibex inclut désormais les type de rails de Termite. Veuillez retirer Termite des la liste des NewGRF et relancer une partie. Merci.
+STR_COLOUR_NAME_COLOUR_DARK_BLUE                              :Bleu foncé
+STR_COLOUR_NAME_COLOUR_PALE_GREEN                             :Vert pâle
+STR_COLOUR_NAME_COLOUR_PINK                                   :Rose
+STR_COLOUR_NAME_COLOUR_YELLOW                                 :Jaune
+STR_COLOUR_NAME_COLOUR_RED                                    :Rouge
+STR_COLOUR_NAME_COLOUR_LIGHT_BLUE                             :Bleu clair
+STR_COLOUR_NAME_COLOUR_GREEN                                  :Vert
+STR_COLOUR_NAME_COLOUR_DARK_GREEN                             :Vert foncé
+STR_COLOUR_NAME_COLOUR_BLUE                                   :Bleu
+STR_COLOUR_NAME_COLOUR_CREAM                                  :Crême
+STR_COLOUR_NAME_COLOUR_MAUVE                                  :Mauve
+STR_COLOUR_NAME_COLOUR_PURPLE                                 :Violet
+STR_COLOUR_NAME_COLOUR_ORANGE                                 :Orange
+STR_COLOUR_NAME_COLOUR_BROWN                                  :Marron
+STR_COLOUR_NAME_COLOUR_GREY                                   :Gris
+STR_COLOUR_NAME_COLOUR_WHITE                                  :Blanc
+STR_COLOUR_NAME_CUSTOM_BAUXITE                                :Marron
+STR_COLOUR_NAME_CUSTOM_DARK_GREY                              :Gris
+STR_COLOUR_NAME_CUSTOM_GREMLIN_GREEN                          :Vert
+STR_COLOUR_NAME_CUSTOM_NIGHTSHADE                             :Noir
+STR_COLOUR_NAME_CUSTOM_OCHRE                                  :Ocre
+STR_COLOUR_NAME_CUSTOM_OIL_BLACK                              :Noir d’encre
+STR_COLOUR_NAME_CUSTOM_PEWTER                                 :Métallisé
+STR_COLOUR_NAME_CUSTOM_RUBY                                   :Rouge foncé
+STR_COLOUR_NAME_CUSTOM_SILVER                                 :Argenté
+STR_COLOUR_NAME_CUSTOM_SULPHUR                                :Moutarde
+STR_COLOUR_NAME_CUSTOM_TEAL                                   :Bleu canard
+STR_COLOUR_NAME_CUSTOM_VIOLET                                 :Violet
+STR_NAME_SUFFIX_LIVERY_MIX_COMPLEMENT_COMPANY_COLOUR          :- {STRING}/{STRING}
+STR_NAME_SUFFIX_LIVERY_MIX_VARIETY                            :Varié
+STR_NAME_SUFFIX_LIVERY_MIX_BAUXITE_GREY_NIGHTSHADE            :Rouille/Roche
+STR_NAME_SUFFIX_LIVERY_MIX_TEAL_VIOLET                        :Écume/Améthyste
+STR_NAME_SUFFIX_LIVERY_MIX_SILVER_PEWTER                      :Argenté/Métallisé
+STR_NAME_SUFFIX_LIVERY_MIX_SULPHUR_OCHRE                      :Moutarde/Ocre
+STR_NAME_SUFFIX_LIVERY_MIX_RUBY_BAUXITE                       :Rubis/Rouille
+STR_NAME_SUFFIX_LIVERY_MIX_OIL_BLACK_NIGHTSHADE               :Obsidienne/Nocturne
+STR_NAME_SUFFIX_LIVERY_MIX_OCHRE_SAND                         :Ocre/Paille
+STR_BADGE_POWER_SOURCE_BATTERY_HYBRID                         :Hybride
+STR_BADGE_POWER_SOURCE_DIESEL                                 :Diesel
+STR_BADGE_POWER_SOURCE_ELECTRIC_AC                            :Électrique alternatif
+STR_BADGE_POWER_SOURCE_ELECTRIC_DC                            :Électrique continu
+STR_BADGE_POWER_SOURCE_ELECTRIC_AC_DC                         :Électrique universel
+STR_BADGE_POWER_SOURCE_ELECTRODIESEL                          :Électro-diesel
+STR_BADGE_POWER_SOURCE_METRO                                  :Métro
+STR_BADGE_POWER_SOURCE_STEAM                                  :Vapeur
+STR_BADGE_WAGON_LENGTH_SMALL                                  :petit
+STR_BADGE_WAGON_LENGTH_MEDIUM                                 :moyen
+STR_BADGE_WAGON_LENGTH_LARGE                                  :grand
+STR_BADGE_WAGON_LENGTH_TWIN                                   :jumeau
+STR_NAME_SUFFIX_RANDOMISED_WAGON                              : - aléatoire
+STR_WAGON_GROUP_ACID_TANK_CARS                                :Wagons-citerne d’acide
+STR_WAGON_GROUP_CEMENT_SILO_CARS                              :Wagons cimentiers
+STR_WAGON_GROUP_COIL_CARS                                     :Wagons porte-bobines
+STR_WAGON_GROUP_FLAT_CARS                                     :Wagons plats
+STR_WAGON_GROUP_INGOT_CARS                                    :Wagons porte-lingots
+STR_WAGON_GROUP_INTERMODAL_CARS                               :Wagons porte-container
+STR_WAGON_GROUP_LOG_CARS                                      :Wagons porte-bûches
+STR_WAGON_GROUP_PRESSURE_TANK_CARS                            :Wagons-citerne pressurisés
+STR_WAGON_GROUP_PRODUCT_TANK_CARS                             :Wagons-citerne à produits
+STR_WAGON_GROUP_REEFER_CARS                                   :Wagons frigorifiques
+STR_WAGON_GROUP_SILO_CARS                                     :Wagons-silo
+STR_WAGON_GROUP_SLAG_LADLE_CARS                               :Wagons-poche
+STR_WAGON_GROUP_SLIDING_WALL_CARS                             :Wagons à parois coulissantes
+STR_WAGON_GROUP_TANK_CARS                                     :Wagons-citerne
+STR_WAGON_GROUP_TARPAULIN_CARS                                :Wagons bâchés
+STR_WAGON_GROUP_TORPEDO_CARS                                  :Wagons-torpille
+STR_WAGON_GROUP_MORE                                          :Plus…
+STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_1                          :Wagon-citerne d’acide
+STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2                          :Wagon-citerne d’acide
+STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                       :Wagon-trémie à noir de carbone
+STR_NAME_SUFFIX_CEMENT_SILO_CAR_TYPE_1                        :Wagon cimentier
+STR_NAME_SUFFIX_COIL_CAR_COVERED                              :Wagon porte-bobines couvert
+STR_NAME_SUFFIX_COIL_CAR_COVERED_ASYMMETRIC                   :Wagon porte-bobines couvert
+STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                            :Wagon porte-bobines
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                 :Wagon-citerne cryogénique
+STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                        :Wagon porte-container express
+STR_NAME_SUFFIX_FLAT_CAR                                      :Wagon plat
+STR_NAME_SUFFIX_HEAVY_DUTY_DUMP_CAR                           :Wagon de gros renforcé
+STR_NAME_SUFFIX_HEAVY_DUTY_FLAT_CAR                           :Wagon plat de gros renforcé
+STR_NAME_SUFFIX_INGOT_CAR                                     :Wagon porte-lingots
+STR_NAME_SUFFIX_INTERMODAL_CAR                                :Wagon porte-container
+STR_NAME_SUFFIX_KAOLIN_HOPPER_CAR                             :Wagon-trémie à kaolin
+STR_NAME_SUFFIX_LOG_CAR                                       :Wagon porte-bûches
+STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                      :Wagon porte-container surbaissé
+STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR                           :Fourgon de marchandise
+STR_NAME_SUFFIX_DROP_SIDE_FLAT_CAR                            :Wagon porte-tôles
+STR_NAME_SUFFIX_PRESSURE_TANK_CAR                             :Wagon-citerne pressurisé
+STR_NAME_SUFFIX_PRODUCT_TANK_CAR_TYPE_1                       :Wagon-citerne à produits
+STR_NAME_SUFFIX_FLAT_CAR_RANDOMISED                           :Wagon plat
+STR_NAME_SUFFIX_REEFER_CAR_TYPE_1                             :Wagon frigorifique
+STR_NAME_SUFFIX_REEFER_CAR_TYPE_2                             :Wagon frigorifique
+STR_NAME_SUFFIX_SILO_CAR_TYPE_1                               :Wagon-silo
+STR_NAME_SUFFIX_SLAG_LADLE_CAR                                :Wagon-poche
+STR_NAME_SUFFIX_SLIDING_ROOF_CAR                              :Wagon à toit coulissant
+STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1                       :Wagon à parois coulissantes
+STR_NAME_SUFFIX_TANK_CAR_TYPE_1                               :Wagon-citerne
+STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1                          :Wagon bâché
+STR_NAME_SUFFIX_TORPEDO_CAR                                   :Wagon-torpille
+STR_BADGE_ROLE                                                :{BLACK}Rôle{NBSP}: {GOLD}{STRING}
+STR_BADGE_ROLE_DRIVING_CAB                                    :Voiture-pilote
+STR_BADGE_ROLE_GENERAL_PURPOSE                                :Universel
+STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS                        :Universel / Express
+STR_BADGE_ROLE_GENERAL_PURPOSE_FREIGHT                        :Universel / Fret
+STR_BADGE_ROLE_GRONK                                          :Gronk{NBSP}!
+STR_BADGE_ROLE_INTERCITY_EXPRESS                              :Express inter-cités
+STR_BADGE_ROLE_LOLZ                                           :Blague
+STR_BADGE_ROLE_METRO                                          :Transport de masse urbain
+STR_BADGE_ROLE_SUBURBAN                                       :Universel / Haute capacité
+STR_POWER_BY_POWER_SOURCE_TWO_SOURCES                         :{BLACK}Puissance en {STRING}{NBSP}: {GOLD}{POWER} {}{BLACK}Puissance en {STRING}{NBSP}: {GOLD}{POWER}
+STR_POWER_SOURCE_AC                                           :courant alternatif
+STR_POWER_SOURCE_DC                                           :courant continu
+STR_POWER_SOURCE_DIESEL                                       :diesel
+STR_POWER_SOURCE_STEAM                                        :vapeur
+STR_SPEED_BY_RAILTYPE_LGV_CAPABLE                             :{BLACK}Vitesse (ligne à grande vitesse dédiée){NBSP}: {GOLD}{VELOCITY} {}{BLACK}Vitesse (rails normaux){NBSP}: {GOLD}{VELOCITY}
+STR_WAGONS_ADD_POWER_CAB                                      :Puissance (distribuée){NBSP}: {GOLD}{POWER} par {STRING} voiture ou fourgon postal attaché
+STR_WAGONS_ADD_POWER_MIDDLE                                   :Puissance (distribuée): {GOLD}{POWER} quand attaché à une locomotive {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS             :{}{BLACK}Nuances de couleur{NBSP}: {GOLD}{STRING}
+STR_RAILTYPE_LGV_NAME                                         :Ligne à grande vitesse dédiée
+STR_RAILTYPE_LGV_TOOLBAR_CAPTION                              :[inutilisée]
+STR_RAILTYPE_LGV_MENU_TEXT                                    :[inutilisée]
+STR_RAILTYPE_LGV_BUILD_WINDOW_CAPTION                         :Nouveaux véhicules dédiés à grande vitesse
+STR_RAILTYPE_LGV_AUTOREPLACE_TEXT                             :Véhicules dédiés à grande vitesse
+STR_RAILTYPE_LGV_NEW_ENGINE_TEXT                              :véhicule ferroviaire à grande vitesse
+STR_RAILTYPE_LGV_ELECTRIFIED_NAME                             :Ligne à grande vitesse dédiée
+STR_RAILTYPE_LGV_ELECTRIFIED_TOOLBAR_CAPTION                  :Construction de voie ferrée à grande vitesse dédiée
+STR_RAILTYPE_LGV_ELECTRIFIED_MENU_TEXT                        :Construction de voie ferrée à grande vitesse dédiée
+STR_RAILTYPE_LGV_ELECTRIFIED_BUILD_WINDOW_CAPTION             :Nouveaux véhicules dédiés à grande vitesse
+STR_RAILTYPE_LGV_ELECTRIFIED_AUTOREPLACE_TEXT                 :Véhicules dédiés à grande vitesse
+STR_RAILTYPE_LGV_ELECTRIFIED_NEW_ENGINE_TEXT                  :véhicule ferroviaire à grande vitesse
+STR_RAILTYPE_METRO_NAME                                       :Ligne de métro
+STR_RAILTYPE_METRO_TOOLBAR_CAPTION                            :Construction de voie de métro
+STR_RAILTYPE_METRO_MENU_TEXT                                  :Construction de voie de métro
+STR_RAILTYPE_METRO_BUILD_WINDOW_CAPTION                       :Nouveaux métros
+STR_RAILTYPE_METRO_AUTOREPLACE_TEXT                           :Métros
+STR_RAILTYPE_METRO_NEW_ENGINE_TEXT                            :métro
+STR_RAILTYPE_NARROW_GAUGE_NAME                                :Voie ferrée à écartement faible
+STR_RAILTYPE_NARROW_GAUGE_TOOLBAR_CAPTION                     :Construction de voie ferrée à écartement faible
+STR_RAILTYPE_NARROW_GAUGE_MENU_TEXT                           :Construction de voie ferrée à écartement faible
+STR_RAILTYPE_NARROW_GAUGE_BUILD_WINDOW_CAPTION                :Nouveaux véhicules à écartement faible
+STR_RAILTYPE_NARROW_GAUGE_AUTOREPLACE_TEXT                    :Véhicules ferroviaires à écartement faible
+STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT                     :véhicule ferroviaire à écartement faible
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NAME                         :Voie ferrée de grande taille
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_TOOLBAR_CAPTION              :Construction de voie ferrée de grande taille
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_MENU_TEXT                    :Construction de voie ferrée de grande taille
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_BUILD_WINDOW_CAPTION         :Nouveaux véhicules de grande taille
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_AUTOREPLACE_TEXT             :Véhicules de grande taille
+STR_RAILTYPE_RAIL_HIGH_CLEARANCE_NEW_ENGINE_TEXT              :véhicule ferroviaire de grande taille
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NAME                         :Voie ferrée électrifiée en courant alternatif
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_TOOLBAR_CAPTION              :Construction de voie ferrée électrifiée en courant alternatif
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_MENU_TEXT                    :Construction de voie ferrée électrifiée en courant alternatif
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_BUILD_WINDOW_CAPTION         :Nouveaux véhicules électriques en courant alternatif
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_AUTOREPLACE_TEXT             :Véhicules électriques en courant alternatif
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_NEW_ENGINE_TEXT              :Véhicule ferroviaire électrique en courant alternatif
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NAME                      :[inutilisé]
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_TOOLBAR_CAPTION           :[inutilisé]
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_MENU_TEXT                 :[inutilisé]
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_BUILD_WINDOW_CAPTION      :Nouveaux véhicules électriques universels
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_AUTOREPLACE_TEXT          :Véhicules électriques universels
+STR_RAILTYPE_RAIL_ELECTRIFIED_AC_DC_NEW_ENGINE_TEXT           :Véhicule ferroviaire électrique universel
+STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NAME                         :Voie ferrée électrifiée en courant continu
+STR_RAILTYPE_RAIL_ELECTRIFIED_DC_TOOLBAR_CAPTION              :Construction de voie ferrée électrifiée en courant continu
+STR_RAILTYPE_RAIL_ELECTRIFIED_DC_MENU_TEXT                    :Construction de voie ferrée électrifiée en courant continu
+STR_RAILTYPE_RAIL_ELECTRIFIED_DC_BUILD_WINDOW_CAPTION         :Nouveaux véhicules électriques en courant continu
+STR_RAILTYPE_RAIL_ELECTRIFIED_DC_AUTOREPLACE_TEXT             :Véhicules électriques en courant continu
+STR_RAILTYPE_RAIL_ELECTRIFIED_DC_NEW_ENGINE_TEXT              :Véhicule ferroviaire électrique en courant continu
+STR_NAME_AE_3_5                                               :Ae 3/5
+STR_NAME_SBB_FB_4_4                                           :SBB Sb 4/4
+STR_NAME_SAAS_BE_4_4                                          :SAAS Be 4/4
+STR_NAME_OBB_1040                                             :OBB 1040
+STR_NAME_SBB_EEM_923                                          :SBB Eem 923
+STR_NAME_AE_3_6_1                                             :Ae 3/6 I
+STR_NAME_OBB_1570                                             :OBB 1570
+STR_NAME_OBB_1170_2                                           :OBB 1170.2
+STR_NAME_RE_4_4_I                                             :Re 4/4i
+STR_NAME_OBB_1163                                             :OBB 1163
+STR_NAME_VECTRON_DUAL_MODE                                    :Vectron Dual-Mode
+STR_NAME_HUNGARIAN_2D2_400                                    :Hungarian 2D2 400
+STR_NAME_AE_4_7                                               :Ae 4/7
+STR_NAME_OBB_1041                                             :OBB 1041
+STR_NAME_OBB_1141                                             :OBB 1141
+STR_NAME_RE_450                                               :Re 450
+STR_NAME_OBB_1014                                             :OBB 1014
+STR_NAME_FS_E330                                              :FS E.330
+STR_NAME_FS_E428                                              :FS E.428
+STR_NAME_FS_E444                                              :FS E.444
+STR_NAME_FS_E464                                              :FS E.464
+STR_NAME_FS_E464_UPGRADE                                      :FS E.464 (upgraded)
+STR_NAME_DRG_E_16                                             :DRG E 16
+STR_NAME_OBB_1010                                             :OBB 1010 Co-Co
+STR_NAME_OBB_1042                                             :OBB 1042
+STR_NAME_OBB_1142                                             :OBB 1142
+STR_NAME_FS_E412                                              :FS E.412 Brenner / OBB 1822
+STR_NAME_FS_E636                                              :FS E.636
+STR_NAME_FS_E646                                              :FS E.646
+STR_NAME_FS_E656                                              :FS E.656
+STR_NAME_FS_E656_UPGRADED                                     :FS E.656 (upgraded)
+STR_NAME_BLS_AE_6_8                                           :BLS Ae 6/8
+STR_NAME_BLS_AE_4_4                                           :BLS Ae 4/4
+STR_NAME_BLS_RE_4_4                                           :BLS Re 4/4
+STR_NAME_SOB_RE_446                                           :SOB Re 446
+STR_NAME_PLM_2CC2_3400                                        :PLM 2CC2 3400
+STR_NAME_CC_7100                                              :CC 7100
+STR_NAME_BB_7200                                              :BB 7200
+STR_NAME_BB_22200                                             :BB 22200
+STR_NAME_BB_22200_UPGRADED                                    :BB 22200 (upgraded)
+STR_NAME_OBB_1044                                             :OBB 1044
+STR_NAME_RE_460                                               :Re 460
+STR_NAME_RE_465                                               :Re 465
+STR_NAME_CC_6500                                              :CC 6500
+STR_NAME_BB_26000                                             :BB 26000 Sybic
+STR_NAME_BB_26000_UPGRADED                                    :BB 26000 Sybic (upgraded)
+STR_NAME_HIGH_POWER_RAILCAR_2                                 :SBB Ce 4/6
+STR_NAME_HIGH_POWER_RAILCAR_3                                 :SOB BDe 4/4 62
+STR_NAME_HIGH_POWER_RAILCAR_4                                 :SOB ABe 4/4 71
+STR_NAME_HIGH_POWER_RAILCAR_5                                 :SBB RBDe 560
+STR_NAME_DE_6_6                                               :De 6/6 Seetal Krokodil
+STR_NAME_TRIENT                                               :Trient
+STR_NAME_KROKODIL_CE_6_8                                      :SBB Ce 6/8 ii Krokodil
+STR_NAME_KROKODIL_BE_6_8                                      :SBB Be 6/8 ii Krokodil
+STR_NAME_SBB_EE_6_6_II                                        :SBB Ee 6/6 ii
+STR_NAME_MTHB_RE_486                                          :MTHB Re 486
+STR_NAME_PO_2D2_5500                                          :PO 2D2 5500
+STR_NAME_BB_25200                                             :BB 25200
+STR_NAME_BB_27000                                             :BB 27000
+STR_NAME_SBB_AE_4_6                                           :Ae 4/6
+STR_NAME_SBB_RE_4_4_II                                        :SBB Re 4/4ii
+STR_NAME_RE_430                                               :Re 430 (Re 4/4ii)
+STR_NAME_RE_430_LION                                          :Re 430 LION
+STR_NAME_FS_E633                                              :FS E.633 Tigre
+STR_NAME_FS_E652                                              :FS E.652 Tigre 2
+STR_NAME_TRAXX_E_494                                          :Captrain Italia E.494 Traxx 3 LM
+STR_NAME_BLS_AE_8_8                                           :BLS Ae 8/8
+STR_NAME_BLS_RE_475                                           :BLS Re 475 !! Multi-system
+STR_NAME_BB_8100_DUO                                          :BB 8100 / 9200 (duo)
+STR_NAME_BB_8500_DUO                                          :BB 8500 / 16000 (duo)
+STR_NAME_RE_6_6                                               :SBB Re 6/6
+STR_NAME_RE_6_6_II                                            :SBB Re 6/6 ii
+STR_NAME_EMU_IBEX_2                                           :BLS Ce 2/4
+STR_NAME_EMU_IBEX_3                                           :SBB Ce 2/4
+STR_NAME_EMU_IBEX_4                                           :SBB RABDe 12/12
+STR_NAME_EMU_IBEX_5                                           :RBDe 4/4
+STR_NAME_EMU_IBEX_6                                           :FLIRT
+STR_NAME_RAPIDE_CAB                                           :Rapide
+STR_NAME_RAPIDE_MIDDLE_MAIL                                   :Rapide Mail Van
+STR_NAME_RAPIDE_MIDDLE_PASSENGER                              :Rapide Passenger Coach
+STR_GRF_NAME_VERSIONED                                          :Iron Ibex 3.37.0-105-gd87a14217
+STR_GRF_DOCS_URL                                                :https://grf.farm/iron-horse/index.html
+STR_EMPTY                                                       :
+STR_NAME_CONTAINER_1                                            :{STRING}
+STR_NAME_CONTAINER_2                                            :{STRING} {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_1      :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2      :{STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_3      :{STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_4      :{STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_5      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_6      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_7      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+# buy menu wrappers
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
+STR_COMPANY_COLOUR_CABBAGE                                      :CC CABBAGE

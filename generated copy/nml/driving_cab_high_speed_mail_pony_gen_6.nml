@@ -1,0 +1,512 @@
+// default graphics chain
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_0_base_livery_0, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_0_base_livery_0, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_0_base_livery_1, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_0_base_livery_1, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(100,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_0_base_livery_2, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(130,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_0_base_livery_2, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(160,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_0_base_livery_3, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(190,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_0_base_livery_3, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(220,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_1_base_livery_0, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(250,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_1_base_livery_0, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(280,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_1_base_livery_1, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(310,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_1_base_livery_1, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(340,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_1_base_livery_2, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(370,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_1_base_livery_2, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(400,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_1_base_livery_3, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(430,NOANIM)
+        }
+        spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_1_base_livery_3, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+            spriteset_template_asymmetric_unreversed_8_8(460,NOANIM)
+        }
+    switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_0,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_0_base_livery_0;
+            01: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_0_base_livery_0;
+            10: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_1_base_livery_0;
+            11: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_1_base_livery_0;
+    }
+    switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_1,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_0_base_livery_1;
+            01: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_0_base_livery_1;
+            10: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_1_base_livery_1;
+            11: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_1_base_livery_1;
+    }
+    switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_2,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_0_base_livery_2;
+            01: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_0_base_livery_2;
+            10: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_1_base_livery_2;
+            11: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_1_base_livery_2;
+    }
+    switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_3,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_0_base_livery_3;
+            01: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_0_base_livery_3;
+            10: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_closed_position_variant_1_base_livery_3;
+            11: return driving_cab_high_speed_mail_pony_gen_6_ss_doors_open_position_variant_1_base_livery_3;
+    }
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_check_engine_and_doors, vehicle_type_id) {
+        17320: return driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_0;
+        17321: return driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_1;
+        17322: return driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_2;
+        17323: return driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_3;
+}
+    switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_layers_0,
+            [
+                STORE_TEMP(0, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_check_engine_and_doors;
+    }
+    switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_layers_1,
+            [
+                STORE_TEMP(1, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_check_engine_and_doors;
+    }
+            switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_graphics_position_in_consist_entry_point, switch_graphics_driving_cab_car_ruleset()) {
+                0: return driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_layers_0;
+                1: return driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_layers_1;
+            }
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle,
+    1
+    ) {
+    return driving_cab_high_speed_mail_pony_gen_6_switch_graphics_position_in_consist_entry_point;
+}
+// buy menu graphics chain
+    spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_vehicle_purchase_0, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+                spriteset_template_purchase_default(224,10,33,-16,NOANIM)
+    }
+    spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_vehicle_purchase_1, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+                spriteset_template_purchase_default(224,70,33,-16,NOANIM)
+    }
+    spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_vehicle_purchase_2, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+                spriteset_template_purchase_default(224,130,33,-16,NOANIM)
+    }
+    spriteset(driving_cab_high_speed_mail_pony_gen_6_ss_vehicle_purchase_3, "generated/graphics/iron-horse/driving_cab_high_speed_mail_pony_gen_6.png") {
+                spriteset_template_purchase_default(224,190,33,-16,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_purchase, vehicle_type_id) {
+        17320: return driving_cab_high_speed_mail_pony_gen_6_ss_vehicle_purchase_0;
+        17321: return driving_cab_high_speed_mail_pony_gen_6_ss_vehicle_purchase_1;
+        17322: return driving_cab_high_speed_mail_pony_gen_6_ss_vehicle_purchase_2;
+        17323: return driving_cab_high_speed_mail_pony_gen_6_ss_vehicle_purchase_3;
+}
+        switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_graphics_purchase, 0) {
+            0: return driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle_purchase;
+        }
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return driving_cab_high_speed_mail_pony_gen_6_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return driving_cab_high_speed_mail_pony_gen_6_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_empty;
+}
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_colour_mapping, vehicle_type_id) {
+                17320:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                17321:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                17322:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                17323:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+}
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_cargo_capacity,
+        [
+         STORE_TEMP(8, 0),
+         STORE_TEMP(17, 1),
+         STORE_TEMP(24, 2),
+         STORE_TEMP(32, 3),
+         STORE_TEMP(43, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+    switch (FEAT_TRAINS, PARENT, driving_cab_high_speed_mail_pony_gen_6_switch_speed_by_tile_railtype, [tile_is_railtype("IHAA") || tile_is_railtype("IHBA")]) {
+        1: return 225;
+        return 193;
+    }
+    switch (FEAT_TRAINS, PARENT, driving_cab_high_speed_mail_pony_gen_6_switch_speed, [railtype_available("IHAA") && railtype_available("IHBA")]) {
+        1: return driving_cab_high_speed_mail_pony_gen_6_switch_speed_by_tile_railtype;
+        return 225;
+    }
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_DRIVING_CAB_HIGH_SPEED_MAIL_PONY_GEN_6)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_DRIVING_CAB_HIGH_SPEED_MAIL_PONY_GEN_6)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return driving_cab_high_speed_mail_pony_gen_6_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_DRIVING_CAB_HIGH_SPEED_MAIL_PONY_GEN_6)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: driving_cab_high_speed_mail_pony_gen_6_switch_name_purchase_level_0;
+    1: driving_cab_high_speed_mail_pony_gen_6_switch_name_purchase_level_1;
+    return driving_cab_high_speed_mail_pony_gen_6_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: driving_cab_high_speed_mail_pony_gen_6_switch_name_purchase_extra_bits;
+    return driving_cab_high_speed_mail_pony_gen_6_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, driving_cab_high_speed_mail_pony_gen_6_switch_name, [
+        param_vehicle_availability_engines
+    ]) {
+    1: return driving_cab_high_speed_mail_pony_gen_6_switch_name_default;
+    return driving_cab_high_speed_mail_pony_gen_6_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6, 17320) {
+        property {
+            name:                           string(STR_NAME_DRIVING_CAB_HIGH_SPEED_MAIL_PONY_GEN_6);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_ruleset_flags/report_as_pax_car","ih_variants_cabbage/cabbage_level_0_has_children","role/driving_cab"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(2020, 9, 1);
+                power:                          300hp;
+                weight:                         34ton;
+                tractive_effort_coefficient:    0.1;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          120mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHAA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        driving_cab_high_speed_mail_pony_gen_6_switch_graphics;
+            purchase:                       driving_cab_high_speed_mail_pony_gen_6_switch_graphics_purchase;
+                name:                           driving_cab_high_speed_mail_pony_gen_6_switch_name;
+                cost_factor:                    16; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 453;
+                purchase_running_cost_factor:   453; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          driving_cab_high_speed_mail_pony_gen_6_switch_speed;
+                    purchase_speed:                 193;
+                    colour_mapping:                 driving_cab_high_speed_mail_pony_gen_6_switch_colour_mapping;
+                    purchase_colour_mapping:        driving_cab_high_speed_mail_pony_gen_6_switch_colour_mapping;
+                cargo_capacity:                 driving_cab_high_speed_mail_pony_gen_6_switch_cargo_capacity;
+                purchase_cargo_capacity:        driving_cab_high_speed_mail_pony_gen_6_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6, 17320) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6, 17320) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6, 17320) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6_variant_1, 17321) {
+        property {
+            name:                           string(STR_NAME_DRIVING_CAB_HIGH_SPEED_MAIL_PONY_GEN_6);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_ruleset_flags/report_as_pax_car","ih_variants_cabbage/cabbage_level_0_has_children","role/driving_cab"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(2020, 9, 1);
+                power:                          300hp;
+                weight:                         34ton;
+                tractive_effort_coefficient:    0.1;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  driving_cab_high_speed_mail_pony_gen_6;
+                speed:                          120mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHAA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        driving_cab_high_speed_mail_pony_gen_6_switch_graphics;
+            purchase:                       driving_cab_high_speed_mail_pony_gen_6_switch_graphics_purchase;
+                name:                           driving_cab_high_speed_mail_pony_gen_6_switch_name;
+                cost_factor:                    16; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 453;
+                purchase_running_cost_factor:   453; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          driving_cab_high_speed_mail_pony_gen_6_switch_speed;
+                    purchase_speed:                 193;
+                    colour_mapping:                 driving_cab_high_speed_mail_pony_gen_6_switch_colour_mapping;
+                    purchase_colour_mapping:        driving_cab_high_speed_mail_pony_gen_6_switch_colour_mapping;
+                cargo_capacity:                 driving_cab_high_speed_mail_pony_gen_6_switch_cargo_capacity;
+                purchase_cargo_capacity:        driving_cab_high_speed_mail_pony_gen_6_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6_variant_1, 17321) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6_variant_1, 17321) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6_variant_1, 17321) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6_variant_2, 17322) {
+        property {
+            name:                           string(STR_NAME_DRIVING_CAB_HIGH_SPEED_MAIL_PONY_GEN_6);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_ruleset_flags/report_as_pax_car","ih_variants_cabbage/cabbage_level_0_has_children","role/driving_cab"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(2020, 9, 1);
+                power:                          300hp;
+                weight:                         34ton;
+                tractive_effort_coefficient:    0.1;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  driving_cab_high_speed_mail_pony_gen_6;
+                speed:                          120mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHAA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        driving_cab_high_speed_mail_pony_gen_6_switch_graphics;
+            purchase:                       driving_cab_high_speed_mail_pony_gen_6_switch_graphics_purchase;
+                name:                           driving_cab_high_speed_mail_pony_gen_6_switch_name;
+                cost_factor:                    16; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 453;
+                purchase_running_cost_factor:   453; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          driving_cab_high_speed_mail_pony_gen_6_switch_speed;
+                    purchase_speed:                 193;
+                    colour_mapping:                 driving_cab_high_speed_mail_pony_gen_6_switch_colour_mapping;
+                    purchase_colour_mapping:        driving_cab_high_speed_mail_pony_gen_6_switch_colour_mapping;
+                cargo_capacity:                 driving_cab_high_speed_mail_pony_gen_6_switch_cargo_capacity;
+                purchase_cargo_capacity:        driving_cab_high_speed_mail_pony_gen_6_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6_variant_2, 17322) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6_variant_2, 17322) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6_variant_2, 17322) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6_variant_3, 17323) {
+        property {
+            name:                           string(STR_NAME_DRIVING_CAB_HIGH_SPEED_MAIL_PONY_GEN_6);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_ruleset_flags/report_as_pax_car","ih_variants_cabbage/cabbage_level_0_has_children","role/driving_cab"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(2020, 9, 1);
+                power:                          300hp;
+                weight:                         34ton;
+                tractive_effort_coefficient:    0.1;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  driving_cab_high_speed_mail_pony_gen_6;
+                speed:                          120mph;
+            cargo_capacity:                 24;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHAA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        driving_cab_high_speed_mail_pony_gen_6_switch_graphics;
+            purchase:                       driving_cab_high_speed_mail_pony_gen_6_switch_graphics_purchase;
+                name:                           driving_cab_high_speed_mail_pony_gen_6_switch_name;
+                cost_factor:                    16; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 453;
+                purchase_running_cost_factor:   453; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          driving_cab_high_speed_mail_pony_gen_6_switch_speed;
+                    purchase_speed:                 193;
+                    colour_mapping:                 driving_cab_high_speed_mail_pony_gen_6_switch_colour_mapping;
+                    purchase_colour_mapping:        driving_cab_high_speed_mail_pony_gen_6_switch_colour_mapping;
+                cargo_capacity:                 driving_cab_high_speed_mail_pony_gen_6_switch_cargo_capacity;
+                purchase_cargo_capacity:        driving_cab_high_speed_mail_pony_gen_6_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6_variant_3, 17323) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6_variant_3, 17323) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, driving_cab_high_speed_mail_pony_gen_6_variant_3, 17323) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

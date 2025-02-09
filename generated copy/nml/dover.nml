@@ -1,0 +1,802 @@
+// default graphics chain
+        spriteset(dover_ss_doors_closed_position_variant_0_base_livery_0, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_0_base_livery_0, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_0_base_livery_1, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_0_base_livery_1, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(100,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_0_base_livery_2, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(130,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_0_base_livery_2, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(160,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_0_base_livery_3, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(190,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_0_base_livery_3, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(220,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_0_base_livery_4, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(250,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_0_base_livery_4, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(280,NOANIM)
+        }
+            spriteset(dover_ss_pantographs_down_0, "generated/graphics/iron-horse/dover_pantographs_down.png") {
+                spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+            }
+            spriteset(dover_ss_pantographs_up_0, "generated/graphics/iron-horse/dover_pantographs_up.png") {
+                spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, dover_switch_graphics_pantographs_state_0, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()]) {
+            1: return dover_ss_pantographs_up_0;
+            return dover_ss_pantographs_down_0;
+        }
+        switch (FEAT_TRAINS, PARENT, dover_switch_graphics_pantographs_0,
+            [
+                1
+            ]
+        ) {
+            1: return dover_switch_graphics_pantographs_state_0;
+            return ss_global_empty_vehicle;
+        }
+        spriteset(dover_ss_doors_closed_position_variant_1_base_livery_0, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(310,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_1_base_livery_0, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(340,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_1_base_livery_1, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(370,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_1_base_livery_1, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(400,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_1_base_livery_2, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(430,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_1_base_livery_2, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(460,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_1_base_livery_3, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(490,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_1_base_livery_3, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(520,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_1_base_livery_4, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(550,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_1_base_livery_4, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(580,NOANIM)
+        }
+            spriteset(dover_ss_pantographs_down_1, "generated/graphics/iron-horse/dover_pantographs_down.png") {
+                spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+            }
+            spriteset(dover_ss_pantographs_up_1, "generated/graphics/iron-horse/dover_pantographs_up.png") {
+                spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, dover_switch_graphics_pantographs_state_1, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()]) {
+            1: return dover_ss_pantographs_up_1;
+            return dover_ss_pantographs_down_1;
+        }
+        switch (FEAT_TRAINS, PARENT, dover_switch_graphics_pantographs_1,
+            [
+                1
+            ]
+        ) {
+            1: return dover_switch_graphics_pantographs_state_1;
+            return ss_global_empty_vehicle;
+        }
+        spriteset(dover_ss_doors_closed_position_variant_2_base_livery_0, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(610,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_2_base_livery_0, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(640,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_2_base_livery_1, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(670,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_2_base_livery_1, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(700,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_2_base_livery_2, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(730,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_2_base_livery_2, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(760,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_2_base_livery_3, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(790,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_2_base_livery_3, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(820,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_2_base_livery_4, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(850,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_2_base_livery_4, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(880,NOANIM)
+        }
+            spriteset(dover_ss_pantographs_down_2, "generated/graphics/iron-horse/dover_pantographs_down.png") {
+                spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+            }
+            spriteset(dover_ss_pantographs_up_2, "generated/graphics/iron-horse/dover_pantographs_up.png") {
+                spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, dover_switch_graphics_pantographs_state_2, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()]) {
+            1: return dover_ss_pantographs_up_2;
+            return dover_ss_pantographs_down_2;
+        }
+        switch (FEAT_TRAINS, PARENT, dover_switch_graphics_pantographs_2,
+            [
+                1
+            ]
+        ) {
+            1: return dover_switch_graphics_pantographs_state_2;
+            return ss_global_empty_vehicle;
+        }
+        spriteset(dover_ss_doors_closed_position_variant_3_base_livery_0, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(910,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_3_base_livery_0, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(940,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_3_base_livery_1, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(970,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_3_base_livery_1, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(1000,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_3_base_livery_2, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(1030,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_3_base_livery_2, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(1060,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_3_base_livery_3, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(1090,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_3_base_livery_3, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(1120,NOANIM)
+        }
+        spriteset(dover_ss_doors_closed_position_variant_3_base_livery_4, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(1150,NOANIM)
+        }
+        spriteset(dover_ss_doors_open_position_variant_3_base_livery_4, "generated/graphics/iron-horse/dover.png") {
+            spriteset_template_asymmetric_unreversed_8_8(1180,NOANIM)
+        }
+            spriteset(dover_ss_pantographs_down_3, "generated/graphics/iron-horse/dover_pantographs_down.png") {
+                spriteset_template_asymmetric_unreversed_8_8(100,NOANIM)
+            }
+            spriteset(dover_ss_pantographs_up_3, "generated/graphics/iron-horse/dover_pantographs_up.png") {
+                spriteset_template_asymmetric_unreversed_8_8(100,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, dover_switch_graphics_pantographs_state_3, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()]) {
+            1: return dover_ss_pantographs_up_3;
+            return dover_ss_pantographs_down_3;
+        }
+        switch (FEAT_TRAINS, PARENT, dover_switch_graphics_pantographs_3,
+            [
+                1
+            ]
+        ) {
+            1: return dover_switch_graphics_pantographs_state_3;
+            return ss_global_empty_vehicle;
+        }
+    switch (FEAT_TRAINS, SELF, dover_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_3,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return dover_ss_doors_closed_position_variant_0_base_livery_3;
+            01: return dover_ss_doors_open_position_variant_0_base_livery_3;
+            10: return dover_ss_doors_closed_position_variant_1_base_livery_3;
+            11: return dover_ss_doors_open_position_variant_1_base_livery_3;
+            20: return dover_ss_doors_closed_position_variant_2_base_livery_3;
+            21: return dover_ss_doors_open_position_variant_2_base_livery_3;
+            30: return dover_ss_doors_closed_position_variant_3_base_livery_3;
+            31: return dover_ss_doors_open_position_variant_3_base_livery_3;
+    }
+    switch (FEAT_TRAINS, SELF, dover_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_0,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return dover_ss_doors_closed_position_variant_0_base_livery_0;
+            01: return dover_ss_doors_open_position_variant_0_base_livery_0;
+            10: return dover_ss_doors_closed_position_variant_1_base_livery_0;
+            11: return dover_ss_doors_open_position_variant_1_base_livery_0;
+            20: return dover_ss_doors_closed_position_variant_2_base_livery_0;
+            21: return dover_ss_doors_open_position_variant_2_base_livery_0;
+            30: return dover_ss_doors_closed_position_variant_3_base_livery_0;
+            31: return dover_ss_doors_open_position_variant_3_base_livery_0;
+    }
+    switch (FEAT_TRAINS, SELF, dover_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_1,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return dover_ss_doors_closed_position_variant_0_base_livery_1;
+            01: return dover_ss_doors_open_position_variant_0_base_livery_1;
+            10: return dover_ss_doors_closed_position_variant_1_base_livery_1;
+            11: return dover_ss_doors_open_position_variant_1_base_livery_1;
+            20: return dover_ss_doors_closed_position_variant_2_base_livery_1;
+            21: return dover_ss_doors_open_position_variant_2_base_livery_1;
+            30: return dover_ss_doors_closed_position_variant_3_base_livery_1;
+            31: return dover_ss_doors_open_position_variant_3_base_livery_1;
+    }
+    switch (FEAT_TRAINS, SELF, dover_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_2,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return dover_ss_doors_closed_position_variant_0_base_livery_2;
+            01: return dover_ss_doors_open_position_variant_0_base_livery_2;
+            10: return dover_ss_doors_closed_position_variant_1_base_livery_2;
+            11: return dover_ss_doors_open_position_variant_1_base_livery_2;
+            20: return dover_ss_doors_closed_position_variant_2_base_livery_2;
+            21: return dover_ss_doors_open_position_variant_2_base_livery_2;
+            30: return dover_ss_doors_closed_position_variant_3_base_livery_2;
+            31: return dover_ss_doors_open_position_variant_3_base_livery_2;
+    }
+    switch (FEAT_TRAINS, SELF, dover_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_4,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return dover_ss_doors_closed_position_variant_0_base_livery_4;
+            01: return dover_ss_doors_open_position_variant_0_base_livery_4;
+            10: return dover_ss_doors_closed_position_variant_1_base_livery_4;
+            11: return dover_ss_doors_open_position_variant_1_base_livery_4;
+            20: return dover_ss_doors_closed_position_variant_2_base_livery_4;
+            21: return dover_ss_doors_open_position_variant_2_base_livery_4;
+            30: return dover_ss_doors_closed_position_variant_3_base_livery_4;
+            31: return dover_ss_doors_open_position_variant_3_base_livery_4;
+    }
+switch (FEAT_TRAINS, SELF, dover_switch_graphics_vehicle_check_engine_and_doors, vehicle_type_id) {
+        21150: return dover_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_3;
+        21151: return dover_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_0;
+        21152: return dover_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_1;
+        21153: return dover_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_2;
+        21154: return dover_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_4;
+}
+    switch (FEAT_TRAINS, SELF, dover_switch_graphics_vehicle_layers_0,
+            [
+                STORE_TEMP(0, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return dover_switch_graphics_vehicle_check_engine_and_doors;
+            1: return dover_switch_graphics_pantographs_0;
+    }
+    switch (FEAT_TRAINS, SELF, dover_switch_graphics_vehicle_layers_1,
+            [
+                STORE_TEMP(1, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return dover_switch_graphics_vehicle_check_engine_and_doors;
+            1: return dover_switch_graphics_pantographs_1;
+    }
+    switch (FEAT_TRAINS, SELF, dover_switch_graphics_vehicle_layers_2,
+            [
+                STORE_TEMP(2, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return dover_switch_graphics_vehicle_check_engine_and_doors;
+            1: return dover_switch_graphics_pantographs_2;
+    }
+    switch (FEAT_TRAINS, SELF, dover_switch_graphics_vehicle_layers_3,
+            [
+                STORE_TEMP(3, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return dover_switch_graphics_vehicle_check_engine_and_doors;
+            1: return dover_switch_graphics_pantographs_3;
+    }
+            switch (FEAT_TRAINS, SELF, dover_switch_graphics_position_in_consist_entry_point, switch_graphics_railcar_ruleset_3_unit_sets()) {
+                0: return dover_switch_graphics_vehicle_layers_0;
+                1: return dover_switch_graphics_vehicle_layers_1;
+                2: return dover_switch_graphics_vehicle_layers_2;
+                3: return dover_switch_graphics_vehicle_layers_3;
+            }
+switch (FEAT_TRAINS, SELF, dover_switch_graphics_vehicle,
+    switch_initialise_var_41_but_badges_not_ids(badgetype("vehicle_family/dover"))
+    ) {
+    return dover_switch_graphics_position_in_consist_entry_point;
+}
+// buy menu graphics chain
+    spriteset(dover_ss_vehicle_purchase_0, "generated/graphics/iron-horse/dover.png") {
+                spriteset_template_purchase_default(224,190,33,-16,NOANIM)
+    }
+    spriteset(dover_ss_vehicle_purchase_1, "generated/graphics/iron-horse/dover.png") {
+                spriteset_template_purchase_default(224,10,33,-16,NOANIM)
+    }
+    spriteset(dover_ss_vehicle_purchase_2, "generated/graphics/iron-horse/dover.png") {
+                spriteset_template_purchase_default(224,70,33,-16,NOANIM)
+    }
+    spriteset(dover_ss_vehicle_purchase_3, "generated/graphics/iron-horse/dover.png") {
+                spriteset_template_purchase_default(224,130,33,-16,NOANIM)
+    }
+    spriteset(dover_ss_vehicle_purchase_4, "generated/graphics/iron-horse/dover.png") {
+                spriteset_template_purchase_default(224,250,33,-16,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, dover_switch_graphics_vehicle_purchase, vehicle_type_id) {
+        21150: return dover_ss_vehicle_purchase_0;
+        21151: return dover_ss_vehicle_purchase_1;
+        21152: return dover_ss_vehicle_purchase_2;
+        21153: return dover_ss_vehicle_purchase_3;
+        21154: return dover_ss_vehicle_purchase_4;
+}
+        spriteset(dover_ss_pantograph_purchase, "generated/graphics/iron-horse/dover_pantographs_down.png") {
+            spriteset_template_purchase_default(224,10,33,-16,NOANIM)
+        }
+        switch (FEAT_TRAINS, SELF, dover_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+            return dover_switch_graphics_vehicle_purchase;
+        }
+        switch (FEAT_TRAINS, SELF, dover_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+            0: return dover_switch_set_layers_register_more_sprites_purchase;
+            1: return dover_ss_pantograph_purchase;
+        }
+switch (FEAT_TRAINS, SELF, dover_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return dover_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, dover_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return dover_switch_set_layers_register_more_sprites;
+        1: return dover_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_railcar_32px_2;
+}
+switch (FEAT_TRAINS, SELF, dover_switch_colour_mapping, vehicle_type_id) {
+                21150:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                21151:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                21152:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                21153:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                21154: return base_sprite_2cc + 16 * company_colour2 + COLOUR_RED;
+}
+switch (FEAT_TRAINS, SELF, dover_switch_cargo_capacity,
+        [
+         STORE_TEMP(8, 0),
+         STORE_TEMP(15, 1),
+         STORE_TEMP(22, 2),
+         STORE_TEMP(30, 3),
+         STORE_TEMP(39, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, SELF, dover_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_ELECTRIC;
+        }
+        switch (FEAT_TRAINS, SELF, dover_switch_create_effect_default, [STORE_TEMP(create_effect(EFFECT_SPRITE_ELECTRIC,0,0,12), 0x100)]) {
+            return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+        }
+        switch (FEAT_TRAINS, SELF, dover_switch_create_effect_check_railtype, 1) {
+            return dover_switch_create_effect_default;
+        }
+    switch (FEAT_TRAINS, PARENT, dover_switch_speed, haulage_bonus_switch_speed_0()) {
+        1: return 168;
+        0: return 120;
+    }
+switch (FEAT_TRAINS, SELF, dover_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_DOVER)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, dover_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_DOVER)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return dover_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, dover_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_DOVER)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, dover_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: dover_switch_name_purchase_level_0;
+    1: dover_switch_name_purchase_level_1;
+    return dover_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, dover_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: dover_switch_name_purchase_extra_bits;
+    return dover_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, dover_switch_name, [
+        param_vehicle_availability_engines
+    ]) {
+    1: return dover_switch_name_default;
+    return dover_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, dover, 21150) {
+        property {
+            name:                           string(STR_NAME_DOVER);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/ac","ih_variants_cabbage/cabbage_level_0_has_children","role/mail_railcar","vehicle_family/dover"];
+                engine_class:                   ENGINE_CLASS_ELECTRIC;
+                introduction_date:              date(1957, 7, 1);
+                power:                          540hp;
+                weight:                         35ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          75mph;
+            cargo_capacity:                 22;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_MU);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHB_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        dover_switch_graphics;
+            purchase:                       dover_switch_graphics_purchase;
+                name:                           dover_switch_name;
+                cost_factor:                    31; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 574;
+                purchase_running_cost_factor:   574; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          dover_switch_speed;
+                    purchase_speed:                 120;
+                    colour_mapping:                 dover_switch_colour_mapping;
+                    purchase_colour_mapping:        dover_switch_colour_mapping;
+                cargo_capacity:                 dover_switch_cargo_capacity;
+                purchase_cargo_capacity:        dover_switch_cargo_capacity;
+                loading_speed:                  5;
+                effect_spawn_model_and_powered: dover_switch_effect_spawn_model_and_powered;
+                create_effect:      dover_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, dover, 21150) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, dover, 21150) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, dover_variant_1, 21151) {
+        property {
+            name:                           string(STR_NAME_DOVER);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/ac","ih_variants_cabbage/cabbage_level_0_has_children","role/mail_railcar","vehicle_family/dover"];
+                engine_class:                   ENGINE_CLASS_ELECTRIC;
+                introduction_date:              date(1957, 7, 1);
+                power:                          540hp;
+                weight:                         35ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  dover;
+                speed:                          75mph;
+            cargo_capacity:                 22;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_MU);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHB_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        dover_switch_graphics;
+            purchase:                       dover_switch_graphics_purchase;
+                name:                           dover_switch_name;
+                cost_factor:                    31; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 574;
+                purchase_running_cost_factor:   574; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          dover_switch_speed;
+                    purchase_speed:                 120;
+                    colour_mapping:                 dover_switch_colour_mapping;
+                    purchase_colour_mapping:        dover_switch_colour_mapping;
+                cargo_capacity:                 dover_switch_cargo_capacity;
+                purchase_cargo_capacity:        dover_switch_cargo_capacity;
+                loading_speed:                  5;
+                effect_spawn_model_and_powered: dover_switch_effect_spawn_model_and_powered;
+                create_effect:      dover_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, dover_variant_1, 21151) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, dover_variant_1, 21151) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, dover_variant_1, 21151) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, dover_variant_2, 21152) {
+        property {
+            name:                           string(STR_NAME_DOVER);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/ac","ih_variants_cabbage/cabbage_level_0_has_children","role/mail_railcar","vehicle_family/dover"];
+                engine_class:                   ENGINE_CLASS_ELECTRIC;
+                introduction_date:              date(1957, 7, 1);
+                power:                          540hp;
+                weight:                         35ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  dover;
+                speed:                          75mph;
+            cargo_capacity:                 22;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_MU);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHB_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        dover_switch_graphics;
+            purchase:                       dover_switch_graphics_purchase;
+                name:                           dover_switch_name;
+                cost_factor:                    31; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 574;
+                purchase_running_cost_factor:   574; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          dover_switch_speed;
+                    purchase_speed:                 120;
+                    colour_mapping:                 dover_switch_colour_mapping;
+                    purchase_colour_mapping:        dover_switch_colour_mapping;
+                cargo_capacity:                 dover_switch_cargo_capacity;
+                purchase_cargo_capacity:        dover_switch_cargo_capacity;
+                loading_speed:                  5;
+                effect_spawn_model_and_powered: dover_switch_effect_spawn_model_and_powered;
+                create_effect:      dover_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, dover_variant_2, 21152) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, dover_variant_2, 21152) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, dover_variant_2, 21152) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, dover_variant_3, 21153) {
+        property {
+            name:                           string(STR_NAME_DOVER);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/ac","ih_variants_cabbage/cabbage_level_0_has_children","role/mail_railcar","vehicle_family/dover"];
+                engine_class:                   ENGINE_CLASS_ELECTRIC;
+                introduction_date:              date(1957, 7, 1);
+                power:                          540hp;
+                weight:                         35ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  dover;
+                speed:                          75mph;
+            cargo_capacity:                 22;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_MU);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHB_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        dover_switch_graphics;
+            purchase:                       dover_switch_graphics_purchase;
+                name:                           dover_switch_name;
+                cost_factor:                    31; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 574;
+                purchase_running_cost_factor:   574; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          dover_switch_speed;
+                    purchase_speed:                 120;
+                    colour_mapping:                 dover_switch_colour_mapping;
+                    purchase_colour_mapping:        dover_switch_colour_mapping;
+                cargo_capacity:                 dover_switch_cargo_capacity;
+                purchase_cargo_capacity:        dover_switch_cargo_capacity;
+                loading_speed:                  5;
+                effect_spawn_model_and_powered: dover_switch_effect_spawn_model_and_powered;
+                create_effect:      dover_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, dover_variant_3, 21153) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, dover_variant_3, 21153) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, dover_variant_3, 21153) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, dover_variant_4, 21154) {
+        property {
+            name:                           string(STR_NAME_DOVER);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/ac","ih_variants_cabbage/cabbage_level_0_has_children","role/mail_railcar","vehicle_family/dover"];
+                engine_class:                   ENGINE_CLASS_ELECTRIC;
+                introduction_date:              date(1957, 7, 1);
+                power:                          540hp;
+                weight:                         35ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  dover;
+                speed:                          75mph;
+            cargo_capacity:                 22;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_MU);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHB_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        dover_switch_graphics;
+            purchase:                       dover_switch_graphics_purchase;
+                name:                           dover_switch_name;
+                cost_factor:                    31; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 574;
+                purchase_running_cost_factor:   574; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          dover_switch_speed;
+                    purchase_speed:                 120;
+                    colour_mapping:                 dover_switch_colour_mapping;
+                    purchase_colour_mapping:        dover_switch_colour_mapping;
+                cargo_capacity:                 dover_switch_cargo_capacity;
+                purchase_cargo_capacity:        dover_switch_cargo_capacity;
+                loading_speed:                  5;
+                effect_spawn_model_and_powered: dover_switch_effect_spawn_model_and_powered;
+                create_effect:      dover_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, dover_variant_4, 21154) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, dover_variant_4, 21154) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, dover_variant_4, 21154) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

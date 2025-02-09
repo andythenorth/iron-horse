@@ -1,0 +1,778 @@
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_empty_unweathered, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(10,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_0, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(40,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_0, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(70,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_1, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(100,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_1, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(130,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_2, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(160,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_2, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(190,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_3, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(220,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_3, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(250,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_4, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(280,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_4, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(310,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_5, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(340,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_5, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(370,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_6, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(400,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_6, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(430,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_7, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(460,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_7, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(490,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_8, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(520,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_8, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(550,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_9, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(580,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_9, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(610,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_10, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(640,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_10, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(670,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_11, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(700,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_11, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(730,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_12, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(760,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_12, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(790,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_13, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(820,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_13, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(850,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_14, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(880,NOANIM)
+    }
+    spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_14, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(910,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_loading, cargo_type_in_veh) {
+                    BEER: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_0;
+                    DYES: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_0;
+                    EOIL: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_0;
+                    MILK: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_0;
+                    OIL_: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_0;
+                    PETR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_0;
+                    RFPR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_0;
+                    WATR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_0;
+                    COPR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_1;
+                    GOOD: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_2;
+                    ALUM: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_3;
+                    STIG: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_3;
+                    ZINC: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_3;
+                    WOOD: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_4;
+                    WDPR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_5;
+                    PAPR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_6;
+                    PIPE: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_7;
+                    STPP: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_7;
+                    STEL: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_8;
+                    STSH: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_8;
+                    METL: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_8;
+                    STAL: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_9;
+                    STBL: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_9;
+                    STCB: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_9;
+                    STSL: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_9;
+                    STSE: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_9;
+                    STST: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_9;
+                    RBAR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_10;
+                    STWR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_10;
+                    TYCO: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_10;
+                    FMSP: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_12;
+                    ENSP: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_13;
+                    BDMT: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_14;
+        return mill_flat_car_type_2_ng_pony_gen_2A_ss_loading_11;
+    }
+    switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_loaded, cargo_type_in_veh) {
+                    BEER: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_0;
+                    DYES: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_0;
+                    EOIL: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_0;
+                    MILK: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_0;
+                    OIL_: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_0;
+                    PETR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_0;
+                    RFPR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_0;
+                    WATR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_0;
+                    COPR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_1;
+                    GOOD: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_2;
+                    ALUM: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_3;
+                    STIG: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_3;
+                    ZINC: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_3;
+                    WOOD: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_4;
+                    WDPR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_5;
+                    PAPR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_6;
+                    PIPE: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_7;
+                    STPP: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_7;
+                    STEL: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_8;
+                    STSH: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_8;
+                    METL: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_8;
+                    STAL: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_9;
+                    STBL: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_9;
+                    STCB: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_9;
+                    STSL: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_9;
+                    STSE: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_9;
+                    STST: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_9;
+                    RBAR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_10;
+                    STWR: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_10;
+                    TYCO: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_10;
+                    FMSP: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_12;
+                    ENSP: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_13;
+                    BDMT: return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_14;
+        return mill_flat_car_type_2_ng_pony_gen_2A_ss_loaded_11;
+    }
+        switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics_vehicle_check_state_unweathered, switch_graphics_visible_cargo_no_cover_percent_loaded()) {
+            0: return mill_flat_car_type_2_ng_pony_gen_2A_ss_empty_unweathered;
+            1: return mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_loading;
+            2: return mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_loaded;
+        }
+switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics_vehicle_check_state_unweathered;
+}
+// buy menu graphics chain
+spriteset(mill_flat_car_type_2_ng_pony_gen_2A_ss_purchase, "generated/graphics/iron-horse/mill_flat_car_type_2_ng_pony_gen_2A.png") {
+    spriteset_template_purchase_default(224,10,17,-8,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics_purchase, 1) {
+    return mill_flat_car_type_2_ng_pony_gen_2A_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return mill_flat_car_type_2_ng_pony_gen_2A_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_16px;
+}
+switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity,
+        [
+         STORE_TEMP(4, 0),
+         STORE_TEMP(9, 1),
+         STORE_TEMP(12, 2),
+         STORE_TEMP(16, 3),
+         STORE_TEMP(22, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_2)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_MILL_FLAT_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return mill_flat_car_type_2_ng_pony_gen_2A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_2)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: mill_flat_car_type_2_ng_pony_gen_2A_switch_name_purchase_level_0;
+    1: mill_flat_car_type_2_ng_pony_gen_2A_switch_name_purchase_level_1;
+    return mill_flat_car_type_2_ng_pony_gen_2A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: mill_flat_car_type_2_ng_pony_gen_2A_switch_name_purchase_extra_bits;
+    return mill_flat_car_type_2_ng_pony_gen_2A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return mill_flat_car_type_2_ng_pony_gen_2A_switch_name_default;
+    return mill_flat_car_type_2_ng_pony_gen_2A_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A, 25930) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 11, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mill_flat_car_type_1_ng_pony_gen_2A;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_FLATBED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [GOOD];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("STSL")?STSL:cargotype_available("STBL")?STBL:cargotype_available("STCB")?STCB:cargotype_available("PIPE")?PIPE:cargotype_available("STPP")?STPP:cargotype_available("WDPR")?WDPR:cargotype_available("ALUM")?ALUM:cargotype_available("ZINC")?ZINC:cargotype_available("STEL")?STEL:COPR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics;
+            purchase:                       mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics_purchase;
+                name:                           mill_flat_car_type_2_ng_pony_gen_2A_switch_name;
+                cost_factor:                    37; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 21;
+                purchase_running_cost_factor:   21; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                mill_flat_car_type_2_ng_pony_gen_2A_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(4);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(130);
+                cargo_capacity:                 mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A, 25930) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A, 25930) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A, 25930) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_4))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x101
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((0) << 16),
+                    0x102
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_1, 25931) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 11, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mill_flat_car_type_1_ng_pony_gen_2A;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_FLATBED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [GOOD];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("STSL")?STSL:cargotype_available("STBL")?STBL:cargotype_available("STCB")?STCB:cargotype_available("PIPE")?PIPE:cargotype_available("STPP")?STPP:cargotype_available("WDPR")?WDPR:cargotype_available("ALUM")?ALUM:cargotype_available("ZINC")?ZINC:cargotype_available("STEL")?STEL:COPR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics;
+            purchase:                       mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics_purchase;
+                name:                           mill_flat_car_type_2_ng_pony_gen_2A_switch_name;
+                cost_factor:                    37; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 21;
+                purchase_running_cost_factor:   21; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                mill_flat_car_type_2_ng_pony_gen_2A_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(79);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(74);
+                cargo_capacity:                 mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_1, 25931) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_1, 25931) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_1, 25931) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, mill_flat_car_type_2_ng_pony_gen_2A_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_2, 25932) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 11, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mill_flat_car_type_1_ng_pony_gen_2A;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_FLATBED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [GOOD];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("STSL")?STSL:cargotype_available("STBL")?STBL:cargotype_available("STCB")?STCB:cargotype_available("PIPE")?PIPE:cargotype_available("STPP")?STPP:cargotype_available("WDPR")?WDPR:cargotype_available("ALUM")?ALUM:cargotype_available("ZINC")?ZINC:cargotype_available("STEL")?STEL:COPR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics;
+            purchase:                       mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics_purchase;
+                name:                           mill_flat_car_type_2_ng_pony_gen_2A_switch_name;
+                cost_factor:                    37; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 21;
+                purchase_running_cost_factor:   21; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                mill_flat_car_type_2_ng_pony_gen_2A_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(30);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(13);
+                cargo_capacity:                 mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_2, 25932) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_2, 25932) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_2, 25932) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_3, 25933) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 11, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mill_flat_car_type_1_ng_pony_gen_2A_variant_3;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_FLATBED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [GOOD];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("STSL")?STSL:cargotype_available("STBL")?STBL:cargotype_available("STCB")?STCB:cargotype_available("PIPE")?PIPE:cargotype_available("STPP")?STPP:cargotype_available("WDPR")?WDPR:cargotype_available("ALUM")?ALUM:cargotype_available("ZINC")?ZINC:cargotype_available("STEL")?STEL:COPR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics;
+            purchase:                       mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics_purchase;
+                name:                           mill_flat_car_type_2_ng_pony_gen_2A_switch_name;
+                cost_factor:                    37; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 21;
+                purchase_running_cost_factor:   21; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(9);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(75);
+                cargo_capacity:                 mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_3, 25933) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_3, 25933) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_3, 25933) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_4, 25934) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 11, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mill_flat_car_type_1_ng_pony_gen_2A_variant_3;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_FLATBED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [GOOD];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("STSL")?STSL:cargotype_available("STBL")?STBL:cargotype_available("STCB")?STCB:cargotype_available("PIPE")?PIPE:cargotype_available("STPP")?STPP:cargotype_available("WDPR")?WDPR:cargotype_available("ALUM")?ALUM:cargotype_available("ZINC")?ZINC:cargotype_available("STEL")?STEL:COPR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics;
+            purchase:                       mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics_purchase;
+                name:                           mill_flat_car_type_2_ng_pony_gen_2A_switch_name;
+                cost_factor:                    37; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 21;
+                purchase_running_cost_factor:   21; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(16);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(126);
+                cargo_capacity:                 mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_4, 25934) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_4, 25934) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_4, 25934) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_5, 25935) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 11, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mill_flat_car_type_1_ng_pony_gen_2A_variant_3;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_FLATBED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [GOOD];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("STSL")?STSL:cargotype_available("STBL")?STBL:cargotype_available("STCB")?STCB:cargotype_available("PIPE")?PIPE:cargotype_available("STPP")?STPP:cargotype_available("WDPR")?WDPR:cargotype_available("ALUM")?ALUM:cargotype_available("ZINC")?ZINC:cargotype_available("STEL")?STEL:COPR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics;
+            purchase:                       mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics_purchase;
+                name:                           mill_flat_car_type_2_ng_pony_gen_2A_switch_name;
+                cost_factor:                    37; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 21;
+                purchase_running_cost_factor:   21; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(17);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(110);
+                cargo_capacity:                 mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_5, 25935) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_5, 25935) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_5, 25935) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_6, 25936) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MILL_FLAT_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 11, 1);
+                power:                          0hp;
+                weight:                         4ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mill_flat_car_type_1_ng_pony_gen_2A_variant_3;
+                speed:                          45mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_FLATBED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [GOOD];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("STSL")?STSL:cargotype_available("STBL")?STBL:cargotype_available("STCB")?STCB:cargotype_available("PIPE")?PIPE:cargotype_available("STPP")?STPP:cargotype_available("WDPR")?WDPR:cargotype_available("ALUM")?ALUM:cargotype_available("ZINC")?ZINC:cargotype_available("STEL")?STEL:COPR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics;
+            purchase:                       mill_flat_car_type_2_ng_pony_gen_2A_switch_graphics_purchase;
+                name:                           mill_flat_car_type_2_ng_pony_gen_2A_switch_name;
+                cost_factor:                    37; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 21;
+                purchase_running_cost_factor:   21; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(93);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(90);
+                cargo_capacity:                 mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        mill_flat_car_type_2_ng_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_6, 25936) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_6, 25936) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mill_flat_car_type_2_ng_pony_gen_2A_variant_6, 25936) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

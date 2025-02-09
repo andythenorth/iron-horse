@@ -1,0 +1,237 @@
+    spriteset(caboose_car_ng_pony_gen_1B_ss_cc_enclosed_1, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_asymmetric_unreversed_4_8(10,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_cc_enclosed_2, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_asymmetric_unreversed_4_8(40,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_cc_enclosed_3, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_asymmetric_unreversed_4_8(70,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_cc_asymmetric_1, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_asymmetric_unreversed_4_8(100,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_cc_asymmetric_2, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_asymmetric_unreversed_4_8(130,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_cc_asymmetric_3, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_asymmetric_unreversed_4_8(160,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_brown_enclosed_1, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_asymmetric_unreversed_4_8(190,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_brown_enclosed_2, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_asymmetric_unreversed_4_8(220,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_brown_enclosed_3, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_asymmetric_unreversed_4_8(250,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_brown_asymmetric_1, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_asymmetric_unreversed_4_8(280,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_brown_asymmetric_2, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_asymmetric_unreversed_4_8(310,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_brown_asymmetric_3, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_asymmetric_unreversed_4_8(340,NOANIM)
+    }
+    // ('default_1', ['cc_enclosed_1', 'brown_enclosed_1', 'cc_asymmetric_1', 'brown_asymmetric_1'])
+    random_switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_1) {
+            1: return caboose_car_ng_pony_gen_1B_ss_cc_enclosed_1;
+            1: return caboose_car_ng_pony_gen_1B_ss_brown_enclosed_1;
+            1: return caboose_car_ng_pony_gen_1B_ss_cc_asymmetric_1;
+            1: return caboose_car_ng_pony_gen_1B_ss_brown_asymmetric_1;
+    }
+    // ('default_2', ['cc_enclosed_2', 'brown_enclosed_2', 'cc_asymmetric_2', 'brown_asymmetric_2'])
+    random_switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_2) {
+            1: return caboose_car_ng_pony_gen_1B_ss_cc_enclosed_2;
+            1: return caboose_car_ng_pony_gen_1B_ss_brown_enclosed_2;
+            1: return caboose_car_ng_pony_gen_1B_ss_cc_asymmetric_2;
+            1: return caboose_car_ng_pony_gen_1B_ss_brown_asymmetric_2;
+    }
+    // ('default_3', ['cc_enclosed_3', 'brown_enclosed_3', 'cc_asymmetric_3', 'brown_asymmetric_3'])
+    random_switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3) {
+            1: return caboose_car_ng_pony_gen_1B_ss_cc_enclosed_3;
+            1: return caboose_car_ng_pony_gen_1B_ss_brown_enclosed_3;
+            1: return caboose_car_ng_pony_gen_1B_ss_cc_asymmetric_3;
+            1: return caboose_car_ng_pony_gen_1B_ss_brown_asymmetric_3;
+    }
+    // ('default_4', ['cc_enclosed_3', 'brown_enclosed_3', 'cc_asymmetric_3', 'brown_asymmetric_3'])
+    random_switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_4) {
+            1: return caboose_car_ng_pony_gen_1B_ss_cc_enclosed_3;
+            1: return caboose_car_ng_pony_gen_1B_ss_brown_enclosed_3;
+            1: return caboose_car_ng_pony_gen_1B_ss_cc_asymmetric_3;
+            1: return caboose_car_ng_pony_gen_1B_ss_brown_asymmetric_3;
+    }
+switch (FEAT_TRAINS, PARENT, caboose_car_ng_pony_gen_1B_switch_graphics_default_fallback, current_year) {
+        1860..1909: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_1;
+        1910..1959: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_2;
+        1960..2009: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3;
+        2010..5000001: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_4;
+}
+switch (FEAT_TRAINS, PARENT, caboose_car_ng_pony_gen_1B_switch_graphics_vehicle, vehicle_type_id) {
+        21060..21062: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_1;
+        21040..21042: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_1;
+        21100..21103: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3;
+        920..923: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3;
+        21270..21272: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3;
+        910..912: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3;
+        21330..21332: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_1;
+        21670..21672: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_2;
+        21400..21402: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3;
+        21810..21813: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3;
+        30570..30571: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_4;
+        930..931: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_2;
+        21820..21822: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_2;
+        21740..21742: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3;
+        21290..21292: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3;
+        30870..30873: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_4;
+        830..832: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3;
+        17140..17142: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3;
+        9350..9352: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_4;
+        35850..35852: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_4;
+        21030..21035: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_3;
+        28310..28315: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_4;
+        970..971: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_4;
+        390..392: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_4;
+        23260..23262: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_4;
+        23510..23512: return caboose_car_ng_pony_gen_1B_switch_graphics_caboose_family_default_4;
+    return caboose_car_ng_pony_gen_1B_switch_graphics_default_fallback;
+}
+// buy menu graphics chain
+    spriteset(caboose_car_ng_pony_gen_1B_ss_purchase_0, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_purchase_default(360,10,40,-19,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_purchase_1, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_purchase_default(360,40,40,-19,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_purchase_2, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_purchase_default(360,70,40,-19,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_purchase_3, "generated/graphics/iron-horse/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_purchase_default(360,100,40,-19,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_graphics_purchase, current_year) {
+        1860..1909: return caboose_car_ng_pony_gen_1B_ss_purchase_0;
+        1910..1959: return caboose_car_ng_pony_gen_1B_ss_purchase_1;
+        1960..2009: return caboose_car_ng_pony_gen_1B_ss_purchase_2;
+        2010..5000001: return caboose_car_ng_pony_gen_1B_ss_purchase_3;
+}
+switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return caboose_car_ng_pony_gen_1B_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return caboose_car_ng_pony_gen_1B_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_16px;
+}
+switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_CABOOSE_CAR), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            0
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return caboose_car_ng_pony_gen_1B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_CABOOSE_CAR), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: caboose_car_ng_pony_gen_1B_switch_name_purchase_level_0;
+    1: caboose_car_ng_pony_gen_1B_switch_name_purchase_level_1;
+    return caboose_car_ng_pony_gen_1B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: caboose_car_ng_pony_gen_1B_switch_name_purchase_extra_bits;
+    return caboose_car_ng_pony_gen_1B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return caboose_car_ng_pony_gen_1B_switch_name_default;
+    return caboose_car_ng_pony_gen_1B_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, caboose_car_ng_pony_gen_1B, 26270) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_CABOOSE_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1860, 1, 1);
+                power:                          0hp;
+                weight:                         12ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [ENSP,GOOD,COAL,WOOD,OIL_];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        caboose_car_ng_pony_gen_1B_switch_graphics;
+            purchase:                       caboose_car_ng_pony_gen_1B_switch_graphics_purchase;
+                name:                           caboose_car_ng_pony_gen_1B_switch_name;
+                cost_factor:                    99; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 34;
+                purchase_running_cost_factor:   34; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(36);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(111);
+                reverse_build_probability: return 50 * param_vehicle_random_reverse_on_build;
+        }
+    }
+        item(FEAT_TRAINS, caboose_car_ng_pony_gen_1B, 26270) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, caboose_car_ng_pony_gen_1B, 26270) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, caboose_car_ng_pony_gen_1B, 26270) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

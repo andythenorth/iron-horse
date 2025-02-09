@@ -1,0 +1,60 @@
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_0, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 0, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_1, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 30, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_2, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 60, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_3, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 90, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_4, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 120, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_5, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 150, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_6, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 180, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_7, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 210, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_8, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 240, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_9, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 270, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_10, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 300, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_11, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 330, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_12, "generated/graphics/iron-horse/automobiles_double_deck_upper_cars_DFLT_20px.png") {
+            spriteset_template_asymmetric_unreversed_5_8(10 + 360, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_automobiles_double_deck_upper_20px_random_cars_DFLT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_0;
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_1;
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_2;
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_3;
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_4;
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_5;
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_6;
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_7;
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_8;
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_9;
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_10;
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_11;
+                1: return ss_spritelayer_cargos_automobiles_double_deck_upper_20px_cars_DFLT_12;
+    }
+        switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_automobiles_double_deck_upper_20px_generic_by_class_entry_point, 0) {
+            return switch_spritelayer_cargos_automobiles_double_deck_upper_20px_random_cars_DFLT;
+        }
+switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_automobiles_double_deck_upper_20px, cargo_type_in_veh) {
+    return switch_spritelayer_cargos_automobiles_double_deck_upper_20px_generic_by_class_entry_point;
+}

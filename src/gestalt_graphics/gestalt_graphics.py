@@ -391,7 +391,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # we make an assumption that the spriterows will always be vertically contiguous
         # so we can take the last value of start_y_cumulative, apply the offset multiplier, then rewrite the y values in result
         # n.b. by default force_spriterow_group_in_output_spritesheet = 0, so this has no effect unless explicitly set
-        vehicle_y_offset = vehicle.force_spriterow_group_in_output_spritesheet * (
+        vehicle_y_offset = vehicle._unit_def.force_spriterow_group_in_output_spritesheet * (
             start_y_cumulative - graphics_constants.spritesheet_top_margin
         )
         for row_map in result:
@@ -407,7 +407,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     def get_buy_menu_unit_input_row_num(
         self, unit_counter, pipeline, buyable_variant, unit
     ):
-        result = len(self.get_unique_spritesets(unit)) * unit.force_spriterow_group_in_output_spritesheet
+        result = len(self.get_unique_spritesets(unit)) * unit._unit_def.force_spriterow_group_in_output_spritesheet
         return result
 
 class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):

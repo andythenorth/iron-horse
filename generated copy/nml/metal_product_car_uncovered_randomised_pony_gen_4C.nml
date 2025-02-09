@@ -1,0 +1,453 @@
+// buy menu graphics chain
+spriteset(metal_product_car_uncovered_randomised_pony_gen_4C_ss_purchase, "generated/graphics/iron-horse/metal_product_car_uncovered_randomised_pony_gen_4C.png") {
+    spriteset_template_purchase_default(360,10,56,-27,NOANIM)
+}
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics_variant, metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics_variant_choose_randomised_wagon()) {
+                0: mill_open_car_pony_gen_4C_switch_graphics;
+                1: drop_end_flat_car_pony_gen_4C_switch_graphics;
+                2: drop_side_flat_car_pony_gen_4C_switch_graphics;
+                3: bolster_car_pony_gen_4C_switch_graphics;
+                4: high_end_bolster_car_pony_gen_4C_switch_graphics;
+                5: mill_flat_car_type_1_pony_gen_4C_switch_graphics;
+                6: mill_flat_car_type_2_pony_gen_4C_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 4;
+                1: return 4;
+                2: return 4;
+                3: return 4;
+                4: return 4;
+                5: return 4;
+                6: return 4;
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                130
+            );
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_graphics_variant, metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_graphics_variant_choose_randomised_wagon()) {
+                0: mill_open_car_pony_gen_4C_switch_graphics;
+                1: drop_end_flat_car_pony_gen_4C_switch_graphics;
+                2: drop_side_flat_car_pony_gen_4C_switch_graphics;
+                3: bolster_car_pony_gen_4C_switch_graphics;
+                4: high_end_bolster_car_pony_gen_4C_switch_graphics;
+                5: mill_flat_car_type_1_pony_gen_4C_switch_graphics;
+                6: mill_flat_car_type_2_pony_gen_4C_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 40;
+                1: return 79;
+                2: return 79;
+                3: return 79;
+                4: return 79;
+                5: return 79;
+                6: return 79;
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                103
+            );
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    7
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+                6: 6;
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_graphics_variant, metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_graphics_variant_choose_randomised_wagon()) {
+                0: mill_open_car_pony_gen_4C_switch_graphics;
+                1: drop_end_flat_car_pony_gen_4C_switch_graphics;
+                2: drop_side_flat_car_pony_gen_4C_switch_graphics;
+                3: bolster_car_pony_gen_4C_switch_graphics;
+                4: high_end_bolster_car_pony_gen_4C_switch_graphics;
+                5: mill_flat_car_type_1_pony_gen_4C_switch_graphics;
+                6: mill_flat_car_type_2_pony_gen_4C_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 30;
+                1: return 30;
+                2: return 30;
+                3: return 30;
+                4: return 30;
+                5: return 30;
+                6: return 30;
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                13
+            );
+        }
+switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics, vehicle_type_id) {
+        23150: metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics_variant;
+        23151: metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_graphics_variant;
+        23152: metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_graphics_variant;
+}
+switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics_purchase, vehicle_type_id) {
+    metal_product_car_uncovered_randomised_pony_gen_4C_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping, vehicle_type_id) {
+        23150: metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping_variant;
+        23151: metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_colour_mapping_variant;
+        23152: metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_colour_mapping_variant;
+}
+switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping_purchase, vehicle_type_id) {
+        23150: metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping_variant_purchase;
+        23151: metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_colour_mapping_variant_purchase;
+        23152: metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_colour_mapping_variant_purchase;
+}
+switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_cargo_capacity,
+        [
+         STORE_TEMP(15, 0),
+         STORE_TEMP(30, 1),
+         STORE_TEMP(44, 2),
+         STORE_TEMP(59, 3),
+         STORE_TEMP(78, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_METAL_PRODUCT_CAR_UNCOVERED_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_METAL_PRODUCT_CARS_RANDOMISED)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_METAL_PRODUCT_CAR_UNCOVERED_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_purchase_level_0;
+    1: metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_purchase_level_1;
+    return metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_purchase_extra_bits;
+    return metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_default;
+    return metal_product_car_uncovered_randomised_pony_gen_4C_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, metal_product_car_uncovered_randomised_pony_gen_4C, 23150) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_METAL_PRODUCT_CAR_UNCOVERED_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/c"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 11, 1);
+                power:                          0hp;
+                weight:                         21ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          75mph;
+            cargo_capacity:                 44;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [ALUM,COPR,METL,RBAR,STAL,STBL,STBR,STCB,STEL,STIG,STSE,STSH,STSL,STST,STWR,TYCO,ZINC];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics;
+            purchase:                       metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics_purchase;
+                name:                           metal_product_car_uncovered_randomised_pony_gen_4C_switch_name;
+                cost_factor:                    136; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 307;
+                purchase_running_cost_factor:   307; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                metal_product_car_uncovered_randomised_pony_gen_4C_switch_buy_menu_additional_text;
+                    colour_mapping:                 metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping;
+                    purchase_colour_mapping:        metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping_purchase;
+                cargo_capacity:                 metal_product_car_uncovered_randomised_pony_gen_4C_switch_cargo_capacity;
+                purchase_cargo_capacity:        metal_product_car_uncovered_randomised_pony_gen_4C_switch_cargo_capacity;
+                loading_speed:                  7;
+                reverse_build_probability: return 50 * param_vehicle_random_reverse_on_build;
+        }
+    }
+        item(FEAT_TRAINS, metal_product_car_uncovered_randomised_pony_gen_4C, 23150) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, metal_product_car_uncovered_randomised_pony_gen_4C, 23150) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, metal_product_car_uncovered_randomised_pony_gen_4C, 23150) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_5))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x101
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((switch_get_colour_name(19) | 0xD000) << 16),
+                    0x102
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, metal_product_car_uncovered_randomised_pony_gen_4C_variant_1, 23151) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_METAL_PRODUCT_CAR_UNCOVERED_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/c"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 11, 1);
+                power:                          0hp;
+                weight:                         21ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  metal_product_car_uncovered_randomised_pony_gen_4C;
+                speed:                          75mph;
+            cargo_capacity:                 44;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [ALUM,COPR,METL,RBAR,STAL,STBL,STBR,STCB,STEL,STIG,STSE,STSH,STSL,STST,STWR,TYCO,ZINC];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics;
+            purchase:                       metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics_purchase;
+                name:                           metal_product_car_uncovered_randomised_pony_gen_4C_switch_name;
+                cost_factor:                    136; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 307;
+                purchase_running_cost_factor:   307; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                metal_product_car_uncovered_randomised_pony_gen_4C_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping;
+                    purchase_colour_mapping:        metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping_purchase;
+                cargo_capacity:                 metal_product_car_uncovered_randomised_pony_gen_4C_switch_cargo_capacity;
+                purchase_cargo_capacity:        metal_product_car_uncovered_randomised_pony_gen_4C_switch_cargo_capacity;
+                loading_speed:                  7;
+                reverse_build_probability: return 50 * param_vehicle_random_reverse_on_build;
+        }
+    }
+        item(FEAT_TRAINS, metal_product_car_uncovered_randomised_pony_gen_4C_variant_1, 23151) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, metal_product_car_uncovered_randomised_pony_gen_4C_variant_1, 23151) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, metal_product_car_uncovered_randomised_pony_gen_4C_variant_1, 23151) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, metal_product_car_uncovered_randomised_pony_gen_4C_variant_2, 23152) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_METAL_PRODUCT_CAR_UNCOVERED_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/c"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 11, 1);
+                power:                          0hp;
+                weight:                         21ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  metal_product_car_uncovered_randomised_pony_gen_4C;
+                speed:                          75mph;
+            cargo_capacity:                 44;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [ALUM,COPR,METL,RBAR,STAL,STBL,STBR,STCB,STEL,STIG,STSE,STSH,STSL,STST,STWR,TYCO,ZINC];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics;
+            purchase:                       metal_product_car_uncovered_randomised_pony_gen_4C_switch_graphics_purchase;
+                name:                           metal_product_car_uncovered_randomised_pony_gen_4C_switch_name;
+                cost_factor:                    136; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 307;
+                purchase_running_cost_factor:   307; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                metal_product_car_uncovered_randomised_pony_gen_4C_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping;
+                    purchase_colour_mapping:        metal_product_car_uncovered_randomised_pony_gen_4C_switch_colour_mapping_purchase;
+                cargo_capacity:                 metal_product_car_uncovered_randomised_pony_gen_4C_switch_cargo_capacity;
+                purchase_cargo_capacity:        metal_product_car_uncovered_randomised_pony_gen_4C_switch_cargo_capacity;
+                loading_speed:                  7;
+                reverse_build_probability: return 50 * param_vehicle_random_reverse_on_build;
+        }
+    }
+        item(FEAT_TRAINS, metal_product_car_uncovered_randomised_pony_gen_4C_variant_2, 23152) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, metal_product_car_uncovered_randomised_pony_gen_4C_variant_2, 23152) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, metal_product_car_uncovered_randomised_pony_gen_4C_variant_2, 23152) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

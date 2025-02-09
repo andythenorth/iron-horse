@@ -1,0 +1,124 @@
+##grflangid 0x27
+##plural 0
+##gender m ma f
+##case fp fs mp ms
+STR_GRF_DESCRIPTION                             :Licenza: {SILVER}GPL v2{}{BLACK}
+STR_PARAM_ADJUST_VEHICLE_CAPACITY               :Capacità del treno
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0      :Squallida
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1      :Meravigliosa
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2      :Eccessiva
+STR_BADGE_POWER_SOURCE_DIESEL                   :Diesel
+STR_BADGE_POWER_SOURCE_ELECTRODIESEL            :Diesel-Elettrica
+STR_BADGE_POWER_SOURCE_METRO                    :Metropolitana
+STR_BADGE_POWER_SOURCE_STEAM                    :(A vapore)
+STR_BADGE_WAGON_LENGTH_SMALL                    :Piccolo
+STR_BADGE_WAGON_LENGTH_MEDIUM                   :Intermedio
+STR_BADGE_WAGON_LENGTH_LARGE                    :Grande
+STR_NAME_SUFFIX_FLAT_CAR                        :Carro piatto
+STR_NAME_SUFFIX_INTERMODAL_CAR                  :Carro intermodale
+STR_NAME_SUFFIX_DROP_SIDE_FLAT_CAR              :Carro piatto
+STR_NAME_SUFFIX_REEFER_CAR_TYPE_1               :Carro frigorifero
+STR_NAME_SUFFIX_SILO_CAR_TYPE_1                 :Carro silos
+STR_NAME_SUFFIX_SLIDING_WALL_CAR_TYPE_1         :Carro a pareti scorrevoli
+STR_NAME_SUFFIX_TANK_CAR_TYPE_1                 :Carro cisterna
+STR_NAME_SUFFIX_TARPAULIN_CAR_TYPE_1            :Carro telonato
+STR_BADGE_ROLE                                  :Ruolo: {GOLD}{STRING}
+STR_BADGE_ROLE_GENERAL_PURPOSE                  :Universale
+STR_BADGE_ROLE_GENERAL_PURPOSE_EXPRESS          :Merci leggere / Universale
+STR_BADGE_ROLE_METRO                            :Urbano ad alta capacità
+STR_NAME_AE_3_5                                 :Ae 3/5
+STR_NAME_SBB_FB_4_4                             :SBB Sb 4/4
+STR_NAME_SAAS_BE_4_4                            :SAAS Be 4/4
+STR_NAME_OBB_1040                               :OBB 1040
+STR_NAME_SBB_EEM_923                            :SBB Eem 923
+STR_NAME_AE_3_6_1                               :Ae 3/6 I
+STR_NAME_OBB_1570                               :OBB 1570
+STR_NAME_OBB_1170_2                             :OBB 1170.2
+STR_NAME_RE_4_4_I                               :Re 4/4i
+STR_NAME_OBB_1163                               :OBB 1163
+STR_NAME_VECTRON_DUAL_MODE                      :Vectron Dual-Mode
+STR_NAME_HUNGARIAN_2D2_400                      :Hungarian 2D2 400
+STR_NAME_AE_4_7                                 :Ae 4/7
+STR_NAME_OBB_1041                               :OBB 1041
+STR_NAME_OBB_1141                               :OBB 1141
+STR_NAME_RE_450                                 :Re 450
+STR_NAME_OBB_1014                               :OBB 1014
+STR_NAME_FS_E330                                :FS E.330
+STR_NAME_FS_E428                                :FS E.428
+STR_NAME_FS_E444                                :FS E.444
+STR_NAME_FS_E464                                :FS E.464
+STR_NAME_FS_E464_UPGRADE                        :FS E.464 (upgraded)
+STR_NAME_DRG_E_16                               :DRG E 16
+STR_NAME_OBB_1010                               :OBB 1010 Co-Co
+STR_NAME_OBB_1042                               :OBB 1042
+STR_NAME_OBB_1142                               :OBB 1142
+STR_NAME_FS_E412                                :FS E.412 Brenner / OBB 1822
+STR_NAME_FS_E636                                :FS E.636
+STR_NAME_FS_E646                                :FS E.646
+STR_NAME_FS_E656                                :FS E.656
+STR_NAME_FS_E656_UPGRADED                       :FS E.656 (upgraded)
+STR_NAME_BLS_AE_6_8                             :BLS Ae 6/8
+STR_NAME_BLS_AE_4_4                             :BLS Ae 4/4
+STR_NAME_BLS_RE_4_4                             :BLS Re 4/4
+STR_NAME_SOB_RE_446                             :SOB Re 446
+STR_NAME_PLM_2CC2_3400                          :PLM 2CC2 3400
+STR_NAME_CC_7100                                :CC 7100
+STR_NAME_BB_7200                                :BB 7200
+STR_NAME_BB_22200                               :BB 22200
+STR_NAME_BB_22200_UPGRADED                      :BB 22200 (upgraded)
+STR_NAME_OBB_1044                               :OBB 1044
+STR_NAME_RE_460                                 :Re 460
+STR_NAME_RE_465                                 :Re 465
+STR_NAME_CC_6500                                :CC 6500
+STR_NAME_BB_26000                               :BB 26000 Sybic
+STR_NAME_BB_26000_UPGRADED                      :BB 26000 Sybic (upgraded)
+STR_NAME_HIGH_POWER_RAILCAR_2                   :SBB Ce 4/6
+STR_NAME_HIGH_POWER_RAILCAR_3                   :SOB BDe 4/4 62
+STR_NAME_HIGH_POWER_RAILCAR_4                   :SOB ABe 4/4 71
+STR_NAME_HIGH_POWER_RAILCAR_5                   :SBB RBDe 560
+STR_NAME_DE_6_6                                 :De 6/6 Seetal Krokodil
+STR_NAME_TRIENT                                 :Trient
+STR_NAME_KROKODIL_CE_6_8                        :SBB Ce 6/8 ii Krokodil
+STR_NAME_KROKODIL_BE_6_8                        :SBB Be 6/8 ii Krokodil
+STR_NAME_SBB_EE_6_6_II                          :SBB Ee 6/6 ii
+STR_NAME_MTHB_RE_486                            :MTHB Re 486
+STR_NAME_PO_2D2_5500                            :PO 2D2 5500
+STR_NAME_BB_25200                               :BB 25200
+STR_NAME_BB_27000                               :BB 27000
+STR_NAME_SBB_AE_4_6                             :Ae 4/6
+STR_NAME_SBB_RE_4_4_II                          :SBB Re 4/4ii
+STR_NAME_RE_430                                 :Re 430 (Re 4/4ii)
+STR_NAME_RE_430_LION                            :Re 430 LION
+STR_NAME_FS_E633                                :FS E.633 Tigre
+STR_NAME_FS_E652                                :FS E.652 Tigre 2
+STR_NAME_TRAXX_E_494                            :Captrain Italia E.494 Traxx 3 LM
+STR_NAME_BLS_AE_8_8                             :BLS Ae 8/8
+STR_NAME_BLS_RE_475                             :BLS Re 475 !! Multi-system
+STR_NAME_BB_8100_DUO                            :BB 8100 / 9200 (duo)
+STR_NAME_BB_8500_DUO                            :BB 8500 / 16000 (duo)
+STR_NAME_RE_6_6                                 :SBB Re 6/6
+STR_NAME_RE_6_6_II                              :SBB Re 6/6 ii
+STR_NAME_EMU_IBEX_2                             :BLS Ce 2/4
+STR_NAME_EMU_IBEX_3                             :SBB Ce 2/4
+STR_NAME_EMU_IBEX_4                             :SBB RABDe 12/12
+STR_NAME_EMU_IBEX_5                             :RBDe 4/4
+STR_NAME_EMU_IBEX_6                             :FLIRT
+STR_NAME_RAPIDE_CAB                             :Rapide
+STR_NAME_RAPIDE_MIDDLE_MAIL                     :Rapide Mail Van
+STR_NAME_RAPIDE_MIDDLE_PASSENGER                :Rapide Passenger Coach
+STR_GRF_NAME_VERSIONED                                          :Iron Ibex 3.37.0-105-gd87a14217
+STR_GRF_DOCS_URL                                                :https://grf.farm/iron-horse/index.html
+STR_EMPTY                                                       :
+STR_NAME_CONTAINER_1                                            :{STRING}
+STR_NAME_CONTAINER_2                                            :{STRING} {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_1      :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2      :{STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_3      :{STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_4      :{STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_5      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_6      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_7      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+# buy menu wrappers
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
+STR_COMPANY_COLOUR_CABBAGE                                      :CC CABBAGE

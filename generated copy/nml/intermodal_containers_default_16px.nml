@@ -1,0 +1,389 @@
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_box_DFLT_0, "generated/graphics/iron-horse/intermodal_containers_default_box_DFLT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_box_DFLT_1, "generated/graphics/iron-horse/intermodal_containers_default_box_DFLT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 30, NOANIM)
+        }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_box_DFLT_2, "generated/graphics/iron-horse/intermodal_containers_default_box_DFLT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 60, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_box_DFLT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_box_DFLT_0;
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_box_DFLT_1;
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_box_DFLT_2;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_chemicals_tank_DFLT_0, "generated/graphics/iron-horse/intermodal_containers_default_chemicals_tank_DFLT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_chemicals_tank_DFLT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_chemicals_tank_DFLT_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_cryo_tank_DFLT_0, "generated/graphics/iron-horse/intermodal_containers_default_cryo_tank_DFLT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_cryo_tank_DFLT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_cryo_tank_DFLT_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_curtain_side_DFLT_0, "generated/graphics/iron-horse/intermodal_containers_default_curtain_side_DFLT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_curtain_side_DFLT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_curtain_side_DFLT_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_edibles_tank_DFLT_0, "generated/graphics/iron-horse/intermodal_containers_default_edibles_tank_DFLT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_edibles_tank_DFLT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_edibles_tank_DFLT_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_livestock_DFLT_0, "generated/graphics/iron-horse/intermodal_containers_default_livestock_DFLT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_livestock_DFLT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_livestock_DFLT_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_reefer_DFLT_0, "generated/graphics/iron-horse/intermodal_containers_default_reefer_DFLT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_reefer_DFLT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_reefer_DFLT_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_tank_DFLT_0, "generated/graphics/iron-horse/intermodal_containers_default_tank_DFLT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_tank_DFLT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_tank_DFLT_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_wood_DFLT_0, "generated/graphics/iron-horse/intermodal_containers_default_wood_DFLT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_wood_DFLT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_wood_DFLT_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_curtain_side_VENG_0, "generated/graphics/iron-horse/intermodal_containers_default_curtain_side_VENG_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_curtain_side_VENG, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_curtain_side_VENG_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_tank_PETR_0, "generated/graphics/iron-horse/intermodal_containers_default_tank_PETR_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_tank_PETR, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_tank_PETR_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STAL_0, "generated/graphics/iron-horse/intermodal_containers_default_stake_flatrack_STAL_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STAL, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STAL_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SCMT_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_SCMT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SCMT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SCMT_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_ZINC_0, "generated/graphics/iron-horse/intermodal_containers_default_stake_flatrack_ZINC_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_ZINC, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_ZINC_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_tank_CTAR_0, "generated/graphics/iron-horse/intermodal_containers_default_tank_CTAR_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_tank_CTAR, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_tank_CTAR_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_KAOL_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_KAOL_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_KAOL, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_KAOL_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_tank_RUBR_0, "generated/graphics/iron-horse/intermodal_containers_default_tank_RUBR_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_tank_RUBR, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_tank_RUBR_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_NITR_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_NITR_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_NITR, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_NITR_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_LIME_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_LIME_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_LIME, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_LIME_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_AORE_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_AORE_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_AORE, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_AORE_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_GRVL_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_GRVL_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_GRVL, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_GRVL_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_curtain_side_VPTS_0, "generated/graphics/iron-horse/intermodal_containers_default_curtain_side_VPTS_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_curtain_side_VPTS, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_curtain_side_VPTS_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STCB_0, "generated/graphics/iron-horse/intermodal_containers_default_stake_flatrack_STCB_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STCB, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STCB_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SGBT_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_SGBT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SGBT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SGBT_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_cryo_tank_CHLO_0, "generated/graphics/iron-horse/intermodal_containers_default_cryo_tank_CHLO_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_cryo_tank_CHLO, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_cryo_tank_CHLO_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_ALUM_0, "generated/graphics/iron-horse/intermodal_containers_default_stake_flatrack_ALUM_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_ALUM, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_ALUM_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_COKE_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_COKE_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_COKE, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_COKE_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_PEAT_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_PEAT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_PEAT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_PEAT_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STSL_0, "generated/graphics/iron-horse/intermodal_containers_default_stake_flatrack_STSL_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STSL, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STSL_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STSE_0, "generated/graphics/iron-horse/intermodal_containers_default_stake_flatrack_STSE_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STSE, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STSE_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_COAL_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_COAL_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_COAL, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_COAL_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STIG_0, "generated/graphics/iron-horse/intermodal_containers_default_stake_flatrack_STIG_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STIG, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STIG_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SASH_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_SASH_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SASH, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SASH_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STST_0, "generated/graphics/iron-horse/intermodal_containers_default_stake_flatrack_STST_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STST, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STST_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_CLAY_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_CLAY_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_CLAY, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_CLAY_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_POTA_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_POTA_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_POTA, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_POTA_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_CORE_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_CORE_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_CORE, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_CORE_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_MNO2_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_MNO2_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_MNO2, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_MNO2_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SLAG_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_SLAG_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SLAG, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SLAG_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STPP_0, "generated/graphics/iron-horse/intermodal_containers_default_stake_flatrack_STPP_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STPP, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STPP_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_curtain_side_TYRE_0, "generated/graphics/iron-horse/intermodal_containers_default_curtain_side_TYRE_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_curtain_side_TYRE, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_curtain_side_TYRE_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_WDCH_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_WDCH_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_WDCH, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_WDCH_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SAND_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_SAND_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SAND, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SAND_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_PORE_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_PORE_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_PORE, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_PORE_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SALT_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_SALT_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SALT, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SALT_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SGCN_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_SGCN_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SGCN, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_SGCN_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_tank_OIL__0, "generated/graphics/iron-horse/intermodal_containers_default_tank_OIL__16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_tank_OIL_, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_tank_OIL__0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_CASS_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_CASS_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_CASS, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_CASS_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_tank_SULP_0, "generated/graphics/iron-horse/intermodal_containers_default_tank_SULP_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_tank_SULP, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_tank_SULP_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_PHOS_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_PHOS_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_PHOS, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_PHOS_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_IORE_0, "generated/graphics/iron-horse/intermodal_containers_default_bulk_IORE_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_IORE, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_bulk_IORE_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_PIPE_0, "generated/graphics/iron-horse/intermodal_containers_default_stake_flatrack_PIPE_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_PIPE, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_PIPE_0;
+    }
+        spriteset(ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STBL_0, "generated/graphics/iron-horse/intermodal_containers_default_stake_flatrack_STBL_16px.png") {
+            spriteset_template_asymmetric_unreversed_4_8(10 + 0, NOANIM)
+        }
+    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STBL, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                1: return ss_spritelayer_cargos_intermodal_containers_default_16px_stake_flatrack_STBL_0;
+    }
+        switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_generic_by_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
+            0: return switch_spritelayer_cargos_intermodal_containers_default_16px_random_box_DFLT;
+            return switch_spritelayer_cargos_intermodal_containers_default_16px_random_tank_DFLT;
+        }
+        switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px_generic_by_class_entry_point, cargo_classes & bitmask(CC_REFRIGERATED)) {
+            0: switch_spritelayer_cargos_intermodal_containers_default_16px_generic_by_class_liquid;
+            return switch_spritelayer_cargos_intermodal_containers_default_16px_random_reefer_DFLT;
+        }
+switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_containers_default_16px, cargo_type_in_veh) {
+        AORE: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_AORE;
+        CASS: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_CASS;
+        CLAY: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_CLAY;
+        COAL: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_COAL;
+        COKE: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_COKE;
+        CORE: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_CORE;
+        GRVL: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_GRVL;
+        IORE: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_IORE;
+        LIME: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_LIME;
+        KAOL: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_KAOL;
+        MNO2: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_MNO2;
+        NITR: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_NITR;
+        PEAT: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_PEAT;
+        PHOS: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_PHOS;
+        PORE: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_PORE;
+        POTA: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_POTA;
+        SALT: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SALT;
+        SAND: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SAND;
+        SASH: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SASH;
+        SCMT: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SCMT;
+        SGBT: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SGBT;
+        SLAG: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SLAG;
+        SGCN: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_SGCN;
+        WDCH: switch_spritelayer_cargos_intermodal_containers_default_16px_random_bulk_WDCH;
+        ACID: switch_spritelayer_cargos_intermodal_containers_default_16px_random_chemicals_tank_DFLT;
+        RFPR: switch_spritelayer_cargos_intermodal_containers_default_16px_random_chemicals_tank_DFLT;
+        CHLO: switch_spritelayer_cargos_intermodal_containers_default_16px_random_cryo_tank_CHLO;
+        VBOD: switch_spritelayer_cargos_intermodal_containers_default_16px_random_curtain_side_DFLT;
+        TYRE: switch_spritelayer_cargos_intermodal_containers_default_16px_random_curtain_side_TYRE;
+        VENG: switch_spritelayer_cargos_intermodal_containers_default_16px_random_curtain_side_VENG;
+        VPTS: switch_spritelayer_cargos_intermodal_containers_default_16px_random_curtain_side_VPTS;
+        LVST: switch_spritelayer_cargos_intermodal_containers_default_16px_random_livestock_DFLT;
+        FISH: switch_spritelayer_cargos_intermodal_containers_default_16px_random_reefer_DFLT;
+        FOOD: switch_spritelayer_cargos_intermodal_containers_default_16px_random_reefer_DFLT;
+        FRUT: switch_spritelayer_cargos_intermodal_containers_default_16px_random_reefer_DFLT;
+        OIL_: switch_spritelayer_cargos_intermodal_containers_default_16px_random_tank_OIL_;
+        CTAR: switch_spritelayer_cargos_intermodal_containers_default_16px_random_tank_CTAR;
+        SULP: switch_spritelayer_cargos_intermodal_containers_default_16px_random_tank_SULP;
+        RUBR: switch_spritelayer_cargos_intermodal_containers_default_16px_random_tank_RUBR;
+        PETR: switch_spritelayer_cargos_intermodal_containers_default_16px_random_tank_PETR;
+        WOOD: switch_spritelayer_cargos_intermodal_containers_default_16px_random_wood_DFLT;
+        ALUM: switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_ALUM;
+        STIG: switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STIG;
+        ZINC: switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_ZINC;
+        PIPE: switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_PIPE;
+        STPP: switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STPP;
+        STAL: switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STAL;
+        STBL: switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STBL;
+        STCB: switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STCB;
+        STSL: switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STSL;
+        STSE: switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STSE;
+        STST: switch_spritelayer_cargos_intermodal_containers_default_16px_random_stake_flatrack_STST;
+    return switch_spritelayer_cargos_intermodal_containers_default_16px_generic_by_class_entry_point;
+}

@@ -1,0 +1,475 @@
+    spriteset(lemon_ss_0, "generated/graphics/iron-horse/lemon.png") {
+        spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+    }
+    spriteset(lemon_ss_1, "generated/graphics/iron-horse/lemon.png") {
+        spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+    }
+    spriteset(lemon_ss_2, "generated/graphics/iron-horse/lemon.png") {
+        spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, lemon_switch_graphics_livery, vehicle_type_id) {
+        270: return lemon_ss_0;
+        271: return lemon_ss_1;
+        272: return lemon_ss_2;
+}
+switch (FEAT_TRAINS, SELF, lemon_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    return lemon_switch_graphics_livery;
+}
+// buy menu graphics chain
+spriteset(lemon_ss_vehicle_purchase_0, "generated/graphics/iron-horse/lemon.png") {
+    spriteset_template_purchase_default(360,10,49,-24,NOANIM)
+}
+spriteset(lemon_ss_vehicle_purchase_1, "generated/graphics/iron-horse/lemon.png") {
+    spriteset_template_purchase_default(360,40,49,-24,NOANIM)
+}
+spriteset(lemon_ss_vehicle_purchase_2, "generated/graphics/iron-horse/lemon.png") {
+    spriteset_template_purchase_default(360,70,49,-24,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, lemon_switch_graphics_vehicle_purchase_livery, vehicle_type_id) {
+        270: return lemon_ss_vehicle_purchase_0;
+        271: return lemon_ss_vehicle_purchase_1;
+        272: return lemon_ss_vehicle_purchase_2;
+}
+    switch (FEAT_TRAINS, SELF, lemon_switch_graphics_purchase_base,
+        STORE_TEMP(
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+                return lemon_switch_graphics_vehicle_purchase_livery;
+    }
+switch (FEAT_TRAINS, SELF, lemon_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+        0: return lemon_switch_graphics_purchase_base;
+}
+switch (FEAT_TRAINS, SELF, lemon_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return lemon_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, lemon_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return lemon_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_empty;
+}
+switch (FEAT_TRAINS, SELF, lemon_switch_colour_mapping, vehicle_type_id) {
+                    270: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    271: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    272: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+}
+        switch (FEAT_TRAINS, SELF, lemon_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_STEAM;
+        }
+        switch (FEAT_TRAINS, SELF, lemon_switch_create_effect_default, [STORE_TEMP(create_effect(EFFECT_SPRITE_STEAM,-3,0,13), 0x100),STORE_TEMP(create_effect(EFFECT_SPRITE_STEAM,-2,0,13), 0x101)]) {
+            return 2 + CB_RESULT_CREATE_EFFECT_CENTER;
+        }
+        switch (FEAT_TRAINS, SELF, lemon_switch_create_effect_check_railtype, 1) {
+            return lemon_switch_create_effect_default;
+        }
+    // add the units to articulated consist
+    switch (FEAT_TRAINS, SELF, lemon_variant_0_articulated_cb_switch, extra_callback_info1) {
+            0: return lemon;
+            1: return lemon_unit_1_variant_0;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, lemon_variant_1_articulated_cb_switch, extra_callback_info1) {
+            0: return lemon_variant_1;
+            1: return lemon_unit_1_variant_1;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, lemon_variant_2_articulated_cb_switch, extra_callback_info1) {
+            0: return lemon_variant_2;
+            1: return lemon_unit_1_variant_2;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+switch (FEAT_TRAINS, SELF, lemon_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_LEMON)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, lemon_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_LEMON)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return lemon_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, lemon_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_LEMON)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, lemon_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: lemon_switch_name_purchase_level_0;
+    1: lemon_switch_name_purchase_level_1;
+    return lemon_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, lemon_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: lemon_switch_name_purchase_extra_bits;
+    return lemon_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, lemon_switch_name, [
+        param_vehicle_availability_engines
+    ]) {
+    1: return lemon_switch_name_default;
+    return lemon_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, lemon, 270) {
+        property {
+            name:                           string(STR_NAME_LEMON);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/steam","ih_variants_cabbage/cabbage_level_0_has_children","role/freight"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          2400hp;
+                weight:                         165ton;
+                tractive_effort_coefficient:    0.29;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          75mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lemon_switch_graphics;
+            purchase:                       lemon_switch_graphics_purchase;
+                name:                           lemon_switch_name;
+                cost_factor:                    58; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 3830;
+                purchase_running_cost_factor:   3830; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: lemon_variant_0_articulated_cb_switch;
+                    colour_mapping:                 lemon_switch_colour_mapping;
+                    purchase_colour_mapping:        lemon_switch_colour_mapping;
+                effect_spawn_model_and_powered: lemon_switch_effect_spawn_model_and_powered;
+                create_effect:      lemon_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, lemon, 270) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, lemon, 270) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, lemon_variant_1, 271) {
+        property {
+            name:                           string(STR_NAME_LEMON);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/steam","ih_variants_cabbage/cabbage_level_0_has_children","role/freight"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          2400hp;
+                weight:                         165ton;
+                tractive_effort_coefficient:    0.29;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  lemon;
+                speed:                          75mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lemon_switch_graphics;
+            purchase:                       lemon_switch_graphics_purchase;
+                name:                           lemon_switch_name;
+                cost_factor:                    58; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 3830;
+                purchase_running_cost_factor:   3830; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: lemon_variant_1_articulated_cb_switch;
+                    colour_mapping:                 lemon_switch_colour_mapping;
+                    purchase_colour_mapping:        lemon_switch_colour_mapping;
+                effect_spawn_model_and_powered: lemon_switch_effect_spawn_model_and_powered;
+                create_effect:      lemon_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, lemon_variant_1, 271) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, lemon_variant_1, 271) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, lemon_variant_1, 271) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, lemon_variant_2, 272) {
+        property {
+            name:                           string(STR_NAME_LEMON);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/steam","ih_variants_cabbage/cabbage_level_0_has_children","role/freight"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          2400hp;
+                weight:                         165ton;
+                tractive_effort_coefficient:    0.29;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  lemon;
+                speed:                          75mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lemon_switch_graphics;
+            purchase:                       lemon_switch_graphics_purchase;
+                name:                           lemon_switch_name;
+                cost_factor:                    58; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 3830;
+                purchase_running_cost_factor:   3830; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: lemon_variant_2_articulated_cb_switch;
+                    colour_mapping:                 lemon_switch_colour_mapping;
+                    purchase_colour_mapping:        lemon_switch_colour_mapping;
+                effect_spawn_model_and_powered: lemon_switch_effect_spawn_model_and_powered;
+                create_effect:      lemon_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, lemon_variant_2, 272) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, lemon_variant_2, 272) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, lemon_variant_2, 272) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    spriteset(lemon_unit_1_ss_0, "generated/graphics/iron-horse/lemon.png") {
+        spriteset_template_asymmetric_unreversed_4_8(100,NOANIM)
+    }
+    spriteset(lemon_unit_1_ss_1, "generated/graphics/iron-horse/lemon.png") {
+        spriteset_template_asymmetric_unreversed_4_8(130,NOANIM)
+    }
+    spriteset(lemon_unit_1_ss_2, "generated/graphics/iron-horse/lemon.png") {
+        spriteset_template_asymmetric_unreversed_4_8(160,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, lemon_unit_1_switch_graphics_livery, vehicle_type_id) {
+        273: return lemon_unit_1_ss_0;
+        274: return lemon_unit_1_ss_1;
+        275: return lemon_unit_1_ss_2;
+}
+switch (FEAT_TRAINS, SELF, lemon_unit_1_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    return lemon_unit_1_switch_graphics_livery;
+}
+// buy menu graphics chain
+spriteset(lemon_unit_1_ss_vehicle_purchase_0, "generated/graphics/iron-horse/lemon.png") {
+    spriteset_template_purchase_default(360,10,49,-24,NOANIM)
+}
+spriteset(lemon_unit_1_ss_vehicle_purchase_1, "generated/graphics/iron-horse/lemon.png") {
+    spriteset_template_purchase_default(360,40,49,-24,NOANIM)
+}
+spriteset(lemon_unit_1_ss_vehicle_purchase_2, "generated/graphics/iron-horse/lemon.png") {
+    spriteset_template_purchase_default(360,70,49,-24,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, lemon_unit_1_switch_graphics_vehicle_purchase_livery, vehicle_type_id) {
+        273: return lemon_unit_1_ss_vehicle_purchase_0;
+        274: return lemon_unit_1_ss_vehicle_purchase_1;
+        275: return lemon_unit_1_ss_vehicle_purchase_2;
+}
+    switch (FEAT_TRAINS, SELF, lemon_unit_1_switch_graphics_purchase_base,
+        STORE_TEMP(
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+                return lemon_unit_1_switch_graphics_vehicle_purchase_livery;
+    }
+switch (FEAT_TRAINS, SELF, lemon_unit_1_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+        0: return lemon_unit_1_switch_graphics_purchase_base;
+}
+switch (FEAT_TRAINS, SELF, lemon_unit_1_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return lemon_unit_1_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, lemon_unit_1_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return lemon_unit_1_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_empty;
+}
+switch (FEAT_TRAINS, SELF, lemon_unit_1_switch_colour_mapping, vehicle_type_id) {
+                    273: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    274: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                    275: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+}
+    item(FEAT_TRAINS, lemon_unit_1_variant_0, 273) {
+        property {
+            name:                           string(STR_NAME_LEMON);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/steam","ih_variants_cabbage/cabbage_level_0_has_children","role/freight"];
+                power:                          1;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          75mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lemon_unit_1_switch_graphics;
+            purchase:                       lemon_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 lemon_unit_1_switch_colour_mapping;
+                    purchase_colour_mapping:        lemon_unit_1_switch_colour_mapping;
+        }
+    }
+    item(FEAT_TRAINS, lemon_unit_1_variant_1, 274) {
+        property {
+            name:                           string(STR_NAME_LEMON);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/steam","ih_variants_cabbage/cabbage_level_0_has_children","role/freight"];
+                power:                          1;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          75mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lemon_unit_1_switch_graphics;
+            purchase:                       lemon_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 lemon_unit_1_switch_colour_mapping;
+                    purchase_colour_mapping:        lemon_unit_1_switch_colour_mapping;
+        }
+    }
+    item(FEAT_TRAINS, lemon_unit_1_variant_2, 275) {
+        property {
+            name:                           string(STR_NAME_LEMON);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/steam","ih_variants_cabbage/cabbage_level_0_has_children","role/freight"];
+                power:                          1;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          75mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        lemon_unit_1_switch_graphics;
+            purchase:                       lemon_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 lemon_unit_1_switch_colour_mapping;
+                    purchase_colour_mapping:        lemon_unit_1_switch_colour_mapping;
+        }
+    }

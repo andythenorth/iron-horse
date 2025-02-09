@@ -1,0 +1,235 @@
+    spriteset(arrow_ss_0, "generated/graphics/iron-horse/arrow.png") {
+        spriteset_template_asymmetric_unreversed_7_8(10,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, arrow_switch_graphics_livery, vehicle_type_id) {
+        6420: return arrow_ss_0;
+}
+switch (FEAT_TRAINS, SELF, arrow_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    return arrow_switch_graphics_livery;
+}
+// buy menu graphics chain
+spriteset(arrow_ss_vehicle_purchase_0, "generated/graphics/iron-horse/arrow.png") {
+    spriteset_template_purchase_default(360,10,41,-20,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, arrow_switch_graphics_vehicle_purchase_livery, vehicle_type_id) {
+        6420: return arrow_ss_vehicle_purchase_0;
+}
+    switch (FEAT_TRAINS, SELF, arrow_switch_graphics_purchase_base,
+        STORE_TEMP(
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+                return arrow_switch_graphics_vehicle_purchase_livery;
+    }
+switch (FEAT_TRAINS, SELF, arrow_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+        0: return arrow_switch_graphics_purchase_base;
+}
+switch (FEAT_TRAINS, SELF, arrow_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return arrow_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, arrow_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return arrow_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_empty;
+}
+switch (FEAT_TRAINS, SELF, arrow_switch_colour_mapping, vehicle_type_id) {
+                    6420: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+}
+        switch (FEAT_TRAINS, SELF, arrow_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_STEAM;
+        }
+        switch (FEAT_TRAINS, SELF, arrow_switch_create_effect_default, [STORE_TEMP(create_effect(EFFECT_SPRITE_STEAM,-3,0,13), 0x100)]) {
+            return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+        }
+        switch (FEAT_TRAINS, SELF, arrow_switch_create_effect_check_railtype, 1) {
+            return arrow_switch_create_effect_default;
+        }
+    // add the units to articulated consist
+    switch (FEAT_TRAINS, SELF, arrow_variant_0_articulated_cb_switch, extra_callback_info1) {
+            0: return arrow;
+            1: return arrow_unit_1_variant_0;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+switch (FEAT_TRAINS, SELF, arrow_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_ARROW)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, arrow_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_ARROW)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return arrow_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, arrow_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_ARROW)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, arrow_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: arrow_switch_name_purchase_level_0;
+    1: arrow_switch_name_purchase_level_1;
+    return arrow_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, arrow_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: arrow_switch_name_purchase_extra_bits;
+    return arrow_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, arrow_switch_name, [
+        param_vehicle_availability_engines
+    ]) {
+    1: return arrow_switch_name_default;
+    return arrow_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, arrow, 6420) {
+        property {
+            name:                           string(STR_NAME_ARROW);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/steam","role/express"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1934, 9, 1);
+                power:                          1900hp;
+                weight:                         140ton;
+                tractive_effort_coefficient:    0.18;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     26;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          90mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         7;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        arrow_switch_graphics;
+            purchase:                       arrow_switch_graphics_purchase;
+                name:                           arrow_switch_name;
+                cost_factor:                    55; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 3329;
+                purchase_running_cost_factor:   3329; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    articulated_part: arrow_variant_0_articulated_cb_switch;
+                    colour_mapping:                 arrow_switch_colour_mapping;
+                    purchase_colour_mapping:        arrow_switch_colour_mapping;
+                effect_spawn_model_and_powered: arrow_switch_effect_spawn_model_and_powered;
+                create_effect:      arrow_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, arrow, 6420) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, arrow, 6420) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, arrow, 6420) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    spriteset(arrow_unit_1_ss_0, "generated/graphics/iron-horse/arrow.png") {
+        spriteset_template_asymmetric_unreversed_3_8(40,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, arrow_unit_1_switch_graphics_livery, vehicle_type_id) {
+        6421: return arrow_unit_1_ss_0;
+}
+switch (FEAT_TRAINS, SELF, arrow_unit_1_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    return arrow_unit_1_switch_graphics_livery;
+}
+// buy menu graphics chain
+spriteset(arrow_unit_1_ss_vehicle_purchase_0, "generated/graphics/iron-horse/arrow.png") {
+    spriteset_template_purchase_default(360,10,41,-20,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, arrow_unit_1_switch_graphics_vehicle_purchase_livery, vehicle_type_id) {
+        6421: return arrow_unit_1_ss_vehicle_purchase_0;
+}
+    switch (FEAT_TRAINS, SELF, arrow_unit_1_switch_graphics_purchase_base,
+        STORE_TEMP(
+            PALETTE_USE_DEFAULT, 0x100
+            )
+        ) {
+                return arrow_unit_1_switch_graphics_vehicle_purchase_livery;
+    }
+switch (FEAT_TRAINS, SELF, arrow_unit_1_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+        0: return arrow_unit_1_switch_graphics_purchase_base;
+}
+switch (FEAT_TRAINS, SELF, arrow_unit_1_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return arrow_unit_1_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, arrow_unit_1_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return arrow_unit_1_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_empty;
+}
+switch (FEAT_TRAINS, SELF, arrow_unit_1_switch_colour_mapping, vehicle_type_id) {
+                    6421: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+}
+    item(FEAT_TRAINS, arrow_unit_1_variant_0, 6421) {
+        property {
+            name:                           string(STR_NAME_ARROW);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/steam","role/express"];
+                power:                          1;
+                weight:                         0;
+                tractive_effort_coefficient:    0;
+                cost_factor:                    0;
+                running_cost_base:              RUNNING_COST_NONE;
+                running_cost_factor:            0;
+                speed:                          90mph;
+            cargo_capacity:                 0;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask();
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         3;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        arrow_unit_1_switch_graphics;
+            purchase:                       arrow_unit_1_switch_graphics_purchase;
+                    colour_mapping:                 arrow_unit_1_switch_colour_mapping;
+                    purchase_colour_mapping:        arrow_unit_1_switch_colour_mapping;
+        }
+    }

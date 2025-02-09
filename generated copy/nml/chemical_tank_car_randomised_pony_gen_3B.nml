@@ -1,0 +1,898 @@
+// buy menu graphics chain
+spriteset(chemical_tank_car_randomised_pony_gen_3B_ss_purchase, "generated/graphics/iron-horse/chemical_tank_car_randomised_pony_gen_3B.png") {
+    spriteset_template_purchase_default(360,10,48,-23,NOANIM)
+}
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    4
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_graphics_variant, chemical_tank_car_randomised_pony_gen_3B_switch_graphics_variant_choose_randomised_wagon()) {
+                0: product_tank_car_type_1_pony_gen_3B_switch_graphics;
+                1: product_tank_car_type_2_pony_gen_3B_switch_graphics;
+                2: acid_tank_car_type_1_pony_gen_3B_switch_graphics;
+                3: acid_tank_car_type_2_pony_gen_3B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, chemical_tank_car_randomised_pony_gen_3B_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 4;
+                1: return 4;
+                2: return 4;
+                3: return 4;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                130
+            );
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    4
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_graphics_variant, chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_graphics_variant_choose_randomised_wagon()) {
+                0: product_tank_car_type_1_pony_gen_3B_switch_graphics;
+                1: product_tank_car_type_2_pony_gen_3B_switch_graphics;
+                2: acid_tank_car_type_1_pony_gen_3B_switch_graphics;
+                3: acid_tank_car_type_2_pony_gen_3B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 77;
+                1: return 77;
+                2: return 23;
+                3: return 23;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                95
+            );
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    4
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_graphics_variant, chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_graphics_variant_choose_randomised_wagon()) {
+                0: product_tank_car_type_1_pony_gen_3B_switch_graphics;
+                1: product_tank_car_type_2_pony_gen_3B_switch_graphics;
+                2: acid_tank_car_type_1_pony_gen_3B_switch_graphics;
+                3: acid_tank_car_type_2_pony_gen_3B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 38;
+                1: return 38;
+                2: return 38;
+                3: return 38;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                48
+            );
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    4
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_graphics_variant, chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_graphics_variant_choose_randomised_wagon()) {
+                0: product_tank_car_type_1_pony_gen_3B_switch_graphics;
+                1: product_tank_car_type_2_pony_gen_3B_switch_graphics;
+                2: acid_tank_car_type_1_pony_gen_3B_switch_graphics;
+                3: acid_tank_car_type_2_pony_gen_3B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 78;
+                1: return 78;
+                2: return 113;
+                3: return 113;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                119
+            );
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    6
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+                4: 4;
+                5: 5;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_graphics_variant, chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_graphics_variant_choose_randomised_wagon()) {
+                0: product_tank_car_type_1_pony_gen_3B_switch_graphics;
+                1: product_tank_car_type_2_pony_gen_3B_switch_graphics;
+                2: acid_tank_car_type_1_pony_gen_3B_switch_graphics;
+                3: acid_tank_car_type_1_pony_gen_3B_switch_graphics;
+                4: acid_tank_car_type_2_pony_gen_3B_switch_graphics;
+                5: acid_tank_car_type_2_pony_gen_3B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 14;
+                1: return 14;
+                2: return 8;
+                3: return 120;
+                4: return 8;
+                5: return 120;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                65
+            );
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    4
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_graphics_variant, chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_graphics_variant_choose_randomised_wagon()) {
+                0: product_tank_car_type_1_pony_gen_3B_switch_graphics;
+                1: product_tank_car_type_2_pony_gen_3B_switch_graphics;
+                2: acid_tank_car_type_1_pony_gen_3B_switch_graphics;
+                3: acid_tank_car_type_2_pony_gen_3B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 81;
+                1: return 81;
+                2: return 81;
+                3: return 81;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                84
+            );
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    4
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_graphics_variant, chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_graphics_variant_choose_randomised_wagon()) {
+                0: product_tank_car_type_1_pony_gen_3B_switch_graphics;
+                1: product_tank_car_type_2_pony_gen_3B_switch_graphics;
+                2: acid_tank_car_type_1_pony_gen_3B_switch_graphics;
+                3: acid_tank_car_type_2_pony_gen_3B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 114;
+                1: return 114;
+                2: return 114;
+                3: return 114;
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                33
+            );
+        }
+switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_graphics, vehicle_type_id) {
+        20660: chemical_tank_car_randomised_pony_gen_3B_switch_graphics_variant;
+        20661: chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_graphics_variant;
+        20662: chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_graphics_variant;
+        20663: chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_graphics_variant;
+        20664: chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_graphics_variant;
+        20665: chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_graphics_variant;
+        20666: chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_graphics_variant;
+}
+switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_graphics_purchase, vehicle_type_id) {
+    chemical_tank_car_randomised_pony_gen_3B_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping, vehicle_type_id) {
+        20660: chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_variant;
+        20661: chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_colour_mapping_variant;
+        20662: chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_colour_mapping_variant;
+        20663: chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_colour_mapping_variant;
+        20664: chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_colour_mapping_variant;
+        20665: chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_colour_mapping_variant;
+        20666: chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_colour_mapping_variant;
+}
+switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_purchase, vehicle_type_id) {
+        20660: chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_variant_purchase;
+        20661: chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_colour_mapping_variant_purchase;
+        20662: chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_colour_mapping_variant_purchase;
+        20663: chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_colour_mapping_variant_purchase;
+        20664: chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_colour_mapping_variant_purchase;
+        20665: chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_colour_mapping_variant_purchase;
+        20666: chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_colour_mapping_variant_purchase;
+}
+switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity,
+        [
+         STORE_TEMP(10, 0),
+         STORE_TEMP(21, 1),
+         STORE_TEMP(30, 2),
+         STORE_TEMP(40, 3),
+         STORE_TEMP(54, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_WAGON_GROUP_CHEMICAL_TANK_CARS_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return chemical_tank_car_randomised_pony_gen_3B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: chemical_tank_car_randomised_pony_gen_3B_switch_name_purchase_level_0;
+    1: chemical_tank_car_randomised_pony_gen_3B_switch_name_purchase_level_1;
+    return chemical_tank_car_randomised_pony_gen_3B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: chemical_tank_car_randomised_pony_gen_3B_switch_name_purchase_extra_bits;
+    return chemical_tank_car_randomised_pony_gen_3B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return chemical_tank_car_randomised_pony_gen_3B_switch_name_default;
+    return chemical_tank_car_randomised_pony_gen_3B_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B, 20660) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        chemical_tank_car_randomised_pony_gen_3B_switch_graphics;
+            purchase:                       chemical_tank_car_randomised_pony_gen_3B_switch_graphics_purchase;
+                name:                           chemical_tank_car_randomised_pony_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                chemical_tank_car_randomised_pony_gen_3B_switch_buy_menu_additional_text;
+                    colour_mapping:                 chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping;
+                    purchase_colour_mapping:        chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_purchase;
+                cargo_capacity:                 chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B, 20660) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B, 20660) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B, 20660) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_7))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x101
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(18) | 0xD000)
+                    | ((switch_get_colour_name(21) | 0xD000) << 16),
+                    0x102
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((switch_get_colour_name(19) | 0xD000) << 16),
+                    0x103
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_1, 20661) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  chemical_tank_car_randomised_pony_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        chemical_tank_car_randomised_pony_gen_3B_switch_graphics;
+            purchase:                       chemical_tank_car_randomised_pony_gen_3B_switch_graphics_purchase;
+                name:                           chemical_tank_car_randomised_pony_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                chemical_tank_car_randomised_pony_gen_3B_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping;
+                    purchase_colour_mapping:        chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_purchase;
+                cargo_capacity:                 chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_1, 20661) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_1, 20661) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_1, 20661) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(25) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(16) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_2, 20662) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  chemical_tank_car_randomised_pony_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        chemical_tank_car_randomised_pony_gen_3B_switch_graphics;
+            purchase:                       chemical_tank_car_randomised_pony_gen_3B_switch_graphics_purchase;
+                name:                           chemical_tank_car_randomised_pony_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                chemical_tank_car_randomised_pony_gen_3B_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping;
+                    purchase_colour_mapping:        chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_purchase;
+                cargo_capacity:                 chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_2, 20662) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_2, 20662) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_2, 20662) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_3))
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(18) | 0xD000)
+                    | ((switch_get_colour_name(17) | 0xD000) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_3, 20663) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  chemical_tank_car_randomised_pony_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        chemical_tank_car_randomised_pony_gen_3B_switch_graphics;
+            purchase:                       chemical_tank_car_randomised_pony_gen_3B_switch_graphics_purchase;
+                name:                           chemical_tank_car_randomised_pony_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                chemical_tank_car_randomised_pony_gen_3B_variant_3_switch_buy_menu_additional_text;
+                    colour_mapping:                 chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping;
+                    purchase_colour_mapping:        chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_purchase;
+                cargo_capacity:                 chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_3, 20663) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_3, 20663) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_3, 20663) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(21) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(22) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_4, 20664) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  chemical_tank_car_randomised_pony_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        chemical_tank_car_randomised_pony_gen_3B_switch_graphics;
+            purchase:                       chemical_tank_car_randomised_pony_gen_3B_switch_graphics_purchase;
+                name:                           chemical_tank_car_randomised_pony_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                chemical_tank_car_randomised_pony_gen_3B_variant_4_switch_buy_menu_additional_text;
+                    colour_mapping:                 chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping;
+                    purchase_colour_mapping:        chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_purchase;
+                cargo_capacity:                 chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_4, 20664) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_4, 20664) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_4, 20664) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(19) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(22) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_5, 20665) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  chemical_tank_car_randomised_pony_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        chemical_tank_car_randomised_pony_gen_3B_switch_graphics;
+            purchase:                       chemical_tank_car_randomised_pony_gen_3B_switch_graphics_purchase;
+                name:                           chemical_tank_car_randomised_pony_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                chemical_tank_car_randomised_pony_gen_3B_variant_5_switch_buy_menu_additional_text;
+                    colour_mapping:                 chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping;
+                    purchase_colour_mapping:        chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_purchase;
+                cargo_capacity:                 chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_5, 20665) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_5, 20665) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_5, 20665) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(23) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(28) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_6, 20666) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_CHEMICAL_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1930, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  chemical_tank_car_randomised_pony_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        chemical_tank_car_randomised_pony_gen_3B_switch_graphics;
+            purchase:                       chemical_tank_car_randomised_pony_gen_3B_switch_graphics_purchase;
+                name:                           chemical_tank_car_randomised_pony_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                chemical_tank_car_randomised_pony_gen_3B_variant_6_switch_buy_menu_additional_text;
+                    colour_mapping:                 chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping;
+                    purchase_colour_mapping:        chemical_tank_car_randomised_pony_gen_3B_switch_colour_mapping_purchase;
+                cargo_capacity:                 chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        chemical_tank_car_randomised_pony_gen_3B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_6, 20666) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_6, 20666) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, chemical_tank_car_randomised_pony_gen_3B_variant_6, 20666) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

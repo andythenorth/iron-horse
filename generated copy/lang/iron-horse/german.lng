@@ -1,0 +1,253 @@
+##grflangid 0x02
+##plural 0
+##gender m w n p
+STR_GRF_DESCRIPTION                                         :Lizenz: {SILVER}GPL v2{}{BLACK}
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                           :Zugkapazität
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                  :kümmerlich
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                  :phänomenal
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                  :übermäßig
+STR_BADGE_POWER_SOURCE_DIESEL                               :Diesel
+STR_BADGE_POWER_SOURCE_ELECTRODIESEL                        :Dieselelektrisch
+STR_BADGE_POWER_SOURCE_STEAM                                :Dampf
+STR_BADGE_WAGON_LENGTH_SMALL                                :Klein
+STR_BADGE_WAGON_LENGTH_MEDIUM                               :Mittel
+STR_BADGE_WAGON_LENGTH_LARGE                                :Groß
+STR_NAME_SUFFIX_BOX_CAR_TYPE_1                              :geschlossener Wagen
+STR_NAME_SUFFIX_CABOOSE_CAR                                 :Bremserwagen
+STR_NAME_SUFFIX_FLAT_CAR                                    :Flachwagen
+STR_NAME_SUFFIX_INTERMODAL_CAR                              :Wagen für kombinierten Verkehr
+STR_NAME_SUFFIX_LIVESTOCK_CAR                               :Viehwagen
+STR_NAME_SUFFIX_MAIL_CAR                                    :Postwagen
+STR_NAME_SUFFIX_OPEN_CAR                                    :offener Wagen
+STR_NAME_SUFFIX_PASSENGER_CAR                               :Personenwagen
+STR_NAME_SUFFIX_REEFER_CAR_TYPE_1                           :Kühlwagen
+STR_NAME_SUFFIX_SILO_CAR_TYPE_1                             :Silowagen
+STR_NAME_SUFFIX_TANK_CAR_TYPE_1                             :Kesselwagen
+STR_NAME_LARK                                               :4-4-2 Lark
+STR_NAME_MERRYLEGS                                          :2-6-2 Merrylegs
+STR_NAME_DECAPOD                                            :0-10-0 Decapod
+STR_NAME_PROPER_JOB                                         :2-6-2 Proper Job
+STR_NAME_STAG                                               :0-6-4 Stag
+STR_NAME_KELPIE                                             :Kelpie
+STR_NAME_KELPIE_CLONE_1                                     :Kelpie
+STR_NAME_FOXHOUND                                           :Foxhound
+STR_NAME_FOXHOUND_CLONE_1                                   :Foxhound
+STR_NAME_GRIFFON                                            :Griffon
+STR_NAME_GRIFFON_CLONE_1                                    :Griffon
+STR_NAME_LYNX                                               :Lynx
+STR_NAME_LYNX_CLONE_1                                       :Lynx
+STR_NAME_PINHORSE                                           :Pinhorse
+STR_NAME_ARGUS                                              :Argus
+STR_NAME_BOOSTER                                            :Booster
+STR_NAME_TORNADO                                            :Tornado
+STR_NAME_RELIANCE                                           :2-4-0 Reliance
+STR_NAME_SPINNER                                            :4-2-2 Spinner
+STR_NAME_CARRACK                                            :4-4-0 Carrack
+STR_NAME_BRAF                                               :2-6-0 Braf
+STR_NAME_TENCENDUR                                          :4-4-0 Tencendur
+STR_NAME_DIABLO                                             :2-6-0 Diablo
+STR_NAME_SATYR                                              :4-6-4 Satyr
+STR_NAME_THUNDERER                                          :4-6-0 Thunderer
+STR_NAME_DARING                                             :Daring
+STR_NAME_GROWLER                                            :Growler
+STR_NAME_MERLION                                            :Merlion
+STR_NAME_SHREDDER                                           :Shredder
+STR_NAME_PHOENIX                                            :Phoenix
+STR_NAME_CENTAUR                                            :Centaur
+STR_NAME_SWIFT                                              :4-4-2 Swift
+STR_NAME_STRONGBOW                                          :4-6-0 Strongbow
+STR_NAME_ARROW                                              :2-6-2 Arrow
+STR_NAME_WYVERN                                             :Wyvern
+STR_NAME_TENACIOUS                                          :Tenacious
+STR_NAME_INTREPID                                           :Intrepid
+STR_NAME_RESILIENT                                          :Resilient
+STR_NAME_RAPID                                              :Rapid
+STR_NAME_PEGASUS                                            :2-8-2 Pegasus
+STR_NAME_STREAMER                                           :4-6-4 Streamer
+STR_NAME_HAWKINGE                                           :4-8-2 Hawkinge
+STR_NAME_DRAGON                                             :Dragon
+STR_NAME_VULCAN                                             :Vulcan
+STR_NAME_FALCON                                             :Falcon
+STR_NAME_ONSLAUGHT                                          :Onslaught
+STR_NAME_DREADNOUGHT                                        :Dreadnought
+STR_NAME_DEFIANT                                            :Defiant
+STR_NAME_RELENTLESS                                         :Relentless
+STR_NAME_DYNAMO                                             :Dynamo
+STR_NAME_CYCLONE                                            :Cyclone
+STR_NAME_SHOEBOX                                            :Shoebox
+STR_NAME_ULTRA_SHOEBOX                                      :Ultra Shoebox
+STR_NAME_HURLY_BURLY                                        :Hurly Burly
+STR_NAME_MOOR_GALLOP                                        :Moor Gallop
+STR_NAME_ROARER                                             :Roarer
+STR_NAME_FURY                                               :Fury
+STR_NAME_CONSTANCE                                          :Constance
+STR_NAME_STALWART                                           :Stalwart
+STR_NAME_ZEBEDEE                                            :Zebedee
+STR_NAME_SCREAMER                                           :Screamer
+STR_NAME_REVOLUTION                                         :Revolution
+STR_NAME_AVENGER                                            :Avenger
+STR_NAME_SIZZLER                                            :Sizzler
+STR_NAME_BUFFALO                                            :0-6-2 Buffalo
+STR_NAME_SAXON                                              :0-8-0 Saxon
+STR_NAME_YAK                                                :0-8-2 Yak
+STR_NAME_LITTLE_BEAR                                        :Little Bear
+STR_NAME_CAPTAIN_STEEL                                      :Captain Steel
+STR_NAME_GOLIATH                                            :Goliath
+STR_NAME_GENERAL_ENDEAVOUR                                  :General Endeavour
+STR_NAME_STOAT                                              :Stoat
+STR_NAME_ZEST                                               :Zest
+STR_NAME_HERCULES                                           :0-6-0 Hercules
+STR_NAME_EASTERN                                            :0-8-0 Eastern
+STR_NAME_HAAR                                               :0-8-0 Haar
+STR_NAME_TROJAN                                             :Trojan
+STR_NAME_VIKING                                             :Viking
+STR_NAME_XERXES                                             :0-6-0+0-6-0 Xerxes
+STR_NAME_KEEN                                               :0-6-0+0-6-0 Keen
+STR_NAME_VIGILANT                                           :2-8-0 Vigilant
+STR_NAME_MAINSTAY                                           :2-8-0 Mainstay
+STR_NAME_YILLEN                                             :Yillen
+STR_NAME_MAELSTROM                                          :Maelstrom
+STR_NAME_DOINEANN                                           :Doineann
+STR_NAME_DOUBLETIDE                                         :Doubletide
+STR_NAME_GIRT_LICKER                                        :0-10-0 Girt Licker
+STR_NAME_LEMON                                              :4-8-0 Lemon
+STR_NAME_ESK                                                :2-6-0+0-6-2 Esk
+STR_NAME_CHINOOK                                            :Chinook
+STR_NAME_CHINOOK_CLONE_1                                    :Chinook
+STR_NAME_WITHERSHINS                                        :Withershins
+STR_NAME_WITHERSHINS_CLONE_1                                :Withershins
+STR_NAME_LION                                               :Lion
+STR_NAME_GRID                                               :Grid
+STR_NAME_BONE                                               :Bone
+STR_NAME_TOASTER                                            :Toaster
+STR_NAME_CHEDDAR_VALLEY                                     :Cheddar Valley
+STR_NAME_STENTOR                                            :Stentor
+STR_NAME_FLINDERMOUSE                                       :Flindermouse
+STR_NAME_FLINDERMOUSE_CLONE_1                               :Flindermouse
+STR_NAME_DRYTH                                              :Dryth
+STR_NAME_DRYTH_CLONE_1                                      :Dryth
+STR_NAME_PEASWEEP                                           :Peasweep
+STR_NAME_PEASWEEP_CLONE_1                                   :Peasweep
+STR_NAME_RESISTANCE                                         :Resistance
+STR_NAME_TINCANS                                            :Tincans
+STR_NAME_TINCANS_CLONE_1                                    :Tincans
+STR_NAME_FLANDERS_STORM                                     :Flanders Storm
+STR_NAME_QUIETUS                                            :Quietus
+STR_NAME_GRUB                                               :Grub
+STR_NAME_LAMIA                                              :0-6-0 Lamia
+STR_NAME_FIREBALL                                           :0-6-0 Fireball
+STR_NAME_GRONK                                              :Gronk
+STR_NAME_GRONK_CLONE_1                                      :Gronk
+STR_NAME_CHUGGYPIG                                          :Chuggypig
+STR_NAME_PROGRESS                                           :Progress
+STR_NAME_MAGNUM_90                                          :Magnum 90
+STR_NAME_SNOWPLOUGH_PONY_GEN_2                              :Snowplough
+STR_NAME_CARGO_SPRINTER                                     :Cargo Sprinter
+STR_NAME_AUTO_COACH_PONY_GEN_2                              :Autocoach Set
+STR_NAME_CLIPPER                                            :Clipper
+STR_NAME_CLIPPER_SINGLE                                     :Clipper
+STR_NAME_SKIPPER                                            :Skipper
+STR_NAME_SKIPPER_SINGLE                                     :Skipper
+STR_NAME_ZIPPER                                             :Zipper
+STR_NAME_ZIPPER_SINGLE                                      :Zipper
+STR_NAME_DEASIL                                             :Deasil
+STR_NAME_SLAMMER                                            :Slammer
+STR_NAME_TIN_ROCKET                                         :Tin Rocket
+STR_NAME_HAPPY_TRAIN                                        :Happy Train
+STR_NAME_GOWSTY                                             :Gowsty
+STR_NAME_SCOOBY                                             :Scooby
+STR_NAME_PLASTIC_POSTBOX                                    :Plastic Postbox
+STR_NAME_ATHENA                                             :Athena
+STR_NAME_GERONIMO                                           :Geronimo
+STR_NAME_BREEZE                                             :Breeze
+STR_NAME_ZEUS                                               :Zeus
+STR_NAME_ARES                                               :Ares
+STR_NAME_DOVER                                              :Dover
+STR_NAME_JUPITER                                            :Jupiter
+STR_NAME_PYLON                                              :Pylon
+STR_NAME_HIGH_FLYER                                         :High Flyer
+STR_NAME_SUNSHINE_COAST                                     :Sunshine Coast
+STR_NAME_OLYMPIC                                            :Olympic
+STR_NAME_CHRONOS                                            :Chronos
+STR_NAME_NIMBUS                                             :Nimbus
+STR_NAME_FIREBIRD                                           :Firebird
+STR_NAME_BLAZE                                              :Blaze HST
+STR_NAME_HELM_WIND_CAB                                      :Helm Wind
+STR_NAME_HELM_WIND_MIDDLE_PASSENGER                         :Helm Wind Passenger Coach
+STR_NAME_HELM_WIND_MIDDLE_MAIL                              :Helm Wind Mail Van
+STR_NAME_ALIZE_CAB                                          :Alizé
+STR_NAME_ALIZE_MIDDLE_PASSENGER                             :Alizé Passenger Coach
+STR_NAME_ALIZE_MIDDLE_MAIL                                  :Alizé Mail Van
+STR_NAME_BRENNER_CAB                                        :Brenner
+STR_NAME_BRENNER_MIDDLE_PASSENGER                           :Brenner Passenger Coach
+STR_NAME_BRENNER_MIDDLE_MAIL                                :Brenner Mail Van
+STR_NAME_SKEIRON_CAB                                        :Skeiron
+STR_NAME_SKEIRON_MIDDLE_PASSENGER                           :Skeiron Passenger Coach
+STR_NAME_SKEIRON_MIDDLE_MAIL                                :Skeiron Mail Van
+STR_NAME_DRIVING_CAB_PASSENGER_PONY_GEN_4                   :Driving Trailer
+STR_NAME_DRIVING_CAB_PASSENGER_PONY_GEN_5                   :Driving Trailer
+STR_NAME_DRIVING_CAB_HIGH_SPEED_PASSENGER_PONY_GEN_5        :High Speed Driving Trailer
+STR_NAME_DRIVING_CAB_HIGH_SPEED_PASSENGER_PONY_GEN_6        :High Speed Driving Trailer
+STR_NAME_DRIVING_CAB_MAIL_PONY_GEN_5                        :Driving Van Trailer
+STR_NAME_DRIVING_CAB_HIGH_SPEED_MAIL_PONY_GEN_5             :High Speed Driving Van Trailer
+STR_NAME_DRIVING_CAB_HIGH_SPEED_MAIL_PONY_GEN_6             :High Speed Driving Van Trailer
+STR_NAME_SERPENTINE                                         :Serpentine
+STR_NAME_POPLAR                                             :Poplar
+STR_NAME_WESTBOURNE                                         :Westbourne
+STR_NAME_HAMMERSMITH                                        :Hammersmith
+STR_NAME_FLEET                                              :Fleet
+STR_NAME_CANARY                                             :Canary
+STR_NAME_LONGWATER                                          :Longwater
+STR_NAME_RAVENSBOURNE                                       :Ravensbourne
+STR_NAME_TYBURN                                             :Tyburn
+STR_NAME_WANDLE                                             :Wandle
+STR_NAME_TIDEWAY                                            :Tideway
+STR_NAME_BANKSIDE                                           :Bankside
+STR_NAME_DEBDEN                                             :Debden
+STR_NAME_CRINGLE                                            :Cringle
+STR_NAME_MULBERRY                                           :Mulberry
+STR_NAME_WALBROOK                                           :Walbrook
+STR_NAME_BORAX                                              :Borax
+STR_NAME_ANGERSTEIN                                         :Angerstein
+STR_NAME_CHEESE_BUG                                         :2-6-2 Cheese Bug
+STR_NAME_BEAN_FEAST                                         :2-6-4 Bean Feast
+STR_NAME_PIKEL                                              :Pikel
+STR_NAME_PIKEL_CLONE_1                                      :Pikel
+STR_NAME_BOAR_CAT                                           :Boar Cat
+STR_NAME_BOAR_CAT_CLONE_1                                   :Boar Cat
+STR_NAME_THOR                                               :0-4-4-0 Thor
+STR_NAME_ALFAMA                                             :0-4-4-0 Alfama
+STR_NAME_GARGOUILLE                                         :Gargouille
+STR_NAME_SOLANO                                             :Solano
+STR_NAME_LEBECHE                                            :Lebeche
+STR_NAME_TYRCONNELL                                         :4-8-0 Tyrconnell
+STR_NAME_NILE                                               :2-6-0+0-6-2 Nile
+STR_NAME_HINTERLAND                                         :Hinterland
+STR_NAME_ROCKHAMPTON                                        :Rockhampton
+STR_NAME_HIGUMA                                             :Higuma
+STR_NAME_MUMBLE                                             :Mumble
+STR_NAME_MUMBLE_SINGLE                                      :Mumble
+STR_NAME_SNAPPER                                            :Snapper
+STR_NAME_SNAPPER_SINGLE                                     :Snapper
+STR_NAME_ZORRO                                              :Zorro
+STR_NAME_RUBY                                               :Ruby
+STR_NAME_GOLFINHO                                           :Golfinho
+STR_NAME_STRATOS                                            :Stratos
+STR_NAME_DRIVING_CAB_PASSENGER_NG_PONY_GEN_4                :Driving Trailer
+STR_NAME_DRIVING_CAB_PANORAMIC_PASSENGER_NG_PONY_GEN_4      :Panoramic Driving Trailer
+STR_GRF_NAME_VERSIONED                                          :Iron Horse 3.37.0-101-gc2719c365
+STR_GRF_DOCS_URL                                                :https://grf.farm/iron-horse/index.html
+STR_EMPTY                                                       :
+STR_NAME_CONTAINER_1                                            :{STRING}
+STR_NAME_CONTAINER_2                                            :{STRING} {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_1      :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2      :{STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_3      :{STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_4      :{STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_5      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_6      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_7      :{STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}, {STRING}
+# buy menu wrappers
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR                 :{STRING}
+STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR                 :{STRING}{}{STRING}
+STR_COMPANY_COLOUR_CABBAGE                                      :CC CABBAGE

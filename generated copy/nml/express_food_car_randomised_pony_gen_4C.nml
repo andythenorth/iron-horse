@@ -1,0 +1,172 @@
+// buy menu graphics chain
+spriteset(express_food_car_randomised_pony_gen_4C_ss_purchase, "generated/graphics/iron-horse/express_food_car_randomised_pony_gen_4C.png") {
+    spriteset_template_purchase_default(360,10,56,-27,NOANIM)
+}
+        switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_loose_mixed_train()
+                                    %
+                                    4
+            ]) {
+                0: 0;
+                1: 1;
+                2: 2;
+                3: 3;
+        }
+        switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_graphics_variant, express_food_car_randomised_pony_gen_4C_switch_graphics_variant_choose_randomised_wagon()) {
+                0: express_car_pony_gen_4C_switch_graphics;
+                1: reefer_car_type_1_pony_gen_4C_switch_graphics;
+                2: reefer_car_type_2_pony_gen_4C_switch_graphics;
+                3: food_express_tank_car_type_1_pony_gen_4C_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, express_food_car_randomised_pony_gen_4C_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 9;
+                1: return 9;
+                2: return 9;
+                3: return 9;
+        }
+        switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(express_food_car_randomised_pony_gen_4C_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                75
+            );
+        }
+switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_graphics, vehicle_type_id) {
+        31990: express_food_car_randomised_pony_gen_4C_switch_graphics_variant;
+}
+switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_graphics_purchase, vehicle_type_id) {
+    express_food_car_randomised_pony_gen_4C_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_colour_mapping, vehicle_type_id) {
+        31990: express_food_car_randomised_pony_gen_4C_switch_colour_mapping_variant;
+}
+switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_colour_mapping_purchase, vehicle_type_id) {
+        31990: express_food_car_randomised_pony_gen_4C_switch_colour_mapping_variant_purchase;
+}
+switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_cargo_capacity,
+        [
+         STORE_TEMP(15, 0),
+         STORE_TEMP(30, 1),
+         STORE_TEMP(44, 2),
+         STORE_TEMP(59, 3),
+         STORE_TEMP(78, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_EXPRESS_FOOD_CAR_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            0
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return express_food_car_randomised_pony_gen_4C_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_EXPRESS_FOOD_CAR_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: express_food_car_randomised_pony_gen_4C_switch_name_purchase_level_0;
+    1: express_food_car_randomised_pony_gen_4C_switch_name_purchase_level_1;
+    return express_food_car_randomised_pony_gen_4C_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: express_food_car_randomised_pony_gen_4C_switch_name_purchase_extra_bits;
+    return express_food_car_randomised_pony_gen_4C_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, express_food_car_randomised_pony_gen_4C_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return express_food_car_randomised_pony_gen_4C_switch_name_default;
+    return express_food_car_randomised_pony_gen_4C_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, express_food_car_randomised_pony_gen_4C, 31990) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_EXPRESS_FOOD_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_wagon_length/c"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 10, 1);
+                power:                          0hp;
+                weight:                         21ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          105mph;
+            cargo_capacity:                 44;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_NON_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             cargotype_available("WATR")?WATR:cargotype_available("MILK")?MILK:BEER;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        express_food_car_randomised_pony_gen_4C_switch_graphics;
+            purchase:                       express_food_car_randomised_pony_gen_4C_switch_graphics_purchase;
+                name:                           express_food_car_randomised_pony_gen_4C_switch_name;
+                cost_factor:                    231; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 540;
+                purchase_running_cost_factor:   540; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 express_food_car_randomised_pony_gen_4C_switch_colour_mapping;
+                    purchase_colour_mapping:        express_food_car_randomised_pony_gen_4C_switch_colour_mapping_purchase;
+                cargo_capacity:                 express_food_car_randomised_pony_gen_4C_switch_cargo_capacity;
+                purchase_cargo_capacity:        express_food_car_randomised_pony_gen_4C_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, express_food_car_randomised_pony_gen_4C, 31990) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, express_food_car_randomised_pony_gen_4C, 31990) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, express_food_car_randomised_pony_gen_4C, 31990) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

@@ -1,0 +1,655 @@
+// default graphics chain
+        spriteset(zorro_ss_doors_closed_position_variant_0_base_livery_0, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(10,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_0_base_livery_0, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(40,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_0_base_livery_1, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(70,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_0_base_livery_1, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(100,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_0_base_livery_2, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(130,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_0_base_livery_2, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(160,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_0_base_livery_3, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(190,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_0_base_livery_3, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(220,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_0_base_livery_4, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(250,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_0_base_livery_4, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(280,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_1_base_livery_0, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(310,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_1_base_livery_0, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(340,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_1_base_livery_1, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(370,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_1_base_livery_1, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(400,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_1_base_livery_2, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(430,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_1_base_livery_2, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(460,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_1_base_livery_3, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(490,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_1_base_livery_3, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(520,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_1_base_livery_4, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(550,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_1_base_livery_4, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(580,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_2_base_livery_0, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(610,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_2_base_livery_0, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(640,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_2_base_livery_1, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(670,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_2_base_livery_1, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(700,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_2_base_livery_2, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(730,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_2_base_livery_2, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(760,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_2_base_livery_3, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(790,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_2_base_livery_3, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(820,NOANIM)
+        }
+        spriteset(zorro_ss_doors_closed_position_variant_2_base_livery_4, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(850,NOANIM)
+        }
+        spriteset(zorro_ss_doors_open_position_variant_2_base_livery_4, "generated/graphics/iron-horse/zorro.png") {
+            spriteset_template_asymmetric_unreversed_6_8(880,NOANIM)
+        }
+    switch (FEAT_TRAINS, SELF, zorro_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_2,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return zorro_ss_doors_closed_position_variant_0_base_livery_2;
+            01: return zorro_ss_doors_open_position_variant_0_base_livery_2;
+            10: return zorro_ss_doors_closed_position_variant_1_base_livery_2;
+            11: return zorro_ss_doors_open_position_variant_1_base_livery_2;
+            20: return zorro_ss_doors_closed_position_variant_2_base_livery_2;
+            21: return zorro_ss_doors_open_position_variant_2_base_livery_2;
+    }
+    switch (FEAT_TRAINS, SELF, zorro_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_0,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return zorro_ss_doors_closed_position_variant_0_base_livery_0;
+            01: return zorro_ss_doors_open_position_variant_0_base_livery_0;
+            10: return zorro_ss_doors_closed_position_variant_1_base_livery_0;
+            11: return zorro_ss_doors_open_position_variant_1_base_livery_0;
+            20: return zorro_ss_doors_closed_position_variant_2_base_livery_0;
+            21: return zorro_ss_doors_open_position_variant_2_base_livery_0;
+    }
+    switch (FEAT_TRAINS, SELF, zorro_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_1,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return zorro_ss_doors_closed_position_variant_0_base_livery_1;
+            01: return zorro_ss_doors_open_position_variant_0_base_livery_1;
+            10: return zorro_ss_doors_closed_position_variant_1_base_livery_1;
+            11: return zorro_ss_doors_open_position_variant_1_base_livery_1;
+            20: return zorro_ss_doors_closed_position_variant_2_base_livery_1;
+            21: return zorro_ss_doors_open_position_variant_2_base_livery_1;
+    }
+    switch (FEAT_TRAINS, SELF, zorro_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_3,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return zorro_ss_doors_closed_position_variant_0_base_livery_3;
+            01: return zorro_ss_doors_open_position_variant_0_base_livery_3;
+            10: return zorro_ss_doors_closed_position_variant_1_base_livery_3;
+            11: return zorro_ss_doors_open_position_variant_1_base_livery_3;
+            20: return zorro_ss_doors_closed_position_variant_2_base_livery_3;
+            21: return zorro_ss_doors_open_position_variant_2_base_livery_3;
+    }
+    switch (FEAT_TRAINS, SELF, zorro_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_4,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return zorro_ss_doors_closed_position_variant_0_base_livery_4;
+            01: return zorro_ss_doors_open_position_variant_0_base_livery_4;
+            10: return zorro_ss_doors_closed_position_variant_1_base_livery_4;
+            11: return zorro_ss_doors_open_position_variant_1_base_livery_4;
+            20: return zorro_ss_doors_closed_position_variant_2_base_livery_4;
+            21: return zorro_ss_doors_open_position_variant_2_base_livery_4;
+    }
+switch (FEAT_TRAINS, SELF, zorro_switch_graphics_vehicle_check_engine_and_doors, vehicle_type_id) {
+        21030: return zorro_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_2;
+        21031: return zorro_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_0;
+        21032: return zorro_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_1;
+        21033: return zorro_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_3;
+        21034: return zorro_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_4;
+}
+    switch (FEAT_TRAINS, SELF, zorro_switch_graphics_vehicle_layers_0,
+            [
+                STORE_TEMP(0, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return zorro_switch_graphics_vehicle_check_engine_and_doors;
+    }
+    switch (FEAT_TRAINS, SELF, zorro_switch_graphics_vehicle_layers_1,
+            [
+                STORE_TEMP(1, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return zorro_switch_graphics_vehicle_check_engine_and_doors;
+    }
+    switch (FEAT_TRAINS, SELF, zorro_switch_graphics_vehicle_layers_2,
+            [
+                STORE_TEMP(2, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return zorro_switch_graphics_vehicle_check_engine_and_doors;
+    }
+            switch (FEAT_TRAINS, SELF, zorro_switch_graphics_position_in_consist_entry_point, switch_graphics_railcar_ruleset_2_unit_sets()) {
+                0: return zorro_switch_graphics_vehicle_layers_0;
+                1: return zorro_switch_graphics_vehicle_layers_1;
+                2: return zorro_switch_graphics_vehicle_layers_2;
+            }
+switch (FEAT_TRAINS, SELF, zorro_switch_graphics_vehicle,
+    switch_initialise_var_41_but_badges_not_ids(badgetype("vehicle_family/zorro"))
+    ) {
+    return zorro_switch_graphics_position_in_consist_entry_point;
+}
+// buy menu graphics chain
+    spriteset(zorro_ss_vehicle_purchase_0, "generated/graphics/iron-horse/zorro.png") {
+                spriteset_template_purchase_default(224,130,25,-12,NOANIM)
+    }
+    spriteset(zorro_ss_vehicle_purchase_1, "generated/graphics/iron-horse/zorro.png") {
+                spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+    }
+    spriteset(zorro_ss_vehicle_purchase_2, "generated/graphics/iron-horse/zorro.png") {
+                spriteset_template_purchase_default(224,70,25,-12,NOANIM)
+    }
+    spriteset(zorro_ss_vehicle_purchase_3, "generated/graphics/iron-horse/zorro.png") {
+                spriteset_template_purchase_default(224,190,25,-12,NOANIM)
+    }
+    spriteset(zorro_ss_vehicle_purchase_4, "generated/graphics/iron-horse/zorro.png") {
+                spriteset_template_purchase_default(224,250,25,-12,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, zorro_switch_graphics_vehicle_purchase, vehicle_type_id) {
+        21030: return zorro_ss_vehicle_purchase_0;
+        21031: return zorro_ss_vehicle_purchase_1;
+        21032: return zorro_ss_vehicle_purchase_2;
+        21033: return zorro_ss_vehicle_purchase_3;
+        21034: return zorro_ss_vehicle_purchase_4;
+}
+        switch (FEAT_TRAINS, SELF, zorro_switch_graphics_purchase, 0) {
+            0: return zorro_switch_graphics_vehicle_purchase;
+        }
+switch (FEAT_TRAINS, SELF, zorro_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return zorro_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, zorro_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return zorro_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_railcar_24px_1;
+}
+switch (FEAT_TRAINS, SELF, zorro_switch_colour_mapping, vehicle_type_id) {
+                21030:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                21031:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                21032:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                21033:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                21034: return base_sprite_2cc + 16 * company_colour2 + COLOUR_RED;
+}
+switch (FEAT_TRAINS, SELF, zorro_switch_cargo_capacity,
+        [
+         STORE_TEMP(4, 0),
+         STORE_TEMP(9, 1),
+         STORE_TEMP(12, 2),
+         STORE_TEMP(16, 3),
+         STORE_TEMP(22, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, SELF, zorro_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_DIESEL;
+        }
+        switch (FEAT_TRAINS, SELF, zorro_switch_create_effect_default, [STORE_TEMP(create_effect(EFFECT_SPRITE_DIESEL,0,0,11), 0x100)]) {
+            return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+        }
+        switch (FEAT_TRAINS, SELF, zorro_switch_create_effect_check_railtype, 1) {
+            return zorro_switch_create_effect_default;
+        }
+switch (FEAT_TRAINS, SELF, zorro_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_ZORRO)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, zorro_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_ZORRO)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return zorro_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, zorro_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_ZORRO)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, zorro_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: zorro_switch_name_purchase_level_0;
+    1: zorro_switch_name_purchase_level_1;
+    return zorro_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, zorro_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: zorro_switch_name_purchase_extra_bits;
+    return zorro_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, zorro_switch_name, [
+        param_vehicle_availability_engines
+    ]) {
+    1: return zorro_switch_name_default;
+    return zorro_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, zorro, 21030) {
+        property {
+            name:                           string(STR_NAME_ZORRO);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/mail_railcar","vehicle_family/zorro"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1960, 7, 1);
+                power:                          420hp;
+                weight:                         18ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   60;
+                speed:                          60mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_MU);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        zorro_switch_graphics;
+            purchase:                       zorro_switch_graphics_purchase;
+                name:                           zorro_switch_name;
+                cost_factor:                    21; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 248;
+                purchase_running_cost_factor:   248; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 zorro_switch_colour_mapping;
+                    purchase_colour_mapping:        zorro_switch_colour_mapping;
+                cargo_capacity:                 zorro_switch_cargo_capacity;
+                purchase_cargo_capacity:        zorro_switch_cargo_capacity;
+                loading_speed:                  5;
+                effect_spawn_model_and_powered: zorro_switch_effect_spawn_model_and_powered;
+                create_effect:      zorro_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, zorro, 21030) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, zorro, 21030) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, zorro_variant_1, 21031) {
+        property {
+            name:                           string(STR_NAME_ZORRO);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/mail_railcar","vehicle_family/zorro"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1960, 7, 1);
+                power:                          420hp;
+                weight:                         18ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   60;
+                    variant_group:                  zorro;
+                speed:                          60mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_MU);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        zorro_switch_graphics;
+            purchase:                       zorro_switch_graphics_purchase;
+                name:                           zorro_switch_name;
+                cost_factor:                    21; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 248;
+                purchase_running_cost_factor:   248; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 zorro_switch_colour_mapping;
+                    purchase_colour_mapping:        zorro_switch_colour_mapping;
+                cargo_capacity:                 zorro_switch_cargo_capacity;
+                purchase_cargo_capacity:        zorro_switch_cargo_capacity;
+                loading_speed:                  5;
+                effect_spawn_model_and_powered: zorro_switch_effect_spawn_model_and_powered;
+                create_effect:      zorro_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, zorro_variant_1, 21031) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, zorro_variant_1, 21031) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, zorro_variant_1, 21031) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, zorro_variant_2, 21032) {
+        property {
+            name:                           string(STR_NAME_ZORRO);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/mail_railcar","vehicle_family/zorro"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1960, 7, 1);
+                power:                          420hp;
+                weight:                         18ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   60;
+                    variant_group:                  zorro;
+                speed:                          60mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_MU);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        zorro_switch_graphics;
+            purchase:                       zorro_switch_graphics_purchase;
+                name:                           zorro_switch_name;
+                cost_factor:                    21; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 248;
+                purchase_running_cost_factor:   248; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 zorro_switch_colour_mapping;
+                    purchase_colour_mapping:        zorro_switch_colour_mapping;
+                cargo_capacity:                 zorro_switch_cargo_capacity;
+                purchase_cargo_capacity:        zorro_switch_cargo_capacity;
+                loading_speed:                  5;
+                effect_spawn_model_and_powered: zorro_switch_effect_spawn_model_and_powered;
+                create_effect:      zorro_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, zorro_variant_2, 21032) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, zorro_variant_2, 21032) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, zorro_variant_2, 21032) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, zorro_variant_3, 21033) {
+        property {
+            name:                           string(STR_NAME_ZORRO);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/mail_railcar","vehicle_family/zorro"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1960, 7, 1);
+                power:                          420hp;
+                weight:                         18ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   60;
+                    variant_group:                  zorro;
+                speed:                          60mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_MU);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        zorro_switch_graphics;
+            purchase:                       zorro_switch_graphics_purchase;
+                name:                           zorro_switch_name;
+                cost_factor:                    21; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 248;
+                purchase_running_cost_factor:   248; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 zorro_switch_colour_mapping;
+                    purchase_colour_mapping:        zorro_switch_colour_mapping;
+                cargo_capacity:                 zorro_switch_cargo_capacity;
+                purchase_cargo_capacity:        zorro_switch_cargo_capacity;
+                loading_speed:                  5;
+                effect_spawn_model_and_powered: zorro_switch_effect_spawn_model_and_powered;
+                create_effect:      zorro_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, zorro_variant_3, 21033) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, zorro_variant_3, 21033) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, zorro_variant_3, 21033) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, zorro_variant_4, 21034) {
+        property {
+            name:                           string(STR_NAME_ZORRO);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/diesel","ih_variants_cabbage/cabbage_level_0_has_children","role/mail_railcar","vehicle_family/zorro"];
+                engine_class:                   ENGINE_CLASS_DIESEL;
+                introduction_date:              date(1960, 7, 1);
+                power:                          420hp;
+                weight:                         18ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   60;
+                    variant_group:                  zorro;
+                speed:                          60mph;
+            cargo_capacity:                 12;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_MAIL,CC_EXPRESS,CC_ARMOURED);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             MAIL;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_MU);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        zorro_switch_graphics;
+            purchase:                       zorro_switch_graphics_purchase;
+                name:                           zorro_switch_name;
+                cost_factor:                    21; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 248;
+                purchase_running_cost_factor:   248; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 zorro_switch_colour_mapping;
+                    purchase_colour_mapping:        zorro_switch_colour_mapping;
+                cargo_capacity:                 zorro_switch_cargo_capacity;
+                purchase_cargo_capacity:        zorro_switch_cargo_capacity;
+                loading_speed:                  5;
+                effect_spawn_model_and_powered: zorro_switch_effect_spawn_model_and_powered;
+                create_effect:      zorro_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, zorro_variant_4, 21034) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, zorro_variant_4, 21034) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, zorro_variant_4, 21034) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

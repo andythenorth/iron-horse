@@ -1,0 +1,1291 @@
+    spriteset(acid_tank_car_type_2_pony_gen_2A_ss_unweathered, "generated/graphics/iron-horse/acid_tank_car_type_2_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(10,NOANIM)
+    }
+    spriteset(acid_tank_car_type_2_pony_gen_2A_ss_weathered, "generated/graphics/iron-horse/acid_tank_car_type_2_pony_gen_2A.png") {
+        spriteset_template_symmetric_unreversed_4_8(40,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
+        0: return acid_tank_car_type_2_pony_gen_2A_ss_unweathered;
+        1: return acid_tank_car_type_2_pony_gen_2A_ss_weathered;
+    return acid_tank_car_type_2_pony_gen_2A_ss_unweathered; 
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_graphics_vehicle, param_wagon_colour_randomisation) {
+    0: acid_tank_car_type_2_pony_gen_2A_ss_unweathered; 
+    acid_tank_car_type_2_pony_gen_2A_switch_graphics_vehicle_choose_weathered_variant;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return acid_tank_car_type_2_pony_gen_2A_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return acid_tank_car_type_2_pony_gen_2A_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_16px;
+}
+// buy menu graphics chain
+spriteset(acid_tank_car_type_2_pony_gen_2A_ss_purchase, "generated/graphics/iron-horse/acid_tank_car_type_2_pony_gen_2A.png") {
+    spriteset_template_purchase_default(224,10,17,-8,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase, 0) {
+    return acid_tank_car_type_2_pony_gen_2A_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity,
+        [
+         STORE_TEMP(6, 0),
+         STORE_TEMP(11, 1),
+         STORE_TEMP(16, 2),
+         STORE_TEMP(22, 3),
+         STORE_TEMP(29, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_ACID_TANK_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return acid_tank_car_type_2_pony_gen_2A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: acid_tank_car_type_2_pony_gen_2A_switch_name_purchase_level_0;
+    1: acid_tank_car_type_2_pony_gen_2A_switch_name_purchase_level_1;
+    return acid_tank_car_type_2_pony_gen_2A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: acid_tank_car_type_2_pony_gen_2A_switch_name_purchase_extra_bits;
+    return acid_tank_car_type_2_pony_gen_2A_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return acid_tank_car_type_2_pony_gen_2A_switch_name_default;
+    return acid_tank_car_type_2_pony_gen_2A_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A, 25780) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                acid_tank_car_type_2_pony_gen_2A_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(4);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(130);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A, 25780) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A, 25780) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A, 25780) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_6))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x101
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(21) | 0xD000)
+                    | ((switch_get_colour_name(18) | 0xD000) << 16),
+                    0x102
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(19) | 0xD000)
+                    | ((0) << 16),
+                    0x103
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_1, 25781) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                acid_tank_car_type_2_pony_gen_2A_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(23);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(85);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_1, 25781) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_1, 25781) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_1, 25781) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(25) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(16) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_2, 25782) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                acid_tank_car_type_2_pony_gen_2A_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(38);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(48);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_2, 25782) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_2, 25782) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_2, 25782) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_variant_3_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(18) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_3, 25783) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                acid_tank_car_type_2_pony_gen_2A_variant_3_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(113);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(35);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_3, 25783) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_3, 25783) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_3, 25783) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_variant_4_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(23) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(28) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_4, 25784) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                acid_tank_car_type_2_pony_gen_2A_variant_4_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(114);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(33);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_4, 25784) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_4, 25784) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_4, 25784) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_type_2_pony_gen_2A_variant_5_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(19) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(22) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_5, 25785) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                acid_tank_car_type_2_pony_gen_2A_variant_5_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(81);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(84);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_5, 25785) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_5, 25785) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_5, 25785) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_6, 25786) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A_variant_6;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(9);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(75);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_6, 25786) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_6, 25786) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_6, 25786) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_7, 25787) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A_variant_6;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(16);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(126);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_7, 25787) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_7, 25787) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_7, 25787) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_8, 25788) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A_variant_6;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(109);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(116);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_8, 25788) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_8, 25788) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_8, 25788) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_9, 25789) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A_variant_6;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(17);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(110);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_9, 25789) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_9, 25789) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_9, 25789) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_10, 25790) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A_variant_6;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(88);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(80);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_10, 25790) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_10, 25790) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_10, 25790) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_11, 25791) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A_variant_6;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(99);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(125);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_11, 25791) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_11, 25791) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_11, 25791) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_12, 25792) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A_variant_6;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(8);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(63);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_12, 25792) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_12, 25792) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_12, 25792) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_13, 25793) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A_variant_6;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(127);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(60);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_13, 25793) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_13, 25793) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_13, 25793) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_14, 25794) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A_variant_6;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(82);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(87);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_14, 25794) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_14, 25794) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_14, 25794) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_15, 25795) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_TYPE_2);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/a"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1890, 5, 1);
+                power:                          0hp;
+                weight:                         8ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     40;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_pony_gen_2A_variant_6;
+                speed:                          45mph;
+            cargo_capacity:                 16;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         4;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_type_2_pony_gen_2A_switch_graphics;
+            purchase:                       acid_tank_car_type_2_pony_gen_2A_switch_graphics_purchase;
+                name:                           acid_tank_car_type_2_pony_gen_2A_switch_name;
+                cost_factor:                    44; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 105;
+                purchase_running_cost_factor:   105; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(120);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(1);
+                cargo_capacity:                 acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_type_2_pony_gen_2A_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_15, 25795) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_15, 25795) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_type_2_pony_gen_2A_variant_15, 25795) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

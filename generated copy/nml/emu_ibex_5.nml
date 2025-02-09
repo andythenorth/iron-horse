@@ -1,0 +1,326 @@
+// default graphics chain
+        spriteset(emu_ibex_5_ss_doors_closed_position_variant_0_base_livery_0, "generated/graphics/iron-ibex/emu_ibex_5.png") {
+            spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+        }
+        spriteset(emu_ibex_5_ss_doors_open_position_variant_0_base_livery_0, "generated/graphics/iron-ibex/emu_ibex_5.png") {
+            spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+        }
+            spriteset(emu_ibex_5_ss_pantographs_down_0, "generated/graphics/iron-ibex/emu_ibex_5_pantographs_down.png") {
+                spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+            }
+            spriteset(emu_ibex_5_ss_pantographs_up_0, "generated/graphics/iron-ibex/emu_ibex_5_pantographs_up.png") {
+                spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_pantographs_state_0, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()]) {
+            1: return emu_ibex_5_ss_pantographs_up_0;
+            return emu_ibex_5_ss_pantographs_down_0;
+        }
+        switch (FEAT_TRAINS, PARENT, emu_ibex_5_switch_graphics_pantographs_0,
+            [
+                1
+            ]
+        ) {
+            1: return emu_ibex_5_switch_graphics_pantographs_state_0;
+            return ss_global_empty_vehicle;
+        }
+        spriteset(emu_ibex_5_ss_doors_closed_position_variant_1_base_livery_0, "generated/graphics/iron-ibex/emu_ibex_5.png") {
+            spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+        }
+        spriteset(emu_ibex_5_ss_doors_open_position_variant_1_base_livery_0, "generated/graphics/iron-ibex/emu_ibex_5.png") {
+            spriteset_template_asymmetric_unreversed_8_8(100,NOANIM)
+        }
+            spriteset(emu_ibex_5_ss_pantographs_down_1, "generated/graphics/iron-ibex/emu_ibex_5_pantographs_down.png") {
+                spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+            }
+            spriteset(emu_ibex_5_ss_pantographs_up_1, "generated/graphics/iron-ibex/emu_ibex_5_pantographs_up.png") {
+                spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_pantographs_state_1, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()]) {
+            1: return emu_ibex_5_ss_pantographs_up_1;
+            return emu_ibex_5_ss_pantographs_down_1;
+        }
+        switch (FEAT_TRAINS, PARENT, emu_ibex_5_switch_graphics_pantographs_1,
+            [
+                1
+            ]
+        ) {
+            1: return emu_ibex_5_switch_graphics_pantographs_state_1;
+            return ss_global_empty_vehicle;
+        }
+        spriteset(emu_ibex_5_ss_doors_closed_position_variant_2_base_livery_0, "generated/graphics/iron-ibex/emu_ibex_5.png") {
+            spriteset_template_asymmetric_unreversed_8_8(130,NOANIM)
+        }
+        spriteset(emu_ibex_5_ss_doors_open_position_variant_2_base_livery_0, "generated/graphics/iron-ibex/emu_ibex_5.png") {
+            spriteset_template_asymmetric_unreversed_8_8(160,NOANIM)
+        }
+            spriteset(emu_ibex_5_ss_pantographs_down_2, "generated/graphics/iron-ibex/emu_ibex_5_pantographs_down.png") {
+                spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+            }
+            spriteset(emu_ibex_5_ss_pantographs_up_2, "generated/graphics/iron-ibex/emu_ibex_5_pantographs_up.png") {
+                spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_pantographs_state_2, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()]) {
+            1: return emu_ibex_5_ss_pantographs_up_2;
+            return emu_ibex_5_ss_pantographs_down_2;
+        }
+        switch (FEAT_TRAINS, PARENT, emu_ibex_5_switch_graphics_pantographs_2,
+            [
+                1
+            ]
+        ) {
+            1: return emu_ibex_5_switch_graphics_pantographs_state_2;
+            return ss_global_empty_vehicle;
+        }
+        spriteset(emu_ibex_5_ss_doors_closed_position_variant_3_base_livery_0, "generated/graphics/iron-ibex/emu_ibex_5.png") {
+            spriteset_template_asymmetric_unreversed_8_8(190,NOANIM)
+        }
+        spriteset(emu_ibex_5_ss_doors_open_position_variant_3_base_livery_0, "generated/graphics/iron-ibex/emu_ibex_5.png") {
+            spriteset_template_asymmetric_unreversed_8_8(220,NOANIM)
+        }
+            spriteset(emu_ibex_5_ss_pantographs_down_3, "generated/graphics/iron-ibex/emu_ibex_5_pantographs_down.png") {
+                spriteset_template_asymmetric_unreversed_8_8(100,NOANIM)
+            }
+            spriteset(emu_ibex_5_ss_pantographs_up_3, "generated/graphics/iron-ibex/emu_ibex_5_pantographs_up.png") {
+                spriteset_template_asymmetric_unreversed_8_8(100,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_pantographs_state_3, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC()]) {
+            1: return emu_ibex_5_ss_pantographs_up_3;
+            return emu_ibex_5_ss_pantographs_down_3;
+        }
+        switch (FEAT_TRAINS, PARENT, emu_ibex_5_switch_graphics_pantographs_3,
+            [
+                1
+            ]
+        ) {
+            1: return emu_ibex_5_switch_graphics_pantographs_state_3;
+            return ss_global_empty_vehicle;
+        }
+    switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_0,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return emu_ibex_5_ss_doors_closed_position_variant_0_base_livery_0;
+            01: return emu_ibex_5_ss_doors_open_position_variant_0_base_livery_0;
+            10: return emu_ibex_5_ss_doors_closed_position_variant_1_base_livery_0;
+            11: return emu_ibex_5_ss_doors_open_position_variant_1_base_livery_0;
+            20: return emu_ibex_5_ss_doors_closed_position_variant_2_base_livery_0;
+            21: return emu_ibex_5_ss_doors_open_position_variant_2_base_livery_0;
+            30: return emu_ibex_5_ss_doors_closed_position_variant_3_base_livery_0;
+            31: return emu_ibex_5_ss_doors_open_position_variant_3_base_livery_0;
+    }
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_vehicle_check_engine_and_doors, vehicle_type_id) {
+        34510: return emu_ibex_5_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_0;
+}
+    switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_vehicle_layers_0,
+            [
+                STORE_TEMP(0, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return emu_ibex_5_switch_graphics_vehicle_check_engine_and_doors;
+            1: return emu_ibex_5_switch_graphics_pantographs_0;
+    }
+    switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_vehicle_layers_1,
+            [
+                STORE_TEMP(1, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return emu_ibex_5_switch_graphics_vehicle_check_engine_and_doors;
+            1: return emu_ibex_5_switch_graphics_pantographs_1;
+    }
+    switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_vehicle_layers_2,
+            [
+                STORE_TEMP(2, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return emu_ibex_5_switch_graphics_vehicle_check_engine_and_doors;
+            1: return emu_ibex_5_switch_graphics_pantographs_2;
+    }
+    switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_vehicle_layers_3,
+            [
+                STORE_TEMP(3, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return emu_ibex_5_switch_graphics_vehicle_check_engine_and_doors;
+            1: return emu_ibex_5_switch_graphics_pantographs_3;
+    }
+            switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_position_in_consist_entry_point, switch_graphics_railcar_ruleset_3_unit_sets()) {
+                0: return emu_ibex_5_switch_graphics_vehicle_layers_0;
+                1: return emu_ibex_5_switch_graphics_vehicle_layers_1;
+                2: return emu_ibex_5_switch_graphics_vehicle_layers_2;
+                3: return emu_ibex_5_switch_graphics_vehicle_layers_3;
+            }
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_vehicle,
+    switch_initialise_var_41_but_badges_not_ids(badgetype("vehicle_family/emu_ibex_5"))
+    ) {
+    return emu_ibex_5_switch_graphics_position_in_consist_entry_point;
+}
+// buy menu graphics chain
+    spriteset(emu_ibex_5_ss_vehicle_purchase_0, "generated/graphics/iron-ibex/emu_ibex_5.png") {
+                spriteset_template_purchase_default(224,10,33,-16,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_vehicle_purchase, vehicle_type_id) {
+        34510: return emu_ibex_5_ss_vehicle_purchase_0;
+}
+        spriteset(emu_ibex_5_ss_pantograph_purchase, "generated/graphics/iron-ibex/emu_ibex_5_pantographs_down.png") {
+            spriteset_template_purchase_default(224,10,33,-16,NOANIM)
+        }
+        switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+            return emu_ibex_5_switch_graphics_vehicle_purchase;
+        }
+        switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+            0: return emu_ibex_5_switch_set_layers_register_more_sprites_purchase;
+            1: return emu_ibex_5_ss_pantograph_purchase;
+        }
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return emu_ibex_5_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return emu_ibex_5_switch_set_layers_register_more_sprites;
+        1: return emu_ibex_5_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_railcar_32px_1;
+}
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_colour_mapping, vehicle_type_id) {
+                34510:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+}
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_cargo_capacity,
+        [
+         STORE_TEMP(24, 0),
+         STORE_TEMP(49, 1),
+         STORE_TEMP(72, 2),
+         STORE_TEMP(96, 3),
+         STORE_TEMP(128, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_ELECTRIC;
+        }
+        switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_create_effect_default, [STORE_TEMP(create_effect(EFFECT_SPRITE_ELECTRIC,0,0,12), 0x100)]) {
+            return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+        }
+        switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_create_effect_check_railtype, 1) {
+            return emu_ibex_5_switch_create_effect_default;
+        }
+    switch (FEAT_TRAINS, PARENT, emu_ibex_5_switch_speed, haulage_bonus_switch_speed_0()) {
+        1: return 201;
+        0: return 140;
+    }
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_EMU_IBEX_5)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_EMU_IBEX_5)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return emu_ibex_5_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_EMU_IBEX_5)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: emu_ibex_5_switch_name_purchase_level_0;
+    1: emu_ibex_5_switch_name_purchase_level_1;
+    return emu_ibex_5_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: emu_ibex_5_switch_name_purchase_extra_bits;
+    return emu_ibex_5_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, emu_ibex_5_switch_name, [
+        param_vehicle_availability_engines
+    ]) {
+    1: return emu_ibex_5_switch_name_default;
+    return emu_ibex_5_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, emu_ibex_5, 34510) {
+        property {
+            name:                           string(STR_NAME_EMU_IBEX_5);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/ac","role/suburban_or_universal_railcar","vehicle_family/emu_ibex_5"];
+                engine_class:                   ENGINE_CLASS_ELECTRIC;
+                introduction_date:              date(1993, 7, 1);
+                power:                          320hp;
+                weight:                         28ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          87mph;
+            cargo_capacity:                 72;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             PASS;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_MU);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHB_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        emu_ibex_5_switch_graphics;
+            purchase:                       emu_ibex_5_switch_graphics_purchase;
+                name:                           emu_ibex_5_switch_name;
+                cost_factor:                    30; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 511;
+                purchase_running_cost_factor:   511; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    speed:                          emu_ibex_5_switch_speed;
+                    purchase_speed:                 140;
+                    colour_mapping:                 emu_ibex_5_switch_colour_mapping;
+                    purchase_colour_mapping:        emu_ibex_5_switch_colour_mapping;
+                cargo_capacity:                 emu_ibex_5_switch_cargo_capacity;
+                purchase_cargo_capacity:        emu_ibex_5_switch_cargo_capacity;
+                loading_speed:                  8;
+                effect_spawn_model_and_powered: emu_ibex_5_switch_effect_spawn_model_and_powered;
+                create_effect:      emu_ibex_5_switch_create_effect_check_railtype;
+        }
+    }
+        item(FEAT_TRAINS, emu_ibex_5, 34510) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, emu_ibex_5, 34510) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

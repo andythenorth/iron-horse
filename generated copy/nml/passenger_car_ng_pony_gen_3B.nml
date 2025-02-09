@@ -1,0 +1,320 @@
+// default graphics chain
+        spriteset(passenger_car_ng_pony_gen_3B_ss_doors_closed_position_variant_0_base_livery_0, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+            spriteset_template_asymmetric_unreversed_6_8(10,NOANIM)
+        }
+        spriteset(passenger_car_ng_pony_gen_3B_ss_doors_open_position_variant_0_base_livery_0, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+            spriteset_template_asymmetric_unreversed_6_8(40,NOANIM)
+        }
+        spriteset(passenger_car_ng_pony_gen_3B_ss_doors_closed_position_variant_0_base_livery_1, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+            spriteset_template_asymmetric_unreversed_6_8(70,NOANIM)
+        }
+        spriteset(passenger_car_ng_pony_gen_3B_ss_doors_open_position_variant_0_base_livery_1, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+            spriteset_template_asymmetric_unreversed_6_8(100,NOANIM)
+        }
+        spriteset(passenger_car_ng_pony_gen_3B_ss_doors_closed_position_variant_1_base_livery_0, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+            spriteset_template_asymmetric_unreversed_6_8(130,NOANIM)
+        }
+        spriteset(passenger_car_ng_pony_gen_3B_ss_doors_open_position_variant_1_base_livery_0, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+            spriteset_template_asymmetric_unreversed_6_8(160,NOANIM)
+        }
+        spriteset(passenger_car_ng_pony_gen_3B_ss_doors_closed_position_variant_1_base_livery_1, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+            spriteset_template_asymmetric_unreversed_6_8(190,NOANIM)
+        }
+        spriteset(passenger_car_ng_pony_gen_3B_ss_doors_open_position_variant_1_base_livery_1, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+            spriteset_template_asymmetric_unreversed_6_8(220,NOANIM)
+        }
+        spriteset(passenger_car_ng_pony_gen_3B_ss_doors_closed_position_variant_2_base_livery_0, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+            spriteset_template_asymmetric_unreversed_6_8(250,NOANIM)
+        }
+        spriteset(passenger_car_ng_pony_gen_3B_ss_doors_open_position_variant_2_base_livery_0, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+            spriteset_template_asymmetric_unreversed_6_8(280,NOANIM)
+        }
+        spriteset(passenger_car_ng_pony_gen_3B_ss_doors_closed_position_variant_2_base_livery_1, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+            spriteset_template_asymmetric_unreversed_6_8(310,NOANIM)
+        }
+        spriteset(passenger_car_ng_pony_gen_3B_ss_doors_open_position_variant_2_base_livery_1, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+            spriteset_template_asymmetric_unreversed_6_8(340,NOANIM)
+        }
+    switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_0,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return passenger_car_ng_pony_gen_3B_ss_doors_closed_position_variant_0_base_livery_0;
+            01: return passenger_car_ng_pony_gen_3B_ss_doors_open_position_variant_0_base_livery_0;
+            10: return passenger_car_ng_pony_gen_3B_ss_doors_closed_position_variant_1_base_livery_0;
+            11: return passenger_car_ng_pony_gen_3B_ss_doors_open_position_variant_1_base_livery_0;
+            20: return passenger_car_ng_pony_gen_3B_ss_doors_closed_position_variant_2_base_livery_0;
+            21: return passenger_car_ng_pony_gen_3B_ss_doors_open_position_variant_2_base_livery_0;
+    }
+    switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_1,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return passenger_car_ng_pony_gen_3B_ss_doors_closed_position_variant_0_base_livery_1;
+            01: return passenger_car_ng_pony_gen_3B_ss_doors_open_position_variant_0_base_livery_1;
+            10: return passenger_car_ng_pony_gen_3B_ss_doors_closed_position_variant_1_base_livery_1;
+            11: return passenger_car_ng_pony_gen_3B_ss_doors_open_position_variant_1_base_livery_1;
+            20: return passenger_car_ng_pony_gen_3B_ss_doors_closed_position_variant_2_base_livery_1;
+            21: return passenger_car_ng_pony_gen_3B_ss_doors_open_position_variant_2_base_livery_1;
+    }
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_check_engine_and_doors, vehicle_type_id) {
+        25010: return passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_0;
+        25011: return passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_1;
+}
+    switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_layers_0,
+            [
+                STORE_TEMP(0, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_check_engine_and_doors;
+    }
+    switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_layers_1,
+            [
+                STORE_TEMP(1, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_check_engine_and_doors;
+    }
+    switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_layers_2,
+            [
+                STORE_TEMP(2, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_check_engine_and_doors;
+    }
+            switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_graphics_position_in_consist_entry_point, switch_graphics_pax_car_ruleset()) {
+                0: return passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_layers_0;
+                1: return passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_layers_1;
+                2: return passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_layers_2;
+                3: return passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_layers_0;
+            }
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_graphics_vehicle,
+    1
+    ) {
+    return passenger_car_ng_pony_gen_3B_switch_graphics_position_in_consist_entry_point;
+}
+// buy menu graphics chain
+    spriteset(passenger_car_ng_pony_gen_3B_ss_vehicle_purchase_0, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+                spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+    }
+    spriteset(passenger_car_ng_pony_gen_3B_ss_vehicle_purchase_1, "generated/graphics/iron-horse/passenger_car_ng_pony_gen_3B.png") {
+                spriteset_template_purchase_default(224,70,25,-12,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_purchase, vehicle_type_id) {
+        25010: return passenger_car_ng_pony_gen_3B_ss_vehicle_purchase_0;
+        25011: return passenger_car_ng_pony_gen_3B_ss_vehicle_purchase_1;
+}
+        switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_graphics_purchase, 0) {
+            0: return passenger_car_ng_pony_gen_3B_switch_graphics_vehicle_purchase;
+        }
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return passenger_car_ng_pony_gen_3B_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return passenger_car_ng_pony_gen_3B_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_24px;
+}
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_colour_mapping, vehicle_type_id) {
+                25010:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                25011:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+}
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_cargo_capacity,
+        [
+         STORE_TEMP(10, 0),
+         STORE_TEMP(21, 1),
+         STORE_TEMP(30, 2),
+         STORE_TEMP(40, 3),
+         STORE_TEMP(54, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+    switch (FEAT_TRAINS, PARENT, passenger_car_ng_pony_gen_3B_switch_running_cost_factor, count_has_badge("role/restaurant_car")) {
+        0: return 127;
+        return 0;
+    }
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_PASSENGER_CAR)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_PASSENGER_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return passenger_car_ng_pony_gen_3B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_PASSENGER_CAR)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: passenger_car_ng_pony_gen_3B_switch_name_purchase_level_0;
+    1: passenger_car_ng_pony_gen_3B_switch_name_purchase_level_1;
+    return passenger_car_ng_pony_gen_3B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: passenger_car_ng_pony_gen_3B_switch_name_purchase_extra_bits;
+    return passenger_car_ng_pony_gen_3B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, passenger_car_ng_pony_gen_3B_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return passenger_car_ng_pony_gen_3B_switch_name_default;
+    return passenger_car_ng_pony_gen_3B_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, passenger_car_ng_pony_gen_3B, 25010) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_PASSENGER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_ruleset_flags/report_as_pax_car","ih_variants_cabbage/cabbage_level_0_has_children","role/universal","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 2, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     50;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             PASS;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        passenger_car_ng_pony_gen_3B_switch_graphics;
+            purchase:                       passenger_car_ng_pony_gen_3B_switch_graphics_purchase;
+                name:                           passenger_car_ng_pony_gen_3B_switch_name;
+                cost_factor:                    104; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor:            passenger_car_ng_pony_gen_3B_switch_running_cost_factor;
+                purchase_running_cost_factor:   127; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 passenger_car_ng_pony_gen_3B_switch_colour_mapping;
+                    purchase_colour_mapping:        passenger_car_ng_pony_gen_3B_switch_colour_mapping;
+                cargo_capacity:                 passenger_car_ng_pony_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        passenger_car_ng_pony_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, passenger_car_ng_pony_gen_3B, 25010) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, passenger_car_ng_pony_gen_3B, 25010) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, passenger_car_ng_pony_gen_3B_variant_1, 25011) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_PASSENGER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_ruleset_flags/report_as_pax_car","ih_variants_cabbage/cabbage_level_0_has_children","role/universal","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 2, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     50;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  passenger_car_ng_pony_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             PASS;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHD_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        passenger_car_ng_pony_gen_3B_switch_graphics;
+            purchase:                       passenger_car_ng_pony_gen_3B_switch_graphics_purchase;
+                name:                           passenger_car_ng_pony_gen_3B_switch_name;
+                cost_factor:                    104; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor:            passenger_car_ng_pony_gen_3B_switch_running_cost_factor;
+                purchase_running_cost_factor:   127; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 passenger_car_ng_pony_gen_3B_switch_colour_mapping;
+                    purchase_colour_mapping:        passenger_car_ng_pony_gen_3B_switch_colour_mapping;
+                cargo_capacity:                 passenger_car_ng_pony_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        passenger_car_ng_pony_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, passenger_car_ng_pony_gen_3B_variant_1, 25011) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, passenger_car_ng_pony_gen_3B_variant_1, 25011) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, passenger_car_ng_pony_gen_3B_variant_1, 25011) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

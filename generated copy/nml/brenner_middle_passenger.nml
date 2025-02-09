@@ -1,0 +1,515 @@
+// default graphics chain
+        spriteset(brenner_middle_passenger_ss_doors_closed_position_variant_0_base_livery_0, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+        }
+        spriteset(brenner_middle_passenger_ss_doors_open_position_variant_0_base_livery_0, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+        }
+        spriteset(brenner_middle_passenger_ss_doors_closed_position_variant_0_base_livery_1, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+        }
+        spriteset(brenner_middle_passenger_ss_doors_open_position_variant_0_base_livery_1, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(100,NOANIM)
+        }
+            spriteset(brenner_middle_passenger_ss_pantographs_down_0, "generated/graphics/iron-horse/brenner_middle_passenger_pantographs_down.png") {
+                spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+            }
+            spriteset(brenner_middle_passenger_ss_pantographs_up_0, "generated/graphics/iron-horse/brenner_middle_passenger_pantographs_up.png") {
+                spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_pantographs_state_0, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC() || tile_powers_track_type_name_LGV_ELECTRIFIED_AC()]) {
+            1: return brenner_middle_passenger_ss_pantographs_up_0;
+            return brenner_middle_passenger_ss_pantographs_down_0;
+        }
+        switch (FEAT_TRAINS, PARENT, brenner_middle_passenger_switch_graphics_pantographs_0,
+            [
+                1
+                    ||
+                        count_veh_id(brenner_cab) > 0
+                            ||
+                        count_veh_id(brenner_cab_variant_1) > 0
+            ]
+        ) {
+            1: return brenner_middle_passenger_switch_graphics_pantographs_state_0;
+            return ss_global_empty_vehicle;
+        }
+        spriteset(brenner_middle_passenger_ss_doors_closed_position_variant_1_base_livery_0, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(130,NOANIM)
+        }
+        spriteset(brenner_middle_passenger_ss_doors_open_position_variant_1_base_livery_0, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(160,NOANIM)
+        }
+        spriteset(brenner_middle_passenger_ss_doors_closed_position_variant_1_base_livery_1, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(190,NOANIM)
+        }
+        spriteset(brenner_middle_passenger_ss_doors_open_position_variant_1_base_livery_1, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(220,NOANIM)
+        }
+            spriteset(brenner_middle_passenger_ss_pantographs_down_1, "generated/graphics/iron-horse/brenner_middle_passenger_pantographs_down.png") {
+                spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+            }
+            spriteset(brenner_middle_passenger_ss_pantographs_up_1, "generated/graphics/iron-horse/brenner_middle_passenger_pantographs_up.png") {
+                spriteset_template_asymmetric_unreversed_8_8(40,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_pantographs_state_1, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC() || tile_powers_track_type_name_LGV_ELECTRIFIED_AC()]) {
+            1: return brenner_middle_passenger_ss_pantographs_up_1;
+            return brenner_middle_passenger_ss_pantographs_down_1;
+        }
+        switch (FEAT_TRAINS, PARENT, brenner_middle_passenger_switch_graphics_pantographs_1,
+            [
+                1
+                    ||
+                        count_veh_id(brenner_cab) > 0
+                            ||
+                        count_veh_id(brenner_cab_variant_1) > 0
+            ]
+        ) {
+            1: return brenner_middle_passenger_switch_graphics_pantographs_state_1;
+            return ss_global_empty_vehicle;
+        }
+        spriteset(brenner_middle_passenger_ss_doors_closed_position_variant_2_base_livery_0, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(250,NOANIM)
+        }
+        spriteset(brenner_middle_passenger_ss_doors_open_position_variant_2_base_livery_0, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(280,NOANIM)
+        }
+        spriteset(brenner_middle_passenger_ss_doors_closed_position_variant_2_base_livery_1, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(310,NOANIM)
+        }
+        spriteset(brenner_middle_passenger_ss_doors_open_position_variant_2_base_livery_1, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(340,NOANIM)
+        }
+            spriteset(brenner_middle_passenger_ss_pantographs_down_2, "generated/graphics/iron-horse/brenner_middle_passenger_pantographs_down.png") {
+                spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+            }
+            spriteset(brenner_middle_passenger_ss_pantographs_up_2, "generated/graphics/iron-horse/brenner_middle_passenger_pantographs_up.png") {
+                spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_pantographs_state_2, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC() || tile_powers_track_type_name_LGV_ELECTRIFIED_AC()]) {
+            1: return brenner_middle_passenger_ss_pantographs_up_2;
+            return brenner_middle_passenger_ss_pantographs_down_2;
+        }
+        switch (FEAT_TRAINS, PARENT, brenner_middle_passenger_switch_graphics_pantographs_2,
+            [
+                1
+                    ||
+                        count_veh_id(brenner_cab) > 0
+                            ||
+                        count_veh_id(brenner_cab_variant_1) > 0
+            ]
+        ) {
+            1: return brenner_middle_passenger_switch_graphics_pantographs_state_2;
+            return ss_global_empty_vehicle;
+        }
+        spriteset(brenner_middle_passenger_ss_doors_closed_position_variant_3_base_livery_0, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(370,NOANIM)
+        }
+        spriteset(brenner_middle_passenger_ss_doors_open_position_variant_3_base_livery_0, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(400,NOANIM)
+        }
+        spriteset(brenner_middle_passenger_ss_doors_closed_position_variant_3_base_livery_1, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(430,NOANIM)
+        }
+        spriteset(brenner_middle_passenger_ss_doors_open_position_variant_3_base_livery_1, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+            spriteset_template_asymmetric_unreversed_8_8(460,NOANIM)
+        }
+            spriteset(brenner_middle_passenger_ss_pantographs_down_3, "generated/graphics/iron-horse/brenner_middle_passenger_pantographs_down.png") {
+                spriteset_template_asymmetric_unreversed_8_8(100,NOANIM)
+            }
+            spriteset(brenner_middle_passenger_ss_pantographs_up_3, "generated/graphics/iron-horse/brenner_middle_passenger_pantographs_up.png") {
+                spriteset_template_asymmetric_unreversed_8_8(100,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_pantographs_state_3, [tile_powers_track_type_name_RAIL_ELECTRIFIED_AC() || tile_powers_track_type_name_LGV_ELECTRIFIED_AC()]) {
+            1: return brenner_middle_passenger_ss_pantographs_up_3;
+            return brenner_middle_passenger_ss_pantographs_down_3;
+        }
+        switch (FEAT_TRAINS, PARENT, brenner_middle_passenger_switch_graphics_pantographs_3,
+            [
+                1
+                    ||
+                        count_veh_id(brenner_cab) > 0
+                            ||
+                        count_veh_id(brenner_cab_variant_1) > 0
+            ]
+        ) {
+            1: return brenner_middle_passenger_switch_graphics_pantographs_state_3;
+            return ss_global_empty_vehicle;
+        }
+    switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_0,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return brenner_middle_passenger_ss_doors_closed_position_variant_0_base_livery_0;
+            01: return brenner_middle_passenger_ss_doors_open_position_variant_0_base_livery_0;
+            10: return brenner_middle_passenger_ss_doors_closed_position_variant_1_base_livery_0;
+            11: return brenner_middle_passenger_ss_doors_open_position_variant_1_base_livery_0;
+            20: return brenner_middle_passenger_ss_doors_closed_position_variant_2_base_livery_0;
+            21: return brenner_middle_passenger_ss_doors_open_position_variant_2_base_livery_0;
+            30: return brenner_middle_passenger_ss_doors_closed_position_variant_3_base_livery_0;
+            31: return brenner_middle_passenger_ss_doors_open_position_variant_3_base_livery_0;
+    }
+    switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_1,
+            [
+                (10 * LOAD_TEMP(23))
+                +
+                (1 * switch_graphics_opening_doors())
+            ]
+        ) {
+            00: return brenner_middle_passenger_ss_doors_closed_position_variant_0_base_livery_1;
+            01: return brenner_middle_passenger_ss_doors_open_position_variant_0_base_livery_1;
+            10: return brenner_middle_passenger_ss_doors_closed_position_variant_1_base_livery_1;
+            11: return brenner_middle_passenger_ss_doors_open_position_variant_1_base_livery_1;
+            20: return brenner_middle_passenger_ss_doors_closed_position_variant_2_base_livery_1;
+            21: return brenner_middle_passenger_ss_doors_open_position_variant_2_base_livery_1;
+            30: return brenner_middle_passenger_ss_doors_closed_position_variant_3_base_livery_1;
+            31: return brenner_middle_passenger_ss_doors_open_position_variant_3_base_livery_1;
+    }
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_vehicle_check_engine_and_doors, vehicle_type_id) {
+        2880: return brenner_middle_passenger_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_0;
+        2881: return brenner_middle_passenger_switch_graphics_vehicle_check_engine_and_doors_variant_relative_spriterow_num_1;
+}
+    switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_vehicle_layers_0,
+            [
+                STORE_TEMP(0, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return brenner_middle_passenger_switch_graphics_vehicle_check_engine_and_doors;
+            1: return brenner_middle_passenger_switch_graphics_pantographs_0;
+    }
+    switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_vehicle_layers_1,
+            [
+                STORE_TEMP(1, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return brenner_middle_passenger_switch_graphics_vehicle_check_engine_and_doors;
+            1: return brenner_middle_passenger_switch_graphics_pantographs_1;
+    }
+    switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_vehicle_layers_2,
+            [
+                STORE_TEMP(2, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return brenner_middle_passenger_switch_graphics_vehicle_check_engine_and_doors;
+            1: return brenner_middle_passenger_switch_graphics_pantographs_2;
+    }
+    switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_vehicle_layers_3,
+            [
+                STORE_TEMP(3, 23),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return brenner_middle_passenger_switch_graphics_vehicle_check_engine_and_doors;
+            1: return brenner_middle_passenger_switch_graphics_pantographs_3;
+    }
+            switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_position_in_consist_entry_point, switch_graphics_tgv_ruleset()) {
+                0: return brenner_middle_passenger_switch_graphics_vehicle_layers_0;
+                1: return brenner_middle_passenger_switch_graphics_vehicle_layers_1;
+                2: return brenner_middle_passenger_switch_graphics_vehicle_layers_2;
+                3: return brenner_middle_passenger_switch_graphics_vehicle_layers_3;
+            }
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_vehicle,
+    switch_initialise_var_41_but_badges_not_ids(badgetype("vehicle_family/brenner_cab"))
+    ) {
+    return brenner_middle_passenger_switch_graphics_position_in_consist_entry_point;
+}
+// buy menu graphics chain
+    spriteset(brenner_middle_passenger_ss_vehicle_purchase_0, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+                spriteset_template_purchase_default(360,10,65,-32,NOANIM)
+    }
+    spriteset(brenner_middle_passenger_ss_vehicle_purchase_1, "generated/graphics/iron-horse/brenner_middle_passenger.png") {
+                spriteset_template_purchase_default(360,40,65,-32,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_vehicle_purchase, vehicle_type_id) {
+        2880: return brenner_middle_passenger_ss_vehicle_purchase_0;
+        2881: return brenner_middle_passenger_ss_vehicle_purchase_1;
+}
+        spriteset(brenner_middle_passenger_ss_pantograph_purchase, "generated/graphics/iron-horse/brenner_middle_passenger_pantographs_down.png") {
+            spriteset_template_purchase_default(360,10,65,-32,NOANIM)
+        }
+        switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+            return brenner_middle_passenger_switch_graphics_vehicle_purchase;
+        }
+        switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+            0: return brenner_middle_passenger_switch_set_layers_register_more_sprites_purchase;
+            1: return brenner_middle_passenger_ss_pantograph_purchase;
+        }
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return brenner_middle_passenger_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return brenner_middle_passenger_switch_set_layers_register_more_sprites;
+        1: return brenner_middle_passenger_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_empty;
+}
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_colour_mapping, vehicle_type_id) {
+                2880:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+                2881:return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+}
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_cargo_capacity,
+        [
+         STORE_TEMP(16, 0),
+         STORE_TEMP(33, 1),
+         STORE_TEMP(48, 2),
+         STORE_TEMP(64, 3),
+         STORE_TEMP(85, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+    // -- power varies if specific engines are present in the consist -- //
+    switch (FEAT_TRAINS, PARENT, brenner_middle_passenger_switch_power_0, [
+            count_veh_id(brenner_cab) > 0
+                ||
+            count_veh_id(brenner_cab_variant_1) > 0
+        ]) {
+        1: return 3000;
+        return 0;
+    }
+    switch (FEAT_TRAINS, PARENT, brenner_middle_passenger_switch_speed_by_tile_railtype, [tile_is_railtype("IHAA") || tile_is_railtype("IHBA")]) {
+        1: return 299;
+        return 205;
+    }
+    switch (FEAT_TRAINS, PARENT, brenner_middle_passenger_switch_speed, [railtype_available("IHAA") && railtype_available("IHBA")]) {
+        1: return brenner_middle_passenger_switch_speed_by_tile_railtype;
+        return 299;
+    }
+    // add the units to articulated consist
+    switch (FEAT_TRAINS, SELF, brenner_middle_passenger_variant_0_articulated_cb_switch, extra_callback_info1) {
+            0: return brenner_middle_passenger;
+            1: return brenner_middle_passenger;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+    switch (FEAT_TRAINS, SELF, brenner_middle_passenger_variant_1_articulated_cb_switch, extra_callback_info1) {
+            0: return brenner_middle_passenger_variant_1;
+            1: return brenner_middle_passenger_variant_1;
+      return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+    }
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_BRENNER_MIDDLE_PASSENGER)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_NAME_BRENNER_MIDDLE_PASSENGER)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return brenner_middle_passenger_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_BRENNER_MIDDLE_PASSENGER)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: brenner_middle_passenger_switch_name_purchase_level_0;
+    1: brenner_middle_passenger_switch_name_purchase_level_1;
+    return brenner_middle_passenger_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: brenner_middle_passenger_switch_name_purchase_extra_bits;
+    return brenner_middle_passenger_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_name, [
+        param_vehicle_availability_engines
+    ]) {
+    1: return brenner_middle_passenger_switch_name_default;
+    return brenner_middle_passenger_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, brenner_middle_passenger_switch_buy_menu_additional_text, [
+            STORE_TEMP(
+                299
+                | (205 << 16),
+                0x100
+            ),
+            STORE_TEMP(
+                (3000 | string(STR_NAME_BRENNER_CAB) << 16),
+                0x101
+            )
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR, string(STR_SPEED_BY_RAILTYPE_LGV_CAPABLE), string(STR_WAGONS_ADD_POWER_MIDDLE));
+        }
+    item(FEAT_TRAINS, brenner_middle_passenger, 2880) {
+        property {
+            name:                           string(STR_NAME_BRENNER_MIDDLE_PASSENGER);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/ac","ih_variants_cabbage/cabbage_level_0_has_children","role/very_high_speed","vehicle_family/brenner_cab","special_flags/tilt"];
+                engine_class:                   ENGINE_CLASS_ELECTRIC;
+                introduction_date:              date(2006, 12, 1);
+                power:                          0hp;
+                weight:                         104ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  brenner_cab;
+                speed:                          128mph;
+            cargo_capacity:                 48;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             PASS;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_TILT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHBA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        brenner_middle_passenger_switch_graphics;
+            purchase:                       brenner_middle_passenger_switch_graphics_purchase;
+                name:                           brenner_middle_passenger_switch_name;
+                cost_factor:                    3250; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 1565;
+                purchase_running_cost_factor:   1565; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    power:                          brenner_middle_passenger_switch_power_0;
+                    purchase_power:                 0;
+                    speed:                          brenner_middle_passenger_switch_speed;
+                    purchase_speed:                 205;
+                    articulated_part: brenner_middle_passenger_variant_0_articulated_cb_switch;
+                    additional_text:                brenner_middle_passenger_switch_buy_menu_additional_text;
+                    colour_mapping:                 brenner_middle_passenger_switch_colour_mapping;
+                    purchase_colour_mapping:        brenner_middle_passenger_switch_colour_mapping;
+                cargo_capacity:                 brenner_middle_passenger_switch_cargo_capacity;
+                purchase_cargo_capacity:        brenner_middle_passenger_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, brenner_middle_passenger, 2880) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, brenner_middle_passenger, 2880) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, brenner_middle_passenger, 2880) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, brenner_middle_passenger_variant_1_switch_buy_menu_additional_text, [
+            STORE_TEMP(
+                299
+                | (205 << 16),
+                0x100
+            ),
+            STORE_TEMP(
+                (3000 | string(STR_NAME_BRENNER_CAB) << 16),
+                0x101
+            )
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_TWO_SUBSTR, string(STR_SPEED_BY_RAILTYPE_LGV_CAPABLE), string(STR_WAGONS_ADD_POWER_MIDDLE));
+        }
+    item(FEAT_TRAINS, brenner_middle_passenger_variant_1, 2881) {
+        property {
+            name:                           string(STR_NAME_BRENNER_MIDDLE_PASSENGER);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["power_source/ac","ih_variants_cabbage/cabbage_level_0_has_children","role/very_high_speed","vehicle_family/brenner_cab","special_flags/tilt"];
+                engine_class:                   ENGINE_CLASS_ELECTRIC;
+                introduction_date:              date(2006, 12, 1);
+                power:                          0hp;
+                weight:                         104ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_STEAM;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  brenner_cab;
+                speed:                          128mph;
+            cargo_capacity:                 48;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [];
+                default_cargo_type:             PASS;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_TILT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHBA;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        brenner_middle_passenger_switch_graphics;
+            purchase:                       brenner_middle_passenger_switch_graphics_purchase;
+                name:                           brenner_middle_passenger_switch_name;
+                cost_factor:                    3250; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 1565;
+                purchase_running_cost_factor:   1565; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    power:                          brenner_middle_passenger_switch_power_0;
+                    purchase_power:                 0;
+                    speed:                          brenner_middle_passenger_switch_speed;
+                    purchase_speed:                 205;
+                    articulated_part: brenner_middle_passenger_variant_1_articulated_cb_switch;
+                    additional_text:                brenner_middle_passenger_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 brenner_middle_passenger_switch_colour_mapping;
+                    purchase_colour_mapping:        brenner_middle_passenger_switch_colour_mapping;
+                cargo_capacity:                 brenner_middle_passenger_switch_cargo_capacity;
+                purchase_cargo_capacity:        brenner_middle_passenger_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, brenner_middle_passenger_variant_1, 2881) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_engines==1) {
+                    item(FEAT_TRAINS, brenner_middle_passenger_variant_1, 2881) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_engines==2) {
+                item(FEAT_TRAINS, brenner_middle_passenger_variant_1, 2881) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

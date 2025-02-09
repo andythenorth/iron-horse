@@ -1,0 +1,168 @@
+// graphics chain for vehicle platform
+// position variants are 'default', 'first', 'last', 'middle', etc, and are dependent on consist_ruleset
+    spriteset(intermodal_car_ibex_gen_5C_ss_default, "generated/graphics/iron-ibex/intermodal_car_ibex_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8(10,NOANIM)
+    }
+    spriteset(intermodal_car_ibex_gen_5C_ss_first, "generated/graphics/iron-ibex/intermodal_car_ibex_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8(70,NOANIM)
+    }
+    spriteset(intermodal_car_ibex_gen_5C_ss_last, "generated/graphics/iron-ibex/intermodal_car_ibex_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8(130,NOANIM)
+    }
+    spriteset(intermodal_car_ibex_gen_5C_ss_middle, "generated/graphics/iron-ibex/intermodal_car_ibex_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8(190,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_intermodal_platform_ruleset_4_unit_sets()) {
+        0: intermodal_car_ibex_gen_5C_ss_default;
+        1: return intermodal_car_ibex_gen_5C_ss_first;
+        2: return intermodal_car_ibex_gen_5C_ss_last;
+        3: return intermodal_car_ibex_gen_5C_ss_middle;
+        return intermodal_car_ibex_gen_5C_ss_default;
+    }
+    switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_graphics_spritelayer_cargos_check_cargo_count_default, cargo_count) {
+            0: return ss_global_empty_vehicle;
+        return switch_spritelayer_cargos_intermodal_containers_default_32px;
+    }
+    switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_graphics_spritelayer_cargos_default, [
+                         STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100),
+                         STORE_TEMP(1, 22)
+                        ]) {
+        return intermodal_car_ibex_gen_5C_switch_graphics_spritelayer_cargos_check_cargo_count_default;
+    }
+// switch layers: base platform / spritelayer cargo
+switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    0: return intermodal_car_ibex_gen_5C_switch_graphics_platform_position_in_consist_entry_point;
+    1: return intermodal_car_ibex_gen_5C_switch_graphics_spritelayer_cargos_default;
+}
+// buy menu graphics chain
+spriteset(intermodal_car_ibex_gen_5C_ss_vehicle_purchase, "generated/graphics/iron-ibex/intermodal_car_ibex_gen_5C.png") {
+    spriteset_template_purchase_default(224,10,33,-16,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_graphics_purchase, 0) {
+    return intermodal_car_ibex_gen_5C_ss_vehicle_purchase;
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return intermodal_car_ibex_gen_5C_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return intermodal_car_ibex_gen_5C_switch_set_layers_register_more_sprites;
+        1: return intermodal_car_ibex_gen_5C_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_32px;
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_cargo_capacity,
+        [
+         STORE_TEMP(16, 0),
+         STORE_TEMP(33, 1),
+         STORE_TEMP(48, 2),
+         STORE_TEMP(64, 3),
+         STORE_TEMP(85, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_INTERMODAL_CAR)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_INTERMODAL_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return intermodal_car_ibex_gen_5C_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_INTERMODAL_CAR)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: intermodal_car_ibex_gen_5C_switch_name_purchase_level_0;
+    1: intermodal_car_ibex_gen_5C_switch_name_purchase_level_1;
+    return intermodal_car_ibex_gen_5C_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: intermodal_car_ibex_gen_5C_switch_name_purchase_extra_bits;
+    return intermodal_car_ibex_gen_5C_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_ibex_gen_5C_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return intermodal_car_ibex_gen_5C_switch_name_default;
+    return intermodal_car_ibex_gen_5C_switch_name_not_simplified_gameplay;
+}
+    item(FEAT_TRAINS, intermodal_car_ibex_gen_5C, 28420) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_INTERMODAL_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/c"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         21ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          87mph;
+            cargo_capacity:                 48;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_ARMOURED,CC_COVERED_BULK,CC_EXPRESS,CC_FLATBED,CC_GAS_BULK,CC_LIQUID_BULK,CC_OPEN_BULK,CC_PIECE_GOODS,CC_POWDER_BULK,CC_REFRIGERATED,CC_WEIRD);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("POWR")?POWR:cargotype_available("GOOD")?GOOD:PAPR;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         8;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        intermodal_car_ibex_gen_5C_switch_graphics;
+            purchase:                       intermodal_car_ibex_gen_5C_switch_graphics_purchase;
+                name:                           intermodal_car_ibex_gen_5C_switch_name;
+                cost_factor:                    144; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 361;
+                purchase_running_cost_factor:   361; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                random_trigger:                 intermodal_car_ibex_gen_5C_switch_graphics_spritelayer_cargos_default;
+                cargo_capacity:                 intermodal_car_ibex_gen_5C_switch_cargo_capacity;
+                purchase_cargo_capacity:        intermodal_car_ibex_gen_5C_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, intermodal_car_ibex_gen_5C, 28420) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, intermodal_car_ibex_gen_5C, 28420) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

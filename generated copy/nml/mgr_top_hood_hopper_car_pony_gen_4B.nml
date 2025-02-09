@@ -1,0 +1,1216 @@
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_empty_unweathered, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(10,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_empty_weathered, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(40,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_0, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(70,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_0, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(100,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_1, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(130,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_1, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(160,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_2, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(190,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_2, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(220,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_3, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(250,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_3, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(280,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_4, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(310,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_4, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(340,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_5, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(370,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_5, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(400,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_6, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(430,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_6, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(460,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_7, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(490,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_7, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(520,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_8, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(550,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_8, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(580,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_9, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(610,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_9, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(640,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_10, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(670,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_10, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(700,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_11, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(730,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_11, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(760,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_12, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(790,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_12, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(820,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_13, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(850,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_13, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(880,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_14, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(910,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_14, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(940,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_15, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(970,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_15, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1000,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_16, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1030,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_16, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1060,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_17, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1090,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_17, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1120,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_18, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1150,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_18, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1180,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_19, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1210,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_19, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1240,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_20, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1270,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_20, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1300,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_21, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1330,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_21, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1360,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_22, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1390,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_22, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1420,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_23, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1450,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_23, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1480,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_24, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1510,NOANIM)
+    }
+    spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_24, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8(1540,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_loading, cargo_type_in_veh) {
+                    AORE: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_0;
+                    CASS: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_1;
+                    CLAY: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_2;
+                    COAL: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_3;
+                    COKE: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_4;
+                    CORE: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_5;
+                    GRVL: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_6;
+                    IORE: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_7;
+                    LIME: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_8;
+                    KAOL: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_9;
+                    MNO2: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_10;
+                    NITR: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_11;
+                    PEAT: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_12;
+                    PHOS: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_13;
+                    PORE: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_14;
+                    POTA: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_15;
+                    SALT: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_16;
+                    SAND: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_17;
+                    SASH: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_18;
+                    SCMT: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_19;
+                    SGBT: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_20;
+                    SLAG: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_21;
+                    SGCN: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_22;
+                    SULP: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_23;
+                    WDCH: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_24;
+        return mgr_top_hood_hopper_car_pony_gen_4B_ss_loading_6;
+    }
+    switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_loaded, cargo_type_in_veh) {
+                    AORE: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_0;
+                    CASS: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_1;
+                    CLAY: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_2;
+                    COAL: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_3;
+                    COKE: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_4;
+                    CORE: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_5;
+                    GRVL: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_6;
+                    IORE: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_7;
+                    LIME: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_8;
+                    KAOL: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_9;
+                    MNO2: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_10;
+                    NITR: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_11;
+                    PEAT: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_12;
+                    PHOS: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_13;
+                    PORE: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_14;
+                    POTA: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_15;
+                    SALT: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_16;
+                    SAND: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_17;
+                    SASH: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_18;
+                    SCMT: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_19;
+                    SGBT: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_20;
+                    SLAG: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_21;
+                    SGCN: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_22;
+                    SULP: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_23;
+                    WDCH: return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_24;
+        return mgr_top_hood_hopper_car_pony_gen_4B_ss_loaded_6;
+    }
+        switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_vehicle_check_state_unweathered, switch_graphics_visible_cargo_no_cover_percent_loaded()) {
+            0: return mgr_top_hood_hopper_car_pony_gen_4B_ss_empty_unweathered;
+            1: return mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_loading;
+            2: return mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_loaded;
+        }
+        switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_vehicle_check_state_weathered, switch_graphics_visible_cargo_no_cover_percent_loaded()) {
+            0: return mgr_top_hood_hopper_car_pony_gen_4B_ss_empty_weathered;
+            1: return mgr_top_hood_hopper_car_pony_gen_4B_ss_empty_weathered;
+            2: return mgr_top_hood_hopper_car_pony_gen_4B_ss_empty_weathered;
+        }
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
+        0: return mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_vehicle_check_state_unweathered;
+        1: return mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_vehicle_check_state_weathered;
+    return mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_vehicle_check_state_unweathered; 
+}
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_check_randomisation_strategy, param_wagon_colour_randomisation) {
+    0: mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_vehicle_check_state_unweathered; 
+    mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_vehicle_choose_weathered_variant;
+}
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+        1: mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_check_randomisation_strategy;
+    mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_vehicle_check_state_unweathered;
+}
+// buy menu graphics chain
+spriteset(mgr_top_hood_hopper_car_pony_gen_4B_ss_purchase, "generated/graphics/iron-horse/mgr_top_hood_hopper_car_pony_gen_4B.png") {
+    spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase, 1) {
+    return mgr_top_hood_hopper_car_pony_gen_4B_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return mgr_top_hood_hopper_car_pony_gen_4B_switch_set_layers_register_more_sprites;
+        1: return mgr_top_hood_hopper_car_pony_gen_4B_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_24px;
+}
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity,
+        [
+         STORE_TEMP(11, 0),
+         STORE_TEMP(23, 1),
+         STORE_TEMP(33, 2),
+         STORE_TEMP(44, 3),
+         STORE_TEMP(59, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_MGR_HOPPER_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return mgr_top_hood_hopper_car_pony_gen_4B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: mgr_top_hood_hopper_car_pony_gen_4B_switch_name_purchase_level_0;
+    1: mgr_top_hood_hopper_car_pony_gen_4B_switch_name_purchase_level_1;
+    return mgr_top_hood_hopper_car_pony_gen_4B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: mgr_top_hood_hopper_car_pony_gen_4B_switch_name_purchase_extra_bits;
+    return mgr_top_hood_hopper_car_pony_gen_4B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return mgr_top_hood_hopper_car_pony_gen_4B_switch_name_default;
+    return mgr_top_hood_hopper_car_pony_gen_4B_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B, 36280) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mgr_hopper_car_pony_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics;
+            purchase:                       mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase;
+                name:                           mgr_top_hood_hopper_car_pony_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                mgr_top_hood_hopper_car_pony_gen_4B_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(4);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(130);
+                cargo_capacity:                 mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B, 36280) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B, 36280) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B, 36280) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_4))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x101
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((0) << 16),
+                    0x102
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_1, 36281) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mgr_hopper_car_pony_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics;
+            purchase:                       mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase;
+                name:                           mgr_top_hood_hopper_car_pony_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                mgr_top_hood_hopper_car_pony_gen_4B_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(79);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(74);
+                cargo_capacity:                 mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_1, 36281) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_1, 36281) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_1, 36281) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_2, 36282) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mgr_hopper_car_pony_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics;
+            purchase:                       mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase;
+                name:                           mgr_top_hood_hopper_car_pony_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                mgr_top_hood_hopper_car_pony_gen_4B_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(30);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(13);
+                cargo_capacity:                 mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_2, 36282) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_2, 36282) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_2, 36282) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_variant_3_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(23) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(24) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_3, 36283) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mgr_hopper_car_pony_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics;
+            purchase:                       mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase;
+                name:                           mgr_top_hood_hopper_car_pony_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                mgr_top_hood_hopper_car_pony_gen_4B_variant_3_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(92);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(44);
+                cargo_capacity:                 mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_3, 36283) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_3, 36283) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_3, 36283) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, mgr_top_hood_hopper_car_pony_gen_4B_variant_4_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(25) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(16) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_4, 36284) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mgr_hopper_car_pony_gen_4B;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics;
+            purchase:                       mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase;
+                name:                           mgr_top_hood_hopper_car_pony_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                mgr_top_hood_hopper_car_pony_gen_4B_variant_4_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(38);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(48);
+                cargo_capacity:                 mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_4, 36284) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_4, 36284) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_4, 36284) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_5, 36285) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mgr_hopper_car_pony_gen_4B_variant_5;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics;
+            purchase:                       mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase;
+                name:                           mgr_top_hood_hopper_car_pony_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(9);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(75);
+                cargo_capacity:                 mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_5, 36285) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_5, 36285) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_5, 36285) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_6, 36286) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mgr_hopper_car_pony_gen_4B_variant_5;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics;
+            purchase:                       mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase;
+                name:                           mgr_top_hood_hopper_car_pony_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(16);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(126);
+                cargo_capacity:                 mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_6, 36286) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_6, 36286) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_6, 36286) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_7, 36287) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mgr_hopper_car_pony_gen_4B_variant_5;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics;
+            purchase:                       mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase;
+                name:                           mgr_top_hood_hopper_car_pony_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(109);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(116);
+                cargo_capacity:                 mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_7, 36287) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_7, 36287) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_7, 36287) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_8, 36288) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mgr_hopper_car_pony_gen_4B_variant_5;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics;
+            purchase:                       mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase;
+                name:                           mgr_top_hood_hopper_car_pony_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(17);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(110);
+                cargo_capacity:                 mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_8, 36288) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_8, 36288) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_8, 36288) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_9, 36289) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mgr_hopper_car_pony_gen_4B_variant_5;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics;
+            purchase:                       mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase;
+                name:                           mgr_top_hood_hopper_car_pony_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(93);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(90);
+                cargo_capacity:                 mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_9, 36289) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_9, 36289) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_9, 36289) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_10, 36290) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mgr_hopper_car_pony_gen_4B_variant_5;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics;
+            purchase:                       mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase;
+                name:                           mgr_top_hood_hopper_car_pony_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(88);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(80);
+                cargo_capacity:                 mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_10, 36290) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_10, 36290) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_10, 36290) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_11, 36291) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MGR_TOP_HOOD_HOPPER_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1960, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     30;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  mgr_hopper_car_pony_gen_4B_variant_5;
+                speed:                          75mph;
+            cargo_capacity:                 33;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_OPEN_BULK);
+            non_refittable_cargo_classes:   bitmask();
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [WOOD,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS,BAKE];
+                default_cargo_type:             cargotype_available("COAL")?COAL:cargotype_available("COKE")?COKE:cargotype_available("NITR")?NITR:POTA;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics;
+            purchase:                       mgr_top_hood_hopper_car_pony_gen_4B_switch_graphics_purchase;
+                name:                           mgr_top_hood_hopper_car_pony_gen_4B_switch_name;
+                cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 230;
+                purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(19);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(122);
+                cargo_capacity:                 mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                purchase_cargo_capacity:        mgr_top_hood_hopper_car_pony_gen_4B_switch_cargo_capacity;
+                loading_speed:                  10;
+        }
+    }
+        item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_11, 36291) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_11, 36291) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, mgr_top_hood_hopper_car_pony_gen_4B_variant_11, 36291) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

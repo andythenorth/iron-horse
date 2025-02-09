@@ -1,0 +1,1707 @@
+// buy menu graphics chain
+spriteset(acid_tank_car_randomised_ibex_gen_5B_ss_purchase, "generated/graphics/iron-ibex/acid_tank_car_randomised_ibex_gen_5B.png") {
+    spriteset_template_purchase_default(360,10,48,-23,NOANIM)
+}
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 81;
+                1: return 81;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                33
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 4;
+                1: return 4;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                37
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 24;
+                1: return 24;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                44
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 31;
+                1: return 31;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                58
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 25;
+                1: return 25;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                13
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 5;
+                1: return 5;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                26
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_6_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_6_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_6_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_6_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_6_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 82;
+                1: return 82;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_6_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_6_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_6_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                52
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_7_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_7_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_7_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_7_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_7_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 47;
+                1: return 47;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_7_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_7_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_7_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                57
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_8_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_8_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_8_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_8_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_8_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 29;
+                1: return 29;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_8_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_8_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_8_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                35
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_9_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_9_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_9_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_9_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_9_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 69;
+                1: return 69;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_9_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_9_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_9_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                70
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_10_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_10_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_10_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_10_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_10_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 59;
+                1: return 59;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_10_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_10_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_10_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                28
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_11_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_11_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_11_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_11_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_11_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 30;
+                1: return 30;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_11_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_11_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_11_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                38
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_12_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_12_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_12_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_12_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_12_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 62;
+                1: return 62;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_12_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_12_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_12_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                19
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_13_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_13_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_13_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_13_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_13_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 49;
+                1: return 49;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_13_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_13_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_13_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                66
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_14_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_14_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_14_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_14_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_14_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 46;
+                1: return 46;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_14_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_14_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_14_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                6
+            );
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_15_switch_graphics_variant_choose_randomised_wagon, [
+                                    pseudo_random_value_from_deterministic_random_map_map_block_train_with_minor_variation()
+                                    %
+                                    2
+            ]) {
+                0: 0;
+                1: 1;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_15_switch_graphics_variant, acid_tank_car_randomised_ibex_gen_5B_variant_15_switch_graphics_variant_choose_randomised_wagon()) {
+                0: acid_tank_car_type_1_ibex_gen_5B_switch_graphics;
+                1: acid_tank_car_type_2_ibex_gen_5B_switch_graphics;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_15_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates, acid_tank_car_randomised_ibex_gen_5B_variant_15_switch_graphics_variant_choose_randomised_wagon()) {
+                0: return 74;
+                1: return 74;
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_15_switch_colour_mapping_variant, 0) {
+            return switch_wagon_recolour_sets(acid_tank_car_randomised_ibex_gen_5B_variant_15_switch_colour_mapping_variant_get_colour_set_num_from_random_candidates());
+        }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_15_switch_colour_mapping_variant_purchase, 0) {
+            return switch_wagon_recolour_sets(
+                15
+            );
+        }
+switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_graphics, vehicle_type_id) {
+        31260: acid_tank_car_randomised_ibex_gen_5B_switch_graphics_variant;
+        31261: acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_graphics_variant;
+        31262: acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_graphics_variant;
+        31263: acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_graphics_variant;
+        31264: acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_graphics_variant;
+        31265: acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_graphics_variant;
+        31266: acid_tank_car_randomised_ibex_gen_5B_variant_6_switch_graphics_variant;
+        31267: acid_tank_car_randomised_ibex_gen_5B_variant_7_switch_graphics_variant;
+        31268: acid_tank_car_randomised_ibex_gen_5B_variant_8_switch_graphics_variant;
+        31269: acid_tank_car_randomised_ibex_gen_5B_variant_9_switch_graphics_variant;
+        31270: acid_tank_car_randomised_ibex_gen_5B_variant_10_switch_graphics_variant;
+        31271: acid_tank_car_randomised_ibex_gen_5B_variant_11_switch_graphics_variant;
+        31272: acid_tank_car_randomised_ibex_gen_5B_variant_12_switch_graphics_variant;
+        31273: acid_tank_car_randomised_ibex_gen_5B_variant_13_switch_graphics_variant;
+        31274: acid_tank_car_randomised_ibex_gen_5B_variant_14_switch_graphics_variant;
+        31275: acid_tank_car_randomised_ibex_gen_5B_variant_15_switch_graphics_variant;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase, vehicle_type_id) {
+    acid_tank_car_randomised_ibex_gen_5B_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping, vehicle_type_id) {
+        31260: acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_variant;
+        31261: acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_colour_mapping_variant;
+        31262: acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_colour_mapping_variant;
+        31263: acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_colour_mapping_variant;
+        31264: acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_colour_mapping_variant;
+        31265: acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_colour_mapping_variant;
+        31266: acid_tank_car_randomised_ibex_gen_5B_variant_6_switch_colour_mapping_variant;
+        31267: acid_tank_car_randomised_ibex_gen_5B_variant_7_switch_colour_mapping_variant;
+        31268: acid_tank_car_randomised_ibex_gen_5B_variant_8_switch_colour_mapping_variant;
+        31269: acid_tank_car_randomised_ibex_gen_5B_variant_9_switch_colour_mapping_variant;
+        31270: acid_tank_car_randomised_ibex_gen_5B_variant_10_switch_colour_mapping_variant;
+        31271: acid_tank_car_randomised_ibex_gen_5B_variant_11_switch_colour_mapping_variant;
+        31272: acid_tank_car_randomised_ibex_gen_5B_variant_12_switch_colour_mapping_variant;
+        31273: acid_tank_car_randomised_ibex_gen_5B_variant_13_switch_colour_mapping_variant;
+        31274: acid_tank_car_randomised_ibex_gen_5B_variant_14_switch_colour_mapping_variant;
+        31275: acid_tank_car_randomised_ibex_gen_5B_variant_15_switch_colour_mapping_variant;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase, vehicle_type_id) {
+        31260: acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_variant_purchase;
+        31261: acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_colour_mapping_variant_purchase;
+        31262: acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_colour_mapping_variant_purchase;
+        31263: acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_colour_mapping_variant_purchase;
+        31264: acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_colour_mapping_variant_purchase;
+        31265: acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_colour_mapping_variant_purchase;
+        31266: acid_tank_car_randomised_ibex_gen_5B_variant_6_switch_colour_mapping_variant_purchase;
+        31267: acid_tank_car_randomised_ibex_gen_5B_variant_7_switch_colour_mapping_variant_purchase;
+        31268: acid_tank_car_randomised_ibex_gen_5B_variant_8_switch_colour_mapping_variant_purchase;
+        31269: acid_tank_car_randomised_ibex_gen_5B_variant_9_switch_colour_mapping_variant_purchase;
+        31270: acid_tank_car_randomised_ibex_gen_5B_variant_10_switch_colour_mapping_variant_purchase;
+        31271: acid_tank_car_randomised_ibex_gen_5B_variant_11_switch_colour_mapping_variant_purchase;
+        31272: acid_tank_car_randomised_ibex_gen_5B_variant_12_switch_colour_mapping_variant_purchase;
+        31273: acid_tank_car_randomised_ibex_gen_5B_variant_13_switch_colour_mapping_variant_purchase;
+        31274: acid_tank_car_randomised_ibex_gen_5B_variant_14_switch_colour_mapping_variant_purchase;
+        31275: acid_tank_car_randomised_ibex_gen_5B_variant_15_switch_colour_mapping_variant_purchase;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity,
+        [
+         STORE_TEMP(12, 0),
+         STORE_TEMP(25, 1),
+         STORE_TEMP(36, 2),
+         STORE_TEMP(48, 3),
+         STORE_TEMP(64, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_ACID_TANK_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return acid_tank_car_randomised_ibex_gen_5B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_CONTAINER_2, string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED), string(STR_NAME_SUFFIX_RANDOMISED_WAGON))
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: acid_tank_car_randomised_ibex_gen_5B_switch_name_purchase_level_0;
+    1: acid_tank_car_randomised_ibex_gen_5B_switch_name_purchase_level_1;
+    return acid_tank_car_randomised_ibex_gen_5B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: acid_tank_car_randomised_ibex_gen_5B_switch_name_purchase_extra_bits;
+    return acid_tank_car_randomised_ibex_gen_5B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return acid_tank_car_randomised_ibex_gen_5B_switch_name_default;
+    return acid_tank_car_randomised_ibex_gen_5B_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B, 31260) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                acid_tank_car_randomised_ibex_gen_5B_switch_buy_menu_additional_text;
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B, 31260) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B, 31260) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B, 31260) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_6))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x101
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(21) | 0xD000)
+                    | ((switch_get_colour_name(18) | 0xD000) << 16),
+                    0x102
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(19) | 0xD000)
+                    | ((0) << 16),
+                    0x103
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_1, 31261) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                acid_tank_car_randomised_ibex_gen_5B_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_1, 31261) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_1, 31261) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_1, 31261) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(25) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(16) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_2, 31262) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                acid_tank_car_randomised_ibex_gen_5B_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_2, 31262) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_2, 31262) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_2, 31262) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(18) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_3, 31263) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                acid_tank_car_randomised_ibex_gen_5B_variant_3_switch_buy_menu_additional_text;
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_3, 31263) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_3, 31263) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_3, 31263) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(23) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(28) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_4, 31264) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                acid_tank_car_randomised_ibex_gen_5B_variant_4_switch_buy_menu_additional_text;
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_4, 31264) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_4, 31264) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_4, 31264) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(19) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(22) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_5, 31265) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                acid_tank_car_randomised_ibex_gen_5B_variant_5_switch_buy_menu_additional_text;
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_5, 31265) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_5, 31265) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_5, 31265) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_6, 31266) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B_variant_6;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_6, 31266) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_6, 31266) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_6, 31266) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_7, 31267) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B_variant_6;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_7, 31267) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_7, 31267) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_7, 31267) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_8, 31268) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B_variant_6;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_8, 31268) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_8, 31268) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_8, 31268) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_9, 31269) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B_variant_6;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_9, 31269) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_9, 31269) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_9, 31269) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_10, 31270) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B_variant_6;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_10, 31270) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_10, 31270) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_10, 31270) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_11, 31271) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B_variant_6;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_11, 31271) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_11, 31271) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_11, 31271) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_12, 31272) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B_variant_6;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_12, 31272) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_12, 31272) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_12, 31272) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_13, 31273) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B_variant_6;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_13, 31273) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_13, 31273) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_13, 31273) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_14, 31274) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B_variant_6;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_14, 31274) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_14, 31274) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_14, 31274) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_15, 31275) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_ACID_TANK_CAR_RANDOMISED);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1993, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     VEHICLE_NEVER_EXPIRES;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  acid_tank_car_type_1_ibex_gen_5B_variant_6;
+                speed:                          87mph;
+            cargo_capacity:                 36;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_LIQUID_BULK);
+            non_refittable_cargo_classes:   bitmask(CC_POTABLE);
+            cargo_allow_refit:              [];
+            cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO,N7__];
+                default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        acid_tank_car_randomised_ibex_gen_5B_switch_graphics;
+            purchase:                       acid_tank_car_randomised_ibex_gen_5B_switch_graphics_purchase;
+                name:                           acid_tank_car_randomised_ibex_gen_5B_switch_name;
+                cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 271;
+                purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping;
+                    purchase_colour_mapping:        acid_tank_car_randomised_ibex_gen_5B_switch_colour_mapping_purchase;
+                cargo_capacity:                 acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                purchase_cargo_capacity:        acid_tank_car_randomised_ibex_gen_5B_switch_cargo_capacity;
+                loading_speed:                  7;
+        }
+    }
+        item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_15, 31275) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_15, 31275) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, acid_tank_car_randomised_ibex_gen_5B_variant_15, 31275) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }

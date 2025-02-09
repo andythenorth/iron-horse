@@ -1,0 +1,1517 @@
+    // default graphics chain
+    spriteset(merchandise_box_car_ibex_gen_3B_ss_unweathered_doors_closed, "generated/graphics/iron-ibex/merchandise_box_car_ibex_gen_3B.png") {
+        spriteset_template_symmetric_unreversed_6_8(10,NOANIM)
+    }
+    spriteset(merchandise_box_car_ibex_gen_3B_ss_unweathered_doors_open, "generated/graphics/iron-ibex/merchandise_box_car_ibex_gen_3B.png") {
+        spriteset_template_symmetric_unreversed_6_8(40,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_graphics_vehicle_unweathered,
+            [switch_graphics_opening_doors()]) {
+        0: return merchandise_box_car_ibex_gen_3B_ss_unweathered_doors_closed;
+        1: return merchandise_box_car_ibex_gen_3B_ss_unweathered_doors_open;
+    }
+switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_graphics_vehicle_choose_weathered_variant, random_bits_weathered_variant()) {
+        0: return merchandise_box_car_ibex_gen_3B_switch_graphics_vehicle_unweathered;
+    return merchandise_box_car_ibex_gen_3B_switch_graphics_vehicle_unweathered; 
+}
+switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_graphics_vehicle, param_wagon_colour_randomisation) {
+    0: merchandise_box_car_ibex_gen_3B_switch_graphics_vehicle_unweathered; 
+    merchandise_box_car_ibex_gen_3B_switch_graphics_vehicle_choose_weathered_variant;
+}
+switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return merchandise_box_car_ibex_gen_3B_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+        0: return merchandise_box_car_ibex_gen_3B_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_24px;
+}
+// buy menu graphics chain
+spriteset(merchandise_box_car_ibex_gen_3B_ss_purchase, "generated/graphics/iron-ibex/merchandise_box_car_ibex_gen_3B.png") {
+    spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_graphics_purchase, 0) {
+    return merchandise_box_car_ibex_gen_3B_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_cargo_capacity,
+        [
+         STORE_TEMP(10, 0),
+         STORE_TEMP(21, 1),
+         STORE_TEMP(30, 2),
+         STORE_TEMP(40, 3),
+         STORE_TEMP(54, 4)
+        ]) {
+    return switch_cargo_capacity();
+}
+switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_name_default, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR)
+            ,
+            0x100
+        ),
+    ]) {
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_name_purchase_level_0, [
+        STORE_TEMP(
+            string(STR_WAGON_GROUP_MERCHANDISE_BOX_CARS)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_0_has_children")
+    ]) {
+    1: return string(STR_NAME_CONTAINER_1);
+    return merchandise_box_car_ibex_gen_3B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_name_purchase_level_1, [
+        STORE_TEMP(
+            string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR)
+            ,
+            0x100
+        ),
+        has_badge("ih_variants_cabbage/cabbage_level_1_has_children")
+    ]) {
+    1: return string(STR_WAGON_GROUP_MORE);
+    return string(STR_NAME_CONTAINER_1);
+}
+switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_name_purchase_extra_bits, getbits(extra_callback_info1, 8, 8)) {
+    0: merchandise_box_car_ibex_gen_3B_switch_name_purchase_level_0;
+    1: merchandise_box_car_ibex_gen_3B_switch_name_purchase_level_1;
+    return merchandise_box_car_ibex_gen_3B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_name_not_simplified_gameplay, [
+        getbits(extra_callback_info1, 0, 8)
+    ]) {
+    0x20: merchandise_box_car_ibex_gen_3B_switch_name_purchase_extra_bits;
+    return merchandise_box_car_ibex_gen_3B_switch_name_default;
+}
+switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_name, [
+        param_vehicle_availability_wagons
+    ]) {
+    1: return merchandise_box_car_ibex_gen_3B_switch_name_default;
+    return merchandise_box_car_ibex_gen_3B_switch_name_not_simplified_gameplay;
+}
+        switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B, 25610) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                merchandise_box_car_ibex_gen_3B_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(81);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(33);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B, 25610) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B, 25610) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B, 25610) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_variant_1_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_7))
+                    | ((string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000)
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x101
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((switch_get_colour_name(21) | 0xD000) << 16),
+                    0x102
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(18) | 0xD000)
+                    | ((switch_get_colour_name(19) | 0xD000) << 16),
+                    0x103
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_1, 25611) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                merchandise_box_car_ibex_gen_3B_variant_1_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(43);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(54);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_1, 25611) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_1, 25611) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_1, 25611) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_variant_2_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(25) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(16) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_2, 25612) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                merchandise_box_car_ibex_gen_3B_variant_2_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(24);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(44);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_2, 25612) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_2, 25612) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_2, 25612) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_variant_3_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_3))
+                    | ((switch_get_colour_name(16) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(17) | 0xD000)
+                    | ((switch_get_colour_name(18) | 0xD000) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_3, 25613) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                merchandise_box_car_ibex_gen_3B_variant_3_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(17);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(41);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_3, 25613) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_3, 25613) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_3, 25613) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_variant_4_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(21) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(22) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_4, 25614) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                merchandise_box_car_ibex_gen_3B_variant_4_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(77);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(61);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_4, 25614) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_4, 25614) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_4, 25614) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_variant_5_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(28) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(29) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_5, 25615) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                merchandise_box_car_ibex_gen_3B_variant_5_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(21);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(73);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_5, 25615) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_5, 25615) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_5, 25615) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+        switch (FEAT_TRAINS, SELF, merchandise_box_car_ibex_gen_3B_variant_6_switch_buy_menu_additional_text, [
+                STORE_TEMP(
+                    (string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_2))
+                    | ((switch_get_colour_name(19) | 0xD000) << 16),
+                    0x100
+                ),
+                STORE_TEMP(
+                    (switch_get_colour_name(22) | 0xD000)
+                    | ((0) << 16),
+                    0x101
+                ),
+        ]) {
+            return string(STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS));
+        }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_6, 25616) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    additional_text:                merchandise_box_car_ibex_gen_3B_variant_6_switch_buy_menu_additional_text;
+                    colour_mapping:                 switch_wagon_recolour_sets(5);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(26);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_6, 25616) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_6, 25616) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_6, 25616) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_7, 25617) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(82);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(52);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_7, 25617) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_7, 25617) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_7, 25617) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_8, 25618) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B_variant_7;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(47);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(57);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_8, 25618) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_8, 25618) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_8, 25618) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_9, 25619) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B_variant_7;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(29);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(35);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_9, 25619) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_9, 25619) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_9, 25619) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_10, 25620) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B_variant_7;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(69);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(70);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_10, 25620) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_10, 25620) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_10, 25620) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_11, 25621) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B_variant_7;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(2);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(55);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_11, 25621) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_11, 25621) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_11, 25621) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_12, 25622) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B_variant_7;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(62);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(19);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_12, 25622) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_12, 25622) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_12, 25622) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_13, 25623) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B_variant_7;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(49);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(66);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_13, 25623) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_13, 25623) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_13, 25623) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_14, 25624) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B_variant_7;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(50);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(0);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_14, 25624) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_14, 25624) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_14, 25624) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_15, 25625) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B_variant_7;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(30);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(38);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_15, 25625) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_15, 25625) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_15, 25625) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_16, 25626) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B_variant_7;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(32);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(11);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_16, 25626) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_16, 25626) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_16, 25626) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_17, 25627) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B_variant_7;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(46);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(6);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_17, 25627) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_17, 25627) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_17, 25627) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
+    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_18, 25628) {
+        property {
+            name:                           string(STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR);
+            climates_available:             NO_CLIMATE; // nml constant
+            badges:                         ["ih_variants_cabbage/cabbage_level_0_has_children","ih_variants_cabbage/cabbage_level_1_has_children","ih_wagon_length/b"];
+                engine_class:                   ENGINE_CLASS_STEAM;
+                introduction_date:              date(1939, 5, 1);
+                power:                          0hp;
+                weight:                         15ton;
+                tractive_effort_coefficient:    0.3;
+                cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                running_cost_base:              RUNNING_COST_DIESEL;
+                running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+                model_life:                     27;
+                retire_early:                   -10;
+                reliability_decay:              20; // default value
+                vehicle_life:                   40;
+                    variant_group:                  merchandise_box_car_ibex_gen_3B_variant_7;
+                speed:                          60mph;
+            cargo_capacity:                 30;
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+            refittable_cargo_classes:       bitmask(CC_PIECE_GOODS,CC_EXPRESS);
+            non_refittable_cargo_classes:   bitmask(CC_WEIRD);
+            cargo_allow_refit:              [BEAN,CMNT,FRUT,GRAI,MAIL,MAIZ,NITR,WHEA];
+            cargo_disallow_refit:           [TOUR];
+                default_cargo_type:             cargotype_available("GOOD")?GOOD:cargotype_available("GLAS")?GLAS:cargotype_available("FRUT")?FRUT:BOOM;
+            misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT);
+            extra_flags:                    bitmask(VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE,VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW,VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            dual_headed:                    0;
+            length:                         6;
+            track_type:                     IHA_;
+            effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+        }
+        graphics {
+            default:                        merchandise_box_car_ibex_gen_3B_switch_graphics;
+            purchase:                       merchandise_box_car_ibex_gen_3B_switch_graphics_purchase;
+                name:                           merchandise_box_car_ibex_gen_3B_switch_name;
+                cost_factor:                    89; // CB used as it is capped to max 32k, prop is only 255
+                    // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+                        running_cost_factor: 191;
+                purchase_running_cost_factor:   191; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                    colour_mapping:                 switch_wagon_recolour_sets(74);
+                    purchase_colour_mapping:        switch_wagon_recolour_sets(15);
+                cargo_capacity:                 merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                purchase_cargo_capacity:        merchandise_box_car_ibex_gen_3B_switch_cargo_capacity;
+                loading_speed:                  5;
+        }
+    }
+        item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_18, 25628) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+                if (param_vehicle_availability_wagons==1) {
+                    item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_18, 25628) {
+                        property {
+                            climates_available:             NO_CLIMATE;
+                            variant_group:                  0xFFFF; 
+                        }
+                    }
+                }
+            if (param_vehicle_availability_wagons==2) {
+                item(FEAT_TRAINS, merchandise_box_car_ibex_gen_3B_variant_18, 25628) {
+                    property {
+                        climates_available:             NO_CLIMATE;
+                    }
+                }
+            }
