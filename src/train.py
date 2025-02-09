@@ -96,7 +96,7 @@ class ModelDef(object):
             # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
             raise Exception(
                 "Don't clone a consist factory that is itself a clone, it won't work as expected. \nClone the original consist factory. \nConsist is: "
-                + self.kwargs["id"]
+                + self.base_id
             )
         cloned_model_def = copy.deepcopy(self)
         # cloned consist factory may need to reference original source
@@ -119,10 +119,13 @@ class ModelDef(object):
 
         cloned_model_def.kwargs["base_numeric_id"] = base_numeric_id
         # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
+        # CABBAGE
         cloned_model_def.kwargs["id"] = (
             self.kwargs["id"] + "_clone_" + str(len(self.clones))
         )
-        cloned_model_def.kwargs["buyable_variant_group_id"] = self.kwargs["id"]
+        # CABBAGE SHIM
+        cloned_model_def.base_id = cloned_model_def.kwargs["id"]
+        cloned_model_def.kwargs["buyable_variant_group_id"] = cloned_model_def.base_id
         return cloned_model_def
 
     def complete_clone(self):
@@ -235,7 +238,7 @@ class ModelTypeFactory(object):
             except:
                 raise Exception(
                     "class_name not found for "
-                    + self.model_def.kwargs["id"]
+                    + self.model_def.base_id
                     + ", "
                     + unit_def.class_name
                 )
@@ -1168,7 +1171,7 @@ class Consist(object):
             if self.is_clone:
                 # this will get a default consist from the source factory, mapping this consist to the source spritesheet
                 input_spritesheet_name_stem = (
-                    self.model_def.cloned_from_model_def.kwargs["id"]
+                    self.model_def.cloned_from_model_def.base_id
                 )
             else:
                 input_spritesheet_name_stem = self.id
