@@ -2429,8 +2429,9 @@ class CarConsist(Consist):
     Intermediate class for car (wagon) consists to subclass from, provides sparse properties, most are declared in subclasses.
     """
 
+    # base_id = '' # provide in subclass
+
     def __init__(self, speedy=False, **kwargs):
-        # self.base_id = '' # provide in subclass
         # we can't called super yet, because we need the id
         # but we need to call the consist factory to get the id, so duplicate the assignment here (Consist will also set it)
         # CABBAGE model_def?
@@ -2664,8 +2665,9 @@ class AlignmentCarConsist(CarConsist):
     For checking sprite alignment
     """
 
+    base_id = "alignment_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "alignment_car"
         super().__init__(**kwargs)
         # no speed limit
         self.speed_class = None
@@ -2723,8 +2725,9 @@ class AutomobileCarConsist(AutomobileCarConsistBase):
     Automobile transporter with single flat deck at conventional height.
     """
 
+    base_id = "automobile_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "automobile_car"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -2746,8 +2749,9 @@ class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
     Automobile transporter with double deck, cars only.
     """
 
+    base_id = "double_deck_automobile_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "double_deck_automobile_car"
         super().__init__(**kwargs)
         # blah blah, more restrictive refits for double deck, cars only
         self.label_refits_allowed = ["PASS", "VEHI"]
@@ -2773,8 +2777,9 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
     Automobile transporter with single deck at lowered height.
     """
 
+    base_id = "low_floor_automobile_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "low_floor_automobile_car"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -2806,8 +2811,9 @@ class AutomobileEnclosedCarConsist(CarConsist):
         ],
     ]
 
+    base_id = "enclosed_automobile_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "enclosed_automobile_car"
         super().__init__(**kwargs)
         self.speed_class = "express"
         # no classes, use explicit labels
@@ -2884,8 +2890,9 @@ class BolsterCarConsist(BolsterCarConsistBase):
     Specialist wagon with side stakes and bolsters for long products, limited refits.
     """
 
+    base_id = "bolster_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "bolster_car"
         super().__init__(**kwargs)
 
 
@@ -2894,8 +2901,9 @@ class BolsterCarHighEndConsist(BolsterCarConsistBase):
     Specialist wagon with side stakes and bolsters for long products, limited refits.
     """
 
+    base_id = "high_end_bolster_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "high_end_bolster_car"
         super().__init__(**kwargs)
 
 
@@ -2904,8 +2912,9 @@ class BolsterCarConsistRandomisedConsist(RandomisedConsistMixin, BolsterCarConsi
     Random choice of bolster car sprite, from available bolster cars.
     """
 
+    base_id = "bolster_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "bolster_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -2972,8 +2981,9 @@ class BoxCarConsistType1(BoxCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
     ]
 
+    base_id = "box_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "box_car_type_1"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "box_car_randomised",
@@ -3006,8 +3016,9 @@ class BoxCarConsistType2(BoxCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
     ]
 
+    base_id = "box_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "box_car_type_2"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "box_car_randomised",
@@ -3061,8 +3072,9 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
     ]
 
+    base_id = "curtain_side_box_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "curtain_side_box_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_curtain_side"]
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
@@ -3130,8 +3142,9 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
     ]
 
+    base_id = "merchandise_box_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "merchandise_box_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_goods"]
         # don't include in random box car group, at least for pony, looks bad - other rosters may differ?
@@ -3172,8 +3185,9 @@ class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
         ],
     ]
 
+    base_id = "box_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "box_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -3234,8 +3248,9 @@ class BoxCarSlidingWallConsistType1(BoxCarSlidingWallConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
     ]
 
+    base_id = "sliding_wall_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "sliding_wall_car_type_1"
         super().__init__(**kwargs)
         # Graphics configuration
         if self.base_track_type_name == "NG":
@@ -3284,8 +3299,9 @@ class BoxCarSlidingWallConsistType2(BoxCarSlidingWallConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
     ]
 
+    base_id = "sliding_wall_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "sliding_wall_car_type_2"
         super().__init__(**kwargs)
         self.randomised_candidate_groups.extend(
             ["piece_goods_car_manufacturing_parts_randomised"]
@@ -3328,8 +3344,9 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
     ]
 
+    base_id = "vehicle_parts_box_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "vehicle_parts_box_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_vehicle_parts"]
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
@@ -3430,8 +3447,9 @@ class BulkOpenCarAggregateConsistType1(BulkOpenCarAggregateConsistBase):
     Same as standard dump car, but different appearance and default cargos.
     """
 
+    base_id = "aggregate_bulk_open_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_bulk_open_car_type_1"
         super().__init__(**kwargs)
 
 
@@ -3441,8 +3459,9 @@ class BulkOpenCarAggregateConsistType2(BulkOpenCarAggregateConsistBase):
     Same as standard dump car, but different appearance and default cargos.
     """
 
+    base_id = "aggregate_bulk_open_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_bulk_open_car_type_2"
         super().__init__(**kwargs)
 
 
@@ -3452,8 +3471,9 @@ class BulkOpenCarAggregateConsistType3(BulkOpenCarAggregateConsistBase):
     Same as standard dump car, but different appearance and default cargos.
     """
 
+    base_id = "aggregate_bulk_open_car_type_3"
+
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_bulk_open_car_type_3"
         super().__init__(**kwargs)
 
 
@@ -3464,8 +3484,9 @@ class BulkOpenCarAggregateRandomisedConsist(
     Random choice of aggregate car.
     """
 
+    base_id = "aggregate_bulk_open_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_bulk_open_car_randomised"
         super().__init__(**kwargs)
         # needed to clear randomised set by base class
         self.randomised_candidate_groups = []
@@ -3484,8 +3505,9 @@ class BulkOpenCarHeavyDutyConsist(BulkOpenCarConsistBase):
     Heavy duty dump car, higher capacity, reduced speed (set in vehicle class, not consist)
     """
 
+    base_id = "heavy_duty_dump_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "heavy_duty_dump_car"
         super().__init__(**kwargs)
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
@@ -3577,8 +3599,9 @@ class BulkOpenCarMineralConsist(BulkOpenCarMineralConsistBase):
     Standard dump car (Mineral Wagon in UK terms).
     """
 
+    base_id = "mineral_bulk_open_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "mineral_bulk_open_car"
         super().__init__(**kwargs)
 
 
@@ -3587,8 +3610,9 @@ class BulkOpenCarMineralHighSideConsist(BulkOpenCarMineralConsistBase):
     Standard dump car (Mineral Wagon in UK terms), with high sides.
     """
 
+    base_id = "mineral_bulk_open_car_high_side"
+
     def __init__(self, **kwargs):
-        self.base_id = "mineral_bulk_open_car_high_side"
         super().__init__(**kwargs)
 
 
@@ -3597,8 +3621,9 @@ class BulkOpenCarMineralLowSideConsist(BulkOpenCarMineralConsistBase):
     Standard dump car (Mineral Wagon in UK terms), with low sides.
     """
 
+    base_id = "mineral_bulk_open_car_low_side"
+
     def __init__(self, **kwargs):
-        self.base_id = "mineral_bulk_open_car_low_side"
         super().__init__(**kwargs)
 
 
@@ -3609,8 +3634,9 @@ class BulkOpenCarMineralRandomisedConsist(
     Random choice of standard dump car (Mineral Wagon in UK terms).
     """
 
+    base_id = "mineral_bulk_open_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "mineral_bulk_open_car_randomised"
         super().__init__(**kwargs)
         # needed to clear randomised set by base class
         self.randomised_candidate_groups = []
@@ -3678,8 +3704,9 @@ class BulkOpenCarScrapMetalConsistType1(BulkOpenCarScrapMetalConsistBase):
     Scrap Metal Car
     """
 
+    base_id = "scrap_metal_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "scrap_metal_car_type_1"
         super().__init__(**kwargs)
 
 
@@ -3688,8 +3715,9 @@ class BulkOpenCarScrapMetalConsistType2(BulkOpenCarScrapMetalConsistBase):
     Scrap Metal Car
     """
 
+    base_id = "scrap_metal_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "scrap_metal_car_type_2"
         super().__init__(**kwargs)
 
 
@@ -3700,8 +3728,9 @@ class BulkOpenCarScrapMetalRandomisedConsist(
     Random choice of scrap metal car sprite.
     """
 
+    base_id = "scrap_metal_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "scrap_metal_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
@@ -3778,8 +3807,9 @@ class BulkOpenCarTipplerConsistType1(BulkOpenCarTipplerConsistBase):
     Tippler (dump car).
     """
 
+    base_id = "tippler_bulk_open_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "tippler_bulk_open_car_type_1"
         super().__init__(**kwargs)
 
 
@@ -3788,8 +3818,9 @@ class BulkOpenCarTipplerConsistType2(BulkOpenCarTipplerConsistBase):
     Tippler (dump car).
     """
 
+    base_id = "tippler_bulk_open_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "tippler_bulk_open_car_type_2"
         super().__init__(**kwargs)
 
 
@@ -3798,8 +3829,9 @@ class BulkOpenCarTipplerRotaryConsistType1(BulkOpenCarTipplerConsistBase):
     Tippler (dump car).
     """
 
+    base_id = "tippler_rotary_bulk_open_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "tippler_rotary_bulk_open_car_type_1"
         super().__init__(**kwargs)
         # needed to clear randomised set by base class - rotary tipplers don't look good as randomisation candidates
         self.randomised_candidate_groups = []
@@ -3812,8 +3844,9 @@ class BulkOpenCarTipplerRandomisedConsist(
     Random choice of tippler (dump car).
     """
 
+    base_id = "tippler_bulk_open_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "tippler_bulk_open_car_randomised"
         super().__init__(**kwargs)
         # needed to clear randomised set by base class
         self.randomised_candidate_groups = []
@@ -3855,8 +3888,9 @@ class BulkCarBoxRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBase
         ],
     ]
 
+    base_id = "bulk_car_box_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "bulk_car_box_randomised"
         super().__init__(**kwargs)
         self.use_named_buyable_variant_group = "wagon_group_bulk_cars_randomised"
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -3890,8 +3924,9 @@ class BulkCarHopperRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistB
         ],
     ]
 
+    base_id = "bulk_car_hopper_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "bulk_car_hopper_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -3929,8 +3964,9 @@ class BulkCarMixedRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBa
         ],
     ]
 
+    base_id = "bulk_car_mixed_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "bulk_car_mixed_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -3950,8 +3986,9 @@ class CabooseCarConsist(CarConsist):
 
     liveries = [global_constants.freight_wagon_liveries["SWOOSH"]]
 
+    base_id = "caboose_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "caboose_car"
         super().__init__(**kwargs)
         # no speed limit
         self.speed_class = None
@@ -4006,8 +4043,9 @@ class CaneBinCarConsist(CarConsist):
         global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
     ]
 
+    base_id = "cane_bin_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "cane_bin_car"
         super().__init__(**kwargs)
         # no classes, use explicit labels
         self.class_refit_groups = []
@@ -4035,8 +4073,9 @@ class CarbonBlackHopperCarConsist(CarConsist):
         global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"]
     ]
 
+    base_id = "carbon_black_hopper_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "carbon_black_hopper_car"
         super().__init__(**kwargs)
         # no classes, use explicit labels
         self.class_refit_groups = []
@@ -4082,8 +4121,9 @@ class CoilBuggyCarConsist(CarConsist):
     ]
 
     # note does NOT subclass CoilCarConsistBase - different type of consist
+    base_id = "coil_buggy_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "coil_buggy_car"
         super().__init__(**kwargs)
         # none needed
         self.class_refit_groups = []
@@ -4158,8 +4198,9 @@ class CoilCarCoveredAsymmetricConsist(CoilCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
     ]
 
+    base_id = "coil_car_covered_asymmetric"
+
     def __init__(self, **kwargs):
-        self.base_id = "coil_car_covered_asymmetric"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
         self.randomised_candidate_groups = [
@@ -4206,8 +4247,9 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_GREY"],
     ]
 
+    base_id = "coil_car_covered"
+
     def __init__(self, **kwargs):
-        self.base_id = "coil_car_covered"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
         self.randomised_candidate_groups = [
@@ -4250,8 +4292,9 @@ class CoilCarTarpaulinConsist(CoilCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_GREY"],
     ]
 
+    base_id = "coil_car_tarpaulin"
+
     def __init__(self, **kwargs):
-        self.base_id = "coil_car_tarpaulin"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
         self.randomised_candidate_groups = [
@@ -4297,8 +4340,9 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_GREY"],
     ]
 
+    base_id = "coil_car_uncovered"
+
     def __init__(self, **kwargs):
-        self.base_id = "coil_car_uncovered"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["coil"]
         self.randomised_candidate_groups = [
@@ -4330,8 +4374,9 @@ class DedicatedCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBa
         ],
     ]
 
+    base_id = "dedicated_coil_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "dedicated_coil_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -4416,8 +4461,9 @@ class CoveredHopperCarConsistType1(CoveredHopperCarConsistBase):
     Default covered hopper type.
     """
 
+    base_id = "covered_hopper_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "covered_hopper_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
         self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
@@ -4431,8 +4477,9 @@ class CoveredHopperCarConsistType2(CoveredHopperCarConsistBase):
     Default covered hopper type.
     """
 
+    base_id = "covered_hopper_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "covered_hopper_car_type_2"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
         self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
@@ -4447,8 +4494,9 @@ class CoveredHopperCarConsistType3(CoveredHopperCarConsistBase):
     Default covered hopper type.
     """
 
+    base_id = "covered_hopper_car_type_3"
+
     def __init__(self, **kwargs):
-        self.base_id = "covered_hopper_car_type_3"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
         self.randomised_candidate_groups = ["covered_hopper_car_randomised"]
@@ -4483,8 +4531,9 @@ class CoveredHopperCarRandomisedConsist(
         global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
     ]
 
+    base_id = "covered_hopper_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "covered_hopper_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -4532,8 +4581,9 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
     ]
 
+    base_id = "swing_roof_hopper_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "swing_roof_hopper_car"
         super().__init__(**kwargs)
         self._joker = True
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
@@ -4580,8 +4630,9 @@ class ExpressCarConsist(CarConsist):
         global_constants.freight_wagon_liveries["FREIGHT_RED"],
     ]
 
+    base_id = "express_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "express_car"
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = ["mail", "express_freight"]
@@ -4621,8 +4672,9 @@ class ExpressFoodCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
         global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"]
     ]
 
+    base_id = "express_food_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "express_food_car_randomised"
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = ["liquids_food_grade"]
@@ -4711,8 +4763,9 @@ class ExpressFoodTankCarConsistType1(ExpressFoodTankCarConsistBase):
     Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
     """
 
+    base_id = "food_express_tank_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "food_express_tank_car_type_1"
         super().__init__(**kwargs)
 
 
@@ -4723,8 +4776,9 @@ class ExpressFoodTankCarConsistType2(ExpressFoodTankCarConsistBase):
     Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
     """
 
+    base_id = "food_express_tank_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "food_express_tank_car_type_2"
         super().__init__(**kwargs)
 
 
@@ -4735,8 +4789,9 @@ class ExpressFoodTankCarRandomisedConsist(
     Random choice of express food tanker.
     """
 
+    base_id = "food_express_tank_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "food_express_tank_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
@@ -4755,8 +4810,9 @@ class ExpressIntermodalCarConsist(CarConsist):
 
     liveries = [global_constants.freight_wagon_liveries["SWOOSH"]]
 
+    base_id = "express_intermodal_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "express_intermodal_car"
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = ["mail", "express_freight"]
@@ -4832,8 +4888,9 @@ class FarmProductsBoxCarConsistType1(FarmProductsBoxCarConsistBase):
     Farm type cargos - box cars / vans.
     """
 
+    base_id = "farm_product_box_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "farm_product_box_car_type_1"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "farm_product_box_car_randomised",
@@ -4845,8 +4902,9 @@ class FarmProductsBoxCarConsistType2(FarmProductsBoxCarConsistBase):
     Farm type cargos - box cars / vans.
     """
 
+    base_id = "farm_product_box_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "farm_product_box_car_type_2"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "farm_product_box_car_randomised",
@@ -4860,8 +4918,9 @@ class FarmProductsBoxCarRandomisedConsist(
     Random choice of farm products box car / van sprite.
     """
 
+    base_id = "farm_product_box_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "farm_product_box_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
@@ -4913,8 +4972,9 @@ class FarmProductsHopperCarConsistType1(FarmProductsHopperCarConsistBase):
     Farm type cargos - covered hoppers.
     """
 
+    base_id = "farm_product_hopper_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "farm_product_hopper_car_type_1"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "farm_product_hopper_car_randomised",
@@ -4926,8 +4986,9 @@ class FarmProductsHopperCarConsistType2(FarmProductsHopperCarConsistBase):
     Farm type cargos - covered hoppers.
     """
 
+    base_id = "farm_product_hopper_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "farm_product_hopper_car_type_2"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "farm_product_hopper_car_randomised",
@@ -4941,8 +5002,9 @@ class FarmProductsHopperCarRandomisedConsist(
     Random choice of farm products hopper sprite.
     """
 
+    base_id = "farm_product_hopper_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "farm_product_hopper_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
@@ -4982,8 +5044,9 @@ class FoodHopperCarConsistType1(FoodHopperCarConsistBase):
     Food type covered hoppers - same refits as farm product cars.
     """
 
+    base_id = "food_hopper_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "food_hopper_car_type_1"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "food_hopper_car_randomised",
@@ -4995,8 +5058,9 @@ class FoodHopperCarConsistType2(FoodHopperCarConsistBase):
     Food type covered hoppers - same refits as farm product cars.
     """
 
+    base_id = "food_hopper_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "food_hopper_car_type_2"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "food_hopper_car_randomised",
@@ -5008,8 +5072,9 @@ class FoodHopperCarConsistType3(FoodHopperCarConsistBase):
     Food type covered hoppers - same refits as farm product cars.
     """
 
+    base_id = "food_hopper_car_type_3"
+
     def __init__(self, **kwargs):
-        self.base_id = "food_hopper_car_type_3"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "food_hopper_car_randomised",
@@ -5021,8 +5086,9 @@ class FoodHopperCarRandomisedConsist(RandomisedConsistMixin, FoodHopperCarConsis
     Random choice of food hopper sprite.
     """
 
+    base_id = "food_hopper_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "food_hopper_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
@@ -5116,8 +5182,9 @@ class FlatCarBulkheadConsistType1(FlatCarBulkheadConsistBase):
     """
 
     # low or high bulkhead? stakes or not?
+    base_id = "bulkhead_flat_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "bulkhead_flat_car_type_1"
         super().__init__(**kwargs)
 
 
@@ -5127,8 +5194,9 @@ class FlatCarBulkheadConsistType2(FlatCarBulkheadConsistBase):
     """
 
     # low or high bulkhead? stakes or not?
+    base_id = "bulkhead_flat_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "bulkhead_flat_car_type_2"
         super().__init__(**kwargs)
 
 
@@ -5139,8 +5207,9 @@ class FlatCarBulkheadRandomisedConsist(
     Random choice of bulkhead flat car sprite.
     """
 
+    base_id = "bulkhead_flat_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "bulkhead_flat_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
@@ -5157,8 +5226,9 @@ class FlatCarDropEndConsist(FlatCarConsistBase):
     Wagon with droppable end flaps - variant on flat wagon, refits same
     """
 
+    base_id = "drop_end_flat_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "drop_end_flat_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["plate"]
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
@@ -5180,8 +5250,9 @@ class FlatCarDropSideConsist(FlatCarConsistBase):
     Wagon with droppable low sides - variant on flat wagon, refits same
     """
 
+    base_id = "drop_side_flat_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "drop_side_flat_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["plate"]
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
@@ -5204,8 +5275,9 @@ class FlatCarConsist(FlatCarConsistBase):
     Flatbed - no stakes, visible cargo.
     """
 
+    base_id = "flat_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "flat_car"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "flat_car_randomised",
@@ -5237,8 +5309,9 @@ class FlatCarHeavyDutyConsist(FlatCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
     ]
 
+    base_id = "heavy_duty_flat_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "heavy_duty_flat_car"
         super().__init__(**kwargs)
         self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
@@ -5278,8 +5351,9 @@ class FlatCarMillConsistType1(FlatCarMillConsistBase):
     """
 
     # low or high mill? stakes or not?
+    base_id = "mill_flat_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "mill_flat_car_type_1"
         super().__init__(**kwargs)
 
 
@@ -5289,8 +5363,9 @@ class FlatCarMillConsistType2(FlatCarMillConsistBase):
     """
 
     # low or high mill? stakes or not?
+    base_id = "mill_flat_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "mill_flat_car_type_2"
         super().__init__(**kwargs)
 
 
@@ -5299,8 +5374,9 @@ class FlatCarMillRandomisedConsist(RandomisedConsistMixin, FlatCarMillConsistBas
     Random choice of mill flat car sprite.
     """
 
+    base_id = "mill_flat_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "mill_flat_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
@@ -5317,8 +5393,9 @@ class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
     Random choice of flat car sprite, from available coil cars, bolster cars etc.
     """
 
+    base_id = "flat_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "flat_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5367,10 +5444,9 @@ class GasTankCarPressureConsist(GasTankCarConsistBase):
     Pressure tank cars for gases under pressure at low temperatue, e.g. Chlorine etc.
     """
 
+    base_id = "pressure_tank_car"
+
     def __init__(self, **kwargs):
-        # tank cars are unrealistically autorefittable, and at no cost
-        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        self.base_id = "pressure_tank_car"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5382,10 +5458,9 @@ class GasTankCarCryoConsist(GasTankCarConsistBase):
     Specialist insulated and pressurised tank cars for gases under pressure at low temperatue, e.g. Oxygen etc.
     """
 
+    base_id = "cryo_tank_car"
+
     def __init__(self, **kwargs):
-        # tank cars are unrealistically autorefittable, and at no cost
-        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        self.base_id = "cryo_tank_car"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5479,8 +5554,9 @@ class HopperCarAggregateConsistType1(HopperCarAggregateConsistBase):
     Hopper for rock cargos, just a visual variant.
     """
 
+    base_id = "aggregate_hopper_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_hopper_car_type_1"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "aggregate_hopper_car_randomised",
@@ -5527,8 +5603,9 @@ class HopperCarAggregateConsistType2(HopperCarAggregateConsistBase):
     Hopper for rock cargos, just a visual variant.
     """
 
+    base_id = "aggregate_hopper_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_hopper_car_type_2"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "aggregate_hopper_car_randomised",
@@ -5576,8 +5653,9 @@ class HopperCarAggregateConsistType3(HopperCarAggregateConsistBase):
     Hopper for rock cargos, just a visual variant.
     """
 
+    base_id = "aggregate_hopper_car_type_3"
+
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_hopper_car_type_3"
         super().__init__(**kwargs)
         self.randomised_candidate_groups = [
             "aggregate_hopper_car_randomised",
@@ -5656,8 +5734,9 @@ class HopperCarAggregateRandomisedConsist(
         global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
     ]
 
+    base_id = "aggregate_hopper_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "aggregate_hopper_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -5675,8 +5754,9 @@ class HopperCarConsist(HopperCarConsistBase):
     Standard hopper car. Defaults to coal.
     """
 
+    base_id = "hopper_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
         self.randomised_candidate_groups = [
@@ -5694,8 +5774,9 @@ class HopperCarHighSideConsist(HopperCarConsistBase):
     Hopper for ore cargos, same refits as standard hopper, just a visual variant.
     """
 
+    base_id = "hopper_car_high_side"
+
     def __init__(self, **kwargs):
-        self.base_id = "hopper_car_high_side"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_ore"]
         self.randomised_candidate_groups = [
@@ -5766,8 +5847,9 @@ class HopperCarMGRConsist(HopperCarMGRConsistBase):
     Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.
     """
 
+    base_id = "mgr_hopper_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "mgr_hopper_car"
         super().__init__(**kwargs)
 
 
@@ -5776,8 +5858,9 @@ class HopperCarMGRTopHoodConsist(HopperCarMGRConsistBase):
     Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.
     """
 
+    base_id = "mgr_top_hood_hopper_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "mgr_top_hood_hopper_car"
         super().__init__(**kwargs)
 
 
@@ -5805,8 +5888,9 @@ class HopperCarRandomisedConsist(RandomisedConsistMixin, HopperCarConsistBase):
         ],
     ]
 
+    base_id = "hopper_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "hopper_car_randomised"
         super().__init__(**kwargs)
         # needed to clear randomised set by base class
         self.randomised_candidate_groups = []
@@ -5826,8 +5910,9 @@ class HopperCarRockConsist(HopperCarConsistBase):
     Hopper for rock cargos, same refits as standard hopper, just a visual variant.
     """
 
+    base_id = "rock_hopper_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "rock_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
         # don't include rock hoppers in randomised lists, they don't look good
@@ -5876,8 +5961,9 @@ class HopperCarSideDoorConsist(HopperCarConsistBase):
     Side door hopper (saddle-bottom hopper).
     """
 
+    base_id = "side_door_hopper_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "side_door_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
         # not eligible for randomisation, doesn't look right
@@ -5891,8 +5977,9 @@ class HopperCarSkipConsist(HopperCarConsistBase):
     Defaults to rock/stone-type cargos.
     """
 
+    base_id = "skip_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "skip_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
         # not eligible for randomisation, breaks due to articulation
@@ -5942,8 +6029,9 @@ class IngotCarConsist(CarConsist):
         global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
     ]
 
+    base_id = "ingot_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "ingot_car"
         super().__init__(**kwargs)
         # none needed
         self.class_refit_groups = []
@@ -6017,8 +6105,9 @@ class IntermodalCarConsist(IntermodalCarConsistBase):
     Default intermodal car - simple flat platform at default height.
     """
 
+    base_id = "intermodal_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "intermodal_car"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -6039,8 +6128,9 @@ class IntermodalLowFloorCarConsist(IntermodalCarConsistBase):
     Low floor intermodal car - simple flat platform at height -1
     """
 
+    base_id = "low_floor_intermodal_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "low_floor_intermodal_car"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -6062,8 +6152,9 @@ class KaolinHopperCarConsist(CarConsist):
         global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"]
     ]
 
+    base_id = "kaolin_hopper_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "kaolin_hopper_car"
         super().__init__(**kwargs)
         # no classes, use explicit labels
         self.class_refit_groups = []
@@ -6118,8 +6209,9 @@ class LivestockCarConsist(CarConsist):
         global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
     ]
 
+    base_id = "livestock_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "livestock_car"
         super().__init__(**kwargs)
         # no classes, use explicit labels
         self.class_refit_groups = []
@@ -6160,8 +6252,9 @@ class LogCarConsist(CarConsist):
         global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
     ]
 
+    base_id = "log_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "log_car"
         super().__init__(**kwargs)
         # no classes, use explicit labels
         self.class_refit_groups = []
@@ -6271,8 +6364,9 @@ class MailCarConsist(MailCarConsistBase):
     Mail cars - also handle express freight, valuables.
     """
 
+    base_id = "mail_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "mail_car"
         super().__init__(**kwargs)
         # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
         if self.base_track_type_name == "NG" and self.gen < 4:
@@ -6317,8 +6411,9 @@ class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
     Position-dependent sprites for cabs etc.
     """
 
+    base_id = "express_railcar_mail_trailer_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "express_railcar_mail_trailer_car"
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.buy_cost_adjustment_factor = 2.1
@@ -6359,8 +6454,9 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
     Position-dependent sprites for brake car etc.
     """
 
+    base_id = "high_speed_mail_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "high_speed_mail_car"
         super().__init__(**kwargs)
         self.subrole = "very_high_speed"
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
@@ -6397,8 +6493,9 @@ class MailHSTCarConsist(MailCarConsistBase):
     Trailer dedicated for Mail on HST-type trains (no wagon attach, but matching stats and livery).
     """
 
+    base_id = "hst_mail_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "hst_mail_car"
         super().__init__(**kwargs)
         # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs["cab_id"]
@@ -6479,8 +6576,9 @@ class MetalProductCarCoveredRandomisedConsist(MetalProductCarRandomisedConsistBa
     Random choice of cold metal car sprite, from suitable covered coil cars, vans etc.
     """
 
+    base_id = "metal_product_car_covered_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "metal_product_car_covered_randomised"
         super().__init__(**kwargs)
 
 
@@ -6489,8 +6587,9 @@ class MetalProductCarMixedRandomisedConsist(MetalProductCarRandomisedConsistBase
     Random choice of cold metal car sprite, from all suitable metal carrying wagons cars etc.
     """
 
+    base_id = "metal_product_car_mixed_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "metal_product_car_mixed_randomised"
         super().__init__(**kwargs)
 
 
@@ -6499,8 +6598,9 @@ class MetalProductCarUncoveredRandomisedConsist(MetalProductCarRandomisedConsist
     Random choice of cold metal car sprite, from suitable bolster, flat, open cars etc.
     """
 
+    base_id = "metal_product_car_uncovered_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "metal_product_car_uncovered_randomised"
         super().__init__(**kwargs)
 
 
@@ -6617,8 +6717,9 @@ class MineralCoveredHopperCarLimeConsistType1(MineralCoveredHopperCarLimeConsist
     Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
     """
 
+    base_id = "lime_covered_hopper_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "lime_covered_hopper_car_type_1"
         super().__init__(**kwargs)
 
 
@@ -6628,8 +6729,9 @@ class MineralCoveredHopperCarLimeConsistType2(MineralCoveredHopperCarLimeConsist
     Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
     """
 
+    base_id = "lime_covered_hopper_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "lime_covered_hopper_car_type_2"
         super().__init__(**kwargs)
 
 
@@ -6639,8 +6741,9 @@ class MineralCoveredHopperCarLimeConsistType3(MineralCoveredHopperCarLimeConsist
     Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
     """
 
+    base_id = "lime_covered_hopper_car_type_3"
+
     def __init__(self, **kwargs):
-        self.base_id = "lime_covered_hopper_car_type_3"
         super().__init__(**kwargs)
 
 
@@ -6652,8 +6755,9 @@ class MineralCoveredHopperCarLimeRandomisedConsist(
     Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
     """
 
+    base_id = "lime_covered_hopper_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "lime_covered_hopper_car_randomised"
         super().__init__(**kwargs)
         # clear from randomisation groups
         self.randomised_candidate_groups = []
@@ -6702,8 +6806,9 @@ class MineralCoveredHopperCarRandomisedConsist(
         global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
     ]
 
+    base_id = "covered_bulk_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "covered_bulk_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         # ruby before bauxite to ensure it appears in buy menu order for mixed version
@@ -6777,8 +6882,9 @@ class MineralCoveredHopperCarRollerRoofConsistType1(
     Mineral covered hopper with a rollover roof.
     """
 
+    base_id = "roller_roof_hopper_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "roller_roof_hopper_car_type_1"
         super().__init__(**kwargs)
 
 
@@ -6789,8 +6895,9 @@ class MineralCoveredHopperCarRollerRoofConsistType2(
     Mineral covered hopper with a rollover roof.
     """
 
+    base_id = "roller_roof_hopper_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "roller_roof_hopper_car_type_2"
         super().__init__(**kwargs)
 
 
@@ -6801,8 +6908,9 @@ class MineralCoveredHopperCarRollerRoofRandomisedConsist(
     Mineral covered hopper with a rollover roof.
     """
 
+    base_id = "roller_roof_hopper_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "roller_roof_hopper_car_randomised"
         super().__init__(**kwargs)
         # clear from randomisation groups
         self.randomised_candidate_groups = []
@@ -6886,8 +6994,9 @@ class MineralCoveredHopperCarSaltConsist(MineralCoveredHopperCarSaltConsistBase)
     Mineral covered hopper for salt, potash, similar cargos.
     """
 
+    base_id = "salt_covered_hopper_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "salt_covered_hopper_car"
         super().__init__(**kwargs)
 
 
@@ -6898,8 +7007,9 @@ class MineralCoveredHopperCarSaltSwingRoofConsist(
     Mineral covered hopper for salt, potash, similar cargos.
     """
 
+    base_id = "salt_swing_roof_hopper_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "salt_swing_roof_hopper_car"
         super().__init__(**kwargs)
 
 
@@ -6910,8 +7020,9 @@ class MineralCoveredHopperCarSaltRandomisedConsist(
     Mineral covered hopper for salt, potash, similar cargos.
     """
 
+    base_id = "salt_covered_hopper_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "salt_covered_hopper_car_randomised"
         super().__init__(**kwargs)
         # clear from randomisation groups
         self.randomised_candidate_groups = []
@@ -6974,8 +7085,9 @@ class OpenCarConsist(OpenCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
     ]
 
+    base_id = "open_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "open_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         # buyable variant groups are created post-hoc and can group across subclasses
@@ -7010,8 +7122,9 @@ class OpenCarHoodConsist(OpenCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
     ]
 
+    base_id = "hood_open_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "hood_open_car"
         super().__init__(**kwargs)
         self.default_cargos = ["KAOL"]
         self.default_cargos.extend(polar_fox.constants.default_cargos["open"])
@@ -7049,8 +7162,9 @@ class OpenCarHighEndConsist(OpenCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
     ]
 
+    base_id = "high_end_open_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "high_end_open_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         # buyable variant groups are created post-hoc and can group across subclasses
@@ -7096,8 +7210,9 @@ class OpenCarMillConsist(OpenCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_TEAL"],
     ]
 
+    base_id = "mill_open_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "mill_open_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         self.randomised_candidate_groups = [
@@ -7131,8 +7246,9 @@ class OpenCarRandomisedConsist(RandomisedConsistMixin, OpenCarConsistBase):
         ],
     ]
 
+    base_id = "open_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "open_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7239,8 +7355,9 @@ class PanoramicCarConsist(PassengerCarConsistBase):
     # not sure why I did this as a class property, but eh
     affected_by_restaurant_car_in_consist = True
 
+    base_id = "panoramic_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "panoramic_car"
         super().__init__(**kwargs)
         self.subrole = "express"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
@@ -7277,8 +7394,9 @@ class PassengerCarConsist(PassengerCarConsistBase):
     # not sure why I did this as a class property, but eh
     affected_by_restaurant_car_in_consist = True
 
+    base_id = "passenger_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "passenger_car"
         super().__init__(**kwargs)
         # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
         if self.base_track_type_name == "NG" and self.gen < 4:
@@ -7325,8 +7443,9 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
     # not sure why I did this as a class property, but eh
     affected_by_restaurant_car_in_consist = True
 
+    base_id = "high_speed_passenger_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "high_speed_passenger_car"
         super().__init__(**kwargs)
         self.subrole = "very_high_speed"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
@@ -7357,8 +7476,9 @@ class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistB
     Position-dependent sprites for cabs etc.
     """
 
+    base_id = "express_railcar_passenger_trailer_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "express_railcar_passenger_trailer_car"
         super().__init__(**kwargs)
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
@@ -7399,8 +7519,9 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
     Position-dependent sprites for buffet car, brake car etc.
     """
 
+    base_id = "hst_passenger_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "hst_passenger_car"
         super().__init__(**kwargs)
         self.speed_class = "hst"
         # used to get insert the name of the parent into vehicle name
@@ -7453,8 +7574,9 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
     Position-dependent sprites for cabs etc.
     """
 
+    base_id = "railbus_passenger_trailer_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "railbus_passenger_trailer_car"
         super().__init__(**kwargs)
         if self.base_track_type_name == "NG" and self.gen == 4:
             # pony NG jank, gen 4 railbus trailers get a speed bump to 'express'
@@ -7494,8 +7616,9 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
     Position-dependent sprites for cabs etc.
     """
 
+    base_id = "railcar_passenger_trailer_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "railcar_passenger_trailer_car"
         super().__init__(**kwargs)
         # PassengerCarConsistBase sets 'express' speed, but railcar trailers should override this
         self.speed_class = "suburban"
@@ -7537,8 +7660,9 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
     Special pax coach that modifies run costs and decay rates for other pax coaches in the consist.
     """
 
+    base_id = "restaurant_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "restaurant_car"
         super().__init__(**kwargs)
         self.subrole = "restaurant_car"
         # flag pax car ruleset behaviour
@@ -7567,8 +7691,9 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
     Position-dependent sprites for brake car etc.
     """
 
+    base_id = "suburban_passenger_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "suburban_passenger_car"
         super().__init__(**kwargs)
         self.subrole = "pax_suburban_coach"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
@@ -7621,8 +7746,9 @@ class PeatCarConsist(CarConsist):
         global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
     ]
 
+    base_id = "peat_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "peat_car"
         super().__init__(**kwargs)
         # no classes, use explicit labels
         self.class_refit_groups = []
@@ -7684,8 +7810,9 @@ class PieceGoodsCarCoveredRandomisedConsist(PieceGoodsCarRandomisedConsistBase):
         ],
     ]
 
+    base_id = "piece_goods_car_covered_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "piece_goods_car_covered_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -7713,8 +7840,9 @@ class PieceGoodsCarMixedRandomisedConsist(PieceGoodsCarRandomisedConsistBase):
         ],
     ]
 
+    base_id = "piece_goods_car_mixed_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "piece_goods_car_mixed_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -7744,8 +7872,9 @@ class PieceGoodsCarManufacturingPartsRandomisedConsist(
         ],
     ]
 
+    base_id = "piece_goods_car_manufacturing_parts_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "piece_goods_car_manufacturing_parts_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -7780,8 +7909,9 @@ class PipeCarConsist(FlatCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_GREY"],
     ]
 
+    base_id = "pipe_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "pipe_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["flat"]
         self.randomised_candidate_groups = []
@@ -7839,8 +7969,9 @@ class ReeferCarConsistType1(ReeferCarConsistBase):
     Standard reefer car.
     """
 
+    base_id = "reefer_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "reefer_car_type_1"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7852,8 +7983,9 @@ class ReeferCarConsistType2(ReeferCarConsistBase):
     Alternative reefer car style.
     """
 
+    base_id = "reefer_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "reefer_car_type_2"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7866,8 +7998,9 @@ class ReeferCarRandomisedConsist(RandomisedConsistMixin, ReeferCarConsistBase):
     Random choice of reefer car sprite.
     """
 
+    base_id = "reefer_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "reefer_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -7965,8 +8098,9 @@ class SiloCarConsistType1(SiloCarConsistBase):
     Standard silo car.
     """
 
+    base_id = "silo_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "silo_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
         self.randomised_candidate_groups = ["silo_car_randomised"]
@@ -7980,8 +8114,9 @@ class SiloCarConsistType2(SiloCarConsistBase):
     Silo car with V-shaped barrel.
     """
 
+    base_id = "silo_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "silo_car_type_2"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
         self.randomised_candidate_groups = ["silo_car_randomised"]
@@ -7995,8 +8130,9 @@ class SiloCarConsistType3(SiloCarConsistBase):
     Silo car with V-shaped barrel.
     """
 
+    base_id = "silo_car_type_3"
+
     def __init__(self, **kwargs):
-        self.base_id = "silo_car_type_3"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
         self.randomised_candidate_groups = ["silo_car_randomised"]
@@ -8032,8 +8168,9 @@ class SiloCarRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase):
         ],
     ]
 
+    base_id = "silo_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "silo_car_randomised"
         super().__init__(**kwargs)
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
@@ -8055,8 +8192,9 @@ class SiloCarCementConsistType1(SiloCarConsistBase):
         global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"]
     ]
 
+    base_id = "cement_silo_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "cement_silo_car_type_1"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
         self.randomised_candidate_groups = ["cement_silo_car_randomised"]
@@ -8083,8 +8221,9 @@ class SiloCarCementConsistType2(SiloCarConsistBase):
         global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"]
     ]
 
+    base_id = "cement_silo_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "cement_silo_car_type_2"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
         self.randomised_candidate_groups = ["cement_silo_car_randomised"]
@@ -8111,8 +8250,9 @@ class SiloCarCementConsistType3(SiloCarConsistBase):
         global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"]
     ]
 
+    base_id = "cement_silo_car_type_3"
+
     def __init__(self, **kwargs):
-        self.base_id = "cement_silo_car_type_3"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
         self.randomised_candidate_groups = ["cement_silo_car_randomised"]
@@ -8139,8 +8279,9 @@ class SiloCarCementRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase)
         global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"]
     ]
 
+    base_id = "cement_silo_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "cement_silo_car_randomised"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
         self._joker = True
@@ -8181,8 +8322,9 @@ class SlidingRoofCarConsist(BoxCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_PEWTER"],
     ]
 
+    base_id = "sliding_roof_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "sliding_roof_car"
         super().__init__(**kwargs)
         self.buy_cost_adjustment_factor = 1.2
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
@@ -8241,8 +8383,9 @@ class SlidingRoofCarConsistHiCube(BoxCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_OIL_BLACK"],
     ]
 
+    base_id = "sliding_roof_hi_cube_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "sliding_roof_hi_cube_car"
         super().__init__(**kwargs)
         # minor abuse of existing list
         self.default_cargos = polar_fox.constants.default_cargos["box_vehicle_parts"]
@@ -8287,8 +8430,9 @@ class SlagLadleCarConsist(CarConsist):
         global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
     ]
 
+    base_id = "slag_ladle_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "slag_ladle_car"
         super().__init__(**kwargs)
         # none needed
         self.class_refit_groups = []
@@ -8405,8 +8549,9 @@ class TankCarAcidConsistType1(TankCarAcidConsistBase):
     Visual variant of the standard tank car, same refits, different default cargos.
     """
 
+    base_id = "acid_tank_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "acid_tank_car_type_1"
         super().__init__(**kwargs)
         # Graphics configuration
         weathered_variants = {
@@ -8421,8 +8566,9 @@ class TankCarAcidConsistType2(TankCarAcidConsistBase):
     Visual variant of the standard tank car, same refits, different default cargos.
     """
 
+    base_id = "acid_tank_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "acid_tank_car_type_2"
         super().__init__(**kwargs)
         # Graphics configuration
         weathered_variants = {
@@ -8437,8 +8583,9 @@ class TankCarAcidRandomisedConsist(RandomisedConsistMixin, TankCarAcidConsistBas
     Random choice of acid tank car sprites.
     """
 
+    base_id = "acid_tank_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "acid_tank_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
@@ -8477,8 +8624,9 @@ class TankCarChemicalRandomisedConsist(RandomisedConsistMixin, TankCarConsistBas
         ],
     ]
 
+    base_id = "chemical_tank_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "chemical_tank_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -8561,8 +8709,9 @@ class TankCarProductConsistType1(TankCarProductConsistBase):
     Same refits as standard tank car, just a visual variant.
     """
 
+    base_id = "product_tank_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "product_tank_car_type_1"
         super().__init__(**kwargs)
         # Graphics configuration
         weathered_variants = {
@@ -8577,8 +8726,9 @@ class TankCarProductConsistType2(TankCarProductConsistBase):
     Same refits as standard tank car, just a visual variant.
     """
 
+    base_id = "product_tank_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "product_tank_car_type_2"
         super().__init__(**kwargs)
         # Graphics configuration
         weathered_variants = {
@@ -8594,8 +8744,9 @@ class TankCarProductRandomisedConsist(
     Random choice of product tank car.
     """
 
+    base_id = "product_tank_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "product_tank_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
@@ -8667,8 +8818,9 @@ class TankCarStandardConsistType1(TankCarStandardConsistBase):
     Standard tank car
     """
 
+    base_id = "tank_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "tank_car_type_1"
         super().__init__(**kwargs)
 
 
@@ -8677,8 +8829,9 @@ class TankCarStandardConsistType2(TankCarStandardConsistBase):
     Standard tank car
     """
 
+    base_id = "tank_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "tank_car_type_2"
         super().__init__(**kwargs)
 
 
@@ -8687,8 +8840,9 @@ class TankCarStandardConsistType3(TankCarStandardConsistBase):
     Standard tank car
     """
 
+    base_id = "tank_car_type_3"
+
     def __init__(self, **kwargs):
-        self.base_id = "tank_car_type_3"
         super().__init__(**kwargs)
 
 
@@ -8699,8 +8853,9 @@ class TankCarStandardRandomisedConsist(
     Random choice of acid tank car sprites.
     """
 
+    base_id = "tank_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "tank_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         # note we copy the liveries from the base class gestalt, but then replace the gestalt in this instance with the randomised gestalt
@@ -8775,8 +8930,9 @@ class TankCarVolatilesConsistType1(TankCarVolatilesConsistBase):
     Tank car with reflective silver or white finish (for low-flashpoint / volative liquids such as petrol).
     """
 
+    base_id = "volatiles_tank_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "volatiles_tank_car_type_1"
         super().__init__(**kwargs)
 
 
@@ -8851,8 +9007,9 @@ class TarpaulinCarConsistType1(TarpaulinCarConsistBase):
     Tarpaulin car - refits similar to box van for gameplay reasons, unlike IRL (which is flat)
     """
 
+    base_id = "tarpaulin_car_type_1"
+
     def __init__(self, **kwargs):
-        self.base_id = "tarpaulin_car_type_1"
         super().__init__(**kwargs)
 
 
@@ -8861,8 +9018,9 @@ class TarpaulinCarConsistType2(TarpaulinCarConsistBase):
     Tarpaulin car - refits similar to box van for gameplay reasons, unlike IRL (which is flat)
     """
 
+    base_id = "tarpaulin_car_type_2"
+
     def __init__(self, **kwargs):
-        self.base_id = "tarpaulin_car_type_2"
         super().__init__(**kwargs)
 
 
@@ -8888,8 +9046,9 @@ class TarpaulinCarConsistType3(TarpaulinCarConsistBase):
         global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
     ]
 
+    base_id = "tarpaulin_car_type_3"
+
     def __init__(self, **kwargs):
-        self.base_id = "tarpaulin_car_type_3"
         super().__init__(**kwargs)
         # Graphics configuration
         # slightly fewer liveries than TarpaulinCarConsistBase
@@ -8932,8 +9091,9 @@ class TarpaulinCarRandomisedConsist(RandomisedConsistMixin, TarpaulinCarConsistB
         ],
     ]
 
+    base_id = "tarpaulin_car_randomised"
+
     def __init__(self, **kwargs):
-        self.base_id = "tarpaulin_car_randomised"
         super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
@@ -8966,8 +9126,9 @@ class TorpedoCarConsist(CarConsist):
         global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
     ]
 
+    base_id = "torpedo_car"
+
     def __init__(self, **kwargs):
-        self.base_id = "torpedo_car"
         super().__init__(**kwargs)
         # no classes, use explicit labels
         self.class_refit_groups = []
