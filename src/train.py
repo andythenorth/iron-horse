@@ -9,6 +9,8 @@ sys.path.append(os.path.join("src"))  # add to the module search path
 import copy
 import math
 import random
+from dataclasses import dataclass, field
+from typing import Optional
 
 # python builtin templater might be used in some utility cases
 from string import Template
@@ -36,13 +38,29 @@ import iron_horse
 import spritelayer_cargos
 
 
-class UnitDef(object):
+@dataclass
+class UnitDef:
     """Simple wrapper obj to unpack/default required kwargs (the rest are arbitrary)"""
 
-    def __init__(self, class_name, repeat=1, **kwargs):
-        self.class_name = class_name
-        self.repeat = repeat
-        self.kwargs = kwargs
+    # CABBAGE DOCUMENT
+    class_name: str
+    repeat: int = 1
+    capacity: Optional[int] = None
+    weight: Optional[int] = None
+    vehicle_length: Optional[int] = None
+    spriterow_num: Optional[int] = 0
+    chassis: Optional[str] = None
+    effects: Optional[dict] = None
+    effect_offsets: Optional[list] = None
+    # z offset is rarely used and is handled separately, mostly just for low-height engines
+    effect_z_offset: Optional[int] = None
+    tail_light: Optional[str] = None
+    suppress_roof_sprite: bool = False
+    symmetry_type: Optional[str] = None
+    # mostly vehicles figure out their own spriterows in output, but occasionaly we need explicit control
+    force_spriterow_group_in_output_spritesheet: Optional[int] = 0
+    # optional - we might want to force the sprites to reverse in some contexts, for example rear cabs of multiple-unit articulated railcars
+    reverse_sprite_template: bool = False
 
 
 class ModelDef(object):
@@ -50,13 +68,15 @@ class ModelDef(object):
     def __init__(self, class_name, **kwargs):
         self.class_name = class_name
         self.kwargs = kwargs
-        self.units = []
+        self.unit_defs = []
         # used for clone book-keeping
         self.cloned_from_model_def = None
         self.clones = []
+        # unpack some keywords
+        self.gen = kwargs["gen"]
 
     def add_unit(self, **kwargs):
-        self.units.append(UnitDef(**kwargs))
+        self.unit_defs.append(UnitDef(**kwargs))
 
     def define_description(self, description):
         # note we store in kwargs, as the 'recipe' for the consist
@@ -84,13 +104,13 @@ class ModelDef(object):
         # e.g. [1, 0] will keep the first and drop the second
         # [2, 1] will repeat the first unit twice
         # [0, 2] will drop the first unit and repeat the second twice
-        units_old = cloned_model_def.units.copy()
-        cloned_model_def.units = []  # clear, we'll rebuild from clean
-        for counter, unit in enumerate(units_old):
+        unit_defs_old = cloned_model_def.unit_defs.copy()
+        cloned_model_def.unit_defs = []
+        for counter, unit_def in enumerate(unit_defs_old):
             # don't use unit if repeat is 0
             if unit_repeats[counter] > 0:
-                cloned_model_def.units.append(unit)
-                unit.repeat = unit_repeats[counter]
+                cloned_model_def.unit_defs.append(unit_def)
+                unit_def.repeat = unit_repeats[counter]
 
         cloned_model_def.kwargs["base_numeric_id"] = base_numeric_id
         # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
@@ -132,15 +152,15 @@ class ModelDef(object):
     @property
     def produced_unit_total(self):
         # convenience way to find out how many units in total this model def will produce
-        return sum(unit.repeat for unit in self.units)
+        return sum(unit_def.repeat for unit_def in self.unit_defs)
 
 
 class ModelTypeFactory(object):
     """
     ModelTypeFactory instances:
     - hold a roster_id identifier
-    - store a ModelType subclass with vehicle-specific parameters
-    - maintain a sequence of one or more UnitTypeFactory instances
+    - store a ModelDef object with vehicle-specific parameters
+    - maintain a sequence of one or more UnitDef instances
     - include the set of available liveries for the vehicle model
     - for each livery, create a model variant (an instance of the ModelType subclass)
         - each model variant will appear in the in-game buy menu
@@ -176,7 +196,7 @@ class ModelTypeFactory(object):
         self.roster_id = roster_id
         self.roster_id_providing_module = roster_id_providing_module
 
-    def produce(self, livery=None):
+    def produce(self, livery=None, dry_run=False):
         if livery == None:
             # just do the default livery, this means that calling ModelTypeFactory.produce() without params will always just return a default consist, which is useful
             # ASSIGN LIVERY HERE
@@ -193,21 +213,22 @@ class ModelTypeFactory(object):
         """
 
         # orchestrate addition of units
-        for unit in self.model_def.units:
+        for unit_def in self.model_def.unit_defs:
             try:
-                unit_cls = getattr(sys.modules[__name__], unit.class_name)
+                unit_cls = getattr(sys.modules[__name__], unit_def.class_name)
             except:
                 raise Exception(
                     "class_name not found for "
                     + self.model_def.kwargs["id"]
                     + ", "
-                    + unit.class_name
+                    + unit_def.class_name
                 )
             # CABBAGE - this is delegating to consist currently, by passing unit classes, we want to pass actual units from here, consist knows too much
             # print(unit_cls, unit)
-            consist.add_unit(unit_cls, unit.repeat, **unit.kwargs)
+            consist.add_unit(unit_cls, unit_def)
 
-        self.produced_consists.append(consist)
+        if dry_run == False:
+            self.produced_consists.append(consist)
         return consist
 
     def get_wagon_id(self, base_id, **kwargs):
@@ -262,47 +283,62 @@ class Consist(object):
         # create a structure to hold the units
         self.units = []
         # either gen xor intro_year is required, don't set both, one will be interpolated from the other
+        # CABBAGE model_def?
         self._intro_year = kwargs.get("intro_year", None)
-        self._gen = kwargs.get("gen", None)
         # override this in subclasses if needed, there's no case currently for setting it via keyword
         self._model_life = None
         # if gen is used, the calculated intro year can be adjusted with +ve or -ve offset
+        # CABBAGE model_def?
         self.intro_year_offset = kwargs.get("intro_year_offset", None)
         # used for synchronising / desynchronising intro dates for groups vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147
         self._intro_year_days_offset = (
             None  # defined in subclasses, no need for instances to define this
         )
         # vehicle life uses a default value, but can be extended automatically via a bool keyword, or it can be set manually
+        # CABBAGE model_def?
         self.extended_vehicle_life = kwargs.get("extended_vehicle_life", False)
+        # CABBAGE model_def?
         self._vehicle_life = kwargs.get("vehicle_life", None)
         #  most consists are automatically replaced by the next consist in the subrole tree
         # ocasionally we need to merge two branches of the subrole, in this case set replacement consist id
+        # CABBAGE model_def?
         self._replacement_consist_id = kwargs.get("replacement_consist_id", None)
         # default loading speed multiplier, override in subclasses as needed
         self._loading_speed_multiplier = 1
+        # CABBAGE model_def?
         self.base_track_type_name = kwargs.get("base_track_type_name", "RAIL")
         # modify base_track_type_name for electric engines when writing out the actual rail type
         # without this, RAIL and ELRL have to be specially handled whenever a list of compatible consists is wanted
+        # CABBAGE model_def?
         self.tractive_effort_coefficient = kwargs.get(
             "tractive_effort_coefficient", 0.3
         )  # 0.3 is recommended default value
         # private var, can be used to overrides default (per generation, per class) speed
+        # CABBAGE model_def?
         self._speed = kwargs.get("speed", None)
         # used by multi-mode engines such as electro-diesel, otherwise ignored
+        # CABBAGE model_def?
         self.power_by_power_source = kwargs.get("power_by_power_source", None)
         # some engines require pantograph sprites composited, don't bother setting this unless required
+        # CABBAGE model_def?
         self.pantograph_type = kwargs.get("pantograph_type", None)
         # some consists don't show pans in the buy menu (usually unpowered)
         self.suppress_pantograph_if_no_engine_attached = False
         # some engines have an optional decor layer, which is a manual spriterow num (as decor might not be widely used?)
+        # CABBAGE model_def?
         self.decor_spriterow_num = kwargs.get("decor_spriterow_num", None)
         # stupid extra-detail, control which variants show decor in purchase menu
+        # CABBAGE model_def?
         self.show_decor_in_purchase_for_variants = kwargs.get(
             "show_decor_in_purchase_for_variants", []
         )
+        # CABBAGE model_def?
         self.dual_headed = kwargs.get("dual_headed", False)
+        # CABBAGE model_def?
         self.tilt_bonus = kwargs.get("tilt_bonus", False)
+        # CABBAGE model_def?
         self.lgv_capable = kwargs.get("lgv_capable", False)
+        # CABBAGE model_def?
         self.requires_high_clearance = kwargs.get("requires_high_clearance", False)
         # solely used for ottd livery (company colour) selection, set in subclass as needed
         self.train_flag_mu = False
@@ -315,6 +351,7 @@ class Consist(object):
         # this is on Consist not CarConsist as we need to check it when determining order for all consists
         self.randomised_candidate_groups = []
         # some vehicles will get a higher speed if hauled by an express engine (use rarely)
+        # CABBAGE model_def?
         self.easter_egg_haulage_speed_bonus = kwargs.get(
             "easter_egg_haulage_speed_bonus", False
         )
@@ -322,6 +359,7 @@ class Consist(object):
         self._str_name_suffix = None
         # random_reverse means (1) randomised flip of vehicle when built (2) player can also flip vehicle manually
         # random_reverse is not supported in some templates
+        # CABBAGE model_def?
         self.random_reverse = kwargs.get("random_reverse", False)
         # just a simple buy cost tweak, only use when needed
         self.electro_diesel_buy_cost_malus = None
@@ -346,13 +384,16 @@ class Consist(object):
         # option to provide automatic roof for all units in the consist, leave as None for no generation
         self.roof_type = None
         # subrole and branches
+        # CABBAGE model_def?
         self.subrole = kwargs.get("subrole", None)
         # subrole child branch num places this vehicle on a specific child branch of the tech tree, where the subrole and role are the parent branches
         # 0 = null, no branch (for wagons etc)
         #  1..n for branches
         # -1..-n for jokers
+        # CABBAGE model_def?
         self.subrole_child_branch_num = kwargs.get("subrole_child_branch_num", 0)
         # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
+        # CABBAGE model_def?
         self.suppress_animated_pixel_warnings = kwargs.get(
             "suppress_animated_pixel_warnings", False
         )
@@ -362,11 +403,14 @@ class Consist(object):
         # for 'inspired by' stuff
         self.foamer_facts = """"""  # to be set per vehicle, multi-line supported
         # 0 indexed spriterows, position in generated spritesheet, used by brake vans to get a docs image for 4th gen, not 1st
+        # CABBAGE model_def?
         self.docs_image_spriterow = kwargs.get("docs_image_spriterow", None)
         # used for docs management
         self.is_wagon_for_docs = False
         # aids 'project management'
+        # CABBAGE model_def?
         self.sprites_complete = kwargs.get("sprites_complete", False)
+        # CABBAGE model_def?
         self.sprites_additional_liveries_potential = kwargs.get(
             "sprites_additional_liveries_potential", False
         )
@@ -398,13 +442,13 @@ class Consist(object):
             # we don't need to know the actual livery here, we rely on matching them up later by indexes, which is fine
             self.buyable_variants.append(BuyableVariant(self, livery=livery))
 
-    def add_unit(self, unit_cls, repeat=1, **kwargs):
+    def add_unit(self, unit_cls, unit_def):
         # we have add_unit create the variants when needed, which means we avoid sequencing problems with gestalt_graphics initialisation
         if len(self.buyable_variants) == 0:
             self.resolve_buyable_variants()
         # now add the units
-        unit = unit_cls(consist=self, **kwargs)
-        for repeat_num in range(repeat):
+        unit = unit_cls(consist=self, unit_def=unit_def)
+        for repeat_num in range(unit_def.repeat):
             self.units.append(unit)
         # append the unit variants after adding the unit to consist.units, as we want to be able to simply increment numeric IDs based on the number of units added so far
         for buyable_variant in self.buyable_variants:
@@ -635,27 +679,20 @@ class Consist(object):
         return 0
 
     @property
+    def gen(self):
+        # just a passthrough for convenience
+        return self.model_def.gen
+
+    @property
     def intro_year(self):
         # automatic intro_year, but can override by passing in kwargs for consist
-        if self._intro_year:
-            assert self._gen == None, (
-                "%s consist has both gen and intro_year set, which is incorrect"
-                % self.id
-            )
-            assert self.intro_year_offset == None, (
-                "%s consist has both intro_year and intro_year_offset set, which is incorrect"
-                % self.id
-            )
-            return self._intro_year
-        else:
-            assert self._gen != None, (
-                "%s consist has neither gen nor intro_year set, which is incorrect"
-                % self.id
-            )
-            result = self.roster.intro_years[self.base_track_type_name][self.gen - 1]
-            if self.intro_year_offset is not None:
-                result = result + self.intro_year_offset
-            return result
+        assert self.gen != None, (
+            "%s consist has no gen value set, which is incorrect" % self.id
+        )
+        result = self.roster.intro_years[self.base_track_type_name][self.gen - 1]
+        if self.intro_year_offset is not None:
+            result = result + self.intro_year_offset
+        return result
 
     @property
     def intro_date_months_offset(self):
@@ -683,28 +720,6 @@ class Consist(object):
                 # if further variation is wanted, give the joker a different intro year, automating that isn't wise
                 result = min(result + 6, 11)
         return result
-
-    @property
-    def gen(self):
-        # gen is usually set in the vehicle, but can be left unset if intro_year is set
-        if self._gen:
-            assert self._intro_year == None, (
-                "%s consist has both gen and intro_year set, which is incorrect"
-                % self.id
-            )
-            return self._gen
-        else:
-            assert self._intro_year != None, (
-                "%s consist has neither gen nor intro_year set, which is incorrect"
-                % self.id
-            )
-            for gen_counter, intro_year in enumerate(
-                self.roster.intro_years[self.base_track_type_name]
-            ):
-                if self.intro_year < intro_year:
-                    return gen_counter
-            # if no result is found in list, it's last gen
-            return len(self.roster.intro_years[self.base_track_type_name])
 
     @property
     def replacement_consist(self):
@@ -1509,8 +1524,10 @@ class EngineConsist(Consist):
         # adjust per subtype as needed
         self.floating_run_cost_multiplier = 8.5
         # fixed (baseline) run costs on this subtype, or more rarely instances can override this
+        # CABBAGE model_def?
         self.fixed_run_cost_points = kwargs.get("fixed_run_cost_points", 180)
         # optionally force a specific caboose family to be used
+        # CABBAGE model_def?
         self._caboose_family = kwargs.get("caboose_family", None)
         # how to handle grouping this consist type
         self.group_as_wagon = False
@@ -1518,6 +1535,7 @@ class EngineConsist(Consist):
         # (pantographs can also be generated by other gestalts as needed, this isn't the exclusive gestalt for it)
         # note that this Gestalt might get replaced by subclasses as needed
         # insert a default livery
+        # CABBAGE FACTORY?
         self.gestalt_graphics = GestaltGraphicsEngine(
             pantograph_type=self.pantograph_type,
             liveries=self.roster.get_liveries_by_name(
@@ -1543,15 +1561,14 @@ class EngineConsist(Consist):
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
-            print("CABBAGE 547", "buy_cost, clone", self.id)
-            """
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
-            temp_consist = self.model_def.cloned_from_model_def.produce()
+            model_type_factory = ModelTypeFactory(self.model_def.cloned_from_model_def)
+            model_type_factory.set_roster_ids(self.roster_id, self.roster_id_providing_module)
+            temp_consist = model_type_factory.produce(dry_run=True)
             return int(
                 temp_consist.buy_cost
-                * self.model_type_factory.clone_stats_adjustment_factor
+                * self.model_def.clone_stats_adjustment_factor
             )
-            """
 
         # max speed = 200mph by design - see assert_speed()
         # multiplier for speed, max value will be 25
@@ -1590,15 +1607,14 @@ class EngineConsist(Consist):
         # first check if this is a clone, because then we just take the costs from the clone source
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
-            print("CABBAGE 849", "running_cost, clone", self.id)
-            """
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
-            temp_consist = self.model_type_factory.cloned_from_model_def.produce()
+            model_type_factory = ModelTypeFactory(self.model_def.cloned_from_model_def)
+            model_type_factory.set_roster_ids(self.roster_id, self.roster_id_providing_module)
+            temp_consist = model_type_factory.produce(dry_run=True)
             return int(
                 temp_consist.running_cost
-                * self.model_type_factory.clone_stats_adjustment_factor
+                * self.model_def.clone_stats_adjustment_factor
             )
-            """
 
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
         is_NG = True if self.base_track_type_name == "NG" else False
@@ -2411,6 +2427,7 @@ class CarConsist(Consist):
         # self.base_id = '' # provide in subclass
         # we can't called super yet, because we need the id
         # but we need to call the consist factory to get the id, so duplicate the assignment here (Consist will also set it)
+        # CABBAGE model_def?
         kwargs["id"] = kwargs["model_type_factory"].get_wagon_id(self.base_id, **kwargs)
         super().__init__(**kwargs)
         self.roster.register_wagon_consist(self)
@@ -2419,6 +2436,7 @@ class CarConsist(Consist):
         self._joker = False
         # override this in subclass for, e.g. express freight consists
         self.speed_class = "standard"
+        # CABBAGE model_def?
         self.subtype = kwargs["subtype"]
         # Weight factor: override in subclass as needed
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
@@ -9269,6 +9287,7 @@ class Train(object):
     """
 
     def __init__(self, **kwargs):
+        self._unit_def = kwargs["unit_def"]
         self.consist = kwargs.get("consist")
         # create an id, which is used for shared switch chains, and as base id for unit variants to construct an id
         if len(self.consist.unique_units) == 0:
@@ -9280,14 +9299,7 @@ class Train(object):
         self.unit_variants = []
         # vehicle_length is either derived from chassis length or similar, or needs to be set explicitly as kwarg
         self._vehicle_length = kwargs.get("vehicle_length", None)
-        self._weight = kwargs.get("weight", None)
-        self.capacity = kwargs.get("capacity", 0)
-        # spriterow_num allows assigning sprites for multi-part vehicles, and is not supported in all vehicle templates (by design - TMWFTLB to support)
-        self.spriterow_num = kwargs.get("spriterow_num", 0)  # first row = 0;
-        # mostly vehicles figure out their own spriterows in output, but occasionaly we need explicit control
-        self.force_spriterow_group_in_output_spritesheet = kwargs.get(
-            "force_spriterow_group_in_output_spritesheet", 0
-        )
+        self._weight = self._unit_def.weight
         # !! the need to copy cargo refits from the consist is legacy from the default multi-unit articulated consists in Iron Horse 1
         # !! could likely be refactored !!
         self.label_refits_allowed = self.consist.label_refits_allowed
@@ -9295,45 +9307,62 @@ class Train(object):
         self.autorefit = True
         # nml constant (STEAM is sane default)
         self.engine_class = "ENGINE_CLASS_STEAM"
-        # structure for effect spawn and sprites, default and per railtype as needed
-        self.effects = {}  # empty if no effects, set in subtypes as needed
-        # optional, use to override automatic effect positioning
-        # expects a list of offset pairs [(x, y), (x, y)] etc
-        # n.b max 4 effects (nml limit)
-        self._effect_offsets = kwargs.get("effect_offsets", None)
-        # z offset is rarely used and is handled separately, mostly just for low-height engines
-        self._effect_z_offset = kwargs.get("effect_z_offset", None)
         self.default_effect_z_offset = (
             12  # optimised for Pony diesel and electric trains
         )
-        # optional - we might want to force the sprites to reverse in some contexts, for example rear cabs of multiple-unit articulated railcars
-        self.reverse_sprite_template = kwargs.get("reverse_sprite_template", False)
-        # optional - only set if the graphics processor generates the vehicle chassis
-        self.chassis = kwargs.get("chassis", None)
-        # optional - occasionally we need to suppress composited roof sprites and just draw our own
-        self.suppress_roof_sprite = kwargs.get("suppress_roof_sprite", False)
-        # optional - some engine units need to set explicit tail light spritesheets
-        # subclasses may override this, e.g. wagons have an automatic tail light based on vehicle length
-        self.tail_light = kwargs.get("tail_light", "empty")
         # 'symmetric' or 'asymmetric'?
         # defaults to symmetric, override in subclasses or per vehicle as needed
-        self._symmetry_type = kwargs.get("symmetry_type", "symmetric")
+        self._symmetry_type = "symmetric"
         # optional - a switch name to trigger re-randomising vehicle random bits - override as need in subclasses
         self.random_trigger_switch = None
         # store the kwargs so we can clone this unit later if we need to
         self.kwargs_for_optional_consist_cloning_later = kwargs
 
+    @property
+    def tail_light(self):
+        # optional - some engine units need to set explicit tail light spritesheets
+        # subclasses may override this, e.g. wagons have an automatic tail light based on vehicle length
+        if self._unit_def.tail_light is not None:
+            return self._unit_def.tail_light
+        else:
+            return "empty"
+
+    @property
+    def effects(self):
+        # empty by default, set in subtypes as needed
+        return {}
+
+    @property
+    def spriterow_num(self):
+        if self._unit_def.spriterow_num is not None:
+            return self._unit_def.spriterow_num
+        else:
+            return 0
+
+    @property
+    def CABBAGE_capacity(self):
+        if self._unit_def.capacity is not None:
+            return self._unit_def.capacity
+        else:
+            return 0
+
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter
         # allow that integer maths is needed for newgrf cb results; round up for safety
-        return [
-            int(math.ceil(capacity * multiplier))
-            for multiplier in global_constants.capacity_multipliers
-        ]
+        try:
+            result = [
+                int(math.ceil(capacity * multiplier))
+                for multiplier in global_constants.capacity_multipliers
+            ]
+        except:
+            raise Exception(
+                "get_capacity_variations" + " " + self.id + " " + self.consist.id
+            )
+        return result
 
     @property
     def capacities(self):
-        return self.get_capacity_variations(self.capacity)
+        return self.get_capacity_variations(self.CABBAGE_capacity)
 
     @property
     def default_cargo_capacity(self):
@@ -9358,6 +9387,20 @@ class Train(object):
         )
         return result
 
+    def get_mail_car_capacity(self):
+        result = (
+            int(self.get_freight_car_capacity()) / polar_fox.constants.mail_multiplier
+        )
+        return result
+
+    def get_freight_car_capacity(self):
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
+            self.consist.base_track_type_name
+        ][self.consist.gen - 1]
+        result = int(self.vehicle_length * base_capacity)
+        return result
+
     @property
     def weight(self):
         # weight can be set explicitly or by methods on subclasses
@@ -9367,25 +9410,28 @@ class Train(object):
     def vehicle_length(self):
         # length of this unit, either derived from from chassis length, or set explicitly via keyword
         # first guard that one and only one of these props is set
-        if self._vehicle_length is not None and self.chassis is not None:
+        if (
+            self._unit_def.vehicle_length is not None
+            and self._unit_def.chassis is not None
+        ):
             utils.echo_message(
                 self.consist.id
                 + " has units with both chassis and length properties set"
             )
-        if self._vehicle_length is None and self.chassis is None:
+        if self._unit_def.vehicle_length is None and self._unit_def.chassis is None:
             utils.echo_message(
                 self.consist.id
                 + " has units with neither chassis nor length properties set"
             )
 
-        if self.chassis is not None:
+        if self._unit_def.chassis is not None:
             # assume that chassis name format is 'foo_bar_ham_eggs_24px' or similar - true as of Nov 2020
             # if chassis name format changes / varies in future, just update the string slice accordingly, safe enough
             # splits on _, then takes last entry, then slices to remove 'px'
-            result = int(self.chassis.split("_")[-1][0:-2])
+            result = int(self._unit_def.chassis.split("_")[-1][0:-2])
             return int(result / 4)
         else:
-            return self._vehicle_length
+            return self._unit_def.vehicle_length
 
     @property
     def availability(self):
@@ -9404,14 +9450,18 @@ class Train(object):
 
     @property
     def symmetry_type(self):
-        assert self._symmetry_type in [
+        if self._unit_def.symmetry_type is not None:
+            symmetry_type = self._unit_def.symmetry_type
+        else:
+            symmetry_type = self._symmetry_type
+        assert symmetry_type in [
             "symmetric",
             "asymmetric",
         ], "symmetry_type '%s' is invalid in %s" % (
-            self._symmetry_type,
+            symmetry_type,
             self.consist.id,
         )
-        return self._symmetry_type
+        return symmetry_type
 
     @property
     def misc_flags(self):
@@ -9510,21 +9560,24 @@ class Train(object):
     @property
     def default_effect_offsets(self):
         # override this in subclasses as needed (e.g. to move steam engine smoke to front by default
-        # vehicles can also override this on init (stored on each model_variant as _effect_offsets)
+        # vehicles can also override this via _unit_def
         return [(0, 0)]
 
     def get_nml_expression_for_effects(self, railtype="default"):
         # provides part of nml switch for effects (smoke)
 
         # effects can be over-ridden per vehicle, or use a default from the vehicle subclass
-        if self._effect_offsets is not None:
-            effect_offsets = self._effect_offsets
+        if self._unit_def.effect_offsets is not None:
+            effect_offsets = self._unit_def.effect_offsets
         else:
             effect_offsets = self.default_effect_offsets
 
+        if self.consist.id == "toaster":
+            print("TOASTER", effect_offsets)
+
         # z offset is handled independently to x, y for simplicity, option to override z offset default per vehicle
-        if self._effect_z_offset is not None:
-            z_offset = self._effect_z_offset
+        if self._unit_def.effect_z_offset is not None:
+            z_offset = self._unit_def.effect_z_offset
         else:
             z_offset = self.default_effect_z_offset
 
@@ -9651,9 +9704,12 @@ class BatteryHybridEngineUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
-        self.effects = {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]}
         # most battery hybrid engines are asymmetric, override per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
+
+    @property
+    def effects(self):
+        return {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]}
 
 
 class CabbageDVTUnit(Train):
@@ -9664,15 +9720,15 @@ class CabbageDVTUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"  # probably fine?
-        self.effects = {}
         self._symmetry_type = "asymmetric"
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type_name
-        ][self.consist.gen - 1]
-        self.capacity = (
-            self.vehicle_length * base_capacity
-        ) / polar_fox.constants.mail_multiplier
+
+    @property
+    def effects(self):
+        return {}
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_mail_car_capacity()
 
 
 class CabControlPaxCarUnit(Train):
@@ -9683,10 +9739,15 @@ class CabControlPaxCarUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"  # probably fine?
-        self.effects = {}
         self._symmetry_type = "asymmetric"
-        # magic to set capacity subject to length and vehicle capacity type
-        self.capacity = self.get_pax_car_capacity()
+
+    @property
+    def effects(self):
+        return {}
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_pax_car_capacity()
 
 
 class CombineUnitMailBase(Train):
@@ -9700,14 +9761,11 @@ class CombineUnitMailBase(Train):
         self.articulated_unit_different_class_refit_groups = [
             "mail"
         ]  # note mail only, no other express cargos
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type_name
-        ][self.consist.gen - 1]
-        # also account for some pax capacity 'on' this unit (implemented on adjacent pax unit)
-        self.capacity = (
-            0.75 * self.vehicle_length * base_capacity
-        ) / polar_fox.constants.mail_multiplier
+
+    @property
+    def CABBAGE_capacity(self):
+        # 0.75 is to account for some pax capacity 'on' this unit (implemented on adjacent pax unit)
+        return 0.75 * self.get_mail_car_capacity()
 
 
 class CombineUnitPaxBase(Train):
@@ -9719,8 +9777,10 @@ class CombineUnitPaxBase(Train):
         super().__init__(**kwargs)
         # usually refit classes come from consist, but we special case to the unit for this combine coach
         self.articulated_unit_different_class_refit_groups = ["pax"]
-        # magic to set capacity subject to length and vehicle capacity type
-        self.capacity = self.get_pax_car_capacity()
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_pax_car_capacity()
 
 
 class AutoCoachCombineUnitMail(CombineUnitMailBase):
@@ -9731,9 +9791,11 @@ class AutoCoachCombineUnitMail(CombineUnitMailBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_STEAM"
-        self.effects = {}
         self._symmetry_type = "asymmetric"
 
+    @property
+    def effects(self):
+        return {}
 
 class AutoCoachCombineUnitPax(CombineUnitPaxBase):
     """
@@ -9743,8 +9805,11 @@ class AutoCoachCombineUnitPax(CombineUnitPaxBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_STEAM"
-        self.effects = {}
         self._symmetry_type = "asymmetric"
+
+    @property
+    def effects(self):
+        return {}
 
 
 class DieselRailcarCombineUnitMail(CombineUnitMailBase):
@@ -9755,10 +9820,13 @@ class DieselRailcarCombineUnitMail(CombineUnitMailBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
-        self.effects = {
+        self._symmetry_type = "asymmetric"
+
+    @property
+    def effects(self):
+        return {
             "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
         }
-        self._symmetry_type = "asymmetric"
 
 
 class DieselRailcarCombineUnitPax(CombineUnitPaxBase):
@@ -9769,11 +9837,13 @@ class DieselRailcarCombineUnitPax(CombineUnitPaxBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
-        self.effects = {
-            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
-        }
         self._symmetry_type = "asymmetric"
 
+    @property
+    def effects(self):
+        return {
+            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
+        }
 
 class DieselEngineUnit(Train):
     """
@@ -9783,12 +9853,14 @@ class DieselEngineUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
-        self.effects = {
-            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
-        }
         # most diesel engines are asymmetric, override per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
+    @property
+    def effects(self):
+        return {
+            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
+        }
 
 class DieselRailcarBaseUnit(DieselEngineUnit):
     """
@@ -9809,13 +9881,18 @@ class DieselExpressRailcarPaxUnit(DieselRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length and vehicle capacity type
-        self.capacity = self.get_pax_car_capacity()
         # effects
         self.engine_class = "ENGINE_CLASS_DIESEL"
-        self.effects = {
-            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
+
+    @property
+    def effects(self):
+        return {
+            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
         }
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_pax_car_capacity()
 
 
 class DieselRailcarMailUnit(DieselRailcarBaseUnit):
@@ -9825,13 +9902,10 @@ class DieselRailcarMailUnit(DieselRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type_name
-        ][self.consist.gen - 1]
-        self.capacity = (
-            self.vehicle_length * base_capacity
-        ) / polar_fox.constants.mail_multiplier
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_mail_car_capacity()
 
 
 class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
@@ -9841,8 +9915,10 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length and vehicle capacity type
-        self.capacity = self.get_pax_car_capacity()
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_pax_car_capacity()
 
 
 class ElectricEngineUnit(Train):
@@ -9853,13 +9929,18 @@ class ElectricEngineUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_ELECTRIC"
-        # use kwargs so we can suppress effects by settting to empty dict
-        self.effects = kwargs.get(
-            "effects",
-            {"default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]},
-        )
         # almost all electric engines are asymmetric, override per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
+
+    @property
+    def effects(self):
+        # option to suppress default effects here via unit_def
+        if self._unit_def.effects is not None:
+            return self._unit_def.effects
+        else:
+            return {
+                "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
+            }
 
 
 class ElectricHighSpeedUnitBase(Train):
@@ -9870,13 +9951,17 @@ class ElectricHighSpeedUnitBase(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_ELECTRIC"
-        # use kwargs so we can suppress effects by settting to empty dict
-        self.effects = kwargs.get(
-            "effects",
-            {"default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]},
-        )
         self._symmetry_type = "asymmetric"
 
+    @property
+    def effects(self):
+        # option to suppress default effects here via unit_def
+        if self._unit_def.effects is not None:
+            return self._unit_def.effects
+        else:
+            return {
+                "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
+            }
 
 class ElectricHighSpeedMailUnit(ElectricHighSpeedUnitBase):
     """
@@ -9885,13 +9970,10 @@ class ElectricHighSpeedMailUnit(ElectricHighSpeedUnitBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type_name
-        ][self.consist.gen - 1]
-        self.capacity = (
-            self.vehicle_length * base_capacity
-        ) / polar_fox.constants.mail_multiplier
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_mail_car_capacity()
 
 
 class ElectricHighSpeedPaxUnit(ElectricHighSpeedUnitBase):
@@ -9901,9 +9983,11 @@ class ElectricHighSpeedPaxUnit(ElectricHighSpeedUnitBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set high speed pax car capacity subject to length
+
+    @property
+    def CABBAGE_capacity(self):
         # this won't work with double deck high speed in future, extend a class for that then if needed
-        self.capacity = self.get_pax_car_capacity()
+        return self.get_pax_car_capacity()
 
 
 class ElectroDieselEngineUnit(Train):
@@ -9914,14 +9998,17 @@ class ElectroDieselEngineUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
-        self.effects = {
-            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
-            "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
-        }
         # electro-diesels are complex eh?
         self.consist.electro_diesel_buy_cost_malus = 1  # will get same buy cost factor as electric engine of same gen (blah balancing)
         # almost all electro-diesel engines are asymmetric, override per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
+
+    @property
+    def effects(self):
+        return {
+            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
+            "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
+        }
 
 
 class ElectroDieselRailcarBaseUnit(Train):
@@ -9932,14 +10019,17 @@ class ElectroDieselRailcarBaseUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
-        self.effects = {
-            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
-            "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
-        }
         # electro-diesels are complex eh?
         self.consist.electro_diesel_buy_cost_malus = 1.15  # will get higher buy cost factor than electric railcar of same gen (blah balancing)
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = "asymmetric"
+
+    @property
+    def effects(self):
+        return {
+            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
+            "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
+        }
 
 
 class ElectroDieselRailcarMailUnit(ElectroDieselRailcarBaseUnit):
@@ -9949,13 +10039,10 @@ class ElectroDieselRailcarMailUnit(ElectroDieselRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type_name
-        ][self.consist.gen - 1]
-        self.capacity = (
-            self.vehicle_length * base_capacity
-        ) / polar_fox.constants.mail_multiplier
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_mail_car_capacity()
 
 
 class ElectroDieselExpressRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
@@ -9965,14 +10052,19 @@ class ElectroDieselExpressRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length and vehicle capacity type
-        self.capacity = self.get_pax_car_capacity()
         # effects
         self.engine_class = "ENGINE_CLASS_DIESEL"
-        self.effects = {
+
+    @property
+    def effects(self):
+        return {
             "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"],
             "electrified": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"],
         }
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_pax_car_capacity()
 
 
 class ElectricRailcarBaseUnit(Train):
@@ -9983,11 +10075,14 @@ class ElectricRailcarBaseUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_ELECTRIC"
-        self.effects = {
-            "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
-        }
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = "asymmetric"
+
+    @property
+    def effects(self):
+        return {
+            "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
+        }
 
 
 class ElectricExpressRailcarPaxUnit(ElectricRailcarBaseUnit):
@@ -9997,8 +10092,10 @@ class ElectricExpressRailcarPaxUnit(ElectricRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length and vehicle capacity type
-        self.capacity = self.get_pax_car_capacity()
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_pax_car_capacity()
 
 
 class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
@@ -10008,13 +10105,10 @@ class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type_name
-        ][self.consist.gen - 1]
-        self.capacity = (
-            self.vehicle_length * base_capacity
-        ) / polar_fox.constants.mail_multiplier
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_mail_car_capacity()
 
 
 class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
@@ -10024,8 +10118,10 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length and vehicle capacity type
-        self.capacity = self.get_pax_car_capacity()
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_pax_car_capacity()
 
 
 class MetroUnit(Train):
@@ -10037,14 +10133,22 @@ class MetroUnit(Train):
         super().__init__(**kwargs)
         kwargs["consist"].base_track_type_name = "METRO"
         self.engine_class = "ENGINE_CLASS_ELECTRIC"
-        self.effects = {
-            "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
-        }
         self.default_effect_z_offset = (
             1  # optimised for Pony diesel and electric trains
         )
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = "asymmetric"
+
+    @property
+    def effects(self):
+        return {
+            "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
+        }
+
+    @property
+    def CABBAGE_capacity(self):
+        print("CABBAGE_capacity", "Metro")
+        return 0
 
 
 class SnowploughUnit(Train):
@@ -10055,15 +10159,15 @@ class SnowploughUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"  # !! needs changing??
-        self.effects = {}
         self._symmetry_type = "asymmetric"
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type_name
-        ][self.consist.gen - 1]
-        self.capacity = (
-            self.vehicle_length * base_capacity
-        ) / polar_fox.constants.mail_multiplier
+
+    @property
+    def effects(self):
+        return {}
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_mail_car_capacity()
 
 
 class SteamEngineUnit(Train):
@@ -10074,9 +10178,14 @@ class SteamEngineUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_STEAM"
-        self.effects = {"default": ["EFFECT_SPAWN_MODEL_STEAM", "EFFECT_SPRITE_STEAM"]}
         self.default_effect_z_offset = 13  # optimised for Pony steam trains
         self._symmetry_type = "asymmetric"  # assume all steam engines are asymmetric
+
+    @property
+    def effects(self):
+        return {
+            "default": ["EFFECT_SPAWN_MODEL_STEAM", "EFFECT_SPRITE_STEAM"]
+        }
 
     @property
     def default_effect_offsets(self):
@@ -10112,8 +10221,12 @@ class TrainCar(Train):
         self.consist = kwargs["consist"]
         # most wagons are symmetric, override per vehicle or subclass as needed
         self._symmetry_type = kwargs.get("symmetry_type", "symmetric")
+
+    @property
+    def tail_light(self):
         # all wagons use auto tail-lights based on length
-        self.tail_light = str(self.vehicle_length * 4) + "px"
+        # override in subclass if needed
+        return str(self.vehicle_length * 4) + "px"
 
     @property
     def running_cost_base(self):
@@ -10158,6 +10271,10 @@ class CabooseCar(TrainCar):
         weight_factor = 3 if self.consist.base_track_type_name == "NG" else 5
         return weight_factor * self.vehicle_length
 
+    @property
+    def CABBAGE_capacity(self):
+        return 0
+
 
 class PaxCar(TrainCar):
     """
@@ -10168,8 +10285,10 @@ class PaxCar(TrainCar):
         super().__init__(**kwargs)
         # pax wagons may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        # magic to set capacity subject to length and vehicle capacity type
-        self.capacity = self.get_pax_car_capacity()
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_pax_car_capacity()
 
 
 class PaxRailcarTrailerCar(PaxCar):
@@ -10179,8 +10298,17 @@ class PaxRailcarTrailerCar(PaxCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # TrainCar sets auto tail light, override it
-        self.tail_light = kwargs["tail_light"]  # fail if not passed, required arg
+
+    @property
+    def tail_light(self):
+        # TrainCar sets auto tail light, override it in unit_def, fail if not set
+        assert (
+            self._unit_def.tail_light is not None
+        ), "%s consist has a unit without tail_light set, which is required for %s" % (
+            self.id,
+            self.__class__.__name__,
+        )
+        return self._unit_def.tail_light
 
 
 class PaxRestaurantCar(PaxCar):
@@ -10204,13 +10332,10 @@ class ExpressCar(TrainCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type_name
-        ][self.consist.gen - 1]
-        self.capacity = (
-            self.vehicle_length * base_capacity
-        ) / polar_fox.constants.mail_multiplier
+
+    @property
+    def CABBAGE_capacity(self):
+        return self.get_mail_car_capacity()
 
 
 class ExpressIntermodalCar(ExpressCar):
@@ -10246,9 +10371,18 @@ class MailRailcarTrailerCar(ExpressCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # TrainCar sets auto tail light, override it
-        self.tail_light = kwargs["tail_light"]  # fail if not passed, required arg
         self._symmetry_type = "asymmetric"
+
+    @property
+    def tail_light(self):
+        # TrainCar sets auto tail light, override it in unit_def, fail if not set
+        assert (
+            self._unit_def.tail_light is not None
+        ), "%s consist has a unit without tail_light set, which is required for %s" % (
+            self.id,
+            self.__class__.__name__,
+        )
+        return self._unit_def.tail_light
 
 
 class AutomobileCarAsymmetric(ExpressCar):
@@ -10298,9 +10432,13 @@ class FreightCar(TrainCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        if kwargs.get("capacity", None) is not None:
+
+    @property
+    def CABBAGE_capacity(self):
+        if self._unit_def.capacity is not None:
             print(
                 self.consist.id,
+                self.id,
                 " has a capacity set in init - possibly incorrect",
                 kwargs.get("capacity", None),
             )
@@ -10308,7 +10446,7 @@ class FreightCar(TrainCar):
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
             self.consist.base_track_type_name
         ][self.consist.gen - 1]
-        self.capacity = self.vehicle_length * base_capacity
+        return self.vehicle_length * base_capacity
 
 
 class BinCar(FreightCar):
@@ -10318,8 +10456,11 @@ class BinCar(FreightCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+    @property
+    def CABBAGE_capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
-        self.capacity = 2 * self.capacity
+        return 2 * self.get_freight_car_capacity()
 
 
 class CoilBuggyCar(FreightCar):
@@ -10329,8 +10470,11 @@ class CoilBuggyCar(FreightCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+    @property
+    def CABBAGE_capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
-        self.capacity = 2 * self.capacity
+        return 2 * self.get_freight_car_capacity()
 
 
 class CoilCarAsymmetric(FreightCar):
@@ -10350,8 +10494,11 @@ class HeavyDutyCar(FreightCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+    @property
+    def CABBAGE_capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
-        self.capacity = 2 * self.capacity
+        return 2 * self.get_freight_car_capacity()
 
 
 class IngotCar(FreightCar):
@@ -10361,8 +10508,11 @@ class IngotCar(FreightCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+    @property
+    def CABBAGE_capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
-        self.capacity = 2 * self.capacity
+        return 2 * self.get_freight_car_capacity()
 
 
 class IntermodalCar(FreightCar):
@@ -10397,8 +10547,11 @@ class SlagLadleCar(FreightCar):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+    @property
+    def CABBAGE_capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
-        self.capacity = 2 * self.capacity
+        return 2 * self.get_freight_car_capacity()
 
 
 class TorpedoCar(FreightCar):
@@ -10410,5 +10563,8 @@ class TorpedoCar(FreightCar):
         super().__init__(**kwargs)
         # just multiply whatever is set by the init, what could go wrong? :)
         self._symmetry_type = "asymmetric"
+
+    @property
+    def CABBAGE_capacity(self):
         # capacity bonus is solely to support using small stations in Steeltown where space between industries is constrained
-        self.capacity = 1.5 * self.capacity
+        return 1.5 * self.get_freight_car_capacity()
