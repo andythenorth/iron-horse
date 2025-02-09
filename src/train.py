@@ -74,6 +74,8 @@ class ModelDef(object):
         self.clones = []
         # unpack some keywords
         self.gen = kwargs["gen"]
+        # CABBAGE - need to port ModelDef instance params to base_id, not id
+        self.base_id = kwargs.get("id", None)
 
     def add_unit_def(self, **kwargs):
         self.unit_defs.append(UnitDef(**kwargs))
@@ -204,11 +206,16 @@ class ModelTypeFactory(object):
             pass
 
         consist_cls = getattr(sys.modules[__name__], self.class_name)
+        """
+        print(self.base_id_resolver(consist_cls))
+        """
         consist = consist_cls(model_type_factory=self, **self.model_def.kwargs)
 
+        """
         for counter, livery in enumerate(["example", "cabbage_livery"]):
             increment = counter * self.model_def.produced_unit_total
-            print(self.model_def.kwargs.get("id", "anonymous wagon"), self.model_def.kwargs["base_numeric_id"] + increment)
+            print(self.model_def.kwargs.get("id", consist.base_id), self.model_def.kwargs["base_numeric_id"] + increment)
+        """
 
 
         """
@@ -236,6 +243,14 @@ class ModelTypeFactory(object):
         if dry_run == False:
             self.produced_consists.append(consist)
         return consist
+
+    def base_id_resolver(self, consist_cls):
+        # figures out where a consist is getting a base id from
+        # must be either defined on model_def or in the consist class attrs
+        if self.model_def.base_id is not None:
+            return self.model_def.base_id
+        else:
+            return consist_cls.base_id
 
     def get_wagon_id(self, base_id, **kwargs):
         # auto id creator, used for wagons not locos
