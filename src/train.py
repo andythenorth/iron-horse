@@ -76,6 +76,7 @@ class ModelDef(object):
         self.gen = kwargs["gen"]
         # CABBAGE - need to port ModelDef instance params to base_id, not id
         self.base_id = kwargs.get("base_id", None)
+        self.base_numeric_id = kwargs.get("base_numeric_id", None)
         # CABBAGE
         self.base_track_type_name = kwargs.get("base_track_type_name", None)
         self.subtype = kwargs.get("subtype", None)
@@ -121,14 +122,9 @@ class ModelDef(object):
                 cloned_model_def.unit_defs.append(unit_def)
                 unit_def.repeat = unit_repeats[counter]
 
-        cloned_model_def.kwargs["base_numeric_id"] = base_numeric_id
+        cloned_model_def.base_numeric_id = base_numeric_id
         # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
-        # CABBAGE
-        cloned_model_def.kwargs["id"] = (
-            self.kwargs["id"] + "_clone_" + str(len(self.clones))
-        )
-        # CABBAGE SHIM
-        cloned_model_def.base_id = cloned_model_def.kwargs["id"]
+        cloned_model_def.base_id = self.base_id + "_clone_" + str(len(self.clones))
         cloned_model_def.kwargs["buyable_variant_group_id"] = cloned_model_def.base_id
         return cloned_model_def
 
@@ -293,14 +289,16 @@ class Consist(object):
     """
 
     def __init__(self, **kwargs):
+        # mandatory, fail if missing
         self.model_type_factory = kwargs[
             "model_type_factory"
-        ]  # mandatory, fail if missing
-        self.id = kwargs.get("id", None)
+        ]
+        # mandatory, fail if missing
+        self.id = kwargs["id"]
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         # private var, used to store a name substr for engines, composed into name with other strings as needed
         self._name = kwargs.get("name", None)
-        self.base_numeric_id = kwargs.get("base_numeric_id", None)
+        self.base_numeric_id = self.model_def.base_numeric_id
         # create a structure to hold buyable variants - the method can be over-ridden in consist subclasses to provide specific rules for buyable variants
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
         # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem
@@ -336,8 +334,6 @@ class Consist(object):
         self._replacement_consist_id = kwargs.get("replacement_consist_id", None)
         # default loading speed multiplier, override in subclasses as needed
         self._loading_speed_multiplier = 1
-        # CABBAGE model_def?
-        self.base_track_type_name = kwargs.get("base_track_type_name", "RAIL")
         # modify base_track_type_name for electric engines when writing out the actual rail type
         # without this, RAIL and ELRL have to be specially handled whenever a list of compatible consists is wanted
         # CABBAGE model_def?
@@ -516,6 +512,13 @@ class Consist(object):
             unit_variant.numeric_id for unit_variant in self.units[0].unit_variants
         ]
         return result
+
+    @property
+    def base_track_type_name(self):
+        if self.model_def.base_track_type_name is not None:
+            return self.model_def.base_track_type_name
+        else:
+            return "RAIL"
 
     @property
     def unique_spriterow_nums(self):
@@ -10315,7 +10318,6 @@ class MetroUnit(Train):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        kwargs["consist"].base_track_type_name = "METRO"
         self.engine_class = "ENGINE_CLASS_ELECTRIC"
         self.default_effect_z_offset = (
             1  # optimised for Pony diesel and electric trains
