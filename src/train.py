@@ -77,10 +77,19 @@ class ModelDef(object):
         # CABBAGE - need to port ModelDef instance params to base_id, not id
         self.base_id = kwargs.get("base_id", None)
         self.base_numeric_id = kwargs.get("base_numeric_id", None)
-        # CABBAGE
+        # CABBAGE - THESE NEED DEFAULT PROPS CHECKED
         self.base_track_type_name = kwargs.get("base_track_type_name", None)
         self.subtype = kwargs.get("subtype", None)
         self.cab_id = kwargs.get("cab_id", None)
+        self.dual_headed = kwargs.get("dual_headed", False)
+        self.random_reverse = kwargs.get("random_reverse", False)
+        self.lgv_capable = kwargs.get("lgv_capable", False)
+        self.tilt_bonus = kwargs.get("tilt_bonus", False)
+        self.requires_high_clearance = kwargs.get("requires_high_clearance", False)
+        self.decor_spriterow_num = kwargs.get("decor_spriterow_num", None)
+        self.show_decor_in_purchase_for_variants = kwargs.get(
+            "show_decor_in_purchase_for_variants", []
+        )
         # CABBAGE SHIM
         if self.base_id is not None:
             self.kwargs["id"] = self.base_id
@@ -215,14 +224,17 @@ class ModelTypeFactory(object):
 
         CABBAGE_KWARGS = {k: v for k, v in self.model_def.kwargs.items() if k != "id"}
 
-        consist = consist_cls(model_type_factory=self, id=self.base_id_resolver(consist_cls), **CABBAGE_KWARGS)
+        consist = consist_cls(
+            model_type_factory=self,
+            id=self.base_id_resolver(consist_cls),
+            **CABBAGE_KWARGS,
+        )
 
         """
         for counter, livery in enumerate(["example", "cabbage_livery"]):
             increment = counter * self.model_def.produced_unit_total
             print(self.model_def.kwargs.get("id", consist.base_id), self.model_def.kwargs["base_numeric_id"] + increment)
         """
-
 
         """
         if hasattr(consist_cls, "liveries"):
@@ -290,9 +302,7 @@ class Consist(object):
 
     def __init__(self, **kwargs):
         # mandatory, fail if missing
-        self.model_type_factory = kwargs[
-            "model_type_factory"
-        ]
+        self.model_type_factory = kwargs["model_type_factory"]
         # mandatory, fail if missing
         self.id = kwargs["id"]
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
@@ -352,21 +362,6 @@ class Consist(object):
         # some consists don't show pans in the buy menu (usually unpowered)
         self.suppress_pantograph_if_no_engine_attached = False
         # some engines have an optional decor layer, which is a manual spriterow num (as decor might not be widely used?)
-        # CABBAGE model_def?
-        self.decor_spriterow_num = kwargs.get("decor_spriterow_num", None)
-        # stupid extra-detail, control which variants show decor in purchase menu
-        # CABBAGE model_def?
-        self.show_decor_in_purchase_for_variants = kwargs.get(
-            "show_decor_in_purchase_for_variants", []
-        )
-        # CABBAGE model_def?
-        self.dual_headed = kwargs.get("dual_headed", False)
-        # CABBAGE model_def?
-        self.tilt_bonus = kwargs.get("tilt_bonus", False)
-        # CABBAGE model_def?
-        self.lgv_capable = kwargs.get("lgv_capable", False)
-        # CABBAGE model_def?
-        self.requires_high_clearance = kwargs.get("requires_high_clearance", False)
         # solely used for ottd livery (company colour) selection, set in subclass as needed
         self.train_flag_mu = False
         # some wagons will provide power if specific engine IDs are in the consist
@@ -384,10 +379,6 @@ class Consist(object):
         )
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
         self._str_name_suffix = None
-        # random_reverse means (1) randomised flip of vehicle when built (2) player can also flip vehicle manually
-        # random_reverse is not supported in some templates
-        # CABBAGE model_def?
-        self.random_reverse = kwargs.get("random_reverse", False)
         # just a simple buy cost tweak, only use when needed
         self.electro_diesel_buy_cost_malus = None
         # arbitrary multiplier to the calculated buy cost, e.g. 1.1, 0.9 etc
@@ -721,6 +712,44 @@ class Consist(object):
     def gen(self):
         # just a passthrough for convenience
         return self.model_def.gen
+
+    @property
+    def random_reverse(self):
+        # just a passthrough for convenience
+        # random_reverse means (1) randomised flip of vehicle when built (2) player can also flip vehicle manually
+        # random_reverse is not supported in some templates
+        return self.model_def.random_reverse
+
+    @property
+    def decor_spriterow_num(self):
+        # just a passthrough for convenience
+        # stupid extra-detail, control which variants show decor in purchase menu
+        return self.model_def.decor_spriterow_num
+
+    @property
+    def show_decor_in_purchase_for_variants(self):
+        # just a passthrough for convenience
+        return self.model_def.show_decor_in_purchase_for_variants
+
+    @property
+    def tilt_bonus(self):
+        # just a passthrough for convenience
+        return self.model_def.tilt_bonus
+
+    @property
+    def lgv_capable(self):
+        # just a passthrough for convenience
+        return self.model_def.lgv_capable
+
+    @property
+    def requires_high_clearance(self):
+        # just a passthrough for convenience
+        return self.model_def.requires_high_clearance
+
+    @property
+    def dual_headed(self):
+        # just a passthrough for convenience
+        return self.model_def.dual_headed
 
     @property
     def intro_year(self):
@@ -1602,11 +1631,12 @@ class EngineConsist(Consist):
         if self.model_def.cloned_from_model_def is not None:
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
             model_type_factory = ModelTypeFactory(self.model_def.cloned_from_model_def)
-            model_type_factory.set_roster_ids(self.roster_id, self.roster_id_providing_module)
+            model_type_factory.set_roster_ids(
+                self.roster_id, self.roster_id_providing_module
+            )
             temp_consist = model_type_factory.produce(dry_run=True)
             return int(
-                temp_consist.buy_cost
-                * self.model_def.clone_stats_adjustment_factor
+                temp_consist.buy_cost * self.model_def.clone_stats_adjustment_factor
             )
 
         # max speed = 200mph by design - see assert_speed()
@@ -1648,11 +1678,12 @@ class EngineConsist(Consist):
         if self.model_def.cloned_from_model_def is not None:
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
             model_type_factory = ModelTypeFactory(self.model_def.cloned_from_model_def)
-            model_type_factory.set_roster_ids(self.roster_id, self.roster_id_providing_module)
+            model_type_factory.set_roster_ids(
+                self.roster_id, self.roster_id_providing_module
+            )
             temp_consist = model_type_factory.produce(dry_run=True)
             return int(
-                temp_consist.running_cost
-                * self.model_def.clone_stats_adjustment_factor
+                temp_consist.running_cost * self.model_def.clone_stats_adjustment_factor
             )
 
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
@@ -1849,7 +1880,6 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.dual_headed = True
         # non-standard cite
         self._cite = "Arabella Unit"
         # run cost algorithm doesn't account for dual-head / high power MUs reliably, so just fix it here, using assumption that there are very few cargo sprinters and this will be fine
@@ -1871,6 +1901,10 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
     def spritelayer_cargo_layers(self):
         # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
         return ["cargo_sprinter"]
+
+    @property
+    def dual_headed(self):
+        return True
 
 
 class MailEngineMetroConsist(MailEngineConsist):
@@ -2085,14 +2119,16 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # always dual-head
-        self.dual_headed = True
         self.buy_cost_adjustment_factor = 1.2
         # higher speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base for high speed
         self.floating_run_cost_multiplier = 10
         # non-standard cite
         self._cite = "Dr Constance Speed"
+
+    @property
+    def dual_headed(self):
+        return True
 
 
 class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
@@ -2311,10 +2347,7 @@ class TGVCabEngineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.dual_headed = True
         self.buy_menu_additional_text_hint_wagons_add_power = True
-        self.tilt_bonus = True
-        self.lgv_capable = True
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
         self.buy_cost_adjustment_factor = 0.95
         # ....run cost multiplier is adjusted up from pax base because regrettable realism
@@ -2338,6 +2371,18 @@ class TGVCabEngineConsist(EngineConsist):
     def buy_menu_distributed_power_hp_value(self):
         return self.power
 
+    @property
+    def tilt_bonus(self):
+        return True
+
+    @property
+    def lgv_capable(self):
+        return True
+
+    @property
+    def dual_headed(self):
+        return True
+
 
 class TGVMiddleEngineConsistMixin(EngineConsist):
     """
@@ -2352,8 +2397,6 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         self._buyable_variant_group_id = self.cab_id
         self.wagons_add_power = True
         self.buy_menu_additional_text_hint_wagons_add_power = True
-        self.tilt_bonus = True
-        self.lgv_capable = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         # eh as of Feb 2019, OpenTTD won't actually use this for middle cars, as not engines
         # this means the buy menu won't match, but wagons will match anyway when attached to cab
@@ -2417,6 +2460,14 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
     @property
     def vehicle_family_badge(self):
         return "vehicle_family/" + self._buyable_variant_group_id
+
+    @property
+    def tilt_bonus(self):
+        return True
+
+    @property
+    def lgv_capable(self):
+        return True
 
 
 class TGVMiddleMailEngineConsist(TGVMiddleEngineConsistMixin, MailEngineConsist):
@@ -4024,7 +4075,6 @@ class CabooseCarConsist(CarConsist):
         # chop down caboose costs, they're just eye candy eh
         self.buy_cost_adjustment_factor = 0.75
         self.use_colour_randomisation_strategies = True
-        self.random_reverse = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
@@ -4043,6 +4093,10 @@ class CabooseCarConsist(CarConsist):
         ):
             result.append((counter, date_range))
         return result
+
+        @property
+        def random_reverse(self):
+            return True
 
 
 class CaneBinCarConsist(CarConsist):
@@ -4235,7 +4289,6 @@ class CoilCarCoveredAsymmetricConsist(CoilCarConsistBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_coil_cars"
         self._joker = True
-        self.random_reverse = True
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.covered_coil_car_asymmetric_body_recolour_map,
@@ -4247,6 +4300,10 @@ class CoilCarCoveredAsymmetricConsist(CoilCarConsistBase):
             piece="coil",
             has_cover=True,
         )
+
+        @property
+        def random_reverse(self):
+            return True
 
 
 class CoilCarCoveredConsist(CoilCarConsistBase):
@@ -4405,14 +4462,16 @@ class DedicatedCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBa
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_coil_cars"
         self._joker = True
-        # because the asymmetric covered wagons can reverse
-        self.random_reverse = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
             liveries=self.liveries,
         )
+
+        @property
+        def random_reverse(self):
+            return True
 
 
 class CoveredHopperCarConsistBase(CarConsist):
@@ -6486,7 +6545,6 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
         # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.speed_class = "express"
-        self.lgv_capable = True
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.9
         self.floating_run_cost_multiplier = 4
@@ -6509,6 +6567,10 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
             consist_ruleset="mail_cars",
             liveries=liveries,
         )
+
+        @property
+        def lgv_capable(self):
+            return True
 
 
 class MailHSTCarConsist(MailCarConsistBase):
@@ -6580,7 +6642,6 @@ class MetalProductCarRandomisedConsistBase(RandomisedConsistMixin, CoilCarConsis
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # because the asymmetric covered wagons can reverse
-        self.random_reverse = True
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = (
@@ -6592,6 +6653,10 @@ class MetalProductCarRandomisedConsistBase(RandomisedConsistMixin, CoilCarConsis
             dice_colour=2,
             liveries=self.liveries,
         )
+
+        @property
+        def random_reverse(self):
+            return True
 
 
 class MetalProductCarCoveredRandomisedConsist(MetalProductCarRandomisedConsistBase):
@@ -7472,7 +7537,6 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         self.subrole = "very_high_speed"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
-        self.lgv_capable = True
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.9
         self.floating_run_cost_multiplier = 4
@@ -7491,6 +7555,10 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
             consist_ruleset="pax_cars",
             liveries=liveries,
         )
+
+        @property
+        def lgv_capable(self):
+            return True
 
 
 class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
@@ -9984,6 +10052,7 @@ class AutoCoachCombineUnitMail(CombineUnitMailBase):
     def effects(self):
         return {}
 
+
 class AutoCoachCombineUnitPax(CombineUnitPaxBase):
     """
     Pax unit for a combine auto coach (articulated driving cab consist with mail + pax capacity)
@@ -10011,9 +10080,7 @@ class DieselRailcarCombineUnitMail(CombineUnitMailBase):
 
     @property
     def effects(self):
-        return {
-            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
-        }
+        return {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]}
 
 
 class DieselRailcarCombineUnitPax(CombineUnitPaxBase):
@@ -10028,9 +10095,8 @@ class DieselRailcarCombineUnitPax(CombineUnitPaxBase):
 
     @property
     def effects(self):
-        return {
-            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
-        }
+        return {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]}
+
 
 class DieselEngineUnit(Train):
     """
@@ -10045,9 +10111,8 @@ class DieselEngineUnit(Train):
 
     @property
     def effects(self):
-        return {
-            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
-        }
+        return {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]}
+
 
 class DieselRailcarBaseUnit(DieselEngineUnit):
     """
@@ -10073,9 +10138,7 @@ class DieselExpressRailcarPaxUnit(DieselRailcarBaseUnit):
 
     @property
     def effects(self):
-        return {
-            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]
-        }
+        return {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]}
 
     @property
     def capacity(self):
@@ -10149,6 +10212,7 @@ class ElectricHighSpeedUnitBase(Train):
             return {
                 "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
             }
+
 
 class ElectricHighSpeedMailUnit(ElectricHighSpeedUnitBase):
     """
@@ -10267,9 +10331,7 @@ class ElectricRailcarBaseUnit(Train):
 
     @property
     def effects(self):
-        return {
-            "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
-        }
+        return {"default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]}
 
 
 class ElectricExpressRailcarPaxUnit(ElectricRailcarBaseUnit):
@@ -10327,9 +10389,7 @@ class MetroUnit(Train):
 
     @property
     def effects(self):
-        return {
-            "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
-        }
+        return {"default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]}
 
     @property
     def capacity(self):
@@ -10371,9 +10431,7 @@ class SteamEngineUnit(Train):
 
     @property
     def effects(self):
-        return {
-            "default": ["EFFECT_SPAWN_MODEL_STEAM", "EFFECT_SPRITE_STEAM"]
-        }
+        return {"default": ["EFFECT_SPAWN_MODEL_STEAM", "EFFECT_SPRITE_STEAM"]}
 
     @property
     def default_effect_offsets(self):
