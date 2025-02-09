@@ -73,10 +73,11 @@ class ModelDef(object):
         self.cloned_from_model_def = None
         self.clones = []
         # unpack some keywords
-        self.gen = kwargs["gen"]
-        # CABBAGE - need to port ModelDef instance params to base_id, not id
         self.base_id = kwargs.get("base_id", None)
         self.base_numeric_id = kwargs.get("base_numeric_id", None)
+        self.gen = kwargs["gen"]
+        self.intro_year_offset = kwargs.get("intro_year_offset", None)
+        self.speed =  kwargs.get("speed", None)
         # CABBAGE - THESE NEED DEFAULT PROPS CHECKED
         self.base_track_type_name = kwargs.get("base_track_type_name", None)
         self.subtype = kwargs.get("subtype", None)
@@ -90,9 +91,17 @@ class ModelDef(object):
         self.show_decor_in_purchase_for_variants = kwargs.get(
             "show_decor_in_purchase_for_variants", []
         )
-        # CABBAGE SHIM
-        if self.base_id is not None:
-            self.kwargs["id"] = self.base_id
+        # REQUIRED
+        self.sprites_complete = kwargs["sprites_complete"]
+        # CABBAGE - SPECIFIC TO CABOOSE ONLY?
+        self.docs_image_spriterow = kwargs.get("docs_image_spriterow", None)
+        self.spriterow_labels = kwargs.get("spriterow_labels", None)
+        self.caboose_families = kwargs.get("caboose_families", None)
+        self.buy_menu_sprite_pairs = kwargs.get("buy_menu_sprite_pairs", None)
+        # After processing all expected kwargs (e.g., via pop or explicit assignment), do:
+        for key, value in kwargs.items():
+            if not hasattr(self, key):
+                print(f"Migration Report: Unused keyword argument '{key}' with value {value}")
 
     def add_unit_def(self, **kwargs):
         self.unit_defs.append(UnitDef(**kwargs))
@@ -326,9 +335,6 @@ class Consist(object):
         self._intro_year = kwargs.get("intro_year", None)
         # override this in subclasses if needed, there's no case currently for setting it via keyword
         self._model_life = None
-        # if gen is used, the calculated intro year can be adjusted with +ve or -ve offset
-        # CABBAGE model_def?
-        self.intro_year_offset = kwargs.get("intro_year_offset", None)
         # used for synchronising / desynchronising intro dates for groups vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147
         self._intro_year_days_offset = (
             None  # defined in subclasses, no need for instances to define this
@@ -350,9 +356,6 @@ class Consist(object):
         self.tractive_effort_coefficient = kwargs.get(
             "tractive_effort_coefficient", 0.3
         )  # 0.3 is recommended default value
-        # private var, can be used to overrides default (per generation, per class) speed
-        # CABBAGE model_def?
-        self._speed = kwargs.get("speed", None)
         # used by multi-mode engines such as electro-diesel, otherwise ignored
         # CABBAGE model_def?
         self.power_by_power_source = kwargs.get("power_by_power_source", None)
@@ -420,14 +423,10 @@ class Consist(object):
         self._cite = ""  # optional, set per subclass as needed
         # for 'inspired by' stuff
         self.foamer_facts = """"""  # to be set per vehicle, multi-line supported
-        # 0 indexed spriterows, position in generated spritesheet, used by brake vans to get a docs image for 4th gen, not 1st
-        # CABBAGE model_def?
-        self.docs_image_spriterow = kwargs.get("docs_image_spriterow", None)
         # used for docs management
         self.is_wagon_for_docs = False
-        # aids 'project management'
-        # CABBAGE model_def?
-        self.sprites_complete = kwargs.get("sprites_complete", False)
+        # aids 'project management' - doesn't need @property passthrough, always set in model_def
+        self.sprites_complete = self.model_def.sprites_complete
         # CABBAGE model_def?
         self.sprites_additional_liveries_potential = kwargs.get(
             "sprites_additional_liveries_potential", False
@@ -732,6 +731,12 @@ class Consist(object):
         return self.model_def.show_decor_in_purchase_for_variants
 
     @property
+    def docs_image_spriterow(self):
+        # just a passthrough for convenience
+        # 0 indexed spriterows, position in generated spritesheet, used by caboose to get a docs image for 4th gen, not 1st
+        return self.model_def.docs_image_spriterow
+
+    @property
     def tilt_bonus(self):
         # just a passthrough for convenience
         return self.model_def.tilt_bonus
@@ -761,6 +766,11 @@ class Consist(object):
         if self.intro_year_offset is not None:
             result = result + self.intro_year_offset
         return result
+
+    @property
+    def intro_year_offset(self):
+        # if gen is used, the calculated intro year can be adjusted with +ve or -ve offset
+        return self.model_def.intro_year_offset
 
     @property
     def intro_date_months_offset(self):
@@ -1042,8 +1052,8 @@ class Consist(object):
 
     @property
     def speed(self):
-        if self._speed:
-            return self._speed
+        if self.model_def.speed is not None:
+            return self.model_def.speed
         elif getattr(self, "speed_class", None):
             # speed by class, if speed_class is set explicitly (and not None)
             # !! this doesn't handle RAIL / ELRL correctly
@@ -2403,8 +2413,6 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         # prop left in place in case that ever gets changed :P
         # !! commented out as of July 2019 because the middle engines won't pick this up, which causes inconsistency in the buy menu
         # self.train_flag_mu = True
-        # get the intro year offset and life props from the cab, to ensure they're in sync
-        self.intro_year_offset = self.cab_consist.intro_year_offset
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
         # non-standard cite
@@ -2456,6 +2464,11 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
     @property
     def buy_menu_distributed_power_hp_value(self):
         return self.cab_consist.power
+
+    @property
+    def intro_year_offset(self):
+        # get the intro year offset and life props from the cab, to ensure they're in sync
+        return self.cab_consist.intro_year_offset
 
     @property
     def vehicle_family_badge(self):
@@ -4079,9 +4092,9 @@ class CabooseCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCaboose(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
             liveries=self.liveries,
-            spriterow_labels=kwargs.get("spriterow_labels"),
-            caboose_families=kwargs.get("caboose_families"),
-            buy_menu_sprite_pairs=kwargs.get("buy_menu_sprite_pairs"),
+            spriterow_labels=self.model_def.spriterow_labels,
+            caboose_families=self.model_def.caboose_families,
+            buy_menu_sprite_pairs=self.model_def.buy_menu_sprite_pairs,
         )
 
     @property
@@ -6413,8 +6426,6 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
         self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
         self.subrole = self.cab_consist.subrole
-        # get the intro year offset and life props from the cab, to ensure they're in sync
-        self.intro_year_offset = self.cab_consist.intro_year_offset
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
         # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
@@ -6427,6 +6438,11 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
+
+    @property
+    def intro_year_offset(self):
+        # get the intro year offset and life props from the cab, to ensure they're in sync
+        return self.cab_consist.intro_year_offset
 
     @property
     def vehicle_family_badge(self):
@@ -6591,8 +6607,6 @@ class MailHSTCarConsist(MailCarConsistBase):
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.speed_class = "hst"
         self.buy_cost_adjustment_factor = 1.66
-        # get the intro year offset and life props from the cab, to ensure they're in sync
-        self.intro_year_offset = self.cab_consist.intro_year_offset
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
         # non-standard cite
@@ -6610,6 +6624,11 @@ class MailHSTCarConsist(MailCarConsistBase):
             consist_ruleset="mail_cars",
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
+
+    @property
+    def intro_year_offset(self):
+        # get the intro year offset and life props from the cab, to ensure they're in sync
+        return self.cab_consist.intro_year_offset
 
     def get_name_parts(self, context):
         # special name handling to use the cab name
@@ -7404,8 +7423,6 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
         self.subrole = self.cab_consist.subrole
-        # get the intro year offset and life props from the cab, to ensure they're in sync
-        self.intro_year_offset = self.cab_consist.intro_year_offset
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
         # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
@@ -7418,6 +7435,11 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
+
+    @property
+    def intro_year_offset(self):
+        # get the intro year offset and life props from the cab, to ensure they're in sync
+        return self.cab_consist.intro_year_offset
 
     def get_name_parts(self, context):
         # special name handling to use the cab name
@@ -7624,8 +7646,6 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33
-        # get the intro year offset and life props from the cab, to ensure they're in sync
-        self.intro_year_offset = self.cab_consist.intro_year_offset
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
@@ -7645,6 +7665,11 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
             consist_ruleset="pax_cars",
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
+
+    @property
+    def intro_year_offset(self):
+        # get the intro year offset and life props from the cab, to ensure they're in sync
+        return self.cab_consist.intro_year_offset
 
     def get_name_parts(self, context):
         # special name handling to use the cab name
