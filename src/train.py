@@ -9296,10 +9296,9 @@ class Train(object):
         else:
             self.id = self.consist.id + "_unit_" + str(len(self.consist.unique_units))
         # create structure to hold the buyable variants, done last as may depend on other attrs of self
+        # CABBAGE
         self.unit_variants = []
-        # vehicle_length is either derived from chassis length or similar, or needs to be set explicitly as kwarg
-        self._vehicle_length = kwargs.get("vehicle_length", None)
-        self._weight = self._unit_def.weight
+        # CABBAGE
         # !! the need to copy cargo refits from the consist is legacy from the default multi-unit articulated consists in Iron Horse 1
         # !! could likely be refactored !!
         self.label_refits_allowed = self.consist.label_refits_allowed
@@ -9315,8 +9314,6 @@ class Train(object):
         self._symmetry_type = "symmetric"
         # optional - a switch name to trigger re-randomising vehicle random bits - override as need in subclasses
         self.random_trigger_switch = None
-        # store the kwargs so we can clone this unit later if we need to
-        self.kwargs_for_optional_consist_cloning_later = kwargs
 
     @property
     def tail_light(self):
@@ -9340,7 +9337,7 @@ class Train(object):
             return 0
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         if self._unit_def.capacity is not None:
             return self._unit_def.capacity
         else:
@@ -9362,7 +9359,7 @@ class Train(object):
 
     @property
     def capacities(self):
-        return self.get_capacity_variations(self.CABBAGE_capacity)
+        return self.get_capacity_variations(self.capacity)
 
     @property
     def default_cargo_capacity(self):
@@ -9403,8 +9400,8 @@ class Train(object):
 
     @property
     def weight(self):
-        # weight can be set explicitly or by methods on subclasses
-        return self._weight
+        # weight can be set explicitly via unit_def or by methods on subclasses
+        return self._unit_def.weight
 
     @property
     def vehicle_length(self):
@@ -9727,7 +9724,7 @@ class CabbageDVTUnit(Train):
         return {}
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_mail_car_capacity()
 
 
@@ -9746,7 +9743,7 @@ class CabControlPaxCarUnit(Train):
         return {}
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_pax_car_capacity()
 
 
@@ -9763,7 +9760,7 @@ class CombineUnitMailBase(Train):
         ]  # note mail only, no other express cargos
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         # 0.75 is to account for some pax capacity 'on' this unit (implemented on adjacent pax unit)
         return 0.75 * self.get_mail_car_capacity()
 
@@ -9779,7 +9776,7 @@ class CombineUnitPaxBase(Train):
         self.articulated_unit_different_class_refit_groups = ["pax"]
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_pax_car_capacity()
 
 
@@ -9891,7 +9888,7 @@ class DieselExpressRailcarPaxUnit(DieselRailcarBaseUnit):
         }
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_pax_car_capacity()
 
 
@@ -9904,7 +9901,7 @@ class DieselRailcarMailUnit(DieselRailcarBaseUnit):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_mail_car_capacity()
 
 
@@ -9917,7 +9914,7 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_pax_car_capacity()
 
 
@@ -9972,7 +9969,7 @@ class ElectricHighSpeedMailUnit(ElectricHighSpeedUnitBase):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_mail_car_capacity()
 
 
@@ -9985,7 +9982,7 @@ class ElectricHighSpeedPaxUnit(ElectricHighSpeedUnitBase):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         # this won't work with double deck high speed in future, extend a class for that then if needed
         return self.get_pax_car_capacity()
 
@@ -10041,7 +10038,7 @@ class ElectroDieselRailcarMailUnit(ElectroDieselRailcarBaseUnit):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_mail_car_capacity()
 
 
@@ -10063,7 +10060,7 @@ class ElectroDieselExpressRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
         }
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_pax_car_capacity()
 
 
@@ -10094,7 +10091,7 @@ class ElectricExpressRailcarPaxUnit(ElectricRailcarBaseUnit):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_pax_car_capacity()
 
 
@@ -10107,7 +10104,7 @@ class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_mail_car_capacity()
 
 
@@ -10120,7 +10117,7 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_pax_car_capacity()
 
 
@@ -10146,9 +10143,11 @@ class MetroUnit(Train):
         }
 
     @property
-    def CABBAGE_capacity(self):
-        print("CABBAGE_capacity", "Metro")
-        return 0
+    def capacity(self):
+        if self._unit_def.capacity is not None:
+            return self._unit_def.capacity
+        else:
+            return 0
 
 
 class SnowploughUnit(Train):
@@ -10166,7 +10165,7 @@ class SnowploughUnit(Train):
         return {}
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_mail_car_capacity()
 
 
@@ -10272,7 +10271,7 @@ class CabooseCar(TrainCar):
         return weight_factor * self.vehicle_length
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return 0
 
 
@@ -10287,7 +10286,7 @@ class PaxCar(TrainCar):
         self._symmetry_type = "asymmetric"
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_pax_car_capacity()
 
 
@@ -10334,7 +10333,7 @@ class ExpressCar(TrainCar):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         return self.get_mail_car_capacity()
 
 
@@ -10434,7 +10433,7 @@ class FreightCar(TrainCar):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         if self._unit_def.capacity is not None:
             print(
                 self.consist.id,
@@ -10458,7 +10457,7 @@ class BinCar(FreightCar):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
         return 2 * self.get_freight_car_capacity()
 
@@ -10472,7 +10471,7 @@ class CoilBuggyCar(FreightCar):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
         return 2 * self.get_freight_car_capacity()
 
@@ -10496,7 +10495,7 @@ class HeavyDutyCar(FreightCar):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
         return 2 * self.get_freight_car_capacity()
 
@@ -10510,7 +10509,7 @@ class IngotCar(FreightCar):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
         return 2 * self.get_freight_car_capacity()
 
@@ -10549,7 +10548,7 @@ class SlagLadleCar(FreightCar):
         super().__init__(**kwargs)
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         # just double whatever is set by the init, what could go wrong? :)
         return 2 * self.get_freight_car_capacity()
 
@@ -10565,6 +10564,6 @@ class TorpedoCar(FreightCar):
         self._symmetry_type = "asymmetric"
 
     @property
-    def CABBAGE_capacity(self):
+    def capacity(self):
         # capacity bonus is solely to support using small stations in Steeltown where space between industries is constrained
         return 1.5 * self.get_freight_car_capacity()

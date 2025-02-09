@@ -2,23 +2,33 @@
 import subprocess, sys
 
 # Default file paths
-file1 = "generated/iron-horse.nml"
-file2 = "generated copy/iron-horse.nml"
+file1 = "generated copy/iron-horse.nml"
+file2 = "generated/iron-horse.nml"
 
 if len(sys.argv) >= 3:
     file1 = sys.argv[1]
     file2 = sys.argv[2]
 
 # List of exclusion patterns (noise differences)
-excludes = ["colour_mapping", "No newline at end of file", "intermodal_containers", "spriteset_template", "ih_ruleset_flags"]
+excludes = [
+    "colour_mapping",
+    "No newline at end of file",
+    "intermodal_containers",
+    "spriteset_template",
+    "ih_ruleset_flags",
+    "additional_text",
+    "mineral_bulk_open_car_low_side_pony_gen_5B_switch_cargo_capacity",
+    "_switch_cargo_capacity",
+]
 
 # Run diff with zero context lines so only changed lines (and hunk headers) are shown
 proc = subprocess.Popen(
     ["diff", "-U0", file1, file2],
     stdout=subprocess.PIPE,
     stderr=subprocess.PIPE,
-    text=True
+    text=True,
 )
+
 
 def process_hunk(hunk):
     """
@@ -29,9 +39,9 @@ def process_hunk(hunk):
     significant = False
     filtered = []
     for line in hunk:
-        if line.startswith('@@'):
+        if line.startswith("@@"):
             filtered.append(line)
-        elif line.startswith('+') or line.startswith('-'):
+        elif line.startswith("+") or line.startswith("-"):
             if any(pattern in line for pattern in excludes):
                 # skip this noise line
                 continue
@@ -40,12 +50,13 @@ def process_hunk(hunk):
                 filtered.append(line)
     return filtered if significant else None
 
+
 # Group diff output into hunks
 current_hunk = []
 output_lines = []
 
 for line in proc.stdout:
-    if line.startswith('@@'):
+    if line.startswith("@@"):
         # Process previous hunk if any
         if current_hunk:
             filtered = process_hunk(current_hunk)
