@@ -188,6 +188,7 @@ class ModelTypeFactory(object):
         self.model_def = model_def
         # used for book-keeping related consists, does not define consists in roster
         self.produced_consists = []
+        self.produced_units = []
 
     def set_roster_ids(self, roster_id, roster_id_providing_module):
         # rosters can optionally init consist factories from other rosters
@@ -204,6 +205,11 @@ class ModelTypeFactory(object):
 
         consist_cls = getattr(sys.modules[__name__], self.class_name)
         consist = consist_cls(model_type_factory=self, **self.model_def.kwargs)
+
+        for counter, livery in enumerate(["example", "cabbage_livery"]):
+            increment = counter * self.model_def.produced_unit_total
+            print(self.model_def.kwargs.get("id", "anonymous wagon"), self.model_def.kwargs["base_numeric_id"] + increment)
+
 
         """
         if hasattr(consist_cls, "liveries"):
