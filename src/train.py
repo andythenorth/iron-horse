@@ -216,9 +216,9 @@ class ModelTypeFactory(object):
             pass
 
         consist_cls = getattr(sys.modules[__name__], self.class_name)
-        """
+
         print(self.base_id_resolver(consist_cls))
-        """
+
         consist = consist_cls(model_type_factory=self, **self.model_def.kwargs)
 
         """
@@ -261,8 +261,7 @@ class ModelTypeFactory(object):
             return self.model_def.base_id
         else:
             # we assume it's a wagon id
-            #return self.get_wagon_id(consist_cls.model_type_id_stem)
-            return consist_cls.model_type_id_stem
+            return self.get_wagon_id(consist_cls.model_type_id_stem, self.model_def)
 
     def get_wagon_id(self, model_type_id_stem, model_def):
         # auto id creator, used for wagons not locos
