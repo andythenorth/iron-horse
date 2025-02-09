@@ -260,27 +260,28 @@ class ModelTypeFactory(object):
             #return self.get_wagon_id(consist_cls.model_type_id_stem)
             return consist_cls.model_type_id_stem
 
-    def get_wagon_id(self, model_type_id_stem, **kwargs):
+    def get_wagon_id(self, model_type_id_stem, model_def):
         # auto id creator, used for wagons not locos
         # handled by consist factory not consist, better this way
         base_id = model_type_id_stem
         substrings = []
         # prepend cab_id if present, used for e.g. railcar trailers, HST coaches etc where the wagon matches a specific 'cab' engine
-        if kwargs.get("cab_id", None) is not None:
-            substrings.append(kwargs["cab_id"])
+        if model_def.kwargs.get("cab_id", None) is not None:
+            substrings.append(model_def.kwargs["cab_id"])
         # special case NG - extend this for other track_types as needed
         # 'normal' rail and 'elrail' doesn't require an id modifier
-        if kwargs.get("base_track_type_name", None) == "NG":
+        if model_def.kwargs.get("base_track_type_name", None) == "NG":
             base_id = base_id + "_ng"
-        elif kwargs.get("base_track_type_name", None) == "METRO":
+        elif model_def.kwargs.get("base_track_type_name", None) == "METRO":
             base_id = base_id + "_metro"
+        print(model_type_id_stem, base_id)
         substrings.append(base_id)
         try:
             substrings.append(self.roster_id)
         except:
-            raise Exception(base_id + str(kwargs))
+            raise Exception(base_id + str(model_def.kwargs))
         substrings.append("gen")
-        substrings.append(str(kwargs["gen"]) + str(kwargs["subtype"]))
+        substrings.append(str(model_def.kwargs["gen"]) + str(model_def.kwargs["subtype"]))
         result = "_".join(substrings)
         return result
 
@@ -2464,7 +2465,7 @@ class CarConsist(Consist):
         # we can't called super yet, because we need the id
         # but we need to call the consist factory to get the id, so duplicate the assignment here (Consist will also set it)
         # CABBAGE model_def?
-        kwargs["id"] = kwargs["model_type_factory"].get_wagon_id(self.model_type_id_stem, **kwargs)
+        kwargs["id"] = kwargs["model_type_factory"].get_wagon_id(self.model_type_id_stem, kwargs["model_type_factory"].model_def)
         super().__init__(**kwargs)
         self.roster.register_wagon_consist(self)
 
@@ -2572,15 +2573,9 @@ class CarConsist(Consist):
     def get_input_spritesheet_delegate_id_wagon(
         self, input_spritesheet_delegate_base_id
     ):
-        if self.base_track_type_name == "NG":
-            input_spritesheet_delegate_base_id = (
-                input_spritesheet_delegate_base_id + "_ng"
-            )
-
         input_spritesheet_delegate_id = self.model_type_factory.get_wagon_id(
             input_spritesheet_delegate_base_id,
-            gen=self.gen,
-            subtype=self.subtype,
+            model_def=self.model_def,
         )
         return input_spritesheet_delegate_id
 
