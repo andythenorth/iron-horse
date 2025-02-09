@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TGVMiddleMailEngineConsist",
-        id="rapide_middle_mail",
+        base_id="rapide_middle_mail",
         base_numeric_id=6400,
         name="Rapide Mail Van",
         subrole="very_high_speed",

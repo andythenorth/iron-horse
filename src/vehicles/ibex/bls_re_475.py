@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="EngineConsist",
-        id="bls_re_475",
+        base_id="bls_re_475",
         base_numeric_id=30790,
         name="BLS Re 475 !! Multi-system",
         subrole="ultra_heavy_express",

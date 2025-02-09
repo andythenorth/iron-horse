@@ -10,7 +10,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="AutoCoachCombineConsist",
-        id="auto_coach_pony_gen_2",
+        base_id="auto_coach_pony_gen_2",
         base_numeric_id=4690,
         name="Autocoach Set",
         replacement_consist_id="clipper",  # auto-coach ends with gen 4 clipper

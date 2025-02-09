@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="EngineConsist",
-        id="doineann",
+        base_id="doineann",
         base_numeric_id=21110,
         name="Doineann",
         # Marauder??

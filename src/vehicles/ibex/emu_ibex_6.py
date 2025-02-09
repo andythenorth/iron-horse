@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerEngineRailcarConsist",
-        id="emu_ibex_6",
+        base_id="emu_ibex_6",
         base_numeric_id=34500,
         name="FLIRT",
         subrole="pax_railcar",

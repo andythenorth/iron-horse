@@ -75,7 +75,10 @@ class ModelDef(object):
         # unpack some keywords
         self.gen = kwargs["gen"]
         # CABBAGE - need to port ModelDef instance params to base_id, not id
-        self.base_id = kwargs.get("id", None)
+        self.base_id = kwargs.get("base_id", None)
+        # CABBAGE SHIM
+        if self.base_id is not None:
+            self.kwargs["id"] = self.base_id
 
     def add_unit_def(self, **kwargs):
         self.unit_defs.append(UnitDef(**kwargs))

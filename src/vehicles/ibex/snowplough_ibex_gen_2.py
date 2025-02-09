@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SnowploughEngineConsist",
-        id="snowplough_ibex_gen_2",
+        base_id="snowplough_ibex_gen_2",
         base_numeric_id=9020,
         name="Snowplough",
         gen=2,

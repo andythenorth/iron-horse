@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailEngineRailcarConsist",
-        id="zorro",
+        base_id="zorro",
         base_numeric_id=21030,
         name="Zorro",
         subrole="mail_railcar",

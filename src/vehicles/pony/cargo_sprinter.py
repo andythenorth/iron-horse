@@ -10,7 +10,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailEngineCargoSprinterEngineConsist",
-        id="cargo_sprinter",
+        base_id="cargo_sprinter",
         base_numeric_id=25840,
         name="Cargo Sprinter",
         subrole="mail_railcar",  # abuse of existing railcar role for convenience

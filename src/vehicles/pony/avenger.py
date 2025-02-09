@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="EngineConsist",
-        id="avenger",
+        base_id="avenger",
         base_numeric_id=21530,
         name="Avenger",
         subrole="ultra_heavy_express",

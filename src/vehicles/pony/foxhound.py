@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="EngineConsist",
-        id="foxhound",
+        base_id="foxhound",
         base_numeric_id=27160,
         name="Foxhound",
         subrole="branch_express",

@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="FixedFormationRailcarCombineConsist",
-        id="golfinho",
+        base_id="golfinho",
         base_numeric_id=970,
         name="Golfinho",
         subrole="pax_railbus",

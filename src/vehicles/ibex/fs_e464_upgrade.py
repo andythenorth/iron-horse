@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="EngineConsist",
-        id="fs_e464_upgrade",
+        base_id="fs_e464_upgrade",
         base_numeric_id=32750,
         name="FS E.464 (upgraded)",
         subrole="super_heavy_express",

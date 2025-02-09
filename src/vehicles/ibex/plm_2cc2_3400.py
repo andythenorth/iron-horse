@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="EngineConsist",
-        id="plm_2cc2_3400",
+        base_id="plm_2cc2_3400",
         base_numeric_id=150,
         name="PLM 2CC2 3400",
         subrole="ultra_heavy_express",

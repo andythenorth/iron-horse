@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailEngineMetroConsist",
-        id="bankside",
+        base_id="bankside",
         base_numeric_id=1920,
         name="Bankside",
         subrole="mail_metro",

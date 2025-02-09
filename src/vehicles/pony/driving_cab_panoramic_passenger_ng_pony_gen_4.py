@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerEngineCabControlCarConsist",
-        id="driving_cab_panoramic_passenger_ng_pony_gen_4",
+        base_id="driving_cab_panoramic_passenger_ng_pony_gen_4",
         base_numeric_id=23510,
         name="Panoramic Driving Trailer",
         subrole_child_branch_num=-2,  # driving cab cars are probably jokers?

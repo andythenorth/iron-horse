@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerEngineExpressRailcarConsist",
-        id="stratos",
+        base_id="stratos",
         base_numeric_id=390,
         name="Stratos",
         subrole="express_pax_railcar",  # quite a specific role, may or may not scale to other rosters

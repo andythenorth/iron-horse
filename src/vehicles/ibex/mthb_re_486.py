@@ -9,7 +9,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="EngineConsist",
-        id="mthb_re_486",
+        base_id="mthb_re_486",
         base_numeric_id=34750,
         name="MTHB Re 486",
         subrole="super_heavy_freight",
