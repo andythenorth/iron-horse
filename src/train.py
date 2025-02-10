@@ -66,6 +66,7 @@ class UnitDef:
 class ModelDef(object):
 
     def __init__(self, class_name, **kwargs):
+        # ALL DEFAULTS SHOULD BE NONE REALLY, INCLUDING BOOLS, it's up to Consist to sort out defaults, ModelDef is about variations on baked-in defaults
         self.class_name = class_name
         self.kwargs = kwargs
         self.unit_defs = []
@@ -92,6 +93,7 @@ class ModelDef(object):
             "show_decor_in_purchase_for_variants", []
         )
         self.tractive_effort_coefficient = kwargs.get("tractive_effort_coefficient", None)
+        self.pantograph_type = kwargs.get("pantograph_type", None)
         # CABBAGE - SHOULD BE NONE AS DEFAULT CURRENTLY, USED TO GUESS WHAT'S A WAGON by def power(self)
         self.power_by_power_source = kwargs.get("power_by_power_source", None)
         # REQUIRED
@@ -101,6 +103,7 @@ class ModelDef(object):
         self.spriterow_labels = kwargs.get("spriterow_labels", None)
         self.caboose_families = kwargs.get("caboose_families", None)
         self.buy_menu_sprite_pairs = kwargs.get("buy_menu_sprite_pairs", None)
+        self.extended_vehicle_life = kwargs.get("extended_vehicle_life", False)
         # After processing all expected kwargs (e.g., via pop or explicit assignment), do:
         for key, value in kwargs.items():
             if not hasattr(self, key):
@@ -342,9 +345,6 @@ class Consist(object):
         self._intro_year_days_offset = (
             None  # defined in subclasses, no need for instances to define this
         )
-        # vehicle life uses a default value, but can be extended automatically via a bool keyword, or it can be set manually
-        # CABBAGE model_def?
-        self.extended_vehicle_life = kwargs.get("extended_vehicle_life", False)
         # CABBAGE model_def?
         self._vehicle_life = kwargs.get("vehicle_life", None)
         #  most consists are automatically replaced by the next consist in the subrole tree
@@ -354,8 +354,6 @@ class Consist(object):
         # default loading speed multiplier, override in subclasses as needed
         self._loading_speed_multiplier = 1
         # some engines require pantograph sprites composited, don't bother setting this unless required
-        # CABBAGE model_def?
-        self.pantograph_type = kwargs.get("pantograph_type", None)
         # some consists don't show pans in the buy menu (usually unpowered)
         self.suppress_pantograph_if_no_engine_attached = False
         # some engines have an optional decor layer, which is a manual spriterow num (as decor might not be widely used?)
@@ -750,6 +748,19 @@ class Consist(object):
         # just a passthrough for convenience
         return self.model_def.dual_headed
 
+    @property
+    def pantograph_type(self):
+        # just a passthrough
+        # default will be None if not set
+        return self.model_def.pantograph_type
+
+    @property
+    def extended_vehicle_life(self):
+        # vehicle life uses a default value, but can be extended automatically via a bool keyword, or it can be set manually
+        if self.model_def.extended_vehicle_life is not None:
+            self.model_def.extended_vehicle_life
+        else:
+            return False
 
     @property
     def power_by_power_source(self):
@@ -6457,12 +6468,13 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
         self.subrole = self.cab_consist.subrole
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
-        self.pantograph_type = self.cab_consist.pantograph_type
         self.suppress_pantograph_if_no_engine_attached = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
+        # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
+        self._frozen_pantograph_type = self.cab_consist.pantograph_type
 
     @property
     def power_by_power_source(self):
@@ -6475,6 +6487,10 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
     def intro_year_offset(self):
         # get the intro year offset and life props from the cab, to ensure they're in sync
         return self.cab_consist.intro_year_offset
+
+    @property
+    def pantograph_type(self):
+        return self._frozen_pantograph_type
 
     @property
     def vehicle_family_badge(self):
@@ -7457,12 +7473,13 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         self.subrole = self.cab_consist.subrole
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
-        self.pantograph_type = self.cab_consist.pantograph_type
         self.suppress_pantograph_if_no_engine_attached = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
+        # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
+        self._frozen_pantograph_type = self.cab_consist.pantograph_type
 
     @property
     def power_by_power_source(self):
@@ -7470,6 +7487,10 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         return {
             key: 0 for key in self.cab_consist.power_by_power_source.keys()
         }
+
+    @property
+    def pantograph_type(self):
+        return self._frozen_pantograph_type
 
     @property
     def intro_year_offset(self):
