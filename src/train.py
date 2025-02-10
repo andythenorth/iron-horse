@@ -78,7 +78,7 @@ class ModelDef(object):
         self.base_numeric_id = kwargs.get("base_numeric_id", None)
         self.gen = kwargs["gen"]
         self.intro_year_offset = kwargs.get("intro_year_offset", None)
-        self.speed =  kwargs.get("speed", None)
+        self.speed = kwargs.get("speed", None)
         # CABBAGE - THESE NEED DEFAULT PROPS CHECKED
         self.base_track_type_name = kwargs.get("base_track_type_name", None)
         self.subtype = kwargs.get("subtype", None)
@@ -92,7 +92,9 @@ class ModelDef(object):
         self.show_decor_in_purchase_for_variants = kwargs.get(
             "show_decor_in_purchase_for_variants", []
         )
-        self.tractive_effort_coefficient = kwargs.get("tractive_effort_coefficient", None)
+        self.tractive_effort_coefficient = kwargs.get(
+            "tractive_effort_coefficient", None
+        )
         self.pantograph_type = kwargs.get("pantograph_type", None)
         # CABBAGE - SHOULD BE NONE AS DEFAULT CURRENTLY, USED TO GUESS WHAT'S A WAGON by def power(self)
         self.power_by_power_source = kwargs.get("power_by_power_source", None)
@@ -104,10 +106,16 @@ class ModelDef(object):
         self.caboose_families = kwargs.get("caboose_families", None)
         self.buy_menu_sprite_pairs = kwargs.get("buy_menu_sprite_pairs", None)
         self.extended_vehicle_life = kwargs.get("extended_vehicle_life", False)
+        self.additional_liveries = kwargs.get("additional_liveries", None)
+        self.default_livery_extra_docs_examples = kwargs.get(
+            "default_livery_extra_docs_examples", None
+        )
         # After processing all expected kwargs (e.g., via pop or explicit assignment), do:
         for key, value in kwargs.items():
             if not hasattr(self, key):
-                print(f"Migration Report: Unused keyword argument '{key}' with value {value}")
+                print(
+                    f"Migration Report: Unused keyword argument '{key}' with value {value}"
+                )
 
     def add_unit_def(self, **kwargs):
         self.unit_defs.append(UnitDef(**kwargs))
@@ -1632,14 +1640,20 @@ class EngineConsist(Consist):
         # note that this Gestalt might get replaced by subclasses as needed
         # insert a default livery
         # CABBAGE FACTORY?
+        liveries = self.roster.get_liveries_by_name(
+            self.model_def.additional_liveries
+            if self.model_def.additional_liveries is not None
+            else []
+        )
+        default_livery_extra_docs_examples = (
+            self.model_def.default_livery_extra_docs_examples
+            if self.model_def.default_livery_extra_docs_examples is not None
+            else []
+        )
         self.gestalt_graphics = GestaltGraphicsEngine(
             pantograph_type=self.pantograph_type,
-            liveries=self.roster.get_liveries_by_name(
-                kwargs.get("additional_liveries", [])
-            ),
-            default_livery_extra_docs_examples=kwargs.get(
-                "default_livery_extra_docs_examples", []
-            ),
+            liveries=liveries,
+            default_livery_extra_docs_examples=default_livery_extra_docs_examples,
         )
 
     @property
@@ -1910,6 +1924,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         # nerf TE down to minimal value
         return 0.1
 
+
 class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
     """
     Consist for a cab motor unit for Cargo Sprinter express freight unit.
@@ -2155,6 +2170,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         # nerf TE down to minimal value
         return 0.1
 
+
 class PassengerHSTCabEngineConsist(PassengerEngineConsist):
     """
     Consist for a dual-headed HST (high speed train).
@@ -2386,6 +2402,7 @@ class SnowploughEngineConsist(EngineConsist):
     def tractive_effort_coefficient(self):
         # nerf TE down to minimal value
         return 0.1
+
 
 class TGVCabEngineConsist(EngineConsist):
     """
@@ -6479,9 +6496,7 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
     @property
     def power_by_power_source(self):
         # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
-        return {
-            key: 0 for key in self.cab_consist.power_by_power_source.keys()
-        }
+        return {key: 0 for key in self.cab_consist.power_by_power_source.keys()}
 
     @property
     def intro_year_offset(self):
@@ -7484,9 +7499,7 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
     @property
     def power_by_power_source(self):
         # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
-        return {
-            key: 0 for key in self.cab_consist.power_by_power_source.keys()
-        }
+        return {key: 0 for key in self.cab_consist.power_by_power_source.keys()}
 
     @property
     def pantograph_type(self):
