@@ -161,7 +161,7 @@ class ModelDef(object):
         cloned_model_def.base_numeric_id = base_numeric_id
         # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
         cloned_model_def.base_id = self.base_id + "_clone_" + str(len(self.clones))
-        cloned_model_def.kwargs["buyable_variant_group_id"] = cloned_model_def.base_id
+        cloned_model_def.kwargs["buyable_variant_group_id"] = self.base_id
         return cloned_model_def
 
     def complete_clone(self):
