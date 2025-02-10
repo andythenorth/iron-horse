@@ -91,6 +91,9 @@ class ModelDef(object):
         self.show_decor_in_purchase_for_variants = kwargs.get(
             "show_decor_in_purchase_for_variants", []
         )
+        self.tractive_effort_coefficient = kwargs.get("tractive_effort_coefficient", None)
+        # CABBAGE - SHOULD BE NONE AS DEFAULT CURRENTLY, USED TO GUESS WHAT'S A WAGON by def power(self)
+        self.power_by_power_source = kwargs.get("power_by_power_source", None)
         # REQUIRED
         self.sprites_complete = kwargs["sprites_complete"]
         # CABBAGE - SPECIFIC TO CABOOSE ONLY?
@@ -350,15 +353,6 @@ class Consist(object):
         self._replacement_consist_id = kwargs.get("replacement_consist_id", None)
         # default loading speed multiplier, override in subclasses as needed
         self._loading_speed_multiplier = 1
-        # modify base_track_type_name for electric engines when writing out the actual rail type
-        # without this, RAIL and ELRL have to be specially handled whenever a list of compatible consists is wanted
-        # CABBAGE model_def?
-        self.tractive_effort_coefficient = kwargs.get(
-            "tractive_effort_coefficient", 0.3
-        )  # 0.3 is recommended default value
-        # used by multi-mode engines such as electro-diesel, otherwise ignored
-        # CABBAGE model_def?
-        self.power_by_power_source = kwargs.get("power_by_power_source", None)
         # some engines require pantograph sprites composited, don't bother setting this unless required
         # CABBAGE model_def?
         self.pantograph_type = kwargs.get("pantograph_type", None)
@@ -755,6 +749,19 @@ class Consist(object):
     def dual_headed(self):
         # just a passthrough for convenience
         return self.model_def.dual_headed
+
+
+    @property
+    def power_by_power_source(self):
+        # just a passthrough for convenience
+        return self.model_def.power_by_power_source
+
+    @property
+    def tractive_effort_coefficient(self):
+        if self.model_def.tractive_effort_coefficient is not None:
+            return self.model_def.tractive_effort_coefficient
+        else:
+            return 0.3
 
     @property
     def intro_year(self):
@@ -1777,11 +1784,6 @@ class AutoCoachCombineConsist(EngineConsist):
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
             "autocoach_combine"
         ]
-        # confer tiny power value to make this one an engine so it can lead.
-        # use 10 not 1, because 1 looks weird when added to engine HP
-        self.power_by_power_source = {"NULL": 10}
-        # nerf TE down to minimal value
-        self.tractive_effort_coefficient = 0
         # ....buy costs adjusted to match equivalent gen 2 + 3 pax / mail cars
         self.fixed_buy_cost_points = 6
         # ....run costs nerfed down to match equivalent gen 2 + 3 pax / mail cars
@@ -1793,6 +1795,17 @@ class AutoCoachCombineConsist(EngineConsist):
             "vehicle_autocoach.pynml",
             liveries=liveries,
         )
+
+    @property
+    def power_by_power_source(self):
+        # confer tiny power value to make this one an engine so it can lead.
+        # use 10 not 1, because 1 looks weird when added to engine HP
+        return {"NULL": 10}
+
+    @property
+    def tractive_effort_coefficient(self):
+        # nerf TE down to minimal value
+        return 0
 
     @property
     def loading_speed_multiplier(self):
@@ -1858,10 +1871,6 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         self.subrole = "driving_cab_express_mail"
         # report mail cab cars as pax cars for consist rulesets
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
-        # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
-        self.power_by_power_source = {"NULL": 300}
-        # nerf TE down to minimal value
-        self.tractive_effort_coefficient = 0.1
         # ....buy costs reduced from base to make it close to mail cars
         self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
@@ -1880,6 +1889,15 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
             liveries=liveries,
         )
 
+    @property
+    def power_by_power_source(self):
+        # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
+        return {"NULL": 300}
+
+    @property
+    def tractive_effort_coefficient(self):
+        # nerf TE down to minimal value
+        return 0.1
 
 class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
     """
@@ -2098,10 +2116,6 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         self.subrole = "driving_cab_express_pax"
         # report cab cars as pax cars for consist rulesets
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
-        # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
-        self.power_by_power_source = {"NULL": 300}
-        # nerf TE down to minimal value
-        self.tractive_effort_coefficient = 0.1
         # ....buy costs reduced from base to make it close to mail cars
         self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
@@ -2120,6 +2134,15 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
             liveries=liveries,
         )
 
+    @property
+    def power_by_power_source(self):
+        # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
+        return {"NULL": 300}
+
+    @property
+    def tractive_effort_coefficient(self):
+        # nerf TE down to minimal value
+        return 0.1
 
 class PassengerHSTCabEngineConsist(PassengerEngineConsist):
     """
@@ -2323,9 +2346,6 @@ class SnowploughEngineConsist(EngineConsist):
         # blame Pikka for the spelling eh? :)
         self.subrole = "snoughplough!"
         self.subrole_child_branch_num = -1
-        # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
-        self.power_by_power_source = {"NULL": 100}
-        self.tractive_effort_coefficient = 0.1
         # give it mail / express capacity so it has some purpose :P
         self.class_refit_groups = ["mail", "express_freight"]
         # no specific labels needed
@@ -2346,6 +2366,15 @@ class SnowploughEngineConsist(EngineConsist):
             liveries=liveries,
         )
 
+    @property
+    def power_by_power_source(self):
+        # confer a small power value for 'operational efficiency' :)
+        return {"NULL": 100}
+
+    @property
+    def tractive_effort_coefficient(self):
+        # nerf TE down to minimal value
+        return 0.1
 
 class TGVCabEngineConsist(EngineConsist):
     """
@@ -6428,16 +6457,19 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
         self.subrole = self.cab_consist.subrole
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
-        # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
-        self.power_by_power_source = {
-            key: 0 for key in self.cab_consist.power_by_power_source.keys()
-        }
         self.pantograph_type = self.cab_consist.pantograph_type
         self.suppress_pantograph_if_no_engine_attached = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
+
+    @property
+    def power_by_power_source(self):
+        # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
+        return {
+            key: 0 for key in self.cab_consist.power_by_power_source.keys()
+        }
 
     @property
     def intro_year_offset(self):
@@ -7425,16 +7457,19 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         self.subrole = self.cab_consist.subrole
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
-        # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
-        self.power_by_power_source = {
-            key: 0 for key in self.cab_consist.power_by_power_source.keys()
-        }
         self.pantograph_type = self.cab_consist.pantograph_type
         self.suppress_pantograph_if_no_engine_attached = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self._str_name_suffix = "STR_NAME_SUFFIX_TRAILER"
         self._joker = True
+
+    @property
+    def power_by_power_source(self):
+        # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
+        return {
+            key: 0 for key in self.cab_consist.power_by_power_source.keys()
+        }
 
     @property
     def intro_year_offset(self):
