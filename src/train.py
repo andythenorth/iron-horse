@@ -427,10 +427,6 @@ class Consist(object):
         self.is_wagon_for_docs = False
         # aids 'project management' - doesn't need @property passthrough, always set in model_def
         self.sprites_complete = self.model_def.sprites_complete
-        # CABBAGE model_def?
-        self.sprites_additional_liveries_potential = kwargs.get(
-            "sprites_additional_liveries_potential", False
-        )
 
     # CABBAGE
     @property

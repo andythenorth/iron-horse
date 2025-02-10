@@ -22,7 +22,6 @@ def main(**kwargs):
         additional_liveries=["BANGER_BLUE", "DB_SCHENKER"],
         decor_spriterow_num=8,
         sprites_complete=True,
-        sprites_additional_liveries_potential=True,  # more?
     )
 
     model_def.add_unit_def(

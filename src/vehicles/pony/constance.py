@@ -23,7 +23,6 @@ def main(**kwargs):
         additional_liveries=[],
         # additional_liveries=["SWOOSH", "SWOOSH", "FREIGHTLINER_GBRF"],
         sprites_complete=True,
-        sprites_additional_liveries_potential=True,
     )
 
     model_def.add_unit_def(

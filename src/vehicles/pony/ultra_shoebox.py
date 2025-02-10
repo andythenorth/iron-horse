@@ -29,7 +29,6 @@ def main(**kwargs):
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
-        sprites_additional_liveries_potential=True,  # banger blue, yellow? - unused banger blue from Super Shoebox also?  Freightliner swoosh?
     )
 
     model_def.add_unit_def(

@@ -32,7 +32,6 @@ def main(**kwargs):
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
-        sprites_additional_liveries_potential=True,  # unfinished livery with yellow stripe
     )
 
     model_def.add_unit_def(

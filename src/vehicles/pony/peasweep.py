@@ -22,7 +22,6 @@ def main(**kwargs):
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
         sprites_complete=True,
-        sprites_additional_liveries_potential=True,  # nightshade / nighthawk?
     )
 
     model_def.add_unit_def(

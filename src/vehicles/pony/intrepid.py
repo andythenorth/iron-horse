@@ -25,7 +25,6 @@ def main(**kwargs):
         # note that livery names are metadata only and can repeat for different spriterows
         additional_liveries=["LARGE_LOGO", "RAILFREIGHT_RED_STRIPE"],
         sprites_complete=True,
-        sprites_additional_liveries_potential=True,  # triple grey railfreight?
     )
 
     model_def.add_unit_def(

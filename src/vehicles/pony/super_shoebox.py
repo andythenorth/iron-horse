@@ -32,7 +32,6 @@ def main(**kwargs):
         decor_spriterow_num=6,
         show_decor_in_purchase_for_variants=[1],
         sprites_complete=True,
-        sprites_additional_liveries_potential=True,
     )
 
     model_def.add_unit_def(

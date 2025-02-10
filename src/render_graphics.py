@@ -59,19 +59,6 @@ def report_sprites_complete(consists):
             ).append(consist)
     for track_type, incomplete_consists in incomplete_by_track_type.items():
         print("  *", track_type, len(incomplete_consists))
-    # also track vehicles where additional liveries are intended, but not defined and drawn
-    sprites_additional_liveries_potential_total = len(
-        [
-            consist.sprites_additional_liveries_potential
-            for consist in consists
-            if consist.sprites_additional_liveries_potential
-        ]
-    )
-    print(
-        "Additional livery ideas exist for",
-        sprites_additional_liveries_potential_total,
-        "consists",
-    )
 
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
