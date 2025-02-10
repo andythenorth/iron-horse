@@ -105,6 +105,8 @@ class ModelDef(object):
         self.docs_image_spriterow = kwargs.get("docs_image_spriterow", None)
         self.spriterow_labels = kwargs.get("spriterow_labels", None)
         self.caboose_families = kwargs.get("caboose_families", None)
+        # optionally force a specific caboose family to be used
+        self.caboose_family = kwargs.get("caboose_family", None)
         self.buy_menu_sprite_pairs = kwargs.get("buy_menu_sprite_pairs", None)
         self.extended_vehicle_life = kwargs.get("extended_vehicle_life", False)
         self.additional_liveries = kwargs.get("additional_liveries", None)
@@ -1635,9 +1637,6 @@ class EngineConsist(Consist):
         # fixed (baseline) run costs on this subtype, or more rarely instances can override this
         # CABBAGE model_def?
         self.fixed_run_cost_points = kwargs.get("fixed_run_cost_points", 180)
-        # optionally force a specific caboose family to be used
-        # CABBAGE model_def?
-        self._caboose_family = kwargs.get("caboose_family", None)
         # how to handle grouping this consist type
         self.group_as_wagon = False
         # Graphics configuration only as required
@@ -1666,8 +1665,8 @@ class EngineConsist(Consist):
         # caboose families are used to match engines to caboose variants
         # can be forced on a per engine basis
         # otherwise use default for base track type and vehicle gen
-        if self._caboose_family is not None:
-            return self._caboose_family
+        if self.model_def.caboose_family is not None:
+            return self.model_def.caboose_family
         else:
             return "default_" + str(self.gen)
 
