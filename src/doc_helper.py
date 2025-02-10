@@ -350,9 +350,9 @@ class DocHelper(object):
         return result
 
     def unpack_name_string(self, consist):
-        # engines have an untranslated name defined via _name, wagons use a translated string
-        if consist._name is not None:
-            return consist._name
+        # engines have an untranslated name defined via name, wagons use a translated string
+        if consist.name is not None:
+            return consist.name
         else:
             name_parts = consist.get_name_parts(context="docs")
             result = []

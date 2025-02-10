@@ -194,8 +194,7 @@
                                                                             ${'tech_tree_vehicle_electro_diesel' if consist.str_name_suffix == 'STR_BADGE_POWER_SOURCE_ELECTRODIESEL' else None}
                                                                             ${'tech_tree_vehicle_arrow' if consist.replacement_consist is not None else None}">
                                                                     <span style="display:block;">
-                                                                        <!--! this is using a private var, but I am not going to lose sleep over it -->
-                                                                        ${consist._name}
+                                                                        ${consist.name}
                                                                     </span>
                                                                     <img src="static/img/${consist.id}_variant_0_${vehicle_cc}.png"
                                                                          width="${2 * doc_helper.docs_sprite_width(consist)}"

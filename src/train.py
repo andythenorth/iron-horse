@@ -79,6 +79,7 @@ class ModelDef(object):
         self.gen = kwargs["gen"]
         self.intro_year_offset = kwargs.get("intro_year_offset", None)
         self.subrole = kwargs.get("subrole", None)
+        self.name = kwargs.get("name", None)
         self.speed = kwargs.get("speed", None)
         # CABBAGE - THESE NEED DEFAULT PROPS CHECKED
         self.base_track_type_name = kwargs.get("base_track_type_name", None)
@@ -332,8 +333,7 @@ class Consist(object):
         # mandatory, fail if missing
         self.id = kwargs["id"]
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
-        # private var, used to store a name substr for engines, composed into name with other strings as needed
-        self._name = kwargs.get("name", None)
+        self.name = self.model_def.name
         self.base_numeric_id = self.model_def.base_numeric_id
         # create a structure to hold buyable variants - the method can be over-ridden in consist subclasses to provide specific rules for buyable variants
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised

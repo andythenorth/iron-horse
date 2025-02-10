@@ -562,8 +562,8 @@ class Roster(object):
                     lang_strings[node_name] = node_value["base"]
 
         for consist in self.consists_in_buy_menu_order:
-            if consist._name is not None:
-                lang_strings["STR_NAME_" + consist.id.upper()] = consist._name
+            if consist.name is not None:
+                lang_strings["STR_NAME_" + consist.id.upper()] = consist.name
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}
 
