@@ -1873,7 +1873,7 @@ class FixedFormationRailcarCombineConsist(EngineConsist):
             else:
                 return "universal"
         else:
-            return self.model_def.subrole
+            return super().subrole
 
     @property
     def loading_speed_multiplier(self):
@@ -2074,7 +2074,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
             # pony NG jank
             return "express"
         else:
-            return self.model_def.subrole
+            return super().subrole
 
     @property
     def vehicle_family_badge(self):
@@ -2337,7 +2337,7 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
             else:
                 return "universal"
         else:
-            return self.model_def.subrole
+            return super().subrole
 
     @property
     def vehicle_family_badge(self):
