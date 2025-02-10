@@ -78,6 +78,7 @@ class ModelDef(object):
         self.base_numeric_id = kwargs.get("base_numeric_id", None)
         self.gen = kwargs["gen"]
         self.intro_year_offset = kwargs.get("intro_year_offset", None)
+        self.subrole = kwargs.get("subrole", None)
         self.speed = kwargs.get("speed", None)
         # CABBAGE - THESE NEED DEFAULT PROPS CHECKED
         self.base_track_type_name = kwargs.get("base_track_type_name", None)
@@ -404,9 +405,6 @@ class Consist(object):
         self.gestalt_graphics = GestaltGraphics()
         # option to provide automatic roof for all units in the consist, leave as None for no generation
         self.roof_type = None
-        # subrole and branches
-        # CABBAGE model_def?
-        self.subrole = kwargs.get("subrole", None)
         # subrole child branch num places this vehicle on a specific child branch of the tech tree, where the subrole and role are the parent branches
         # 0 = null, no branch (for wagons etc)
         #  1..n for branches
@@ -582,6 +580,13 @@ class Consist(object):
         name_parts = self.get_name_parts(context="default_name")
         result = "string(" + name_parts[0] + ")"
         return result
+
+    @property
+    def subrole(self):
+        if self.model_def.subrole is not None:
+            return self.model_def.subrole
+        else:
+            return None
 
     @property
     def role(self):
@@ -1803,7 +1808,6 @@ class AutoCoachCombineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.subrole = "driving_cab_express_mixed"
         # driving cab cars are probably jokers?
         self.subrole_child_branch_num = -1
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
@@ -1820,6 +1824,10 @@ class AutoCoachCombineConsist(EngineConsist):
             "vehicle_autocoach.pynml",
             liveries=liveries,
         )
+
+    @property
+    def subrole(self):
+        return "driving_cab_express_mixed"
 
     @property
     def power_by_power_source(self):
@@ -1848,12 +1856,6 @@ class FixedFormationRailcarCombineConsist(EngineConsist):
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
             kwargs["pax_car_capacity_type"]
         ]
-        if self.base_track_type_name == "NG":
-            # pony NG jank, to force a different role string for NG
-            if self.gen == 4:
-                self.subrole = "express"
-            else:
-                self.subrole = "universal"
         # Graphics configuration
         # inserts the default liveries for docs examples
         liveries = self.roster.get_liveries_by_name([])
@@ -1861,6 +1863,17 @@ class FixedFormationRailcarCombineConsist(EngineConsist):
             "vehicle_fixed_formation_railcar.pynml",
             liveries=self.roster.get_liveries_by_name([]),
         )
+
+    @property
+    def subrole(self):
+        if self.base_track_type_name == "NG":
+            # pony NG jank, to force a different role string for NG
+            if self.gen == 4:
+                return "express"
+            else:
+                return "universal"
+        else:
+            return self.model_def.subrole
 
     @property
     def loading_speed_multiplier(self):
@@ -1893,7 +1906,6 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.subrole = "driving_cab_express_mail"
         # report mail cab cars as pax cars for consist rulesets
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # ....buy costs reduced from base to make it close to mail cars
@@ -1913,6 +1925,10 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
             consist_ruleset="driving_cab_cars",
             liveries=liveries,
         )
+
+    @property
+    def subrole(self):
+        return "driving_cab_express_mail"
 
     @property
     def power_by_power_source(self):
@@ -2000,9 +2016,6 @@ class MailEngineRailcarConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        if self.base_track_type_name == "NG" and self.gen == 4:
-            # pony NG jank
-            self.subrole = "express"
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # non-standard cite
@@ -2054,6 +2067,14 @@ class MailEngineRailcarConsist(MailEngineConsist):
             liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
+
+    @property
+    def subrole(self):
+        if self.base_track_type_name == "NG" and self.gen == 4:
+            # pony NG jank
+            return "express"
+        else:
+            return self.model_def.subrole
 
     @property
     def vehicle_family_badge(self):
@@ -2139,7 +2160,6 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.subrole = "driving_cab_express_pax"
         # report cab cars as pax cars for consist rulesets
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # ....buy costs reduced from base to make it close to mail cars
@@ -2159,6 +2179,10 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
             consist_ruleset="driving_cab_cars",
             liveries=liveries,
         )
+
+    @property
+    def subrole(self):
+        return "driving_cab_express_pax"
 
     @property
     def power_by_power_source(self):
@@ -2286,12 +2310,6 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
             self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
                 kwargs["pax_car_capacity_type"]
             ]
-        if self.base_track_type_name == "NG":
-            # pony NG jank
-            if self.gen == 4:
-                self.subrole = "express"
-            else:
-                self.subrole = "universal"
         # non-standard cite
         self._cite = "Arabella Unit"
         # Graphics configuration
@@ -2309,6 +2327,17 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
             liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
+
+    @property
+    def subrole(self):
+        if self.base_track_type_name == "NG":
+            # pony NG jank
+            if self.gen == 4:
+                return "express"
+            else:
+                return "universal"
+        else:
+            return self.model_def.subrole
 
     @property
     def vehicle_family_badge(self):
@@ -2370,8 +2399,6 @@ class SnowploughEngineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # blame Pikka for the spelling eh? :)
-        self.subrole = "snoughplough!"
         self.subrole_child_branch_num = -1
         # give it mail / express capacity so it has some purpose :P
         self.class_refit_groups = ["mail", "express_freight"]
@@ -2392,6 +2419,11 @@ class SnowploughEngineConsist(EngineConsist):
             "vehicle_snowplough.pynml",
             liveries=liveries,
         )
+
+    @property
+    def subrole(self):
+        # blame Pikka for the spelling eh? :)
+        return "snoughplough!"
 
     @property
     def power_by_power_source(self):
@@ -4164,9 +4196,9 @@ class CabooseCarConsist(CarConsist):
             result.append((counter, date_range))
         return result
 
-        @property
-        def random_reverse(self):
-            return True
+    @property
+    def random_reverse(self):
+        return True
 
 
 class CaneBinCarConsist(CarConsist):
@@ -4371,9 +4403,9 @@ class CoilCarCoveredAsymmetricConsist(CoilCarConsistBase):
             has_cover=True,
         )
 
-        @property
-        def random_reverse(self):
-            return True
+    @property
+    def random_reverse(self):
+        return True
 
 
 class CoilCarCoveredConsist(CoilCarConsistBase):
@@ -4539,9 +4571,9 @@ class DedicatedCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBa
             liveries=self.liveries,
         )
 
-        @property
-        def random_reverse(self):
-            return True
+    @property
+    def random_reverse(self):
+        return True
 
 
 class CoveredHopperCarConsistBase(CarConsist):
@@ -6482,7 +6514,6 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
         # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
-        self.subrole = self.cab_consist.subrole
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
         self.suppress_pantograph_if_no_engine_attached = True
@@ -6492,6 +6523,10 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
         self._joker = True
         # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
         self._frozen_pantograph_type = self.cab_consist.pantograph_type
+
+    @property
+    def subrole(self):
+        return self.cab_consist.subrole
 
     @property
     def power_by_power_source(self):
@@ -6529,11 +6564,6 @@ class MailCarConsist(MailCarConsistBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
-        if self.base_track_type_name == "NG" and self.gen < 4:
-            self.subrole = "universal"
-        else:
-            self.subrole = "express"
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
         # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
@@ -6564,6 +6594,14 @@ class MailCarConsist(MailCarConsistBase):
             consist_ruleset="mail_cars",
             liveries=liveries,
         )
+
+    @property
+    def subrole(self):
+        # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
+        if self.base_track_type_name == "NG" and self.gen < 4:
+            return "universal"
+        else:
+            return "express"
 
 
 class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
@@ -6619,7 +6657,6 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.subrole = "very_high_speed"
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
         # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
@@ -6647,9 +6684,13 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
             liveries=liveries,
         )
 
-        @property
-        def lgv_capable(self):
-            return True
+    @property
+    def subrole(self):
+        return "very_high_speed"
+
+    @property
+    def lgv_capable(self):
+        return True
 
 
 class MailHSTCarConsist(MailCarConsistBase):
@@ -6664,7 +6705,6 @@ class MailHSTCarConsist(MailCarConsistBase):
         # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
-        self.subrole = self.cab_consist.subrole
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
         # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
@@ -6687,6 +6727,10 @@ class MailHSTCarConsist(MailCarConsistBase):
             consist_ruleset="mail_cars",
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
+
+    @property
+    def subrole(self):
+        return self.cab_consist.subrole
 
     @property
     def intro_year_offset(self):
@@ -6736,9 +6780,9 @@ class MetalProductCarRandomisedConsistBase(RandomisedConsistMixin, CoilCarConsis
             liveries=self.liveries,
         )
 
-        @property
-        def random_reverse(self):
-            return True
+    @property
+    def random_reverse(self):
+        return True
 
 
 class MetalProductCarCoveredRandomisedConsist(MetalProductCarRandomisedConsistBase):
@@ -7485,7 +7529,6 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
-        self.subrole = self.cab_consist.subrole
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
         self.suppress_pantograph_if_no_engine_attached = True
@@ -7495,6 +7538,10 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         self._joker = True
         # faff to avoid pickle failures due to roster lookups when using multiprocessing in graphics pipeline
         self._frozen_pantograph_type = self.cab_consist.pantograph_type
+
+    @property
+    def subrole(self):
+        return self.cab_consist.subrole
 
     @property
     def power_by_power_source(self):
@@ -7538,7 +7585,6 @@ class PanoramicCarConsist(PassengerCarConsistBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.subrole = "express"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         """
         # not working as expected, unwanted nesting of panoramic car, needs debugged
@@ -7560,6 +7606,10 @@ class PanoramicCarConsist(PassengerCarConsistBase):
             liveries=liveries,
         )
 
+    @property
+    def subrole(self):
+        return "express"
+
 
 class PassengerCarConsist(PassengerCarConsistBase):
     """
@@ -7577,11 +7627,6 @@ class PassengerCarConsist(PassengerCarConsistBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
-        if self.base_track_type_name == "NG" and self.gen < 4:
-            self.subrole = "universal"
-        else:
-            self.subrole = "express"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         """
         # not working as expected, unwanted nesting of panoramic car, needs debugged
@@ -7609,6 +7654,14 @@ class PassengerCarConsist(PassengerCarConsistBase):
             liveries=liveries,
         )
 
+    @property
+    def subrole(self):
+        # pony NG jank directly set role buy menu string here, handles pony gen 4 NG speed bump
+        if self.base_track_type_name == "NG" and self.gen < 4:
+            return "universal"
+        else:
+            return "express"
+
 
 class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
     """
@@ -7626,7 +7679,6 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.subrole = "very_high_speed"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.9
@@ -7647,9 +7699,13 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
             liveries=liveries,
         )
 
-        @property
-        def lgv_capable(self):
-            return True
+    @property
+    def subrole(self):
+        return "very_high_speed"
+
+    @property
+    def lgv_capable(self):
+        return True
 
 
 class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
@@ -7710,7 +7766,6 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         # cab_id must be passed, do not mask errors with .get()
         self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
-        self.subrole = self.cab_consist.subrole
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
@@ -7734,6 +7789,10 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
             consist_ruleset="pax_cars",
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
+
+    @property
+    def subrole(self):
+        return self.cab_consist.subrole
 
     @property
     def intro_year_offset(self):
@@ -7849,7 +7908,6 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.subrole = "restaurant_car"
         # flag pax car ruleset behaviour
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["restaurant"]
@@ -7869,6 +7927,10 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
             liveries=liveries,
         )
 
+    @property
+    def subrole(self):
+        return "restaurant_car"
+
 
 class PassengerSuburbanCarConsist(PassengerCarConsistBase):
     """
@@ -7880,7 +7942,6 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.subrole = "pax_suburban_coach"
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         # PassengerCarConsistBase sets 'express' speed, but suburban coaches should override this
         # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
@@ -7908,6 +7969,11 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
             consist_ruleset="pax_cars",
             liveries=liveries,
         )
+
+    @property
+    def subrole(self):
+        return "pax_suburban_coach"
+
 
 
 class PeatCarConsist(CarConsist):
