@@ -2042,21 +2042,26 @@ class MailEngineRailcarConsist(MailEngineConsist):
         # * unit with driving cab rear end
         # * unit with no driving cabs (OPTIONAL - only provided for 4-unit sets)
         # Rules are 2 unit sets of 3 unit sets (4 could also be supported, but isn't at time of writing)
-        if kwargs.get("use_3_unit_sets", False):
-            consist_ruleset = "railcars_3_unit_sets"
-            spriterow_group_mappings = {
-                "default": 0,
-                "first": 1,
-                "last": 2,
-                "special": 3,
-            }
+        # CABBAGE THIS SHOULD BE CONSIST RULESET
+        if self.model_def.consist_ruleset is not None:
+            consist_ruleset = self.model_def.consist_ruleset
         else:
             consist_ruleset = "railcars_2_unit_sets"
+
+        # note that this if/elif only actually covers 2 cases as of Feb 2025 - no other cases were needed
+        if consist_ruleset == "railcars_2_unit_sets":
             spriterow_group_mappings = {
                 "default": 0,
                 "first": 1,
                 "last": 2,
                 "special": 0,
+            }
+        elif consist_ruleset == "railcars_3_unit_sets":
+            spriterow_group_mappings = {
+                "default": 0,
+                "first": 1,
+                "last": 2,
+                "special": 3,
             }
         # this will be fragile, it's dedicated to pony roster, but eh
         # for special cases, these vehicles could just use the livery keyword on init, but it would be over-ridden by this conditional block currently
