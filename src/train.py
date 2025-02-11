@@ -92,6 +92,7 @@ class ModelDef(object):
         self.lgv_capable = kwargs.get("lgv_capable", False)
         self.tilt_bonus = kwargs.get("tilt_bonus", False)
         self.requires_high_clearance = kwargs.get("requires_high_clearance", False)
+        self.consist_ruleset = kwargs.get("consist_ruleset", None)
         self.decor_spriterow_num = kwargs.get("decor_spriterow_num", None)
         self.show_decor_in_purchase_for_variants = kwargs.get(
             "show_decor_in_purchase_for_variants", []
@@ -2251,9 +2252,15 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
         jfdi_pantograph_debug_image_y_offsets = [len(liveries) * 60, 30]
+        # various rulesets are supported, per consist, (or could be extended to checks per roster)
+        # this wasn't moved to @property due to laziness, as of Jan 2025
+        if self.model_def.consist_ruleset is not None:
+            consist_ruleset = self.model_def.consist_ruleset
+        else:
+            consist_ruleset = "railcars_6_unit_sets"
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset=kwargs.get("consist_ruleset", "railcars_6_unit_sets"),
+            consist_ruleset=consist_ruleset,
             liveries=liveries,
             pantograph_type=self.pantograph_type,
             jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
@@ -6290,8 +6297,9 @@ class IntermodalCarConsistBase(CarConsist):
         self.use_colour_randomisation_strategies = False
         # Graphics configuration
         # various rulesets are supported, per consist, (or could be extended to checks per roster)
-        if kwargs.get("consist_ruleset", None) is not None:
-            consist_ruleset = kwargs.get("consist_ruleset")
+        # this wasn't moved to @property due to laziness, as of Jan 2025
+        if self.model_def.consist_ruleset is not None:
+            consist_ruleset = self.model_def.consist_ruleset
         else:
             consist_ruleset = "4_unit_sets"
         # !! as of April 2023, company colour isn't used for default intermodal sprite, so use SWOOSH as JFDI
