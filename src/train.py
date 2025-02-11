@@ -80,6 +80,7 @@ class ModelDef(object):
         self.intro_year_offset = kwargs.get("intro_year_offset", None)
         self.subrole = kwargs.get("subrole", None)
         self.subrole_child_branch_num = kwargs.get("subrole_child_branch_num", None)
+        self.replacement_consist_id = kwargs.get("replacement_consist_id", None)
         self.name = kwargs.get("name", None)
         self.speed = kwargs.get("speed", None)
         # CABBAGE - THESE NEED DEFAULT PROPS CHECKED
@@ -98,6 +99,7 @@ class ModelDef(object):
         self.tractive_effort_coefficient = kwargs.get(
             "tractive_effort_coefficient", None
         )
+        self.easter_egg_haulage_speed_bonus = kwargs.get("easter_egg_haulage_speed_bonus", None)
         self.pantograph_type = kwargs.get("pantograph_type", None)
         # CABBAGE - SHOULD BE NONE AS DEFAULT CURRENTLY, USED TO GUESS WHAT'S A WAGON by def power(self)
         self.power_by_power_source = kwargs.get("power_by_power_source", None)
@@ -359,10 +361,6 @@ class Consist(object):
         )
         # CABBAGE model_def?
         self._vehicle_life = kwargs.get("vehicle_life", None)
-        #  most consists are automatically replaced by the next consist in the subrole tree
-        # ocasionally we need to merge two branches of the subrole, in this case set replacement consist id
-        # CABBAGE model_def?
-        self._replacement_consist_id = kwargs.get("replacement_consist_id", None)
         # default loading speed multiplier, override in subclasses as needed
         self._loading_speed_multiplier = 1
         # some engines require pantograph sprites composited, don't bother setting this unless required
@@ -380,10 +378,6 @@ class Consist(object):
         # this is on Consist not CarConsist as we need to check it when determining order for all consists
         self.randomised_candidate_groups = []
         # some vehicles will get a higher speed if hauled by an express engine (use rarely)
-        # CABBAGE model_def?
-        self.easter_egg_haulage_speed_bonus = kwargs.get(
-            "easter_egg_haulage_speed_bonus", False
-        )
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
         self._str_name_suffix = None
         # just a simple buy cost tweak, only use when needed
@@ -767,6 +761,11 @@ class Consist(object):
         return self.model_def.dual_headed
 
     @property
+    def easter_egg_haulage_speed_bonus(self):
+        # just a passthrough for convenience
+        return self.model_def.easter_egg_haulage_speed_bonus
+
+    @property
     def pantograph_type(self):
         # just a passthrough
         # default will be None if not set
@@ -838,14 +837,16 @@ class Consist(object):
     @property
     def replacement_consist(self):
         # option exists to force a replacement consist, this is used to merge tech tree branches
-        if self._replacement_consist_id is not None:
+        #  most consists are automatically replaced by the next consist in the subrole tree
+        # ocasionally we need to merge two branches of the subrole, in this case set replacement consist id on the model_def
+        if self.model_def.replacement_consist_id is not None:
             for consist in self.roster.engine_consists:
-                if consist.id == self._replacement_consist_id:
+                if consist.id == self.model_def.replacement_consist_id:
                     return consist
             # if we don't return a valid result, that's an error, probably a broken replacement id
             raise Exception(
                 "replacement consist id "
-                + self._replacement_consist_id
+                + self.model_def.replacement_consist_id
                 + " not found for consist "
                 + self.id
             )
