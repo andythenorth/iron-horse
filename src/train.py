@@ -83,6 +83,7 @@ class ModelDef(object):
         self.replacement_consist_id = kwargs.get("replacement_consist_id", None)
         self.name = kwargs.get("name", None)
         self.speed = kwargs.get("speed", None)
+        self.fixed_run_cost_points = kwargs.get("fixed_run_cost_points", None)
         # CABBAGE - THESE NEED DEFAULT PROPS CHECKED
         self.base_track_type_name = kwargs.get("base_track_type_name", None)
         self.subtype = kwargs.get("subtype", None)
@@ -392,8 +393,6 @@ class Consist(object):
         # arbitrary multiplier to the calculated run cost, e.g. 1.1, 0.9 etc
         # set to 1 by default, override in subclasses as needed
         self.floating_run_cost_multiplier = 1
-        # fixed (baseline) run costs on this subtype, 100 points
-        self.fixed_run_cost_points = 30  # default, override in subclass as needed
         # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
         self.default_cargos = []
         self.class_refit_groups = []
@@ -711,6 +710,11 @@ class Consist(object):
         # stub only
         # vehicle classes should override this to provide class-appropriate running cost calculation
         return 0
+
+    @property
+    def fixed_run_cost_points(self):
+        # default, override in subclass as needed
+        self.fixed_run_cost_points = 30
 
     @property
     def gen(self):
@@ -1639,9 +1643,6 @@ class EngineConsist(Consist):
         # arbitrary multiplier to floating run costs (factors are speed, power, weight)
         # adjust per subtype as needed
         self.floating_run_cost_multiplier = 8.5
-        # fixed (baseline) run costs on this subtype, or more rarely instances can override this
-        # CABBAGE model_def?
-        self.fixed_run_cost_points = kwargs.get("fixed_run_cost_points", 180)
         # how to handle grouping this consist type
         self.group_as_wagon = False
         # Graphics configuration only as required
@@ -1718,6 +1719,14 @@ class EngineConsist(Consist):
         # start from an arbitrary baseline of 10 points, add points for gen, cost points, seems to work
         # cap to int for nml
         return int(self.fixed_buy_cost_points + self.gen + buy_cost_points)
+
+    @property
+    def fixed_run_cost_points(self):
+        # fixed (baseline) run costs on this subtype, or, more rarely, instances can override this
+        if self.model_def.fixed_run_cost_points is not None:
+            return self.model_def.fixed_run_cost_points
+        else:
+            return 180
 
     @property
     def running_cost(self):
@@ -1817,8 +1826,6 @@ class AutoCoachCombineConsist(EngineConsist):
         ]
         # ....buy costs adjusted to match equivalent gen 2 + 3 pax / mail cars
         self.fixed_buy_cost_points = 6
-        # ....run costs nerfed down to match equivalent gen 2 + 3 pax / mail cars
-        self.fixed_run_cost_points = 43
         # Graphics configuration
         # inserts the default liveries for docs examples
         liveries = self.roster.get_liveries_by_name([])
@@ -1846,6 +1853,11 @@ class AutoCoachCombineConsist(EngineConsist):
     def tractive_effort_coefficient(self):
         # nerf TE down to minimal value
         return 0
+
+    @property
+    def fixed_run_cost_points(self):
+        # ....run costs nerfed down to match equivalent gen 2 + 3 pax / mail cars
+        return 43
 
     @property
     def loading_speed_multiplier(self):
@@ -1902,8 +1914,11 @@ class MailEngineConsist(EngineConsist):
         self.default_cargos = polar_fox.constants.default_cargos["mail"]
         # increased buy costs for having extra doors and stuff eh?
         self.buy_cost_adjustment_factor = 1.4
-        # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
-        self.fixed_run_cost_points = 84
+
+    @property
+    def fixed_run_cost_points(self):
+        # ...reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
+        return 84
 
 
 class MailEngineCabbageDVTConsist(MailEngineConsist):
@@ -1918,8 +1933,6 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         # ....buy costs reduced from base to make it close to mail cars
         self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
-        # ....run costs reduced from base to make it close to mail cars
-        self.fixed_run_cost_points = 68
         # Graphics configuration
         # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
@@ -1947,6 +1960,10 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         # nerf TE down to minimal value
         return 0.1
 
+    @property
+    def fixed_run_cost_points(self):
+        # ....run costs reduced from base to make it close to mail cars
+        return 68
 
 class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
     """
@@ -1959,8 +1976,6 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
         super().__init__(**kwargs)
         # non-standard cite
         self._cite = "Arabella Unit"
-        # run cost algorithm doesn't account for dual-head / high power MUs reliably, so just fix it here, using assumption that there are very few cargo sprinters and this will be fine
-        self.fixed_run_cost_points = 240
         self._loading_speed_multiplier = 2
         # Graphics configuration
         # !! there is no automatic masking of the cab overlays as of Dec 2020, currently manual - automation might be needed for well cars in future, deal with it then if that's the case
@@ -1973,6 +1988,11 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
             num_extra_layers_for_spritelayer_cargos=2,
             liveries=self.liveries,
         )
+
+    @property
+    def fixed_run_cost_points(self):
+        # run cost algorithm doesn't account for dual-head / high power MUs reliably, so just fix it here, using assumption that there are very few cargo sprinters and this will be fine
+        return 240
 
     @property
     def spritelayer_cargo_layers(self):
@@ -2026,10 +2046,6 @@ class MailEngineRailcarConsist(MailEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # non-standard cite
-        if self.base_track_type_name == "NG":
-            # give NG a bonus to align run cost with NG railbus
-            self.fixed_run_cost_points = 52
-
         self._cite = "Arabella Unit"
         # Graphics configuration
         if self.gen in [2, 3]:
@@ -2089,6 +2105,14 @@ class MailEngineRailcarConsist(MailEngineConsist):
             return super().subrole
 
     @property
+    def fixed_run_cost_points(self):
+        if self.base_track_type_name == "NG":
+            # give NG a bonus to align run cost with NG railbus
+            return 52
+        else:
+            return super().fixed_run_cost_points
+
+    @property
     def vehicle_family_badge(self):
         if self._buyable_variant_group_id is not None:
             family_name = self._buyable_variant_group_id
@@ -2108,8 +2132,6 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 0.85
-        # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
-        self.fixed_run_cost_points = 155
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # Graphics configuration
@@ -2141,6 +2163,10 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
             family_name = self.id
         return "vehicle_family/" + family_name
 
+    @property
+    def fixed_run_cost_points(self):
+        # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
+        return 155
 
 class PassengerEngineConsist(EngineConsist):
     """
@@ -2155,14 +2181,17 @@ class PassengerEngineConsist(EngineConsist):
         self.default_cargos = ["PASS"]
         # increased buy costs for having seats and stuff eh?
         self.buy_cost_adjustment_factor = 1.8
-        # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
-        self.fixed_run_cost_points = 84
         # specific structure for capacity multiplier and loading speed, override in subclasses as needed
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
 
     @property
     def loading_speed_multiplier(self):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
+
+    @property
+    def fixed_run_cost_points(self):
+        # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
+        return 84
 
 
 class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
@@ -2177,8 +2206,6 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         # ....buy costs reduced from base to make it close to mail cars
         self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
-        # ....run costs reduced from base to make it close to mail cars
-        self.fixed_run_cost_points = 68
         # Graphics configuration
         # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
@@ -2206,6 +2233,10 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         # nerf TE down to minimal value
         return 0.1
 
+    @property
+    def fixed_run_cost_points(self):
+        # ....run costs reduced from base to make it close to mail cars
+        return 68
 
 class PassengerHSTCabEngineConsist(PassengerEngineConsist):
     """
@@ -2238,14 +2269,6 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 0.85
-        if self.base_track_type_name == "NG":
-            # special case to knock costs on NG versions of these down similar to other railcars
-            self.fixed_run_cost_points = 120
-            # cleanest way to compress run cost down sufficiently
-            self.floating_run_cost_multiplier = 4
-        else:
-            # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
-            self.fixed_run_cost_points = 155
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # Graphics configuration
@@ -2278,6 +2301,17 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         else:
             family_name = self.id
         return "vehicle_family/" + family_name
+
+    @property
+    def fixed_run_cost_points(self):
+        if self.base_track_type_name == "NG":
+            # cleanest way to compress run cost down sufficiently
+            self.floating_run_cost_multiplier = 4
+            # special case to knock costs on NG versions of these down similar to other railcars
+            return 120
+        else:
+            # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
+            return 155
 
 
 class PassengerEngineMetroConsist(PassengerEngineConsist):
@@ -2321,8 +2355,6 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # big cost bonus for railbus
-        self.fixed_run_cost_points = 48
         # optional keyword override, intended for Combine type railbuses, otherwise just use the default for this class
         if "pax_car_capacity_type" in kwargs:
             self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
@@ -2365,6 +2397,11 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
             family_name = self.id
         return "vehicle_family/" + family_name
 
+
+    @property
+    def fixed_run_cost_points(self):
+        # big cost bonus for railbus
+        return 48
 
 class PassengerEngineRailcarConsist(PassengerEngineConsist):
     """
@@ -2426,8 +2463,6 @@ class SnowploughEngineConsist(EngineConsist):
         # to reduce it from engine factor
         self.fixed_buy_cost_points = 1
         self.buy_cost_adjustment_factor = 1
-        # ....run costs reduced from base to make it close to mail cars
-        self.fixed_run_cost_points = 68
         # Graphics configuration
 
         # inserts the default liveries for docs examples
@@ -2456,6 +2491,11 @@ class SnowploughEngineConsist(EngineConsist):
     def tractive_effort_coefficient(self):
         # nerf TE down to minimal value
         return 0.1
+
+    @property
+    def fixed_run_cost_points(self):
+        # ....run costs reduced from base to make it close to mail cars
+        return 68
 
 
 class TGVCabEngineConsist(EngineConsist):
