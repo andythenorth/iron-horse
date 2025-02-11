@@ -79,6 +79,7 @@ class ModelDef(object):
         self.gen = kwargs["gen"]
         self.intro_year_offset = kwargs.get("intro_year_offset", None)
         self.subrole = kwargs.get("subrole", None)
+        self.subrole_child_branch_num = kwargs.get("subrole_child_branch_num", None)
         self.name = kwargs.get("name", None)
         self.speed = kwargs.get("speed", None)
         # CABBAGE - THESE NEED DEFAULT PROPS CHECKED
@@ -407,12 +408,6 @@ class Consist(object):
         self.gestalt_graphics = GestaltGraphics()
         # option to provide automatic roof for all units in the consist, leave as None for no generation
         self.roof_type = None
-        # subrole child branch num places this vehicle on a specific child branch of the tech tree, where the subrole and role are the parent branches
-        # 0 = null, no branch (for wagons etc)
-        #  1..n for branches
-        # -1..-n for jokers
-        # CABBAGE model_def?
-        self.subrole_child_branch_num = kwargs.get("subrole_child_branch_num", 0)
         # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         # CABBAGE model_def?
         self.suppress_animated_pixel_warnings = kwargs.get(
@@ -427,6 +422,7 @@ class Consist(object):
         self.is_wagon_for_docs = False
         # aids 'project management' - doesn't need @property passthrough, always set in model_def
         self.sprites_complete = self.model_def.sprites_complete
+
 
     # CABBAGE
     @property
@@ -578,6 +574,17 @@ class Consist(object):
         name_parts = self.get_name_parts(context="default_name")
         result = "string(" + name_parts[0] + ")"
         return result
+
+    @property
+    def subrole_child_branch_num(self):
+        # subrole child branch num places this vehicle on a specific child branch of the tech tree, where the subrole and role are the parent branches
+        # 0 = null, no branch (for wagons etc)
+        #  1..n for branches
+        # -1..-n for jokers
+        if self.model_def.subrole_child_branch_num is not None:
+            return self.model_def.subrole_child_branch_num
+        else:
+            return 0
 
     @property
     def subrole(self):
@@ -1803,8 +1810,6 @@ class AutoCoachCombineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # driving cab cars are probably jokers?
-        self.subrole_child_branch_num = -1
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
             "autocoach_combine"
         ]
@@ -1823,6 +1828,11 @@ class AutoCoachCombineConsist(EngineConsist):
     @property
     def subrole(self):
         return "driving_cab_express_mixed"
+
+    @property
+    def subrole_child_branch_num(self):
+        # driving cab cars are probably jokers?
+        return -1
 
     @property
     def power_by_power_source(self):
@@ -2394,7 +2404,6 @@ class SnowploughEngineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.subrole_child_branch_num = -1
         # give it mail / express capacity so it has some purpose :P
         self.class_refit_groups = ["mail", "express_freight"]
         # no specific labels needed
@@ -2419,6 +2428,11 @@ class SnowploughEngineConsist(EngineConsist):
     def subrole(self):
         # blame Pikka for the spelling eh? :)
         return "snoughplough!"
+
+    @property
+    def subrole_child_branch_num(self):
+        # joker
+        return -1
 
     @property
     def power_by_power_source(self):
@@ -2574,13 +2588,16 @@ class TGVMiddleMailEngineConsist(TGVMiddleEngineConsistMixin, MailEngineConsist)
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+    @property
+    def subrole_child_branch_num(self):
         # force the child branches apart for middle engines, based on cab ID
         # as of Jan 2025, this is used by tech tree, and (I think) for calculating replacement
         if self.cab_consist.subrole_child_branch_num < 0:
             offset = -2000
         else:
             offset = 2000
-        self.subrole_child_branch_num = (
+        return (
             offset + self.cab_consist.subrole_child_branch_num
         )
 
@@ -2594,13 +2611,16 @@ class TGVMiddlePassengerEngineConsist(
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+    @property
+    def subrole_child_branch_num(self):
         # force the child branches apart for middle engines, based on cab ID
         # as of Jan 2025, this is used by tech tree, and (I think) for calculating replacement
         if self.cab_consist.subrole_child_branch_num < 0:
             offset = -1000
         else:
             offset = 1000
-        self.subrole_child_branch_num = (
+        return (
             offset + self.cab_consist.subrole_child_branch_num
         )
 
