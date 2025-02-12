@@ -246,10 +246,13 @@ class Roster(object):
         )
         return result
 
-    def get_pax_mail_liveries(self, default_livery_group_name, **kwargs):
+    def get_pax_mail_liveries(self, default_livery_group_name, model_def):
         result = []
-        # we can optionally specify liveries per consist by passing the liveries keyword when defining the vehicle, otherwise use the default for this consist subclass
-        livery_group_name = kwargs.get("liveries", default_livery_group_name)
+        # we can optionally specify liveries per consist via the model_def, otherwise use the default for this consist subclass
+        if model_def.livery_group_name is not None:
+            livery_group_name = model_def.livery_group_name
+        else:
+            livery_group_name = default_livery_group_name
         # will fail if the livery group is not defined in the roster
         for livery in self.pax_mail_livery_groups[livery_group_name]:
             livery_result = self.engine_and_pax_mail_car_liveries[livery[0]].copy()

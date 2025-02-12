@@ -68,7 +68,7 @@ def main(**kwargs):
         gen=5,
         subtype="U",
         lgv_capable=True,  # for lolz
-        liveries="gen_5_and_6_pax_liveries",  # override default liveries from gestalt
+        livery_group_name="gen_5_and_6_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

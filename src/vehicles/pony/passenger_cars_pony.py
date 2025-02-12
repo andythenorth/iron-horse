@@ -240,7 +240,7 @@ def main(**kwargs):
         base_numeric_id=25310,
         gen=5,
         subtype="B",
-        liveries="gen_5_and_6_pax_liveries",  # override default liveries from gestalt
+        livery_group_name="gen_5_and_6_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 
@@ -253,7 +253,7 @@ def main(**kwargs):
         base_numeric_id=25320,
         gen=5,
         subtype="C",
-        liveries="gen_5_and_6_pax_liveries",  # override default liveries from gestalt
+        livery_group_name="gen_5_and_6_pax_liveries",  # override default liveries from gestalt
         sprites_complete=True,
     )
 

@@ -118,6 +118,7 @@ class ModelDef(object):
         self.buy_menu_sprite_pairs = kwargs.get("buy_menu_sprite_pairs", None)
         self.extended_vehicle_life = kwargs.get("extended_vehicle_life", False)
         self.additional_liveries = kwargs.get("additional_liveries", None)
+        self.livery_group_name = kwargs.get("livery_group_name", None)
         self.default_livery_extra_docs_examples = kwargs.get(
             "default_livery_extra_docs_examples", None
         )
@@ -1947,7 +1948,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # position based variants
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
-        liveries = self.roster.get_pax_mail_liveries("dvt_mail_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("dvt_mail_liveries", self.model_def)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="driving_cab_cars",
@@ -2031,7 +2032,7 @@ class MailEngineMetroConsist(MailEngineConsist):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
-        liveries = self.roster.get_pax_mail_liveries("metro_mail_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("metro_mail_liveries", self.model_def)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="metro",
@@ -2091,11 +2092,11 @@ class MailEngineRailcarConsist(MailEngineConsist):
         # for special cases, these vehicles could just use the livery keyword on init, but it would be over-ridden by this conditional block currently
         if self.subrole_child_branch_num in [2] or self.base_track_type_name == "NG":
             liveries = self.roster.get_pax_mail_liveries(
-                "diesel_railcar_mail_liveries", **kwargs
+                "diesel_railcar_mail_liveries", self.model_def
             )
         else:
             liveries = self.roster.get_pax_mail_liveries(
-                "electric_railcar_mail_liveries", **kwargs
+                "electric_railcar_mail_liveries", self.model_def
             )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
@@ -2153,7 +2154,7 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
         # * unit with driving cab rear end
         # * unit with no cabs (center car)
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        liveries = self.roster.get_pax_mail_liveries("default_mail_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("default_mail_liveries", self.model_def)
         jfdi_pantograph_debug_image_y_offsets = [len(liveries) * 60, 30]
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
@@ -2230,7 +2231,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
         # position based variants
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
-        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", self.model_def)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="driving_cab_cars",
@@ -2296,7 +2297,7 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
             self.roof_type = "pax_mail_smooth"
         # position variants
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", self.model_def)
         jfdi_pantograph_debug_image_y_offsets = [len(liveries) * 60, 30]
         # various rulesets are supported, per consist, (or could be extended to checks per roster)
         # this wasn't moved to @property due to laziness, as of Jan 2025
@@ -2351,7 +2352,7 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 1, "special": 0}
-        liveries = self.roster.get_pax_mail_liveries("metro_pax_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("metro_pax_liveries", self.model_def)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="metro",
@@ -2383,7 +2384,7 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         # ruleset will combine these to make multiple-units 1, 2 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         consist_ruleset = "railcars_3_unit_sets"
-        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", self.model_def)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset=consist_ruleset,
@@ -2441,11 +2442,11 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         if self.subrole_child_branch_num in [2]:
             liveries = self.roster.get_pax_mail_liveries(
-                "suburban_pax_liveries", **kwargs
+                "suburban_pax_liveries", self.model_def
             )
         else:
             liveries = self.roster.get_pax_mail_liveries(
-                "default_pax_liveries", **kwargs
+                "default_pax_liveries", self.model_def
             )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
@@ -6679,7 +6680,7 @@ class MailCarConsist(MailCarConsistBase):
             "last": brake_car_sprites,
             "special": bonus_sprites,
         }
-        liveries = self.roster.get_pax_mail_liveries("default_mail_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("default_mail_liveries", self.model_def)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="mail_cars",
@@ -6768,7 +6769,7 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
             "last": 1,
             "special": 2,
         }
-        liveries = self.roster.get_pax_mail_liveries("default_mail_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("default_mail_liveries", self.model_def)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="mail_cars",
@@ -7694,7 +7695,7 @@ class PanoramicCarConsist(PassengerCarConsistBase):
         self.weight_factor = 1 if self.base_track_type_name == "NG" else 2
         # Graphics configuration
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
-        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", self.model_def)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
@@ -7742,7 +7743,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         #   * brake coach rear
         #   * I removed special coaches from PassengerLuxuryCarConsist Feb 2021, as Restaurant cars were added
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
-        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", self.model_def)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
@@ -7787,7 +7788,7 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
         #   * brake coach front
         #   * brake coach rear
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
-        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", self.model_def)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
@@ -8019,7 +8020,7 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         # Graphics configuration
         # position based variants are not used for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
         spriterow_group_mappings = {"default": 0, "first": 0, "last": 0, "special": 0}
-        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("default_pax_liveries", self.model_def)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
@@ -8067,7 +8068,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         #   * brake coach rear
         #   * I removed special coaches from PassengerCarConsistBase Dec 2018, overkill
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
-        liveries = self.roster.get_pax_mail_liveries("suburban_pax_liveries", **kwargs)
+        liveries = self.roster.get_pax_mail_liveries("suburban_pax_liveries", self.model_def)
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
             consist_ruleset="pax_cars",
