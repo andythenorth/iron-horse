@@ -101,6 +101,7 @@ class ModelDef(object):
         self.tractive_effort_coefficient = kwargs.get(
             "tractive_effort_coefficient", None
         )
+        self.pax_car_capacity_type = kwargs.get("pax_car_capacity_type", None)
         self.easter_egg_haulage_speed_bonus = kwargs.get("easter_egg_haulage_speed_bonus", None)
         self.pantograph_type = kwargs.get("pantograph_type", None)
         # CABBAGE - SHOULD BE NONE AS DEFAULT CURRENTLY, USED TO GUESS WHAT'S A WAGON by def power(self)
@@ -1821,9 +1822,6 @@ class AutoCoachCombineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
-            "autocoach_combine"
-        ]
         # ....buy costs adjusted to match equivalent gen 2 + 3 pax / mail cars
         self.fixed_buy_cost_points = 6
         # Graphics configuration
@@ -1833,6 +1831,12 @@ class AutoCoachCombineConsist(EngineConsist):
             "vehicle_autocoach.pynml",
             liveries=liveries,
         )
+
+    @property
+    def pax_car_capacity_type(self):
+        return self.roster.pax_car_capacity_types[
+            "autocoach_combine"
+        ]
 
     @property
     def subrole(self):
@@ -1872,9 +1876,6 @@ class FixedFormationRailcarCombineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
-            kwargs["pax_car_capacity_type"]
-        ]
         # Graphics configuration
         # inserts the default liveries for docs examples
         liveries = self.roster.get_liveries_by_name([])
@@ -1882,6 +1883,12 @@ class FixedFormationRailcarCombineConsist(EngineConsist):
             "vehicle_fixed_formation_railcar.pynml",
             liveries=self.roster.get_liveries_by_name([]),
         )
+
+    @property
+    def pax_car_capacity_type(self):
+        return self.roster.pax_car_capacity_types[
+            self.model_def.pax_car_capacity_type
+        ]
 
     @property
     def subrole(self):
@@ -2181,8 +2188,18 @@ class PassengerEngineConsist(EngineConsist):
         self.default_cargos = ["PASS"]
         # increased buy costs for having seats and stuff eh?
         self.buy_cost_adjustment_factor = 1.8
+
+    @property
+    def pax_car_capacity_type(self):
         # specific structure for capacity multiplier and loading speed, override in subclasses as needed
-        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
+        if self.model_def.pax_car_capacity_type is not None:
+            return self.roster.pax_car_capacity_types[
+                self.model_def.pax_car_capacity_type
+            ]
+        else:
+            return self.roster.pax_car_capacity_types[
+                "default"
+            ]
 
     @property
     def loading_speed_multiplier(self):
@@ -2355,11 +2372,6 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # optional keyword override, intended for Combine type railbuses, otherwise just use the default for this class
-        if "pax_car_capacity_type" in kwargs:
-            self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
-                kwargs["pax_car_capacity_type"]
-            ]
         # non-standard cite
         self._cite = "Arabella Unit"
         # Graphics configuration
@@ -2412,7 +2424,6 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         # non-standard cite
         self._cite = "Arabella Unit"
         # Graphics configuration
@@ -2441,6 +2452,12 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
             liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
+
+    @property
+    def pax_car_capacity_type(self):
+        return self.roster.pax_car_capacity_types[
+            "high_capacity"
+        ]
 
     @property
     def vehicle_family_badge(self):
@@ -6539,8 +6556,6 @@ class MailCarConsistBase(CarConsist):
             "non_freight_special_cases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["mail"]
-        # specific structure for capacity multiplier and loading speed, override in subclasses as needed
-        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
         # keep matched to ExpressCarConsist
         self.floating_run_cost_multiplier = 2.33
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
@@ -6554,6 +6569,12 @@ class MailCarConsistBase(CarConsist):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
+
+    @property
+    def pax_car_capacity_type(self):
+        return self.roster.pax_car_capacity_types[
+            "default"
+        ]
 
     @property
     def loading_speed_multiplier(self):
@@ -7557,8 +7578,6 @@ class PassengerCarConsistBase(CarConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["pax"]
-        # specific structure for capacity multiplier and loading speed, override in subclasses as needed
-        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "express_core"
         ]
@@ -7570,6 +7589,12 @@ class PassengerCarConsistBase(CarConsist):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
+
+    @property
+    def pax_car_capacity_type(self):
+        return self.roster.pax_car_capacity_types[
+            "default"
+        ]
 
     @property
     def loading_speed_multiplier(self):
@@ -7935,7 +7960,6 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         super().__init__(**kwargs)
         # PassengerCarConsistBase sets 'express' speed, but railcar trailers should override this
         self.speed_class = "suburban"
-        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
@@ -7964,6 +7988,12 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         )
 
     @property
+    def pax_car_capacity_type(self):
+        return self.roster.pax_car_capacity_types[
+            "high_capacity"
+        ]
+
+    @property
     def is_general_purpose_true_wagon(self):
         return False
 
@@ -7979,7 +8009,6 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         # flag pax car ruleset behaviour
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
-        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["restaurant"]
         self.buy_cost_adjustment_factor = 2.5
         # double the luxury pax car amount; balance between the bonus amount (which scales with num. pax coaches) and the run cost of running this booster
         self.floating_run_cost_multiplier = 12
@@ -7995,6 +8024,12 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
             consist_ruleset="pax_cars",
             liveries=liveries,
         )
+
+    @property
+    def pax_car_capacity_type(self):
+        return self.roster.pax_car_capacity_types[
+            "restaurant"
+        ]
 
     @property
     def subrole(self):
@@ -8015,7 +8050,6 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         # PassengerCarConsistBase sets 'express' speed, but suburban coaches should override this
         # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
         self.speed_class = "suburban"
-        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         # buy costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
         # give it a run cost nerf due to the very high capacity
@@ -8038,6 +8072,12 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
             consist_ruleset="pax_cars",
             liveries=liveries,
         )
+
+    @property
+    def pax_car_capacity_type(self):
+        return self.roster.pax_car_capacity_types[
+            "high_capacity"
+        ]
 
     @property
     def subrole(self):
