@@ -87,6 +87,7 @@ class ModelDef(object):
         # CABBAGE - THESE NEED DEFAULT PROPS CHECKED
         self.base_track_type_name = kwargs.get("base_track_type_name", None)
         self.subtype = kwargs.get("subtype", None)
+        self.buyable_variant_group_id = kwargs.get("buyable_variant_group_id", None)
         self.cab_id = kwargs.get("cab_id", None)
         self.dual_headed = kwargs.get("dual_headed", False)
         self.random_reverse = kwargs.get("random_reverse", False)
@@ -167,7 +168,7 @@ class ModelDef(object):
         cloned_model_def.base_numeric_id = base_numeric_id
         # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
         cloned_model_def.base_id = self.base_id + "_clone_" + str(len(self.clones))
-        cloned_model_def.kwargs["buyable_variant_group_id"] = self.base_id
+        cloned_model_def.buyable_variant_group_id = self.base_id
         return cloned_model_def
 
     def complete_clone(self):
@@ -349,7 +350,7 @@ class Consist(object):
         # set explicitly to a named group matching a consist id
         # set explicitly to a base id, for e.g. wagon groups defined on the roster, which will then compose a group name using e.g. consist track type, gen etc
         # or implicitly inferred later from rules for e.g. livery variants
-        self._buyable_variant_group_id = kwargs.get("buyable_variant_group_id", None)
+        self._buyable_variant_group_id = self.model_def.buyable_variant_group_id
         self.use_named_buyable_variant_group = None
         # create a structure to hold the units
         self.units = []
