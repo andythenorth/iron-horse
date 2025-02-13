@@ -782,7 +782,7 @@ class Consist(object):
     def extended_vehicle_life(self):
         # vehicle life uses a default value, but can be extended automatically via a bool keyword, or it can be set manually
         if self.model_def.extended_vehicle_life is not None:
-            self.model_def.extended_vehicle_life
+            return self.model_def.extended_vehicle_life
         else:
             return False
 
