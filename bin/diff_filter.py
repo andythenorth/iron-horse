@@ -2,7 +2,7 @@
 import subprocess, sys
 
 # Default file paths
-file1 = "generated copy/iron-horse.nml"
+file1 = "generated.c2719c365/iron-horse.nml"
 file2 = "generated/iron-horse.nml"
 
 if len(sys.argv) >= 3:
