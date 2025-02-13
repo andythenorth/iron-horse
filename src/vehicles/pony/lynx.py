@@ -42,7 +42,7 @@ def main(**kwargs):
     )
 
     # JFDI, the single unit should randomly reverse, the 2-unit version should not, so hax
-    model_def.kwargs["random_reverse"] = False
+    model_def.random_reverse = False
 
     model_def.complete_clone()
 

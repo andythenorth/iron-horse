@@ -68,7 +68,6 @@ class ModelDef(object):
     def __init__(self, class_name, **kwargs):
         # ALL DEFAULTS SHOULD BE NONE REALLY, INCLUDING BOOLS, it's up to Consist to sort out defaults, ModelDef is about variations on baked-in defaults
         self.class_name = class_name
-        self.kwargs = kwargs
         self.unit_defs = []
         # used for clone book-keeping
         self.cloned_from_model_def = None
@@ -122,23 +121,17 @@ class ModelDef(object):
         self.default_livery_extra_docs_examples = kwargs.get(
             "default_livery_extra_docs_examples", None
         )
-        # After processing all expected kwargs (e.g., via pop or explicit assignment), do:
-        for key, value in kwargs.items():
-            if not hasattr(self, key):
-                print(
-                    f"Migration Report: Unused keyword argument '{key}' with value {value}"
-                )
 
     def add_unit_def(self, **kwargs):
         self.unit_defs.append(UnitDef(**kwargs))
 
     def define_description(self, description):
         # note we store in kwargs, as the 'recipe' for the consist
-        self.kwargs["description"] = description
+        self.description = description
 
     def define_foamer_facts(self, foamer_facts):
         # note we store in kwargs, as the 'recipe' for the consist
-        self.kwargs["foamer_facts"] = foamer_facts
+        self.foamer_facts = foamer_facts
 
     def begin_clone(self, base_numeric_id, unit_repeats, **kwargs):
         if self.cloned_from_model_def is not None:
@@ -174,10 +167,10 @@ class ModelDef(object):
 
     def complete_clone(self):
         # book-keeping and adjustments after all changes are made to a cloned consist factory
-        self.kwargs["power_by_power_source"] = self.clone_adjust_power_by_power_source()
+        self.power_by_power_source = self.clone_adjust_power_by_power_source()
         # purchase menu variant decor isn't supported if the consist is articulated, so just forcibly clear this property
         if self.produced_unit_total > 1:
-            self.kwargs["show_decor_in_purchase_for_variants"] = []
+            self.show_decor_in_purchase_for_variants = []
 
     @property
     def clone_stats_adjustment_factor(self):
@@ -197,7 +190,7 @@ class ModelDef(object):
         for (
             power_type,
             power_value,
-        ) in self.kwargs["power_by_power_source"].items():
+        ) in self.power_by_power_source.items():
             result[power_type] = int(power_value * self.clone_stats_adjustment_factor)
         return result
 
@@ -257,12 +250,9 @@ class ModelTypeFactory(object):
 
         consist_cls = getattr(sys.modules[__name__], self.class_name)
 
-        CABBAGE_KWARGS = {k: v for k, v in self.model_def.kwargs.items() if k != "id"}
-
         consist = consist_cls(
             model_type_factory=self,
             id=self.base_id_resolver(consist_cls),
-            **CABBAGE_KWARGS,
         )
 
         """
@@ -320,7 +310,7 @@ class ModelTypeFactory(object):
         substrings = []
         # prepend cab_id if present, used for e.g. railcar trailers, HST coaches etc where the wagon matches a specific 'cab' engine
         if model_def.cab_id is not None:
-            substrings.append(model_def.kwargs["cab_id"])
+            substrings.append(model_def.cab_id)
         substrings.append(base_id)
         substrings.append(self.roster_id)
         substrings.append("gen")
@@ -410,11 +400,9 @@ class Consist(object):
         self.suppress_animated_pixel_warnings = kwargs.get(
             "suppress_animated_pixel_warnings", False
         )
-        # extended description (and a cite from a made up person) for docs etc
-        self.description = """"""  # to be set per vehicle, multi-line supported
-        self._cite = ""  # optional, set per subclass as needed
-        # for 'inspired by' stuff
-        self.foamer_facts = """"""  # to be set per vehicle, multi-line supported
+        # cite from a made up person) for docs etc
+        # optional, set per subclass as needed
+        self._cite = ""
         # used for docs management
         self.is_wagon_for_docs = False
         # aids 'project management' - doesn't need @property passthrough, always set in model_def
@@ -1613,11 +1601,11 @@ class Consist(object):
     def assert_description_foamer_facts(self):
         # if these are too noisy, comment them out temporarily
         if self.power > 0:
-            if len(self.description) == 0:
+            if len(self.model_def.description) == 0:
                 utils.echo_message("Consist " + self.id + " has no description")
-            if len(self.foamer_facts) == 0:
+            if len(self.model_def.foamer_facts) == 0:
                 utils.echo_message("Consist " + self.id + " has no foamer_facts")
-            if "." in self.foamer_facts:
+            if "." in self.model_def.foamer_facts:
                 utils.echo_message(
                     "Consist " + self.id + " foamer_facts has a '.' in it."
                 )
@@ -1639,10 +1627,6 @@ class EngineConsist(Consist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # required
-        self.description = kwargs["description"]
-        # required
-        self.foamer_facts = kwargs["foamer_facts"]
         # arbitrary multiplier to floating run costs (factors are speed, power, weight)
         # adjust per subtype as needed
         self.floating_run_cost_multiplier = 8.5
@@ -2712,8 +2696,6 @@ class CarConsist(Consist):
         self._joker = False
         # override this in subclass for, e.g. express freight consists
         self.speed_class = "standard"
-        # CABBAGE model_def?
-        self.subtype = kwargs["subtype"]
         # Weight factor: override in subclass as needed
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1
@@ -2728,6 +2710,11 @@ class CarConsist(Consist):
         self.group_as_wagon = True
         # used for docs optimisation etc
         self.is_wagon_for_docs = True
+
+    @property
+    def subtype(self):
+        # just a passthrough for convenience
+        return self.model_def.subtype
 
     @property
     def buy_cost(self):
@@ -6603,8 +6590,6 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
     def __init__(self, **kwargs):
         # don't set base_id here, let subclasses do it
         super().__init__(**kwargs)
-        # cab_id must be passed, do not mask errors with .get()
-        self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
@@ -6619,6 +6604,11 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
     @property
     def subrole(self):
         return self.cab_consist.subrole
+
+    @property
+    def cab_id(self):
+        # cab_id is required, must be set in model_def
+        return self.model_def.cab_id
 
     @property
     def power_by_power_source(self):
@@ -6794,8 +6784,6 @@ class MailHSTCarConsist(MailCarConsistBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # cab_id must be passed, do not mask errors with .get()
-        self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
         self._badges.append("ih_ruleset_flags/report_as_mail_car")
         # mail cars also treated as pax for rulesets (to hide adjacent pax brake coach)
@@ -6823,6 +6811,11 @@ class MailHSTCarConsist(MailCarConsistBase):
     @property
     def subrole(self):
         return self.cab_consist.subrole
+
+    @property
+    def cab_id(self):
+        # cab_id is required, must be set in model_def
+        return self.model_def.cab_id
 
     @property
     def intro_year_offset(self):
@@ -7622,8 +7615,6 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         # don't set base_id here, let subclasses do it
         super().__init__(**kwargs)
-        # cab_id must be passed, do not mask errors with .get()
-        self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
@@ -7638,6 +7629,11 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
     @property
     def subrole(self):
         return self.cab_consist.subrole
+
+    @property
+    def cab_id(self):
+        # cab_id is required, must be set in model_def
+        return self.model_def.cab_id
 
     @property
     def power_by_power_source(self):
@@ -7859,8 +7855,6 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         self.speed_class = "hst"
         # used to get insert the name of the parent into vehicle name
-        # cab_id must be passed, do not mask errors with .get()
-        self.cab_id = kwargs["cab_id"]
         self._buyable_variant_group_id = self.cab_id
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
         self.buy_cost_adjustment_factor = 1.66
@@ -7889,6 +7883,11 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
     @property
     def subrole(self):
         return self.cab_consist.subrole
+
+    @property
+    def cab_id(self):
+        # cab_id is required, must be set in model_def
+        return self.model_def.cab_id
 
     @property
     def intro_year_offset(self):
