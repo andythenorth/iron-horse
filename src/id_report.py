@@ -67,14 +67,6 @@ def main():
         report_content += "Vacant " + label + ":\n" + ", ".join(id_gaps) + "\n"
     # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
     print(report_content)
-    """
-    # temp whilst we move non-articulated IDs to above 16384 instead of 8192
-    report_non_articulated_need_id_moving = "Non-articulated vehicles with ID < 16384\n"
-    for id, consist in iron_horse.roster_manager.numeric_id_defender.items():
-        if (id > global_constants.max_articulated_id - 10) and (id < (2 * global_constants.max_articulated_id)):
-            report_non_articulated_need_id_moving += consist.id + ","
-    print(report_non_articulated_need_id_moving)
-    """
 
 
 if __name__ == "__main__":
