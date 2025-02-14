@@ -1,5 +1,5 @@
-/generated/
-/docs/
+/generated*
+/docs*
 /tmp/
 .nmlcache/
 .chameleon_cache/
