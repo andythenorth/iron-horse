@@ -1,4 +1,4 @@
-<tal:title define="global title python: doc_helper.unpack_name_string(consist) + ' - ' + roster.str_grf_name" />
+<tal:title define="global title python: doc_helper.unpack_name_string(model_type) + ' - ' + roster.str_grf_name" />
 <tal:suppress_hero_unit define="global suppress_hero_unit True" />
 
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
@@ -16,30 +16,30 @@
     <div class="container text-left">
         <div class="row">
             <div class="span10 offset1">
-                <!--!${consist.replaces_consist}-->
-                ${consist.replacement_consist}
+                <!--!${model_type.replaces_consist}-->
+                ${model_type.replacement_consist}
                 <h2>
-                    ${doc_helper.unpack_name_string(consist)}
-                    ${'(' + doc_helper.lang_strings[consist.str_name_suffix] + ')' if consist.str_name_suffix is not None else None}
+                    ${doc_helper.unpack_name_string(model_type)}
+                    ${'(' + doc_helper.lang_strings[model_type.str_name_suffix] + ')' if model_type.str_name_suffix is not None else None}
                     <small>Vehicle Info</small>
                 </h2>
                 <div style="margin-top:30px; margin-bottom:50px;">
-                    <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                    <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(model_type)">
                         <div class="vehicle-image"
                             style="width:${2 * doc_helper.docs_sprite_max_width};
                                    display:inline-block;">
-                            <img src="static/img/${consist.id}_${livery_variant['livery_name']}.png"
-                                 width="${2 * doc_helper.docs_sprite_width(consist)}"
+                            <img src="static/img/${model_type.id}_${livery_variant['livery_name']}.png"
+                                 width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                  height="${2 * doc_helper.docs_sprite_height}" />
                         </div>
                     </tal:livery>
                     <br />
-                    <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                    <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(model_type)">
                         <div class="vehicle-image"
                             style="width:${4 * doc_helper.docs_sprite_max_width};
                                    display:inline-block;">
-                            <img src="static/img/${consist.id}_${livery_variant['livery_name']}.png"
-                                 width="${4 * doc_helper.docs_sprite_width(consist)}"
+                            <img src="static/img/${model_type.id}_${livery_variant['livery_name']}.png"
+                                 width="${4 * doc_helper.docs_sprite_width(model_type)}"
                                  height="${4 * doc_helper.docs_sprite_height}" />
                         </div>
                     </tal:livery>
@@ -74,11 +74,11 @@
                 </style>
                 <blockquote class="vehicle-quote">
                     <p>
-                        ${structure: consist.model_def.description}
+                        ${structure: model_type.model_def.description}
                     </p>
                     <small>
                         <cite>
-                            ${structure: consist.cite}
+                            ${structure: model_type.cite}
                         </cite>
                     </small>
                 </blockquote>
@@ -122,30 +122,30 @@
                     <tbody>
                         <tr>
                             <th>Intro year / Designed</th>
-                            <td>${consist.intro_year}</td>
+                            <td>${model_type.intro_year}</td>
                         </tr>
                         <tr>
                             <th>Max. Speed</th>
-                            <td>${doc_helper.speed_formatted_for_docs(consist)}</td>
+                            <td>${doc_helper.speed_formatted_for_docs(model_type)}</td>
                         </tr>
                         <tr>
                             <th>Power</th>
-                            <td>${" / ".join(doc_helper.power_formatted_for_docs(consist))}</td>
+                            <td>${" / ".join(doc_helper.power_formatted_for_docs(model_type))}</td>
                         </tr>
                         <tr>
                             <th>Weight</th>
-                            <td>${consist.weight} t</td>
+                            <td>${model_type.weight} t</td>
                         </tr>
                         <tr>
                             <th>Track type</th>
-                            <td>${consist.track_type}</td>
+                            <td>${model_type.track_type}</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <h3 id="appearance">Appearance</h3>
                 <div style="font-size:16px;">
-                    <p>This vehicle has ${len(consist.gestalt_graphics.all_liveries)} ${"livery" if len(consist.gestalt_graphics.all_liveries) == 1 else "liveries"}.</p>
+                    <p>This vehicle has ${len(model_type.gestalt_graphics.all_liveries)} ${"livery" if len(model_type.gestalt_graphics.all_liveries) == 1 else "liveries"}.</p>
                 </div>
 
                 <style>
@@ -194,16 +194,16 @@
                 </style>
 
                 <table class="livery-table text-left">
-                    <tal:buyable_variants repeat="buyable_variant consist.buyable_variants">
+                    <tal:buyable_variants repeat="buyable_variant model_type.buyable_variants">
                         <tr>
                             <th class="livery-table-first-col"><div style="margin-top:12px;">Livery ${repeat.buyable_variant.number} examples</div></th>
                             <td class="livery-table-col-with-divider">
-                                <tal:livery_examples repeat="livery_variant [livery_variant for livery_variant in doc_helper.get_docs_livery_variants(consist) if livery_variant['buyable_variant'] == buyable_variant]">
+                                <tal:livery_examples repeat="livery_variant [livery_variant for livery_variant in doc_helper.get_docs_livery_variants(model_type) if livery_variant['buyable_variant'] == buyable_variant]">
                                     <div class="livery-example-container">
                                         <div class="vehicle-image"
                                             style="width:${3 * doc_helper.docs_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
-                                            <img src="static/img/${consist.id}_${livery_variant['livery_name']}.png"
-                                                 width="${3 * doc_helper.docs_sprite_width(consist)}"
+                                            <img src="static/img/${model_type.id}_${livery_variant['livery_name']}.png"
+                                                 width="${3 * doc_helper.docs_sprite_width(model_type)}"
                                                  height="${3 * doc_helper.docs_sprite_height}" />
                                         </div>
                                         <div style="display:block;">
@@ -227,7 +227,7 @@
                     </tal:buyable_variants>
                 </table>
                 <h3 id="foamer-facts">Foamer Facts</h3>
-                <p>Inspired by ${structure: consist.model_def.foamer_facts}.</p>
+                <p>Inspired by ${structure: model_type.model_def.foamer_facts}.</p>
 
                 <hr />
                 <h3 id="tech-tree">Tech Tree</h3>
@@ -241,8 +241,8 @@
                         <tr>
                             <td style="text-align:center; vertical-align:middle;">
                                 <!--! replaces -->
-                                <tal:replaces condition="len(consist.replaces_consists) > 0">
-                                    <tal:replaced_consist repeat="replaced_consist consist.replaces_consists">
+                                <tal:replaces condition="len(model_type.replaces_consists) > 0">
+                                    <tal:replaced_consist repeat="replaced_consist model_type.replaces_consists">
                                         <div style="margin:10px;">
                                             <a href="${replaced_consist.id}.html">
                                                 <div class="vehicle-image">
@@ -255,36 +255,36 @@
                                         </div>
                                      </tal:replaced_consist>
                                 </tal:replaces>
-                                <tal:replaces_none condition="len(consist.replaces_consists) == 0">
+                                <tal:replaces_none condition="len(model_type.replaces_consists) == 0">
                                     <span class="muted">None</span>
                                 </tal:replaces_none>
                             </td>
                             <!--! this vehicle -->
                             <td style="text-align:center; vertical-align:middle;">
                                 <div class="vehicle-image">
-                                    <img src="static/img/${consist.id}_variant_0_red_white.png"
-                                         width="${4 * doc_helper.docs_sprite_width(consist)}"
+                                    <img src="static/img/${model_type.id}_variant_0_red_white.png"
+                                         width="${4 * doc_helper.docs_sprite_width(model_type)}"
                                          height="${4 * doc_helper.docs_sprite_height}" />
                                 </div>
-                                ${doc_helper.unpack_name_string(consist)}
+                                ${doc_helper.unpack_name_string(model_type)}
                                 <br />
-                                <a href="tech_tree_table_red.html#${consist.id}">See in Tech Tree</a>
+                                <a href="tech_tree_table_red.html#${model_type.id}">See in Tech Tree</a>
                             </td>
                             <!--! replaced by -->
                             <td style="text-align:center; vertical-align:middle;">
-                                <tal:replacement condition="consist.replacement_consist is not None">
+                                <tal:replacement condition="model_type.replacement_consist is not None">
                                     <div style="margin:10px;">
-                                        <a href="${consist.replacement_consist.id}.html">
+                                        <a href="${model_type.replacement_consist.id}.html">
                                             <div class="vehicle-image">
-                                                <img src="static/img/${consist.replacement_consist.id}_variant_0_red_white.png"
-                                                     width="${2* doc_helper.docs_sprite_width(consist.replacement_consist)}"
+                                                <img src="static/img/${model_type.replacement_consist.id}_variant_0_red_white.png"
+                                                     width="${2* doc_helper.docs_sprite_width(model_type.replacement_consist)}"
                                                      height="${2 * doc_helper.docs_sprite_height}" />
                                             </div>
-                                             ${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}
+                                             ${doc_helper.get_replaced_by_name(model_type.replacement_consist.id, consists)}
                                         </a>
                                     </div>
                                 </tal:replacement>
-                                <tal:replacement_is_none condition="consist.replacement_consist is None">
+                                <tal:replacement_is_none condition="model_type.replacement_consist is None">
                                     <span class="muted">None</span>
                                 </tal:replacement_is_none>
                             </td>
@@ -294,7 +294,7 @@
                         </tr>
                         <tr>
                             <td colspan="3" style="text-align:center">
-                                <tal:similar_consists repeat="similar_consist consist.similar_consists">
+                                <tal:similar_consists repeat="similar_consist model_type.similar_consists">
                                     <div style="display:inline-block; margin:10px;">
                                         <a href="${similar_consist.id}.html">
                                             <div class="vehicle-image">

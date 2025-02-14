@@ -185,23 +185,24 @@
                                                 </span>
                                             </th>
                                             <td tal:repeat="gen range(1, len(intro_years) + 1)" class="text-center" style="width: 160px;">
-                                                <tal:consist define="consist tech_tree[base_track_type_and_label][role][subrole][subrole_child_branch][gen]">
-                                                    <tal:block condition="consist is not None">
-                                                        <div id="${consist.id}" class="tech_tree_vehicle_container">
-                                                            <a href="${consist.id}.html">
+                                                <!--! model_type might actually be default model_variant -->
+                                                <tal:model_type define="model_type tech_tree[base_track_type_and_label][role][subrole][subrole_child_branch][gen]">
+                                                    <tal:block condition="model_type is not None">
+                                                        <div id="${model_type.id}" class="tech_tree_vehicle_container">
+                                                            <a href="${model_type.id}.html">
                                                                 <div class="tech_tree_vehicle
-                                                                            ${'tech_tree_vehicle_electric_' + consist.electrification_type.lower() if consist.requires_electric_rails else 'None'}
-                                                                            ${'tech_tree_vehicle_electro_diesel' if consist.str_name_suffix == 'STR_BADGE_POWER_SOURCE_ELECTRODIESEL' else None}
-                                                                            ${'tech_tree_vehicle_arrow' if consist.replacement_consist is not None else None}">
+                                                                            ${'tech_tree_vehicle_electric_' + model_type.electrification_type.lower() if model_type.requires_electric_rails else 'None'}
+                                                                            ${'tech_tree_vehicle_electro_diesel' if model_type.str_name_suffix == 'STR_BADGE_POWER_SOURCE_ELECTRODIESEL' else None}
+                                                                            ${'tech_tree_vehicle_arrow' if model_type.replacement_consist is not None else None}">
                                                                     <span style="display:block;">
-                                                                        ${consist.name}
+                                                                        ${model_type.name}
                                                                     </span>
-                                                                    <img src="static/img/${consist.id}_variant_0_${vehicle_cc}.png"
-                                                                         width="${2 * doc_helper.docs_sprite_width(consist)}"
+                                                                    <img src="static/img/${model_type.id}_variant_0_${vehicle_cc}.png"
+                                                                         width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                                                          height="${2 * doc_helper.docs_sprite_height}" />
                                                                     <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">
                                                                         <small>
-                                                                            <tal:power repeat="power_string doc_helper.power_formatted_for_docs(consist)">
+                                                                            <tal:power repeat="power_string doc_helper.power_formatted_for_docs(model_type)">
                                                                                 <span style="display:block">${power_string}</span>
                                                                             </tal:power>
                                                                         </small>
@@ -209,24 +210,24 @@
                                                                             this is a lolz JFDI hack to provide equal height spacing when there are 1 or 2 power sources
                                                                             this will fail with more than 2 power sources, but deal with that later by adding more conditions
                                                                         -->
-                                                                        <tal:linebreak condition="(len(doc_helper.power_formatted_for_docs(consist)) == 1) and (consist.lgv_capable == False)">
+                                                                        <tal:linebreak condition="(len(doc_helper.power_formatted_for_docs(model_type)) == 1) and (model_type.lgv_capable == False)">
                                                                             <br />
                                                                         </tal:linebreak>
-                                                                        <small>${doc_helper.speed_formatted_for_docs(consist)}</small>
+                                                                        <small>${doc_helper.speed_formatted_for_docs(model_type)}</small>
 
-                                                                        <small>${consist.power_speed_ratio}i</small>
-                                                                        <tal:branch condition="consist.roster.id != 'pony'">
-                                                                            <small>branch: ${consist.subrole_child_branch_num}</small>
+                                                                        <small>${model_type.power_speed_ratio}i</small>
+                                                                        <tal:branch condition="model_type.roster.id != 'pony'">
+                                                                            <small>branch: ${model_type.subrole_child_branch_num}</small>
                                                                         </tal:branch>
                                                                     </span>
                                                                 </div>
-                                                                <div tal:condition="consist.replacement_consist is not None"
+                                                                <div tal:condition="model_type.replacement_consist is not None"
                                                                      style="float:left; margin-left: 173px; margin-top: 30px;">
-                                                                     <div style="${'visibility:hidden;' if doc_helper.consist_has_direct_replacment(consist) else nothing}">
-                                                                        <a href="${consist.replacement_consist.id}.html">
+                                                                     <div style="${'visibility:hidden;' if doc_helper.consist_has_direct_replacment(model_type) else nothing}">
+                                                                        <a href="${model_type.replacement_consist.id}.html">
                                                                             <div class="muted"
                                                                                  style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
-                                                                                Replaced by ${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}
+                                                                                Replaced by ${doc_helper.get_replaced_by_name(model_type.replacement_consist.id, consists)}
                                                                             </div>
                                                                         </a>
                                                                     </div>
@@ -234,7 +235,7 @@
                                                             </a>
                                                         </div>
                                                     </tal:block>
-                                                </tal:consist>
+                                                </tal:model_type>
                                             </td>
                                             <td><!--! empty space cell --></td>
                                         </tr>

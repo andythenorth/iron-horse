@@ -142,19 +142,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tal:vehicles repeat="consist subclass['vehicles']">
+                                    <!--! model_type might be actually default model_variant -->
+                                    <tal:vehicles repeat="model_type subclass['vehicles']">
                                         <tr>
                                             <td class="vehicle-image"
                                                 style="min-width:${2 * doc_helper.docs_sprite_max_width}px;">
-                                                <img src="static/img/${consist.id}_variant_0_red_white.png"
-                                                     width="${2 * doc_helper.docs_sprite_width(consist)}"
+                                                <img src="static/img/${model_type.id}_variant_0_red_white.png"
+                                                     width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                                      height="${2 * doc_helper.docs_sprite_height}" />
                                             </td>
                                             <tal:props repeat="prop_name props_to_print[subclass['name']]">
-                                                <td>${props_to_print[consist][prop_name]}</td>
+                                                <td>${props_to_print[model_type][prop_name]}</td>
                                             </tal:props>
                                             <td>
-                                                ${structure: "&amp;#10004;" if consist.sprites_complete else "&lt;span style='color:red;'&gt;Nope&lt;/span&gt;"}
+                                                ${structure: "&amp;#10004;" if model_type.sprites_complete else "&lt;span style='color:red;'&gt;Nope&lt;/span&gt;"}
                                             </td>
                                         </tr>
                                     </tal:vehicles>
@@ -182,11 +183,11 @@
                             <th>Title</th>
                         </thead>
                         <tbody>
-                            <tal:consists repeat="consist sorted(consists, key=doc_helper.get_base_numeric_id)">
+                            <tal:consists repeat="model_type sorted(consists, key=doc_helper.get_base_numeric_id)">
                                 <tr>
-                                    <td>${consist.base_numeric_id}</td>
-                                    <td>${consist.id}</td>
-                                    <td>${doc_helper.unpack_name_string(consist)}</td>
+                                    <td>${model_type.base_numeric_id}</td>
+                                    <td>${model_type.id}</td>
+                                    <td>${doc_helper.unpack_name_string(model_type)}</td>
                                 </tr>
                             </tal:consists>
                         </tbody>

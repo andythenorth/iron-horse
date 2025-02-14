@@ -63,36 +63,37 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tal:engine_consists repeat="consist doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])">
-                                    <tr id="${consist.id}">
+                                <!--! model_type might actually be default model_variant -->
+                                <tal:engine_model_types repeat="model_type doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])">
+                                    <tr id="${model_type.id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${consist.id}_variant_0_blue_blue.png"
-                                                 width="${2 * doc_helper.docs_sprite_width(consist)}"
+                                            <img src="static/img/${model_type.id}_variant_0_blue_blue.png"
+                                                 width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${consist.id}_variant_0_red_white.png"
-                                                 width="${2 * doc_helper.docs_sprite_width(consist)}"
+                                            <img src="static/img/${model_type.id}_variant_0_red_white.png"
+                                                 width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td>
-                                            <a class="table-link-dark" href="${consist.id}.html">${doc_helper.unpack_name_string(consist)}</a>
+                                            <a class="table-link-dark" href="${model_type.id}.html">${doc_helper.unpack_name_string(model_type)}</a>
                                         </td>
-                                        <td>${doc_helper.get_role_string_for_consist(consist, iron_horse.badge_manager)}</td>
-                                        <td class="date">${consist.intro_year}</td>
+                                        <td>${doc_helper.get_role_string_for_consist(model_type, iron_horse.badge_manager)}</td>
+                                        <td class="date">${model_type.intro_year}</td>
                                         <td class="number">
-                                            <tal:power repeat="power_string doc_helper.power_formatted_for_docs(consist)">
+                                            <tal:power repeat="power_string doc_helper.power_formatted_for_docs(model_type)">
                                                 <span style="display:block; white-space:nowrap;">${power_string}</span>
                                             </tal:power>
                                         </td>
-                                        <td class="number">${doc_helper.speed_formatted_for_docs(consist)}</td>
+                                        <td class="number">${doc_helper.speed_formatted_for_docs(model_type)}</td>
                                         <td>
-                                            <a style="text-decoration:none;" href="#${consist.id}">&#x1f517;</a>
+                                            <a style="text-decoration:none;" href="#${model_type.id}">&#x1f517;</a>
                                         </td>
                                     </tr>
-                                </tal:engine_consists>
+                                </tal:engine_model_types>
                             </tbody>
                         </table>
                     </tal:not_empty>
@@ -117,31 +118,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tal:wagon_consists repeat="consist doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])">
-                                    <tr id="${consist.id}">
+                                <tal:wagon_model_types repeat="model_type doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])">
+                                    <tr id="${model_type.id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${consist.id}_variant_0_blue_blue.png"
-                                                 width="${2 * doc_helper.docs_sprite_width(consist)}"
+                                            <img src="static/img/${model_type.id}_variant_0_blue_blue.png"
+                                                 width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${consist.id}_variant_0_red_white.png"
-                                                 width="${2 * doc_helper.docs_sprite_width(consist)}"
+                                            <img src="static/img/${model_type.id}_variant_0_red_white.png"
+                                                 width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td>
-                                            ${doc_helper.unpack_name_string(consist)}
+                                            ${doc_helper.unpack_name_string(model_type)}
                                         </td>
-                                        <td class="date">${consist.intro_year}</td>
-                                        <td class="number">${sum([unit.default_cargo_capacity for unit in consist.units])} t</td>
-                                        <td class="number">${consist.speed} mph</td>
+                                        <td class="date">${model_type.intro_year}</td>
+                                        <td class="number">${sum([unit.default_cargo_capacity for unit in model_type.units])} t</td>
+                                        <td class="number">${model_type.speed} mph</td>
                                         <td>
-                                            <a style="text-decoration:none;" href="#${consist.id}">&#x1f517;</a>
+                                            <a style="text-decoration:none;" href="#${model_type.id}">&#x1f517;</a>
                                         </td>
                                     </tr>
-                                </tal:wagon_consists>
+                                </tal:wagon_model_types>
                             </tbody>
                         </table>
                     </tal:not_empty>

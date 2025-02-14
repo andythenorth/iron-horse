@@ -192,13 +192,13 @@ def main():
         grfid=r"CA\12\21",
         str_grf_name="Iron Ibex",
         # ELRL, ELNG is mapped to RAIL, NG etc
-        # default intro dates per generation, can be over-ridden if needed by setting intro_year kw on consist
+        # default intro dates per generation, can be over-ridden if needed by setting intro_year kw on model def
         intro_years={
             "RAIL": [1885, 1912, 1939, 1966, 1993, 2020],
             "METRO": [1900, 1950, 2000],
             "NG": [1860, 1905, 1950, 2000],
         },
-        # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
+        # default speeds per generation, can be over-ridden if needed by setting speed kw arg on model def
         # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
         # NG is Corsican-style 1000mm, native brit NG is not a thing for gameplay
         speeds={

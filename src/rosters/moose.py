@@ -56,14 +56,14 @@ def main():
         grfid=r"CA\12\20",
         str_grf_name="Iron Moose",
         # ELRL, ELNG is mapped to RAIL, NG etc
-        # default intro dates per generation, can be over-ridden if needed by setting intro_year kw on consist
+        # default intro dates per generation, can be over-ridden if needed by setting intro_year kw on model def
         # Moose RAIL runs 10 years later than Horse, and is pinned to IRL UP Big Boy (1940) and UP Centennial (1970)
         intro_years={
             "RAIL": [1860, 1910, 1940, 1970, 2000, 2030],
             "METRO": [1900, 1950, 2000],
             "NG": [1860, 1905, 1950, 2000],
         },
-        # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
+        # default speeds per generation, can be over-ridden if needed by setting speed kw arg on model def
         speeds={
             "RAIL": {
                 # gen 5 and 6 held down by design, really fast freight is imbalanced

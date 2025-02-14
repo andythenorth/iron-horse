@@ -103,12 +103,12 @@ def render_docs_vehicle_details(docs_output_path, doc_helper, consists, template
     template = docs_templates[template_name + ".pt"]
 
     roster = iron_horse.roster_manager.active_roster
-    for consist in consists:
-        consist.assert_description_foamer_facts()
-        doc_name = consist.id
+    for model_type in consists:
+        model_type.assert_description_foamer_facts()
+        doc_name = model_type.id
         doc = template(
             roster=roster,
-            consist=consist,
+            model_type=model_type,
             consists=consists,
             iron_horse=iron_horse,
             global_constants=global_constants,

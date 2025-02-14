@@ -299,7 +299,7 @@ intro_month_offsets_by_role = {
 }
 
 # shared across all rosters, keep alphabetised, order not significant
-# only needed for groups composing more than one type of consist
+# only needed for groups composing more than one model type
 buyable_variant_group_consist_base_ids_by_group_name = {
     "wagon_group_acid_tank_cars": "acid_tank_car_type_1",
     "wagon_group_aggregate_hopper_cars": "aggregate_hopper_car_type_1",
@@ -878,7 +878,7 @@ wagon_livery_mixes = {
     "random_from_consist_liveries_grey_pewter": ["freight_grey", "freight_pewter"],
 }
 
-# badges can be predefined here, or created dynamically for specific consist types etc as needed
+# badges can be predefined here, or created dynamically for specific model types etc as needed
 static_badges = {
     "power_source": {
         "name": "STR_POWER_SOURCE",
