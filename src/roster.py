@@ -12,7 +12,7 @@ import utils
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
-from train.train import ModelVariantFactory
+from train.factory import ModelVariantFactory
 
 class Roster(object):
     """

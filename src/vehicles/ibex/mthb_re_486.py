@@ -1,4 +1,4 @@
-from train.train import ModelDef
+from train.factory import ModelDef
 
 # !! based on MittelThurgauBahn MThB Re486 of 2000 - sold to SBB Cargo Re481, see also DB cargo 145
 # !! actually a predecessor of Traxx

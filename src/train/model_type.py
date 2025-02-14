@@ -1382,9 +1382,11 @@ class EngineConsist(Consist):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
-            from train.train import ModelVariantFactory
+            from train.factory import ModelVariantFactory
 
-            model_variant_factory = ModelVariantFactory(self.model_def.cloned_from_model_def)
+            model_variant_factory = ModelVariantFactory(
+                self.model_def.cloned_from_model_def
+            )
             model_variant_factory.set_roster_ids(
                 self.roster_id, self.roster_id_providing_module
             )
@@ -1439,9 +1441,11 @@ class EngineConsist(Consist):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
-            from train.train import ModelVariantFactory
+            from train.factory import ModelVariantFactory
 
-            model_variant_factory = ModelVariantFactory(self.model_def.cloned_from_model_def)
+            model_variant_factory = ModelVariantFactory(
+                self.model_def.cloned_from_model_def
+            )
             model_variant_factory.set_roster_ids(
                 self.roster_id, self.roster_id_providing_module
             )

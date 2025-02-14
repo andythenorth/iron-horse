@@ -1,4 +1,4 @@
-from train.train import ModelDef
+from train.factory import ModelDef
 
 # multi-system !!
 

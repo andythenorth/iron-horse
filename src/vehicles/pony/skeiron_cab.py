@@ -1,4 +1,4 @@
-from train.train import ModelDef
+from train.factory import ModelDef
 
 # skeiron does not have pax capacity, so it can be used for pure mail consists
 

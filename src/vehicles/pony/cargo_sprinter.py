@@ -1,4 +1,4 @@
-from train.train import ModelDef
+from train.factory import ModelDef
 
 # implemented as dual headed, it really is just the nicer way to build these units (esp. when adding container wagons)
 
