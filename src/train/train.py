@@ -9809,6 +9809,7 @@ class Train(object):
     """
 
     def __init__(self, **kwargs):
+        # unit def is private, the public interface shouldn't use it, wrap @property methods around it as needed
         self._unit_def = kwargs["unit_def"]
         self.consist = kwargs.get("consist")
         # create an id, which is used for shared switch chains, and as base id for unit variants to construct an id

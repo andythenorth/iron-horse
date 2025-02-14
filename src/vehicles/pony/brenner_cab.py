@@ -1,4 +1,4 @@
-from train import ModelDef
+from train.train import ModelDef
 
 # pax capacity on these limits use for 100% mail consists - use the Skeiron for that?
 
