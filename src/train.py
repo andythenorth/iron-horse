@@ -65,52 +65,54 @@ class UnitDef:
 
 @dataclass
 class ModelDef:
-    # Required fields
+    # Required fields (lexically sorted)
     class_name: str
     gen: Any
-    sprites_complete: Any
+    sprites_complete: bool
 
-    # Optional fields with explicit types (defaults to None or False)
+    # Optional common fields (lexically sorted)
+    additional_liveries: Optional[Any] = None
     base_id: Optional[str] = None
     base_numeric_id: Optional[int] = None
-    intro_year_offset: Optional[int] = None
-    subrole: Optional[str] = None
-    subrole_child_branch_num: Optional[int] = None
-    replacement_consist_id: Optional[str] = None
-    name: Optional[str] = None
-    speed: Optional[int] = None
-    fixed_run_cost_points: Optional[int] = None
     base_track_type_name: Optional[str] = None
-    subtype: Optional[str] = None
     buyable_variant_group_id: Optional[str] = None
     cab_id: Optional[str] = None
-    dual_headed: bool = False
-    random_reverse: bool = False
-    lgv_capable: bool = False
-    tilt_bonus: bool = False
-    requires_high_clearance: bool = False
-    consist_ruleset: Optional[str] = None
     decor_spriterow_num: Optional[int] = None
-    show_decor_in_purchase_for_variants: List[Any] = None
-    tractive_effort_coefficient: Optional[float] = None
-    pax_car_capacity_type: Optional[str] = None
+    default_livery_extra_docs_examples: Optional[Any] = None
+    dual_headed: bool = False
     easter_egg_haulage_speed_bonus: Optional[Any] = None
+    extended_vehicle_life: bool = False
+    fixed_run_cost_points: Optional[int] = None
+    intro_year_offset: Optional[int] = None
+    lgv_capable: bool = False
+    name: Optional[str] = None
+    pax_car_capacity_type: Optional[str] = None
     pantograph_type: Optional[str] = None
     power_by_power_source: Optional[Dict[Any, Any]] = None
-    docs_image_spriterow: Optional[int] = None
-    spriterow_labels: Optional[Any] = None
-    caboose_families: Optional[Any] = None
-    caboose_family: Optional[Any] = None
-    buy_menu_sprite_pairs: Optional[Any] = None
-    extended_vehicle_life: bool = False
-    additional_liveries: Optional[Any] = None
-    livery_group_name: Optional[Any] = None
-    default_livery_extra_docs_examples: Optional[Any] = None
+    random_reverse: bool = False
+    replacement_consist_id: Optional[str] = None
+    speed: Optional[int] = None
+    subrole: Optional[str] = None
+    subrole_child_branch_num: Optional[int] = None
+    subtype: Optional[str] = None
+    tractive_effort_coefficient: Optional[float] = None
 
-    # Internal attributes (not provided via __init__)
-    unit_defs: List[Any] = field(default_factory=list, init=False)
-    clones: List[Any] = field(default_factory=list, init=False)
+    # Optional esoteric fields (lexically sorted)
+    buy_menu_sprite_pairs: Optional[Any] = None
+    caboose_family: Optional[Any] = None
+    caboose_families: Optional[Any] = None
+    consist_ruleset: Optional[str] = None
+    docs_image_spriterow: Optional[int] = None
+    livery_group_name: Optional[Any] = None
+    requires_high_clearance: bool = False
+    show_decor_in_purchase_for_variants: List[Any] = None
+    spriterow_labels: Optional[Any] = None
+    tilt_bonus: bool = False
+
+    # Internal attributes (not provided via __init__) (lexically sorted)
     cloned_from_model_def: Optional["ModelDef"] = field(default=None, init=False)
+    clones: List[Any] = field(default_factory=list, init=False)
+    unit_defs: List[Any] = field(default_factory=list, init=False)
 
     def add_unit_def(self, **kwargs):
         self.unit_defs.append(UnitDef(**kwargs))
