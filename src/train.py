@@ -137,9 +137,9 @@ class ModelDef:
         cloned_model_def.cloned_from_model_def = self
         # keep a reference locally for book-keeping
         self.clones.append(cloned_model_def)
-        # deepcopy will have created new unit factory instances, but we might want to modify the sequence for the cloned consist factory
+        # deepcopy will have created new unit instances, but we might want to modify the sequence for the cloned consist factory
         # the format is unit_repeats=[x, y z]
-        # for each existing unit factory, this will specify which unit factories to copy, and what their repeat values are
+        # for each existing unit, this will specify which units to copy, and what their repeat values are
         # e.g. [1, 0] will keep the first and drop the second
         # [2, 1] will repeat the first unit twice
         # [0, 2] will drop the first unit and repeat the second twice
