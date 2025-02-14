@@ -91,7 +91,7 @@ class ModelDef:
     requires_high_clearance: bool = False
     consist_ruleset: Optional[str] = None
     decor_spriterow_num: Optional[int] = None
-    show_decor_in_purchase_for_variants: List[Any] = field(default_factory=list)
+    show_decor_in_purchase_for_variants: List[Any] = None
     tractive_effort_coefficient: Optional[float] = None
     pax_car_capacity_type: Optional[str] = None
     easter_egg_haulage_speed_bonus: Optional[Any] = None
@@ -160,7 +160,7 @@ class ModelDef:
         self.power_by_power_source = self.clone_adjust_power_by_power_source()
         # purchase menu variant decor isn't supported if the consist is articulated, so just forcibly clear this property
         if self.produced_unit_total > 1:
-            self.show_decor_in_purchase_for_variants = []
+            self.show_decor_in_purchase_for_variants = None
 
     @property
     def clone_stats_adjustment_factor(self):
@@ -717,8 +717,10 @@ class Consist(object):
 
     @property
     def show_decor_in_purchase_for_variants(self):
-        # just a passthrough for convenience
-        return self.model_def.show_decor_in_purchase_for_variants
+        if self.model_def.show_decor_in_purchase_for_variants is not None:
+            return self.model_def.show_decor_in_purchase_for_variants
+        else:
+            return []
 
     @property
     def docs_image_spriterow(self):
