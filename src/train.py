@@ -10,7 +10,7 @@ import copy
 import math
 import random
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Any, Dict, List, Optional
 
 # python builtin templater might be used in some utility cases
 from string import Template
@@ -63,64 +63,54 @@ class UnitDef:
     reverse_sprite_template: bool = False
 
 
-class ModelDef(object):
+@dataclass
+class ModelDef:
+    # Required fields
+    class_name: str
+    gen: Any
+    sprites_complete: Any
 
-    def __init__(self, class_name, **kwargs):
-        # ALL DEFAULTS SHOULD BE NONE REALLY, INCLUDING BOOLS, it's up to Consist to sort out defaults, ModelDef is about variations on baked-in defaults
-        self.class_name = class_name
-        self.unit_defs = []
-        # used for clone book-keeping
-        self.cloned_from_model_def = None
-        self.clones = []
-        # unpack some keywords
-        self.base_id = kwargs.get("base_id", None)
-        self.base_numeric_id = kwargs.get("base_numeric_id", None)
-        self.gen = kwargs["gen"]
-        self.intro_year_offset = kwargs.get("intro_year_offset", None)
-        self.subrole = kwargs.get("subrole", None)
-        self.subrole_child_branch_num = kwargs.get("subrole_child_branch_num", None)
-        self.replacement_consist_id = kwargs.get("replacement_consist_id", None)
-        self.name = kwargs.get("name", None)
-        self.speed = kwargs.get("speed", None)
-        self.fixed_run_cost_points = kwargs.get("fixed_run_cost_points", None)
-        # CABBAGE - THESE NEED DEFAULT PROPS CHECKED
-        self.base_track_type_name = kwargs.get("base_track_type_name", None)
-        self.subtype = kwargs.get("subtype", None)
-        self.buyable_variant_group_id = kwargs.get("buyable_variant_group_id", None)
-        self.cab_id = kwargs.get("cab_id", None)
-        self.dual_headed = kwargs.get("dual_headed", False)
-        self.random_reverse = kwargs.get("random_reverse", False)
-        self.lgv_capable = kwargs.get("lgv_capable", False)
-        self.tilt_bonus = kwargs.get("tilt_bonus", False)
-        self.requires_high_clearance = kwargs.get("requires_high_clearance", False)
-        self.consist_ruleset = kwargs.get("consist_ruleset", None)
-        self.decor_spriterow_num = kwargs.get("decor_spriterow_num", None)
-        self.show_decor_in_purchase_for_variants = kwargs.get(
-            "show_decor_in_purchase_for_variants", []
-        )
-        self.tractive_effort_coefficient = kwargs.get(
-            "tractive_effort_coefficient", None
-        )
-        self.pax_car_capacity_type = kwargs.get("pax_car_capacity_type", None)
-        self.easter_egg_haulage_speed_bonus = kwargs.get("easter_egg_haulage_speed_bonus", None)
-        self.pantograph_type = kwargs.get("pantograph_type", None)
-        # CABBAGE - SHOULD BE NONE AS DEFAULT CURRENTLY, USED TO GUESS WHAT'S A WAGON by def power(self)
-        self.power_by_power_source = kwargs.get("power_by_power_source", None)
-        # REQUIRED
-        self.sprites_complete = kwargs["sprites_complete"]
-        # CABBAGE - SPECIFIC TO CABOOSE ONLY?
-        self.docs_image_spriterow = kwargs.get("docs_image_spriterow", None)
-        self.spriterow_labels = kwargs.get("spriterow_labels", None)
-        self.caboose_families = kwargs.get("caboose_families", None)
-        # optionally force a specific caboose family to be used
-        self.caboose_family = kwargs.get("caboose_family", None)
-        self.buy_menu_sprite_pairs = kwargs.get("buy_menu_sprite_pairs", None)
-        self.extended_vehicle_life = kwargs.get("extended_vehicle_life", False)
-        self.additional_liveries = kwargs.get("additional_liveries", None)
-        self.livery_group_name = kwargs.get("livery_group_name", None)
-        self.default_livery_extra_docs_examples = kwargs.get(
-            "default_livery_extra_docs_examples", None
-        )
+    # Optional fields with explicit types (defaults to None or False)
+    base_id: Optional[str] = None
+    base_numeric_id: Optional[int] = None
+    intro_year_offset: Optional[int] = None
+    subrole: Optional[str] = None
+    subrole_child_branch_num: Optional[int] = None
+    replacement_consist_id: Optional[str] = None
+    name: Optional[str] = None
+    speed: Optional[int] = None
+    fixed_run_cost_points: Optional[int] = None
+    base_track_type_name: Optional[str] = None
+    subtype: Optional[str] = None
+    buyable_variant_group_id: Optional[str] = None
+    cab_id: Optional[str] = None
+    dual_headed: bool = False
+    random_reverse: bool = False
+    lgv_capable: bool = False
+    tilt_bonus: bool = False
+    requires_high_clearance: bool = False
+    consist_ruleset: Optional[str] = None
+    decor_spriterow_num: Optional[int] = None
+    show_decor_in_purchase_for_variants: List[Any] = field(default_factory=list)
+    tractive_effort_coefficient: Optional[float] = None
+    pax_car_capacity_type: Optional[str] = None
+    easter_egg_haulage_speed_bonus: Optional[Any] = None
+    pantograph_type: Optional[str] = None
+    power_by_power_source: Optional[Dict[Any, Any]] = None
+    docs_image_spriterow: Optional[int] = None
+    spriterow_labels: Optional[Any] = None
+    caboose_families: Optional[Any] = None
+    caboose_family: Optional[Any] = None
+    buy_menu_sprite_pairs: Optional[Any] = None
+    extended_vehicle_life: bool = False
+    additional_liveries: Optional[Any] = None
+    livery_group_name: Optional[Any] = None
+    default_livery_extra_docs_examples: Optional[Any] = None
+
+    # Internal attributes (not provided via __init__)
+    unit_defs: List[Any] = field(default_factory=list, init=False)
+    clones: List[Any] = field(default_factory=list, init=False)
+    cloned_from_model_def: Optional["ModelDef"] = field(default=None, init=False)
 
     def add_unit_def(self, **kwargs):
         self.unit_defs.append(UnitDef(**kwargs))
