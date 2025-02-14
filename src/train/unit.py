@@ -1,47 +1,12 @@
-"""
-import os.path
-
-currentdir = os.curdir
-
-import sys
-
-sys.path.append(os.path.join("src"))  # add to the module search path
-
-import copy
-"""
 import math
-"""
-import random
-from dataclasses import dataclass, field
-from typing import Any, Dict, List, Optional
-"""
 
 # python builtin templater might be used in some utility cases
 from string import Template
 
 import polar_fox
 import global_constants  # expose all constants for easy passing to templates
-import utils
-"""
-from gestalt_graphics.gestalt_graphics import (
-    GestaltGraphics,
-    GestaltGraphicsVisibleCargo,
-    GestaltGraphicsBoxCarOpeningDoors,
-    GestaltGraphicsEngine,
-    GestaltGraphicsCaboose,
-    GestaltGraphicsSimpleBodyColourRemaps,
-    GestaltGraphicsRandomisedWagon,
-    GestaltGraphicsConsistPositionDependent,
-    GestaltGraphicsIntermodalContainerTransporters,
-    GestaltGraphicsAutomobilesTransporter,
-    GestaltGraphicsCustom,
-)
-import gestalt_graphics.graphics_constants as graphics_constants
-
-import iron_horse
-"""
 import spritelayer_cargos
-
+import utils
 
 
 class Train(object):
