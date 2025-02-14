@@ -10,33 +10,8 @@ import copy
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
-from train import consist as consist_module
+from train import model_type as model_type_module
 from train import unit as unit_module
-
-
-@dataclass
-class UnitDef:
-    """Simple wrapper obj to unpack/default required kwargs (the rest are arbitrary)"""
-
-    # CABBAGE DOCUMENT
-    class_name: str
-    repeat: int = 1
-    capacity: Optional[int] = None
-    weight: Optional[int] = None
-    vehicle_length: Optional[int] = None
-    spriterow_num: Optional[int] = 0
-    chassis: Optional[str] = None
-    effects: Optional[dict] = None
-    effect_offsets: Optional[list] = None
-    # z offset is rarely used and is handled separately, mostly just for low-height engines
-    effect_z_offset: Optional[int] = None
-    tail_light: Optional[str] = None
-    suppress_roof_sprite: bool = False
-    symmetry_type: Optional[str] = None
-    # mostly vehicles figure out their own spriterows in output, but occasionaly we need explicit control
-    force_spriterow_group_in_output_spritesheet: Optional[int] = 0
-    # optional - we might want to force the sprites to reverse in some contexts, for example rear cabs of multiple-unit articulated railcars
-    reverse_sprite_template: bool = False
 
 
 @dataclass
@@ -168,9 +143,34 @@ class ModelDef:
         return sum(unit_def.repeat for unit_def in self.unit_defs)
 
 
-class ModelTypeFactory(object):
+@dataclass
+class UnitDef:
+    """Simple wrapper obj to unpack/default required kwargs (the rest are arbitrary)"""
+
+    # CABBAGE DOCUMENT
+    class_name: str
+    repeat: int = 1
+    capacity: Optional[int] = None
+    weight: Optional[int] = None
+    vehicle_length: Optional[int] = None
+    spriterow_num: Optional[int] = 0
+    chassis: Optional[str] = None
+    effects: Optional[dict] = None
+    effect_offsets: Optional[list] = None
+    # z offset is rarely used and is handled separately, mostly just for low-height engines
+    effect_z_offset: Optional[int] = None
+    tail_light: Optional[str] = None
+    suppress_roof_sprite: bool = False
+    symmetry_type: Optional[str] = None
+    # mostly vehicles figure out their own spriterows in output, but occasionaly we need explicit control
+    force_spriterow_group_in_output_spritesheet: Optional[int] = 0
+    # optional - we might want to force the sprites to reverse in some contexts, for example rear cabs of multiple-unit articulated railcars
+    reverse_sprite_template: bool = False
+
+
+class ModelVariantFactory(object):
     """
-    ModelTypeFactory instances:
+    ModelVariantFactory instances:
     - hold a roster_id identifier
     - store a ModelDef object with vehicle-specific parameters
     - maintain a sequence of one or more UnitDef instances
@@ -200,7 +200,7 @@ class ModelTypeFactory(object):
         self.class_name = model_def.class_name
         self.model_def = model_def
         # used for book-keeping related consists, does not define consists in roster
-        self.produced_consists = []
+        self.produced_model_variants = []
         self.produced_units = []
 
     def set_roster_ids(self, roster_id, roster_id_providing_module):
@@ -212,28 +212,28 @@ class ModelTypeFactory(object):
 
     def produce(self, livery=None, dry_run=False):
         if livery == None:
-            # just do the default livery, this means that calling ModelTypeFactory.produce() without params will always just return a default consist, which is useful
+            # just do the default livery, this means that calling ModelVariantFactory.produce() without params will always just return a default consist, which is useful
             # ASSIGN LIVERY HERE
             pass
 
-        consist_cls = getattr(consist_module, self.class_name)
+        model_type_cls = getattr(model_type_module, self.class_name)
 
-        consist = consist_cls(
-            model_type_factory=self,
-            id=self.base_id_resolver(consist_cls),
+        model_variant = model_type_cls(
+            model_variant_factory=self,
+            id=self.base_id_resolver(model_type_cls),
         )
 
         """
         for counter, livery in enumerate(["example", "cabbage_livery"]):
             increment = counter * self.model_def.produced_unit_total
-            print(self.model_def.kwargs.get("id", consist.base_id), self.model_def.kwargs["base_numeric_id"] + increment)
+            print(self.model_def.kwargs.get("id", model_variant.base_id), self.model_def.kwargs["base_numeric_id"] + increment)
         """
 
         """
-        if hasattr(consist_cls, "liveries"):
-            print(consist_cls, len(consist_cls.liveries))
+        if hasattr(model_type_cls, "liveries"):
+            print(model_type_cls, len(model_type_cls.liveries))
         if self.kwargs.get("additional_liveries", None) != None:
-            print(consist_cls, self.kwargs["additional_liveries"])
+            print(model_type_cls, self.kwargs["additional_liveries"])
         """
 
         # orchestrate addition of units
@@ -247,22 +247,22 @@ class ModelTypeFactory(object):
                     + ", "
                     + unit_def.class_name
                 )
-            # CABBAGE - this is delegating to consist currently, by passing unit classes, we want to pass actual units from here, consist knows too much
+            # CABBAGE - this is delegating to model_variant currently, by passing unit classes, we want to pass actual units from here, consist knows too much
             # print(unit_cls, unit)
-            consist.add_unit(unit_cls, unit_def)
+            model_variant.add_unit(unit_cls, unit_def)
 
         if dry_run == False:
-            self.produced_consists.append(consist)
-        return consist
+            self.produced_model_variants.append(model_variant)
+        return model_variant
 
-    def base_id_resolver(self, consist_cls):
+    def base_id_resolver(self, model_type_cls):
         # figures out where a consist is getting a base id from
         # must be either defined on model_def or in the consist class attrs
         if self.model_def.base_id is not None:
             return self.model_def.base_id
         else:
             # we assume it's a wagon id
-            return self.get_wagon_id(consist_cls.model_type_id_stem, self.model_def)
+            return self.get_wagon_id(model_type_cls.model_type_id_stem, self.model_def)
 
     def get_wagon_id(self, model_type_id_stem, model_def):
         # auto id creator, used for wagons not locos

@@ -39,7 +39,7 @@ class Consist(object):
 
     def __init__(self, **kwargs):
         # mandatory, fail if missing
-        self.model_type_factory = kwargs["model_type_factory"]
+        self.model_variant_factory = kwargs["model_variant_factory"]
         # mandatory, fail if missing
         self.id = kwargs["id"]
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
@@ -128,17 +128,17 @@ class Consist(object):
     @property
     def model_def(self):
         # just a pass through for convenience
-        return self.model_type_factory.model_def
+        return self.model_variant_factory.model_def
 
     @property
     def roster_id(self):
         # just a pass through for convenience
-        return self.model_type_factory.roster_id
+        return self.model_variant_factory.roster_id
 
     @property
     def roster_id_providing_module(self):
         # just a pass through for convenience
-        return self.model_type_factory.roster_id_providing_module
+        return self.model_variant_factory.roster_id_providing_module
 
     @property
     def is_clone(self):
@@ -1382,13 +1382,13 @@ class EngineConsist(Consist):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
-            from train.train import ModelTypeFactory
+            from train.train import ModelVariantFactory
 
-            model_type_factory = ModelTypeFactory(self.model_def.cloned_from_model_def)
-            model_type_factory.set_roster_ids(
+            model_variant_factory = ModelVariantFactory(self.model_def.cloned_from_model_def)
+            model_variant_factory.set_roster_ids(
                 self.roster_id, self.roster_id_providing_module
             )
-            temp_consist = model_type_factory.produce(dry_run=True)
+            temp_consist = model_variant_factory.produce(dry_run=True)
             return int(
                 temp_consist.buy_cost * self.model_def.clone_stats_adjustment_factor
             )
@@ -1439,13 +1439,13 @@ class EngineConsist(Consist):
         # and adjust them to account for differing number of units
         if self.model_def.cloned_from_model_def is not None:
             # we have to instantiate an actual consist, temporarily, as the factory doesn't know the calculated cost directly
-            from train.train import ModelTypeFactory
+            from train.train import ModelVariantFactory
 
-            model_type_factory = ModelTypeFactory(self.model_def.cloned_from_model_def)
-            model_type_factory.set_roster_ids(
+            model_variant_factory = ModelVariantFactory(self.model_def.cloned_from_model_def)
+            model_variant_factory.set_roster_ids(
                 self.roster_id, self.roster_id_providing_module
             )
-            temp_consist = model_type_factory.produce(dry_run=True)
+            temp_consist = model_variant_factory.produce(dry_run=True)
             return int(
                 temp_consist.running_cost * self.model_def.clone_stats_adjustment_factor
             )
@@ -2521,7 +2521,7 @@ class CarConsist(Consist):
     def get_input_spritesheet_delegate_id_wagon(
         self, input_spritesheet_delegate_base_id
     ):
-        input_spritesheet_delegate_id = self.model_type_factory.get_wagon_id(
+        input_spritesheet_delegate_id = self.model_variant_factory.get_wagon_id(
             input_spritesheet_delegate_base_id,
             model_def=self.model_def,
         )

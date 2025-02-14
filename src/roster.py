@@ -12,7 +12,7 @@ import utils
 # get args passed by makefile
 command_line_args = utils.get_command_line_args()
 
-from train.train import ModelTypeFactory
+from train.train import ModelVariantFactory
 
 class Roster(object):
     """
@@ -354,9 +354,9 @@ class Roster(object):
                 "." + engine_module_name, package_name
             )
             for model_def in engine_module_name.main():
-                model_type_factory = ModelTypeFactory(model_def)
-                model_type_factory.set_roster_ids(self.id, roster_id_providing_module)
-                consist = model_type_factory.produce()
+                model_variant_factory = ModelVariantFactory(model_def)
+                model_variant_factory.set_roster_ids(self.id, roster_id_providing_module)
+                consist = model_variant_factory.produce()
                 self.engine_consists.append(consist)
 
     def init_wagon_modules(self):
@@ -388,11 +388,11 @@ class Roster(object):
                         "." + wagon_module_name, package_name
                     )
                     for model_def in wagon_module.main():
-                        model_type_factory = ModelTypeFactory(model_def)
-                        model_type_factory.set_roster_ids(
+                        model_variant_factory = ModelVariantFactory(model_def)
+                        model_variant_factory.set_roster_ids(
                             self.id, roster_id_providing_module
                         )
-                        model_type_factory.produce()
+                        model_variant_factory.produce()
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name
