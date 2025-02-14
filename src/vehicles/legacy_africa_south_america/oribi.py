@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 
 def main(**kwargs):
-    consist = EngineConsist(
+    consist_cabbage = EngineConsist(
         id="oribi",
         base_numeric_id=11020,
         name="Oribi",
@@ -14,8 +14,8 @@ def main(**kwargs):
         intro_year=1960,
     )
 
-    consist.add_unit(
+    consist_cabbage.add_unit(
         type=DieselEngineUnit, weight=65, vehicle_length=8, capacity=30, spriterow_num=0
     )
 
-    return consist
+    return consist_cabbage

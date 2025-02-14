@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 
 def main(**kwargs):
-    consist = EngineConsist(
+    consist_cabbage = EngineConsist(
         id="dl",
         base_numeric_id=10550,
         name="DL",
@@ -20,7 +20,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    consist.add_unit(
+    consist_cabbage.add_unit(
         type=DieselEngineUnit,
         weight=55,
         vehicle_length=8,
@@ -28,7 +28,7 @@ def main(**kwargs):
         spriterow_num=0,
     )
 
-    consist.description = """"""
-    consist.foamer_facts = """"""
+    consist_cabbage.description = """"""
+    consist_cabbage.foamer_facts = """"""
 
-    return consist
+    return consist_cabbage

@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 
 def main(**kwargs):  # GE Shovelnose - meter gauge ish
-    consist = EngineConsist(
+    consist_cabbage = EngineConsist(
         id="cooper",
         base_numeric_id=10480,
         name="Cooper",
@@ -13,8 +13,8 @@ def main(**kwargs):  # GE Shovelnose - meter gauge ish
         intro_year=1949,
     )
 
-    consist.add_unit(
+    consist_cabbage.add_unit(
         type=DieselEngineUnit, weight=85, vehicle_length=7, spriterow_num=0
     )
 
-    return consist
+    return consist_cabbage

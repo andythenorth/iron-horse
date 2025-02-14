@@ -2,12 +2,12 @@ from train import EngineConsist, DieselEngineUnit
 
 
 def main(**kwargs):  # for rest of stats, look up EMD G22CW
-    consist = EngineConsist(
+    consist_cabbage = EngineConsist(
         id="astarsa", base_numeric_id=9090, name="Astarsa", power=1600, intro_year=1969
     )
 
-    consist.add_unit(
+    consist_cabbage.add_unit(
         type=DieselEngineUnit, weight=40, vehicle_length=8, spriterow_num=0
     )
 
-    return consist
+    return consist_cabbage

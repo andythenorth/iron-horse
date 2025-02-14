@@ -2,7 +2,7 @@ from train import EngineConsist, ElectricEngineUnit
 
 
 def main(**kwargs):
-    consist = EngineConsist(
+    consist_cabbage = EngineConsist(
         id="estados",
         base_numeric_id=9230,
         name="Estados Boxcab",
@@ -10,8 +10,8 @@ def main(**kwargs):
         intro_year=1925,
     )
 
-    consist.add_unit(
+    consist_cabbage.add_unit(
         type=ElectricEngineUnit, weight=90, vehicle_length=6, spriterow_num=0
     )
 
-    return consist
+    return consist_cabbage

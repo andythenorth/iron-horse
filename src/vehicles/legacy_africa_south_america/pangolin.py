@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 
 def main(**kwargs):
-    consist = EngineConsist(
+    consist_cabbage = EngineConsist(
         id="pangolin",
         base_numeric_id=11100,
         name="2-6-0 Pangolin",
@@ -11,10 +11,10 @@ def main(**kwargs):
         intro_year=1860,
     )
 
-    consist.add_unit(type=SteamEngineUnit, weight=40, vehicle_length=6, spriterow_num=0)
+    consist_cabbage.add_unit(type=SteamEngineUnit, weight=40, vehicle_length=6, spriterow_num=0)
 
-    consist.add_unit(
+    consist_cabbage.add_unit(
         type=SteamEngineTenderUnit, weight=27, vehicle_length=4, spriterow_num=1
     )
 
-    return consist
+    return consist_cabbage

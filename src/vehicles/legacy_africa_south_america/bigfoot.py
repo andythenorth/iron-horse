@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 
 def main(**kwargs):  # roughly an SAR 91-000 class
-    consist = EngineConsist(
+    consist_cabbage = EngineConsist(
         id="bigfoot",
         base_numeric_id=10660,
         name="Bigfoot",
@@ -11,8 +11,8 @@ def main(**kwargs):  # roughly an SAR 91-000 class
         intro_year=1970,
     )
 
-    consist.add_unit(
+    consist_cabbage.add_unit(
         type=DieselEngineUnit, weight=50, vehicle_length=5, spriterow_num=0
     )
 
-    return consist
+    return consist_cabbage

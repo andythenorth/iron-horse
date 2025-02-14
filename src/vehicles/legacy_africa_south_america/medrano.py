@@ -2,7 +2,7 @@ from train import PassengerEngineConsist, MetroUnit
 
 
 def main(**kwargs):
-    consist = PassengerEngineConsist(
+    consist_cabbage = PassengerEngineConsist(
         id="medrano",
         base_numeric_id=10530,
         name="Medrano",
@@ -11,12 +11,12 @@ def main(**kwargs):
     )
 
     # should be 4 units, not 2
-    consist.add_unit(
+    consist_cabbage.add_unit(
         type=MetroUnit, weight=30, vehicle_length=8, capacity=200, spriterow_num=0
     )
 
-    consist.add_unit(
+    consist_cabbage.add_unit(
         type=MetroUnit, weight=30, vehicle_length=8, capacity=200, spriterow_num=1
     )
 
-    return consist
+    return consist_cabbage

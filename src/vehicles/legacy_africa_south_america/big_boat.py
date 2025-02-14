@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 
 def main(**kwargs):
-    consist = EngineConsist(
+    consist_cabbage = EngineConsist(
         id="big_boat",
         base_numeric_id=10640,
         name="Big Boat",
@@ -12,10 +12,10 @@ def main(**kwargs):
         intro_year=1985,
     )
 
-    consist.add_unit(
+    consist_cabbage.add_unit(
         type=DieselEngineUnit, weight=190, vehicle_length=8, spriterow_num=0
     )
 
     # I tried the Big Boat with a long-hood forward random variant, but it looked bad, removed it.
 
-    return consist
+    return consist_cabbage
