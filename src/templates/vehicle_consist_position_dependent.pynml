@@ -92,7 +92,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_engine_an
 </tal:consist_position_variants>
 
 <tal:vars define="position_variants consist.gestalt_graphics.spriterow_group_mappings">
-    <tal:switch_position_ruleset switch="consist.gestalt_graphics.consist_ruleset">
+    <tal:switch_position_ruleset switch="consist.gestalt_graphics.formation_ruleset">
         <!--! rulesets must comply with the position names in gestalt_graphics
               these could be extended or made arbitrary, but that's unwanted complexity -->
         <tal:position_ruleset case="'pax_cars'">

@@ -18,7 +18,7 @@ def main(**kwargs):
         gen=4,
         tilt_bonus=True,  # for lolz
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
-        consist_ruleset="railcars_4_unit_sets",  # special case
+        formation_ruleset="railcars_4_unit_sets",  # special case
         sprites_complete=True,
     )
 

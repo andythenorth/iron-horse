@@ -41,7 +41,7 @@ class ModelDef:
     pantograph_type: Optional[str] = None
     power_by_power_source: Optional[Dict[Any, Any]] = None
     random_reverse: bool = False
-    replacement_consist_id: Optional[str] = None
+    replacement_model_base_id: Optional[str] = None
     speed: Optional[int] = None
     subrole: Optional[str] = None
     subrole_child_branch_num: Optional[int] = None
@@ -52,7 +52,7 @@ class ModelDef:
     buy_menu_sprite_pairs: Optional[Any] = None
     caboose_family: Optional[Any] = None
     caboose_families: Optional[Any] = None
-    consist_ruleset: Optional[str] = None
+    formation_ruleset: Optional[str] = None
     docs_image_spriterow: Optional[int] = None
     livery_group_name: Optional[Any] = None
     requires_high_clearance: bool = False
@@ -69,26 +69,24 @@ class ModelDef:
         self.unit_defs.append(UnitDef(**kwargs))
 
     def define_description(self, description):
-        # note we store in kwargs, as the 'recipe' for the consist
         self.description = description
 
     def define_foamer_facts(self, foamer_facts):
-        # note we store in kwargs, as the 'recipe' for the consist
         self.foamer_facts = foamer_facts
 
     def begin_clone(self, base_numeric_id, unit_repeats, **kwargs):
         if self.cloned_from_model_def is not None:
             # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
             raise Exception(
-                "Don't clone a consist factory that is itself a clone, it won't work as expected. \nClone the original consist factory. \nConsist is: "
-                + self.base_id
+                "Don't clone a model def that is itself a clone, it won't work as expected. \nClone the original model def. \nModel def is: "
+                +self.base_id,
             )
         cloned_model_def = copy.deepcopy(self)
-        # cloned consist factory may need to reference original source
+        # clone may need to reference original source
         cloned_model_def.cloned_from_model_def = self
         # keep a reference locally for book-keeping
         self.clones.append(cloned_model_def)
-        # deepcopy will have created new unit instances, but we might want to modify the sequence for the cloned consist factory
+        # deepcopy will have created new unit instances, but we might want to modify the sequence for the clone
         # the format is unit_repeats=[x, y z]
         # for each existing unit, this will specify which units to copy, and what their repeat values are
         # e.g. [1, 0] will keep the first and drop the second
@@ -109,9 +107,9 @@ class ModelDef:
         return cloned_model_def
 
     def complete_clone(self):
-        # book-keeping and adjustments after all changes are made to a cloned consist factory
+        # book-keeping and adjustments after all changes are made to a clone
         self.power_by_power_source = self.clone_adjust_power_by_power_source()
-        # purchase menu variant decor isn't supported if the consist is articulated, so just forcibly clear this property
+        # purchase menu variant decor isn't supported if the vehicle is articulated, so just forcibly clear this property
         if self.produced_unit_total > 1:
             self.show_decor_in_purchase_for_variants = None
 
@@ -128,7 +126,7 @@ class ModelDef:
         return result
 
     def clone_adjust_power_by_power_source(self):
-        # recalculate power in 'recipe' for a cloned consist factory
+        # recalculate power in a clone
         result = {}
         for (
             power_type,
@@ -199,20 +197,20 @@ class ModelVariantFactory(object):
     def __init__(self, model_def):
         self.class_name = model_def.class_name
         self.model_def = model_def
-        # used for book-keeping related consists, does not define consists in roster
+        # used for book-keeping related model_variants
         self.produced_model_variants = []
         self.produced_units = []
 
     def set_roster_ids(self, roster_id, roster_id_providing_module):
-        # rosters can optionally init consist factories from other rosters
-        # store the roster that inited the consist factory, and the roster that the consist factory module is in the filesystem path for
+        # rosters can optionally init model variants from other rosters
+        # store the roster that inited the model variant, and the roster that the model variant module is in the filesystem path for
         # we don't store the roster object directly as it can fail to pickle with multiprocessing
         self.roster_id = roster_id
         self.roster_id_providing_module = roster_id_providing_module
 
     def produce(self, livery=None, dry_run=False):
         if livery == None:
-            # just do the default livery, this means that calling ModelVariantFactory.produce() without params will always just return a default consist, which is useful
+            # just do the default livery, this means that calling ModelVariantFactory.produce() without params will always just return a default model variant, which is useful
             # ASSIGN LIVERY HERE
             pass
 
@@ -247,7 +245,7 @@ class ModelVariantFactory(object):
                     + ", "
                     + unit_def.class_name
                 )
-            # CABBAGE - this is delegating to model_variant currently, by passing unit classes, we want to pass actual units from here, consist knows too much
+            # CABBAGE - this is delegating to model_variant currently, by passing unit classes, we want to pass actual units from here, model variant knows too much
             # print(unit_cls, unit)
             model_variant.add_unit(unit_cls, unit_def)
 
@@ -256,8 +254,8 @@ class ModelVariantFactory(object):
         return model_variant
 
     def base_id_resolver(self, model_type_cls):
-        # figures out where a consist is getting a base id from
-        # must be either defined on model_def or in the consist class attrs
+        # figures out where a model variant is getting a base id from
+        # must be either defined on model_def or in the model variant class attrs
         if self.model_def.base_id is not None:
             return self.model_def.base_id
         else:
@@ -266,7 +264,7 @@ class ModelVariantFactory(object):
 
     def get_wagon_id(self, model_type_id_stem, model_def):
         # auto id creator, used for wagons not locos
-        # handled by consist factory not consist, better this way
+        # handled by model variant factory not model variant, better this way
         base_id = model_type_id_stem
         # special case NG - extend this for other track_types as needed
         # 'normal' rail and 'elrail' doesn't require an id modifier

@@ -14,7 +14,7 @@ def main(**kwargs):
         power_by_power_source={"DIESEL": 700, "AC": 820},
         pantograph_type="z-shaped-single-with-base",
         easter_egg_haulage_speed_bonus=True,
-        consist_ruleset="railcars_3_unit_sets",
+        formation_ruleset="railcars_3_unit_sets",
         gen=6,
         sprites_complete=True,
         intro_year_offset=-3,

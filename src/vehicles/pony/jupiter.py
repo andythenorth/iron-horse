@@ -16,7 +16,7 @@ def main(**kwargs):
         },
         pantograph_type="z-shaped-single-with-base",
         easter_egg_haulage_speed_bonus=True,
-        consist_ruleset="railcars_3_unit_sets",
+        formation_ruleset="railcars_3_unit_sets",
         gen=5,
         sprites_complete=True,
         intro_year_offset=-3,

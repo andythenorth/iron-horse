@@ -548,14 +548,14 @@ class Consist(object):
         # option exists to force a replacement consist, this is used to merge tech tree branches
         #  most consists are automatically replaced by the next consist in the subrole tree
         # ocasionally we need to merge two branches of the subrole, in this case set replacement consist id on the model_def
-        if self.model_def.replacement_consist_id is not None:
+        if self.model_def.replacement_model_base_id is not None:
             for consist in self.roster.engine_consists:
-                if consist.id == self.model_def.replacement_consist_id:
+                if consist.id == self.model_def.replacement_model_base_id:
                     return consist
             # if we don't return a valid result, that's an error, probably a broken replacement id
             raise Exception(
                 "replacement consist id "
-                + self.model_def.replacement_consist_id
+                + self.model_def.replacement_model_base_id
                 + " not found for consist "
                 + self.id
             )
@@ -1654,7 +1654,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="driving_cab_cars",
+            formation_ruleset="driving_cab_cars",
             liveries=liveries,
         )
 
@@ -1741,7 +1741,7 @@ class MailEngineMetroConsist(MailEngineConsist):
         )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="metro",
+            formation_ruleset="metro",
             liveries=liveries,
         )
 
@@ -1774,20 +1774,20 @@ class MailEngineRailcarConsist(MailEngineConsist):
         # * unit with no driving cabs (OPTIONAL - only provided for 4-unit sets)
         # Rules are 2 unit sets of 3 unit sets (4 could also be supported, but isn't at time of writing)
         # CABBAGE THIS SHOULD BE CONSIST RULESET
-        if self.model_def.consist_ruleset is not None:
-            consist_ruleset = self.model_def.consist_ruleset
+        if self.model_def.formation_ruleset is not None:
+            formation_ruleset = self.model_def.formation_ruleset
         else:
-            consist_ruleset = "railcars_2_unit_sets"
+            formation_ruleset = "railcars_2_unit_sets"
 
         # note that this if/elif only actually covers 2 cases as of Feb 2025 - no other cases were needed
-        if consist_ruleset == "railcars_2_unit_sets":
+        if formation_ruleset == "railcars_2_unit_sets":
             spriterow_group_mappings = {
                 "default": 0,
                 "first": 1,
                 "last": 2,
                 "special": 0,
             }
-        elif consist_ruleset == "railcars_3_unit_sets":
+        elif formation_ruleset == "railcars_3_unit_sets":
             spriterow_group_mappings = {
                 "default": 0,
                 "first": 1,
@@ -1806,7 +1806,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
             )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset=consist_ruleset,
+            formation_ruleset=formation_ruleset,
             liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
@@ -1866,7 +1866,7 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
         jfdi_pantograph_debug_image_y_offsets = [len(liveries) * 60, 30]
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="railcars_4_unit_sets",
+            formation_ruleset="railcars_4_unit_sets",
             liveries=liveries,
             pantograph_type=self.pantograph_type,
             jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
@@ -1943,7 +1943,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="driving_cab_cars",
+            formation_ruleset="driving_cab_cars",
             liveries=liveries,
         )
 
@@ -2013,13 +2013,13 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         jfdi_pantograph_debug_image_y_offsets = [len(liveries) * 60, 30]
         # various rulesets are supported, per consist, (or could be extended to checks per roster)
         # this wasn't moved to @property due to laziness, as of Jan 2025
-        if self.model_def.consist_ruleset is not None:
-            consist_ruleset = self.model_def.consist_ruleset
+        if self.model_def.formation_ruleset is not None:
+            formation_ruleset = self.model_def.formation_ruleset
         else:
-            consist_ruleset = "railcars_6_unit_sets"
+            formation_ruleset = "railcars_6_unit_sets"
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset=consist_ruleset,
+            formation_ruleset=formation_ruleset,
             liveries=liveries,
             pantograph_type=self.pantograph_type,
             jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
@@ -2069,7 +2069,7 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="metro",
+            formation_ruleset="metro",
             liveries=liveries,
         )
 
@@ -2097,13 +2097,13 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         # * unit with driving cab rear end
         # ruleset will combine these to make multiple-units 1, 2 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        consist_ruleset = "railcars_3_unit_sets"
+        formation_ruleset = "railcars_3_unit_sets"
         liveries = self.roster.get_pax_mail_liveries(
             "default_pax_liveries", self.model_def
         )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset=consist_ruleset,
+            formation_ruleset=formation_ruleset,
             liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
@@ -2166,7 +2166,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
             )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="railcars_3_unit_sets",
+            formation_ruleset="railcars_3_unit_sets",
             liveries=liveries,
             pantograph_type=self.pantograph_type,
         )
@@ -2311,7 +2311,7 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="tgv",
+            formation_ruleset="tgv",
             liveries=self.cab_consist.gestalt_graphics.liveries,
             default_livery_extra_docs_examples=self.cab_consist.gestalt_graphics.default_livery_extra_docs_examples,
             pantograph_type=self.pantograph_type,
@@ -2683,15 +2683,15 @@ class AutomobileCarConsistBase(CarConsist):
             "non_core_wagons"
         ]
         if self.subtype == "D":
-            consist_ruleset = "articulated_permanent_twin_sets"
+            formation_ruleset = "articulated_permanent_twin_sets"
         else:
-            consist_ruleset = self._consist_ruleset
+            formation_ruleset = self._consist_ruleset
         # automobile cars can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
         # ...wouldn't be desirable anyway because they are pseudo-articulated units
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
-            consist_ruleset=consist_ruleset,
+            formation_ruleset=formation_ruleset,
             liveries=self.liveries,
         )
 
@@ -4817,11 +4817,11 @@ class ExpressIntermodalCarConsist(CarConsist):
         self._joker = True
         self.use_colour_randomisation_strategies = False
         # Graphics configuration
-        # !! note to future, if e.g. NA Horse needs longer express intermodal sets, set the consist_ruleset conditionally by checking roster
+        # !! note to future, if e.g. NA Horse needs longer express intermodal sets, set the formation_ruleset conditionally by checking roster
         # intermodal container wagons can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
-            consist_ruleset="2_unit_sets", liveries=self.liveries
+            formation_ruleset="2_unit_sets", liveries=self.liveries
         )
 
     @property
@@ -6075,13 +6075,13 @@ class IntermodalCarConsistBase(CarConsist):
         # Graphics configuration
         # various rulesets are supported, per consist, (or could be extended to checks per roster)
         # this wasn't moved to @property due to laziness, as of Jan 2025
-        if self.model_def.consist_ruleset is not None:
-            consist_ruleset = self.model_def.consist_ruleset
+        if self.model_def.formation_ruleset is not None:
+            formation_ruleset = self.model_def.formation_ruleset
         else:
-            consist_ruleset = "4_unit_sets"
+            formation_ruleset = "4_unit_sets"
         # !! as of April 2023, company colour isn't used for default intermodal sprite, so use SWOOSH as JFDI
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
-            consist_ruleset=consist_ruleset, liveries=self.liveries
+            formation_ruleset=formation_ruleset, liveries=self.liveries
         )
 
 
@@ -6399,7 +6399,7 @@ class MailCarConsist(MailCarConsistBase):
         )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="mail_cars",
+            formation_ruleset="mail_cars",
             liveries=liveries,
         )
 
@@ -6445,7 +6445,7 @@ class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="railcars_4_unit_sets",
+            formation_ruleset="railcars_4_unit_sets",
             liveries=self.cab_consist.gestalt_graphics.liveries,
             pantograph_type=self.pantograph_type,
         )
@@ -6490,7 +6490,7 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
         )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="mail_cars",
+            formation_ruleset="mail_cars",
             liveries=liveries,
         )
 
@@ -6532,7 +6532,7 @@ class MailHSTCarConsist(MailCarConsistBase):
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="mail_cars",
+            formation_ruleset="mail_cars",
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
 
@@ -7422,7 +7422,7 @@ class PanoramicCarConsist(PassengerCarConsistBase):
         )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="pax_cars",
+            formation_ruleset="pax_cars",
             liveries=liveries,
         )
 
@@ -7472,7 +7472,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="pax_cars",
+            formation_ruleset="pax_cars",
             liveries=liveries,
         )
 
@@ -7519,7 +7519,7 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
         )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="pax_cars",
+            formation_ruleset="pax_cars",
             liveries=liveries,
         )
 
@@ -7564,7 +7564,7 @@ class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistB
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="railcars_6_unit_sets",
+            formation_ruleset="railcars_6_unit_sets",
             liveries=self.cab_consist.gestalt_graphics.liveries,
             pantograph_type=self.pantograph_type,
         )
@@ -7608,7 +7608,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="pax_cars",
+            formation_ruleset="pax_cars",
             liveries=self.cab_consist.gestalt_graphics.liveries,
         )
 
@@ -7671,7 +7671,7 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="railcars_3_unit_sets",
+            formation_ruleset="railcars_3_unit_sets",
             liveries=self.cab_consist.gestalt_graphics.liveries,
             pantograph_type=self.pantograph_type,
         )
@@ -7715,7 +7715,7 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="railcars_3_unit_sets",
+            formation_ruleset="railcars_3_unit_sets",
             liveries=self.cab_consist.gestalt_graphics.liveries,
             pantograph_type=self.pantograph_type,
         )
@@ -7754,7 +7754,7 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="pax_cars",
+            formation_ruleset="pax_cars",
             liveries=liveries,
         )
 
@@ -7802,7 +7802,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         )
         self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
             spriterow_group_mappings,
-            consist_ruleset="pax_cars",
+            formation_ruleset="pax_cars",
             liveries=liveries,
         )
 

@@ -11,7 +11,7 @@
 <tal:spritelayer_vehicle_layers repeat="vehicle_spritelayer_name consist.gestalt_graphics.vehicle_spritelayer_names">
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${vehicle_spritelayer_name}_position_in_consist_entry_point,
         [
-            10 + switch_graphics_automobile_transporter_ruleset_${consist.gestalt_graphics.consist_ruleset}()
+            10 + switch_graphics_automobile_transporter_ruleset_${consist.gestalt_graphics.formation_ruleset}()
         ]
     ) {
         <tal:position_ruleset repeat="position_variant consist.gestalt_graphics.position_variants">

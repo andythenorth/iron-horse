@@ -11,7 +11,7 @@ def main(**kwargs):
         name="Falcon",
         subrole="super_heavy_express",
         subrole_child_branch_num=-2,
-        replacement_consist_id="rapid",  # this Joker ends with Rapid (switching child branch) - goal is to keep Falcon around for a while, because I like it
+        replacement_model_base_id="rapid",  # this Joker ends with Rapid (switching child branch) - goal is to keep Falcon around for a while, because I like it
         power_by_power_source={
             "DIESEL": 2800,
         },

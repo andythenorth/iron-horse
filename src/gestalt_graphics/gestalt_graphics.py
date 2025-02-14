@@ -29,7 +29,7 @@ class GestaltGraphics(object):
         self.num_load_state_or_similar_spriterows = 1
         # optional - rulesets are used to define for different types of vehicle how sprites change depending on consist position
         # ruleset may also be used for buy menu sprite processing
-        self.consist_ruleset = kwargs.get("consist_ruleset", None)
+        self.formation_ruleset = kwargs.get("formation_ruleset", None)
         # optional - (not common) we can delegate to another spritesheet if we're doing e.g. different consist types, but recolouring the same base sprites
         self.input_spritesheet_delegate_id = kwargs.get(
             "input_spritesheet_delegate_id", None
@@ -677,10 +677,10 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
     @property
     def position_variants(self):
         # used in spriteset templating
-        if self.consist_ruleset == "1_unit_sets":
+        if self.formation_ruleset == "1_unit_sets":
             # 1 unit articulated sets only need 1 variant
             return ["default"]
-        elif self.consist_ruleset == "2_unit_sets":
+        elif self.formation_ruleset == "2_unit_sets":
             # 2 unit articulated sets only need 3 variants
             return ["default", "first", "last"]
         else:
@@ -724,15 +724,15 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         # !! the actual number of variants needs decided - are we having articulated variants or just single units?
         # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
         # note to self, remarkably adding multiple empty rows appears to just work here :o
-        if self.consist_ruleset == "1_unit_sets":
+        if self.formation_ruleset == "1_unit_sets":
             result = ["empty"]
-        elif self.consist_ruleset == "2_unit_sets":
+        elif self.formation_ruleset == "2_unit_sets":
             result = [
                 "empty",
                 "empty",
                 "empty",
             ]
-        elif self.consist_ruleset == "4_unit_sets":
+        elif self.formation_ruleset == "4_unit_sets":
             result = [
                 "empty",
                 "empty",
@@ -741,7 +741,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
             ]
         else:
             raise BaseException(
-                str(self.consist_ruleset)
+                str(self.formation_ruleset)
                 + " not matched in GestaltGraphicsAutomobilesTransporter get_output_row_types()"
             )
         if self.add_masked_overlay:
@@ -847,13 +847,13 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     @property
     def position_variants(self):
         # used in spriteset templating
-        if self.consist_ruleset == "articulated_permanent_twin_sets":
+        if self.formation_ruleset == "articulated_permanent_twin_sets":
             # permanent articulated twin sets only need 2 variants
             return ["first", "last"]
-        elif self.consist_ruleset == "1_unit_sets":
+        elif self.formation_ruleset == "1_unit_sets":
             # 1 unit articulated sets only need 1 variant
             return ["default"]
-        elif self.consist_ruleset == "2_unit_sets":
+        elif self.formation_ruleset == "2_unit_sets":
             # 2 unit articulated sets only need 3 variants
             return ["default", "first", "last"]
         else:
