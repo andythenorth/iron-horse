@@ -11,7 +11,7 @@ import utils
 
 class UnitBase(object):
     """
-    Base class for all types of trains
+    Base class for all types of units
     """
 
     def __init__(self, **kwargs):
