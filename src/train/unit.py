@@ -9,7 +9,7 @@ import spritelayer_cargos
 import utils
 
 
-class Train(object):
+class UnitBase(object):
     """
     Base class for all types of trains
     """
@@ -422,7 +422,7 @@ class Train(object):
         return nml_result
 
 
-class BatteryHybridEngineUnit(Train):
+class BatteryHybridEngineUnit(UnitBase):
     """
     Unit for a battery hybrid engine.
     """
@@ -438,7 +438,7 @@ class BatteryHybridEngineUnit(Train):
         return {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]}
 
 
-class CabbageDVTUnit(Train):
+class CabbageDVTUnit(UnitBase):
     """
     Unit for a DVT / Cabbage (driving cab with mail capacity)
     """
@@ -457,7 +457,7 @@ class CabbageDVTUnit(Train):
         return self.get_mail_car_capacity()
 
 
-class CabControlPaxCarUnit(Train):
+class CabControlPaxCarUnit(UnitBase):
     """
     Unit for a cab control car (driving cab with pax capacity)
     """
@@ -476,7 +476,7 @@ class CabControlPaxCarUnit(Train):
         return self.get_pax_car_capacity()
 
 
-class CombineUnitMailBase(Train):
+class CombineUnitMailBase(UnitBase):
     """
     Mail unit for a combine vehicle (articulated consist with mail + pax capacity)
     """
@@ -494,7 +494,7 @@ class CombineUnitMailBase(Train):
         return 0.75 * self.get_mail_car_capacity()
 
 
-class CombineUnitPaxBase(Train):
+class CombineUnitPaxBase(UnitBase):
     """
     Pax unit for a combine vehicle (articulated consist with mail + pax capacity)
     """
@@ -569,7 +569,7 @@ class DieselRailcarCombineUnitPax(CombineUnitPaxBase):
         return {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_DIESEL"]}
 
 
-class DieselEngineUnit(Train):
+class DieselEngineUnit(UnitBase):
     """
     Unit for a diesel engine.
     """
@@ -642,7 +642,7 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
         return self.get_pax_car_capacity()
 
 
-class ElectricEngineUnit(Train):
+class ElectricEngineUnit(UnitBase):
     """
     Unit for an electric engine.
     """
@@ -664,7 +664,7 @@ class ElectricEngineUnit(Train):
             }
 
 
-class ElectricHighSpeedUnitBase(Train):
+class ElectricHighSpeedUnitBase(UnitBase):
     """
     Unit for high-speed, high-power electric train
     """
@@ -712,7 +712,7 @@ class ElectricHighSpeedPaxUnit(ElectricHighSpeedUnitBase):
         return self.get_pax_car_capacity()
 
 
-class ElectroDieselEngineUnit(Train):
+class ElectroDieselEngineUnit(UnitBase):
     """
     Unit for a bi-mode Locomotive - operates on electrical power or diesel.
     """
@@ -733,7 +733,7 @@ class ElectroDieselEngineUnit(Train):
         }
 
 
-class ElectroDieselRailcarBaseUnit(Train):
+class ElectroDieselRailcarBaseUnit(UnitBase):
     """
     Unit for a bi-mode railcar - operates on electrical power or diesel.
     """
@@ -789,7 +789,7 @@ class ElectroDieselExpressRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
         return self.get_pax_car_capacity()
 
 
-class ElectricRailcarBaseUnit(Train):
+class ElectricRailcarBaseUnit(UnitBase):
     """
     Unit for an electric railcar.  Capacity set in subclasses
     """
@@ -844,7 +844,7 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
         return self.get_pax_car_capacity()
 
 
-class MetroUnit(Train):
+class MetroUnit(UnitBase):
     """
     Unit for an electric metro train, with high loading speed.
     """
@@ -870,7 +870,7 @@ class MetroUnit(Train):
             return 0
 
 
-class SnowploughUnit(Train):
+class SnowploughUnit(UnitBase):
     """
     Unit for a snowplough.  Snowploughs have express cargo capacity, so they can actually be useful. :P
     """
@@ -889,7 +889,7 @@ class SnowploughUnit(Train):
         return self.get_mail_car_capacity()
 
 
-class SteamEngineUnit(Train):
+class SteamEngineUnit(UnitBase):
     """
     Unit for a steam engine, with smoke
     """
@@ -910,7 +910,7 @@ class SteamEngineUnit(Train):
         return [(1 + int(math.floor(-0.5 * self.vehicle_length)), 0)]
 
 
-class SteamEngineTenderUnit(Train):
+class SteamEngineTenderUnit(UnitBase):
     """
     Unit for a steam engine tender.
     Arguably this class is pointless, as it is just passthrough.
@@ -922,15 +922,15 @@ class SteamEngineTenderUnit(Train):
         self._symmetry_type = "asymmetric"
 
 
-# alphabetised (mostly) non-TrainCar subclasses of Train above here
-# then TrainCar subclasses below here, also alphabetised
+# alphabetised (mostly) non-CarUnit subclasses of UnitBase above here
+# then CarUnit subclasses below here, also alphabetised
 
 
-class TrainCar(Train):
+class CarUnit(UnitBase):
     """
     Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
     This class should be sparse - only declare the most limited set of properties common to wagons.
-    Most props should be declared by Train with useful defaults.
+    Most props should be declared by UnitBase with useful defaults.
     """
 
     def __init__(self, **kwargs):
@@ -962,7 +962,7 @@ class TrainCar(Train):
         )
 
 
-class AlignmentCar(TrainCar):
+class AlignmentCar(CarUnit):
     """
     Alignment Car, for debugging sprite positions
     """
@@ -972,7 +972,7 @@ class AlignmentCar(TrainCar):
         self._symmetry_type = "asymmetric"
 
 
-class CabooseCar(TrainCar):
+class CabooseCar(CarUnit):
     """
     Caboose Car. This subclass only exists to set weight in absence of cargo capacity, in other respects it's just a standard wagon.
     """
@@ -993,7 +993,7 @@ class CabooseCar(TrainCar):
         return 0
 
 
-class PaxCar(TrainCar):
+class PaxCar(CarUnit):
     """
     Pax wagon. This subclass only exists to set capacity and symmetry_type.
     """
@@ -1018,7 +1018,7 @@ class PaxRailcarTrailerCar(PaxCar):
 
     @property
     def tail_light(self):
-        # TrainCar sets auto tail light, override it in unit_def, fail if not set
+        # CarUnit sets auto tail light, override it in unit_def, fail if not set
         assert (
             self._unit_def.tail_light is not None
         ), "%s consist has a unit without tail_light set, which is required for %s" % (
@@ -1042,7 +1042,7 @@ class PaxRestaurantCar(PaxCar):
         return 37 + self.consist.gen
 
 
-class ExpressCar(TrainCar):
+class ExpressCar(CarUnit):
     """
     Express freight car.
     """
@@ -1092,7 +1092,7 @@ class MailRailcarTrailerCar(ExpressCar):
 
     @property
     def tail_light(self):
-        # TrainCar sets auto tail light, override it in unit_def, fail if not set
+        # CarUnit sets auto tail light, override it in unit_def, fail if not set
         assert (
             self._unit_def.tail_light is not None
         ), "%s consist has a unit without tail_light set, which is required for %s" % (
@@ -1142,7 +1142,7 @@ class AutomobileCarSymmetric(ExpressCar):
         )
 
 
-class FreightCar(TrainCar):
+class FreightCar(CarUnit):
     """
     Freight wagon.
     """
