@@ -206,7 +206,7 @@ def main():
     roster_manager.validate_vehicles()
     roster_manager.add_buyable_variant_groups()
 
-    # badges, done after consists as badges can be either static (global), or dynamically created (for specific consists)
+    # badges, done after vehicle models as badges can be either static (global), or dynamically created (for specific vehicle models)
 
     if roster_manager.active_roster is not None:
         badge_manager.add_badge(

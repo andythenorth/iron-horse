@@ -28,7 +28,7 @@ class UnitBase(object):
         # CABBAGE
         self.unit_variants = []
         # CABBAGE
-        # !! the need to copy cargo refits from the consist is legacy from the default multi-unit articulated consists in Iron Horse 1
+        # !! the need to copy cargo refits from the consist is legacy from the default multi-unit articulated vehicles in Iron Horse 1
         # !! could likely be refactored !!
         self.label_refits_allowed = self.consist.label_refits_allowed
         self.label_refits_disallowed = self.consist.label_refits_disallowed

@@ -1,6 +1,6 @@
 from train.factory import ModelDef
 
-# pax capacity on these limits use for 100% mail consists - use the Skeiron for that?
+# pax capacity on these limits use for 100% mail formations - use the Skeiron for that?
 
 
 def main(**kwargs):

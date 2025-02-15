@@ -27,10 +27,10 @@ class GestaltGraphics(object):
         self.buy_menu_width_addition = 0
         # override this in subclasses as needed
         self.num_load_state_or_similar_spriterows = 1
-        # optional - rulesets are used to define for different types of vehicle how sprites change depending on consist position
+        # optional - rulesets are used to define for different types of vehicle how sprites change depending on formation position
         # ruleset may also be used for buy menu sprite processing
         self.formation_ruleset = kwargs.get("formation_ruleset", None)
-        # optional - (not common) we can delegate to another spritesheet if we're doing e.g. different consist types, but recolouring the same base sprites
+        # optional - (not common) we can delegate to another spritesheet if we're doing e.g. different model variant types, but recolouring the same base sprites
         self.input_spritesheet_delegate_id = kwargs.get(
             "input_spritesheet_delegate_id", None
         )
@@ -206,7 +206,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         # so the resulting sprites may vary between compiles - this is accepted as of August 2022
         source_vehicles_and_input_spriterow_nums = [
             # vehicle unit, y offset (num spriterows) to buy menu input row
-            # note that buy_menu_row_map works with *units* not consists; we can always look up the consist from the unit, but not trivially the other way round
+            # note that buy_menu_row_map works with *units*; we can always look up the model variant from the unit, but not trivially the other way round
             (
                 list(candidate_consists)[0].units[0],
                 0,
@@ -533,7 +533,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         for counter, buy_menu_sprite_pair in enumerate(self.buy_menu_sprite_pairs):
             row_config = {"spriterow_num_dest": counter}
             # vehicle unit, y offset (num spriterows) to buy menu input row
-            # note that buy_menu_row_map works with *units* not consists; we can always look up the consist from the unit, but not trivially the other way round
+            # note that buy_menu_row_map works with *units*; we can always look up the model variant from the unit, but not trivially the other way round
             source_vehicles_and_input_spriterow_nums = [
                 (
                     pipeline.consist.units[0],
@@ -556,7 +556,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
     """
     Dedicated gestalt for intermodal container transporter
     Gestalt handles both
-    - the consist sprites
+    - the model variant sprites
     - the spritelayer cargos which are in separate layer
     """
 
@@ -696,7 +696,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     """
     Dedicated automobiles (car, truck, tractor) transporter
     Gestalt handles both
-    - the consist sprites
+    - the model variant sprites
     - the spritelayer cargos which are in separate layer
     """
 
@@ -906,13 +906,13 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
         return ["simple_recolour_spriterows"]
 
 
-class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
+class GestaltGraphicsFormationDependent(GestaltGraphics):
     """
-     Used when the vehicle changes appearance depending on position in the consist
+     Used when the vehicle changes appearance depending on position in the formation
      Intended for pax and mail cars
       - intended for closed vehicles with doors, 'loaded' sprites are same as 'empty'
       - option to show loading sprites (open doors) via 1 or 2 'loading' rows
-    - vehicles can be configured to optionally show 1 of 4 different sprites depending on position in consist
+    - vehicles can be configured to optionally show 1 of 4 different sprites depending on position in formation
          - 'default'
          - 'first'
          - 'last'
@@ -926,8 +926,8 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
     def __init__(self, spriterow_group_mappings, **kwargs):
         super().__init__(**kwargs)
         # spriterow_group_mappings provided by subclass calling gestalt_graphics:
-        # - spriterow numbers for named positions in consist
-        # - spriterow numbers are zero-indexed *relative* to the start of the consist-cargo block, to reduce shuffling them all if new rows are inserted in future
+        # - spriterow numbers for named positions in formation
+        # - spriterow numbers are zero-indexed *relative* to the start of the formation-cargo block, to reduce shuffling them all if new rows are inserted in future
         # - *all* of the keys must be provided in the mapping, set values to 0 if unused
         self.spriterow_group_mappings = spriterow_group_mappings
         # liveries provided by subclass calling gestalt_graphics
@@ -1043,9 +1043,9 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
     def get_buy_menu_unit_input_row_num(
         self, unit_counter, pipeline, buyable_variant, unit
     ):
-        # as of Jan 2024 it was easiest to enforce that this only works with consist comprised of exactly 2 units
+        # as of Jan 2024 it was easiest to enforce that this only works with model variant comprised of exactly 2 units
         # that means we can just do first / last, and not worry about other position variants
-        # support for arbitrary number of units could be added, derived from consist ruleset, but those cases don't exist as of Jan 2024
+        # support for arbitrary number of units could be added, derived from formation ruleset, but those cases don't exist as of Jan 2024
         if len(pipeline.consist.units) != 2:
             if pipeline.consist.id == "golfinho":
                 # JFDI jank
@@ -1062,7 +1062,7 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
                     return unit_variant_row_num
             else:
                 raise BaseException(
-                    "GestaltGraphicsConsistPositionDependent.get_buy_menu_unit_input_row_num(): consist "
+                    "GestaltGraphicsFormationDependent.get_buy_menu_unit_input_row_num(): consist "
                     + pipeline.consist.id
                     + " does not have exactly 2 units - this case is not currently supported"
                 )

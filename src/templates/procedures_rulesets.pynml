@@ -158,7 +158,7 @@
                           then remove one, because we want
                           - n whole blocks of 4 (divisor = 4)
                           - a remainder amount which is at least 4 (and won't be more than 8), to which we apply special rules
-                          this is to ensure we don't get isolated blocks of 2 cab units at the end of consists that are > 12 units long
+                          this is to ensure we don't get isolated blocks of 2 cab units at the end of formations that are > 12 units long
                           note we multiply the n-1 block count by the divisor to store an *actual* position in the relative ID chain, which we will use to split behaviour on later
                     -->
                     num_vehs_in_vehid_chain > 4
@@ -314,7 +314,7 @@
                           then remove one, because we want
                           - n whole blocks of 4 (divisor = 4)
                           - a remainder amount which is at least 4 (and won't be more than 8), to which we apply special rules
-                          this is to ensure we don't get isolated blocks of 2 cab units at the end of consists that are > 12 units long
+                          this is to ensure we don't get isolated blocks of 2 cab units at the end of formations that are > 12 units long
                           note we multiply the n-1 block count by the divisor to store an *actual* position in the relative ID chain, which we will use to split behaviour on later
                     -->
                     num_vehs_in_vehid_chain > 4
@@ -561,7 +561,7 @@
                           then remove one, because we want
                           - n whole blocks of 6 (divisor = 6)
                           - a remainder amount which is at least 6 (and won't be more than 12), to which we apply special rules
-                          this is to ensure we don't get isolated blocks of 2 cab units at the end of consists that are > 12 units long
+                          this is to ensure we don't get isolated blocks of 2 cab units at the end of formations that are > 12 units long
                           note we multiply the n-1 block count by the divisor to store an *actual* position in the relative ID chain, which we will use to split behaviour on later
                     -->
                     LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) > 6
@@ -695,7 +695,7 @@
                           then remove one, because we want
                           - n whole blocks of 4 (divisor = 4)
                           - a remainder amount which is at least 4 (and won't be more than 8), to which we apply special rules
-                          this is to ensure we don't get isolated blocks of 2 cab units at the end of consists that are > 12 units long
+                          this is to ensure we don't get isolated blocks of 2 cab units at the end of formations that are > 12 units long
                           note we multiply the n-1 block count by the divisor to store an *actual* position in the relative ID chain, which we will use to split behaviour on later
                     -->
                     LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) > 4
@@ -803,7 +803,7 @@
                           then remove one, because we want
                           - n whole blocks of 3 (divisor = 3)
                           - a remainder amount which is at least 3 (and won't be more than 6), to which we apply special rules
-                          this is to ensure we don't get isolated blocks of 2 cab units at the end of consists that are > 12 units long
+                          this is to ensure we don't get isolated blocks of 2 cab units at the end of formations that are > 12 units long
                           note we multiply the n-1 block count by the divisor to store an *actual* position in the relative ID chain, which we will use to split behaviour on later
                     -->
                     LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids}) > 3

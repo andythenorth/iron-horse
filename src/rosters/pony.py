@@ -117,7 +117,7 @@ engine_module_names = [
     "snowplough_pony_gen_2",
     # cargo sprinter
     "cargo_sprinter",
-    # auto-coach (only one as autoreplace can't handle mixed cargo articulated consists)
+    # auto-coach (only one as autoreplace can't handle mixed cargo articulated vehicles)
     "auto_coach_pony_gen_2",
     # railbuses
     "clipper",
@@ -480,12 +480,12 @@ def main():
                 "multiplier": 0.45,
                 "loading_speed_multiplier": 1,
             },
-            # very specifically tuned multiplier against combine consists
+            # very specifically tuned multiplier against combine vehicles
             "autocoach_combine": {
                 "multiplier": 2.7,
                 "loading_speed_multiplier": 1.75,
             },
-            # very specifically tuned multiplier against combine consists
+            # very specifically tuned multiplier against combine vehicles
             "railbus_combine": {
                 "multiplier": 2.5,
                 "loading_speed_multiplier": 1.75,

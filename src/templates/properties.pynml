@@ -44,7 +44,7 @@
             climates_available:             NO_CLIMATE; // nml constant
             badges:                         ${consist.get_badges_for_nml(unit_variant)};
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
-                <!--! some properties should not be set for trailing parts of articulated consists -->
+                <!--! some properties should not be set for trailing parts of articulated vehicles -->
                 engine_class:                   ${vehicle.engine_class};
                 introduction_date:              date(${unit_variant.intro_year}, ${1 + consist.intro_date_months_offset}, 1);
                 power:                          ${consist.power}hp;
@@ -97,7 +97,7 @@
             purchase:                       ${vehicle.id}_switch_graphics_purchase;
             <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
                 name:                           ${consist.id}_switch_name;
-                <!--! certain callbacks should not be handled for trailing parts of articulated consists -->
+                <!--! certain callbacks should not be handled for trailing parts of articulated vehicles -->
                 cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
                 <tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">
                     // CB should be used even for static running costs as it is capped to max 32k, prop is only 255

@@ -34,7 +34,7 @@ class Pipeline(object):
     @property
     def vehicle_source_input_path(self):
         # I considered having this return the Image, not just the path, but it's not saving much, and is less obvious what it does when used
-        # the consist resolves what the spritesheet should be used as consists can delegate to other consists if required
+        # the consist resolves what the spritesheet should be used as vehicle models can delegate to other vehicle models if required
 
         return os.path.join(
             currentdir,
@@ -436,7 +436,7 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
         # this was done so that it has the processed spritesheet available, which is essential for creating buy menu sprites
         # as of Jan 2024 that limitation could be met differently, as there are multiple render phases, but the existing solution works
 
-        # this is the vanilla function, intended for articulated consists, which will build a sprite from the vehicle units
+        # this is the vanilla function, intended for articulated vehicles, which will build a sprite from the vehicle units
         # liveries etc are supported
         #
         # gestalt must return a structure for buy_menu_row_map conforming to:
@@ -552,7 +552,7 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
         if not consist.requires_custom_buy_menu_sprite:
             return
 
-        # some consists don't show pans in the buy menu (usually unpowered)
+        # some vehicle models don't show pans in the buy menu (usually unpowered)
         if consist.suppress_pantograph_if_no_engine_attached:
             return
 
@@ -613,7 +613,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         # note that we have to call set here, due to the way random candidates are padded out to make power of 2 list lengths for random bits
         if len(self.consist.units) > 1:
             raise BaseException(
-                "GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline won't work with articulated consists - called by "
+                "GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline won't work with articulated vehicles - called by "
                 + self.consist.id
             )
         unit_length_in_pixels = 4 * self.consist.units[0].vehicle_length
@@ -962,7 +962,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
 
         # add debug sprites with vehicle-pantograph comp for ease of checking
         # this very much assumes that the vehicle image has been generated, which holds currently due to the order pipelines are run in (and are in series)
-        # !! this doesn't handle the case of articulated consists, especially where the first consist row doesn't have pans
+        # !! this doesn't handle the case of articulated vehicles, especially where the first consist row doesn't have pans
         vehicle_debug_image = Image.open(
             os.path.join(self.graphics_output_path, self.consist.id + ".png")
         )

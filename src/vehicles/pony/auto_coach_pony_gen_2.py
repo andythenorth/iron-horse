@@ -1,6 +1,6 @@
 from train.factory import ModelDef
 
-# only one autocoach, as autoreplace cannot handle mixed cargo articulated consists
+# only one autocoach, as autoreplace cannot handle mixed cargo articulated vehicles
 # this means that gen 3 engines will be speed-limited by this unit
 # but speed still compares favourably with equivalent era railcars, and there's a capacity bonus also
 

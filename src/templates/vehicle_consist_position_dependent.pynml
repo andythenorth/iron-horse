@@ -27,7 +27,7 @@
             1: return ${vehicle.id}_ss_pantographs_up_${position_variant_num};
             return ${vehicle.id}_ss_pantographs_down_${position_variant_num};
         }
-        <!--! some vehicles don't show pans if the OpenTTD consist is not powered
+        <!--! some vehicle models don't show pans if the OpenTTD consist is not powered
               this isn't very sophisticated as of Feb 2024, it literally just checks if engine (cab cars) are in the conist, doesn't check for contiguous chain -->
         switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_pantographs_${position_variant_num},
             [

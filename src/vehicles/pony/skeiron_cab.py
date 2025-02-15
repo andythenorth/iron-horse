@@ -1,6 +1,6 @@
 from train.factory import ModelDef
 
-# skeiron does not have pax capacity, so it can be used for pure mail consists
+# skeiron does not have pax capacity, so it can be used for pure mail formations
 
 
 def main(**kwargs):

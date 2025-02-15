@@ -15,7 +15,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery, vehicle_type_id
 }
 
 <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
-    <!--! optional decor sprites - as of Mar 2023 this is only intended for snowploughs on single units, and won't handle articulated consists  -->
+    <!--! optional decor sprites - as of Mar 2023 this is only intended for snowploughs on single units, and won't handle articulated vehicles  -->
     spriteset(${vehicle.id}_ss_decor, "${graphics_path}${consist.id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', 10 + (consist.decor_spriterow_num * 30))}
     }

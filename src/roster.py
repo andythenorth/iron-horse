@@ -340,7 +340,7 @@ class Roster(object):
         self.wagon_consists.append(wagon_consist)
 
     def post_init_actions(self):
-        # init of consists has to happen after the roster is registered with RosterManager, otherwise vehicles can't get the roster
+        # init of vehicle models has to happen after the roster is registered with RosterManager, otherwise they can't get the roster
         self.init_engine_modules()
         self.init_wagon_modules()
         self.init_wagon_recolour_colour_sets()

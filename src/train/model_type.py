@@ -21,7 +21,7 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsCaboose,
     GestaltGraphicsSimpleBodyColourRemaps,
     GestaltGraphicsRandomisedWagon,
-    GestaltGraphicsConsistPositionDependent,
+    GestaltGraphicsFormationDependent,
     GestaltGraphicsIntermodalContainerTransporters,
     GestaltGraphicsAutomobilesTransporter,
     GestaltGraphicsCustom,
@@ -33,8 +33,8 @@ import iron_horse
 
 class ModelTypeBase(object):
     """
-    'Vehicles' (appearing in buy menu) are composed as articulated consists.
-    Each consist comprises one or more 'units' (visible).
+    'Model Variants' (appearing in buy menu) are composed as articulated vehicles.
+    Each vehicle comprises one or more 'units' (visible).
     """
 
     def __init__(self, **kwargs):
@@ -71,7 +71,7 @@ class ModelTypeBase(object):
         # default loading speed multiplier, override in subclasses as needed
         self._loading_speed_multiplier = 1
         # some engines require pantograph sprites composited, don't bother setting this unless required
-        # some consists don't show pans in the buy menu (usually unpowered)
+        # some vehicle models don't show pans in the buy menu (usually unpowered)
         self.suppress_pantograph_if_no_engine_attached = False
         # some engines have an optional decor layer, which is a manual spriterow num (as decor might not be widely used?)
         # solely used for ottd livery (company colour) selection, set in subclass as needed
@@ -82,7 +82,7 @@ class ModelTypeBase(object):
         # structure to hold badges, add badges in subclass as needed
         self._badges = []
         # wagons can be candidates for the magic randomised wagons
-        # this is on ModelTypeBase not CarModelTypeBase as we need to check it when determining order for all consists
+        # this is on ModelTypeBase not CarModelTypeBase as we need to check it when determining order for all vehicle models
         self.randomised_candidate_groups = []
         # some vehicles will get a higher speed if hauled by an express engine (use rarely)
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
@@ -107,7 +107,7 @@ class ModelTypeBase(object):
         self.gestalt_graphics = GestaltGraphics()
         # option to provide automatic roof for all units in the consist, leave as None for no generation
         self.roof_type = None
-        # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
+        # optionally suppress nmlc warnings about animated pixels for vehicle models where they're intentional
         # CABBAGE model_def?
         self.suppress_animated_pixel_warnings = kwargs.get(
             "suppress_animated_pixel_warnings", False
@@ -291,7 +291,7 @@ class ModelTypeBase(object):
 
     @property
     def role(self):
-        # returns first matched, assumption is consists only have one valid subrole
+        # returns first matched, assumption is vehicle models only have one valid subrole
         for role, subroles in global_constants.role_subrole_mapping.items():
             if self.subrole in subroles:
                 return role
@@ -546,7 +546,7 @@ class ModelTypeBase(object):
     @property
     def replacement_consist(self):
         # option exists to force a replacement consist, this is used to merge tech tree branches
-        #  most consists are automatically replaced by the next consist in the subrole tree
+        #  most vehicle models are automatically replaced by the next vehicle model in the subrole tree
         # ocasionally we need to merge two branches of the subrole, in this case set replacement consist id on the model_def
         if self.model_def.replacement_model_base_id is not None:
             for consist in self.roster.engine_consists:
@@ -582,7 +582,7 @@ class ModelTypeBase(object):
 
     @property
     def replaces_consists(self):
-        # note that this depends on replacement_consist property in other consists, and may not work in all cases
+        # note that this depends on replacement_consist property in other model defs, and may not work in all cases
         # a consist can replace more than one other consist
         result = []
         for consist in self.roster.engine_consists:
@@ -620,7 +620,7 @@ class ModelTypeBase(object):
 
     @property
     def dedicated_trailer_consists(self):
-        # fetch dedicated trailer consists for this cab engine (if any)
+        # fetch dedicated trailer vehicles for this cab engine (if any)
         result = []
         for consists in [
             self.roster.engine_consists_excluding_clones,
@@ -1276,7 +1276,7 @@ class ModelTypeBase(object):
         # no return
 
     def assert_buyable_variant_groups(self):
-        # can't use buyable variant groups until they've been inited, which depends on consists being inited prior, so guard for that case
+        # can't use buyable variant groups until they've been inited, which depends on model variants being inited prior, so guard for that case
         if self.roster.buyable_variant_groups is None:
             raise BaseException(
                 "buyable_variant_groups undefined for roster "
@@ -1662,7 +1662,7 @@ class MailEngineCabbageDVT(MailEngineBase):
         liveries = self.roster.get_pax_mail_liveries(
             "dvt_mail_liveries", self.model_def
         )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="driving_cab_cars",
             liveries=liveries,
@@ -1749,7 +1749,7 @@ class MailEngineMetro(MailEngineBase):
         liveries = self.roster.get_pax_mail_liveries(
             "metro_mail_liveries", self.model_def
         )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="metro",
             liveries=liveries,
@@ -1814,7 +1814,7 @@ class MailEngineRailcar(MailEngineBase):
             liveries = self.roster.get_pax_mail_liveries(
                 "electric_railcar_mail_liveries", self.model_def
             )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset=formation_ruleset,
             liveries=liveries,
@@ -1874,7 +1874,7 @@ class MailEngineExpressRailcar(MailEngineBase):
             "default_mail_liveries", self.model_def
         )
         jfdi_pantograph_debug_image_y_offsets = [len(liveries) * 60, 30]
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_4_unit_sets",
             liveries=liveries,
@@ -1951,7 +1951,7 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
         liveries = self.roster.get_pax_mail_liveries(
             "default_pax_liveries", self.model_def
         )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="driving_cab_cars",
             liveries=liveries,
@@ -2027,7 +2027,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
             formation_ruleset = self.model_def.formation_ruleset
         else:
             formation_ruleset = "railcars_6_unit_sets"
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset=formation_ruleset,
             liveries=liveries,
@@ -2077,7 +2077,7 @@ class PassengerEngineMetro(PassengerEngineBase):
         liveries = self.roster.get_pax_mail_liveries(
             "metro_pax_liveries", self.model_def
         )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="metro",
             liveries=liveries,
@@ -2111,7 +2111,7 @@ class PassengerEngineRailbus(PassengerEngineBase):
         liveries = self.roster.get_pax_mail_liveries(
             "default_pax_liveries", self.model_def
         )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset=formation_ruleset,
             liveries=liveries,
@@ -2174,7 +2174,7 @@ class PassengerEngineRailcar(PassengerEngineBase):
             liveries = self.roster.get_pax_mail_liveries(
                 "default_pax_liveries", self.model_def
             )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
             liveries=liveries,
@@ -2319,7 +2319,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
         # * unit with pantograph -  rear end
         # * buffet unit
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="tgv",
             liveries=self.cab_consist.gestalt_graphics.liveries,
@@ -2419,7 +2419,7 @@ class TGVMiddlePassengerEngine(
 
 class CarModelTypeBase(ModelTypeBase):
     """
-    Intermediate class for car (wagon) consists to subclass from, provides sparse properties, most are declared in subclasses.
+    Intermediate class for car (wagon) model types to subclass from, provides sparse properties, most are declared in subclasses.
     """
 
     # base_id = '' # provide in subclass
@@ -2430,13 +2430,13 @@ class CarModelTypeBase(ModelTypeBase):
 
         # override this in subclass as needed
         self._joker = False
-        # override this in subclass for, e.g. express freight consists
+        # override this in subclass for, e.g. express freight car model types
         self.speed_class = "standard"
         # Weight factor: override in subclass as needed
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1
         # used to synchronise / desynchronise groups of vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
-        # default all to car consists to 'universal' offset, override in subclasses as needed
+        # default all car model types to 'universal' offset, override in subclasses as needed
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "universal"
         ]
@@ -2583,7 +2583,7 @@ class CarModelTypeBase(ModelTypeBase):
                 except:
                     raise BaseException(self.id)
             # some dubious special-casing to make wagon names plural if there are variants, and a named variant group is *not* already used
-            # !! this might fail for composite groups where the group has multiple variants from multiple consists, but this specific consist has only one variant
+            # !! this might fail for composite groups where the group has multiple variants from multiple model types, but this specific model has only one variant
             elif len(self.buyable_variants) > 1:
                 result = default_result.copy()
                 result[0] = result[0].replace("_CAR", "_CARS")
@@ -2630,7 +2630,7 @@ class CarModelTypeBase(ModelTypeBase):
 
 class RandomisedCarMixin(object):
     """
-    Mixin to set certain common attributes for randomised consists.
+    Mixin to set certain common attributes for randomised car model types.
     """
 
     def __init__(self, **kwargs):
@@ -6407,7 +6407,7 @@ class MailCar(MailCarBase):
         liveries = self.roster.get_pax_mail_liveries(
             "default_mail_liveries", self.model_def
         )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
             liveries=liveries,
@@ -6453,7 +6453,7 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_4_unit_sets",
             liveries=self.cab_consist.gestalt_graphics.liveries,
@@ -6498,7 +6498,7 @@ class MailHighSpeedCar(MailCarBase):
         liveries = self.roster.get_pax_mail_liveries(
             "default_mail_liveries", self.model_def
         )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
             liveries=liveries,
@@ -6540,7 +6540,7 @@ class MailHSTCar(MailCarBase):
         #   * brake coach rear
         #   * special (buffet) coach
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
             liveries=self.cab_consist.gestalt_graphics.liveries,
@@ -7430,7 +7430,7 @@ class PanoramicCar(PassengerCarBase):
         liveries = self.roster.get_pax_mail_liveries(
             "default_pax_liveries", self.model_def
         )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
             liveries=liveries,
@@ -7480,7 +7480,7 @@ class PassengerCar(PassengerCarBase):
         liveries = self.roster.get_pax_mail_liveries(
             "default_pax_liveries", self.model_def
         )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
             liveries=liveries,
@@ -7527,7 +7527,7 @@ class PassengerHighSpeedCar(PassengerCarBase):
         liveries = self.roster.get_pax_mail_liveries(
             "default_pax_liveries", self.model_def
         )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
             liveries=liveries,
@@ -7572,7 +7572,7 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_6_unit_sets",
             liveries=self.cab_consist.gestalt_graphics.liveries,
@@ -7616,7 +7616,7 @@ class PassengerHSTCar(PassengerCarBase):
         #   * brake coach rear
         #   * special (buffet) coach
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
             liveries=self.cab_consist.gestalt_graphics.liveries,
@@ -7679,7 +7679,7 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
         # * unit with driving cab rear end
         # ruleset will combine these to make multiple-units 1, 2 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
             liveries=self.cab_consist.gestalt_graphics.liveries,
@@ -7723,7 +7723,7 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
             liveries=self.cab_consist.gestalt_graphics.liveries,
@@ -7762,7 +7762,7 @@ class PassengerRestaurantCar(PassengerCarBase):
         liveries = self.roster.get_pax_mail_liveries(
             "default_pax_liveries", self.model_def
         )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
             liveries=liveries,
@@ -7788,7 +7788,7 @@ class PassengerSuburbanCar(PassengerCarBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self._badges.append("ih_ruleset_flags/report_as_pax_car")
-        # PassengerCarConsistBase sets 'express' speed, but suburban coaches should override this
+        # PassengerCarBase sets 'express' speed, but suburban coaches should override this
         # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
         self.speed_class = "suburban"
         # buy costs are levelled for standard and lux pax cars, not an interesting factor for variation
@@ -7810,7 +7810,7 @@ class PassengerSuburbanCar(PassengerCarBase):
         liveries = self.roster.get_pax_mail_liveries(
             "suburban_pax_liveries", self.model_def
         )
-        self.gestalt_graphics = GestaltGraphicsConsistPositionDependent(
+        self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
             liveries=liveries,
@@ -9361,7 +9361,7 @@ class BuyableVariant(object):
                 # we nest buyable variants with fixed colours into sub-groups
                 fixed_mixed_suffix = "fixed"
             else:
-                # everything else goes into one group, either on the consist group, or a named parent group which composes multiple consists
+                # everything else goes into one group, either on the consist group, or a named parent group which composes multiple model variants
                 fixed_mixed_suffix = None
             id = self.compose_variant_group_id(
                 group_id_base, self.consist, fixed_mixed_suffix

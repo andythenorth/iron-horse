@@ -494,7 +494,7 @@ complements_to_company_colours = {
 # wagon liveries overlap between rosters so are in global constants (engine liveries are per-roster)
 # custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants
 freight_wagon_liveries = {
-    # SWOOSH is default, and only used for cases where the livery isn't actually meaningful, e.g. randomised consists
+    # SWOOSH is default, and only used for cases where the livery isn't actually meaningful, e.g. randomised cars
     "SWOOSH": {
         "colour_set": "company_colour",
         "use_weathering": False,
@@ -878,7 +878,7 @@ wagon_livery_mixes = {
     "random_from_consist_liveries_grey_pewter": ["freight_grey", "freight_pewter"],
 }
 
-# badges can be predefined here, or created dynamically for specific model types etc as needed
+# badges can be predefined here, or created dynamically for specific vehicle models etc as needed
 static_badges = {
     "power_source": {
         "name": "STR_POWER_SOURCE",
