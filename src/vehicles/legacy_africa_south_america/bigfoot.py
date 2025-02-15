@@ -1,8 +1,8 @@
-from train import EngineConsist, DieselEngineUnit
+#from train import foo 
 
 
 def main(**kwargs):  # roughly an SAR 91-000 class
-    consist_cabbage = EngineConsist(
+    consist_cabbage = ModelDefFoo(
         id="bigfoot",
         base_numeric_id=10660,
         name="Bigfoot",

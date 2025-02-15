@@ -1,8 +1,8 @@
-from train import EngineConsist, ElectricEngineUnit
+#from train import foo 
 
 
 def main(**kwargs):
-    consist_cabbage = EngineConsist(
+    consist_cabbage = ModelDefFoo(
         id="breda",
         base_numeric_id=9120,
         name="Breda E32",

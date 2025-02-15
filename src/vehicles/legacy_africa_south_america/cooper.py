@@ -1,8 +1,8 @@
-from train import EngineConsist, DieselEngineUnit
+#from train import foo 
 
 
 def main(**kwargs):  # GE Shovelnose - meter gauge ish
-    consist_cabbage = EngineConsist(
+    consist_cabbage = ModelDefFoo(
         id="cooper",
         base_numeric_id=10480,
         name="Cooper",

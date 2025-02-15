@@ -1,8 +1,8 @@
-from train import EngineConsist, ElectricEngineUnit
+#from train import foo 
 
 
 def main(**kwargs):
-    consist_cabbage = EngineConsist(
+    consist_cabbage = ModelDefFoo(
         id="v8",
         base_numeric_id=9450,
         name="V8 2-C+C-2",

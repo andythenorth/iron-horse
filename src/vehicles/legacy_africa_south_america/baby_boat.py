@@ -1,8 +1,8 @@
-from train import EngineConsist, DieselEngineUnit
+#from train import foo 
 
 
 def main(**kwargs):
-    consist_cabbage = EngineConsist(
+    consist_cabbage = ModelDefFoo(
         id="baby_boat",
         base_numeric_id=10630,
         name="Baby Boat",

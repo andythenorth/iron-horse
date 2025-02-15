@@ -1,8 +1,8 @@
-from train import EngineConsist, SteamEngineUnit
+#from train import foo 
 
 
 def main(**kwargs):
-    consist_cabbage = EngineConsist(
+    consist_cabbage = ModelDefFoo(
         id="oubangui",
         base_numeric_id=11050,
         name="2-6-6-2 Oubangui",

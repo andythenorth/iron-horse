@@ -1,8 +1,8 @@
-from train import EngineConsist, DieselEngineUnit
+#from train import foo 
 
 
 def main(**kwargs):  # for rest of stats, look up EMD G22CW
-    consist_cabbage = EngineConsist(
+    consist_cabbage = ModelDefFoo(
         id="astarsa", base_numeric_id=9090, name="Astarsa", power=1600, intro_year=1969
     )
 

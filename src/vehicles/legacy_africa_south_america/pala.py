@@ -1,8 +1,8 @@
-from train import EngineConsist, DieselEngineUnit
+#from train import foo 
 
 
 def main(**kwargs):  # standard gauge GE Shovelnose
-    consist_cabbage = EngineConsist(
+    consist_cabbage = ModelDefFoo(
         id="pala", base_numeric_id=9360, name="Pala", power=1200, intro_year=1955
     )
 

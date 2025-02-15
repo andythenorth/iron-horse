@@ -1,8 +1,8 @@
-from train import EngineConsist, DieselEngineUnit
+#from train import foo 
 
 
 def main(**kwargs):  # for rest of stats, look up Chinese CKD8G
-    consist_cabbage = EngineConsist(
+    consist_cabbage = ModelDefFoo(
         id="roca", base_numeric_id=9440, name="Roca", power=3000, intro_year=1990
     )
 

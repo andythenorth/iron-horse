@@ -1,8 +1,8 @@
-from train import EngineConsist, DieselEngineUnit
+#from train import foo 
 
 
 def main(**kwargs):  # for rest of stats, look up Krauss Maffei Brazil
-    consist_cabbage = EngineConsist(
+    consist_cabbage = ModelDefFoo(
         id="krauss",
         base_numeric_id=9300,
         name="Krauss",
