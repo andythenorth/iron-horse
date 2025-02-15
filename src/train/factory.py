@@ -213,26 +213,35 @@ class ModelVariantFactory(object):
         self.roster_id_providing_module = roster_id_providing_module
 
     def produce(self, livery=None, dry_run=False):
-        if livery == None:
-            # just do the default livery, this means that calling ModelVariantFactory.produce() without params will always just return a default model variant, which is useful
-            # ASSIGN LIVERY HERE
-            pass
-
         model_type_cls = getattr(model_type_module, self.class_name)
+
+        if livery == None:
+            raise BaseException("no livery passed for ModelVariantFactory; model_def is " + str(model_type_cls))
 
         # this needs to be in roster probably, not the factory - produce should produce only one model variant at once
         if self.model_def.cabbage_new_livery_system:
+            if livery == "_default":
+                # CABBAGE special case to allow not caring what livery it is, let the model return the default
+                livery = self.model_def.liveries[0]
+
+            # HAX
             if len(self.produced_model_variants) == 0:
                 id=self.base_id_resolver(model_type_cls)
             else:
                 id=self.base_id_resolver(model_type_cls) + "_variant_" + str(len(self.produced_model_variants))
-            # HAX
-            self.model_def.base_numeric_id = self.model_def.base_numeric_id + (len(self.produced_model_variants) * self.model_def.produced_unit_total)
+
+            # CABBAGE FAILS WITH CLONES - HAX TO RESOLVE, THIS SHOULD ALREADY BE FIGURED OUT BY THE CLONE THOUGH
+            if self.model_def.cloned_from_model_def is not None:
+                self.model_def.buyable_variant_group_id = self.model_def.cloned_from_model_def.base_id
+            else:
+                self.model_def.buyable_variant_group_id = self.model_def.base_id
+
             model_variant = model_type_cls(
                 model_variant_factory=self,
                 id=id,
                 cabbage_livery = livery
             )
+            self.model_def.base_numeric_id = self.model_def.base_numeric_id + len(self.model_def.unit_defs)
 
         else:
             model_variant = model_type_cls(
@@ -241,6 +250,10 @@ class ModelVariantFactory(object):
             )
 
         #print(model_variant.gestalt_graphics.__class__.__name__)
+
+        if self.roster_id == "pony":
+            if (self.model_def.liveries == None) and (hasattr(model_type_cls, "liveries") == False) and (model_variant.gestalt_graphics.__class__.__name__ != "GestaltGraphicsFormationDependent"):
+                print("No liveries in model_def or class attrs for:", model_variant.id)
 
         """
         for counter, livery in enumerate(["example", "cabbage_livery"]):
@@ -282,6 +295,13 @@ class ModelVariantFactory(object):
         else:
             # we assume it's a wagon id
             return self.get_wagon_id(model_type_cls.model_type_id_stem, self.model_def)
+
+    def cabbage_new_livery_system_livery_index(self, model_variant):
+        result = self.produced_model_variants.index(model_variant)
+        return result
+
+    def cabbage_model_variant_is_default(self, model_variant):
+        return model_variant == self.produced_model_variants[0]
 
     def get_wagon_id(self, model_type_id_stem, model_def):
         # auto id creator, used for wagons not locos

@@ -20,7 +20,8 @@ def main(**kwargs):
         gen=4,
         caboose_family="railfreight_1",
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
+        liveries=["VANILLA", "BANGER_BLUE", "RAILFREIGHT_RED_STRIPE"],
+        cabbage_new_livery_system=True,
         decor_spriterow_num=3,
         show_decor_in_purchase_for_variants=[2],
         sprites_complete=True,

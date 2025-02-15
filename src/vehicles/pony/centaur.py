@@ -20,7 +20,8 @@ def main(**kwargs):
         gen=5,
         # red stripe? Teeside steelmaster?
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=[
+        liveries=[
+            "VANILLA",
             "SWOOSH",
             "SWOOSH",
             "DB_SCHENKER",
@@ -36,6 +37,7 @@ def main(**kwargs):
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
             ("COLOUR_YELLOW", "COLOUR_YELLOW"),
         ],
+        cabbage_new_livery_system=True,
         caboose_family="railfreight_2",
         sprites_complete=True,
     )

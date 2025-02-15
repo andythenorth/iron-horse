@@ -20,7 +20,8 @@ def main(**kwargs):
         fixed_run_cost_points=120,  # substantial cost bonus for balance against same-era steam engines
         extended_vehicle_life=True,
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["INDUSTRIAL_YELLOW"],
+        liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

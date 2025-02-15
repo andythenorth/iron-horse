@@ -1396,7 +1396,7 @@ class EngineModelTypeBase(ModelTypeBase):
             model_variant_factory.set_roster_ids(
                 self.roster_id, self.roster_id_providing_module
             )
-            temp_consist = model_variant_factory.produce(dry_run=True)
+            temp_consist = model_variant_factory.produce(dry_run=True, livery="_default")
             return int(
                 temp_consist.buy_cost * self.model_def.clone_stats_adjustment_factor
             )
@@ -1455,7 +1455,7 @@ class EngineModelTypeBase(ModelTypeBase):
             model_variant_factory.set_roster_ids(
                 self.roster_id, self.roster_id_providing_module
             )
-            temp_consist = model_variant_factory.produce(dry_run=True)
+            temp_consist = model_variant_factory.produce(dry_run=True, livery="_default")
             return int(
                 temp_consist.running_cost * self.model_def.clone_stats_adjustment_factor
             )

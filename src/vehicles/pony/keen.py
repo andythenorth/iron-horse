@@ -19,7 +19,8 @@ def main(**kwargs):
         intro_year_offset=-13,  # introduce much earlier than gen epoch by design
         fixed_run_cost_points=240,  # adjust to match similar engines of same gen
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["INDUSTRIAL_YELLOW"],
+        liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

@@ -20,7 +20,8 @@ def main(**kwargs):
         intro_year_offset=-2,  # introduce a bit earlier
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE", "INDUSTRIAL_YELLOW"],
+        liveries=["VANILLA", "BANGER_BLUE", "INDUSTRIAL_YELLOW"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

@@ -20,7 +20,8 @@ def main(**kwargs):
         extended_vehicle_life=True,
         fixed_run_cost_points=140,  # minor run cost bonus as default algorithm makes run cost too high
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["INDUSTRIAL_YELLOW"],
+        liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

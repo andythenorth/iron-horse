@@ -19,7 +19,8 @@ def main(**kwargs):
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         random_reverse=True,
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["SWOOSH", "SWOOSH"],
+        liveries=["VANILLA", "SWOOSH", "SWOOSH"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

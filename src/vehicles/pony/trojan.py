@@ -18,8 +18,9 @@ def main(**kwargs):
         gen=4,
         intro_year_offset=6,  # introduce later than gen epoch by design
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE", "INDUSTRIAL_YELLOW"],
-        sprites_complete=True,
+        liveries=["VANILLA", "BANGER_BLUE", "INDUSTRIAL_YELLOW"],
+        cabbage_new_livery_system=True,
+   sprites_complete=True,
     )
 
     model_def.add_unit_def(

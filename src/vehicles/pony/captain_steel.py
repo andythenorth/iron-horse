@@ -19,7 +19,8 @@ def main(**kwargs):
         random_reverse=True,
         gen=4,
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE", "INDUSTRIAL_YELLOW"],
+        liveries=["VANILLA", "BANGER_BLUE", "INDUSTRIAL_YELLOW"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

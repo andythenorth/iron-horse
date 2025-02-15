@@ -342,6 +342,8 @@ class Roster(object):
                         + str(numeric_id)
                         + ") with a numeric_id of a unit variant in consist "
                         + colliding_consist.id
+                        + "\n"
+                        + str([unit.unit_variants for unit in consist.units])
                     )
                 else:
                     numeric_id_defender[numeric_id] = consist
@@ -373,7 +375,7 @@ class Roster(object):
                         consist = model_variant_factory.produce(livery=livery)
                         self.engine_consists.append(consist)
                 else:
-                    consist = model_variant_factory.produce()
+                    consist = model_variant_factory.produce(livery="_cabbage")
                     self.engine_consists.append(consist)
 
     def init_wagon_modules(self):
@@ -409,7 +411,7 @@ class Roster(object):
                         model_variant_factory.set_roster_ids(
                             self.id, roster_id_providing_module
                         )
-                        model_variant_factory.produce()
+                        model_variant_factory.produce(livery="_cabbage")
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name

@@ -20,7 +20,8 @@ def main(**kwargs):
         fixed_run_cost_points=65,  # give a bonus so this can be a genuine mixed-traffic engine
         # add RfD Euro style triple grey?
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=[
+        liveries=[
+            "VANILLA",
             "INTERCITY_RASPBERRY_RIPPLE",
             "RES",
             "FREIGHTLINER_GBRF",
@@ -31,6 +32,7 @@ def main(**kwargs):
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
         ],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

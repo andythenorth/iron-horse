@@ -18,7 +18,8 @@ def main(**kwargs):
         gen=4,
         intro_year_offset=-2,  # let's not have everything turn up in 1960
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["SWOOSH", "BANGER_BLUE", "SWOOSH"],
+        liveries=["VANILLA", "SWOOSH", "BANGER_BLUE", "SWOOSH"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

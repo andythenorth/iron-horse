@@ -131,7 +131,7 @@ class PassThroughPipeline(Pipeline):
         self.consist = consist
         self.graphics_output_path = graphics_output_path
 
-        if self.consist.model_def.cabbage_new_livery_system == False or self.consist.id == "growler":
+        if self.consist.model_def.cabbage_new_livery_system == False or self.consist.model_variant_factory.cabbage_model_variant_is_default(consist):
             input_image = Image.open(self.vehicle_source_input_path)
             self.render_common(input_image, self.units)
             input_image.close()
@@ -525,9 +525,14 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
         self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
-        spritesheet_image = Image.open(
-            os.path.join(self.graphics_output_path, self.consist.id + ".png")
-        )
+        if self.consist.model_def.cabbage_new_livery_system:
+            spritesheet_image = Image.open(
+                os.path.join(self.graphics_output_path, self.consist.model_def.base_id + ".png")
+            )
+        else:
+            spritesheet_image = Image.open(
+                os.path.join(self.graphics_output_path, self.consist.id + ".png")
+            )
 
         self.render_common(spritesheet_image, self.units)
         spritesheet_image.close()

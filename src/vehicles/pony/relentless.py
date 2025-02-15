@@ -20,7 +20,8 @@ def main(**kwargs):
         gen=6,
         fixed_run_cost_points=190,  # run cost nerf as light weight throws the cost too cheap
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE"],
+        liveries=["VANILLA", "BANGER_BLUE"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

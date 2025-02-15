@@ -23,7 +23,8 @@ def main(**kwargs):
         intro_year_offset=-9,  # introduce much earlier than gen epoch by design
         extended_vehicle_life=True,  # extended vehicle life for all gronks eh
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE", "DB_SCHENKER", "INDUSTRIAL_YELLOW"],
+        liveries=["VANILLA", "BANGER_BLUE", "DB_SCHENKER", "INDUSTRIAL_YELLOW"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 
