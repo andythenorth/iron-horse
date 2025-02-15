@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarLimeConsistType3",
+        class_name="MineralCoveredHopperCarLimeType3",
         base_numeric_id=34840,
         gen=4,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarLimeConsistType3",
+        class_name="MineralCoveredHopperCarLimeType3",
         base_numeric_id=33820,
         gen=4,
         subtype="B",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarLimeConsistType3",
+        class_name="MineralCoveredHopperCarLimeType3",
         base_numeric_id=33030,
         gen=5,
         subtype="A",
@@ -45,7 +45,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarLimeConsistType3",
+        class_name="MineralCoveredHopperCarLimeType3",
         base_numeric_id=34850,
         gen=5,
         subtype="B",
@@ -59,7 +59,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarLimeConsistType3",
+        class_name="MineralCoveredHopperCarLimeType3",
         base_numeric_id=36340,
         gen=5,
         subtype="C",

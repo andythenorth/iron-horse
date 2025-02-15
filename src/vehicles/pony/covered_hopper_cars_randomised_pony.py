@@ -8,7 +8,7 @@ def main(**kwargs):
     # gen 2 start
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarRandomisedConsist",
+        class_name="CoveredHopperCarRandomised",
         base_numeric_id=17240,
         gen=2,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarRandomisedConsist",
+        class_name="CoveredHopperCarRandomised",
         base_numeric_id=17250,
         gen=3,
         subtype="A",
@@ -32,7 +32,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarRandomisedConsist",
+        class_name="CoveredHopperCarRandomised",
         base_numeric_id=35830,
         gen=4,
         subtype="A",
@@ -44,7 +44,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarRandomisedConsist",
+        class_name="CoveredHopperCarRandomised",
         base_numeric_id=35840,
         gen=4,
         subtype="B",
@@ -56,7 +56,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarRandomisedConsist",
+        class_name="CoveredHopperCarRandomised",
         base_numeric_id=35860,
         gen=5,
         subtype="B",
@@ -68,7 +68,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarRandomisedConsist",
+        class_name="CoveredHopperCarRandomised",
         base_numeric_id=35870,
         gen=5,
         subtype="C",

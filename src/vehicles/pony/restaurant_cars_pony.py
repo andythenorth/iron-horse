@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="PassengerRestaurantCarConsist",
+        class_name="PassengerRestaurantCar",
         base_numeric_id=34560,
         gen=1,
         subtype="U",
@@ -21,7 +21,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRestaurantCarConsist",
+        class_name="PassengerRestaurantCar",
         base_numeric_id=34570,
         gen=2,
         subtype="U",
@@ -35,7 +35,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRestaurantCarConsist",
+        class_name="PassengerRestaurantCar",
         base_numeric_id=34580,
         gen=3,
         subtype="U",
@@ -49,7 +49,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRestaurantCarConsist",
+        class_name="PassengerRestaurantCar",
         base_numeric_id=34590,
         gen=4,
         subtype="U",
@@ -63,7 +63,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRestaurantCarConsist",
+        class_name="PassengerRestaurantCar",
         base_numeric_id=34600,
         gen=5,
         subtype="U",

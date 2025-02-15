@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- pony NG----------------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="PassengerRailbusTrailerCarConsist",
+        class_name="PassengerRailbusTrailerCar",
         base_numeric_id=28150,
         gen=3,
         subtype="U",
@@ -26,7 +26,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRailbusTrailerCarConsist",
+        class_name="PassengerRailbusTrailerCar",
         base_numeric_id=26190,
         gen=4,
         subtype="U",

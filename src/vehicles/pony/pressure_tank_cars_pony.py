@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="GasTankCarPressureConsist",
+        class_name="GasTankCarPressure",
         base_numeric_id=25410,
         gen=2,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarPressureConsist",
+        class_name="GasTankCarPressure",
         base_numeric_id=25420,
         gen=3,
         subtype="A",
@@ -33,7 +33,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarPressureConsist",
+        class_name="GasTankCarPressure",
         base_numeric_id=25430,
         gen=3,
         subtype="B",
@@ -48,7 +48,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="GasTankCarPressureConsist",
+        class_name="GasTankCarPressure",
         base_numeric_id=25440,
         gen=2,
         subtype="A",
@@ -60,7 +60,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarPressureConsist",
+        class_name="GasTankCarPressure",
         base_numeric_id=25450,
         gen=3,
         subtype="A",
@@ -72,7 +72,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarPressureConsist",
+        class_name="GasTankCarPressure",
         base_numeric_id=25460,
         gen=3,
         subtype="B",
@@ -84,7 +84,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarPressureConsist",
+        class_name="GasTankCarPressure",
         base_numeric_id=25470,
         gen=4,
         subtype="A",
@@ -96,7 +96,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarPressureConsist",
+        class_name="GasTankCarPressure",
         base_numeric_id=25480,
         gen=4,
         subtype="B",
@@ -110,7 +110,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarPressureConsist",
+        class_name="GasTankCarPressure",
         base_numeric_id=25490,
         gen=4,
         subtype="C",
@@ -122,7 +122,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarPressureConsist",
+        class_name="GasTankCarPressure",
         base_numeric_id=25500,
         gen=5,
         subtype="A",
@@ -136,7 +136,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarPressureConsist",
+        class_name="GasTankCarPressure",
         base_numeric_id=25510,
         gen=5,
         subtype="B",
@@ -150,7 +150,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarPressureConsist",
+        class_name="GasTankCarPressure",
         base_numeric_id=25520,
         gen=5,
         subtype="C",

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="GasTankCarCryoConsist",
+        class_name="GasTankCarCryo",
         base_numeric_id=20730,
         gen=4,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarCryoConsist",
+        class_name="GasTankCarCryo",
         base_numeric_id=20740,
         gen=4,
         subtype="B",
@@ -33,7 +33,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarCryoConsist",
+        class_name="GasTankCarCryo",
         base_numeric_id=20750,
         gen=4,
         subtype="C",
@@ -45,7 +45,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarCryoConsist",
+        class_name="GasTankCarCryo",
         base_numeric_id=20760,
         gen=5,
         subtype="A",
@@ -59,7 +59,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarCryoConsist",
+        class_name="GasTankCarCryo",
         base_numeric_id=20770,
         gen=5,
         subtype="B",
@@ -73,7 +73,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="GasTankCarCryoConsist",
+        class_name="GasTankCarCryo",
         base_numeric_id=20780,
         gen=5,
         subtype="C",

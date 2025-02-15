@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="TankCarStandardConsistType2",
+        class_name="TankCarStandardType2",
         base_numeric_id=35100,
         gen=5,
         subtype="A",
@@ -21,7 +21,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarStandardConsistType2",
+        class_name="TankCarStandardType2",
         base_numeric_id=33050,
         gen=5,
         subtype="B",
@@ -35,7 +35,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarStandardConsistType2",
+        class_name="TankCarStandardType2",
         base_numeric_id=37000,
         gen=5,
         subtype="C",

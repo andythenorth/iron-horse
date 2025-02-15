@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="SlidingRoofCarConsistHiCube",
+        class_name="SlidingRoofCarHiCube",
         base_numeric_id=30730,
         gen=5,
         subtype="B",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SlidingRoofCarConsistHiCube",
+        class_name="SlidingRoofCarHiCube",
         base_numeric_id=18520,
         gen=5,
         subtype="C",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SlidingRoofCarConsistHiCube",
+        class_name="SlidingRoofCarHiCube",
         base_numeric_id=840,
         gen=5,
         subtype="D",

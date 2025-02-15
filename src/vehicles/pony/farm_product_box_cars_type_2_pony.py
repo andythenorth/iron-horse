@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- pony --------------------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarConsistType2",
+        class_name="FarmProductsBoxCarType2",
         base_numeric_id=35450,
         gen=2,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarConsistType2",
+        class_name="FarmProductsBoxCarType2",
         base_numeric_id=35460,
         gen=2,
         subtype="B",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarConsistType2",
+        class_name="FarmProductsBoxCarType2",
         base_numeric_id=35470,
         gen=3,
         subtype="A",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarConsistType2",
+        class_name="FarmProductsBoxCarType2",
         base_numeric_id=35480,
         gen=3,
         subtype="B",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarConsistType2",
+        class_name="FarmProductsBoxCarType2",
         base_numeric_id=35300,
         gen=4,
         subtype="A",
@@ -67,7 +67,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarConsistType2",
+        class_name="FarmProductsBoxCarType2",
         base_numeric_id=35600,
         gen=4,
         subtype="B",
@@ -79,7 +79,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarConsistType2",
+        class_name="FarmProductsBoxCarType2",
         base_numeric_id=35120,
         gen=4,
         subtype="C",
@@ -95,7 +95,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarConsistType2",
+        class_name="FarmProductsBoxCarType2",
         base_numeric_id=28430,
         gen=5,
         subtype="B",
@@ -109,7 +109,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsBoxCarConsistType2",
+        class_name="FarmProductsBoxCarType2",
         base_numeric_id=32960,
         gen=5,
         subtype="C",

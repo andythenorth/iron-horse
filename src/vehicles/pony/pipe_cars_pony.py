@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="PipeCarConsist",
+        class_name="PipeCar",
         base_numeric_id=20010,
         gen=4,
         subtype="B",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PipeCarConsist",
+        class_name="PipeCar",
         base_numeric_id=28490,
         gen=4,
         subtype="C",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PipeCarConsist",
+        class_name="PipeCar",
         base_numeric_id=35590,
         gen=5,
         subtype="B",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PipeCarConsist",
+        class_name="PipeCar",
         base_numeric_id=34830,
         gen=5,
         subtype="C",

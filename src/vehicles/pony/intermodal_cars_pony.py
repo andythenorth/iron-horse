@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="IntermodalCarConsist",
+        class_name="IntermodalCar",
         base_numeric_id=28350,
         gen=3,
         intro_year_offset=15,  # let's be a little bit later for this one
@@ -21,7 +21,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="IntermodalCarConsist",
+        class_name="IntermodalCar",
         base_numeric_id=28360,
         gen=3,
         intro_year_offset=15,  # let's be a little bit later for this one
@@ -37,7 +37,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="IntermodalCarConsist",
+        class_name="IntermodalCar",
         base_numeric_id=28370,
         gen=4,
         subtype="A",
@@ -49,7 +49,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="IntermodalCarConsist",
+        class_name="IntermodalCar",
         base_numeric_id=28380,
         gen=4,
         subtype="B",
@@ -61,7 +61,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="IntermodalCarConsist",
+        class_name="IntermodalCar",
         base_numeric_id=28390,
         gen=4,
         subtype="C",
@@ -73,7 +73,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="IntermodalCarConsist",
+        class_name="IntermodalCar",
         base_numeric_id=28400,
         gen=5,
         subtype="A",
@@ -85,7 +85,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="IntermodalCarConsist",
+        class_name="IntermodalCar",
         base_numeric_id=28410,
         gen=5,
         subtype="B",
@@ -97,7 +97,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="IntermodalCarConsist",
+        class_name="IntermodalCar",
         base_numeric_id=28420,
         gen=5,
         subtype="C",

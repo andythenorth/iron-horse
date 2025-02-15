@@ -8,7 +8,7 @@ def main(**kwargs):
     # start gen 4
 
     model_def = ModelDef(
-        class_name="CoilCarUncoveredConsist",
+        class_name="CoilCarUncovered",
         base_numeric_id=24040,
         gen=4,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarUncoveredConsist",
+        class_name="CoilCarUncovered",
         base_numeric_id=24050,
         gen=4,
         subtype="B",
@@ -32,7 +32,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarUncoveredConsist",
+        class_name="CoilCarUncovered",
         base_numeric_id=24060,
         gen=4,
         subtype="C",
@@ -44,7 +44,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarUncoveredConsist",
+        class_name="CoilCarUncovered",
         base_numeric_id=24070,
         gen=5,
         subtype="B",
@@ -56,7 +56,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarUncoveredConsist",
+        class_name="CoilCarUncovered",
         base_numeric_id=24080,
         gen=5,
         subtype="C",

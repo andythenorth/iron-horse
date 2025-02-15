@@ -8,7 +8,7 @@ def main(**kwargs):
     """
 
     model_def =ModelDef(
-        class_name="FoodHopperCarConsistType3",
+        class_name="FoodHopperCarType3",
         base_numeric_id=23480,
         gen=2,
         subtype="A",
@@ -21,7 +21,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="FoodHopperCarConsistType3",
+        class_name="FoodHopperCarType3",
         base_numeric_id=23770,
         gen=2,
         subtype="B",
@@ -34,7 +34,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="FoodHopperCarConsistType3",
+        class_name="FoodHopperCarType3",
         base_numeric_id=24000,
         gen=3,
         subtype="A",
@@ -47,7 +47,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="FoodHopperCarConsistType3",
+        class_name="FoodHopperCarType3",
         base_numeric_id=23430,
         gen=3,
         subtype="B",
@@ -60,7 +60,7 @@ def main(**kwargs):
     """
 
     model_def = ModelDef(
-        class_name="FoodHopperCarConsistType3",
+        class_name="FoodHopperCarType3",
         base_numeric_id=34200,
         gen=4,
         subtype="A",
@@ -72,7 +72,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FoodHopperCarConsistType3",
+        class_name="FoodHopperCarType3",
         base_numeric_id=35070,
         gen=4,
         subtype="B",
@@ -84,7 +84,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FoodHopperCarConsistType3",
+        class_name="FoodHopperCarType3",
         base_numeric_id=33040,
         gen=5,
         subtype="B",
@@ -98,7 +98,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FoodHopperCarConsistType3",
+        class_name="FoodHopperCarType3",
         base_numeric_id=36970,
         gen=5,
         subtype="C",

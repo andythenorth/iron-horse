@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="TankCarAcidRandomisedConsist",
+        class_name="TankCarAcidRandomised",
         base_numeric_id=25700,
         gen=2,
         subtype="A",
@@ -21,7 +21,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarAcidRandomisedConsist",
+        class_name="TankCarAcidRandomised",
         base_numeric_id=25720,
         gen=3,
         subtype="A",
@@ -34,7 +34,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarAcidRandomisedConsist",
+        class_name="TankCarAcidRandomised",
         base_numeric_id=31300,
         gen=3,
         subtype="B",
@@ -49,7 +49,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="TankCarAcidRandomisedConsist",
+        class_name="TankCarAcidRandomised",
         base_numeric_id=31160,
         gen=2,
         subtype="A",
@@ -62,7 +62,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarAcidRandomisedConsist",
+        class_name="TankCarAcidRandomised",
         base_numeric_id=31180,
         gen=3,
         subtype="A",
@@ -74,7 +74,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarAcidRandomisedConsist",
+        class_name="TankCarAcidRandomised",
         base_numeric_id=31200,
         gen=3,
         subtype="B",
@@ -86,7 +86,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarAcidRandomisedConsist",
+        class_name="TankCarAcidRandomised",
         base_numeric_id=31220,
         gen=4,
         subtype="A",
@@ -98,7 +98,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarAcidRandomisedConsist",
+        class_name="TankCarAcidRandomised",
         base_numeric_id=31240,
         gen=4,
         subtype="B",
@@ -110,7 +110,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarAcidRandomisedConsist",
+        class_name="TankCarAcidRandomised",
         base_numeric_id=31020,
         gen=4,
         subtype="C",
@@ -122,7 +122,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarAcidRandomisedConsist",
+        class_name="TankCarAcidRandomised",
         base_numeric_id=31040,
         gen=5,
         subtype="A",
@@ -134,7 +134,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarAcidRandomisedConsist",
+        class_name="TankCarAcidRandomised",
         base_numeric_id=31260,
         gen=5,
         subtype="B",
@@ -146,7 +146,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarAcidRandomisedConsist",
+        class_name="TankCarAcidRandomised",
         base_numeric_id=31280,
         gen=5,
         subtype="C",

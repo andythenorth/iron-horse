@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="PassengerExpressRailcarTrailerCarConsist",
+        class_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=6750,
         gen=3,
         subtype="U",
@@ -25,7 +25,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerExpressRailcarTrailerCarConsist",
+        class_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=6770,
         gen=4,
         subtype="U",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerExpressRailcarTrailerCarConsist",
+        class_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=30,
         gen=5,
         subtype="U",
@@ -61,7 +61,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerExpressRailcarTrailerCarConsist",
+        class_name="PassengerExpressRailcarTrailerCar",
         base_numeric_id=6380,
         gen=6,
         subtype="U",

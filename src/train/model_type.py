@@ -82,7 +82,7 @@ class ModelTypeBase(object):
         # structure to hold badges, add badges in subclass as needed
         self._badges = []
         # wagons can be candidates for the magic randomised wagons
-        # this is on ModelTypeBase not CarConsist as we need to check it when determining order for all consists
+        # this is on ModelTypeBase not CarModelTypeBase as we need to check it when determining order for all consists
         self.randomised_candidate_groups = []
         # some vehicles will get a higher speed if hauled by an express engine (use rarely)
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
@@ -2055,7 +2055,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
             return 155
 
 
-class PassengerEngineMetroConsist(PassengerEngineBase):
+class PassengerEngineMetro(PassengerEngineBase):
     """
     Pax metro train.  Just a sparse subclass to force the gestalt_graphics
     """
@@ -2417,7 +2417,7 @@ class TGVMiddlePassengerEngine(
         return offset + self.cab_consist.subrole_child_branch_num
 
 
-class CarConsist(ModelTypeBase):
+class CarModelTypeBase(ModelTypeBase):
     """
     Intermediate class for car (wagon) consists to subclass from, provides sparse properties, most are declared in subclasses.
     """
@@ -2628,7 +2628,7 @@ class CarConsist(ModelTypeBase):
         return False
 
 
-class RandomisedConsistMixin(object):
+class RandomisedCarMixin(object):
     """
     Mixin to set certain common attributes for randomised consists.
     """
@@ -2646,7 +2646,7 @@ class RandomisedConsistMixin(object):
         return True
 
 
-class AlignmentCarConsist(CarConsist):
+class AlignmentCar(CarModelTypeBase):
     """
     For checking sprite alignment
     """
@@ -2667,7 +2667,7 @@ class AlignmentCarConsist(CarConsist):
         self.use_colour_randomisation_strategies = False
 
 
-class AutomobileCarConsistBase(CarConsist):
+class AutomobileCarBase(CarModelTypeBase):
     """
     Transports automobiles (cars, trucks, tractors etc).
     'Automobile' is used as name to avoid confusion with 'Vehicles' or 'Car'.
@@ -2706,7 +2706,7 @@ class AutomobileCarConsistBase(CarConsist):
         )
 
 
-class AutomobileCarConsist(AutomobileCarConsistBase):
+class AutomobileSingleDeckCar(AutomobileCarBase):
     """
     Automobile transporter with single flat deck at conventional height.
     """
@@ -2730,7 +2730,7 @@ class AutomobileCarConsist(AutomobileCarConsistBase):
         return ["default"]
 
 
-class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
+class AutomobileDoubleDeckCar(AutomobileCarBase):
     """
     Automobile transporter with double deck, cars only.
     """
@@ -2758,7 +2758,7 @@ class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
         return ["double_deck_lower", "double_deck_upper"]
 
 
-class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
+class AutomobileLowFloorCar(AutomobileCarBase):
     """
     Automobile transporter with single deck at lowered height.
     """
@@ -2785,7 +2785,7 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
         return ["low_floor"]
 
 
-class AutomobileEnclosedCarConsist(CarConsist):
+class AutomobileEnclosedCar(CarModelTypeBase):
     """
     Fully enclosed automobile transporter with, no vehicle sprites shown.
     """
@@ -2824,7 +2824,7 @@ class AutomobileEnclosedCarConsist(CarConsist):
         )
 
 
-class BolsterCarConsistBase(CarConsist):
+class BolsterCarBase(CarModelTypeBase):
     """
     Base class for specialist wagon with side stakes and bolsters for long products, limited refits.
     """
@@ -2871,7 +2871,7 @@ class BolsterCarConsistBase(CarConsist):
         )
 
 
-class BolsterCarConsist(BolsterCarConsistBase):
+class BolsterCar(BolsterCarBase):
     """
     Specialist wagon with side stakes and bolsters for long products, limited refits.
     """
@@ -2882,7 +2882,7 @@ class BolsterCarConsist(BolsterCarConsistBase):
         super().__init__(**kwargs)
 
 
-class BolsterCarHighEndConsist(BolsterCarConsistBase):
+class BolsterCarHighEnd(BolsterCarBase):
     """
     Specialist wagon with side stakes and bolsters for long products, limited refits.
     """
@@ -2893,7 +2893,7 @@ class BolsterCarHighEndConsist(BolsterCarConsistBase):
         super().__init__(**kwargs)
 
 
-class BolsterCarConsistRandomisedConsist(RandomisedConsistMixin, BolsterCarConsistBase):
+class BolsterCarRandomised(RandomisedCarMixin, BolsterCarBase):
     """
     Random choice of bolster car sprite, from available bolster cars.
     """
@@ -2915,7 +2915,7 @@ class BolsterCarConsistRandomisedConsist(RandomisedConsistMixin, BolsterCarConsi
         )
 
 
-class BoxCarConsistBase(CarConsist):
+class BoxCarBase(CarModelTypeBase):
     """
     Base for box car, van - piece goods cargos, express, other selected cargos.
     """
@@ -2936,7 +2936,7 @@ class BoxCarConsistBase(CarConsist):
         ]
 
 
-class BoxCarConsistType1(BoxCarConsistBase):
+class BoxCarType1(BoxCarBase):
     """
     Standard box car / van
     """
@@ -2988,7 +2988,7 @@ class BoxCarConsistType1(BoxCarConsistBase):
         )
 
 
-class BoxCarConsistType2(BoxCarConsistBase):
+class BoxCarType2(BoxCarBase):
     """
     Alternative livery for standard box car / van
     """
@@ -3030,7 +3030,7 @@ class BoxCarConsistType2(BoxCarConsistBase):
         )
 
 
-class BoxCarCurtainSideConsist(BoxCarConsistBase):
+class BoxCarCurtainSide(BoxCarBase):
     """
     Curtain side box car - same refits as box car.
     """
@@ -3087,7 +3087,7 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         )
 
 
-class BoxCarMerchandiseConsist(BoxCarConsistBase):
+class BoxCarMerchandise(BoxCarBase):
     """
     Alternative livery for standard box car / van
     """
@@ -3150,7 +3150,7 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
         )
 
 
-class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
+class BoxCarRandomised(RandomisedCarMixin, BoxCarBase):
     """
     Random choice of box car sprite, from available box cars.
     """
@@ -3186,7 +3186,7 @@ class BoxCarRandomisedConsist(RandomisedConsistMixin, BoxCarConsistBase):
         )
 
 
-class BoxCarSlidingWallConsistBase(BoxCarConsistBase):
+class BoxCarSlidingWallBase(BoxCarBase):
     """
     Base for sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
     """
@@ -3207,7 +3207,7 @@ class BoxCarSlidingWallConsistBase(BoxCarConsistBase):
         self._joker = True
 
 
-class BoxCarSlidingWallConsistType1(BoxCarSlidingWallConsistBase):
+class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
     """
     Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
     """
@@ -3255,7 +3255,7 @@ class BoxCarSlidingWallConsistType1(BoxCarSlidingWallConsistBase):
         )
 
 
-class BoxCarSlidingWallConsistType2(BoxCarSlidingWallConsistBase):
+class BoxCarSlidingWallType2(BoxCarSlidingWallBase):
     """
     Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
     """
@@ -3303,7 +3303,7 @@ class BoxCarSlidingWallConsistType2(BoxCarSlidingWallConsistBase):
         )
 
 
-class BoxCarVehiclePartsConsist(BoxCarConsistBase):
+class BoxCarVehicleParts(BoxCarBase):
     """
     Vehicle parts box car, van - same refits as box car, just a specific visual variation.
     """
@@ -3357,7 +3357,7 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
         )
 
 
-class BulkOpenCarConsistBase(CarConsist):
+class BulkOpenCarBase(CarModelTypeBase):
     """
     Common base class for dump cars.
     Limited set of bulk (mineral) cargos, same set as hopper cars.
@@ -3387,7 +3387,7 @@ class BulkOpenCarConsistBase(CarConsist):
         )
 
 
-class BulkOpenCarAggregateConsistBase(BulkOpenCarConsistBase):
+class BulkOpenCarAggregateBase(BulkOpenCarBase):
     """
     Base class for aggregate dump car.
     Same as standard dump car, but different appearance and default cargos.
@@ -3427,7 +3427,7 @@ class BulkOpenCarAggregateConsistBase(BulkOpenCarConsistBase):
         )
 
 
-class BulkOpenCarAggregateConsistType1(BulkOpenCarAggregateConsistBase):
+class BulkOpenCarAggregateType1(BulkOpenCarAggregateBase):
     """
     Aggregate Car.
     Same as standard dump car, but different appearance and default cargos.
@@ -3439,7 +3439,7 @@ class BulkOpenCarAggregateConsistType1(BulkOpenCarAggregateConsistBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarAggregateConsistType2(BulkOpenCarAggregateConsistBase):
+class BulkOpenCarAggregateType2(BulkOpenCarAggregateBase):
     """
     Aggregate Car.
     Same as standard dump car, but different appearance and default cargos.
@@ -3451,7 +3451,7 @@ class BulkOpenCarAggregateConsistType2(BulkOpenCarAggregateConsistBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarAggregateConsistType3(BulkOpenCarAggregateConsistBase):
+class BulkOpenCarAggregateType3(BulkOpenCarAggregateBase):
     """
     Aggregate Car.
     Same as standard dump car, but different appearance and default cargos.
@@ -3463,8 +3463,8 @@ class BulkOpenCarAggregateConsistType3(BulkOpenCarAggregateConsistBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarAggregateRandomisedConsist(
-    RandomisedConsistMixin, BulkOpenCarAggregateConsistBase
+class BulkOpenCarAggregateRandomised(
+    RandomisedCarMixin, BulkOpenCarAggregateBase
 ):
     """
     Random choice of aggregate car.
@@ -3486,7 +3486,7 @@ class BulkOpenCarAggregateRandomisedConsist(
         )
 
 
-class BulkOpenCarHeavyDutyConsist(BulkOpenCarConsistBase):
+class BulkOpenCarHeavyDuty(BulkOpenCarBase):
     """
     Heavy duty dump car, higher capacity, reduced speed (set in vehicle class, not consist)
     """
@@ -3521,7 +3521,7 @@ class BulkOpenCarHeavyDutyConsist(BulkOpenCarConsistBase):
         ]
 
 
-class BulkOpenCarMineralConsistBase(BulkOpenCarConsistBase):
+class BulkOpenCarMineralBase(BulkOpenCarBase):
     """
     Base class for standard dump car (Mineral Wagon in UK terms).
     """
@@ -3580,7 +3580,7 @@ class BulkOpenCarMineralConsistBase(BulkOpenCarConsistBase):
         ]
 
 
-class BulkOpenCarMineralConsist(BulkOpenCarMineralConsistBase):
+class BulkOpenCarMineral(BulkOpenCarMineralBase):
     """
     Standard dump car (Mineral Wagon in UK terms).
     """
@@ -3591,7 +3591,7 @@ class BulkOpenCarMineralConsist(BulkOpenCarMineralConsistBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarMineralHighSideConsist(BulkOpenCarMineralConsistBase):
+class BulkOpenCarMineralHighSide(BulkOpenCarMineralBase):
     """
     Standard dump car (Mineral Wagon in UK terms), with high sides.
     """
@@ -3602,7 +3602,7 @@ class BulkOpenCarMineralHighSideConsist(BulkOpenCarMineralConsistBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarMineralLowSideConsist(BulkOpenCarMineralConsistBase):
+class BulkOpenCarMineralLowSide(BulkOpenCarMineralBase):
     """
     Standard dump car (Mineral Wagon in UK terms), with low sides.
     """
@@ -3613,8 +3613,8 @@ class BulkOpenCarMineralLowSideConsist(BulkOpenCarMineralConsistBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarMineralRandomisedConsist(
-    RandomisedConsistMixin, BulkOpenCarMineralConsistBase
+class BulkOpenCarMineralRandomised(
+    RandomisedCarMixin, BulkOpenCarMineralBase
 ):
     """
     Random choice of standard dump car (Mineral Wagon in UK terms).
@@ -3639,7 +3639,7 @@ class BulkOpenCarMineralRandomisedConsist(
         )
 
 
-class BulkOpenCarScrapMetalConsistBase(BulkOpenCarConsistBase):
+class BulkOpenCarScrapMetalBase(BulkOpenCarBase):
     """
     Scrap Metal Car
     Same as standard dump car, but different appearance and default cargos.
@@ -3685,7 +3685,7 @@ class BulkOpenCarScrapMetalConsistBase(BulkOpenCarConsistBase):
         ]
 
 
-class BulkOpenCarScrapMetalConsistType1(BulkOpenCarScrapMetalConsistBase):
+class BulkOpenCarScrapMetalType1(BulkOpenCarScrapMetalBase):
     """
     Scrap Metal Car
     """
@@ -3696,7 +3696,7 @@ class BulkOpenCarScrapMetalConsistType1(BulkOpenCarScrapMetalConsistBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarScrapMetalConsistType2(BulkOpenCarScrapMetalConsistBase):
+class BulkOpenCarScrapMetalType2(BulkOpenCarScrapMetalBase):
     """
     Scrap Metal Car
     """
@@ -3707,8 +3707,8 @@ class BulkOpenCarScrapMetalConsistType2(BulkOpenCarScrapMetalConsistBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarScrapMetalRandomisedConsist(
-    RandomisedConsistMixin, BulkOpenCarScrapMetalConsistBase
+class BulkOpenCarScrapMetalRandomised(
+    RandomisedCarMixin, BulkOpenCarScrapMetalBase
 ):
     """
     Random choice of scrap metal car sprite.
@@ -3728,7 +3728,7 @@ class BulkOpenCarScrapMetalRandomisedConsist(
         )
 
 
-class BulkOpenCarTipplerConsistBase(BulkOpenCarConsistBase):
+class BulkOpenCarTipplerBase(BulkOpenCarBase):
     """
     Base class for Tippler (dump car).
     Same as standard dump car, but different appearance and default cargos.
@@ -3788,7 +3788,7 @@ class BulkOpenCarTipplerConsistBase(BulkOpenCarConsistBase):
         ]
 
 
-class BulkOpenCarTipplerConsistType1(BulkOpenCarTipplerConsistBase):
+class BulkOpenCarTipplerType1(BulkOpenCarTipplerBase):
     """
     Tippler (dump car).
     """
@@ -3799,7 +3799,7 @@ class BulkOpenCarTipplerConsistType1(BulkOpenCarTipplerConsistBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarTipplerConsistType2(BulkOpenCarTipplerConsistBase):
+class BulkOpenCarTipplerType2(BulkOpenCarTipplerBase):
     """
     Tippler (dump car).
     """
@@ -3810,7 +3810,7 @@ class BulkOpenCarTipplerConsistType2(BulkOpenCarTipplerConsistBase):
         super().__init__(**kwargs)
 
 
-class BulkOpenCarTipplerRotaryConsistType1(BulkOpenCarTipplerConsistBase):
+class BulkOpenCarTipplerRotaryType1(BulkOpenCarTipplerBase):
     """
     Tippler (dump car).
     """
@@ -3823,8 +3823,8 @@ class BulkOpenCarTipplerRotaryConsistType1(BulkOpenCarTipplerConsistBase):
         self.randomised_candidate_groups = []
 
 
-class BulkOpenCarTipplerRandomisedConsist(
-    RandomisedConsistMixin, BulkOpenCarTipplerConsistBase
+class BulkOpenCarTipplerRandomised(
+    RandomisedCarMixin, BulkOpenCarTipplerBase
 ):
     """
     Random choice of tippler (dump car).
@@ -3849,8 +3849,8 @@ class BulkOpenCarTipplerRandomisedConsist(
         )
 
 
-# not in alphabetical order as it depends on subclassing BulkOpenCarConsistBase
-class BulkCarBoxRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBase):
+# not in alphabetical order as it depends on subclassing BulkOpenCarBase
+class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
     """
     Random choice of bulk car sprite, from available dump / box open cars.
     """
@@ -3886,7 +3886,7 @@ class BulkCarBoxRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBase
         )
 
 
-class BulkCarHopperRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBase):
+class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
     """
     Random choice of bulk car sprite, from available dump / hopper cars.
     """
@@ -3925,8 +3925,8 @@ class BulkCarHopperRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistB
         )
 
 
-# not in alphabetical order as it depends on subclassing BulkOpenCarConsistBase
-class BulkCarMixedRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBase):
+# not in alphabetical order as it depends on subclassing BulkOpenCarBase
+class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
     """
     Random choice of bulk car sprite, from available dump / hopper cars.
     """
@@ -3965,7 +3965,7 @@ class BulkCarMixedRandomisedConsist(RandomisedConsistMixin, BulkOpenCarConsistBa
         )
 
 
-class CabooseCarConsist(CarConsist):
+class CabooseCar(CarModelTypeBase):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
@@ -4011,7 +4011,7 @@ class CabooseCarConsist(CarConsist):
         return True
 
 
-class CaneBinCarConsist(CarConsist):
+class CaneBinCar(CarModelTypeBase):
     """
     Specialist transporter (narrow gauge bin) for (sugar) cane
     """
@@ -4053,7 +4053,7 @@ class CaneBinCarConsist(CarConsist):
         )
 
 
-class CarbonBlackHopperCarConsist(CarConsist):
+class CarbonBlackHopperCar(CarModelTypeBase):
     """
     Dedicated covered hopper car for carbon black.  No other cargos.
     """
@@ -4087,7 +4087,7 @@ class CarbonBlackHopperCarConsist(CarConsist):
         )
 
 
-class CoilBuggyCarConsist(CarConsist):
+class CoilBuggyCar(CarModelTypeBase):
     """
     Dedicated (steel mill) buggy car for coils. Not a standard railcar. No other refits.
     """
@@ -4109,7 +4109,7 @@ class CoilBuggyCarConsist(CarConsist):
         global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
     ]
 
-    # note does NOT subclass CoilCarConsistBase - different type of consist
+    # note does NOT subclass CoilCarBase - different type of consist
     model_type_id_stem = "coil_buggy_car"
 
     def __init__(self, **kwargs):
@@ -4147,7 +4147,7 @@ class CoilBuggyCarConsist(CarConsist):
         )
 
 
-class CoilCarConsistBase(CarConsist):
+class CoilCarBase(CarModelTypeBase):
     """
     Coil car - for finished metals (steel, copper etc).
     """
@@ -4166,7 +4166,7 @@ class CoilCarConsistBase(CarConsist):
         ]
 
 
-class CoilCarCoveredAsymmetricConsist(CoilCarConsistBase):
+class CoilCarCoveredAsymmetric(CoilCarBase):
     """
     Covered coil car.  No visible cargo.
     """
@@ -4218,7 +4218,7 @@ class CoilCarCoveredAsymmetricConsist(CoilCarConsistBase):
         return True
 
 
-class CoilCarCoveredConsist(CoilCarConsistBase):
+class CoilCarCovered(CoilCarBase):
     """
     Covered coil car.  No visible cargo.
     """
@@ -4263,7 +4263,7 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         )
 
 
-class CoilCarTarpaulinConsist(CoilCarConsistBase):
+class CoilCarTarpaulin(CoilCarBase):
     """
     Covered coil car.  No visible cargo.
     """
@@ -4311,7 +4311,7 @@ class CoilCarTarpaulinConsist(CoilCarConsistBase):
         )
 
 
-class CoilCarUncoveredConsist(CoilCarConsistBase):
+class CoilCarUncovered(CoilCarBase):
     """
     Uncovered coil car.  Visible cargo.
     """
@@ -4351,7 +4351,7 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
         )
 
 
-class DedicatedCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBase):
+class DedicatedCoilCarRandomised(RandomisedCarMixin, CoilCarBase):
     """
     Random choice of covered or uncovered coil car.
     """
@@ -4386,7 +4386,7 @@ class DedicatedCoilCarRandomisedConsist(RandomisedConsistMixin, CoilCarConsistBa
         return True
 
 
-class CoveredHopperCarConsistBase(CarConsist):
+class CoveredHopperCarBase(CarModelTypeBase):
     """
     Bulk cargos needing covered protection.
     """
@@ -4450,7 +4450,7 @@ class CoveredHopperCarConsistBase(CarConsist):
         )
 
 
-class CoveredHopperCarConsistType1(CoveredHopperCarConsistBase):
+class CoveredHopperCarType1(CoveredHopperCarBase):
     """
     Default covered hopper type.
     """
@@ -4466,7 +4466,7 @@ class CoveredHopperCarConsistType1(CoveredHopperCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_covered_hopper_cars"
 
 
-class CoveredHopperCarConsistType2(CoveredHopperCarConsistBase):
+class CoveredHopperCarType2(CoveredHopperCarBase):
     """
     Default covered hopper type.
     """
@@ -4483,7 +4483,7 @@ class CoveredHopperCarConsistType2(CoveredHopperCarConsistBase):
         self._joker = True
 
 
-class CoveredHopperCarConsistType3(CoveredHopperCarConsistBase):
+class CoveredHopperCarType3(CoveredHopperCarBase):
     """
     Default covered hopper type.
     """
@@ -4500,8 +4500,8 @@ class CoveredHopperCarConsistType3(CoveredHopperCarConsistBase):
         self._joker = True
 
 
-class CoveredHopperCarRandomisedConsist(
-    RandomisedConsistMixin, CoveredHopperCarConsistBase
+class CoveredHopperCarRandomised(
+    RandomisedCarMixin, CoveredHopperCarBase
 ):
     """
     Random choice of covered hopper car sprite.
@@ -4540,7 +4540,7 @@ class CoveredHopperCarRandomisedConsist(
         )
 
 
-class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
+class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
     """
     Covered hopper with a swing roof hatch, same refits as standard covered hopper, just a visual variant.
     """
@@ -4593,7 +4593,7 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
         )
 
 
-class ExpressCarConsist(CarConsist):
+class ExpressCar(CarModelTypeBase):
     """
     Express cars - express freight, valuables, mails.
     """
@@ -4639,7 +4639,7 @@ class ExpressCarConsist(CarConsist):
         self.randomised_candidate_groups = ["express_food_car_randomised"]
         # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
-        # keep matched to MailCarConsist
+        # keep matched to MailCar
         self.floating_run_cost_multiplier = 2.33
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "express_core"
@@ -4657,7 +4657,7 @@ class ExpressCarConsist(CarConsist):
         )
 
 
-class ExpressFoodCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
+class ExpressFoodCarRandomised(RandomisedCarMixin, CarModelTypeBase):
     """
     Random choice of food car sprite, noting limited refits because it includes food tankers.
     """
@@ -4689,7 +4689,7 @@ class ExpressFoodCarRandomisedConsist(RandomisedConsistMixin, CarConsist):
         )
 
 
-class ExpressFoodTankCarConsistBase(CarConsist):
+class ExpressFoodTankCarBase(CarModelTypeBase):
     """
     Wine, milk, water etc.
     No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
@@ -4750,7 +4750,7 @@ class ExpressFoodTankCarConsistBase(CarConsist):
         )
 
 
-class ExpressFoodTankCarConsistType1(ExpressFoodTankCarConsistBase):
+class ExpressFoodTankCarType1(ExpressFoodTankCarBase):
     """
     Wine, milk, water etc.
     No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
@@ -4763,7 +4763,7 @@ class ExpressFoodTankCarConsistType1(ExpressFoodTankCarConsistBase):
         super().__init__(**kwargs)
 
 
-class ExpressFoodTankCarConsistType2(ExpressFoodTankCarConsistBase):
+class ExpressFoodTankCarType2(ExpressFoodTankCarBase):
     """
     Wine, milk, water etc.
     No actual cargo aging change - doesn't really work - so trades higher speed against lower capacity instead.
@@ -4776,8 +4776,8 @@ class ExpressFoodTankCarConsistType2(ExpressFoodTankCarConsistBase):
         super().__init__(**kwargs)
 
 
-class ExpressFoodTankCarRandomisedConsist(
-    RandomisedConsistMixin, ExpressFoodTankCarConsistBase
+class ExpressFoodTankCarRandomised(
+    RandomisedCarMixin, ExpressFoodTankCarBase
 ):
     """
     Random choice of express food tanker.
@@ -4797,7 +4797,7 @@ class ExpressFoodTankCarRandomisedConsist(
         )
 
 
-class ExpressIntermodalCarConsist(CarConsist):
+class ExpressIntermodalCar(CarModelTypeBase):
     """
     Express intermodal container cars - express freight, valuables, mails.
     """
@@ -4819,7 +4819,7 @@ class ExpressIntermodalCarConsist(CarConsist):
         self._loading_speed_multiplier = 2
         # adjust weight factor because express intermodal car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
-        # keep matched to MailCarConsist
+        # keep matched to MailCar
         self.floating_run_cost_multiplier = 2.33
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "express_core"
@@ -4841,7 +4841,7 @@ class ExpressIntermodalCarConsist(CarConsist):
         return ["default"]
 
 
-class FarmProductsBoxCarConsistBase(CarConsist):
+class FarmProductsBoxCarBase(CarModelTypeBase):
     """
     Bae for farm type cargos - box cars / vans.
     """
@@ -4877,7 +4877,7 @@ class FarmProductsBoxCarConsistBase(CarConsist):
         )
 
 
-class FarmProductsBoxCarConsistType1(FarmProductsBoxCarConsistBase):
+class FarmProductsBoxCarType1(FarmProductsBoxCarBase):
     """
     Farm type cargos - box cars / vans.
     """
@@ -4891,7 +4891,7 @@ class FarmProductsBoxCarConsistType1(FarmProductsBoxCarConsistBase):
         ]
 
 
-class FarmProductsBoxCarConsistType2(FarmProductsBoxCarConsistBase):
+class FarmProductsBoxCarType2(FarmProductsBoxCarBase):
     """
     Farm type cargos - box cars / vans.
     """
@@ -4905,8 +4905,8 @@ class FarmProductsBoxCarConsistType2(FarmProductsBoxCarConsistBase):
         ]
 
 
-class FarmProductsBoxCarRandomisedConsist(
-    RandomisedConsistMixin, FarmProductsBoxCarConsistBase
+class FarmProductsBoxCarRandomised(
+    RandomisedCarMixin, FarmProductsBoxCarBase
 ):
     """
     Random choice of farm products box car / van sprite.
@@ -4926,7 +4926,7 @@ class FarmProductsBoxCarRandomisedConsist(
         )
 
 
-class FarmProductsHopperCarConsistBase(CarConsist):
+class FarmProductsHopperCarBase(CarModelTypeBase):
     """
     Farm type cargos - covered hoppers.
     """
@@ -4961,7 +4961,7 @@ class FarmProductsHopperCarConsistBase(CarConsist):
         )
 
 
-class FarmProductsHopperCarConsistType1(FarmProductsHopperCarConsistBase):
+class FarmProductsHopperCarType1(FarmProductsHopperCarBase):
     """
     Farm type cargos - covered hoppers.
     """
@@ -4975,7 +4975,7 @@ class FarmProductsHopperCarConsistType1(FarmProductsHopperCarConsistBase):
         ]
 
 
-class FarmProductsHopperCarConsistType2(FarmProductsHopperCarConsistBase):
+class FarmProductsHopperCarType2(FarmProductsHopperCarBase):
     """
     Farm type cargos - covered hoppers.
     """
@@ -4989,8 +4989,8 @@ class FarmProductsHopperCarConsistType2(FarmProductsHopperCarConsistBase):
         ]
 
 
-class FarmProductsHopperCarRandomisedConsist(
-    RandomisedConsistMixin, FarmProductsHopperCarConsistBase
+class FarmProductsHopperCarRandomised(
+    RandomisedCarMixin, FarmProductsHopperCarBase
 ):
     """
     Random choice of farm products hopper sprite.
@@ -5010,7 +5010,7 @@ class FarmProductsHopperCarRandomisedConsist(
         )
 
 
-class FoodHopperCarConsistBase(FarmProductsHopperCarConsistBase):
+class FoodHopperCarBase(FarmProductsHopperCarBase):
     """
     Food type covered hoppers - same refits as farm product cars.
     """
@@ -5033,7 +5033,7 @@ class FoodHopperCarConsistBase(FarmProductsHopperCarConsistBase):
         )
 
 
-class FoodHopperCarConsistType1(FoodHopperCarConsistBase):
+class FoodHopperCarType1(FoodHopperCarBase):
     """
     Food type covered hoppers - same refits as farm product cars.
     """
@@ -5047,7 +5047,7 @@ class FoodHopperCarConsistType1(FoodHopperCarConsistBase):
         ]
 
 
-class FoodHopperCarConsistType2(FoodHopperCarConsistBase):
+class FoodHopperCarType2(FoodHopperCarBase):
     """
     Food type covered hoppers - same refits as farm product cars.
     """
@@ -5061,7 +5061,7 @@ class FoodHopperCarConsistType2(FoodHopperCarConsistBase):
         ]
 
 
-class FoodHopperCarConsistType3(FoodHopperCarConsistBase):
+class FoodHopperCarType3(FoodHopperCarBase):
     """
     Food type covered hoppers - same refits as farm product cars.
     """
@@ -5075,7 +5075,7 @@ class FoodHopperCarConsistType3(FoodHopperCarConsistBase):
         ]
 
 
-class FoodHopperCarRandomisedConsist(RandomisedConsistMixin, FoodHopperCarConsistBase):
+class FoodHopperCarRandomised(RandomisedCarMixin, FoodHopperCarBase):
     """
     Random choice of food hopper sprite.
     """
@@ -5094,7 +5094,7 @@ class FoodHopperCarRandomisedConsist(RandomisedConsistMixin, FoodHopperCarConsis
         )
 
 
-class FlatCarConsistBase(CarConsist):
+class FlatCarBase(CarModelTypeBase):
     """
     Flatbed - refits wide range of cargos, but not bulk.
     """
@@ -5132,7 +5132,7 @@ class FlatCarConsistBase(CarConsist):
         )
 
 
-class FlatCarBulkheadConsistBase(FlatCarConsistBase):
+class FlatCarBulkheadBase(FlatCarBase):
     """
     Variant of flat wagon with heavy reinforced ends - refits same as flat wagon
     """
@@ -5170,7 +5170,7 @@ class FlatCarBulkheadConsistBase(FlatCarConsistBase):
         )
 
 
-class FlatCarBulkheadConsistType1(FlatCarBulkheadConsistBase):
+class FlatCarBulkheadType1(FlatCarBulkheadBase):
     """
     Variant of flat wagon with heavy reinforced ends - refits same as flat wagon
     """
@@ -5182,7 +5182,7 @@ class FlatCarBulkheadConsistType1(FlatCarBulkheadConsistBase):
         super().__init__(**kwargs)
 
 
-class FlatCarBulkheadConsistType2(FlatCarBulkheadConsistBase):
+class FlatCarBulkheadType2(FlatCarBulkheadBase):
     """
     Variant of flat wagon with heavy reinforced ends - refits same as flat wagon
     """
@@ -5194,8 +5194,8 @@ class FlatCarBulkheadConsistType2(FlatCarBulkheadConsistBase):
         super().__init__(**kwargs)
 
 
-class FlatCarBulkheadRandomisedConsist(
-    RandomisedConsistMixin, FlatCarBulkheadConsistBase
+class FlatCarBulkheadRandomised(
+    RandomisedCarMixin, FlatCarBulkheadBase
 ):
     """
     Random choice of bulkhead flat car sprite.
@@ -5215,7 +5215,7 @@ class FlatCarBulkheadRandomisedConsist(
         )
 
 
-class FlatCarDropEndConsist(FlatCarConsistBase):
+class FlatCarDropEnd(FlatCarBase):
     """
     Wagon with droppable end flaps - variant on flat wagon, refits same
     """
@@ -5239,7 +5239,7 @@ class FlatCarDropEndConsist(FlatCarConsistBase):
         self._joker = True
 
 
-class FlatCarDropSideConsist(FlatCarConsistBase):
+class FlatCarDropSide(FlatCarBase):
     """
     Wagon with droppable low sides - variant on flat wagon, refits same
     """
@@ -5264,7 +5264,7 @@ class FlatCarDropSideConsist(FlatCarConsistBase):
         self._joker = True
 
 
-class FlatCarConsist(FlatCarConsistBase):
+class FlatCar(FlatCarBase):
     """
     Flatbed - no stakes, visible cargo.
     """
@@ -5281,7 +5281,7 @@ class FlatCarConsist(FlatCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_flat_cars"
 
 
-class FlatCarHeavyDutyConsist(FlatCarConsistBase):
+class FlatCarHeavyDuty(FlatCarBase):
     """
     Heavy duty flat car, higher capacity, reduced speed (set in vehicle class, not consist)
     """
@@ -5318,7 +5318,7 @@ class FlatCarHeavyDutyConsist(FlatCarConsistBase):
         )
 
 
-class FlatCarMillConsistBase(FlatCarConsistBase):
+class FlatCarMillBase(FlatCarBase):
     """
     Variant of flat wagon designed specfically for steel industry.
     """
@@ -5339,7 +5339,7 @@ class FlatCarMillConsistBase(FlatCarConsistBase):
         self._joker = True
 
 
-class FlatCarMillConsistType1(FlatCarMillConsistBase):
+class FlatCarMillType1(FlatCarMillBase):
     """
     Variant of flat wagon designed specfically for steel industry.
     """
@@ -5351,7 +5351,7 @@ class FlatCarMillConsistType1(FlatCarMillConsistBase):
         super().__init__(**kwargs)
 
 
-class FlatCarMillConsistType2(FlatCarMillConsistBase):
+class FlatCarMillType2(FlatCarMillBase):
     """
     Variant of flat wagon designed specfically for steel industry.
     """
@@ -5363,7 +5363,7 @@ class FlatCarMillConsistType2(FlatCarMillConsistBase):
         super().__init__(**kwargs)
 
 
-class FlatCarMillRandomisedConsist(RandomisedConsistMixin, FlatCarMillConsistBase):
+class FlatCarMillRandomised(RandomisedCarMixin, FlatCarMillBase):
     """
     Random choice of mill flat car sprite.
     """
@@ -5382,7 +5382,7 @@ class FlatCarMillRandomisedConsist(RandomisedConsistMixin, FlatCarMillConsistBas
         )
 
 
-class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
+class FlatCarRandomised(RandomisedCarMixin, FlatCarBase):
     """
     Random choice of flat car sprite, from available coil cars, bolster cars etc.
     """
@@ -5404,7 +5404,7 @@ class FlatCarRandomisedConsist(RandomisedConsistMixin, FlatCarConsistBase):
         )
 
 
-class GasTankCarConsistBase(CarConsist):
+class GasTankCarBase(CarModelTypeBase):
     """
     Specialist tank cars for gases, e.g. Oxygen, Chlorine, Ammonia, Propylene etc.
     """
@@ -5433,7 +5433,7 @@ class GasTankCarConsistBase(CarConsist):
         )
 
 
-class GasTankCarPressureConsist(GasTankCarConsistBase):
+class GasTankCarPressure(GasTankCarBase):
     """
     Pressure tank cars for gases under pressure at low temperatue, e.g. Chlorine etc.
     """
@@ -5447,7 +5447,7 @@ class GasTankCarPressureConsist(GasTankCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_pressure_tank_cars"
 
 
-class GasTankCarCryoConsist(GasTankCarConsistBase):
+class GasTankCarCryo(GasTankCarBase):
     """
     Specialist insulated and pressurised tank cars for gases under pressure at low temperatue, e.g. Oxygen etc.
     """
@@ -5462,7 +5462,7 @@ class GasTankCarCryoConsist(GasTankCarConsistBase):
         self._joker = True
 
 
-class HopperCarConsistBase(CarConsist):
+class HopperCarBase(CarModelTypeBase):
     """
     Common base class for dump cars.
     Limited set of bulk (mineral) cargos.
@@ -5530,7 +5530,7 @@ class HopperCarConsistBase(CarConsist):
         )
 
 
-class HopperCarAggregateConsistBase(HopperCarConsistBase):
+class HopperCarAggregateBase(HopperCarBase):
     """
     Base class for hopper for rock cargos, same refits as standard hopper, just a visual variant.
     """
@@ -5543,7 +5543,7 @@ class HopperCarAggregateConsistBase(HopperCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_aggregate_hopper_cars"
 
 
-class HopperCarAggregateConsistType1(HopperCarAggregateConsistBase):
+class HopperCarAggregateType1(HopperCarAggregateBase):
     """
     Hopper for rock cargos, just a visual variant.
     """
@@ -5592,7 +5592,7 @@ class HopperCarAggregateConsistType1(HopperCarAggregateConsistBase):
         ]
 
 
-class HopperCarAggregateConsistType2(HopperCarAggregateConsistBase):
+class HopperCarAggregateType2(HopperCarAggregateBase):
     """
     Hopper for rock cargos, just a visual variant.
     """
@@ -5642,7 +5642,7 @@ class HopperCarAggregateConsistType2(HopperCarAggregateConsistBase):
         ]
 
 
-class HopperCarAggregateConsistType3(HopperCarAggregateConsistBase):
+class HopperCarAggregateType3(HopperCarAggregateBase):
     """
     Hopper for rock cargos, just a visual variant.
     """
@@ -5692,8 +5692,8 @@ class HopperCarAggregateConsistType3(HopperCarAggregateConsistBase):
         ]
 
 
-class HopperCarAggregateRandomisedConsist(
-    RandomisedConsistMixin, HopperCarAggregateConsistBase
+class HopperCarAggregateRandomised(
+    RandomisedCarMixin, HopperCarAggregateBase
 ):
     """
     Random choice of aggregate hopper car sprite.
@@ -5743,7 +5743,7 @@ class HopperCarAggregateRandomisedConsist(
         )
 
 
-class HopperCarConsist(HopperCarConsistBase):
+class HopperCar(HopperCarBase):
     """
     Standard hopper car. Defaults to coal.
     """
@@ -5763,7 +5763,7 @@ class HopperCarConsist(HopperCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_hopper_cars"
 
 
-class HopperCarHighSideConsist(HopperCarConsistBase):
+class HopperCarHighSide(HopperCarBase):
     """
     Hopper for ore cargos, same refits as standard hopper, just a visual variant.
     """
@@ -5784,7 +5784,7 @@ class HopperCarHighSideConsist(HopperCarConsistBase):
         self._joker = True
 
 
-class HopperCarMGRConsistBase(HopperCarConsistBase):
+class HopperCarMGRBase(HopperCarBase):
     """
     Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.
     """
@@ -5836,7 +5836,7 @@ class HopperCarMGRConsistBase(HopperCarConsistBase):
         )
 
 
-class HopperCarMGRConsist(HopperCarMGRConsistBase):
+class HopperCarMGR(HopperCarMGRBase):
     """
     Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.
     """
@@ -5847,7 +5847,7 @@ class HopperCarMGRConsist(HopperCarMGRConsistBase):
         super().__init__(**kwargs)
 
 
-class HopperCarMGRTopHoodConsist(HopperCarMGRConsistBase):
+class HopperCarMGRTopHood(HopperCarMGRBase):
     """
     Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.
     """
@@ -5858,7 +5858,7 @@ class HopperCarMGRTopHoodConsist(HopperCarMGRConsistBase):
         super().__init__(**kwargs)
 
 
-class HopperCarRandomisedConsist(RandomisedConsistMixin, HopperCarConsistBase):
+class HopperCarRandomised(RandomisedCarMixin, HopperCarBase):
     """
     Random choice of hopper car sprite.
     """
@@ -5899,7 +5899,7 @@ class HopperCarRandomisedConsist(RandomisedConsistMixin, HopperCarConsistBase):
         )
 
 
-class HopperCarRockConsist(HopperCarConsistBase):
+class HopperCarRock(HopperCarBase):
     """
     Hopper for rock cargos, same refits as standard hopper, just a visual variant.
     """
@@ -5950,7 +5950,7 @@ class HopperCarRockConsist(HopperCarConsistBase):
         ]
 
 
-class HopperCarSideDoorConsist(HopperCarConsistBase):
+class HopperCarSideDoor(HopperCarBase):
     """
     Side door hopper (saddle-bottom hopper).
     """
@@ -5965,7 +5965,7 @@ class HopperCarSideDoorConsist(HopperCarConsistBase):
         self._joker = True
 
 
-class HopperCarSkipConsist(HopperCarConsistBase):
+class HopperCarSkip(HopperCarBase):
     """
     Dedicated (narrow gauge) skip variant of hoppers
     Defaults to rock/stone-type cargos.
@@ -6001,7 +6001,7 @@ class HopperCarSkipConsist(HopperCarConsistBase):
         ]
 
 
-class IngotCarConsist(CarConsist):
+class IngotCar(CarModelTypeBase):
     """
     Dedicated car for steel / iron ingots. A steel mill ingot buggy, not a standard railcar. No other refits.
     """
@@ -6059,7 +6059,7 @@ class IngotCarConsist(CarConsist):
         )
 
 
-class IntermodalCarConsistBase(CarConsist):
+class IntermodalCarBase(CarModelTypeBase):
     """
     General cargo - refits everything except mail, pax.
     """
@@ -6095,7 +6095,7 @@ class IntermodalCarConsistBase(CarConsist):
         )
 
 
-class IntermodalCarConsist(IntermodalCarConsistBase):
+class IntermodalCar(IntermodalCarBase):
     """
     Default intermodal car - simple flat platform at default height.
     """
@@ -6118,7 +6118,7 @@ class IntermodalCarConsist(IntermodalCarConsistBase):
             return ["default"]
 
 
-class IntermodalLowFloorCarConsist(IntermodalCarConsistBase):
+class IntermodalLowFloorCar(IntermodalCarBase):
     """
     Low floor intermodal car - simple flat platform at height -1
     """
@@ -6138,7 +6138,7 @@ class IntermodalLowFloorCarConsist(IntermodalCarConsistBase):
         return ["low_floor"]
 
 
-class KaolinHopperCarConsist(CarConsist):
+class KaolinHopperCar(CarModelTypeBase):
     """
     Dedicated to kaolin (china clay).
     """
@@ -6174,7 +6174,7 @@ class KaolinHopperCarConsist(CarConsist):
         )
 
 
-class LivestockCarConsist(CarConsist):
+class LivestockCar(CarModelTypeBase):
     """
     Specialist transporter for livestock.
     """
@@ -6231,7 +6231,7 @@ class LivestockCarConsist(CarConsist):
         )
 
 
-class LogCarConsist(CarConsist):
+class LogCar(CarModelTypeBase):
     """
     Specialist transporter for logs
     """
@@ -6266,7 +6266,7 @@ class LogCarConsist(CarConsist):
         )
 
 
-class MailCarConsistBase(CarConsist):
+class MailCarBase(CarModelTypeBase):
     """
     Common base class for mail cars.
     """
@@ -6281,7 +6281,7 @@ class MailCarConsistBase(CarConsist):
             "non_freight_special_cases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["mail"]
-        # keep matched to ExpressCarConsist
+        # keep matched to ExpressCar
         self.floating_run_cost_multiplier = 2.33
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "express_core"
@@ -6316,7 +6316,7 @@ class MailCarConsistBase(CarConsist):
         return None
 
 
-class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
+class MailRailcarTrailerCarBase(MailCarBase):
     """
     Common base class for mail railcar trailer cars.
     """
@@ -6371,7 +6371,7 @@ class MailRailcarTrailerCarConsistBase(MailCarConsistBase):
         return result
 
 
-class MailCarConsist(MailCarConsistBase):
+class MailCar(MailCarBase):
     """
     Mail cars - also handle express freight, valuables.
     """
@@ -6422,7 +6422,7 @@ class MailCarConsist(MailCarConsistBase):
             return "express"
 
 
-class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
+class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
     """
     Unpowered mail trailer car for express railcars.
     Position-dependent sprites for cabs etc.
@@ -6465,7 +6465,7 @@ class MailExpressRailcarTrailerCarConsist(MailRailcarTrailerCarConsistBase):
         return False
 
 
-class MailHighSpeedCarConsist(MailCarConsistBase):
+class MailHighSpeedCar(MailCarBase):
     """
     High speed (LGV capable) variant of mail car.
     Position-dependent sprites for brake car etc.
@@ -6513,7 +6513,7 @@ class MailHighSpeedCarConsist(MailCarConsistBase):
         return True
 
 
-class MailHSTCarConsist(MailCarConsistBase):
+class MailHSTCar(MailCarBase):
     """
     Trailer dedicated for Mail on HST-type trains (no wagon attach, but matching stats and livery).
     """
@@ -6573,7 +6573,7 @@ class MailHSTCarConsist(MailCarConsistBase):
         return False
 
 
-class MetalProductCarRandomisedConsistBase(RandomisedConsistMixin, CoilCarConsistBase):
+class MetalProductCarRandomisedBase(RandomisedCarMixin, CoilCarBase):
     """
     Base class for randomised cold metal car sprite.
     """
@@ -6608,7 +6608,7 @@ class MetalProductCarRandomisedConsistBase(RandomisedConsistMixin, CoilCarConsis
         return True
 
 
-class MetalProductCarCoveredRandomisedConsist(MetalProductCarRandomisedConsistBase):
+class MetalProductCarCoveredRandomised(MetalProductCarRandomisedBase):
     """
     Random choice of cold metal car sprite, from suitable covered coil cars, vans etc.
     """
@@ -6619,7 +6619,7 @@ class MetalProductCarCoveredRandomisedConsist(MetalProductCarRandomisedConsistBa
         super().__init__(**kwargs)
 
 
-class MetalProductCarMixedRandomisedConsist(MetalProductCarRandomisedConsistBase):
+class MetalProductCarMixedRandomised(MetalProductCarRandomisedBase):
     """
     Random choice of cold metal car sprite, from all suitable metal carrying wagons cars etc.
     """
@@ -6630,7 +6630,7 @@ class MetalProductCarMixedRandomisedConsist(MetalProductCarRandomisedConsistBase
         super().__init__(**kwargs)
 
 
-class MetalProductCarUncoveredRandomisedConsist(MetalProductCarRandomisedConsistBase):
+class MetalProductCarUncoveredRandomised(MetalProductCarRandomisedBase):
     """
     Random choice of cold metal car sprite, from suitable bolster, flat, open cars etc.
     """
@@ -6641,7 +6641,7 @@ class MetalProductCarUncoveredRandomisedConsist(MetalProductCarRandomisedConsist
         super().__init__(**kwargs)
 
 
-class MineralCoveredHopperCarConsistBase(CarConsist):
+class MineralCoveredHopperCarBase(CarModelTypeBase):
     """
     Bulk mineral cargos needing covered protection.
     """
@@ -6704,7 +6704,7 @@ class MineralCoveredHopperCarConsistBase(CarConsist):
         )
 
 
-class MineralCoveredHopperCarLimeConsistBase(MineralCoveredHopperCarConsistBase):
+class MineralCoveredHopperCarLimeBase(MineralCoveredHopperCarBase):
     """
     Visual variant of mineral / chemical covered hopper.
     Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
@@ -6748,7 +6748,7 @@ class MineralCoveredHopperCarLimeConsistBase(MineralCoveredHopperCarConsistBase)
         )
 
 
-class MineralCoveredHopperCarLimeConsistType1(MineralCoveredHopperCarLimeConsistBase):
+class MineralCoveredHopperCarLimeType1(MineralCoveredHopperCarLimeBase):
     """
     Visual variant of mineral / chemical covered hopper.
     Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
@@ -6760,7 +6760,7 @@ class MineralCoveredHopperCarLimeConsistType1(MineralCoveredHopperCarLimeConsist
         super().__init__(**kwargs)
 
 
-class MineralCoveredHopperCarLimeConsistType2(MineralCoveredHopperCarLimeConsistBase):
+class MineralCoveredHopperCarLimeType2(MineralCoveredHopperCarLimeBase):
     """
     Visual variant of mineral / chemical covered hopper.
     Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
@@ -6772,7 +6772,7 @@ class MineralCoveredHopperCarLimeConsistType2(MineralCoveredHopperCarLimeConsist
         super().__init__(**kwargs)
 
 
-class MineralCoveredHopperCarLimeConsistType3(MineralCoveredHopperCarLimeConsistBase):
+class MineralCoveredHopperCarLimeType3(MineralCoveredHopperCarLimeBase):
     """
     Visual variant of mineral / chemical covered hopper.
     Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
@@ -6784,8 +6784,8 @@ class MineralCoveredHopperCarLimeConsistType3(MineralCoveredHopperCarLimeConsist
         super().__init__(**kwargs)
 
 
-class MineralCoveredHopperCarLimeRandomisedConsist(
-    RandomisedConsistMixin, MineralCoveredHopperCarLimeConsistBase
+class MineralCoveredHopperCarLimeRandomised(
+    RandomisedCarMixin, MineralCoveredHopperCarLimeBase
 ):
     """
     Visual variant of mineral / chemical covered hopper.
@@ -6808,9 +6808,9 @@ class MineralCoveredHopperCarLimeRandomisedConsist(
         )
 
 
-# not in alphabetical order as it depends on subclassing CoveredHopperCarConsistBase
-class MineralCoveredHopperCarRandomisedConsist(
-    RandomisedConsistMixin, MineralCoveredHopperCarConsistBase
+# not in alphabetical order as it depends on subclassing CoveredHopperCarBase
+class MineralCoveredHopperCarRandomised(
+    RandomisedCarMixin, MineralCoveredHopperCarBase
 ):
     """
     Random choice of mineral covered hopper car sprite.
@@ -6857,7 +6857,7 @@ class MineralCoveredHopperCarRandomisedConsist(
         )
 
 
-class MineralCoveredHopperCarRollerRoofConsistBase(MineralCoveredHopperCarConsistBase):
+class MineralCoveredHopperCarRollerRoofBase(MineralCoveredHopperCarBase):
     """
     Mineral covered hopper with a rollover roof.
     """
@@ -6912,8 +6912,8 @@ class MineralCoveredHopperCarRollerRoofConsistBase(MineralCoveredHopperCarConsis
         )
 
 
-class MineralCoveredHopperCarRollerRoofConsistType1(
-    MineralCoveredHopperCarRollerRoofConsistBase
+class MineralCoveredHopperCarRollerRoofType1(
+    MineralCoveredHopperCarRollerRoofBase
 ):
     """
     Mineral covered hopper with a rollover roof.
@@ -6925,8 +6925,8 @@ class MineralCoveredHopperCarRollerRoofConsistType1(
         super().__init__(**kwargs)
 
 
-class MineralCoveredHopperCarRollerRoofConsistType2(
-    MineralCoveredHopperCarRollerRoofConsistBase
+class MineralCoveredHopperCarRollerRoofType2(
+    MineralCoveredHopperCarRollerRoofBase
 ):
     """
     Mineral covered hopper with a rollover roof.
@@ -6938,8 +6938,8 @@ class MineralCoveredHopperCarRollerRoofConsistType2(
         super().__init__(**kwargs)
 
 
-class MineralCoveredHopperCarRollerRoofRandomisedConsist(
-    RandomisedConsistMixin, MineralCoveredHopperCarRollerRoofConsistBase
+class MineralCoveredHopperCarRollerRoofRandomised(
+    RandomisedCarMixin, MineralCoveredHopperCarRollerRoofBase
 ):
     """
     Mineral covered hopper with a rollover roof.
@@ -6961,7 +6961,7 @@ class MineralCoveredHopperCarRollerRoofRandomisedConsist(
         )
 
 
-class MineralCoveredHopperCarSaltConsistBase(MineralCoveredHopperCarConsistBase):
+class MineralCoveredHopperCarSaltBase(MineralCoveredHopperCarBase):
     """
     Mineral covered hopper for salt, potash, similar cargos.
     """
@@ -7026,7 +7026,7 @@ class MineralCoveredHopperCarSaltConsistBase(MineralCoveredHopperCarConsistBase)
         )
 
 
-class MineralCoveredHopperCarSaltConsist(MineralCoveredHopperCarSaltConsistBase):
+class MineralCoveredHopperCarSalt(MineralCoveredHopperCarSaltBase):
     """
     Mineral covered hopper for salt, potash, similar cargos.
     """
@@ -7037,8 +7037,8 @@ class MineralCoveredHopperCarSaltConsist(MineralCoveredHopperCarSaltConsistBase)
         super().__init__(**kwargs)
 
 
-class MineralCoveredHopperCarSaltSwingRoofConsist(
-    MineralCoveredHopperCarSaltConsistBase
+class MineralCoveredHopperCarSaltSwingRoof(
+    MineralCoveredHopperCarSaltBase
 ):
     """
     Mineral covered hopper for salt, potash, similar cargos.
@@ -7050,8 +7050,8 @@ class MineralCoveredHopperCarSaltSwingRoofConsist(
         super().__init__(**kwargs)
 
 
-class MineralCoveredHopperCarSaltRandomisedConsist(
-    RandomisedConsistMixin, MineralCoveredHopperCarSaltConsistBase
+class MineralCoveredHopperCarSaltRandomised(
+    RandomisedCarMixin, MineralCoveredHopperCarSaltBase
 ):
     """
     Mineral covered hopper for salt, potash, similar cargos.
@@ -7073,7 +7073,7 @@ class MineralCoveredHopperCarSaltRandomisedConsist(
         )
 
 
-class OpenCarConsistBase(CarConsist):
+class OpenCarBase(CarModelTypeBase):
     """
     General cargo - refits everything except mail, pax.
     """
@@ -7096,7 +7096,7 @@ class OpenCarConsistBase(CarConsist):
         ]
 
 
-class OpenCarConsist(OpenCarConsistBase):
+class OpenCar(OpenCarBase):
     """
     Standard open car
     """
@@ -7136,7 +7136,7 @@ class OpenCarConsist(OpenCarConsistBase):
         )
 
 
-class OpenCarHoodConsist(OpenCarConsistBase):
+class OpenCarHood(OpenCarBase):
     """
     Open car with a hood when fully loaded
     """
@@ -7184,7 +7184,7 @@ class OpenCarHoodConsist(OpenCarConsistBase):
         )
 
 
-class OpenCarHighEndConsist(OpenCarConsistBase):
+class OpenCarHighEnd(OpenCarBase):
     """
     Open car with alternative livery
     """
@@ -7221,7 +7221,7 @@ class OpenCarHighEndConsist(OpenCarConsistBase):
         )
 
 
-class OpenCarMillConsist(OpenCarConsistBase):
+class OpenCarMill(OpenCarBase):
     """
     Open car for use in the steel industry, but widely repurposed and refittable.
     """
@@ -7268,7 +7268,7 @@ class OpenCarMillConsist(OpenCarConsistBase):
         )
 
 
-class OpenCarRandomisedConsist(RandomisedConsistMixin, OpenCarConsistBase):
+class OpenCarRandomised(RandomisedCarMixin, OpenCarBase):
     """
     Random choice of open car sprite, from available open cars.
     """
@@ -7298,7 +7298,7 @@ class OpenCarRandomisedConsist(RandomisedConsistMixin, OpenCarConsistBase):
         )
 
 
-class PassengerCarConsistBase(CarConsist):
+class PassengerCarBase(CarModelTypeBase):
     """
     Common base class for passenger cars.
     """
@@ -7343,7 +7343,7 @@ class PassengerCarConsistBase(CarConsist):
         return None
 
 
-class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
+class PassengeRailcarTrailerCarBase(PassengerCarBase):
     """
     Common base class for railcar trailer cars.
     """
@@ -7398,7 +7398,7 @@ class PassengeRailcarTrailerCarConsistBase(PassengerCarConsistBase):
         return "vehicle_family/" + self._buyable_variant_group_id
 
 
-class PanoramicCarConsist(PassengerCarConsistBase):
+class PanoramicCar(PassengerCarBase):
     """
     Panoramic car / observation car / dome car.
     No special effects, just an explicitly buildable visual variant of standard passenger car.
@@ -7441,7 +7441,7 @@ class PanoramicCarConsist(PassengerCarConsistBase):
         return "express"
 
 
-class PassengerCarConsist(PassengerCarConsistBase):
+class PassengerCar(PassengerCarBase):
     """
     Standard passenger car.
     Default decay rate, capacities within reasonable distance of original base set pax coaches.
@@ -7475,7 +7475,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         #   * standard coach
         #   * brake coach front
         #   * brake coach rear
-        #   * I removed special coaches from PassengerLuxuryCarConsist Feb 2021, as Restaurant cars were added
+        #   * I removed special coaches from PassengerCar Feb 2021, as Restaurant cars were added
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
         liveries = self.roster.get_pax_mail_liveries(
             "default_pax_liveries", self.model_def
@@ -7495,7 +7495,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
             return "express"
 
 
-class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
+class PassengerHighSpeedCar(PassengerCarBase):
     """
     High speed (LGV capable) variant of passenger car.
     Default decay rate, capacities within reasonable distance of original base set pax coaches.
@@ -7542,7 +7542,7 @@ class PassengerHighSpeedCarConsist(PassengerCarConsistBase):
         return True
 
 
-class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
+class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
     """
     Unpowered passenger trailer car for express railcars.
     Position-dependent sprites for cabs etc.
@@ -7584,7 +7584,7 @@ class PassengerExpressRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistB
         return False
 
 
-class PassengerHSTCarConsist(PassengerCarConsistBase):
+class PassengerHSTCar(PassengerCarBase):
     """
     Trailer dedicated for HST-type trains (no wagon attach, but matching stats and livery).
     Moderately improved decay rate compared to standard pax car.
@@ -7649,7 +7649,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         return False
 
 
-class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
+class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
     """
     Unpowered passenger trailer car for railbus (not railcar).
     Position-dependent sprites for cabs etc.
@@ -7663,7 +7663,7 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
             # pony NG jank, gen 4 railbus trailers get a speed bump to 'express'
             self.speed_class = "express"
         else:
-            # PassengerCarConsistBase sets 'express' speed, but railbus trailers should override this
+            # PassengerCarBase sets 'express' speed, but railbus trailers should override this
             self.speed_class = "standard"
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
@@ -7691,7 +7691,7 @@ class PassengerRailbusTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         return False
 
 
-class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
+class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
     """
     Unpowered high-capacity passenger trailer car for railcars (not railbus).
     Position-dependent sprites for cabs etc.
@@ -7701,7 +7701,7 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # PassengerCarConsistBase sets 'express' speed, but railcar trailers should override this
+        # PassengerCarBase sets 'express' speed, but railcar trailers should override this
         self.speed_class = "suburban"
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
@@ -7739,7 +7739,7 @@ class PassengerRailcarTrailerCarConsist(PassengeRailcarTrailerCarConsistBase):
         return False
 
 
-class PassengerRestaurantCarConsist(PassengerCarConsistBase):
+class PassengerRestaurantCar(PassengerCarBase):
     """
     Special pax coach that modifies run costs and decay rates for other pax coaches in the consist.
     """
@@ -7777,7 +7777,7 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         return "restaurant_car"
 
 
-class PassengerSuburbanCarConsist(PassengerCarConsistBase):
+class PassengerSuburbanCar(PassengerCarBase):
     """
     Suburban pax car.
     Position-dependent sprites for brake car etc.
@@ -7805,7 +7805,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         #   * standard coach
         #   * brake coach front
         #   * brake coach rear
-        #   * I removed special coaches from PassengerCarConsistBase Dec 2018, overkill
+        #   * I removed special coaches from PassengerCarBase Dec 2018, overkill
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 0}
         liveries = self.roster.get_pax_mail_liveries(
             "suburban_pax_liveries", self.model_def
@@ -7825,7 +7825,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         return "pax_suburban_coach"
 
 
-class PeatCarConsist(CarConsist):
+class PeatCar(CarModelTypeBase):
     """
     Specialist transporter (narrow gauge bin) for peat
     """
@@ -7867,7 +7867,7 @@ class PeatCarConsist(CarConsist):
         )
 
 
-class PieceGoodsCarRandomisedConsistBase(RandomisedConsistMixin, CarConsist):
+class PieceGoodsCarRandomisedBase(RandomisedCarMixin, CarModelTypeBase):
     """
     Base class for randomised general (piece goods) cargo wagon.
     Refits match box vans, this is a compromise and means some cargos won't match e.g. non-randomised plate wagons or opens.
@@ -7892,7 +7892,7 @@ class PieceGoodsCarRandomisedConsistBase(RandomisedConsistMixin, CarConsist):
         self._joker = True
 
 
-class PieceGoodsCarCoveredRandomisedConsist(PieceGoodsCarRandomisedConsistBase):
+class PieceGoodsCarCoveredRandomised(PieceGoodsCarRandomisedBase):
     """
     Randomised (piece goods) cargo wagon, using covered sprites - mostly vans.
     """
@@ -7922,7 +7922,7 @@ class PieceGoodsCarCoveredRandomisedConsist(PieceGoodsCarRandomisedConsistBase):
         )
 
 
-class PieceGoodsCarMixedRandomisedConsist(PieceGoodsCarRandomisedConsistBase):
+class PieceGoodsCarMixedRandomised(PieceGoodsCarRandomisedBase):
     """
     Randomised general (piece goods) cargo wagon.
     """
@@ -7952,8 +7952,8 @@ class PieceGoodsCarMixedRandomisedConsist(PieceGoodsCarRandomisedConsistBase):
         )
 
 
-class PieceGoodsCarManufacturingPartsRandomisedConsist(
-    PieceGoodsCarRandomisedConsistBase
+class PieceGoodsCarManufacturingPartsRandomised(
+    PieceGoodsCarRandomisedBase
 ):
     """
     Randomised general (piece goods) cargo wagon - using vehicles suitable for auto parts and similar manufacturing cargos.
@@ -7984,7 +7984,7 @@ class PieceGoodsCarManufacturingPartsRandomisedConsist(
         )
 
 
-class PipeCarConsist(FlatCarConsistBase):
+class PipeCar(FlatCarBase):
     """
     Pipe wagon with fixed stakes & cradles, reusable for tube and other long products.
     """
@@ -8026,7 +8026,7 @@ class PipeCarConsist(FlatCarConsistBase):
         )
 
 
-class ReeferCarConsistBase(CarConsist):
+class ReeferCarBase(CarModelTypeBase):
     """
     Refrigerated cargos.
     No actual cargo aging change - doesn't really work - so trade higher speed against lower capacity instead.
@@ -8064,7 +8064,7 @@ class ReeferCarConsistBase(CarConsist):
         )
 
 
-class ReeferCarConsistType1(ReeferCarConsistBase):
+class ReeferCarType1(ReeferCarBase):
     """
     Standard reefer car.
     """
@@ -8078,7 +8078,7 @@ class ReeferCarConsistType1(ReeferCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_reefer_cars"
 
 
-class ReeferCarConsistType2(ReeferCarConsistBase):
+class ReeferCarType2(ReeferCarBase):
     """
     Alternative reefer car style.
     """
@@ -8093,7 +8093,7 @@ class ReeferCarConsistType2(ReeferCarConsistBase):
         self._joker = True
 
 
-class ReeferCarRandomisedConsist(RandomisedConsistMixin, ReeferCarConsistBase):
+class ReeferCarRandomised(RandomisedCarMixin, ReeferCarBase):
     """
     Random choice of reefer car sprite.
     """
@@ -8120,7 +8120,7 @@ class ReeferCarRandomisedConsist(RandomisedConsistMixin, ReeferCarConsistBase):
         )
 
 
-class SiloCarConsistBase(CarConsist):
+class SiloCarBase(CarModelTypeBase):
     """
     Powder bulk cargos needing protection and special equipment for unloading.
     """
@@ -8193,7 +8193,7 @@ class SiloCarConsistBase(CarConsist):
         )
 
 
-class SiloCarConsistType1(SiloCarConsistBase):
+class SiloCarType1(SiloCarBase):
     """
     Standard silo car.
     """
@@ -8209,7 +8209,7 @@ class SiloCarConsistType1(SiloCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_silo_cars"
 
 
-class SiloCarConsistType2(SiloCarConsistBase):
+class SiloCarType2(SiloCarBase):
     """
     Silo car with V-shaped barrel.
     """
@@ -8225,7 +8225,7 @@ class SiloCarConsistType2(SiloCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_silo_cars"
 
 
-class SiloCarConsistType3(SiloCarConsistBase):
+class SiloCarType3(SiloCarBase):
     """
     Silo car with V-shaped barrel.
     """
@@ -8241,7 +8241,7 @@ class SiloCarConsistType3(SiloCarConsistBase):
         self.use_named_buyable_variant_group = "wagon_group_silo_cars"
 
 
-class SiloCarRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase):
+class SiloCarRandomised(RandomisedCarMixin, SiloCarBase):
     """
     Random choice of silo car sprite.
     """
@@ -8283,7 +8283,7 @@ class SiloCarRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase):
         )
 
 
-class SiloCarCementConsistType1(SiloCarConsistBase):
+class SiloCarCementType1(SiloCarBase):
     """
     Cement-coloured silo car.
     """
@@ -8312,7 +8312,7 @@ class SiloCarCementConsistType1(SiloCarConsistBase):
         )
 
 
-class SiloCarCementConsistType2(SiloCarConsistBase):
+class SiloCarCementType2(SiloCarBase):
     """
     Cement-coloured silo car.
     """
@@ -8341,7 +8341,7 @@ class SiloCarCementConsistType2(SiloCarConsistBase):
         )
 
 
-class SiloCarCementConsistType3(SiloCarConsistBase):
+class SiloCarCementType3(SiloCarBase):
     """
     Cement-coloured silo car.
     """
@@ -8370,7 +8370,7 @@ class SiloCarCementConsistType3(SiloCarConsistBase):
         )
 
 
-class SiloCarCementRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase):
+class SiloCarCementRandomised(RandomisedCarMixin, SiloCarBase):
     """
     Random choice of cement silo car sprite.
     """
@@ -8396,7 +8396,7 @@ class SiloCarCementRandomisedConsist(RandomisedConsistMixin, SiloCarConsistBase)
         )
 
 
-class SlidingRoofCarConsist(BoxCarConsistBase):
+class SlidingRoofCar(BoxCarBase):
     """
     Sliding roof flat - sfins2 holdall and similar - same refits as box van.
     """
@@ -8452,7 +8452,7 @@ class SlidingRoofCarConsist(BoxCarConsistBase):
         )
 
 
-class SlidingRoofCarConsistHiCube(BoxCarConsistBase):
+class SlidingRoofCarHiCube(BoxCarBase):
     """
     Sliding roof high volume wagon - rover KSA cube and similar - same refits as box van.
     """
@@ -8508,7 +8508,7 @@ class SlidingRoofCarConsistHiCube(BoxCarConsistBase):
         )
 
 
-class SlagLadleCarConsist(CarConsist):
+class SlagLadleCar(CarModelTypeBase):
     """
     Dedicated car for iron / steel slag.  No other refits.
     """
@@ -8564,7 +8564,7 @@ class SlagLadleCarConsist(CarConsist):
         )
 
 
-class TankCarConsistBase(CarConsist):
+class TankCarBase(CarModelTypeBase):
     """
     All non-edible liquid cargos
     """
@@ -8586,7 +8586,7 @@ class TankCarConsistBase(CarConsist):
         ]
 
 
-class TankCarAcidConsistBase(TankCarConsistBase):
+class TankCarAcidBase(TankCarBase):
     """
     Base class for acid visual variant of the standard tank car, same refits, different default cargos.
     """
@@ -8644,7 +8644,7 @@ class TankCarAcidConsistBase(TankCarConsistBase):
         )
 
 
-class TankCarAcidConsistType1(TankCarAcidConsistBase):
+class TankCarAcidType1(TankCarAcidBase):
     """
     Visual variant of the standard tank car, same refits, different default cargos.
     """
@@ -8661,7 +8661,7 @@ class TankCarAcidConsistType1(TankCarAcidConsistBase):
         self.gestalt_graphics.weathered_variants = weathered_variants
 
 
-class TankCarAcidConsistType2(TankCarAcidConsistBase):
+class TankCarAcidType2(TankCarAcidBase):
     """
     Visual variant of the standard tank car, same refits, different default cargos.
     """
@@ -8678,7 +8678,7 @@ class TankCarAcidConsistType2(TankCarAcidConsistBase):
         self.gestalt_graphics.weathered_variants = weathered_variants
 
 
-class TankCarAcidRandomisedConsist(RandomisedConsistMixin, TankCarAcidConsistBase):
+class TankCarAcidRandomised(RandomisedCarMixin, TankCarAcidBase):
     """
     Random choice of acid tank car sprites.
     """
@@ -8697,7 +8697,7 @@ class TankCarAcidRandomisedConsist(RandomisedConsistMixin, TankCarAcidConsistBas
         )
 
 
-class TankCarChemicalRandomisedConsist(RandomisedConsistMixin, TankCarConsistBase):
+class TankCarChemicalRandomised(RandomisedCarMixin, TankCarBase):
     """
     Random choice of tank car sprite, from available acid / product tank cars.
     """
@@ -8736,7 +8736,7 @@ class TankCarChemicalRandomisedConsist(RandomisedConsistMixin, TankCarConsistBas
         )
 
 
-class TankCarProductConsistBase(TankCarConsistBase):
+class TankCarProductBase(TankCarBase):
     """
     Tank car with more visible ribs etc than standard tank car, for chemicals, specialist cargos etc.
     Same refits as standard tank car, just a visual variant.
@@ -8803,7 +8803,7 @@ class TankCarProductConsistBase(TankCarConsistBase):
         )
 
 
-class TankCarProductConsistType1(TankCarProductConsistBase):
+class TankCarProductType1(TankCarProductBase):
     """
     Tank car with more visible ribs etc than standard tank car, for chemicals, specialist cargos etc.
     Same refits as standard tank car, just a visual variant.
@@ -8820,7 +8820,7 @@ class TankCarProductConsistType1(TankCarProductConsistBase):
         self.gestalt_graphics.weathered_variants = weathered_variants
 
 
-class TankCarProductConsistType2(TankCarProductConsistBase):
+class TankCarProductType2(TankCarProductBase):
     """
     Tank car with more visible ribs etc than standard tank car, for chemicals, specialist cargos etc.
     Same refits as standard tank car, just a visual variant.
@@ -8837,8 +8837,8 @@ class TankCarProductConsistType2(TankCarProductConsistBase):
         self.gestalt_graphics.weathered_variants = weathered_variants
 
 
-class TankCarProductRandomisedConsist(
-    RandomisedConsistMixin, TankCarProductConsistBase
+class TankCarProductRandomised(
+    RandomisedCarMixin, TankCarProductBase
 ):
     """
     Random choice of product tank car.
@@ -8858,7 +8858,7 @@ class TankCarProductRandomisedConsist(
         )
 
 
-class TankCarStandardConsistBase(TankCarConsistBase):
+class TankCarStandardBase(TankCarBase):
     """
     Standard tank car
     """
@@ -8913,7 +8913,7 @@ class TankCarStandardConsistBase(TankCarConsistBase):
         )
 
 
-class TankCarStandardConsistType1(TankCarStandardConsistBase):
+class TankCarStandardType1(TankCarStandardBase):
     """
     Standard tank car
     """
@@ -8924,7 +8924,7 @@ class TankCarStandardConsistType1(TankCarStandardConsistBase):
         super().__init__(**kwargs)
 
 
-class TankCarStandardConsistType2(TankCarStandardConsistBase):
+class TankCarStandardType2(TankCarStandardBase):
     """
     Standard tank car
     """
@@ -8935,7 +8935,7 @@ class TankCarStandardConsistType2(TankCarStandardConsistBase):
         super().__init__(**kwargs)
 
 
-class TankCarStandardConsistType3(TankCarStandardConsistBase):
+class TankCarStandardType3(TankCarStandardBase):
     """
     Standard tank car
     """
@@ -8946,8 +8946,8 @@ class TankCarStandardConsistType3(TankCarStandardConsistBase):
         super().__init__(**kwargs)
 
 
-class TankCarStandardRandomisedConsist(
-    RandomisedConsistMixin, TankCarStandardConsistBase
+class TankCarStandardRandomised(
+    RandomisedCarMixin, TankCarStandardBase
 ):
     """
     Random choice of acid tank car sprites.
@@ -8967,7 +8967,7 @@ class TankCarStandardRandomisedConsist(
         )
 
 
-class TankCarVolatilesConsistBase(TankCarConsistBase):
+class TankCarVolatilesBase(TankCarBase):
     """
     Tank car with reflective silver or white finish (for low-flashpoint / volative liquids such as petrol).
     """
@@ -9025,7 +9025,7 @@ class TankCarVolatilesConsistBase(TankCarConsistBase):
         )
 
 
-class TankCarVolatilesConsistType1(TankCarVolatilesConsistBase):
+class TankCarVolatilesType1(TankCarVolatilesBase):
     """
     Tank car with reflective silver or white finish (for low-flashpoint / volative liquids such as petrol).
     """
@@ -9036,7 +9036,7 @@ class TankCarVolatilesConsistType1(TankCarVolatilesConsistBase):
         super().__init__(**kwargs)
 
 
-class TarpaulinCarConsistBase(BoxCarConsistBase):
+class TarpaulinCarBase(BoxCarBase):
     """
     Tarpaulin car - refits similar to box van for gameplay reasons, unlike IRL (which is flat)
     """
@@ -9102,7 +9102,7 @@ class TarpaulinCarConsistBase(BoxCarConsistBase):
         )
 
 
-class TarpaulinCarConsistType1(TarpaulinCarConsistBase):
+class TarpaulinCarType1(TarpaulinCarBase):
     """
     Tarpaulin car - refits similar to box van for gameplay reasons, unlike IRL (which is flat)
     """
@@ -9113,7 +9113,7 @@ class TarpaulinCarConsistType1(TarpaulinCarConsistBase):
         super().__init__(**kwargs)
 
 
-class TarpaulinCarConsistType2(TarpaulinCarConsistBase):
+class TarpaulinCarType2(TarpaulinCarBase):
     """
     Tarpaulin car - refits similar to box van for gameplay reasons, unlike IRL (which is flat)
     """
@@ -9124,7 +9124,7 @@ class TarpaulinCarConsistType2(TarpaulinCarConsistBase):
         super().__init__(**kwargs)
 
 
-class TarpaulinCarConsistType3(TarpaulinCarConsistBase):
+class TarpaulinCarType3(TarpaulinCarBase):
     """
     Tarpaulin car - refits similar to box van for gameplay reasons, unlike IRL (which is flat)
     """
@@ -9151,7 +9151,7 @@ class TarpaulinCarConsistType3(TarpaulinCarConsistBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
-        # slightly fewer liveries than TarpaulinCarConsistBase
+        # slightly fewer liveries than TarpaulinCarBase
         weathered_variants = {
             "unweathered": graphics_constants.tarpaulin_car_body_recolour_maps,
             "weathered": graphics_constants.tarpaulin_car_body_recolour_maps_weathered,
@@ -9166,7 +9166,7 @@ class TarpaulinCarConsistType3(TarpaulinCarConsistBase):
         )
 
 
-class TarpaulinCarRandomisedConsist(RandomisedConsistMixin, TarpaulinCarConsistBase):
+class TarpaulinCarRandomised(RandomisedCarMixin, TarpaulinCarBase):
     """
     Random choice of tarpaulin car sprite
     """
@@ -9203,7 +9203,7 @@ class TarpaulinCarRandomisedConsist(RandomisedConsistMixin, TarpaulinCarConsistB
         )
 
 
-class TorpedoCarConsist(CarConsist):
+class TorpedoCar(CarModelTypeBase):
     """
     Specialist wagon for hauling molten pig iron.
     May or may not extend to other metal cargos (probably not).
@@ -9375,7 +9375,7 @@ class BuyableVariant(object):
 class UnitVariant(object):
     """
     Simple class for unit variants.
-    Consists have buyable_variants, and each unit of the consist needs a corresponding unit_variant.
+    Model variants have buyable_variants, and each unit of the consist needs a corresponding unit_variant.
     """
 
     def __init__(self, unit, buyable_variant, **kwargs):

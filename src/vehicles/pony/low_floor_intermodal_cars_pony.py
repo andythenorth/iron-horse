@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="IntermodalLowFloorCarConsist",
+        class_name="IntermodalLowFloorCar",
         base_numeric_id=24450,
         gen=5,
         subtype="A",
@@ -22,7 +22,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="IntermodalLowFloorCarConsist",
+        class_name="IntermodalLowFloorCar",
         base_numeric_id=24460,
         gen=5,
         subtype="B",
@@ -36,7 +36,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="IntermodalLowFloorCarConsist",
+        class_name="IntermodalLowFloorCar",
         base_numeric_id=24470,
         gen=5,
         subtype="C",

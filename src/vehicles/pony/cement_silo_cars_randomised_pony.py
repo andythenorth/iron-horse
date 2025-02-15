@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="SiloCarCementRandomisedConsist",
+        class_name="SiloCarCementRandomised",
         base_numeric_id=17590,
         gen=4,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarCementRandomisedConsist",
+        class_name="SiloCarCementRandomised",
         base_numeric_id=17560,
         gen=4,
         subtype="B",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarCementRandomisedConsist",
+        class_name="SiloCarCementRandomised",
         base_numeric_id=17540,
         gen=4,
         subtype="C",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarCementRandomisedConsist",
+        class_name="SiloCarCementRandomised",
         base_numeric_id=17520,
         gen=5,
         subtype="A",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarCementRandomisedConsist",
+        class_name="SiloCarCementRandomised",
         base_numeric_id=17500,
         gen=5,
         subtype="B",
@@ -67,7 +67,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarCementRandomisedConsist",
+        class_name="SiloCarCementRandomised",
         base_numeric_id=17480,
         gen=5,
         subtype="C",

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="CoilBuggyCarConsist",
+        class_name="CoilBuggyCar",
         base_numeric_id=5160,
         gen=1,
         subtype="U",

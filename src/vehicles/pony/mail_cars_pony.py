@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30000,
         gen=1,
         subtype="A",
@@ -22,7 +22,7 @@ def main(**kwargs):
     # no gen 2 for NG, straight to gen 3
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30010,
         gen=3,
         subtype="A",
@@ -35,7 +35,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30020,
         gen=3,
         subtype="B",
@@ -48,7 +48,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30030,
         gen=4,
         subtype="A",
@@ -61,7 +61,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30260,
         gen=4,
         subtype="B",
@@ -76,7 +76,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30040,
         gen=1,
         subtype="A",
@@ -90,7 +90,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30050,
         gen=1,
         subtype="B",
@@ -104,7 +104,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30060,
         gen=2,
         subtype="A",
@@ -118,7 +118,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30070,
         gen=2,
         subtype="B",
@@ -132,7 +132,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30080,
         gen=3,
         subtype="A",
@@ -146,7 +146,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30090,
         gen=3,
         subtype="B",
@@ -160,7 +160,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30100,
         gen=3,
         subtype="C",
@@ -174,7 +174,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30110,
         gen=4,
         subtype="A",
@@ -188,7 +188,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30140,
         gen=4,
         subtype="B",
@@ -202,7 +202,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30150,
         gen=4,
         subtype="C",
@@ -216,7 +216,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30160,
         gen=5,
         subtype="A",
@@ -231,7 +231,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30170,
         gen=5,
         subtype="B",
@@ -246,7 +246,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailCarConsist",
+        class_name="MailCar",
         base_numeric_id=30180,
         gen=5,
         subtype="C",

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="PanoramicCarConsist",
+        class_name="PanoramicCar",
         base_numeric_id=35130,
         gen=4,
         subtype="B",
@@ -22,7 +22,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PanoramicCarConsist",
+        class_name="PanoramicCar",
         base_numeric_id=35140,
         gen=4,
         subtype="C",

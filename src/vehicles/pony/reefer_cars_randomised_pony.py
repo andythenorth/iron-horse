@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="ReeferCarRandomisedConsist",
+        class_name="ReeferCarRandomised",
         base_numeric_id=31930,
         gen=3,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarRandomisedConsist",
+        class_name="ReeferCarRandomised",
         base_numeric_id=31940,
         gen=3,
         subtype="B",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarRandomisedConsist",
+        class_name="ReeferCarRandomised",
         base_numeric_id=31920,
         gen=4,
         subtype="A",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarRandomisedConsist",
+        class_name="ReeferCarRandomised",
         base_numeric_id=31900,
         gen=4,
         subtype="B",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarRandomisedConsist",
+        class_name="ReeferCarRandomised",
         base_numeric_id=31910,
         gen=4,
         subtype="C",
@@ -67,7 +67,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarRandomisedConsist",
+        class_name="ReeferCarRandomised",
         base_numeric_id=23060,
         gen=5,
         subtype="B",
@@ -79,7 +79,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarRandomisedConsist",
+        class_name="ReeferCarRandomised",
         base_numeric_id=23070,
         gen=5,
         subtype="C",

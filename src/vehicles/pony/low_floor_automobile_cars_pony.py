@@ -8,7 +8,7 @@ def main(**kwargs):
     # intro gen 4
 
     model_def = ModelDef(
-        class_name="AutomobileLowFloorCarConsist",
+        class_name="AutomobileLowFloorCar",
         base_numeric_id=26720,
         gen=4,
         subtype="B",
@@ -22,7 +22,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileLowFloorCarConsist",
+        class_name="AutomobileLowFloorCar",
         base_numeric_id=26730,
         gen=4,
         subtype="C",
@@ -36,7 +36,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileLowFloorCarConsist",
+        class_name="AutomobileLowFloorCar",
         base_numeric_id=26740,
         gen=5,
         subtype="B",
@@ -50,7 +50,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileLowFloorCarConsist",
+        class_name="AutomobileLowFloorCar",
         base_numeric_id=26750,
         gen=5,
         subtype="C",

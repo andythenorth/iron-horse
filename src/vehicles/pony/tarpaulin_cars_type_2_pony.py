@@ -8,7 +8,7 @@ def main(**kwargs):
     # gen 5 start, only B and C lengths
 
     model_def = ModelDef(
-        class_name="TarpaulinCarConsistType2",
+        class_name="TarpaulinCarType2",
         base_numeric_id=24850,
         gen=5,
         subtype="B",
@@ -22,7 +22,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TarpaulinCarConsistType2",
+        class_name="TarpaulinCarType2",
         base_numeric_id=24980,
         gen=5,
         subtype="C",

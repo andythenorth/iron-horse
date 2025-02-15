@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType2",
+        class_name="ReeferCarType2",
         base_numeric_id=34790,
         gen=2,
         subtype="A",
@@ -23,7 +23,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType2",
+        class_name="ReeferCarType2",
         base_numeric_id=31880,
         gen=3,
         subtype="A",
@@ -39,7 +39,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType2",
+        class_name="ReeferCarType2",
         base_numeric_id=31890,
         gen=3,
         subtype="B",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType2",
+        class_name="ReeferCarType2",
         base_numeric_id=36940,
         gen=4,
         subtype="A",
@@ -71,7 +71,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType2",
+        class_name="ReeferCarType2",
         base_numeric_id=28110,
         gen=4,
         subtype="B",
@@ -87,7 +87,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType2",
+        class_name="ReeferCarType2",
         base_numeric_id=31320,
         gen=4,
         subtype="C",
@@ -103,7 +103,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType2",
+        class_name="ReeferCarType2",
         base_numeric_id=32610,
         gen=5,
         subtype="B",
@@ -119,7 +119,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType2",
+        class_name="ReeferCarType2",
         base_numeric_id=32620,
         gen=5,
         subtype="C",

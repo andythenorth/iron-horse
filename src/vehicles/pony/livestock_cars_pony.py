@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="LivestockCarConsist",
+        class_name="LivestockCar",
         base_numeric_id=18160,
         gen=1,
         subtype="A",
@@ -22,7 +22,7 @@ def main(**kwargs):
     # no gen 2 for NG, straight to gen 3
 
     model_def = ModelDef(
-        class_name="LivestockCarConsist",
+        class_name="LivestockCar",
         base_numeric_id=18180,
         gen=3,
         subtype="A",
@@ -35,7 +35,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="LivestockCarConsist",
+        class_name="LivestockCar",
         base_numeric_id=18200,
         gen=3,
         subtype="B",
@@ -50,7 +50,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="LivestockCarConsist",
+        class_name="LivestockCar",
         base_numeric_id=18220,
         gen=1,
         subtype="A",
@@ -62,7 +62,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="LivestockCarConsist",
+        class_name="LivestockCar",
         base_numeric_id=18140,
         gen=2,
         subtype="B",
@@ -74,7 +74,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="LivestockCarConsist",
+        class_name="LivestockCar",
         base_numeric_id=18240,
         gen=3,
         subtype="A",
@@ -86,7 +86,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="LivestockCarConsist",
+        class_name="LivestockCar",
         base_numeric_id=18670,
         gen=3,
         subtype="B",
@@ -98,7 +98,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="LivestockCarConsist",
+        class_name="LivestockCar",
         base_numeric_id=18260,
         gen=4,
         subtype="A",
@@ -110,7 +110,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="LivestockCarConsist",
+        class_name="LivestockCar",
         base_numeric_id=30710,
         gen=4,
         subtype="B",
@@ -122,7 +122,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="LivestockCarConsist",
+        class_name="LivestockCar",
         base_numeric_id=18280,
         gen=5,
         subtype="C",
@@ -134,7 +134,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="LivestockCarConsist",
+        class_name="LivestockCar",
         base_numeric_id=7160,
         gen=5,
         subtype="D",

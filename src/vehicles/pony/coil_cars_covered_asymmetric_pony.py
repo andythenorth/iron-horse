@@ -8,7 +8,7 @@ def main(**kwargs):
     # start gen 4
 
     model_def = ModelDef(
-        class_name="CoilCarCoveredAsymmetricConsist",
+        class_name="CoilCarCoveredAsymmetric",
         base_numeric_id=23320,
         gen=4,
         subtype="B",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarCoveredAsymmetricConsist",
+        class_name="CoilCarCoveredAsymmetric",
         base_numeric_id=23330,
         gen=4,
         subtype="C",
@@ -32,7 +32,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarCoveredAsymmetricConsist",
+        class_name="CoilCarCoveredAsymmetric",
         base_numeric_id=23340,
         gen=5,
         subtype="B",
@@ -46,7 +46,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoilCarCoveredAsymmetricConsist",
+        class_name="CoilCarCoveredAsymmetric",
         base_numeric_id=23350,
         gen=5,
         subtype="C",

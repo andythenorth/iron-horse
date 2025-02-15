@@ -9,7 +9,7 @@ def main(**kwargs):
     """
 
     model_def =ModelDef(
-        class_name="ExpressFoodTankCarConsistType2",
+        class_name="ExpressFoodTankCarType2",
         base_numeric_id=17200,
         gen=2,
         subtype="A",
@@ -22,7 +22,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="ExpressFoodTankCarConsistType2",
+        class_name="ExpressFoodTankCarType2",
         base_numeric_id=17210,
         gen=3,
         subtype="A",
@@ -35,7 +35,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="ExpressFoodTankCarConsistType2",
+        class_name="ExpressFoodTankCarType2",
         base_numeric_id=17220,
         gen=4,
         subtype="A",
@@ -48,7 +48,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="ExpressFoodTankCarConsistType2",
+        class_name="ExpressFoodTankCarType2",
         base_numeric_id=17230,
         gen=4,
         subtype="B",
@@ -61,7 +61,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="ExpressFoodTankCarConsistType2",
+        class_name="ExpressFoodTankCarType2",
         base_numeric_id=28190,
         gen=4,
         subtype="C",
@@ -74,7 +74,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="ExpressFoodTankCarConsistType2",
+        class_name="ExpressFoodTankCarType2",
         base_numeric_id=28440,
         gen=5,
         subtype="A",
@@ -87,7 +87,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="ExpressFoodTankCarConsistType2",
+        class_name="ExpressFoodTankCarType2",
         base_numeric_id=16970,
         gen=5,
         subtype="B",
@@ -100,7 +100,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="ExpressFoodTankCarConsistType2",
+        class_name="ExpressFoodTankCarType2",
         base_numeric_id=28180,
         gen=5,
         subtype="C",
@@ -115,7 +115,7 @@ def main(**kwargs):
     """
 
     model_def = ModelDef(
-        class_name="ExpressFoodTankCarConsistType2",
+        class_name="ExpressFoodTankCarType2",
         base_numeric_id=20380,
         gen=5,
         subtype="B",
@@ -127,7 +127,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ExpressFoodTankCarConsistType2",
+        class_name="ExpressFoodTankCarType2",
         base_numeric_id=20390,
         gen=5,
         subtype="C",

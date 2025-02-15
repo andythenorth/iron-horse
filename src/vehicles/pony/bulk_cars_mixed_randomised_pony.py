@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BulkCarMixedRandomisedConsist",
+        class_name="BulkCarMixedRandomised",
         base_numeric_id=28340,
         gen=1,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCarMixedRandomisedConsist",
+        class_name="BulkCarMixedRandomised",
         base_numeric_id=16920,
         gen=3,
         subtype="A",
@@ -33,7 +33,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCarMixedRandomisedConsist",
+        class_name="BulkCarMixedRandomised",
         base_numeric_id=17030,
         gen=3,
         subtype="B",
@@ -48,7 +48,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BulkCarMixedRandomisedConsist",
+        class_name="BulkCarMixedRandomised",
         base_numeric_id=28240,
         gen=1,
         subtype="A",
@@ -62,7 +62,7 @@ def main(**kwargs):
     # no new type A for gen 2, gen 1 type A continues
 
     model_def = ModelDef(
-        class_name="BulkCarMixedRandomisedConsist",
+        class_name="BulkCarMixedRandomised",
         base_numeric_id=28250,
         gen=3,
         subtype="A",
@@ -74,7 +74,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCarMixedRandomisedConsist",
+        class_name="BulkCarMixedRandomised",
         base_numeric_id=28260,
         gen=3,
         subtype="B",
@@ -86,7 +86,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCarMixedRandomisedConsist",
+        class_name="BulkCarMixedRandomised",
         base_numeric_id=28270,
         gen=4,
         subtype="A",
@@ -98,7 +98,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCarMixedRandomisedConsist",
+        class_name="BulkCarMixedRandomised",
         base_numeric_id=28280,
         gen=4,
         subtype="B",
@@ -110,7 +110,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCarMixedRandomisedConsist",
+        class_name="BulkCarMixedRandomised",
         base_numeric_id=22140,
         gen=5,
         subtype="A",
@@ -122,7 +122,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCarMixedRandomisedConsist",
+        class_name="BulkCarMixedRandomised",
         base_numeric_id=28290,
         gen=5,
         subtype="B",
@@ -134,7 +134,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkCarMixedRandomisedConsist",
+        class_name="BulkCarMixedRandomised",
         base_numeric_id=28300,
         gen=5,
         subtype="C",

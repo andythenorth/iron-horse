@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="HopperCarSkipConsist",
+        class_name="HopperCarSkip",
         base_numeric_id=6120,
         gen=1,
         subtype="U",

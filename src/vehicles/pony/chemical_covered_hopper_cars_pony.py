@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarSaltConsist",
+        class_name="MineralCoveredHopperCarSalt",
         base_numeric_id=26840,
         gen=2,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarSaltConsist",
+        class_name="MineralCoveredHopperCarSalt",
         base_numeric_id=37850,
         gen=3,
         subtype="A",
@@ -33,7 +33,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarSaltConsist",
+        class_name="MineralCoveredHopperCarSalt",
         base_numeric_id=26860,
         gen=3,
         subtype="B",
@@ -48,7 +48,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarSaltConsist",
+        class_name="MineralCoveredHopperCarSalt",
         base_numeric_id=39870,
         gen=2,
         subtype="A",
@@ -60,7 +60,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarSaltConsist",
+        class_name="MineralCoveredHopperCarSalt",
         base_numeric_id=36880,
         gen=3,
         subtype="A",
@@ -72,7 +72,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarSaltConsist",
+        class_name="MineralCoveredHopperCarSalt",
         base_numeric_id=26890,
         gen=4,
         subtype="A",
@@ -84,7 +84,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarSaltConsist",
+        class_name="MineralCoveredHopperCarSalt",
         base_numeric_id=36900,
         gen=4,
         subtype="B",
@@ -96,7 +96,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarSaltConsist",
+        class_name="MineralCoveredHopperCarSalt",
         base_numeric_id=17340,
         gen=5,
         subtype="A",
@@ -110,7 +110,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarSaltConsist",
+        class_name="MineralCoveredHopperCarSalt",
         base_numeric_id=26910,
         gen=5,
         subtype="B",
@@ -124,7 +124,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarSaltConsist",
+        class_name="MineralCoveredHopperCarSalt",
         base_numeric_id=36920,
         gen=5,
         subtype="C",

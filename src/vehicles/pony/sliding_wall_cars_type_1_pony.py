@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BoxCarSlidingWallConsistType1",
+        class_name="BoxCarSlidingWallType1",
         base_numeric_id=26980,
         gen=3,
         intro_year_offset=15,  # let's be a little bit later for this one
@@ -21,7 +21,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarSlidingWallConsistType1",
+        class_name="BoxCarSlidingWallType1",
         base_numeric_id=22080,
         gen=3,
         intro_year_offset=15,  # let's be a little bit later for this one
@@ -38,7 +38,7 @@ def main(**kwargs):
     # starts gen 4, B and C only
 
     model_def = ModelDef(
-        class_name="BoxCarSlidingWallConsistType1",
+        class_name="BoxCarSlidingWallType1",
         base_numeric_id=27000,
         gen=4,
         subtype="B",
@@ -51,7 +51,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarSlidingWallConsistType1",
+        class_name="BoxCarSlidingWallType1",
         base_numeric_id=22100,
         gen=4,
         subtype="C",
@@ -68,7 +68,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarSlidingWallConsistType1",
+        class_name="BoxCarSlidingWallType1",
         base_numeric_id=27020,
         gen=5,
         subtype="B",
@@ -84,7 +84,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarSlidingWallConsistType1",
+        class_name="BoxCarSlidingWallType1",
         base_numeric_id=22120,
         gen=5,
         subtype="C",
@@ -100,7 +100,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarSlidingWallConsistType1",
+        class_name="BoxCarSlidingWallType1",
         base_numeric_id=5190,
         gen=5,
         subtype="D",

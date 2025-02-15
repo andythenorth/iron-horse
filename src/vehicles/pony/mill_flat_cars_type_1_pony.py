@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FlatCarMillConsistType1",
+        class_name="FlatCarMillType1",
         base_numeric_id=34160,
         gen=2,
         subtype="A",
@@ -21,7 +21,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatCarMillConsistType1",
+        class_name="FlatCarMillType1",
         base_numeric_id=34170,
         gen=3,
         subtype="A",
@@ -34,7 +34,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatCarMillConsistType1",
+        class_name="FlatCarMillType1",
         base_numeric_id=32600,
         gen=3,
         subtype="B",
@@ -49,7 +49,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FlatCarMillConsistType1",
+        class_name="FlatCarMillType1",
         base_numeric_id=33740,
         gen=3,
         subtype="A",
@@ -61,7 +61,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatCarMillConsistType1",
+        class_name="FlatCarMillType1",
         base_numeric_id=33750,
         gen=3,
         subtype="B",
@@ -73,7 +73,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatCarMillConsistType1",
+        class_name="FlatCarMillType1",
         base_numeric_id=33760,
         gen=3,
         subtype="C",
@@ -85,7 +85,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatCarMillConsistType1",
+        class_name="FlatCarMillType1",
         base_numeric_id=33770,
         gen=4,
         subtype="A",
@@ -97,7 +97,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatCarMillConsistType1",
+        class_name="FlatCarMillType1",
         base_numeric_id=33780,
         gen=4,
         subtype="B",
@@ -109,7 +109,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatCarMillConsistType1",
+        class_name="FlatCarMillType1",
         base_numeric_id=33790,
         gen=4,
         subtype="C",
@@ -121,7 +121,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatCarMillConsistType1",
+        class_name="FlatCarMillType1",
         base_numeric_id=33800,
         gen=5,
         subtype="B",
@@ -133,7 +133,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatCarMillConsistType1",
+        class_name="FlatCarMillType1",
         base_numeric_id=33810,
         gen=5,
         subtype="C",

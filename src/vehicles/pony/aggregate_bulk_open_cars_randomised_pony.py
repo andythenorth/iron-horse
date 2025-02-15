@@ -8,7 +8,7 @@ def main(**kwargs):
     """
 
     model_def =ModelDef(
-        class_name="BulkOpenCarAggregateRandomisedConsist",
+        class_name="BulkOpenCarAggregateRandomised",
         base_numeric_id=34810,
         gen=2,
         subtype="A",
@@ -21,7 +21,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="BulkOpenCarAggregateRandomisedConsist",
+        class_name="BulkOpenCarAggregateRandomised",
         base_numeric_id=34300,
         gen=3,
         subtype="A",
@@ -34,7 +34,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="BulkOpenCarAggregateRandomisedConsist",
+        class_name="BulkOpenCarAggregateRandomised",
         base_numeric_id=34460,
         gen=3,
         subtype="B",
@@ -47,7 +47,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="BulkOpenCarAggregateRandomisedConsist",
+        class_name="BulkOpenCarAggregateRandomised",
         base_numeric_id=34270,
         gen=4,
         subtype="A",
@@ -60,7 +60,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="BulkOpenCarAggregateRandomisedConsist",
+        class_name="BulkOpenCarAggregateRandomised",
         base_numeric_id=34440,
         gen=4,
         subtype="B",
@@ -73,7 +73,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="BulkOpenCarAggregateRandomisedConsist",
+        class_name="BulkOpenCarAggregateRandomised",
         base_numeric_id=34250,
         gen=4,
         subtype="C",
@@ -89,7 +89,7 @@ def main(**kwargs):
     """
 
     model_def = ModelDef(
-        class_name="BulkOpenCarAggregateRandomisedConsist",
+        class_name="BulkOpenCarAggregateRandomised",
         base_numeric_id=32040,
         gen=5,
         subtype="B",
@@ -101,7 +101,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarAggregateRandomisedConsist",
+        class_name="BulkOpenCarAggregateRandomised",
         base_numeric_id=32050,
         gen=5,
         subtype="C",

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MailHSTCarConsist",
+        class_name="MailHSTCar",
         base_numeric_id=16880,
         gen=4,
         subtype="U",
@@ -21,7 +21,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MailHSTCarConsist",
+        class_name="MailHSTCar",
         base_numeric_id=26180,
         gen=5,
         subtype="U",

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="DedicatedCoilCarRandomisedConsist",
+        class_name="DedicatedCoilCarRandomised",
         base_numeric_id=25860,
         gen=4,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="DedicatedCoilCarRandomisedConsist",
+        class_name="DedicatedCoilCarRandomised",
         base_numeric_id=25870,
         gen=4,
         subtype="B",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="DedicatedCoilCarRandomisedConsist",
+        class_name="DedicatedCoilCarRandomised",
         base_numeric_id=25880,
         gen=4,
         subtype="C",
@@ -47,7 +47,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="DedicatedCoilCarRandomisedConsist",
+        class_name="DedicatedCoilCarRandomised",
         base_numeric_id=25890,
         gen=5,
         subtype="B",
@@ -59,7 +59,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="DedicatedCoilCarRandomisedConsist",
+        class_name="DedicatedCoilCarRandomised",
         base_numeric_id=25900,
         gen=5,
         subtype="C",

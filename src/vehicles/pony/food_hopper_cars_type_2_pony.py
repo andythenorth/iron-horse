@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FoodHopperCarConsistType2",
+        class_name="FoodHopperCarType2",
         base_numeric_id=35090,
         gen=2,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FoodHopperCarConsistType2",
+        class_name="FoodHopperCarType2",
         base_numeric_id=35270,
         gen=3,
         subtype="A",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FoodHopperCarConsistType2",
+        class_name="FoodHopperCarType2",
         base_numeric_id=19990,
         gen=4,
         subtype="A",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FoodHopperCarConsistType2",
+        class_name="FoodHopperCarType2",
         base_numeric_id=17190,
         gen=4,
         subtype="B",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FoodHopperCarConsistType2",
+        class_name="FoodHopperCarType2",
         base_numeric_id=36950,
         gen=5,
         subtype="B",
@@ -69,7 +69,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FoodHopperCarConsistType2",
+        class_name="FoodHopperCarType2",
         base_numeric_id=36960,
         gen=5,
         subtype="C",

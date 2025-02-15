@@ -8,7 +8,7 @@ def main(**kwargs):
     """
 
     model_def =ModelDef(
-        class_name="TankCarStandardRandomisedConsist",
+        class_name="TankCarStandardRandomised",
         base_numeric_id=37020,
         gen=2,
         subtype="A",
@@ -22,7 +22,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="TankCarStandardRandomisedConsist",
+        class_name="TankCarStandardRandomised",
         base_numeric_id=32900,
         gen=3,
         subtype="A",
@@ -35,7 +35,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="TankCarStandardRandomisedConsist",
+        class_name="TankCarStandardRandomised",
         base_numeric_id=32940,
         gen=3,
         subtype="B",
@@ -48,7 +48,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="TankCarStandardRandomisedConsist",
+        class_name="TankCarStandardRandomised",
         base_numeric_id=35900,
         gen=4,
         subtype="A",
@@ -61,7 +61,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="TankCarStandardRandomisedConsist",
+        class_name="TankCarStandardRandomised",
         base_numeric_id=35920,
         gen=4,
         subtype="B",
@@ -74,7 +74,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="TankCarStandardRandomisedConsist",
+        class_name="TankCarStandardRandomised",
         base_numeric_id=35940,
         gen=4,
         subtype="C",
@@ -87,7 +87,7 @@ def main(**kwargs):
     """
 
     model_def = ModelDef(
-        class_name="TankCarStandardRandomisedConsist",
+        class_name="TankCarStandardRandomised",
         base_numeric_id=35960,
         gen=5,
         subtype="A",
@@ -99,7 +99,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarStandardRandomisedConsist",
+        class_name="TankCarStandardRandomised",
         base_numeric_id=35980,
         gen=5,
         subtype="B",
@@ -111,7 +111,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarStandardRandomisedConsist",
+        class_name="TankCarStandardRandomised",
         base_numeric_id=35280,
         gen=5,
         subtype="C",

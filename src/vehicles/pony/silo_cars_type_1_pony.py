@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="SiloCarConsistType1",
+        class_name="SiloCarType1",
         base_numeric_id=32720,
         gen=4,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarConsistType1",
+        class_name="SiloCarType1",
         base_numeric_id=17390,
         gen=4,
         subtype="B",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarConsistType1",
+        class_name="SiloCarType1",
         base_numeric_id=17430,
         gen=4,
         subtype="C",
@@ -45,7 +45,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarConsistType1",
+        class_name="SiloCarType1",
         base_numeric_id=32660,
         gen=5,
         subtype="A",
@@ -59,7 +59,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarConsistType1",
+        class_name="SiloCarType1",
         base_numeric_id=17410,
         gen=5,
         subtype="B",
@@ -73,7 +73,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarConsistType1",
+        class_name="SiloCarType1",
         base_numeric_id=32680,
         gen=5,
         subtype="C",

@@ -8,7 +8,7 @@ def main(**kwargs):
     """
 
     model_def =ModelDef(
-        class_name="HopperCarAggregateConsistType3",
+        class_name="HopperCarAggregateType3",
         base_numeric_id=34300,
         gen=3,
         intro_year_offset=20,  # let's be a little bit later for this one
@@ -23,7 +23,7 @@ def main(**kwargs):
 
 
     model_def =ModelDef(
-        class_name="HopperCarAggregateConsistType3",
+        class_name="HopperCarAggregateType3",
         base_numeric_id=32850,
         gen=3,
         intro_year_offset=20,  # let's be a little bit later for this one
@@ -39,7 +39,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType3",
+        class_name="HopperCarAggregateType3",
         base_numeric_id=20280,
         gen=5,
         subtype="A",
@@ -51,7 +51,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType3",
+        class_name="HopperCarAggregateType3",
         base_numeric_id=22980,
         gen=5,
         subtype="B",
@@ -63,7 +63,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType3",
+        class_name="HopperCarAggregateType3",
         base_numeric_id=20300,
         gen=5,
         subtype="C",

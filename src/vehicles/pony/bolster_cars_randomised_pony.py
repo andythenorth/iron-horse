@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BolsterCarConsistRandomisedConsist",
+        class_name="BolsterCarRandomised",
         base_numeric_id=36600,
         gen=4,
         subtype="B",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BolsterCarConsistRandomisedConsist",
+        class_name="BolsterCarRandomised",
         base_numeric_id=31080,
         gen=4,
         subtype="C",
@@ -35,7 +35,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BolsterCarConsistRandomisedConsist",
+        class_name="BolsterCarRandomised",
         base_numeric_id=31090,
         gen=5,
         subtype="B",
@@ -47,7 +47,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BolsterCarConsistRandomisedConsist",
+        class_name="BolsterCarRandomised",
         base_numeric_id=31100,
         gen=5,
         subtype="C",

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="TankCarProductRandomisedConsist",
+        class_name="TankCarProductRandomised",
         base_numeric_id=32310,
         gen=2,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarProductRandomisedConsist",
+        class_name="TankCarProductRandomised",
         base_numeric_id=28530,
         gen=3,
         subtype="A",
@@ -32,7 +32,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarProductRandomisedConsist",
+        class_name="TankCarProductRandomised",
         base_numeric_id=32330,
         gen=3,
         subtype="B",
@@ -44,7 +44,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarProductRandomisedConsist",
+        class_name="TankCarProductRandomised",
         base_numeric_id=22360,
         gen=3,
         subtype="C",
@@ -56,7 +56,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarProductRandomisedConsist",
+        class_name="TankCarProductRandomised",
         base_numeric_id=28550,
         gen=4,
         subtype="A",
@@ -68,7 +68,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarProductRandomisedConsist",
+        class_name="TankCarProductRandomised",
         base_numeric_id=28570,
         gen=4,
         subtype="B",
@@ -80,7 +80,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarProductRandomisedConsist",
+        class_name="TankCarProductRandomised",
         base_numeric_id=28590,
         gen=4,
         subtype="C",
@@ -92,7 +92,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarProductRandomisedConsist",
+        class_name="TankCarProductRandomised",
         base_numeric_id=28610,
         gen=5,
         subtype="A",
@@ -104,7 +104,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarProductRandomisedConsist",
+        class_name="TankCarProductRandomised",
         base_numeric_id=28630,
         gen=5,
         subtype="B",
@@ -116,7 +116,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarProductRandomisedConsist",
+        class_name="TankCarProductRandomised",
         base_numeric_id=36370,
         gen=5,
         subtype="C",

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarConsistType2",
+        class_name="CoveredHopperCarType2",
         base_numeric_id=24010,
         gen=2,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarConsistType2",
+        class_name="CoveredHopperCarType2",
         base_numeric_id=17800,
         gen=3,
         subtype="A",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarConsistType2",
+        class_name="CoveredHopperCarType2",
         base_numeric_id=23240,
         gen=4,
         subtype="A",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarConsistType2",
+        class_name="CoveredHopperCarType2",
         base_numeric_id=17820,
         gen=4,
         subtype="B",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarConsistType2",
+        class_name="CoveredHopperCarType2",
         base_numeric_id=37070,
         gen=5,
         subtype="A",
@@ -69,7 +69,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarConsistType2",
+        class_name="CoveredHopperCarType2",
         base_numeric_id=36320,
         gen=5,
         subtype="B",
@@ -83,7 +83,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="CoveredHopperCarConsistType2",
+        class_name="CoveredHopperCarType2",
         base_numeric_id=17840,
         gen=5,
         subtype="C",

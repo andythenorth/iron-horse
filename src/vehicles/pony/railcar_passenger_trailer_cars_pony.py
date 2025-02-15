@@ -12,7 +12,7 @@ def main(**kwargs):
     # gen 3 could be added but needs the engine grilles replacing with pax car pixels
 
     model_def = ModelDef(
-        class_name="PassengerRailcarTrailerCarConsist",
+        class_name="PassengerRailcarTrailerCar",
         base_numeric_id=17130,
         gen=4,
         subtype="U",
@@ -29,7 +29,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRailcarTrailerCarConsist",
+        class_name="PassengerRailcarTrailerCar",
         base_numeric_id=26060,
         gen=4,
         subtype="U",
@@ -46,7 +46,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRailcarTrailerCarConsist",
+        class_name="PassengerRailcarTrailerCar",
         base_numeric_id=27170,
         gen=5,
         subtype="U",
@@ -63,7 +63,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRailcarTrailerCarConsist",
+        class_name="PassengerRailcarTrailerCar",
         base_numeric_id=25140,
         gen=5,
         subtype="U",
@@ -80,7 +80,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRailcarTrailerCarConsist",
+        class_name="PassengerRailcarTrailerCar",
         base_numeric_id=25580,
         gen=6,
         subtype="U",
@@ -97,7 +97,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerRailcarTrailerCarConsist",
+        class_name="PassengerRailcarTrailerCar",
         base_numeric_id=25400,
         gen=6,
         subtype="U",

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FarmProductsHopperCarConsistType2",
+        class_name="FarmProductsHopperCarType2",
         base_numeric_id=26940,
         gen=2,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsHopperCarConsistType2",
+        class_name="FarmProductsHopperCarType2",
         base_numeric_id=26950,
         gen=2,
         subtype="B",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsHopperCarConsistType2",
+        class_name="FarmProductsHopperCarType2",
         base_numeric_id=26960,
         gen=3,
         subtype="A",
@@ -43,7 +43,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsHopperCarConsistType2",
+        class_name="FarmProductsHopperCarType2",
         base_numeric_id=26970,
         gen=3,
         subtype="B",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsHopperCarConsistType2",
+        class_name="FarmProductsHopperCarType2",
         base_numeric_id=17990,
         gen=4,
         subtype="A",
@@ -67,7 +67,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsHopperCarConsistType2",
+        class_name="FarmProductsHopperCarType2",
         base_numeric_id=17460,
         gen=4,
         subtype="B",
@@ -79,7 +79,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsHopperCarConsistType2",
+        class_name="FarmProductsHopperCarType2",
         base_numeric_id=17980,
         gen=5,
         subtype="B",
@@ -93,7 +93,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FarmProductsHopperCarConsistType2",
+        class_name="FarmProductsHopperCarType2",
         base_numeric_id=16620,
         gen=5,
         subtype="C",

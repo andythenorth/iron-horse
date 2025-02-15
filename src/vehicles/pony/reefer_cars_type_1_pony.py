@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------    # no gen 1 reefer - straight to gen 2
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType1",
+        class_name="ReeferCarType1",
         base_numeric_id=24180,
         gen=2,
         subtype="A",
@@ -23,7 +23,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType1",
+        class_name="ReeferCarType1",
         base_numeric_id=24190,
         gen=3,
         subtype="A",
@@ -39,7 +39,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType1",
+        class_name="ReeferCarType1",
         base_numeric_id=16430,
         gen=3,
         subtype="B",
@@ -55,7 +55,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType1",
+        class_name="ReeferCarType1",
         base_numeric_id=24200,
         gen=4,
         subtype="A",
@@ -71,7 +71,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType1",
+        class_name="ReeferCarType1",
         base_numeric_id=24210,
         gen=4,
         subtype="B",
@@ -87,7 +87,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType1",
+        class_name="ReeferCarType1",
         base_numeric_id=24220,
         gen=4,
         subtype="C",
@@ -103,7 +103,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType1",
+        class_name="ReeferCarType1",
         base_numeric_id=24230,
         gen=5,
         subtype="B",
@@ -119,7 +119,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="ReeferCarConsistType1",
+        class_name="ReeferCarType1",
         base_numeric_id=24240,
         gen=5,
         subtype="C",

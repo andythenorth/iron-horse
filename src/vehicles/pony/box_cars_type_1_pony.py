@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BoxCarConsistType1",
+        class_name="BoxCarType1",
         base_numeric_id=18480,
         gen=1,
         subtype="A",
@@ -22,7 +22,7 @@ def main(**kwargs):
     # no gen 2 for NG, straight to gen 3
 
     model_def = ModelDef(
-        class_name="BoxCarConsistType1",
+        class_name="BoxCarType1",
         base_numeric_id=18500,
         gen=3,
         subtype="A",
@@ -35,7 +35,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarConsistType1",
+        class_name="BoxCarType1",
         base_numeric_id=27040,
         gen=3,
         subtype="B",
@@ -51,7 +51,7 @@ def main(**kwargs):
     # only type A for gen 1
 
     model_def = ModelDef(
-        class_name="BoxCarConsistType1",
+        class_name="BoxCarType1",
         base_numeric_id=18400,
         gen=1,
         subtype="A",
@@ -65,7 +65,7 @@ def main(**kwargs):
     # no new type A for gen 2, gen 1 type A continues
 
     model_def = ModelDef(
-        class_name="BoxCarConsistType1",
+        class_name="BoxCarType1",
         base_numeric_id=37050,
         gen=2,
         subtype="B",
@@ -77,7 +77,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarConsistType1",
+        class_name="BoxCarType1",
         base_numeric_id=18380,
         gen=3,
         subtype="A",
@@ -89,7 +89,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarConsistType1",
+        class_name="BoxCarType1",
         base_numeric_id=18460,
         gen=3,
         subtype="B",
@@ -101,7 +101,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarConsistType1",
+        class_name="BoxCarType1",
         base_numeric_id=18340,
         gen=4,
         subtype="A",
@@ -113,7 +113,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarConsistType1",
+        class_name="BoxCarType1",
         base_numeric_id=18420,
         gen=4,
         subtype="B",
@@ -125,7 +125,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarConsistType1",
+        class_name="BoxCarType1",
         base_numeric_id=18440,
         gen=4,
         subtype="C",
@@ -141,7 +141,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarConsistType1",
+        class_name="BoxCarType1",
         base_numeric_id=24250,
         gen=5,
         subtype="B",
@@ -155,7 +155,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarConsistType1",
+        class_name="BoxCarType1",
         base_numeric_id=18360,
         gen=5,
         subtype="C",

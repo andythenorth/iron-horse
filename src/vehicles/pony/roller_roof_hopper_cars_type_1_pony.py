@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarRollerRoofConsistType1",
+        class_name="MineralCoveredHopperCarRollerRoofType1",
         base_numeric_id=23670,
         gen=4,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarRollerRoofConsistType1",
+        class_name="MineralCoveredHopperCarRollerRoofType1",
         base_numeric_id=16840,
         gen=4,
         subtype="B",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarRollerRoofConsistType1",
+        class_name="MineralCoveredHopperCarRollerRoofType1",
         base_numeric_id=23730,
         gen=5,
         subtype="A",
@@ -45,7 +45,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="MineralCoveredHopperCarRollerRoofConsistType1",
+        class_name="MineralCoveredHopperCarRollerRoofType1",
         base_numeric_id=17160,
         gen=5,
         subtype="B",

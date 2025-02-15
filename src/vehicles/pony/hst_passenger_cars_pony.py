@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="PassengerHSTCarConsist",
+        class_name="PassengerHSTCar",
         base_numeric_id=30330,
         gen=4,
         subtype="U",
@@ -21,7 +21,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PassengerHSTCarConsist",
+        class_name="PassengerHSTCar",
         base_numeric_id=30340,
         gen=5,
         subtype="U",

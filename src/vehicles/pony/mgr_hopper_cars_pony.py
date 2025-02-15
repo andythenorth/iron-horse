@@ -8,7 +8,7 @@ def main(**kwargs):
     # just type gen 4 and 5
 
     model_def = ModelDef(
-        class_name="HopperCarMGRConsist",
+        class_name="HopperCarMGR",
         base_numeric_id=30240,
         gen=4,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarMGRConsist",
+        class_name="HopperCarMGR",
         base_numeric_id=16600,
         gen=4,
         subtype="B",
@@ -32,7 +32,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarMGRConsist",
+        class_name="HopperCarMGR",
         base_numeric_id=36260,
         gen=5,
         subtype="A",
@@ -46,7 +46,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarMGRConsist",
+        class_name="HopperCarMGR",
         base_numeric_id=16640,
         gen=5,
         subtype="B",

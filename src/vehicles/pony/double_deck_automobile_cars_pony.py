@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------    # intro gen 4
 
     model_def = ModelDef(
-        class_name="AutomobileDoubleDeckCarConsist",
+        class_name="AutomobileDoubleDeckCar",
         base_numeric_id=26760,
         gen=4,
         subtype="B",
@@ -21,7 +21,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileDoubleDeckCarConsist",
+        class_name="AutomobileDoubleDeckCar",
         base_numeric_id=30890,
         gen=4,
         subtype="C",
@@ -35,7 +35,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileDoubleDeckCarConsist",
+        class_name="AutomobileDoubleDeckCar",
         base_numeric_id=26770,
         gen=5,
         subtype="B",
@@ -49,7 +49,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="AutomobileDoubleDeckCarConsist",
+        class_name="AutomobileDoubleDeckCar",
         base_numeric_id=17330,
         gen=5,
         subtype="C",
@@ -64,7 +64,7 @@ def main(**kwargs):
     """
 
     model_def =ModelDef(
-        class_name="AutomobileDoubleDeckCarConsist",
+        class_name="AutomobileDoubleDeckCar",
         roster_id_providing_module = kwargs["roster_id_providing_module"],
         base_numeric_id=5830,
         gen=5,

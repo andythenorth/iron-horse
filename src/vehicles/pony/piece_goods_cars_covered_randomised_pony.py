@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- pony NG -------------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="PieceGoodsCarCoveredRandomisedConsist",
+        class_name="PieceGoodsCarCoveredRandomised",
         base_numeric_id=26420,
         gen=3,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PieceGoodsCarCoveredRandomisedConsist",
+        class_name="PieceGoodsCarCoveredRandomised",
         base_numeric_id=26430,
         gen=3,
         subtype="B",
@@ -35,7 +35,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="PieceGoodsCarCoveredRandomisedConsist",
+        class_name="PieceGoodsCarCoveredRandomised",
         base_numeric_id=26440,
         gen=1,
         subtype="A",
@@ -49,7 +49,7 @@ def main(**kwargs):
     # no new type A for gen 2, gen 1 type A continues
 
     model_def = ModelDef(
-        class_name="PieceGoodsCarCoveredRandomisedConsist",
+        class_name="PieceGoodsCarCoveredRandomised",
         base_numeric_id=26460,
         gen=3,
         subtype="A",
@@ -61,7 +61,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PieceGoodsCarCoveredRandomisedConsist",
+        class_name="PieceGoodsCarCoveredRandomised",
         base_numeric_id=26470,
         gen=3,
         subtype="B",
@@ -73,7 +73,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PieceGoodsCarCoveredRandomisedConsist",
+        class_name="PieceGoodsCarCoveredRandomised",
         base_numeric_id=26480,
         gen=4,
         subtype="A",
@@ -85,7 +85,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PieceGoodsCarCoveredRandomisedConsist",
+        class_name="PieceGoodsCarCoveredRandomised",
         base_numeric_id=26490,
         gen=4,
         subtype="B",
@@ -97,7 +97,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PieceGoodsCarCoveredRandomisedConsist",
+        class_name="PieceGoodsCarCoveredRandomised",
         base_numeric_id=26500,
         gen=4,
         subtype="C",
@@ -109,7 +109,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PieceGoodsCarCoveredRandomisedConsist",
+        class_name="PieceGoodsCarCoveredRandomised",
         base_numeric_id=26510,
         gen=5,
         subtype="B",
@@ -121,7 +121,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="PieceGoodsCarCoveredRandomisedConsist",
+        class_name="PieceGoodsCarCoveredRandomised",
         base_numeric_id=26520,
         gen=5,
         subtype="C",

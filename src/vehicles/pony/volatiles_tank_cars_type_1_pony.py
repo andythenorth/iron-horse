@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=32900,
         gen=1,
         subtype="A",
@@ -22,7 +22,7 @@ def main(**kwargs):
     # no gen 2 for NG, straight to gen 3
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=32920,
         gen=3,
         subtype="A",
@@ -35,7 +35,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=32940,
         gen=3,
         subtype="B",
@@ -50,7 +50,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=22260,
         gen=1,
         subtype="A",
@@ -62,7 +62,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=22400,
         gen=2,
         subtype="B",
@@ -74,7 +74,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=22280,
         gen=3,
         subtype="A",
@@ -86,7 +86,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=22420,
         gen=3,
         subtype="B",
@@ -98,7 +98,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=22300,
         gen=3,
         subtype="C",
@@ -110,7 +110,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=22480,
         gen=4,
         subtype="A",
@@ -124,7 +124,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=22320,
         gen=4,
         subtype="B",
@@ -138,7 +138,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=22440,
         gen=4,
         subtype="C",
@@ -152,7 +152,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=22340,
         gen=5,
         subtype="A",
@@ -166,7 +166,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=22460,
         gen=5,
         subtype="B",
@@ -180,7 +180,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="TankCarVolatilesConsistType1",
+        class_name="TankCarVolatilesType1",
         base_numeric_id=37870,
         gen=5,
         subtype="C",

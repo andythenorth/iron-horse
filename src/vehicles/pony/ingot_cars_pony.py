@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="IngotCarConsist",
+        class_name="IngotCar",
         base_numeric_id=5150,
         gen=1,
         subtype="U",
@@ -23,7 +23,7 @@ def main(**kwargs):
     # --------------- pony -------------------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="IngotCarConsist",
+        class_name="IngotCar",
         base_numeric_id=80,
         gen=1,
         subtype="U",
@@ -36,7 +36,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="IngotCarConsist",
+        class_name="IngotCar",
         base_numeric_id=60,
         gen=4,
         subtype="U",

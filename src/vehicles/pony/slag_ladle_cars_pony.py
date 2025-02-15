@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="SlagLadleCarConsist",
+        class_name="SlagLadleCar",
         base_numeric_id=24030,
         gen=1,
         subtype="U",
@@ -23,7 +23,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="SlagLadleCarConsist",
+        class_name="SlagLadleCar",
         base_numeric_id=23410,
         gen=1,
         subtype="U",
@@ -36,7 +36,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SlagLadleCarConsist",
+        class_name="SlagLadleCar",
         base_numeric_id=23420,
         gen=4,
         subtype="U",

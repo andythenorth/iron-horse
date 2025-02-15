@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BoxCarRandomisedConsist",
+        class_name="BoxCarRandomised",
         base_numeric_id=31330,
         gen=3,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarRandomisedConsist",
+        class_name="BoxCarRandomised",
         base_numeric_id=31340,
         gen=3,
         subtype="B",
@@ -35,7 +35,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BoxCarRandomisedConsist",
+        class_name="BoxCarRandomised",
         base_numeric_id=16680,
         gen=4,
         subtype="A",
@@ -47,7 +47,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarRandomisedConsist",
+        class_name="BoxCarRandomised",
         base_numeric_id=16690,
         gen=4,
         subtype="B",
@@ -59,7 +59,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarRandomisedConsist",
+        class_name="BoxCarRandomised",
         base_numeric_id=16700,
         gen=4,
         subtype="C",
@@ -75,7 +75,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarRandomisedConsist",
+        class_name="BoxCarRandomised",
         base_numeric_id=16710,
         gen=5,
         subtype="B",
@@ -87,7 +87,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BoxCarRandomisedConsist",
+        class_name="BoxCarRandomised",
         base_numeric_id=16720,
         gen=5,
         subtype="C",

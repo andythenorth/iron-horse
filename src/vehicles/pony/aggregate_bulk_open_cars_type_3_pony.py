@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BulkOpenCarAggregateConsistType3",
+        class_name="BulkOpenCarAggregateType3",
         base_numeric_id=32060,
         gen=5,
         subtype="B",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarAggregateConsistType3",
+        class_name="BulkOpenCarAggregateType3",
         base_numeric_id=32070,
         gen=5,
         subtype="C",

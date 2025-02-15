@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="SiloCarCementConsistType2",
+        class_name="SiloCarCementType2",
         base_numeric_id=23200,
         gen=4,
         subtype="A",
@@ -19,7 +19,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarCementConsistType2",
+        class_name="SiloCarCementType2",
         base_numeric_id=23210,
         gen=4,
         subtype="B",
@@ -31,7 +31,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarCementConsistType2",
+        class_name="SiloCarCementType2",
         base_numeric_id=23290,
         gen=4,
         subtype="C",
@@ -45,7 +45,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarCementConsistType2",
+        class_name="SiloCarCementType2",
         base_numeric_id=23300,
         gen=5,
         subtype="A",
@@ -59,7 +59,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarCementConsistType2",
+        class_name="SiloCarCementType2",
         base_numeric_id=23310,
         gen=5,
         subtype="B",
@@ -73,7 +73,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SiloCarCementConsistType2",
+        class_name="SiloCarCementType2",
         base_numeric_id=23400,
         gen=5,
         subtype="C",

@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FlatCarHeavyDutyConsist",
+        class_name="FlatCarHeavyDuty",
         base_numeric_id=21920,
         gen=1,
         subtype="U",
@@ -23,7 +23,7 @@ def main(**kwargs):
     # --------------- pony -------------------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="FlatCarHeavyDutyConsist",
+        class_name="FlatCarHeavyDuty",
         base_numeric_id=21930,
         gen=1,
         subtype="A",
@@ -36,7 +36,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatCarHeavyDutyConsist",
+        class_name="FlatCarHeavyDuty",
         base_numeric_id=21940,
         gen=2,
         subtype="B",
@@ -49,7 +49,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatCarHeavyDutyConsist",
+        class_name="FlatCarHeavyDuty",
         base_numeric_id=21950,
         gen=4,
         subtype="A",
@@ -62,7 +62,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="FlatCarHeavyDutyConsist",
+        class_name="FlatCarHeavyDuty",
         base_numeric_id=21960,
         gen=4,
         subtype="B",

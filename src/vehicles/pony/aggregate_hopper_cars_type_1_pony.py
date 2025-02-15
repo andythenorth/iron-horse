@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType1",
+        class_name="HopperCarAggregateType1",
         base_numeric_id=20400,
         gen=1,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType1",
+        class_name="HopperCarAggregateType1",
         base_numeric_id=20420,
         gen=3,
         subtype="A",
@@ -33,7 +33,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType1",
+        class_name="HopperCarAggregateType1",
         base_numeric_id=20440,
         gen=3,
         subtype="B",
@@ -48,7 +48,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType1",
+        class_name="HopperCarAggregateType1",
         base_numeric_id=20460,
         gen=2,
         subtype="A",
@@ -60,7 +60,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType1",
+        class_name="HopperCarAggregateType1",
         base_numeric_id=20480,
         gen=3,
         subtype="A",
@@ -72,7 +72,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType1",
+        class_name="HopperCarAggregateType1",
         base_numeric_id=20500,
         gen=3,
         subtype="B",
@@ -84,7 +84,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType1",
+        class_name="HopperCarAggregateType1",
         base_numeric_id=20520,
         gen=4,
         subtype="A",
@@ -96,7 +96,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType1",
+        class_name="HopperCarAggregateType1",
         base_numeric_id=20540,
         gen=4,
         subtype="B",
@@ -108,7 +108,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType1",
+        class_name="HopperCarAggregateType1",
         base_numeric_id=20560,
         gen=4,
         subtype="C",
@@ -120,7 +120,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType1",
+        class_name="HopperCarAggregateType1",
         base_numeric_id=20580,
         gen=5,
         subtype="A",
@@ -132,7 +132,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType1",
+        class_name="HopperCarAggregateType1",
         base_numeric_id=20600,
         gen=5,
         subtype="B",
@@ -146,7 +146,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="HopperCarAggregateConsistType1",
+        class_name="HopperCarAggregateType1",
         base_numeric_id=20620,
         gen=5,
         subtype="C",

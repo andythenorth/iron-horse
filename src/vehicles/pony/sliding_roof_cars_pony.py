@@ -8,7 +8,7 @@ def main(**kwargs):
     # gen 5 start, only B and C lengths
 
     model_def = ModelDef(
-        class_name="SlidingRoofCarConsist",
+        class_name="SlidingRoofCar",
         base_numeric_id=24270,
         gen=5,
         subtype="B",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SlidingRoofCarConsist",
+        class_name="SlidingRoofCar",
         base_numeric_id=24280,
         gen=5,
         subtype="C",
@@ -32,7 +32,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SlidingRoofCarConsist",
+        class_name="SlidingRoofCar",
         base_numeric_id=1000,
         gen=5,
         subtype="D",

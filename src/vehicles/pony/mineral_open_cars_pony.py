@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineralConsist",
+        class_name="BulkOpenCarMineral",
         base_numeric_id=18690,
         gen=1,
         subtype="A",
@@ -20,7 +20,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineralConsist",
+        class_name="BulkOpenCarMineral",
         base_numeric_id=18710,
         gen=3,
         subtype="A",
@@ -33,7 +33,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineralConsist",
+        class_name="BulkOpenCarMineral",
         base_numeric_id=18730,
         gen=3,
         subtype="B",
@@ -48,7 +48,7 @@ def main(**kwargs):
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineralConsist",
+        class_name="BulkOpenCarMineral",
         base_numeric_id=18750,
         gen=1,
         subtype="A",
@@ -62,7 +62,7 @@ def main(**kwargs):
     # gen 1 also covers gen 2
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineralConsist",
+        class_name="BulkOpenCarMineral",
         base_numeric_id=18770,
         gen=3,
         subtype="A",
@@ -74,7 +74,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineralConsist",
+        class_name="BulkOpenCarMineral",
         base_numeric_id=18790,
         gen=3,
         subtype="B",
@@ -86,7 +86,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineralConsist",
+        class_name="BulkOpenCarMineral",
         base_numeric_id=18810,
         gen=4,
         subtype="A",
@@ -98,7 +98,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineralConsist",
+        class_name="BulkOpenCarMineral",
         base_numeric_id=18830,
         gen=4,
         subtype="B",
@@ -110,7 +110,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineralConsist",
+        class_name="BulkOpenCarMineral",
         base_numeric_id=18850,
         gen=5,
         subtype="A",
@@ -124,7 +124,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineralConsist",
+        class_name="BulkOpenCarMineral",
         base_numeric_id=18870,
         gen=5,
         subtype="B",
@@ -138,7 +138,7 @@ def main(**kwargs):
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="BulkOpenCarMineralConsist",
+        class_name="BulkOpenCarMineral",
         base_numeric_id=18890,
         gen=5,
         subtype="C",
