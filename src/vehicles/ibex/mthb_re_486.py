@@ -8,7 +8,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="EngineConsist",
+        class_name="SimpleEngine",
         base_id="mthb_re_486",
         base_numeric_id=34750,
         name="MTHB Re 486",

@@ -31,7 +31,7 @@ import gestalt_graphics.graphics_constants as graphics_constants
 import iron_horse
 
 
-class Consist(object):
+class ModelTypeBase(object):
     """
     'Vehicles' (appearing in buy menu) are composed as articulated consists.
     Each consist comprises one or more 'units' (visible).
@@ -82,7 +82,7 @@ class Consist(object):
         # structure to hold badges, add badges in subclass as needed
         self._badges = []
         # wagons can be candidates for the magic randomised wagons
-        # this is on Consist not CarConsist as we need to check it when determining order for all consists
+        # this is on ModelTypeBase not CarConsist as we need to check it when determining order for all consists
         self.randomised_candidate_groups = []
         # some vehicles will get a higher speed if hauled by an express engine (use rarely)
         # option to force a specific name suffix, if the auto-detected ones aren't appropriate
@@ -1290,7 +1290,7 @@ class Consist(object):
         if self.speed is not None:
             if self.speed > 200:
                 utils.echo_message(
-                    "Consist " + self.id + " has speed > 200, which is too much"
+                    "ModelType " + self.id + " has speed > 200, which is too much"
                 )
 
     def assert_power(self):
@@ -1299,7 +1299,7 @@ class Consist(object):
         if self.speed is not None:
             if self.power > 10000:
                 utils.echo_message(
-                    "Consist " + self.id + " has power > 10000hp, which is too much"
+                    "ModelType " + self.id + " has power > 10000hp, which is too much"
                 )
 
     def assert_weight(self):
@@ -1308,19 +1308,19 @@ class Consist(object):
         if self.weight is not None:
             if self.weight > 500:
                 utils.echo_message(
-                    "Consist " + self.id + " has weight > 500t, which is too much"
+                    "ModelType " + self.id + " has weight > 500t, which is too much"
                 )
 
     def assert_description_foamer_facts(self):
         # if these are too noisy, comment them out temporarily
         if self.power > 0:
             if len(self.model_def.description) == 0:
-                utils.echo_message("Consist " + self.id + " has no description")
+                utils.echo_message("ModelType " + self.id + " has no description")
             if len(self.model_def.foamer_facts) == 0:
-                utils.echo_message("Consist " + self.id + " has no foamer_facts")
+                utils.echo_message("ModelType " + self.id + " has no foamer_facts")
             if "." in self.model_def.foamer_facts:
                 utils.echo_message(
-                    "Consist " + self.id + " foamer_facts has a '.' in it."
+                    "ModelType " + self.id + " foamer_facts has a '.' in it."
                 )
 
     def render(self, templates, graphics_path):
@@ -1333,9 +1333,9 @@ class Consist(object):
         return nml_result
 
 
-class EngineConsist(Consist):
+class EngineModelTypeBase(ModelTypeBase):
     """
-    Standard engines (without passenger or cargo capacity).
+    Base model type for Engines and other powered vehicles.
     """
 
     def __init__(self, **kwargs):
@@ -1521,9 +1521,19 @@ class EngineConsist(Consist):
         return self.subrole_child_branch_num < 0
 
 
-class AutoCoachCombineConsist(EngineConsist):
+class SimpleEngine(EngineModelTypeBase):
     """
-    Consist for an articulated auto coach combine (mail + pax).  Implemented as Engine so it can lead a consist in-game.
+    Basic engine (without passenger or cargo capacity).
+    """
+
+    def __init__(self, **kwargs):
+        # minimal pass through to parent as of Feb 2025
+        super().__init__(**kwargs)
+
+
+class AutoCoachCombineConsist(EngineModelTypeBase):
+    """
+    Articulated auto coach combine (mail + pax).  Implemented as Engine so it can lead a consist in-game.
     To keep implementation simple + crude, first unit should be dedicated mail type, second unit should be dedicated pax type
     """
 
@@ -1573,9 +1583,9 @@ class AutoCoachCombineConsist(EngineConsist):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
-class FixedFormationRailcarCombineConsist(EngineConsist):
+class FixedFormationRailcarCombineConsist(EngineModelTypeBase):
     """
-    Consist for a fixed formation articulated railcar combine (mail + pax).
+    Fixed formation articulated railcar combine (mail + pax).
     This *does* not use consist-dependent position sprite rulesets; the formation is fixed.
     """
 
@@ -1610,9 +1620,9 @@ class FixedFormationRailcarCombineConsist(EngineConsist):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
-class MailEngineConsist(EngineConsist):
+class MailEngineConsist(EngineModelTypeBase):
     """
-    Consist of engines / units that has mail (and express freight) capacity
+    Engines / units with mail (and express freight) capacity
     """
 
     def __init__(self, **kwargs):
@@ -1633,7 +1643,7 @@ class MailEngineConsist(EngineConsist):
 
 class MailEngineCabbageDVTConsist(MailEngineConsist):
     """
-    Consist for a mail DVT / cabbage.  Implemented as Engine so it can lead a consist in-game.
+    Mail DVT / cabbage.  Implemented as Engine so it can lead a consist in-game.
     """
 
     def __init__(self, **kwargs):
@@ -1680,7 +1690,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
 
 class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
     """
-    Consist for a cab motor unit for Cargo Sprinter express freight unit.
+    Cab Motor for Cargo Sprinter express freight formation.
     """
 
     liveries = [global_constants.freight_wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"]]
@@ -1719,7 +1729,7 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
 
 class MailEngineMetroConsist(MailEngineConsist):
     """
-    Consist for a mail metro train.
+    Mail metro train.
     """
 
     def __init__(self, **kwargs):
@@ -1753,7 +1763,7 @@ class MailEngineMetroConsist(MailEngineConsist):
 
 class MailEngineRailcarConsist(MailEngineConsist):
     """
-    Consist for a mail railcar.
+    Mail railcar.
     """
 
     def __init__(self, **kwargs):
@@ -1838,7 +1848,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
 
 class MailEngineExpressRailcarConsist(MailEngineConsist):
     """
-    Consist for an express mail railcar (single unit, combinable).
+    Express mail railcar (single unit, combinable).
     Intended for express-speed, high-power long-distance EMUs, use railbus or railcars for short / slow / commuter routes.
     """
 
@@ -1886,9 +1896,9 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
         return 155
 
 
-class PassengerEngineConsist(EngineConsist):
+class PassengerEngineConsist(EngineModelTypeBase):
     """
-    Consist of engines / units that has passenger capacity
+    Engine with passenger capacity
     """
 
     def __init__(self, **kwargs):
@@ -1922,7 +1932,7 @@ class PassengerEngineConsist(EngineConsist):
 
 class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
     """
-    Consist for a passenger cab control car / driving trailer.  Implemented as Engine so it can lead a consist in-game.
+    Passenger cab control car / driving trailer.  Implemented as Engine so it can lead a consist in-game.
     """
 
     def __init__(self, **kwargs):
@@ -1969,7 +1979,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
 
 class PassengerHSTCabEngineConsist(PassengerEngineConsist):
     """
-    Consist for a dual-headed HST (high speed train).
+    Dual-headed HST (high speed train).
     May or may not have capacity (set per vehicle).
     """
 
@@ -1989,7 +1999,7 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
 
 class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
     """
-    Consist for an express pax railcar (single unit, combinable).
+    Express pax railcar (single unit, combinable).
     Intended for express-speed, high-power long-distance EMUs, use railbus or railcars for short / slow / commuter routes.
     """
 
@@ -2047,7 +2057,7 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
 
 class PassengerEngineMetroConsist(PassengerEngineConsist):
     """
-    Consist for a pax metro train.  Just a sparse subclass to force the gestalt_graphics
+    Pax metro train.  Just a sparse subclass to force the gestalt_graphics
     """
 
     def __init__(self, **kwargs):
@@ -2081,7 +2091,7 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
 
 class PassengerEngineRailbusConsist(PassengerEngineConsist):
     """
-    Consist for a lightweight railbus (single unit, combinable).
+    Lightweight railbus (single unit, combinable).
     """
 
     def __init__(self, **kwargs):
@@ -2135,7 +2145,7 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
 
 class PassengerEngineRailcarConsist(PassengerEngineConsist):
     """
-    Consist for a high-capacity pax railcar (single unit, combinable).
+    High-capacity pax railcar (single unit, combinable).
     """
 
     def __init__(self, **kwargs):
@@ -2180,9 +2190,9 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         return "vehicle_family/" + self.id
 
 
-class SnowploughEngineConsist(EngineConsist):
+class SnowploughEngineConsist(EngineModelTypeBase):
     """
-    Consist for a snowplough.  Implemented as Engine so it can lead a consist in-game.
+    Snowplough!  Implemented as Engine so it can lead a consist in-game.
     """
 
     def __init__(self, **kwargs):
@@ -2231,9 +2241,9 @@ class SnowploughEngineConsist(EngineConsist):
         return 68
 
 
-class TGVCabEngineConsist(EngineConsist):
+class TGVCabEngineConsist(EngineModelTypeBase):
     """
-    Consist for a TGV (very high speed) engine cab (leading motor unit)
+    TGV (very high speed) engine (leading cab motor)
     This has power by default and would usually be set as a dual-headed engine.
     Adding specific middle engines (with correct ID) will increase power for this engine.
     This does not have pax capacity, by design, to allow for TGV La Poste mail trains.
@@ -2278,7 +2288,7 @@ class TGVCabEngineConsist(EngineConsist):
         return True
 
 
-class TGVMiddleEngineConsistMixin(EngineConsist):
+class TGVMiddleEngineConsistMixin(EngineModelTypeBase):
     """
     Mixin for an intermediate motor unit for very high speed train (TGV etc).
     When added to the correct cab engine, this vehicle will cause cab power to increase.
@@ -2407,7 +2417,7 @@ class TGVMiddlePassengerEngineConsist(
         return offset + self.cab_consist.subrole_child_branch_num
 
 
-class CarConsist(Consist):
+class CarConsist(ModelTypeBase):
     """
     Intermediate class for car (wagon) consists to subclass from, provides sparse properties, most are declared in subclasses.
     """
@@ -2685,7 +2695,7 @@ class AutomobileCarConsistBase(CarConsist):
         if self.subtype == "D":
             formation_ruleset = "articulated_permanent_twin_sets"
         else:
-            formation_ruleset = self._consist_ruleset
+            formation_ruleset = self._formation_ruleset
         # automobile cars can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
         # ...wouldn't be desirable anyway because they are pseudo-articulated units
@@ -2711,7 +2721,7 @@ class AutomobileCarConsist(AutomobileCarConsistBase):
         self._joker = True
 
     @property
-    def _consist_ruleset(self):
+    def _formation_ruleset(self):
         return "1_unit_sets"
 
     @property
@@ -2736,7 +2746,7 @@ class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
         self.gestalt_graphics.add_masked_overlay = True
 
     @property
-    def _consist_ruleset(self):
+    def _formation_ruleset(self):
         if self.subtype == "B":
             return "2_unit_sets"
         else:
@@ -2763,7 +2773,7 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
         self._joker = True
 
     @property
-    def _consist_ruleset(self):
+    def _formation_ruleset(self):
         if self.subtype == "B":
             return "2_unit_sets"
         else:

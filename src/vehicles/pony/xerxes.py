@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="EngineConsist",
+        class_name="SimpleEngine",
         base_id="xerxes",
         base_numeric_id=6760,
         name="0-6-0+0-6-0 Xerxes",

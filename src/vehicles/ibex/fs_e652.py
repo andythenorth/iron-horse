@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="EngineConsist",
+        class_name="SimpleEngine",
         base_id="fs_e652",
         base_numeric_id=31120,
         name="FS E.652 Tigre 2",

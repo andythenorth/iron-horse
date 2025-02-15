@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="EngineConsist",
+        class_name="SimpleEngine",
         base_id="vectron_dual_mode",
         base_numeric_id=30810,
         name="Vectron Dual-Mode",

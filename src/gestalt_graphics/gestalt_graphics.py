@@ -918,7 +918,7 @@ class GestaltGraphicsConsistPositionDependent(GestaltGraphics):
          - 'last'
          - 'special'
      - 'positions' are flexible, and hax can safely be used within reason to get worthwhile results / save time
-         - positions are controlled by consist_rulesets, defined per Consist type as needed
+         - positions are controlled by formation_rulesets, defined per model type as needed
          - the positions are just keywords, mapped onto spriterow nums, and can be remapped fairly freely
      - the limit of 4 is arbitrary, and self-imposed to prevent combinatorial explosion (and consequent need to draw sprites)
     """

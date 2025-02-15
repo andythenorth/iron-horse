@@ -16,7 +16,7 @@ switch (FEAT_TRAINS, SELF, switch_alternative_var_random_bits, bits_offset, bits
 <!--! to aid managing which bits are used for what, access to them is wrapped in named pseudo vars
       these can then be eye-balled for overlaps
       - note that not all vehicles use all the pseudo vars, and/or not all overlaps are problematic
-      - this could be book-kept by getting the bits via Train() or Consist() but seems like over-engineering as of August 2022
+      - this could be book-kept by getting the bits via the model variant or unit, but seems like over-engineering as of August 2022
 -->
 
 <!--! colour set and weathered variant are ok to overlap (probably gets best visual result where vehicles use both together) -->
