@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="PassengerEngineExpressRailcarConsist",
+        class_name="PassengerEngineExpressRailcar",
         base_id="nimbus",
         base_numeric_id=940,
         name="Nimbus",

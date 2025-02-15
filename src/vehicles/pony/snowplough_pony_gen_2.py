@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="SnowploughEngineConsist",
+        class_name="SnowploughEngine",
         base_id="snowplough_pony_gen_2",
         base_numeric_id=25130,
         name="Snowplough",

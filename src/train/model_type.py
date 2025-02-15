@@ -1531,7 +1531,7 @@ class SimpleEngine(EngineModelTypeBase):
         super().__init__(**kwargs)
 
 
-class AutoCoachCombineConsist(EngineModelTypeBase):
+class AutoCoachCombineEngine(EngineModelTypeBase):
     """
     Articulated auto coach combine (mail + pax).  Implemented as Engine so it can lead a consist in-game.
     To keep implementation simple + crude, first unit should be dedicated mail type, second unit should be dedicated pax type
@@ -1583,7 +1583,7 @@ class AutoCoachCombineConsist(EngineModelTypeBase):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
-class FixedFormationRailcarCombineConsist(EngineModelTypeBase):
+class FixedFormationRailcarCombineEngine(EngineModelTypeBase):
     """
     Fixed formation articulated railcar combine (mail + pax).
     This *does* not use consist-dependent position sprite rulesets; the formation is fixed.
@@ -1620,7 +1620,7 @@ class FixedFormationRailcarCombineConsist(EngineModelTypeBase):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
-class MailEngineConsist(EngineModelTypeBase):
+class MailEngineBase(EngineModelTypeBase):
     """
     Engines / units with mail (and express freight) capacity
     """
@@ -1641,7 +1641,7 @@ class MailEngineConsist(EngineModelTypeBase):
         return 84
 
 
-class MailEngineCabbageDVTConsist(MailEngineConsist):
+class MailEngineCabbageDVT(MailEngineBase):
     """
     Mail DVT / cabbage.  Implemented as Engine so it can lead a consist in-game.
     """
@@ -1688,7 +1688,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         return 68
 
 
-class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
+class MailEngineCargoSprinter(MailEngineBase):
     """
     Cab Motor for Cargo Sprinter express freight formation.
     """
@@ -1727,7 +1727,7 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
         return True
 
 
-class MailEngineMetroConsist(MailEngineConsist):
+class MailEngineMetro(MailEngineBase):
     """
     Mail metro train.
     """
@@ -1761,7 +1761,7 @@ class MailEngineMetroConsist(MailEngineConsist):
         return 4
 
 
-class MailEngineRailcarConsist(MailEngineConsist):
+class MailEngineRailcar(MailEngineBase):
     """
     Mail railcar.
     """
@@ -1846,7 +1846,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
         return "vehicle_family/" + family_name
 
 
-class MailEngineExpressRailcarConsist(MailEngineConsist):
+class MailEngineExpressRailcar(MailEngineBase):
     """
     Express mail railcar (single unit, combinable).
     Intended for express-speed, high-power long-distance EMUs, use railbus or railcars for short / slow / commuter routes.
@@ -1896,7 +1896,7 @@ class MailEngineExpressRailcarConsist(MailEngineConsist):
         return 155
 
 
-class PassengerEngineConsist(EngineModelTypeBase):
+class PassengerEngineBase(EngineModelTypeBase):
     """
     Engine with passenger capacity
     """
@@ -1930,7 +1930,7 @@ class PassengerEngineConsist(EngineModelTypeBase):
         return 84
 
 
-class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
+class PassengerEngineCabControlCar(PassengerEngineBase):
     """
     Passenger cab control car / driving trailer.  Implemented as Engine so it can lead a consist in-game.
     """
@@ -1977,7 +1977,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         return 68
 
 
-class PassengerHSTCabEngineConsist(PassengerEngineConsist):
+class PassengerEngineHSTCab(PassengerEngineBase):
     """
     Dual-headed HST (high speed train).
     May or may not have capacity (set per vehicle).
@@ -1997,7 +1997,7 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
         return True
 
 
-class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
+class PassengerEngineExpressRailcar(PassengerEngineBase):
     """
     Express pax railcar (single unit, combinable).
     Intended for express-speed, high-power long-distance EMUs, use railbus or railcars for short / slow / commuter routes.
@@ -2055,7 +2055,7 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
             return 155
 
 
-class PassengerEngineMetroConsist(PassengerEngineConsist):
+class PassengerEngineMetroConsist(PassengerEngineBase):
     """
     Pax metro train.  Just a sparse subclass to force the gestalt_graphics
     """
@@ -2089,7 +2089,7 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         return 8
 
 
-class PassengerEngineRailbusConsist(PassengerEngineConsist):
+class PassengerEngineRailbus(PassengerEngineBase):
     """
     Lightweight railbus (single unit, combinable).
     """
@@ -2143,7 +2143,7 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         return 48
 
 
-class PassengerEngineRailcarConsist(PassengerEngineConsist):
+class PassengerEngineRailcar(PassengerEngineBase):
     """
     High-capacity pax railcar (single unit, combinable).
     """
@@ -2190,7 +2190,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         return "vehicle_family/" + self.id
 
 
-class SnowploughEngineConsist(EngineModelTypeBase):
+class SnowploughEngine(EngineModelTypeBase):
     """
     Snowplough!  Implemented as Engine so it can lead a consist in-game.
     """
@@ -2241,7 +2241,7 @@ class SnowploughEngineConsist(EngineModelTypeBase):
         return 68
 
 
-class TGVCabEngineConsist(EngineModelTypeBase):
+class TGVCabEngine(EngineModelTypeBase):
     """
     TGV (very high speed) engine (leading cab motor)
     This has power by default and would usually be set as a dual-headed engine.
@@ -2288,7 +2288,7 @@ class TGVCabEngineConsist(EngineModelTypeBase):
         return True
 
 
-class TGVMiddleEngineConsistMixin(EngineModelTypeBase):
+class TGVMiddleEngineMixin(EngineModelTypeBase):
     """
     Mixin for an intermediate motor unit for very high speed train (TGV etc).
     When added to the correct cab engine, this vehicle will cause cab power to increase.
@@ -2377,7 +2377,7 @@ class TGVMiddleEngineConsistMixin(EngineModelTypeBase):
         return True
 
 
-class TGVMiddleMailEngineConsist(TGVMiddleEngineConsistMixin, MailEngineConsist):
+class TGVMiddleMailEngine(TGVMiddleEngineMixin, MailEngineBase):
     """
     Mail intermediate motor unit for TGV.
     """
@@ -2396,8 +2396,8 @@ class TGVMiddleMailEngineConsist(TGVMiddleEngineConsistMixin, MailEngineConsist)
         return offset + self.cab_consist.subrole_child_branch_num
 
 
-class TGVMiddlePassengerEngineConsist(
-    TGVMiddleEngineConsistMixin, PassengerEngineConsist
+class TGVMiddlePassengerEngine(
+    TGVMiddleEngineMixin, PassengerEngineBase
 ):
     """
     Pax intermediate motor unit for TGV.

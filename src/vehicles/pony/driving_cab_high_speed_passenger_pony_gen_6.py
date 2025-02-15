@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="PassengerEngineCabControlCarConsist",
+        class_name="PassengerEngineCabControlCar",
         base_id="driving_cab_high_speed_passenger_pony_gen_6",
         base_numeric_id=19920,
         name="High Speed Driving Trailer",

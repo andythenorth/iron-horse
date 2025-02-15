@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="TGVMiddlePassengerEngineConsist",
+        class_name="TGVMiddlePassengerEngine",
         base_id="skeiron_middle_passenger",
         base_numeric_id=420,
         name="Skeiron Passenger Coach",

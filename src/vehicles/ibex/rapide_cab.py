@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="TGVCabEngineConsist",
+        class_name="TGVCabEngine",
         base_id="rapide_cab",
         base_numeric_id=34800,
         name="Rapide",

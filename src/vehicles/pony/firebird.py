@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="PassengerHSTCabEngineConsist",
+        class_name="PassengerEngineHSTCab",
         base_id="firebird",
         base_numeric_id=21500,
         name="Firebird",

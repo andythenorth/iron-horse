@@ -9,7 +9,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="MailEngineCargoSprinterEngineConsist",
+        class_name="MailEngineCargoSprinter",
         base_id="cargo_sprinter",
         base_numeric_id=25840,
         name="Cargo Sprinter",

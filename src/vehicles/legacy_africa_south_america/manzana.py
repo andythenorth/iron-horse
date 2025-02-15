@@ -1,8 +1,8 @@
-from train import PassengerEngineConsist, MetroUnit
+from train import PassengerEngineBase, MetroUnit
 
 
 def main(**kwargs):
-    consist_cabbage = PassengerEngineConsist(
+    consist_cabbage = PassengerEngineBase(
         id="manzana",
         base_numeric_id=10520,
         name="Manzana",

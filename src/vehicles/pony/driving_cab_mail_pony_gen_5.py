@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="MailEngineCabbageDVTConsist",
+        class_name="MailEngineCabbageDVT",
         base_id="driving_cab_mail_pony_gen_5",
         base_numeric_id=19970,
         name="Driving Van Trailer",

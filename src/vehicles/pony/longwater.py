@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="MailEngineMetroConsist",
+        class_name="MailEngineMetro",
         base_id="longwater",
         base_numeric_id=290,
         name="Longwater",

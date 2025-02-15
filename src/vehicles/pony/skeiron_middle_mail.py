@@ -5,7 +5,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="TGVMiddleMailEngineConsist",
+        class_name="TGVMiddleMailEngine",
         base_id="skeiron_middle_mail",
         base_numeric_id=430,
         name="Skeiron Mail Van",

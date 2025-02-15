@@ -9,7 +9,7 @@ def main(**kwargs):
     result = []
 
     model_def = ModelDef(
-        class_name="AutoCoachCombineConsist",
+        class_name="AutoCoachCombineEngine",
         base_id="auto_coach_pony_gen_2",
         base_numeric_id=4690,
         name="Autocoach Set",
