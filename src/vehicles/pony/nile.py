@@ -26,7 +26,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEngineUnit",
+        class_name="SteamEnginePoweredUnit",
         weight=65,
         vehicle_length=8,
         effect_offsets=[(-1, 0)],  # non-standard smoke position

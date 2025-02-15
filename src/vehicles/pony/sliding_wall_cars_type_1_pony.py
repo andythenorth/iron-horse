@@ -16,7 +16,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
@@ -30,7 +30,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCar", chassis="4_axle_ng_24px")
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_24px")
 
     result.append(model_def)
 
@@ -46,7 +46,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCar", chassis="2_axle_1cc_filled_24px")
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="2_axle_1cc_filled_24px")
 
     result.append(model_def)
 
@@ -60,7 +60,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCar",
+        class_name="FreightCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
     )
@@ -76,7 +76,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCar",
+        class_name="FreightCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_24px",
     )
@@ -92,7 +92,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCar",
+        class_name="FreightCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
     )
@@ -108,7 +108,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCar",
+        class_name="FreightCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
@@ -116,7 +116,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="FreightCar",
+        class_name="FreightCarUnit",
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",

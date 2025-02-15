@@ -6,7 +6,7 @@ def main(**kwargs):
 
     # --------------- narrow gauge -----------------------------------------------------------------
 
-    # note that NG uses FreightCar not ExpressCar, as there is no adjustment of capacity for higher speed
+    # note that NG uses FreightCarUnit not ExpressCarUnit, as there is no adjustment of capacity for higher speed
     # this is a bit of an inconsistency in the set design, but it's a tradeoff where the alternative is having no NG food tanker at all, or bizarrely low capacity
 
     model_def = ModelDef(
@@ -18,7 +18,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCar", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
@@ -31,7 +31,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCar", chassis="4_axle_ng_sparse_16px")
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_sparse_16px")
 
     result.append(model_def)
 
@@ -44,7 +44,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="FreightCar", chassis="4_axle_ng_sparse_24px")
+    model_def.add_unit_def(class_name="FreightCarUnit", chassis="4_axle_ng_sparse_24px")
 
     result.append(model_def)
 
@@ -59,7 +59,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCar", chassis="2_axle_filled_16px")
+    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="2_axle_filled_16px")
 
     result.append(model_def)
 
@@ -71,7 +71,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCar", chassis="3_axle_filled_16px")
+    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="3_axle_filled_16px")
 
     result.append(model_def)
 
@@ -83,7 +83,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCar", chassis="3_axle_filled_16px")
+    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="3_axle_filled_16px")
 
     result.append(model_def)
 
@@ -95,7 +95,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCar", chassis="4_axle_sparse_24px")
+    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="4_axle_sparse_24px")
 
     result.append(model_def)
 
@@ -107,7 +107,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCar", chassis="4_axle_sparse_32px")
+    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="4_axle_sparse_32px")
 
     result.append(model_def)
 
@@ -119,7 +119,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCar", chassis="3_axle_filled_16px")
+    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="3_axle_filled_16px")
 
     result.append(model_def)
 
@@ -131,7 +131,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCar", chassis="4_axle_sparse_24px")
+    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="4_axle_sparse_24px")
 
     result.append(model_def)
 
@@ -143,7 +143,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCar", chassis="4_axle_sparse_32px")
+    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="4_axle_sparse_32px")
 
     result.append(model_def)
 

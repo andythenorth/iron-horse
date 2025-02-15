@@ -7,7 +7,7 @@ def main(**kwargs):
     # --------------- narrow gauge -----------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="SlagLadleCar",
+        class_name="SlagLadleCarUnit",
         base_numeric_id=24030,
         gen=1,
         subtype="U",
@@ -16,14 +16,14 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="SlagLadleCar", chassis="buffers_only_16px")
+    model_def.add_unit_def(class_name="SlagLadleCarUnit", chassis="buffers_only_16px")
 
     result.append(model_def)
 
     # --------------- standard gauge ---------------------------------------------------------------
 
     model_def = ModelDef(
-        class_name="SlagLadleCar",
+        class_name="SlagLadleCarUnit",
         base_numeric_id=23410,
         gen=1,
         subtype="U",
@@ -31,12 +31,12 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="SlagLadleCar", chassis="buffers_only_16px")
+    model_def.add_unit_def(class_name="SlagLadleCarUnit", chassis="buffers_only_16px")
 
     result.append(model_def)
 
     model_def = ModelDef(
-        class_name="SlagLadleCar",
+        class_name="SlagLadleCarUnit",
         base_numeric_id=23420,
         gen=4,
         subtype="U",
@@ -44,7 +44,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="SlagLadleCar", chassis="buffers_only_16px")
+    model_def.add_unit_def(class_name="SlagLadleCarUnit", chassis="buffers_only_16px")
 
     result.append(model_def)
 

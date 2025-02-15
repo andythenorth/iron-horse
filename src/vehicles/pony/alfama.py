@@ -26,7 +26,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEngineUnit",
+        class_name="SteamEnginePoweredUnit",
         weight=32,
         vehicle_length=6,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height

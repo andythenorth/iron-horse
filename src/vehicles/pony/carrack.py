@@ -25,7 +25,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEngineUnit", weight=60, vehicle_length=5, spriterow_num=0
+        class_name="SteamEnginePoweredUnit", weight=60, vehicle_length=5, spriterow_num=0
     )
 
     model_def.add_unit_def(

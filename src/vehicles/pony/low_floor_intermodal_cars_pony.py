@@ -16,7 +16,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="IntermodalCar", chassis="2_axle_1cc_low_floor_16px"
+        class_name="IntermodalCarUnit", chassis="2_axle_1cc_low_floor_16px"
     )
 
     result.append(model_def)
@@ -30,7 +30,7 @@ def main(**kwargs):
         formation_ruleset="2_unit_sets",  # special case for 2 unit low-floor intermodals (they're FLAs eh)
     )
     model_def.add_unit_def(
-        class_name="IntermodalCar", chassis="4_axle_1cc_low_floor_24px"
+        class_name="IntermodalCarUnit", chassis="4_axle_1cc_low_floor_24px"
     )
 
     result.append(model_def)
@@ -44,7 +44,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="IntermodalCar", chassis="4_axle_1cc_low_floor_32px"
+        class_name="IntermodalCarUnit", chassis="4_axle_1cc_low_floor_32px"
     )
 
     result.append(model_def)

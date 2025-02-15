@@ -16,7 +16,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="HeavyDutyCar", chassis="4_axle_ng_16px")
+    model_def.add_unit_def(class_name="HeavyDutyCarUnit", chassis="4_axle_ng_16px")
 
     result.append(model_def)
 
@@ -31,7 +31,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="HeavyDutyCar", chassis="4_axle_filled_16px")
+    model_def.add_unit_def(class_name="HeavyDutyCarUnit", chassis="4_axle_filled_16px")
 
     result.append(model_def)
 
@@ -44,7 +44,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="HeavyDutyCar", chassis="4_axle_filled_24px")
+    model_def.add_unit_def(class_name="HeavyDutyCarUnit", chassis="4_axle_filled_24px")
 
     result.append(model_def)
 
@@ -57,7 +57,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="HeavyDutyCar", chassis="4_axle_filled_16px")
+    model_def.add_unit_def(class_name="HeavyDutyCarUnit", chassis="4_axle_filled_16px")
 
     result.append(model_def)
 
@@ -70,7 +70,7 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="HeavyDutyCar", chassis="4_axle_filled_24px")
+    model_def.add_unit_def(class_name="HeavyDutyCarUnit", chassis="4_axle_filled_24px")
 
     result.append(model_def)
 

@@ -21,7 +21,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCar",
+        class_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
@@ -38,7 +38,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCar",
+        class_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
@@ -55,7 +55,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCar",
+        class_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
@@ -72,7 +72,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCar",
+        class_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
@@ -89,7 +89,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCar",
+        class_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )
@@ -106,7 +106,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRailcarTrailerCar",
+        class_name="PaxRailcarTrailerCarUnit",
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_2",
     )

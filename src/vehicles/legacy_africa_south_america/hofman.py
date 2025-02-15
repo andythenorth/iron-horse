@@ -16,7 +16,7 @@ def main(**kwargs):
         type=SteamEngineTenderUnit, weight=15, vehicle_length=3, spriterow_num=0
     )
 
-    consist_cabbage.add_unit(type=SteamEngineUnit, weight=30, vehicle_length=4, spriterow_num=1)
+    consist_cabbage.add_unit(type=SteamEnginePoweredUnit, weight=30, vehicle_length=4, spriterow_num=1)
 
     consist_cabbage.add_unit(
         type=SteamEngineTenderUnit, weight=15, vehicle_length=3, spriterow_num=2

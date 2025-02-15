@@ -10,6 +10,6 @@ def main(**kwargs):
         intro_year=1850,
     )
 
-    consist_cabbage.add_unit(type=SteamEngineUnit, weight=40, vehicle_length=6, spriterow_num=0)
+    consist_cabbage.add_unit(type=SteamEnginePoweredUnit, weight=40, vehicle_length=6, spriterow_num=0)
 
     return consist_cabbage

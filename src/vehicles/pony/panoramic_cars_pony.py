@@ -16,7 +16,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxCar", suppress_roof_sprite=True, chassis="4_axle_ng_24px"
+        class_name="PaxCarUnit", suppress_roof_sprite=True, chassis="4_axle_ng_24px"
     )
 
     result.append(model_def)
@@ -31,7 +31,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxCar", suppress_roof_sprite=True, chassis="4_axle_ng_32px"
+        class_name="PaxCarUnit", suppress_roof_sprite=True, chassis="4_axle_ng_32px"
     )
 
     result.append(model_def)

@@ -15,7 +15,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRestaurantCar", chassis="6_axle_solid_express_32px"
+        class_name="PaxRestaurantCarUnit", chassis="6_axle_solid_express_32px"
     )
 
     result.append(model_def)
@@ -29,7 +29,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRestaurantCar", chassis="6_axle_solid_express_32px"
+        class_name="PaxRestaurantCarUnit", chassis="6_axle_solid_express_32px"
     )
 
     result.append(model_def)
@@ -43,7 +43,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRestaurantCar", chassis="6_axle_solid_express_32px"
+        class_name="PaxRestaurantCarUnit", chassis="6_axle_solid_express_32px"
     )
 
     result.append(model_def)
@@ -57,7 +57,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRestaurantCar", chassis="4_axle_solid_express_32px"
+        class_name="PaxRestaurantCarUnit", chassis="4_axle_solid_express_32px"
     )
 
     result.append(model_def)
@@ -73,7 +73,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="PaxRestaurantCar", chassis="4_axle_solid_express_32px"
+        class_name="PaxRestaurantCarUnit", chassis="4_axle_solid_express_32px"
     )
 
     result.append(model_def)

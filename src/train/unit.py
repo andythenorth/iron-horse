@@ -889,7 +889,7 @@ class SnowploughUnit(UnitBase):
         return self.get_mail_car_capacity()
 
 
-class SteamEngineUnit(UnitBase):
+class SteamEnginePoweredUnit(UnitBase):
     """
     Unit for a steam engine, with smoke
     """
@@ -922,11 +922,11 @@ class SteamEngineTenderUnit(UnitBase):
         self._symmetry_type = "asymmetric"
 
 
-# alphabetised (mostly) non-CarUnit subclasses of UnitBase above here
-# then CarUnit subclasses below here, also alphabetised
+# alphabetised (mostly) non-CarUnitBase subclasses of UnitBase above here
+# then CarUnitBase subclasses below here, also alphabetised
 
 
-class CarUnit(UnitBase):
+class CarUnitBase(UnitBase):
     """
     Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
     This class should be sparse - only declare the most limited set of properties common to wagons.
@@ -962,7 +962,7 @@ class CarUnit(UnitBase):
         )
 
 
-class AlignmentCar(CarUnit):
+class AlignmentCarUnit(CarUnitBase):
     """
     Alignment Car, for debugging sprite positions
     """
@@ -972,7 +972,7 @@ class AlignmentCar(CarUnit):
         self._symmetry_type = "asymmetric"
 
 
-class CabooseCar(CarUnit):
+class CabooseCarUnit(CarUnitBase):
     """
     Caboose Car. This subclass only exists to set weight in absence of cargo capacity, in other respects it's just a standard wagon.
     """
@@ -993,7 +993,7 @@ class CabooseCar(CarUnit):
         return 0
 
 
-class PaxCar(CarUnit):
+class PaxCarUnit(CarUnitBase):
     """
     Pax wagon. This subclass only exists to set capacity and symmetry_type.
     """
@@ -1008,7 +1008,7 @@ class PaxCar(CarUnit):
         return self.get_pax_car_capacity()
 
 
-class PaxRailcarTrailerCar(PaxCar):
+class PaxRailcarTrailerCarUnit(PaxCarUnit):
     """
     Railcar (or railbus) unpowered pax trailer. This subclass only exists to set tail light
     """
@@ -1018,7 +1018,7 @@ class PaxRailcarTrailerCar(PaxCar):
 
     @property
     def tail_light(self):
-        # CarUnit sets auto tail light, override it in unit_def, fail if not set
+        # CarUnitBase sets auto tail light, override it in unit_def, fail if not set
         assert (
             self._unit_def.tail_light is not None
         ), "%s consist has a unit without tail_light set, which is required for %s" % (
@@ -1028,7 +1028,7 @@ class PaxRailcarTrailerCar(PaxCar):
         return self._unit_def.tail_light
 
 
-class PaxRestaurantCar(PaxCar):
+class PaxRestaurantCarUnit(PaxCarUnit):
     """
     Restaurant (special) pax wagon. This subclass only exists to set special weight handling
     """
@@ -1042,7 +1042,7 @@ class PaxRestaurantCar(PaxCar):
         return 37 + self.consist.gen
 
 
-class ExpressCar(CarUnit):
+class ExpressCarUnit(CarUnitBase):
     """
     Express freight car.
     """
@@ -1055,7 +1055,7 @@ class ExpressCar(CarUnit):
         return self.get_mail_car_capacity()
 
 
-class ExpressIntermodalCar(ExpressCar):
+class ExpressIntermodalCarUnit(ExpressCarUnit):
     """
     Express container car, subclassed from express car.  This subclass only exists to symmetry_type and random trigger.
     """
@@ -1070,7 +1070,7 @@ class ExpressIntermodalCar(ExpressCar):
         )
 
 
-class ExpressMailCar(ExpressCar):
+class ExpressMailCarUnit(ExpressCarUnit):
     """
     Mail wagon, subclassed from express car.  Only exists to set symmetry_type.
     """
@@ -1081,7 +1081,7 @@ class ExpressMailCar(ExpressCar):
         self._symmetry_type = "asymmetric"
 
 
-class MailRailcarTrailerCar(ExpressCar):
+class MailRailcarTrailerCarUnit(ExpressCarUnit):
     """
     Railcar (or railbus) unpowered mail trailer. This subclass only exists to set tail light and symmetry type.
     """
@@ -1092,7 +1092,7 @@ class MailRailcarTrailerCar(ExpressCar):
 
     @property
     def tail_light(self):
-        # CarUnit sets auto tail light, override it in unit_def, fail if not set
+        # CarUnitBase sets auto tail light, override it in unit_def, fail if not set
         assert (
             self._unit_def.tail_light is not None
         ), "%s consist has a unit without tail_light set, which is required for %s" % (
@@ -1102,7 +1102,7 @@ class MailRailcarTrailerCar(ExpressCar):
         return self._unit_def.tail_light
 
 
-class AutomobileCarAsymmetric(ExpressCar):
+class AutomobileCarAsymmetricUnit(ExpressCarUnit):
     """
     Automobile (cars, trucks, tractors) transporter car, subclassed from express car.
     This subclass exists to set symmetry_type and random trigger.
@@ -1113,7 +1113,7 @@ class AutomobileCarAsymmetric(ExpressCar):
         # some vehicle transporter cars are asymmetric
         self._symmetry_type = "asymmetric"
         utils.echo_message(
-            "AutomobileCarAsymmetric random_trigger_switch is using _switch_graphics_spritelayer_cargos "
+            "AutomobileCarAsymmetricUnit random_trigger_switch is using _switch_graphics_spritelayer_cargos "
             + self.consist.id
         )
         self.random_trigger_switch = (
@@ -1122,7 +1122,7 @@ class AutomobileCarAsymmetric(ExpressCar):
         )
 
 
-class AutomobileCarSymmetric(ExpressCar):
+class AutomobileCarSymmetricUnit(ExpressCarUnit):
     """
     Automobile (cars, trucks, tractors) transporter car, subclassed from express car.
     This subclass exists to set symmetry_type and random trigger.
@@ -1133,7 +1133,7 @@ class AutomobileCarSymmetric(ExpressCar):
         # some vehicle transporter cars are symmetric
         self._symmetry_type = "symmetric"
         utils.echo_message(
-            "AutomobileCarSymmetric random_trigger_switch is using _switch_graphics_spritelayer_cargos "
+            "AutomobileCarSymmetricUnit random_trigger_switch is using _switch_graphics_spritelayer_cargos "
             + self.consist.id
         )
         self.random_trigger_switch = (
@@ -1142,7 +1142,7 @@ class AutomobileCarSymmetric(ExpressCar):
         )
 
 
-class FreightCar(CarUnit):
+class FreightCarUnit(CarUnitBase):
     """
     Freight wagon.
     """
@@ -1166,7 +1166,7 @@ class FreightCar(CarUnit):
         return self.vehicle_length * base_capacity
 
 
-class BinCar(FreightCar):
+class BinCarUnit(FreightCarUnit):
     """
     Peat wagon, cane bin car. This subclass only exists to set the capacity.
     """
@@ -1180,7 +1180,7 @@ class BinCar(FreightCar):
         return 2 * self.get_freight_car_capacity()
 
 
-class CoilBuggyCar(FreightCar):
+class CoilBuggyCarUnit(FreightCarUnit):
     """
     Coil buggy car. This subclass only exists to set the capacity.
     """
@@ -1194,7 +1194,7 @@ class CoilBuggyCar(FreightCar):
         return 2 * self.get_freight_car_capacity()
 
 
-class CoilCarAsymmetric(FreightCar):
+class CoilCarAsymmetricUnit(FreightCarUnit):
     """
     Asymmetric coil car. This subclass sets the symmetry_type to asymmetric.
     """
@@ -1204,7 +1204,7 @@ class CoilCarAsymmetric(FreightCar):
         self._symmetry_type = "asymmetric"
 
 
-class HeavyDutyCar(FreightCar):
+class HeavyDutyCarUnit(FreightCarUnit):
     """
     Heavy duty car. This subclass only exists to set the capacity.
     """
@@ -1218,7 +1218,7 @@ class HeavyDutyCar(FreightCar):
         return 2 * self.get_freight_car_capacity()
 
 
-class IngotCar(FreightCar):
+class IngotCarUnit(FreightCarUnit):
     """
     Ingot car. This subclass only exists to set the capacity.
     """
@@ -1232,7 +1232,7 @@ class IngotCar(FreightCar):
         return 2 * self.get_freight_car_capacity()
 
 
-class IntermodalCar(FreightCar):
+class IntermodalCarUnit(FreightCarUnit):
     """
     Intermodal Car. This subclass only exists to symmetry_type, random trigger and colour mapping switches.
     """
@@ -1247,7 +1247,7 @@ class IntermodalCar(FreightCar):
         )
 
 
-class OreDumpCar(FreightCar):
+class OreDumpCarUnit(FreightCarUnit):
     """
     Ore dump car. This subclass sets the symmetry_type to asymmetric.
     """
@@ -1257,7 +1257,7 @@ class OreDumpCar(FreightCar):
         self._symmetry_type = "asymmetric"
 
 
-class SlagLadleCar(FreightCar):
+class SlagLadleCarUnit(FreightCarUnit):
     """
     Slag ladle car. This subclass only exists to set the capacity.
     """
@@ -1271,7 +1271,7 @@ class SlagLadleCar(FreightCar):
         return 2 * self.get_freight_car_capacity()
 
 
-class TorpedoCar(FreightCar):
+class TorpedoCarUnit(FreightCarUnit):
     """
     Torpedo car. This subclass sets the symmetry_type to asymmetric.
     """

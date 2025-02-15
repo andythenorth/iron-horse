@@ -2646,7 +2646,7 @@ class RandomisedCarMixin(object):
         return True
 
 
-class AlignmentCar(CarModelTypeBase):
+class AlignmentCarUnit(CarModelTypeBase):
     """
     For checking sprite alignment
     """
@@ -3965,7 +3965,7 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
         )
 
 
-class CabooseCar(CarModelTypeBase):
+class CabooseCarUnit(CarModelTypeBase):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
@@ -4087,7 +4087,7 @@ class CarbonBlackHopperCar(CarModelTypeBase):
         )
 
 
-class CoilBuggyCar(CarModelTypeBase):
+class CoilBuggyCarUnit(CarModelTypeBase):
     """
     Dedicated (steel mill) buggy car for coils. Not a standard railcar. No other refits.
     """
@@ -4593,7 +4593,7 @@ class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
         )
 
 
-class ExpressCar(CarModelTypeBase):
+class ExpressCarUnit(CarModelTypeBase):
     """
     Express cars - express freight, valuables, mails.
     """
@@ -4797,7 +4797,7 @@ class ExpressFoodTankCarRandomised(
         )
 
 
-class ExpressIntermodalCar(CarModelTypeBase):
+class ExpressIntermodalCarUnit(CarModelTypeBase):
     """
     Express intermodal container cars - express freight, valuables, mails.
     """
@@ -6001,7 +6001,7 @@ class HopperCarSkip(HopperCarBase):
         ]
 
 
-class IngotCar(CarModelTypeBase):
+class IngotCarUnit(CarModelTypeBase):
     """
     Dedicated car for steel / iron ingots. A steel mill ingot buggy, not a standard railcar. No other refits.
     """
@@ -6095,7 +6095,7 @@ class IntermodalCarBase(CarModelTypeBase):
         )
 
 
-class IntermodalCar(IntermodalCarBase):
+class IntermodalCarUnit(IntermodalCarBase):
     """
     Default intermodal car - simple flat platform at default height.
     """
@@ -6281,7 +6281,7 @@ class MailCarBase(CarModelTypeBase):
             "non_freight_special_cases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["mail"]
-        # keep matched to ExpressCar
+        # keep matched to ExpressCarUnit
         self.floating_run_cost_multiplier = 2.33
         self._intro_year_days_offset = global_constants.intro_month_offsets_by_role[
             "express_core"
@@ -8508,7 +8508,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
         )
 
 
-class SlagLadleCar(CarModelTypeBase):
+class SlagLadleCarUnit(CarModelTypeBase):
     """
     Dedicated car for iron / steel slag.  No other refits.
     """
@@ -9203,7 +9203,7 @@ class TarpaulinCarRandomised(RandomisedCarMixin, TarpaulinCarBase):
         )
 
 
-class TorpedoCar(CarModelTypeBase):
+class TorpedoCarUnit(CarModelTypeBase):
     """
     Specialist wagon for hauling molten pig iron.
     May or may not extend to other metal cargos (probably not).

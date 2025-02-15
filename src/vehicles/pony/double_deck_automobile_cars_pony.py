@@ -15,7 +15,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetric", chassis="2_axle_lwb_filled_24px"
+        class_name="AutomobileCarAsymmetricUnit", chassis="2_axle_lwb_filled_24px"
     )
 
     result.append(model_def)
@@ -29,7 +29,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetric", chassis="4_axle_running_gear_only_32px"
+        class_name="AutomobileCarAsymmetricUnit", chassis="4_axle_running_gear_only_32px"
     )
 
     result.append(model_def)
@@ -43,7 +43,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetric", chassis="2_axle_lwb_filled_24px"
+        class_name="AutomobileCarAsymmetricUnit", chassis="2_axle_lwb_filled_24px"
     )
 
     result.append(model_def)
@@ -57,7 +57,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetric", chassis="4_axle_running_gear_only_32px"
+        class_name="AutomobileCarAsymmetricUnit", chassis="4_axle_running_gear_only_32px"
     )
 
     result.append(model_def)
@@ -73,13 +73,13 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetric",
+        class_name="AutomobileCarAsymmetricUnit",
         chassis="2_axle_running_gear_only_20px",
         spriterow_num=0,
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetric",
+        class_name="AutomobileCarAsymmetricUnit",
         chassis="2_axle_running_gear_only_20px",
         spriterow_num=1,
     )
