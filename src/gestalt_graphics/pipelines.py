@@ -131,9 +131,10 @@ class PassThroughPipeline(Pipeline):
         self.consist = consist
         self.graphics_output_path = graphics_output_path
 
-        input_image = Image.open(self.vehicle_source_input_path)
-        self.render_common(input_image, self.units)
-        input_image.close()
+        if self.consist.model_def.cabbage_new_livery_system == False or self.consist.id == "growler":
+            input_image = Image.open(self.vehicle_source_input_path)
+            self.render_common(input_image, self.units)
+            input_image.close()
 
 
 class GenerateSpritelayerCargoSets(Pipeline):

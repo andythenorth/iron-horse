@@ -134,9 +134,15 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
     # I'm not going to try and handle that in python, makefile will handle it in production
     # for development, just run render_graphics manually before running render_docs
 
-    vehicle_spritesheet = Image.open(
-        os.path.join(generated_graphics_path, consist.id + ".png")
-    )
+    if consist.model_def.cabbage_new_livery_system:
+        vehicle_spritesheet = Image.open(
+            os.path.join(generated_graphics_path, consist.model_def.base_id + ".png")
+        )
+    else:
+        vehicle_spritesheet = Image.open(
+            os.path.join(generated_graphics_path, consist.id + ".png")
+        )
+
     # these 'source' var names for images are misleading
     source_vehicle_image = Image.new(
         "P",

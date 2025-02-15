@@ -234,7 +234,19 @@ class Roster(object):
             ],
         }
 
+    def get_liveries_by_name_cabbage_new(self, additional_livery_names):
+        # CABBAGE - REFACTORING SHIM
+        result = []
+        result.extend(
+            [
+                self.engine_and_pax_mail_car_liveries[additional_livery_name]
+                for additional_livery_name in additional_livery_names
+            ]
+        )
+        return result
+
     def get_liveries_by_name(self, additional_livery_names):
+        # CABBAGE - LEGACY SUPPORT
         # for the general case, this is a convenience approach to insert a default_livery for ease of constructing template repeats
         # note that default_livery is not guaranteed to contain all the key/value pairs that additional_liveries has
         result = [self.default_livery]
@@ -356,8 +368,13 @@ class Roster(object):
             for model_def in engine_module_name.main():
                 model_variant_factory = ModelVariantFactory(model_def)
                 model_variant_factory.set_roster_ids(self.id, roster_id_providing_module)
-                consist = model_variant_factory.produce()
-                self.engine_consists.append(consist)
+                if model_def.cabbage_new_livery_system:
+                    for livery in model_def.liveries:
+                        consist = model_variant_factory.produce(livery=livery)
+                        self.engine_consists.append(consist)
+                else:
+                    consist = model_variant_factory.produce()
+                    self.engine_consists.append(consist)
 
     def init_wagon_modules(self):
         # wagons can be optionally reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module

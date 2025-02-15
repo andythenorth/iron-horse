@@ -123,6 +123,7 @@ class ModelTypeBase(object):
     # CABBAGE
     @property
     def base_id(self):
+        # CABBAGE - surely this should be using base_id_resolver() on model variant factory?
         return self.model_type_id_stem
 
     @property
@@ -1350,7 +1351,12 @@ class EngineModelTypeBase(ModelTypeBase):
         # note that this Gestalt might get replaced by subclasses as needed
         # insert a default livery
         # CABBAGE FACTORY?
-        liveries = self.roster.get_liveries_by_name(
+        if self.model_def.cabbage_new_livery_system:
+            liveries = self.roster.get_liveries_by_name_cabbage_new(
+                [kwargs["cabbage_livery"]]
+            )
+        else:
+            liveries = self.roster.get_liveries_by_name(
             self.model_def.additional_liveries
             if self.model_def.additional_liveries is not None
             else []

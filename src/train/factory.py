@@ -22,14 +22,15 @@ class ModelDef:
     sprites_complete: bool
 
     # Optional common fields (lexically sorted)
-    additional_liveries: Optional[Any] = None
+    additional_liveries: List[Any] = None
+    liveries: List[Any] = None
     base_id: Optional[str] = None
     base_numeric_id: Optional[int] = None
     base_track_type_name: Optional[str] = None
     buyable_variant_group_id: Optional[str] = None
     cab_id: Optional[str] = None
     decor_spriterow_num: Optional[int] = None
-    default_livery_extra_docs_examples: Optional[Any] = None
+    default_livery_extra_docs_examples: List[Any] = None
     dual_headed: bool = False
     easter_egg_haulage_speed_bonus: Optional[Any] = None
     extended_vehicle_life: bool = False
@@ -59,6 +60,9 @@ class ModelDef:
     show_decor_in_purchase_for_variants: List[Any] = None
     spriterow_labels: Optional[Any] = None
     tilt_bonus: bool = False
+
+    # Migration / refactoring shims
+    cabbage_new_livery_system: bool = False
 
     # Internal attributes (not provided via __init__) (lexically sorted)
     cloned_from_model_def: Optional["ModelDef"] = field(default=None, init=False)
@@ -216,10 +220,27 @@ class ModelVariantFactory(object):
 
         model_type_cls = getattr(model_type_module, self.class_name)
 
-        model_variant = model_type_cls(
-            model_variant_factory=self,
-            id=self.base_id_resolver(model_type_cls),
-        )
+        # this needs to be in roster probably, not the factory - produce should produce only one model variant at once
+        if self.model_def.cabbage_new_livery_system:
+            if len(self.produced_model_variants) == 0:
+                id=self.base_id_resolver(model_type_cls)
+            else:
+                id=self.base_id_resolver(model_type_cls) + "_variant_" + str(len(self.produced_model_variants))
+            # HAX
+            self.model_def.base_numeric_id = self.model_def.base_numeric_id + (len(self.produced_model_variants) * self.model_def.produced_unit_total)
+            model_variant = model_type_cls(
+                model_variant_factory=self,
+                id=id,
+                cabbage_livery = livery
+            )
+
+        else:
+            model_variant = model_type_cls(
+                model_variant_factory=self,
+                id=self.base_id_resolver(model_type_cls),
+            )
+
+        #print(model_variant.gestalt_graphics.__class__.__name__)
 
         """
         for counter, livery in enumerate(["example", "cabbage_livery"]):
