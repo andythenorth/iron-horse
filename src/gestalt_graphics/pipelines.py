@@ -41,8 +41,8 @@ class Pipeline(object):
             "src",
             "graphics",
             # roster_id providing module will always give us the correct filesystem path to the graphics file, which might differ from the current roster_id
-            self.consist.roster_id_providing_module,
-            self.consist.model_variant_factory.input_spritesheet_name_stem + ".png",
+            self.model_variant_factory.roster_id_providing_module,
+            self.model_variant_factory.input_spritesheet_name_stem + ".png",
         )
 
     @property
@@ -133,11 +133,12 @@ class PassThroughPipeline(Pipeline):
     def render(self, consist, global_constants, graphics_output_path):
         self.units = []
         self.consist = consist
+        self.model_variant_factory = self.consist.model_variant_factory
         self.graphics_output_path = graphics_output_path
 
         if (
             self.consist.model_def.cabbage_new_livery_system == False
-            or self.consist.model_variant_factory.cabbage_model_variant_is_default(
+            or self.model_variant_factory.cabbage_model_variant_is_default(
                 consist
             )
         ):
@@ -412,6 +413,7 @@ class GenerateEmptySpritesheet(Pipeline):
     def render(self, consist, global_constants, graphics_output_path):
         self.units = []
         self.consist = consist
+        self.model_variant_factory = self.consist.model_variant_factory
         self.graphics_output_path = graphics_output_path
 
         empty_spriterow_image = Image.open(
@@ -529,6 +531,7 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
 
         self.units = []
         self.consist = consist
+        self.model_variant_factory = self.consist.model_variant_factory
         self.graphics_output_path = graphics_output_path
 
         self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
@@ -538,7 +541,7 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
             spritesheet_image = Image.open(
                 os.path.join(
                     self.graphics_output_path,
-                    self.consist.model_variant_factory.input_spritesheet_name_stem
+                    self.model_variant_factory.input_spritesheet_name_stem
                     + ".png",
                 )
             )
@@ -577,6 +580,7 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
 
         self.units = []
         self.consist = consist
+        self.model_variant_factory = self.consist.model_variant_factory
         self.graphics_output_path = graphics_output_path
 
         self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
@@ -765,6 +769,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
     def render(self, consist, global_constants, graphics_output_path):
         self.units = []
         self.consist = consist
+        self.model_variant_factory = self.consist.model_variant_factory
         self.graphics_output_path = graphics_output_path
 
         self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
@@ -1064,6 +1069,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
     def render(self, consist, global_constants, graphics_output_path):
         self.units = []
         self.consist = consist
+        self.model_variant_factory = self.consist.model_variant_factory
         self.global_constants = global_constants
         self.graphics_output_path = graphics_output_path
 
@@ -1882,6 +1888,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             []
         )  # graphics units not same as consist units ! confusing overlap of terminology :(
         self.consist = consist
+        self.model_variant_factory = self.consist.model_variant_factory
         self.global_constants = global_constants
         self.graphics_output_path = graphics_output_path
         self.sprites_max_x_extent = self.global_constants.sprites_max_x_extent
