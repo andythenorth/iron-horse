@@ -40,7 +40,12 @@ class ModelTypeBase(object):
     def __init__(self, **kwargs):
         # mandatory, fail if missing
         self.model_variant_factory = kwargs["model_variant_factory"]
+        # SHIM FOR REFACTORING - should just be catalogue_entry when done
+        self.cabbage_catalogue_entry = kwargs.get("catalogue_entry", None)
         # mandatory, fail if missing
+        # SHIM FOR REFACTORING, SHOULD JUST USE catalogue_entry
+        if self.cabbage_catalogue_entry is not None:
+            self.mv_id = self.cabbage_catalogue_entry.model_variant_id
         self.id = kwargs["id"]
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         self.name = self.model_def.name
@@ -1353,7 +1358,7 @@ class EngineModelTypeBase(ModelTypeBase):
         # CABBAGE FACTORY?
         if self.model_def.cabbage_new_livery_system:
             liveries = self.roster.get_liveries_by_name_cabbage_new(
-                [kwargs["cabbage_livery"]]
+                [self.cabbage_catalogue_entry.livery_name]
             )
         else:
             liveries = self.roster.get_liveries_by_name(

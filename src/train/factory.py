@@ -271,12 +271,12 @@ class ModelVariantFactory:
                 + str(self.model_type_cls)
             )
 
-        catalogue_entry = self.catalogue[catalogue_index]
-
         if self.model_def.cabbage_new_livery_system:
+            catalogue_entry = self.catalogue[catalogue_index]
 
             # HAX
             print(catalogue_entry.model_variant_id)
+
             if len(self.produced_model_variants) == 0:
                 id = self.base_id_resolver()
             else:
@@ -298,7 +298,7 @@ class ModelVariantFactory:
             model_variant = self.model_type_cls(
                 model_variant_factory=self,
                 id=id,
-                cabbage_livery=catalogue_entry.livery_name,
+                catalogue_entry=catalogue_entry,
             )
             # CABBAGE - CRUDE SHIM TO INCREMENT NUMERIC ID - INSTEAD USE catalogue_entry WHICH HAS THE IDS
             self.model_def.base_numeric_id = self.model_def.base_numeric_id + len(
