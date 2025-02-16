@@ -965,31 +965,6 @@ class ModelTypeBase(object):
         return result
 
     @property
-    def input_spritesheet_name_stem(self):
-        # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
-        if self.gestalt_graphics.input_spritesheet_delegate_id is not None:
-            # we never get a delegate of this type from anywhere other than current consist, that's the rules
-            input_spritesheet_name_stem = (
-                self.gestalt_graphics.input_spritesheet_delegate_id
-            )
-        else:
-            # handle cloned cases by referring to the original consist factory for the path
-            if self.is_clone:
-                # this will get a default consist from the source factory, mapping this consist to the source spritesheet
-                input_spritesheet_name_stem = (
-                    self.model_def.cloned_from_model_def.model_type_id
-                )
-            else:
-                input_spritesheet_name_stem = self.model_type_id
-
-        # the consist id might have the consist's roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
-        # this will have a null effect (which is fine) if the roster_id consist is the same as the module providing the graphics gile
-        input_spritesheet_name_stem = input_spritesheet_name_stem.replace(
-            self.roster_id, self.roster_id_providing_module
-        )
-        return input_spritesheet_name_stem
-
-    @property
     def requires_custom_buy_menu_sprite(self):
         # boolean check for whether we'll need a custom buy menu sprite, or if we can default to just using 6th angle of vehicle
         if len(self.units) > 1:
@@ -2546,15 +2521,6 @@ class CarModelTypeBase(ModelTypeBase):
         ]
         return next_gen_intro_year - self.intro_year
 
-    def get_input_spritesheet_delegate_id_wagon(
-        self, input_spritesheet_delegate_base_id
-    ):
-        input_spritesheet_delegate_id = self.model_variant_factory.get_wagon_id(
-            input_spritesheet_delegate_base_id,
-            model_def=self.model_def,
-        )
-        return input_spritesheet_delegate_id
-
     @property
     def cabbage_subtype_badge(self):
         return "ih_wagon_length/" + self.subtype.lower()
@@ -3017,7 +2983,7 @@ class BoxCarType2(BoxCarBase):
     ]
 
     model_type_id_root = "box_car_type_2"
-    input_spritesheet_delegate_id_stem = "box_car_type_1"
+    input_spritesheet_delegate_id_root = "box_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3037,9 +3003,6 @@ class BoxCarType2(BoxCarBase):
             "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            input_spritesheet_delegate_id=self.get_input_spritesheet_delegate_id_wagon(
-                self.input_spritesheet_delegate_id_stem
-            ),
             weathered_variants=weathered_variants,
             liveries=self.liveries,
         )

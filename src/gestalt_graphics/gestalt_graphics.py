@@ -30,10 +30,6 @@ class GestaltGraphics(object):
         # optional - rulesets are used to define for different types of vehicle how sprites change depending on formation position
         # ruleset may also be used for buy menu sprite processing
         self.formation_ruleset = kwargs.get("formation_ruleset", None)
-        # optional - (not common) we can delegate to another spritesheet if we're doing e.g. different model variant types, but recolouring the same base sprites
-        self.input_spritesheet_delegate_id = kwargs.get(
-            "input_spritesheet_delegate_id", None
-        )
         # !! we need a way to get a useful (if not perfect) debug vehicle image for checking pantograph positions, and this lets us force useful rows for vehicle and pan
         self.jfdi_pantograph_debug_image_y_offsets = kwargs.get(
             "jfdi_pantograph_debug_image_y_offsets", [0, 0]

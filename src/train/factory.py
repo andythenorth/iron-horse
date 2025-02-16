@@ -415,3 +415,28 @@ class ModelVariantFactory:
         substrings.append(str(model_def.gen) + str(model_def.subtype))
         result = "_".join(substrings)
         return result
+
+    @property
+    def input_spritesheet_name_stem(self):
+        # the input spritesheet name is the same for all variants of the model type
+        # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
+        if getattr(self.model_type_cls, "input_spritesheet_delegate_id_root", None) is not None:
+            input_spritesheet_name_stem = (
+                self.get_wagon_id(self.model_type_cls.input_spritesheet_delegate_id_root, self.model_def)
+            )
+        else:
+            # handle cloned cases by referring to the original consist factory for the path
+            if self.model_def.cloned_from_model_def is not None:
+                # this will get a default consist from the source factory, mapping this consist to the source spritesheet
+                input_spritesheet_name_stem = (
+                    self.model_def.cloned_from_model_def.model_type_id
+                )
+            else:
+                input_spritesheet_name_stem = self.model_type_id
+
+        # the consist id might have the consist's roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
+        # this will have a null effect (which is fine) if the roster_id consist is the same as the module providing the graphics gile
+        input_spritesheet_name_stem = input_spritesheet_name_stem.replace(
+            self.roster_id, self.roster_id_providing_module
+        )
+        return input_spritesheet_name_stem

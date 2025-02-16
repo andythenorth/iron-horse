@@ -42,7 +42,7 @@ class Pipeline(object):
             "graphics",
             # roster_id providing module will always give us the correct filesystem path to the graphics file, which might differ from the current roster_id
             self.consist.roster_id_providing_module,
-            self.consist.input_spritesheet_name_stem + ".png",
+            self.consist.model_variant_factory.input_spritesheet_name_stem + ".png",
         )
 
     @property
@@ -526,16 +526,9 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
 
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
         if self.consist.model_def.cabbage_new_livery_system:
-            if self.consist.model_def.cloned_from_model_def is not None:
-                # SUPER CABBAGE - THIS NEEDS A DELEGATE MODEL TYPE ID, CURRENT APPROACH IS CLUNK AF, AND WILL ONLY WORK FOR ENGINES
-                # LOOK UP input_spritesheet_delegate_id
-                spritesheet_image = Image.open(
-                    os.path.join(self.graphics_output_path, self.consist.model_def.cloned_from_model_def.model_type_id + ".png")
-                )
-            else:
-                spritesheet_image = Image.open(
-                    os.path.join(self.graphics_output_path, self.consist.model_type_id + ".png")
-                )
+            spritesheet_image = Image.open(
+                os.path.join(self.graphics_output_path, self.consist.model_variant_factory.input_spritesheet_name_stem + ".png")
+            )
         else:
             spritesheet_image = Image.open(
                 os.path.join(self.graphics_output_path, self.consist.id + ".png")
