@@ -3017,6 +3017,7 @@ class BoxCarType2(BoxCarBase):
     ]
 
     model_type_id_stem = "box_car_type_2"
+    input_spritesheet_delegate_id_stem = "box_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3037,7 +3038,7 @@ class BoxCarType2(BoxCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             input_spritesheet_delegate_id=self.get_input_spritesheet_delegate_id_wagon(
-                "box_car_type_1"
+                self.input_spritesheet_delegate_id_stem
             ),
             weathered_variants=weathered_variants,
             liveries=self.liveries,
