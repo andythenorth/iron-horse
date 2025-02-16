@@ -83,7 +83,7 @@ class ModelDef:
             # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
             raise Exception(
                 "Don't clone a model def that is itself a clone, it won't work as expected. \nClone the original model def. \nModel def is: "
-                +self.base_id,
+                + self.base_id,
             )
         cloned_model_def = copy.deepcopy(self)
         # clone may need to reference original source
@@ -170,7 +170,56 @@ class UnitDef:
     reverse_sprite_template: bool = False
 
 
-class ModelVariantFactory(object):
+@dataclass
+class CatalogueEntry:
+    model_variant_id: str
+    unit_variant_ids: List[str]
+    unit_numeric_ids: List[int]
+    livery_name: str
+
+
+class Catalogue(list):
+    """
+    CABBAGE - METADATA ABOUT ALL PRODUCED MODEL VARIANTS
+        # all available model variants, with ids, numeric ids etc
+        # ordered by livery index
+    """
+
+    def __init__(self, model_variant_factory):
+        self.model_variant_factory = model_variant_factory
+        if self.model_variant_factory.cabbage_liveries is not None:
+            for livery_counter, livery_name in enumerate(
+                self.model_variant_factory.cabbage_liveries
+            ):
+                model_variant_id = f"{self.model_variant_factory.base_id_resolver()}_mv_{livery_counter}"
+                unit_variant_ids = [
+                    f"{model_variant_id}_unit_{i}"
+                    for i, _ in enumerate(self.model_def.unit_defs)
+                ]
+                # pre-calculated numeric IDs provided for every unit
+                numeric_id_offset = self.model_def.base_numeric_id + (
+                    livery_counter * len(self.model_def.unit_defs)
+                )
+                unit_numeric_ids = [
+                    numeric_id_offset + i
+                    for i, _ in enumerate(self.model_def.unit_defs)
+                ]
+                # note that livery_name is an arbitrary string and might be repeated across model variants
+                catalogue_entry = CatalogueEntry(
+                    model_variant_id=model_variant_id,
+                    unit_variant_ids=unit_variant_ids,
+                    unit_numeric_ids=unit_numeric_ids,
+                    livery_name=livery_name,
+                )
+                self.append(catalogue_entry)
+
+    @property
+    def model_def(self):
+        # just a passthrough for convenience
+        return self.model_variant_factory.model_def
+
+
+class ModelVariantFactory:
     """
     ModelVariantFactory instances:
     - hold a roster_id identifier
@@ -198,61 +247,77 @@ class ModelVariantFactory(object):
             - model_variant.units = [<SteamEngineUnitType>, <SteamEngineTenderUnitType>]
     """
 
-    def __init__(self, model_def):
+    def __init__(self, model_def, roster_id, roster_id_providing_module):
         self.class_name = model_def.class_name
         self.model_def = model_def
-        # used for book-keeping related model_variants
-        self.produced_model_variants = []
-        self.produced_units = []
-
-    def set_roster_ids(self, roster_id, roster_id_providing_module):
         # rosters can optionally init model variants from other rosters
         # store the roster that inited the model variant, and the roster that the model variant module is in the filesystem path for
         # we don't store the roster object directly as it can fail to pickle with multiprocessing
         self.roster_id = roster_id
         self.roster_id_providing_module = roster_id_providing_module
+        # catalogue is a singleton that provides basic metadata for produced model variants
+        self.catalogue = Catalogue(self)
+        # used for book-keeping related model_variants
+        # CABBAGE THIS MIGHT NOT BE NEEDED AT ALL - GO VIA CATALOGUE?
+        # DON'T SEE WHY THE FACTORY INSTANCE NEEDS TO TRACK SPECIFIC OBJECT REFERENCES
+        self.produced_model_variants = []
+        self.produced_units = []
 
-    def produce(self, livery=None, dry_run=False):
-        model_type_cls = getattr(model_type_module, self.class_name)
+    def produce(self, catalogue_index=None, dry_run=False):
 
-        if livery == None:
-            raise BaseException("no livery passed for ModelVariantFactory; model_def is " + str(model_type_cls))
+        if catalogue_index == None:
+            raise BaseException(
+                "no catalogue_index passed for ModelVariantFactory; model_def is "
+                + str(self.model_type_cls)
+            )
 
-        # this needs to be in roster probably, not the factory - produce should produce only one model variant at once
+        catalogue_entry = self.catalogue[catalogue_index]
+
         if self.model_def.cabbage_new_livery_system:
-            if livery == "_default":
-                # CABBAGE special case to allow not caring what livery it is, let the model return the default
-                livery = self.model_def.liveries[0]
 
             # HAX
+            print(catalogue_entry.model_variant_id)
             if len(self.produced_model_variants) == 0:
-                id=self.base_id_resolver(model_type_cls)
+                id = self.base_id_resolver()
             else:
-                id=self.base_id_resolver(model_type_cls) + "_variant_" + str(len(self.produced_model_variants))
+                id = (
+                    self.base_id_resolver()
+                    + "_variant_"
+                    + str(len(self.produced_model_variants))
+                )
 
             # CABBAGE FAILS WITH CLONES - HAX TO RESOLVE, THIS SHOULD ALREADY BE FIGURED OUT BY THE CLONE THOUGH
+            # CHECK if buyable_variant_group_id is already set?  If it is, leave it alone?
             if self.model_def.cloned_from_model_def is not None:
-                self.model_def.buyable_variant_group_id = self.model_def.cloned_from_model_def.base_id
+                self.model_def.buyable_variant_group_id = (
+                    self.model_def.cloned_from_model_def.base_id
+                )
             else:
                 self.model_def.buyable_variant_group_id = self.model_def.base_id
 
-            model_variant = model_type_cls(
+            model_variant = self.model_type_cls(
                 model_variant_factory=self,
                 id=id,
-                cabbage_livery = livery
+                cabbage_livery=catalogue_entry.livery_name,
             )
-            self.model_def.base_numeric_id = self.model_def.base_numeric_id + len(self.model_def.unit_defs)
+            # CABBAGE - CRUDE SHIM TO INCREMENT NUMERIC ID - INSTEAD USE catalogue_entry WHICH HAS THE IDS
+            self.model_def.base_numeric_id = self.model_def.base_numeric_id + len(
+                self.model_def.unit_defs
+            )
 
         else:
-            model_variant = model_type_cls(
+            model_variant = self.model_type_cls(
                 model_variant_factory=self,
-                id=self.base_id_resolver(model_type_cls),
+                id=self.base_id_resolver(),
             )
 
-        #print(model_variant.gestalt_graphics.__class__.__name__)
+        # print(model_variant.gestalt_graphics.__class__.__name__)
 
         if self.roster_id == "pony":
-            if (self.model_def.liveries == None) and (hasattr(model_type_cls, "liveries") == False) and (model_variant.gestalt_graphics.__class__.__name__ != "GestaltGraphicsFormationDependent"):
+            if (self.cabbage_liveries == None) and (
+                model_variant.gestalt_graphics.__class__.__name__
+                != "GestaltGraphicsFormationDependent"
+            ):
                 print("No liveries in model_def or class attrs for:", model_variant.id)
 
         """
@@ -287,21 +352,41 @@ class ModelVariantFactory(object):
             self.produced_model_variants.append(model_variant)
         return model_variant
 
-    def base_id_resolver(self, model_type_cls):
+    @property
+    def model_type_cls(self):
+        # get the class for the model type, uninstantiated
+        return getattr(model_type_module, self.class_name)
+
+    @property
+    def cabbage_liveries(self):
+        # UNFINISHED - NEEDS TO HANDLE cls attr liveries on wagons
+        if self.model_def.liveries is not None:
+            return self.model_def.liveries
+        elif hasattr(self.model_type_cls, "liveries"):
+            return self.model_type_cls.liveries
+        else:
+            return None
+
+    def cabbage_new_livery_system_livery_index(self, model_variant):
+        # THIS IS FOR REVERSE LOOK UP OF LIVERY FROM VARIANT?  IS THIS JUST A MIGRATION SHIM?
+        result = self.produced_model_variants.index(model_variant)
+        return result
+
+    def cabbage_model_variant_is_default(self, model_variant):
+        # DO WE WANT TO LOOK THIS UP? OR SHOULD IT BE STORE DIRECTLY IN MODEL VARIANT AT INIT?
+        return model_variant == self.produced_model_variants[0]
+
+    def base_id_resolver(self):
+        # CABBAGE - I'M NOT SURE ABOUT 'BASE_ID' any more, it's ambiguous, base of what?
         # figures out where a model variant is getting a base id from
         # must be either defined on model_def or in the model variant class attrs
         if self.model_def.base_id is not None:
             return self.model_def.base_id
         else:
             # we assume it's a wagon id
-            return self.get_wagon_id(model_type_cls.model_type_id_stem, self.model_def)
-
-    def cabbage_new_livery_system_livery_index(self, model_variant):
-        result = self.produced_model_variants.index(model_variant)
-        return result
-
-    def cabbage_model_variant_is_default(self, model_variant):
-        return model_variant == self.produced_model_variants[0]
+            return self.get_wagon_id(
+                self.model_type_cls.model_type_id_stem, self.model_def
+            )
 
     def get_wagon_id(self, model_type_id_stem, model_def):
         # auto id creator, used for wagons not locos

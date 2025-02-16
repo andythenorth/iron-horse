@@ -22,7 +22,7 @@ def main(**kwargs):
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA"],
         cabbage_new_livery_system=True,
-        # additional_liveries=["SWOOSH", "SWOOSH", "FREIGHTLINER_GBRF"],
+        # additional_liveries=["SWOOSH", "FREIGHTLINER_GBRF"],
         sprites_complete=True,
     )
 

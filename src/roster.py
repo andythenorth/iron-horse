@@ -368,14 +368,13 @@ class Roster(object):
                 "." + engine_module_name, package_name
             )
             for model_def in engine_module_name.main():
-                model_variant_factory = ModelVariantFactory(model_def)
-                model_variant_factory.set_roster_ids(self.id, roster_id_providing_module)
+                model_variant_factory = ModelVariantFactory(model_def, self.id, roster_id_providing_module)
                 if model_def.cabbage_new_livery_system:
-                    for livery in model_def.liveries:
-                        consist = model_variant_factory.produce(livery=livery)
+                    for catalogue_index, _ in enumerate(model_variant_factory.catalogue):
+                        consist = model_variant_factory.produce(catalogue_index=catalogue_index)
                         self.engine_consists.append(consist)
                 else:
-                    consist = model_variant_factory.produce(livery="_cabbage")
+                    consist = model_variant_factory.produce(catalogue_index="_cabbage")
                     self.engine_consists.append(consist)
 
     def init_wagon_modules(self):
@@ -407,11 +406,8 @@ class Roster(object):
                         "." + wagon_module_name, package_name
                     )
                     for model_def in wagon_module.main():
-                        model_variant_factory = ModelVariantFactory(model_def)
-                        model_variant_factory.set_roster_ids(
-                            self.id, roster_id_providing_module
-                        )
-                        model_variant_factory.produce(livery="_cabbage")
+                        model_variant_factory = ModelVariantFactory(model_def, self.id, roster_id_providing_module)
+                        model_variant_factory.produce(catalogue_index="_cabbage")
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name
