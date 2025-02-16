@@ -1278,10 +1278,10 @@ class TorpedoCarUnit(FreightCarUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # just multiply whatever is set by the init, what could go wrong? :)
         self._symmetry_type = "asymmetric"
 
     @property
     def capacity(self):
         # capacity bonus is solely to support using small stations in Steeltown where space between industries is constrained
+        # just multiply whatever is set by the init, what could go wrong? :)
         return 1.5 * self.get_freight_car_capacity()
