@@ -45,6 +45,7 @@ class ModelTypeBase(object):
         # mandatory, fail if missing
         # SHIM FOR REFACTORING, SHOULD JUST USE catalogue_entry
         if self.cabbage_catalogue_entry is not None:
+            # mv_id can probably just be .id, this is just a refactoring shim?
             self.mv_id = self.cabbage_catalogue_entry.model_variant_id
         self.id = kwargs["id"]
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
