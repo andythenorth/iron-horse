@@ -19,7 +19,8 @@ def main(**kwargs):
         gen=3,
         intro_year_offset=4,  # introduce later than gen epoch by design
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE"],
+        liveries=["VANILLA", "BANGER_BLUE"],
+        cabbage_new_livery_system=True,
         default_livery_extra_docs_examples=[
             ("COLOUR_DARK_GREEN", "COLOUR_DARK_GREEN"),
             ("COLOUR_GREY", "COLOUR_WHITE"),

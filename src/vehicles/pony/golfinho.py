@@ -19,6 +19,8 @@ def main(**kwargs):
         fixed_run_cost_points=20,  # balance against Snapper
         extended_vehicle_life=True,  # extended vehicle life for all this generation of NG eh
         pax_car_capacity_type="railbus_combine_ng_2",  # specific to combined mail + pax model type
+        liveries=["VANILLA"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

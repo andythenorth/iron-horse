@@ -21,7 +21,8 @@ def main(**kwargs):
         extended_vehicle_life=True,
         pantograph_type="z-shaped-double",
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE"],
+        liveries=["VANILLA", "BANGER_BLUE"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

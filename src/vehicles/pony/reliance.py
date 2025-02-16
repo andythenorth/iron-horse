@@ -19,7 +19,8 @@ def main(**kwargs):
         fixed_run_cost_points=140,  # minor cost bonus so it can make money
         gen=1,
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["SWOOSH"],
+        liveries=["VANILLA", "SWOOSH"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

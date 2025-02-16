@@ -319,11 +319,12 @@ class ModelVariantFactory:
         # print(model_variant.gestalt_graphics.__class__.__name__)
 
         if self.roster_id == "pony":
-            if (self.cabbage_liveries == None) and (
-                model_variant.gestalt_graphics.__class__.__name__
-                != "GestaltGraphicsFormationDependent"
-            ):
-                print("No liveries in model_def or class attrs for:", model_variant.id)
+            if len(self.produced_model_variants) == 0:
+                if (self.cabbage_liveries == None) and (
+                    model_variant.gestalt_graphics.__class__.__name__
+                    != "GestaltGraphicsFormationDependent"
+                ):
+                    print("No liveries in model_def or class attrs for:", model_variant.id)
 
         """
         for counter, livery in enumerate(["example", "cabbage_livery"]):

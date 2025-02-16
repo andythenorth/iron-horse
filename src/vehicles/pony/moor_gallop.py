@@ -20,13 +20,14 @@ def main(**kwargs):
         pantograph_type="diamond-double",
         intro_year_offset=5,  # introduce later than gen epoch by design
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE", "DUTCH"],
+        liveries=["VANILLA", "BANGER_BLUE", "DUTCH"],
         default_livery_extra_docs_examples=[
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
             ("COLOUR_DARK_GREEN", "COLOUR_WHITE"),
             ("COLOUR_BLUE", "COLOUR_BLUE"),
         ],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

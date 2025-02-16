@@ -21,7 +21,8 @@ def main(**kwargs):
         intro_year_offset=5,  # introduce later than gen epoch by design
         fixed_run_cost_points=180,  # substantial cost bonus for balance against same-era steam engines
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE"],
+        liveries=["VANILLA", "BANGER_BLUE"],
+        cabbage_new_livery_system=True,
         default_livery_extra_docs_examples=[
             ("COLOUR_PINK", "COLOUR_WHITE"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),

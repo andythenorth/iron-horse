@@ -18,7 +18,7 @@ def main(**kwargs):
         intro_year_offset=6,  # earlier than anything IRL, but we want 125 mph capability so eh, there we go
         extended_vehicle_life=True,  # because long time until replaced
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["SWOOSH", "DB_SCHENKER", "BANGER_BLUE"],
+        liveries=["VANILLA", "SWOOSH", "DB_SCHENKER", "BANGER_BLUE"],
         default_livery_extra_docs_examples=[
             ("COLOUR_RED", "COLOUR_RED"),
             ("COLOUR_PINK", "COLOUR_WHITE"),
@@ -28,6 +28,7 @@ def main(**kwargs):
             ("COLOUR_DARK_BLUE", "COLOUR_BLUE"),
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
         ],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

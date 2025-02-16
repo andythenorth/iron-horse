@@ -18,7 +18,8 @@ def main(**kwargs):
         fixed_run_cost_points=245,  # cost malus, early heavy freight engines are too cheap to run relative to smaller engines
         gen=2,
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["SWOOSH", "BANGER_BLUE", "FREIGHT_BLACK"],
+        liveries=["VANILLA", "SWOOSH", "BANGER_BLUE", "FREIGHT_BLACK"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

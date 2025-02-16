@@ -1534,6 +1534,7 @@ class AutoCoachCombineEngine(EngineModelTypeBase):
         self.fixed_buy_cost_points = 6
         # Graphics configuration
         # inserts the default liveries for docs examples
+        # CABBAGE liveries - probably all gestalts need updated?
         liveries = self.roster.get_liveries_by_name([])
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_autocoach.pynml",

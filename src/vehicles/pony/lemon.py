@@ -18,7 +18,8 @@ def main(**kwargs):
         tractive_effort_coefficient=0.29,
         gen=3,
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["BANGER_BLUE", "FREIGHT_BLACK"],
+        liveries=["VANILLA", "BANGER_BLUE", "FREIGHT_BLACK"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

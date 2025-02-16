@@ -20,7 +20,8 @@ def main(**kwargs):
         intro_year_offset=-5,  # introduce early eh
         random_reverse=False,
         # note that livery names are metadata only and can repeat for different spriterows
-        # additional_liveries=["INDUSTRIAL_YELLOW"],
+        liveries=["VANILLA"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

@@ -20,7 +20,8 @@ def main(**kwargs):
         gen=6,
         intro_year_offset=-14,  # introduce earlier than gen epoch by design, similar to Brenner
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["SWOOSH", "WHITE_STRIPE"],
+        liveries=["VANILLA", "SWOOSH", "WHITE_STRIPE"],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

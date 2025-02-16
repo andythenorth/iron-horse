@@ -23,13 +23,15 @@ def main(**kwargs):
         pantograph_type="z-shaped-double",
         caboose_family="railfreight_2",
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=[
+        liveries=[
+            "VANILLA",
             "RAILFREIGHT_RED_STRIPE",
             "RAILFREIGHT_TRIPLE_GREY",
             "RAILFREIGHT_TRIPLE_GREY_COAL",
             "DB_SCHENKER",
             "EWS",
         ],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

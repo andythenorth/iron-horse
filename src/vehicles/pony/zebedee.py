@@ -21,7 +21,8 @@ def main(**kwargs):
         intro_year_offset=12,  # introduce much later than gen epoch by design
         extended_vehicle_life=True,
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=[
+        liveries=[
+            "VANILLA",
             "WHITE_STRIPE",
             "RES",
             "RAILFREIGHT_TRIPLE_GREY",
@@ -29,6 +30,7 @@ def main(**kwargs):
             "LOADHAUL",
         ],
         default_livery_extra_docs_examples=[("COLOUR_BLUE", "COLOUR_WHITE")],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

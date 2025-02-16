@@ -21,11 +21,12 @@ def main(**kwargs):
         extended_vehicle_life=True,
         # intercity, railfreight?
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=["SWOOSH", "FREIGHTLINER_GBRF", "RES"],
+        liveries=["VANILLA", "SWOOSH", "FREIGHTLINER_GBRF", "RES"],
         default_livery_extra_docs_examples=[
             ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
         ],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

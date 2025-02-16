@@ -21,7 +21,8 @@ def main(**kwargs):
         pantograph_type="z-shaped-double",
         # railfreight grey, intercity, GNER?
         # note that livery names are metadata only and can repeat for different spriterows
-        additional_liveries=[
+        liveries=[
+            "VANILLA",
             "BANGER_BLUE",
             "FREIGHTLINER_GBRF",
             "RES",
@@ -35,6 +36,7 @@ def main(**kwargs):
             ("COLOUR_PINK", "COLOUR_DARK_BLUE"),
             ("COLOUR_WHITE", "COLOUR_RED"),
         ],
+        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

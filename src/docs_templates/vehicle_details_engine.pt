@@ -264,7 +264,7 @@
 
                 <hr />
                 <h3 id="tech-tree">Tech Tree</h3>
-                <table class="vehicle-facts">
+                <table class="vehicle-facts" tal:replace="nothing"><!--! CABBAGE DROPPED THIS WHILE REFACTORING, PERFORMANCE ISSUES -->
                     <tbody>
                         <tr>
                             <th style="text-align:center;">Previous</th>
