@@ -397,15 +397,16 @@ class ModelVariantFactory:
             )
 
     def get_wagon_id(self, model_type_id_root, model_def):
-        # auto id creator, used for wagons not locos
+        # auto id creator, used for wagons not engines
         # handled by model variant factory not model variant, better this way
         # special case NG - extend this for other track_types as needed
         # 'normal' rail and 'elrail' doesn't require an id modifier
-        base_id = model_type_id_root
         if model_def.base_track_type_name == "NG":
             base_id = model_type_id_root + "_ng"
         elif model_def.base_track_type_name == "METRO":
             base_id = model_type_id_root + "_metro"
+        else:
+            base_id = model_type_id_root
 
         substrings = []
         # prepend cab_id if present, used for e.g. railcar trailers, HST coaches etc where the wagon matches a specific 'cab' engine
