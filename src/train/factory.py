@@ -311,6 +311,7 @@ class ModelVariantFactory:
             model_variant = self.model_type_cls(
                 model_variant_factory=self,
                 id=self.model_type_id,
+                catalogue_entry=None,
             )
 
         # print(model_variant.gestalt_graphics.__class__.__name__)
@@ -375,8 +376,11 @@ class ModelVariantFactory:
         return result
 
     def cabbage_model_variant_is_default(self, model_variant):
-        # DO WE WANT TO LOOK THIS UP? OR SHOULD IT BE STORE DIRECTLY IN MODEL VARIANT AT INIT?
-        return model_variant == self.produced_model_variants[0]
+        if getattr(model_variant, "catalogue_entry", None) is None:
+            # CABBAGE - shim conditional handles possibility of catalogue entry being None whilst refactoring, remove this later
+            return model_variant == self.produced_model_variants[0]
+        else:
+            return model_variant.catalogue_entry == self.catalogue[0]
 
     @property
     def model_type_id(self):

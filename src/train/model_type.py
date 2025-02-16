@@ -41,7 +41,7 @@ class ModelTypeBase(object):
         # mandatory, fail if missing
         self.model_variant_factory = kwargs["model_variant_factory"]
         # SHIM FOR REFACTORING - should just be catalogue_entry when done
-        self.cabbage_catalogue_entry = kwargs.get("catalogue_entry", None)
+        self.cabbage_catalogue_entry = kwargs["catalogue_entry"]
         # mandatory, fail if missing
         # SHIM FOR REFACTORING, SHOULD JUST USE catalogue_entry
         if self.cabbage_catalogue_entry is not None:
