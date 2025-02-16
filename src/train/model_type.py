@@ -451,12 +451,6 @@ class ModelTypeBase(object):
             return []
 
     @property
-    def docs_image_spriterow(self):
-        # just a passthrough for convenience
-        # 0 indexed spriterows, position in generated spritesheet, used by caboose to get a docs image for 4th gen, not 1st
-        return self.model_def.docs_image_spriterow
-
-    @property
     def tilt_bonus(self):
         # just a passthrough for convenience
         return self.model_def.tilt_bonus

@@ -153,9 +153,12 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
 
     docs_image_variants = []
 
+    # !! CABBAGE - LOOKS LIKE FOR PRACTICALITY, THIS WILL NEED A CONSIST IN SCOPE AT ALL TIME?
+    # !! we can't just infer everything from model_variant_factory, some things need instantiated model type class in scope
     for variant in doc_helper.get_docs_livery_variants(consist):
-        if consist.docs_image_spriterow is not None:
-            y_offset = 30 * consist.docs_image_spriterow
+        if model_variant_factory.model_def.docs_image_spriterow is not None:
+            y_offset = 30 * model_variant_factory.model_def.docs_image_spriterow
+        # CABBAGE requires_custom_buy_menu_sprite could be folded into factory
         elif consist.requires_custom_buy_menu_sprite:
             y_offset = 30 * variant["buyable_variant"].relative_spriterow_num
         else:

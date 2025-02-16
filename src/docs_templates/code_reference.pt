@@ -183,13 +183,13 @@
                             <th>Title</th>
                         </thead>
                         <tbody>
-                            <tal:consists repeat="model_type sorted(consists, key=doc_helper.get_base_numeric_id)">
+                            <tal:model_types repeat="model_type sorted(consists, key=doc_helper.get_base_numeric_id)">
                                 <tr>
                                     <td>${model_type.base_numeric_id}</td>
                                     <td>${model_type.id}</td>
                                     <td>${doc_helper.unpack_name_string(model_type)}</td>
                                 </tr>
-                            </tal:consists>
+                            </tal:model_types>
                         </tbody>
                     </table>
                 </section>
