@@ -43,11 +43,13 @@ class ModelTypeBase(object):
         # SHIM FOR REFACTORING - should just be catalogue_entry when done
         self.cabbage_catalogue_entry = kwargs["catalogue_entry"]
         # mandatory, fail if missing
+        self.id = kwargs["id"]
         # SHIM FOR REFACTORING, SHOULD JUST USE catalogue_entry
         if self.cabbage_catalogue_entry is not None:
             # mv_id can probably just be .id, this is just a refactoring shim?
-            self.mv_id = self.cabbage_catalogue_entry.model_variant_id
-        self.id = kwargs["id"]
+            self.cabbage_mv_id = self.cabbage_catalogue_entry.model_variant_id
+        else:
+            self.cabbage_mv_id = self.id
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         self.name = self.model_def.name
         self.base_numeric_id = self.model_def.base_numeric_id
@@ -223,7 +225,7 @@ class ModelTypeBase(object):
             return None
 
     def get_name_parts(self, context):
-        default_name = "STR_NAME_" + self.id.upper()
+        default_name = "STR_NAME_" + self.model_type_id.upper()
         if context == "purchase_level_1":
             result = [default_name]
         else:
@@ -399,8 +401,8 @@ class ModelTypeBase(object):
                 # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
                 # would require quite a bit of refactoring though eh
                 assert self.wagons_add_power == False, (
-                    "%s consist has both engine_varies_power_by_power_source and power_by_power_source, which conflict"
-                    % self.id
+                    "%s has both engine_varies_power_by_power_source and power_by_power_source, which conflict"
+                    % self.model_type_id
                 )
                 return True
         else:
@@ -509,7 +511,7 @@ class ModelTypeBase(object):
     def intro_year(self):
         # automatic intro_year, but can override by passing in kwargs for consist
         assert self.gen != None, (
-            "%s consist has no gen value set, which is incorrect" % self.id
+            "%s has no gen value set, which is incorrect" % self.model_type_id
         )
         result = self.roster.intro_years[self.base_track_type_name][self.gen - 1]
         if self.intro_year_offset is not None:
@@ -555,7 +557,8 @@ class ModelTypeBase(object):
         # ocasionally we need to merge two branches of the subrole, in this case set replacement consist id on the model_def
         if self.model_def.replacement_model_model_type_id is not None:
             for consist in self.roster.engine_consists:
-                if consist.id == self.model_def.replacement_model_model_type_id:
+                # CABBAGE model_type_id will over-detect here as multiple variants have the same model_type_id
+                if consist.model_type_id == self.model_def.replacement_model_model_type_id:
                     return consist
             # if we don't return a valid result, that's an error, probably a broken replacement id
             raise Exception(
@@ -592,7 +595,8 @@ class ModelTypeBase(object):
         result = []
         for consist in self.roster.engine_consists:
             if consist.replacement_consist is not None:
-                if consist.replacement_consist.id == self.id:
+                # CABBAGE - THIS WILL OVER-DETECT as model_type_id is used by more than one model variant
+                if consist.replacement_consist.model_type_id == self.model_type_id:
                     result.append(consist)
         return result
 
@@ -620,7 +624,7 @@ class ModelTypeBase(object):
     def cab_consist(self):
         # fetch the consist for the cab engine
         for engine_consist in self.roster.engine_consists:
-            if engine_consist.id == self.cab_id:
+            if engine_consist.model_type_id == self.cab_id:
                 return engine_consist
 
     @property
@@ -632,7 +636,7 @@ class ModelTypeBase(object):
             self.roster.wagon_consists,
         ]:
             for consist in consists:
-                if getattr(consist, "cab_id", None) == self.id:
+                if getattr(consist, "cab_id", None) == self.model_type_id:
                     result.append(consist)
         return result
 
@@ -702,7 +706,7 @@ class ModelTypeBase(object):
         if self.lgv_capable:
             modifier = "A"
         elif self.requires_high_clearance:
-            print(self.id, " has requires_high_clearance set - needs cleared")
+            print(self.model_type_id, " has requires_high_clearance set - needs cleared")
             modifier = "B"
         result = result[0:3] + modifier
         return result
@@ -759,7 +763,7 @@ class ModelTypeBase(object):
         else:
             raise BaseException(
                 "no valid electrification type found for "
-                + self.id
+                + self.model_type_id
                 + " - is it an electrified vehicle?"
             )
 
@@ -792,7 +796,7 @@ class ModelTypeBase(object):
             else:
                 raise BaseException(
                     "no valid power source found when fetching default power for "
-                    + self.id
+                    + self.model_type_id
                     + " - possibly power source check needs extending?"
                 )
 
@@ -839,7 +843,7 @@ class ModelTypeBase(object):
     def speed_on_lgv(self):
         if not self.lgv_capable:
             raise Exception(
-                self.id, "is not lgv capable, but is attempting to set speed on lgv"
+                self.model_type_id, "is not lgv capable, but is attempting to set speed on lgv"
             )
 
         # mildly JDFI hacky
@@ -976,7 +980,7 @@ class ModelTypeBase(object):
                     self.model_def.cloned_from_model_def.model_type_id
                 )
             else:
-                input_spritesheet_name_stem = self.id
+                input_spritesheet_name_stem = self.model_type_id
 
         # the consist id might have the consist's roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
         # this will have a null effect (which is fine) if the roster_id consist is the same as the module providing the graphics gile
@@ -1032,7 +1036,7 @@ class ModelTypeBase(object):
             # guard against the decor spriterow not being updated when liveries are added
             if self.decor_spriterow_num <= len(self.gestalt_graphics.liveries) - 1:
                 raise BaseException(
-                    self.id
+                    self.model_type_id
                     + " has decor_spriterow_num "
                     + str(self.decor_spriterow_num)
                     + " and also "
@@ -1075,7 +1079,7 @@ class ModelTypeBase(object):
             result = result + 1
         # OpenTTD has a limited number of layers in the sprite stack, we can't exceed them
         if result > 8:
-            raise Exception("Too many sprite layers ", result, " defined for ", self.id)
+            raise Exception("Too many sprite layers ", result, " defined for ", self.model_type_id)
         return result
 
     def get_nml_for_spriteset_template(self, y_offset):
@@ -1160,7 +1164,7 @@ class ModelTypeBase(object):
         extension = result[0 : 8 - len(result)]
         if len(extension) == 0:
             raise BaseException(
-                self.id
+                self.cabbage_mv_id
                 + " get_candidate_liveries_for_randomised_strategy: extension list too short "
                 + str(extension)
                 + "; \n this is probably because we're slicing 8, and have more than 8 colours defined; which will fail;"
@@ -1184,8 +1188,7 @@ class ModelTypeBase(object):
                 result.append("STR_POWER_BY_POWER_SOURCE_THREE_SOURCES")
             else:
                 raise BaseException(
-                    "consist "
-                    + self.id
+                    + self.model_type_id
                     + " defines unsupported number of power sources"
                 )
         # optional string if consist is lgv-capable
@@ -1218,7 +1221,7 @@ class ModelTypeBase(object):
         # should never be reached, extend this if we do
         raise Exception(
             "Unsupported number of buy menu strings for "
-            + self.id
+            + self.cabbage_mv_id
             + ": "
             + str(len(result))
         )
@@ -1295,7 +1298,7 @@ class ModelTypeBase(object):
         if self.speed is not None:
             if self.speed > 200:
                 utils.echo_message(
-                    "ModelType " + self.id + " has speed > 200, which is too much"
+                    self.model_type_id + " has speed > 200, which is too much"
                 )
 
     def assert_power(self):
@@ -1304,7 +1307,7 @@ class ModelTypeBase(object):
         if self.speed is not None:
             if self.power > 10000:
                 utils.echo_message(
-                    "ModelType " + self.id + " has power > 10000hp, which is too much"
+                    self.model_type_id + " has power > 10000hp, which is too much"
                 )
 
     def assert_weight(self):
@@ -1313,19 +1316,19 @@ class ModelTypeBase(object):
         if self.weight is not None:
             if self.weight > 500:
                 utils.echo_message(
-                    "ModelType " + self.id + " has weight > 500t, which is too much"
+                    self.model_type_id + " has weight > 500t, which is too much"
                 )
 
     def assert_description_foamer_facts(self):
         # if these are too noisy, comment them out temporarily
         if self.power > 0:
             if len(self.model_def.description) == 0:
-                utils.echo_message("ModelType " + self.id + " has no description")
+                utils.echo_message(self.model_type_id + " has no description")
             if len(self.model_def.foamer_facts) == 0:
-                utils.echo_message("ModelType " + self.id + " has no foamer_facts")
+                utils.echo_message(self.model_type_id + " has no foamer_facts")
             if "." in self.model_def.foamer_facts:
                 utils.echo_message(
-                    "ModelType " + self.id + " foamer_facts has a '.' in it."
+                    self.model_type_id + " foamer_facts has a '.' in it."
                 )
 
     def render(self, templates, graphics_path):
@@ -1854,7 +1857,7 @@ class MailEngineRailcar(MailEngineBase):
         if self._buyable_variant_group_id is not None:
             family_name = self._buyable_variant_group_id
         else:
-            family_name = self.id
+            family_name = self.model_type_id
         return "vehicle_family/" + family_name
 
 
@@ -1899,7 +1902,7 @@ class MailEngineExpressRailcar(MailEngineBase):
         if self._buyable_variant_group_id is not None:
             family_name = self._buyable_variant_group_id
         else:
-            family_name = self.id
+            family_name = self.model_type_id
         return "vehicle_family/" + family_name
 
     @property
@@ -2052,7 +2055,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
         if self._buyable_variant_group_id is not None:
             family_name = self._buyable_variant_group_id
         else:
-            family_name = self.id
+            family_name = self.model_type_id
         return "vehicle_family/" + family_name
 
     @property
@@ -2143,10 +2146,11 @@ class PassengerEngineRailbus(PassengerEngineBase):
 
     @property
     def vehicle_family_badge(self):
+        # CABBAGE - CAN THESE JUST USE SUPER().foo?
         if self._buyable_variant_group_id is not None:
             family_name = self._buyable_variant_group_id
         else:
-            family_name = self.id
+            family_name = self.model_type_id
         return "vehicle_family/" + family_name
 
     @property
@@ -2199,7 +2203,7 @@ class PassengerEngineRailcar(PassengerEngineBase):
 
     @property
     def vehicle_family_badge(self):
-        return "vehicle_family/" + self.id
+        return "vehicle_family/" + self.model_type_id
 
 
 class SnowploughEngine(EngineModelTypeBase):
@@ -2281,7 +2285,7 @@ class TGVCabEngine(EngineModelTypeBase):
 
     @property
     def buy_menu_distributed_power_name_substring(self):
-        return "STR_NAME_" + self.id.upper()
+        return "STR_NAME_" + self.model_type_id.upper()
 
     @property
     def buy_menu_distributed_power_hp_value(self):
@@ -2309,7 +2313,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.cab_id = self.id.split("_middle")[0] + "_cab"
+        self.cab_id = self.model_type_id.split("_middle")[0] + "_cab"
         self._buyable_variant_group_id = self.cab_id
         self.wagons_add_power = True
         self.buy_menu_additional_text_hint_wagons_add_power = True
@@ -2591,7 +2595,7 @@ class CarModelTypeBase(ModelTypeBase):
                         "STR_" + self.use_named_buyable_variant_group.upper(),
                     ]
                 except:
-                    raise BaseException(self.id)
+                    raise BaseException(self.cabbage_mv_id)
             # some dubious special-casing to make wagon names plural if there are variants, and a named variant group is *not* already used
             # !! this might fail for composite groups where the group has multiple variants from multiple model types, but this specific model has only one variant
             elif len(self.buyable_variants) > 1:
@@ -2603,8 +2607,8 @@ class CarModelTypeBase(ModelTypeBase):
                 result = None
         else:
             raise BaseException(
-                "get_name_parts called for wagon consist "
-                + self.id
+                "get_name_parts called for wagon "
+                + self.cabbage_mv_id
                 + " with no context provided"
             )
         return result
@@ -9266,7 +9270,7 @@ class BuyableVariant(object):
                 return unit_variant
         # if not found, fail
         raise BaseException(
-            "unit_variant not found for " + self + " for consist " + self.consist.id
+            "unit_variant not found for " + self + " for consist " + self.consist.cabbage_mv_id
         )
 
     @property
@@ -9334,7 +9338,7 @@ class BuyableVariant(object):
             if self.consist.use_named_buyable_variant_group is not None:
                 group_id_base = self.consist.use_named_buyable_variant_group
             else:
-                group_id_base = self.consist.id
+                group_id_base = self.consist.model_type_id
             if not self.uses_random_livery:
                 # we nest buyable variants with fixed colours into sub-groups
                 fixed_mixed_suffix = "fixed"
@@ -9346,7 +9350,7 @@ class BuyableVariant(object):
             )
         else:
             # assume group is composed from self (for simple case of variant liveries etc)
-            id = self.consist.id
+            id = self.consist.cabbage_mv_id
         return id
 
 

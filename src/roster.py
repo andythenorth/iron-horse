@@ -581,7 +581,7 @@ class Roster(object):
                     lang_strings[node_name] = node_value["base"]
 
         for consist in self.consists_in_buy_menu_order:
-            if consist.name is not None:
+            if consist.name is not None and consist.model_variant_factory.cabbage_model_variant_is_default(consist):
                 lang_strings["STR_NAME_" + consist.id.upper()] = consist.name
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}
