@@ -191,7 +191,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
             # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
             pantographs_spritesheet = Image.open(
                 os.path.join(
-                    generated_graphics_path, consist.id + "_pantographs_up.png"
+                    generated_graphics_path, consist.model_type_id + "_pantographs_up.png"
                 )
             )
             pan_crop_width = consist.buy_menu_width

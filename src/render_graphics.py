@@ -129,9 +129,11 @@ def main():
     # this enables some consists to depend on generated sprites from other consists
     consists_in_priority_groups = {1: [], 2: []}
     for consist in consists:
-        consists_in_priority_groups[
-            consist.gestalt_graphics.processing_priority
-        ].append(consist)
+        # CABBAGE JFDI FILTER - THIS NEEDS HANDLING DIFFERENTLY
+        if consist.model_variant_factory.cabbage_model_variant_is_default(consist):
+            consists_in_priority_groups[
+                consist.gestalt_graphics.processing_priority
+            ].append(consist)
 
     if use_multiprocessing == False:
         for spritelayer_cargo_set_pair in spritelayer_cargo_set_pairs:
