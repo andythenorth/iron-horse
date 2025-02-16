@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        base_id="tyrconnell",
+        model_type_id="tyrconnell",
         base_numeric_id=930,
         name="4-8-0 Tyrconnell",
         subrole="universal",
@@ -25,7 +25,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit", weight=45, vehicle_length=5, spriterow_num=0
+        class_name="SteamEnginePoweredUnit",
+        weight=45,
+        vehicle_length=5,
+        spriterow_num=0,
     )
 
     model_def.add_unit_def(

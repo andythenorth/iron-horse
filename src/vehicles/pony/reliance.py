@@ -6,12 +6,12 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        base_id="reliance",
+        model_type_id="reliance",
         base_numeric_id=4890,
         name="2-4-0 Reliance",
         subrole="express",
         subrole_child_branch_num=-1,
-        replacement_model_base_id="carrack",  # this Joker ends with Carrack
+        replacement_model_model_type_id="carrack",  # this Joker ends with Carrack
         power_by_power_source={
             "STEAM": 950,
         },
@@ -24,7 +24,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit", weight=56, vehicle_length=5, spriterow_num=0
+        class_name="SteamEnginePoweredUnit",
+        weight=56,
+        vehicle_length=5,
+        spriterow_num=0,
     )
 
     model_def.add_unit_def(

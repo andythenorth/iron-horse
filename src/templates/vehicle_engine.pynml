@@ -2,13 +2,13 @@
      <!--! this is the default template for trains that don't supply their own template -->
 
     <!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
-    spriteset(${vehicle.id}_ss, "${graphics_path}${consist.model_def.base_id}.png") {
+    spriteset(${vehicle.id}_ss, "${graphics_path}${consist.model_type_id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.spriterow_num * len(consist.model_def.liveries) * 30) + (consist.model_variant_factory.cabbage_new_livery_system_livery_index(consist) * 30))}
     }
 
     <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
         <!--! optional decor sprites - as of Mar 2023 this is only intended for snowploughs on single units, and won't handle articulated vehicles  -->
-        spriteset(${vehicle.id}_ss_decor, "${graphics_path}${consist.model_def.base_id}.png") {
+        spriteset(${vehicle.id}_ss_decor, "${graphics_path}${consist.model_type_id}.png") {
             ${vehicle.get_spriteset_template_name('unreversed', 10 + (consist.decor_spriterow_num * 30))}
         }
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_decor, random_bits_engine_show_decor()) {
@@ -20,7 +20,7 @@
     <tal:pantographs condition="consist.pantograph_type is not None">
         <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
         <tal:pantographs repeat="pantograph_state ['down', 'up']">
-            spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.model_def.base_id}_pantographs_${pantograph_state}.png") {
+            spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.model_type_id}_pantographs_${pantograph_state}.png") {
                 ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.spriterow_num * 30))}
             }
         </tal:pantographs>
@@ -38,20 +38,20 @@
     }
 
     // buy menu graphics chain
-    spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_def.base_id}.png") {
+    spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_type_id}.png") {
         ${consist.get_nml_for_spriteset_template(y_offset=consist.model_variant_factory.cabbage_new_livery_system_livery_index(consist) * 30)}
     }
 
     <tal:conditional_pantographs condition="consist.pantograph_type is not None">
         <!--! purchase sprites for case where pantograph layer is needed -->
-        spriteset(${vehicle.id}_ss_pantographs_purchase, "${graphics_path}${consist.model_def.base_id}_pantographs_down.png") {
+        spriteset(${vehicle.id}_ss_pantographs_purchase, "${graphics_path}${consist.model_type_id}_pantographs_down.png") {
             ${consist.get_nml_for_spriteset_template(y_offset=0)}
         }
     </tal:conditional_pantographs>
 
     <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
         <!--! purchase sprites for case where decor layer is needed -->
-        spriteset(${vehicle.id}_ss_decor_purchase, "${graphics_path}${consist.model_def.base_id}.png") {
+        spriteset(${vehicle.id}_ss_decor_purchase, "${graphics_path}${consist.model_type_id}.png") {
             ${consist.get_nml_for_spriteset_template(y_offset=30 * consist.decor_spriterow_num)}
         }
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase_decor, vehicle_type_id) {
@@ -132,7 +132,7 @@
 
     <!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
     <tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
-        spriteset(${vehicle.id}_ss_${repeat.livery.index}, "${graphics_path}${consist.model_def.base_id}.png") {
+        spriteset(${vehicle.id}_ss_${repeat.livery.index}, "${graphics_path}${consist.model_type_id}.png") {
             ${vehicle.get_spriteset_template_name('unreversed', 10 + (repeat.livery.index * 30) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 30))}
         }
     </tal:liveries>
@@ -146,7 +146,7 @@
 
     <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
         <!--! optional decor sprites - as of Mar 2023 this is only intended for snowploughs on single units, and won't handle articulated vehicles  -->
-        spriteset(${vehicle.id}_ss_decor, "${graphics_path}${consist.model_def.base_id}.png") {
+        spriteset(${vehicle.id}_ss_decor, "${graphics_path}${consist.model_type_id}.png") {
             ${vehicle.get_spriteset_template_name('unreversed', 10 + (consist.decor_spriterow_num * 30))}
         }
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_decor, random_bits_engine_show_decor()) {
@@ -158,7 +158,7 @@
     <tal:pantographs condition="consist.pantograph_type is not None">
         <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
         <tal:pantographs repeat="pantograph_state ['down', 'up']">
-            spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.model_def.base_id}_pantographs_${pantograph_state}.png") {
+            spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.model_type_id}_pantographs_${pantograph_state}.png") {
                 ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.spriterow_num * 30))}
             }
         </tal:pantographs>
@@ -178,7 +178,7 @@
     // buy menu graphics chain
     <!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
     <tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
-    spriteset(${vehicle.id}_ss_vehicle_purchase_${repeat.livery.index}, "${graphics_path}${consist.model_def.base_id}.png") {
+    spriteset(${vehicle.id}_ss_vehicle_purchase_${repeat.livery.index}, "${graphics_path}${consist.model_type_id}.png") {
         ${consist.get_nml_for_spriteset_template(y_offset=repeat.livery.index * 30)}
     }
     </tal:liveries>
@@ -192,14 +192,14 @@
 
     <tal:conditional_pantographs condition="consist.pantograph_type is not None">
         <!--! purchase sprites for case where pantograph layer is needed -->
-        spriteset(${vehicle.id}_ss_pantographs_purchase, "${graphics_path}${consist.model_def.base_id}_pantographs_down.png") {
+        spriteset(${vehicle.id}_ss_pantographs_purchase, "${graphics_path}${consist.model_type_id}_pantographs_down.png") {
             ${consist.get_nml_for_spriteset_template(y_offset=0)}
         }
     </tal:conditional_pantographs>
 
     <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
         <!--! purchase sprites for case where decor layer is needed -->
-        spriteset(${vehicle.id}_ss_decor_purchase, "${graphics_path}${consist.model_def.base_id}.png") {
+        spriteset(${vehicle.id}_ss_decor_purchase, "${graphics_path}${consist.model_type_id}.png") {
             ${consist.get_nml_for_spriteset_template(y_offset=30 * consist.decor_spriterow_num)}
         }
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase_decor, vehicle_type_id) {

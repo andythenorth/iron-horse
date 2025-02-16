@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        base_id="lark",
+        model_type_id="lark",
         base_numeric_id=20340,
         name="4-4-2 Lark",
         subrole="branch_express",
@@ -24,7 +24,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit", weight=35, vehicle_length=6, spriterow_num=0
+        class_name="SteamEnginePoweredUnit",
+        weight=35,
+        vehicle_length=6,
+        spriterow_num=0,
     )
 
     model_def.define_description(

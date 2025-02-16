@@ -14,7 +14,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="4_axle_solid_express_24px")
+    model_def.add_unit_def(
+        class_name="ExpressCarUnit", chassis="4_axle_solid_express_24px"
+    )
 
     result.append(model_def)
 
@@ -26,7 +28,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="4_axle_solid_express_32px")
+    model_def.add_unit_def(
+        class_name="ExpressCarUnit", chassis="4_axle_solid_express_32px"
+    )
 
     result.append(model_def)
 
@@ -38,7 +42,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="4_axle_solid_express_24px")
+    model_def.add_unit_def(
+        class_name="ExpressCarUnit", chassis="4_axle_solid_express_24px"
+    )
 
     result.append(model_def)
 
@@ -50,7 +56,9 @@ def main(**kwargs):
         sprites_complete=True,
     )
 
-    model_def.add_unit_def(class_name="ExpressCarUnit", chassis="4_axle_solid_express_32px")
+    model_def.add_unit_def(
+        class_name="ExpressCarUnit", chassis="4_axle_solid_express_32px"
+    )
 
     result.append(model_def)
 

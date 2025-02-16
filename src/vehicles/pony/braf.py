@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        base_id="braf",
+        model_type_id="braf",
         base_numeric_id=0,
         name="2-6-0 Braf",  # Welsh for "fine, nice, pleasant" https://omniglot.com/language/weather/welsh.htm
         subrole="express",
@@ -24,7 +24,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit", weight=65, vehicle_length=5, spriterow_num=0
+        class_name="SteamEnginePoweredUnit",
+        weight=65,
+        vehicle_length=5,
+        spriterow_num=0,
     )
 
     model_def.add_unit_def(

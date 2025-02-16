@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        base_id="dreadnought",
+        model_type_id="dreadnought",
         base_numeric_id=16510,
         name="Dreadnought",
         subrole="super_heavy_express",
@@ -16,7 +16,7 @@ def main(**kwargs):
         },
         random_reverse=False,  # Dreadnought has asymmetric logo pixels that don't look great when running reversed
         gen=5,
-        replacement_model_base_id="defiant",
+        replacement_model_model_type_id="defiant",
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE"],
         default_livery_extra_docs_examples=[

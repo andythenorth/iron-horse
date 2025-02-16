@@ -377,9 +377,9 @@ class DocHelper(object):
                 role_string_name = badge_manager.get_badge_by_label("role/" + role).name
                 return self.clean_role_string(self.lang_strings[role_string_name])
 
-    def get_replaced_by_name(self, replacement_model_base_id, consists):
+    def get_replaced_by_name(self, replacement_model_model_type_id, consists):
         for consist in consists:
-            if consist.id == replacement_model_base_id:
+            if consist.id == replacement_model_model_type_id:
                 return self.unpack_name_string(consist)
 
     def consist_has_direct_replacment(self, consist):

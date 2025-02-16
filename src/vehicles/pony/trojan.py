@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        base_id="trojan",
+        model_type_id="trojan",
         base_numeric_id=21450,
         name="Trojan",
         subrole="freight",
@@ -20,7 +20,7 @@ def main(**kwargs):
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "INDUSTRIAL_YELLOW"],
         cabbage_new_livery_system=True,
-   sprites_complete=True,
+        sprites_complete=True,
     )
 
     model_def.add_unit_def(

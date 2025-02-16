@@ -139,7 +139,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
 
     if consist.model_def.cabbage_new_livery_system:
         vehicle_spritesheet = Image.open(
-            os.path.join(generated_graphics_path, consist.model_def.base_id + ".png")
+            os.path.join(generated_graphics_path, consist.model_type_id + ".png")
         )
     else:
         vehicle_spritesheet = Image.open(

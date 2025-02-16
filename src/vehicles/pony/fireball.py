@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        base_id="fireball",
+        model_type_id="fireball",
         base_numeric_id=23990,
         name="0-6-0 Fireball",
         subrole="gronk",
@@ -30,7 +30,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit", weight=35, vehicle_length=4, spriterow_num=0
+        class_name="SteamEnginePoweredUnit",
+        weight=35,
+        vehicle_length=4,
+        spriterow_num=0,
     )
 
     model_def.define_description("""Your typical pint-sized workhorse.""")

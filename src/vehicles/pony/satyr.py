@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        base_id="satyr",
+        model_type_id="satyr",
         base_numeric_id=31010,
         name="4-6-4 Satyr",
         subrole="express",
@@ -23,7 +23,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit", weight=90, vehicle_length=8, spriterow_num=0
+        class_name="SteamEnginePoweredUnit",
+        weight=90,
+        vehicle_length=8,
+        spriterow_num=0,
     )
 
     model_def.define_description("""Bob on.""")

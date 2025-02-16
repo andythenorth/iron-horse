@@ -1,4 +1,4 @@
-#from train import foo 
+# from train import foo
 
 
 def main(**kwargs):
@@ -12,7 +12,9 @@ def main(**kwargs):
         intro_year=1885,
     )
 
-    consist_cabbage.add_unit(type=SteamEnginePoweredUnit, weight=45, vehicle_length=7, spriterow_num=0)
+    consist_cabbage.add_unit(
+        type=SteamEnginePoweredUnit, weight=45, vehicle_length=7, spriterow_num=0
+    )
 
     consist_cabbage.add_unit(
         type=SteamEngineTenderUnit, weight=30, vehicle_length=4, spriterow_num=1

@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TGVMiddleMailEngine",
-        base_id="alize_middle_mail",
+        model_type_id="alize_middle_mail",
         base_numeric_id=340,
         name="Alizé Mail Van",
         subrole="very_high_speed",

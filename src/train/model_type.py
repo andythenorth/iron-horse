@@ -125,11 +125,9 @@ class ModelTypeBase(object):
         # aids 'project management' - doesn't need @property passthrough, always set in model_def
         self.sprites_complete = self.model_def.sprites_complete
 
-    # CABBAGE
     @property
-    def base_id(self):
-        # CABBAGE - surely this should be using base_id_resolver() on model variant factory?
-        return self.model_type_id_stem
+    def model_type_id(self):
+        return self.model_variant_factory.model_type_id
 
     @property
     def model_def(self):
@@ -554,14 +552,14 @@ class ModelTypeBase(object):
         # option exists to force a replacement consist, this is used to merge tech tree branches
         #  most vehicle models are automatically replaced by the next vehicle model in the subrole tree
         # ocasionally we need to merge two branches of the subrole, in this case set replacement consist id on the model_def
-        if self.model_def.replacement_model_base_id is not None:
+        if self.model_def.replacement_model_model_type_id is not None:
             for consist in self.roster.engine_consists:
-                if consist.id == self.model_def.replacement_model_base_id:
+                if consist.id == self.model_def.replacement_model_model_type_id:
                     return consist
             # if we don't return a valid result, that's an error, probably a broken replacement id
             raise Exception(
                 "replacement consist id "
-                + self.model_def.replacement_model_base_id
+                + self.model_def.replacement_model_model_type_id
                 + " not found for consist "
                 + self.id
             )
@@ -974,7 +972,7 @@ class ModelTypeBase(object):
             if self.is_clone:
                 # this will get a default consist from the source factory, mapping this consist to the source spritesheet
                 input_spritesheet_name_stem = (
-                    self.model_def.cloned_from_model_def.base_id
+                    self.model_def.cloned_from_model_def.model_type_id
                 )
             else:
                 input_spritesheet_name_stem = self.id
@@ -1400,7 +1398,9 @@ class EngineModelTypeBase(ModelTypeBase):
                 self.roster_id,
                 self.roster_id_providing_module,
             )
-            temp_consist = model_variant_factory.produce(dry_run=True, catalogue_index=0)
+            temp_consist = model_variant_factory.produce(
+                dry_run=True, catalogue_index=0
+            )
             return int(
                 temp_consist.buy_cost * self.model_def.clone_stats_adjustment_factor
             )
@@ -1458,7 +1458,9 @@ class EngineModelTypeBase(ModelTypeBase):
                 self.roster_id,
                 self.roster_id_providing_module,
             )
-            temp_consist = model_variant_factory.produce(dry_run=True, catalogue_index=0)
+            temp_consist = model_variant_factory.produce(
+                dry_run=True, catalogue_index=0
+            )
             return int(
                 temp_consist.running_cost * self.model_def.clone_stats_adjustment_factor
             )
@@ -2429,7 +2431,7 @@ class CarModelTypeBase(ModelTypeBase):
     Intermediate class for car (wagon) model types to subclass from, provides sparse properties, most are declared in subclasses.
     """
 
-    # base_id = '' # provide in subclass
+    # model_type_id = '' # provide in subclass
 
     def __init__(self, speedy=False, **kwargs):
         super().__init__(**kwargs)
@@ -2514,7 +2516,7 @@ class CarModelTypeBase(ModelTypeBase):
         # - subtype where there is a generation gap in the tree, but the subtype continues across the gap
         tree_permissive = []
         tree_strict = []
-        for wagon in self.roster.wagon_consists_by_base_id[self.base_id]:
+        for wagon in self.roster.wagon_consists_by_base_id[self.model_type_id_stem]:
             if wagon.base_track_type_name == self.base_track_type_name:
                 tree_permissive.append(wagon.gen)
                 if wagon.subtype == self.subtype:
@@ -2554,7 +2556,7 @@ class CarModelTypeBase(ModelTypeBase):
 
     @property
     def wagon_title_class_str(self):
-        return "STR_NAME_SUFFIX_" + self.base_id.upper()
+        return "STR_NAME_SUFFIX_" + self.model_type_id_stem.upper()
 
     @property
     def wagon_title_optional_randomised_suffix_str(self):
@@ -6259,7 +6261,7 @@ class MailCarBase(CarModelTypeBase):
     """
 
     def __init__(self, **kwargs):
-        # don't set base_id here, let subclasses do it
+        # don't set model_type_id here, let subclasses do it
         super().__init__(**kwargs)
         self.class_refit_groups = ["mail", "express_freight"]
         # no specific labels needed
@@ -6309,7 +6311,7 @@ class MailRailcarTrailerCarBase(MailCarBase):
     """
 
     def __init__(self, **kwargs):
-        # don't set base_id here, let subclasses do it
+        # don't set model_type_id here, let subclasses do it
         super().__init__(**kwargs)
         self._buyable_variant_group_id = self.cab_id
         self._model_life = self.cab_consist.model_life
@@ -7285,7 +7287,7 @@ class PassengerCarBase(CarModelTypeBase):
     """
 
     def __init__(self, **kwargs):
-        # don't set base_id here, let subclasses do it
+        # don't set model_type_id here, let subclasses do it
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = ["pax"]
@@ -7330,7 +7332,7 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
     """
 
     def __init__(self, **kwargs):
-        # don't set base_id here, let subclasses do it
+        # don't set model_type_id here, let subclasses do it
         super().__init__(**kwargs)
         self._buyable_variant_group_id = self.cab_id
         self._model_life = self.cab_consist.model_life

@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerEngineRailbus",
-        base_id="zipper_single",
+        model_type_id="zipper_single",
         base_numeric_id=25270,
         name="Zipper",
         subrole="pax_railbus",

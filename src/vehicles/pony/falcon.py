@@ -6,12 +6,12 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        base_id="falcon",
+        model_type_id="falcon",
         base_numeric_id=17860,
         name="Falcon",
         subrole="super_heavy_express",
         subrole_child_branch_num=-2,
-        replacement_model_base_id="rapid",  # this Joker ends with Rapid (switching child branch) - goal is to keep Falcon around for a while, because I like it
+        replacement_model_model_type_id="rapid",  # this Joker ends with Rapid (switching child branch) - goal is to keep Falcon around for a while, because I like it
         power_by_power_source={
             "DIESEL": 2800,
         },

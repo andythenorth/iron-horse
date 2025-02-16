@@ -29,7 +29,8 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetricUnit", chassis="4_axle_running_gear_only_32px"
+        class_name="AutomobileCarAsymmetricUnit",
+        chassis="4_axle_running_gear_only_32px",
     )
 
     result.append(model_def)
@@ -57,7 +58,8 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="AutomobileCarAsymmetricUnit", chassis="4_axle_running_gear_only_32px"
+        class_name="AutomobileCarAsymmetricUnit",
+        chassis="4_axle_running_gear_only_32px",
     )
 
     result.append(model_def)

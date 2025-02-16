@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        base_id="lamia",
+        model_type_id="lamia",
         base_numeric_id=21730,
         name="0-6-0 Lamia",  # the name is the Basque mythical creature, not the Greek https://en.wikipedia.org/wiki/Lamia_(Basque_mythology)
         subrole="gronk",
@@ -29,7 +29,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit", weight=35, vehicle_length=4, spriterow_num=0
+        class_name="SteamEnginePoweredUnit",
+        weight=35,
+        vehicle_length=4,
+        spriterow_num=0,
     )
 
     model_def.define_description("""Nice little engine this one.""")

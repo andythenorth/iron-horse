@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        base_id="challenger",
+        model_type_id="challenger",
         base_numeric_id=14020,
         name="4-6-6-4 Challenger",
         subrole="heavy_freight",
@@ -18,7 +18,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit", weight=60, vehicle_length=6, spriterow_num=0
+        class_name="SteamEnginePoweredUnit",
+        weight=60,
+        vehicle_length=6,
+        spriterow_num=0,
     )
 
     model_def.add_unit_def(
@@ -30,7 +33,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit", weight=60, vehicle_length=6, spriterow_num=2
+        class_name="SteamEnginePoweredUnit",
+        weight=60,
+        vehicle_length=6,
+        spriterow_num=2,
     )
 
     model_def.define_description(""" """)

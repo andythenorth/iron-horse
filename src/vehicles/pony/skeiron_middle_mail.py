@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TGVMiddleMailEngine",
-        base_id="skeiron_middle_mail",
+        model_type_id="skeiron_middle_mail",
         base_numeric_id=430,
         name="Skeiron Mail Van",
         subrole="very_high_speed",

@@ -7,7 +7,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        base_id="stag",
+        model_type_id="stag",
         base_numeric_id=17870,
         name="0-6-4 Stag",
         subrole="branch_express",
@@ -25,7 +25,10 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="SteamEnginePoweredUnit", weight=60, vehicle_length=6, spriterow_num=0
+        class_name="SteamEnginePoweredUnit",
+        weight=60,
+        vehicle_length=6,
+        spriterow_num=0,
     )
 
     model_def.define_description("""Not the biggest, but quite a beast all the same.""")

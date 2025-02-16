@@ -527,7 +527,7 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
         if self.consist.model_def.cabbage_new_livery_system:
             spritesheet_image = Image.open(
-                os.path.join(self.graphics_output_path, self.consist.model_def.base_id + ".png")
+                os.path.join(self.graphics_output_path, self.consist.model_type_id + ".png")
             )
         else:
             spritesheet_image = Image.open(

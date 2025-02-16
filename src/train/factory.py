@@ -24,7 +24,7 @@ class ModelDef:
     # Optional common fields (lexically sorted)
     additional_liveries: List[Any] = None
     liveries: List[Any] = None
-    base_id: Optional[str] = None
+    model_type_id: Optional[str] = None
     base_numeric_id: Optional[int] = None
     base_track_type_name: Optional[str] = None
     buyable_variant_group_id: Optional[str] = None
@@ -42,7 +42,7 @@ class ModelDef:
     pantograph_type: Optional[str] = None
     power_by_power_source: Optional[Dict[Any, Any]] = None
     random_reverse: bool = False
-    replacement_model_base_id: Optional[str] = None
+    replacement_model_model_type_id: Optional[str] = None
     speed: Optional[int] = None
     subrole: Optional[str] = None
     subrole_child_branch_num: Optional[int] = None
@@ -83,7 +83,7 @@ class ModelDef:
             # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
             raise Exception(
                 "Don't clone a model def that is itself a clone, it won't work as expected. \nClone the original model def. \nModel def is: "
-                + self.base_id,
+                + self.model_type_id,
             )
         cloned_model_def = copy.deepcopy(self)
         # clone may need to reference original source
@@ -106,8 +106,8 @@ class ModelDef:
 
         cloned_model_def.base_numeric_id = base_numeric_id
         # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
-        cloned_model_def.base_id = self.base_id + "_clone_" + str(len(self.clones))
-        cloned_model_def.buyable_variant_group_id = self.base_id
+        cloned_model_def.model_type_id = self.model_type_id + "_clone_" + str(len(self.clones))
+        cloned_model_def.buyable_variant_group_id = self.model_type_id
         return cloned_model_def
 
     def complete_clone(self):
@@ -191,7 +191,9 @@ class Catalogue(list):
             for livery_counter, livery_name in enumerate(
                 self.model_variant_factory.cabbage_liveries
             ):
-                model_variant_id = f"{self.model_variant_factory.base_id_resolver()}_mv_{livery_counter}"
+                model_variant_id = (
+                    f"{self.model_variant_factory.model_type_id}_mv_{livery_counter}"
+                )
                 unit_variant_ids = [
                     f"{model_variant_id}_unit_{i}"
                     for i, _ in enumerate(self.model_def.unit_defs)
@@ -275,13 +277,13 @@ class ModelVariantFactory:
             catalogue_entry = self.catalogue[catalogue_index]
 
             # HAX
-            print(catalogue_entry.model_variant_id)
-
+            # WE ARE MID-REFACTORING, AND id IS VERY SHIMMED CURRENTLY
+            # NEEDS REPLACED WITH BOTH model_type_id and catalogue_entry.mv_id, to be used in templates as appropriate
             if len(self.produced_model_variants) == 0:
-                id = self.base_id_resolver()
+                id = self.model_type_id
             else:
                 id = (
-                    self.base_id_resolver()
+                    self.model_type_id
                     + "_variant_"
                     + str(len(self.produced_model_variants))
                 )
@@ -290,10 +292,10 @@ class ModelVariantFactory:
             # CHECK if buyable_variant_group_id is already set?  If it is, leave it alone?
             if self.model_def.cloned_from_model_def is not None:
                 self.model_def.buyable_variant_group_id = (
-                    self.model_def.cloned_from_model_def.base_id
+                    self.model_def.cloned_from_model_def.model_type_id
                 )
             else:
-                self.model_def.buyable_variant_group_id = self.model_def.base_id
+                self.model_def.buyable_variant_group_id = self.model_def.model_type_id
 
             model_variant = self.model_type_cls(
                 model_variant_factory=self,
@@ -308,7 +310,7 @@ class ModelVariantFactory:
         else:
             model_variant = self.model_type_cls(
                 model_variant_factory=self,
-                id=self.base_id_resolver(),
+                id=self.model_type_id,
             )
 
         # print(model_variant.gestalt_graphics.__class__.__name__)
@@ -323,7 +325,7 @@ class ModelVariantFactory:
         """
         for counter, livery in enumerate(["example", "cabbage_livery"]):
             increment = counter * self.model_def.produced_unit_total
-            print(self.model_def.kwargs.get("id", model_variant.base_id), self.model_def.kwargs["base_numeric_id"] + increment)
+            print(self.model_def.kwargs.get("id", self.model_type_id), self.model_def.kwargs["base_numeric_id"] + increment)
         """
 
         """
@@ -340,7 +342,7 @@ class ModelVariantFactory:
             except:
                 raise Exception(
                     "class_name not found for "
-                    + self.model_def.base_id
+                    + self.model_def.model_type_id
                     + ", "
                     + unit_def.class_name
                 )
@@ -376,12 +378,12 @@ class ModelVariantFactory:
         # DO WE WANT TO LOOK THIS UP? OR SHOULD IT BE STORE DIRECTLY IN MODEL VARIANT AT INIT?
         return model_variant == self.produced_model_variants[0]
 
-    def base_id_resolver(self):
-        # CABBAGE - I'M NOT SURE ABOUT 'BASE_ID' any more, it's ambiguous, base of what?
+    @property
+    def model_type_id(self):
         # figures out where a model variant is getting a base id from
         # must be either defined on model_def or in the model variant class attrs
-        if self.model_def.base_id is not None:
-            return self.model_def.base_id
+        if self.model_def.model_type_id is not None:
+            return self.model_def.model_type_id
         else:
             # we assume it's a wagon id
             return self.get_wagon_id(
@@ -391,13 +393,13 @@ class ModelVariantFactory:
     def get_wagon_id(self, model_type_id_stem, model_def):
         # auto id creator, used for wagons not locos
         # handled by model variant factory not model variant, better this way
-        base_id = model_type_id_stem
         # special case NG - extend this for other track_types as needed
         # 'normal' rail and 'elrail' doesn't require an id modifier
+        base_id = model_type_id_stem
         if model_def.base_track_type_name == "NG":
-            base_id = base_id + "_ng"
+            base_id = model_type_id_stem + "_ng"
         elif model_def.base_track_type_name == "METRO":
-            base_id = base_id + "_metro"
+            base_id = model_type_id_stem + "_metro"
 
         substrings = []
         # prepend cab_id if present, used for e.g. railcar trailers, HST coaches etc where the wagon matches a specific 'cab' engine
