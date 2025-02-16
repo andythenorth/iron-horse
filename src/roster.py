@@ -70,8 +70,8 @@ class Roster(object):
     def wagon_consists_by_base_id(self):
         result = {}
         for wagon_consist in self.wagon_consists:
-            result.setdefault(wagon_consist.model_type_id_stem, [])
-            result[wagon_consist.model_type_id_stem].append(wagon_consist)
+            result.setdefault(wagon_consist.model_type_id_root, [])
+            result[wagon_consist.model_type_id_root].append(wagon_consist)
         return result
 
     @property
@@ -172,10 +172,10 @@ class Roster(object):
                     continue
                 if randomisation_consist.subtype != wagon_consist.subtype:
                     continue
-                if randomisation_consist.model_type_id_stem == wagon_consist.model_type_id_stem:
+                if randomisation_consist.model_type_id_root == wagon_consist.model_type_id_root:
                     continue
                 if (
-                    randomisation_consist.model_type_id_stem
+                    randomisation_consist.model_type_id_root
                     not in wagon_consist.randomised_candidate_groups
                 ):
                     continue
@@ -328,10 +328,10 @@ class Roster(object):
                     colliding_consist = numeric_id_defender[numeric_id]
                     # there is a specific case of reused vehicles that are allowed to overlap IDs (they will be grf-independent, and the compile doesn't actually care)
                     # if base_id matches both consists have been instantiated from the same source module...
-                    if hasattr(consist, "model_type_id_stem"):
+                    if hasattr(consist, "model_type_id_root"):
                         if (
-                            getattr(colliding_consist, "model_type_id_stem", None)
-                            == consist.model_type_id_stem
+                            getattr(colliding_consist, "model_type_id_root", None)
+                            == consist.model_type_id_root
                         ):
                             # it's fine if both consists are then in different rosters, as they will not conflict
                             if colliding_consist.roster.id != consist.roster.id:
@@ -506,7 +506,7 @@ class Roster(object):
                     for consist in self.wagon_consists_by_base_id[
                         base_id_for_target_parent_consist
                     ]:
-                        if consist.model_type_id_stem == base_id_for_target_parent_consist:
+                        if consist.model_type_id_root == base_id_for_target_parent_consist:
                             match_failed = False
                             if (
                                 consist.base_track_type_name
