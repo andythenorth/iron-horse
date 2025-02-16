@@ -537,19 +537,13 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
         self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
-        if self.consist.model_def.cabbage_new_livery_system:
-            spritesheet_image = Image.open(
-                os.path.join(
-                    self.graphics_output_path,
-                    self.model_variant_factory.input_spritesheet_name_stem
-                    + ".png",
-                )
+        spritesheet_image = Image.open(
+            os.path.join(
+                self.graphics_output_path,
+                self.model_variant_factory.input_spritesheet_name_stem
+                + ".png",
             )
-        else:
-            spritesheet_image = Image.open(
-                os.path.join(self.graphics_output_path, self.consist.id + ".png")
-            )
-
+        )
         self.render_common(spritesheet_image, self.units)
         spritesheet_image.close()
 
@@ -588,7 +582,7 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
         suffix = "_pantographs_" + self.pantograph_state
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
         spritesheet_image = Image.open(
-            os.path.join(self.graphics_output_path, self.consist.id + suffix + ".png")
+            os.path.join(self.graphics_output_path, self.model_variant_factory.input_spritesheet_name_stem + suffix + ".png")
         )
         self.render_common(spritesheet_image, self.units, output_suffix=suffix)
         spritesheet_image.close()
@@ -776,7 +770,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
 
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
         spritesheet_image = Image.open(
-            os.path.join(self.graphics_output_path, self.consist.id + ".png")
+            os.path.join(self.graphics_output_path, self.model_variant_factory.input_spritesheet_name_stem + ".png")
         )
 
         self.render_common(spritesheet_image, self.units)
@@ -988,7 +982,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # this very much assumes that the vehicle image has been generated, which holds currently due to the order pipelines are run in (and are in series)
         # !! this doesn't handle the case of articulated vehicles, especially where the first consist row doesn't have pans
         vehicle_debug_image = Image.open(
-            os.path.join(self.graphics_output_path, self.consist.id + ".png")
+            os.path.join(self.graphics_output_path, self.model_variant_factory.input_spritesheet_name_stem + ".png")
         )
         vehicle_debug_image = vehicle_debug_image.copy().crop(
             (
