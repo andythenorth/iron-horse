@@ -14,6 +14,7 @@ command_line_args = utils.get_command_line_args()
 
 from train.factory import ModelVariantFactory
 
+
 class Roster(object):
     """
     Rosters compose a set of vehicles which is complete for gameplay.
@@ -172,7 +173,10 @@ class Roster(object):
                     continue
                 if randomisation_consist.subtype != wagon_consist.subtype:
                     continue
-                if randomisation_consist.model_type_id_root == wagon_consist.model_type_id_root:
+                if (
+                    randomisation_consist.model_type_id_root
+                    == wagon_consist.model_type_id_root
+                ):
                     continue
                 if (
                     randomisation_consist.model_type_id_root
@@ -369,10 +373,16 @@ class Roster(object):
                 "." + engine_module_name, package_name
             )
             for model_def in engine_module_name.main():
-                model_variant_factory = ModelVariantFactory(model_def, self.id, roster_id_providing_module)
+                model_variant_factory = ModelVariantFactory(
+                    model_def, self.id, roster_id_providing_module
+                )
                 if model_def.cabbage_new_livery_system:
-                    for catalogue_index, _ in enumerate(model_variant_factory.catalogue):
-                        consist = model_variant_factory.produce(catalogue_index=catalogue_index)
+                    for catalogue_index, _ in enumerate(
+                        model_variant_factory.catalogue
+                    ):
+                        consist = model_variant_factory.produce(
+                            catalogue_index=catalogue_index
+                        )
                         self.engine_consists.append(consist)
                 else:
                     consist = model_variant_factory.produce(catalogue_index="_cabbage")
@@ -407,7 +417,9 @@ class Roster(object):
                         "." + wagon_module_name, package_name
                     )
                     for model_def in wagon_module.main():
-                        model_variant_factory = ModelVariantFactory(model_def, self.id, roster_id_providing_module)
+                        model_variant_factory = ModelVariantFactory(
+                            model_def, self.id, roster_id_providing_module
+                        )
                         model_variant_factory.produce(catalogue_index="_cabbage")
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
@@ -506,7 +518,10 @@ class Roster(object):
                     for consist in self.wagon_consists_by_base_id[
                         base_id_for_target_parent_consist
                     ]:
-                        if consist.model_type_id_root == base_id_for_target_parent_consist:
+                        if (
+                            consist.model_type_id_root
+                            == base_id_for_target_parent_consist
+                        ):
                             match_failed = False
                             if (
                                 consist.base_track_type_name
@@ -581,7 +596,12 @@ class Roster(object):
                     lang_strings[node_name] = node_value["base"]
 
         for consist in self.consists_in_buy_menu_order:
-            if consist.name is not None and consist.model_variant_factory.cabbage_model_variant_is_default(consist):
+            if (
+                consist.name is not None
+                and consist.model_variant_factory.cabbage_model_variant_is_default(
+                    consist
+                )
+            ):
                 lang_strings["STR_NAME_" + consist.id.upper()] = consist.name
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}

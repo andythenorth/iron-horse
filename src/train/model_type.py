@@ -558,7 +558,10 @@ class ModelTypeBase(object):
         if self.model_def.replacement_model_model_type_id is not None:
             for consist in self.roster.engine_consists:
                 # CABBAGE model_type_id will over-detect here as multiple variants have the same model_type_id
-                if consist.model_type_id == self.model_def.replacement_model_model_type_id:
+                if (
+                    consist.model_type_id
+                    == self.model_def.replacement_model_model_type_id
+                ):
                     return consist
             # if we don't return a valid result, that's an error, probably a broken replacement id
             raise Exception(
@@ -706,7 +709,9 @@ class ModelTypeBase(object):
         if self.lgv_capable:
             modifier = "A"
         elif self.requires_high_clearance:
-            print(self.model_type_id, " has requires_high_clearance set - needs cleared")
+            print(
+                self.model_type_id, " has requires_high_clearance set - needs cleared"
+            )
             modifier = "B"
         result = result[0:3] + modifier
         return result
@@ -843,7 +848,8 @@ class ModelTypeBase(object):
     def speed_on_lgv(self):
         if not self.lgv_capable:
             raise Exception(
-                self.model_type_id, "is not lgv capable, but is attempting to set speed on lgv"
+                self.model_type_id,
+                "is not lgv capable, but is attempting to set speed on lgv",
             )
 
         # mildly JDFI hacky
@@ -1054,7 +1060,9 @@ class ModelTypeBase(object):
             result = result + 1
         # OpenTTD has a limited number of layers in the sprite stack, we can't exceed them
         if result > 8:
-            raise Exception("Too many sprite layers ", result, " defined for ", self.model_type_id)
+            raise Exception(
+                "Too many sprite layers ", result, " defined for ", self.model_type_id
+            )
         return result
 
     def get_nml_for_spriteset_template(self, y_offset):
@@ -1163,8 +1171,7 @@ class ModelTypeBase(object):
                 result.append("STR_POWER_BY_POWER_SOURCE_THREE_SOURCES")
             else:
                 raise BaseException(
-                    + self.model_type_id
-                    + " defines unsupported number of power sources"
+                    +self.model_type_id + " defines unsupported number of power sources"
                 )
         # optional string if consist is lgv-capable
         if self.lgv_capable:
@@ -9234,7 +9241,10 @@ class BuyableVariant(object):
                 return unit_variant
         # if not found, fail
         raise BaseException(
-            "unit_variant not found for " + self + " for consist " + self.consist.cabbage_mv_id
+            "unit_variant not found for "
+            + self
+            + " for consist "
+            + self.consist.cabbage_mv_id
         )
 
     @property

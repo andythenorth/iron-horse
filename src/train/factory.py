@@ -106,7 +106,9 @@ class ModelDef:
 
         cloned_model_def.base_numeric_id = base_numeric_id
         # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
-        cloned_model_def.model_type_id = self.model_type_id + "_clone_" + str(len(self.clones))
+        cloned_model_def.model_type_id = (
+            self.model_type_id + "_clone_" + str(len(self.clones))
+        )
         cloned_model_def.buyable_variant_group_id = self.model_type_id
         return cloned_model_def
 
@@ -420,9 +422,12 @@ class ModelVariantFactory:
     def input_spritesheet_name_stem(self):
         # the input spritesheet name is the same for all variants of the model type
         # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
-        if getattr(self.model_type_cls, "input_spritesheet_delegate_id_root", None) is not None:
-            input_spritesheet_name_stem = (
-                self.get_wagon_id(self.model_type_cls.input_spritesheet_delegate_id_root, self.model_def)
+        if (
+            getattr(self.model_type_cls, "input_spritesheet_delegate_id_root", None)
+            is not None
+        ):
+            input_spritesheet_name_stem = self.get_wagon_id(
+                self.model_type_cls.input_spritesheet_delegate_id_root, self.model_def
             )
         else:
             # handle cloned cases by referring to the original consist factory for the path

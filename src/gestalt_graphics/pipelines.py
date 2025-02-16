@@ -49,7 +49,11 @@ class Pipeline(object):
     def chassis_input_path(self):
         # convenience method to get the path for the chassis image
         return os.path.join(
-            currentdir, "src", "graphics", "chassis", self.vehicle_unit._unit_def.chassis + ".png"
+            currentdir,
+            "src",
+            "graphics",
+            "chassis",
+            self.vehicle_unit._unit_def.chassis + ".png",
         )
 
     @property
@@ -131,7 +135,12 @@ class PassThroughPipeline(Pipeline):
         self.consist = consist
         self.graphics_output_path = graphics_output_path
 
-        if self.consist.model_def.cabbage_new_livery_system == False or self.consist.model_variant_factory.cabbage_model_variant_is_default(consist):
+        if (
+            self.consist.model_def.cabbage_new_livery_system == False
+            or self.consist.model_variant_factory.cabbage_model_variant_is_default(
+                consist
+            )
+        ):
             input_image = Image.open(self.vehicle_source_input_path)
             self.render_common(input_image, self.units)
             input_image.close()
@@ -527,7 +536,11 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
         if self.consist.model_def.cabbage_new_livery_system:
             spritesheet_image = Image.open(
-                os.path.join(self.graphics_output_path, self.consist.model_variant_factory.input_spritesheet_name_stem + ".png")
+                os.path.join(
+                    self.graphics_output_path,
+                    self.consist.model_variant_factory.input_spritesheet_name_stem
+                    + ".png",
+                )
             )
         else:
             spritesheet_image = Image.open(
