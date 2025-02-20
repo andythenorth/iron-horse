@@ -1334,7 +1334,7 @@ class EngineModelTypeBase(ModelTypeBase):
         # note that this Gestalt might get replaced by subclasses as needed
         # insert a default livery
         # CABBAGE FACTORY?
-        if self.model_def.cabbage_new_livery_system:
+        if self.model_variant_factory.cabbage_new_livery_system:
             liveries = self.roster.get_liveries_by_name_cabbage_new(
                 [self.cabbage_catalogue_entry.livery_name]
             )

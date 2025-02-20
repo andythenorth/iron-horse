@@ -1,4 +1,4 @@
-<tal:NEW_CABBAGE condition="consist.model_def.cabbage_new_livery_system == True">
+<tal:NEW_CABBAGE condition="consist.model_variant_factory.cabbage_new_livery_system == True">
      <!--! this is the default template for trains that don't supply their own template -->
 
     <!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
@@ -127,7 +127,7 @@
     <tal:include metal:use-macro="load: properties.pynml" />
 
 </tal:NEW_CABBAGE>
-<tal:OLD_CABBAGE condition="consist.model_def.cabbage_new_livery_system == False">
+<tal:OLD_CABBAGE condition="consist.model_variant_factory.cabbage_new_livery_system == False">
      <!--! this is the default template for trains that don't supply their own template -->
 
     <!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->

@@ -463,6 +463,13 @@ def main():
         utils.string_format_compile_time_deltas(start, time()),
     )
 
+    # CABBAGE MIGRATION REPORT
+    cabbage_buyable_variants = {}
+    for consist in consists:
+        if len(consist.buyable_variants) > 1:
+            cabbage_buyable_variants[consist.id] = consist.buyable_variants
+    print("Consists with > 1 buyable variants:", str(len(cabbage_buyable_variants.keys())))
+
 
 if __name__ == "__main__":
     main()

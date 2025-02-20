@@ -275,7 +275,7 @@ class ModelVariantFactory:
                 + str(self.model_type_cls)
             )
 
-        if self.model_def.cabbage_new_livery_system:
+        if self.cabbage_new_livery_system:
             catalogue_entry = self.catalogue[catalogue_index]
 
             # HAX
@@ -372,6 +372,14 @@ class ModelVariantFactory:
             return self.model_type_cls.liveries
         else:
             return None
+
+    @property
+    def cabbage_new_livery_system(self):
+        if self.model_def.cabbage_new_livery_system:
+            return True
+        if getattr(self.model_type_cls, "cabbage_new_livery_system", False):
+            return True
+        return False
 
     def cabbage_new_livery_system_livery_index(self, model_variant):
         # THIS IS FOR REVERSE LOOK UP OF LIVERY FROM VARIANT?  IS THIS JUST A MIGRATION SHIM?

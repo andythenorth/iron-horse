@@ -376,7 +376,7 @@ class Roster(object):
                 model_variant_factory = ModelVariantFactory(
                     model_def, self.id, roster_id_providing_module
                 )
-                if model_def.cabbage_new_livery_system:
+                if model_variant_factory.cabbage_new_livery_system:
                     for catalogue_index, _ in enumerate(
                         model_variant_factory.catalogue
                     ):
@@ -420,6 +420,8 @@ class Roster(object):
                         model_variant_factory = ModelVariantFactory(
                             model_def, self.id, roster_id_providing_module
                         )
+                        if model_variant_factory.cabbage_new_livery_system:
+                            print("cabbage_new_livery_system for", model_def)
                         model_variant_factory.produce(catalogue_index="_cabbage")
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
