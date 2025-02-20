@@ -421,8 +421,14 @@ class Roster(object):
                             model_def, self.id, roster_id_providing_module
                         )
                         if model_variant_factory.cabbage_new_livery_system:
-                            print("cabbage_new_livery_system for", model_def)
-                        model_variant_factory.produce(catalogue_index="_cabbage")
+                            for catalogue_index, _ in enumerate(
+                                model_variant_factory.catalogue
+                            ):
+                                consist = model_variant_factory.produce(
+                                    catalogue_index=catalogue_index
+                                )
+                        else:
+                            model_variant_factory.produce(catalogue_index="_cabbage")
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name
