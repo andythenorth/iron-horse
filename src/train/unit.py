@@ -22,8 +22,10 @@ class UnitBase(object):
         if len(self.consist.unique_units) == 0:
             # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc
             self.id = self.consist.id
+            self.cabbage_numeric_id = 0
         else:
             self.id = self.consist.id + "_unit_" + str(len(self.consist.unique_units))
+            self.cabbage_numeric_id = len(self.consist.unique_units)
         # create structure to hold the buyable variants, done last as may depend on other attrs of self
         # CABBAGE
         self.unit_variants = []
@@ -43,6 +45,10 @@ class UnitBase(object):
         self._symmetry_type = "symmetric"
         # optional - a switch name to trigger re-randomising vehicle random bits - override as need in subclasses
         self.random_trigger_switch = None
+
+    @property
+    def cabbage_unit_id_from_model_type(self):
+        return self.consist.model_type_id + "_unit_" + str(self.cabbage_numeric_id)
 
     @property
     def tail_light(self):

@@ -469,6 +469,12 @@ def main():
         if len(consist.buyable_variants) > 1:
             cabbage_buyable_variants[consist.id] = consist.buyable_variants
     print("Consists with > 1 buyable variants:", str(len(cabbage_buyable_variants.keys())))
+    """
+    for consist in consists:
+        if consist.gestalt_graphics.__class__.__name__ == "GestaltGraphicsVisibleCargo":
+            if len(set(consist.units)) > 1:
+                raise Exception(consist.id)
+    """
 
 
 if __name__ == "__main__":

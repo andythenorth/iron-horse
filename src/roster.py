@@ -435,7 +435,7 @@ class Roster(object):
                                 continue
                             # CABBAGE TRIM CATALOGUE TO FIRST ENTRY DUE TO ACTION 1 LIMIT TEMPORARILY BEING EXCEEDED BY OUTDATED TEMPLATING
                             for catalogue_index, _ in enumerate(
-                                model_variant_factory.catalogue[0:1]
+                                model_variant_factory.catalogue
                             ):
                                 consist = model_variant_factory.produce(
                                     catalogue_index=catalogue_index
