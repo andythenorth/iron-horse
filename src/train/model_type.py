@@ -3816,9 +3816,10 @@ class CabooseCarUnit(CarModelTypeBase):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
-    liveries = [global_constants.freight_wagon_liveries["FREIGHT_SWOOSH"]]
+    liveries = ["FREIGHT_SWOOSH"]
 
     model_type_id_root = "caboose_car"
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3836,7 +3837,7 @@ class CabooseCarUnit(CarModelTypeBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
-            liveries=self.liveries,
+            liveries=self.cabbage_refactoring_livery_resolver,
             spriterow_labels=self.model_def.spriterow_labels,
             caboose_families=self.model_def.caboose_families,
             buy_menu_sprite_pairs=self.model_def.buy_menu_sprite_pairs,

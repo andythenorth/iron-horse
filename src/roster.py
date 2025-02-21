@@ -392,6 +392,7 @@ class Roster(object):
                         self.engine_consists.append(consist)
                 else:
                     consist = model_variant_factory.produce(catalogue_index="_cabbage")
+                    print("cabbage: legacy consist init for", consist.id)
                     self.engine_consists.append(consist)
 
     def init_wagon_modules(self):
@@ -441,6 +442,7 @@ class Roster(object):
                                     catalogue_index=catalogue_index
                                 )
                         else:
+                            print("cabbage: legacy consist init for", model_def.class_name)
                             model_variant_factory.produce(catalogue_index="_cabbage")
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
