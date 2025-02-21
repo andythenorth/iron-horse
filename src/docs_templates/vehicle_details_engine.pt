@@ -277,7 +277,7 @@
                                 <tal:replaces condition="len(model_type.replaces_consists) > 0">
                                     <tal:replaced_consist repeat="replaced_consist model_type.replaces_consists">
                                         <div style="margin:10px;">
-                                            <a href="${replaced_consist.id}.html">
+                                            <a href="${replaced_consist.model_type_id}.html">
                                                 <div class="vehicle-image">
                                                     <img src="static/img/${replaced_consist.id}_variant_0_red_white.png"
                                                          width="${2 * doc_helper.docs_sprite_width(replaced_consist)}"
@@ -307,7 +307,7 @@
                             <td style="text-align:center; vertical-align:middle;">
                                 <tal:replacement condition="model_type.replacement_consist is not None">
                                     <div style="margin:10px;">
-                                        <a href="${model_type.replacement_consist.id}.html">
+                                        <a href="${model_type.replacement_consist.model_type_id}.html">
                                             <div class="vehicle-image">
                                                 <img src="static/img/${model_type.replacement_consist.id}_variant_0_red_white.png"
                                                      width="${2* doc_helper.docs_sprite_width(model_type.replacement_consist)}"
