@@ -3,7 +3,7 @@
 <tal:spritesets repeat="spriteset_data consist.gestalt_graphics.get_unique_spritesets(vehicle)">
     <!--! spriteset loops got too complex in the templates, with livery, empty state, cargo loading, cargo loaded, and random variants
           so I moved the logic for spritesets into the gestalt, and simply render out all from a list with a trivial loop -->
-    spriteset(${vehicle.id}_ss_${spriteset_data[0]}, "${graphics_path}${consist.id}.png") {
+    spriteset(${vehicle.id}_ss_${spriteset_data[0]}, "${graphics_path}${consist.model_type_id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', spriteset_data[1])}
     }
     <!--! spritegroups aren't used here, direct to spriteset -->
@@ -90,7 +90,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_
 }
 
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.model_type_id}.png") {
     ${consist.get_nml_for_spriteset_template(y_offset=0)}
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 1) {

@@ -4015,24 +4015,19 @@ class CoilBuggyCarUnit(CarModelTypeBase):
     """
 
     liveries = [
-        global_constants.freight_wagon_liveries[
-            "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-        ],
-        global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_VARIETY"],
-        global_constants.freight_wagon_liveries[
-            "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-        ],
-        global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-        global_constants.freight_wagon_liveries[
-            "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-        ],
-        global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-        global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-        global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+        "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_FROM_CONSIST_LIVERIES_VARIETY",
+        "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BAUXITE",
+        "FREIGHT_GREY",
+        "FREIGHT_NIGHTSHADE",
     ]
 
     # note does NOT subclass CoilCarBase - different type of consist
     model_type_id_root = "coil_buggy_car"
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4058,7 +4053,7 @@ class CoilBuggyCarUnit(CarModelTypeBase):
         cargo_row_map = {}
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
-            liveries=self.liveries,
+            liveries=self.cabbage_refactoring_livery_resolver,
             cargo_row_map=cargo_row_map,
             generic_rows=[0],
             unique_spritesets=[
@@ -5878,23 +5873,18 @@ class IngotCarUnit(CarModelTypeBase):
     """
 
     liveries = [
-        global_constants.freight_wagon_liveries[
-            "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-        ],
-        global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_VARIETY"],
-        global_constants.freight_wagon_liveries[
-            "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-        ],
-        global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-        global_constants.freight_wagon_liveries[
-            "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-        ],
-        global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-        global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-        global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+        "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_FROM_CONSIST_LIVERIES_VARIETY",
+        "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BAUXITE",
+        "FREIGHT_GREY",
+        "FREIGHT_NIGHTSHADE",
     ]
 
     model_type_id_root = "ingot_car"
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5919,7 +5909,7 @@ class IngotCarUnit(CarModelTypeBase):
         cargo_row_map = {}
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
-            liveries=self.liveries,
+            liveries=self.cabbage_refactoring_livery_resolver,
             cargo_row_map=cargo_row_map,
             generic_rows=[0],
             unique_spritesets=[
@@ -8299,23 +8289,18 @@ class SlagLadleCarUnit(CarModelTypeBase):
     """
 
     liveries = [
-        global_constants.freight_wagon_liveries[
-            "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-        ],
-        global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_VARIETY"],
-        global_constants.freight_wagon_liveries[
-            "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-        ],
-        global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-        global_constants.freight_wagon_liveries[
-            "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-        ],
-        global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-        global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-        global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+        "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_FROM_CONSIST_LIVERIES_VARIETY",
+        "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BAUXITE",
+        "FREIGHT_GREY",
+        "FREIGHT_NIGHTSHADE",
     ]
 
     model_type_id_root = "slag_ladle_car"
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8338,7 +8323,7 @@ class SlagLadleCarUnit(CarModelTypeBase):
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
-            liveries=self.liveries,
+            liveries=self.cabbage_refactoring_livery_resolver,
             cargo_row_map={"SLAG": [0]},
             generic_rows=[0],
             unique_spritesets=[
@@ -8926,23 +8911,18 @@ class TorpedoCarUnit(CarModelTypeBase):
     """
 
     liveries = [
-        global_constants.freight_wagon_liveries[
-            "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR"
-        ],
-        global_constants.freight_wagon_liveries[
-            "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE"
-        ],
-        global_constants.freight_wagon_liveries["RANDOM_FROM_CONSIST_LIVERIES_VARIETY"],
-        global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"],
-        global_constants.freight_wagon_liveries[
-            "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING"
-        ],
-        global_constants.freight_wagon_liveries["FREIGHT_BAUXITE"],
-        global_constants.freight_wagon_liveries["FREIGHT_GREY"],
-        global_constants.freight_wagon_liveries["FREIGHT_NIGHTSHADE"],
+        "RANDOM_FROM_CONSIST_LIVERIES_COMPLEMENT_COMPANY_COLOUR",
+        "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
+        "RANDOM_FROM_CONSIST_LIVERIES_VARIETY",
+        "COMPANY_COLOUR_USE_WEATHERING",
+        "COMPLEMENT_COMPANY_COLOUR_USE_WEATHERING",
+        "FREIGHT_BAUXITE",
+        "FREIGHT_GREY",
+        "FREIGHT_NIGHTSHADE",
     ]
 
     model_type_id_root = "torpedo_car"
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8964,7 +8944,8 @@ class TorpedoCarUnit(CarModelTypeBase):
         # Graphics configuration
         # custom gestalt with dedicated template as these wagons are articulated which standard wagon templates don't support
         self.gestalt_graphics = GestaltGraphicsCustom(
-            "vehicle_torpedo_car.pynml", liveries=self.liveries
+            "vehicle_torpedo_car.pynml",
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
 
