@@ -427,6 +427,9 @@ class Roster(object):
                             model_def, self.id, roster_id_providing_module
                         )
                         if model_variant_factory.cabbage_new_livery_system:
+                            if "Randomised" in model_def.class_name:
+                                # CABBAGE SKIP RANDOMISED WAGONS FOR NOW
+                                continue
                             for catalogue_index, _ in enumerate(
                                 model_variant_factory.catalogue
                             ):

@@ -193,6 +193,8 @@ class Catalogue(list):
             for livery_counter, livery_name in enumerate(
                 self.model_variant_factory.cabbage_liveries
             ):
+                if "RANDOM_FROM_CONSIST_LIVERIES_" in livery_name:
+                    continue
                 model_variant_id = (
                     f"{self.model_variant_factory.model_type_id}_mv_{livery_counter}"
                 )

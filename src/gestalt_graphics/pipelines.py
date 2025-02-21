@@ -661,10 +661,10 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                 # note that we want the *generated* source wagon spritesheet
                 source_vehicle_input_path = os.path.join(
                     self.graphics_output_path,
-                    source_vehicle_unit.consist.id + ".png",
+                    source_vehicle_unit.consist.model_type_id + ".png",
                 )
                 source_vehicle_image = Image.open(source_vehicle_input_path)
-                if self.consist.id == "randomised_box_car_pony_gen_1A":
+                if self.consist.model_type_id == "randomised_box_car_pony_gen_1A":
                     # source_vehicle_image.show()
                     pass
                 input_spriterow_y_offset = (
