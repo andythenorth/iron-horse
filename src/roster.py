@@ -410,6 +410,9 @@ class Roster(object):
                 )
 
         for wagon_module_name_stem in global_constants.wagon_module_name_stems:
+            if "_randomised" in wagon_module_name_stem:
+                # CABBAGE SKIP RANDOMISED WAGONS FOR NOW
+                continue
             if wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
                 roster_id_providing_module = self.wagon_module_names_with_roster_ids[
                     wagon_module_name_stem
@@ -430,8 +433,9 @@ class Roster(object):
                             if "Randomised" in model_def.class_name:
                                 # CABBAGE SKIP RANDOMISED WAGONS FOR NOW
                                 continue
+                            # CABBAGE TRIM CATALOGUE TO FIRST ENTRY DUE TO ACTION 1 LIMIT TEMPORARILY BEING EXCEEDED BY OUTDATED TEMPLATING
                             for catalogue_index, _ in enumerate(
-                                model_variant_factory.catalogue
+                                model_variant_factory.catalogue[0:1]
                             ):
                                 consist = model_variant_factory.produce(
                                     catalogue_index=catalogue_index
