@@ -1694,7 +1694,8 @@ class MailEngineCargoSprinter(MailEngineBase):
     Cab Motor for Cargo Sprinter express freight formation.
     """
 
-    liveries = [global_constants.freight_wagon_liveries["COMPANY_COLOUR_NO_WEATHERING"]]
+    liveries = ["COMPANY_COLOUR_NO_WEATHERING"]
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1710,7 +1711,7 @@ class MailEngineCargoSprinter(MailEngineBase):
                 liveries=self.liveries
             ).cargo_label_mapping,
             num_extra_layers_for_spritelayer_cargos=2,
-            liveries=self.liveries,
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
     @property
