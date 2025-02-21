@@ -17,6 +17,8 @@ def main(**kwargs):
         pantograph_type="diamond-single-with-base",
         easter_egg_haulage_speed_bonus=True,
         gen=2,
+        liveries=["VANILLA"],
+        cabbage_new_livery_system=True,
         sprites_complete=False,
         # intro_year_offset=-3,
     )

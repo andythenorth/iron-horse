@@ -20,6 +20,8 @@ def main(**kwargs):
         intro_year_offset=3,  # let's be a little bit later for this one
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
+        liveries=["VANILLA"],
+        cabbage_new_livery_system=True,
         default_livery_extra_docs_examples=[
             ("COLOUR_WHITE", "COLOUR_GREEN"),
             ("COLOUR_ORANGE", "COLOUR_RED"),

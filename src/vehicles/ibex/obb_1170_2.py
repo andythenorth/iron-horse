@@ -18,6 +18,8 @@ def main(**kwargs):
         gen=3,
         pantograph_type="diamond-double",
         # intro_year_offset=-5,  # introduce earlier than gen epoch by design
+        liveries=["VANILLA"],
+        cabbage_new_livery_system=True,
         sprites_complete=False,
     )
 
