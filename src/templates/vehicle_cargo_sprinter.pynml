@@ -14,10 +14,10 @@
 </tal:spritelayer_cargo_layers>
 
 // base platform graphics chain
-spriteset(${vehicle.id}_ss_unreversed, "${graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_unreversed, "${graphics_path}${consist.model_type_id}.png") {
     ${vehicle.get_spriteset_template_name('unreversed', 10)}
 }
-spriteset(${vehicle.id}_ss_masked_overlay_unreversed, "${graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_masked_overlay_unreversed, "${graphics_path}${consist.model_type_id}.png") {
     ${vehicle.get_spriteset_template_name('unreversed', 40)}
 }
 
@@ -29,7 +29,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_
 }
 
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_type_id}.png") {
     ${consist.get_nml_for_spriteset_template(y_offset=0)}
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {

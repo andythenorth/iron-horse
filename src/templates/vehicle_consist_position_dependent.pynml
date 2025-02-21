@@ -8,10 +8,10 @@
 // default graphics chain
 <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
     <tal:base_liveries repeat="base_livery_num range(consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant)">
-        spriteset(${vehicle.id}_ss_doors_closed_position_variant_${position_variant_num}_base_livery_${base_livery_num}, "${graphics_path}${consist.id}.png") {
+        spriteset(${vehicle.id}_ss_doors_closed_position_variant_${position_variant_num}_base_livery_${base_livery_num}, "${graphics_path}${consist.model_type_id}.png") {
             ${vehicle.get_spriteset_template_name('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (base_livery_num * 60))}
         }
-        spriteset(${vehicle.id}_ss_doors_open_position_variant_${position_variant_num}_base_livery_${base_livery_num}, "${graphics_path}${consist.id}.png") {
+        spriteset(${vehicle.id}_ss_doors_open_position_variant_${position_variant_num}_base_livery_${base_livery_num}, "${graphics_path}${consist.model_type_id}.png") {
             ${vehicle.get_spriteset_template_name('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (base_livery_num * 60) + 30)}
         }
     </tal:base_liveries>
@@ -189,7 +189,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
 
 // buy menu graphics chain
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-    spriteset(${vehicle.id}_ss_vehicle_purchase_${unit_variant.buyable_variant.buyable_variant_num}, "${graphics_path}${consist.id}.png") {
+    spriteset(${vehicle.id}_ss_vehicle_purchase_${unit_variant.buyable_variant.buyable_variant_num}, "${graphics_path}${consist.model_type_id}.png") {
         <!--! note the weird jank to handle articulated the y position of buy menu sprites
               it's easier for the buy menu sprite generator to place them where it places them, then deal with it here -->
         <tal:buy_menu_sprite_switch_case switch="consist.requires_custom_buy_menu_sprite">

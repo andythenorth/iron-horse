@@ -9,7 +9,7 @@
     <!--! as of June 2023, the spritesheets contain an alternative livery which was not included in initial variant wagons release
           hence the row offset of 60, not 30
     -->
-    spriteset(${vehicle.id}_ss_${position_variant}, "${graphics_path}${consist.id}.png") {
+    spriteset(${vehicle.id}_ss_${position_variant}, "${graphics_path}${consist.model_type_id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', 10 + (repeat.position_variant.index * 60))}
     }
 </tal:position_variants>
@@ -61,7 +61,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_
 }
 
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_type_id}.png") {
     ${consist.get_nml_for_spriteset_template(y_offset=0)}
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
