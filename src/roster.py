@@ -242,12 +242,18 @@ class Roster(object):
     def get_liveries_by_name_cabbage_new(self, additional_livery_names):
         # CABBAGE - REFACTORING SHIM
         result = []
-        result.extend(
-            [
-                self.engine_and_pax_mail_car_liveries[additional_livery_name]
-                for additional_livery_name in additional_livery_names
-            ]
-        )
+        try:
+            result.extend(
+                [
+                    self.engine_and_pax_mail_car_liveries[additional_livery_name]
+                    for additional_livery_name in additional_livery_names
+                ]
+            )
+        except:
+            # assume we've been passed a freight livery
+            # CABBAGE - SHOULD ONLY BE ONE LIVERY NAME IN ACTUALITY
+            for livery_name in additional_livery_names:
+                result.append(global_constants.freight_wagon_liveries[livery_name])
         return result
 
     def get_liveries_by_name(self, additional_livery_names):

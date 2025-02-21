@@ -1001,6 +1001,21 @@ class ModelTypeBase(object):
             return 64
 
     @property
+    def cabbage_refactoring_livery_resolver(self):
+        # CABBAGE FACTORY?
+        if self.model_variant_factory.cabbage_new_livery_system:
+            result = self.roster.get_liveries_by_name_cabbage_new(
+                [self.cabbage_catalogue_entry.livery_name]
+            )
+        else:
+            result = self.roster.get_liveries_by_name(
+                self.model_def.additional_liveries
+                if self.model_def.additional_liveries is not None
+                else []
+            )
+        return result
+
+    @property
     def engine_sprite_layers_with_layer_names(self):
         result = []
         counter = 0
@@ -1343,21 +1358,6 @@ class EngineModelTypeBase(ModelTypeBase):
             liveries=self.cabbage_refactoring_livery_resolver,
             default_livery_extra_docs_examples=default_livery_extra_docs_examples,
         )
-
-    @property
-    def cabbage_refactoring_livery_resolver(self):
-        # CABBAGE FACTORY?
-        if self.model_variant_factory.cabbage_new_livery_system:
-            result = self.roster.get_liveries_by_name_cabbage_new(
-                [self.cabbage_catalogue_entry.livery_name]
-            )
-        else:
-            result = self.roster.get_liveries_by_name(
-                self.model_def.additional_liveries
-                if self.model_def.additional_liveries is not None
-                else []
-            )
-        return result
 
     @property
     def caboose_family(self):
@@ -3946,7 +3946,7 @@ class CabooseCarUnit(CarModelTypeBase):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
-    liveries = [global_constants.freight_wagon_liveries["SWOOSH"]]
+    liveries = [global_constants.freight_wagon_liveries["FREIGHT_SWOOSH"]]
 
     model_type_id_root = "caboose_car"
 
@@ -4034,11 +4034,10 @@ class CarbonBlackHopperCar(CarModelTypeBase):
     Dedicated covered hopper car for carbon black.  No other cargos.
     """
 
-    liveries = [
-        global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"]
-    ]
+    liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_type_id_root = "carbon_black_hopper_car"
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4059,7 +4058,8 @@ class CarbonBlackHopperCar(CarModelTypeBase):
             "weathered": graphics_constants.carbon_black_hopper_car_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants, liveries=self.liveries
+            weathered_variants=weathered_variants,
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
 
@@ -4774,7 +4774,8 @@ class ExpressIntermodalCarUnit(CarModelTypeBase):
     Express intermodal container cars - express freight, valuables, mails.
     """
 
-    liveries = [global_constants.freight_wagon_liveries["SWOOSH"]]
+    liveries = ["FREIGHT_SWOOSH"]
+    cabbage_new_livery_system = True
 
     model_type_id_root = "express_intermodal_car"
 
@@ -4803,7 +4804,8 @@ class ExpressIntermodalCarUnit(CarModelTypeBase):
         # intermodal container wagons can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
-            formation_ruleset="2_unit_sets", liveries=self.liveries
+            formation_ruleset="2_unit_sets",
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
     @property
@@ -4818,7 +4820,8 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
     Bae for farm type cargos - box cars / vans.
     """
 
-    liveries = [global_constants.freight_wagon_liveries["SWOOSH"]]
+    # company colour not used on these wagons, so set SWOOSH as JFDI
+    liveries = ["FREIGHT_SWOOSH"]
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -4844,9 +4847,9 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
             "unweathered": graphics_constants.farm_product_box_car_livery_recolour_map,
             "weathered": graphics_constants.farm_product_box_car_livery_recolour_map_weathered,
         }
-        # company colour not used on these wagons, so set SWOOSH as JFDI
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            weathered_variants=weathered_variants, liveries=self.liveries
+            weathered_variants=weathered_variants,
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
 
@@ -4902,7 +4905,9 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
     Farm type cargos - covered hoppers.
     """
 
-    liveries = [global_constants.freight_wagon_liveries["SWOOSH"]]
+    # company colour not used on these wagons, so use SWOOSH as JFDI
+    liveries = ["FREIGHT_SWOOSH"]
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4926,9 +4931,9 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
             "unweathered": graphics_constants.farm_product_hopper_car_livery_recolour_map,
             "weathered": graphics_constants.farm_product_hopper_car_livery_recolour_map_weathered,
         }
-        # company colour not used on these wagons, so use SWOOSH as JFDI
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants, liveries=self.liveries
+            weathered_variants=weathered_variants,
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
 
@@ -4984,7 +4989,8 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
     Food type covered hoppers - same refits as farm product cars.
     """
 
-    liveries = [global_constants.freight_wagon_liveries["SWOOSH"]]
+    # company colour not used on these wagons, so use SWOOSH as JFDI
+    liveries = ["FREIGHT_SWOOSH"]
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4996,9 +5002,9 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
             "unweathered": graphics_constants.refrigerated_livery_recolour_map,
             "weathered": graphics_constants.refrigerated_livery_recolour_map_weathered,
         }
-        # company colour not used on these wagons, so use SWOOSH as JFDI
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants, liveries=self.liveries
+            weathered_variants=weathered_variants,
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
 
@@ -5376,7 +5382,7 @@ class GasTankCarBase(CarModelTypeBase):
     Specialist tank cars for gases, e.g. Oxygen, Chlorine, Ammonia, Propylene etc.
     """
 
-    liveries = [global_constants.freight_wagon_liveries["SWOOSH"]]
+    liveries = ["FREIGHT_SWOOSH"]
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -5397,7 +5403,8 @@ class GasTankCarBase(CarModelTypeBase):
             "weathered": graphics_constants.cryo_tanker_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants, liveries=self.liveries
+            weathered_variants=weathered_variants,
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
 
@@ -6030,7 +6037,9 @@ class IntermodalCarBase(CarModelTypeBase):
     General cargo - refits everything except mail, pax.
     """
 
-    liveries = [global_constants.freight_wagon_liveries["SWOOSH"]]
+    # !! as of April 2023, company colour isn't used for default intermodal sprite, so use SWOOSH as JFDI
+    liveries = ["FREIGHT_SWOOSH"]
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6055,9 +6064,9 @@ class IntermodalCarBase(CarModelTypeBase):
             formation_ruleset = self.model_def.formation_ruleset
         else:
             formation_ruleset = "4_unit_sets"
-        # !! as of April 2023, company colour isn't used for default intermodal sprite, so use SWOOSH as JFDI
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
-            formation_ruleset=formation_ruleset, liveries=self.liveries
+            formation_ruleset=formation_ruleset,
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
 
@@ -8246,11 +8255,10 @@ class SiloCarCementType1(SiloCarBase):
     Cement-coloured silo car.
     """
 
-    liveries = [
-        global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"]
-    ]
+    liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_type_id_root = "cement_silo_car_type_1"
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8266,7 +8274,8 @@ class SiloCarCementType1(SiloCarBase):
             "weathered": graphics_constants.cement_silo_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants, liveries=self.liveries
+            weathered_variants=weathered_variants,
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
 
@@ -8275,11 +8284,10 @@ class SiloCarCementType2(SiloCarBase):
     Cement-coloured silo car.
     """
 
-    liveries = [
-        global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"]
-    ]
+    liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_type_id_root = "cement_silo_car_type_2"
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8295,7 +8303,8 @@ class SiloCarCementType2(SiloCarBase):
             "weathered": graphics_constants.cement_silo_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants, liveries=self.liveries
+            weathered_variants=weathered_variants,
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
 
@@ -8304,11 +8313,10 @@ class SiloCarCementType3(SiloCarBase):
     Cement-coloured silo car.
     """
 
-    liveries = [
-        global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"]
-    ]
+    liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_type_id_root = "cement_silo_car_type_3"
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8324,7 +8332,8 @@ class SiloCarCementType3(SiloCarBase):
             "weathered": graphics_constants.cement_silo_livery_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            weathered_variants=weathered_variants, liveries=self.liveries
+            weathered_variants=weathered_variants,
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
 
@@ -8334,10 +8343,11 @@ class SiloCarCementRandomised(RandomisedCarMixin, SiloCarBase):
     """
 
     liveries = [
-        global_constants.freight_wagon_liveries["COMPANY_COLOUR_USE_WEATHERING"]
+        "COMPANY_COLOUR_USE_WEATHERING"
     ]
 
     model_type_id_root = "cement_silo_car_randomised"
+    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8350,7 +8360,7 @@ class SiloCarCementRandomised(RandomisedCarMixin, SiloCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            liveries=self.liveries,
+            liveries=self.cabbage_refactoring_livery_resolver,
         )
 
 

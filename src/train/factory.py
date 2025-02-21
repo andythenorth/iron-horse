@@ -324,7 +324,9 @@ class ModelVariantFactory:
                     model_variant.gestalt_graphics.__class__.__name__
                     != "GestaltGraphicsFormationDependent"
                 ):
-                    print("No liveries in model_def or class attrs for:", model_variant.id)
+                    print(
+                        "No liveries in model_def or class attrs for:", model_variant.id
+                    )
 
         """
         for counter, livery in enumerate(["example", "cabbage_livery"]):
