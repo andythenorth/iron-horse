@@ -369,7 +369,7 @@ class ModelVariantFactory:
 
     @property
     def cabbage_liveries(self):
-        # UNFINISHED - NEEDS TO HANDLE cls attr liveries on wagons
+        # UNFINISHED - NEEDS TO HANDLE liveries defined as groups on roster
         if self.model_def.liveries is not None:
             return self.model_def.liveries
         elif hasattr(self.model_type_cls, "liveries"):
