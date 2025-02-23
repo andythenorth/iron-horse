@@ -238,17 +238,6 @@ class Roster(object):
             ],
         }
 
-    def get_liveries_by_name_cabbage_new(self, additional_livery_names):
-        # CABBAGE - REFACTORING SHIM
-        result = []
-        result.extend(
-            [
-                self.engine_and_pax_mail_car_liveries[additional_livery_name]
-                for additional_livery_name in additional_livery_names
-            ]
-        )
-        return result
-
     def get_pax_mail_liveries(self, default_livery_group_name, model_def):
         result = []
         # we can optionally specify liveries per consist via the model_def, otherwise use the default for this consist subclass
@@ -352,9 +341,7 @@ class Roster(object):
                 model_variant_factory = ModelVariantFactory(
                     model_def, self.id, roster_id_providing_module
                 )
-                for catalogue_index, _ in enumerate(
-                    model_variant_factory.catalogue
-                ):
+                for catalogue_index, _ in enumerate(model_variant_factory.catalogue):
                     consist = model_variant_factory.produce(
                         catalogue_index=catalogue_index
                     )

@@ -1004,9 +1004,7 @@ class ModelTypeBase(object):
 
     @property
     def cabbage_refactoring_livery_name_resolver(self):
-        result = iron_horse.livery_manager[
-            self.cabbage_catalogue_entry.livery_name
-        ]
+        result = iron_horse.livery_manager[self.cabbage_catalogue_entry.livery_name]
         return result
 
     @property
@@ -1019,7 +1017,10 @@ class ModelTypeBase(object):
         if self.decor_spriterow_num is not None:
             # CABBAGE
             # guard against the decor spriterow not being updated when liveries are added
-            if self.decor_spriterow_num <= len(self.model_variant_factory.catalogue) - 1:
+            if (
+                self.decor_spriterow_num
+                <= len(self.model_variant_factory.catalogue) - 1
+            ):
                 raise BaseException(
                     self.model_type_id
                     + " has decor_spriterow_num "
