@@ -1,3 +1,6 @@
+# CABBAGE - convert to @dataclass?
+# ALSO - move to train/badge.py?
+
 class Badge(object):
     """Simple generic class for badges"""
 
