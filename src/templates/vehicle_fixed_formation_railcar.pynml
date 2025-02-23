@@ -2,13 +2,12 @@
       support for pantographs and opening doors *is* included
       this is very similar to the standard engine template, but has opening door support, but no decor spriterow support-->
 
-<!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
-<tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
+<tal:liveries repeat="livery consist.model_variant_factory.catalogue">
     spriteset(${vehicle.id}_ss_doors_closed_${repeat.livery.index}, "${graphics_path}${consist.model_type_id}.png") {
-        ${vehicle.get_spriteset_template_name('reversed' if vehicle._unit_def.reverse_sprite_template else 'unreversed', 10 + (repeat.livery.index * 60) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 60))}
+        ${vehicle.get_spriteset_template_name('reversed' if vehicle._unit_def.reverse_sprite_template else 'unreversed', 10 + (repeat.livery.index * 60) + (vehicle.spriterow_num * len(consist.model_variant_factory.catalogue) * 60))}
     }
     spriteset(${vehicle.id}_ss_doors_open_${repeat.livery.index}, "${graphics_path}${consist.model_type_id}.png") {
-        ${vehicle.get_spriteset_template_name('reversed' if vehicle._unit_def.reverse_sprite_template else 'unreversed', 10 + 30 + (repeat.livery.index * 60) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 60))}
+        ${vehicle.get_spriteset_template_name('reversed' if vehicle._unit_def.reverse_sprite_template else 'unreversed', 10 + 30 + (repeat.livery.index * 60) + (vehicle.spriterow_num * len(consist.model_variant_factory.catalogue) * 60))}
     }
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_doors_${repeat.livery.index}, switch_graphics_opening_doors()) {
         0: return ${vehicle.id}_ss_doors_closed_${repeat.livery.index};
@@ -44,18 +43,9 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_
 }
 
 // buy menu graphics chain
-<!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
-<tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
-spriteset(${vehicle.id}_ss_vehicle_purchase_${repeat.livery.index}, "${graphics_path}${consist.model_type_id}.png") {
-    ${consist.get_nml_for_spriteset_template(y_offset=repeat.livery.index * 60)}
-}
-</tal:liveries>
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase_livery, vehicle_type_id) {
-    <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-        ${unit_variant.numeric_id}: return ${vehicle.id}_ss_vehicle_purchase_${unit_variant.buyable_variant.buyable_variant_num};
-    </tal:unit_variants>
-    <!--! no default, by design all variants should be explicitly found -->
+spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_type_id}.png") {
+    <!--! CABBAGE --> // ${consist.get_nml_for_spriteset_template(y_offset=repeat.livery.index * 60)}
+    ${consist.get_nml_for_spriteset_template(y_offset=["need a cabbage spriterow offset here", 1][1] * 60)}
 }
 
 <tal:conditional_pantographs condition="consist.pantograph_type is not None">
@@ -76,7 +66,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase_livery
         ) {
         <tal:result switch="extra_sprite_layer[1]">
             <tal:block case="'base'">
-                return ${vehicle.id}_switch_graphics_vehicle_purchase_livery;
+                return ${vehicle.id}_ss_vehicle_purchase;
             </tal:block>
             <tal:block case="'pantographs'">
                 return ${vehicle.id}_ss_${extra_sprite_layer[1]}_purchase;
@@ -98,11 +88,11 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, getbits(extra
 <!--! dedicated colour remapping with rules against specific cc2 colours-->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id) {
     <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-        <tal:livery define="livery consist.gestalt_graphics.all_liveries[repeat.unit_variant.index]">
-            <tal:optional_forced_recolour switch="livery.get('remap_to_cc', None) is not None">
+        <tal:livery define="livery_cabbage consist.cabbage_catalogue_entry.livery_def">
+            <tal:optional_forced_recolour switch="livery_cabbage.get('remap_to_cc', None) is not None">
                 <tal:block case="True">
                     <!--! recolour CC2 to arbitrary other CC as defined by livery -->
-                    ${unit_variant.numeric_id}: palette_2cc(${livery['remap_to_cc']['company_colour1']}, ${livery['remap_to_cc']['company_colour2']});
+                    ${unit_variant.numeric_id}: palette_2cc(${livery_cabbage['remap_to_cc']['company_colour1']}, ${livery_cabbage['remap_to_cc']['company_colour2']});
                 </tal:block>
                 <tal:block case="False">
                     <!--! apply regular 1CC and 2CC -->

@@ -1011,6 +1011,7 @@ class ModelTypeBase(object):
                     self.cabbage_catalogue_entry.livery_name
                 ]
             except:
+                raise Exception(iron_horse.livery_manager.keys())
                 # CABBAGE SHIM to HANDLE UNFINISHED REFACTORING
                 result = self.roster.get_liveries_by_name_cabbage_new(
                     [self.cabbage_catalogue_entry.livery_name]
@@ -1027,14 +1028,15 @@ class ModelTypeBase(object):
         result.append((counter, "base"))
         # add a layer for decor as needed, note this is not done in the gestalt as it's more convenient to treat separarely
         if self.decor_spriterow_num is not None:
+            # CABBAGE
             # guard against the decor spriterow not being updated when liveries are added
-            if self.decor_spriterow_num <= len(self.gestalt_graphics.liveries) - 1:
+            if self.decor_spriterow_num <= len(self.model_variant_factory.catalogue) - 1:
                 raise BaseException(
                     self.model_type_id
                     + " has decor_spriterow_num "
                     + str(self.decor_spriterow_num)
                     + " and also "
-                    + str(len(self.gestalt_graphics.liveries) - 1)
+                    + str(len(self.model_variant_factory.catalogue) - 1)
                     + " additional liveries defined. This will cause vehicle sprites to be incorrectly shown as decor."
                 )
             # if guard passes...
@@ -1902,7 +1904,7 @@ class MailEngineExpressRailcar(MailEngineBase):
         # * unit with no cabs (center car)
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         jfdi_pantograph_debug_image_y_offsets = [
-            len(self.cabbage_refactoring_livery_name_resolver) * 60,
+            len(self.model_variant_factory.catalogue) * 60,
             30,
         ]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
@@ -2058,7 +2060,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
         # position variants
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         jfdi_pantograph_debug_image_y_offsets = [
-            len(self.cabbage_refactoring_livery_name_resolver) * 60,
+            len(self.model_variant_factory.catalogue) * 60,
             30,
         ]
         # various rulesets are supported, per consist, (or could be extended to checks per roster)

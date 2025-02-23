@@ -149,14 +149,16 @@ class RosterManager(list):
 
         # some actions have to be run after the rosters are all added to RosterManager, to ensure all rosters are present
         for roster in self:
+            for livery_name, livery_def in roster.engine_and_pax_mail_car_liveries.items():
+                livery_manager.add_livery(livery_name, **livery_def)
             roster.produce_engines()
             roster.produce_wagons()
+        # now validate as we have all the vehicles in all rosters
         self.validate_vehicles()
+        # now complete any post validation steps
         for roster in self:
             roster.compute_wagon_recolour_sets()
             roster.add_buyable_variant_groups()
-            for livery_name, livery_def in roster.engine_and_pax_mail_car_liveries.items():
-                livery_manager.add_livery(livery_name, **livery_def)
 
     def validate_vehicles(self):
         # has to be explicitly called after all rosters are active, and all vehicles and vehicle units are registered to each roster
