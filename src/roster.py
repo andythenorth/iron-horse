@@ -352,17 +352,12 @@ class Roster(object):
                 model_variant_factory = ModelVariantFactory(
                     model_def, self.id, roster_id_providing_module
                 )
-                if model_variant_factory.cabbage_new_livery_system:
-                    for catalogue_index, _ in enumerate(
-                        model_variant_factory.catalogue
-                    ):
-                        consist = model_variant_factory.produce(
-                            catalogue_index=catalogue_index
-                        )
-                        self.engine_consists.append(consist)
-                else:
-                    consist = model_variant_factory.produce(catalogue_index="_cabbage")
-                    print("cabbage: legacy consist init for", consist.id)
+                for catalogue_index, _ in enumerate(
+                    model_variant_factory.catalogue
+                ):
+                    consist = model_variant_factory.produce(
+                        catalogue_index=catalogue_index
+                    )
                     self.engine_consists.append(consist)
 
     def produce_wagons(self):
@@ -400,20 +395,15 @@ class Roster(object):
                         model_variant_factory = ModelVariantFactory(
                             model_def, self.id, roster_id_providing_module
                         )
-                        if model_variant_factory.cabbage_new_livery_system:
-                            if "Randomised" in model_def.class_name:
-                                # CABBAGE SKIP RANDOMISED WAGONS FOR NOW
-                                continue
-                            # CABBAGE TRIM CATALOGUE TO FIRST ENTRY DUE TO ACTION 1 LIMIT TEMPORARILY BEING EXCEEDED BY OUTDATED TEMPLATING
-                            for catalogue_index, _ in enumerate(
-                                model_variant_factory.catalogue
-                            ):
-                                consist = model_variant_factory.produce(
-                                    catalogue_index=catalogue_index
-                                )
-                        else:
-                            print("cabbage: legacy consist init for", model_def.class_name)
-                            model_variant_factory.produce(catalogue_index="_cabbage")
+                        if "Randomised" in model_def.class_name:
+                            # CABBAGE SKIP RANDOMISED WAGONS FOR NOW
+                            continue
+                        for catalogue_index, _ in enumerate(
+                            model_variant_factory.catalogue
+                        ):
+                            consist = model_variant_factory.produce(
+                                catalogue_index=catalogue_index
+                            )
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
                         wagon_module_name
