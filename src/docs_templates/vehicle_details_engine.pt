@@ -150,7 +150,7 @@
 
                 <h3 id="appearance">Appearance</h3>
                 <div style="font-size:16px;">
-                    <p>This vehicle has ${len(model_type.gestalt_graphics.all_liveries)} ${"livery" if len(model_type.gestalt_graphics.all_liveries) == 1 else "liveries"}.</p>
+                    <p>This vehicle has ${len(model_type.model_variant_factory.catalogue)} ${"livery" if len(model_type.model_variant_factory.catalogue) == 1 else "liveries"}.</p>
                 </div>
 
                 <style>

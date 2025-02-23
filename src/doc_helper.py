@@ -217,12 +217,18 @@ class DocHelper(object):
             buyable_variants_for_docs = consist.buyable_variants
 
         for buyable_variant in buyable_variants_for_docs:
-            livery = consist.gestalt_graphics.all_liveries[
-                buyable_variant.buyable_variant_num
-            ]
+            # CABBAGE SHIM - THIS DOESN'T WORK, NEED TO REFACTOR buyable_variants_for_docs and work from model_variant_factory and catalogue
+            livery_def = consist.cabbage_catalogue_entry.livery_def
+
+            if isinstance(livery_def, dict):
+                # CABBAGE REFACTORING SHIM
+                livery = livery_def
+            else:
+                livery = {"docs_image_input_cc": livery_def.docs_image_input_cc, "colour_set": livery_def.colour_set}
+
             # docs_image_input_cc is mandatory for each livery, fail if it's not present
             if "docs_image_input_cc" not in livery.keys():
-                raise BaseException(consist + livery)
+                raise KeyError(consist + livery)
             docs_image_input_cc = livery["docs_image_input_cc"].copy()
             # as of Dec 2022 only the default livery has per-vehicle extendable colour combos
             # all other liveries have the examples baked into the livery

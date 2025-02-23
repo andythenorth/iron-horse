@@ -47,6 +47,7 @@ class GestaltGraphics(object):
 
     @property
     def all_liveries(self):
+        # CABBAGE - THIS SHOULD BE DELEGATED TO CATALOGUE, AND MAY NOT BE NEEDED
         # stub to map this gestalt's liveries to the wider all_liveries structure
         # this can be over-ridden as needed by gestalts
         # note that self.liveries must be initialised by passing a keyword (as the default livery comes from the roster which is not in scope here)
