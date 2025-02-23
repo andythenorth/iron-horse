@@ -353,13 +353,7 @@ class Roster(object):
         # eh this is a bit of a stub function, but we have to explicitly add the wagons when they're instantiated, and it seems cleaner to delegate it to the roster?
         self.wagon_consists.append(wagon_consist)
 
-    def post_init_actions(self):
-        # init of vehicle models has to happen after the roster is registered with RosterManager, otherwise they can't get the roster
-        self.init_engine_modules()
-        self.init_wagon_modules()
-        self.init_wagon_recolour_colour_sets()
-
-    def init_engine_modules(self):
+    def produce_engines(self):
         package_name = "vehicles." + self.id
         roster_id_providing_module = self.id
         # engines
@@ -384,7 +378,7 @@ class Roster(object):
                     print("cabbage: legacy consist init for", consist.id)
                     self.engine_consists.append(consist)
 
-    def init_wagon_modules(self):
+    def produce_wagons(self):
         # wagons can be optionally reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module
         # this is not intended to be a common case, it's for things like torpedo cars where redrawing and redefining them for all rosters is pointless
         # this may cause compile failures when refactoring stuff due to cross-roster dependencies being broken, if so comment the calls out
@@ -445,7 +439,7 @@ class Roster(object):
                 except Exception:
                     raise
 
-    def init_wagon_recolour_colour_sets(self):
+    def compute_wagon_recolour_sets(self):
         # wagon recolour liveries can be randomised across multiple colour sets
         # this is a run-time randomisation, relying on a procedure that takes parameters for the candidate livery numbers
         # however there are 10 parameters, and calls to the procedure are needed thousands of times per grf,

@@ -130,9 +130,22 @@ class RosterManager(list):
     Extends default python list, as we also use it when we want a list of active rosters (the instantiated class instance behaves like a list object).
     """
 
-    def add_roster(self, roster_module):
-        roster = roster_module.main()
-        self.append(roster)
+    def add_rosters(self, roster_module_names):
+        for roster_module_name in roster_module_names:
+            roster_module = importlib.import_module(
+                "." + roster_module_name, package="rosters"
+            )
+            roster = roster_module.main()
+            self.append(roster)
+
+        # some actions have to be run after the rosters are all added to RosterManager, to ensure all rosters are present
+        for roster in self:
+            roster.produce_engines()
+            roster.produce_wagons()
+        self.validate_vehicles()
+        for roster in self:
+            roster.compute_wagon_recolour_sets()
+            roster.add_buyable_variant_groups()
 
     def validate_vehicles(self):
         # has to be explicitly called after all rosters are active, and all vehicles and vehicle units are registered to each roster
@@ -141,11 +154,6 @@ class RosterManager(list):
         self.numeric_id_defender = {}
         for roster in self:
             roster.validate_vehicles(self.numeric_id_defender)
-
-    def add_buyable_variant_groups(self):
-        # has to be explicitly called after all vehicles and vehicle units are registered to each roster
-        for roster in self:
-            roster.add_buyable_variant_groups()
 
     @property
     def active_roster(self):
@@ -224,19 +232,7 @@ def main():
     print(livery_manager)
 
     # rosters
-    for roster_module_name in roster_module_names:
-        roster_module = importlib.import_module(
-            "." + roster_module_name, package="rosters"
-        )
-        roster_manager.add_roster(roster_module)
-
-    # CABBAGE - LIVERY MANAGER NEEDS INTERLEAVED HERE SOMEHOW FOR ROSTERS
-
-    for roster in roster_manager:
-        # some actions have to be run after the rosters are all added to RosterManager, to ensure all rosters are present
-        # CABBAGE - THIS COULD BE A METHOD ON THE ROSTER MANAGER
-        # THIS PRIMARILY DEALS WITH INITING VEHICLES, BUT ALSO OTHER THINGS
-        roster.post_init_actions()
+    roster_manager.add_rosters(roster_module_names)
 
     # spritelayer cargos
     for spritelayer_cargo_module_name in spritelayer_cargo_module_names:
@@ -244,9 +240,6 @@ def main():
             "." + spritelayer_cargo_module_name, package="spritelayer_cargos"
         )
         spritelayer_cargo_module.main()
-
-    roster_manager.validate_vehicles()
-    roster_manager.add_buyable_variant_groups()
 
     # badges, done after vehicle models as badges can be either static (global), or dynamically created (for specific vehicle models)
 
