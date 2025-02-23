@@ -54,6 +54,7 @@ class LiveryDef:
     docs_image_input_cc: Optional[List] = None
     purchase: Optional[str] = None
     relative_spriterow_num: Optional[int] = None
+    remap_to_cc: Optional[str] = None
     use_weathering: Optional[bool] = False
 
 
@@ -67,7 +68,11 @@ class LiveryManager(dict):
     def add_livery(self, livery_name, **kwargs):
         # if not a duplicate, add the livery
         if livery_name in self:
-            raise Exception("CABBAGE TRIED TO ADD A LIVERY THAT EXISTS")
+            # CABBAGE - FIGURE OUT LATER WHETHER TO ALLOW REDEFINING BY ROSTERS, OR WHETHER TO FORCE A COMMON LIVERY SET
+            if livery_name in ["VANILLA", "SWOOSH", "FOO", "TGV_LA_POSTE"]:
+                print(f"LiveryManager.add_livery: a roster tried to add {livery_name} when it already exists")
+            else:
+                raise ValueError(f"LiveryManager.add_livery: a roster tried to add {livery_name} when it already exists")
         else:
             self[livery_name] = LiveryDef(**kwargs)
         # no return as of now, not needed
@@ -150,7 +155,8 @@ class RosterManager(list):
         for roster in self:
             roster.compute_wagon_recolour_sets()
             roster.add_buyable_variant_groups()
-
+            for livery_name, livery_def in roster.engine_and_pax_mail_car_liveries.items():
+                livery_manager.add_livery(livery_name, **livery_def)
 
     def validate_vehicles(self):
         # has to be explicitly called after all rosters are active, and all vehicles and vehicle units are registered to each roster
