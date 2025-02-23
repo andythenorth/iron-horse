@@ -1007,7 +1007,9 @@ class ModelTypeBase(object):
         # CABBAGE - FACTORY SHOULD HANDLE THIS?
         if self.model_variant_factory.cabbage_new_livery_system:
             try:
-                result = iron_horse.livery_manager[self.cabbage_catalogue_entry.livery_name]
+                result = iron_horse.livery_manager[
+                    self.cabbage_catalogue_entry.livery_name
+                ]
             except:
                 # CABBAGE SHIM to HANDLE UNFINISHED REFACTORING
                 result = self.roster.get_liveries_by_name_cabbage_new(
@@ -1901,7 +1903,10 @@ class MailEngineExpressRailcar(MailEngineBase):
         # * unit with driving cab rear end
         # * unit with no cabs (center car)
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        jfdi_pantograph_debug_image_y_offsets = [len(self.cabbage_refactoring_livery_name_resolver) * 60, 30]
+        jfdi_pantograph_debug_image_y_offsets = [
+            len(self.cabbage_refactoring_livery_name_resolver) * 60,
+            30,
+        ]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_4_unit_sets",
@@ -2054,7 +2059,10 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
             self.roof_type = "pax_mail_smooth"
         # position variants
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
-        jfdi_pantograph_debug_image_y_offsets = [len(self.cabbage_refactoring_livery_name_resolver) * 60, 30]
+        jfdi_pantograph_debug_image_y_offsets = [
+            len(self.cabbage_refactoring_livery_name_resolver) * 60,
+            30,
+        ]
         # various rulesets are supported, per consist, (or could be extended to checks per roster)
         # this wasn't moved to @property due to laziness, as of Jan 2025
         if self.model_def.formation_ruleset is not None:
@@ -5954,7 +5962,8 @@ class LogCar(CarModelTypeBase):
         ]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="tree_length_logs", liveries=self.cabbage_refactoring_livery_name_resolver
+            piece="tree_length_logs",
+            liveries=self.cabbage_refactoring_livery_name_resolver,
         )
 
 
@@ -6768,7 +6777,9 @@ class OpenCar(OpenCarBase):
         self.use_named_buyable_variant_group = "wagon_group_open_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            bulk=True, piece="open", liveries=self.cabbage_refactoring_livery_name_resolver
+            bulk=True,
+            piece="open",
+            liveries=self.cabbage_refactoring_livery_name_resolver,
         )
 
 
@@ -6884,7 +6895,9 @@ class OpenCarMill(OpenCarBase):
             "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            bulk=True, piece="open", liveries=self.cabbage_refactoring_livery_name_resolver
+            bulk=True,
+            piece="open",
+            liveries=self.cabbage_refactoring_livery_name_resolver,
         )
 
 
@@ -8724,11 +8737,16 @@ class BuyableVariant(object):
             if isinstance(livery_def, dict):
                 # CABBAGE REFACTORING SHIM
                 self.livery = livery_def
-                self._relative_spriterow_num = livery_def.get("relative_spriterow_num", None)
+                self._relative_spriterow_num = livery_def.get(
+                    "relative_spriterow_num", None
+                )
             else:
                 # CABBAGE REFACTORING SHIM - PARSE livery_def back to dict, temporarily, as consumers want a dict
                 self._relative_spriterow_num = livery_def.relative_spriterow_num
-                self.livery = {"docs_image_input_cc": livery_def.docs_image_input_cc, "colour_set": livery_def.colour_set}
+                self.livery = {
+                    "docs_image_input_cc": livery_def.docs_image_input_cc,
+                    "colour_set": livery_def.colour_set,
+                }
         except:
             # CABBAGE TEMP EXCEPTION HANDLING
             raise Exception(

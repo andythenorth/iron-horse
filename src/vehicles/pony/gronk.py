@@ -39,19 +39,19 @@ def main(**kwargs):
 
     result.append(model_def)
 
-    model_def = model_def.begin_clone(base_numeric_id=990, unit_repeats=[1])
+    model_def_clone = model_def.begin_clone(base_numeric_id=990, unit_repeats=[1])
 
     # this is a JFDI thing, the 2-unit version varies sprites per unit position, which is generally supported
     # but the *buy menu* compositor does not support that as of Jan 2024, so hax
-    model_def.unit_defs[0].spriterow_num = 1
-    model_def.add_unit_def(
+    model_def_clone.unit_defs[0].spriterow_num = 1
+    model_def_clone.add_unit_def(
         class_name="DieselEngineUnit", weight=55, vehicle_length=4, spriterow_num=0
     )
 
     # JFDI, the single unit should randomly reverse, the 2-unit version should not, so hax
-    model_def.random_reverse = False
+    model_def_clone.random_reverse = False
 
-    model_def.complete_clone()
+    model_def = model_def_clone.complete_clone()
 
     result.append(model_def)
 

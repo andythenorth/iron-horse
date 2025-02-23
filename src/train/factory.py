@@ -69,6 +69,7 @@ class ModelDef:
     # Internal attributes (not provided via __init__) (lexically sorted)
     cloned_from_model_def: Optional["ModelDef"] = field(default=None, init=False)
     clones: List[Any] = field(default_factory=list, init=False)
+    clone_stats_adjustment_factor: Optional[float] = None
     unit_defs: List[Any] = field(default_factory=list, init=False)
 
     def add_unit_def(self, **kwargs):
@@ -80,68 +81,11 @@ class ModelDef:
     def define_foamer_facts(self, foamer_facts):
         self.foamer_facts = foamer_facts
 
-    def begin_clone(self, base_numeric_id, unit_repeats, **kwargs):
-        if self.cloned_from_model_def is not None:
-            # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
-            raise Exception(
-                "Don't clone a model def that is itself a clone, it won't work as expected. \nClone the original model def. \nModel def is: "
-                + self.model_type_id,
-            )
-        cloned_model_def = copy.deepcopy(self)
-        # clone may need to reference original source
-        cloned_model_def.cloned_from_model_def = self
-        # keep a reference locally for book-keeping
-        self.clones.append(cloned_model_def)
-        # deepcopy will have created new unit instances, but we might want to modify the sequence for the clone
-        # the format is unit_repeats=[x, y z]
-        # for each existing unit, this will specify which units to copy, and what their repeat values are
-        # e.g. [1, 0] will keep the first and drop the second
-        # [2, 1] will repeat the first unit twice
-        # [0, 2] will drop the first unit and repeat the second twice
-        unit_defs_old = cloned_model_def.unit_defs.copy()
-        cloned_model_def.unit_defs = []
-        for counter, unit_def in enumerate(unit_defs_old):
-            # don't use unit if repeat is 0
-            if unit_repeats[counter] > 0:
-                cloned_model_def.unit_defs.append(unit_def)
-                unit_def.repeat = unit_repeats[counter]
-
-        cloned_model_def.base_numeric_id = base_numeric_id
-        # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
-        cloned_model_def.model_type_id = (
-            self.model_type_id + "_clone_" + str(len(self.clones))
-        )
-        cloned_model_def.buyable_variant_group_id = self.model_type_id
-        return cloned_model_def
+    def begin_clone(self, base_numeric_id, unit_repeats):
+        return ModelDefCloner.begin_clone(self, base_numeric_id, unit_repeats)
 
     def complete_clone(self):
-        # book-keeping and adjustments after all changes are made to a clone
-        self.power_by_power_source = self.clone_adjust_power_by_power_source()
-        # purchase menu variant decor isn't supported if the vehicle is articulated, so just forcibly clear this property
-        if self.produced_unit_total > 1:
-            self.show_decor_in_purchase_for_variants = None
-
-    @property
-    def clone_stats_adjustment_factor(self):
-        # clones need to adjust some stats, e.g. power, running_cost etc, we do this by inferring a multiple by comparing number of units that will be produced
-        # call on clone, not source, will except (correctly) if called on source
-        try:
-            source_unit_count = self.cloned_from_model_def.produced_unit_total
-        except:
-            raise Exception("source_unit_count failed" + str(self.kwargs))
-        clone_unit_count = self.produced_unit_total
-        result = clone_unit_count / source_unit_count
-        return result
-
-    def clone_adjust_power_by_power_source(self):
-        # recalculate power in a clone
-        result = {}
-        for (
-            power_type,
-            power_value,
-        ) in self.power_by_power_source.items():
-            result[power_type] = int(power_value * self.clone_stats_adjustment_factor)
-        return result
+        return ModelDefCloner.complete_clone(self)
 
     @property
     def produced_unit_total(self):
@@ -183,52 +127,6 @@ class CatalogueEntry:
     livery_def: dict
 
 
-class Catalogue(list):
-    """
-    CABBAGE - METADATA ABOUT ALL PRODUCED MODEL VARIANTS
-        # all available model variants, with ids, numeric ids etc
-        # ordered by livery index
-    """
-
-    def __init__(self, model_variant_factory):
-        self.model_variant_factory = model_variant_factory
-        if self.model_variant_factory.cabbage_livery_names is not None:
-            for livery_counter, livery_name in enumerate(
-                self.model_variant_factory.cabbage_livery_names
-            ):
-                if "RANDOM_FROM_CONSIST_LIVERIES_" in livery_name:
-                    continue
-                model_variant_id = (
-                    f"{self.model_variant_factory.model_type_id}_mv_{livery_counter}"
-                )
-                unit_variant_ids = [
-                    f"{model_variant_id}_unit_{i}"
-                    for i, _ in enumerate(self.model_def.unit_defs)
-                ]
-                # pre-calculated numeric IDs provided for every unit
-                numeric_id_offset = self.model_def.base_numeric_id + (
-                    livery_counter * len(self.model_def.unit_defs)
-                )
-                unit_numeric_ids = [
-                    numeric_id_offset + i
-                    for i, _ in enumerate(self.model_def.unit_defs)
-                ]
-                # note that livery_name is an arbitrary string and might be repeated across model variants
-                catalogue_entry = CatalogueEntry(
-                    model_variant_id=model_variant_id,
-                    unit_variant_ids=unit_variant_ids,
-                    unit_numeric_ids=unit_numeric_ids,
-                    livery_name=livery_name,
-                    livery_def=self.model_variant_factory.cabbage_refactoring_livery_def_resolver(livery_name),
-                )
-                self.append(catalogue_entry)
-
-    @property
-    def model_def(self):
-        # just a passthrough for convenience
-        return self.model_variant_factory.model_def
-
-
 class ModelVariantFactory:
     """
     ModelVariantFactory instances:
@@ -268,7 +166,11 @@ class ModelVariantFactory:
         # catalogue is a singleton that provides basic metadata for produced model variants
         self.catalogue = Catalogue(self)
         if len(self.catalogue) == 0:
-            print(self.model_type_id, " no liveries; cabbage_livery_names: ", self.cabbage_livery_names)
+            print(
+                self.model_type_id,
+                " no liveries; cabbage_livery_names: ",
+                self.cabbage_livery_names,
+            )
         # used for book-keeping related model_variants
         # CABBAGE THIS MIGHT NOT BE NEEDED AT ALL - GO VIA CATALOGUE?
         # DON'T SEE WHY THE FACTORY INSTANCE NEEDS TO TRACK SPECIFIC OBJECT REFERENCES
@@ -386,7 +288,12 @@ class ModelVariantFactory:
             roster = iron_horse.roster_manager.get_roster_by_id(
                 self.roster_id_providing_module
             )
-            result = [i[0] for i in roster.pax_mail_livery_groups[self.model_type_cls.livery_group_name]]
+            result = [
+                i[0]
+                for i in roster.pax_mail_livery_groups[
+                    self.model_type_cls.livery_group_name
+                ]
+            ]
             # CABBAGE THIS WOULD GET THE ACTUAL LIVERY, WHICH WE DO WANT TO DO
             """
             return roster.get_pax_mail_liveries(
@@ -485,3 +392,122 @@ class ModelVariantFactory:
             self.roster_id, self.roster_id_providing_module
         )
         return input_spritesheet_name_stem
+
+
+class Catalogue(list):
+    """
+    CABBAGE - METADATA ABOUT ALL PRODUCED MODEL VARIANTS
+        # all available model variants, with ids, numeric ids etc
+        # ordered by livery index
+    """
+
+    def __init__(self, model_variant_factory):
+        self.model_variant_factory = model_variant_factory
+        if self.model_variant_factory.cabbage_livery_names is not None:
+            for livery_counter, livery_name in enumerate(
+                self.model_variant_factory.cabbage_livery_names
+            ):
+                if "RANDOM_FROM_CONSIST_LIVERIES_" in livery_name:
+                    continue
+                model_variant_id = (
+                    f"{self.model_variant_factory.model_type_id}_mv_{livery_counter}"
+                )
+                unit_variant_ids = [
+                    f"{model_variant_id}_unit_{i}"
+                    for i, _ in enumerate(
+                        self.model_variant_factory.model_def.unit_defs
+                    )
+                ]
+                # pre-calculated numeric IDs provided for every unit
+                numeric_id_offset = (
+                    self.model_variant_factory.model_def.base_numeric_id
+                    + (
+                        livery_counter
+                        * len(self.model_variant_factory.model_def.unit_defs)
+                    )
+                )
+                unit_numeric_ids = [
+                    numeric_id_offset + i
+                    for i, _ in enumerate(
+                        self.model_variant_factory.model_def.unit_defs
+                    )
+                ]
+                # note that livery_name is an arbitrary string and might be repeated across model variants
+                catalogue_entry = CatalogueEntry(
+                    model_variant_id=model_variant_id,
+                    unit_variant_ids=unit_variant_ids,
+                    unit_numeric_ids=unit_numeric_ids,
+                    livery_name=livery_name,
+                    livery_def=self.model_variant_factory.cabbage_refactoring_livery_def_resolver(
+                        livery_name
+                    ),
+                )
+                self.append(catalogue_entry)
+
+
+class ModelDefCloner:
+    """Utility to clone a model_def instance, this is just to keep clone logic out of the simple ModelDef dataclass"""
+
+    @staticmethod
+    def begin_clone(model_def, base_numeric_id, unit_repeats):
+        if model_def.cloned_from_model_def is not None:
+            # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
+            raise Exception(
+                "Don't clone a model def that is itself a clone, it won't work as expected. \nClone the original model def. \nModel def is: "
+                + model_def.model_type_id,
+            )
+        cloned_model_def = copy.deepcopy(model_def)
+        # clone may need to reference original source
+        cloned_model_def.cloned_from_model_def = model_def
+        # keep a reference locally for book-keeping
+        model_def.clones.append(cloned_model_def)
+        # deepcopy will have created new unit instances, but we might want to modify the sequence for the clone
+        # the format is unit_repeats=[x, y z]
+        # for each existing unit, this will specify which units to copy, and what their repeat values are
+        # e.g. [1, 0] will keep the first and drop the second
+        # [2, 1] will repeat the first unit twice
+        # [0, 2] will drop the first unit and repeat the second twice
+        unit_defs_old = cloned_model_def.unit_defs.copy()
+        cloned_model_def.unit_defs = []
+        for counter, unit_def in enumerate(unit_defs_old):
+            # don't use unit if repeat is 0
+            if unit_repeats[counter] > 0:
+                cloned_model_def.unit_defs.append(unit_def)
+                unit_def.repeat = unit_repeats[counter]
+
+        cloned_model_def.base_numeric_id = base_numeric_id
+        # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
+        cloned_model_def.model_type_id = (
+            model_def.model_type_id + "_clone_" + str(len(model_def.clones))
+        )
+        cloned_model_def.buyable_variant_group_id = model_def.model_type_id
+        return cloned_model_def
+
+    @staticmethod
+    def complete_clone(model_def):
+        # book-keeping and adjustments after all changes are made to a clone
+
+        # clones need to adjust some stats, e.g. power, running_cost etc, we do this by inferring a multiple by comparing number of units that will be produced
+        # call on clone, not source, will except (correctly) if called on source
+        try:
+            source_unit_count = model_def.cloned_from_model_def.produced_unit_total
+        except:
+            raise Exception("source_unit_count failed" + str(model_def))
+        clone_unit_count = model_def.produced_unit_total
+        model_def.clone_stats_adjustment_factor = clone_unit_count / source_unit_count
+
+        # recalculate power in a clone
+        result = {}
+        for (
+            power_type,
+            power_value,
+        ) in model_def.power_by_power_source.items():
+            result[power_type] = int(
+                power_value * model_def.clone_stats_adjustment_factor
+            )
+        model_def.power_by_power_source = result
+
+        # purchase menu variant decor isn't supported if the vehicle is articulated, so just forcibly clear this property
+        if model_def.produced_unit_total > 1:
+            model_def.show_decor_in_purchase_for_variants = None
+        return model_def
