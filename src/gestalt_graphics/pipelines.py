@@ -138,7 +138,7 @@ class PassThroughPipeline(Pipeline):
 
         if (
             self.consist.model_variant_factory.cabbage_new_livery_system == False
-            or self.model_variant_factory.cabbage_model_variant_is_default(
+            or self.model_variant_factory.is_default_model_variant(
                 consist
             )
         ):

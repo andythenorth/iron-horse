@@ -1,6 +1,6 @@
 <!--! 'random_reverse' property is not supported in this template, vehicles using this template are almost all symmetrical, reversing would do nothing -->
 
-<tal:only_default_model_variant condition="consist.model_variant_factory.cabbage_model_variant_is_default(consist)">
+<tal:only_default_model_variant condition="consist.model_variant_factory.is_default_model_variant(consist)">
     <tal:spritesets repeat="spriteset_data consist.gestalt_graphics.get_unique_spritesets(vehicle)">
         <!--! spriteset loops got too complex in the templates, with livery, empty state, cargo loading, cargo loaded, and random variants
               so I moved the logic for spritesets into the gestalt, and simply render out all from a list with a trivial loop -->

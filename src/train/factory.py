@@ -315,7 +315,7 @@ class ModelVariantFactory:
         result = self.produced_model_variants.index(model_variant)
         return result
 
-    def cabbage_model_variant_is_default(self, model_variant):
+    def is_default_model_variant(self, model_variant):
         if getattr(model_variant, "catalogue_entry", None) is None:
             # CABBAGE - shim conditional handles possibility of catalogue entry being None whilst refactoring, remove this later
             return model_variant == self.produced_model_variants[0]
