@@ -45,15 +45,6 @@ class GestaltGraphics(object):
         # stub, for compatibility reasons
         return ["single_row"]
 
-    @property
-    def all_liveries(self):
-        # CABBAGE - THIS SHOULD BE DELEGATED TO CATALOGUE, AND MAY NOT BE NEEDED
-        # stub to map this gestalt's liveries to the wider all_liveries structure
-        # this can be over-ridden as needed by gestalts
-        # note that self.liveries must be initialised by passing a keyword (as the default livery comes from the roster which is not in scope here)
-        # if self.liveries is undefined, that's an error
-        return self.liveries
-
     def buy_menu_row_map(self, pipeline):
         # return a structure for buy_menu_row_map conforming to:
         # [

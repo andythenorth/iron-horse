@@ -215,7 +215,8 @@ class ModelTypeBase(object):
             result.append(unit)
             # extend with alternative cc livery if present, spritesheet format assumes unit_1_default, unit_1_additional_liveries, unit_2_default, unit_2_additional_liveries if present
             # !! this is suspect, it's not counting the actual number of liveries
-            if len(self.gestalt_graphics.all_liveries) > 1:
+            # CABBAGE SHIM - ALTHOUGH THIS MAKES NO SENSE TO ME
+            if len(self.model_variant_factory.catalogue) > 1:
                 result.append(unit + 1)
         return result
 
@@ -1143,13 +1144,13 @@ class ModelTypeBase(object):
     def get_candidate_liveries_for_randomised_strategy(self, livery):
         # this will only work with wagon liveries as of April 2023, and is intended to get remaps only
         result = []
-        for candidate_livery in self.gestalt_graphics.all_liveries:
+        for cabbage_candidate_livery in self.model_variant_factory.catalogue:
             if (
-                candidate_livery["colour_set"]
+                cabbage_candidate_livery.livery_def.colour_set
                 in global_constants.wagon_livery_mixes[livery["colour_set"]]
             ):
                 candidate_livery_strategy_num = self.get_wagon_recolour_strategy_num(
-                    candidate_livery
+                    cabbage_candidate_livery.livery_def
                 )
                 result.append(candidate_livery_strategy_num)
         # length of result *must* be 8, as we have up to 8 liveries per buyable wagon variant, and we must provide values for 8 registers
@@ -8950,13 +8951,14 @@ class UnitVariant(object):
             self.buyable_variant.livery["colour_set"]
         ]
         variant_colour_set = []
+        # CABBAGE SHIM
         for unit_variant in unit_variants:
             for (
-                candidate_livery
-            ) in unit_variant.unit.consist.gestalt_graphics.all_liveries:
-                if candidate_livery["colour_set"] not in variant_colour_set:
-                    if candidate_livery["colour_set"] in eligible_colours:
-                        variant_colour_set.append(candidate_livery["colour_set"])
+                cabbage_candidate_livery
+            ) in model_variant_factory.catalogue:
+                if cabbage_candidate_livery["colour_set"] not in variant_colour_set:
+                    if cabbage_candidate_livery["colour_set"] in eligible_colours:
+                        variant_colour_set.append(cabbage_candidate_livery["colour_set"])
 
         if len(variant_colour_set) == 0:
             raise BaseException(
