@@ -89,7 +89,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, getbits(extra
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id) {
     <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
         <tal:livery define="livery_cabbage consist.cabbage_catalogue_entry.livery_def">
-            <tal:optional_forced_recolour switch="livery_cabbage.get('remap_to_cc', None) is not None">
+            <tal:optional_forced_recolour switch="getattr(livery_cabbage, 'remap_to_cc', None) is not None">
                 <tal:block case="True">
                     <!--! recolour CC2 to arbitrary other CC as defined by livery -->
                     ${unit_variant.numeric_id}: palette_2cc(${livery_cabbage['remap_to_cc']['company_colour1']}, ${livery_cabbage['remap_to_cc']['company_colour2']});

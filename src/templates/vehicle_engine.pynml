@@ -105,10 +105,10 @@
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id) {
         <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
             <tal:livery define="livery consist.cabbage_catalogue_entry.livery_def"><!--! CABBAGE -->
-                <tal:optional_forced_recolour switch="livery.get('remap_to_cc', None) is not None">
+                <tal:optional_forced_recolour switch="getattr(consist.cabbage_catalogue_entry.livery_def, 'remap_to_cc', None) is not None">
                     <tal:block case="True">
                         <!--! recolour CC2 to arbitrary other CC as defined by livery -->
-                        ${unit_variant.numeric_id}: palette_2cc(${livery['remap_to_cc']['company_colour1']}, ${livery['remap_to_cc']['company_colour2']});
+                        ${unit_variant.numeric_id}: palette_2cc(${livery.remap_to_cc['company_colour1']}, ${livery.remap_to_cc['company_colour2']});
                     </tal:block>
                     <tal:block case="False">
                         <!--! apply regular 1CC and 2CC -->

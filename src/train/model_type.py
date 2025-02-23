@@ -1004,20 +1004,9 @@ class ModelTypeBase(object):
 
     @property
     def cabbage_refactoring_livery_name_resolver(self):
-        # CABBAGE - FACTORY SHOULD HANDLE THIS?
-        if self.model_variant_factory.cabbage_new_livery_system:
-            try:
-                result = iron_horse.livery_manager[
-                    self.cabbage_catalogue_entry.livery_name
-                ]
-            except:
-                raise Exception(iron_horse.livery_manager.keys())
-                # CABBAGE SHIM to HANDLE UNFINISHED REFACTORING
-                result = self.roster.get_liveries_by_name_cabbage_new(
-                    [self.cabbage_catalogue_entry.livery_name]
-                )
-        else:
-            raise Exception(self.id)
+        result = iron_horse.livery_manager[
+            self.cabbage_catalogue_entry.livery_name
+        ]
         return result
 
     @property

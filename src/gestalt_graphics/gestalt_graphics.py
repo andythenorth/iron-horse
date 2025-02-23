@@ -1002,7 +1002,8 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         # buyable variants _could_ be passed, it's just work to get that param added to all the classes using this gestalt
         spriterow_nums_seen = []
         for livery_counter, livery in enumerate(self.model_variant_factory.cabbage_get_all_liveries_as_livery_defs()):
-            if livery.get("relative_spriterow_num", None) is None:
+            # CABBAGE SHIM
+            if getattr(livery, "relative_spriterow_num", None) is None:
                 spriterow_nums_seen.append(livery_counter)
             else:
                 spriterow_nums_seen.append(livery["relative_spriterow_num"])

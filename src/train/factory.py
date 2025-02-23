@@ -255,18 +255,10 @@ class ModelVariantFactory:
         roster = iron_horse.roster_manager.get_roster_by_id(
             self.roster_id_providing_module
         )
-
-        if livery_name in roster.engine_and_pax_mail_car_liveries:
-            result = roster.engine_and_pax_mail_car_liveries[livery_name].copy()
-            # CABBAGE - this fails to set relative_spriterow_num which means that we've broken the split of buy menu order from pre-existing spritesheet order
-            # that is handled by roster.pax_mail_livery_groups and livery_group_name
-            # probably the factory or Catalogue need to resolve livery_group_name, as it can be defined by model_type_cls or model_def
-            return result
-        if livery_name in iron_horse.livery_manager:
-            result = iron_horse.livery_manager[livery_name]
-            return result
-        # CABBAGE SHIM to HANDLE UNFINISHED REFACTORING
-        result = roster.get_liveries_by_name_cabbage_new([livery_name])
+        # CABBAGE - this fails to set relative_spriterow_num which means that we've broken the split of buy menu order from pre-existing spritesheet order
+        # that is handled by roster.pax_mail_livery_groups and livery_group_name
+        # probably the factory or Catalogue need to resolve livery_group_name, as it can be defined by model_type_cls or model_def
+        result = iron_horse.livery_manager[livery_name]
         return result
 
     def cabbage_get_all_liveries_as_livery_defs(self):
