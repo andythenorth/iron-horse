@@ -155,9 +155,11 @@ class ModelTypeBase(object):
     def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed
         # the basic form of buyable variants is driven by liveries
-        for livery in self.gestalt_graphics.all_liveries:
-            # we don't need to know the actual livery here, we rely on matching them up later by indexes, which is fine
-            self.buyable_variants.append(BuyableVariant(self, livery=livery))
+        if self.cabbage_catalogue_entry is None:
+            livery_def = {}
+        else:
+            livery_def = self.cabbage_catalogue_entry.livery_def
+        self.buyable_variants.append(BuyableVariant(self, livery_def=livery_def))
 
     def add_unit(self, unit_cls, unit_def):
         # we have add_unit create the variants when needed, which means we avoid sequencing problems with gestalt_graphics initialisation
@@ -1004,20 +1006,19 @@ class ModelTypeBase(object):
     def cabbage_refactoring_livery_name_resolver(self):
         # CABBAGE - FACTORY SHOULD HANDLE THIS?
         if self.model_variant_factory.cabbage_new_livery_system:
-            if isinstance(self.cabbage_catalogue_entry.livery_name, dict):
-                # CABBAGE SHIM early return if we already have a livery
-                return [self.cabbage_catalogue_entry.livery_name]
-            result = self.roster.get_liveries_by_name_cabbage_new(
-                [self.cabbage_catalogue_entry.livery_name]
-            )
+            try:
+                result = iron_horse.livery_manager[self.cabbage_catalogue_entry.livery_name]
+            except:
+                # CABBAGE SHIM to HANDLE UNFINISHED REFACTORING
+                result = self.roster.get_liveries_by_name_cabbage_new(
+                    [self.cabbage_catalogue_entry.livery_name]
+                )
         else:
             result = self.roster.get_liveries_by_name(
                 self.model_def.additional_liveries
                 if self.model_def.additional_liveries is not None
                 else []
             )
-        if self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsFormationDependent":
-            print(self.id, result)
         return result
 
     @property
@@ -1367,6 +1368,8 @@ class EngineModelTypeBase(ModelTypeBase):
             pantograph_type=self.pantograph_type,
             liveries=self.cabbage_refactoring_livery_name_resolver,
             default_livery_extra_docs_examples=default_livery_extra_docs_examples,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
     @property
@@ -8713,23 +8716,29 @@ class BuyableVariant(object):
     Simple class to hold buyable variants of the consist.
     """
 
-    def __init__(self, consist, livery):
+    def __init__(self, consist, livery_def):
         self.consist = consist
         # option to point this livery to a specific row in the spritesheet, relative to the block of livery spriterows for the specific unit or similar
         # this is just for convenience if spritesheets are a chore to re-order
         try:
-            self._relative_spriterow_num = livery.get("relative_spriterow_num", None)
+            if isinstance(livery_def, dict):
+                # CABBAGE REFACTORING SHIM
+                self.livery = livery_def
+                self._relative_spriterow_num = livery_def.get("relative_spriterow_num", None)
+            else:
+                # CABBAGE REFACTORING SHIM - PARSE livery_def back to dict, temporarily, as consumers want a dict
+                self._relative_spriterow_num = livery_def.relative_spriterow_num
+                self.livery = {"docs_image_input_cc": livery_def.docs_image_input_cc, "colour_set": livery_def.colour_set}
         except:
             # CABBAGE TEMP EXCEPTION HANDLING
             raise Exception(
                 self.consist.id
                 + " | "
                 + self.consist.__class__.__name__
-                + " | "
-                + livery
+                + " \n "
+                + str(livery_def)
             )
         # possibly we don't need to store the livery, as we could look it up from the gestalt, but eh
-        self.livery = livery
 
     @property
     def buyable_variant_num(self):

@@ -125,6 +125,9 @@ class GestaltGraphicsEngine(GestaltGraphics):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # CABBAGE - PROBABLY ALL GESTALTS SHOULD STORE THESE TWO FACTORY ATTRS?
+        self.model_variant_factory = kwargs.get("model_variant_factory", None)
+        self.cabbage_catalogue_entry = kwargs.get("cabbage_catalogue_entry", None)
         self.pipelines = pipelines.get_pipelines(
             ["pass_through_pipeline", "generate_buy_menu_sprite_vanilla_vehicle"]
         )
@@ -147,7 +150,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
                     ]
                 )
             )
-        self.num_pantograph_rows = len(self.liveries)
+        self.num_pantograph_rows = len(self.model_variant_factory.cabbage_get_all_liveries_as_livery_defs())
 
     @property
     def nml_template(self):
@@ -926,8 +929,8 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
 
     def __init__(self, spriterow_group_mappings, **kwargs):
         super().__init__(**kwargs)
-        self.cabbage_catalogue_entry = kwargs.get("cabbage_catalogue_entry", None)
         self.model_variant_factory = kwargs.get("model_variant_factory", None)
+        self.cabbage_catalogue_entry = kwargs.get("cabbage_catalogue_entry", None)
         # spriterow_group_mappings provided by subclass calling gestalt_graphics:
         # - spriterow numbers for named positions in formation
         # - spriterow numbers are zero-indexed *relative* to the start of the formation-cargo block, to reduce shuffling them all if new rows are inserted in future

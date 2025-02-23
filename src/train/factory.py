@@ -360,6 +360,10 @@ class ModelVariantFactory:
             # that is handled by roster.pax_mail_livery_groups and livery_group_name
             # probably the factory or Catalogue need to resolve livery_group_name, as it can be defined by model_type_cls or model_def
             return result
+        if livery_name in iron_horse.livery_manager:
+            result = iron_horse.livery_manager[livery_name]
+            return result
+        # CABBAGE SHIM to HANDLE UNFINISHED REFACTORING
         result = roster.get_liveries_by_name_cabbage_new([livery_name])
         return result
 

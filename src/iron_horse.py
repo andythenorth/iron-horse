@@ -7,6 +7,9 @@ import sys
 
 sys.path.append(os.path.join("src"))  # add to the module search path
 
+from dataclasses import dataclass, field
+from typing import Any, Dict, List, Optional
+
 from badge import Badge
 import global_constants
 import utils
@@ -41,6 +44,33 @@ roster_module_names = [
     "moose",
     "pony",
 ]
+
+
+@dataclass
+class LiveryDef:
+    # CABBAGE SPARSE CLASS
+    # alphabetised attrs
+    colour_set: Optional[str] = None
+    docs_image_input_cc: Optional[List] = None
+    purchase: Optional[str] = None
+    relative_spriterow_num: Optional[int] = None
+    use_weathering: Optional[bool] = False
+
+
+class LiveryManager(dict):
+    """
+    It's convenient to have a structure for working with liveries.
+    This is a class to manage that, intended for use as a singleton, which can be passed to templates etc.
+    Extends default python dict, as it's a convenient behaviour (the instantiated class instance behaves like a dict object).
+    """
+
+    def add_livery(self, livery_name, **kwargs):
+        # if not a duplicate, add the badge
+        if livery_name in self:
+            raise Exception("CABBAGE TRIED TO ADD A LIVERY THAT EXISTS")
+        else:
+            self[livery_name] = LiveryDef(**kwargs)
+        # no return as of now, not needed
 
 
 class BadgeManager(list):
@@ -177,6 +207,7 @@ def main():
 
     # globals *within* this module so they can be accessed externally by other modules using iron_horse.foo
     globals()["badge_manager"] = BadgeManager()
+    globals()["livery_manager"] = LiveryManager()
     globals()["railtype_manager"] = RailTypeManager()
     globals()["roster_manager"] = RosterManager()
 
@@ -187,6 +218,11 @@ def main():
         )
         railtype_manager.add_railtype(railtype_module)
 
+    # liveries
+    for livery_name, livery_def in global_constants.freight_wagon_liveries.items():
+        livery_manager.add_livery(livery_name, **livery_def)
+    print(livery_manager)
+
     # rosters
     for roster_module_name in roster_module_names:
         roster_module = importlib.import_module(
@@ -194,7 +230,7 @@ def main():
         )
         roster_manager.add_roster(roster_module)
 
-    # CABBAGE - LIVERY MANAGER NEEDS INTERLEAVED HERE SOMEHOW
+    # CABBAGE - LIVERY MANAGER NEEDS INTERLEAVED HERE SOMEHOW FOR ROSTERS
 
     for roster in roster_manager:
         # some actions have to be run after the rosters are all added to RosterManager, to ensure all rosters are present

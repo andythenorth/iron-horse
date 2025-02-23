@@ -53,7 +53,6 @@ class Roster(object):
         self.engine_and_pax_mail_car_liveries = kwargs.get(
             "engine_and_pax_mail_car_liveries", []
         )
-        self.freight_wagon_liveries = kwargs.get("freight_wagon_liveries", {})
         self.pax_mail_livery_groups = kwargs.get("pax_mail_livery_groups", {})
         self.wagon_recolour_colour_sets = []
 
@@ -242,18 +241,12 @@ class Roster(object):
     def get_liveries_by_name_cabbage_new(self, additional_livery_names):
         # CABBAGE - REFACTORING SHIM
         result = []
-        try:
-            result.extend(
-                [
-                    self.engine_and_pax_mail_car_liveries[additional_livery_name]
-                    for additional_livery_name in additional_livery_names
-                ]
-            )
-        except:
-            # assume we've been passed a freight livery
-            # CABBAGE - SHOULD ONLY BE ONE LIVERY NAME IN ACTUALITY
-            for livery_name in additional_livery_names:
-                result.append(global_constants.freight_wagon_liveries[livery_name])
+        result.extend(
+            [
+                self.engine_and_pax_mail_car_liveries[additional_livery_name]
+                for additional_livery_name in additional_livery_names
+            ]
+        )
         return result
 
     def get_liveries_by_name(self, additional_livery_names):
