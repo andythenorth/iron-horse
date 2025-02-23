@@ -13,6 +13,8 @@ from typing import Any, Dict, List, Optional
 from train import model_type as model_type_module
 from train import unit as unit_module
 
+import iron_horse
+
 
 @dataclass
 class ModelDef:
@@ -178,6 +180,7 @@ class CatalogueEntry:
     unit_variant_ids: List[str]
     unit_numeric_ids: List[int]
     livery_name: str
+    livery_def: dict
 
 
 class Catalogue(list):
@@ -189,9 +192,9 @@ class Catalogue(list):
 
     def __init__(self, model_variant_factory):
         self.model_variant_factory = model_variant_factory
-        if self.model_variant_factory.cabbage_liveries is not None:
+        if self.model_variant_factory.cabbage_livery_names is not None:
             for livery_counter, livery_name in enumerate(
-                self.model_variant_factory.cabbage_liveries
+                self.model_variant_factory.cabbage_livery_names
             ):
                 if "RANDOM_FROM_CONSIST_LIVERIES_" in livery_name:
                     continue
@@ -216,6 +219,7 @@ class Catalogue(list):
                     unit_variant_ids=unit_variant_ids,
                     unit_numeric_ids=unit_numeric_ids,
                     livery_name=livery_name,
+                    livery_def=self.model_variant_factory.cabbage_refactoring_livery_def_resolver(livery_name),
                 )
                 self.append(catalogue_entry)
 
@@ -263,6 +267,8 @@ class ModelVariantFactory:
         self.roster_id_providing_module = roster_id_providing_module
         # catalogue is a singleton that provides basic metadata for produced model variants
         self.catalogue = Catalogue(self)
+        if len(self.catalogue) == 0:
+            print(self.model_type_id, " no liveries; cabbage_livery_names: ", self.cabbage_livery_names)
         # used for book-keeping related model_variants
         # CABBAGE THIS MIGHT NOT BE NEEDED AT ALL - GO VIA CATALOGUE?
         # DON'T SEE WHY THE FACTORY INSTANCE NEEDS TO TRACK SPECIFIC OBJECT REFERENCES
@@ -318,31 +324,6 @@ class ModelVariantFactory:
                 catalogue_entry=None,
             )
 
-        # print(model_variant.gestalt_graphics.__class__.__name__)
-
-        if self.roster_id == "pony":
-            if len(self.produced_model_variants) == 0:
-                if (self.cabbage_liveries == None) and (
-                    model_variant.gestalt_graphics.__class__.__name__
-                    != "GestaltGraphicsFormationDependent"
-                ):
-                    print(
-                        "No liveries in model_def or class attrs for:", model_variant.id
-                    )
-
-        """
-        for counter, livery in enumerate(["example", "cabbage_livery"]):
-            increment = counter * self.model_def.produced_unit_total
-            print(self.model_def.kwargs.get("id", self.model_type_id), self.model_def.kwargs["base_numeric_id"] + increment)
-        """
-
-        """
-        if hasattr(model_type_cls, "liveries"):
-            print(model_type_cls, len(model_type_cls.liveries))
-        if self.kwargs.get("additional_liveries", None) != None:
-            print(model_type_cls, self.kwargs["additional_liveries"])
-        """
-
         # orchestrate addition of units
         for unit_def in self.model_def.unit_defs:
             try:
@@ -367,15 +348,56 @@ class ModelVariantFactory:
         # get the class for the model type, uninstantiated
         return getattr(model_type_module, self.class_name)
 
+    def cabbage_refactoring_livery_def_resolver(self, livery_name):
+        # CABBAGE - go via LiveryManager in future
+        roster = iron_horse.roster_manager.get_roster_by_id(
+            self.roster_id_providing_module
+        )
+
+        if livery_name in roster.engine_and_pax_mail_car_liveries:
+            result = roster.engine_and_pax_mail_car_liveries[livery_name].copy()
+            # CABBAGE - this fails to set relative_spriterow_num which means that we've broken the split of buy menu order from pre-existing spritesheet order
+            # that is handled by roster.pax_mail_livery_groups and livery_group_name
+            # probably the factory or Catalogue need to resolve livery_group_name, as it can be defined by model_type_cls or model_def
+            return result
+        result = roster.get_liveries_by_name_cabbage_new([livery_name])
+        return result
+
+    def cabbage_get_all_liveries_as_livery_defs(self):
+        # shim for gestalts to call to get all available liveries for spritesheet generation
+        # this should be a call returning Livery object instances, possibly against catalogue.livery_defs or something
+        result = []
+        for catalogue_entry in self.catalogue:
+            result.append(catalogue_entry.livery_def)
+        return result
+
     @property
-    def cabbage_liveries(self):
-        # UNFINISHED - NEEDS TO HANDLE liveries defined as groups on roster
+    def cabbage_livery_names(self):
+        # get livery names from various sources (model def, model type class, or via a livery group name on model def or model type)
+
+        # unpack livery list from livery groups
+        if hasattr(self.model_type_cls, "livery_group_name"):
+            # note that we can override livery_group_name in model_def, but *only* if the class attr sets a default
+            # CABBAGE - the override is probably broken, looking at this, it doesn't check model_def
+            roster = iron_horse.roster_manager.get_roster_by_id(
+                self.roster_id_providing_module
+            )
+            result = [i[0] for i in roster.pax_mail_livery_groups[self.model_type_cls.livery_group_name]]
+            # CABBAGE THIS WOULD GET THE ACTUAL LIVERY, WHICH WE DO WANT TO DO
+            """
+            return roster.get_pax_mail_liveries(
+                self.model_type_cls.livery_group_name, self.model_def
+            )
+            """
+            return result
+
+        # get liveries directly
         if self.model_def.liveries is not None:
             return self.model_def.liveries
-        elif hasattr(self.model_type_cls, "liveries"):
+        if hasattr(self.model_type_cls, "liveries"):
             return self.model_type_cls.liveries
-        else:
-            return None
+        # CABBAGE should not be reached?
+        return None
 
     @property
     def cabbage_new_livery_system(self):

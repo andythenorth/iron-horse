@@ -346,15 +346,11 @@ class Roster(object):
                             # it's fine if both consists are then in different rosters, as they will not conflict
                             if colliding_consist.roster.id != consist.roster.id:
                                 continue
-                    raise BaseException(
-                        "Error: consist "
-                        + consist.id
-                        + " has a unit variant with a numeric_id that collides ("
-                        + str(numeric_id)
-                        + ") with a numeric_id of a unit variant in consist "
-                        + colliding_consist.id
-                        + "\n"
-                        + str([unit.unit_variants for unit in consist.units])
+                    raise ValueError(
+                        f"Error: consist {consist.id} has a unit variant with a numeric_id that collides "
+                        f"({numeric_id}) with a numeric_id of a unit variant in consist {colliding_consist.id}\n"
+                        f"{[unit.unit_variants for unit in consist.units]}\n"
+                        f"{consist.model_variant_factory.catalogue}\n"
                     )
                 else:
                     numeric_id_defender[numeric_id] = consist

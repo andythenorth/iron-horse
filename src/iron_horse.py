@@ -103,8 +103,6 @@ class RosterManager(list):
     def add_roster(self, roster_module):
         roster = roster_module.main()
         self.append(roster)
-        # some actions have to be run after the register is added to RosterManager
-        roster.post_init_actions()
 
     def validate_vehicles(self):
         # has to be explicitly called after all rosters are active, and all vehicles and vehicle units are registered to each roster
@@ -195,6 +193,14 @@ def main():
             "." + roster_module_name, package="rosters"
         )
         roster_manager.add_roster(roster_module)
+
+    # CABBAGE - LIVERY MANAGER NEEDS INTERLEAVED HERE SOMEHOW
+
+    for roster in roster_manager:
+        # some actions have to be run after the rosters are all added to RosterManager, to ensure all rosters are present
+        # CABBAGE - THIS COULD BE A METHOD ON THE ROSTER MANAGER
+        # THIS PRIMARILY DEALS WITH INITING VEHICLES, BUT ALSO OTHER THINGS
+        roster.post_init_actions()
 
     # spritelayer cargos
     for spritelayer_cargo_module_name in spritelayer_cargo_module_names:

@@ -926,13 +926,15 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
 
     def __init__(self, spriterow_group_mappings, **kwargs):
         super().__init__(**kwargs)
+        self.cabbage_catalogue_entry = kwargs.get("cabbage_catalogue_entry", None)
+        self.model_variant_factory = kwargs.get("model_variant_factory", None)
         # spriterow_group_mappings provided by subclass calling gestalt_graphics:
         # - spriterow numbers for named positions in formation
         # - spriterow numbers are zero-indexed *relative* to the start of the formation-cargo block, to reduce shuffling them all if new rows are inserted in future
         # - *all* of the keys must be provided in the mapping, set values to 0 if unused
         self.spriterow_group_mappings = spriterow_group_mappings
         # liveries provided by subclass calling gestalt_graphics
-        self.liveries = kwargs.get("liveries", [])
+        self.liveries = kwargs["liveries"]
         self.default_livery_extra_docs_examples = kwargs.get(
             "default_livery_extra_docs_examples", []
         )
@@ -977,7 +979,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
             # note that we simply generate a row per vehicle position variant
             # this method leads to unnecessary rows for many cases
             # but is relied on for multiple unit (railcars etc) where not all vehicles have pans, in which case the row is simply empty
-            self.num_pantograph_rows = len(self.liveries) * (
+            self.num_pantograph_rows = len(self.model_variant_factory.cabbage_get_all_liveries_as_livery_defs()) * (
                 1 + max(self.spriterow_group_mappings.values())
             )
 
@@ -995,7 +997,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         # there is some risk of divergence here from buyable variants, as those aren't passed to gestalt graphics currently
         # buyable variants _could_ be passed, it's just work to get that param added to all the classes using this gestalt
         spriterow_nums_seen = []
-        for livery_counter, livery in enumerate(self.liveries):
+        for livery_counter, livery in enumerate(self.model_variant_factory.cabbage_get_all_liveries_as_livery_defs()):
             if livery.get("relative_spriterow_num", None) is None:
                 spriterow_nums_seen.append(livery_counter)
             else:
@@ -1033,7 +1035,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 source_row_num = position_variant_num
             # group of n rows - n liveries * two loaded/loading states (opening doors)
             row_group_size = self.num_load_state_or_similar_spriterows * len(
-                self.liveries
+                self.model_variant_factory.cabbage_get_all_liveries_as_livery_defs()
             )
             for i in range(1, 1 + row_group_size):
                 result[base_row_num + (row_group_size * position_variant_num) + i] = (
