@@ -249,19 +249,6 @@ class Roster(object):
         )
         return result
 
-    def get_liveries_by_name(self, additional_livery_names):
-        # CABBAGE - LEGACY SUPPORT
-        # for the general case, this is a convenience approach to insert a default_livery for ease of constructing template repeats
-        # note that default_livery is not guaranteed to contain all the key/value pairs that additional_liveries has
-        result = [self.default_livery]
-        result.extend(
-            [
-                self.engine_and_pax_mail_car_liveries[additional_livery_name]
-                for additional_livery_name in additional_livery_names
-            ]
-        )
-        return result
-
     def get_pax_mail_liveries(self, default_livery_group_name, model_def):
         result = []
         # we can optionally specify liveries per consist via the model_def, otherwise use the default for this consist subclass

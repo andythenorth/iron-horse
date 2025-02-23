@@ -18,6 +18,8 @@ def main(**kwargs):
         tractive_effort_coefficient=0.375,
         random_reverse=True,
         gen=4,
+        liveries=["VANILLA"],
+        cabbage_new_livery_system=True,
         sprites_complete=False,
     )
 

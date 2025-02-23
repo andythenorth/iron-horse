@@ -1016,11 +1016,7 @@ class ModelTypeBase(object):
                     [self.cabbage_catalogue_entry.livery_name]
                 )
         else:
-            result = self.roster.get_liveries_by_name(
-                self.model_def.additional_liveries
-                if self.model_def.additional_liveries is not None
-                else []
-            )
+            raise Exception(self.id)
         return result
 
     @property
@@ -1547,6 +1543,8 @@ class AutoCoachCombineEngine(EngineModelTypeBase):
     To keep implementation simple + crude, first unit should be dedicated mail type, second unit should be dedicated pax type
     """
 
+    liveries = ["VANILLA"]
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # ....buy costs adjusted to match equivalent gen 2 + 3 pax / mail cars
@@ -1554,10 +1552,9 @@ class AutoCoachCombineEngine(EngineModelTypeBase):
         # Graphics configuration
         # inserts the default liveries for docs examples
         # CABBAGE liveries - probably all gestalts need updated?
-        liveries = self.roster.get_liveries_by_name([])
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_autocoach.pynml",
-            liveries=liveries,
+            liveries=self.cabbage_refactoring_livery_name_resolver,
         )
 
     @property
@@ -1600,14 +1597,15 @@ class FixedFormationRailcarCombineEngine(EngineModelTypeBase):
     This *does* not use consist-dependent position sprite rulesets; the formation is fixed.
     """
 
+    liveries = ["VANILLA"]
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # Graphics configuration
         # inserts the default liveries for docs examples
-        liveries = self.roster.get_liveries_by_name([])
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_fixed_formation_railcar.pynml",
-            liveries=self.roster.get_liveries_by_name([]),
+            liveries=self.cabbage_refactoring_livery_name_resolver,
         )
 
     @property
@@ -2257,6 +2255,8 @@ class SnowploughEngine(EngineModelTypeBase):
     Snowplough!  Implemented as Engine so it can lead a consist in-game.
     """
 
+    liveries = ["VANILLA"]
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # give it mail / express capacity so it has some purpose :P
@@ -2271,10 +2271,9 @@ class SnowploughEngine(EngineModelTypeBase):
         # Graphics configuration
 
         # inserts the default liveries for docs examples
-        liveries = self.roster.get_liveries_by_name([])
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_snowplough.pynml",
-            liveries=liveries,
+            liveries=self.cabbage_refactoring_livery_name_resolver,
         )
 
     @property
