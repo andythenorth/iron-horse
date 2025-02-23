@@ -65,7 +65,7 @@ class LiveryManager(dict):
     """
 
     def add_livery(self, livery_name, **kwargs):
-        # if not a duplicate, add the badge
+        # if not a duplicate, add the livery
         if livery_name in self:
             raise Exception("CABBAGE TRIED TO ADD A LIVERY THAT EXISTS")
         else:
@@ -100,9 +100,13 @@ class RailTypeManager(list):
     Extends default python list, as it's a convenient behaviour (the instantiated class instance behaves like a list object).
     """
 
-    def add_railtype(self, railtype_module):
-        railtype = railtype_module.main(disabled=False)
-        self.append(railtype)
+    def add_railtypes(self, railtype_modules):
+        for railtype_module_name in railtype_module_names:
+            railtype_module = importlib.import_module(
+                "." + railtype_module_name, package="railtypes"
+            )
+            railtype = railtype_module.main(disabled=False)
+            self.append(railtype)
 
     @property
     def railtype_labels_for_railtypetable(self):
@@ -146,6 +150,7 @@ class RosterManager(list):
         for roster in self:
             roster.compute_wagon_recolour_sets()
             roster.add_buyable_variant_groups()
+
 
     def validate_vehicles(self):
         # has to be explicitly called after all rosters are active, and all vehicles and vehicle units are registered to each roster
@@ -220,16 +225,11 @@ def main():
     globals()["roster_manager"] = RosterManager()
 
     # railtypes
-    for railtype_module_name in railtype_module_names:
-        railtype_module = importlib.import_module(
-            "." + railtype_module_name, package="railtypes"
-        )
-        railtype_manager.add_railtype(railtype_module)
+    railtype_manager.add_railtypes(railtype_module_names)
 
     # liveries
     for livery_name, livery_def in global_constants.freight_wagon_liveries.items():
         livery_manager.add_livery(livery_name, **livery_def)
-    print(livery_manager)
 
     # rosters
     roster_manager.add_rosters(roster_module_names)
