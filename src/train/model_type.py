@@ -112,7 +112,10 @@ class ModelTypeBase(object):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         # create a structure for cargo /livery graphics options
-        self.gestalt_graphics = GestaltGraphics()
+        self.gestalt_graphics = GestaltGraphics(
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+        )
         # option to provide automatic roof for all units in the consist, leave as None for no generation
         self.roof_type = None
         # optionally suppress nmlc warnings about animated pixels for vehicle models where they're intentional
@@ -1004,11 +1007,6 @@ class ModelTypeBase(object):
             return 64
 
     @property
-    def cabbage_refactoring_livery_name_resolver(self):
-        result = iron_horse.livery_manager[self.cabbage_catalogue_entry.livery_name]
-        return result
-
-    @property
     def engine_sprite_layers_with_layer_names(self):
         result = []
         counter = 0
@@ -1357,7 +1355,6 @@ class EngineModelTypeBase(ModelTypeBase):
         )
         self.gestalt_graphics = GestaltGraphicsEngine(
             pantograph_type=self.pantograph_type,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             default_livery_extra_docs_examples=default_livery_extra_docs_examples,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
@@ -1547,7 +1544,8 @@ class AutoCoachCombineEngine(EngineModelTypeBase):
         # CABBAGE liveries - probably all gestalts need updated?
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_autocoach.pynml",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
     @property
@@ -1598,7 +1596,8 @@ class FixedFormationRailcarCombineEngine(EngineModelTypeBase):
         # inserts the default liveries for docs examples
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_fixed_formation_railcar.pynml",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
     @property
@@ -1668,7 +1667,6 @@ class MailEngineCabbageDVT(MailEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="driving_cab_cars",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -1709,13 +1707,18 @@ class MailEngineCargoSprinter(MailEngineBase):
         # Graphics configuration
         # !! there is no automatic masking of the cab overlays as of Dec 2020, currently manual - automation might be needed for well cars in future, deal with it then if that's the case
         # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
+        cargo_label_mapping = (
+            GestaltGraphicsIntermodalContainerTransporters(
+                model_variant_factory=self.model_variant_factory,
+                cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            ).cargo_label_mapping,
+        )
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_cargo_sprinter.pynml",
-            cargo_label_mapping=GestaltGraphicsIntermodalContainerTransporters(
-                liveries=self.liveries
-            ).cargo_label_mapping,
+            cargo_label_mapping=cargo_label_mapping,
             num_extra_layers_for_spritelayer_cargos=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
     @property
@@ -1759,7 +1762,6 @@ class MailEngineMetro(MailEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="metro",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -1835,7 +1837,6 @@ class MailEngineRailcar(MailEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset=formation_ruleset,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             pantograph_type=self.pantograph_type,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
@@ -1901,7 +1902,6 @@ class MailEngineExpressRailcar(MailEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_4_unit_sets",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
             pantograph_type=self.pantograph_type,
@@ -1981,7 +1981,6 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="driving_cab_cars",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -2063,7 +2062,6 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset=formation_ruleset,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
             pantograph_type=self.pantograph_type,
@@ -2116,7 +2114,6 @@ class PassengerEngineMetro(PassengerEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="metro",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -2153,7 +2150,6 @@ class PassengerEngineRailbus(PassengerEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset=formation_ruleset,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
             pantograph_type=self.pantograph_type,
@@ -2228,7 +2224,6 @@ class PassengerEngineRailcar(PassengerEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
             pantograph_type=self.pantograph_type,
@@ -2266,7 +2261,8 @@ class SnowploughEngine(EngineModelTypeBase):
         # inserts the default liveries for docs examples
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_snowplough.pynml",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
     @property
@@ -2378,7 +2374,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="tgv",
-            liveries=self.cab_consist.gestalt_graphics.liveries,
+            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE, # CABBAGE
             default_livery_extra_docs_examples=self.cab_consist.gestalt_graphics.default_livery_extra_docs_examples,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
@@ -2750,7 +2746,8 @@ class AutomobileCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
             formation_ruleset=formation_ruleset,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -2868,7 +2865,8 @@ class AutomobileEnclosedCar(CarModelTypeBase):
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -2910,7 +2908,9 @@ class BolsterCarBase(CarModelTypeBase):
         self.use_named_buyable_variant_group = "wagon_group_bolster_cars"
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="flat", liveries=self.cabbage_refactoring_livery_name_resolver
+            piece="flat",
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -2954,7 +2954,8 @@ class BolsterCarRandomised(RandomisedCarMixin, BolsterCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3019,7 +3020,8 @@ class BoxCarType1(BoxCarBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3058,7 +3060,8 @@ class BoxCarType2(BoxCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3109,7 +3112,8 @@ class BoxCarCurtainSide(BoxCarBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3160,7 +3164,8 @@ class BoxCarMerchandise(BoxCarBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3189,7 +3194,8 @@ class BoxCarRandomised(RandomisedCarMixin, BoxCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3252,7 +3258,8 @@ class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3292,7 +3299,8 @@ class BoxCarSlidingWallType2(BoxCarSlidingWallBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3340,7 +3348,8 @@ class BoxCarVehicleParts(BoxCarBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3369,7 +3378,9 @@ class BulkOpenCarBase(CarModelTypeBase):
         ]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            bulk=True, liveries=self.cabbage_refactoring_livery_name_resolver
+            bulk=True,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3407,7 +3418,8 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3462,7 +3474,8 @@ class BulkOpenCarAggregateRandomised(RandomisedCarMixin, BulkOpenCarAggregateBas
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3494,7 +3507,8 @@ class BulkOpenCarHeavyDuty(BulkOpenCarBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3537,8 +3551,6 @@ class BulkOpenCarMineralBase(BulkOpenCarBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_mineral_bulk_open_cars"
         self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics.liveries = self.cabbage_refactoring_livery_name_resolver
 
 
 class BulkOpenCarMineral(BulkOpenCarMineralBase):
@@ -3594,7 +3606,8 @@ class BulkOpenCarMineralRandomised(RandomisedCarMixin, BulkOpenCarMineralBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3630,8 +3643,6 @@ class BulkOpenCarScrapMetalBase(BulkOpenCarBase):
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_scrap_metal_cars"
         self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics.liveries = self.cabbage_refactoring_livery_name_resolver
 
 
 class BulkOpenCarScrapMetalType1(BulkOpenCarScrapMetalBase):
@@ -3671,7 +3682,8 @@ class BulkOpenCarScrapMetalRandomised(RandomisedCarMixin, BulkOpenCarScrapMetalB
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3715,8 +3727,6 @@ class BulkOpenCarTipplerBase(BulkOpenCarBase):
         # buyable variant groups are created post-hoc and can group across subclasses
         # any buyable variants (liveries) within the subclass will be automatically added to the group
         self.use_named_buyable_variant_group = "wagon_group_tippler_bulk_open_cars"
-        # Graphics configuration
-        self.gestalt_graphics.liveries = self.cabbage_refactoring_livery_name_resolver
 
 
 class BulkOpenCarTipplerType1(BulkOpenCarTipplerBase):
@@ -3774,7 +3784,8 @@ class BulkOpenCarTipplerRandomised(RandomisedCarMixin, BulkOpenCarTipplerBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3802,7 +3813,8 @@ class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3832,7 +3844,8 @@ class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3863,7 +3876,8 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3893,10 +3907,11 @@ class CabooseCarUnit(CarModelTypeBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             spriterow_labels=self.model_def.spriterow_labels,
             caboose_families=self.model_def.caboose_families,
             buy_menu_sprite_pairs=self.model_def.buy_menu_sprite_pairs,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
     @property
@@ -3949,7 +3964,8 @@ class CaneBinCar(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -3983,7 +3999,8 @@ class CarbonBlackHopperCar(CarModelTypeBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4031,7 +4048,6 @@ class CoilBuggyCarUnit(CarModelTypeBase):
         cargo_row_map = {}
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             cargo_row_map=cargo_row_map,
             generic_rows=[0],
             unique_spritesets=[
@@ -4039,6 +4055,8 @@ class CoilBuggyCarUnit(CarModelTypeBase):
                 ["loading_0", 40],
                 ["loaded_0", 40],
             ],
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4098,9 +4116,10 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             piece="coil",
             has_cover=True,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
     @property
@@ -4142,9 +4161,10 @@ class CoilCarCovered(CoilCarBase):
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             piece="coil",
             has_cover=True,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4185,9 +4205,10 @@ class CoilCarTarpaulin(CoilCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             piece="coil",
             has_cover=True,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4222,7 +4243,9 @@ class CoilCarUncovered(CoilCarBase):
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="coil", liveries=self.cabbage_refactoring_livery_name_resolver
+            piece="coil",
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4250,7 +4273,8 @@ class DedicatedCoilCarRandomised(RandomisedCarMixin, CoilCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
     @property
@@ -4306,7 +4330,8 @@ class CoveredHopperCarBase(CarModelTypeBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4386,7 +4411,8 @@ class CoveredHopperCarRandomised(RandomisedCarMixin, CoveredHopperCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4428,7 +4454,8 @@ class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4484,7 +4511,8 @@ class ExpressCarUnit(CarModelTypeBase):
         weathered_variants = {"unweathered": graphics_constants.box_livery_recolour_map}
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4515,7 +4543,8 @@ class ExpressFoodCarRandomised(RandomisedCarMixin, CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4570,7 +4599,8 @@ class ExpressFoodTankCarBase(CarModelTypeBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4613,7 +4643,8 @@ class ExpressFoodTankCarRandomised(RandomisedCarMixin, ExpressFoodTankCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4653,7 +4684,8 @@ class ExpressIntermodalCarUnit(CarModelTypeBase):
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             formation_ruleset="2_unit_sets",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
     @property
@@ -4697,7 +4729,8 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4743,7 +4776,8 @@ class FarmProductsBoxCarRandomised(RandomisedCarMixin, FarmProductsBoxCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4780,7 +4814,8 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4826,7 +4861,8 @@ class FarmProductsHopperCarRandomised(RandomisedCarMixin, FarmProductsHopperCarB
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4850,7 +4886,8 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4910,7 +4947,8 @@ class FoodHopperCarRandomised(RandomisedCarMixin, FoodHopperCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4943,7 +4981,9 @@ class FlatCarBase(CarModelTypeBase):
         ]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="flat", liveries=self.cabbage_refactoring_livery_name_resolver
+            piece="flat",
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -4975,7 +5015,9 @@ class FlatCarBulkheadBase(FlatCarBase):
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="flat", liveries=self.cabbage_refactoring_livery_name_resolver
+            piece="flat",
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5017,7 +5059,8 @@ class FlatCarBulkheadRandomised(RandomisedCarMixin, FlatCarBulkheadBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5114,7 +5157,9 @@ class FlatCarHeavyDuty(FlatCarBase):
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="flat", liveries=self.cabbage_refactoring_livery_name_resolver
+            piece="flat",
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5177,7 +5222,8 @@ class FlatCarMillRandomised(RandomisedCarMixin, FlatCarMillBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5198,7 +5244,8 @@ class FlatCarRandomised(RandomisedCarMixin, FlatCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5229,7 +5276,8 @@ class GasTankCarBase(CarModelTypeBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5311,7 +5359,9 @@ class HopperCarBase(CarModelTypeBase):
         ]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            bulk=True, liveries=self.cabbage_refactoring_livery_name_resolver
+            bulk=True,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5363,8 +5413,6 @@ class HopperCarAggregateType1(HopperCarAggregateBase):
             "bulk_car_mixed_randomised",
         ]
         self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics.liveries = self.cabbage_refactoring_livery_name_resolver
 
 
 class HopperCarAggregateType2(HopperCarAggregateBase):
@@ -5403,8 +5451,6 @@ class HopperCarAggregateType2(HopperCarAggregateBase):
             "bulk_car_mixed_randomised",
         ]
         self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics.liveries = self.cabbage_refactoring_livery_name_resolver
 
 
 class HopperCarAggregateType3(HopperCarAggregateBase):
@@ -5443,8 +5489,6 @@ class HopperCarAggregateType3(HopperCarAggregateBase):
             "bulk_car_mixed_randomised",
         ]
         self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics.liveries = self.cabbage_refactoring_livery_name_resolver
 
 
 class HopperCarAggregateRandomised(RandomisedCarMixin, HopperCarAggregateBase):
@@ -5482,7 +5526,8 @@ class HopperCarAggregateRandomised(RandomisedCarMixin, HopperCarAggregateBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5567,7 +5612,8 @@ class HopperCarMGRBase(HopperCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5620,7 +5666,8 @@ class HopperCarRandomised(RandomisedCarMixin, HopperCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5659,8 +5706,6 @@ class HopperCarRock(HopperCarBase):
         # don't include rock hoppers in randomised lists, they don't look good
         self.randomised_candidate_groups = ["bulk_car_hopper_randomised"]
         self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics.liveries = self.cabbage_refactoring_livery_name_resolver
 
 
 class HopperCarSideDoor(HopperCarBase):
@@ -5703,8 +5748,6 @@ class HopperCarSkip(HopperCarBase):
         # not eligible for randomisation, breaks due to articulation
         self.randomised_candidate_groups = []
         self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics.liveries = self.cabbage_refactoring_livery_name_resolver
 
 
 class IngotCarUnit(CarModelTypeBase):
@@ -5749,7 +5792,6 @@ class IngotCarUnit(CarModelTypeBase):
         cargo_row_map = {}
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             cargo_row_map=cargo_row_map,
             generic_rows=[0],
             unique_spritesets=[
@@ -5757,6 +5799,8 @@ class IngotCarUnit(CarModelTypeBase):
                 ["loading_0", 40],
                 ["loaded_0", 70],
             ],
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5794,7 +5838,8 @@ class IntermodalCarBase(CarModelTypeBase):
             formation_ruleset = "4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             formation_ruleset=formation_ruleset,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5873,7 +5918,8 @@ class KaolinHopperCar(CarModelTypeBase):
         # tried more liveries, doesn't add anything
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5922,7 +5968,8 @@ class LivestockCar(CarModelTypeBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -5955,7 +6002,8 @@ class LogCar(CarModelTypeBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="tree_length_logs",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -6103,7 +6151,6 @@ class MailCar(MailCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -6152,7 +6199,7 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_4_unit_sets",
-            liveries=self.cab_consist.gestalt_graphics.liveries,
+            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE,
             pantograph_type=self.pantograph_type,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
@@ -6199,7 +6246,6 @@ class MailHighSpeedCar(MailCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -6244,7 +6290,7 @@ class MailHSTCar(MailCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
-            liveries=self.cab_consist.gestalt_graphics.liveries,
+            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -6299,7 +6345,6 @@ class MetalProductCarRandomisedBase(RandomisedCarMixin, CoilCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
         )
 
     @property
@@ -6387,7 +6432,8 @@ class MineralCoveredHopperCarBase(CarModelTypeBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -6428,7 +6474,8 @@ class MineralCoveredHopperCarLimeBase(MineralCoveredHopperCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -6487,7 +6534,6 @@ class MineralCoveredHopperCarLimeRandomised(
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
         )
 
 
@@ -6526,7 +6572,6 @@ class MineralCoveredHopperCarRandomised(
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=3,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
         )
 
 
@@ -6572,7 +6617,8 @@ class MineralCoveredHopperCarRollerRoofBase(MineralCoveredHopperCarBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -6616,7 +6662,6 @@ class MineralCoveredHopperCarRollerRoofRandomised(
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
         )
 
 
@@ -6668,7 +6713,8 @@ class MineralCoveredHopperCarSaltBase(MineralCoveredHopperCarBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -6712,7 +6758,6 @@ class MineralCoveredHopperCarSaltRandomised(
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
         )
 
 
@@ -6771,7 +6816,8 @@ class OpenCar(OpenCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             piece="open",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -6812,8 +6858,9 @@ class OpenCarHood(OpenCarBase):
             bulk=True,
             piece="open",
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             has_cover=True,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -6848,7 +6895,8 @@ class OpenCarHighEnd(OpenCarBase):
             bulk=True,
             piece="open",
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -6889,7 +6937,8 @@ class OpenCarMill(OpenCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             piece="open",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -6915,7 +6964,6 @@ class OpenCarRandomised(RandomisedCarMixin, OpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
         )
 
 
@@ -7054,7 +7102,6 @@ class PanoramicCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -7106,7 +7153,6 @@ class PassengerCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -7155,7 +7201,6 @@ class PassengerHighSpeedCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -7203,7 +7248,7 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_6_unit_sets",
-            liveries=self.cab_consist.gestalt_graphics.liveries,
+            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE,
             pantograph_type=self.pantograph_type,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
@@ -7250,7 +7295,7 @@ class PassengerHSTCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            liveries=self.cab_consist.gestalt_graphics.liveries,
+            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -7316,7 +7361,7 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
-            liveries=self.cab_consist.gestalt_graphics.liveries,
+            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
             pantograph_type=self.pantograph_type,
@@ -7363,7 +7408,7 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
-            liveries=self.cab_consist.gestalt_graphics.liveries,
+            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
             pantograph_type=self.pantograph_type,
@@ -7404,7 +7449,6 @@ class PassengerRestaurantCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -7454,7 +7498,6 @@ class PassengerSuburbanCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -7503,7 +7546,8 @@ class PeatCar(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -7552,7 +7596,8 @@ class PieceGoodsCarCoveredRandomised(PieceGoodsCarRandomisedBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -7577,7 +7622,8 @@ class PieceGoodsCarMixedRandomised(PieceGoodsCarRandomisedBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -7601,7 +7647,8 @@ class PieceGoodsCarManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=1,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -7635,7 +7682,9 @@ class PipeCar(FlatCarBase):
             "weathered": graphics_constants.box_car_type_2_body_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            piece="flat", liveries=self.cabbage_refactoring_livery_name_resolver
+            piece="flat",
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -7673,7 +7722,8 @@ class ReeferCarBase(CarModelTypeBase):
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -7728,7 +7778,8 @@ class ReeferCarRandomised(RandomisedCarMixin, ReeferCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -7789,7 +7840,8 @@ class SiloCarBase(CarModelTypeBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -7867,7 +7919,8 @@ class SiloCarRandomised(RandomisedCarMixin, SiloCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -7896,7 +7949,8 @@ class SiloCarCementType1(SiloCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -7925,7 +7979,8 @@ class SiloCarCementType2(SiloCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -7954,7 +8009,8 @@ class SiloCarCementType3(SiloCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -7979,7 +8035,8 @@ class SiloCarCementRandomised(RandomisedCarMixin, SiloCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8026,9 +8083,10 @@ class SlidingRoofCar(BoxCarBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             piece="flat",
             has_cover=True,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8073,9 +8131,10 @@ class SlidingRoofCarHiCube(BoxCarBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             piece="flat",
             has_cover=True,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8119,7 +8178,6 @@ class SlagLadleCarUnit(CarModelTypeBase):
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_with_visible_cargo.pynml",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
             cargo_row_map={"SLAG": [0]},
             generic_rows=[0],
             unique_spritesets=[
@@ -8127,6 +8185,8 @@ class SlagLadleCarUnit(CarModelTypeBase):
                 ["loading_0", 40],
                 ["loaded_0", 70],
             ],
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8196,7 +8256,8 @@ class TankCarAcidBase(TankCarBase):
         # # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8248,7 +8309,8 @@ class TankCarAcidRandomised(RandomisedCarMixin, TankCarAcidBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8276,7 +8338,8 @@ class TankCarChemicalRandomised(RandomisedCarMixin, TankCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8331,7 +8394,8 @@ class TankCarProductBase(TankCarBase):
         # # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8373,7 +8437,8 @@ class TankCarProductRandomised(RandomisedCarMixin, TankCarProductBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8418,7 +8483,8 @@ class TankCarStandardBase(TankCarBase):
         # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8468,7 +8534,8 @@ class TankCarStandardRandomised(RandomisedCarMixin, TankCarStandardBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8516,7 +8583,8 @@ class TankCarVolatilesBase(TankCarBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8582,7 +8650,8 @@ class TarpaulinCarBase(BoxCarBase):
             piece="flat",
             has_cover=True,
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8640,7 +8709,8 @@ class TarpaulinCarType3(TarpaulinCarBase):
             piece="flat",
             has_cover=True,
             weathered_variants=weathered_variants,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8667,7 +8737,8 @@ class TarpaulinCarRandomised(RandomisedCarMixin, TarpaulinCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8712,7 +8783,8 @@ class TorpedoCarUnit(CarModelTypeBase):
         # custom gestalt with dedicated template as these wagons are articulated which standard wagon templates don't support
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_torpedo_car.pynml",
-            liveries=self.cabbage_refactoring_livery_name_resolver,
+            model_variant_factory=self.model_variant_factory,
+            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
 
 
@@ -8953,12 +9025,12 @@ class UnitVariant(object):
         variant_colour_set = []
         # CABBAGE SHIM
         for unit_variant in unit_variants:
-            for (
-                cabbage_candidate_livery
-            ) in model_variant_factory.catalogue:
+            for cabbage_candidate_livery in model_variant_factory.catalogue:
                 if cabbage_candidate_livery["colour_set"] not in variant_colour_set:
                     if cabbage_candidate_livery["colour_set"] in eligible_colours:
-                        variant_colour_set.append(cabbage_candidate_livery["colour_set"])
+                        variant_colour_set.append(
+                            cabbage_candidate_livery["colour_set"]
+                        )
 
         if len(variant_colour_set) == 0:
             raise BaseException(
