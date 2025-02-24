@@ -139,20 +139,18 @@ class RosterManager(list):
                 livery_manager.add_livery(livery_name, **livery_def)
             roster.produce_engines()
             roster.produce_wagons()
-        # now validate as we have all the vehicles in all rosters
-        self.validate_vehicles()
-        # now complete any post validation steps
-        for roster in self:
-            roster.compute_wagon_recolour_sets()
-            roster.add_buyable_variant_groups()
 
-    def validate_vehicles(self):
-        # has to be explicitly called after all rosters are active, and all vehicles and vehicle units are registered to each roster
+        # now validate as we have all the vehicles in all rosters
         # validation will also populate numeric_id_defender which can be re-used for ID reporting
         # actual validation is delegated to the roster
         self.numeric_id_defender = {}
         for roster in self:
             roster.validate_vehicles(self.numeric_id_defender)
+
+        # now complete any post validation steps
+        for roster in self:
+            roster.compute_wagon_recolour_sets()
+            roster.add_buyable_variant_groups()
 
     @property
     def active_roster(self):
@@ -175,6 +173,7 @@ class RosterManager(list):
 
     @property
     def haulage_bonus_engine_id_tree(self):
+        # CABBAGE - JUST USE BADGES
         # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
         express_engine_ids = []
         # if we wanted cross-grf haulage bonus then this would need extending beyond active_roster; but we don't as of April 2023, so eh
@@ -193,6 +192,7 @@ class RosterManager(list):
 
     @property
     def cargo_sprinter_ids(self):
+        # CABBAGE - JUST USE BADGES
         # find cargo_sprinters
         # used to switch wagon company colours
         result = []
