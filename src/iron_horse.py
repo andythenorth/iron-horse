@@ -56,9 +56,13 @@ class LiveryManager(dict):
         if livery_name in self:
             # CABBAGE - FIGURE OUT LATER WHETHER TO ALLOW REDEFINING BY ROSTERS, OR WHETHER TO FORCE A COMMON LIVERY SET
             if livery_name in ["VANILLA", "SWOOSH", "FOO", "TGV_LA_POSTE"]:
-                print(f"LiveryManager.add_livery: a roster tried to add {livery_name} when it already exists")
+                print(
+                    f"LiveryManager.add_livery: a roster tried to add {livery_name} when it already exists"
+                )
             else:
-                raise ValueError(f"LiveryManager.add_livery: a roster tried to add {livery_name} when it already exists")
+                raise ValueError(
+                    f"LiveryManager.add_livery: a roster tried to add {livery_name} when it already exists"
+                )
         else:
             self[livery_name] = LiveryDef(**kwargs)
         # no return as of now, not needed
@@ -135,7 +139,10 @@ class RosterManager(list):
 
         # some actions have to be run after the rosters are all added to RosterManager, to ensure all rosters are present
         for roster in self:
-            for livery_name, livery_def in roster.engine_and_pax_mail_car_liveries.items():
+            for (
+                livery_name,
+                livery_def,
+            ) in roster.engine_and_pax_mail_car_liveries.items():
                 livery_manager.add_livery(livery_name, **livery_def)
             roster.produce_engines()
             roster.produce_wagons()

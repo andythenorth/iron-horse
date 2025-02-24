@@ -2374,7 +2374,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="tgv",
-            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE, # CABBAGE
+            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE, # CABBAGE
             default_livery_extra_docs_examples=self.cab_consist.gestalt_graphics.default_livery_extra_docs_examples,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
@@ -6199,7 +6199,7 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_4_unit_sets",
-            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE,
+            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE,
             pantograph_type=self.pantograph_type,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
@@ -6290,7 +6290,7 @@ class MailHSTCar(MailCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
-            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE,
+            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -7248,7 +7248,7 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_6_unit_sets",
-            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE,
+            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE,
             pantograph_type=self.pantograph_type,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
@@ -7295,7 +7295,7 @@ class PassengerHSTCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE,
+            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -7361,7 +7361,7 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
-            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE,
+            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
             pantograph_type=self.pantograph_type,
@@ -7408,7 +7408,7 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
-            liveries=self.cab_consist.gestalt_graphics.liveries, # CABBAGE,
+            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
             pantograph_type=self.pantograph_type,

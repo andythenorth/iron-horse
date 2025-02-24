@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Any, Dict, List, Optional
 
+
 @dataclass
 class LiveryDef:
     # CABBAGE SPARSE CLASS
@@ -11,5 +12,3 @@ class LiveryDef:
     relative_spriterow_num: Optional[int] = None
     remap_to_cc: Optional[str] = None
     use_weathering: Optional[bool] = False
-
-
