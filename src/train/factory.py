@@ -7,7 +7,7 @@ import sys
 sys.path.append(os.path.join("src"))  # add to the module search path
 
 import copy
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Any, Dict, List, Optional
 
 from train import model_type as model_type_module
@@ -124,7 +124,7 @@ class CatalogueEntry:
     unit_variant_ids: List[str]
     unit_numeric_ids: List[int]
     livery_name: str
-    livery_def: dict
+    livery_def: "LiveryDef"
 
 
 class ModelVariantFactory:
@@ -166,10 +166,9 @@ class ModelVariantFactory:
         # catalogue is a singleton that provides basic metadata for produced model variants
         self.catalogue = Catalogue(self)
         if len(self.catalogue) == 0:
-            print(
-                self.model_type_id,
-                " no liveries; cabbage_livery_names: ",
-                self.cabbage_livery_names,
+            raise Exception(
+                f"{self.model_type_id}\n"
+                f"ModelVariantFactory catalogue is empty"
             )
         # used for book-keeping related model_variants
         # CABBAGE THIS MIGHT NOT BE NEEDED AT ALL - GO VIA CATALOGUE?
@@ -185,46 +184,38 @@ class ModelVariantFactory:
                 + str(self.model_type_cls)
             )
 
-        if self.cabbage_new_livery_system:
-            catalogue_entry = self.catalogue[catalogue_index]
+        catalogue_entry = self.catalogue[catalogue_index]
 
-            # HAX
-            # WE ARE MID-REFACTORING, AND id IS VERY SHIMMED CURRENTLY
-            # NEEDS REPLACED WITH BOTH model_type_id and catalogue_entry.mv_id, to be used in templates as appropriate
-            if len(self.produced_model_variants) == 0:
-                id = self.model_type_id
-            else:
-                id = (
-                    self.model_type_id
-                    + "_variant_"
-                    + str(len(self.produced_model_variants))
-                )
-
-            # CABBAGE FAILS WITH CLONES - HAX TO RESOLVE, THIS SHOULD ALREADY BE FIGURED OUT BY THE CLONE THOUGH
-            # CHECK if buyable_variant_group_id is already set?  If it is, leave it alone?
-            if self.model_def.cloned_from_model_def is not None:
-                self.model_def.buyable_variant_group_id = (
-                    self.model_def.cloned_from_model_def.model_type_id
-                )
-            else:
-                self.model_def.buyable_variant_group_id = self.model_def.model_type_id
-
-            model_variant = self.model_type_cls(
-                model_variant_factory=self,
-                id=id,
-                catalogue_entry=catalogue_entry,
-            )
-            # CABBAGE - CRUDE SHIM TO INCREMENT NUMERIC ID - INSTEAD USE catalogue_entry WHICH HAS THE IDS
-            self.model_def.base_numeric_id = self.model_def.base_numeric_id + len(
-                self.model_def.unit_defs
-            )
-
+        # HAX
+        # WE ARE MID-REFACTORING, AND id IS VERY SHIMMED CURRENTLY
+        # NEEDS REPLACED WITH BOTH model_type_id and catalogue_entry.mv_id, to be used in templates as appropriate
+        if len(self.produced_model_variants) == 0:
+            id = self.model_type_id
         else:
-            model_variant = self.model_type_cls(
-                model_variant_factory=self,
-                id=self.model_type_id,
-                catalogue_entry=None,
+            id = (
+                self.model_type_id
+                + "_variant_"
+                + str(len(self.produced_model_variants))
             )
+
+        # CABBAGE FAILS WITH CLONES - HAX TO RESOLVE, THIS SHOULD ALREADY BE FIGURED OUT BY THE CLONE THOUGH
+        # CHECK if buyable_variant_group_id is already set?  If it is, leave it alone?
+        if self.model_def.cloned_from_model_def is not None:
+            self.model_def.buyable_variant_group_id = (
+                self.model_def.cloned_from_model_def.model_type_id
+            )
+        else:
+            self.model_def.buyable_variant_group_id = self.model_def.model_type_id
+
+        model_variant = self.model_type_cls(
+            model_variant_factory=self,
+            id=id,
+            catalogue_entry=catalogue_entry,
+        )
+        # CABBAGE - CRUDE SHIM TO INCREMENT NUMERIC ID - INSTEAD USE catalogue_entry WHICH HAS THE IDS
+        self.model_def.base_numeric_id = self.model_def.base_numeric_id + len(
+            self.model_def.unit_defs
+        )
 
         # orchestrate addition of units
         for unit_def in self.model_def.unit_defs:
@@ -249,17 +240,6 @@ class ModelVariantFactory:
     def model_type_cls(self):
         # get the class for the model type, uninstantiated
         return getattr(model_type_module, self.class_name)
-
-    def cabbage_refactoring_livery_def_resolver(self, livery_name):
-        # CABBAGE - go via LiveryManager in future
-        roster = iron_horse.roster_manager.get_roster_by_id(
-            self.roster_id_providing_module
-        )
-        # CABBAGE - this fails to set relative_spriterow_num which means that we've broken the split of buy menu order from pre-existing spritesheet order
-        # that is handled by roster.pax_mail_livery_groups and livery_group_name
-        # probably the factory or Catalogue need to resolve livery_group_name, as it can be defined by model_type_cls or model_def
-        result = iron_horse.livery_manager[livery_name]
-        return result
 
     def cabbage_get_all_liveries_as_livery_defs(self):
         # shim for gestalts to call to get all available liveries for spritesheet generation
@@ -424,15 +404,25 @@ class Catalogue(list):
                         self.model_variant_factory.model_def.unit_defs
                     )
                 ]
+                # get the livery def from LiveryManager, copying it locally so we can modify it
+                # CABBAGE - this fails to set relative_spriterow_num which means that we've broken the split of buy menu order from pre-existing spritesheet order
+                # that is handled by roster.pax_mail_livery_groups and livery_group_name
+                # probably the factory or Catalogue need to resolve livery_group_name, as it can be defined by model_type_cls or model_def
+                roster = iron_horse.roster_manager.get_roster_by_id(
+                    self.model_variant_factory.roster_id_providing_module
+                )
+                livery_def = iron_horse.livery_manager[livery_name]
+                if livery_def.relative_spriterow_num is not None:
+                    print("CABBAGE 2341", livery_def.relative_spriterow_num)
+                livery_def_copy = replace(livery_def) # CABBAGE REPLACE THE LIVERY SPRITEROW INDEX HERE
+
                 # note that livery_name is an arbitrary string and might be repeated across model variants
                 catalogue_entry = CatalogueEntry(
                     model_variant_id=model_variant_id,
                     unit_variant_ids=unit_variant_ids,
                     unit_numeric_ids=unit_numeric_ids,
                     livery_name=livery_name,
-                    livery_def=self.model_variant_factory.cabbage_refactoring_livery_def_resolver(
-                        livery_name
-                    ),
+                    livery_def=livery_def_copy,
                 )
                 self.append(catalogue_entry)
 

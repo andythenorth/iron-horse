@@ -2345,6 +2345,8 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
     Add as additional class for e.g. pax or mail engine consist.
     """
 
+    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
+    liveries = ["VANILLA", "VANILLA"]
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -2374,7 +2376,6 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="tgv",
-            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE, # CABBAGE
             default_livery_extra_docs_examples=self.cab_consist.gestalt_graphics.default_livery_extra_docs_examples,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
@@ -6170,6 +6171,9 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
     Position-dependent sprites for cabs etc.
     """
 
+    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
+    liveries = ["VANILLA", "VANILLA"]
+
     model_type_id_root = "express_railcar_mail_trailer_car"
     cabbage_new_livery_system = True
 
@@ -6199,7 +6203,6 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_4_unit_sets",
-            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE,
             pantograph_type=self.pantograph_type,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
@@ -6264,6 +6267,9 @@ class MailHSTCar(MailCarBase):
     Trailer dedicated for Mail on HST-type trains (no wagon attach, but matching stats and livery).
     """
 
+    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
+    liveries = ["VANILLA", "VANILLA"]
+
     model_type_id_root = "hst_mail_car"
     cabbage_new_livery_system = True
 
@@ -6290,7 +6296,6 @@ class MailHSTCar(MailCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
-            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -7220,6 +7225,9 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
     Position-dependent sprites for cabs etc.
     """
 
+    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
+    liveries = ["VANILLA", "VANILLA"]
+
     model_type_id_root = "express_railcar_passenger_trailer_car"
     cabbage_new_livery_system = True
 
@@ -7248,7 +7256,6 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_6_unit_sets",
-            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE,
             pantograph_type=self.pantograph_type,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
@@ -7265,6 +7272,9 @@ class PassengerHSTCar(PassengerCarBase):
     Moderately improved decay rate compared to standard pax car.
     Position-dependent sprites for buffet car, brake car etc.
     """
+
+    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
+    liveries = ["VANILLA", "VANILLA"]
 
     model_type_id_root = "hst_passenger_car"
     cabbage_new_livery_system = True
@@ -7295,7 +7305,6 @@ class PassengerHSTCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
         )
@@ -7333,6 +7342,9 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
     Position-dependent sprites for cabs etc.
     """
 
+    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
+    liveries = ["VANILLA", "VANILLA"]
+
     model_type_id_root = "railbus_passenger_trailer_car"
     cabbage_new_livery_system = True
 
@@ -7361,7 +7373,6 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
-            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
             pantograph_type=self.pantograph_type,
@@ -7377,6 +7388,9 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
     Unpowered high-capacity passenger trailer car for railcars (not railbus).
     Position-dependent sprites for cabs etc.
     """
+
+    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
+    liveries = ["VANILLA", "VANILLA"]
 
     model_type_id_root = "railcar_passenger_trailer_car"
     cabbage_new_livery_system = True
@@ -7408,7 +7422,6 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
-            liveries=self.cab_consist.gestalt_graphics.liveries,  # CABBAGE,
             model_variant_factory=self.model_variant_factory,
             cabbage_catalogue_entry=self.cabbage_catalogue_entry,
             pantograph_type=self.pantograph_type,
