@@ -34,7 +34,7 @@ def main(**kwargs):
         class_name="ElectroDieselEngineUnit",
         weight=105,
         vehicle_length=8,
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description(""" """)

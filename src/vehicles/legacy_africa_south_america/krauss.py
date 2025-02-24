@@ -14,7 +14,7 @@ def main(**kwargs):  # for rest of stats, look up Krauss Maffei Brazil
     )
 
     consist_cabbage.add_unit(
-        type=DieselEngineUnit, weight=150, vehicle_length=8, spriterow_num=0
+        type=DieselEngineUnit, weight=150, vehicle_length=8, rel_spriterow_index=0
     )
 
     return consist_cabbage

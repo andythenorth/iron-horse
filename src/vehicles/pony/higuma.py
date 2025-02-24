@@ -29,7 +29,7 @@ def main(**kwargs):
         weight=60,
         vehicle_length=8,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     # https://en.wikipedia.org/wiki/New_Zealand_DL_class_locomotive

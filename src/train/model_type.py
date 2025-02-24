@@ -214,7 +214,7 @@ class ModelTypeBase(object):
     def unique_spriterow_nums(self):
         # find the unique spriterow numbers, used in graphics generation
         result = []
-        for unit in set([unit.spriterow_num for unit in self.units]):
+        for unit in set([unit.rel_spriterow_index for unit in self.units]):
             result.append(unit)
             # extend with alternative cc livery if present, spritesheet format assumes unit_1_default, unit_1_additional_liveries, unit_2_default, unit_2_additional_liveries if present
             # !! this is suspect, it's not counting the actual number of liveries

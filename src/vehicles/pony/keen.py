@@ -28,7 +28,7 @@ def main(**kwargs):
         class_name="SteamEnginePoweredUnit",
         weight=58,
         vehicle_length=5,
-        spriterow_num=0,
+        rel_spriterow_index=0,
         repeat=2,
     )
 

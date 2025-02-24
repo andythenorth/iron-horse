@@ -32,7 +32,7 @@ def main(**kwargs):
         class_name="SteamEnginePoweredUnit",
         weight=35,
         vehicle_length=4,
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description("""Nice little engine this one.""")

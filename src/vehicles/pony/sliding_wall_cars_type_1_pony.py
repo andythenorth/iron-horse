@@ -114,7 +114,7 @@ def main(**kwargs):
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.add_unit_def(
@@ -122,7 +122,7 @@ def main(**kwargs):
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
-        spriterow_num=4,
+        rel_spriterow_index=4,
     )
 
     result.append(model_def)

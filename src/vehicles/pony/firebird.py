@@ -27,7 +27,7 @@ def main(**kwargs):
         vehicle_length=8,
         capacity=16,
         effect_offsets=[(0, 1), (0, -1)],  # double the smoke eh?
-        spriterow_num=0,
+        rel_spriterow_index=0,
         tail_light="hst_32px_1",
     )
 

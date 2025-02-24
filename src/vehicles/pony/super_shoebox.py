@@ -39,7 +39,7 @@ def main(**kwargs):
         weight=82,
         vehicle_length=8,
         effect_offsets=[(2, 0)],
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description(

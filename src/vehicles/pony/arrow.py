@@ -33,11 +33,11 @@ def main(**kwargs):
         weight=96,
         vehicle_length=7,
         effect_offsets=[(-3, 0)],
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.add_unit_def(
-        class_name="SteamEngineTenderUnit", weight=44, vehicle_length=3, spriterow_num=1
+        class_name="SteamEngineTenderUnit", weight=44, vehicle_length=3, rel_spriterow_index=1
     )
 
     model_def.define_description(

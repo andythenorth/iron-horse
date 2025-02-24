@@ -103,7 +103,7 @@ class GestaltGraphics(object):
         # override in subclasses as needed
 
         unit_variant_row_num = (
-            unit.spriterow_num * len(pipeline.consist.buyable_variants)
+            unit.rel_spriterow_index * len(pipeline.consist.buyable_variants)
         ) + (
             (buyable_variant.relative_spriterow_num)
             * self.num_load_state_or_similar_spriterows
@@ -456,7 +456,7 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         self, unit_counter, pipeline, buyable_variant, unit
     ):
 
-        unit_variant_row_num = unit.spriterow_num + (
+        unit_variant_row_num = unit.rel_spriterow_index + (
             (buyable_variant.relative_spriterow_num)
             * self.num_load_state_or_similar_spriterows
         )

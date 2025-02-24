@@ -27,7 +27,7 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="MetroUnit", weight=60, vehicle_length=8, spriterow_num=0
+        class_name="MetroUnit", weight=60, vehicle_length=8, rel_spriterow_index=0
     )
 
     model_def.define_description("""Is London drowning? Because I live by the river.""")

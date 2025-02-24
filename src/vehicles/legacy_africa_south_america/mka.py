@@ -25,7 +25,7 @@ def main(**kwargs):
         weight=55,
         vehicle_length=6,
         effect_z_offset=10,  # reduce smoke z position to suit NG engine height
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     consist_cabbage.description = """"""

@@ -24,7 +24,7 @@ def main(**kwargs):
 
     # 63ft IRL is 8/8, surprisingly short
     model_def.add_unit_def(
-        class_name="ElectricEngineUnit", weight=75, vehicle_length=8, spriterow_num=0
+        class_name="ElectricEngineUnit", weight=75, vehicle_length=8, rel_spriterow_index=0
     )
 
     model_def.define_description(""" """)

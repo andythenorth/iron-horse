@@ -29,7 +29,7 @@ def main(**kwargs):
         class_name="DieselEngineUnit",
         weight=95,  # notably low weight
         vehicle_length=8,
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description("""Amazing what they can do these days isn't it?""")

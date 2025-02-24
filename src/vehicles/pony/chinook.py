@@ -28,11 +28,11 @@ def main(**kwargs):
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=0
+        class_name="DieselEngineUnit", weight=80, vehicle_length=6, rel_spriterow_index=0
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit", weight=80, vehicle_length=6, spriterow_num=1
+        class_name="DieselEngineUnit", weight=80, vehicle_length=6, rel_spriterow_index=1
     )
 
     model_def.define_description("""I send these out in twos.""")

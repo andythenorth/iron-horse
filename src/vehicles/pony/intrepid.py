@@ -32,7 +32,7 @@ def main(**kwargs):
         class_name="DieselEngineUnit",
         weight=100,  # bonus over Wyvern, less than IRL as HP is nerfed
         vehicle_length=8,
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description(

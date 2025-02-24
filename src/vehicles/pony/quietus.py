@@ -30,7 +30,7 @@ def main(**kwargs):
         class_name="ElectroDieselEngineUnit",
         weight=136,
         vehicle_length=8,
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description("""It'll get there and back again, in any weather.""")

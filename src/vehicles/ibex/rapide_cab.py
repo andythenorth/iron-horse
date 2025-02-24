@@ -31,7 +31,7 @@ def main(**kwargs):
         weight=76,
         # no pax capacity on Helm Wind cabs
         capacity=0,
-        spriterow_num=0,
+        rel_spriterow_index=0,
         chassis="4_axle_solid_express_32px",
         tail_light="very_high_speed_32px_3",
     )

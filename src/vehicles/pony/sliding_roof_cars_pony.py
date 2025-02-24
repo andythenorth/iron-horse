@@ -47,7 +47,7 @@ def main(**kwargs):
         class_name="FreightCarUnit",
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.add_unit_def(

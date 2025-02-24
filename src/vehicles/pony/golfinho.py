@@ -30,7 +30,7 @@ def main(**kwargs):
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
         tail_light="railcar_20px_3",
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.add_unit_def(
@@ -38,7 +38,7 @@ def main(**kwargs):
         weight=22,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_24px",
-        spriterow_num=1,
+        rel_spriterow_index=1,
     )
 
     model_def.add_unit_def(
@@ -47,7 +47,7 @@ def main(**kwargs):
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
         chassis="railcar_ng_20px",
         tail_light="railcar_20px_3",
-        spriterow_num=0,
+        rel_spriterow_index=0,
         reverse_sprite_template=True,
     )
 

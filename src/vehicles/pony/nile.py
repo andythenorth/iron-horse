@@ -32,7 +32,7 @@ def main(**kwargs):
         vehicle_length=8,
         effect_offsets=[(-1, 0)],  # non-standard smoke position
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description("""Is twice as nice.""")

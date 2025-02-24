@@ -15,7 +15,7 @@ def main(**kwargs):
     )
 
     consist_cabbage.add_unit(
-        type=DieselEngineUnit, weight=65, vehicle_length=8, capacity=30, spriterow_num=0
+        type=DieselEngineUnit, weight=65, vehicle_length=8, capacity=30, rel_spriterow_index=0
     )
 
     return consist_cabbage

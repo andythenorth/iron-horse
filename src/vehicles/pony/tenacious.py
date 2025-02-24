@@ -31,7 +31,7 @@ def main(**kwargs):
         class_name="DieselEngineUnit",
         weight=80,  # significant bonus over other of same power band
         vehicle_length=8,
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.define_description(

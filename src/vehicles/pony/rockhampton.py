@@ -30,7 +30,7 @@ def main(**kwargs):
         weight=55,
         vehicle_length=8,
         effect_z_offset=11,  # reduce smoke z position to suit NG engine height
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     # various NZ / tasrail / QLD diesels

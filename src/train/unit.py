@@ -68,9 +68,9 @@ class UnitBase(object):
         return {}
 
     @property
-    def spriterow_num(self):
-        if self._unit_def.spriterow_num is not None:
-            return self._unit_def.spriterow_num
+    def rel_spriterow_index(self):
+        if self._unit_def.rel_spriterow_index is not None:
+            return self._unit_def.rel_spriterow_index
         else:
             return 0
 

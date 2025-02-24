@@ -12,11 +12,11 @@ def main(**kwargs):
     )
 
     consist_cabbage.add_unit(
-        type=SteamEnginePoweredUnit, weight=70, vehicle_length=7, spriterow_num=0
+        type=SteamEnginePoweredUnit, weight=70, vehicle_length=7, rel_spriterow_index=0
     )
 
     consist_cabbage.add_unit(
-        type=SteamEngineTenderUnit, weight=25, vehicle_length=4, spriterow_num=1
+        type=SteamEngineTenderUnit, weight=25, vehicle_length=4, rel_spriterow_index=1
     )
 
     return consist_cabbage

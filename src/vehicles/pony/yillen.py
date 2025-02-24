@@ -29,11 +29,11 @@ def main(**kwargs):
 
     # 2 separate units so that buy menu has reversed cabs
     model_def.add_unit_def(
-        class_name="DieselEngineUnit", weight=67, vehicle_length=5, spriterow_num=0
+        class_name="DieselEngineUnit", weight=67, vehicle_length=5, rel_spriterow_index=0
     )
 
     model_def.add_unit_def(
-        class_name="DieselEngineUnit", weight=67, vehicle_length=5, spriterow_num=1
+        class_name="DieselEngineUnit", weight=67, vehicle_length=5, rel_spriterow_index=1
     )
 
     model_def.define_description("""The universe is asymmetric. And so are these.""")

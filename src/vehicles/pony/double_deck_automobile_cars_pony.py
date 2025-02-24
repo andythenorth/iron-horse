@@ -77,13 +77,13 @@ def main(**kwargs):
     model_def.add_unit_def(
         class_name="AutomobileCarAsymmetricUnit",
         chassis="2_axle_running_gear_only_20px",
-        spriterow_num=0,
+        rel_spriterow_index=0,
     )
 
     model_def.add_unit_def(
         class_name="AutomobileCarAsymmetricUnit",
         chassis="2_axle_running_gear_only_20px",
-        spriterow_num=1,
+        rel_spriterow_index=1,
     )
 
     result.append(model_def)

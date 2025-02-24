@@ -2,7 +2,7 @@
      <!--! this is the default template for trains that don't supply their own template -->
 
     spriteset(${vehicle.id}_ss, "${graphics_path}${consist.model_type_id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.spriterow_num * len(consist.model_def.liveries) * 30) + (consist.model_variant_factory.cabbage_new_livery_system_livery_index(consist) * 30))}
+        ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.rel_spriterow_index * len(consist.model_def.liveries) * 30) + (consist.model_variant_factory.cabbage_new_livery_system_livery_index(consist) * 30))}
     }
 
     <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
@@ -20,7 +20,7 @@
         <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
         <tal:pantographs repeat="pantograph_state ['down', 'up']">
             spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.model_type_id}_pantographs_${pantograph_state}.png") {
-                ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.spriterow_num * 30))}
+                ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.rel_spriterow_index * 30))}
             }
         </tal:pantographs>
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {

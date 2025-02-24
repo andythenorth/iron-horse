@@ -24,10 +24,10 @@ def main(**kwargs):
 
     # !! Re 6/6 is only 63ft IRL, so 8/8, but that's weird because 10k HP in 8/8 is weird, so lengthen and articulate
     model_def.add_unit_def(
-        class_name="ElectricEngineUnit", weight=75, vehicle_length=5, spriterow_num=0
+        class_name="ElectricEngineUnit", weight=75, vehicle_length=5, rel_spriterow_index=0
     )
     model_def.add_unit_def(
-        class_name="ElectricEngineUnit", weight=75, vehicle_length=5, spriterow_num=1
+        class_name="ElectricEngineUnit", weight=75, vehicle_length=5, rel_spriterow_index=1
     )
 
     model_def.define_description(""" """)

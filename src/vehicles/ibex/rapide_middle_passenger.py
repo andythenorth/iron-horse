@@ -23,7 +23,7 @@ def main(**kwargs):
     model_def.add_unit_def(
         class_name="ElectricHighSpeedPaxUnit",
         weight=42,
-        spriterow_num=0,
+        rel_spriterow_index=0,
         chassis="jacobs_solid_express_32px",
         repeat=2,
         effects={},  # suppress visual effects

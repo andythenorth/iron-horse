@@ -13,7 +13,7 @@ def main(**kwargs):
     )
 
     consist_cabbage.add_unit(
-        type=DieselEngineUnit, weight=190, vehicle_length=8, spriterow_num=0
+        type=DieselEngineUnit, weight=190, vehicle_length=8, rel_spriterow_index=0
     )
 
     # I tried the Big Boat with a long-hood forward random variant, but it looked bad, removed it.

@@ -12,11 +12,11 @@ def main(**kwargs):
 
     # should be 4 units, not 2
     consist_cabbage.add_unit(
-        type=MetroUnit, weight=30, vehicle_length=8, capacity=200, spriterow_num=0
+        type=MetroUnit, weight=30, vehicle_length=8, capacity=200, rel_spriterow_index=0
     )
 
     consist_cabbage.add_unit(
-        type=MetroUnit, weight=30, vehicle_length=8, capacity=200, spriterow_num=1
+        type=MetroUnit, weight=30, vehicle_length=8, capacity=200, rel_spriterow_index=1
     )
 
     return consist_cabbage

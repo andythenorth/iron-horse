@@ -103,7 +103,7 @@ class UnitDef:
     capacity: Optional[int] = None
     weight: Optional[int] = None
     vehicle_length: Optional[int] = None
-    spriterow_num: Optional[int] = 0
+    rel_spriterow_index: Optional[int] = 0
     chassis: Optional[str] = None
     effects: Optional[dict] = None
     effect_offsets: Optional[list] = None
