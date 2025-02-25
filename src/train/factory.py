@@ -168,11 +168,6 @@ class ModelVariantFactory:
             raise Exception(
                 f"{self.model_type_id}\n" f"ModelVariantFactory catalogue is empty"
             )
-        # used for book-keeping related model_variants
-        # CABBAGE THIS MIGHT NOT BE NEEDED AT ALL - GO VIA CATALOGUE?
-        # DON'T SEE WHY THE FACTORY INSTANCE NEEDS TO TRACK SPECIFIC OBJECT REFERENCES
-        self.produced_model_variants = []
-        self.produced_units = []
 
     def produce(self, catalogue_index=None):
 
