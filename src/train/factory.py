@@ -252,14 +252,6 @@ class ModelVariantFactory:
             self.roster_id_providing_module
         )
 
-    def cabbage_get_all_liveries_as_livery_defs(self):
-        # shim for gestalts to call to get all available liveries for spritesheet generation
-        # this should be a call returning Livery object instances, possibly against catalogue.livery_defs or something
-        result = []
-        for catalogue_entry in self.catalogue:
-            result.append(catalogue_entry.livery_def)
-        return result
-
     @property
     def cabbage_new_livery_system(self):
         if self.model_def.cabbage_new_livery_system:

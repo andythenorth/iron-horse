@@ -140,7 +140,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
                     ]
                 )
             )
-        self.num_pantograph_rows = len(self.model_variant_factory.cabbage_get_all_liveries_as_livery_defs())
+        self.num_pantograph_rows = len(self.model_variant_factory.catalogue)
 
     @property
     def nml_template(self):
@@ -962,7 +962,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
             # note that we simply generate a row per vehicle position variant
             # this method leads to unnecessary rows for many cases
             # but is relied on for multiple unit (railcars etc) where not all vehicles have pans, in which case the row is simply empty
-            self.num_pantograph_rows = len(self.model_variant_factory.cabbage_get_all_liveries_as_livery_defs()) * (
+            self.num_pantograph_rows = len(self.model_variant_factory.catalogue) * (
                 1 + max(self.spriterow_group_mappings.values())
             )
 
@@ -980,7 +980,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         # there is some risk of divergence here from buyable variants, as those aren't passed to gestalt graphics currently
         # buyable variants _could_ be passed, it's just work to get that param added to all the classes using this gestalt
         spriterow_nums_seen = []
-        for livery_counter, livery_def in enumerate(self.model_variant_factory.cabbage_get_all_liveries_as_livery_defs()):
+        for livery_counter, livery_def in enumerate(self.model_variant_factory.catalogue):
             # CABBAGE SHIM
             if getattr(livery_def, "relative_spriterow_num", None) is None:
                 spriterow_nums_seen.append(livery_counter)
@@ -1019,7 +1019,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 source_row_num = position_variant_num
             # group of n rows - n liveries * two loaded/loading states (opening doors)
             row_group_size = self.num_load_state_or_similar_spriterows * len(
-                self.model_variant_factory.cabbage_get_all_liveries_as_livery_defs()
+                self.model_variant_factory.catalogue
             )
             for i in range(1, 1 + row_group_size):
                 result[base_row_num + (row_group_size * position_variant_num) + i] = (
