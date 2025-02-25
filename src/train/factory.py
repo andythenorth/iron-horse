@@ -175,7 +175,7 @@ class ModelVariantFactory:
         self.produced_model_variants = []
         self.produced_units = []
 
-    def produce(self, catalogue_index=None, dry_run=False):
+    def produce(self, catalogue_index=None):
 
         if catalogue_index == None:
             raise BaseException(
@@ -188,14 +188,10 @@ class ModelVariantFactory:
         # HAX
         # WE ARE MID-REFACTORING, AND id IS VERY SHIMMED CURRENTLY
         # NEEDS REPLACED WITH BOTH model_type_id and catalogue_entry.mv_id, to be used in templates as appropriate
-        if len(self.produced_model_variants) == 0:
+        if catalogue_index == 0:
             id = self.model_type_id
         else:
-            id = (
-                self.model_type_id
-                + "_variant_"
-                + str(len(self.produced_model_variants))
-            )
+            id = f"{self.model_type_id}_variant_{catalogue_index}"
 
         # CABBAGE FAILS WITH CLONES - HAX TO RESOLVE, THIS SHOULD ALREADY BE FIGURED OUT BY THE CLONE THOUGH
         # CHECK if buyable_variant_group_id is already set?  If it is, leave it alone?
@@ -231,8 +227,6 @@ class ModelVariantFactory:
             # print(unit_cls, unit)
             model_variant.add_unit(unit_cls, unit_def)
 
-        if dry_run == False:
-            self.produced_model_variants.append(model_variant)
         return model_variant
 
     @property
@@ -260,17 +254,8 @@ class ModelVariantFactory:
             return True
         return False
 
-    def cabbage_new_livery_system_livery_index(self, model_variant):
-        # THIS IS FOR REVERSE LOOK UP OF LIVERY FROM VARIANT?  IS THIS JUST A MIGRATION SHIM?
-        result = self.produced_model_variants.index(model_variant)
-        return result
-
     def is_default_model_variant(self, model_variant):
-        if getattr(model_variant, "catalogue_entry", None) is None:
-            # CABBAGE - shim conditional handles possibility of catalogue entry being None whilst refactoring, remove this later
-            return model_variant == self.produced_model_variants[0]
-        else:
-            return model_variant.catalogue_entry == self.catalogue[0]
+        return model_variant.cabbage_catalogue_entry == self.catalogue[0]
 
     @property
     def model_type_id(self):
@@ -338,7 +323,7 @@ class ModelVariantFactory:
 
 class Catalogue(list):
     """
-    CABBAGE - METADATA ABOUT ALL PRODUCED MODEL VARIANTS
+    CABBAGE - METADATA ABOUT ALL AVAILABLE MODEL VARIANTS
         # all available model variants, with ids, numeric ids etc
         # ordered by livery index
     """

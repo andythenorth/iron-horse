@@ -105,7 +105,7 @@ def render_docs_vehicle_details(docs_output_path, doc_helper, consists, template
     roster = iron_horse.roster_manager.active_roster
     for model_type in consists:
         # CABBAGE FILTER - DEFAULT DETECTION UNFINISHED
-        if not model_type == model_type.model_variant_factory.produced_model_variants[0]:
+        if not model_type == model_type.model_variant_factory.is_default_model_variant(model_type):
             continue
         model_type.assert_description_foamer_facts()
         doc_name = model_type.id
