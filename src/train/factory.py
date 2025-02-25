@@ -123,7 +123,6 @@ class CatalogueEntry:
     model_variant_id: str
     unit_variant_ids: List[str]
     unit_numeric_ids: List[int]
-    livery_name: str
     livery_def: "LiveryDef"
 
 
@@ -367,7 +366,6 @@ class Catalogue(list):
                 model_variant_id=model_variant_id,
                 unit_variant_ids=unit_variant_ids,
                 unit_numeric_ids=unit_numeric_ids,
-                livery_name=livery_def.livery_name,  # CABBAGE - not needed?
                 livery_def=livery_def,
             )
             instance.append(catalogue_entry)
