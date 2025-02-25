@@ -14,9 +14,6 @@ class UnitBase(object):
     Base class for all types of units
     """
 
-    # REFACTORING SHIM - SHOULD BE RELATIVE SPRITEROW NUM FROM THE LIVERY DEF
-    cabbage_relative_spriterow_num = 1
-
     def __init__(self, **kwargs):
         # unit def is private, the public interface shouldn't use it, wrap @property methods around it as needed
         self._unit_def = kwargs["unit_def"]

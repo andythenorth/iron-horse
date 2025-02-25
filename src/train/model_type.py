@@ -8808,7 +8808,7 @@ class BuyableVariant(object):
         # this is just for convenience if spritesheets are a chore to re-order
         try:
             if isinstance(livery_def, dict):
-                # CABBAGE REFACTORING SHIM
+                # CABBAGE REFACTORING SHIM - MIGHT NOT BE USED?
                 self.livery = livery_def
                 self._relative_spriterow_num = livery_def.get(
                     "relative_spriterow_num", None
