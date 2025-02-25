@@ -164,11 +164,10 @@ class ModelVariantFactory:
         self.roster_id = roster_id
         self.roster_id_providing_module = roster_id_providing_module
         # catalogue is a singleton that provides basic metadata for produced model variants
-        self.catalogue = Catalogue(self)
+        self.catalogue = Catalogue.create(self)
         if len(self.catalogue) == 0:
             raise Exception(
-                f"{self.model_type_id}\n"
-                f"ModelVariantFactory catalogue is empty"
+                f"{self.model_type_id}\n" f"ModelVariantFactory catalogue is empty"
             )
         # used for book-keeping related model_variants
         # CABBAGE THIS MIGHT NOT BE NEEDED AT ALL - GO VIA CATALOGUE?
@@ -241,6 +240,18 @@ class ModelVariantFactory:
         # get the class for the model type, uninstantiated
         return getattr(model_type_module, self.class_name)
 
+    @property
+    def roster(self):
+        # convenience method, we can't store roster instances directly as they fail to pickle in multiprocessing; instead look up as needed using the string id
+        return iron_horse.roster_manager.get_roster_by_id(self.roster_id)
+
+    @property
+    def roster_providing_module(self):
+        # convenience method, we can't store roster instances directly as they fail to pickle in multiprocessing; instead look up as needed using the string id
+        return iron_horse.roster_manager.get_roster_by_id(
+            self.roster_id_providing_module
+        )
+
     def cabbage_get_all_liveries_as_livery_defs(self):
         # shim for gestalts to call to get all available liveries for spritesheet generation
         # this should be a call returning Livery object instances, possibly against catalogue.livery_defs or something
@@ -248,39 +259,6 @@ class ModelVariantFactory:
         for catalogue_entry in self.catalogue:
             result.append(catalogue_entry.livery_def)
         return result
-
-    @property
-    def cabbage_livery_names(self):
-        # get livery names from various sources (model def, model type class, or via a livery group name on model def or model type)
-
-        # unpack livery list from livery groups
-        if hasattr(self.model_type_cls, "livery_group_name"):
-            # note that we can override livery_group_name in model_def, but *only* if the class attr sets a default
-            # CABBAGE - the override is probably broken, looking at this, it doesn't check model_def
-            roster = iron_horse.roster_manager.get_roster_by_id(
-                self.roster_id_providing_module
-            )
-            result = [
-                i[0]
-                for i in roster.pax_mail_livery_groups[
-                    self.model_type_cls.livery_group_name
-                ]
-            ]
-            # CABBAGE THIS WOULD GET THE ACTUAL LIVERY, WHICH WE DO WANT TO DO
-            """
-            return roster.get_pax_mail_liveries(
-                self.model_type_cls.livery_group_name, self.model_def
-            )
-            """
-            return result
-
-        # get liveries directly
-        if self.model_def.liveries is not None:
-            return self.model_def.liveries
-        if hasattr(self.model_type_cls, "liveries"):
-            return self.model_type_cls.liveries
-        # CABBAGE should not be reached?
-        return None
 
     @property
     def cabbage_new_livery_system(self):
@@ -375,56 +353,132 @@ class Catalogue(list):
 
     def __init__(self, model_variant_factory):
         self.model_variant_factory = model_variant_factory
-        if self.model_variant_factory.cabbage_livery_names is not None:
-            for livery_counter, livery_name in enumerate(
-                self.model_variant_factory.cabbage_livery_names
-            ):
-                if "RANDOM_FROM_CONSIST_LIVERIES_" in livery_name:
-                    continue
-                model_variant_id = (
-                    f"{self.model_variant_factory.model_type_id}_mv_{livery_counter}"
-                )
-                unit_variant_ids = [
-                    f"{model_variant_id}_unit_{i}"
-                    for i, _ in enumerate(
-                        self.model_variant_factory.model_def.unit_defs
-                    )
-                ]
-                # pre-calculated numeric IDs provided for every unit
-                numeric_id_offset = (
-                    self.model_variant_factory.model_def.base_numeric_id
-                    + (
-                        livery_counter
-                        * len(self.model_variant_factory.model_def.unit_defs)
-                    )
-                )
-                unit_numeric_ids = [
-                    numeric_id_offset + i
-                    for i, _ in enumerate(
-                        self.model_variant_factory.model_def.unit_defs
-                    )
-                ]
-                # get the livery def from LiveryManager, copying it locally so we can modify it
-                # CABBAGE - this fails to set relative_spriterow_num which means that we've broken the split of buy menu order from pre-existing spritesheet order
-                # that is handled by roster.pax_mail_livery_groups and livery_group_name
-                # probably the factory or Catalogue need to resolve livery_group_name, as it can be defined by model_type_cls or model_def
-                roster = iron_horse.roster_manager.get_roster_by_id(
-                    self.model_variant_factory.roster_id_providing_module
-                )
-                livery_def = iron_horse.livery_manager[livery_name]
-                if livery_def.relative_spriterow_num is not None:
-                    print("CABBAGE 2341", livery_def.relative_spriterow_num)
-                livery_def_copy = replace(livery_def) # CABBAGE REPLACE THE LIVERY SPRITEROW INDEX HERE
 
-                # note that livery_name is an arbitrary string and might be repeated across model variants
-                catalogue_entry = CatalogueEntry(
-                    model_variant_id=model_variant_id,
-                    unit_variant_ids=unit_variant_ids,
-                    unit_numeric_ids=unit_numeric_ids,
-                    livery_name=livery_name,
-                    livery_def=livery_def_copy,
+    # to avoid having a very complicated __init__ we faff around with this class method, GPT reports that it's idiomatic, I _mostly_ agree
+    @classmethod
+    def create(cls, model_variant_factory):
+        instance = cls(model_variant_factory)
+        for livery_counter, livery_def in enumerate(instance.livery_defs):
+            if "RANDOM_FROM_CONSIST_LIVERIES_" in livery_def.livery_name:
+                continue
+            model_variant_id = (
+                f"{instance.model_variant_factory.model_type_id}_mv_{livery_counter}"
+            )
+            unit_variant_ids = [
+                f"{model_variant_id}_unit_{i}"
+                for i, _ in enumerate(
+                    instance.model_variant_factory.model_def.unit_defs
                 )
-                self.append(catalogue_entry)
+            ]
+            # pre-calculated numeric IDs provided for every unit
+            numeric_id_offset = (
+                instance.model_variant_factory.model_def.base_numeric_id
+                + (
+                    livery_counter
+                    * len(instance.model_variant_factory.model_def.unit_defs)
+                )
+            )
+            unit_numeric_ids = [
+                numeric_id_offset + i
+                for i, _ in enumerate(
+                    instance.model_variant_factory.model_def.unit_defs
+                )
+            ]
+
+            # note that livery_name is an arbitrary string and might be repeated across model variants
+            catalogue_entry = CatalogueEntry(
+                model_variant_id=model_variant_id,
+                unit_variant_ids=unit_variant_ids,
+                unit_numeric_ids=unit_numeric_ids,
+                livery_name=livery_def.livery_name,  # CABBAGE - not needed?
+                livery_def=livery_def,
+            )
+            instance.append(catalogue_entry)
+        return instance
+
+    @property
+    def livery_defs(self):
+        # Retrieve a list of livery definitions from various sources.
+        # Liveries may be specified in either model_def or model_type_cls,
+        # and can be provided in two formats:
+        #
+        # 1. Livery group format (2-tuples: (livery_name, index)):
+        #    - Supports reordering liveries in the buy menu without reordering the spritesheet.
+        #    - Used for cases such as pax and mail car liveries, common across multiple vehicle models.
+        #
+        #    Priority:
+        #      a. model_def.livery_group_name (per-vehicle override)
+        #      b. model_type_cls.livery_group_name (default)
+        #
+        # 2. Direct liveries (simple list):
+        #    - Assumes liveries in the spritesheet are in the same order as in the buy menu.
+        #    - Used for cases like engine liveries, which are unique to the vehicle model.
+        #
+        #    Priority:
+        #      a. model_def.liveries (per-vehicle override)
+        #      b. model_type_cls.liveries (default)
+
+        # 1. Unpack liveries from livery groups (2-tuples: (livery_name, index))
+        if self.model_variant_factory.model_def.livery_group_name is not None:
+            result = []
+            for (
+                livery_name,
+                index,
+            ) in self.model_variant_factory.roster_providing_module.pax_mail_livery_groups[
+                self.model_variant_factory.model_def.livery_group_name
+            ]:
+                result.append(
+                    iron_horse.livery_supplier.deliver(
+                        livery_name, relative_spriterow_num=index
+                    )
+                )
+            return result
+
+        if hasattr(self.model_variant_factory.model_type_cls, "livery_group_name"):
+            result = []
+            for (
+                livery_name,
+                index,
+            ) in self.model_variant_factory.roster_providing_module.pax_mail_livery_groups[
+                self.model_variant_factory.model_type_cls.livery_group_name
+            ]:
+                result.append(
+                    iron_horse.livery_supplier.deliver(
+                        livery_name, relative_spriterow_num=index
+                    )
+                )
+            return result
+
+        # 2. Get liveries directly from model_def (simple list)
+        if self.model_variant_factory.model_def.liveries is not None:
+            result = []
+            for index, name in enumerate(self.model_variant_factory.model_def.liveries):
+                result.append(
+                    iron_horse.livery_supplier.deliver(
+                        name, relative_spriterow_num=index
+                    )
+                )
+            return result
+
+        # Then try to get liveries directly from model_type_cls
+        if hasattr(self.model_variant_factory.model_type_cls, "liveries"):
+            result = []
+            for index, name in enumerate(
+                self.model_variant_factory.model_type_cls.liveries
+            ):
+                result.append(
+                    iron_horse.livery_supplier.deliver(
+                        name, relative_spriterow_num=index
+                    )
+                )
+            return result
+
+        # If no valid source is found, raise an error.
+        raise ValueError(
+            f"Unable to determine valid livery names for "
+            f"{self.model_variant_factory.model_type_id}\n"
+            f"{self.model_variant_factory.model_def}"
+        )
 
 
 class ModelDefCloner:
