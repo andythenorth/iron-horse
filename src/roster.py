@@ -572,7 +572,7 @@ class Roster(object):
                     consist
                 )
             ):
-                lang_strings["STR_NAME_" + consist.id.upper()] = consist.name
+                lang_strings["STR_NAME_" + consist.model_id.upper()] = consist.name
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}
 

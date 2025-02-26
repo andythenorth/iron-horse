@@ -42,17 +42,6 @@ class ModelTypeBase(object):
         self.factory = kwargs["factory"]
         # SHIM FOR REFACTORING - should just be catalogue_entry when done
         self.cabbage_catalogue_entry = kwargs["catalogue_entry"]
-        # mandatory, fail if missing
-        self.id = kwargs["id"]
-        # SHIM FOR REFACTORING, SHOULD JUST USE catalogue_entry
-        if self.cabbage_catalogue_entry is not None:
-            # mv_id can probably just be .id, this is just a refactoring shim?
-            self.cabbage_mv_id = self.cabbage_catalogue_entry.model_variant_id
-        else:
-            self.cabbage_mv_id = self.id
-        # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
-        self.name = self.model_def.name
-        self.base_numeric_id = self.model_def.base_numeric_id
         # create a structure to hold buyable variants - the method can be over-ridden in consist subclasses to provide specific rules for buyable variants
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
         # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem
@@ -128,8 +117,10 @@ class ModelTypeBase(object):
         self._cite = ""
         # used for docs management
         self.is_wagon_for_docs = False
-        # aids 'project management' - doesn't need @property passthrough, always set in model_def
-        self.sprites_complete = self.model_def.sprites_complete
+
+    @property
+    def id(self):
+        return self.cabbage_catalogue_entry.model_variant_id
 
     @property
     def model_id(self):
@@ -142,13 +133,21 @@ class ModelTypeBase(object):
 
     @property
     def roster_id(self):
-        # just a pass through for convenience
+        # just a pass through for convenience - we can't store roster directly as it won't pickle for multiprocessing, so store the id for lookups
         return self.factory.roster_id
 
     @property
     def roster_id_providing_module(self):
         # just a pass through for convenience
         return self.factory.roster_id_providing_module
+
+    @property
+    def base_numeric_id(self):
+        return self.model_def.base_numeric_id
+
+    @property
+    def name(self):
+        return self.model_def.name
 
     @property
     def is_clone(self):
@@ -1156,7 +1155,7 @@ class ModelTypeBase(object):
         extension = result[0 : 8 - len(result)]
         if len(extension) == 0:
             raise BaseException(
-                self.cabbage_mv_id
+                self.id
                 + " get_candidate_liveries_for_randomised_strategy: extension list too short "
                 + str(extension)
                 + "; \n this is probably because we're slicing 8, and have more than 8 colours defined; which will fail;"
@@ -1212,7 +1211,7 @@ class ModelTypeBase(object):
         # should never be reached, extend this if we do
         raise Exception(
             "Unsupported number of buy menu strings for "
-            + self.cabbage_mv_id
+            + self.id
             + ": "
             + str(len(result))
         )
@@ -2621,7 +2620,7 @@ class CarModelTypeBase(ModelTypeBase):
                         "STR_" + self.use_named_buyable_variant_group.upper(),
                     ]
                 except:
-                    raise BaseException(self.cabbage_mv_id)
+                    raise BaseException(self.id)
             # some dubious special-casing to make wagon names plural if there are variants, and a named variant group is *not* already used
             # !! this might fail for composite groups where the group has multiple variants from multiple model types, but this specific model has only one variant
             elif len(self.buyable_variants) > 1:
@@ -2634,7 +2633,7 @@ class CarModelTypeBase(ModelTypeBase):
         else:
             raise BaseException(
                 "get_name_parts called for wagon "
-                + self.cabbage_mv_id
+                + self.id
                 + " with no context provided"
             )
         return result
@@ -8857,7 +8856,7 @@ class BuyableVariant(object):
             "unit_variant not found for "
             + self
             + " for consist "
-            + self.consist.cabbage_mv_id
+            + self.consist.id
         )
 
     @property
@@ -8937,7 +8936,7 @@ class BuyableVariant(object):
             )
         else:
             # assume group is composed from self (for simple case of variant liveries etc)
-            id = self.consist.cabbage_mv_id
+            id = self.consist.id
         return id
 
 

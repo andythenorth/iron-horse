@@ -155,7 +155,7 @@
                                                 <td>${props_to_print[model_type][prop_name]}</td>
                                             </tal:props>
                                             <td>
-                                                ${structure: "&amp;#10004;" if model_type.sprites_complete else "&lt;span style='color:red;'&gt;Nope&lt;/span&gt;"}
+                                                ${structure: "&amp;#10004;" if model_type.model_def.sprites_complete else "&lt;span style='color:red;'&gt;Nope&lt;/span&gt;"}
                                             </td>
                                         </tr>
                                     </tal:vehicles>

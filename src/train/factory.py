@@ -179,14 +179,6 @@ class ModelVariantFactory:
 
         catalogue_entry = self.catalogue[catalogue_index]
 
-        # HAX
-        # WE ARE MID-REFACTORING, AND id IS VERY SHIMMED CURRENTLY
-        # NEEDS REPLACED WITH BOTH model_id and catalogue_entry.mv_id, to be used in templates as appropriate
-        if catalogue_index == 0:
-            id = self.model_id
-        else:
-            id = f"{self.model_id}_variant_{catalogue_index}"
-
         # CABBAGE FAILS WITH CLONES - HAX TO RESOLVE, THIS SHOULD ALREADY BE FIGURED OUT BY THE CLONE THOUGH
         # CHECK if buyable_variant_group_id is already set?  If it is, leave it alone?
         if self.model_def.cloned_from_model_def is not None:
@@ -199,7 +191,6 @@ class ModelVariantFactory:
         model_variant = self.model_type_cls(
             factory=self,
             catalogue_entry=catalogue_entry,
-            id=id,
         )
         # CABBAGE - CRUDE SHIM TO INCREMENT NUMERIC ID - INSTEAD USE catalogue_entry WHICH HAS THE IDS
         self.model_def.base_numeric_id = self.model_def.base_numeric_id + len(

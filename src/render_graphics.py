@@ -41,7 +41,7 @@ def run_spritelayer_cargo_set_pipelines(
 def report_sprites_complete(consists):
     # project management eh :P
     complete = len(
-        [consist.sprites_complete for consist in consists if consist.sprites_complete]
+        [consist.model_def.sprites_complete for consist in consists if consist.model_def.sprites_complete]
     )
     print(
         "Sprites complete for",
@@ -53,7 +53,7 @@ def report_sprites_complete(consists):
     )
     incomplete_by_track_type = {}
     for consist in consists:
-        if not consist.sprites_complete:
+        if not consist.model_def.sprites_complete:
             incomplete_by_track_type.setdefault(
                 consist.base_track_type_name, []
             ).append(consist)
