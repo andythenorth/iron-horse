@@ -198,8 +198,8 @@ class ModelVariantFactory:
 
         model_variant = self.model_type_cls(
             factory=self,
-            id=id,
             catalogue_entry=catalogue_entry,
+            id=id,
         )
         # CABBAGE - CRUDE SHIM TO INCREMENT NUMERIC ID - INSTEAD USE catalogue_entry WHICH HAS THE IDS
         self.model_def.base_numeric_id = self.model_def.base_numeric_id + len(
