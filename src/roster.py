@@ -568,9 +568,7 @@ class Roster(object):
         for consist in self.consists_in_buy_menu_order:
             if (
                 consist.name is not None
-                and consist.factory.is_default_model_variant(
-                    consist
-                )
+                and consist.is_default_model_variant
             ):
                 lang_strings["STR_NAME_" + consist.model_id.upper()] = consist.name
 

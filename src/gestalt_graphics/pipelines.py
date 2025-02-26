@@ -138,9 +138,7 @@ class PassThroughPipeline(Pipeline):
 
         if (
             self.factory.cabbage_new_livery_system == False
-            or self.factory.is_default_model_variant(
-                consist
-            )
+            or self.consist.is_default_model_variant
         ):
             input_image = Image.open(self.vehicle_source_input_path)
             self.render_common(input_image, self.units)

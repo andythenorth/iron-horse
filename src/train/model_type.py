@@ -154,6 +154,10 @@ class ModelTypeBase(object):
         # convenience boolean to avoid checking implementation details of cloning in callers
         return self.model_def.cloned_from_model_def is not None
 
+    @property
+    def is_default_model_variant(self):
+        return self.factory.is_default_model_variant(self)
+
     def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed
         # the basic form of buyable variants is driven by liveries

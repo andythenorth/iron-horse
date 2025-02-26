@@ -130,7 +130,7 @@ def main():
     consists_in_priority_groups = {1: [], 2: []}
     for consist in consists:
         # CABBAGE JFDI FILTER - THIS NEEDS HANDLING DIFFERENTLY
-        if consist.factory.is_default_model_variant(consist):
+        if consist.is_default_model_variant:
             consists_in_priority_groups[
                 consist.gestalt_graphics.processing_priority
             ].append(consist)
