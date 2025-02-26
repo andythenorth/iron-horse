@@ -1,4 +1,4 @@
-<tal:NEW_CABBAGE condition="consist.model_variant_factory.cabbage_new_livery_system == True">
+<tal:NEW_CABBAGE condition="consist.factory.cabbage_new_livery_system == True">
      <!--! this is the default template for trains that don't supply their own template -->
 
     spriteset(${vehicle.id}_ss, "${graphics_path}${consist.model_type_id}.png") {

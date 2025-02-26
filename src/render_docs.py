@@ -105,7 +105,7 @@ def render_docs_vehicle_details(docs_output_path, doc_helper, consists, template
     roster = iron_horse.roster_manager.active_roster
     for model_type in consists:
         # CABBAGE FILTER - DEFAULT DETECTION UNFINISHED
-        if not model_type == model_type.model_variant_factory.is_default_model_variant(model_type):
+        if not model_type == model_type.factory.is_default_model_variant(model_type):
             continue
         model_type.assert_description_foamer_facts()
         doc_name = model_type.id
@@ -137,10 +137,10 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
     # I'm not going to try and handle that in python, makefile will handle it in production
     # for development, just run render_graphics manually before running render_docs
 
-    model_variant_factory = consist.model_variant_factory
+    factory = consist.factory
 
     vehicle_spritesheet = Image.open(
-        os.path.join(generated_graphics_path, model_variant_factory.input_spritesheet_name_stem + ".png")
+        os.path.join(generated_graphics_path, factory.input_spritesheet_name_stem + ".png")
     )
 
     # these 'source' var names for images are misleading
@@ -154,10 +154,10 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
     docs_image_variants = []
 
     # !! CABBAGE - LOOKS LIKE FOR PRACTICALITY, THIS WILL NEED A CONSIST IN SCOPE AT ALL TIME?
-    # !! we can't just infer everything from model_variant_factory, some things need instantiated model type class in scope
+    # !! we can't just infer everything from factory, some things need instantiated model type class in scope
     for variant in doc_helper.get_docs_livery_variants(consist):
-        if model_variant_factory.model_def.docs_image_spriterow is not None:
-            y_offset = 30 * model_variant_factory.model_def.docs_image_spriterow
+        if factory.model_def.docs_image_spriterow is not None:
+            y_offset = 30 * factory.model_def.docs_image_spriterow
         # CABBAGE requires_custom_buy_menu_sprite could be folded into factory
         elif consist.requires_custom_buy_menu_sprite:
             y_offset = 30 * variant["buyable_variant"].relative_spriterow_num

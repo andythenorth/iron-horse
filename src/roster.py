@@ -319,7 +319,7 @@ class Roster(object):
                         f"Error: consist {consist.id} has a unit variant with a numeric_id that collides "
                         f"({numeric_id}) with a numeric_id of a unit variant in consist {colliding_consist.id}\n"
                         f"{[unit.unit_variants for unit in consist.units]}\n"
-                        f"{consist.model_variant_factory.catalogue}\n"
+                        f"{consist.factory.catalogue}\n"
                     )
                 else:
                     numeric_id_defender[numeric_id] = consist
@@ -338,11 +338,11 @@ class Roster(object):
                 "." + engine_module_name, package_name
             )
             for model_def in engine_module_name.main():
-                model_variant_factory = ModelVariantFactory(
+                factory = ModelVariantFactory(
                     model_def, self.id, roster_id_providing_module
                 )
-                for catalogue_index, _ in enumerate(model_variant_factory.catalogue):
-                    consist = model_variant_factory.produce(
+                for catalogue_index, _ in enumerate(factory.catalogue):
+                    consist = factory.produce(
                         catalogue_index=catalogue_index
                     )
                     self.engine_consists.append(consist)
@@ -379,16 +379,16 @@ class Roster(object):
                         "." + wagon_module_name, package_name
                     )
                     for model_def in wagon_module.main():
-                        model_variant_factory = ModelVariantFactory(
+                        factory = ModelVariantFactory(
                             model_def, self.id, roster_id_providing_module
                         )
                         if "Randomised" in model_def.class_name:
                             # CABBAGE SKIP RANDOMISED WAGONS FOR NOW
                             continue
                         for catalogue_index, _ in enumerate(
-                            model_variant_factory.catalogue
+                            factory.catalogue
                         ):
-                            consist = model_variant_factory.produce(
+                            consist = factory.produce(
                                 catalogue_index=catalogue_index
                             )
                 except ModuleNotFoundError:
@@ -568,7 +568,7 @@ class Roster(object):
         for consist in self.consists_in_buy_menu_order:
             if (
                 consist.name is not None
-                and consist.model_variant_factory.is_default_model_variant(
+                and consist.factory.is_default_model_variant(
                     consist
                 )
             ):

@@ -197,7 +197,7 @@ class ModelVariantFactory:
             self.model_def.buyable_variant_group_id = self.model_def.model_type_id
 
         model_variant = self.model_type_cls(
-            model_variant_factory=self,
+            factory=self,
             id=id,
             catalogue_entry=catalogue_entry,
         )
@@ -322,37 +322,37 @@ class Catalogue(list):
         # ordered by livery index
     """
 
-    def __init__(self, model_variant_factory):
-        self.model_variant_factory = model_variant_factory
+    def __init__(self, factory):
+        self.factory = factory
 
     # to avoid having a very complicated __init__ we faff around with this class method, GPT reports that it's idiomatic, I _mostly_ agree
     @classmethod
-    def create(cls, model_variant_factory):
-        instance = cls(model_variant_factory)
+    def create(cls, factory):
+        instance = cls(factory)
         for livery_counter, livery_def in enumerate(instance.livery_defs):
             if "RANDOM_FROM_CONSIST_LIVERIES_" in livery_def.livery_name:
                 continue
             model_variant_id = (
-                f"{instance.model_variant_factory.model_type_id}_mv_{livery_counter}"
+                f"{instance.factory.model_type_id}_mv_{livery_counter}"
             )
             unit_variant_ids = [
                 f"{model_variant_id}_unit_{i}"
                 for i, _ in enumerate(
-                    instance.model_variant_factory.model_def.unit_defs
+                    instance.factory.model_def.unit_defs
                 )
             ]
             # pre-calculated numeric IDs provided for every unit
             numeric_id_offset = (
-                instance.model_variant_factory.model_def.base_numeric_id
+                instance.factory.model_def.base_numeric_id
                 + (
                     livery_counter
-                    * len(instance.model_variant_factory.model_def.unit_defs)
+                    * len(instance.factory.model_def.unit_defs)
                 )
             )
             unit_numeric_ids = [
                 numeric_id_offset + i
                 for i, _ in enumerate(
-                    instance.model_variant_factory.model_def.unit_defs
+                    instance.factory.model_def.unit_defs
                 )
             ]
 
@@ -389,13 +389,13 @@ class Catalogue(list):
         #      b. model_type_cls.liveries (default)
 
         # 1. Unpack liveries from livery groups (2-tuples: (livery_name, index))
-        if self.model_variant_factory.model_def.livery_group_name is not None:
+        if self.factory.model_def.livery_group_name is not None:
             result = []
             for (
                 livery_name,
                 index,
-            ) in self.model_variant_factory.roster_providing_module.pax_mail_livery_groups[
-                self.model_variant_factory.model_def.livery_group_name
+            ) in self.factory.roster_providing_module.pax_mail_livery_groups[
+                self.factory.model_def.livery_group_name
             ]:
                 result.append(
                     iron_horse.livery_supplier.deliver(
@@ -404,13 +404,13 @@ class Catalogue(list):
                 )
             return result
 
-        if hasattr(self.model_variant_factory.model_type_cls, "livery_group_name"):
+        if hasattr(self.factory.model_type_cls, "livery_group_name"):
             result = []
             for (
                 livery_name,
                 index,
-            ) in self.model_variant_factory.roster_providing_module.pax_mail_livery_groups[
-                self.model_variant_factory.model_type_cls.livery_group_name
+            ) in self.factory.roster_providing_module.pax_mail_livery_groups[
+                self.factory.model_type_cls.livery_group_name
             ]:
                 result.append(
                     iron_horse.livery_supplier.deliver(
@@ -420,9 +420,9 @@ class Catalogue(list):
             return result
 
         # 2. Get liveries directly from model_def (simple list)
-        if self.model_variant_factory.model_def.liveries is not None:
+        if self.factory.model_def.liveries is not None:
             result = []
-            for index, name in enumerate(self.model_variant_factory.model_def.liveries):
+            for index, name in enumerate(self.factory.model_def.liveries):
                 result.append(
                     iron_horse.livery_supplier.deliver(
                         name, relative_spriterow_num=index
@@ -431,10 +431,10 @@ class Catalogue(list):
             return result
 
         # Then try to get liveries directly from model_type_cls
-        if hasattr(self.model_variant_factory.model_type_cls, "liveries"):
+        if hasattr(self.factory.model_type_cls, "liveries"):
             result = []
             for index, name in enumerate(
-                self.model_variant_factory.model_type_cls.liveries
+                self.factory.model_type_cls.liveries
             ):
                 result.append(
                     iron_horse.livery_supplier.deliver(
@@ -446,8 +446,8 @@ class Catalogue(list):
         # If no valid source is found, raise an error.
         raise ValueError(
             f"Unable to determine valid livery names for "
-            f"{self.model_variant_factory.model_type_id}\n"
-            f"{self.model_variant_factory.model_def}"
+            f"{self.factory.model_type_id}\n"
+            f"{self.factory.model_def}"
         )
 
 

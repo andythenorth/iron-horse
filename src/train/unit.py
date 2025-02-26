@@ -419,6 +419,8 @@ class UnitBase(object):
         nml_result = template(
             vehicle=self,
             consist=self.consist,
+            cabbage_catalogue_entry=self.consist.cabbage_catalogue_entry,
+            factory=self.consist.factory,
             global_constants=global_constants,
             utils=utils,
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure

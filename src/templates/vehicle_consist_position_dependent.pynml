@@ -5,9 +5,6 @@
       - most sprites are symmetric, except, e.g. brake coaches; if vehicle is flipped in depot, any asymmetric sprite will be flipped
  -->
 
-// ${vehicle.unit_variants}
-// ${consist.cabbage_catalogue_entry}
-
 // default graphics chain
 <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
     spriteset(${vehicle.id}_ss_doors_closed_position_variant_${position_variant_num}, "${graphics_path}${consist.model_type_id}.png") {

@@ -14,7 +14,7 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
         super().__init__(**kwargs)
         self.base_id = "intermodal_containers"
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
-            model_variant_factory=None,  # CABBAGE
+            factory=None,  # CABBAGE
             cabbage_catalogue_entry=None,  # CABBAGE
         )
         self.provide_container_shadows = True
@@ -325,7 +325,7 @@ def main():
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
         GestaltGraphicsIntermodalContainerTransporters(
-            model_variant_factory=None,  # CABBAGE
+            factory=None,  # CABBAGE
             cabbage_catalogue_entry=None,  # CABBAGE
         ).cargo_label_mapping.values()
     ):
