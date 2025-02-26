@@ -1,7 +1,7 @@
 <!--! this is the template for caboose cars -->
 
 <tal:caboose_variants repeat="caboose_variant consist.gestalt_graphics.spriterow_labels">
-    spriteset(${vehicle.id}_ss_${caboose_variant}, "${graphics_path}${consist.model_type_id}.png") {
+    spriteset(${vehicle.id}_ss_${caboose_variant}, "${graphics_path}${consist.model_id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', 10 + (repeat.caboose_variant.index * 30))}
     }
 </tal:caboose_variants>
@@ -37,7 +37,7 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type
 // buy menu graphics chain
 <!--! this uses buy_menu_sprite_pairs *only* to get the count of buy menu sprites, the actual data from buy_menu_sprite_pairs isn't used -->
 <tal:caboose_variants repeat="buy_menu_sprite_pair consist.gestalt_graphics.buy_menu_sprite_pairs">
-    spriteset(${vehicle.id}_ss_purchase_${repeat.buy_menu_sprite_pair.index}, "${graphics_path}${consist.model_type_id}.png") {
+    spriteset(${vehicle.id}_ss_purchase_${repeat.buy_menu_sprite_pair.index}, "${graphics_path}${consist.model_id}.png") {
         ${consist.get_nml_for_spriteset_template(y_offset=repeat.buy_menu_sprite_pair.index * 30)}
     }
 </tal:caboose_variants>

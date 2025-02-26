@@ -5,16 +5,16 @@
 
 // default graphics chain
 <tal:reversed repeat="reversed ['unreversed', 'reversed']">
-    spriteset(${vehicle.id}_ss_doors_closed_${reversed}_0, "${graphics_path}${consist.model_type_id}.png") {
+    spriteset(${vehicle.id}_ss_doors_closed_${reversed}_0, "${graphics_path}${consist.model_id}.png") {
         ${vehicle.get_spriteset_template_name(reversed, 10)}
     }
-    spriteset(${vehicle.id}_ss_doors_open_${reversed}_0, "${graphics_path}${consist.model_type_id}.png") {
+    spriteset(${vehicle.id}_ss_doors_open_${reversed}_0, "${graphics_path}${consist.model_id}.png") {
         ${vehicle.get_spriteset_template_name(reversed, 40)}
     }
-    spriteset(${vehicle.id}_ss_doors_closed_${reversed}_1, "${graphics_path}${consist.model_type_id}.png") {
+    spriteset(${vehicle.id}_ss_doors_closed_${reversed}_1, "${graphics_path}${consist.model_id}.png") {
         ${vehicle.get_spriteset_template_name(reversed, 70)}
     }
-    spriteset(${vehicle.id}_ss_doors_open_${reversed}_1, "${graphics_path}${consist.model_type_id}.png") {
+    spriteset(${vehicle.id}_ss_doors_open_${reversed}_1, "${graphics_path}${consist.model_id}.png") {
         ${vehicle.get_spriteset_template_name(reversed, 100)}
     }
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_doors_${reversed}_0, switch_graphics_opening_doors()) {
@@ -53,7 +53,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, position_in_ar
 
 
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.model_type_id}.png") {
+spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.model_id}.png") {
     ${consist.get_nml_for_spriteset_template(y_offset=0)}
 }
 

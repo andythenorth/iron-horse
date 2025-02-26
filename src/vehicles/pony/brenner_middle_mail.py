@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TGVMiddleMailEngine",
-        model_type_id="brenner_middle_mail",
+        model_id="brenner_middle_mail",
         base_numeric_id=6780,
         name="Brenner Mail Van",
         subrole="very_high_speed",

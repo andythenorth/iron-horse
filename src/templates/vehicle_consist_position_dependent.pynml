@@ -7,17 +7,17 @@
 
 // default graphics chain
 <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
-    spriteset(${vehicle.id}_ss_doors_closed_position_variant_${position_variant_num}, "${graphics_path}${consist.model_type_id}.png") {
+    spriteset(${vehicle.id}_ss_doors_closed_position_variant_${position_variant_num}, "${graphics_path}${consist.model_id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (consist.cabbage_catalogue_entry.livery_def.relative_spriterow_num * 60))}
     }
-    spriteset(${vehicle.id}_ss_doors_open_position_variant_${position_variant_num}, "${graphics_path}${consist.model_type_id}.png") {
+    spriteset(${vehicle.id}_ss_doors_open_position_variant_${position_variant_num}, "${graphics_path}${consist.model_id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (consist.cabbage_catalogue_entry.livery_def.relative_spriterow_num * 60) + 30)}
     }
     <!--! in case there wasn't enough complexity here, let's do pantographs too, in a separate layer -->
     <tal:pantographs condition="consist.pantograph_type is not None">
         <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
         <tal:pantographs repeat="pantograph_state ['down', 'up']">
-            spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${position_variant_num}, "${graphics_path}${consist.model_type_id}_pantographs_${pantograph_state}.png") {
+            spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${position_variant_num}, "${graphics_path}${consist.model_id}_pantographs_${pantograph_state}.png") {
                 ${vehicle.get_spriteset_template_name('unreversed', 10 + (position_variant_num * 30))}
             }
         </tal:pantographs>
@@ -180,7 +180,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
 
 // buy menu graphics chain
 <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-    spriteset(${vehicle.id}_ss_vehicle_purchase_${unit_variant.buyable_variant.buyable_variant_num}, "${graphics_path}${consist.model_type_id}.png") {
+    spriteset(${vehicle.id}_ss_vehicle_purchase_${unit_variant.buyable_variant.buyable_variant_num}, "${graphics_path}${consist.model_id}.png") {
         <!--! note the weird jank to handle articulated the y position of buy menu sprites
               it's easier for the buy menu sprite generator to place them where it places them, then deal with it here -->
         <tal:buy_menu_sprite_switch_case switch="consist.requires_custom_buy_menu_sprite">
@@ -205,7 +205,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase, vehic
 <tal:conditional_pantographs switch="(consist.pantograph_type is not None) and (not consist.suppress_pantograph_if_no_engine_attached)">
     <tal:has_pantographs case="True">
         <!--! purchase sprites for case where pantograph layer is needed -->
-        spriteset(${vehicle.id}_ss_pantograph_purchase, "${graphics_path}${consist.model_type_id}_pantographs_down.png") {
+        spriteset(${vehicle.id}_ss_pantograph_purchase, "${graphics_path}${consist.model_id}_pantographs_down.png") {
             ${consist.get_nml_for_spriteset_template(y_offset=0)}
         }
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {

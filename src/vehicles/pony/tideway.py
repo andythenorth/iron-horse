@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailEngineMetro",
-        model_type_id="tideway",
+        model_id="tideway",
         base_numeric_id=2200,
         name="Tideway",
         subrole="mail_metro",

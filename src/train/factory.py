@@ -26,7 +26,7 @@ class ModelDef:
     # Optional common fields (lexically sorted)
     additional_liveries: List[Any] = None
     liveries: List[Any] = None
-    model_type_id: Optional[str] = None
+    model_id: Optional[str] = None
     base_numeric_id: Optional[int] = None
     base_track_type_name: Optional[str] = None
     buyable_variant_group_id: Optional[str] = None
@@ -44,7 +44,7 @@ class ModelDef:
     pantograph_type: Optional[str] = None
     power_by_power_source: Optional[Dict[Any, Any]] = None
     random_reverse: bool = False
-    replacement_model_model_type_id: Optional[str] = None
+    replacement_model_id: Optional[str] = None
     speed: Optional[int] = None
     subrole: Optional[str] = None
     subrole_child_branch_num: Optional[int] = None
@@ -140,14 +140,14 @@ class ModelVariantFactory:
 
     # examples
     - class_name = class SmallVan(ModelType)
-    - model_type_id = "ford_transit"
+    - model_id = "ford_transit"
         - model_variant = "ford_transit_blue"
             - model_variant.units = [<FreightRoadVehicleUnitType>]
         - model_variant = "ford_transit_red"
             - model_variant.units = [<FreightRoadVehicleUnitType>]
 
     - class_name = class Engine(ModelType)
-    - model_type_id = "challenger"
+    - model_id = "challenger"
         - model_variant = "challenger_grey"
             - model_variant.units = [<SteamEngineUnitType>, <SteamEngineTenderUnitType>]
         - model_variant = "challenger_black"
@@ -166,7 +166,7 @@ class ModelVariantFactory:
         self.catalogue = Catalogue.create(self)
         if len(self.catalogue) == 0:
             raise Exception(
-                f"{self.model_type_id}\n" f"ModelVariantFactory catalogue is empty"
+                f"{self.model_id}\n" f"ModelVariantFactory catalogue is empty"
             )
 
     def produce(self, catalogue_index=None):
@@ -181,20 +181,20 @@ class ModelVariantFactory:
 
         # HAX
         # WE ARE MID-REFACTORING, AND id IS VERY SHIMMED CURRENTLY
-        # NEEDS REPLACED WITH BOTH model_type_id and catalogue_entry.mv_id, to be used in templates as appropriate
+        # NEEDS REPLACED WITH BOTH model_id and catalogue_entry.mv_id, to be used in templates as appropriate
         if catalogue_index == 0:
-            id = self.model_type_id
+            id = self.model_id
         else:
-            id = f"{self.model_type_id}_variant_{catalogue_index}"
+            id = f"{self.model_id}_variant_{catalogue_index}"
 
         # CABBAGE FAILS WITH CLONES - HAX TO RESOLVE, THIS SHOULD ALREADY BE FIGURED OUT BY THE CLONE THOUGH
         # CHECK if buyable_variant_group_id is already set?  If it is, leave it alone?
         if self.model_def.cloned_from_model_def is not None:
             self.model_def.buyable_variant_group_id = (
-                self.model_def.cloned_from_model_def.model_type_id
+                self.model_def.cloned_from_model_def.model_id
             )
         else:
-            self.model_def.buyable_variant_group_id = self.model_def.model_type_id
+            self.model_def.buyable_variant_group_id = self.model_def.model_id
 
         model_variant = self.model_type_cls(
             factory=self,
@@ -213,7 +213,7 @@ class ModelVariantFactory:
             except:
                 raise Exception(
                     "class_name not found for "
-                    + self.model_def.model_type_id
+                    + self.model_def.model_id
                     + ", "
                     + unit_def.class_name
                 )
@@ -252,28 +252,28 @@ class ModelVariantFactory:
         return model_variant.cabbage_catalogue_entry == self.catalogue[0]
 
     @property
-    def model_type_id(self):
+    def model_id(self):
         # figures out where a model variant is getting a base id from
         # must be either defined on model_def or in the model variant class attrs
-        if self.model_def.model_type_id is not None:
-            return self.model_def.model_type_id
+        if self.model_def.model_id is not None:
+            return self.model_def.model_id
         else:
             # we assume it's a wagon id
             return self.get_wagon_id(
-                self.model_type_cls.model_type_id_root, self.model_def
+                self.model_type_cls.model_id_root, self.model_def
             )
 
-    def get_wagon_id(self, model_type_id_root, model_def):
+    def get_wagon_id(self, model_id_root, model_def):
         # auto id creator, used for wagons not engines
         # handled by model variant factory not model variant, better this way
         # special case NG - extend this for other track_types as needed
         # 'normal' rail and 'elrail' doesn't require an id modifier
         if model_def.base_track_type_name == "NG":
-            base_id = model_type_id_root + "_ng"
+            base_id = model_id_root + "_ng"
         elif model_def.base_track_type_name == "METRO":
-            base_id = model_type_id_root + "_metro"
+            base_id = model_id_root + "_metro"
         else:
-            base_id = model_type_id_root
+            base_id = model_id_root
 
         substrings = []
         # prepend cab_id if present, used for e.g. railcar trailers, HST coaches etc where the wagon matches a specific 'cab' engine
@@ -302,10 +302,10 @@ class ModelVariantFactory:
             if self.model_def.cloned_from_model_def is not None:
                 # this will get a default consist from the source factory, mapping this consist to the source spritesheet
                 input_spritesheet_name_stem = (
-                    self.model_def.cloned_from_model_def.model_type_id
+                    self.model_def.cloned_from_model_def.model_id
                 )
             else:
-                input_spritesheet_name_stem = self.model_type_id
+                input_spritesheet_name_stem = self.model_id
 
         # the consist id might have the consist's roster_id baked into it, if so replace it with the roster_id of the module providing the graphics file
         # this will have a null effect (which is fine) if the roster_id consist is the same as the module providing the graphics gile
@@ -333,7 +333,7 @@ class Catalogue(list):
             if "RANDOM_FROM_CONSIST_LIVERIES_" in livery_def.livery_name:
                 continue
             model_variant_id = (
-                f"{instance.factory.model_type_id}_mv_{livery_counter}"
+                f"{instance.factory.model_id}_mv_{livery_counter}"
             )
             unit_variant_ids = [
                 f"{model_variant_id}_unit_{i}"
@@ -446,7 +446,7 @@ class Catalogue(list):
         # If no valid source is found, raise an error.
         raise ValueError(
             f"Unable to determine valid livery names for "
-            f"{self.factory.model_type_id}\n"
+            f"{self.factory.model_id}\n"
             f"{self.factory.model_def}"
         )
 
@@ -460,7 +460,7 @@ class ModelDefCloner:
             # cloning clones isn't supported, it will cause issues resolving spritesheets etc, and makes it difficult to manage clone id suffixes
             raise Exception(
                 "Don't clone a model def that is itself a clone, it won't work as expected. \nClone the original model def. \nModel def is: "
-                + model_def.model_type_id,
+                + model_def.model_id,
             )
         cloned_model_def = copy.deepcopy(model_def)
         # clone may need to reference original source
@@ -483,10 +483,10 @@ class ModelDefCloner:
 
         cloned_model_def.base_numeric_id = base_numeric_id
         # this method of resolving id will probably fail with wagons, untested as of Feb 2025, not expected to work, deal with that later if needed
-        cloned_model_def.model_type_id = (
-            model_def.model_type_id + "_clone_" + str(len(model_def.clones))
+        cloned_model_def.model_id = (
+            model_def.model_id + "_clone_" + str(len(model_def.clones))
         )
-        cloned_model_def.buyable_variant_group_id = model_def.model_type_id
+        cloned_model_def.buyable_variant_group_id = model_def.model_id
         return cloned_model_def
 
     @staticmethod

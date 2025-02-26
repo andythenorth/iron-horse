@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerEngineHSTCab",
-        model_type_id="firebird",
+        model_id="firebird",
         base_numeric_id=21500,
         name="Firebird",
         subrole="hst",  # quite a specific role, may or may not scale to other rosters

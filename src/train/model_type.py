@@ -132,8 +132,8 @@ class ModelTypeBase(object):
         self.sprites_complete = self.model_def.sprites_complete
 
     @property
-    def model_type_id(self):
-        return self.factory.model_type_id
+    def model_id(self):
+        return self.factory.model_id
 
     @property
     def model_def(self):
@@ -231,7 +231,7 @@ class ModelTypeBase(object):
             return None
 
     def get_name_parts(self, context):
-        default_name = "STR_NAME_" + self.model_type_id.upper()
+        default_name = "STR_NAME_" + self.model_id.upper()
         if context == "purchase_level_1":
             result = [default_name]
         else:
@@ -408,7 +408,7 @@ class ModelTypeBase(object):
                 # would require quite a bit of refactoring though eh
                 assert self.wagons_add_power == False, (
                     "%s has both engine_varies_power_by_power_source and power_by_power_source, which conflict"
-                    % self.model_type_id
+                    % self.model_id
                 )
                 return True
         else:
@@ -511,7 +511,7 @@ class ModelTypeBase(object):
     def intro_year(self):
         # automatic intro_year, but can override by passing in kwargs for consist
         assert self.gen != None, (
-            "%s has no gen value set, which is incorrect" % self.model_type_id
+            "%s has no gen value set, which is incorrect" % self.model_id
         )
         result = self.roster.intro_years[self.base_track_type_name][self.gen - 1]
         if self.intro_year_offset is not None:
@@ -555,18 +555,18 @@ class ModelTypeBase(object):
         # option exists to force a replacement consist, this is used to merge tech tree branches
         #  most vehicle models are automatically replaced by the next vehicle model in the subrole tree
         # ocasionally we need to merge two branches of the subrole, in this case set replacement consist id on the model_def
-        if self.model_def.replacement_model_model_type_id is not None:
+        if self.model_def.replacement_model_id is not None:
             for consist in self.roster.engine_consists:
-                # CABBAGE model_type_id will over-detect here as multiple variants have the same model_type_id
+                # CABBAGE model_id will over-detect here as multiple variants have the same model_id
                 if (
-                    consist.model_type_id
-                    == self.model_def.replacement_model_model_type_id
+                    consist.model_id
+                    == self.model_def.replacement_model_id
                 ):
                     return consist
             # if we don't return a valid result, that's an error, probably a broken replacement id
             raise Exception(
                 "replacement consist id "
-                + self.model_def.replacement_model_model_type_id
+                + self.model_def.replacement_model_id
                 + " not found for consist "
                 + self.id
             )
@@ -598,8 +598,8 @@ class ModelTypeBase(object):
         result = []
         for consist in self.roster.engine_consists:
             if consist.replacement_consist is not None:
-                # CABBAGE - THIS WILL OVER-DETECT as model_type_id is used by more than one model variant
-                if consist.replacement_consist.model_type_id == self.model_type_id:
+                # CABBAGE - THIS WILL OVER-DETECT as model_id is used by more than one model variant
+                if consist.replacement_consist.model_id == self.model_id:
                     result.append(consist)
         return result
 
@@ -627,7 +627,7 @@ class ModelTypeBase(object):
     def cab_consist(self):
         # fetch the consist for the cab engine
         for engine_consist in self.roster.engine_consists:
-            if engine_consist.model_type_id == self.cab_id:
+            if engine_consist.model_id == self.cab_id:
                 return engine_consist
 
     @property
@@ -639,7 +639,7 @@ class ModelTypeBase(object):
             self.roster.wagon_consists,
         ]:
             for consist in consists:
-                if getattr(consist, "cab_id", None) == self.model_type_id:
+                if getattr(consist, "cab_id", None) == self.model_id:
                     result.append(consist)
         return result
 
@@ -710,7 +710,7 @@ class ModelTypeBase(object):
             modifier = "A"
         elif self.requires_high_clearance:
             print(
-                self.model_type_id, " has requires_high_clearance set - needs cleared"
+                self.model_id, " has requires_high_clearance set - needs cleared"
             )
             modifier = "B"
         result = result[0:3] + modifier
@@ -768,7 +768,7 @@ class ModelTypeBase(object):
         else:
             raise BaseException(
                 "no valid electrification type found for "
-                + self.model_type_id
+                + self.model_id
                 + " - is it an electrified vehicle?"
             )
 
@@ -801,7 +801,7 @@ class ModelTypeBase(object):
             else:
                 raise BaseException(
                     "no valid power source found when fetching default power for "
-                    + self.model_type_id
+                    + self.model_id
                     + " - possibly power source check needs extending?"
                 )
 
@@ -848,7 +848,7 @@ class ModelTypeBase(object):
     def speed_on_lgv(self):
         if not self.lgv_capable:
             raise Exception(
-                self.model_type_id,
+                self.model_id,
                 "is not lgv capable, but is attempting to set speed on lgv",
             )
 
@@ -1021,7 +1021,7 @@ class ModelTypeBase(object):
                 <= len(self.factory.catalogue) - 1
             ):
                 raise BaseException(
-                    self.model_type_id
+                    self.model_id
                     + " has decor_spriterow_num "
                     + str(self.decor_spriterow_num)
                     + " and also "
@@ -1065,7 +1065,7 @@ class ModelTypeBase(object):
         # OpenTTD has a limited number of layers in the sprite stack, we can't exceed them
         if result > 8:
             raise Exception(
-                "Too many sprite layers ", result, " defined for ", self.model_type_id
+                "Too many sprite layers ", result, " defined for ", self.model_id
             )
         return result
 
@@ -1180,7 +1180,7 @@ class ModelTypeBase(object):
                 result.append("STR_POWER_BY_POWER_SOURCE_THREE_SOURCES")
             else:
                 raise BaseException(
-                    +self.model_type_id + " defines unsupported number of power sources"
+                    +self.model_id + " defines unsupported number of power sources"
                 )
         # optional string if consist is lgv-capable
         if self.lgv_capable:
@@ -1289,7 +1289,7 @@ class ModelTypeBase(object):
         if self.speed is not None:
             if self.speed > 200:
                 utils.echo_message(
-                    self.model_type_id + " has speed > 200, which is too much"
+                    self.model_id + " has speed > 200, which is too much"
                 )
 
     def assert_power(self):
@@ -1298,7 +1298,7 @@ class ModelTypeBase(object):
         if self.speed is not None:
             if self.power > 10000:
                 utils.echo_message(
-                    self.model_type_id + " has power > 10000hp, which is too much"
+                    self.model_id + " has power > 10000hp, which is too much"
                 )
 
     def assert_weight(self):
@@ -1307,19 +1307,19 @@ class ModelTypeBase(object):
         if self.weight is not None:
             if self.weight > 500:
                 utils.echo_message(
-                    self.model_type_id + " has weight > 500t, which is too much"
+                    self.model_id + " has weight > 500t, which is too much"
                 )
 
     def assert_description_foamer_facts(self):
         # if these are too noisy, comment them out temporarily
         if self.power > 0:
             if len(self.model_def.description) == 0:
-                utils.echo_message(self.model_type_id + " has no description")
+                utils.echo_message(self.model_id + " has no description")
             if len(self.model_def.foamer_facts) == 0:
-                utils.echo_message(self.model_type_id + " has no foamer_facts")
+                utils.echo_message(self.model_id + " has no foamer_facts")
             if "." in self.model_def.foamer_facts:
                 utils.echo_message(
-                    self.model_type_id + " foamer_facts has a '.' in it."
+                    self.model_id + " foamer_facts has a '.' in it."
                 )
 
     def render(self, templates, graphics_path):
@@ -1859,7 +1859,7 @@ class MailEngineRailcar(MailEngineBase):
         if self._buyable_variant_group_id is not None:
             family_name = self._buyable_variant_group_id
         else:
-            family_name = self.model_type_id
+            family_name = self.model_id
         return "vehicle_family/" + family_name
 
 
@@ -1909,7 +1909,7 @@ class MailEngineExpressRailcar(MailEngineBase):
         if self._buyable_variant_group_id is not None:
             family_name = self._buyable_variant_group_id
         else:
-            family_name = self.model_type_id
+            family_name = self.model_id
         return "vehicle_family/" + family_name
 
     @property
@@ -2069,7 +2069,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
         if self._buyable_variant_group_id is not None:
             family_name = self._buyable_variant_group_id
         else:
-            family_name = self.model_type_id
+            family_name = self.model_id
         return "vehicle_family/" + family_name
 
     @property
@@ -2168,7 +2168,7 @@ class PassengerEngineRailbus(PassengerEngineBase):
         if self._buyable_variant_group_id is not None:
             family_name = self._buyable_variant_group_id
         else:
-            family_name = self.model_type_id
+            family_name = self.model_id
         return "vehicle_family/" + family_name
 
     @property
@@ -2231,7 +2231,7 @@ class PassengerEngineRailcar(PassengerEngineBase):
 
     @property
     def vehicle_family_badge(self):
-        return "vehicle_family/" + self.model_type_id
+        return "vehicle_family/" + self.model_id
 
 
 class SnowploughEngine(EngineModelTypeBase):
@@ -2315,7 +2315,7 @@ class TGVCabEngine(EngineModelTypeBase):
 
     @property
     def buy_menu_distributed_power_name_substring(self):
-        return "STR_NAME_" + self.model_type_id.upper()
+        return "STR_NAME_" + self.model_id.upper()
 
     @property
     def buy_menu_distributed_power_hp_value(self):
@@ -2347,7 +2347,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.cab_id = self.model_type_id.split("_middle")[0] + "_cab"
+        self.cab_id = self.model_id.split("_middle")[0] + "_cab"
         self._buyable_variant_group_id = self.cab_id
         self.wagons_add_power = True
         self.buy_menu_additional_text_hint_wagons_add_power = True
@@ -2471,7 +2471,7 @@ class CarModelTypeBase(ModelTypeBase):
     Intermediate class for car (wagon) model types to subclass from, provides sparse properties, most are declared in subclasses.
     """
 
-    # model_type_id = '' # provide in subclass
+    # model_id = '' # provide in subclass
 
     def __init__(self, speedy=False, **kwargs):
         super().__init__(**kwargs)
@@ -2556,7 +2556,7 @@ class CarModelTypeBase(ModelTypeBase):
         # - subtype where there is a generation gap in the tree, but the subtype continues across the gap
         tree_permissive = []
         tree_strict = []
-        for wagon in self.roster.wagon_consists_by_base_id[self.model_type_id_root]:
+        for wagon in self.roster.wagon_consists_by_base_id[self.model_id_root]:
             if wagon.base_track_type_name == self.base_track_type_name:
                 tree_permissive.append(wagon.gen)
                 if wagon.subtype == self.subtype:
@@ -2587,7 +2587,7 @@ class CarModelTypeBase(ModelTypeBase):
 
     @property
     def wagon_title_class_str(self):
-        return "STR_NAME_SUFFIX_" + self.model_type_id_root.upper()
+        return "STR_NAME_SUFFIX_" + self.model_id_root.upper()
 
     @property
     def wagon_title_optional_randomised_suffix_str(self):
@@ -2691,7 +2691,7 @@ class AlignmentCarUnit(CarModelTypeBase):
     For checking sprite alignment
     """
 
-    model_type_id_root = "alignment_car"
+    model_id_root = "alignment_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2753,7 +2753,7 @@ class AutomobileSingleDeckCar(AutomobileCarBase):
     Automobile transporter with single flat deck at conventional height.
     """
 
-    model_type_id_root = "automobile_car"
+    model_id_root = "automobile_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2777,7 +2777,7 @@ class AutomobileDoubleDeckCar(AutomobileCarBase):
     Automobile transporter with double deck, cars only.
     """
 
-    model_type_id_root = "double_deck_automobile_car"
+    model_id_root = "double_deck_automobile_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2805,7 +2805,7 @@ class AutomobileLowFloorCar(AutomobileCarBase):
     Automobile transporter with single deck at lowered height.
     """
 
-    model_type_id_root = "low_floor_automobile_car"
+    model_id_root = "low_floor_automobile_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2837,7 +2837,7 @@ class AutomobileEnclosedCar(CarModelTypeBase):
         "COMPLEMENT_COMPANY_COLOUR_NO_WEATHERING",
     ]
 
-    model_type_id_root = "enclosed_automobile_car"
+    model_id_root = "enclosed_automobile_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -2916,7 +2916,7 @@ class BolsterCar(BolsterCarBase):
     Specialist wagon with side stakes and bolsters for long products, limited refits.
     """
 
-    model_type_id_root = "bolster_car"
+    model_id_root = "bolster_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2927,7 +2927,7 @@ class BolsterCarHighEnd(BolsterCarBase):
     Specialist wagon with side stakes and bolsters for long products, limited refits.
     """
 
-    model_type_id_root = "high_end_bolster_car"
+    model_id_root = "high_end_bolster_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2938,7 +2938,7 @@ class BolsterCarRandomised(RandomisedCarMixin, BolsterCarBase):
     Random choice of bolster car sprite, from available bolster cars.
     """
 
-    model_type_id_root = "bolster_car_randomised"
+    model_id_root = "bolster_car_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -2998,7 +2998,7 @@ class BoxCarType1(BoxCarBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "box_car_type_1"
+    model_id_root = "box_car_type_1"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3034,7 +3034,7 @@ class BoxCarType2(BoxCarBase):
         "FREIGHT_BAUXITE",
     ]
 
-    model_type_id_root = "box_car_type_2"
+    model_id_root = "box_car_type_2"
     input_spritesheet_delegate_id_root = "box_car_type_1"
     cabbage_new_livery_system = True
 
@@ -3082,7 +3082,7 @@ class BoxCarCurtainSide(BoxCarBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "curtain_side_box_car"
+    model_id_root = "curtain_side_box_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3141,7 +3141,7 @@ class BoxCarMerchandise(BoxCarBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "merchandise_box_car"
+    model_id_root = "merchandise_box_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3179,7 +3179,7 @@ class BoxCarRandomised(RandomisedCarMixin, BoxCarBase):
         "RANDOM_FROM_CONSIST_LIVERIES_SILVER_PEWTER",
     ]
 
-    model_type_id_root = "box_car_randomised"
+    model_id_root = "box_car_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3236,7 +3236,7 @@ class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "sliding_wall_car_type_1"
+    model_id_root = "sliding_wall_car_type_1"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3280,7 +3280,7 @@ class BoxCarSlidingWallType2(BoxCarSlidingWallBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "sliding_wall_car_type_2"
+    model_id_root = "sliding_wall_car_type_2"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3320,7 +3320,7 @@ class BoxCarVehicleParts(BoxCarBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "vehicle_parts_box_car"
+    model_id_root = "vehicle_parts_box_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3426,7 +3426,7 @@ class BulkOpenCarAggregateType1(BulkOpenCarAggregateBase):
     Same as standard dump car, but different appearance and default cargos.
     """
 
-    model_type_id_root = "aggregate_bulk_open_car_type_1"
+    model_id_root = "aggregate_bulk_open_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3438,7 +3438,7 @@ class BulkOpenCarAggregateType2(BulkOpenCarAggregateBase):
     Same as standard dump car, but different appearance and default cargos.
     """
 
-    model_type_id_root = "aggregate_bulk_open_car_type_2"
+    model_id_root = "aggregate_bulk_open_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3450,7 +3450,7 @@ class BulkOpenCarAggregateType3(BulkOpenCarAggregateBase):
     Same as standard dump car, but different appearance and default cargos.
     """
 
-    model_type_id_root = "aggregate_bulk_open_car_type_3"
+    model_id_root = "aggregate_bulk_open_car_type_3"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3461,7 +3461,7 @@ class BulkOpenCarAggregateRandomised(RandomisedCarMixin, BulkOpenCarAggregateBas
     Random choice of aggregate car.
     """
 
-    model_type_id_root = "aggregate_bulk_open_car_randomised"
+    model_id_root = "aggregate_bulk_open_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3492,7 +3492,7 @@ class BulkOpenCarHeavyDuty(BulkOpenCarBase):
         "FREIGHT_NIGHTSHADE",
     ]
 
-    model_type_id_root = "heavy_duty_dump_car"
+    model_id_root = "heavy_duty_dump_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3555,7 +3555,7 @@ class BulkOpenCarMineral(BulkOpenCarMineralBase):
     Standard dump car (Mineral Wagon in UK terms).
     """
 
-    model_type_id_root = "mineral_bulk_open_car"
+    model_id_root = "mineral_bulk_open_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3566,7 +3566,7 @@ class BulkOpenCarMineralHighSide(BulkOpenCarMineralBase):
     Standard dump car (Mineral Wagon in UK terms), with high sides.
     """
 
-    model_type_id_root = "mineral_bulk_open_car_high_side"
+    model_id_root = "mineral_bulk_open_car_high_side"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3577,7 +3577,7 @@ class BulkOpenCarMineralLowSide(BulkOpenCarMineralBase):
     Standard dump car (Mineral Wagon in UK terms), with low sides.
     """
 
-    model_type_id_root = "mineral_bulk_open_car_low_side"
+    model_id_root = "mineral_bulk_open_car_low_side"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3588,7 +3588,7 @@ class BulkOpenCarMineralRandomised(RandomisedCarMixin, BulkOpenCarMineralBase):
     Random choice of standard dump car (Mineral Wagon in UK terms).
     """
 
-    model_type_id_root = "mineral_bulk_open_car_randomised"
+    model_id_root = "mineral_bulk_open_car_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3647,7 +3647,7 @@ class BulkOpenCarScrapMetalType1(BulkOpenCarScrapMetalBase):
     Scrap Metal Car
     """
 
-    model_type_id_root = "scrap_metal_car_type_1"
+    model_id_root = "scrap_metal_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3658,7 +3658,7 @@ class BulkOpenCarScrapMetalType2(BulkOpenCarScrapMetalBase):
     Scrap Metal Car
     """
 
-    model_type_id_root = "scrap_metal_car_type_2"
+    model_id_root = "scrap_metal_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3669,7 +3669,7 @@ class BulkOpenCarScrapMetalRandomised(RandomisedCarMixin, BulkOpenCarScrapMetalB
     Random choice of scrap metal car sprite.
     """
 
-    model_type_id_root = "scrap_metal_car_randomised"
+    model_id_root = "scrap_metal_car_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3731,7 +3731,7 @@ class BulkOpenCarTipplerType1(BulkOpenCarTipplerBase):
     Tippler (dump car).
     """
 
-    model_type_id_root = "tippler_bulk_open_car_type_1"
+    model_id_root = "tippler_bulk_open_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3742,7 +3742,7 @@ class BulkOpenCarTipplerType2(BulkOpenCarTipplerBase):
     Tippler (dump car).
     """
 
-    model_type_id_root = "tippler_bulk_open_car_type_2"
+    model_id_root = "tippler_bulk_open_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3753,7 +3753,7 @@ class BulkOpenCarTipplerRotaryType1(BulkOpenCarTipplerBase):
     Tippler (dump car).
     """
 
-    model_type_id_root = "tippler_rotary_bulk_open_car_type_1"
+    model_id_root = "tippler_rotary_bulk_open_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3766,7 +3766,7 @@ class BulkOpenCarTipplerRandomised(RandomisedCarMixin, BulkOpenCarTipplerBase):
     Random choice of tippler (dump car).
     """
 
-    model_type_id_root = "tippler_bulk_open_car_randomised"
+    model_id_root = "tippler_bulk_open_car_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3801,7 +3801,7 @@ class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
         "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER",
     ]
 
-    model_type_id_root = "bulk_car_box_randomised"
+    model_id_root = "bulk_car_box_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3829,7 +3829,7 @@ class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
         "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER",
     ]
 
-    model_type_id_root = "bulk_car_hopper_randomised"
+    model_id_root = "bulk_car_hopper_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3861,7 +3861,7 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
         "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER",
     ]
 
-    model_type_id_root = "bulk_car_mixed_randomised"
+    model_id_root = "bulk_car_mixed_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3885,7 +3885,7 @@ class CabooseCarUnit(CarModelTypeBase):
 
     liveries = ["FREIGHT_SWOOSH"]
 
-    model_type_id_root = "caboose_car"
+    model_id_root = "caboose_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3941,7 +3941,7 @@ class CaneBinCar(CarModelTypeBase):
         "FREIGHT_NIGHTSHADE",
     ]
 
-    model_type_id_root = "cane_bin_car"
+    model_id_root = "cane_bin_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -3973,7 +3973,7 @@ class CarbonBlackHopperCar(CarModelTypeBase):
 
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
-    model_type_id_root = "carbon_black_hopper_car"
+    model_id_root = "carbon_black_hopper_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -4018,7 +4018,7 @@ class CoilBuggyCarUnit(CarModelTypeBase):
     ]
 
     # note does NOT subclass CoilCarBase - different type of consist
-    model_type_id_root = "coil_buggy_car"
+    model_id_root = "coil_buggy_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -4091,7 +4091,7 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
         "FREIGHT_BAUXITE",
     ]
 
-    model_type_id_root = "coil_car_covered_asymmetric"
+    model_id_root = "coil_car_covered_asymmetric"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -4139,7 +4139,7 @@ class CoilCarCovered(CoilCarBase):
         "FREIGHT_GREY",
     ]
 
-    model_type_id_root = "coil_car_covered"
+    model_id_root = "coil_car_covered"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -4180,7 +4180,7 @@ class CoilCarTarpaulin(CoilCarBase):
         "FREIGHT_GREY",
     ]
 
-    model_type_id_root = "coil_car_tarpaulin"
+    model_id_root = "coil_car_tarpaulin"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -4224,7 +4224,7 @@ class CoilCarUncovered(CoilCarBase):
         "FREIGHT_GREY",
     ]
 
-    model_type_id_root = "coil_car_uncovered"
+    model_id_root = "coil_car_uncovered"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -4257,7 +4257,7 @@ class DedicatedCoilCarRandomised(RandomisedCarMixin, CoilCarBase):
         "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
     ]
 
-    model_type_id_root = "dedicated_coil_car_randomised"
+    model_id_root = "dedicated_coil_car_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -4337,7 +4337,7 @@ class CoveredHopperCarType1(CoveredHopperCarBase):
     Default covered hopper type.
     """
 
-    model_type_id_root = "covered_hopper_car_type_1"
+    model_id_root = "covered_hopper_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4353,7 +4353,7 @@ class CoveredHopperCarType2(CoveredHopperCarBase):
     Default covered hopper type.
     """
 
-    model_type_id_root = "covered_hopper_car_type_2"
+    model_id_root = "covered_hopper_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4370,7 +4370,7 @@ class CoveredHopperCarType3(CoveredHopperCarBase):
     Default covered hopper type.
     """
 
-    model_type_id_root = "covered_hopper_car_type_3"
+    model_id_root = "covered_hopper_car_type_3"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4397,7 +4397,7 @@ class CoveredHopperCarRandomised(RandomisedCarMixin, CoveredHopperCarBase):
         "FREIGHT_TEAL",
     ]
 
-    model_type_id_root = "covered_hopper_car_randomised"
+    model_id_root = "covered_hopper_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4436,7 +4436,7 @@ class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "swing_roof_hopper_car"
+    model_id_root = "swing_roof_hopper_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4477,7 +4477,7 @@ class ExpressCarUnit(CarModelTypeBase):
         "FREIGHT_RED",
     ]
 
-    model_type_id_root = "express_car"
+    model_id_root = "express_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -4520,7 +4520,7 @@ class ExpressFoodCarRandomised(RandomisedCarMixin, CarModelTypeBase):
 
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
-    model_type_id_root = "express_food_car_randomised"
+    model_id_root = "express_food_car_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -4608,7 +4608,7 @@ class ExpressFoodTankCarType1(ExpressFoodTankCarBase):
     Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
     """
 
-    model_type_id_root = "food_express_tank_car_type_1"
+    model_id_root = "food_express_tank_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4621,7 +4621,7 @@ class ExpressFoodTankCarType2(ExpressFoodTankCarBase):
     Formerly known as 'Edibles Tanker', renamed in 2024 to 'Food Tanker' to be easily understand.
     """
 
-    model_type_id_root = "food_express_tank_car_type_2"
+    model_id_root = "food_express_tank_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4632,7 +4632,7 @@ class ExpressFoodTankCarRandomised(RandomisedCarMixin, ExpressFoodTankCarBase):
     Random choice of express food tanker.
     """
 
-    model_type_id_root = "food_express_tank_car_randomised"
+    model_id_root = "food_express_tank_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4653,7 +4653,7 @@ class ExpressIntermodalCarUnit(CarModelTypeBase):
     liveries = ["FREIGHT_SWOOSH"]
     cabbage_new_livery_system = True
 
-    model_type_id_root = "express_intermodal_car"
+    model_id_root = "express_intermodal_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4736,7 +4736,7 @@ class FarmProductsBoxCarType1(FarmProductsBoxCarBase):
     Farm type cargos - box cars / vans.
     """
 
-    model_type_id_root = "farm_product_box_car_type_1"
+    model_id_root = "farm_product_box_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4750,7 +4750,7 @@ class FarmProductsBoxCarType2(FarmProductsBoxCarBase):
     Farm type cargos - box cars / vans.
     """
 
-    model_type_id_root = "farm_product_box_car_type_2"
+    model_id_root = "farm_product_box_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4764,7 +4764,7 @@ class FarmProductsBoxCarRandomised(RandomisedCarMixin, FarmProductsBoxCarBase):
     Random choice of farm products box car / van sprite.
     """
 
-    model_type_id_root = "farm_product_box_car_randomised"
+    model_id_root = "farm_product_box_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4821,7 +4821,7 @@ class FarmProductsHopperCarType1(FarmProductsHopperCarBase):
     Farm type cargos - covered hoppers.
     """
 
-    model_type_id_root = "farm_product_hopper_car_type_1"
+    model_id_root = "farm_product_hopper_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4835,7 +4835,7 @@ class FarmProductsHopperCarType2(FarmProductsHopperCarBase):
     Farm type cargos - covered hoppers.
     """
 
-    model_type_id_root = "farm_product_hopper_car_type_2"
+    model_id_root = "farm_product_hopper_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4849,7 +4849,7 @@ class FarmProductsHopperCarRandomised(RandomisedCarMixin, FarmProductsHopperCarB
     Random choice of farm products hopper sprite.
     """
 
-    model_type_id_root = "farm_product_hopper_car_randomised"
+    model_id_root = "farm_product_hopper_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4893,7 +4893,7 @@ class FoodHopperCarType1(FoodHopperCarBase):
     Food type covered hoppers - same refits as farm product cars.
     """
 
-    model_type_id_root = "food_hopper_car_type_1"
+    model_id_root = "food_hopper_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4907,7 +4907,7 @@ class FoodHopperCarType2(FoodHopperCarBase):
     Food type covered hoppers - same refits as farm product cars.
     """
 
-    model_type_id_root = "food_hopper_car_type_2"
+    model_id_root = "food_hopper_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4921,7 +4921,7 @@ class FoodHopperCarType3(FoodHopperCarBase):
     Food type covered hoppers - same refits as farm product cars.
     """
 
-    model_type_id_root = "food_hopper_car_type_3"
+    model_id_root = "food_hopper_car_type_3"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4935,7 +4935,7 @@ class FoodHopperCarRandomised(RandomisedCarMixin, FoodHopperCarBase):
     Random choice of food hopper sprite.
     """
 
-    model_type_id_root = "food_hopper_car_randomised"
+    model_id_root = "food_hopper_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5024,7 +5024,7 @@ class FlatCarBulkheadType1(FlatCarBulkheadBase):
     """
 
     # low or high bulkhead? stakes or not?
-    model_type_id_root = "bulkhead_flat_car_type_1"
+    model_id_root = "bulkhead_flat_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5036,7 +5036,7 @@ class FlatCarBulkheadType2(FlatCarBulkheadBase):
     """
 
     # low or high bulkhead? stakes or not?
-    model_type_id_root = "bulkhead_flat_car_type_2"
+    model_id_root = "bulkhead_flat_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5047,7 +5047,7 @@ class FlatCarBulkheadRandomised(RandomisedCarMixin, FlatCarBulkheadBase):
     Random choice of bulkhead flat car sprite.
     """
 
-    model_type_id_root = "bulkhead_flat_car_randomised"
+    model_id_root = "bulkhead_flat_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5066,7 +5066,7 @@ class FlatCarDropEnd(FlatCarBase):
     Wagon with droppable end flaps - variant on flat wagon, refits same
     """
 
-    model_type_id_root = "drop_end_flat_car"
+    model_id_root = "drop_end_flat_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5090,7 +5090,7 @@ class FlatCarDropSide(FlatCarBase):
     Wagon with droppable low sides - variant on flat wagon, refits same
     """
 
-    model_type_id_root = "drop_side_flat_car"
+    model_id_root = "drop_side_flat_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5115,7 +5115,7 @@ class FlatCar(FlatCarBase):
     Flatbed - no stakes, visible cargo.
     """
 
-    model_type_id_root = "flat_car"
+    model_id_root = "flat_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5143,7 +5143,7 @@ class FlatCarHeavyDuty(FlatCarBase):
         "FREIGHT_NIGHTSHADE",
     ]
 
-    model_type_id_root = "heavy_duty_flat_car"
+    model_id_root = "heavy_duty_flat_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5187,7 +5187,7 @@ class FlatCarMillType1(FlatCarMillBase):
     """
 
     # low or high mill? stakes or not?
-    model_type_id_root = "mill_flat_car_type_1"
+    model_id_root = "mill_flat_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5199,7 +5199,7 @@ class FlatCarMillType2(FlatCarMillBase):
     """
 
     # low or high mill? stakes or not?
-    model_type_id_root = "mill_flat_car_type_2"
+    model_id_root = "mill_flat_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5210,7 +5210,7 @@ class FlatCarMillRandomised(RandomisedCarMixin, FlatCarMillBase):
     Random choice of mill flat car sprite.
     """
 
-    model_type_id_root = "mill_flat_car_randomised"
+    model_id_root = "mill_flat_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5229,7 +5229,7 @@ class FlatCarRandomised(RandomisedCarMixin, FlatCarBase):
     Random choice of flat car sprite, from available coil cars, bolster cars etc.
     """
 
-    model_type_id_root = "flat_car_randomised"
+    model_id_root = "flat_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5283,7 +5283,7 @@ class GasTankCarPressure(GasTankCarBase):
     Pressure tank cars for gases under pressure at low temperatue, e.g. Chlorine etc.
     """
 
-    model_type_id_root = "pressure_tank_car"
+    model_id_root = "pressure_tank_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5297,7 +5297,7 @@ class GasTankCarCryo(GasTankCarBase):
     Specialist insulated and pressurised tank cars for gases under pressure at low temperatue, e.g. Oxygen etc.
     """
 
-    model_type_id_root = "cryo_tank_car"
+    model_id_root = "cryo_tank_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5400,7 +5400,7 @@ class HopperCarAggregateType1(HopperCarAggregateBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "aggregate_hopper_car_type_1"
+    model_id_root = "aggregate_hopper_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5438,7 +5438,7 @@ class HopperCarAggregateType2(HopperCarAggregateBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "aggregate_hopper_car_type_2"
+    model_id_root = "aggregate_hopper_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5476,7 +5476,7 @@ class HopperCarAggregateType3(HopperCarAggregateBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "aggregate_hopper_car_type_3"
+    model_id_root = "aggregate_hopper_car_type_3"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5512,7 +5512,7 @@ class HopperCarAggregateRandomised(RandomisedCarMixin, HopperCarAggregateBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "aggregate_hopper_car_randomised"
+    model_id_root = "aggregate_hopper_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5533,7 +5533,7 @@ class HopperCar(HopperCarBase):
     Standard hopper car. Defaults to coal.
     """
 
-    model_type_id_root = "hopper_car"
+    model_id_root = "hopper_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5553,7 +5553,7 @@ class HopperCarHighSide(HopperCarBase):
     Hopper for ore cargos, same refits as standard hopper, just a visual variant.
     """
 
-    model_type_id_root = "hopper_car_high_side"
+    model_id_root = "hopper_car_high_side"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5619,7 +5619,7 @@ class HopperCarMGR(HopperCarMGRBase):
     Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.
     """
 
-    model_type_id_root = "mgr_hopper_car"
+    model_id_root = "mgr_hopper_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5630,7 +5630,7 @@ class HopperCarMGRTopHood(HopperCarMGRBase):
     Hopper for coal industry cargos, same refits as standard hopper, just a visual variant. UK-specific lolz.
     """
 
-    model_type_id_root = "mgr_top_hood_hopper_car"
+    model_id_root = "mgr_top_hood_hopper_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5650,7 +5650,7 @@ class HopperCarRandomised(RandomisedCarMixin, HopperCarBase):
         "RANDOM_FROM_CONSIST_LIVERIES_OIL_BLACK_NIGHTSHADE",
     ]
 
-    model_type_id_root = "hopper_car_randomised"
+    model_id_root = "hopper_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5695,7 +5695,7 @@ class HopperCarRock(HopperCarBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "rock_hopper_car"
+    model_id_root = "rock_hopper_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5710,7 +5710,7 @@ class HopperCarSideDoor(HopperCarBase):
     Side door hopper (saddle-bottom hopper).
     """
 
-    model_type_id_root = "side_door_hopper_car"
+    model_id_root = "side_door_hopper_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5737,7 +5737,7 @@ class HopperCarSkip(HopperCarBase):
         "FREIGHT_NIGHTSHADE",
         # player choice, various others tried, not needed
     ]
-    model_type_id_root = "skip_car"
+    model_id_root = "skip_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5763,7 +5763,7 @@ class IngotCarUnit(CarModelTypeBase):
         "FREIGHT_NIGHTSHADE",
     ]
 
-    model_type_id_root = "ingot_car"
+    model_id_root = "ingot_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -5845,7 +5845,7 @@ class IntermodalCarUnit(IntermodalCarBase):
     Default intermodal car - simple flat platform at default height.
     """
 
-    model_type_id_root = "intermodal_car"
+    model_id_root = "intermodal_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5868,7 +5868,7 @@ class IntermodalLowFloorCar(IntermodalCarBase):
     Low floor intermodal car - simple flat platform at height -1
     """
 
-    model_type_id_root = "low_floor_intermodal_car"
+    model_id_root = "low_floor_intermodal_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5890,7 +5890,7 @@ class KaolinHopperCar(CarModelTypeBase):
 
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
-    model_type_id_root = "kaolin_hopper_car"
+    model_id_root = "kaolin_hopper_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -5940,7 +5940,7 @@ class LivestockCar(CarModelTypeBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "livestock_car"
+    model_id_root = "livestock_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -5982,7 +5982,7 @@ class LogCar(CarModelTypeBase):
         "FREIGHT_BAUXITE",
     ]
 
-    model_type_id_root = "log_car"
+    model_id_root = "log_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -6010,7 +6010,7 @@ class MailCarBase(CarModelTypeBase):
     """
 
     def __init__(self, **kwargs):
-        # don't set model_type_id here, let subclasses do it
+        # don't set model_id here, let subclasses do it
         super().__init__(**kwargs)
         self.class_refit_groups = ["mail", "express_freight"]
         # no specific labels needed
@@ -6060,7 +6060,7 @@ class MailRailcarTrailerCarBase(MailCarBase):
     """
 
     def __init__(self, **kwargs):
-        # don't set model_type_id here, let subclasses do it
+        # don't set model_id here, let subclasses do it
         super().__init__(**kwargs)
         self._buyable_variant_group_id = self.cab_id
         self._model_life = self.cab_consist.model_life
@@ -6116,7 +6116,7 @@ class MailCar(MailCarBase):
 
     livery_group_name = "default_mail_liveries"
 
-    model_type_id_root = "mail_car"
+    model_id_root = "mail_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -6170,7 +6170,7 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
     # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
     liveries = ["VANILLA", "VANILLA"]
 
-    model_type_id_root = "express_railcar_mail_trailer_car"
+    model_id_root = "express_railcar_mail_trailer_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -6217,7 +6217,7 @@ class MailHighSpeedCar(MailCarBase):
 
     livery_group_name = "default_mail_liveries"
 
-    model_type_id_root = "high_speed_mail_car"
+    model_id_root = "high_speed_mail_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -6266,7 +6266,7 @@ class MailHSTCar(MailCarBase):
     # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
     liveries = ["VANILLA", "VANILLA"]
 
-    model_type_id_root = "hst_mail_car"
+    model_id_root = "hst_mail_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -6358,7 +6358,7 @@ class MetalProductCarCoveredRandomised(MetalProductCarRandomisedBase):
     Random choice of cold metal car sprite, from suitable covered coil cars, vans etc.
     """
 
-    model_type_id_root = "metal_product_car_covered_randomised"
+    model_id_root = "metal_product_car_covered_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6369,7 +6369,7 @@ class MetalProductCarMixedRandomised(MetalProductCarRandomisedBase):
     Random choice of cold metal car sprite, from all suitable metal carrying wagons cars etc.
     """
 
-    model_type_id_root = "metal_product_car_mixed_randomised"
+    model_id_root = "metal_product_car_mixed_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6380,7 +6380,7 @@ class MetalProductCarUncoveredRandomised(MetalProductCarRandomisedBase):
     Random choice of cold metal car sprite, from suitable bolster, flat, open cars etc.
     """
 
-    model_type_id_root = "metal_product_car_uncovered_randomised"
+    model_id_root = "metal_product_car_uncovered_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6486,7 +6486,7 @@ class MineralCoveredHopperCarLimeType1(MineralCoveredHopperCarLimeBase):
     Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
     """
 
-    model_type_id_root = "lime_covered_hopper_car_type_1"
+    model_id_root = "lime_covered_hopper_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6498,7 +6498,7 @@ class MineralCoveredHopperCarLimeType2(MineralCoveredHopperCarLimeBase):
     Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
     """
 
-    model_type_id_root = "lime_covered_hopper_car_type_2"
+    model_id_root = "lime_covered_hopper_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6510,7 +6510,7 @@ class MineralCoveredHopperCarLimeType3(MineralCoveredHopperCarLimeBase):
     Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
     """
 
-    model_type_id_root = "lime_covered_hopper_car_type_3"
+    model_id_root = "lime_covered_hopper_car_type_3"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6524,7 +6524,7 @@ class MineralCoveredHopperCarLimeRandomised(
     Heavily weathered white - powdered lime / burnt lime / quicklime and similar cargos.
     """
 
-    model_type_id_root = "lime_covered_hopper_car_randomised"
+    model_id_root = "lime_covered_hopper_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6563,7 +6563,7 @@ class MineralCoveredHopperCarRandomised(
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "covered_bulk_car_randomised"
+    model_id_root = "covered_bulk_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6628,7 +6628,7 @@ class MineralCoveredHopperCarRollerRoofType1(MineralCoveredHopperCarRollerRoofBa
     Mineral covered hopper with a rollover roof.
     """
 
-    model_type_id_root = "roller_roof_hopper_car_type_1"
+    model_id_root = "roller_roof_hopper_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6639,7 +6639,7 @@ class MineralCoveredHopperCarRollerRoofType2(MineralCoveredHopperCarRollerRoofBa
     Mineral covered hopper with a rollover roof.
     """
 
-    model_type_id_root = "roller_roof_hopper_car_type_2"
+    model_id_root = "roller_roof_hopper_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6652,7 +6652,7 @@ class MineralCoveredHopperCarRollerRoofRandomised(
     Mineral covered hopper with a rollover roof.
     """
 
-    model_type_id_root = "roller_roof_hopper_car_randomised"
+    model_id_root = "roller_roof_hopper_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6724,7 +6724,7 @@ class MineralCoveredHopperCarSalt(MineralCoveredHopperCarSaltBase):
     Mineral covered hopper for salt, potash, similar cargos.
     """
 
-    model_type_id_root = "salt_covered_hopper_car"
+    model_id_root = "salt_covered_hopper_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6735,7 +6735,7 @@ class MineralCoveredHopperCarSaltSwingRoof(MineralCoveredHopperCarSaltBase):
     Mineral covered hopper for salt, potash, similar cargos.
     """
 
-    model_type_id_root = "salt_swing_roof_hopper_car"
+    model_id_root = "salt_swing_roof_hopper_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6748,7 +6748,7 @@ class MineralCoveredHopperCarSaltRandomised(
     Mineral covered hopper for salt, potash, similar cargos.
     """
 
-    model_type_id_root = "salt_covered_hopper_car_randomised"
+    model_id_root = "salt_covered_hopper_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6805,7 +6805,7 @@ class OpenCar(OpenCarBase):
         "FREIGHT_TEAL",
     ]
 
-    model_type_id_root = "open_car"
+    model_id_root = "open_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6839,7 +6839,7 @@ class OpenCarHood(OpenCarBase):
         "FREIGHT_TEAL",
     ]
 
-    model_type_id_root = "hood_open_car"
+    model_id_root = "hood_open_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6878,7 +6878,7 @@ class OpenCarHighEnd(OpenCarBase):
         "FREIGHT_TEAL",
     ]
 
-    model_type_id_root = "high_end_open_car"
+    model_id_root = "high_end_open_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6919,7 +6919,7 @@ class OpenCarMill(OpenCarBase):
         "FREIGHT_TEAL",
     ]
 
-    model_type_id_root = "mill_open_car"
+    model_id_root = "mill_open_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6954,7 +6954,7 @@ class OpenCarRandomised(RandomisedCarMixin, OpenCarBase):
         "RANDOM_FROM_CONSIST_LIVERIES_BAUXITE_GREY_NIGHTSHADE",
     ]
 
-    model_type_id_root = "open_car_randomised"
+    model_id_root = "open_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6974,7 +6974,7 @@ class PassengerCarBase(CarModelTypeBase):
     """
 
     def __init__(self, **kwargs):
-        # don't set model_type_id here, let subclasses do it
+        # don't set model_id here, let subclasses do it
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = ["pax"]
@@ -7019,7 +7019,7 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
     """
 
     def __init__(self, **kwargs):
-        # don't set model_type_id here, let subclasses do it
+        # don't set model_id here, let subclasses do it
         super().__init__(**kwargs)
         self._buyable_variant_group_id = self.cab_id
         self._model_life = self.cab_consist.model_life
@@ -7081,7 +7081,7 @@ class PanoramicCar(PassengerCarBase):
     # not sure why I did this as a class property, but eh
     affected_by_restaurant_car_in_consist = True
 
-    model_type_id_root = "panoramic_car"
+    model_id_root = "panoramic_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -7126,7 +7126,7 @@ class PassengerCar(PassengerCarBase):
 
     livery_group_name = "default_pax_liveries"
 
-    model_type_id_root = "passenger_car"
+    model_id_root = "passenger_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -7181,7 +7181,7 @@ class PassengerHighSpeedCar(PassengerCarBase):
     # not sure why I did this as a class property, but eh
     affected_by_restaurant_car_in_consist = True
 
-    model_type_id_root = "high_speed_passenger_car"
+    model_id_root = "high_speed_passenger_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -7224,7 +7224,7 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
     # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
     liveries = ["VANILLA", "VANILLA"]
 
-    model_type_id_root = "express_railcar_passenger_trailer_car"
+    model_id_root = "express_railcar_passenger_trailer_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -7272,7 +7272,7 @@ class PassengerHSTCar(PassengerCarBase):
     # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
     liveries = ["VANILLA", "VANILLA"]
 
-    model_type_id_root = "hst_passenger_car"
+    model_id_root = "hst_passenger_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -7341,7 +7341,7 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
     # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
     liveries = ["VANILLA", "VANILLA"]
 
-    model_type_id_root = "railbus_passenger_trailer_car"
+    model_id_root = "railbus_passenger_trailer_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -7388,7 +7388,7 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
     # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
     liveries = ["VANILLA", "VANILLA"]
 
-    model_type_id_root = "railcar_passenger_trailer_car"
+    model_id_root = "railcar_passenger_trailer_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -7439,7 +7439,7 @@ class PassengerRestaurantCar(PassengerCarBase):
 
     livery_group_name = "default_pax_liveries"
 
-    model_type_id_root = "restaurant_car"
+    model_id_root = "restaurant_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -7479,7 +7479,7 @@ class PassengerSuburbanCar(PassengerCarBase):
 
     livery_group_name = "suburban_pax_liveries"
 
-    model_type_id_root = "suburban_passenger_car"
+    model_id_root = "suburban_passenger_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -7535,7 +7535,7 @@ class PeatCar(CarModelTypeBase):
         "FREIGHT_NIGHTSHADE",
     ]
 
-    model_type_id_root = "peat_car"
+    model_id_root = "peat_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -7597,7 +7597,7 @@ class PieceGoodsCarCoveredRandomised(PieceGoodsCarRandomisedBase):
         "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER",
     ]
 
-    model_type_id_root = "piece_goods_car_covered_randomised"
+    model_id_root = "piece_goods_car_covered_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7622,7 +7622,7 @@ class PieceGoodsCarMixedRandomised(PieceGoodsCarRandomisedBase):
         "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER",
     ]
 
-    model_type_id_root = "piece_goods_car_mixed_randomised"
+    model_id_root = "piece_goods_car_mixed_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -7648,7 +7648,7 @@ class PieceGoodsCarManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
         "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER",
     ]
 
-    model_type_id_root = "piece_goods_car_manufacturing_parts_randomised"
+    model_id_root = "piece_goods_car_manufacturing_parts_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7678,7 +7678,7 @@ class PipeCar(FlatCarBase):
         "FREIGHT_GREY",
     ]
 
-    model_type_id_root = "pipe_car"
+    model_id_root = "pipe_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7741,7 +7741,7 @@ class ReeferCarType1(ReeferCarBase):
     Standard reefer car.
     """
 
-    model_type_id_root = "reefer_car_type_1"
+    model_id_root = "reefer_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7755,7 +7755,7 @@ class ReeferCarType2(ReeferCarBase):
     Alternative reefer car style.
     """
 
-    model_type_id_root = "reefer_car_type_2"
+    model_id_root = "reefer_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7770,7 +7770,7 @@ class ReeferCarRandomised(RandomisedCarMixin, ReeferCarBase):
     Random choice of reefer car sprite.
     """
 
-    model_type_id_root = "reefer_car_randomised"
+    model_id_root = "reefer_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7859,7 +7859,7 @@ class SiloCarType1(SiloCarBase):
     Standard silo car.
     """
 
-    model_type_id_root = "silo_car_type_1"
+    model_id_root = "silo_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7875,7 +7875,7 @@ class SiloCarType2(SiloCarBase):
     Silo car with V-shaped barrel.
     """
 
-    model_type_id_root = "silo_car_type_2"
+    model_id_root = "silo_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7891,7 +7891,7 @@ class SiloCarType3(SiloCarBase):
     Silo car with V-shaped barrel.
     """
 
-    model_type_id_root = "silo_car_type_3"
+    model_id_root = "silo_car_type_3"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7917,7 +7917,7 @@ class SiloCarRandomised(RandomisedCarMixin, SiloCarBase):
         "RANDOM_FROM_CONSIST_LIVERIES_TEAL_VIOLET",
     ]
 
-    model_type_id_root = "silo_car_randomised"
+    model_id_root = "silo_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7940,7 +7940,7 @@ class SiloCarCementType1(SiloCarBase):
 
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
-    model_type_id_root = "cement_silo_car_type_1"
+    model_id_root = "cement_silo_car_type_1"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -7970,7 +7970,7 @@ class SiloCarCementType2(SiloCarBase):
 
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
-    model_type_id_root = "cement_silo_car_type_2"
+    model_id_root = "cement_silo_car_type_2"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -8000,7 +8000,7 @@ class SiloCarCementType3(SiloCarBase):
 
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
-    model_type_id_root = "cement_silo_car_type_3"
+    model_id_root = "cement_silo_car_type_3"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -8030,7 +8030,7 @@ class SiloCarCementRandomised(RandomisedCarMixin, SiloCarBase):
 
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
-    model_type_id_root = "cement_silo_car_randomised"
+    model_id_root = "cement_silo_car_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -8067,7 +8067,7 @@ class SlidingRoofCar(BoxCarBase):
         "FREIGHT_PEWTER",
     ]
 
-    model_type_id_root = "sliding_roof_car"
+    model_id_root = "sliding_roof_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -8121,7 +8121,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
     ]
     cabbage_new_livery_system = True
 
-    model_type_id_root = "sliding_roof_hi_cube_car"
+    model_id_root = "sliding_roof_hi_cube_car"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8163,7 +8163,7 @@ class SlagLadleCarUnit(CarModelTypeBase):
         "FREIGHT_NIGHTSHADE",
     ]
 
-    model_type_id_root = "slag_ladle_car"
+    model_id_root = "slag_ladle_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -8275,7 +8275,7 @@ class TankCarAcidType1(TankCarAcidBase):
     Visual variant of the standard tank car, same refits, different default cargos.
     """
 
-    model_type_id_root = "acid_tank_car_type_1"
+    model_id_root = "acid_tank_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8292,7 +8292,7 @@ class TankCarAcidType2(TankCarAcidBase):
     Visual variant of the standard tank car, same refits, different default cargos.
     """
 
-    model_type_id_root = "acid_tank_car_type_2"
+    model_id_root = "acid_tank_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8309,7 +8309,7 @@ class TankCarAcidRandomised(RandomisedCarMixin, TankCarAcidBase):
     Random choice of acid tank car sprites.
     """
 
-    model_type_id_root = "acid_tank_car_randomised"
+    model_id_root = "acid_tank_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8338,7 +8338,7 @@ class TankCarChemicalRandomised(RandomisedCarMixin, TankCarBase):
         "RANDOM_FROM_CONSIST_LIVERIES_SULPHUR_OCHRE",
     ]
 
-    model_type_id_root = "chemical_tank_car_randomised"
+    model_id_root = "chemical_tank_car_randomised"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -8414,7 +8414,7 @@ class TankCarProductType1(TankCarProductBase):
     Same refits as standard tank car, just a visual variant.
     """
 
-    model_type_id_root = "product_tank_car_type_1"
+    model_id_root = "product_tank_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8426,7 +8426,7 @@ class TankCarProductType2(TankCarProductBase):
     Same refits as standard tank car, just a visual variant.
     """
 
-    model_type_id_root = "product_tank_car_type_2"
+    model_id_root = "product_tank_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8437,7 +8437,7 @@ class TankCarProductRandomised(RandomisedCarMixin, TankCarProductBase):
     Random choice of product tank car.
     """
 
-    model_type_id_root = "product_tank_car_randomised"
+    model_id_root = "product_tank_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8502,7 +8502,7 @@ class TankCarStandardType1(TankCarStandardBase):
     Standard tank car
     """
 
-    model_type_id_root = "tank_car_type_1"
+    model_id_root = "tank_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8513,7 +8513,7 @@ class TankCarStandardType2(TankCarStandardBase):
     Standard tank car
     """
 
-    model_type_id_root = "tank_car_type_2"
+    model_id_root = "tank_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8524,7 +8524,7 @@ class TankCarStandardType3(TankCarStandardBase):
     Standard tank car
     """
 
-    model_type_id_root = "tank_car_type_3"
+    model_id_root = "tank_car_type_3"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8535,7 +8535,7 @@ class TankCarStandardRandomised(RandomisedCarMixin, TankCarStandardBase):
     Random choice of acid tank car sprites.
     """
 
-    model_type_id_root = "tank_car_randomised"
+    model_id_root = "tank_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8602,7 +8602,7 @@ class TankCarVolatilesType1(TankCarVolatilesBase):
     Tank car with reflective silver or white finish (for low-flashpoint / volative liquids such as petrol).
     """
 
-    model_type_id_root = "volatiles_tank_car_type_1"
+    model_id_root = "volatiles_tank_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8669,7 +8669,7 @@ class TarpaulinCarType1(TarpaulinCarBase):
     Tarpaulin car - refits similar to box van for gameplay reasons, unlike IRL (which is flat)
     """
 
-    model_type_id_root = "tarpaulin_car_type_1"
+    model_id_root = "tarpaulin_car_type_1"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8680,7 +8680,7 @@ class TarpaulinCarType2(TarpaulinCarBase):
     Tarpaulin car - refits similar to box van for gameplay reasons, unlike IRL (which is flat)
     """
 
-    model_type_id_root = "tarpaulin_car_type_2"
+    model_id_root = "tarpaulin_car_type_2"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8702,7 +8702,7 @@ class TarpaulinCarType3(TarpaulinCarBase):
         "FREIGHT_NIGHTSHADE",
     ]
 
-    model_type_id_root = "tarpaulin_car_type_3"
+    model_id_root = "tarpaulin_car_type_3"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8738,7 +8738,7 @@ class TarpaulinCarRandomised(RandomisedCarMixin, TarpaulinCarBase):
         "RANDOM_FROM_CONSIST_LIVERIES_TEAL_NIGHTSHADE",
     ]
 
-    model_type_id_root = "tarpaulin_car_randomised"
+    model_id_root = "tarpaulin_car_randomised"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8768,7 +8768,7 @@ class TorpedoCarUnit(CarModelTypeBase):
         "FREIGHT_NIGHTSHADE",
     ]
 
-    model_type_id_root = "torpedo_car"
+    model_id_root = "torpedo_car"
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
@@ -8925,7 +8925,7 @@ class BuyableVariant(object):
             if self.consist.use_named_buyable_variant_group is not None:
                 group_id_base = self.consist.use_named_buyable_variant_group
             else:
-                group_id_base = self.consist.model_type_id
+                group_id_base = self.consist.model_id
             if not self.uses_random_livery:
                 # we nest buyable variants with fixed colours into sub-groups
                 fixed_mixed_suffix = "fixed"

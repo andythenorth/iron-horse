@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_type_id="fs_e656",
+        model_id="fs_e656",
         base_numeric_id=170,
         name="FS E.656",
         subrole="ultra_heavy_express",

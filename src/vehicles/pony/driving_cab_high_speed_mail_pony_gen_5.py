@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailEngineCabbageDVT",
-        model_type_id="driving_cab_high_speed_mail_pony_gen_5",
+        model_id="driving_cab_high_speed_mail_pony_gen_5",
         base_numeric_id=18090,
         name="High Speed Driving Van Trailer",
         subrole_child_branch_num=-2,  # driving cab cars are probably jokers?

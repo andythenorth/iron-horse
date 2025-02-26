@@ -3,10 +3,10 @@
       this is very similar to the standard engine template, but has opening door support, but no decor spriterow support-->
 
 <tal:liveries repeat="livery consist.factory.catalogue">
-    spriteset(${vehicle.id}_ss_doors_closed_${repeat.livery.index}, "${graphics_path}${consist.model_type_id}.png") {
+    spriteset(${vehicle.id}_ss_doors_closed_${repeat.livery.index}, "${graphics_path}${consist.model_id}.png") {
         ${vehicle.get_spriteset_template_name('reversed' if vehicle._unit_def.reverse_sprite_template else 'unreversed', 10 + (repeat.livery.index * 60) + (vehicle.rel_spriterow_index * len(consist.factory.catalogue) * 60))}
     }
-    spriteset(${vehicle.id}_ss_doors_open_${repeat.livery.index}, "${graphics_path}${consist.model_type_id}.png") {
+    spriteset(${vehicle.id}_ss_doors_open_${repeat.livery.index}, "${graphics_path}${consist.model_id}.png") {
         ${vehicle.get_spriteset_template_name('reversed' if vehicle._unit_def.reverse_sprite_template else 'unreversed', 10 + 30 + (repeat.livery.index * 60) + (vehicle.rel_spriterow_index * len(consist.factory.catalogue) * 60))}
     }
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_doors_${repeat.livery.index}, switch_graphics_opening_doors()) {
@@ -43,7 +43,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_
 }
 
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_type_id}.png") {
+spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id}.png") {
     <!--! CABBAGE --> // ${consist.get_nml_for_spriteset_template(y_offset=repeat.livery.index * 60)}
     ${consist.get_nml_for_spriteset_template(y_offset=["need a cabbage spriterow offset here", 1][1] * 60)}
 }

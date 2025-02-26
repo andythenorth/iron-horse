@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_type_id="pikel",
+        model_id="pikel",
         base_numeric_id=21100,
         name="Pikel",
         subrole="universal",

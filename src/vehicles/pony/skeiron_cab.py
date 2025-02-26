@@ -8,7 +8,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="TGVCabEngine",
-        model_type_id="skeiron_cab",
+        model_id="skeiron_cab",
         base_numeric_id=25120,
         name="Skeiron",
         subrole="very_high_speed",

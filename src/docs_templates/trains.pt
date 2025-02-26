@@ -119,7 +119,7 @@
                             </thead>
                             <tbody>
                                 <tal:wagon_model_types repeat="model_type doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])">
-                                    <tr id="${model_type.model_type_id}">
+                                    <tr id="${model_type.model_id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
                                             <img src="static/img/${model_type.id}_variant_0_blue_blue.png"
@@ -139,7 +139,7 @@
                                         <td class="number">${sum([unit.default_cargo_capacity for unit in model_type.units])} t</td>
                                         <td class="number">${model_type.speed} mph</td>
                                         <td>
-                                            <a style="text-decoration:none;" href="#${model_type.model_type_id}">&#x1f517;</a>
+                                            <a style="text-decoration:none;" href="#${model_type.model_id}">&#x1f517;</a>
                                         </td>
                                     </tr>
                                 </tal:wagon_model_types>

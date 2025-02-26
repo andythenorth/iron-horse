@@ -6,12 +6,12 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_type_id="thunderer",
+        model_id="thunderer",
         base_numeric_id=4830,
         name="4-6-0 Thunderer",  # shorter 2-6-0 version was tried, but doesn't fit a power band gap in the mixed traffic roster
         subrole="heavy_express",
         subrole_child_branch_num=-1,
-        replacement_model_model_type_id="intrepid",  # this Joker ends with Intrepid, long-lived
+        replacement_model_id="intrepid",  # this Joker ends with Intrepid, long-lived
         power_by_power_source={
             "STEAM": 1500,  # slightly less than the Swift (and lighter engine)
         },

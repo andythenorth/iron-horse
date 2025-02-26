@@ -6,12 +6,12 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_type_id="reliance",
+        model_id="reliance",
         base_numeric_id=4890,
         name="2-4-0 Reliance",
         subrole="express",
         subrole_child_branch_num=-1,
-        replacement_model_model_type_id="carrack",  # this Joker ends with Carrack
+        replacement_model_id="carrack",  # this Joker ends with Carrack
         power_by_power_source={
             "STEAM": 950,
         },

@@ -224,7 +224,7 @@
                                                                 <div tal:condition="model_type.replacement_consist is not None"
                                                                      style="float:left; margin-left: 173px; margin-top: 30px;">
                                                                      <div style="${'visibility:hidden;' if doc_helper.consist_has_direct_replacment(model_type) else nothing}">
-                                                                        <a href="${model_type.replacement_consist.model_type_id}.html">
+                                                                        <a href="${model_type.replacement_consist.model_id}.html">
                                                                             <div class="muted"
                                                                                  style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
                                                                                 Replaced by ${doc_helper.get_replaced_by_name(model_type.replacement_consist.id, consists)}

@@ -6,12 +6,12 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_type_id="buffalo",
+        model_id="buffalo",
         base_numeric_id=21720,
         name="0-6-2 Buffalo",
         subrole="branch_freight",
         subrole_child_branch_num=-2,
-        replacement_model_model_type_id="saxon",  # this Joker ends with Saxon
+        replacement_model_id="saxon",  # this Joker ends with Saxon
         power_by_power_source={
             "STEAM": 650,
         },

@@ -48,7 +48,7 @@ class UnitBase(object):
 
     @property
     def cabbage_unit_id_from_model_type(self):
-        return self.consist.model_type_id + "_unit_" + str(self.cabbage_numeric_id)
+        return self.consist.model_id + "_unit_" + str(self.cabbage_numeric_id)
 
     @property
     def tail_light(self):

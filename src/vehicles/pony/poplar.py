@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="PassengerEngineMetro",
-        model_type_id="poplar",
+        model_id="poplar",
         base_numeric_id=1930,
         name="Poplar",
         subrole="pax_metro",

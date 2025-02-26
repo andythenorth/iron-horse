@@ -6,12 +6,12 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="MailEngineRailcar",
-        model_type_id="plastic_postbox",
+        model_id="plastic_postbox",
         base_numeric_id=21420,
         name="Plastic Postbox",
         subrole="mail_railcar",
         subrole_child_branch_num=2,
-        replacement_model_model_type_id="pylon",  # consolidates to electro-diesel with Pylon
+        replacement_model_id="pylon",  # consolidates to electro-diesel with Pylon
         power_by_power_source={
             "DIESEL": 560,
         },

@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_type_id="bb_22200",
+        model_id="bb_22200",
         base_numeric_id=30960,
         name="BB 22200",
         subrole="ultra_heavy_express",

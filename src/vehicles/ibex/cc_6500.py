@@ -6,7 +6,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_type_id="cc_6500",
+        model_id="cc_6500",
         base_numeric_id=31130,
         name="CC 6500",
         subrole="ultra_heavy_express",

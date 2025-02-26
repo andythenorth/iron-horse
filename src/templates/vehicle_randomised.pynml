@@ -1,6 +1,6 @@
 <!--! as of Sept 2024, this was simplified to always use python generated pseudo-random maps -->
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.model_type_id}.png") {
+spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.model_id}.png") {
     ${consist.get_nml_for_spriteset_template(y_offset=0)}
 }
 

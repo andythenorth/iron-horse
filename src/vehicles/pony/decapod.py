@@ -7,7 +7,7 @@ def main(**kwargs):
 
     model_def = ModelDef(
         class_name="SimpleEngine",
-        model_type_id="decapod",
+        model_id="decapod",
         base_numeric_id=26080,
         name="0-10-0 Decapod",
         subrole="branch_express",
