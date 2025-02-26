@@ -137,7 +137,7 @@ class PassThroughPipeline(Pipeline):
         self.graphics_output_path = graphics_output_path
 
         if (
-            self.consist.factory.cabbage_new_livery_system == False
+            self.factory.cabbage_new_livery_system == False
             or self.factory.is_default_model_variant(
                 consist
             )
