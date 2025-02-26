@@ -8,10 +8,10 @@
 // default graphics chain
 <tal:consist_position_variants repeat="position_variant_num python:range(consist.gestalt_graphics.total_position_variants)">
     spriteset(${vehicle.id}_ss_doors_closed_position_variant_${position_variant_num}, "${graphics_path}${consist.model_id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (consist.cabbage_catalogue_entry.livery_def.relative_spriterow_num * 60))}
+        ${vehicle.get_spriteset_template_name('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (consist.catalogue_entry.livery_def.relative_spriterow_num * 60))}
     }
     spriteset(${vehicle.id}_ss_doors_open_position_variant_${position_variant_num}, "${graphics_path}${consist.model_id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (consist.cabbage_catalogue_entry.livery_def.relative_spriterow_num * 60) + 30)}
+        ${vehicle.get_spriteset_template_name('unreversed', 10 + (position_variant_num * consist.gestalt_graphics.num_spritesheet_liveries_per_position_variant * 60) + (consist.catalogue_entry.livery_def.relative_spriterow_num * 60) + 30)}
     }
     <!--! in case there wasn't enough complexity here, let's do pantographs too, in a separate layer -->
     <tal:pantographs condition="consist.pantograph_type is not None">
@@ -190,7 +190,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
             </tal:case>
             <tal:case case="False">
                 <!--! non-custom buy menu sprites use a specific relative_spriterow_num and need to skip a row to account for door states -->
-                ${consist.get_nml_for_spriteset_template(y_offset=consist.cabbage_catalogue_entry.livery_def.relative_spriterow_num * 60)}
+                ${consist.get_nml_for_spriteset_template(y_offset=consist.catalogue_entry.livery_def.relative_spriterow_num * 60)}
             </tal:case>
         </tal:buy_menu_sprite_switch_case>
     }
@@ -235,9 +235,9 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase, vehic
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id) {
     <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
         <!--! CABBAGE SHIM-->
-        <tal:forced_remap switch="getattr(consist.cabbage_catalogue_entry.livery_def, 'remap_to_cc', None) is not None">
+        <tal:forced_remap switch="getattr(consist.catalogue_entry.livery_def, 'remap_to_cc', None) is not None">
             <tal:remap case="True">
-                ${unit_variant.numeric_id}: return base_sprite_2cc + 16 * ${consist.cabbage_catalogue_entry.livery_def.remap_to_cc['company_colour2']} + ${consist.cabbage_catalogue_entry.livery_def.remap_to_cc['company_colour1']};
+                ${unit_variant.numeric_id}: return base_sprite_2cc + 16 * ${consist.catalogue_entry.livery_def.remap_to_cc['company_colour2']} + ${consist.catalogue_entry.livery_def.remap_to_cc['company_colour1']};
             </tal:remap>
             <tal:no_remap case="False">
                 ${unit_variant.numeric_id}:return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->

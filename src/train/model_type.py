@@ -41,7 +41,7 @@ class ModelTypeBase(object):
         # mandatory, fail if missing
         self.factory = kwargs["factory"]
         # SHIM FOR REFACTORING - should just be catalogue_entry when done
-        self.cabbage_catalogue_entry = kwargs["catalogue_entry"]
+        self.catalogue_entry = kwargs["catalogue_entry"]
         # create a structure to hold buyable variants - the method can be over-ridden in consist subclasses to provide specific rules for buyable variants
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
         # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem
@@ -103,7 +103,7 @@ class ModelTypeBase(object):
         # create a structure for cargo /livery graphics options
         self.gestalt_graphics = GestaltGraphics(
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
         # option to provide automatic roof for all units in the consist, leave as None for no generation
         self.roof_type = None
@@ -120,7 +120,7 @@ class ModelTypeBase(object):
 
     @property
     def id(self):
-        return self.cabbage_catalogue_entry.model_variant_id
+        return self.catalogue_entry.model_variant_id
 
     @property
     def model_id(self):
@@ -157,10 +157,10 @@ class ModelTypeBase(object):
     def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed
         # the basic form of buyable variants is driven by liveries
-        if self.cabbage_catalogue_entry is None:
+        if self.catalogue_entry is None:
             livery_def = {}
         else:
-            livery_def = self.cabbage_catalogue_entry.livery_def
+            livery_def = self.catalogue_entry.livery_def
         self.buyable_variants.append(BuyableVariant(self, livery_def=livery_def))
 
     def add_unit(self, unit_cls, unit_def):
@@ -1356,7 +1356,7 @@ class EngineModelTypeBase(ModelTypeBase):
             pantograph_type=self.pantograph_type,
             default_livery_extra_docs_examples=default_livery_extra_docs_examples,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -1540,7 +1540,7 @@ class AutoCoachCombineEngine(EngineModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_autocoach.pynml",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -1592,7 +1592,7 @@ class FixedFormationRailcarCombineEngine(EngineModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_fixed_formation_railcar.pynml",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -1663,7 +1663,7 @@ class MailEngineCabbageDVT(MailEngineBase):
             spriterow_group_mappings,
             formation_ruleset="driving_cab_cars",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -1705,7 +1705,7 @@ class MailEngineCargoSprinter(MailEngineBase):
         cargo_label_mapping = (
             GestaltGraphicsIntermodalContainerTransporters(
                 factory=self.factory,
-                cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+                catalogue_entry=self.catalogue_entry,
             ).cargo_label_mapping,
         )
         self.gestalt_graphics = GestaltGraphicsCustom(
@@ -1713,7 +1713,7 @@ class MailEngineCargoSprinter(MailEngineBase):
             cargo_label_mapping=cargo_label_mapping,
             num_extra_layers_for_spritelayer_cargos=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -1758,7 +1758,7 @@ class MailEngineMetro(MailEngineBase):
             spriterow_group_mappings,
             formation_ruleset="metro",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -1834,7 +1834,7 @@ class MailEngineRailcar(MailEngineBase):
             formation_ruleset=formation_ruleset,
             pantograph_type=self.pantograph_type,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -1898,7 +1898,7 @@ class MailEngineExpressRailcar(MailEngineBase):
             spriterow_group_mappings,
             formation_ruleset="railcars_4_unit_sets",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
             jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
         )
@@ -1977,7 +1977,7 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
             spriterow_group_mappings,
             formation_ruleset="driving_cab_cars",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -2058,7 +2058,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
             spriterow_group_mappings,
             formation_ruleset=formation_ruleset,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
             jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
         )
@@ -2110,7 +2110,7 @@ class PassengerEngineMetro(PassengerEngineBase):
             spriterow_group_mappings,
             formation_ruleset="metro",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -2146,7 +2146,7 @@ class PassengerEngineRailbus(PassengerEngineBase):
             spriterow_group_mappings,
             formation_ruleset=formation_ruleset,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
 
@@ -2220,7 +2220,7 @@ class PassengerEngineRailcar(PassengerEngineBase):
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
 
@@ -2257,7 +2257,7 @@ class SnowploughEngine(EngineModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_snowplough.pynml",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -2373,7 +2373,7 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
             formation_ruleset="tgv",
             default_livery_extra_docs_examples=self.cab_consist.gestalt_graphics.default_livery_extra_docs_examples,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
 
@@ -2743,7 +2743,7 @@ class AutomobileCarBase(CarModelTypeBase):
             self.spritelayer_cargo_layers,
             formation_ruleset=formation_ruleset,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -2862,7 +2862,7 @@ class AutomobileEnclosedCar(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -2906,7 +2906,7 @@ class BolsterCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -2951,7 +2951,7 @@ class BolsterCarRandomised(RandomisedCarMixin, BolsterCarBase):
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3017,7 +3017,7 @@ class BoxCarType1(BoxCarBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3057,7 +3057,7 @@ class BoxCarType2(BoxCarBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3109,7 +3109,7 @@ class BoxCarCurtainSide(BoxCarBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3161,7 +3161,7 @@ class BoxCarMerchandise(BoxCarBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3191,7 +3191,7 @@ class BoxCarRandomised(RandomisedCarMixin, BoxCarBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3255,7 +3255,7 @@ class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3296,7 +3296,7 @@ class BoxCarSlidingWallType2(BoxCarSlidingWallBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3345,7 +3345,7 @@ class BoxCarVehicleParts(BoxCarBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3376,7 +3376,7 @@ class BulkOpenCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3415,7 +3415,7 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
             bulk=True,
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3471,7 +3471,7 @@ class BulkOpenCarAggregateRandomised(RandomisedCarMixin, BulkOpenCarAggregateBas
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3504,7 +3504,7 @@ class BulkOpenCarHeavyDuty(BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3603,7 +3603,7 @@ class BulkOpenCarMineralRandomised(RandomisedCarMixin, BulkOpenCarMineralBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3679,7 +3679,7 @@ class BulkOpenCarScrapMetalRandomised(RandomisedCarMixin, BulkOpenCarScrapMetalB
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3781,7 +3781,7 @@ class BulkOpenCarTipplerRandomised(RandomisedCarMixin, BulkOpenCarTipplerBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3810,7 +3810,7 @@ class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3841,7 +3841,7 @@ class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3873,7 +3873,7 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3907,7 +3907,7 @@ class CabooseCarUnit(CarModelTypeBase):
             caboose_families=self.model_def.caboose_families,
             buy_menu_sprite_pairs=self.model_def.buy_menu_sprite_pairs,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -3961,7 +3961,7 @@ class CaneBinCar(CarModelTypeBase):
             bulk=True,
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -3996,7 +3996,7 @@ class CarbonBlackHopperCar(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4052,7 +4052,7 @@ class CoilBuggyCarUnit(CarModelTypeBase):
                 ["loaded_0", 40],
             ],
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4115,7 +4115,7 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
             piece="coil",
             has_cover=True,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -4160,7 +4160,7 @@ class CoilCarCovered(CoilCarBase):
             piece="coil",
             has_cover=True,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4204,7 +4204,7 @@ class CoilCarTarpaulin(CoilCarBase):
             piece="coil",
             has_cover=True,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4241,7 +4241,7 @@ class CoilCarUncovered(CoilCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="coil",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4270,7 +4270,7 @@ class DedicatedCoilCarRandomised(RandomisedCarMixin, CoilCarBase):
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -4327,7 +4327,7 @@ class CoveredHopperCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4408,7 +4408,7 @@ class CoveredHopperCarRandomised(RandomisedCarMixin, CoveredHopperCarBase):
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4451,7 +4451,7 @@ class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4508,7 +4508,7 @@ class ExpressCarUnit(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4540,7 +4540,7 @@ class ExpressFoodCarRandomised(RandomisedCarMixin, CarModelTypeBase):
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4596,7 +4596,7 @@ class ExpressFoodTankCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4640,7 +4640,7 @@ class ExpressFoodTankCarRandomised(RandomisedCarMixin, ExpressFoodTankCarBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4681,7 +4681,7 @@ class ExpressIntermodalCarUnit(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             formation_ruleset="2_unit_sets",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -4726,7 +4726,7 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4773,7 +4773,7 @@ class FarmProductsBoxCarRandomised(RandomisedCarMixin, FarmProductsBoxCarBase):
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4811,7 +4811,7 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4858,7 +4858,7 @@ class FarmProductsHopperCarRandomised(RandomisedCarMixin, FarmProductsHopperCarB
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4883,7 +4883,7 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4944,7 +4944,7 @@ class FoodHopperCarRandomised(RandomisedCarMixin, FoodHopperCarBase):
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -4979,7 +4979,7 @@ class FlatCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5013,7 +5013,7 @@ class FlatCarBulkheadBase(FlatCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5056,7 +5056,7 @@ class FlatCarBulkheadRandomised(RandomisedCarMixin, FlatCarBulkheadBase):
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5155,7 +5155,7 @@ class FlatCarHeavyDuty(FlatCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5219,7 +5219,7 @@ class FlatCarMillRandomised(RandomisedCarMixin, FlatCarMillBase):
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5241,7 +5241,7 @@ class FlatCarRandomised(RandomisedCarMixin, FlatCarBase):
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5273,7 +5273,7 @@ class GasTankCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5357,7 +5357,7 @@ class HopperCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5523,7 +5523,7 @@ class HopperCarAggregateRandomised(RandomisedCarMixin, HopperCarAggregateBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5609,7 +5609,7 @@ class HopperCarMGRBase(HopperCarBase):
             bulk=True,
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5663,7 +5663,7 @@ class HopperCarRandomised(RandomisedCarMixin, HopperCarBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5796,7 +5796,7 @@ class IngotCarUnit(CarModelTypeBase):
                 ["loaded_0", 70],
             ],
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5835,7 +5835,7 @@ class IntermodalCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             formation_ruleset=formation_ruleset,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5915,7 +5915,7 @@ class KaolinHopperCar(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5965,7 +5965,7 @@ class LivestockCar(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -5999,7 +5999,7 @@ class LogCar(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="tree_length_logs",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6148,7 +6148,7 @@ class MailCar(MailCarBase):
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -6200,7 +6200,7 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
             formation_ruleset="railcars_4_unit_sets",
             pantograph_type=self.pantograph_type,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -6245,7 +6245,7 @@ class MailHighSpeedCar(MailCarBase):
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -6292,7 +6292,7 @@ class MailHSTCar(MailCarBase):
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -6433,7 +6433,7 @@ class MineralCoveredHopperCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6475,7 +6475,7 @@ class MineralCoveredHopperCarLimeBase(MineralCoveredHopperCarBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6618,7 +6618,7 @@ class MineralCoveredHopperCarRollerRoofBase(MineralCoveredHopperCarBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6714,7 +6714,7 @@ class MineralCoveredHopperCarSaltBase(MineralCoveredHopperCarBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6817,7 +6817,7 @@ class OpenCar(OpenCarBase):
             bulk=True,
             piece="open",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6860,7 +6860,7 @@ class OpenCarHood(OpenCarBase):
             weathered_variants=weathered_variants,
             has_cover=True,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6896,7 +6896,7 @@ class OpenCarHighEnd(OpenCarBase):
             piece="open",
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -6938,7 +6938,7 @@ class OpenCarMill(OpenCarBase):
             bulk=True,
             piece="open",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -7103,7 +7103,7 @@ class PanoramicCar(PassengerCarBase):
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -7154,7 +7154,7 @@ class PassengerCar(PassengerCarBase):
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -7202,7 +7202,7 @@ class PassengerHighSpeedCar(PassengerCarBase):
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -7253,7 +7253,7 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
             formation_ruleset="railcars_6_unit_sets",
             pantograph_type=self.pantograph_type,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -7301,7 +7301,7 @@ class PassengerHSTCar(PassengerCarBase):
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -7369,7 +7369,7 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
 
@@ -7418,7 +7418,7 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
 
@@ -7458,7 +7458,7 @@ class PassengerRestaurantCar(PassengerCarBase):
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -7507,7 +7507,7 @@ class PassengerSuburbanCar(PassengerCarBase):
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
     @property
@@ -7555,7 +7555,7 @@ class PeatCar(CarModelTypeBase):
             bulk=True,
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -7605,7 +7605,7 @@ class PieceGoodsCarCoveredRandomised(PieceGoodsCarRandomisedBase):
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -7631,7 +7631,7 @@ class PieceGoodsCarMixedRandomised(PieceGoodsCarRandomisedBase):
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -7656,7 +7656,7 @@ class PieceGoodsCarManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=1,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -7692,7 +7692,7 @@ class PipeCar(FlatCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -7731,7 +7731,7 @@ class ReeferCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -7787,7 +7787,7 @@ class ReeferCarRandomised(RandomisedCarMixin, ReeferCarBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -7849,7 +7849,7 @@ class SiloCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -7928,7 +7928,7 @@ class SiloCarRandomised(RandomisedCarMixin, SiloCarBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -7958,7 +7958,7 @@ class SiloCarCementType1(SiloCarBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -7988,7 +7988,7 @@ class SiloCarCementType2(SiloCarBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8018,7 +8018,7 @@ class SiloCarCementType3(SiloCarBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8044,7 +8044,7 @@ class SiloCarCementRandomised(RandomisedCarMixin, SiloCarBase):
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8094,7 +8094,7 @@ class SlidingRoofCar(BoxCarBase):
             piece="flat",
             has_cover=True,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8142,7 +8142,7 @@ class SlidingRoofCarHiCube(BoxCarBase):
             piece="flat",
             has_cover=True,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8194,7 +8194,7 @@ class SlagLadleCarUnit(CarModelTypeBase):
                 ["loaded_0", 70],
             ],
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8265,7 +8265,7 @@ class TankCarAcidBase(TankCarBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8318,7 +8318,7 @@ class TankCarAcidRandomised(RandomisedCarMixin, TankCarAcidBase):
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8347,7 +8347,7 @@ class TankCarChemicalRandomised(RandomisedCarMixin, TankCarBase):
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8403,7 +8403,7 @@ class TankCarProductBase(TankCarBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8446,7 +8446,7 @@ class TankCarProductRandomised(RandomisedCarMixin, TankCarProductBase):
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8492,7 +8492,7 @@ class TankCarStandardBase(TankCarBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8543,7 +8543,7 @@ class TankCarStandardRandomised(RandomisedCarMixin, TankCarStandardBase):
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8592,7 +8592,7 @@ class TankCarVolatilesBase(TankCarBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8659,7 +8659,7 @@ class TarpaulinCarBase(BoxCarBase):
             has_cover=True,
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8718,7 +8718,7 @@ class TarpaulinCarType3(TarpaulinCarBase):
             has_cover=True,
             weathered_variants=weathered_variants,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8746,7 +8746,7 @@ class TarpaulinCarRandomised(RandomisedCarMixin, TarpaulinCarBase):
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 
@@ -8792,7 +8792,7 @@ class TorpedoCarUnit(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_torpedo_car.pynml",
             factory=self.factory,
-            cabbage_catalogue_entry=self.cabbage_catalogue_entry,
+            catalogue_entry=self.catalogue_entry,
         )
 
 

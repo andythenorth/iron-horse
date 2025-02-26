@@ -18,7 +18,7 @@ class GestaltGraphics(object):
 
     def __init__(self, **kwargs):
         self.factory = kwargs["factory"]
-        self.cabbage_catalogue_entry = kwargs["cabbage_catalogue_entry"]
+        self.catalogue_entry = kwargs["catalogue_entry"]
         # by default, pipelines are empty
         self.pipelines = pipelines.get_pipelines([])
         # sometimes processing may depend on another generated vehicle spritesheet, so there are multiple processing priorities, 1 = highest

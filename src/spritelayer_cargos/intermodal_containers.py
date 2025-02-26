@@ -15,7 +15,7 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
         self.base_id = "intermodal_containers"
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             factory=None,  # CABBAGE
-            cabbage_catalogue_entry=None,  # CABBAGE
+            catalogue_entry=None,  # CABBAGE
         )
         self.provide_container_shadows = True
 
@@ -326,7 +326,7 @@ def main():
     for subtype, subtype_suffix in set(
         GestaltGraphicsIntermodalContainerTransporters(
             factory=None,  # CABBAGE
-            cabbage_catalogue_entry=None,  # CABBAGE
+            catalogue_entry=None,  # CABBAGE
         ).cargo_label_mapping.values()
     ):
         # exclude DFLT, handled explicitly elsewhere

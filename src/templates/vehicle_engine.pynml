@@ -2,7 +2,7 @@
      <!--! this is the default template for trains that don't supply their own template -->
 
     spriteset(${vehicle.id}_ss, "${graphics_path}${consist.model_id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.rel_spriterow_index * len(consist.model_def.liveries) * 30) + (consist.cabbage_catalogue_entry.livery_def.relative_spriterow_num * 30))}
+        ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.rel_spriterow_index * len(consist.model_def.liveries) * 30) + (consist.catalogue_entry.livery_def.relative_spriterow_num * 30))}
     }
 
     <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
@@ -38,7 +38,7 @@
 
     // buy menu graphics chain
     spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id}.png") {
-        ${consist.get_nml_for_spriteset_template(y_offset=consist.cabbage_catalogue_entry.livery_def.relative_spriterow_num * 30)}
+        ${consist.get_nml_for_spriteset_template(y_offset=consist.catalogue_entry.livery_def.relative_spriterow_num * 30)}
     }
 
     <tal:conditional_pantographs condition="consist.pantograph_type is not None">
@@ -104,8 +104,8 @@
     <!--! dedicated colour remapping with rules against specific cc2 colours-->
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id) {
         <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
-            <tal:livery define="livery consist.cabbage_catalogue_entry.livery_def"><!--! CABBAGE -->
-                <tal:optional_forced_recolour switch="getattr(consist.cabbage_catalogue_entry.livery_def, 'remap_to_cc', None) is not None">
+            <tal:livery define="livery consist.catalogue_entry.livery_def"><!--! CABBAGE -->
+                <tal:optional_forced_recolour switch="getattr(consist.catalogue_entry.livery_def, 'remap_to_cc', None) is not None">
                     <tal:block case="True">
                         <!--! recolour CC2 to arbitrary other CC as defined by livery -->
                         ${unit_variant.numeric_id}: palette_2cc(${livery.remap_to_cc['company_colour1']}, ${livery.remap_to_cc['company_colour2']});

@@ -240,7 +240,7 @@ class ModelVariantFactory:
         return False
 
     def is_default_model_variant(self, model_variant):
-        return model_variant.cabbage_catalogue_entry == self.catalogue[0]
+        return model_variant.catalogue_entry == self.catalogue[0]
 
     @property
     def model_id(self):

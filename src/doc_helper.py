@@ -218,7 +218,7 @@ class DocHelper(object):
 
         for buyable_variant in buyable_variants_for_docs:
             # CABBAGE SHIM - THIS DOESN'T WORK, NEED TO REFACTOR buyable_variants_for_docs and work from factory and catalogue
-            livery_def = consist.cabbage_catalogue_entry.livery_def
+            livery_def = consist.catalogue_entry.livery_def
 
             if isinstance(livery_def, dict):
                 # CABBAGE REFACTORING SHIM
