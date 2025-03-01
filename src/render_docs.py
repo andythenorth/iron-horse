@@ -137,10 +137,8 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
     # I'm not going to try and handle that in python, makefile will handle it in production
     # for development, just run render_graphics manually before running render_docs
 
-    factory = consist.catalogue_entry.catalogue.factory
-
     vehicle_spritesheet = Image.open(
-        os.path.join(generated_graphics_path, factory.input_spritesheet_name_stem + ".png")
+        os.path.join(generated_graphics_path, consist.catalogue_entry.input_spritesheet_name_stem + ".png")
     )
 
     # these 'source' var names for images are misleading
@@ -156,9 +154,9 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
     # !! CABBAGE - LOOKS LIKE FOR PRACTICALITY, THIS WILL NEED A CONSIST IN SCOPE AT ALL TIME?
     # !! we can't just infer everything from factory, some things need instantiated model type class in scope
     for variant in doc_helper.get_docs_livery_variants(consist):
-        if factory.model_def.docs_image_spriterow is not None:
-            y_offset = 30 * factory.model_def.docs_image_spriterow
-        # CABBAGE requires_custom_buy_menu_sprite could be folded into factory
+        if consist.model_def.docs_image_spriterow is not None:
+            y_offset = 30 * consist.model_def.docs_image_spriterow
+        # CABBAGE requires_custom_buy_menu_sprite could be folded into factory or catalogue entry
         elif consist.requires_custom_buy_menu_sprite:
             y_offset = 30 * variant["buyable_variant"].relative_spriterow_num
         else:

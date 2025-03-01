@@ -12,7 +12,6 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
         super().__init__(**kwargs)
         self.base_id = "automobiles"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            factory=None,  # CABBAGE
             catalogue_entry=None,  # CABBAGE
         )
 
@@ -496,7 +495,6 @@ def main():
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
         GestaltGraphicsAutomobilesTransporter(
-            factory=None,  # CABBAGE
             catalogue_entry=None,  # CABBAGE
         ).cargo_label_mapping.values()
     ):
