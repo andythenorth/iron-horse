@@ -19,6 +19,7 @@ class UnitBase(object):
         self.unit_def = unit_def
         self.consist = consist
         self.id = id
+        self.numeric_id = numeric_id
         #print(numeric_id)
         # create an id, which is used for shared switch chains, and as base id for unit variants to construct an id
         if len(self.consist.unique_units) == 0:

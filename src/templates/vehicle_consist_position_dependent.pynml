@@ -189,7 +189,7 @@ spriteset(${vehicle.id}_ss_vehicle_purchase_${vehicle.cabbage_unit_variant.buyab
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase, vehicle_type_id) {
-    ${vehicle.cabbage_unit_variant.numeric_id}: return ${vehicle.id}_ss_vehicle_purchase_${vehicle.cabbage_unit_variant.buyable_variant.buyable_variant_num};
+    ${vehicle.numeric_id}: return ${vehicle.id}_ss_vehicle_purchase_${vehicle.cabbage_unit_variant.buyable_variant.buyable_variant_num};
     <!--! no default, by design all variants should be explicitly found -->
 }
 <tal:conditional_pantographs switch="(consist.pantograph_type is not None) and (not consist.suppress_pantograph_if_no_engine_attached)">
@@ -226,10 +226,10 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id)
     <!--! CABBAGE SHIM-->
     <tal:forced_remap switch="getattr(consist.catalogue_entry.livery_def, 'remap_to_cc', None) is not None">
         <tal:remap case="True">
-            ${vehicle.cabbage_unit_variant.numeric_id}: return base_sprite_2cc + 16 * ${consist.catalogue_entry.livery_def.remap_to_cc['company_colour2']} + ${consist.catalogue_entry.livery_def.remap_to_cc['company_colour1']};
+            ${vehicle.numeric_id}: return base_sprite_2cc + 16 * ${consist.catalogue_entry.livery_def.remap_to_cc['company_colour2']} + ${consist.catalogue_entry.livery_def.remap_to_cc['company_colour1']};
         </tal:remap>
         <tal:no_remap case="False">
-            ${vehicle.cabbage_unit_variant.numeric_id}:return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+            ${vehicle.numeric_id}:return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
         </tal:no_remap>
     </tal:forced_remap
 }

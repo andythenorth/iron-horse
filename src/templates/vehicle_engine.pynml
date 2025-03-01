@@ -106,11 +106,11 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id)
         <tal:optional_forced_recolour switch="getattr(consist.catalogue_entry.livery_def, 'remap_to_cc', None) is not None">
             <tal:block case="True">
                 <!--! recolour CC2 to arbitrary other CC as defined by livery -->
-                ${vehicle.cabbage_unit_variant.numeric_id}: palette_2cc(${livery.remap_to_cc['company_colour1']}, ${livery.remap_to_cc['company_colour2']});
+                ${vehicle.numeric_id}: palette_2cc(${livery.remap_to_cc['company_colour1']}, ${livery.remap_to_cc['company_colour2']});
             </tal:block>
             <tal:block case="False">
                 <!--! apply regular 1CC and 2CC -->
-                ${vehicle.cabbage_unit_variant.numeric_id}: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                ${vehicle.numeric_id}: base_sprite_2cc + 16 * company_colour2 + company_colour1;
             </tal:block>
         </tal:optional_forced_recolour>
     </tal:livery>

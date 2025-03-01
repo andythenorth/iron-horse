@@ -36,7 +36,7 @@
     <tal:include metal:use-macro="load: buy_menu_additional_text.pynml" />
 </tal:buy_menu_additional_text>
 
-item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.cabbage_unit_variant.numeric_id}) {
+item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
         <!--! name static prop used for buy menu search only -->
         name:                           ${consist.get_name_as_property()};
@@ -164,7 +164,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.cabbage_unit_variant.numeric_id}) {
     <!--! constructing combinatorial 'if' expressions is too complicated, just turn the vehicle on or off in a cascading way that will probably go wrong eh? -->
 
     <!--! first default to 'on' if lead unit of a consist (we don't want trailing parts -->
-    item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.cabbage_unit_variant.numeric_id}) {
+    item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         property {
             climates_available:             ALL_CLIMATES;
         }
@@ -172,7 +172,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.cabbage_unit_variant.numeric_id}) {
     <tal:vehicle_availability_engines condition="not: consist.is_general_purpose_true_wagon">
         <tal:simplified_gameplay_only_mode condition="consist.joker or not vehicle.cabbage_unit_variant.buyable_variant.is_default_buyable_variant_for_consist">
             if (param_vehicle_availability_engines==1) {
-                item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.cabbage_unit_variant.numeric_id}) {
+                item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
                     property {
                         climates_available:             NO_CLIMATE;
                         variant_group:                  0xFFFF; <!--! equivalent of INVALID_ENGINE - no variant group -->
@@ -181,7 +181,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.cabbage_unit_variant.numeric_id}) {
             }
         </tal:simplified_gameplay_only_mode>
         if (param_vehicle_availability_engines==2) {
-            item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.cabbage_unit_variant.numeric_id}) {
+            item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
                 property {
                     climates_available:             NO_CLIMATE;
                 }
@@ -191,7 +191,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.cabbage_unit_variant.numeric_id}) {
     <tal:vehicle_availability_wagons condition="consist.is_general_purpose_true_wagon">
         <tal:simplified_gameplay_only_mode condition="consist.joker or not vehicle.cabbage_unit_variant.buyable_variant.is_default_buyable_variant_for_consist">
             if (param_vehicle_availability_wagons==1) {
-                item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.cabbage_unit_variant.numeric_id}) {
+                item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
                     property {
                         climates_available:             NO_CLIMATE;
                         variant_group:                  0xFFFF; <!--! equivalent of INVALID_ENGINE - no variant group -->
@@ -200,7 +200,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.cabbage_unit_variant.numeric_id}) {
             }
         </tal:simplified_gameplay_only_mode>
         if (param_vehicle_availability_wagons==2) {
-            item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.cabbage_unit_variant.numeric_id}) {
+            item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
                 property {
                     climates_available:             NO_CLIMATE;
                 }
