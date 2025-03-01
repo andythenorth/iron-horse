@@ -53,7 +53,7 @@ class Pipeline(object):
             "src",
             "graphics",
             "chassis",
-            self.vehicle_unit._unit_def.chassis + ".png",
+            self.vehicle_unit.unit_def.chassis + ".png",
         )
 
     @property
@@ -1141,7 +1141,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # roof is composited (N.B. gangways are not, just draw them in vehicle sprite, handling asymmetric railcar cases would be one step too far on automation)
         if (
             self.vehicle_unit.roof is not None
-            and not self.vehicle_unit._unit_def.suppress_roof_sprite
+            and not self.vehicle_unit.unit_def.suppress_roof_sprite
         ):
             crop_box_roof_dest = (
                 0,

@@ -14,17 +14,18 @@ class UnitBase(object):
     Base class for all types of units
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, *, consist, unit_def, id, numeric_id):
         # unit def is private, the public interface shouldn't use it, wrap @property methods around it as needed
-        self._unit_def = kwargs["unit_def"]
-        self.consist = kwargs.get("consist")
+        self.unit_def = unit_def
+        self.consist = consist
+        self.id = id
+        #print(numeric_id)
         # create an id, which is used for shared switch chains, and as base id for unit variants to construct an id
         if len(self.consist.unique_units) == 0:
             # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc
             self.id = self.consist.id
             self.cabbage_numeric_id = 0
         else:
-            self.id = self.consist.id + "_unit_" + str(len(self.consist.unique_units))
             self.cabbage_numeric_id = len(self.consist.unique_units)
         # create structure to hold the buyable variants, done last as may depend on other attrs of self
         # CABBAGE
@@ -58,8 +59,8 @@ class UnitBase(object):
     def tail_light(self):
         # optional - some engine units need to set explicit tail light spritesheets
         # subclasses may override this, e.g. wagons have an automatic tail light based on vehicle length
-        if self._unit_def.tail_light is not None:
-            return self._unit_def.tail_light
+        if self.unit_def.tail_light is not None:
+            return self.unit_def.tail_light
         else:
             return "empty"
 
@@ -70,15 +71,15 @@ class UnitBase(object):
 
     @property
     def rel_spriterow_index(self):
-        if self._unit_def.rel_spriterow_index is not None:
-            return self._unit_def.rel_spriterow_index
+        if self.unit_def.rel_spriterow_index is not None:
+            return self.unit_def.rel_spriterow_index
         else:
             return 0
 
     @property
     def capacity(self):
-        if self._unit_def.capacity is not None:
-            return self._unit_def.capacity
+        if self.unit_def.capacity is not None:
+            return self.unit_def.capacity
         else:
             return 0
 
@@ -140,34 +141,34 @@ class UnitBase(object):
     @property
     def weight(self):
         # weight can be set explicitly via unit_def or by methods on subclasses
-        return self._unit_def.weight
+        return self.unit_def.weight
 
     @property
     def vehicle_length(self):
         # length of this unit, either derived from from chassis length, or set explicitly via keyword
         # first guard that one and only one of these props is set
         if (
-            self._unit_def.vehicle_length is not None
-            and self._unit_def.chassis is not None
+            self.unit_def.vehicle_length is not None
+            and self.unit_def.chassis is not None
         ):
             utils.echo_message(
                 self.consist.id
                 + " has units with both chassis and length properties set"
             )
-        if self._unit_def.vehicle_length is None and self._unit_def.chassis is None:
+        if self.unit_def.vehicle_length is None and self.unit_def.chassis is None:
             utils.echo_message(
                 self.consist.id
                 + " has units with neither chassis nor length properties set"
             )
 
-        if self._unit_def.chassis is not None:
+        if self.unit_def.chassis is not None:
             # assume that chassis name format is 'foo_bar_ham_eggs_24px' or similar - true as of Nov 2020
             # if chassis name format changes / varies in future, just update the string slice accordingly, safe enough
             # splits on _, then takes last entry, then slices to remove 'px'
-            result = int(self._unit_def.chassis.split("_")[-1][0:-2])
+            result = int(self.unit_def.chassis.split("_")[-1][0:-2])
             return int(result / 4)
         else:
-            return self._unit_def.vehicle_length
+            return self.unit_def.vehicle_length
 
     @property
     def availability(self):
@@ -186,8 +187,8 @@ class UnitBase(object):
 
     @property
     def symmetry_type(self):
-        if self._unit_def.symmetry_type is not None:
-            symmetry_type = self._unit_def.symmetry_type
+        if self.unit_def.symmetry_type is not None:
+            symmetry_type = self.unit_def.symmetry_type
         else:
             symmetry_type = self._symmetry_type
         assert symmetry_type in [
@@ -303,8 +304,8 @@ class UnitBase(object):
         # provides part of nml switch for effects (smoke)
 
         # effects can be over-ridden per vehicle, or use a default from the vehicle subclass
-        if self._unit_def.effect_offsets is not None:
-            effect_offsets = self._unit_def.effect_offsets
+        if self.unit_def.effect_offsets is not None:
+            effect_offsets = self.unit_def.effect_offsets
         else:
             effect_offsets = self.default_effect_offsets
 
@@ -312,8 +313,8 @@ class UnitBase(object):
             print("TOASTER", effect_offsets)
 
         # z offset is handled independently to x, y for simplicity, option to override z offset default per vehicle
-        if self._unit_def.effect_z_offset is not None:
-            z_offset = self._unit_def.effect_z_offset
+        if self.unit_def.effect_z_offset is not None:
+            z_offset = self.unit_def.effect_z_offset
         else:
             z_offset = self.default_effect_z_offset
 
@@ -667,8 +668,8 @@ class ElectricEngineUnit(UnitBase):
     @property
     def effects(self):
         # option to suppress default effects here via unit_def
-        if self._unit_def.effects is not None:
-            return self._unit_def.effects
+        if self.unit_def.effects is not None:
+            return self.unit_def.effects
         else:
             return {
                 "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
@@ -688,8 +689,8 @@ class ElectricHighSpeedUnitBase(UnitBase):
     @property
     def effects(self):
         # option to suppress default effects here via unit_def
-        if self._unit_def.effects is not None:
-            return self._unit_def.effects
+        if self.unit_def.effects is not None:
+            return self.unit_def.effects
         else:
             return {
                 "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
@@ -875,8 +876,8 @@ class MetroUnit(UnitBase):
 
     @property
     def capacity(self):
-        if self._unit_def.capacity is not None:
-            return self._unit_def.capacity
+        if self.unit_def.capacity is not None:
+            return self.unit_def.capacity
         else:
             return 0
 
@@ -1031,12 +1032,12 @@ class PaxRailcarTrailerCarUnit(PaxCarUnit):
     def tail_light(self):
         # CarUnitBase sets auto tail light, override it in unit_def, fail if not set
         assert (
-            self._unit_def.tail_light is not None
+            self.unit_def.tail_light is not None
         ), "%s consist has a unit without tail_light set, which is required for %s" % (
             self.id,
             self.__class__.__name__,
         )
-        return self._unit_def.tail_light
+        return self.unit_def.tail_light
 
 
 class PaxRestaurantCarUnit(PaxCarUnit):
@@ -1105,12 +1106,12 @@ class MailRailcarTrailerCarUnit(ExpressCarUnit):
     def tail_light(self):
         # CarUnitBase sets auto tail light, override it in unit_def, fail if not set
         assert (
-            self._unit_def.tail_light is not None
+            self.unit_def.tail_light is not None
         ), "%s consist has a unit without tail_light set, which is required for %s" % (
             self.id,
             self.__class__.__name__,
         )
-        return self._unit_def.tail_light
+        return self.unit_def.tail_light
 
 
 class AutomobileCarAsymmetricUnit(ExpressCarUnit):
@@ -1163,12 +1164,12 @@ class FreightCarUnit(CarUnitBase):
 
     @property
     def capacity(self):
-        if self._unit_def.capacity is not None:
+        if self.unit_def.capacity is not None:
             print(
                 self.consist.id,
                 self.id,
                 " has a capacity set in init - possibly incorrect",
-                self._unit_def.capacity,
+                self.unit_def.capacity,
             )
         # magic to set freight car capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[

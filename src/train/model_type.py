@@ -8666,19 +8666,12 @@ class BuyableVariant(object):
         # option to point this livery to a specific row in the spritesheet, relative to the block of livery spriterows for the specific unit or similar
         # this is just for convenience if spritesheets are a chore to re-order
         try:
-            if isinstance(livery_def, dict):
-                # CABBAGE REFACTORING SHIM - MIGHT NOT BE USED?
-                self.livery = livery_def
-                self._relative_spriterow_num = livery_def.get(
-                    "relative_spriterow_num", None
-                )
-            else:
-                # CABBAGE REFACTORING SHIM - PARSE livery_def back to dict, temporarily, as consumers want a dict
-                self._relative_spriterow_num = livery_def.relative_spriterow_num
-                self.livery = {
-                    "docs_image_input_cc": livery_def.docs_image_input_cc,
-                    "colour_set": livery_def.colour_set,
-                }
+            # CABBAGE REFACTORING SHIM - PARSE livery_def back to dict, temporarily, as consumers want a dict
+            self._relative_spriterow_num = livery_def.relative_spriterow_num
+            self.livery = {
+                "docs_image_input_cc": livery_def.docs_image_input_cc,
+                "colour_set": livery_def.colour_set,
+            }
         except:
             # CABBAGE TEMP EXCEPTION HANDLING
             raise Exception(

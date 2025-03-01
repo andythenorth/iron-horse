@@ -127,6 +127,7 @@ class CatalogueEntry:
     It aggregates properties derived from model_def and computed by the factory, ensuring
     consumers can access necessary data without referencing the factory directly.
     """
+
     catalogue: "Catalogue"
     model_id: str
     model_variant_id: str
@@ -210,7 +211,7 @@ class ModelVariantFactory:
         )
 
         # orchestrate addition of units
-        for unit_def in self.model_def.unit_defs:
+        for counter, unit_def in enumerate(self.model_def.unit_defs):
             try:
                 unit_cls = getattr(unit_module, unit_def.class_name)
             except:
@@ -222,8 +223,13 @@ class ModelVariantFactory:
                 )
             # CABBAGE - this is delegating to model_variant currently, by passing unit classes, we want to pass actual units from here, model variant knows too much
             # print(unit_cls, unit)
-        # now add the units
-            unit = unit_cls(consist=model_variant, unit_def=unit_def)
+            # now add the units
+            unit = unit_cls(
+                consist=model_variant,
+                unit_def=unit_def,
+                id=catalogue_entry.unit_variant_ids[counter],
+                numeric_id=catalogue_entry.unit_numeric_ids[counter],
+            )
             for repeat_num in range(unit_def.repeat):
                 model_variant.units.append(unit)
 
@@ -264,9 +270,7 @@ class ModelVariantFactory:
             return self.model_def.model_id
         else:
             # we assume it's a wagon id
-            return self.get_wagon_id(
-                self.model_type_cls.model_id_root, self.model_def
-            )
+            return self.get_wagon_id(self.model_type_cls.model_id_root, self.model_def)
 
     def get_wagon_id(self, model_id_root, model_def):
         # auto id creator, used for wagons not engines
@@ -297,7 +301,9 @@ class ModelVariantFactory:
         assert self.model_def.gen != None, (
             "%s has no gen value set, which is incorrect" % self.model_id
         )
-        result = self.roster.intro_years[self.base_track_type_name][self.model_def.gen - 1]
+        result = self.roster.intro_years[self.base_track_type_name][
+            self.model_def.gen - 1
+        ]
         if self.model_def.intro_year_offset is not None:
             result = result + self.model_def.intro_year_offset
         return result
@@ -355,28 +361,18 @@ class Catalogue(list):
         for livery_counter, livery_def in enumerate(instance.livery_defs):
             if "RANDOM_FROM_CONSIST_LIVERIES_" in livery_def.livery_name:
                 continue
-            model_variant_id = (
-                f"{instance.factory.model_id}_mv_{livery_counter}"
-            )
+            model_variant_id = f"{instance.factory.model_id}_mv_{livery_counter}"
             unit_variant_ids = [
                 f"{model_variant_id}_unit_{i}"
-                for i, _ in enumerate(
-                    instance.factory.model_def.unit_defs
-                )
+                for i, _ in enumerate(instance.factory.model_def.unit_defs)
             ]
             # pre-calculated numeric IDs provided for every unit
-            numeric_id_offset = (
-                instance.factory.model_def.base_numeric_id
-                + (
-                    livery_counter
-                    * len(instance.factory.model_def.unit_defs)
-                )
+            numeric_id_offset = instance.factory.model_def.base_numeric_id + (
+                livery_counter * len(instance.factory.model_def.unit_defs)
             )
             unit_numeric_ids = [
                 numeric_id_offset + i
-                for i, _ in enumerate(
-                    instance.factory.model_def.unit_defs
-                )
+                for i, _ in enumerate(instance.factory.model_def.unit_defs)
             ]
 
             # certain static properties are copied into the catalogue_entry from the factory
@@ -392,7 +388,7 @@ class Catalogue(list):
                 livery_def=livery_def,
                 input_spritesheet_name_stem=factory.input_spritesheet_name_stem,
                 intro_year=factory.intro_year,
-                base_track_type_name=factory.base_track_type_name
+                base_track_type_name=factory.base_track_type_name,
             )
             instance.append(catalogue_entry)
         return instance
@@ -464,9 +460,7 @@ class Catalogue(list):
         # Then try to get liveries directly from model_type_cls
         if hasattr(self.factory.model_type_cls, "liveries"):
             result = []
-            for index, name in enumerate(
-                self.factory.model_type_cls.liveries
-            ):
+            for index, name in enumerate(self.factory.model_type_cls.liveries):
                 result.append(
                     iron_horse.livery_supplier.deliver(
                         name, relative_spriterow_num=index

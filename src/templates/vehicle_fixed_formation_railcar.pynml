@@ -4,10 +4,10 @@
 
 <tal:liveries repeat="livery catalogue_entry.catalogue">
     spriteset(${vehicle.id}_ss_doors_closed_${repeat.livery.index}, "${graphics_path}${consist.model_id}.png") {
-        ${vehicle.get_spriteset_template_name('reversed' if vehicle._unit_def.reverse_sprite_template else 'unreversed', 10 + (repeat.livery.index * 60) + (vehicle.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
+        ${vehicle.get_spriteset_template_name('reversed' if vehicle.unit_def.reverse_sprite_template else 'unreversed', 10 + (repeat.livery.index * 60) + (vehicle.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
     }
     spriteset(${vehicle.id}_ss_doors_open_${repeat.livery.index}, "${graphics_path}${consist.model_id}.png") {
-        ${vehicle.get_spriteset_template_name('reversed' if vehicle._unit_def.reverse_sprite_template else 'unreversed', 10 + 30 + (repeat.livery.index * 60) + (vehicle.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
+        ${vehicle.get_spriteset_template_name('reversed' if vehicle.unit_def.reverse_sprite_template else 'unreversed', 10 + 30 + (repeat.livery.index * 60) + (vehicle.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
     }
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_doors_${repeat.livery.index}, switch_graphics_opening_doors()) {
         0: return ${vehicle.id}_ss_doors_closed_${repeat.livery.index};

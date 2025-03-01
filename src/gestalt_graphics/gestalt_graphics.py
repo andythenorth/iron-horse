@@ -378,7 +378,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # so we can take the last value of start_y_cumulative, apply the offset multiplier, then rewrite the y values in result
         # n.b. by default force_spriterow_group_in_output_spritesheet = 0, so this has no effect unless explicitly set
         vehicle_y_offset = (
-            vehicle._unit_def.force_spriterow_group_in_output_spritesheet
+            vehicle.unit_def.force_spriterow_group_in_output_spritesheet
             * (start_y_cumulative - graphics_constants.spritesheet_top_margin)
         )
         for row_map in result:
@@ -396,7 +396,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     ):
         result = (
             len(self.get_unique_spritesets(unit))
-            * unit._unit_def.force_spriterow_group_in_output_spritesheet
+            * unit.unit_def.force_spriterow_group_in_output_spritesheet
         )
         return result
 
