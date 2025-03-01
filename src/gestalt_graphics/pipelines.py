@@ -133,7 +133,7 @@ class PassThroughPipeline(Pipeline):
     def render(self, consist, global_constants, graphics_output_path):
         self.units = []
         self.consist = consist
-        self.factory = self.consist.factory
+        self.factory = self.consist.catalogue_entry.catalogue.factory
         self.graphics_output_path = graphics_output_path
 
         if (
@@ -411,7 +411,7 @@ class GenerateEmptySpritesheet(Pipeline):
     def render(self, consist, global_constants, graphics_output_path):
         self.units = []
         self.consist = consist
-        self.factory = self.consist.factory
+        self.factory = self.consist.catalogue_entry.catalogue.factory
         self.graphics_output_path = graphics_output_path
 
         empty_spriterow_image = Image.open(
@@ -529,7 +529,7 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
 
         self.units = []
         self.consist = consist
-        self.factory = self.consist.factory
+        self.factory = self.consist.catalogue_entry.catalogue.factory
         self.graphics_output_path = graphics_output_path
 
         self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
@@ -572,7 +572,7 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
 
         self.units = []
         self.consist = consist
-        self.factory = self.consist.factory
+        self.factory = self.consist.catalogue_entry.catalogue.factory
         self.graphics_output_path = graphics_output_path
 
         self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
@@ -761,7 +761,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
     def render(self, consist, global_constants, graphics_output_path):
         self.units = []
         self.consist = consist
-        self.factory = self.consist.factory
+        self.factory = self.consist.catalogue_entry.catalogue.factory
         self.graphics_output_path = graphics_output_path
 
         self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
@@ -1061,7 +1061,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
     def render(self, consist, global_constants, graphics_output_path):
         self.units = []
         self.consist = consist
-        self.factory = self.consist.factory
+        self.factory = self.consist.catalogue_entry.catalogue.factory
         self.global_constants = global_constants
         self.graphics_output_path = graphics_output_path
 
@@ -1880,7 +1880,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             []
         )  # graphics units not same as consist units ! confusing overlap of terminology :(
         self.consist = consist
-        self.factory = self.consist.factory
+        self.factory = self.consist.catalogue_entry.catalogue.factory
         self.global_constants = global_constants
         self.graphics_output_path = graphics_output_path
         self.sprites_max_x_extent = self.global_constants.sprites_max_x_extent

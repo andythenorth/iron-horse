@@ -17,7 +17,6 @@ class GestaltGraphics(object):
     """
 
     def __init__(self, **kwargs):
-        self.factory = kwargs["factory"]
         self.catalogue_entry = kwargs["catalogue_entry"]
         # by default, pipelines are empty
         self.pipelines = pipelines.get_pipelines([])
@@ -140,7 +139,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
                     ]
                 )
             )
-        self.num_pantograph_rows = len(self.factory.catalogue)
+        self.num_pantograph_rows = len(self.catalogue_entry.catalogue)
 
     @property
     def nml_template(self):
@@ -962,7 +961,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
             # note that we simply generate a row per vehicle position variant
             # this method leads to unnecessary rows for many cases
             # but is relied on for multiple unit (railcars etc) where not all vehicles have pans, in which case the row is simply empty
-            self.num_pantograph_rows = len(self.factory.catalogue) * (
+            self.num_pantograph_rows = len(self.catalogue_entry.catalogue) * (
                 1 + max(self.spriterow_group_mappings.values())
             )
 
@@ -980,7 +979,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         # there is some risk of divergence here from buyable variants, as those aren't passed to gestalt graphics currently
         # buyable variants _could_ be passed, it's just work to get that param added to all the classes using this gestalt
         spriterow_nums_seen = []
-        for livery_counter, livery_def in enumerate(self.factory.catalogue):
+        for livery_counter, livery_def in enumerate(self.catalogue_entry.catalogue):
             # CABBAGE SHIM
             if getattr(livery_def, "relative_spriterow_num", None) is None:
                 spriterow_nums_seen.append(livery_counter)
@@ -1019,7 +1018,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 source_row_num = position_variant_num
             # group of n rows - n liveries * two loaded/loading states (opening doors)
             row_group_size = self.num_load_state_or_similar_spriterows * len(
-                self.factory.catalogue
+                self.catalogue_entry.catalogue
             )
             for i in range(1, 1 + row_group_size):
                 result[base_row_num + (row_group_size * position_variant_num) + i] = (

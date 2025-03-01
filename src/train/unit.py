@@ -420,7 +420,6 @@ class UnitBase(object):
             vehicle=self,
             consist=self.consist,
             catalogue_entry=self.consist.catalogue_entry,
-            factory=self.consist.factory,
             global_constants=global_constants,
             utils=utils,
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure

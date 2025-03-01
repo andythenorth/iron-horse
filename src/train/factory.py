@@ -120,11 +120,12 @@ class UnitDef:
 
 @dataclass
 class CatalogueEntry:
+    catalogue: "Catalogue"
+    model_id: str
     model_variant_id: str
     unit_variant_ids: List[str]
     unit_numeric_ids: List[int]
     livery_def: "LiveryDef"
-
 
 class ModelVariantFactory:
     """
@@ -349,6 +350,8 @@ class Catalogue(list):
 
             # note that livery_name is an arbitrary string and might be repeated across model variants
             catalogue_entry = CatalogueEntry(
+                catalogue=instance,
+                model_id=instance.factory.model_id,
                 model_variant_id=model_variant_id,
                 unit_variant_ids=unit_variant_ids,
                 unit_numeric_ids=unit_numeric_ids,

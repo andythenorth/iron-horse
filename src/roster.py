@@ -319,7 +319,7 @@ class Roster(object):
                         f"Error: consist {consist.id} has a unit variant with a numeric_id that collides "
                         f"({numeric_id}) with a numeric_id of a unit variant in consist {colliding_consist.id}\n"
                         f"{[unit.unit_variants for unit in consist.units]}\n"
-                        f"{consist.factory.catalogue}\n"
+                        f"{consist.catalogue_entry.catalogue}\n"
                     )
                 else:
                     numeric_id_defender[numeric_id] = consist

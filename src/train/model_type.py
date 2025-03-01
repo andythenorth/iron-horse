@@ -39,8 +39,6 @@ class ModelTypeBase(object):
 
     def __init__(self, **kwargs):
         # mandatory, fail if missing
-        self.factory = kwargs["factory"]
-        # SHIM FOR REFACTORING - should just be catalogue_entry when done
         self.catalogue_entry = kwargs["catalogue_entry"]
         # create a structure to hold buyable variants - the method can be over-ridden in consist subclasses to provide specific rules for buyable variants
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
@@ -102,7 +100,6 @@ class ModelTypeBase(object):
         self.label_refits_disallowed = []
         # create a structure for cargo /livery graphics options
         self.gestalt_graphics = GestaltGraphics(
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
         # option to provide automatic roof for all units in the consist, leave as None for no generation
@@ -124,22 +121,22 @@ class ModelTypeBase(object):
 
     @property
     def model_id(self):
-        return self.factory.model_id
+        return self.catalogue_entry.model_id
 
     @property
     def model_def(self):
         # just a pass through for convenience
-        return self.factory.model_def
+        return self.catalogue_entry.catalogue.factory.model_def
 
     @property
     def roster_id(self):
         # just a pass through for convenience - we can't store roster directly as it won't pickle for multiprocessing, so store the id for lookups
-        return self.factory.roster_id
+        return self.catalogue_entry.catalogue.factory.roster_id
 
     @property
     def roster_id_providing_module(self):
         # just a pass through for convenience
-        return self.factory.roster_id_providing_module
+        return self.catalogue_entry.catalogue.factory.roster_id_providing_module
 
     @property
     def base_numeric_id(self):
@@ -156,7 +153,7 @@ class ModelTypeBase(object):
 
     @property
     def is_default_model_variant(self):
-        return self.factory.is_default_model_variant(self)
+        return self.catalogue_entry.catalogue.factory.is_default_model_variant(self)
 
     def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed
@@ -168,6 +165,8 @@ class ModelTypeBase(object):
         self.buyable_variants.append(BuyableVariant(self, livery_def=livery_def))
 
     def add_unit(self, unit_cls, unit_def):
+        # CABBAGE - this should be removable
+        # !! we should just be able to either set the units from the factory after init, or pass units to the init (better?)
         # we have add_unit create the variants when needed, which means we avoid sequencing problems with gestalt_graphics initialisation
         if len(self.buyable_variants) == 0:
             self.resolve_buyable_variants()
@@ -222,7 +221,7 @@ class ModelTypeBase(object):
             # extend with alternative cc livery if present, spritesheet format assumes unit_1_default, unit_1_additional_liveries, unit_2_default, unit_2_additional_liveries if present
             # !! this is suspect, it's not counting the actual number of liveries
             # CABBAGE SHIM - ALTHOUGH THIS MAKES NO SENSE TO ME
-            if len(self.factory.catalogue) > 1:
+            if len(self.cataloge_entry.catalogue) > 1:
                 result.append(unit + 1)
         return result
 
@@ -1021,14 +1020,14 @@ class ModelTypeBase(object):
             # guard against the decor spriterow not being updated when liveries are added
             if (
                 self.decor_spriterow_num
-                <= len(self.factory.catalogue) - 1
+                <= len(self.catalogue_entry.catalogue) - 1
             ):
                 raise BaseException(
                     self.model_id
                     + " has decor_spriterow_num "
                     + str(self.decor_spriterow_num)
                     + " and also "
-                    + str(len(self.factory.catalogue) - 1)
+                    + str(len(self.catalogue_entry.catalogue) - 1)
                     + " additional liveries defined. This will cause vehicle sprites to be incorrectly shown as decor."
                 )
             # if guard passes...
@@ -1145,7 +1144,7 @@ class ModelTypeBase(object):
     def get_candidate_liveries_for_randomised_strategy(self, livery):
         # this will only work with wagon liveries as of April 2023, and is intended to get remaps only
         result = []
-        for cabbage_candidate_livery in self.factory.catalogue:
+        for cabbage_candidate_livery in self.catalogue_entry.catalogue:
             if (
                 cabbage_candidate_livery.livery_def.colour_set
                 in global_constants.wagon_livery_mixes[livery["colour_set"]]
@@ -1359,7 +1358,6 @@ class EngineModelTypeBase(ModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsEngine(
             pantograph_type=self.pantograph_type,
             default_livery_extra_docs_examples=default_livery_extra_docs_examples,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -1543,7 +1541,6 @@ class AutoCoachCombineEngine(EngineModelTypeBase):
         # CABBAGE liveries - probably all gestalts need updated?
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_autocoach.pynml",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -1595,7 +1592,6 @@ class FixedFormationRailcarCombineEngine(EngineModelTypeBase):
         # inserts the default liveries for docs examples
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_fixed_formation_railcar.pynml",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -1666,7 +1662,6 @@ class MailEngineCabbageDVT(MailEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="driving_cab_cars",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -1708,15 +1703,13 @@ class MailEngineCargoSprinter(MailEngineBase):
         # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
         cargo_label_mapping = (
             GestaltGraphicsIntermodalContainerTransporters(
-                factory=self.factory,
-                catalogue_entry=self.catalogue_entry,
+                    catalogue_entry=self.catalogue_entry,
             ).cargo_label_mapping,
         )
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_cargo_sprinter.pynml",
             cargo_label_mapping=cargo_label_mapping,
             num_extra_layers_for_spritelayer_cargos=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -1761,7 +1754,6 @@ class MailEngineMetro(MailEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="metro",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -1837,7 +1829,6 @@ class MailEngineRailcar(MailEngineBase):
             spriterow_group_mappings,
             formation_ruleset=formation_ruleset,
             pantograph_type=self.pantograph_type,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -1895,13 +1886,12 @@ class MailEngineExpressRailcar(MailEngineBase):
         # * unit with no cabs (center car)
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         jfdi_pantograph_debug_image_y_offsets = [
-            len(self.factory.catalogue) * 60,
+            len(self.catalogue_entry.catalogue) * 60,
             30,
         ]
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_4_unit_sets",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
             jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
@@ -1980,7 +1970,6 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="driving_cab_cars",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -2049,7 +2038,7 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
         # position variants
         spriterow_group_mappings = {"default": 0, "first": 1, "last": 2, "special": 3}
         jfdi_pantograph_debug_image_y_offsets = [
-            len(self.factory.catalogue) * 60,
+            len(self.catalogue_entry.catalogue) * 60,
             30,
         ]
         # various rulesets are supported, per consist, (or could be extended to checks per roster)
@@ -2061,7 +2050,6 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset=formation_ruleset,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
             jfdi_pantograph_debug_image_y_offsets=jfdi_pantograph_debug_image_y_offsets,
@@ -2113,7 +2101,6 @@ class PassengerEngineMetro(PassengerEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="metro",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -2149,7 +2136,6 @@ class PassengerEngineRailbus(PassengerEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset=formation_ruleset,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
@@ -2223,7 +2209,6 @@ class PassengerEngineRailcar(PassengerEngineBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
@@ -2260,7 +2245,6 @@ class SnowploughEngine(EngineModelTypeBase):
         # inserts the default liveries for docs examples
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_snowplough.pynml",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -2376,7 +2360,6 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
             spriterow_group_mappings,
             formation_ruleset="tgv",
             default_livery_extra_docs_examples=self.cab_consist.gestalt_graphics.default_livery_extra_docs_examples,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
@@ -2746,7 +2729,6 @@ class AutomobileCarBase(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
             formation_ruleset=formation_ruleset,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -2865,7 +2847,6 @@ class AutomobileEnclosedCar(CarModelTypeBase):
         weathered_variants = {"unweathered": graphics_constants.body_recolour_CC1}
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -2909,7 +2890,6 @@ class BolsterCarBase(CarModelTypeBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -2954,7 +2934,6 @@ class BolsterCarRandomised(RandomisedCarMixin, BolsterCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3020,7 +2999,6 @@ class BoxCarType1(BoxCarBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3060,7 +3038,6 @@ class BoxCarType2(BoxCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3112,7 +3089,6 @@ class BoxCarCurtainSide(BoxCarBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3164,7 +3140,6 @@ class BoxCarMerchandise(BoxCarBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3194,7 +3169,6 @@ class BoxCarRandomised(RandomisedCarMixin, BoxCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3258,7 +3232,6 @@ class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3299,7 +3272,6 @@ class BoxCarSlidingWallType2(BoxCarSlidingWallBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3348,7 +3320,6 @@ class BoxCarVehicleParts(BoxCarBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3379,7 +3350,6 @@ class BulkOpenCarBase(CarModelTypeBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3418,7 +3388,6 @@ class BulkOpenCarAggregateBase(BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3474,7 +3443,6 @@ class BulkOpenCarAggregateRandomised(RandomisedCarMixin, BulkOpenCarAggregateBas
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3507,7 +3475,6 @@ class BulkOpenCarHeavyDuty(BulkOpenCarBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3606,7 +3573,6 @@ class BulkOpenCarMineralRandomised(RandomisedCarMixin, BulkOpenCarMineralBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3682,7 +3648,6 @@ class BulkOpenCarScrapMetalRandomised(RandomisedCarMixin, BulkOpenCarScrapMetalB
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3784,7 +3749,6 @@ class BulkOpenCarTipplerRandomised(RandomisedCarMixin, BulkOpenCarTipplerBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3813,7 +3777,6 @@ class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3844,7 +3807,6 @@ class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3876,7 +3838,6 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3910,7 +3871,6 @@ class CabooseCarUnit(CarModelTypeBase):
             spriterow_labels=self.model_def.spriterow_labels,
             caboose_families=self.model_def.caboose_families,
             buy_menu_sprite_pairs=self.model_def.buy_menu_sprite_pairs,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3964,7 +3924,6 @@ class CaneBinCar(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -3999,7 +3958,6 @@ class CarbonBlackHopperCar(CarModelTypeBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4055,7 +4013,6 @@ class CoilBuggyCarUnit(CarModelTypeBase):
                 ["loading_0", 40],
                 ["loaded_0", 40],
             ],
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4118,7 +4075,6 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
             weathered_variants=weathered_variants,
             piece="coil",
             has_cover=True,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4163,7 +4119,6 @@ class CoilCarCovered(CoilCarBase):
             weathered_variants=weathered_variants,
             piece="coil",
             has_cover=True,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4207,7 +4162,6 @@ class CoilCarTarpaulin(CoilCarBase):
             weathered_variants=weathered_variants,
             piece="coil",
             has_cover=True,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4244,7 +4198,6 @@ class CoilCarUncovered(CoilCarBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="coil",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4273,7 +4226,6 @@ class DedicatedCoilCarRandomised(RandomisedCarMixin, CoilCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4330,7 +4282,6 @@ class CoveredHopperCarBase(CarModelTypeBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4411,7 +4362,6 @@ class CoveredHopperCarRandomised(RandomisedCarMixin, CoveredHopperCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4454,7 +4404,6 @@ class CoveredHopperCarSwingRoof(CoveredHopperCarBase):
         # teal before pewter to ensure it appears in buy menu order for mixed version
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4511,7 +4460,6 @@ class ExpressCarUnit(CarModelTypeBase):
         weathered_variants = {"unweathered": graphics_constants.box_livery_recolour_map}
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4543,7 +4491,6 @@ class ExpressFoodCarRandomised(RandomisedCarMixin, CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4599,7 +4546,6 @@ class ExpressFoodTankCarBase(CarModelTypeBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4643,7 +4589,6 @@ class ExpressFoodTankCarRandomised(RandomisedCarMixin, ExpressFoodTankCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4684,7 +4629,6 @@ class ExpressIntermodalCarUnit(CarModelTypeBase):
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             formation_ruleset="2_unit_sets",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4729,7 +4673,6 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4776,7 +4719,6 @@ class FarmProductsBoxCarRandomised(RandomisedCarMixin, FarmProductsBoxCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=1,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4814,7 +4756,6 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4861,7 +4802,6 @@ class FarmProductsHopperCarRandomised(RandomisedCarMixin, FarmProductsHopperCarB
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4886,7 +4826,6 @@ class FoodHopperCarBase(FarmProductsHopperCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4947,7 +4886,6 @@ class FoodHopperCarRandomised(RandomisedCarMixin, FoodHopperCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -4982,7 +4920,6 @@ class FlatCarBase(CarModelTypeBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5016,7 +4953,6 @@ class FlatCarBulkheadBase(FlatCarBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5059,7 +4995,6 @@ class FlatCarBulkheadRandomised(RandomisedCarMixin, FlatCarBulkheadBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5158,7 +5093,6 @@ class FlatCarHeavyDuty(FlatCarBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5222,7 +5156,6 @@ class FlatCarMillRandomised(RandomisedCarMixin, FlatCarMillBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5244,7 +5177,6 @@ class FlatCarRandomised(RandomisedCarMixin, FlatCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5276,7 +5208,6 @@ class GasTankCarBase(CarModelTypeBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5360,7 +5291,6 @@ class HopperCarBase(CarModelTypeBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5526,7 +5456,6 @@ class HopperCarAggregateRandomised(RandomisedCarMixin, HopperCarAggregateBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5612,7 +5541,6 @@ class HopperCarMGRBase(HopperCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5666,7 +5594,6 @@ class HopperCarRandomised(RandomisedCarMixin, HopperCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=1,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5799,7 +5726,6 @@ class IngotCarUnit(CarModelTypeBase):
                 ["loading_0", 40],
                 ["loaded_0", 70],
             ],
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5838,7 +5764,6 @@ class IntermodalCarBase(CarModelTypeBase):
             formation_ruleset = "4_unit_sets"
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             formation_ruleset=formation_ruleset,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5918,7 +5843,6 @@ class KaolinHopperCar(CarModelTypeBase):
         # tried more liveries, doesn't add anything
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -5968,7 +5892,6 @@ class LivestockCar(CarModelTypeBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6002,7 +5925,6 @@ class LogCar(CarModelTypeBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="tree_length_logs",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6151,7 +6073,6 @@ class MailCar(MailCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6203,7 +6124,6 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
             spriterow_group_mappings,
             formation_ruleset="railcars_4_unit_sets",
             pantograph_type=self.pantograph_type,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6248,7 +6168,6 @@ class MailHighSpeedCar(MailCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6295,7 +6214,6 @@ class MailHSTCar(MailCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="mail_cars",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6436,7 +6354,6 @@ class MineralCoveredHopperCarBase(CarModelTypeBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6478,7 +6395,6 @@ class MineralCoveredHopperCarLimeBase(MineralCoveredHopperCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6621,7 +6537,6 @@ class MineralCoveredHopperCarRollerRoofBase(MineralCoveredHopperCarBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6717,7 +6632,6 @@ class MineralCoveredHopperCarSaltBase(MineralCoveredHopperCarBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6820,7 +6734,6 @@ class OpenCar(OpenCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             piece="open",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6863,7 +6776,6 @@ class OpenCarHood(OpenCarBase):
             piece="open",
             weathered_variants=weathered_variants,
             has_cover=True,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6899,7 +6811,6 @@ class OpenCarHighEnd(OpenCarBase):
             bulk=True,
             piece="open",
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -6941,7 +6852,6 @@ class OpenCarMill(OpenCarBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             piece="open",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7106,7 +7016,6 @@ class PanoramicCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7157,7 +7066,6 @@ class PassengerCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7205,7 +7113,6 @@ class PassengerHighSpeedCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7256,7 +7163,6 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
             spriterow_group_mappings,
             formation_ruleset="railcars_6_unit_sets",
             pantograph_type=self.pantograph_type,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7304,7 +7210,6 @@ class PassengerHSTCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7372,7 +7277,6 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
@@ -7421,7 +7325,6 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="railcars_3_unit_sets",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
             pantograph_type=self.pantograph_type,
         )
@@ -7461,7 +7364,6 @@ class PassengerRestaurantCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7510,7 +7412,6 @@ class PassengerSuburbanCar(PassengerCarBase):
         self.gestalt_graphics = GestaltGraphicsFormationDependent(
             spriterow_group_mappings,
             formation_ruleset="pax_cars",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7558,7 +7459,6 @@ class PeatCar(CarModelTypeBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True,
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7608,7 +7508,6 @@ class PieceGoodsCarCoveredRandomised(PieceGoodsCarRandomisedBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7634,7 +7533,6 @@ class PieceGoodsCarMixedRandomised(PieceGoodsCarRandomisedBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7659,7 +7557,6 @@ class PieceGoodsCarManufacturingPartsRandomised(PieceGoodsCarRandomisedBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_segmented_block_train",
             dice_colour=1,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7695,7 +7592,6 @@ class PipeCar(FlatCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             piece="flat",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7734,7 +7630,6 @@ class ReeferCarBase(CarModelTypeBase):
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7790,7 +7685,6 @@ class ReeferCarRandomised(RandomisedCarMixin, ReeferCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7852,7 +7746,6 @@ class SiloCarBase(CarModelTypeBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7931,7 +7824,6 @@ class SiloCarRandomised(RandomisedCarMixin, SiloCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7961,7 +7853,6 @@ class SiloCarCementType1(SiloCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -7991,7 +7882,6 @@ class SiloCarCementType2(SiloCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8021,7 +7911,6 @@ class SiloCarCementType3(SiloCarBase):
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8047,7 +7936,6 @@ class SiloCarCementRandomised(RandomisedCarMixin, SiloCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_mixed_train_one_car_type_more_common",
             dice_colour=2,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8097,7 +7985,6 @@ class SlidingRoofCar(BoxCarBase):
             weathered_variants=weathered_variants,
             piece="flat",
             has_cover=True,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8145,7 +8032,6 @@ class SlidingRoofCarHiCube(BoxCarBase):
             weathered_variants=weathered_variants,
             piece="flat",
             has_cover=True,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8197,7 +8083,6 @@ class SlagLadleCarUnit(CarModelTypeBase):
                 ["loading_0", 40],
                 ["loaded_0", 70],
             ],
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8268,7 +8153,6 @@ class TankCarAcidBase(TankCarBase):
         # # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8321,7 +8205,6 @@ class TankCarAcidRandomised(RandomisedCarMixin, TankCarAcidBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8350,7 +8233,6 @@ class TankCarChemicalRandomised(RandomisedCarMixin, TankCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8406,7 +8288,6 @@ class TankCarProductBase(TankCarBase):
         # # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8449,7 +8330,6 @@ class TankCarProductRandomised(RandomisedCarMixin, TankCarProductBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8495,7 +8375,6 @@ class TankCarStandardBase(TankCarBase):
         # teal before pewter for buy menu appearance reasons
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8546,7 +8425,6 @@ class TankCarStandardRandomised(RandomisedCarMixin, TankCarStandardBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_loose_mixed_train",
             dice_colour=3,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8595,7 +8473,6 @@ class TankCarVolatilesBase(TankCarBase):
         # patching get_candidate_liveries_for_randomised_strategy to preserve order from wagon_livery_mixes would be better, but that's non-trivial right now
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8662,7 +8539,6 @@ class TarpaulinCarBase(BoxCarBase):
             piece="flat",
             has_cover=True,
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8721,7 +8597,6 @@ class TarpaulinCarType3(TarpaulinCarBase):
             piece="flat",
             has_cover=True,
             weathered_variants=weathered_variants,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8749,7 +8624,6 @@ class TarpaulinCarRandomised(RandomisedCarMixin, TarpaulinCarBase):
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon(
             random_vehicle_map_type="map_block_train_with_minor_variation",
             dice_colour=3,
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -8795,7 +8669,6 @@ class TorpedoCarUnit(CarModelTypeBase):
         # custom gestalt with dedicated template as these wagons are articulated which standard wagon templates don't support
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_torpedo_car.pynml",
-            factory=self.factory,
             catalogue_entry=self.catalogue_entry,
         )
 
@@ -9037,7 +8910,7 @@ class UnitVariant(object):
         variant_colour_set = []
         # CABBAGE SHIM
         for unit_variant in unit_variants:
-            for cabbage_candidate_livery in factory.catalogue:
+            for cabbage_candidate_livery in catalogue_entry.catalogue:
                 if cabbage_candidate_livery["colour_set"] not in variant_colour_set:
                     if cabbage_candidate_livery["colour_set"] in eligible_colours:
                         variant_colour_set.append(
