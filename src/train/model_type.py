@@ -53,8 +53,6 @@ class ModelTypeBase(object):
         # create a structure to hold the units
         self.units = []
         # either gen xor intro_year is required, don't set both, one will be interpolated from the other
-        # CABBAGE model_def?
-        self._intro_year = kwargs.get("intro_year", None)
         # override this in subclasses if needed, there's no case currently for setting it via keyword
         self._model_life = None
         # used for synchronising / desynchronising intro dates for groups vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147
