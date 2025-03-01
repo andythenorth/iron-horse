@@ -8824,18 +8824,7 @@ class UnitVariant(object):
 
     @property
     def id(self):
-        if (
-            self.unit.is_lead_unit_of_consist
-            and self.buyable_variant.is_default_buyable_variant_for_consist
-        ):
-            # we make certain assumptions about the id of the first unit of the default variant which need special handling
-            return self.unit.id
-        else:
-            return (
-                self.unit.id
-                + "_variant_"
-                + str(self.buyable_variant.buyable_variant_num)
-            )
+        return self.unit.id
 
     @property
     def uses_random_livery(self):
