@@ -120,8 +120,13 @@ class UnitDef:
 
 @dataclass
 class CatalogueEntry:
-    # whereas the model_def is (mostly) immutable, the catalogue entry is used to hold properties computed by the factory
-    # we could access factory directly from the consumers, but that's unpleasant, it's better access only via the catalogue entry
+    """
+    The catalogue is composed of multiple CatalogueEntry instances.
+
+    Each CatalogueEntry provides instantiation-time configuration for a model variant instance.
+    It aggregates properties derived from model_def and computed by the factory, ensuring
+    consumers can access necessary data without referencing the factory directly.
+    """
     catalogue: "Catalogue"
     model_id: str
     model_variant_id: str
