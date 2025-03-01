@@ -56,15 +56,11 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, vehicle_type_
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id) {
-    <tal:unit_variants repeat="vehicle.cabbage_unit_variant vehicle.unit_variants">
-        ${vehicle.cabbage_unit_variant.numeric_id}: ${vehicle.id}_switch_colour_mapping_variant;
-    </tal:unit_variants>
+    ${vehicle.cabbage_unit_variant.numeric_id}: ${vehicle.id}_switch_colour_mapping_variant;
     <!--! no default, by design all variants should be explicitly found -->
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping_purchase, vehicle_type_id) {
-    <tal:unit_variants repeat="vehicle.cabbage_unit_variant vehicle.unit_variants">
-        ${vehicle.cabbage_unit_variant.numeric_id}: ${vehicle.id}_switch_colour_mapping_variant_purchase;
-    </tal:unit_variants>
+    ${vehicle.cabbage_unit_variant.numeric_id}: ${vehicle.id}_switch_colour_mapping_variant_purchase;
     <!--! no default, by design all variants should be explicitly found -->
 }
 

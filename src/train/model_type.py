@@ -154,24 +154,18 @@ class ModelTypeBase(object):
         return self.catalogue_entry.catalogue.is_default_model_variant(self)
 
     def resolve_buyable_variants(self):
+        # CABBAGE - this should be removable
         # this method can be over-ridden per consist subclass as needed
         # the basic form of buyable variants is driven by liveries
-        if self.catalogue_entry is None:
-            livery_def = {}
-        else:
-            livery_def = self.catalogue_entry.livery_def
+        livery_def = self.catalogue_entry.livery_def
         self.buyable_variants.append(BuyableVariant(self, livery_def=livery_def))
 
-    def add_unit(self, unit_cls, unit_def):
+    def cabbage_add_buyable_variant(self, unit):
         # CABBAGE - this should be removable
         # !! we should just be able to either set the units from the factory after init, or pass units to the init (better?)
         # we have add_unit create the variants when needed, which means we avoid sequencing problems with gestalt_graphics initialisation
         if len(self.buyable_variants) == 0:
             self.resolve_buyable_variants()
-        # now add the units
-        unit = unit_cls(consist=self, unit_def=unit_def)
-        for repeat_num in range(unit_def.repeat):
-            self.units.append(unit)
         # append the unit variants after adding the unit to consist.units, as we want to be able to simply increment numeric IDs based on the number of units added so far
         for buyable_variant in self.buyable_variants:
             unit.unit_variants.append(UnitVariant(unit, buyable_variant))

@@ -222,7 +222,12 @@ class ModelVariantFactory:
                 )
             # CABBAGE - this is delegating to model_variant currently, by passing unit classes, we want to pass actual units from here, model variant knows too much
             # print(unit_cls, unit)
-            model_variant.add_unit(unit_cls, unit_def)
+        # now add the units
+            unit = unit_cls(consist=model_variant, unit_def=unit_def)
+            for repeat_num in range(unit_def.repeat):
+                model_variant.units.append(unit)
+
+            model_variant.cabbage_add_buyable_variant(unit)
 
         return model_variant
 
