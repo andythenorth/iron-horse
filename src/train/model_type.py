@@ -8838,10 +8838,6 @@ class UnitVariant(object):
             )
 
     @property
-    def intro_year(self):
-        return self.unit.consist.catalogue_entry.intro_year
-
-    @property
     def uses_random_livery(self):
         return self.buyable_variant.uses_random_livery
 
