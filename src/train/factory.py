@@ -240,9 +240,6 @@ class ModelVariantFactory:
             return True
         return False
 
-    def is_default_model_variant(self, model_variant):
-        return model_variant.catalogue_entry == self.catalogue[0]
-
     @property
     def model_id(self):
         # figures out where a model variant is getting a base id from
@@ -443,6 +440,9 @@ class Catalogue(list):
             f"{self.factory.model_id}\n"
             f"{self.factory.model_def}"
         )
+
+    def is_default_model_variant(self, model_variant):
+        return model_variant.catalogue_entry == self[0]
 
 
 class ModelDefCloner:

@@ -153,7 +153,7 @@ class ModelTypeBase(object):
 
     @property
     def is_default_model_variant(self):
-        return self.catalogue_entry.catalogue.factory.is_default_model_variant(self)
+        return self.catalogue_entry.catalogue.is_default_model_variant(self)
 
     def resolve_buyable_variants(self):
         # this method can be over-ridden per consist subclass as needed
