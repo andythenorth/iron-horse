@@ -1,16 +1,16 @@
  <!--! this is the default template for trains that don't supply their own template -->
 
-spriteset(${vehicle.id}_ss, "${graphics_path}${consist.model_id}.png") {
+spriteset(${unit.id}_ss, "${graphics_path}${consist.model_id}.png") {
     ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.rel_spriterow_index * len(consist.model_def.liveries) * 30) + (consist.catalogue_entry.livery_def.relative_spriterow_num * 30))}
 }
 
 <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
     <!--! optional decor sprites - as of Mar 2023 this is only intended for snowploughs on single units, and won't handle articulated vehicles  -->
-    spriteset(${vehicle.id}_ss_decor, "${graphics_path}${consist.model_id}.png") {
+    spriteset(${unit.id}_ss_decor, "${graphics_path}${consist.model_id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', 10 + (consist.decor_spriterow_num * 30))}
     }
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_decor, random_bits_engine_show_decor()) {
-        1: return ${vehicle.id}_ss_decor;
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_decor, random_bits_engine_show_decor()) {
+        1: return ${unit.id}_ss_decor;
         return ss_global_empty_vehicle;
     }
 </tal:conditional_decor>
@@ -18,45 +18,45 @@ spriteset(${vehicle.id}_ss, "${graphics_path}${consist.model_id}.png") {
 <tal:pantographs condition="consist.pantograph_type is not None">
     <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
     <tal:pantographs repeat="pantograph_state ['down', 'up']">
-        spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.model_id}_pantographs_${pantograph_state}.png") {
+        spriteset(${unit.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.model_id}_pantographs_${pantograph_state}.png") {
             ${vehicle.get_spriteset_template_name('unreversed', 10 + (vehicle.rel_spriterow_index * 30))}
         }
     </tal:pantographs>
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
-        1: return ${vehicle.id}_ss_pantographs_up;
-        return ${vehicle.id}_ss_pantographs_down;
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_pantographs, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
+        1: return ${unit.id}_ss_pantographs_up;
+        return ${unit.id}_ss_pantographs_down;
     }
 </tal:pantographs>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names[1:]">
-        ${extra_sprite_layer[0]}: return ${vehicle.id}_switch_graphics_${extra_sprite_layer[1]};
+        ${extra_sprite_layer[0]}: return ${unit.id}_switch_graphics_${extra_sprite_layer[1]};
     </tal:extra_sprite_layers>
-    return ${vehicle.id}_ss;
+    return ${unit.id}_ss;
 }
 
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id}.png") {
+spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id}.png") {
     ${consist.get_nml_for_spriteset_template(y_offset=consist.catalogue_entry.livery_def.relative_spriterow_num * 30)}
 }
 
 <tal:conditional_pantographs condition="consist.pantograph_type is not None">
     <!--! purchase sprites for case where pantograph layer is needed -->
-    spriteset(${vehicle.id}_ss_pantographs_purchase, "${graphics_path}${consist.model_id}_pantographs_down.png") {
+    spriteset(${unit.id}_ss_pantographs_purchase, "${graphics_path}${consist.model_id}_pantographs_down.png") {
         ${consist.get_nml_for_spriteset_template(y_offset=0)}
     }
 </tal:conditional_pantographs>
 
 <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
     <!--! purchase sprites for case where decor layer is needed -->
-    spriteset(${vehicle.id}_ss_decor_purchase, "${graphics_path}${consist.model_id}.png") {
+    spriteset(${unit.id}_ss_decor_purchase, "${graphics_path}${consist.model_id}.png") {
         ${consist.get_nml_for_spriteset_template(y_offset=30 * consist.decor_spriterow_num)}
     }
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_purchase_decor, vehicle_type_id) {
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_purchase_decor, vehicle_type_id) {
         <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
             <tal:show_decor_in_purchase_menu switch="repeat.unit_variant.index in consist.show_decor_in_purchase_for_variants">
                 <tal:block case="True">
-                    ${unit_variant.numeric_id}: return ${vehicle.id}_ss_decor_purchase;
+                    ${unit_variant.numeric_id}: return ${unit.id}_ss_decor_purchase;
                 </tal:block>
                 <tal:block case="False">
                     ${unit_variant.numeric_id}: return ss_global_empty_purchase;
@@ -68,7 +68,7 @@ spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id
 </tal:conditional_decor>
 
 <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_${extra_sprite_layer[1]},
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase_${extra_sprite_layer[1]},
         STORE_TEMP(
             <tal:more_sprites condition="not: repeat.extra_sprite_layer.end">
                 CB_FLAG_MORE_SPRITES |
@@ -78,22 +78,22 @@ spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id
         ) {
         <tal:result switch="extra_sprite_layer[1]">
             <tal:block case="'base'">
-                return ${vehicle.id}_ss_vehicle_purchase;
+                return ${unit.id}_ss_vehicle_purchase;
             </tal:block>
             <tal:block case="'pantographs'">
-                return ${vehicle.id}_ss_${extra_sprite_layer[1]}_purchase;
+                return ${unit.id}_ss_${extra_sprite_layer[1]}_purchase;
             </tal:block>
             <tal:block case="'decor'">
-                return ${vehicle.id}_ss_vehicle_purchase; <!--! CABBAGE - why doesn't this switch to decor?? -->
+                return ${unit.id}_ss_vehicle_purchase; <!--! CABBAGE - why doesn't this switch to decor?? -->
             </tal:block>
         </tal:result>
     }
 </tal:extra_sprite_layers>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
     <!--! chaining these switches to ensure that layers continue is slight faff, as we have to know which is the last -->
     <tal:extra_sprite_layers repeat="extra_sprite_layer consist.engine_sprite_layers_with_layer_names">
-        ${extra_sprite_layer[0]}: return ${vehicle.id}_switch_graphics_purchase_${extra_sprite_layer[1]};
+        ${extra_sprite_layer[0]}: return ${unit.id}_switch_graphics_purchase_${extra_sprite_layer[1]};
     </tal:extra_sprite_layers>
 }
 
@@ -101,16 +101,16 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, getbits(extra
 <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
 <!--! dedicated colour remapping with rules against specific cc2 colours-->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_type_id) {
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_colour_mapping, vehicle_type_id) {
     <tal:livery define="livery consist.catalogue_entry.livery_def"><!--! CABBAGE -->
         <tal:optional_forced_recolour switch="getattr(consist.catalogue_entry.livery_def, 'remap_to_cc', None) is not None">
             <tal:block case="True">
                 <!--! recolour CC2 to arbitrary other CC as defined by livery -->
-                ${vehicle.numeric_id}: palette_2cc(${livery.remap_to_cc['company_colour1']}, ${livery.remap_to_cc['company_colour2']});
+                ${unit.numeric_id}: palette_2cc(${livery.remap_to_cc['company_colour1']}, ${livery.remap_to_cc['company_colour2']});
             </tal:block>
             <tal:block case="False">
                 <!--! apply regular 1CC and 2CC -->
-                ${vehicle.numeric_id}: base_sprite_2cc + 16 * company_colour2 + company_colour1;
+                ${unit.numeric_id}: base_sprite_2cc + 16 * company_colour2 + company_colour1;
             </tal:block>
         </tal:optional_forced_recolour>
     </tal:livery>

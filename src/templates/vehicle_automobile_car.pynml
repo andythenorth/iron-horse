@@ -2,58 +2,58 @@
 <tal:spritesets repeat="spriteset_data consist.gestalt_graphics.get_unique_spritesets(vehicle)">
     <!--! spriteset loops got too complex in the templates, with livery, empty state, cargo loading, cargo loaded, and random variants
           so I moved the logic for spritesets into the gestalt, and simply render out all from a list with a trivial loop -->
-    spriteset(${vehicle.id}_ss_${spriteset_data[0]}, "${graphics_path}${consist.model_id}.png") {
+    spriteset(${unit.id}_ss_${spriteset_data[0]}, "${graphics_path}${consist.model_id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', spriteset_data[1])}
     }
     <!--! spritegroups aren't used here, direct to spriteset -->
 </tal:spritesets>
 
 <tal:spritelayer_vehicle_layers repeat="vehicle_spritelayer_name consist.gestalt_graphics.vehicle_spritelayer_names">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${vehicle_spritelayer_name}_position_in_consist_entry_point,
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_${vehicle_spritelayer_name}_position_in_consist_entry_point,
         [
             10 + switch_graphics_automobile_transporter_ruleset_${consist.gestalt_graphics.formation_ruleset}()
         ]
     ) {
         <tal:position_ruleset repeat="position_variant consist.gestalt_graphics.position_variants">
-            ${10 + repeat.position_variant.index}: ${vehicle.id}_ss_${vehicle_spritelayer_name}_${position_variant};
+            ${10 + repeat.position_variant.index}: ${unit.id}_ss_${vehicle_spritelayer_name}_${position_variant};
         </tal:position_ruleset>
     }
 </tal:spritelayer_vehicle_layers>
 
 <tal:spritelayer_cargo_layers repeat="platform_type consist.spritelayer_cargo_layers">
     <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of automobile cargos -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type}, cargo_count) {
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type}, cargo_count) {
             0: return ss_global_empty_vehicle;
         return switch_spritelayer_cargos_${spritelayer_cargos.automobiles.AutomobilesSpritelayerCargo().base_id}_${platform_type}_${4 * vehicle.vehicle_length}px;
     }
 
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_${platform_type}, [
+    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_spritelayer_cargos_${platform_type}, [
                          STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), <!--! note requirement to pass along 'more sprites' flag here -->
                          STORE_TEMP(1, ${temp_storage_ids.unreversible_spritelayer_cargos})
                         ]) {
-        return ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type};
+        return ${unit.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type};
     }
 </tal:spritelayer_cargo_layers>
 
 // switch layers: base platform / spritelayer cargo
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
-    0: return ${vehicle.id}_switch_graphics_base_platform_position_in_consist_entry_point;
-    1: return ${vehicle.id}_switch_graphics_spritelayer_cargos_${consist.spritelayer_cargo_layers[0]};
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    0: return ${unit.id}_switch_graphics_base_platform_position_in_consist_entry_point;
+    1: return ${unit.id}_switch_graphics_spritelayer_cargos_${consist.spritelayer_cargo_layers[0]};
     <tal:optional_masked_overlay condition="consist.gestalt_graphics.add_masked_overlay">
-        2: return ${vehicle.id}_switch_graphics_masked_overlay_position_in_consist_entry_point;
+        2: return ${unit.id}_switch_graphics_masked_overlay_position_in_consist_entry_point;
     </tal:optional_masked_overlay>
     <tal:optional_upper_deck condition="len(consist.spritelayer_cargo_layers) == 2">
-        3: return ${vehicle.id}_switch_graphics_spritelayer_cargos_${consist.spritelayer_cargo_layers[1]};
+        3: return ${unit.id}_switch_graphics_spritelayer_cargos_${consist.spritelayer_cargo_layers[1]};
     </tal:optional_upper_deck>
 }
 
 
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id}.png") {
+spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id}.png") {
     ${consist.get_nml_for_spriteset_template(y_offset=0)}
 }
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
-    0: return ${vehicle.id}_ss_vehicle_purchase;
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, 0) {
+    0: return ${unit.id}_ss_vehicle_purchase;
 }
 
 <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />

@@ -1,13 +1,13 @@
 <!--! capacity determined according to specific labels that might need to be handled, and otherwise cargo class -->
 
 <!--! stuff all values into registers as constants, don't mess about with doing multipliers in varact 2, integer maths causes rounding errors -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_capacity,
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_cargo_capacity,
         [
-         STORE_TEMP(${vehicle.capacities[0]}, 0),
-         STORE_TEMP(${vehicle.capacities[1]}, 1),
-         STORE_TEMP(${vehicle.capacities[2]}, 2),
-         STORE_TEMP(${vehicle.capacities[3]}, 3),
-         STORE_TEMP(${vehicle.capacities[4]}, 4)
+         STORE_TEMP(${unit.capacities[0]}, 0),
+         STORE_TEMP(${unit.capacities[1]}, 1),
+         STORE_TEMP(${unit.capacities[2]}, 2),
+         STORE_TEMP(${unit.capacities[3]}, 3),
+         STORE_TEMP(${unit.capacities[4]}, 4)
         ]) {
     return switch_cargo_capacity();
 }

@@ -83,7 +83,7 @@
     </tal:weathered_variant>
 </tal:only_default_model_variant>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     <!--! masked overlay is JFDI hard-coded for now -->
     <tal:masked_overlay condition="consist.gestalt_graphics.add_masked_overlay">
         1: ${vehicle.cabbage_unit_id_from_model_type}_switch_graphics_check_randomisation_strategy;
@@ -92,11 +92,11 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_
 }
 
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.model_id}.png") {
+spriteset(${unit.id}_ss_purchase, "${graphics_path}${consist.model_id}.png") {
     ${consist.get_nml_for_spriteset_template(y_offset=0)}
 }
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 1) {
-    return ${vehicle.id}_ss_purchase;
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, 1) {
+    return ${unit.id}_ss_purchase;
 }
 
 <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
