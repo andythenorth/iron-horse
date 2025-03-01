@@ -232,7 +232,7 @@ class ModelVariantFactory:
             )
             for repeat_num in range(unit_def.repeat):
                 model_variant.units.append(unit)
-
+            # CABBAGE - legacy shim
             model_variant.cabbage_add_buyable_variant(unit)
 
         return model_variant

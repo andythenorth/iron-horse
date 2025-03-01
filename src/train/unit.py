@@ -23,8 +23,6 @@ class UnitBase(object):
         #print(numeric_id)
         # create an id, which is used for shared switch chains, and as base id for unit variants to construct an id
         if len(self.consist.unique_units) == 0:
-            # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc
-            self.id = self.consist.id
             self.cabbage_numeric_id = 0
         else:
             self.cabbage_numeric_id = len(self.consist.unique_units)

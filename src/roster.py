@@ -516,7 +516,7 @@ class Roster(object):
                 if candidate_parent_group != buyable_variant_group:
                     buyable_variant_group.parent_group = candidate_parent_group
 
-    def get_buyable_variants_in_buy_menu_order(self):
+    def cabbage_get_buyable_variants_in_buy_menu_order(self):
         # relies on the buyable variant group order already being sorted when it's constructed from consists_in_buy_menu_order
         # as a convenience, this flattens that order to a list that's easy to iterate over in template
         result = []
@@ -593,7 +593,7 @@ class BuyableVariantGroup(object):
     @property
     def parent_vehicle(self):
         # actually returns a unit_variant, but eh, equivalent to 'vehicle' in the nml templating
-        return self.buyable_variants[0].lead_unit_variant_matching_buyable_variant
+        return self.buyable_variants[0].cabbage_lead_unit_variant_matching_buyable_variant
 
     @property
     def parent_consist(self):

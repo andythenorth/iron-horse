@@ -170,7 +170,7 @@ class RosterManager(list):
             ]:
                 subroles = global_constants.role_subrole_mapping[role]
                 if consist.subrole in subroles:
-                    express_engine_ids.append(consist.id)
+                    express_engine_ids.append(consist.catalogue_entry.unit_variant_ids[0])
         return [(count, id) for count, id in enumerate(express_engine_ids)]
 
     @property

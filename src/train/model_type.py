@@ -8699,7 +8699,7 @@ class BuyableVariant(object):
             return self._relative_spriterow_num
 
     @property
-    def lead_unit_variant_matching_buyable_variant(self):
+    def cabbage_lead_unit_variant_matching_buyable_variant(self):
         # convenience function
         for unit_variant in self.consist.units[0].unit_variants:
             if unit_variant.buyable_variant == self:
@@ -8739,7 +8739,7 @@ class BuyableVariant(object):
         # we still want to be able to get the variant group when needed without this check so this is handled separately
         if (
             self.buyable_variant_group.parent_vehicle.unit.id
-            == self.lead_unit_variant_matching_buyable_variant.unit.id
+            == self.cabbage_lead_unit_variant_matching_buyable_variant.unit.id
         ):
             # handle nested group case, which is only used on first unit
             if self.buyable_variant_group.parent_group is None:
