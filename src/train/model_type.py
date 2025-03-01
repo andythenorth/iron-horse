@@ -8751,16 +8751,16 @@ class BuyableVariant(object):
         # this function is just a wrapper to handle returning that to nml templates
         # we still want to be able to get the variant group when needed without this check so this is handled separately
         if (
-            self.buyable_variant_group.parent_vehicle.id
-            == self.lead_unit_variant_matching_buyable_variant.id
+            self.buyable_variant_group.parent_vehicle.unit.id
+            == self.lead_unit_variant_matching_buyable_variant.unit.id
         ):
             # handle nested group case, which is only used on first unit
             if self.buyable_variant_group.parent_group is None:
                 return None
             else:
-                return self.buyable_variant_group.parent_group.parent_vehicle.id
+                return self.buyable_variant_group.parent_group.parent_vehicle.unit.id
         else:
-            return self.buyable_variant_group.parent_vehicle.id
+            return self.buyable_variant_group.parent_vehicle.unit.id
 
     @property
     def buyable_variant_group(self):
@@ -8821,10 +8821,6 @@ class UnitVariant(object):
             self.numeric_id = self.unit.consist.base_numeric_id
         else:
             self.numeric_id = max(self.unit.consist.unique_numeric_ids) + 1
-
-    @property
-    def id(self):
-        return self.unit.id
 
     @property
     def uses_random_livery(self):

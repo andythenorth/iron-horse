@@ -18,7 +18,7 @@
     <!--! CABBAGE SHOULD BE BADGES -->
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power_0, [
         <tal:cabs repeat="unit_variant consist.cab_consist.units[0].unit_variants">
-            count_veh_id(${unit_variant.id}) > 0
+            count_veh_id(${vehicle.id}) > 0
             <tal:OR condition="not:repeat.unit_variant.end">
                 ||
             </tal:OR>
