@@ -205,10 +205,8 @@ class ModelTypeBase(object):
 
     @property
     def base_track_type_name(self):
-        if self.model_def.base_track_type_name is not None:
-            return self.model_def.base_track_type_name
-        else:
-            return "RAIL"
+        # just a pass through for convenience
+        return self.catalogue_entry.base_track_type_name
 
     @property
     def unique_spriterow_nums(self):
@@ -509,14 +507,7 @@ class ModelTypeBase(object):
 
     @property
     def intro_year(self):
-        # automatic intro_year, but can override by passing in kwargs for consist
-        assert self.gen != None, (
-            "%s has no gen value set, which is incorrect" % self.model_id
-        )
-        result = self.roster.intro_years[self.base_track_type_name][self.gen - 1]
-        if self.intro_year_offset is not None:
-            result = result + self.intro_year_offset
-        return result
+        return self.catalogue_entry.intro_year
 
     @property
     def intro_year_offset(self):
@@ -8848,7 +8839,7 @@ class UnitVariant(object):
 
     @property
     def intro_year(self):
-        return self.unit.consist.intro_year
+        return self.unit.consist.catalogue_entry.intro_year
 
     @property
     def uses_random_livery(self):

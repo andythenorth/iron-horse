@@ -120,6 +120,8 @@ class UnitDef:
 
 @dataclass
 class CatalogueEntry:
+    # whereas the model_def is (mostly) immutable, the catalogue entry is used to hold properties computed by the factory
+    # we could access factory directly from the consumers, but that's unpleasant, it's better access only via the catalogue entry
     catalogue: "Catalogue"
     model_id: str
     model_variant_id: str
@@ -127,6 +129,8 @@ class CatalogueEntry:
     unit_numeric_ids: List[int]
     livery_def: "LiveryDef"
     input_spritesheet_name_stem: str
+    intro_year: int
+    base_track_type_name: str
 
 
 class ModelVariantFactory:
@@ -278,6 +282,24 @@ class ModelVariantFactory:
         return result
 
     @property
+    def intro_year(self):
+        # automatic intro_year, but can override by passing in kwargs for consist
+        assert self.model_def.gen != None, (
+            "%s has no gen value set, which is incorrect" % self.model_id
+        )
+        result = self.roster.intro_years[self.base_track_type_name][self.model_def.gen - 1]
+        if self.model_def.intro_year_offset is not None:
+            result = result + self.model_def.intro_year_offset
+        return result
+
+    @property
+    def base_track_type_name(self):
+        if self.model_def.base_track_type_name is not None:
+            return self.model_def.base_track_type_name
+        else:
+            return "RAIL"
+
+    @property
     def input_spritesheet_name_stem(self):
         # the input spritesheet name is the same for all variants of the model type
         # optional support for delegating to a spritesheet belonging to a different vehicle type (e.g. when recolouring same base pixels for different wagon types)
@@ -347,7 +369,10 @@ class Catalogue(list):
                 )
             ]
 
-            # note that livery_name is an arbitrary string and might be repeated across model variants
+            # certain static properties are copied into the catalogue_entry from the factory
+            # this is for convenience of access as
+            # - we don't want to access factory directly from templates or graphics generation
+            # - model_def is considered mostly immutable after init, and we don't want the factory extensively writing properties into model_def instances
             catalogue_entry = CatalogueEntry(
                 catalogue=instance,
                 model_id=factory.model_id,
@@ -356,6 +381,8 @@ class Catalogue(list):
                 unit_numeric_ids=unit_numeric_ids,
                 livery_def=livery_def,
                 input_spritesheet_name_stem=factory.input_spritesheet_name_stem,
+                intro_year=factory.intro_year,
+                base_track_type_name=factory.base_track_type_name
             )
             instance.append(catalogue_entry)
         return instance
