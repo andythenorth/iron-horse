@@ -47,6 +47,10 @@ class UnitBase(object):
         self.random_trigger_switch = None
 
     @property
+    def cabbage_unit_variant(self):
+        return self.unit_variants[0]
+
+    @property
     def cabbage_unit_id_from_model_type(self):
         return self.consist.model_id + "_unit_" + str(self.cabbage_numeric_id)
 
