@@ -126,6 +126,8 @@ class CatalogueEntry:
     unit_variant_ids: List[str]
     unit_numeric_ids: List[int]
     livery_def: "LiveryDef"
+    input_spritesheet_name_stem: str
+
 
 class ModelVariantFactory:
     """
@@ -348,11 +350,12 @@ class Catalogue(list):
             # note that livery_name is an arbitrary string and might be repeated across model variants
             catalogue_entry = CatalogueEntry(
                 catalogue=instance,
-                model_id=instance.factory.model_id,
+                model_id=factory.model_id,
                 model_variant_id=model_variant_id,
                 unit_variant_ids=unit_variant_ids,
                 unit_numeric_ids=unit_numeric_ids,
                 livery_def=livery_def,
+                input_spritesheet_name_stem=factory.input_spritesheet_name_stem,
             )
             instance.append(catalogue_entry)
         return instance
