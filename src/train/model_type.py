@@ -387,11 +387,11 @@ class ModelTypeBase(object):
             + "]"
         )
 
-    def engine_varies_power_by_power_source(self, vehicle):
+    def engine_varies_power_by_power_source(self, unit):
         # note that we use self.cab_id to eliminate trailer cars from this (which use power_by_power_source to manage pantographs), this is JFDI and may need refactored in future
         if (
             (self.power_by_power_source is not None)
-            and (vehicle.is_lead_unit_of_consist)
+            and (unit.is_lead_unit_of_consist)
             and (getattr(self, "cab_consist", None) is None)
         ):
             if len(self.power_by_power_source) > 1:
@@ -1155,10 +1155,10 @@ class ModelTypeBase(object):
             result = result[0:8]
         return result
 
-    def get_buy_menu_additional_text(self, vehicle, unit_variant=None):
+    def get_buy_menu_additional_text(self, unit, unit_variant=None):
         result = []
         # optional string if engine varies power by railtype
-        if self.engine_varies_power_by_power_source(vehicle):
+        if self.engine_varies_power_by_power_source(unit):
             if len(self.power_by_power_source) == 2:
                 result.append("STR_POWER_BY_POWER_SOURCE_TWO_SOURCES")
             elif len(self.power_by_power_source) == 3:
@@ -8824,10 +8824,10 @@ class UnitVariant(object):
             return True
         return False
 
-    def get_buy_menu_additional_text_format(self, vehicle):
+    def get_buy_menu_additional_text_format(self, unit):
         # keep the template logic simple, present strings for a switch/case tree
         # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
-        if self.unit.consist.engine_varies_power_by_power_source(vehicle):
+        if self.unit.consist.engine_varies_power_by_power_source(unit):
             # !! this combinatorial handling of power, lgv capable etc is a bad sign - we have the wrong kind of tree, as it's switch/case, not composeable / recursive
             # !!! we need a better tree, similar to get_name_parts
             if self.unit.consist.lgv_capable:

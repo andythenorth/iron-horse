@@ -1,7 +1,7 @@
  <!--! this is the default template for trains that don't supply their own template -->
 
 spriteset(${unit.id}_ss, "${graphics_path}${consist.model_id}.png") {
-    ${unit.get_spriteset_template_name('unreversed', 10 + (vehicle.rel_spriterow_index * len(consist.model_def.liveries) * 30) + (consist.catalogue_entry.livery_def.relative_spriterow_num * 30))}
+    ${unit.get_spriteset_template_name('unreversed', 10 + (unit.rel_spriterow_index * len(consist.model_def.liveries) * 30) + (consist.catalogue_entry.livery_def.relative_spriterow_num * 30))}
 }
 
 <tal:conditional_decor condition="consist.decor_spriterow_num is not None">
@@ -19,7 +19,7 @@ spriteset(${unit.id}_ss, "${graphics_path}${consist.model_id}.png") {
     <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
     <tal:pantographs repeat="pantograph_state ['down', 'up']">
         spriteset(${unit.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.model_id}_pantographs_${pantograph_state}.png") {
-            ${unit.get_spriteset_template_name('unreversed', 10 + (vehicle.rel_spriterow_index * 30))}
+            ${unit.get_spriteset_template_name('unreversed', 10 + (unit.rel_spriterow_index * 30))}
         }
     </tal:pantographs>
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_pantographs, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {
@@ -53,7 +53,7 @@ spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id}.p
         ${consist.get_nml_for_spriteset_template(y_offset=30 * consist.decor_spriterow_num)}
     }
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle_purchase_decor, vehicle_type_id) {
-        <tal:unit_variants repeat="unit_variant vehicle.unit_variants">
+        <tal:unit_variants repeat="unit_variant unit.unit_variants">
             <tal:show_decor_in_purchase_menu switch="repeat.unit_variant.index in consist.show_decor_in_purchase_for_variants">
                 <tal:block case="True">
                     ${unit_variant.numeric_id}: return ${unit.id}_ss_decor_purchase;

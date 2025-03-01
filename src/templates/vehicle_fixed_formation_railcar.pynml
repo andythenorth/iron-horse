@@ -4,10 +4,10 @@
 
 <tal:liveries repeat="livery catalogue_entry.catalogue">
     spriteset(${unit.id}_ss_doors_closed_${repeat.livery.index}, "${graphics_path}${consist.model_id}.png") {
-        ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + (repeat.livery.index * 60) + (vehicle.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
+        ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + (repeat.livery.index * 60) + (unit.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
     }
     spriteset(${unit.id}_ss_doors_open_${repeat.livery.index}, "${graphics_path}${consist.model_id}.png") {
-        ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + 30 + (repeat.livery.index * 60) + (vehicle.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
+        ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + 30 + (repeat.livery.index * 60) + (unit.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
     }
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_check_doors_${repeat.livery.index}, switch_graphics_opening_doors()) {
         0: return ${unit.id}_ss_doors_closed_${repeat.livery.index};
@@ -24,7 +24,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_livery, vehicle_type_id) {
     <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
     <tal:pantographs repeat="pantograph_state ['down', 'up']">
         spriteset(${unit.id}_ss_pantographs_${pantograph_state}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
-            ${unit.get_spriteset_template_name('unreversed', 10 + (vehicle.rel_spriterow_index * 60))}
+            ${unit.get_spriteset_template_name('unreversed', 10 + (unit.rel_spriterow_index * 60))}
         }
     </tal:pantographs>
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_pantographs, ${consist.nml_expression_for_vehicle_is_electrically_powered_by_tile()}) {

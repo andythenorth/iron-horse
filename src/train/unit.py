@@ -421,8 +421,8 @@ class UnitBase(object):
         template_name = self.consist.gestalt_graphics.nml_template
         template = templates[template_name]
         nml_result = template(
-            vehicle=self,
-            unit=self, # CABBAGE SHIM
+            vehicle=self, # CABBAGE SHIM
+            unit=self,
             consist=self.consist,
             catalogue_entry=self.consist.catalogue_entry,
             global_constants=global_constants,
