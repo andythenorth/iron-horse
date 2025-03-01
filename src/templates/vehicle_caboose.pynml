@@ -2,7 +2,7 @@
 
 <tal:caboose_variants repeat="caboose_variant consist.gestalt_graphics.spriterow_labels">
     spriteset(${unit.id}_ss_${caboose_variant}, "${graphics_path}${consist.model_id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', 10 + (repeat.caboose_variant.index * 30))}
+        ${unit.get_spriteset_template_name('unreversed', 10 + (repeat.caboose_variant.index * 30))}
     }
 </tal:caboose_variants>
 
@@ -48,7 +48,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, current_year) {
 }
 <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
-<tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
+<tal:optional_capacity_switches condition="unit.has_cargo_capacity">
     <tal:include metal:use-macro="load: capacity.pynml" />
 </tal:optional_capacity_switches>
 

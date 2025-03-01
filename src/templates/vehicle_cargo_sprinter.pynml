@@ -2,7 +2,7 @@
     <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of containers -->
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_containers_check_cargo_${platform_type}, cargo_count) {
             0: return ss_global_empty_vehicle;
-        return switch_spritelayer_cargos_${spritelayer_cargos.intermodal_containers.IntermodalContainersSpritelayerCargo().base_id}_${platform_type}_${4 * vehicle.vehicle_length}px;
+        return switch_spritelayer_cargos_${spritelayer_cargos.intermodal_containers.IntermodalContainersSpritelayerCargo().base_id}_${platform_type}_${4 * unit.vehicle_length}px;
     }
 
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_containers_${platform_type}, [
@@ -15,10 +15,10 @@
 
 // base platform graphics chain
 spriteset(${unit.id}_ss_unreversed, "${graphics_path}${consist.model_id}.png") {
-    ${vehicle.get_spriteset_template_name('unreversed', 10)}
+    ${unit.get_spriteset_template_name('unreversed', 10)}
 }
 spriteset(${unit.id}_ss_masked_overlay_unreversed, "${graphics_path}${consist.model_id}.png") {
-    ${vehicle.get_spriteset_template_name('unreversed', 40)}
+    ${unit.get_spriteset_template_name('unreversed', 40)}
 }
 
 // switch layers: base platform / containers
@@ -38,7 +38,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_purchase, 0) {
 
 <tal:include metal:use-macro="load: graphics_entry_switches.pynml" />
 
-<tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
+<tal:optional_capacity_switches condition="unit.has_cargo_capacity">
     <tal:include metal:use-macro="load: capacity.pynml" />
 </tal:optional_capacity_switches>
 

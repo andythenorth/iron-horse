@@ -4,12 +4,12 @@ spriteset(${unit.id}_ss_purchase, "${graphics_path}${consist.model_id}.png") {
     ${consist.get_nml_for_spriteset_template(y_offset=0)}
 }
 
-<tal:optimise_wagon_randomisation_candidates define="randomisation_candidates consist.roster.get_wagon_randomisation_candidates(vehicle.cabbage_unit_variant.buyable_variant);">
+<tal:optimise_wagon_randomisation_candidates define="randomisation_candidates consist.roster.get_wagon_randomisation_candidates(unit.cabbage_unit_variant.buyable_variant);">
     switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_variant_choose_randomised_wagon, [
                                 pseudo_random_value_from_deterministic_random_map_${consist.gestalt_graphics.random_vehicle_map_type}()
                                 <!--! modulo to cap the value selected (range 64) to the range of actual candidates -->
                                 %
-                                ${len(consist.roster.get_wagon_randomisation_candidates(vehicle.cabbage_unit_variant.buyable_variant))}
+                                ${len(consist.roster.get_wagon_randomisation_candidates(unit.cabbage_unit_variant.buyable_variant))}
         ]) {
         <tal:randomisation_candidates repeat="randomisation_candidate randomisation_candidates">
             ${repeat.randomisation_candidate.index}: ${repeat.randomisation_candidate.index};
