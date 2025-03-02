@@ -1192,6 +1192,31 @@ class ModelTypeBase(object):
             result = result[0:8]
         return result
 
+    def get_buy_menu_hint_livery_variant_text_stack(self):
+        # CABBAGE
+        variant_colour_set = self.units[0].unit_variants[0].all_candidate_livery_colour_sets_for_variant
+
+        stack_values = []
+        stack_values.append(
+            "string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_"
+            + str(len(variant_colour_set))
+            + ")"
+        )
+
+        # note the OR with 0xD000 to get correct string range
+        for colour_name in variant_colour_set:
+            if colour_name == "company_colour":
+                stack_values.append("string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000")
+            elif colour_name == "complement_company_colour":
+                stack_values.append("string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000")
+            else:
+                stack_values.append(
+                    "switch_get_colour_name("
+                    + str(list(global_constants.colour_sets.keys()).index(colour_name))
+                    + ") | 0xD000"
+                )
+        return utils.convert_flat_list_to_pairs_of_tuples(stack_values)
+
     def get_buy_menu_additional_text(self, unit, unit_variant=None):
         result = []
         # optional string if engine varies power by railtype
@@ -8871,27 +8896,3 @@ class UnitVariant(object):
             )
 
         return variant_colour_set
-
-    def get_buy_menu_hint_livery_variant_text_stack(self):
-        variant_colour_set = self.all_candidate_livery_colour_sets_for_variant
-
-        stack_values = []
-        stack_values.append(
-            "string(STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS_LENGTH_"
-            + str(len(variant_colour_set))
-            + ")"
-        )
-
-        # note the OR with 0xD000 to get correct string range
-        for colour_name in variant_colour_set:
-            if colour_name == "company_colour":
-                stack_values.append("string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000")
-            elif colour_name == "complement_company_colour":
-                stack_values.append("string(STR_COMPANY_COLOUR_CABBAGE) | 0xD000")
-            else:
-                stack_values.append(
-                    "switch_get_colour_name("
-                    + str(list(global_constants.colour_sets.keys()).index(colour_name))
-                    + ") | 0xD000"
-                )
-        return utils.convert_flat_list_to_pairs_of_tuples(stack_values)

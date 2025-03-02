@@ -64,7 +64,7 @@
     </tal:lgv_capable_and_wagons_add_power>
     <tal:livery_variants case="'livery_variants'">
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_buy_menu_additional_text, [
-            <tal:text_stack repeat="value_pair unit.cabbage_unit_variant.get_buy_menu_hint_livery_variant_text_stack()">
+            <tal:text_stack repeat="value_pair consist.get_buy_menu_hint_livery_variant_text_stack()">
                 STORE_TEMP(
                     (${value_pair[0]})
                     | ((${value_pair[1]}) << 16),
