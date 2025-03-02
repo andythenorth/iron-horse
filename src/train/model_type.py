@@ -1192,9 +1192,46 @@ class ModelTypeBase(object):
             result = result[0:8]
         return result
 
+    @property
+    def all_candidate_livery_colour_sets_for_variant(self):
+        # this may be a real variant, or a randomised variant, which delegates out to a set of real variants
+        # therefore we need to get the possible liveries across all possible variants
+        unit_variants = []
+        if self.is_randomised_wagon_type:
+            for (
+                unit_variant
+            ) in self.roster.get_wagon_randomisation_candidates(
+                self.buyable_variants[0] # CABBAGE
+            ):
+                unit_variants.append(unit_variant)
+        else:
+            # we will just use one variant in this case, but we put it in a list so we can iterate later to get liveries
+            unit_variants.append(self.units.unit_variant[0]) # CABBAGE
+
+        eligible_colours = global_constants.wagon_livery_mixes[
+            self.buyable_variants[0].livery["colour_set"] # CABBAGE
+        ]
+        variant_colour_set = []
+        # CABBAGE SHIM
+        for unit_variant in unit_variants:
+            for cabbage_candidate_livery in catalogue_entry.catalogue:
+                if cabbage_candidate_livery["colour_set"] not in variant_colour_set:
+                    if cabbage_candidate_livery["colour_set"] in eligible_colours:
+                        variant_colour_set.append(
+                            cabbage_candidate_livery["colour_set"]
+                        )
+
+        if len(variant_colour_set) == 0:
+            raise BaseException(
+                self.id
+                + " has variant_colour_set length 0, which won't work - check what livery colour_set it's using"
+            )
+
+        return variant_colour_set
+
     def get_buy_menu_hint_livery_variant_text_stack(self):
         # CABBAGE
-        variant_colour_set = self.units[0].unit_variants[0].all_candidate_livery_colour_sets_for_variant
+        variant_colour_set = self.all_candidate_livery_colour_sets_for_variant
 
         stack_values = []
         stack_values.append(
@@ -8859,40 +8896,3 @@ class UnitVariant(object):
     def __init__(self, unit, buyable_variant, **kwargs):
         self.unit = unit
         self.buyable_variant = buyable_variant
-
-    @property
-    def all_candidate_livery_colour_sets_for_variant(self):
-        # this may be a real variant, or a randomised variant, which delegates out to a set of real variants
-        # therefore we need to get the possible liveries across all possible variants
-        unit_variants = []
-        if self.unit.consist.is_randomised_wagon_type:
-            for (
-                unit_variant
-            ) in self.unit.consist.roster.get_wagon_randomisation_candidates(
-                self.buyable_variant
-            ):
-                unit_variants.append(unit_variant)
-        else:
-            # we will just use one variant in this case, but we put it in a list so we can iterate later to get liveries
-            unit_variants.append(self)
-
-        eligible_colours = global_constants.wagon_livery_mixes[
-            self.buyable_variant.livery["colour_set"]
-        ]
-        variant_colour_set = []
-        # CABBAGE SHIM
-        for unit_variant in unit_variants:
-            for cabbage_candidate_livery in catalogue_entry.catalogue:
-                if cabbage_candidate_livery["colour_set"] not in variant_colour_set:
-                    if cabbage_candidate_livery["colour_set"] in eligible_colours:
-                        variant_colour_set.append(
-                            cabbage_candidate_livery["colour_set"]
-                        )
-
-        if len(variant_colour_set) == 0:
-            raise BaseException(
-                self.id
-                + " has variant_colour_set length 0, which won't work - check what livery colour_set it's using"
-            )
-
-        return variant_colour_set
