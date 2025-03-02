@@ -1454,10 +1454,9 @@ class ModelTypeBase(object):
         self.frozen_roster_items = {}
         if self.is_randomised_wagon_type:
             wagon_randomisation_candidates = []
-            for buyable_variant in self.buyable_variants:
-                wagon_randomisation_candidates.append(
-                    self.roster.get_wagon_randomisation_candidates(buyable_variant)
-                )
+            wagon_randomisation_candidates.append(
+                self.roster.get_wagon_randomisation_candidates(self)
+            )
             self.frozen_roster_items["wagon_randomisation_candidates"] = (
                 wagon_randomisation_candidates
             )

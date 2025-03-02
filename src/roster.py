@@ -158,9 +158,8 @@ class Roster(object):
 
         return result
 
-    def get_wagon_randomisation_candidates(self, buyable_variant):
+    def get_wagon_randomisation_candidates(self, randomisation_consist):
         raise Exception("get_wagon_randomisation_candidates called, but will need refactoring to handle elimination of unit_variants_cabbage")
-        randomisation_consist = buyable_variant.consist
         result = []
         for base_id, wagons in self.wagon_consists_by_base_id.items():
             for wagon_consist in wagons:
