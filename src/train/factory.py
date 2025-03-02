@@ -187,15 +187,13 @@ class ModelVariantFactory:
                 f"{self.model_id}\n" f"ModelVariantFactory catalogue is empty"
             )
 
-    def produce(self, catalogue_index=None):
+    def produce(self, catalogue_entry=None):
 
-        if catalogue_index == None:
+        if catalogue_entry == None:
             raise BaseException(
                 "no catalogue_index passed for ModelVariantFactory; model_def is "
                 + str(self.model_type_cls)
             )
-
-        catalogue_entry = self.catalogue[catalogue_index]
 
         # CABBAGE FAILS WITH CLONES - HAX TO RESOLVE, THIS SHOULD ALREADY BE FIGURED OUT BY THE CLONE THOUGH
         # CHECK if buyable_variant_group_id is already set?  If it is, leave it alone?

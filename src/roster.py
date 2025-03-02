@@ -341,9 +341,9 @@ class Roster(object):
                 factory = ModelVariantFactory(
                     model_def, self.id, roster_id_providing_module
                 )
-                for catalogue_index, _ in enumerate(factory.catalogue):
+                for catalogue_entry in factory.catalogue:
                     consist = factory.produce(
-                        catalogue_index=catalogue_index
+                        catalogue_entry=catalogue_entry
                     )
                     self.engine_consists.append(consist)
 
@@ -385,11 +385,9 @@ class Roster(object):
                         if "Randomised" in model_def.class_name:
                             # CABBAGE SKIP RANDOMISED WAGONS FOR NOW
                             continue
-                        for catalogue_index, _ in enumerate(
-                            factory.catalogue
-                        ):
+                        for catalogue_entry in factory.catalogue:
                             consist = factory.produce(
-                                catalogue_index=catalogue_index
+                                catalogue_entry=catalogue_entry
                             )
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(

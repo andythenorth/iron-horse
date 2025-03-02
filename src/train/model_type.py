@@ -1360,7 +1360,7 @@ class EngineModelTypeBase(ModelTypeBase):
                 self.roster_id,
                 self.roster_id_providing_module,
             )
-            temp_consist = factory.produce(catalogue_index=0)
+            temp_consist = factory.produce(catalogue_entry=factory.catalogue[0])
             return int(
                 temp_consist.buy_cost * self.model_def.clone_stats_adjustment_factor
             )
@@ -1418,7 +1418,7 @@ class EngineModelTypeBase(ModelTypeBase):
                 self.roster_id,
                 self.roster_id_providing_module,
             )
-            temp_consist = factory.produce(catalogue_index=0)
+            temp_consist = factory.produce(catalogue_entry=factory.catalogue[0])
             return int(
                 temp_consist.running_cost * self.model_def.clone_stats_adjustment_factor
             )
