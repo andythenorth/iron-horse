@@ -212,9 +212,9 @@ class DocHelper(object):
 
         if consist.is_wagon_for_docs:
             # optimise output by only generating one livery image for wagons, as we had 13k images in static dir, many of them empty images for wagon variants
-            buyable_variants_for_docs = consist.buyable_variants[0:1]
+            buyable_variants_for_docs = consist.cabbage_buyable_variants[0:1]
         else:
-            buyable_variants_for_docs = consist.buyable_variants
+            buyable_variants_for_docs = consist.cabbage_buyable_variants
 
         for buyable_variant in buyable_variants_for_docs:
             # CABBAGE SHIM - THIS DOESN'T WORK, NEED TO REFACTOR buyable_variants_for_docs and work from factory and catalogue

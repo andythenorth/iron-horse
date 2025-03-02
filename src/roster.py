@@ -442,7 +442,7 @@ class Roster(object):
         # - add a group if it doesn't already exist
         # - add the buyable variant as a member of the group
         for consist in self.consists_in_buy_menu_order:
-            for buyable_variant in consist.buyable_variants:
+            for buyable_variant in consist.cabbage_buyable_variants:
                 if (
                     not buyable_variant.consist.buyable_variant_group_id
                     in self.buyable_variant_groups

@@ -64,7 +64,7 @@ class GestaltGraphics(object):
         result = []
         if pipeline.is_pantographs_pipeline:
             # pans are the same for all buyable variants, and are just provided either once, or per position variant
-            dest_spriterows = pipeline.consist.buyable_variants[0:1]
+            dest_spriterows = pipeline.consist.cabbage_buyable_variants[0:1]
         else:
             dest_spriterows = self.get_buy_menu_dest_spriterows(pipeline)
         for dest_spriterow_counter, buyable_variant in enumerate(dest_spriterows):
@@ -94,7 +94,7 @@ class GestaltGraphics(object):
     def get_buy_menu_dest_spriterows(self, pipeline):
         # default case assumes we want a buy menu sprite for each of the buyable variants
         # that's not true for all gestalts - deal with that per gestalt as needed
-        return pipeline.consist.buyable_variants
+        return pipeline.consist.cabbage_buyable_variants
 
     def get_buy_menu_unit_input_row_num(
         self, unit_counter, pipeline, unit
@@ -102,7 +102,7 @@ class GestaltGraphics(object):
         # override in subclasses as needed
         # CABBAGE REFACTOR
         unit_variant_row_num = (
-            unit.rel_spriterow_index * len(pipeline.consist.buyable_variants)
+            unit.rel_spriterow_index * len(pipeline.consist.cabbage_buyable_variants)
         ) + (
             (pipeline.consist.catalogue_entry.livery_def.relative_spriterow_num)
             * self.num_load_state_or_similar_spriterows
@@ -389,7 +389,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # default case assumes we want a buy menu sprite for each of the buyable variants
         # that's not true here, as the buyable variants only use recolour sprites, everything else is an independent consist
         # so just take a slice containing the first variant
-        return pipeline.consist.buyable_variants[0:1]
+        return pipeline.consist.cabbage_buyable_variants[0:1]
 
     def get_buy_menu_unit_input_row_num(
         self, unit_counter, pipeline, unit
@@ -449,7 +449,7 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         # default case assumes we want a buy menu sprite for each of the buyable variants
         # that's not true here, as the buyable variants only use recolour sprites, everything else is an independent consist
         # so just take a slice containing the first variant
-        return pipeline.consist.buyable_variants[0:1]
+        return pipeline.consist.cabbage_buyable_variants[0:1]
 
     def get_buy_menu_unit_input_row_num(
         self, unit_counter, pipeline, unit

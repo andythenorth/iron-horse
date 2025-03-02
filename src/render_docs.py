@@ -462,11 +462,11 @@ def main():
     )
 
     # CABBAGE MIGRATION REPORT
-    cabbage_buyable_variants = {}
+    cabbage_2_buyable_variants = {}
     for consist in consists:
-        if len(consist.buyable_variants) > 1:
-            cabbage_buyable_variants[consist.id] = consist.buyable_variants
-    print("Consists with > 1 buyable variants:", str(len(cabbage_buyable_variants.keys())))
+        if len(consist.cabbage_buyable_variants) > 1:
+            cabbage_2_buyable_variants[consist.id] = consist.cabbage_buyable_variants
+    print("Consists with > 1 buyable variants:", str(len(cabbage_2_buyable_variants.keys())))
     """
     for consist in consists:
         if consist.gestalt_graphics.__class__.__name__ == "GestaltGraphicsVisibleCargo":

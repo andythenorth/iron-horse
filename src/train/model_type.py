@@ -43,7 +43,7 @@ class ModelTypeBase(object):
         # create a structure to hold buyable variants - the method can be over-ridden in consist subclasses to provide specific rules for buyable variants
         # we start empty, and rely on add_unit to populate this later, which means we can rely on gestalt_graphics having been initialised
         # otherwise we're trying to initialise variants before we have gestalt_graphics, and that's a sequencing problem
-        self.buyable_variants = []
+        self.cabbage_buyable_variants = []
         # variant group id options are set in subclasses; supported methods are cascading:
         # set explicitly to a named group matching a consist id
         # set explicitly to a base id, for e.g. wagon groups defined on the roster, which will then compose a group name using e.g. consist track type, gen etc
@@ -164,13 +164,13 @@ class ModelTypeBase(object):
         # CABBAGE - this should be removable
         # this method can be over-ridden per consist subclass as needed
         # the basic form of buyable variants is driven by liveries
-        self.buyable_variants.append(BuyableVariant(self))
+        self.cabbage_buyable_variants.append(BuyableVariant(self))
 
     def cabbage_add_buyable_variant(self, unit):
         # CABBAGE - this should be removable
         # !! we should just be able to either set the units from the factory after init, or pass units to the init (better?)
         # we have add_unit create the variants when needed, which means we avoid sequencing problems with gestalt_graphics initialisation
-        if len(self.buyable_variants) == 0:
+        if len(self.cabbage_buyable_variants) == 0:
             self.resolve_buyable_variants()
 
     @property
@@ -1272,7 +1272,7 @@ class ModelTypeBase(object):
             for (
                 unit_variant
             ) in self.roster.get_wagon_randomisation_candidates(
-                self.buyable_variants[0] # CABBAGE
+                self # CABBAGE
             ):
                 unit_variants.append(unit_variant)
         else:
@@ -2796,7 +2796,7 @@ class CarModelTypeBase(ModelTypeBase):
                     raise BaseException(self.id)
             # some dubious special-casing to make wagon names plural if there are variants, and a named variant group is *not* already used
             # !! this might fail for composite groups where the group has multiple variants from multiple model types, but this specific model has only one variant
-            elif len(self.buyable_variants) > 1:
+            elif len(self.cabbage_buyable_variants) > 1:
                 result = default_result.copy()
                 result[0] = result[0].replace("_CAR", "_CARS")
                 result[0] = result[0].replace("STR_NAME_SUFFIX_", "STR_WAGON_GROUP_")
