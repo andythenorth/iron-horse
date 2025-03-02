@@ -341,15 +341,16 @@ class ModelTypeBase(object):
         result = []
         return result
 
-    def get_cabbage_variant_handling_badges(self, unit_variant):
+    def get_cabbage_variant_handling_badges(self):
         result = []
-        if len(unit_variant.buyable_variant.buyable_variant_group.buyable_variants) > 1:
+        # CABBAGE - remove buyable_variants dependency
+        if len(self.buyable_variants[0].buyable_variant_group.buyable_variants) > 1:
             result.append("ih_variants_cabbage/cabbage_level_0_has_children")
-        if unit_variant.buyable_variant.buyable_variant_group.parent_group is not None:
+        if self.buyable_variants[0].buyable_variant_group.parent_group is not None:
             result.append("ih_variants_cabbage/cabbage_level_1_has_children")
         return result
 
-    def get_badges(self, unit_variant):
+    def get_badges(self):
         # badges can be set on a vehicle for diverse reasons, including
         # - badges explicitly added to _badges attr
         # - badges arising implicitly from consist type or properties
@@ -359,7 +360,7 @@ class ModelTypeBase(object):
         # colour mix badges - note that this returns a list, not a single badge
         result.extend(self.cabbage_colour_mix_badges)
         # special variant handling badges
-        result.extend(self.get_cabbage_variant_handling_badges(unit_variant))
+        result.extend(self.get_cabbage_variant_handling_badges())
         if self.role_badge is not None:
             result.append(self.role_badge)
         # badge for handling vehicle_family
@@ -373,10 +374,10 @@ class ModelTypeBase(object):
             result.append("special_flags/tilt")
         return result
 
-    def get_badges_for_nml(self, unit_variant):
+    def get_badges_for_nml(self):
         return (
             "["
-            + ",".join(f'"{badge}"' for badge in self.get_badges(unit_variant))
+            + ",".join(f'"{badge}"' for badge in self.get_badges())
             + "]"
         )
 
@@ -1254,7 +1255,7 @@ class ModelTypeBase(object):
                 )
         return utils.convert_flat_list_to_pairs_of_tuples(stack_values)
 
-    def get_buy_menu_additional_text(self, unit, unit_variant=None):
+    def get_buy_menu_additional_text(self):
         result = []
         # optional string if engine varies power by railtype
         if self.engine_varies_power_by_power_source:
@@ -1274,11 +1275,13 @@ class ModelTypeBase(object):
             result.append(self.buy_menu_additional_text_distributed_power_substring)
 
         # livery variants comes after role string
-        if unit_variant is not None:
+        # CABBAGE - commented out as unit_variant_cabbage is no longer in scope - this will be replaced by badges??
+        """
+        if unit_variant_cabbage is not None:
             # as of May 2023 get_buy_menu_additional_text is never called with a variant in scope unless the variant requires this string
             # so no conditional checks needed - this may change
             result.append("STR_BUY_MENU_ADDITIONAL_TEXT_HINT_LIVERY_VARIANTS")
-
+        """
         if len(result) == 1:
             return (
                 "STR_BUY_MENU_ADDITIONAL_TEXT_WRAPPER_ONE_SUBSTR, string("

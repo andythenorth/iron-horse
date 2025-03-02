@@ -47,10 +47,6 @@ class UnitBase(object):
         self.random_trigger_switch = None
 
     @property
-    def cabbage_unit_variant(self):
-        return self.unit_variants[0]
-
-    @property
     def cabbage_unit_id_from_model_type(self):
         return self.consist.model_id + "_unit_" + str(self.cabbage_numeric_id)
 
@@ -211,13 +207,14 @@ class UnitBase(object):
             misc_flags.append("TRAIN_FLAG_MU")
         return ",".join(misc_flags)
 
-    def get_extra_flags(self, unit_variant):
+    def get_extra_flags(self):
+        # CABBAGE - should this be a consist or unit method??
         extra_flags = []
-        if unit_variant.buyable_variant.buyable_variant_group is not None:
+        if self.consist.buyable_variants[0].buyable_variant_group is not None:
             # some of these aren't needed for wagons or articulated trailing parts, but eh, probably fine?
             # disable news and exclusive preview for all variants except the default
             if (
-                unit_variant.buyable_variant.get_variant_group_parent_vehicle_id()
+                self.consist.buyable_variants[0].get_variant_group_parent_vehicle_id()
                 is not None
             ):
                 extra_flags.append("VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE")

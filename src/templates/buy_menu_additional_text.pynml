@@ -10,7 +10,7 @@
                 ),
             </tal:power_by_power_source>
         ]) {
-            return string(${consist.get_buy_menu_additional_text(unit)});
+            return string(${consist.get_buy_menu_additional_text()});
         }
     </tal:variable_power>
     <tal:variable_power_and_lgv_capable case="'variable_power_and_lgv_capable'">
@@ -32,7 +32,7 @@
                 0x102 <!--! this will absolutely break on wrong register number if there are more than two power sources -->
             )
         ]) {
-            return string(${consist.get_buy_menu_additional_text(unit)});
+            return string(${consist.get_buy_menu_additional_text()});
         }
     </tal:variable_power_and_lgv_capable>
     <tal:lgv_capable case="'lgv_capable'">
@@ -43,7 +43,7 @@
                 0x100
             )
         ]) {
-            return string(${consist.get_buy_menu_additional_text(unit)});
+            return string(${consist.get_buy_menu_additional_text()});
         }
     </tal:lgv_capable>
     <tal:lgv_capable_and_wagons_add_power case="'lgv_capable_and_wagons_add_power'">
@@ -59,7 +59,7 @@
                 0x101
             )
         ]) {
-            return string(${consist.get_buy_menu_additional_text(unit)});
+            return string(${consist.get_buy_menu_additional_text()});
         }
     </tal:lgv_capable_and_wagons_add_power>
     <tal:livery_variants case="'livery_variants'">
@@ -72,7 +72,7 @@
                 ),
             </tal:text_stack>
         ]) {
-            return string(${consist.get_buy_menu_additional_text(unit, unit.cabbage_unit_variant)});
+            return string(${consist.get_buy_menu_additional_text()});
         }
     </tal:livery_variants>
 </tal:block>

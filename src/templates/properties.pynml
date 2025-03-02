@@ -41,7 +41,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         <!--! name static prop used for buy menu search only -->
         name:                           ${consist.get_name_as_property()};
         climates_available:             NO_CLIMATE; // nml constant
-        badges:                         ${consist.get_badges_for_nml(unit.cabbage_unit_variant)};
+        badges:                         ${consist.get_badges_for_nml()};
         <tal:lead_unit_of_consist_only condition="unit.is_lead_unit_of_consist">
             <!--! some properties should not be set for trailing parts of articulated vehicles -->
             engine_class:                   ${unit.engine_class};
@@ -56,8 +56,8 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             retire_early:                   ${consist.retire_early};
             reliability_decay:              20; // default value
             vehicle_life:                   ${consist.vehicle_life};
-            <tal:variant_group condition="unit.cabbage_unit_variant.buyable_variant.get_variant_group_parent_vehicle_id() is not None">
-                variant_group:                  ${unit.cabbage_unit_variant.buyable_variant.get_variant_group_parent_vehicle_id()};
+            <tal:variant_group condition="consist.buyable_variants[0].get_variant_group_parent_vehicle_id() is not None"> <!--! CABBAGE -->
+                variant_group:                  ${consist.buyable_variants[0].get_variant_group_parent_vehicle_id()};
             </tal:variant_group>
         </tal:lead_unit_of_consist_only>
         <tal:trailing_parts_of_consist_only condition="not unit.is_lead_unit_of_consist">
@@ -85,7 +85,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             default_cargo_type:             ${consist.get_nml_expression_for_default_cargos()};
         </tal:default_cargo>
         misc_flags:                     bitmask(${unit.misc_flags});
-        extra_flags:                    bitmask(${unit.get_extra_flags(unit.cabbage_unit_variant)});
+        extra_flags:                    bitmask(${unit.get_extra_flags()});
         dual_headed:                    ${1 if consist.dual_headed else 0};
         length:                         ${unit.vehicle_length};
         track_type:                     ${consist.track_type};

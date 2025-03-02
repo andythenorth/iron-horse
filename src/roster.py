@@ -159,6 +159,7 @@ class Roster(object):
         return result
 
     def get_wagon_randomisation_candidates(self, buyable_variant):
+        raise Exception("get_wagon_randomisation_candidates called, but will need refactoring to handle elimination of unit_variants_cabbage")
         randomisation_consist = buyable_variant.consist
         result = []
         for base_id, wagons in self.wagon_consists_by_base_id.items():
@@ -185,16 +186,18 @@ class Roster(object):
                 # if there are buyable variants that have random livery
                 # then we want to only append those as it's more direct and leads to shorter candidate lists
                 # otherwise append all the variants
-                unit_variants = wagon_consist.units[0].unit_variants
+                # CABBAGE - NONE OF THIS WILL WORK NOW AS EXPECTED, AS WE DON'T HAVE UNIT VARIANTS
+                # WE NEED TO FIND THE OTHER CONSISTS FROM THE SAME FACTORY
+                unit_variants_cabbage = wagon_consist.units[0].unit_variants_cabbage
                 matched_results = []
-                for unit_variant in unit_variants:
+                for unit_variant in unit_variants_cabbage:
                     if (
                         unit_variant.buyable_variant.livery["colour_set"]
                         == buyable_variant.livery["colour_set"]
                     ):
                         matched_results.append(unit_variant)
                 if len(matched_results) == 0:
-                    for unit_variant in unit_variants:
+                    for unit_variant in unit_variants_cabbage:
                         if (
                             unit_variant.buyable_variant.livery["colour_set"]
                             in global_constants.wagon_livery_mixes[
@@ -318,7 +321,7 @@ class Roster(object):
                     raise ValueError(
                         f"Error: consist {consist.id} has a unit variant with a numeric_id that collides "
                         f"({numeric_id}) with a numeric_id of a unit variant in consist {colliding_consist.id}\n"
-                        f"{[unit.unit_variants for unit in consist.units]}\n"
+                        f"{[unit.unit_variants_cabbage for unit in consist.units]}\n"
                         f"{consist.catalogue_entry.catalogue}\n"
                     )
                 else:
