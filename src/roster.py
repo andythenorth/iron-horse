@@ -32,6 +32,8 @@ class Roster(object):
         self.wagon_module_names_with_roster_ids = kwargs.get(
             "wagon_module_names_with_roster_ids"
         )
+        self.engine_catalogues = []
+        self.wagon_catalogues = []
         self.engine_consists = []
         self.wagon_consists = []
         # create a structure to hold (buyable) variant groups
@@ -344,6 +346,7 @@ class Roster(object):
                 factory = ModelVariantFactory(
                     model_def, self.id, roster_id_providing_module
                 )
+                self.engine_catalogues.append(factory.catalogue)
                 for catalogue_entry in factory.catalogue:
                     consist = factory.produce(
                         catalogue_entry=catalogue_entry
@@ -388,6 +391,7 @@ class Roster(object):
                         if "Randomised" in model_def.class_name:
                             # CABBAGE SKIP RANDOMISED WAGONS FOR NOW
                             continue
+                        self.wagon_catalogues.append(factory.catalogue)
                         for catalogue_entry in factory.catalogue:
                             consist = factory.produce(
                                 catalogue_entry=catalogue_entry
