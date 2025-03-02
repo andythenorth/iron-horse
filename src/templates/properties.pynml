@@ -117,7 +117,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
                 purchase_speed:                 ${int(1.60934 * consist.speed)};
             </tal:speed_is_optional>
             <tal:add_articulated_parts condition="len(consist.units) > 1">
-                articulated_part: ${consist.id}_variant_${unit.cabbage_unit_variant.buyable_variant.buyable_variant_num}_articulated_cb_switch;
+                articulated_part: ${consist.id}_articulated_cb_switch;
             </tal:add_articulated_parts>
             <!--! setting buy menu text for engines and some wagons with role set currently - this is starting to look jank AF eh-->
             <tal:buy_menu_additional_text condition="unit.cabbage_unit_variant.uses_buy_menu_additional_text">
@@ -170,7 +170,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         }
     }
     <tal:vehicle_availability_engines condition="not: consist.is_general_purpose_true_wagon">
-        <tal:simplified_gameplay_only_mode condition="consist.joker or not unit.cabbage_unit_variant.buyable_variant.is_default_buyable_variant_for_consist">
+        <tal:simplified_gameplay_only_mode condition="consist.joker or not consist.is_default_model_variant">
             if (param_vehicle_availability_engines==1) {
                 item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
                     property {
@@ -189,7 +189,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         }
     </tal:vehicle_availability_engines>
     <tal:vehicle_availability_wagons condition="consist.is_general_purpose_true_wagon">
-        <tal:simplified_gameplay_only_mode condition="consist.joker or not unit.cabbage_unit_variant.buyable_variant.is_default_buyable_variant_for_consist">
+        <tal:simplified_gameplay_only_mode condition="consist.joker or not consist.is_default_model_variant">
             if (param_vehicle_availability_wagons==1) {
                 item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
                     property {

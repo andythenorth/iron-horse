@@ -8682,22 +8682,11 @@ class BuyableVariant(object):
                 + " \n "
                 + str(livery_def)
             )
-        # possibly we don't need to store the livery, as we could look it up from the gestalt, but eh
-
-    @property
-    def buyable_variant_num(self):
-        # convenience method
-        return self.consist.buyable_variants.index(self)
 
     @property
     def relative_spriterow_num(self):
-        # either
-        # (1) match to variant number (index in variants array), in which case the order in the spritesheet must match what is expected
-        # (2) or can be forced manually to allow the spritesheet to be out of order (for convenience, or legacy support or any other reason)
-        if self._relative_spriterow_num == None:
-            return self.buyable_variant_num
-        else:
-            return self._relative_spriterow_num
+        # CABBAGE SHIM
+        return self._relative_spriterow_num
 
     @property
     def uses_random_livery(self):
@@ -8706,14 +8695,6 @@ class BuyableVariant(object):
             return colour_set.find("random_from_consist_liveries") != -1
         # fall through to default
         return False
-
-    @property
-    def is_default_buyable_variant_for_consist(self):
-        # convenience method
-        if self.buyable_variant_num == 0:
-            return True
-        else:
-            return False
 
     @property
     def use_named_buyable_variant_group(self):

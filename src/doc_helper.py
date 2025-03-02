@@ -232,7 +232,8 @@ class DocHelper(object):
             docs_image_input_cc = livery["docs_image_input_cc"].copy()
             # as of Dec 2022 only the default livery has per-vehicle extendable colour combos
             # all other liveries have the examples baked into the livery
-            if buyable_variant.buyable_variant_num == 0:
+            # CABBAGE - WE SHOULD BE ABLE TO DROP THIS??
+            if consist.is_default_model_variant:
                 docs_image_input_cc.extend(
                     getattr(
                         consist.gestalt_graphics,
@@ -244,7 +245,7 @@ class DocHelper(object):
                 result = {}
                 livery_name = (
                     "variant_"
-                    + str(buyable_variant.buyable_variant_num)
+                    + str(consist.catalogue_entry.index)
                     + "_"
                     + self.get_livery_file_substr(cc_remap_pair)
                 )

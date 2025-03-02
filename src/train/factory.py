@@ -138,6 +138,11 @@ class CatalogueEntry:
     intro_year: int
     base_track_type_name: str
 
+    @property
+    def index(self):
+        # convenience function
+        return self.catalogue.index(self)
+
 
 class ModelVariantFactory:
     """

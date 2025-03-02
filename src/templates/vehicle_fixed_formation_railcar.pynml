@@ -2,21 +2,19 @@
       support for pantographs and opening doors *is* included
       this is very similar to the standard engine template, but has opening door support, but no decor spriterow support-->
 
-<tal:liveries repeat="livery catalogue_entry.catalogue">
-    spriteset(${unit.id}_ss_doors_closed_${repeat.livery.index}, "${graphics_path}${consist.model_id}.png") {
-        ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + (repeat.livery.index * 60) + (unit.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
-    }
-    spriteset(${unit.id}_ss_doors_open_${repeat.livery.index}, "${graphics_path}${consist.model_id}.png") {
-        ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + 30 + (repeat.livery.index * 60) + (unit.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
-    }
-    switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_check_doors_${repeat.livery.index}, switch_graphics_opening_doors()) {
-        0: return ${unit.id}_ss_doors_closed_${repeat.livery.index};
-        1: return ${unit.id}_ss_doors_open_${repeat.livery.index};
-    }
-</tal:liveries>
+spriteset(${unit.id}_ss_doors_closed, "${graphics_path}${consist.model_id}.png") {
+    ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + (catalogue_entry.index * 60) + (unit.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
+}
+spriteset(${unit.id}_ss_doors_open, "${graphics_path}${consist.model_id}.png") {
+    ${unit.get_spriteset_template_name('reversed' if unit.unit_def.reverse_sprite_template else 'unreversed', 10 + 30 + (catalogue_entry.index * 60) + (unit.rel_spriterow_index * len(catalogue_entry.catalogue) * 60))}
+}
+switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_check_doors, switch_graphics_opening_doors()) {
+    0: return ${unit.id}_ss_doors_closed;
+    1: return ${unit.id}_ss_doors_open;
+}
 
 switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_livery, vehicle_type_id) {
-    ${unit.numeric_id}: return ${unit.id}_switch_graphics_check_doors_${unit.cabbage_unit_variant.buyable_variant.buyable_variant_num};
+    ${unit.numeric_id}: return ${unit.id}_switch_graphics_check_doors;
     <!--! no default, by design all variants should be explicitly found -->
 }
 
@@ -42,7 +40,7 @@ switch (FEAT_TRAINS, SELF, ${unit.id}_switch_graphics_vehicle, getbits(extra_cal
 
 // buy menu graphics chain
 spriteset(${unit.id}_ss_vehicle_purchase, "${graphics_path}${consist.model_id}.png") {
-    <!--! CABBAGE --> // ${consist.get_nml_for_spriteset_template(y_offset=repeat.livery.index * 60)}
+    <!--! CABBAGE --> // ${consist.get_nml_for_spriteset_template(y_offset=catalogue_entry.index * 60)}
     ${consist.get_nml_for_spriteset_template(y_offset=["need a cabbage spriterow offset here", 1][1] * 60)}
 }
 
