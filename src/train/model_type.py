@@ -8819,11 +8819,6 @@ class BuyableVariant(object):
                 + str(self.consist.catalogue_entry.livery_def)
             )
 
-    @property
-    def use_named_buyable_variant_group(self):
-        # convenience pass through
-        return self.consist.use_named_buyable_variant_group
-
     def get_variant_group_parent_vehicle_id(self):
         # we can't set variant group for a vehicle that is intended to be the ultimate parent of a group tree
         # this function is just a wrapper to handle returning that to nml templates
