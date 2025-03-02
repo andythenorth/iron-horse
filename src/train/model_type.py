@@ -1196,6 +1196,17 @@ class ModelTypeBase(object):
         )
 
     @property
+    def uses_buy_menu_additional_text(self):
+        if self.power_by_power_source is not None:
+            if len(self.power_by_power_source) > 1:
+                return True
+        if self.buy_menu_additional_text_hint_wagons_add_power:
+            return True
+        if self.buyable_variants[0].uses_random_livery:
+            return True
+        return False
+
+    @property
     def cite(self):
         # this assumes that NG and Metro always return the same, irrespective of consist cite
         # that makes sense for Pony roster, but might not work in other rosters, deal with that if it comes up eh?
@@ -8764,17 +8775,6 @@ class UnitVariant(object):
             self.numeric_id = self.unit.consist.base_numeric_id
         else:
             self.numeric_id = max(self.unit.consist.unique_numeric_ids) + 1
-
-    @property
-    def uses_buy_menu_additional_text(self):
-        if self.unit.consist.power_by_power_source is not None:
-            if len(self.unit.consist.power_by_power_source) > 1:
-                return True
-        if self.unit.consist.buy_menu_additional_text_hint_wagons_add_power:
-            return True
-        if self.buyable_variant.uses_random_livery:
-            return True
-        return False
 
     def get_buy_menu_additional_text_format(self, unit):
         # keep the template logic simple, present strings for a switch/case tree

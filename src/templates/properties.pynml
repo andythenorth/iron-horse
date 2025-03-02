@@ -32,7 +32,7 @@
     <tal:include metal:use-macro="load: name.pynml" />
 </tal:name>
 
-<tal:buy_menu_additional_text condition="unit.is_lead_unit_of_consist and unit.cabbage_unit_variant.uses_buy_menu_additional_text">
+<tal:buy_menu_additional_text condition="unit.is_lead_unit_of_consist and consist.uses_buy_menu_additional_text">
     <tal:include metal:use-macro="load: buy_menu_additional_text.pynml" />
 </tal:buy_menu_additional_text>
 
@@ -120,8 +120,8 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
                 articulated_part: ${consist.id}_articulated_cb_switch;
             </tal:add_articulated_parts>
             <!--! setting buy menu text for engines and some wagons with role set currently - this is starting to look jank AF eh-->
-            <tal:buy_menu_additional_text condition="unit.cabbage_unit_variant.uses_buy_menu_additional_text">
-                additional_text:                ${unit.id}_switch_buy_menu_additional_text;
+            <tal:buy_menu_additional_text condition="consist.uses_buy_menu_additional_text">
+                additional_text:                ${unit.id}_switch_buy_menu_additional_text; <!--! CABBAGE we don't need this per unit, per consist would do -->
             </tal:buy_menu_additional_text>
         </tal:lead_unit_of_consist_only>
         <tal:conditional_random_trigger condition="unit.random_trigger_switch is not None">
