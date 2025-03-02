@@ -158,11 +158,11 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
             y_offset = 30 * consist.model_def.docs_image_spriterow
         # CABBAGE requires_custom_buy_menu_sprite could be folded into factory or catalogue entry
         elif consist.requires_custom_buy_menu_sprite:
-            y_offset = 30 * variant["buyable_variant"].relative_spriterow_num
+            y_offset = 30 * consist.catalogue_entry.livery_def.relative_spriterow_num
         else:
             y_offset = (
                 30
-                * variant["buyable_variant"].relative_spriterow_num
+                * consist.catalogue_entry.livery_def.relative_spriterow_num
                 * consist.gestalt_graphics.num_load_state_or_similar_spriterows
             )
         # relies on additional_liveries being in predictable row offsets (should be true as of July 2020)

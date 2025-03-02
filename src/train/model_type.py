@@ -157,8 +157,7 @@ class ModelTypeBase(object):
         # CABBAGE - this should be removable
         # this method can be over-ridden per consist subclass as needed
         # the basic form of buyable variants is driven by liveries
-        livery_def = self.catalogue_entry.livery_def
-        self.buyable_variants.append(BuyableVariant(self, livery_def=livery_def))
+        self.buyable_variants.append(BuyableVariant(self))
 
     def cabbage_add_buyable_variant(self, unit):
         # CABBAGE - this should be removable
@@ -1061,6 +1060,14 @@ class ModelTypeBase(object):
             + ")"
         )
 
+    @property
+    def uses_random_livery(self):
+        colour_set = self.catalogue_entry.livery_def.colour_set
+        if colour_set is not None:
+            return colour_set.find("random_from_consist_liveries") != -1
+        # fall through to default
+        return False
+
     def get_wagon_recolour_strategy_num(self, livery, context=None):
         # > 103 = strategy num will be randomised to one of the other strategy nums
         # 101 = use colour set complementary to player company colour
@@ -1120,7 +1127,7 @@ class ModelTypeBase(object):
             self.buyable_variants[0].livery
         )
 
-        if self.buyable_variants[0].uses_random_livery:
+        if self.uses_random_livery:
             available_liveries = (
                 self.get_candidate_liveries_for_randomised_strategy(
                     self.buyable_variants[0].livery
@@ -1317,7 +1324,7 @@ class ModelTypeBase(object):
                 return "lgv_capable_and_wagons_add_power"
             else:
                 return "lgv_capable"
-        elif self.buyable_variants[0].uses_random_livery:
+        elif self.uses_random_livery:
             return "livery_variants"
         else:
             return None
@@ -1329,7 +1336,7 @@ class ModelTypeBase(object):
                 return True
         if self.buy_menu_additional_text_hint_wagons_add_power:
             return True
-        if self.buyable_variants[0].uses_random_livery:
+        if self.uses_random_livery:
             return True
         return False
 
@@ -8792,17 +8799,15 @@ class BuyableVariant(object):
     Simple class to hold buyable variants of the consist.
     """
 
-    def __init__(self, consist, livery_def):
+    def __init__(self, consist):
         self.consist = consist
         # option to point this livery to a specific row in the spritesheet, relative to the block of livery spriterows for the specific unit or similar
         # this is just for convenience if spritesheets are a chore to re-order
         try:
-            # CABBAGE REFACTORING SHIMS
-            self.relative_spriterow_num = livery_def.relative_spriterow_num
             # CABBAGE PARSE livery_def back to dict, temporarily, as consumers want a dict
             self.livery = {
-                "docs_image_input_cc": livery_def.docs_image_input_cc,
-                "colour_set": livery_def.colour_set,
+                "docs_image_input_cc": self.consist.catalogue_entry.livery_def.docs_image_input_cc,
+                "colour_set": self.consist.catalogue_entry.livery_def.colour_set,
             }
         except:
             # CABBAGE TEMP EXCEPTION HANDLING
@@ -8811,16 +8816,8 @@ class BuyableVariant(object):
                 + " | "
                 + self.consist.__class__.__name__
                 + " \n "
-                + str(livery_def)
+                + str(self.consist.catalogue_entry.livery_def)
             )
-
-    @property
-    def uses_random_livery(self):
-        colour_set = self.livery.get("colour_set", None)
-        if colour_set is not None:
-            return colour_set.find("random_from_consist_liveries") != -1
-        # fall through to default
-        return False
 
     @property
     def use_named_buyable_variant_group(self):
@@ -8872,7 +8869,7 @@ class BuyableVariant(object):
                 group_id_base = self.consist.use_named_buyable_variant_group
             else:
                 group_id_base = self.consist.model_id
-            if not self.uses_random_livery:
+            if not self.consist.uses_random_livery:
                 # we nest buyable variants with fixed colours into sub-groups
                 fixed_mixed_suffix = "fixed"
             else:

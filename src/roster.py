@@ -249,6 +249,7 @@ class Roster(object):
         else:
             livery_group_name = default_livery_group_name
         # will fail if the livery group is not defined in the roster
+        # CABBAGE SHIM
         for livery in self.pax_mail_livery_groups[livery_group_name]:
             livery_result = self.engine_and_pax_mail_car_liveries[livery[0]].copy()
             livery_result["relative_spriterow_num"] = livery[1]

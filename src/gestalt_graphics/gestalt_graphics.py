@@ -76,7 +76,7 @@ class GestaltGraphics(object):
                     [
                         unit,
                         self.get_buy_menu_unit_input_row_num(
-                            unit_counter, pipeline, buyable_variant, unit
+                            unit_counter, pipeline, unit
                         ),
                     ]
                 )
@@ -97,14 +97,14 @@ class GestaltGraphics(object):
         return pipeline.consist.buyable_variants
 
     def get_buy_menu_unit_input_row_num(
-        self, unit_counter, pipeline, buyable_variant, unit
+        self, unit_counter, pipeline, unit
     ):
         # override in subclasses as needed
-
+        # CABBAGE REFACTOR
         unit_variant_row_num = (
             unit.rel_spriterow_index * len(pipeline.consist.buyable_variants)
         ) + (
-            (buyable_variant.relative_spriterow_num)
+            (pipeline.consist.catalogue_entry.livery_def.relative_spriterow_num)
             * self.num_load_state_or_similar_spriterows
         )
         return unit_variant_row_num
@@ -392,7 +392,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         return pipeline.consist.buyable_variants[0:1]
 
     def get_buy_menu_unit_input_row_num(
-        self, unit_counter, pipeline, buyable_variant, unit
+        self, unit_counter, pipeline, unit
     ):
         result = (
             len(self.get_unique_spritesets(unit))
@@ -452,11 +452,11 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         return pipeline.consist.buyable_variants[0:1]
 
     def get_buy_menu_unit_input_row_num(
-        self, unit_counter, pipeline, buyable_variant, unit
+        self, unit_counter, pipeline, unit
     ):
 
         unit_variant_row_num = unit.rel_spriterow_index + (
-            (buyable_variant.relative_spriterow_num)
+            (pipeline.consist.catalogue_entry.livery_def.relative_spriterow_num)
             * self.num_load_state_or_similar_spriterows
         )
         return unit_variant_row_num
@@ -1027,7 +1027,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
         return result
 
     def get_buy_menu_unit_input_row_num(
-        self, unit_counter, pipeline, buyable_variant, unit
+        self, unit_counter, pipeline, unit
     ):
         # as of Jan 2024 it was easiest to enforce that this only works with model variant comprised of exactly 2 units
         # that means we can just do first / last, and not worry about other position variants
@@ -1042,7 +1042,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                         * position_variant_offset
                         * self.num_load_state_or_similar_spriterows
                     ) + (
-                        buyable_variant.relative_spriterow_num
+                        pipeline.consist.catalogue_entry.livery_def.relative_spriterow_num
                         * self.num_load_state_or_similar_spriterows
                     )
                     return unit_variant_row_num
@@ -1065,7 +1065,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 * position_variant_offset
                 * self.num_load_state_or_similar_spriterows
             ) + (
-                buyable_variant.relative_spriterow_num
+                pipeline.consist.catalogue_entry.livery_def.relative_spriterow_num
                 * self.num_load_state_or_similar_spriterows
             )
 
