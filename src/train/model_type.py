@@ -1157,6 +1157,10 @@ class ModelTypeBase(object):
         # int used to convert False|True bools to 0|1 values for nml
         return ", ".join(str(int(i)) for i in params_numeric)
 
+    def get_wagon_recolour_colour_set_num(self, context=None):
+        params = self.get_wagon_recolour_strategy_params(context)
+        return self.roster.wagon_recolour_colour_sets.index(params)
+
     def get_candidate_liveries_for_randomised_strategy(self, livery):
         # this will only work with wagon liveries as of April 2023, and is intended to get remaps only
         result = []
@@ -8891,7 +8895,3 @@ class UnitVariant(object):
                     + ") | 0xD000"
                 )
         return utils.convert_flat_list_to_pairs_of_tuples(stack_values)
-
-    def get_wagon_recolour_colour_set_num(self, context=None):
-        params = self.unit.consist.get_wagon_recolour_strategy_params(context)
-        return self.unit.consist.roster.wagon_recolour_colour_sets.index(params)
