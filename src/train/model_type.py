@@ -191,14 +191,6 @@ class ModelTypeBase(object):
         return result
 
     @property
-    def lead_unit_variants_numeric_ids(self):
-        # convenience function
-        result = [
-            unit_variant.numeric_id for unit_variant in self.units[0].unit_variants
-        ]
-        return result
-
-    @property
     def base_track_type_name(self):
         # just a pass through for convenience
         return self.catalogue_entry.base_track_type_name
