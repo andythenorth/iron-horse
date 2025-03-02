@@ -8667,8 +8667,9 @@ class BuyableVariant(object):
         # option to point this livery to a specific row in the spritesheet, relative to the block of livery spriterows for the specific unit or similar
         # this is just for convenience if spritesheets are a chore to re-order
         try:
-            # CABBAGE REFACTORING SHIM - PARSE livery_def back to dict, temporarily, as consumers want a dict
-            self._relative_spriterow_num = livery_def.relative_spriterow_num
+            # CABBAGE REFACTORING SHIMS
+            self.relative_spriterow_num = livery_def.relative_spriterow_num
+            # CABBAGE PARSE livery_def back to dict, temporarily, as consumers want a dict
             self.livery = {
                 "docs_image_input_cc": livery_def.docs_image_input_cc,
                 "colour_set": livery_def.colour_set,
@@ -8682,11 +8683,6 @@ class BuyableVariant(object):
                 + " \n "
                 + str(livery_def)
             )
-
-    @property
-    def relative_spriterow_num(self):
-        # CABBAGE SHIM
-        return self._relative_spriterow_num
 
     @property
     def uses_random_livery(self):
