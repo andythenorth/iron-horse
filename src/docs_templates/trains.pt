@@ -65,21 +65,21 @@
                             <tbody>
                                 <!--! model_type might actually be default model_variant -->
                                 <tal:engine_model_types repeat="model_type doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])">
-                                    <tr id="${model_type.id}">
+                                    <tr id="${model_type.model_id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${model_type.id}_variant_0_blue_blue.png"
+                                            <img src="static/img/${model_type.model_id}_variant_0_blue_blue.png"
                                                  width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${model_type.id}_variant_0_red_white.png"
+                                            <img src="static/img/${model_type.model_id}_variant_0_red_white.png"
                                                  width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td>
-                                            <a class="table-link-dark" href="${model_type.id}.html">${doc_helper.unpack_name_string(model_type)}</a>
+                                            <a class="table-link-dark" href="${model_type.model_id}.html">${doc_helper.unpack_name_string(model_type)}</a>
                                         </td>
                                         <td>${doc_helper.get_role_string_for_consist(model_type, iron_horse.badge_manager)}</td>
                                         <td class="date">${model_type.intro_year}</td>
@@ -90,7 +90,7 @@
                                         </td>
                                         <td class="number">${doc_helper.speed_formatted_for_docs(model_type)}</td>
                                         <td>
-                                            <a style="text-decoration:none;" href="#${model_type.id}">&#x1f517;</a>
+                                            <a style="text-decoration:none;" href="#${model_type.model_id}">&#x1f517;</a>
                                         </td>
                                     </tr>
                                 </tal:engine_model_types>
@@ -122,13 +122,13 @@
                                     <tr id="${model_type.model_id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${model_type.id}_variant_0_blue_blue.png"
+                                            <img src="static/img/${model_type.model_id}_variant_0_blue_blue.png"
                                                  width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${model_type.id}_variant_0_red_white.png"
+                                            <img src="static/img/${model_type.model_id}_variant_0_red_white.png"
                                                  width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>

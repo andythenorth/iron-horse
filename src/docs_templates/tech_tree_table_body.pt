@@ -188,8 +188,8 @@
                                                 <!--! model_type might actually be default model_variant -->
                                                 <tal:model_type define="model_type tech_tree[base_track_type_and_label][role][subrole][subrole_child_branch][gen]">
                                                     <tal:block condition="model_type is not None">
-                                                        <div id="${model_type.id}" class="tech_tree_vehicle_container">
-                                                            <a href="${model_type.id}.html">
+                                                        <div id="${model_type.model_id}" class="tech_tree_vehicle_container">
+                                                            <a href="${model_type.model_id}.html">
                                                                 <div class="tech_tree_vehicle
                                                                             ${'tech_tree_vehicle_electric_' + model_type.electrification_type.lower() if model_type.requires_electric_rails else 'None'}
                                                                             ${'tech_tree_vehicle_electro_diesel' if model_type.str_name_suffix == 'STR_BADGE_POWER_SOURCE_ELECTRODIESEL' else None}

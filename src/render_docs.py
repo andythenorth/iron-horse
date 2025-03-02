@@ -94,7 +94,7 @@ def render_docs(
         doc_file.close()
 
 
-def render_docs_vehicle_details(docs_output_path, doc_helper, consists, template_name):
+def render_docs_vehicle_details(docs_output_path, doc_helper, catalogues, template_name):
     # imports inside functions are generally avoided
     # but PageTemplateLoader is expensive to import and causes unnecessary overhead for Pool mapping when processing docs graphics
     from chameleon import PageTemplateLoader
@@ -103,16 +103,15 @@ def render_docs_vehicle_details(docs_output_path, doc_helper, consists, template
     template = docs_templates[template_name + ".pt"]
 
     roster = iron_horse.roster_manager.active_roster
-    for model_type in consists:
-        # CABBAGE FILTER - DEFAULT DETECTION UNFINISHED
-        if model_type.is_default_model_variant:
-            continue
-        model_type.assert_description_foamer_facts()
-        doc_name = model_type.id
+    for catalogue in catalogues:
+        #model_type.assert_description_foamer_facts() CABBAGE
+        doc_name = catalogue.factory.model_id
+        consists = [catalogue.factory.produce(catalogue_entry) for catalogue_entry in catalogue]
         doc = template(
             roster=roster,
-            model_type=model_type,
+            catalogue=catalogue,
             consists=consists,
+            default_model_variant=consists[0],
             iron_horse=iron_horse,
             global_constants=global_constants,
             command_line_args=command_line_args,
@@ -413,7 +412,7 @@ def main():
     render_docs_vehicle_details(
         html_docs_output_path,
         doc_helper,
-        consists=roster.engine_consists_excluding_clones,
+        catalogues=roster.engine_catalogues,
         template_name="vehicle_details_engine",
     )
     print(
