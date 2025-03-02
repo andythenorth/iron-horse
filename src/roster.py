@@ -445,16 +445,16 @@ class Roster(object):
         for consist in self.consists_in_buy_menu_order:
             for buyable_variant in consist.buyable_variants:
                 if (
-                    not buyable_variant.buyable_variant_group_id
+                    not buyable_variant.consist.buyable_variant_group_id
                     in self.buyable_variant_groups
                 ):
                     self.buyable_variant_groups[
-                        buyable_variant.buyable_variant_group_id
+                        buyable_variant.consist.buyable_variant_group_id
                     ] = BuyableVariantGroup(
-                        id=buyable_variant.buyable_variant_group_id,
+                        id=buyable_variant.consist.buyable_variant_group_id,
                     )
                 self.buyable_variant_groups[
-                    buyable_variant.buyable_variant_group_id
+                    buyable_variant.consist.buyable_variant_group_id
                 ].add_buyable_variant(buyable_variant)
         # now deal with nested groups
         # we do this after creating all the groups, as some groups need to reference other groups
@@ -503,14 +503,10 @@ class Roster(object):
                             if consist.subtype != parent_consist.subtype:
                                 match_failed = True
                             if not match_failed:
-                                candidate_parent_group = consist.buyable_variants[
-                                    0
-                                ].buyable_variant_group
+                                candidate_parent_group = consist.buyable_variant_group
                                 break
                 else:
-                    candidate_parent_group = parent_consist.buyable_variants[
-                        0
-                    ].buyable_variant_group
+                    candidate_parent_group = parent_consist.buyable_variant_group
 
                 # we can't assign parent group to current group, that would be silly / recursive
                 if candidate_parent_group != buyable_variant_group:

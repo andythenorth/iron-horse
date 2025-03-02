@@ -207,11 +207,11 @@ class UnitBase(object):
     def get_extra_flags(self):
         # CABBAGE - should this be a consist or unit method??
         extra_flags = []
-        if self.consist.buyable_variants[0].buyable_variant_group is not None:
+        if self.consist.buyable_variant_group is not None:
             # some of these aren't needed for wagons or articulated trailing parts, but eh, probably fine?
             # disable news and exclusive preview for all variants except the default
             if (
-                self.consist.buyable_variants[0].get_variant_group_parent_vehicle_id()
+                self.consist.get_variant_group_parent_vehicle_id()
                 is not None
             ):
                 extra_flags.append("VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE")

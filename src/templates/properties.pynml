@@ -56,8 +56,8 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
             retire_early:                   ${consist.retire_early};
             reliability_decay:              20; // default value
             vehicle_life:                   ${consist.vehicle_life};
-            <tal:variant_group condition="consist.buyable_variants[0].get_variant_group_parent_vehicle_id() is not None"> <!--! CABBAGE -->
-                variant_group:                  ${consist.buyable_variants[0].get_variant_group_parent_vehicle_id()};
+            <tal:variant_group condition="consist.get_variant_group_parent_vehicle_id() is not None"> <!--! CABBAGE -->
+                variant_group:                  ${consist.get_variant_group_parent_vehicle_id()};
             </tal:variant_group>
         </tal:lead_unit_of_consist_only>
         <tal:trailing_parts_of_consist_only condition="not unit.is_lead_unit_of_consist">

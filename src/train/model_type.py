@@ -340,9 +340,9 @@ class ModelTypeBase(object):
     def get_cabbage_variant_handling_badges(self):
         result = []
         # CABBAGE - remove buyable_variants dependency
-        if len(self.buyable_variants[0].buyable_variant_group.buyable_variants) > 1:
+        if len(self.buyable_variant_group.buyable_variants) > 1:
             result.append("ih_variants_cabbage/cabbage_level_0_has_children")
-        if self.buyable_variants[0].buyable_variant_group.parent_group is not None:
+        if self.buyable_variant_group.parent_group is not None:
             result.append("ih_variants_cabbage/cabbage_level_1_has_children")
         return result
 
@@ -945,6 +945,39 @@ class ModelTypeBase(object):
         result = "[" + result + "]"
         return result
 
+    @property
+    def buyable_variant_group(self):
+        self.assert_buyable_variant_groups()
+        variant_group = self.roster.buyable_variant_groups[
+            self.buyable_variant_group_id
+        ]
+        return variant_group
+
+    @property
+    def buyable_variant_group_id(self):
+        self.assert_buyable_variant_groups()
+        if self._buyable_variant_group_id is not None:
+            # explicitly defined group id
+            id = self._buyable_variant_group_id
+        elif self.group_as_wagon:
+            if self.use_named_buyable_variant_group is not None:
+                group_id_base = self.use_named_buyable_variant_group
+            else:
+                group_id_base = self.model_id
+            if not self.uses_random_livery:
+                # we nest buyable variants with fixed colours into sub-groups
+                fixed_mixed_suffix = "fixed"
+            else:
+                # everything else goes into one group, either on the consist group, or a named parent group which composes multiple model variants
+                fixed_mixed_suffix = None
+            id = self.compose_variant_group_id(
+                group_id_base, fixed_mixed_suffix
+            )
+        else:
+            # assume group is composed from self (for simple case of variant liveries etc)
+            id = self.id
+        return id
+
     def compose_variant_group_id(self, group_name, fixed_mixed_suffix):
         # composes a group id from a group name, and some properties from the consist
         return "{a}_{b}_gen_{c}{d}_{e}".format(
@@ -954,6 +987,22 @@ class ModelTypeBase(object):
             d=self.subtype,
             e=fixed_mixed_suffix,
         )
+
+    def get_variant_group_parent_vehicle_id(self):
+        # we can't set variant group for a vehicle that is intended to be the ultimate parent of a group tree
+        # this function is just a wrapper to handle returning that to nml templates
+        # we still want to be able to get the variant group when needed without this check so this is handled separately
+        if (
+            self.buyable_variant_group.parent_vehicle.id
+            == self.units[0].id
+        ):
+            # handle nested group case, which is only used on first unit
+            if self.buyable_variant_group.parent_group is None:
+                return None
+            else:
+                return self.buyable_variant_group.parent_group.parent_vehicle.unit.id
+        else:
+            return self.buyable_variant_group.parent_vehicle.id
 
     @property
     def requires_custom_buy_menu_sprite(self):
@@ -8828,53 +8877,3 @@ class BuyableVariant(object):
                 + " \n "
                 + str(self.consist.catalogue_entry.livery_def)
             )
-
-    def get_variant_group_parent_vehicle_id(self):
-        # we can't set variant group for a vehicle that is intended to be the ultimate parent of a group tree
-        # this function is just a wrapper to handle returning that to nml templates
-        # we still want to be able to get the variant group when needed without this check so this is handled separately
-        if (
-            self.buyable_variant_group.parent_vehicle.id
-            == self.consist.units[0].id
-        ):
-            # handle nested group case, which is only used on first unit
-            if self.buyable_variant_group.parent_group is None:
-                return None
-            else:
-                return self.buyable_variant_group.parent_group.parent_vehicle.unit.id
-        else:
-            return self.buyable_variant_group.parent_vehicle.id
-
-    @property
-    def buyable_variant_group(self):
-        self.consist.assert_buyable_variant_groups()
-        variant_group = self.consist.roster.buyable_variant_groups[
-            self.buyable_variant_group_id
-        ]
-        return variant_group
-
-    @property
-    def buyable_variant_group_id(self):
-        self.consist.assert_buyable_variant_groups()
-        if self.consist._buyable_variant_group_id is not None:
-            # explicitly defined group id
-            id = self.consist._buyable_variant_group_id
-        elif self.consist.group_as_wagon:
-            if self.consist.use_named_buyable_variant_group is not None:
-                group_id_base = self.consist.use_named_buyable_variant_group
-            else:
-                group_id_base = self.consist.model_id
-            if not self.consist.uses_random_livery:
-                # we nest buyable variants with fixed colours into sub-groups
-                fixed_mixed_suffix = "fixed"
-            else:
-                # everything else goes into one group, either on the consist group, or a named parent group which composes multiple model variants
-                fixed_mixed_suffix = None
-            id = self.consist.compose_variant_group_id(
-                group_id_base, fixed_mixed_suffix
-            )
-        else:
-            # assume group is composed from self (for simple case of variant liveries etc)
-            id = self.consist.id
-        return id
-
