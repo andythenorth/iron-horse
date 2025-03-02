@@ -945,6 +945,16 @@ class ModelTypeBase(object):
         result = "[" + result + "]"
         return result
 
+    def compose_variant_group_id(self, group_name, fixed_mixed_suffix):
+        # composes a group id from a group name, and some properties from the consist
+        return "{a}_{b}_gen_{c}{d}_{e}".format(
+            a=group_name,
+            b=self.base_track_type_name.lower(),
+            c=self.gen,
+            d=self.subtype,
+            e=fixed_mixed_suffix,
+        )
+
     @property
     def requires_custom_buy_menu_sprite(self):
         # boolean check for whether we'll need a custom buy menu sprite, or if we can default to just using 6th angle of vehicle
@@ -8843,16 +8853,6 @@ class BuyableVariant(object):
         ]
         return variant_group
 
-    def compose_variant_group_id(self, group_name, consist, fixed_mixed_suffix):
-        # composes a group id from a group name, and some properties from the consist
-        return "{a}_{b}_gen_{c}{d}_{e}".format(
-            a=group_name,
-            b=consist.base_track_type_name.lower(),
-            c=consist.gen,
-            d=consist.subtype,
-            e=fixed_mixed_suffix,
-        )
-
     @property
     def buyable_variant_group_id(self):
         self.consist.assert_buyable_variant_groups()
@@ -8870,8 +8870,8 @@ class BuyableVariant(object):
             else:
                 # everything else goes into one group, either on the consist group, or a named parent group which composes multiple model variants
                 fixed_mixed_suffix = None
-            id = self.compose_variant_group_id(
-                group_id_base, self.consist, fixed_mixed_suffix
+            id = self.consist.compose_variant_group_id(
+                group_id_base, fixed_mixed_suffix
             )
         else:
             # assume group is composed from self (for simple case of variant liveries etc)
