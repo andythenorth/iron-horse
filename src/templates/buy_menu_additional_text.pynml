@@ -1,4 +1,4 @@
-<tal:block switch="unit.cabbage_unit_variant.get_buy_menu_additional_text_format(unit)">
+<tal:block switch="consist.get_buy_menu_additional_text_format()">
     <tal:variable_power case="'variable_power'">
         <!--! for variable power, we need to stuff the text stack with the values for power -->
         switch (FEAT_TRAINS, SELF, ${unit.id}_switch_buy_menu_additional_text, [

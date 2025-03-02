@@ -4,7 +4,7 @@
     <tal:include metal:use-macro="load: create_effect.pynml" />
 </tal:create_effect>
 
-<tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source(unit) and unit.is_lead_unit_of_consist">
+<tal:railtype_varies_power condition="consist.engine_varies_power_by_power_source and unit.is_lead_unit_of_consist">
     <tal:include metal:use-macro="load: power.pynml" />
 </tal:railtype_varies_power>
 
@@ -108,7 +108,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
                 </tal:block>
             </tal:running_cost_factor>
             purchase_running_cost_factor:   ${consist.running_cost}; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
-            <tal:variable_power condition="consist.engine_varies_power_by_power_source(unit) or consist.wagons_add_power">
+            <tal:variable_power condition="consist.engine_varies_power_by_power_source or consist.wagons_add_power">
                 power:                          ${unit.id}_switch_power_0;
                 purchase_power:                 ${consist.power};
             </tal:variable_power>

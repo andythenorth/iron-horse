@@ -380,11 +380,11 @@ class ModelTypeBase(object):
             + "]"
         )
 
-    def engine_varies_power_by_power_source(self, unit):
+    @property
+    def engine_varies_power_by_power_source(self):
         # note that we use self.cab_id to eliminate trailer cars from this (which use power_by_power_source to manage pantographs), this is JFDI and may need refactored in future
         if (
             (self.power_by_power_source is not None)
-            and (unit.is_lead_unit_of_consist)
             and (getattr(self, "cab_consist", None) is None)
         ):
             if len(self.power_by_power_source) > 1:
@@ -1151,7 +1151,7 @@ class ModelTypeBase(object):
     def get_buy_menu_additional_text(self, unit, unit_variant=None):
         result = []
         # optional string if engine varies power by railtype
-        if self.engine_varies_power_by_power_source(unit):
+        if self.engine_varies_power_by_power_source:
             if len(self.power_by_power_source) == 2:
                 result.append("STR_POWER_BY_POWER_SOURCE_TWO_SOURCES")
             elif len(self.power_by_power_source) == 3:
@@ -1194,6 +1194,27 @@ class ModelTypeBase(object):
             + ": "
             + str(len(result))
         )
+
+    def get_buy_menu_additional_text_format(self):
+        # keep the template logic simple, present strings for a switch/case tree
+        # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
+        if self.engine_varies_power_by_power_source:
+            # !! this combinatorial handling of power, lgv capable etc is a bad sign - we have the wrong kind of tree, as it's switch/case, not composeable / recursive
+            # !!! we need a better tree, similar to get_name_parts
+            if self.lgv_capable:
+                return "variable_power_and_lgv_capable"
+            else:
+                return "variable_power"
+        elif self.lgv_capable:
+            # yeah, simplicity failed when lgv_capable was added, this simple tree needs rethought to allow better composition of arbitrary strings
+            if self.buy_menu_additional_text_hint_wagons_add_power:
+                return "lgv_capable_and_wagons_add_power"
+            else:
+                return "lgv_capable"
+        elif self.buyable_variants[0].uses_random_livery:
+            return "livery_variants"
+        else:
+            return None
 
     @property
     def uses_buy_menu_additional_text(self):
@@ -8775,27 +8796,6 @@ class UnitVariant(object):
             self.numeric_id = self.unit.consist.base_numeric_id
         else:
             self.numeric_id = max(self.unit.consist.unique_numeric_ids) + 1
-
-    def get_buy_menu_additional_text_format(self, unit):
-        # keep the template logic simple, present strings for a switch/case tree
-        # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_power_source as of August 2019)
-        if self.unit.consist.engine_varies_power_by_power_source(unit):
-            # !! this combinatorial handling of power, lgv capable etc is a bad sign - we have the wrong kind of tree, as it's switch/case, not composeable / recursive
-            # !!! we need a better tree, similar to get_name_parts
-            if self.unit.consist.lgv_capable:
-                return "variable_power_and_lgv_capable"
-            else:
-                return "variable_power"
-        elif self.unit.consist.lgv_capable:
-            # yeah, simplicity failed when lgv_capable was added, this simple tree needs rethought to allow better composition of arbitrary strings
-            if self.unit.consist.buy_menu_additional_text_hint_wagons_add_power:
-                return "lgv_capable_and_wagons_add_power"
-            else:
-                return "lgv_capable"
-        elif self.buyable_variant.uses_random_livery:
-            return "livery_variants"
-        else:
-            return None
 
     @property
     def all_candidate_livery_colour_sets_for_variant(self):
