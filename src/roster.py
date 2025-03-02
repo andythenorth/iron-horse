@@ -411,17 +411,15 @@ class Roster(object):
         # this does not have the same cost in nml or grf filesize
         seen_params = []
         for wagon_consist in self.wagon_consists:
-            for unit in wagon_consist.unique_units:
-                if getattr(wagon_consist, "use_colour_randomisation_strategies", False):
-                    for unit_variant in unit.unit_variants:
-                        seen_params.append(
-                            unit_variant.get_wagon_recolour_strategy_params()
-                        )
-                        seen_params.append(
-                            unit_variant.get_wagon_recolour_strategy_params(
-                                context="purchase"
-                            )
-                        )
+            if getattr(wagon_consist, "use_colour_randomisation_strategies", False):
+                seen_params.append(
+                    wagon_consist.get_wagon_recolour_strategy_params()
+                )
+                seen_params.append(
+                    wagon_consist.get_wagon_recolour_strategy_params(
+                        context="purchase"
+                    )
+                )
 
         self.wagon_recolour_colour_sets = list(set(seen_params))
 

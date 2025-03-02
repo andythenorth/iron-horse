@@ -1117,6 +1117,46 @@ class ModelTypeBase(object):
         else:
             return list(global_constants.colour_sets.keys()).index(colour_set)
 
+    def get_wagon_recolour_strategy_params(self, context=None):
+        wagon_recolour_strategy_num = self.get_wagon_recolour_strategy_num(
+            self.buyable_variants[0].livery
+        )
+
+        if self.buyable_variants[0].uses_random_livery:
+            available_liveries = (
+                self.get_candidate_liveries_for_randomised_strategy(
+                    self.buyable_variants[0].livery
+                )
+            )
+            if self.buyable_variants[0].livery.get("purchase", None) is not None:
+                wagon_recolour_strategy_num_purchase = (
+                    self.get_wagon_recolour_strategy_num(
+                        self.buyable_variants[0].livery, context="purchase"
+                    )
+                )
+            else:
+                wagon_recolour_strategy_num_purchase = available_liveries[0]
+        else:
+            # we have to provide 8 options for nml params, but in this case they are all unused, so just pass them as 0
+            available_liveries = [0, 0, 0, 0, 0, 0, 0, 0]
+            # purchase strategy will be same as non-purchase
+            wagon_recolour_strategy_num_purchase = wagon_recolour_strategy_num
+
+        flag_use_weathering = self.buyable_variants[0].livery.get("use_weathering", False)
+        flag_context_is_purchase = True if context == "purchase" else False
+
+        params_numeric = [
+            flag_use_weathering,
+            flag_context_is_purchase,
+            wagon_recolour_strategy_num,
+            wagon_recolour_strategy_num_purchase,
+        ]
+
+        params_numeric.extend(available_liveries)
+
+        # int used to convert False|True bools to 0|1 values for nml
+        return ", ".join(str(int(i)) for i in params_numeric)
+
     def get_candidate_liveries_for_randomised_strategy(self, livery):
         # this will only work with wagon liveries as of April 2023, and is intended to get remaps only
         result = []
@@ -8852,46 +8892,6 @@ class UnitVariant(object):
                 )
         return utils.convert_flat_list_to_pairs_of_tuples(stack_values)
 
-    def get_wagon_recolour_strategy_params(self, context=None):
-        wagon_recolour_strategy_num = self.unit.consist.get_wagon_recolour_strategy_num(
-            self.buyable_variant.livery
-        )
-
-        if self.buyable_variant.uses_random_livery:
-            available_liveries = (
-                self.unit.consist.get_candidate_liveries_for_randomised_strategy(
-                    self.buyable_variant.livery
-                )
-            )
-            if self.buyable_variant.livery.get("purchase", None) is not None:
-                wagon_recolour_strategy_num_purchase = (
-                    self.unit.consist.get_wagon_recolour_strategy_num(
-                        self.buyable_variant.livery, context="purchase"
-                    )
-                )
-            else:
-                wagon_recolour_strategy_num_purchase = available_liveries[0]
-        else:
-            # we have to provide 8 options for nml params, but in this case they are all unused, so just pass them as 0
-            available_liveries = [0, 0, 0, 0, 0, 0, 0, 0]
-            # purchase strategy will be same as non-purchase
-            wagon_recolour_strategy_num_purchase = wagon_recolour_strategy_num
-
-        flag_use_weathering = self.buyable_variant.livery.get("use_weathering", False)
-        flag_context_is_purchase = True if context == "purchase" else False
-
-        params_numeric = [
-            flag_use_weathering,
-            flag_context_is_purchase,
-            wagon_recolour_strategy_num,
-            wagon_recolour_strategy_num_purchase,
-        ]
-
-        params_numeric.extend(available_liveries)
-
-        # int used to convert False|True bools to 0|1 values for nml
-        return ", ".join(str(int(i)) for i in params_numeric)
-
     def get_wagon_recolour_colour_set_num(self, context=None):
-        params = self.get_wagon_recolour_strategy_params(context)
+        params = self.unit.consist.get_wagon_recolour_strategy_params(context)
         return self.unit.consist.roster.wagon_recolour_colour_sets.index(params)
