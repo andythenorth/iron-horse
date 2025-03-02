@@ -166,9 +166,6 @@ class ModelTypeBase(object):
         # we have add_unit create the variants when needed, which means we avoid sequencing problems with gestalt_graphics initialisation
         if len(self.buyable_variants) == 0:
             self.resolve_buyable_variants()
-        # append the unit variants after adding the unit to consist.units, as we want to be able to simply increment numeric IDs based on the number of units added so far
-        for buyable_variant in self.buyable_variants:
-            unit.unit_variants.append(UnitVariant(unit, buyable_variant))
 
     @property
     def unique_units(self):
@@ -8889,13 +8886,3 @@ class BuyableVariant(object):
             id = self.consist.id
         return id
 
-
-class UnitVariant(object):
-    """
-    Simple class for unit variants.
-    Model variants have buyable_variants, and each unit of the consist needs a corresponding unit_variant.
-    """
-
-    def __init__(self, unit, buyable_variant, **kwargs):
-        self.unit = unit
-        self.buyable_variant = buyable_variant

@@ -26,9 +26,6 @@ class UnitBase(object):
             self.cabbage_numeric_id = 0
         else:
             self.cabbage_numeric_id = len(self.consist.unique_units)
-        # create structure to hold the buyable variants, done last as may depend on other attrs of self
-        # CABBAGE
-        self.unit_variants = []
         # CABBAGE
         # !! the need to copy cargo refits from the consist is legacy from the default multi-unit articulated vehicles in Iron Horse 1
         # !! could likely be refactored !!
