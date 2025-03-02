@@ -1190,19 +1190,19 @@ class ModelTypeBase(object):
 
     def get_wagon_recolour_strategy_params(self, context=None):
         wagon_recolour_strategy_num = self.get_wagon_recolour_strategy_num(
-            self.buyable_variants[0].consist.cabbage_livery
+            self.cabbage_livery
         )
 
         if self.uses_random_livery:
             available_liveries = (
                 self.get_candidate_liveries_for_randomised_strategy(
-                    self.buyable_variants[0].consist.cabbage_livery
+                    self.cabbage_livery
                 )
             )
-            if self.buyable_variants[0].consist.cabbage_livery.get("purchase", None) is not None:
+            if self.cabbage_livery.get("purchase", None) is not None:
                 wagon_recolour_strategy_num_purchase = (
                     self.get_wagon_recolour_strategy_num(
-                        self.buyable_variants[0].consist.cabbage_livery, context="purchase"
+                        self.cabbage_livery, context="purchase"
                     )
                 )
             else:
@@ -1213,7 +1213,7 @@ class ModelTypeBase(object):
             # purchase strategy will be same as non-purchase
             wagon_recolour_strategy_num_purchase = wagon_recolour_strategy_num
 
-        flag_use_weathering = self.buyable_variants[0].consist.cabbage_livery.get("use_weathering", False)
+        flag_use_weathering = self.cabbage_livery.get("use_weathering", False)
         flag_context_is_purchase = True if context == "purchase" else False
 
         params_numeric = [
@@ -1280,7 +1280,7 @@ class ModelTypeBase(object):
             unit_variants.append(self.units.unit_variant[0]) # CABBAGE
 
         eligible_colours = global_constants.wagon_livery_mixes[
-            self.buyable_variants[0].consist.cabbage_livery["colour_set"] # CABBAGE
+            self.cabbage_livery["colour_set"] # CABBAGE
         ]
         variant_colour_set = []
         # CABBAGE SHIM
