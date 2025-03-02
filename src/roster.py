@@ -192,16 +192,16 @@ class Roster(object):
                 matched_results = []
                 for unit_variant in unit_variants_cabbage:
                     if (
-                        unit_variant.buyable_variant.livery["colour_set"]
-                        == buyable_variant.livery["colour_set"]
+                        unit_variant.buyable_variant.consist.cabbage_livery["colour_set"]
+                        == buyable_variant.consist.cabbage_livery["colour_set"]
                     ):
                         matched_results.append(unit_variant)
                 if len(matched_results) == 0:
                     for unit_variant in unit_variants_cabbage:
                         if (
-                            unit_variant.buyable_variant.livery["colour_set"]
+                            unit_variant.buyable_variant.consist.cabbage_livery["colour_set"]
                             in global_constants.wagon_livery_mixes[
-                                buyable_variant.livery["colour_set"]
+                                buyable_variant.consist.cabbage_livery["colour_set"]
                             ]
                         ):
                             matched_results.append(unit_variant)
@@ -216,7 +216,7 @@ class Roster(object):
             raise BaseException(
                 randomisation_consist.id
                 + " colour set "
-                + buyable_variant.livery["colour_set"]
+                + buyable_variant.consist.cabbage_livery["colour_set"]
                 + " has only one choice for randomisation_candidates, this is pointless nonsense, consider removing "
                 + randomisation_consist.id
                 + " or check that randomisation candidates provide this colour set"

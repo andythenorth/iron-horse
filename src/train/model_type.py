@@ -114,6 +114,13 @@ class ModelTypeBase(object):
         self.is_wagon_for_docs = False
 
     @property
+    def cabbage_livery(self):
+        return {
+                "docs_image_input_cc": self.catalogue_entry.livery_def.docs_image_input_cc,
+                "colour_set": self.catalogue_entry.livery_def.colour_set,
+            }
+
+    @property
     def id(self):
         return self.catalogue_entry.model_variant_id
 
@@ -1183,19 +1190,19 @@ class ModelTypeBase(object):
 
     def get_wagon_recolour_strategy_params(self, context=None):
         wagon_recolour_strategy_num = self.get_wagon_recolour_strategy_num(
-            self.buyable_variants[0].livery
+            self.buyable_variants[0].consist.cabbage_livery
         )
 
         if self.uses_random_livery:
             available_liveries = (
                 self.get_candidate_liveries_for_randomised_strategy(
-                    self.buyable_variants[0].livery
+                    self.buyable_variants[0].consist.cabbage_livery
                 )
             )
-            if self.buyable_variants[0].livery.get("purchase", None) is not None:
+            if self.buyable_variants[0].consist.cabbage_livery.get("purchase", None) is not None:
                 wagon_recolour_strategy_num_purchase = (
                     self.get_wagon_recolour_strategy_num(
-                        self.buyable_variants[0].livery, context="purchase"
+                        self.buyable_variants[0].consist.cabbage_livery, context="purchase"
                     )
                 )
             else:
@@ -1206,7 +1213,7 @@ class ModelTypeBase(object):
             # purchase strategy will be same as non-purchase
             wagon_recolour_strategy_num_purchase = wagon_recolour_strategy_num
 
-        flag_use_weathering = self.buyable_variants[0].livery.get("use_weathering", False)
+        flag_use_weathering = self.buyable_variants[0].consist.cabbage_livery.get("use_weathering", False)
         flag_context_is_purchase = True if context == "purchase" else False
 
         params_numeric = [
@@ -1273,7 +1280,7 @@ class ModelTypeBase(object):
             unit_variants.append(self.units.unit_variant[0]) # CABBAGE
 
         eligible_colours = global_constants.wagon_livery_mixes[
-            self.buyable_variants[0].livery["colour_set"] # CABBAGE
+            self.buyable_variants[0].consist.cabbage_livery["colour_set"] # CABBAGE
         ]
         variant_colour_set = []
         # CABBAGE SHIM
@@ -8862,18 +8869,3 @@ class BuyableVariant(object):
         self.consist = consist
         # option to point this livery to a specific row in the spritesheet, relative to the block of livery spriterows for the specific unit or similar
         # this is just for convenience if spritesheets are a chore to re-order
-        try:
-            # CABBAGE PARSE livery_def back to dict, temporarily, as consumers want a dict
-            self.livery = {
-                "docs_image_input_cc": self.consist.catalogue_entry.livery_def.docs_image_input_cc,
-                "colour_set": self.consist.catalogue_entry.livery_def.colour_set,
-            }
-        except:
-            # CABBAGE TEMP EXCEPTION HANDLING
-            raise Exception(
-                self.consist.id
-                + " | "
-                + self.consist.__class__.__name__
-                + " \n "
-                + str(self.consist.catalogue_entry.livery_def)
-            )
