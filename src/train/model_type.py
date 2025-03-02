@@ -8791,12 +8791,6 @@ class UnitVariant(object):
         self.unit = unit
         self.buyable_variant = buyable_variant
 
-        # numeric ids are just assigned sequentially when adding variants
-        if len(self.unit.consist.unique_numeric_ids) == 0:
-            self.numeric_id = self.unit.consist.base_numeric_id
-        else:
-            self.numeric_id = max(self.unit.consist.unique_numeric_ids) + 1
-
     @property
     def all_candidate_livery_colour_sets_for_variant(self):
         # this may be a real variant, or a randomised variant, which delegates out to a set of real variants
