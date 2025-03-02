@@ -103,7 +103,7 @@ disable_item(FEAT_TRAINS, 00, 115);
 // sort order
 // CABBAGE
 sort(FEAT_TRAINS, [
-    ${','.join([str(buyable_variant.cabbage_lead_unit_variant_matching_buyable_variant.numeric_id) for buyable_variant in roster.cabbage_get_buyable_variants_in_buy_menu_order()])},
+    ${','.join([str(buyable_variant.consist.units[0].numeric_id) for buyable_variant in roster.cabbage_get_buyable_variants_in_buy_menu_order()])},
 ]);
 
 // fix depot view for trains

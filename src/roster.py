@@ -593,9 +593,9 @@ class BuyableVariantGroup(object):
     @property
     def parent_vehicle(self):
         # actually returns a unit_variant, but eh, equivalent to 'vehicle' in the nml templating
-        return self.buyable_variants[0].cabbage_lead_unit_variant_matching_buyable_variant
+        return self.buyable_variants[0].consist.units[0]
 
     @property
     def parent_consist(self):
         # convenience function, note also parent_vehicle, which is often what we want
-        return self.parent_vehicle.unit.consist
+        return self.parent_vehicle.consist

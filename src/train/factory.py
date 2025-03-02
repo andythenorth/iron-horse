@@ -370,6 +370,7 @@ class Catalogue(list):
             numeric_id_offset = instance.factory.model_def.base_numeric_id + (
                 livery_counter * len(instance.factory.model_def.unit_defs)
             )
+            # note that this is the list of *unique* numeric ids - it doesn't repeat ids for repeated units
             unit_numeric_ids = [
                 numeric_id_offset + i
                 for i, _ in enumerate(instance.factory.model_def.unit_defs)

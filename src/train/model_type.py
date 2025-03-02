@@ -182,11 +182,12 @@ class ModelTypeBase(object):
 
     @property
     def unique_numeric_ids(self):
-        # all the numeric_ids used for all the variants of all the units
+        # all the numeric_ids used for all the unique units
+        # CABBAGE - this should match catalogue_entry.unit_numeric_ids??
+        # WOULD THAT BE BETTER TO USE??
         result = []
         for unit in self.unique_units:
-            for unit_variant in unit.unit_variants:
-                result.append(unit_variant.numeric_id)
+            result.append(unit.numeric_id)
         return result
 
     @property
@@ -8699,20 +8700,6 @@ class BuyableVariant(object):
             return self._relative_spriterow_num
 
     @property
-    def cabbage_lead_unit_variant_matching_buyable_variant(self):
-        # convenience function
-        for unit_variant in self.consist.units[0].unit_variants:
-            if unit_variant.buyable_variant == self:
-                return unit_variant
-        # if not found, fail
-        raise BaseException(
-            "unit_variant not found for "
-            + self
-            + " for consist "
-            + self.consist.id
-        )
-
-    @property
     def uses_random_livery(self):
         colour_set = self.livery.get("colour_set", None)
         if colour_set is not None:
@@ -8738,8 +8725,8 @@ class BuyableVariant(object):
         # this function is just a wrapper to handle returning that to nml templates
         # we still want to be able to get the variant group when needed without this check so this is handled separately
         if (
-            self.buyable_variant_group.parent_vehicle.unit.id
-            == self.cabbage_lead_unit_variant_matching_buyable_variant.unit.id
+            self.buyable_variant_group.parent_vehicle.id
+            == self.consist.units[0].id
         ):
             # handle nested group case, which is only used on first unit
             if self.buyable_variant_group.parent_group is None:
@@ -8747,7 +8734,7 @@ class BuyableVariant(object):
             else:
                 return self.buyable_variant_group.parent_group.parent_vehicle.unit.id
         else:
-            return self.buyable_variant_group.parent_vehicle.unit.id
+            return self.buyable_variant_group.parent_vehicle.id
 
     @property
     def buyable_variant_group(self):
@@ -8810,17 +8797,13 @@ class UnitVariant(object):
             self.numeric_id = max(self.unit.consist.unique_numeric_ids) + 1
 
     @property
-    def uses_random_livery(self):
-        return self.buyable_variant.uses_random_livery
-
-    @property
     def uses_buy_menu_additional_text(self):
         if self.unit.consist.power_by_power_source is not None:
             if len(self.unit.consist.power_by_power_source) > 1:
                 return True
         if self.unit.consist.buy_menu_additional_text_hint_wagons_add_power:
             return True
-        if self.uses_random_livery:
+        if self.buyable_variant.uses_random_livery:
             return True
         return False
 
@@ -8840,7 +8823,7 @@ class UnitVariant(object):
                 return "lgv_capable_and_wagons_add_power"
             else:
                 return "lgv_capable"
-        elif self.uses_random_livery:
+        elif self.buyable_variant.uses_random_livery:
             return "livery_variants"
         else:
             return None
@@ -8911,7 +8894,7 @@ class UnitVariant(object):
             self.buyable_variant.livery
         )
 
-        if self.uses_random_livery:
+        if self.buyable_variant.uses_random_livery:
             available_liveries = (
                 self.unit.consist.get_candidate_liveries_for_randomised_strategy(
                     self.buyable_variant.livery
