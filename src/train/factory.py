@@ -479,8 +479,13 @@ class Catalogue(list):
             f"{self.factory.model_def}"
         )
 
+    @property
+    def default_entry(self):
+        # provide default entry as an explicit option for consumers, not implicit
+        return self[0]
+
     def is_default_model_variant(self, model_variant):
-        return model_variant.catalogue_entry == self[0]
+        return model_variant.catalogue_entry == self.default_entry
 
 
 class ModelDefCloner:

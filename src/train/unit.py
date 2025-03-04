@@ -20,7 +20,7 @@ class UnitBase(object):
         self.consist = consist
         self.id = id
         self.numeric_id = numeric_id
-        #print(numeric_id)
+        # print(numeric_id)
         # create an id, which is used for shared switch chains, and as base id for unit variants to construct an id
         if len(self.consist.unique_units) == 0:
             self.cabbage_numeric_id = 0
@@ -210,10 +210,7 @@ class UnitBase(object):
         if self.consist.buyable_variant_group is not None:
             # some of these aren't needed for wagons or articulated trailing parts, but eh, probably fine?
             # disable news and exclusive preview for all variants except the default
-            if (
-                self.consist.get_variant_group_parent_vehicle_id()
-                is not None
-            ):
+            if self.consist.get_variant_group_parent_vehicle_id() is not None:
                 extra_flags.append("VEHICLE_FLAG_DISABLE_NEW_VEHICLE_MESSAGE")
                 extra_flags.append("VEHICLE_FLAG_DISABLE_EXCLUSIVE_PREVIEW")
             extra_flags.append("VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW")

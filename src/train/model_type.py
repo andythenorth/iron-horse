@@ -110,15 +110,18 @@ class ModelTypeBase(object):
         # cite from a made up person) for docs etc
         # optional, set per subclass as needed
         self._cite = ""
-        # used for docs management
-        self.is_wagon_for_docs = False
+
+    @classmethod
+    @property
+    def doc_flag(cls):
+        return cls._doc_flag
 
     @property
     def cabbage_livery(self):
         return {
-                "docs_image_input_cc": self.catalogue_entry.livery_def.docs_image_input_cc,
-                "colour_set": self.catalogue_entry.livery_def.colour_set,
-            }
+            "docs_image_input_cc": self.catalogue_entry.livery_def.docs_image_input_cc,
+            "colour_set": self.catalogue_entry.livery_def.colour_set,
+        }
 
     @property
     def id(self):
@@ -378,18 +381,13 @@ class ModelTypeBase(object):
         return result
 
     def get_badges_for_nml(self):
-        return (
-            "["
-            + ",".join(f'"{badge}"' for badge in self.get_badges())
-            + "]"
-        )
+        return "[" + ",".join(f'"{badge}"' for badge in self.get_badges()) + "]"
 
     @property
     def engine_varies_power_by_power_source(self):
         # note that we use self.cab_id to eliminate trailer cars from this (which use power_by_power_source to manage pantographs), this is JFDI and may need refactored in future
-        if (
-            (self.power_by_power_source is not None)
-            and (getattr(self, "cab_consist", None) is None)
+        if (self.power_by_power_source is not None) and (
+            getattr(self, "cab_consist", None) is None
         ):
             if len(self.power_by_power_source) > 1:
                 # as of Dec 2018, can't use both variable power and wagon power
@@ -540,10 +538,7 @@ class ModelTypeBase(object):
         if self.model_def.replacement_model_id is not None:
             for consist in self.roster.engine_consists:
                 # CABBAGE model_id will over-detect here as multiple variants have the same model_id
-                if (
-                    consist.model_id
-                    == self.model_def.replacement_model_id
-                ):
+                if consist.model_id == self.model_def.replacement_model_id:
                     return consist
             # if we don't return a valid result, that's an error, probably a broken replacement id
             raise Exception(
@@ -691,9 +686,7 @@ class ModelTypeBase(object):
         if self.lgv_capable:
             modifier = "A"
         elif self.requires_high_clearance:
-            print(
-                self.model_id, " has requires_high_clearance set - needs cleared"
-            )
+            print(self.model_id, " has requires_high_clearance set - needs cleared")
             modifier = "B"
         result = result[0:3] + modifier
         return result
@@ -977,9 +970,7 @@ class ModelTypeBase(object):
             else:
                 # everything else goes into one group, either on the consist group, or a named parent group which composes multiple model variants
                 fixed_mixed_suffix = None
-            id = self.compose_variant_group_id(
-                group_id_base, fixed_mixed_suffix
-            )
+            id = self.compose_variant_group_id(group_id_base, fixed_mixed_suffix)
         else:
             # assume group is composed from self (for simple case of variant liveries etc)
             id = self.id
@@ -999,10 +990,7 @@ class ModelTypeBase(object):
         # we can't set variant group for a vehicle that is intended to be the ultimate parent of a group tree
         # this function is just a wrapper to handle returning that to nml templates
         # we still want to be able to get the variant group when needed without this check so this is handled separately
-        if (
-            self.buyable_variant_group.parent_vehicle.id
-            == self.units[0].id
-        ):
+        if self.buyable_variant_group.parent_vehicle.id == self.units[0].id:
             # handle nested group case, which is only used on first unit
             if self.buyable_variant_group.parent_group is None:
                 return None
@@ -1057,10 +1045,7 @@ class ModelTypeBase(object):
         if self.decor_spriterow_num is not None:
             # CABBAGE
             # guard against the decor spriterow not being updated when liveries are added
-            if (
-                self.decor_spriterow_num
-                <= len(self.catalogue_entry.catalogue) - 1
-            ):
+            if self.decor_spriterow_num <= len(self.catalogue_entry.catalogue) - 1:
                 raise BaseException(
                     self.model_id
                     + " has decor_spriterow_num "
@@ -1194,10 +1179,8 @@ class ModelTypeBase(object):
         )
 
         if self.uses_random_livery:
-            available_liveries = (
-                self.get_candidate_liveries_for_randomised_strategy(
-                    self.cabbage_livery
-                )
+            available_liveries = self.get_candidate_liveries_for_randomised_strategy(
+                self.cabbage_livery
             )
             if self.cabbage_livery.get("purchase", None) is not None:
                 wagon_recolour_strategy_num_purchase = (
@@ -1269,18 +1252,16 @@ class ModelTypeBase(object):
         # therefore we need to get the possible liveries across all possible variants
         unit_variants = []
         if self.is_randomised_wagon_type:
-            for (
-                unit_variant
-            ) in self.roster.get_wagon_randomisation_candidates(
-                self # CABBAGE
+            for unit_variant in self.roster.get_wagon_randomisation_candidates(
+                self  # CABBAGE
             ):
                 unit_variants.append(unit_variant)
         else:
             # we will just use one variant in this case, but we put it in a list so we can iterate later to get liveries
-            unit_variants.append(self.units.unit_variant[0]) # CABBAGE
+            unit_variants.append(self.units.unit_variant[0])  # CABBAGE
 
         eligible_colours = global_constants.wagon_livery_mixes[
-            self.cabbage_livery["colour_set"] # CABBAGE
+            self.cabbage_livery["colour_set"]  # CABBAGE
         ]
         variant_colour_set = []
         # CABBAGE SHIM
@@ -1506,9 +1487,7 @@ class ModelTypeBase(object):
             if len(self.model_def.foamer_facts) == 0:
                 utils.echo_message(self.model_id + " has no foamer_facts")
             if "." in self.model_def.foamer_facts:
-                utils.echo_message(
-                    self.model_id + " foamer_facts has a '.' in it."
-                )
+                utils.echo_message(self.model_id + " foamer_facts has a '.' in it.")
 
     def render(self, templates, graphics_path):
         self.assert_speed()
@@ -1524,6 +1503,9 @@ class EngineModelTypeBase(ModelTypeBase):
     """
     Base model type for Engines and other powered vehicles.
     """
+
+    # used for docs management
+    is_wagon_for_docs = False
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1570,7 +1552,9 @@ class EngineModelTypeBase(ModelTypeBase):
                 self.roster_id,
                 self.roster_id_providing_module,
             )
-            temp_consist = factory.produce(catalogue_entry=factory.catalogue[0])
+            temp_consist = factory.produce(
+                catalogue_entry=factory.catalogue.default_entry
+            )
             return int(
                 temp_consist.buy_cost * self.model_def.clone_stats_adjustment_factor
             )
@@ -1628,7 +1612,9 @@ class EngineModelTypeBase(ModelTypeBase):
                 self.roster_id,
                 self.roster_id_providing_module,
             )
-            temp_consist = factory.produce(catalogue_entry=factory.catalogue[0])
+            temp_consist = factory.produce(
+                catalogue_entry=factory.catalogue.default_entry
+            )
             return int(
                 temp_consist.running_cost * self.model_def.clone_stats_adjustment_factor
             )
@@ -1889,7 +1875,7 @@ class MailEngineCargoSprinter(MailEngineBase):
         # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
         cargo_label_mapping = (
             GestaltGraphicsIntermodalContainerTransporters(
-                    catalogue_entry=self.catalogue_entry,
+                catalogue_entry=self.catalogue_entry,
             ).cargo_label_mapping,
         )
         self.gestalt_graphics = GestaltGraphicsCustom(
@@ -2645,6 +2631,9 @@ class CarModelTypeBase(ModelTypeBase):
 
     # model_id = '' # provide in subclass
 
+    # used for docs optimisation etc
+    is_wagon_for_docs = True
+
     def __init__(self, speedy=False, **kwargs):
         super().__init__(**kwargs)
         self.roster.register_wagon_consist(self)
@@ -2665,8 +2654,6 @@ class CarModelTypeBase(ModelTypeBase):
         self.use_colour_randomisation_strategies = True
         # how to handle grouping this consist type
         self.group_as_wagon = True
-        # used for docs optimisation etc
-        self.is_wagon_for_docs = True
 
     @property
     def subtype(self):
