@@ -3,6 +3,7 @@ import importlib
 import os
 import pickle
 import tomllib
+from collections import defaultdict
 
 currentdir = os.curdir
 
@@ -32,10 +33,8 @@ class Roster(object):
         self.wagon_module_names_with_roster_ids = kwargs.get(
             "wagon_module_names_with_roster_ids"
         )
-        self.engine_catalogues = []
-        self.wagon_catalogues = []
-        self.engine_consists = []
-        self.wagon_consists = []
+        self.engine_consists_by_catalogue = defaultdict(list)
+        self.wagon_consists_by_catalogue = defaultdict(list)
         # create a structure to hold (buyable) variant groups
         # deliberately instantiated as none - cannot be populated as a structure until later, after all consists are inited
         self.buyable_variant_groups = None
@@ -57,6 +56,43 @@ class Roster(object):
         )
         self.pax_mail_livery_groups = kwargs.get("pax_mail_livery_groups", {})
         self.wagon_recolour_colour_sets = []
+
+    @property
+    def consists_by_catalogue(self):
+        # With unique keys across engine and wagon dictionaries,
+        # simply merge them using dictionary unpacking.
+        return {**self.engine_consists_by_catalogue, **self.wagon_consists_by_catalogue}
+
+    @property
+    def engine_catalogues(self):
+        return [catalogue_entry['catalogue'] for catalogue_entry in self.engine_consists_by_catalogue.values()]
+
+    @property
+    def wagon_catalogues(self):
+        return [catalogue_entry['catalogue'] for catalogue_entry in self.wagon_consists_by_catalogue.values()]
+
+    @property
+    def catalogues(self):
+        # Gather catalogue instances from both engines and wagons
+        return self.engine_catalogues + self.wagon_catalogues
+
+    @property
+    def engine_consists(self):
+        # Flatten the list of engine consists from the nested dict
+        return [
+            consist
+            for catalogue_entry in self.engine_consists_by_catalogue.values()
+            for consist in catalogue_entry['consists']
+        ]
+
+    @property
+    def wagon_consists(self):
+        # Flatten the list of wagon consists from the nested dict
+        return [
+            consist
+            for catalogue_entry in self.wagon_consists_by_catalogue.values()
+            for consist in catalogue_entry['consists']
+        ]
 
     @property
     def engine_consists_excluding_clones(self):
@@ -161,7 +197,9 @@ class Roster(object):
         return result
 
     def get_wagon_randomisation_candidates(self, randomisation_consist):
-        raise Exception("get_wagon_randomisation_candidates called, but will need refactoring to handle elimination of unit_variants_cabbage")
+        raise Exception(
+            "get_wagon_randomisation_candidates called, but will need refactoring to handle elimination of unit_variants_cabbage"
+        )
         result = []
         for base_id, wagons in self.wagon_consists_by_base_id.items():
             for wagon_consist in wagons:
@@ -174,10 +212,7 @@ class Roster(object):
                     continue
                 if randomisation_consist.subtype != wagon_consist.subtype:
                     continue
-                if (
-                    randomisation_consist.model_id_root
-                    == wagon_consist.model_id_root
-                ):
+                if randomisation_consist.model_id_root == wagon_consist.model_id_root:
                     continue
                 if (
                     randomisation_consist.model_id_root
@@ -193,14 +228,18 @@ class Roster(object):
                 matched_results = []
                 for unit_variant in unit_variants_cabbage:
                     if (
-                        unit_variant.buyable_variant.consist.cabbage_livery["colour_set"]
+                        unit_variant.buyable_variant.consist.cabbage_livery[
+                            "colour_set"
+                        ]
                         == buyable_variant.consist.cabbage_livery["colour_set"]
                     ):
                         matched_results.append(unit_variant)
                 if len(matched_results) == 0:
                     for unit_variant in unit_variants_cabbage:
                         if (
-                            unit_variant.buyable_variant.consist.cabbage_livery["colour_set"]
+                            unit_variant.buyable_variant.consist.cabbage_livery[
+                                "colour_set"
+                            ]
                             in global_constants.wagon_livery_mixes[
                                 buyable_variant.consist.cabbage_livery["colour_set"]
                             ]
@@ -330,56 +369,56 @@ class Roster(object):
                     numeric_id_defender[numeric_id] = consist
         # no return value needed
 
-    def register_wagon_consist(self, wagon_consist):
-        # eh this is a bit of a stub function, but we have to explicitly add the wagons when they're instantiated, and it seems cleaner to delegate it to the roster?
-        self.wagon_consists.append(wagon_consist)
-
     def produce_engines(self):
+        self.engine_consists_by_catalogue = {}
         package_name = "vehicles." + self.id
         roster_id_providing_module = self.id
-        # engines
         for engine_module_name in self.engine_module_names:
-            engine_module_name = importlib.import_module(
+            engine_module = importlib.import_module(
                 "." + engine_module_name, package_name
             )
-            for model_def in engine_module_name.main():
+            for model_def in engine_module.main():
                 factory = ModelVariantFactory(
                     model_def, self.id, roster_id_providing_module
                 )
-                self.engine_catalogues.append(factory.catalogue)
-                for catalogue_entry in factory.catalogue:
-                    consist = factory.produce(
-                        catalogue_entry=catalogue_entry
+                catalogue = factory.catalogue
+                # Use the convenience property `id` on Catalogue
+                catalogue_id = catalogue.id
+                if catalogue_id not in self.engine_consists_by_catalogue:
+                    self.engine_consists_by_catalogue[catalogue_id] = {
+                        "catalogue": catalogue,
+                        "consists": [],
+                    }
+                for catalogue_entry in catalogue:
+                    consist = factory.produce(catalogue_entry=catalogue_entry)
+                    self.engine_consists_by_catalogue[catalogue_id]["consists"].append(
+                        consist
                     )
-                    self.engine_consists.append(consist)
 
     def produce_wagons(self):
-        # wagons can be optionally reused from other rosters - there is no per-wagon selection, it's all-or-nothing for all the wagons in the module
-        # this is not intended to be a common case, it's for things like torpedo cars where redrawing and redefining them for all rosters is pointless
-        # this may cause compile failures when refactoring stuff due to cross-roster dependencies being broken, if so comment the calls out
-        # validation
+        # Iterate over wagon module name stems and warn if not in global_constants
         for wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
             if wagon_module_name_stem not in global_constants.wagon_module_name_stems:
                 utils.echo_message(
-                    "Warning: ("
-                    + self.id
-                    + ") "
-                    + wagon_module_name_stem
-                    + " not found in global_constants.wagon_module_name_stems"
+                    f"Warning: ({self.id}) {wagon_module_name_stem} not found in global_constants.wagon_module_name_stems"
                 )
+
+        self.wagon_consists_by_catalogue = {}  # Reset or initialize the grouping dict
 
         for wagon_module_name_stem in global_constants.wagon_module_name_stems:
             if "_randomised" in wagon_module_name_stem:
-                # CABBAGE SKIP RANDOMISED WAGONS FOR NOW
+                # CABBAGE: SKIP RANDOMISED WAGONS FOR NOW
                 continue
-            if wagon_module_name_stem in self.wagon_module_names_with_roster_ids.keys():
+
+            if wagon_module_name_stem in self.wagon_module_names_with_roster_ids:
                 roster_id_providing_module = self.wagon_module_names_with_roster_ids[
                     wagon_module_name_stem
                 ]
                 wagon_module_name = (
-                    wagon_module_name_stem + "_" + roster_id_providing_module
+                    f"{wagon_module_name_stem}_{roster_id_providing_module}"
                 )
                 package_name = "vehicles." + roster_id_providing_module
+
                 try:
                     wagon_module = importlib.import_module(
                         "." + wagon_module_name, package_name
@@ -389,21 +428,26 @@ class Roster(object):
                             model_def, self.id, roster_id_providing_module
                         )
                         if "Randomised" in model_def.class_name:
-                            # CABBAGE SKIP RANDOMISED WAGONS FOR NOW
+                            # CABBAGE: SKIP RANDOMISED WAGONS FOR NOW
                             continue
-                        self.wagon_catalogues.append(factory.catalogue)
-                        for catalogue_entry in factory.catalogue:
-                            consist = factory.produce(
-                                catalogue_entry=catalogue_entry
-                            )
+
+                        catalogue = factory.catalogue
+                        catalogue_id = (
+                            catalogue.id
+                        )  # Using the convenience property 'id'
+                        if catalogue_id not in self.wagon_consists_by_catalogue:
+                            self.wagon_consists_by_catalogue[catalogue_id] = {
+                                "catalogue": catalogue,
+                                "consists": [],
+                            }
+                        for catalogue_entry in catalogue:
+                            consist = factory.produce(catalogue_entry=catalogue_entry)
+                            self.wagon_consists_by_catalogue[catalogue_id][
+                                "consists"
+                            ].append(consist)
                 except ModuleNotFoundError:
                     raise ModuleNotFoundError(
-                        wagon_module_name
-                        + " in "
-                        + package_name
-                        + " as defined by "
-                        + self.id
-                        + ".wagon_module_names_with_roster_ids"
+                        f"{wagon_module_name} in {package_name} as defined by {self.id}.wagon_module_names_with_roster_ids"
                     )
                 except Exception:
                     raise
@@ -419,13 +463,9 @@ class Roster(object):
         seen_params = []
         for wagon_consist in self.wagon_consists:
             if getattr(wagon_consist, "use_colour_randomisation_strategies", False):
+                seen_params.append(wagon_consist.get_wagon_recolour_strategy_params())
                 seen_params.append(
-                    wagon_consist.get_wagon_recolour_strategy_params()
-                )
-                seen_params.append(
-                    wagon_consist.get_wagon_recolour_strategy_params(
-                        context="purchase"
-                    )
+                    wagon_consist.get_wagon_recolour_strategy_params(context="purchase")
                 )
 
         self.wagon_recolour_colour_sets = list(set(seen_params))
@@ -491,10 +531,7 @@ class Roster(object):
                     for consist in self.wagon_consists_by_base_id[
                         base_id_for_target_parent_consist
                     ]:
-                        if (
-                            consist.model_id_root
-                            == base_id_for_target_parent_consist
-                        ):
+                        if consist.model_id_root == base_id_for_target_parent_consist:
                             match_failed = False
                             if (
                                 consist.base_track_type_name
@@ -565,10 +602,7 @@ class Roster(object):
                     lang_strings[node_name] = node_value["base"]
 
         for consist in self.consists_in_buy_menu_order:
-            if (
-                consist.name is not None
-                and consist.is_default_model_variant
-            ):
+            if consist.name is not None and consist.is_default_model_variant:
                 lang_strings["STR_NAME_" + consist.model_id.upper()] = consist.name
 
         return {"global_pragma": global_pragma, "lang_strings": lang_strings}

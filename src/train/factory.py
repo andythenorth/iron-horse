@@ -480,6 +480,10 @@ class Catalogue(list):
         )
 
     @property
+    def id(self):
+        return self.factory.model_id
+
+    @property
     def default_entry(self):
         # provide default entry as an explicit option for consumers, not implicit
         return self[0]

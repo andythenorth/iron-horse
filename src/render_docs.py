@@ -128,31 +128,31 @@ def render_docs_vehicle_details(docs_output_path, doc_helper, catalogues, templa
         doc_file.close()
 
 
-def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_helper):
+def render_docs_images(consist_catalogue_mapping, static_dir_dst, generated_graphics_path, doc_helper):
     # process vehicle buy menu sprites for reuse in docs
     # extend this similar to render_docs if other image types need processing in future
 
     # vehicles: assumes render_graphics has been run and generated dir has correct content
     # I'm not going to try and handle that in python, makefile will handle it in production
     # for development, just run render_graphics manually before running render_docs
+    catalogue = consist_catalogue_mapping["catalogue"]
 
     vehicle_spritesheet = Image.open(
-        os.path.join(generated_graphics_path, consist.catalogue_entry.input_spritesheet_name_stem + ".png")
+        os.path.join(generated_graphics_path, catalogue.factory.input_spritesheet_name_stem + ".png")
     )
-
-    # these 'source' var names for images are misleading
-    source_vehicle_image = Image.new(
-        "P",
-        (doc_helper.docs_sprite_width(consist), doc_helper.docs_sprite_height),
-        255,
-    )
-    source_vehicle_image.putpalette(Image.open("palette_key.png").palette)
+    dos_palette = Image.open("palette_key.png").palette
 
     docs_image_variants = []
 
-    # !! CABBAGE - LOOKS LIKE FOR PRACTICALITY, THIS WILL NEED A CONSIST IN SCOPE AT ALL TIME?
-    # !! we can't just infer everything from factory, some things need instantiated model type class in scope
-    for variant in doc_helper.get_docs_livery_variants(consist):
+    for consist in consist_catalogue_mapping["consists"]:
+        # these 'source' var names for images are misleading
+        dest_image = Image.new(
+            "P",
+            (doc_helper.docs_sprite_width(consist), doc_helper.docs_sprite_height),
+            255,
+        )
+        dest_image.putpalette(dos_palette)
+
         if consist.model_def.docs_image_spriterow is not None:
             y_offset = 30 * consist.model_def.docs_image_spriterow
         # CABBAGE requires_custom_buy_menu_sprite could be folded into factory or catalogue entry
@@ -179,7 +179,7 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
             doc_helper.docs_sprite_width(consist),
             doc_helper.docs_sprite_height,
         )
-        source_vehicle_image.paste(
+        dest_image.paste(
             source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest
         )
 
@@ -209,45 +209,51 @@ def render_docs_images(consist, static_dir_dst, generated_graphics_path, doc_hel
             ).convert(
                 "1"
             )  # the inversion here of blue and white looks a bit odd, but potato / potato
-            source_vehicle_image.paste(
+            dest_image.paste(
                 pantographs_image.crop(crop_box_dest),
                 crop_box_dest,
                 pantographs_mask.crop(crop_box_dest),
             )
 
-        docs_image_variants.append(
-            [
-                source_vehicle_image.copy(),
-                variant,
-            ]
-        )
+        # CABBAGE THIS LOOKS OVERKILL, CAN IT NOT BE SIMPLIFIED?
+        for cc_remap_pair in consist.catalogue_entry.livery_def.docs_image_input_cc:
+            # handle possible remap of CC1
+            if consist.catalogue_entry.livery_def.remap_to_cc is not None:
+                CC1_remap = consist.catalogue_entry.livery_def.remap_to_cc["company_colour1"]
+                CC2_remap = consist.catalogue_entry.livery_def.remap_to_cc["company_colour2"]
+                if CC1_remap == "company_colour1":
+                    CC1_remap = cc_remap_pair[0]
+                if CC1_remap == "company_colour2":
+                    CC1_remap = cc_remap_pair[1]
+                if CC2_remap == "company_colour1":
+                    CC2_remap = cc_remap_pair[0]
+                if CC2_remap == "company_colour2":
+                    CC2_remap = cc_remap_pair[1]
+            else:
+                CC1_remap = cc_remap_pair[0]
+                CC2_remap = cc_remap_pair[1]
+        cc_remap_indexes = doc_helper.remap_company_colours({"CC1": CC1_remap, "CC2": CC2_remap})
 
-    for processed_vehicle_image, variant in docs_image_variants:
-        # probably fragile workaround to use the alternative livery spriterow
-        # for the edge case that a docs default livery 2nd company colour matches the alternative livery triggers
-        # ^ !! we what now?  is this actually doing this?
-        cc_remap_indexes = doc_helper.remap_company_colours(variant["cc_remaps"])
-
-        processed_vehicle_image = processed_vehicle_image.copy().point(
+        dest_image = dest_image.copy().point(
             lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i
         )
 
         # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
-        processed_vehicle_image = processed_vehicle_image.resize(
+        dest_image = dest_image.resize(
             (
-                4 * processed_vehicle_image.size[0],
+                4 * dest_image.size[0],
                 4 * doc_helper.docs_sprite_height,
             ),
             resample=Image.Resampling.NEAREST,
         )
+
         output_path = os.path.join(
             static_dir_dst,
             "img",
-            consist.id + "_" + variant["livery_name"] + ".png",
+            consist.id + ".png",
         )
-        processed_vehicle_image.save(output_path, optimize=True, transparency=0)
-    source_vehicle_image.close()
-
+        dest_image.save(output_path, optimize=True, transparency=0)
+        dest_image.close()
 
 def export_roster_to_json(roster, output_dir="docs"):
     """
@@ -426,19 +432,20 @@ def main():
         iron_horse.generated_files_path, "graphics", roster.grf_name
     )
     render_docs_images_start = time()
+
     if use_multiprocessing == False:
-        for consist in consists:
+        for consist_catalogue_mapping in roster.consists_by_catalogue.values():
             render_docs_images(
-                consist, static_dir_dst, generated_graphics_path, doc_helper
+                consist_catalogue_mapping, static_dir_dst, generated_graphics_path, doc_helper
             )
     else:
-        # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
+        # Would this go faster if the pipelines from each consist were placed in MP pool, not just the catalogue?
         # probably potato / potato tbh
         pool = multiprocessing.Pool(processes=num_pool_workers)
         pool.starmap(
             render_docs_images,
             zip(
-                consists,
+                roster.consists_by_catalogue.values(),
                 repeat(static_dir_dst),
                 repeat(generated_graphics_path),
                 repeat(doc_helper),

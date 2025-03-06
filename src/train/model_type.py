@@ -2636,7 +2636,6 @@ class CarModelTypeBase(ModelTypeBase):
 
     def __init__(self, speedy=False, **kwargs):
         super().__init__(**kwargs)
-        self.roster.register_wagon_consist(self)
 
         # override this in subclass as needed
         self._joker = False

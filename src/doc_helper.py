@@ -206,10 +206,15 @@ class DocHelper(object):
             "COLOUR_WHITE": "White",
         }
 
-    def get_docs_livery_variants(self, consist):
+
+    def cabbage_get_docs_livery_variants(self, catalogue):
         # dark blue / dark blue and red / white are defaults
         variants_config = []
 
+        if catalogue.factory.model_type_cls.is_wagon_for_docs:
+            print(catalogue.default_entry)
+
+        """
         if consist.is_wagon_for_docs:
             # optimise output by only generating one livery image for wagons, as we had 13k images in static dir, many of them empty images for wagon variants
             buyable_variants_for_docs = consist.cabbage_buyable_variants[0:1]
@@ -269,6 +274,7 @@ class DocHelper(object):
                 result["docs_image_input_cc"] = cc_remap_pair
                 result["buyable_variant"] = buyable_variant
                 variants_config.append(result)
+        """
         return variants_config
 
     def get_livery_file_substr(self, cc_pair):
