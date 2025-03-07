@@ -26,28 +26,30 @@ class DocHelper(object):
         if consist.dual_headed:
             return min((2 * 4 * consist.length) + 1, self.docs_sprite_max_width)
 
-    def get_vehicles_by_subclass(self, consists, filter_subclasses_by_name=None):
+    def get_default_model_variants_by_subclass(self, consists, filter_subclasses_by_name=None):
         # first find all the subclasses + their vehicles
-        vehicles_by_subclass = {}
+        model_variants_by_subclass = {}
         for consist in consists:
+            if not consist.is_default_model_variant:
+                continue
             subclass = type(consist)
             if (
                 filter_subclasses_by_name == None
                 or subclass.__name__ in filter_subclasses_by_name
             ):
-                if subclass in vehicles_by_subclass:
-                    vehicles_by_subclass[subclass].append(consist)
+                if subclass in model_variants_by_subclass:
+                    model_variants_by_subclass[subclass].append(consist)
                 else:
-                    vehicles_by_subclass[subclass] = [consist]
+                    model_variants_by_subclass[subclass] = [consist]
         # reformat to a list we can then sort so order is consistent
         result = [
             {
                 "name": i.__name__,
                 "doc": i.__doc__,
                 "class_obj": subclass,
-                "vehicles": vehicles_by_subclass[i],
+                "vehicles": model_variants_by_subclass[i],
             }
-            for i in vehicles_by_subclass
+            for i in model_variants_by_subclass
         ]
         return sorted(result, key=lambda subclass: subclass["name"])
 

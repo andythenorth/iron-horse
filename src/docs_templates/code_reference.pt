@@ -125,9 +125,9 @@
                 <br />
 
                 <section id="vehicle_properties">
-                    <h3>Vehicle properties for ${len(consists)} trains</h3>
+                    <h3>Vehicle properties for ${sum(len(item["vehicles"]) for item in doc_helper.get_default_model_variants_by_subclass(consists))} trains</h3>
                     <p></p>
-                    <tal:subclasses repeat="subclass doc_helper.get_vehicles_by_subclass(consists)">
+                    <tal:subclasses repeat="subclass doc_helper.get_default_model_variants_by_subclass(consists)">
                         <tal:props_for_subclass define="props_to_print doc_helper.get_props_to_print_in_code_reference(subclass)">
                             <h4 id="${subclass['name']}">${subclass['name']} <small>Subclass</small></h4>
                             <p>${subclass['doc']}</p>
@@ -147,7 +147,7 @@
                                         <tr>
                                             <td class="vehicle-image"
                                                 style="min-width:${2 * doc_helper.docs_sprite_max_width}px;">
-                                                <img src="static/img/${model_type.id}_variant_0_red_white.png"
+                                                <img src="static/img/${model_type.id}.png"
                                                      width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                                      height="${2 * doc_helper.docs_sprite_height}" />
                                             </td>
