@@ -6,13 +6,14 @@
         <div class="row">
             <div class="span12">
                 <h2>
+                    <!--! CABBAGE COUNTS ARE WRONG -->
                     <!--! for set design numerology purposes it's possible to hover over this for a more detailed breakdown-->
-                    <span title="${len(roster.engine_consists_excluding_clones) - len(doc_helper.not_really_engine_consists(roster))} engines and ${len(doc_helper.not_really_engine_consists(roster))} snowploughs, cab cars, metro trains and similar.">
-                        ${len(roster.engine_consists_excluding_clones)} engines
+                    <span title="${doc_helper.engine_model_counts(roster)['really_engines_count']} engines and ${doc_helper.engine_model_counts(roster)['not_really_engines_count']} snowploughs, cab cars, metro trains and similar.">
+                        ${doc_helper.engine_model_counts(roster)['total_count']} engines
                     </span>
                     and
-                    <span title="${len(roster.wagon_consists) - len(doc_helper.not_really_wagon_consists(roster))} real wagons and ${len(doc_helper.not_really_wagon_consists(roster))} randomised wagons similar.">
-                        ${len(roster.wagon_consists)} wagons
+                    <span title="${doc_helper.wagon_model_counts(roster)['really_wagons_count']} real wagons and ${doc_helper.wagon_model_counts(roster)['not_really_wagons_count']} randomised wagons similar.">
+                        ${doc_helper.wagon_model_counts(roster)['total_count']} wagons
                     </span>
                     inspired by trains (mostly) from
                     <span tal:condition="roster.id == 'zebra'">Southern and Western Africa</span>
@@ -20,22 +21,22 @@
                 </h2>
                 <ul class="inline">
                     <tal:base_track_type_name repeat="base_track_type_name doc_helper.base_track_type_names_and_labels">
-                        <tal:not_empty condition="len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])) > 0">
+                        <tal:not_empty condition="len(doc_helper.get_default_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])) > 0">
                             <li>
                                 <a href="#${base_track_type_name[0]}-engines">
                                     <i class="icon-circle-arrow-right"></i>
-                                    ${len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
+                                    ${len(doc_helper.get_default_engines_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
                                     ${base_track_type_name[1].lower()} engines
                                 </a>
                             </li>
                         </tal:not_empty>
                     </tal:base_track_type_name>
                     <tal:base_track_type_name repeat="base_track_type_name doc_helper.base_track_type_names_and_labels">
-                        <tal:not_empty condition="len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])) > 0">
+                        <tal:not_empty condition="len(doc_helper.get_default_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])) > 0">
                             <li>
                                 <a href="#${base_track_type_name[0]}-wagons">
                                     <i class="icon-circle-arrow-right"></i>
-                                    ${len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
+                                    ${len(doc_helper.get_default_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
                                     ${base_track_type_name[1].lower()} wagons
                                 </a>
                             </li>
@@ -43,10 +44,10 @@
                     </tal:base_track_type_name>
                 </ul>
                 <tal:base_track_type_name repeat="base_track_type_name doc_helper.base_track_type_names_and_labels">
-                    <tal:not_empty condition="len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])) >  0">
+                    <tal:not_empty condition="len(doc_helper.get_default_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])) >  0">
                         <hr />
                         <h4 id="${base_track_type_name[0]}-engines">
-                            ${len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
+                            ${len(doc_helper.get_default_engines_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
                             ${base_track_type_name[1].lower()} engines
                         </h4>
                         <table class="table table-striped tablesorter vehicle-table">
@@ -63,34 +64,34 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!--! model_type might actually be default model_variant -->
-                                <tal:engine_model_types repeat="model_type doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])">
-                                    <tr id="${model_type.model_id}">
+                                <!--! default_model_variant might actually be default model_variant -->
+                                <tal:engine_model_types repeat="default_model_variant doc_helper.get_default_engines_by_roster_and_base_track_type(roster, base_track_type_name[0])">
+                                    <tr id="${default_model_variant.model_id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${model_type.id}.png"
-                                                 width="${2 * doc_helper.docs_sprite_width(model_type)}"
+                                            <img src="static/img/${default_model_variant.id}.png"
+                                                 width="${2 * doc_helper.docs_sprite_width(default_model_variant)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${model_type.id}.png"
-                                                 width="${2 * doc_helper.docs_sprite_width(model_type)}"
+                                            <img src="static/img/${default_model_variant.id}.png"
+                                                 width="${2 * doc_helper.docs_sprite_width(default_model_variant)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td>
-                                            <a class="table-link-dark" href="${model_type.model_id}.html">${doc_helper.unpack_name_string(model_type)}</a>
+                                            <a class="table-link-dark" href="${default_model_variant.model_id}.html">${doc_helper.unpack_name_string(default_model_variant)}</a>
                                         </td>
-                                        <td>${doc_helper.get_role_string_for_consist(model_type, iron_horse.badge_manager)}</td>
-                                        <td class="date">${model_type.intro_year}</td>
+                                        <td>${doc_helper.get_role_string_for_consist(default_model_variant, iron_horse.badge_manager)}</td>
+                                        <td class="date">${default_model_variant.intro_year}</td>
                                         <td class="number">
-                                            <tal:power repeat="power_string doc_helper.power_formatted_for_docs(model_type)">
+                                            <tal:power repeat="power_string doc_helper.power_formatted_for_docs(default_model_variant)">
                                                 <span style="display:block; white-space:nowrap;">${power_string}</span>
                                             </tal:power>
                                         </td>
-                                        <td class="number">${doc_helper.speed_formatted_for_docs(model_type)}</td>
+                                        <td class="number">${doc_helper.speed_formatted_for_docs(default_model_variant)}</td>
                                         <td>
-                                            <a style="text-decoration:none;" href="#${model_type.model_id}">&#x1f517;</a>
+                                            <a style="text-decoration:none;" href="#${default_model_variant.model_id}">&#x1f517;</a>
                                         </td>
                                     </tr>
                                 </tal:engine_model_types>
@@ -99,10 +100,10 @@
                     </tal:not_empty>
                 </tal:base_track_type_name>
                 <tal:base_track_type_name repeat="base_track_type_name doc_helper.base_track_type_names_and_labels">
-                    <tal:not_empty condition="len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])) >  0">
+                    <tal:not_empty condition="len(doc_helper.get_default_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])) >  0">
                         <hr />
                         <h4 id="${base_track_type_name[0]}-wagons">
-                            ${len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
+                            ${len(doc_helper.get_default_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0]))}
                             ${base_track_type_name[1].lower()} wagons
                         </h4>
                         <table class="table table-striped tablesorter vehicle-table">
@@ -118,28 +119,28 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tal:wagon_model_types repeat="model_type doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])">
-                                    <tr id="${model_type.model_id}">
+                                <tal:wagon_model_types repeat="default_model_variant doc_helper.get_default_wagons_by_roster_and_base_track_type(roster, base_track_type_name[0])">
+                                    <tr id="${default_model_variant.model_id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${model_type.model_id}_variant_0_blue_blue.png"
-                                                 width="${2 * doc_helper.docs_sprite_width(model_type)}"
+                                            <img src="static/img/${default_model_variant.model_id}_variant_0_blue_blue.png"
+                                                 width="${2 * doc_helper.docs_sprite_width(default_model_variant)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${model_type.model_id}_variant_0_red_white.png"
-                                                 width="${2 * doc_helper.docs_sprite_width(model_type)}"
+                                            <img src="static/img/${default_model_variant.model_id}_variant_0_red_white.png"
+                                                 width="${2 * doc_helper.docs_sprite_width(default_model_variant)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td>
-                                            ${doc_helper.unpack_name_string(model_type)}
+                                            ${doc_helper.unpack_name_string(default_model_variant)}
                                         </td>
-                                        <td class="date">${model_type.intro_year}</td>
-                                        <td class="number">${sum([unit.default_cargo_capacity for unit in model_type.units])} t</td>
-                                        <td class="number">${model_type.speed} mph</td>
+                                        <td class="date">${default_model_variant.intro_year}</td>
+                                        <td class="number">${sum([unit.default_cargo_capacity for unit in default_model_variant.units])} t</td>
+                                        <td class="number">${default_model_variant.speed} mph</td>
                                         <td>
-                                            <a style="text-decoration:none;" href="#${model_type.model_id}">&#x1f517;</a>
+                                            <a style="text-decoration:none;" href="#${default_model_variant.model_id}">&#x1f517;</a>
                                         </td>
                                     </tr>
                                 </tal:wagon_model_types>

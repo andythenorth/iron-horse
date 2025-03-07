@@ -51,18 +51,26 @@ class DocHelper(object):
         ]
         return sorted(result, key=lambda subclass: subclass["name"])
 
-    def get_engines_by_roster_and_base_track_type(self, roster, base_track_type_name):
+    def get_default_engines_by_roster_and_base_track_type(self, roster, base_track_type_name):
         result = []
-        for consist in roster.engine_consists_excluding_clones:
-            if consist.base_track_type_name == base_track_type_name:
-                result.append(consist)
+        for consist in roster.engine_consists:
+            if not consist.is_default_model_variant:
+                continue
+            if not consist.base_track_type_name == base_track_type_name:
+                continue
+            if consist.is_clone:
+                continue
+            result.append(consist)
         return result
 
-    def get_wagons_by_roster_and_base_track_type(self, roster, base_track_type_name):
+    def get_default_wagons_by_roster_and_base_track_type(self, roster, base_track_type_name):
         result = []
         for consist in roster.wagon_consists:
-            if consist.base_track_type_name == base_track_type_name:
-                result.append(consist)
+            if not consist.is_default_model_variant:
+                continue
+            if not consist.base_track_type_name == base_track_type_name:
+                continue
+            result.append(consist)
         return result
 
     def engines_as_tech_tree(self, roster, consists, simplified_gameplay):
@@ -123,15 +131,13 @@ class DocHelper(object):
                     if len(subrole_child_branches) > 0:
                         result.setdefault(base_track_type_and_label, {})
                         result[base_track_type_and_label].setdefault(role, {})
-                        result[base_track_type_and_label][role].setdefault(
-                            subrole, {}
-                        )
+                        result[base_track_type_and_label][role].setdefault(subrole, {})
                         result[base_track_type_and_label][role][
                             subrole
                         ] = subrole_child_branches
         return result
 
-    def not_really_engine_consists(self, roster):
+    def engine_model_counts(self, roster):
         # some engines aren't really engines
         # - snowploughs
         # - cab cars
@@ -139,26 +145,53 @@ class DocHelper(object):
         # - powered wagons for TGVs
         # - powered cabooses for propelling
         # - anything with a variant group parent is just a sub-variant of some sort
-        result = []
-        for consist in roster.engine_consists_excluding_clones:
+        really_engines = []
+        not_really_engines = []
+        for consist in roster.engine_consists:
+            if not consist.is_default_model_variant:
+                continue
+            if consist.is_clone:
+                continue
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if (
-                consist.wagons_add_power
-                or consist.role in ["driving_cab", "gronk", "lolz", "metro"]
+                consist.role in ["driving_cab", "gronk", "lolz", "metro"]
+                or consist.wagons_add_power
+                # CABBAGE - THIS IS OFF BY 5 - PROBABLY THE RAILBUS VARIANTS? - MIGHT BE THAT _buyable_variant_group_id is not set correctly?
                 or consist._buyable_variant_group_id is not None
             ):
-                result.append(consist)
-        return result
+                not_really_engines.append(consist)
+            else:
+                really_engines.append(consist)
+        really_engines_count = len(really_engines)
+        not_really_engines_count = len(not_really_engines)
+        total_count = really_engines_count + not_really_engines_count
+        return {
+            "total_count": total_count,
+            "really_engines_count": really_engines_count,
+            "not_really_engines_count": not_really_engines_count,
+        }
 
-    def not_really_wagon_consists(self, roster):
+    def wagon_model_counts(self, roster):
         # some wagons aren't really wagons
         # - randomised wagons, which just compose a set of choices from other wagons
-        result = []
+        really_wagons = []
+        not_really_wagons = []
         for consist in roster.wagon_consists:
+            if not consist.is_default_model_variant:
+                continue
             # this is JFDI reuse of existing attributes, if this gets flakey add a dedicated attribute for exclusion
             if getattr(consist.gestalt_graphics, "random_vehicle_map_type", None):
-                result.append(consist)
-        return result
+                not_really_wagons.append(consist)
+            else:
+                really_wagons.append(consist)
+        really_wagons_count = len(really_wagons)
+        not_really_wagons_count = len(not_really_wagons)
+        total_count = really_wagons_count + not_really_wagons_count
+        return {
+            "total_count": total_count,
+            "really_wagons_count": really_wagons_count,
+            "not_really_wagons_count": not_really_wagons_count,
+        }
 
     def get_subrole_child_branches_in_order(self, subrole_child_branches):
         # adjust the sort so that it's +ve, -ve for each value, e.g. [1, -1, 2, -2, 3, -3, 4, 5] etc
@@ -205,7 +238,6 @@ class DocHelper(object):
             "COLOUR_GREY": "Grey",
             "COLOUR_WHITE": "White",
         }
-
 
     def cabbage_get_docs_livery_variants(self, catalogue):
         # dark blue / dark blue and red / white are defaults
