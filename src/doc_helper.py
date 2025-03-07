@@ -113,6 +113,8 @@ class DocHelper(object):
                                 subrole_child_branches[subrole_child_branch][gen] = None
                     # get the engines matching this subrole and track type, and place them into the child branches
                     for consist in consists:
+                        if not consist.is_default_model_variant:
+                            continue
                         # special case to drop anything that shouldn't be in tech tree
                         # e.g. wagons (child branch 0) or TGV middle cars (in the +/-1000 range)
                         if (
