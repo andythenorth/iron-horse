@@ -1073,7 +1073,6 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             (0, 0, graphics_constants.spritesheet_width, 10)
         )
         output_suffix = "_pantographs_" + self.pantograph_state
-        # CABBAGE - !! pans should use model_id?  Only one spritesheet needed; can pass output_base_name here, modify templates & docs accordingly
         self.render_common(input_image, self.units, output_suffix=output_suffix)
         input_image.close()
 
