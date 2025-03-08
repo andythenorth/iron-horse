@@ -27,22 +27,22 @@ Or they can compose processing units for more complicated tasks, such as colouri
 
 class Pipeline(object):
     def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        # this should be sparse, don't store any catalogue info in Pipelines, pass at render time
         # actually, there's nothing to do eh :P
         pass
 
     @property
     def vehicle_source_input_path(self):
         # I considered having this return the Image, not just the path, but it's not saving much, and is less obvious what it does when used
-        # the consist resolves what the spritesheet should be used as vehicle models can delegate to other vehicle models if required
+        # the catalogue resolves what the spritesheet should be used as vehicle models can delegate to other vehicle models if required
 
         return os.path.join(
             currentdir,
             "src",
             "graphics",
             # roster_id providing module will always give us the correct filesystem path to the graphics file, which might differ from the current roster_id
-            self.consist.roster_id_providing_module,
-            self.consist.catalogue_entry.input_spritesheet_name_stem + ".png",
+            self.catalogue.factory.roster_id_providing_module,
+            self.catalogue.factory.input_spritesheet_name_stem + ".png",
         )
 
     @property
@@ -75,8 +75,8 @@ class Pipeline(object):
         # each unit is then called in order, passing in and returning a pixa SpriteSheet
         # finally the spritesheet is saved
         if output_base_name is None:
-            # default to consist name for file name, but can override for e.g. containers by passing something in
-            output_base_name = self.consist.model_id
+            # default to catalogue id for file name, but can override for e.g. containers by passing something in
+            output_base_name = self.catalogue.id
         output_path = os.path.join(
             self.graphics_output_path,
             output_base_name + output_suffix + ".png",
@@ -93,9 +93,6 @@ class Pipeline(object):
 
         for processing_unit in processing_units:
             spritesheet = processing_unit.render(spritesheet)
-        # I don't normally leave commented-out code behind, but I'm bored of looking in the PIL docs for how to show the image during compile
-        # if self.consist.id == 'velaro_thing':
-        # spritesheet.sprites.show()
 
         # save a tmp file first and compare to existing file (if any)
         # this prevents destroying the nmlc sprite cache with every graphics run by needlessly replacing the files
@@ -117,7 +114,7 @@ class Pipeline(object):
         else:
             spritesheet.save(output_path)
 
-    def render(self, consist, graphics_output_path):
+    def render(self, target_config, graphics_output_path):
         raise NotImplementedError("Implement me in %s" % repr(self))
 
 
@@ -127,18 +124,18 @@ class PassThroughPipeline(Pipeline):
     """
 
     def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        # this should be sparse, don't store any catalogue info in Pipelines, pass at render time
         super().__init__()
 
-    def render(self, consist, global_constants, graphics_output_path):
-        self.processing_units = []
-        self.consist = consist
+    def render(self, target_config, global_constants, graphics_output_path):
+        self.catalogue = target_config["catalogue"]
+        self.default_model_variant = target_config["default_model_variant"]
         self.graphics_output_path = graphics_output_path
+        self.processing_units = []
 
-        if self.consist.is_default_model_variant:
-            input_image = Image.open(self.vehicle_source_input_path)
-            self.render_common(input_image, self.processing_units)
-            input_image.close()
+        input_image = Image.open(self.vehicle_source_input_path)
+        self.render_common(input_image, self.processing_units)
+        input_image.close()
 
 
 class GenerateSpritelayerCargoSets(Pipeline):
@@ -147,7 +144,7 @@ class GenerateSpritelayerCargoSets(Pipeline):
     """
 
     def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        # this should be sparse, don't store any catalogue info in Pipelines, pass at render time
         super().__init__()
 
     def resolve_template_name(self, variant):
@@ -370,7 +367,9 @@ class GenerateSpritelayerCargoSets(Pipeline):
                 self.global_constants.sprites_max_x_extent,
                 graphics_constants.spriterow_height,
             )
-            self.processing_units.append(AppendToSpritesheet(variant_spritesheet, crop_box_dest))
+            self.processing_units.append(
+                AppendToSpritesheet(variant_spritesheet, crop_box_dest)
+            )
             variant_output_image.close()
             template_image.close()
 
@@ -401,13 +400,14 @@ class GenerateEmptySpritesheet(Pipeline):
     """
 
     def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        # this should be sparse, don't store any catalogue info in Pipelines, pass at render time
         super().__init__()
 
-    def render(self, consist, global_constants, graphics_output_path):
-        self.processing_units = []
-        self.consist = consist
+    def render(self, target_config, global_constants, graphics_output_path):
+        self.catalogue = target_config["catalogue"]
+        self.default_model_variant = target_config["default_model_variant"]
         self.graphics_output_path = graphics_output_path
+        self.processing_units = []
 
         empty_spriterow_image = Image.open(
             os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
@@ -433,7 +433,7 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
     is_pantographs_pipeline = False
 
     def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        # this should be sparse, don't store any catalogue info in Pipelines, pass at render time
         super().__init__()
 
     def process_buy_menu_sprite(self, spritesheet):
@@ -455,7 +455,9 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
         # each gestalt should internally take care of anything like position-dependent sprites and return an appropriate row_map
         # that covers the majority of cases
         # if any really special cases are needed (e.g. randomised wagon sprites) they can be supplied in an alternative pipeline
-        for row_data in self.consist.gestalt_graphics.buy_menu_row_map(self):
+        for row_data in self.default_model_variant.gestalt_graphics.buy_menu_row_map(
+            self
+        ):
             x_offset = 0
             for (
                 source_vehicle_unit,
@@ -463,10 +465,12 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
             ) in row_data["source_vehicles_and_input_spriterow_nums"]:
                 # the generated sprite for dual_headed case is intended for docs use only (OpenTTD already assembles the buy menu sprite in that case)
                 for input_sprite_x_offset in (
-                    [224, 104] if self.consist.dual_headed else [224]
+                    [224, 104]
+                    if self.catalogue.factory.model_def.dual_headed
+                    else [224]
                 ):
                     # currently no cap on purchase menu sprite width
-                    # consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh
+                    # model_variant has a buy_menu_width prop which caps to 64 which could be used (+1px overlap), but eh
                     unit_length_in_pixels = 4 * source_vehicle_unit.vehicle_length
                     input_spriterow_y_offset = (
                         input_row_num * graphics_constants.spriterow_height
@@ -514,25 +518,25 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
     """
 
     def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        # this should be sparse, don't store any catalogue info in Pipelines, pass at render time
         super().__init__()
 
-    def render(self, consist, global_constants, graphics_output_path):
+    def render(self, target_config, global_constants, graphics_output_path):
+        self.catalogue = target_config["catalogue"]
+        self.default_model_variant = target_config["default_model_variant"]
         # only generate the buy menu sprite if required
-        if not consist.requires_custom_buy_menu_sprite:
+        if not self.default_model_variant.requires_custom_buy_menu_sprite:
             return
 
-        self.processing_units = []
-        self.consist = consist
         self.graphics_output_path = graphics_output_path
-
+        self.processing_units = []
         self.processing_units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
         spritesheet_image = Image.open(
             os.path.join(
                 self.graphics_output_path,
-                self.consist.catalogue_entry.model_id + ".png",
+                self.catalogue.id + ".png",
             )
         )
         self.render_common(spritesheet_image, self.processing_units)
@@ -551,22 +555,23 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
     is_pantographs_pipeline = True
 
     def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        # this should be sparse, don't store any catalogue info in Pipelines, pass at render time
         super().__init__()
 
-    def render(self, consist, global_constants, graphics_output_path):
+    def render(self, target_config, global_constants, graphics_output_path):
+        self.catalogue = target_config["catalogue"]
+        self.default_model_variant = target_config["default_model_variant"]
+
         # only generate the buy menu sprite if required
-        if not consist.requires_custom_buy_menu_sprite:
+        if not self.default_model_variant.requires_custom_buy_menu_sprite:
             return
 
         # some vehicle models don't show pans in the buy menu (usually unpowered)
-        if consist.suppress_pantograph_if_no_engine_attached:
+        if self.default_model_variant.suppress_pantograph_if_no_engine_attached:
             return
 
-        self.processing_units = []
-        self.consist = consist
         self.graphics_output_path = graphics_output_path
-
+        self.processing_units = []
         self.processing_units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         suffix = "_pantographs_" + self.pantograph_state
@@ -574,12 +579,12 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
         spritesheet_image = Image.open(
             os.path.join(
                 self.graphics_output_path,
-                self.consist.catalogue_entry.model_id
-                + suffix
-                + ".png",
+                self.catalogue.id + suffix + ".png",
             )
         )
-        self.render_common(spritesheet_image, self.processing_units, output_suffix=suffix)
+        self.render_common(
+            spritesheet_image, self.processing_units, output_suffix=suffix
+        )
         spritesheet_image.close()
 
 
@@ -615,7 +620,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
     """
 
     def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        # this should be sparse, don't store any catalogue info in Pipelines, pass at render time
         super().__init__()
 
     def process_buy_menu_sprite(self, spritesheet):
@@ -623,12 +628,13 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
 
         # take the first and last candidates;
         # note that we have to call set here, due to the way random candidates are padded out to make power of 2 list lengths for random bits
-        if len(self.consist.units) > 1:
+        # CABBAGE default_model_variant looks like it should be using catalogue.factory.model_def here
+        if len(self.default_model_variant.units) > 1:
             raise BaseException(
                 "GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline won't work with articulated vehicles - called by "
-                + self.consist.id
+                + self.default_model_variant.id
             )
-        unit_length_in_pixels = 4 * self.consist.units[0].vehicle_length
+        unit_length_in_pixels = 4 * self.default_model_variant.units[0].vehicle_length
         unit_slice_length_in_pixels = (
             int(unit_length_in_pixels / 2)
             + graphics_constants.randomised_wagon_extra_unit_width
@@ -649,7 +655,9 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                 x_offset_dest=0,
             ),
         ]
-        for row_data in self.consist.gestalt_graphics.buy_menu_row_map(self):
+        for row_data in self.default_model_variant.gestalt_graphics.buy_menu_row_map(
+            self
+        ):
             for counter, (source_vehicle_unit, input_spriterow_num) in enumerate(
                 row_data["source_vehicles_and_input_spriterow_nums"]
             ):
@@ -659,7 +667,10 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                     source_vehicle_unit.consist.model_id + ".png",
                 )
                 source_vehicle_image = Image.open(source_vehicle_input_path)
-                if self.consist.model_id == "randomised_box_car_pony_gen_1A":
+                if (
+                    self.default_model_variant.model_id
+                    == "randomised_box_car_pony_gen_1A"
+                ):
                     # source_vehicle_image.show()
                     pass
                 input_spriterow_y_offset = (
@@ -708,10 +719,10 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                     {170: 14, 171: 15, 188: 182, 51: 164, 69: 165, 226: 45},
                 ],
             }
-            # the consist gen % 2 is to alternate the overlay colour between generations, to aid distinguising them when replacing vehicles
+            # the gen % 2 is to alternate the overlay colour between generations, to aid distinguising them when replacing vehicles
             dice_recolour_map = dice_recolour_maps[
-                self.consist.gestalt_graphics.dice_colour
-            ][self.consist.gen % 2]
+                self.default_model_variant.gestalt_graphics.dice_colour
+            ][self.catalogue.factory.model_def.gen % 2]
             dice_image = dice_image.point(
                 lambda i: dice_recolour_map[i] if i in dice_recolour_map.keys() else i
             )
@@ -749,16 +760,17 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
                 fade_image = ImageOps.mirror(fade_image)
                 fade_image_mask = ImageOps.mirror(fade_image_mask)
 
-        # if self.consist.id == "randomised_box_car_pony_gen_5B":
+        # if self.default_model_variant.id == "randomised_box_car_pony_gen_5B":
         # spritesheet.sprites.show()
         # pass
 
         return spritesheet
 
-    def render(self, consist, global_constants, graphics_output_path):
-        self.processing_units = []
-        self.consist = consist
+    def render(self, target_config, global_constants, graphics_output_path):
+        self.catalogue = target_config["catalogue"]
+        self.default_model_variant = target_config["default_model_variant"]
         self.graphics_output_path = graphics_output_path
+        self.processing_units = []
 
         self.processing_units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
@@ -766,7 +778,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         spritesheet_image = Image.open(
             os.path.join(
                 self.graphics_output_path,
-                self.consist.catalogue_entry.model_id + ".png",
+                self.catalogue.id + ".png",
             )
         )
 
@@ -782,7 +794,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
     """
 
     def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        # this should be sparse, don't store any catalogue info in Pipelines, pass at render time
         super().__init__()
 
     def add_pantograph_spriterows(self):
@@ -797,12 +809,15 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             "z-shaped-single-with-base": "z-shaped-with-base.png",
             "z-shaped-double-with-base": "z-shaped-with-base.png",
         }
+        # pan type might come from cab model, so for JFDI, just use default_model_variant, although it's actually defined on cab model_def
+        pantograph_type = self.default_model_variant.pantograph_type
+
         pantograph_input_path = os.path.join(
             currentdir,
             "src",
             "graphics",
             "pantographs",
-            pantograph_input_images[self.consist.pantograph_type],
+            pantograph_input_images[pantograph_type],
         )
         pantograph_input_image = Image.open(pantograph_input_path)
 
@@ -897,7 +912,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
                 pixel[0],
                 pixel[1]
                 - (
-                    self.consist.gestalt_graphics.num_pantograph_rows
+                    self.default_model_variant.gestalt_graphics.num_pantograph_rows
                     * graphics_constants.spriterow_height
                 ),
                 pixel[2],
@@ -927,7 +942,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
                 graphics_constants.spritesheet_width,
                 (
                     2
-                    * self.consist.gestalt_graphics.num_pantograph_rows
+                    * self.default_model_variant.gestalt_graphics.num_pantograph_rows
                     * graphics_constants.spriterow_height
                 )
                 + 10,
@@ -935,13 +950,15 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             255,
         )
         pantograph_output_image.putpalette(DOS_PALETTE)
-        for i in range(self.consist.gestalt_graphics.num_pantograph_rows + 1):
+        for i in range(
+            self.default_model_variant.gestalt_graphics.num_pantograph_rows + 1
+        ):
             pantograph_output_image.paste(
                 empty_spriterow_image,
                 (0, 10 + (i * graphics_constants.spriterow_height)),
             )
 
-        state_map = spriterow_pantograph_state_maps[self.consist.pantograph_type][
+        state_map = spriterow_pantograph_state_maps[pantograph_type][
             self.pantograph_state
         ]
         for pixel in loc_points:
@@ -977,23 +994,25 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
 
         # add debug sprites with vehicle-pantograph comp for ease of checking
         # this very much assumes that the vehicle image has been generated, which holds currently due to the order pipelines are run in (and are in series)
-        # !! this doesn't handle the case of articulated vehicles, especially where the first consist row doesn't have pans
+        # !! this doesn't handle the case of articulated vehicles, especially where the first row doesn't have pans
         vehicle_debug_image = Image.open(
             os.path.join(
                 self.graphics_output_path,
-                self.consist.catalogue_entry.model_id + ".png",
+                self.catalogue.id + ".png",
             )
         )
         vehicle_debug_image = vehicle_debug_image.copy().crop(
             (
                 0,
                 10
-                + self.consist.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[
+                + self.default_model_variant.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[
                     0
                 ],
                 graphics_constants.spritesheet_width,
                 10
-                + self.consist.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[0]
+                + self.default_model_variant.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[
+                    0
+                ]
                 + graphics_constants.spriterow_height,
             )
         )
@@ -1003,7 +1022,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
                 0,
                 10
                 + (
-                    self.consist.gestalt_graphics.num_pantograph_rows
+                    self.default_model_variant.gestalt_graphics.num_pantograph_rows
                     * graphics_constants.spriterow_height
                 ),
             ),
@@ -1012,12 +1031,14 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             (
                 0,
                 10
-                + self.consist.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[
+                + self.default_model_variant.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[
                     1
                 ],
                 graphics_constants.spritesheet_width,
                 10
-                + self.consist.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[1]
+                + self.default_model_variant.gestalt_graphics.jfdi_pantograph_debug_image_y_offsets[
+                    1
+                ]
                 + graphics_constants.spriterow_height,
             )
         )
@@ -1033,7 +1054,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
                 0,
                 10
                 + (
-                    self.consist.gestalt_graphics.num_pantograph_rows
+                    self.default_model_variant.gestalt_graphics.num_pantograph_rows
                     * graphics_constants.spriterow_height
                 ),
             ),
@@ -1051,20 +1072,23 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             10
             + (
                 2
-                * self.consist.gestalt_graphics.num_pantograph_rows
+                * self.default_model_variant.gestalt_graphics.num_pantograph_rows
                 * graphics_constants.spriterow_height
             ),
         )
-        self.processing_units.append(AppendToSpritesheet(pantograph_spritesheet, crop_box_dest))
+        self.processing_units.append(
+            AppendToSpritesheet(pantograph_spritesheet, crop_box_dest)
+        )
         pantograph_input_image.close()
         vehicle_input_image.close()
         empty_spriterow_image.close()
 
-    def render(self, consist, global_constants, graphics_output_path):
-        self.processing_units = []
-        self.consist = consist
+    def render(self, target_config, global_constants, graphics_output_path):
+        self.catalogue = target_config["catalogue"]
+        self.default_model_variant = target_config["default_model_variant"]
         self.global_constants = global_constants
         self.graphics_output_path = graphics_output_path
+        self.processing_units = []
 
         self.add_pantograph_spriterows()
 
@@ -1073,7 +1097,9 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             (0, 0, graphics_constants.spritesheet_width, 10)
         )
         output_suffix = "_pantographs_" + self.pantograph_state
-        self.render_common(input_image, self.processing_units, output_suffix=output_suffix)
+        self.render_common(
+            input_image, self.processing_units, output_suffix=output_suffix
+        )
         input_image.close()
 
 
@@ -1114,18 +1140,20 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
     """
 
     def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        # this should be sparse, don't store any catalogue info in Pipelines, pass at render time
         # initing things here is proven to have unexpected results, as the processor will be shared across multiple vehicles
         super().__init__()
 
-    def get_spriterow_types_for_consist(self):
-        # builds a map of spriterows for the entire consist by walking gestalt graphics for each unique unit
+    def get_spriterow_types_for_model_type(self):
+        # builds a map of spriterows for the entire vehicle by walking gestalt graphics for each unique unit
         # might be that this should be handled via the gestalt graphics class, but potato / potato here I think
         result = []
-        for unit in self.consist.unique_units:
+        for unit in self.default_model_variant.unique_units:
             unit_rows = []
             # assumes gestalt_graphics is used to handle all row types, no other cases at time of writing, could be changed eh?
-            unit_rows.extend(self.consist.gestalt_graphics.get_output_row_types())
+            unit_rows.extend(
+                self.default_model_variant.gestalt_graphics.get_output_row_types()
+            )
             result.append(unit_rows)
         return result
 
@@ -1160,7 +1188,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 "1"
             )  # the inversion here of blue and white looks a bit odd, but potato / potato
             chassis_image.paste(roof_image, crop_box_roof_dest, roof_mask)
-        # if self.consist.id == 'box_car_pony_gen_1A':
+        # if self.default_model_variant.id == 'box_car_pony_gen_1A':
         # chassis_image.show()
 
         # chassis and roofs are *always* symmetrical, with 4 angles drawn; for vehicles with asymmetric bodies, copy and paste to provide all 8 angles
@@ -1235,7 +1263,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             )
         )
 
-        variants = self.consist.gestalt_graphics.get_generic_spriterow_output_variants(
+        variants = self.default_model_variant.gestalt_graphics.get_generic_spriterow_output_variants(
             spriterow_type
         )
         for variant in variants:
@@ -1273,7 +1301,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                     0,
                 )
                 mask.paste(mask_source, crop_box_mask_dest)
-                # if self.consist.id == "hood_open_car_pony_gen_1A":
+                # if self.default_model_variant.id == "hood_open_car_pony_gen_1A":
                 # mask_source.show()
 
             generic_spriterow_variant_image = empty_spriterow_image.copy()
@@ -1298,7 +1326,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 )
             )
             if variant["body_recolour_map"] is not None:
-                self.processing_units.append(SimpleRecolour(variant["body_recolour_map"]))
+                self.processing_units.append(
+                    SimpleRecolour(variant["body_recolour_map"])
+                )
             self.processing_units.append(
                 AddCargoLabel(
                     label=variant["label"],
@@ -1331,7 +1361,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         for (
             weathered_variant_label,
             recolour_map,
-        ) in self.consist.gestalt_graphics.weathered_variants.items():
+        ) in self.default_model_variant.gestalt_graphics.weathered_variants.items():
             crop_box_dest = (
                 0,
                 0,
@@ -1374,7 +1404,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             doors_image = doors_image.point(
                 lambda i: 255 if (i in range(178, 192) or i == 0) else i
             )
-            # if self.consist.id == 'mail_car_pony_gen_4C':
+            # if self.default_model_variant.id == 'mail_car_pony_gen_4C':
             # doors_image.show()
 
             # create a mask so that we paste only the door pixels over the body (no blue pixels)
@@ -1449,7 +1479,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             )
             # add doors
             pax_mail_car_image.paste(doors_image, crop_box_comp_dest_doors, doors_mask)
-            # if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
+            # if self.default_model_variant.id == 'luxury_passenger_car_pony_gen_6U':
             # pax_mail_car_col_image.show()
 
             crop_box_dest = (
@@ -1461,7 +1491,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             pax_mail_car_image_as_spritesheet = pixa.make_spritesheet_from_image(
                 pax_mail_car_image, DOS_PALETTE
             )
-            # if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
+            # if self.default_model_variant.id == 'luxury_passenger_car_pony_gen_6U':
             # pax_mail_car_image_as_spritesheet.sprites.show()
             self.processing_units.append(
                 AppendToSpritesheet(pax_mail_car_image_as_spritesheet, crop_box_dest)
@@ -1487,7 +1517,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         box_car_input_image_2 = self.comp_chassis_and_body(
             Image.open(self.vehicle_source_input_path).crop(crop_box_source_2)
         )
-        # if self.consist.id == 'box_car_pony_gen_1A':
+        # if self.default_model_variant.id == 'box_car_pony_gen_1A':
         # box_car_input_image_1.show() # comment in to see the image when debugging
 
         # empty/loaded state and loading state will need pasting once each, so two crop boxes needed
@@ -1530,7 +1560,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         for (
             weathered_variant,
             recolour_map,
-        ) in self.consist.gestalt_graphics.weathered_variants.items():
+        ) in self.default_model_variant.gestalt_graphics.weathered_variants.items():
             self.processing_units.append(
                 AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest)
             )
@@ -1588,7 +1618,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 )
             )
             self.processing_units.append(
-                SimpleRecolour(self.consist.gestalt_graphics.recolour_map)
+                SimpleRecolour(self.default_model_variant.gestalt_graphics.recolour_map)
             )
 
     def add_bulk_cargo_spriterows(self):
@@ -1606,7 +1636,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         cargo_base_image = cargo_base_image.point(
             lambda i: 255 if (i not in range(170, 177)) else i
         )
-        # if self.consist.id == "dump_car_pony_gen_3A":
+        # if self.default_model_variant.id == "dump_car_pony_gen_3A":
         # cargo_base_image.show()
 
         # create a mask so that we paste only the cargo pixels over the body (no blue pixels)
@@ -1616,7 +1646,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         ).convert(
             "1"
         )  # the inversion here of blue and white looks a bit odd, but potato / potato
-        # if self.consist.id == "dump_car_pony_gen_3A":
+        # if self.default_model_variant.id == "dump_car_pony_gen_3A":
         # cargo_base_mask.show()
 
         # loading and loaded state will need pasting once each, so two crop boxes needed
@@ -1642,7 +1672,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # this is dirty shorthand and relies on has_cover yielding 0 or 1 for an additional offset (empty row is second row if has_cover is True)
         empty_row_yoffs = self.cur_vehicle_empty_row_yoffs + (
             graphics_constants.spriterow_height
-            * self.consist.gestalt_graphics.has_cover
+            * self.default_model_variant.gestalt_graphics.has_cover
         )
 
         crop_box_vehicle_body = (
@@ -1668,7 +1698,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         bulk_cargo_rows_image.paste(
             cargo_base_image, crop_box_comp_dest_3, cargo_base_mask
         )
-        # if self.consist.id == "dump_car_pony_gen_3A":
+        # if self.default_model_variant.id == "dump_car_pony_gen_3A":
         # bulk_cargo_rows_image.show()
 
         crop_box_dest = (0, 0, self.sprites_max_x_extent, cargo_group_row_height)
@@ -1685,9 +1715,11 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             label,
             cargo_recolour_map,
         ) in polar_fox.constants.bulk_cargo_recolour_maps:
-            body_recolour_map = self.consist.gestalt_graphics.weathered_variants[
-                "unweathered"
-            ]
+            body_recolour_map = (
+                self.default_model_variant.gestalt_graphics.weathered_variants[
+                    "unweathered"
+                ]
+            )
             self.processing_units.append(
                 AppendToSpritesheet(bulk_cargo_rows_image_as_spritesheet, crop_box_dest)
             )
@@ -1738,7 +1770,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # this is dirty shorthand and relies on has_cover yielding 0 or 1 for an additional offset (empty row is second row if has_cover is True)
         empty_row_yoffs = self.cur_vehicle_empty_row_yoffs + (
             graphics_constants.spriterow_height
-            * self.consist.gestalt_graphics.has_cover
+            * self.default_model_variant.gestalt_graphics.has_cover
         )
 
         crop_box_vehicle_body = (
@@ -1773,7 +1805,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             "1", (self.sprites_max_x_extent, graphics_constants.spriterow_height), 0
         )
         vehicle_mask.paste(vehicle_mask_source, crop_box_mask_dest)
-        # if self.consist.id == "open_car_pony_gen_1A":
+        # if self.default_model_variant.id == "open_car_pony_gen_1A":
         # vehicle_mask.show()
 
         # mask and empty state will need pasting once for each of two cargo rows, so two crop boxes needed
@@ -1797,7 +1829,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # paste empty states in for the cargo rows (base image = empty state)
         piece_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_1)
         piece_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
-        # if self.consist.id == "open_car_pony_gen_1A":
+        # if self.default_model_variant.id == "open_car_pony_gen_1A":
         # piece_cargo_rows_image.show()
         crop_box_dest = (0, 0, self.sprites_max_x_extent, cargo_group_output_row_height)
 
@@ -1806,7 +1838,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             polar_fox_graphics_path=os.path.join("src", "polar_fox", "graphics"),
         )
         for cargo_filename in polar_fox.constants.piece_vehicle_type_to_sprites_maps[
-            self.consist.gestalt_graphics.piece_type
+            self.default_model_variant.gestalt_graphics.piece_type
         ]:
             # n.b. Iron Horse assumes cargo length is always equivalent from vehicle length (probably fine)
             cargo_sprites = piece_cargo_sprites.get_cargo_sprites_all_angles_for_length(
@@ -1854,16 +1886,18 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             vehicle_comped_image.paste(
                 vehicle_base_image, crop_box_comp_dest_2, vehicle_mask
             )
-            # if self.consist.id == "open_car_pony_gen_1A":
+            # if self.default_model_variant.id == "open_car_pony_gen_1A":
             # vehicle_comped_image.show()
 
             vehicle_comped_image_as_spritesheet = pixa.make_spritesheet_from_image(
                 vehicle_comped_image, DOS_PALETTE
             )
 
-            body_recolour_map = self.consist.gestalt_graphics.weathered_variants[
-                "unweathered"
-            ]
+            body_recolour_map = (
+                self.default_model_variant.gestalt_graphics.weathered_variants[
+                    "unweathered"
+                ]
+            )
             self.processing_units.append(
                 AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_dest)
             )
@@ -1876,11 +1910,12 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 )
             )
 
-    def render(self, consist, global_constants, graphics_output_path):
-        self.processing_units = (
-            []
-        )
-        self.consist = consist
+    def render(self, target_config, global_constants, graphics_output_path):
+        self.catalogue = target_config["catalogue"]
+        self.default_model_variant = target_config["default_model_variant"]
+
+        self.processing_units = []
+
         self.global_constants = global_constants
         self.graphics_output_path = graphics_output_path
         self.sprites_max_x_extent = self.global_constants.sprites_max_x_extent
@@ -1898,10 +1933,10 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # !! input_spriterow_count looks a bit weird though; I tried moving it to gestalts, but didn't really work
         cumulative_input_spriterow_count = 0
         for vehicle_counter, vehicle_rows in enumerate(
-            self.get_spriterow_types_for_consist()
+            self.get_spriterow_types_for_model_type()
         ):
             # 'vehicle_unit' not 'unit' to avoid conflating with graphics processor 'unit'
-            self.vehicle_unit = self.consist.unique_units[
+            self.vehicle_unit = self.default_model_variant.unique_units[
                 vehicle_counter
             ]  # !!  this is ugly hax, I didn't want to refactor the iterator above to contain the vehicle
             self.cur_vehicle_empty_row_yoffs = (
@@ -1926,11 +1961,13 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                     input_spriterow_count = 2
                     self.add_box_car_with_opening_doors_spriterows()
                 elif spriterow_type == "caboose_spriterows":
-                    input_spriterow_count = self.consist.gestalt_graphics.num_variations
+                    input_spriterow_count = (
+                        self.default_model_variant.gestalt_graphics.num_variations
+                    )
                     self.add_caboose_spriterows(input_spriterow_count)
                 elif spriterow_type == "pax_mail_cars_with_doors":
                     input_spriterow_count = (
-                        self.consist.gestalt_graphics.total_spriterow_count
+                        self.default_model_variant.gestalt_graphics.total_spriterow_count
                     )
                     self.add_pax_mail_car_with_opening_doors_spriterows(
                         input_spriterow_count
@@ -1945,12 +1982,12 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             # self.vehicle_unit is hax, and is only valid inside this loop, so clear it to prevent incorrectly relying on it outside the loop in future :P
             self.vehicle_unit = None
 
-        if hasattr(self.consist.gestalt_graphics, "asymmetric_row_map"):
+        if hasattr(self.default_model_variant.gestalt_graphics, "asymmetric_row_map"):
             self.processing_units.append(
                 TransposeAsymmetricSprites(
                     graphics_constants.spriterow_height,
                     global_constants.spritesheet_bounding_boxes_asymmetric_unreversed,
-                    self.consist.gestalt_graphics.asymmetric_row_map,
+                    self.default_model_variant.gestalt_graphics.asymmetric_row_map,
                 )
             )
 

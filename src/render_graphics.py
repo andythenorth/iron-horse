@@ -18,13 +18,14 @@ import utils
 import global_constants
 
 
-def run_consist_pipelines(consist, graphics_output_path):
-    if len(consist.gestalt_graphics.pipelines) == 0:
+def run_vehicle_pipelines(target_config, graphics_output_path):
+    pipelines = target_config["default_model_variant"].gestalt_graphics.pipelines
+    if len(pipelines) == 0:
         raise Exception("no pipelines")
     else:
         # run pipelines, obvs
-        for pipeline in consist.gestalt_graphics.pipelines:
-            pipeline.render(consist, global_constants, graphics_output_path)
+        for pipeline in pipelines:
+            pipeline.render(target_config, global_constants, graphics_output_path)
 
 
 def run_spritelayer_cargo_set_pipelines(
@@ -38,27 +39,27 @@ def run_spritelayer_cargo_set_pipelines(
         )
 
 
-def report_sprites_complete(consists):
+def report_sprites_complete(catalogues):
     # project management eh :P
-    complete = len(
-        [consist.model_def.sprites_complete for consist in consists if consist.model_def.sprites_complete]
+    total = len(catalogues)
+    complete_count = sum(
+        1 for catalogue in catalogues if catalogue.factory.model_def.sprites_complete
     )
+    percent_complete = int(100 * (complete_count / total))
+
     print(
-        "Sprites complete for",
-        complete,
-        "consists; incomplete for",
-        len(consists) - complete,
-        "consists;",
-        str(int(100 * (complete / len(consists)))) + "%",
+        f"Sprites complete for {complete_count} vehicles; "
+        f"incomplete for {total - complete_count} vehicles; {percent_complete}%"
     )
+
     incomplete_by_track_type = {}
-    for consist in consists:
-        if not consist.model_def.sprites_complete:
-            incomplete_by_track_type.setdefault(
-                consist.base_track_type_name, []
-            ).append(consist)
-    for track_type, incomplete_consists in incomplete_by_track_type.items():
-        print("  *", track_type, len(incomplete_consists))
+    for catalogue in catalogues:
+        if not catalogue.factory.model_def.sprites_complete:
+            track_type = catalogue.factory.model_def.base_track_type_name
+            incomplete_by_track_type.setdefault(track_type, []).append(catalogue)
+
+    for track_type, group in incomplete_by_track_type.items():
+        print(f"  * {track_type} {len(group)}")
 
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
@@ -109,13 +110,6 @@ def main():
     )
     hint_file.close()
 
-    consists = roster.consists_in_buy_menu_order
-
-    for consist in consists:
-        # rosters won't pickle reliably, and blow up multiprocessing, never figured out why
-        # work around that by freezing anything for graphics processing that depends on roster lookups
-        consist.freeze_cross_roster_lookups()
-
     # get a list of 2-tuple pairs for spritelayer cargos + cargo sets
     # a list format is wanted for convenience with graphics multiprocessing pool
     # the parent spritelayer_cargo object must be passed with the cargo set as cargo sets have render-time properties which change according to context
@@ -125,32 +119,31 @@ def main():
         for cargo_set in spritelayer_cargo.cargo_sets:
             spritelayer_cargo_set_pairs.append((spritelayer_cargo, cargo_set))
 
-    # sort the consists in priority processing order, priority 1 is first
-    # this enables some consists to depend on generated sprites from other consists
-    consists_in_priority_groups = {1: [], 2: []}
-    for consist in consists:
-        # CABBAGE JFDI FILTER - THIS NEEDS HANDLING DIFFERENTLY
-        # !! possibly via catalogues, and consist_catalogue_mapping like docs?
-        # !! for consist_catalogue_mapping in roster.consists_by_catalogue.values():
-        # !! where would processing_priority be set?  Class attr?
-        # !! we'd have the defaul consist in scope though
-        # !! the point would be to pass the catalogue to pipelines cleanly, and emphasise that catalogue is the primary entry point, simplifying id access etc
-        if consist.is_default_model_variant:
-            consists_in_priority_groups[
-                consist.gestalt_graphics.processing_priority
-            ].append(consist)
+    # sort the catalogues into render passes, pass 1 will be first
+    # this enables some vehicles to depend on generated sprites from ealier render passes
+    render_pass_targets = {1: [], 2: []}
+    for catalogue in roster.catalogues:
+        default_model_variant = catalogue.default_model_variant_from_roster
+        # rosters won't pickle reliably, and blow up multiprocessing, never figured out why
+        # work around that by freezing anything for graphics processing that depends on roster lookups
+        default_model_variant.freeze_cross_roster_lookups()
+        target_config = {
+            "catalogue": catalogue,
+            "default_model_variant": default_model_variant,
+        }
+        render_pass_targets[
+            default_model_variant.gestalt_graphics.render_pass_num
+        ].append(target_config)
 
     if use_multiprocessing == False:
         for spritelayer_cargo_set_pair in spritelayer_cargo_set_pairs:
             run_spritelayer_cargo_set_pipelines(
                 spritelayer_cargo_set_pair, graphics_output_path
             )
-        for processing_priority in [1, 2]:
-            for consist in consists_in_priority_groups[processing_priority]:
-                run_consist_pipelines(consist, graphics_output_path)
+        for render_pass_num in [1, 2]:
+            for target_config in render_pass_targets[render_pass_num]:
+                run_vehicle_pipelines(target_config, graphics_output_path)
     else:
-        # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
-        # probably potato / potato tbh
         pool = Pool(processes=num_pool_workers)
         pool.starmap(
             run_spritelayer_cargo_set_pipelines,
@@ -163,19 +156,19 @@ def main():
         pool.join()
         # wait for first pool job to finish before starting further pool jobs
         # vehicle pool jobs are repeated so that some vehicles can depend on generated sprites from others
-        for processing_priority in [1, 2]:
+        for render_pass in [1, 2]:
             pool = Pool(processes=num_pool_workers)
             pool.starmap(
-                run_consist_pipelines,
+                run_vehicle_pipelines,
                 zip(
-                    consists_in_priority_groups[processing_priority],
+                    render_pass_targets[render_pass],
                     repeat(graphics_output_path),
                 ),
             )
             pool.close()
             pool.join()
 
-    report_sprites_complete(consists)
+    report_sprites_complete(roster.catalogues)
 
     for dir_name in ["railtypes", "signals", "tail_lights"]:
         target_path = os.path.join(graphics_input_path, dir_name)

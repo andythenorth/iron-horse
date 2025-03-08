@@ -20,7 +20,7 @@ import iron_horse
 class ModelDef:
     # Required fields (lexically sorted)
     class_name: str
-    gen: Any
+    gen: int
     sprites_complete: bool
 
     # Optional common fields (lexically sorted)

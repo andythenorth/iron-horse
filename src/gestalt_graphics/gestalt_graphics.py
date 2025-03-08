@@ -21,7 +21,7 @@ class GestaltGraphics(object):
         # by default, pipelines are empty
         self.pipelines = pipelines.get_pipelines([])
         # sometimes processing may depend on another generated vehicle spritesheet, so there are multiple processing priorities, 1 = highest
-        self.processing_priority = 1
+        self.render_pass_num = 1
         # default value for optional mask layer, this is JFDI for 2022, may need converting a more generic spritelayers structure in future
         # set directly by the consist self.gestalt_graphics.add_masked_overlay = True, or by kwargs on a specific gestalt subclass
         self.add_masked_overlay = False
@@ -64,13 +64,15 @@ class GestaltGraphics(object):
         result = []
         if pipeline.is_pantographs_pipeline:
             # pans are the same for all buyable variants, and are just provided either once, or per position variant
-            dest_spriterows = pipeline.consist.cabbage_buyable_variants[0:1]
+            dest_spriterows = pipeline.default_model_variant.cabbage_buyable_variants[
+                0:1
+            ]
         else:
             dest_spriterows = self.get_buy_menu_dest_spriterows(pipeline)
         for dest_spriterow_counter, buyable_variant in enumerate(dest_spriterows):
             source_vehicles_and_input_spriterow_nums = []
 
-            for unit_counter, unit in enumerate(pipeline.consist.units):
+            for unit_counter, unit in enumerate(pipeline.default_model_variant.units):
                 # vehicle unit, y offset (num spriterows) to buy menu input row
                 source_vehicles_and_input_spriterow_nums.append(
                     [
@@ -94,17 +96,18 @@ class GestaltGraphics(object):
     def get_buy_menu_dest_spriterows(self, pipeline):
         # default case assumes we want a buy menu sprite for each of the buyable variants
         # that's not true for all gestalts - deal with that per gestalt as needed
-        return pipeline.consist.cabbage_buyable_variants
+        return pipeline.default_model_variant.cabbage_buyable_variants
 
-    def get_buy_menu_unit_input_row_num(
-        self, unit_counter, pipeline, unit
-    ):
+    def get_buy_menu_unit_input_row_num(self, unit_counter, pipeline, unit):
         # override in subclasses as needed
         # CABBAGE REFACTOR
         unit_variant_row_num = (
-            unit.rel_spriterow_index * len(pipeline.consist.cabbage_buyable_variants)
+            unit.rel_spriterow_index
+            * len(pipeline.default_model_variant.cabbage_buyable_variants)
         ) + (
-            (pipeline.consist.catalogue_entry.livery_def.relative_spriterow_num)
+            (
+                pipeline.default_model_variant.catalogue_entry.livery_def.relative_spriterow_num
+            )  # CABBAGE
             * self.num_load_state_or_similar_spriterows
         )
         return unit_variant_row_num
@@ -172,7 +175,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         self.colour_mapping_with_purchase = True
         self.random_vehicle_map_type = kwargs["random_vehicle_map_type"]
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
-        self.processing_priority = 2
+        self.render_pass_num = 2
 
     @property
     def nml_template(self):
@@ -182,7 +185,8 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         # for practicality we only want the default variant where variants exist,
         # e.g. no cc recoloured variants etc as it's seriously not worth handling those here
         candidate_consists = []
-        for unit_variant in pipeline.consist.frozen_roster_items[
+        # DEFINITE CABBAGE
+        for unit_variant in pipeline.default_model_variant.frozen_roster_items[
             "wagon_randomisation_candidates"
         ][0]:
             # ^^^ !! picking the first item off is hax
@@ -377,9 +381,8 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # we make an assumption that the spriterows will always be vertically contiguous
         # so we can take the last value of start_y_cumulative, apply the offset multiplier, then rewrite the y values in result
         # n.b. by default force_spriterow_group_in_output_spritesheet = 0, so this has no effect unless explicitly set
-        vehicle_y_offset = (
-            unit.unit_def.force_spriterow_group_in_output_spritesheet
-            * (start_y_cumulative - graphics_constants.spritesheet_top_margin)
+        vehicle_y_offset = unit.unit_def.force_spriterow_group_in_output_spritesheet * (
+            start_y_cumulative - graphics_constants.spritesheet_top_margin
         )
         for row_map in result:
             row_map[1] = row_map[1] + vehicle_y_offset
@@ -389,11 +392,9 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # default case assumes we want a buy menu sprite for each of the buyable variants
         # that's not true here, as the buyable variants only use recolour sprites, everything else is an independent consist
         # so just take a slice containing the first variant
-        return pipeline.consist.cabbage_buyable_variants[0:1]
+        return pipeline.default_model_variant.cabbage_buyable_variants[0:1]
 
-    def get_buy_menu_unit_input_row_num(
-        self, unit_counter, pipeline, unit
-    ):
+    def get_buy_menu_unit_input_row_num(self, unit_counter, pipeline, unit):
         result = (
             len(self.get_unique_spritesets(unit))
             * unit.unit_def.force_spriterow_group_in_output_spritesheet
@@ -449,14 +450,14 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         # default case assumes we want a buy menu sprite for each of the buyable variants
         # that's not true here, as the buyable variants only use recolour sprites, everything else is an independent consist
         # so just take a slice containing the first variant
-        return pipeline.consist.cabbage_buyable_variants[0:1]
+        return pipeline.default_model_variant.cabbage_buyable_variants[0:1]
 
-    def get_buy_menu_unit_input_row_num(
-        self, unit_counter, pipeline, unit
-    ):
+    def get_buy_menu_unit_input_row_num(self, unit_counter, pipeline, unit):
 
         unit_variant_row_num = unit.rel_spriterow_index + (
-            (pipeline.consist.catalogue_entry.livery_def.relative_spriterow_num)
+            (
+                pipeline.default_model_variant.catalogue_entry.livery_def.relative_spriterow_num
+            )  # CABBAGE MAYBE? - CATALOGUE?
             * self.num_load_state_or_similar_spriterows
         )
         return unit_variant_row_num
@@ -525,11 +526,11 @@ class GestaltGraphicsCaboose(GestaltGraphics):
             # note that buy_menu_row_map works with *units*; we can always look up the model variant from the unit, but not trivially the other way round
             source_vehicles_and_input_spriterow_nums = [
                 (
-                    pipeline.consist.units[0],
+                    pipeline.default_model_variant.units[0],
                     self.spriterow_labels.index(buy_menu_sprite_pair[0]),
                 ),
                 (
-                    pipeline.consist.units[0],
+                    pipeline.default_model_variant.units[0],
                     self.spriterow_labels.index(buy_menu_sprite_pair[1]),
                 ),
             ]
@@ -1026,14 +1027,12 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 )
         return result
 
-    def get_buy_menu_unit_input_row_num(
-        self, unit_counter, pipeline, unit
-    ):
+    def get_buy_menu_unit_input_row_num(self, unit_counter, pipeline, unit):
         # as of Jan 2024 it was easiest to enforce that this only works with model variant comprised of exactly 2 units
         # that means we can just do first / last, and not worry about other position variants
         # support for arbitrary number of units could be added, derived from formation ruleset, but those cases don't exist as of Jan 2024
-        if len(pipeline.consist.units) != 2:
-            if pipeline.consist.id == "golfinho":
+        if len(pipeline.default_model_variant.units) != 2:
+            if pipeline.default_model_variant.id == "golfinho":
                 # JFDI jank
                 if unit_counter == 1:
                     position_variant_offset = self.spriterow_group_mappings["special"]
@@ -1042,14 +1041,14 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                         * position_variant_offset
                         * self.num_load_state_or_similar_spriterows
                     ) + (
-                        pipeline.consist.catalogue_entry.livery_def.relative_spriterow_num
+                        pipeline.default_model_variant.catalogue_entry.livery_def.relative_spriterow_num
                         * self.num_load_state_or_similar_spriterows
                     )
                     return unit_variant_row_num
             else:
                 raise BaseException(
                     "GestaltGraphicsFormationDependent.get_buy_menu_unit_input_row_num(): consist "
-                    + pipeline.consist.id
+                    + pipeline.default_model_variant.id
                     + " does not have exactly 2 units - this case is not currently supported"
                 )
 
@@ -1065,7 +1064,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 * position_variant_offset
                 * self.num_load_state_or_similar_spriterows
             ) + (
-                pipeline.consist.catalogue_entry.livery_def.relative_spriterow_num
+                pipeline.default_model_variant.catalogue_entry.livery_def.relative_spriterow_num
                 * self.num_load_state_or_similar_spriterows
             )
 
@@ -1132,7 +1131,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
         # not implemented as of Jan 2024 - provide custom buy menu sprites via the template and/or manually in the spritesheet
         raise BaseException(
             "buy_menu_row_map called in GestaltGraphicsCustom for consist "
-            + pipeline.consist.id
+            + pipeline.default_model_variant.id
             + " - this isn't supported."
         )
 
