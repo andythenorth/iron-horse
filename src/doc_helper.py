@@ -244,6 +244,7 @@ class DocHelper(object):
         }
 
     def cabbage_get_docs_livery_variants(self, catalogue):
+        # CABBAGE - SHOULD BE REMOVABLE - consumers can be refactored
         # dark blue / dark blue and red / white are defaults
         variants_config = []
 

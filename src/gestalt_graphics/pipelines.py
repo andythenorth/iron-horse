@@ -76,7 +76,7 @@ class Pipeline(object):
         # finally the spritesheet is saved
         if output_base_name is None:
             # default to consist name for file name, but can override for e.g. containers by passing something in
-            output_base_name = self.consist.id
+            output_base_name = self.consist.model_id
         output_path = os.path.join(
             self.graphics_output_path,
             output_base_name + output_suffix + ".png",
@@ -532,7 +532,7 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
         spritesheet_image = Image.open(
             os.path.join(
                 self.graphics_output_path,
-                self.consist.catalogue_entry.input_spritesheet_name_stem + ".png",
+                self.consist.catalogue_entry.model_id + ".png",
             )
         )
         self.render_common(spritesheet_image, self.units)
@@ -574,7 +574,7 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
         spritesheet_image = Image.open(
             os.path.join(
                 self.graphics_output_path,
-                self.consist.catalogue_entry.input_spritesheet_name_stem
+                self.consist.catalogue_entry.model_id
                 + suffix
                 + ".png",
             )
@@ -766,7 +766,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         spritesheet_image = Image.open(
             os.path.join(
                 self.graphics_output_path,
-                self.consist.catalogue_entry.input_spritesheet_name_stem + ".png",
+                self.consist.catalogue_entry.model_id + ".png",
             )
         )
 
@@ -981,7 +981,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         vehicle_debug_image = Image.open(
             os.path.join(
                 self.graphics_output_path,
-                self.consist.catalogue_entry.input_spritesheet_name_stem + ".png",
+                self.consist.catalogue_entry.model_id + ".png",
             )
         )
         vehicle_debug_image = vehicle_debug_image.copy().crop(
@@ -1073,6 +1073,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             (0, 0, graphics_constants.spritesheet_width, 10)
         )
         output_suffix = "_pantographs_" + self.pantograph_state
+        # CABBAGE - !! pans should use model_id?  Only one spritesheet needed; can pass output_base_name here, modify templates & docs accordingly
         self.render_common(input_image, self.units, output_suffix=output_suffix)
         input_image.close()
 

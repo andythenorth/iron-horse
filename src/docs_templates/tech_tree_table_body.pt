@@ -197,8 +197,7 @@
                                                                     <span style="display:block;">
                                                                         ${model_type.name}
                                                                     </span>
-                                                                    <!--! ${vehicle_cc} -->
-                                                                    <img src="static/img/${model_type.id}.png"
+                                                                    <img src="static/img/${model_type.id}_${vehicle_cc}.png"
                                                                          width="${2 * doc_helper.docs_sprite_width(model_type)}"
                                                                          height="${2 * doc_helper.docs_sprite_height}" />
                                                                     <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">

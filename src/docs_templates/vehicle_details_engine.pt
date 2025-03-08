@@ -26,26 +26,29 @@
                     <small>Vehicle Info</small>
                 </h2>
                 <div style="margin-top:30px; margin-bottom:50px;">
-                    <tal:livery repeat="livery_variant doc_helper.cabbage_get_docs_livery_variants(catalogue)">
-                        <div class="vehicle-image"
-                            style="width:${2 * doc_helper.docs_sprite_max_width};
-                                   display:inline-block;">
-                            <!--! _${livery_variant['livery_name']} -->
-                            <img src="static/img/${default_model_variant.id}.png"
-                                 width="${2 * doc_helper.docs_sprite_width(default_model_variant)}"
-                                 height="${2 * doc_helper.docs_sprite_height}" />
-                        </div>
-                    </tal:livery>
-                    <br />
-                    <tal:livery repeat="livery_variant doc_helper.cabbage_get_docs_livery_variants(catalogue)">
-                        <div class="vehicle-image"
-                            style="width:${4 * doc_helper.docs_sprite_max_width};
-                                   display:inline-block;">
-                            <img src="static/img/${default_model_variant.id}_${livery_variant['livery_name']}.png"
-                                 width="${4 * doc_helper.docs_sprite_width(default_model_variant)}"
-                                 height="${4 * doc_helper.docs_sprite_height}" />
-                        </div>
-                    </tal:livery>
+                    <tal:catalogue_entries repeat="catalogue_entry catalogue">
+                        <tal:cc_recolour repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
+                            <div class="vehicle-image"
+                                style="width:${2 * doc_helper.docs_sprite_max_width};
+                                       display:inline-block;">
+                                <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
+                                     width="${2 * doc_helper.docs_sprite_width(default_model_variant)}"
+                                     height="${2 * doc_helper.docs_sprite_height}" />
+                            </div>
+                        </tal:cc_recolour>
+                    </tal:catalogue_entries>
+                        <br />
+                    <tal:catalogue_entries repeat="catalogue_entry catalogue">
+                        <tal:cc_recolour repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
+                            <div class="vehicle-image"
+                                style="width:${4 * doc_helper.docs_sprite_max_width};
+                                       display:inline-block;">
+                                <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
+                                     width="${4 * doc_helper.docs_sprite_width(default_model_variant)}"
+                                     height="${4 * doc_helper.docs_sprite_height}" />
+                            </div>
+                        </tal:cc_recolour>
+                    </tal:catalogue_entries>
                 </div>
                 <style>
                     blockquote.vehicle-quote p {

@@ -138,20 +138,19 @@ def render_docs_images(consist_catalogue_mapping, static_dir_dst, generated_grap
     catalogue = consist_catalogue_mapping["catalogue"]
 
     vehicle_spritesheet = Image.open(
-        os.path.join(generated_graphics_path, catalogue.factory.input_spritesheet_name_stem + ".png")
+        os.path.join(generated_graphics_path, catalogue.id + ".png")
     )
     dos_palette = Image.open("palette_key.png").palette
 
     docs_image_variants = []
 
     for consist in consist_catalogue_mapping["consists"]:
-        # these 'source' var names for images are misleading
-        dest_image = Image.new(
+        intermediate_image = Image.new(
             "P",
             (doc_helper.docs_sprite_width(consist), doc_helper.docs_sprite_height),
             255,
         )
-        dest_image.putpalette(dos_palette)
+        intermediate_image.putpalette(dos_palette)
 
         if consist.model_def.docs_image_spriterow is not None:
             y_offset = 30 * consist.model_def.docs_image_spriterow
@@ -179,7 +178,7 @@ def render_docs_images(consist_catalogue_mapping, static_dir_dst, generated_grap
             doc_helper.docs_sprite_width(consist),
             doc_helper.docs_sprite_height,
         )
-        dest_image.paste(
+        intermediate_image.paste(
             source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest
         )
 
@@ -188,7 +187,7 @@ def render_docs_images(consist_catalogue_mapping, static_dir_dst, generated_grap
             # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
             pantographs_spritesheet = Image.open(
                 os.path.join(
-                    generated_graphics_path, consist.model_id + "_pantographs_up.png"
+                    generated_graphics_path, catalogue.id + "_pantographs_up.png"
                 )
             )
             pan_crop_width = consist.buy_menu_width
@@ -209,13 +208,12 @@ def render_docs_images(consist_catalogue_mapping, static_dir_dst, generated_grap
             ).convert(
                 "1"
             )  # the inversion here of blue and white looks a bit odd, but potato / potato
-            dest_image.paste(
+            intermediate_image.paste(
                 pantographs_image.crop(crop_box_dest),
                 crop_box_dest,
                 pantographs_mask.crop(crop_box_dest),
             )
 
-        # CABBAGE THIS LOOKS OVERKILL, CAN IT NOT BE SIMPLIFIED?
         for cc_remap_pair in consist.catalogue_entry.livery_def.docs_image_input_cc:
             # handle possible remap of CC1
             if consist.catalogue_entry.livery_def.remap_to_cc is not None:
@@ -232,28 +230,29 @@ def render_docs_images(consist_catalogue_mapping, static_dir_dst, generated_grap
             else:
                 CC1_remap = cc_remap_pair[0]
                 CC2_remap = cc_remap_pair[1]
-        cc_remap_indexes = doc_helper.remap_company_colours({"CC1": CC1_remap, "CC2": CC2_remap})
+            cc_remap_indexes = doc_helper.remap_company_colours({"CC1": CC1_remap, "CC2": CC2_remap})
 
-        dest_image = dest_image.copy().point(
-            lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i
-        )
+            dest_image = intermediate_image.copy().point(
+                lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i
+            )
 
-        # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
-        dest_image = dest_image.resize(
-            (
-                4 * dest_image.size[0],
-                4 * doc_helper.docs_sprite_height,
-            ),
-            resample=Image.Resampling.NEAREST,
-        )
+            # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
+            dest_image = dest_image.resize(
+                (
+                    4 * intermediate_image.size[0],
+                    4 * doc_helper.docs_sprite_height,
+                ),
+                resample=Image.Resampling.NEAREST,
+            )
 
-        output_path = os.path.join(
-            static_dir_dst,
-            "img",
-            consist.id + ".png",
-        )
-        dest_image.save(output_path, optimize=True, transparency=0)
-        dest_image.close()
+            remap_name = doc_helper.get_livery_file_substr(cc_remap_pair)
+            output_path = os.path.join(
+                static_dir_dst,
+                "img",
+                consist.id + "_" + remap_name + ".png",
+            )
+            dest_image.save(output_path, optimize=True, transparency=0)
+            dest_image.close()
 
 def export_roster_to_json(roster, output_dir="docs"):
     """
