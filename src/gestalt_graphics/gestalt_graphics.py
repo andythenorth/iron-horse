@@ -380,12 +380,6 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             row_map[1] = row_map[1] + vehicle_y_offset
         return result
 
-    def get_buy_menu_dest_spriterows(self, pipeline):
-        # default case assumes we want a buy menu sprite for each of the buyable variants
-        # that's not true here, as the buyable variants only use recolour sprites, everything else is an independent consist
-        # so just take a slice containing the first variant
-        return pipeline.default_model_variant.cabbage_buyable_variants[0:1]
-
     def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
         result = (
             len(self.get_unique_spritesets(unit))
@@ -437,12 +431,6 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
             "cargo_row_map not implemented in GestaltGraphicsBoxCarOpeningDoorsGestaltGraphics (by design)"
         )
         return None
-
-    def get_buy_menu_dest_spriterows(self, pipeline):
-        # default case assumes we want a buy menu sprite for each of the buyable variants
-        # that's not true here, as the buyable variants only use recolour sprites, everything else is an independent consist
-        # so just take a slice containing the first variant
-        return pipeline.default_model_variant.cabbage_buyable_variants[0:1]
 
     def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
 
