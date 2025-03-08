@@ -464,11 +464,6 @@ class ModelTypeBase(object):
         return self.model_def.cab_id
 
     @property
-    def dual_headed(self):
-        # just a passthrough for convenience
-        return self.model_def.dual_headed
-
-    @property
     def easter_egg_haulage_speed_bonus(self):
         # just a passthrough for convenience
         return self.model_def.easter_egg_haulage_speed_bonus
@@ -610,6 +605,11 @@ class ModelTypeBase(object):
         # fetch the default model variant for the cab, if relevant
         # only applies if cab_id is set in model_def
         return self.catalogue_entry.catalogue.factory.cab_factory.catalogue.default_model_variant_from_roster
+
+    @property
+    def dual_headed(self):
+        # override in subclass as needed
+        return False
 
     @property
     def vehicle_life(self):
