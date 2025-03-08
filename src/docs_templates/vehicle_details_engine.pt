@@ -37,7 +37,7 @@
                             </div>
                         </tal:cc_recolour>
                     </tal:catalogue_entries>
-                        <br />
+                    <br />
                     <tal:catalogue_entries repeat="catalogue_entry catalogue">
                         <tal:cc_recolour repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
                             <div class="vehicle-image"
@@ -212,19 +212,16 @@
                         <tr>
                             <th class="livery-or-trailers-table-first-col"><div style="margin-top:12px;">Livery ${repeat.catalogue_entry.number} examples</div></th>
                             <td class="livery-or-trailers-table-col-with-divider">
-                                ${catalogue_entry.livery_def}
-                                <tal:livery_examples repeat="livery_example doc_helper.cabbage_get_docs_livery_variants(catalogue)">
-                                    ${livery_example}
-                                    <tal:drop replace="nothing">
+                                <tal:cc_recolour repeat="cc_remap_pair catalogue_entry.livery_def.docs_image_input_cc">
                                     <div class="livery-example-container">
                                         <div class="vehicle-image"
                                             style="width:${3 * doc_helper.docs_sprite_max_width}; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
-                                            <img src="static/img/${default_model_variant.id}_${livery_example}.png"
+                                            <img src="static/img/${catalogue_entry.model_variant_id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
                                                  width="${3 * doc_helper.docs_sprite_width(default_model_variant)}"
                                                  height="${3 * doc_helper.docs_sprite_height}" />
                                         </div>
                                         <div style="display:block;">
-                                            <tal:colours repeat="company_colour livery_example['docs_image_input_cc']">
+                                            <tal:colours repeat="company_colour cc_remap_pair">
                                                 <!--! !! probably should be a caption for a figure ?? -->
                                                 <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=7)});
                                                              display:inline-block;
@@ -238,8 +235,7 @@
                                             </tal:colours>
                                         </div>
                                     </div>
-                                    </tal:drop>
-                                </tal:livery_examples>
+                                </tal:cc_recolour>
                             </td>
                         </tr>
                     </tal:catalogue_entries>
@@ -277,6 +273,7 @@
 
                 <hr />
                 <h3 id="tech-tree">Tech Tree</h3>
+                CABBAGE - DROPPED TECH TREE AS BROKEN - RESTORE
                 <table class="vehicle-facts" tal:replace="nothing"><!--! CABBAGE DROPPED THIS WHILE REFACTORING, PERFORMANCE ISSUES -->
                     <tbody>
                         <tr>
