@@ -123,13 +123,13 @@
                                     <tr id="${default_model_variant.model_id}">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${default_model_variant.model_id}_variant_0_blue_blue.png"
+                                            <img src="static/img/${default_model_variant.id}_blue_blue.png"
                                                  width="${2 * doc_helper.docs_sprite_width(default_model_variant)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.docs_sprite_max_width};">
-                                            <img src="static/img/${default_model_variant.model_id}_variant_0_red_white.png"
+                                            <img src="static/img/${default_model_variant.id}_red_white.png"
                                                  width="${2 * doc_helper.docs_sprite_width(default_model_variant)}"
                                                  height="${2 * doc_helper.docs_sprite_height}" />
                                         </td>

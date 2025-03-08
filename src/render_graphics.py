@@ -130,6 +130,11 @@ def main():
     consists_in_priority_groups = {1: [], 2: []}
     for consist in consists:
         # CABBAGE JFDI FILTER - THIS NEEDS HANDLING DIFFERENTLY
+        # !! possibly via catalogues, and consist_catalogue_mapping like docs?
+        # !! for consist_catalogue_mapping in roster.consists_by_catalogue.values():
+        # !! where would processing_priority be set?  Class attr?
+        # !! we'd have the defaul consist in scope though
+        # !! the point would be to pass the catalogue to pipelines cleanly, and emphasise that catalogue is the primary entry point, simplifying id access etc
         if consist.is_default_model_variant:
             consists_in_priority_groups[
                 consist.gestalt_graphics.processing_priority
