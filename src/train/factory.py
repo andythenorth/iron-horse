@@ -465,9 +465,16 @@ class Catalogue(list):
         if hasattr(self.factory.model_type_cls, "liveries"):
             result = []
             for index, name in enumerate(self.factory.model_type_cls.liveries):
+                if self.factory.model_type_cls.is_wagon_for_docs:
+                    # all default wagon liveries are recolour-only, so force relative_spriterow_num to 0
+                    # slight abuse of is_wagon_for_docs to force this - add another cls attr to wagon model type if needed
+                    relative_spriterow_num = 0
+                else:
+                    # assume that liveries map to spriterows (common case for engines)
+                    relative_spriterow_num = index
                 result.append(
                     iron_horse.livery_supplier.deliver(
-                        name, relative_spriterow_num=index
+                        name, relative_spriterow_num=relative_spriterow_num
                     )
                 )
             return result

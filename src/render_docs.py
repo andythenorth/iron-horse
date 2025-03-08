@@ -94,7 +94,9 @@ def render_docs(
         doc_file.close()
 
 
-def render_docs_vehicle_details(docs_output_path, doc_helper, catalogues, template_name):
+def render_docs_vehicle_details(
+    docs_output_path, doc_helper, catalogues, template_name
+):
     # imports inside functions are generally avoided
     # but PageTemplateLoader is expensive to import and causes unnecessary overhead for Pool mapping when processing docs graphics
     from chameleon import PageTemplateLoader
@@ -104,9 +106,11 @@ def render_docs_vehicle_details(docs_output_path, doc_helper, catalogues, templa
 
     roster = iron_horse.roster_manager.active_roster
     for catalogue in catalogues:
-        #model_type.assert_description_foamer_facts() CABBAGE
+        # model_type.assert_description_foamer_facts() CABBAGE
         doc_name = catalogue.factory.model_id
-        consists = [catalogue.factory.produce(catalogue_entry) for catalogue_entry in catalogue]
+        consists = [
+            catalogue.factory.produce(catalogue_entry) for catalogue_entry in catalogue
+        ]
         doc = template(
             roster=roster,
             catalogue=catalogue,
@@ -128,7 +132,9 @@ def render_docs_vehicle_details(docs_output_path, doc_helper, catalogues, templa
         doc_file.close()
 
 
-def render_docs_images(consist_catalogue_mapping, static_dir_dst, generated_graphics_path, doc_helper):
+def render_docs_images(
+    consist_catalogue_mapping, static_dir_dst, generated_graphics_path, doc_helper
+):
     # process vehicle buy menu sprites for reuse in docs
     # extend this similar to render_docs if other image types need processing in future
 
@@ -145,6 +151,12 @@ def render_docs_images(consist_catalogue_mapping, static_dir_dst, generated_grap
     docs_image_variants = []
 
     for consist in consist_catalogue_mapping["consists"]:
+        if consist.is_wagon_for_docs:
+            # optimise output by only generating one livery image for wagons
+            # we accidentally had 13k images in static dir at one point, many of them empty images for wagon variants
+            if not consist.is_default_model_variant:
+                continue
+
         intermediate_image = Image.new(
             "P",
             (doc_helper.docs_sprite_width(consist), doc_helper.docs_sprite_height),
@@ -163,6 +175,22 @@ def render_docs_images(consist_catalogue_mapping, static_dir_dst, generated_grap
                 * consist.catalogue_entry.livery_def.relative_spriterow_num
                 * consist.gestalt_graphics.num_load_state_or_similar_spriterows
             )
+            if consist.is_wagon_for_docs:
+                print(
+                    consist.id,
+                    "\n",
+                    "  y_offset",
+                    y_offset,
+                    "\n",
+                    "  consist.catalogue_entry.livery_def.relative_spriterow_num",
+                    consist.catalogue_entry.livery_def.relative_spriterow_num,
+                    "\n",
+                    "  consist.gestalt_graphics.num_load_state_or_similar_spriterows",
+                    consist.gestalt_graphics.num_load_state_or_similar_spriterows,
+                    "\n",
+                    "  consist.catalogue_entry.livery_def",
+                    consist.catalogue_entry.livery_def,
+                )
         # relies on additional_liveries being in predictable row offsets (should be true as of July 2020)
         source_vehicle_image_tmp = vehicle_spritesheet.crop(
             box=(
@@ -217,8 +245,12 @@ def render_docs_images(consist_catalogue_mapping, static_dir_dst, generated_grap
         for cc_remap_pair in consist.catalogue_entry.livery_def.docs_image_input_cc:
             # handle possible remap of CC1
             if consist.catalogue_entry.livery_def.remap_to_cc is not None:
-                CC1_remap = consist.catalogue_entry.livery_def.remap_to_cc["company_colour1"]
-                CC2_remap = consist.catalogue_entry.livery_def.remap_to_cc["company_colour2"]
+                CC1_remap = consist.catalogue_entry.livery_def.remap_to_cc[
+                    "company_colour1"
+                ]
+                CC2_remap = consist.catalogue_entry.livery_def.remap_to_cc[
+                    "company_colour2"
+                ]
                 if CC1_remap == "company_colour1":
                     CC1_remap = cc_remap_pair[0]
                 if CC1_remap == "company_colour2":
@@ -230,7 +262,9 @@ def render_docs_images(consist_catalogue_mapping, static_dir_dst, generated_grap
             else:
                 CC1_remap = cc_remap_pair[0]
                 CC2_remap = cc_remap_pair[1]
-            cc_remap_indexes = doc_helper.remap_company_colours({"CC1": CC1_remap, "CC2": CC2_remap})
+            cc_remap_indexes = doc_helper.remap_company_colours(
+                {"CC1": CC1_remap, "CC2": CC2_remap}
+            )
 
             dest_image = intermediate_image.copy().point(
                 lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i
@@ -254,6 +288,7 @@ def render_docs_images(consist_catalogue_mapping, static_dir_dst, generated_grap
             dest_image.save(output_path, optimize=True, transparency=0)
             dest_image.close()
 
+
 def export_roster_to_json(roster, output_dir="docs"):
     """
     Exports a roster to JSON for documentation and data interchange.
@@ -272,7 +307,9 @@ def export_roster_to_json(roster, output_dir="docs"):
     for engine in roster.engine_consists:
         engine_data = {
             "id": getattr(engine, "id", "N/A"),
-            "name": getattr(engine, "id", "Unnamed Engine"),  # Using 'id' as a placeholder
+            "name": getattr(
+                engine, "id", "Unnamed Engine"
+            ),  # Using 'id' as a placeholder
             "power": getattr(engine, "power", 0),
             "max_speed": getattr(engine, "speed", 0),
         }
@@ -283,7 +320,9 @@ def export_roster_to_json(roster, output_dir="docs"):
         wagon_data = {
             "id": getattr(wagon, "id", "N/A"),
             "name": getattr(wagon, "id", "Unnamed Wagon"),
-            "cargo_types": getattr(wagon, "cargo_types", []),  # Empty list if not available
+            "cargo_types": getattr(
+                wagon, "cargo_types", []
+            ),  # Empty list if not available
         }
         data["wagons"].append(wagon_data)
 
@@ -435,7 +474,10 @@ def main():
     if use_multiprocessing == False:
         for consist_catalogue_mapping in roster.consists_by_catalogue.values():
             render_docs_images(
-                consist_catalogue_mapping, static_dir_dst, generated_graphics_path, doc_helper
+                consist_catalogue_mapping,
+                static_dir_dst,
+                generated_graphics_path,
+                doc_helper,
             )
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the catalogue?
@@ -457,8 +499,6 @@ def main():
         utils.string_format_compile_time_deltas(render_docs_images_start, time()),
     )
 
-
-
     print(
         "[RENDER DOCS]",
         command_line_args.grf_name,
@@ -471,7 +511,10 @@ def main():
     for consist in consists:
         if len(consist.cabbage_buyable_variants) > 1:
             cabbage_2_buyable_variants[consist.id] = consist.cabbage_buyable_variants
-    print("Consists with > 1 buyable variants:", str(len(cabbage_2_buyable_variants.keys())))
+    print(
+        "Consists with > 1 buyable variants:",
+        str(len(cabbage_2_buyable_variants.keys())),
+    )
     """
     for consist in consists:
         if consist.gestalt_graphics.__class__.__name__ == "GestaltGraphicsVisibleCargo":
