@@ -17,7 +17,6 @@ def main(**kwargs):
         # no pantographs for Alizé middle cars
         gen=5,
         intro_year_offset=-3,  # introduce earlier than gen epoch by design
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

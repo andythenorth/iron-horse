@@ -17,7 +17,6 @@ def main(**kwargs):
         tractive_effort_coefficient=0.27,
         gen=2,
         liveries=["VANILLA"],
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

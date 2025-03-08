@@ -19,7 +19,6 @@ def main(**kwargs):
         fixed_run_cost_points=120,  # give a bonus so this can be a genuine mixed-traffic engine
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "SWOOSH", "FREIGHT_BLACK"],
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

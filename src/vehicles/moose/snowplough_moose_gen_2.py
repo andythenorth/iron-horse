@@ -12,7 +12,6 @@ def main(**kwargs):
         gen=2,
         speed=75,
         liveries=["VANILLA"],
-        cabbage_new_livery_system=True,
         sprites_complete=False,
     )
 

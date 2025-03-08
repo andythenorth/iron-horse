@@ -19,7 +19,6 @@ def main(**kwargs):
         gen=5,
         intro_year_offset=7,  # introduce later than gen epoch by design
         liveries=["VANILLA", "SWOOSH", "SWOOSH", "SWOOSH"],
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

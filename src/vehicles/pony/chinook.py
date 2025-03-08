@@ -23,7 +23,6 @@ def main(**kwargs):
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_BLUE", "COLOUR_GREY"),
         ],
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

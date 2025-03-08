@@ -24,7 +24,6 @@ def main(**kwargs):
         # add triple grey railfreight
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "LARGE_LOGO", "RAILFREIGHT_RED_STRIPE"],
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

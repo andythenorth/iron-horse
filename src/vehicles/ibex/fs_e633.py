@@ -19,7 +19,6 @@ def main(**kwargs):
         pantograph_type="diamond-double",
         intro_year_offset=10,  # introduce earler than gen epoch by design
         liveries=["VANILLA"],
-        cabbage_new_livery_system=True,
         default_livery_extra_docs_examples=[
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),

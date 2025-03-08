@@ -18,7 +18,6 @@ def main(**kwargs):
         easter_egg_haulage_speed_bonus=True,
         gen=5,
         liveries=["VANILLA"],
-        cabbage_new_livery_system=True,
         sprites_complete=False,
         # intro_year_offset=-3,
     )

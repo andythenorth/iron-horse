@@ -19,7 +19,6 @@ def main(**kwargs):
         random_reverse=True,
         gen=4,
         liveries=["VANILLA"],
-        cabbage_new_livery_system=True,
         sprites_complete=False,
     )
 

@@ -37,7 +37,6 @@ def main(**kwargs):
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
             ("COLOUR_YELLOW", "COLOUR_YELLOW"),
         ],
-        cabbage_new_livery_system=True,
         caboose_family="railfreight_2",
         sprites_complete=True,
     )

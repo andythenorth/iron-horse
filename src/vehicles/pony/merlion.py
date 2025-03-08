@@ -32,7 +32,6 @@ def main(**kwargs):
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
         ],
-        cabbage_new_livery_system=True,
         decor_spriterow_num=5,
         sprites_complete=True,
     )

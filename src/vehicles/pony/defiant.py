@@ -21,7 +21,6 @@ def main(**kwargs):
         intro_year_offset=-4,  # let's be a little bit earlier for this one
         fixed_run_cost_points=200,  # run cost nerf as light weight throws the cost too cheap
         liveries=["VANILLA"],
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

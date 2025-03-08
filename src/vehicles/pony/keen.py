@@ -20,7 +20,6 @@ def main(**kwargs):
         fixed_run_cost_points=240,  # adjust to match similar engines of same gen
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "INDUSTRIAL_YELLOW"],
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

@@ -25,7 +25,6 @@ def main(**kwargs):
             "SWOOSH_1995",
             "SWOOSH_1995",
         ],
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

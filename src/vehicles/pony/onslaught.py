@@ -20,7 +20,6 @@ def main(**kwargs):
         # additional_liveries=["BANGER_BLUE", "LARGE_LOGO", "SWOOSH", "INTERCITY_RASPBERRY_RIPPLE", "RAILFREIGHT_TRIPLE_GREY", "DUTCH_1986"],
         # note that livery names are metadata only and can repeat for different spriterows
         liveries=["VANILLA", "BANGER_BLUE", "DB_SCHENKER"],
-        cabbage_new_livery_system=True,
         decor_spriterow_num=8,
         sprites_complete=True,
     )

@@ -31,7 +31,6 @@ def main(**kwargs):
             "DB_SCHENKER",
             "EWS",
         ],
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

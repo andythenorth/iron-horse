@@ -29,7 +29,6 @@ def main(**kwargs):
             "RAILFREIGHT_TRIPLE_GREY_COAL",
             "SWOOSH",
         ],
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

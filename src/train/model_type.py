@@ -604,7 +604,9 @@ class ModelTypeBase(object):
     def cab_consist(self):
         # fetch the default model variant for the cab, if relevant
         # only applies if cab_id is set in model_def
-        return self.catalogue_entry.catalogue.factory.cab_factory.catalogue.default_model_variant_from_roster
+        return (
+            self.catalogue_entry.catalogue.factory.cab_factory.catalogue.default_model_variant_from_roster
+        )
 
     @property
     def dual_headed(self):
@@ -1765,8 +1767,6 @@ class MailEngineCabbageDVT(MailEngineBase):
 
     livery_group_name = "dvt_mail_liveries"
 
-    cabbage_new_livery_system = True
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # report mail cab cars as pax cars for consist rulesets
@@ -1812,7 +1812,6 @@ class MailEngineCargoSprinter(MailEngineBase):
     """
 
     liveries = ["COMPANY_COLOUR_NO_WEATHERING"]
-    cabbage_new_livery_system = True
     # non-standard cite
     cite = "Arabella Unit"
 
@@ -1856,8 +1855,6 @@ class MailEngineMetro(MailEngineBase):
 
     livery_group_name = "metro_mail_liveries"
 
-    cabbage_new_livery_system = True
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # buy costs increased above baseline, account for 2 units + underground nonsense
@@ -1890,7 +1887,6 @@ class MailEngineRailcar(MailEngineBase):
     """
 
     livery_group_name = "diesel_railcar_mail_liveries"
-    cabbage_new_livery_system = True
     # non-standard cite
     cite = "Arabella Unit"
 
@@ -1984,7 +1980,6 @@ class MailEngineExpressRailcar(MailEngineBase):
     """
 
     livery_group_name = "default_mail_liveries"
-    cabbage_new_livery_system = True
     # non-standard cite
     cite = "Dr Constance Speed"
 
@@ -2071,8 +2066,6 @@ class PassengerEngineCabControlCar(PassengerEngineBase):
 
     livery_group_name = "default_pax_liveries"
 
-    cabbage_new_livery_system = True
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # report cab cars as pax cars for consist rulesets
@@ -2140,7 +2133,6 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
     """
 
     livery_group_name = "default_pax_liveries"
-    cabbage_new_livery_system = True
     # non-standard cite
     cite = "Dr Constance Speed"
 
@@ -2201,8 +2193,6 @@ class PassengerEngineMetro(PassengerEngineBase):
 
     livery_group_name = "metro_pax_liveries"
 
-    cabbage_new_livery_system = True
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # buy costs increased above baseline, account for 2 units + underground nonsense
@@ -2235,7 +2225,6 @@ class PassengerEngineRailbus(PassengerEngineBase):
     """
 
     livery_group_name = "default_pax_liveries"
-    cabbage_new_livery_system = True
     # non-standard cite
     cite = "Arabella Unit"
 
@@ -2290,7 +2279,6 @@ class PassengerEngineRailcar(PassengerEngineBase):
     """
 
     livery_group_name = "default_pax_liveries"
-    cabbage_new_livery_system = True
     # non-standard cite
     cite = "Arabella Unit"
 
@@ -2445,8 +2433,6 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
     When added to the correct cab engine, this vehicle will cause cab power to increase.
     Add as additional class for e.g. pax or mail engine consist.
     """
-
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2817,7 +2803,6 @@ class AutomobileCarBase(CarModelTypeBase):
         "FREIGHT_BAUXITE_NO_WEATHERING",
         "FREIGHT_GREY_NO_WEATHERING",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2936,7 +2921,6 @@ class AutomobileEnclosedCar(CarModelTypeBase):
     ]
 
     model_id_root = "enclosed_automobile_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2978,7 +2962,6 @@ class BolsterCarBase(CarModelTypeBase):
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3035,7 +3018,6 @@ class BolsterCarRandomised(RandomisedCarMixin, BolsterCarBase):
     """
 
     model_id_root = "bolster_car_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3094,7 +3076,6 @@ class BoxCarType1(BoxCarBase):
     ]
 
     model_id_root = "box_car_type_1"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3130,7 +3111,6 @@ class BoxCarType2(BoxCarBase):
 
     model_id_root = "box_car_type_2"
     input_spritesheet_delegate_id_root = "box_car_type_1"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3176,7 +3156,6 @@ class BoxCarCurtainSide(BoxCarBase):
     ]
 
     model_id_root = "curtain_side_box_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3234,7 +3213,6 @@ class BoxCarMerchandise(BoxCarBase):
     ]
 
     model_id_root = "merchandise_box_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3271,7 +3249,6 @@ class BoxCarRandomised(RandomisedCarMixin, BoxCarBase):
     ]
 
     model_id_root = "box_car_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3327,7 +3304,6 @@ class BoxCarSlidingWallType1(BoxCarSlidingWallBase):
     ]
 
     model_id_root = "sliding_wall_car_type_1"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3370,7 +3346,6 @@ class BoxCarSlidingWallType2(BoxCarSlidingWallBase):
     ]
 
     model_id_root = "sliding_wall_car_type_2"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3409,7 +3384,6 @@ class BoxCarVehicleParts(BoxCarBase):
     ]
 
     model_id_root = "vehicle_parts_box_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3444,7 +3418,6 @@ class BulkOpenCarBase(CarModelTypeBase):
     """
 
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3672,7 +3645,6 @@ class BulkOpenCarMineralRandomised(RandomisedCarMixin, BulkOpenCarMineralBase):
     """
 
     model_id_root = "mineral_bulk_open_car_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3752,7 +3724,6 @@ class BulkOpenCarScrapMetalRandomised(RandomisedCarMixin, BulkOpenCarScrapMetalB
     """
 
     model_id_root = "scrap_metal_car_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3848,7 +3819,6 @@ class BulkOpenCarTipplerRandomised(RandomisedCarMixin, BulkOpenCarTipplerBase):
     """
 
     model_id_root = "tippler_bulk_open_car_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3882,7 +3852,6 @@ class BulkCarBoxRandomised(RandomisedCarMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_car_box_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3909,7 +3878,6 @@ class BulkCarHopperRandomised(RandomisedCarMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_car_hopper_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3940,7 +3908,6 @@ class BulkCarMixedRandomised(RandomisedCarMixin, BulkOpenCarBase):
     ]
 
     model_id_root = "bulk_car_mixed_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -3963,7 +3930,6 @@ class CabooseCarUnit(CarModelTypeBase):
     liveries = ["FREIGHT_SWOOSH"]
 
     model_id_root = "caboose_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4018,7 +3984,6 @@ class CaneBinCar(CarModelTypeBase):
     ]
 
     model_id_root = "cane_bin_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4049,7 +4014,6 @@ class CarbonBlackHopperCar(CarModelTypeBase):
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_id_root = "carbon_black_hopper_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4093,7 +4057,6 @@ class CoilBuggyCarUnit(CarModelTypeBase):
 
     # note does NOT subclass CoilCarBase - different type of consist
     model_id_root = "coil_buggy_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4165,7 +4128,6 @@ class CoilCarCoveredAsymmetric(CoilCarBase):
     ]
 
     model_id_root = "coil_car_covered_asymmetric"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4212,7 +4174,6 @@ class CoilCarCovered(CoilCarBase):
     ]
 
     model_id_root = "coil_car_covered"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4252,7 +4213,6 @@ class CoilCarTarpaulin(CoilCarBase):
     ]
 
     model_id_root = "coil_car_tarpaulin"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4295,7 +4255,6 @@ class CoilCarUncovered(CoilCarBase):
     ]
 
     model_id_root = "coil_car_uncovered"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4327,7 +4286,6 @@ class DedicatedCoilCarRandomised(RandomisedCarMixin, CoilCarBase):
     ]
 
     model_id_root = "dedicated_coil_car_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4372,7 +4330,6 @@ class CoveredHopperCarBase(CarModelTypeBase):
         "FREIGHT_TEAL",
         "FREIGHT_PEWTER",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4543,7 +4500,6 @@ class ExpressCarUnit(CarModelTypeBase):
     ]
 
     model_id_root = "express_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4585,7 +4541,6 @@ class ExpressFoodCarRandomised(RandomisedCarMixin, CarModelTypeBase):
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_id_root = "express_food_car_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4627,7 +4582,6 @@ class ExpressFoodTankCarBase(CarModelTypeBase):
         "FREIGHT_SILVER",
         "FREIGHT_PEWTER",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         # tank cars are unrealistically autorefittable, and at no cost
@@ -4712,7 +4666,6 @@ class ExpressIntermodalCarUnit(CarModelTypeBase):
     """
 
     liveries = ["FREIGHT_SWOOSH"]
-    cabbage_new_livery_system = True
 
     model_id_root = "express_intermodal_car"
 
@@ -4759,7 +4712,6 @@ class FarmProductsBoxCarBase(CarModelTypeBase):
 
     # company colour not used on these wagons, so set SWOOSH as JFDI
     liveries = ["FREIGHT_SWOOSH"]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -4843,7 +4795,6 @@ class FarmProductsHopperCarBase(CarModelTypeBase):
 
     # company colour not used on these wagons, so use SWOOSH as JFDI
     liveries = ["FREIGHT_SWOOSH"]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5017,7 +4968,6 @@ class FlatCarBase(CarModelTypeBase):
         "FREIGHT_BAUXITE",
         "FREIGHT_GREY",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5300,7 +5250,6 @@ class GasTankCarBase(CarModelTypeBase):
     """
 
     liveries = ["FREIGHT_SWOOSH"]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         # tank cars are unrealistically autorefittable, and at no cost
@@ -5382,7 +5331,6 @@ class HopperCarBase(CarModelTypeBase):
         "FREIGHT_TEAL",
         "FREIGHT_PEWTER",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5807,7 +5755,6 @@ class IngotCarUnit(CarModelTypeBase):
     ]
 
     model_id_root = "ingot_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5850,7 +5797,6 @@ class IntermodalCarBase(CarModelTypeBase):
 
     # !! as of April 2023, company colour isn't used for default intermodal sprite, so use SWOOSH as JFDI
     liveries = ["FREIGHT_SWOOSH"]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5932,7 +5878,6 @@ class KaolinHopperCar(CarModelTypeBase):
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_id_root = "kaolin_hopper_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -5981,7 +5926,6 @@ class LivestockCar(CarModelTypeBase):
     ]
 
     model_id_root = "livestock_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6022,7 +5966,6 @@ class LogCar(CarModelTypeBase):
     ]
 
     model_id_root = "log_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6150,7 +6093,6 @@ class MailCar(MailCarBase):
     livery_group_name = "default_mail_liveries"
 
     model_id_root = "mail_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6203,7 +6145,6 @@ class MailExpressRailcarTrailerCar(MailRailcarTrailerCarBase):
     liveries = ["VANILLA", "VANILLA"]
 
     model_id_root = "express_railcar_mail_trailer_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6249,7 +6190,6 @@ class MailHighSpeedCar(MailCarBase):
     livery_group_name = "default_mail_liveries"
 
     model_id_root = "high_speed_mail_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6297,7 +6237,6 @@ class MailHSTCar(MailCarBase):
     liveries = ["VANILLA", "VANILLA"]
 
     model_id_root = "hst_mail_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6433,7 +6372,6 @@ class MineralCoveredHopperCarBase(CarModelTypeBase):
         "FREIGHT_TEAL",
         "FREIGHT_PEWTER",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -6785,8 +6723,6 @@ class OpenCarBase(CarModelTypeBase):
     General cargo - refits everything except mail, pax.
     """
 
-    cabbage_new_livery_system = True
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.class_refit_groups = ["all_freight"]
@@ -7091,7 +7027,6 @@ class PanoramicCar(PassengerCarBase):
     affected_by_restaurant_car_in_consist = True
 
     model_id_root = "panoramic_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7135,7 +7070,6 @@ class PassengerCar(PassengerCarBase):
     livery_group_name = "default_pax_liveries"
 
     model_id_root = "passenger_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7189,7 +7123,6 @@ class PassengerHighSpeedCar(PassengerCarBase):
     affected_by_restaurant_car_in_consist = True
 
     model_id_root = "high_speed_passenger_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7231,7 +7164,6 @@ class PassengerExpressRailcarTrailerCar(PassengeRailcarTrailerCarBase):
     liveries = ["VANILLA", "VANILLA"]
 
     model_id_root = "express_railcar_passenger_trailer_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7278,7 +7210,6 @@ class PassengerHSTCar(PassengerCarBase):
     liveries = ["VANILLA", "VANILLA"]
 
     model_id_root = "hst_passenger_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7339,7 +7270,6 @@ class PassengerRailbusTrailerCar(PassengeRailcarTrailerCarBase):
     liveries = ["VANILLA", "VANILLA"]
 
     model_id_root = "railbus_passenger_trailer_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7385,7 +7315,6 @@ class PassengerRailcarTrailerCar(PassengeRailcarTrailerCarBase):
     liveries = ["VANILLA", "VANILLA"]
 
     model_id_root = "railcar_passenger_trailer_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7435,7 +7364,6 @@ class PassengerRestaurantCar(PassengerCarBase):
     livery_group_name = "default_pax_liveries"
 
     model_id_root = "restaurant_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7474,7 +7402,6 @@ class PassengerSuburbanCar(PassengerCarBase):
     livery_group_name = "suburban_pax_liveries"
 
     model_id_root = "suburban_passenger_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7529,7 +7456,6 @@ class PeatCar(CarModelTypeBase):
     ]
 
     model_id_root = "peat_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7614,7 +7540,6 @@ class PieceGoodsCarMixedRandomised(PieceGoodsCarRandomisedBase):
     ]
 
     model_id_root = "piece_goods_car_mixed_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7692,7 +7617,6 @@ class ReeferCarBase(CarModelTypeBase):
     """
 
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7801,7 +7725,6 @@ class SiloCarBase(CarModelTypeBase):
         "FREIGHT_PEWTER",
         "FREIGHT_NIGHTSHADE",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7925,7 +7848,6 @@ class SiloCarCementType1(SiloCarBase):
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_id_root = "cement_silo_car_type_1"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7954,7 +7876,6 @@ class SiloCarCementType2(SiloCarBase):
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_id_root = "cement_silo_car_type_2"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -7983,7 +7904,6 @@ class SiloCarCementType3(SiloCarBase):
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_id_root = "cement_silo_car_type_3"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8012,7 +7932,6 @@ class SiloCarCementRandomised(RandomisedCarMixin, SiloCarBase):
     liveries = ["COMPANY_COLOUR_USE_WEATHERING"]
 
     model_id_root = "cement_silo_car_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8048,7 +7967,6 @@ class SlidingRoofCar(BoxCarBase):
     ]
 
     model_id_root = "sliding_roof_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8098,7 +8016,6 @@ class SlidingRoofCarHiCube(BoxCarBase):
         "FREIGHT_NIGHTSHADE",
         "FREIGHT_OIL_BLACK",
     ]
-    cabbage_new_livery_system = True
 
     model_id_root = "sliding_roof_hi_cube_car"
 
@@ -8142,7 +8059,6 @@ class SlagLadleCarUnit(CarModelTypeBase):
     ]
 
     model_id_root = "slag_ladle_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8221,7 +8137,6 @@ class TankCarAcidBase(TankCarBase):
         "FREIGHT_TEAL",
         "FREIGHT_PEWTER",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8314,7 +8229,6 @@ class TankCarChemicalRandomised(RandomisedCarMixin, TankCarBase):
     ]
 
     model_id_root = "chemical_tank_car_randomised"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8354,7 +8268,6 @@ class TankCarProductBase(TankCarBase):
         "FREIGHT_SULPHUR",
         "FREIGHT_OCHRE",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8446,7 +8359,6 @@ class TankCarStandardBase(TankCarBase):
         "FREIGHT_SULPHUR",
         "FREIGHT_OCHRE",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8540,7 +8452,6 @@ class TankCarVolatilesBase(TankCarBase):
         "FREIGHT_GREY",
         "FREIGHT_TEAL",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8600,7 +8511,6 @@ class TarpaulinCarBase(BoxCarBase):
         "RANDOM_FROM_CONSIST_LIVERIES_TEAL_PEWTER",
         "FREIGHT_PEWTER",
     ]
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -8735,7 +8645,6 @@ class TorpedoCarUnit(CarModelTypeBase):
     ]
 
     model_id_root = "torpedo_car"
-    cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

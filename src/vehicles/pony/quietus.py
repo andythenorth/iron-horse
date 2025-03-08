@@ -22,7 +22,6 @@ def main(**kwargs):
         fixed_run_cost_points=640,  # run cost nerf for high power + dual mode
         intro_year_offset=2,  # introduce later than gen epoch by design
         liveries=["VANILLA"],
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 

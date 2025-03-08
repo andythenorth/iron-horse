@@ -32,7 +32,6 @@ def main(**kwargs):
             ("COLOUR_GREY", "COLOUR_GREY"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
         ],
-        cabbage_new_livery_system=True,
         decor_spriterow_num=5,
         show_decor_in_purchase_for_variants=[0, 1, 2],
         sprites_complete=True,

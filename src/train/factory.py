@@ -63,9 +63,6 @@ class ModelDef:
     spriterow_labels: Optional[Any] = None
     tilt_bonus: bool = False
 
-    # Migration / refactoring shims
-    cabbage_new_livery_system: bool = False
-
     # Internal attributes (not provided via __init__) (lexically sorted)
     cloned_from_model_def: Optional["ModelDef"] = field(default=None, init=False)
     clones: List[Any] = field(default_factory=list, init=False)
@@ -256,14 +253,6 @@ class ModelVariantFactory:
         return iron_horse.roster_manager.get_roster_by_id(
             self.roster_id_providing_module
         )
-
-    @property
-    def cabbage_new_livery_system(self):
-        if self.model_def.cabbage_new_livery_system:
-            return True
-        if getattr(self.model_type_cls, "cabbage_new_livery_system", False):
-            return True
-        return False
 
     @property
     def model_id(self):

@@ -16,7 +16,6 @@ def main(**kwargs):
         replacement_model_id="clipper",  # auto-coach ends with gen 4 clipper
         gen=2,
         liveries=["VANILLA"],
-        cabbage_new_livery_system=True,
         sprites_complete=True,
     )
 
