@@ -7,7 +7,6 @@ import sys
 sys.path.append(os.path.join("src"))  # add to the module search path
 
 import math
-import random
 
 import polar_fox
 import global_constants  # expose all constants for easy passing to templates
@@ -109,7 +108,7 @@ class ModelTypeBase(object):
         )
         # cite from a made up person) for docs etc
         # optional, set per subclass as needed
-        self._cite = ""
+        self.cite = ""
 
     @classmethod
     @property
@@ -1379,48 +1378,6 @@ class ModelTypeBase(object):
             return True
         return False
 
-    @property
-    def cite(self):
-        # this assumes that NG and Metro always return the same, irrespective of consist cite
-        # that makes sense for Pony roster, but might not work in other rosters, deal with that if it comes up eh?
-        # don't like how much content (text) is in code here, but eh
-        if self.base_track_type_name == "NG":
-            cite_name = "Roberto Flange"
-            cite_titles = [
-                "Narrow Gauge Superintendent",
-                "Works Manager (Narrow Gauge)",
-                "Traction Controller, Narrow Gauge Lines",
-            ]
-        elif self.base_track_type_name == "METRO":
-            cite_name = "JJ Transit"
-            cite_titles = [
-                "Superintendent (Metro Division)",
-                "Chief Engineer, Mass Mobility Systems",
-            ]
-        else:
-            if self._cite == "Arabella Unit":
-                cite_name = self._cite
-                cite_titles = [
-                    "General Manager (Railcars)",
-                    "Senior Engineer, Self-Propelled Traction",
-                    "Director, Suburban and Rural Lines",
-                ]
-            elif self._cite == "Dr Constance Speed":
-                cite_name = self._cite
-                cite_titles = [
-                    "Lead Engineer, High Speed Projects",
-                    "Director, Future Traction Concepts",
-                ]
-            else:
-                cite_name = "Mr Train"
-                cite_titles = [
-                    "Acting Superintendent of Engines",
-                    "Provisional Chief Engineer",
-                    "Interim Head of Works",
-                    "Transitional General Manager (Traction)",
-                ]
-        return cite_name + ", " + random.choice(cite_titles)
-
     def freeze_cross_roster_lookups(self):
         # graphics processing can't depend on roster object reliably, as it blows up multiprocessing (can't pickle roster), for reasons I never figured out
         # this freezes any necessary roster items in place
@@ -1856,11 +1813,11 @@ class MailEngineCargoSprinter(MailEngineBase):
 
     liveries = ["COMPANY_COLOUR_NO_WEATHERING"]
     cabbage_new_livery_system = True
+    # non-standard cite
+    cite = "Arabella Unit"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # non-standard cite
-        self._cite = "Arabella Unit"
         self._loading_speed_multiplier = 2
         # Graphics configuration
         # !! there is no automatic masking of the cab overlays as of Dec 2020, currently manual - automation might be needed for well cars in future, deal with it then if that's the case
@@ -1933,15 +1890,14 @@ class MailEngineRailcar(MailEngineBase):
     """
 
     livery_group_name = "diesel_railcar_mail_liveries"
-
     cabbage_new_livery_system = True
+    # non-standard cite
+    cite = "Arabella Unit"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # non-standard cite
-        self._cite = "Arabella Unit"
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -2028,16 +1984,15 @@ class MailEngineExpressRailcar(MailEngineBase):
     """
 
     livery_group_name = "default_mail_liveries"
-
     cabbage_new_livery_system = True
+    # non-standard cite
+    cite = "Dr Constance Speed"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 0.85
-        # non-standard cite
-        self._cite = "Dr Constance Speed"
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -2163,14 +2118,15 @@ class PassengerEngineHSTCab(PassengerEngineBase):
     May or may not have capacity (set per vehicle).
     """
 
+    # non-standard cite
+    cite = "Dr Constance Speed"
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.buy_cost_adjustment_factor = 1.2
         # higher speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base for high speed
         self.floating_run_cost_multiplier = 10
-        # non-standard cite
-        self._cite = "Dr Constance Speed"
 
     @property
     def dual_headed(self):
@@ -2184,16 +2140,15 @@ class PassengerEngineExpressRailcar(PassengerEngineBase):
     """
 
     livery_group_name = "default_pax_liveries"
-
     cabbage_new_livery_system = True
+    # non-standard cite
+    cite = "Dr Constance Speed"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 0.85
-        # non-standard cite
-        self._cite = "Dr Constance Speed"
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -2280,15 +2235,14 @@ class PassengerEngineRailbus(PassengerEngineBase):
     """
 
     livery_group_name = "default_pax_liveries"
-
     cabbage_new_livery_system = True
+    # non-standard cite
+    cite = "Arabella Unit"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # non-standard cite
-        self._cite = "Arabella Unit"
         # Graphics configuration
         self.roof_type = "pax_mail_smooth"
         # position variants
@@ -2336,15 +2290,14 @@ class PassengerEngineRailcar(PassengerEngineBase):
     """
 
     livery_group_name = "default_pax_liveries"
-
     cabbage_new_livery_system = True
+    # non-standard cite
+    cite = "Arabella Unit"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # non-standard cite
-        self._cite = "Arabella Unit"
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -2446,6 +2399,9 @@ class TGVCabEngine(EngineModelTypeBase):
     This does not have pax capacity, by design, to allow for TGV La Poste mail trains.
     """
 
+    # non-standard cite
+    cite = "Dr Constance Speed"
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.buy_menu_additional_text_hint_wagons_add_power = True
@@ -2457,8 +2413,6 @@ class TGVCabEngine(EngineModelTypeBase):
         # train_flag_mu solely used for ottd livery (company colour) selection
         # !! commented out as of July 2019 because the middle engines won't pick this up, which causes inconsistency in the buy menu
         # self.train_flag_mu = True
-        # non-standard cite
-        self._cite = "Dr Constance Speed"
 
     @property
     def buy_menu_additional_text_distributed_power_substring(self):
@@ -2507,8 +2461,6 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
         # self.train_flag_mu = True
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
-        # non-standard cite
-        self._cite = "Dr Constance Speed"
         # Graphics configuration
         self.roof_type = "pax_mail_smooth"
         # position variants
@@ -6357,8 +6309,6 @@ class MailHSTCar(MailCarBase):
         self.buy_cost_adjustment_factor = 1.66
         self._model_life = self.cab_consist.model_life
         self._vehicle_life = self.cab_consist.vehicle_life
-        # non-standard cite
-        self._cite = "Dr Constance Speed"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -7343,8 +7293,6 @@ class PassengerHSTCar(PassengerCarBase):
         self._vehicle_life = self.cab_consist.vehicle_life
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.8 if self.base_track_type_name == "NG" else 1.6
-        # non-standard cite
-        self._cite = "Dr Constance Speed"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:

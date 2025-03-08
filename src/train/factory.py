@@ -6,6 +6,7 @@ import sys
 
 sys.path.append(os.path.join("src"))  # add to the module search path
 
+import random
 import copy
 from dataclasses import dataclass, field, replace
 from typing import Any, Dict, List, Optional
@@ -353,6 +354,48 @@ class ModelVariantFactory:
             self.roster_id, self.roster_id_providing_module
         )
         return input_spritesheet_name_stem
+
+    @property
+    def cite(self):
+        # this assumes that NG and Metro always return the same, irrespective of consist cite
+        # that makes sense for Pony roster, but might not work in other rosters, deal with that if it comes up eh?
+        # don't like how much content (text) is in code here, but eh
+        if self.model_def.base_track_type_name == "NG":
+            cite_name = "Roberto Flange"
+            cite_titles = [
+                "Narrow Gauge Superintendent",
+                "Works Manager (Narrow Gauge)",
+                "Traction Controller, Narrow Gauge Lines",
+            ]
+        elif self.model_def.base_track_type_name == "METRO":
+            cite_name = "JJ Transit"
+            cite_titles = [
+                "Superintendent (Metro Division)",
+                "Chief Engineer, Mass Mobility Systems",
+            ]
+        else:
+            if getattr(self.model_type_cls, "cite", None) == "Arabella Unit":
+                cite_name = self.model_type_cls.cite
+                cite_titles = [
+                    "General Manager (Railcars)",
+                    "Senior Engineer, Self-Propelled Traction",
+                    "Director, Suburban and Rural Lines",
+                ]
+            elif getattr(self.model_type_cls, "cite", None) == "Dr Constance Speed":
+                cite_name = self.model_type_cls.cite
+                cite_titles = [
+                    "Lead Engineer, High Speed Projects",
+                    "Director, Future Traction Concepts",
+                ]
+            else:
+                cite_name = "Mr Train"
+                cite_titles = [
+                    "Acting Superintendent of Engines",
+                    "Provisional Chief Engineer",
+                    "Interim Head of Works",
+                    "Transitional General Manager (Traction)",
+                ]
+        return cite_name + ", " + random.choice(cite_titles)
 
 
 class Catalogue(list):

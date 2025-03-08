@@ -18,13 +18,13 @@ class DocHelper(object):
     def __init__(self, lang_strings):
         self.lang_strings = lang_strings
 
-    def docs_sprite_width(self, consist):
-        if not consist.dual_headed:
+    def docs_sprite_width(self, model_variant):
+        if not model_variant.dual_headed:
             # +1 for the buffers etc
-            return min((consist.buy_menu_width + 1), self.docs_sprite_max_width)
+            return min((model_variant.buy_menu_width + 1), self.docs_sprite_max_width)
         # openttd automatically handles dual head, but we need to calculate double width explicitly for docs
-        if consist.dual_headed:
-            return min((2 * 4 * consist.length) + 1, self.docs_sprite_max_width)
+        if model_variant.dual_headed:
+            return min((2 * 4 * model_variant.length) + 1, self.docs_sprite_max_width)
 
     def get_default_model_variants_by_subclass(self, consists, filter_subclasses_by_name=None):
         # first find all the subclasses + their vehicles

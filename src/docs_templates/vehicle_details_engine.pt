@@ -1,9 +1,7 @@
 <tal:title define="global title python: doc_helper.unpack_name_string(default_model_variant) + ' - ' + roster.str_grf_name" />
 <tal:suppress_hero_unit define="global suppress_hero_unit True" />
 
-<!--! CABBAGE - this page now uses catalogue as main context, and heavily relies on default_model_variant
-      that's preferable to trying to isolate a default variant, then work back to the other variants
- -->
+<!--! this page uses a catalogue as main context, and a default_model_variant is also in scope as needed -->
 
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
 <div metal:fill-slot='body'>
@@ -84,7 +82,7 @@
                     </p>
                     <small>
                         <cite>
-                            ${structure: default_model_variant.cite} <!--! CABBAGE - CITE SHOULD BE ON CATALOGUE -->
+                            ${structure: catalogue.factory.cite}
                         </cite>
                     </small>
                 </blockquote>
@@ -270,7 +268,7 @@
                 </tal:has_dedicated_trailers>
 
                 <h3 id="foamer-facts">Foamer Facts</h3>
-                <p>Inspired by ${structure: default_model_variant.model_def.foamer_facts}.</p>
+                <p>Inspired by ${structure: catalogue.factory.model_def.foamer_facts}.</p>
 
                 <hr />
                 <h3 id="tech-tree">Tech Tree</h3>
