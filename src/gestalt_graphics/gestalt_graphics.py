@@ -64,12 +64,12 @@ class GestaltGraphics(object):
         result = []
         if pipeline.is_pantographs_pipeline:
             # pans are the same for all buyable variants, and are just provided either once, or per position variant
-            dest_spriterows = pipeline.default_model_variant.cabbage_buyable_variants[
-                0:1
-            ]
+            cabbage_dest_spriterows = [pipeline.catalogue.default_entry]
         else:
-            dest_spriterows = self.get_buy_menu_dest_spriterows(pipeline)
-        for dest_spriterow_counter, buyable_variant in enumerate(dest_spriterows):
+            cabbage_dest_spriterows = pipeline.catalogue
+        for dest_spriterow_counter, catalogue_entry in enumerate(
+            cabbage_dest_spriterows
+        ):
             source_vehicles_and_input_spriterow_nums = []
 
             for unit_counter, unit in enumerate(pipeline.default_model_variant.units):
@@ -78,7 +78,7 @@ class GestaltGraphics(object):
                     [
                         unit,
                         self.get_buy_menu_unit_input_row_num(
-                            unit_counter, pipeline, unit
+                             pipeline, catalogue_entry, unit_counter, unit
                         ),
                     ]
                 )
@@ -93,21 +93,13 @@ class GestaltGraphics(object):
             result.append(row_config)
         return result
 
-    def get_buy_menu_dest_spriterows(self, pipeline):
-        # default case assumes we want a buy menu sprite for each of the buyable variants
-        # that's not true for all gestalts - deal with that per gestalt as needed
-        return pipeline.default_model_variant.cabbage_buyable_variants
-
-    def get_buy_menu_unit_input_row_num(self, unit_counter, pipeline, unit):
+    def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
         # override in subclasses as needed
-        # CABBAGE REFACTOR
         unit_variant_row_num = (
             unit.rel_spriterow_index
-            * len(pipeline.default_model_variant.cabbage_buyable_variants)
+            * len(pipeline.catalogue)
         ) + (
-            (
-                pipeline.default_model_variant.catalogue_entry.livery_def.relative_spriterow_num
-            )  # CABBAGE
+            catalogue_entry.livery_def.relative_spriterow_num
             * self.num_load_state_or_similar_spriterows
         )
         return unit_variant_row_num
@@ -394,7 +386,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # so just take a slice containing the first variant
         return pipeline.default_model_variant.cabbage_buyable_variants[0:1]
 
-    def get_buy_menu_unit_input_row_num(self, unit_counter, pipeline, unit):
+    def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
         result = (
             len(self.get_unique_spritesets(unit))
             * unit.unit_def.force_spriterow_group_in_output_spritesheet
@@ -452,12 +444,12 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         # so just take a slice containing the first variant
         return pipeline.default_model_variant.cabbage_buyable_variants[0:1]
 
-    def get_buy_menu_unit_input_row_num(self, unit_counter, pipeline, unit):
+    def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
 
         unit_variant_row_num = unit.rel_spriterow_index + (
             (
-                pipeline.default_model_variant.catalogue_entry.livery_def.relative_spriterow_num
-            )  # CABBAGE MAYBE? - CATALOGUE?
+                catalogue_entry.livery_def.relative_spriterow_num
+            )
             * self.num_load_state_or_similar_spriterows
         )
         return unit_variant_row_num
@@ -1027,7 +1019,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 )
         return result
 
-    def get_buy_menu_unit_input_row_num(self, unit_counter, pipeline, unit):
+    def get_buy_menu_unit_input_row_num(self, pipeline, catalogue_entry, unit_counter, unit):
         # as of Jan 2024 it was easiest to enforce that this only works with model variant comprised of exactly 2 units
         # that means we can just do first / last, and not worry about other position variants
         # support for arbitrary number of units could be added, derived from formation ruleset, but those cases don't exist as of Jan 2024
@@ -1041,14 +1033,14 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                         * position_variant_offset
                         * self.num_load_state_or_similar_spriterows
                     ) + (
-                        pipeline.default_model_variant.catalogue_entry.livery_def.relative_spriterow_num
+                        catalogue_entry.livery_def.relative_spriterow_num
                         * self.num_load_state_or_similar_spriterows
                     )
                     return unit_variant_row_num
             else:
                 raise BaseException(
-                    "GestaltGraphicsFormationDependent.get_buy_menu_unit_input_row_num(): consist "
-                    + pipeline.default_model_variant.id
+                    "GestaltGraphicsFormationDependent.get_buy_menu_unit_input_row_num(): catalogue "
+                    + pipeline.catalogue.id
                     + " does not have exactly 2 units - this case is not currently supported"
                 )
 
@@ -1064,7 +1056,7 @@ class GestaltGraphicsFormationDependent(GestaltGraphics):
                 * position_variant_offset
                 * self.num_load_state_or_similar_spriterows
             ) + (
-                pipeline.default_model_variant.catalogue_entry.livery_def.relative_spriterow_num
+                catalogue_entry.livery_def.relative_spriterow_num
                 * self.num_load_state_or_similar_spriterows
             )
 
@@ -1130,8 +1122,8 @@ class GestaltGraphicsCustom(GestaltGraphics):
     def buy_menu_row_map(self, pipeline):
         # not implemented as of Jan 2024 - provide custom buy menu sprites via the template and/or manually in the spritesheet
         raise BaseException(
-            "buy_menu_row_map called in GestaltGraphicsCustom for consist "
-            + pipeline.default_model_variant.id
+            "buy_menu_row_map called in GestaltGraphicsCustom for catalogue "
+            + pipeline.catalogue.id
             + " - this isn't supported."
         )
 
