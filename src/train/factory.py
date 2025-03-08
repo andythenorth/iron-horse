@@ -299,6 +299,14 @@ class ModelVariantFactory:
         return result
 
     @property
+    def cab_factory(self):
+        # convenience way to get cab factory
+        if self.model_def.cab_id is not None:
+            return self.roster.consists_by_catalogue[self.model_def.cab_id]['catalogue'].factory
+        else:
+            return None
+
+    @property
     def intro_year(self):
         # automatic intro_year, but can override by passing in kwargs for consist
         assert self.model_def.gen != None, (
@@ -420,13 +428,20 @@ class Catalogue(list):
         #      b. model_type_cls.liveries (default)
 
         # 1. Unpack liveries from livery groups (2-tuples: (livery_name, index))
-        if self.factory.model_def.livery_group_name is not None:
+
+        if self.factory.cab_factory is not None:
+            # if there's a valid cab factory, we want the liveries from that
+            target_factory = self.factory.cab_factory
+        else:
+            target_factory = self.factory
+
+        if target_factory.model_def.livery_group_name is not None:
             result = []
             for (
                 livery_name,
                 index,
-            ) in self.factory.roster_providing_module.pax_mail_livery_groups[
-                self.factory.model_def.livery_group_name
+            ) in target_factory.roster_providing_module.pax_mail_livery_groups[
+                target_factory.model_def.livery_group_name
             ]:
                 result.append(
                     iron_horse.livery_supplier.deliver(
@@ -435,13 +450,13 @@ class Catalogue(list):
                 )
             return result
 
-        if hasattr(self.factory.model_type_cls, "livery_group_name"):
+        if hasattr(target_factory.model_type_cls, "livery_group_name"):
             result = []
             for (
                 livery_name,
                 index,
-            ) in self.factory.roster_providing_module.pax_mail_livery_groups[
-                self.factory.model_type_cls.livery_group_name
+            ) in target_factory.roster_providing_module.pax_mail_livery_groups[
+                target_factory.model_type_cls.livery_group_name
             ]:
                 result.append(
                     iron_horse.livery_supplier.deliver(
@@ -451,9 +466,9 @@ class Catalogue(list):
             return result
 
         # 2. Get liveries directly from model_def (simple list)
-        if self.factory.model_def.liveries is not None:
+        if target_factory.model_def.liveries is not None:
             result = []
-            for index, name in enumerate(self.factory.model_def.liveries):
+            for index, name in enumerate(target_factory.model_def.liveries):
                 result.append(
                     iron_horse.livery_supplier.deliver(
                         name, relative_spriterow_num=index
@@ -462,10 +477,10 @@ class Catalogue(list):
             return result
 
         # Then try to get liveries directly from model_type_cls
-        if hasattr(self.factory.model_type_cls, "liveries"):
+        if hasattr(target_factory.model_type_cls, "liveries"):
             result = []
-            for index, name in enumerate(self.factory.model_type_cls.liveries):
-                if self.factory.model_type_cls.is_wagon_for_docs:
+            for index, name in enumerate(target_factory.model_type_cls.liveries):
+                if target_factory.model_type_cls.is_wagon_for_docs:
                     # all default wagon liveries are recolour-only, so force relative_spriterow_num to 0
                     # slight abuse of is_wagon_for_docs to force this - add another cls attr to wagon model type if needed
                     relative_spriterow_num = 0
@@ -484,6 +499,7 @@ class Catalogue(list):
             f"Unable to determine valid livery names for "
             f"{self.factory.model_id}\n"
             f"{self.factory.model_def}"
+            f"{self.factory.cab_factory}"
         )
 
     @property

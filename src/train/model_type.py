@@ -459,6 +459,11 @@ class ModelTypeBase(object):
         return self.model_def.requires_high_clearance
 
     @property
+    def cab_id(self):
+        # cab_id is required, must be set in model_def
+        return self.model_def.cab_id
+
+    @property
     def dual_headed(self):
         # just a passthrough for convenience
         return self.model_def.dual_headed
@@ -2487,13 +2492,10 @@ class TGVMiddleEngineMixin(EngineModelTypeBase):
     Add as additional class for e.g. pax or mail engine consist.
     """
 
-    # CABBAGE TEMP - NEEDS TO DELEGATE BACK TO CAB, VIA ModelVariantFactory
-    liveries = ["VANILLA", "VANILLA"]
     cabbage_new_livery_system = True
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.cab_id = self.model_id.split("_middle")[0] + "_cab"
         self._buyable_variant_group_id = self.cab_id
         self.wagons_add_power = True
         self.buy_menu_additional_text_hint_wagons_add_power = True
@@ -6162,11 +6164,6 @@ class MailRailcarTrailerCarBase(MailCarBase):
         return self.cab_consist.subrole
 
     @property
-    def cab_id(self):
-        # cab_id is required, must be set in model_def
-        return self.model_def.cab_id
-
-    @property
     def power_by_power_source(self):
         # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
         return {key: 0 for key in self.cab_consist.power_by_power_source.keys()}
@@ -6379,11 +6376,6 @@ class MailHSTCar(MailCarBase):
     @property
     def subrole(self):
         return self.cab_consist.subrole
-
-    @property
-    def cab_id(self):
-        # cab_id is required, must be set in model_def
-        return self.model_def.cab_id
 
     @property
     def intro_year_offset(self):
@@ -7109,11 +7101,6 @@ class PassengeRailcarTrailerCarBase(PassengerCarBase):
         return self.cab_consist.subrole
 
     @property
-    def cab_id(self):
-        # cab_id is required, must be set in model_def
-        return self.model_def.cab_id
-
-    @property
     def power_by_power_source(self):
         # necessary to ensure that pantograph provision can work, whilst not giving the vehicle any actual power
         return {key: 0 for key in self.cab_consist.power_by_power_source.keys()}
@@ -7375,11 +7362,6 @@ class PassengerHSTCar(PassengerCarBase):
     @property
     def subrole(self):
         return self.cab_consist.subrole
-
-    @property
-    def cab_id(self):
-        # cab_id is required, must be set in model_def
-        return self.model_def.cab_id
 
     @property
     def intro_year_offset(self):

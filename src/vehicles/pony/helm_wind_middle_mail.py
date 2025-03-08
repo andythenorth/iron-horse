@@ -7,6 +7,7 @@ def main(**kwargs):
     model_def = ModelDef(
         class_name="TGVMiddleMailEngine",
         model_id="helm_wind_middle_mail",
+        cab_id="helm_wind_cab",
         base_numeric_id=6740,
         name="Helm Wind Mail Van",
         subrole="very_high_speed",
