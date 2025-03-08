@@ -499,14 +499,21 @@ class Catalogue(list):
         return model_variant.catalogue_entry == self.default_entry
 
     @property
-    def dedicated_trailer_catalogue_consist_mappings(self):
+    def default_model_variant_from_roster(self):
+        # requires that the factory produce() method has been called
+        model_variants = self.factory.roster.consists_by_catalogue[self.id]['consists']
+        for model_variant in model_variants:
+            if model_variant.is_default_model_variant:
+                return model_variant
+
+    @property
+    def dedicated_trailer_catalogue_model_variant_mappings(self):
         # fetch dedicated trailer vehicles for this cab engine (if any)
         result = []
         for catalogue_id, catalogue_consist_mapping in self.factory.roster.consists_by_catalogue.items():
             catalogue = catalogue_consist_mapping['catalogue']
             if catalogue.factory.model_def.cab_id == self.id:
                 result.append(catalogue_consist_mapping)
-                print(self.id, "\n  ", catalogue_id, "\n  ", catalogue_consist_mapping)
         return result
 
 

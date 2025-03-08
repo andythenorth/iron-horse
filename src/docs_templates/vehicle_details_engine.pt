@@ -240,10 +240,10 @@
                     </tal:catalogue_entries>
                 </table>
 
-                <tal:has_dedicated_trailers condition="len(dedicated_trailer_catalogue_consist_mappings) > 0">
+                <tal:has_dedicated_trailers condition="len(dedicated_trailer_catalogue_model_variant_mappings) > 0">
                     <h3>Dedicated Trailers / Coaches / Mail Vans</h3>
                     <table class="livery-or-trailers-table text-left">
-                        <tal:trailer_catalogue_consist_mappings repeat="trailer_catalogue_consist_mapping dedicated_trailer_catalogue_consist_mappings">
+                        <tal:trailer_catalogue_consist_mappings repeat="trailer_catalogue_consist_mapping dedicated_trailer_catalogue_model_variant_mappings">
                             <tr>
                                 <th class="livery-or-trailers-table-first-col">
                                     CABBAGE broken name

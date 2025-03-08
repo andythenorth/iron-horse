@@ -109,16 +109,13 @@ def render_docs_vehicle_details(
         # model_type.assert_description_foamer_facts() CABBAGE
         doc_name = catalogue.id
         consists = roster.consists_by_catalogue[catalogue.id]['consists']
-        for consist in consists:
-            if consist.is_default_model_variant:
-                default_model_variant = consist
 
         doc = template(
             roster=roster,
             catalogue=catalogue,
             consists=consists,
-            default_model_variant=default_model_variant,
-            dedicated_trailer_catalogue_consist_mappings=catalogue.dedicated_trailer_catalogue_consist_mappings,
+            default_model_variant=catalogue.default_model_variant_from_roster,
+            dedicated_trailer_catalogue_model_variant_mappings=catalogue.dedicated_trailer_catalogue_model_variant_mappings,
             iron_horse=iron_horse,
             global_constants=global_constants,
             command_line_args=command_line_args,
