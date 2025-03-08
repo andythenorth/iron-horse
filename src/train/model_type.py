@@ -608,19 +608,6 @@ class ModelTypeBase(object):
                 return engine_consist
 
     @property
-    def dedicated_trailer_consists(self):
-        # fetch dedicated trailer vehicles for this cab engine (if any)
-        result = []
-        for consists in [
-            self.roster.engine_consists_excluding_clones,
-            self.roster.wagon_consists,
-        ]:
-            for consist in consists:
-                if getattr(consist, "cab_id", None) == self.model_id:
-                    result.append(consist)
-        return result
-
-    @property
     def vehicle_life(self):
         if self._vehicle_life is not None:
             # allow vehicles to provide a vehicle life if they want

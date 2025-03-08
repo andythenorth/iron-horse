@@ -107,15 +107,18 @@ def render_docs_vehicle_details(
     roster = iron_horse.roster_manager.active_roster
     for catalogue in catalogues:
         # model_type.assert_description_foamer_facts() CABBAGE
-        doc_name = catalogue.factory.model_id
-        consists = [
-            catalogue.factory.produce(catalogue_entry) for catalogue_entry in catalogue
-        ]
+        doc_name = catalogue.id
+        consists = roster.consists_by_catalogue[catalogue.id]['consists']
+        for consist in consists:
+            if consist.is_default_model_variant:
+                default_model_variant = consist
+
         doc = template(
             roster=roster,
             catalogue=catalogue,
             consists=consists,
-            default_model_variant=consists[0],
+            default_model_variant=default_model_variant,
+            dedicated_trailer_catalogue_consist_mappings=catalogue.dedicated_trailer_catalogue_consist_mappings,
             iron_horse=iron_horse,
             global_constants=global_constants,
             command_line_args=command_line_args,
@@ -154,7 +157,9 @@ def render_docs_images(
         if consist.is_wagon_for_docs:
             # optimise output by only generating one livery image for wagons
             # we accidentally had 13k images in static dir at one point, many of them empty images for wagon variants
-            if not consist.is_default_model_variant:
+            # we *do* want docs images for all trailer model variants
+            # CABBAGE cab consist stuff isn't working right yet - see Blaze is broken (should be more trailers)
+            if (not consist.is_default_model_variant) and (consist.model_def.cab_id is None):
                 continue
 
         intermediate_image = Image.new(
@@ -175,22 +180,6 @@ def render_docs_images(
                 * consist.catalogue_entry.livery_def.relative_spriterow_num
                 * consist.gestalt_graphics.num_load_state_or_similar_spriterows
             )
-            if consist.is_wagon_for_docs:
-                print(
-                    consist.id,
-                    "\n",
-                    "  y_offset",
-                    y_offset,
-                    "\n",
-                    "  consist.catalogue_entry.livery_def.relative_spriterow_num",
-                    consist.catalogue_entry.livery_def.relative_spriterow_num,
-                    "\n",
-                    "  consist.gestalt_graphics.num_load_state_or_similar_spriterows",
-                    consist.gestalt_graphics.num_load_state_or_similar_spriterows,
-                    "\n",
-                    "  consist.catalogue_entry.livery_def",
-                    consist.catalogue_entry.livery_def,
-                )
         # relies on additional_liveries being in predictable row offsets (should be true as of July 2020)
         source_vehicle_image_tmp = vehicle_spritesheet.crop(
             box=(
