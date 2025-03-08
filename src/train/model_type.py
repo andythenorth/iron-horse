@@ -460,7 +460,8 @@ class ModelTypeBase(object):
 
     @property
     def cab_id(self):
-        # cab_id is required, must be set in model_def
+        # cab_id if required must be set in model_def
+        # CABBAGE - WE MIGHT NOT NEED THIS, WE HAVE cab_consist and can get cab_factory at all times?
         return self.model_def.cab_id
 
     @property
@@ -607,10 +608,9 @@ class ModelTypeBase(object):
 
     @property
     def cab_consist(self):
-        # fetch the consist for the cab engine
-        for engine_consist in self.roster.engine_consists:
-            if engine_consist.model_id == self.cab_id:
-                return engine_consist
+        # fetch the default model variant for the cab, if relevant
+        # only applies if cab_id is set in model_def
+        return self.catalogue_entry.catalogue.factory.cab_factory.catalogue.default_model_variant_from_roster
 
     @property
     def vehicle_life(self):
