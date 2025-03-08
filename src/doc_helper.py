@@ -366,7 +366,11 @@ class DocHelper(object):
         # this code repeats for both engines and wagons, but with different source lists
         for vehicle_type, vehicle_consists in [engines, wagons]:
             for consist in vehicle_consists:
+                # CABBAGE JFDI FILTER OUT NON-DEFAULT.  MIGHT BE NICE THOUGH TO INCLUDE ENGINE LIVERIES?
+                if not consist.is_default_model_variant:
+                    continue
                 vehicle_data = [
+                    consist.model_id,
                     consist.id,
                     str(self.docs_sprite_width(consist)),
                     consist.base_numeric_id,
