@@ -21,7 +21,7 @@ DOS_PALETTE = Image.open("palette_key.png").palette
 
 """
 Pipelines can be dedicated to a single task such as SimpleRecolourPipeline
-Or they can compose units for more complicated tasks, such as colouring and loading a specific vehicle type
+Or they can compose processing units for more complicated tasks, such as colouring and loading a specific vehicle type
 """
 
 
@@ -66,12 +66,12 @@ class Pipeline(object):
     def render_common(
         self,
         input_image,
-        units,
+        processing_units,
         output_base_name=None,
         output_suffix="",
     ):
         # expects to be passed a PIL Image object
-        # units is a list of objects, with their config data already baked in (don't have to pass anything to units except the spritesheet)
+        # processing_units is a list of objects, with their config data already baked in (don't have to pass anything to processing_units except the spritesheet)
         # each unit is then called in order, passing in and returning a pixa SpriteSheet
         # finally the spritesheet is saved
         if output_base_name is None:
@@ -91,8 +91,8 @@ class Pipeline(object):
         )
         spritesheet = pixa.make_spritesheet_from_image(input_image, DOS_PALETTE)
 
-        for unit in units:
-            spritesheet = unit.render(spritesheet)
+        for processing_unit in processing_units:
+            spritesheet = processing_unit.render(spritesheet)
         # I don't normally leave commented-out code behind, but I'm bored of looking in the PIL docs for how to show the image during compile
         # if self.consist.id == 'velaro_thing':
         # spritesheet.sprites.show()
@@ -131,13 +131,13 @@ class PassThroughPipeline(Pipeline):
         super().__init__()
 
     def render(self, consist, global_constants, graphics_output_path):
-        self.units = []
+        self.processing_units = []
         self.consist = consist
         self.graphics_output_path = graphics_output_path
 
         if self.consist.is_default_model_variant:
             input_image = Image.open(self.vehicle_source_input_path)
-            self.render_common(input_image, self.units)
+            self.render_common(input_image, self.processing_units)
             input_image.close()
 
 
@@ -370,14 +370,14 @@ class GenerateSpritelayerCargoSets(Pipeline):
                 self.global_constants.sprites_max_x_extent,
                 graphics_constants.spriterow_height,
             )
-            self.units.append(AppendToSpritesheet(variant_spritesheet, crop_box_dest))
+            self.processing_units.append(AppendToSpritesheet(variant_spritesheet, crop_box_dest))
             variant_output_image.close()
             template_image.close()
 
     def render(
         self, spritelayer_cargo_set_pair, global_constants, graphics_output_path
     ):
-        self.units = []
+        self.processing_units = []
         self.spritelayer_cargo = spritelayer_cargo_set_pair[0]
         self.spritelayer_cargo_set = spritelayer_cargo_set_pair[1]
         self.global_constants = global_constants
@@ -390,7 +390,7 @@ class GenerateSpritelayerCargoSets(Pipeline):
         input_image.putpalette(DOS_PALETTE)
         self.render_common(
             input_image,
-            self.units,
+            self.processing_units,
             output_base_name=self.spritelayer_cargo_set.id(self.spritelayer_cargo),
         )
 
@@ -405,7 +405,7 @@ class GenerateEmptySpritesheet(Pipeline):
         super().__init__()
 
     def render(self, consist, global_constants, graphics_output_path):
-        self.units = []
+        self.processing_units = []
         self.consist = consist
         self.graphics_output_path = graphics_output_path
 
@@ -413,7 +413,7 @@ class GenerateEmptySpritesheet(Pipeline):
             os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
         )
 
-        self.render_common(empty_spriterow_image, self.units)
+        self.render_common(empty_spriterow_image, self.processing_units)
         empty_spriterow_image.close()
 
 
@@ -422,7 +422,7 @@ class GenerateBuyMenuSpriteVanillaPipelineBase(Pipeline):
     Create a custom buy menu sprite for the common cases (articulated vehicles etc).
     For complex cases (randomisation etc) create a specific pipeline.
     Possibly this could have been a unit not a pipeline, but eh.
-    This way was marginally easier to integrate - units are in polar fox and not specific to trains.
+    This way was marginally easier to integrate - processing units are in polar fox and not specific to trains.
     Potato / potato.
 
     Subclass this to control which spritesheet(s) are passed to it.
@@ -522,11 +522,11 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
         if not consist.requires_custom_buy_menu_sprite:
             return
 
-        self.units = []
+        self.processing_units = []
         self.consist = consist
         self.graphics_output_path = graphics_output_path
 
-        self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
+        self.processing_units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
         spritesheet_image = Image.open(
@@ -535,7 +535,7 @@ class GenerateBuyMenuSpriteVanillaVehiclePipeline(
                 self.consist.catalogue_entry.model_id + ".png",
             )
         )
-        self.render_common(spritesheet_image, self.units)
+        self.render_common(spritesheet_image, self.processing_units)
         spritesheet_image.close()
 
 
@@ -563,11 +563,11 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
         if consist.suppress_pantograph_if_no_engine_attached:
             return
 
-        self.units = []
+        self.processing_units = []
         self.consist = consist
         self.graphics_output_path = graphics_output_path
 
-        self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
+        self.processing_units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         suffix = "_pantographs_" + self.pantograph_state
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
@@ -579,7 +579,7 @@ class GenerateBuyMenuSpriteVanillaPantographsPipelineBase(
                 + ".png",
             )
         )
-        self.render_common(spritesheet_image, self.units, output_suffix=suffix)
+        self.render_common(spritesheet_image, self.processing_units, output_suffix=suffix)
         spritesheet_image.close()
 
 
@@ -609,7 +609,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
     """
     Creates a custom buy menu for randomised vehicles - composing from the randomisation candidates.
     Possibly this could have been a unit not a pipeline, but eh.
-    This way was marginally easier to integrate - units are in polar fox and not specific to trains.
+    This way was marginally easier to integrate - processing units are in polar fox and not specific to trains.
     Also keeps a clean separation between the generation of the vehicle sprites and the fancy buy menu sprite.
     Potato / potato.
     """
@@ -756,11 +756,11 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
         return spritesheet
 
     def render(self, consist, global_constants, graphics_output_path):
-        self.units = []
+        self.processing_units = []
         self.consist = consist
         self.graphics_output_path = graphics_output_path
 
-        self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
+        self.processing_units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # note that this comes from generated/graphics/[grf-name]/, and expects to find an appropriate generated spritesheet in that location
         spritesheet_image = Image.open(
@@ -770,7 +770,7 @@ class GenerateBuyMenuSpriteFromRandomisationCandidatesPipeline(Pipeline):
             )
         )
 
-        self.render_common(spritesheet_image, self.units)
+        self.render_common(spritesheet_image, self.processing_units)
         spritesheet_image.close()
 
 
@@ -1055,13 +1055,13 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
                 * graphics_constants.spriterow_height
             ),
         )
-        self.units.append(AppendToSpritesheet(pantograph_spritesheet, crop_box_dest))
+        self.processing_units.append(AppendToSpritesheet(pantograph_spritesheet, crop_box_dest))
         pantograph_input_image.close()
         vehicle_input_image.close()
         empty_spriterow_image.close()
 
     def render(self, consist, global_constants, graphics_output_path):
-        self.units = []
+        self.processing_units = []
         self.consist = consist
         self.global_constants = global_constants
         self.graphics_output_path = graphics_output_path
@@ -1073,7 +1073,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             (0, 0, graphics_constants.spritesheet_width, 10)
         )
         output_suffix = "_pantographs_" + self.pantograph_state
-        self.render_common(input_image, self.units, output_suffix=output_suffix)
+        self.render_common(input_image, self.processing_units, output_suffix=output_suffix)
         input_image.close()
 
 
@@ -1292,14 +1292,14 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 self.sprites_max_x_extent,
                 graphics_constants.spriterow_height,
             )
-            self.units.append(
+            self.processing_units.append(
                 AppendToSpritesheet(
                     generic_spriterow_variant_image_as_spritesheet, crop_box_dest
                 )
             )
             if variant["body_recolour_map"] is not None:
-                self.units.append(SimpleRecolour(variant["body_recolour_map"]))
-            self.units.append(
+                self.processing_units.append(SimpleRecolour(variant["body_recolour_map"]))
+            self.processing_units.append(
                 AddCargoLabel(
                     label=variant["label"],
                     x_offset=self.sprites_max_x_extent + 5,
@@ -1339,13 +1339,13 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 graphics_constants.spriterow_height,
             )
 
-            self.units.append(
+            self.processing_units.append(
                 AppendToSpritesheet(
                     vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest
                 )
             )
-            self.units.append(SimpleRecolour(recolour_map))
-            self.units.append(
+            self.processing_units.append(SimpleRecolour(recolour_map))
+            self.processing_units.append(
                 AddCargoLabel(
                     label=weathered_variant_label,
                     x_offset=self.sprites_max_x_extent + 5,
@@ -1463,7 +1463,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             )
             # if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
             # pax_mail_car_image_as_spritesheet.sprites.show()
-            self.units.append(
+            self.processing_units.append(
                 AppendToSpritesheet(pax_mail_car_image_as_spritesheet, crop_box_dest)
             )
 
@@ -1531,10 +1531,10 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             weathered_variant,
             recolour_map,
         ) in self.consist.gestalt_graphics.weathered_variants.items():
-            self.units.append(
+            self.processing_units.append(
                 AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest)
             )
-            self.units.append(SimpleRecolour(recolour_map))
+            self.processing_units.append(SimpleRecolour(recolour_map))
             box_car_input_image_1.close()
 
     def add_caboose_spriterows(self, row_count):
@@ -1582,12 +1582,12 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 caboose_car_rows_image, DOS_PALETTE
             )
 
-            self.units.append(
+            self.processing_units.append(
                 AppendToSpritesheet(
                     caboose_car_rows_image_as_spritesheet, crop_box_dest
                 )
             )
-            self.units.append(
+            self.processing_units.append(
                 SimpleRecolour(self.consist.gestalt_graphics.recolour_map)
             )
 
@@ -1688,12 +1688,12 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             body_recolour_map = self.consist.gestalt_graphics.weathered_variants[
                 "unweathered"
             ]
-            self.units.append(
+            self.processing_units.append(
                 AppendToSpritesheet(bulk_cargo_rows_image_as_spritesheet, crop_box_dest)
             )
-            self.units.append(SimpleRecolour(body_recolour_map))
-            self.units.append(SimpleRecolour(cargo_recolour_map))
-            self.units.append(
+            self.processing_units.append(SimpleRecolour(body_recolour_map))
+            self.processing_units.append(SimpleRecolour(cargo_recolour_map))
+            self.processing_units.append(
                 AddCargoLabel(
                     label=label,
                     x_offset=self.sprites_max_x_extent + 5,
@@ -1864,11 +1864,11 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             body_recolour_map = self.consist.gestalt_graphics.weathered_variants[
                 "unweathered"
             ]
-            self.units.append(
+            self.processing_units.append(
                 AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_dest)
             )
-            self.units.append(SimpleRecolour(body_recolour_map))
-            self.units.append(
+            self.processing_units.append(SimpleRecolour(body_recolour_map))
+            self.processing_units.append(
                 AddCargoLabel(
                     label=cargo_filename,
                     x_offset=self.sprites_max_x_extent + 5,
@@ -1877,9 +1877,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             )
 
     def render(self, consist, global_constants, graphics_output_path):
-        self.units = (
+        self.processing_units = (
             []
-        )  # graphics units not same as consist units ! confusing overlap of terminology :(
+        )
         self.consist = consist
         self.global_constants = global_constants
         self.graphics_output_path = graphics_output_path
@@ -1946,7 +1946,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.vehicle_unit = None
 
         if hasattr(self.consist.gestalt_graphics, "asymmetric_row_map"):
-            self.units.append(
+            self.processing_units.append(
                 TransposeAsymmetricSprites(
                     graphics_constants.spriterow_height,
                     global_constants.spritesheet_bounding_boxes_asymmetric_unreversed,
@@ -1957,7 +1957,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # for this pipeline, input_image is just blank white 10px high image, to which the vehicle sprites are then appended
         input_image = Image.new("P", (graphics_constants.spritesheet_width, 10), 255)
         input_image.putpalette(DOS_PALETTE)
-        self.render_common(input_image, self.units)
+        self.render_common(input_image, self.processing_units)
         self.vehicle_source_image.close()
 
 
