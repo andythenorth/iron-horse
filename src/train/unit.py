@@ -163,17 +163,22 @@ class UnitBase(object):
     @property
     def availability(self):
         # only show vehicle in buy menu if it is first vehicle in model_variant
-        if self.is_lead_unit_of_consist:
+        if self.is_trailing_part:
             return "ALL_CLIMATES"
         else:
             return "NO_CLIMATE"
 
+
     @property
-    def is_lead_unit_of_consist(self):
+    def is_not_trailing_part(self):
+        return not self.is_trailing_part
+
+    @property
+    def is_trailing_part(self):
         if self.model_variant.units.index(self) == 0:
-            return True
-        else:
             return False
+        else:
+            return True
 
     @property
     def symmetry_type(self):

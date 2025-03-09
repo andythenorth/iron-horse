@@ -4,35 +4,35 @@
     <tal:include metal:use-macro="load: create_effect.pynml" />
 </tal:create_effect>
 
-<tal:railtype_varies_power condition="model_variant.engine_varies_power_by_power_source and unit.is_lead_unit_of_consist">
+<tal:railtype_varies_power condition="model_variant.engine_varies_power_by_power_source and unit.is_not_trailing_part">
     <tal:include metal:use-macro="load: power.pynml" />
 </tal:railtype_varies_power>
 
-<tal:wagons_add_power condition="model_variant.wagons_add_power and unit.is_lead_unit_of_consist">
+<tal:wagons_add_power condition="model_variant.wagons_add_power and unit.is_not_trailing_part">
     <tal:include metal:use-macro="load: power.pynml" />
 </tal:wagons_add_power>
 
-<tal:easter_egg_haulage_speed_bonus condition="model_variant.easter_egg_haulage_speed_bonus and unit.is_lead_unit_of_consist">
+<tal:easter_egg_haulage_speed_bonus condition="model_variant.easter_egg_haulage_speed_bonus and unit.is_not_trailing_part">
     <tal:include metal:use-macro="load: speed.pynml" />
 </tal:easter_egg_haulage_speed_bonus>
 
-<tal:lgv_capable_speed_bonus condition="model_variant.lgv_capable and unit.is_lead_unit_of_consist">
+<tal:lgv_capable_speed_bonus condition="model_variant.lgv_capable and unit.is_not_trailing_part">
     <tal:include metal:use-macro="load: speed.pynml" />
 </tal:lgv_capable_speed_bonus>
 
-<tal:running_cost_factor condition="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False) and unit.is_lead_unit_of_consist">
+<tal:running_cost_factor condition="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False) and unit.is_not_trailing_part">
     <tal:include metal:use-macro="load: cost.pynml" />
 </tal:running_cost_factor>
 
-<tal:articulated_parts condition="unit.is_lead_unit_of_consist and len(model_variant.units) > 1">
+<tal:articulated_parts condition="unit.is_not_trailing_part and len(model_variant.units) > 1">
     <tal:include metal:use-macro="load: articulated_parts.pynml" />
 </tal:articulated_parts>
 
-<tal:name condition="unit.is_lead_unit_of_consist">
+<tal:name condition="unit.is_not_trailing_part">
     <tal:include metal:use-macro="load: name.pynml" />
 </tal:name>
 
-<tal:buy_menu_additional_text condition="unit.is_lead_unit_of_consist and model_variant.uses_buy_menu_additional_text">
+<tal:buy_menu_additional_text condition="unit.is_not_trailing_part and model_variant.uses_buy_menu_additional_text">
     <tal:include metal:use-macro="load: buy_menu_additional_text.pynml" />
 </tal:buy_menu_additional_text>
 
@@ -42,7 +42,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
         name:                           ${model_variant.get_name_as_property()};
         climates_available:             NO_CLIMATE; // nml constant
         badges:                         ${model_variant.get_badges_for_nml()};
-        <tal:lead_unit_of_consist_only condition="unit.is_lead_unit_of_consist">
+        <tal:lead_unit_of_consist_only condition="unit.is_not_trailing_part">
             <!--! some properties should not be set for trailing parts of articulated vehicles -->
             engine_class:                   ${unit.engine_class};
             introduction_date:              date(${model_variant.intro_year}, ${1 + model_variant.intro_date_months_offset}, 1);
@@ -60,7 +60,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
                 variant_group:                  ${model_variant.get_variant_group_parent_vehicle_id()};
             </tal:variant_group>
         </tal:lead_unit_of_consist_only>
-        <tal:trailing_parts_of_consist_only condition="not unit.is_lead_unit_of_consist">
+        <tal:trailing_parts_of_consist_only condition="unit.is_trailing_part">
             <!--! some properties must be explicitly set to 0 for trailing parts -->
             <!--! note that power cannot be 0 for engines, even this violates spec as of Nov 2022
                   - for details see https://github.com/OpenTTD/OpenTTD/issues/10146 -->
@@ -94,7 +94,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
     graphics {
         default:                        ${unit.id}_switch_graphics;
         purchase:                       ${unit.id}_switch_graphics_purchase;
-        <tal:lead_unit_of_consist_only condition="unit.is_lead_unit_of_consist">
+        <tal:lead_unit_of_consist_only condition="unit.is_not_trailing_part">
             name:                           ${model_variant.id}_switch_name;
             <!--! certain callbacks should not be handled for trailing parts of articulated vehicles -->
             cost_factor:                    ${model_variant.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
@@ -160,7 +160,7 @@ item(FEAT_TRAINS, ${unit.id}, ${unit.numeric_id}) {
     }
 }
 
-<tal:rosters condition="unit.is_lead_unit_of_consist">
+<tal:rosters condition="unit.is_not_trailing_part">
     <!--! constructing combinatorial 'if' expressions is too complicated, just turn the unit on or off in a cascading way that will probably go wrong eh? -->
 
     <!--! first default to 'on' if lead unit of an articulated vehicle (we don't want trailing parts) -->

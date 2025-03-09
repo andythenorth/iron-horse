@@ -1,6 +1,6 @@
 <!--! some vehicles vary running cost if restaurant car is in consist
       this will need generalised if other similar vehicles are added, e.g. motorail, observation car etc -->
-<tal:running_cost_factor condition="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False) and unit.is_lead_unit_of_consist">
+<tal:running_cost_factor condition="getattr(model_variant, 'affected_by_restaurant_car_in_consist', False) and unit.is_not_trailing_part">
     switch (FEAT_TRAINS, PARENT, ${unit.id}_switch_running_cost_factor, count_has_badge("role/restaurant_car")) {
         <!--! eliminate run costs if at least 1 restaurant car is present (more than 1 has no additional effect)
             not particularly tested for balance as of April 2021, 'rough is good enough'
