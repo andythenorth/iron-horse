@@ -121,11 +121,8 @@ engine_module_names = [
     "auto_coach_pony_gen_2",
     # railbuses
     "clipper",
-    "clipper_single",
     "skipper",
-    "skipper_single",
     "zipper",
-    "zipper_single",
     # diesel railcars
     "deasil",
     "slammer",
@@ -208,9 +205,7 @@ engine_module_names = [
     "higuma",
     # ng railcars
     "mumble",
-    "mumble_single",
     "snapper",
-    "snapper_single",
     "zorro",
     "ruby",
     "golfinho",
