@@ -175,6 +175,8 @@ class DocHelper(object):
                 not_really_engines.append(catalogue)
             else:
                 really_engines.append(catalogue)
+        #print("really_engines", [catalogue.id for catalogue in really_engines])
+        #print("not_really_engines", [catalogue.id for catalogue in not_really_engines])
         really_engines_count = len(really_engines)
         not_really_engines_count = len(not_really_engines)
         total_count = really_engines_count + not_really_engines_count
