@@ -241,21 +241,20 @@
                 <tal:has_dedicated_trailers condition="len(dedicated_trailer_catalogue_model_variant_mappings) > 0">
                     <h3>Dedicated Trailers / Coaches / Mail Vans</h3>
                     <table class="livery-or-trailers-table text-left">
-                        <tal:trailer_catalogue_consist_mappings repeat="trailer_catalogue_consist_mapping dedicated_trailer_catalogue_model_variant_mappings">
+                        <tal:trailer_catalogue_model_variant_mappings repeat="trailer_catalogue_model_variant_mapping dedicated_trailer_catalogue_model_variant_mappings">
                             <tr>
                                 <th class="livery-or-trailers-table-first-col">
-                                    CABBAGE broken name
-                                    <!--!<div style="margin-top:12px;">${doc_helper.unpack_name_string(trailer_catalogue_consist_mapping['catalogue'])}</div>-->
+                                    <div style="margin-top:12px;">${doc_helper.unpack_name_string(trailer_catalogue_model_variant_mapping['catalogue'])}</div>
                                 </th>
                                 <td class="livery-or-trailers-table-col-with-divider">
-                                    <tal:trailer_model_variants repeat="trailer_model_variant trailer_catalogue_consist_mapping['consists']">
+                                    <tal:trailer_model_variants repeat="trailer_model_variant trailer_catalogue_model_variant_mapping['consists']">
                                         <div>
                                             <tal:livery_examples repeat="cc_remap_pair trailer_model_variant.catalogue_entry.livery_def.docs_image_input_cc">
                                                 <div class="vehicle-image"
                                                     style="width:${2 * doc_helper.docs_sprite_max_width};
                                                            display:inline-block;">
                                                     <img src="static/img/${trailer_model_variant.id}_${doc_helper.get_livery_file_substr(cc_remap_pair)}.png"
-                                                         width="${2 * doc_helper.docs_sprite_width(catalogue=trailer_catalogue_consist_mapping['catalogue'])}"
+                                                         width="${2 * doc_helper.docs_sprite_width(catalogue=trailer_catalogue_model_variant_mapping['catalogue'])}"
                                                          height="${2 * doc_helper.docs_sprite_height}" />
                                                 </div>
                                             </tal:livery_examples>
@@ -263,7 +262,7 @@
                                     </tal:trailer_model_variants>
                                 </td>
                             </tr>
-                        </tal:trailer_catalogue_consist_mappings>
+                        </tal:trailer_catalogue_model_variant_mappings>
                     </table>
                 </tal:has_dedicated_trailers>
 
