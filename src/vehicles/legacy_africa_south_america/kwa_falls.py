@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="kwa_falls",
         base_numeric_id=11010,
         name="2-8-2 Kwa Falls",
@@ -12,12 +12,12 @@ def main(**kwargs):
         intro_year=1945,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=SteamEnginePoweredUnit, weight=100, vehicle_length=7, rel_spriterow_index=0
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=SteamEngineTenderUnit, weight=40, vehicle_length=5, rel_spriterow_index=1
     )
 
-    return consist_cabbage
+    return model_def

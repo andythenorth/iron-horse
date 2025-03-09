@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="estados",
         base_numeric_id=9230,
         name="Estados Boxcab",
@@ -10,8 +10,8 @@ def main(**kwargs):
         intro_year=1925,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=ElectricEngineUnit, weight=90, vehicle_length=6, rel_spriterow_index=0
     )
 
-    return consist_cabbage
+    return model_def

@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):  # for rest of stats, look up GE Export models U5B-U8B
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="universal",
         base_numeric_id=9580,
         name="Universal",
@@ -13,8 +13,8 @@ def main(**kwargs):  # for rest of stats, look up GE Export models U5B-U8B
         intro_year=1958,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=DieselEngineUnit, weight=65, vehicle_length=7, rel_spriterow_index=0
     )
 
-    return consist_cabbage
+    return model_def

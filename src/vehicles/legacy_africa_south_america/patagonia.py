@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="patagonia",
         base_numeric_id=9370,
         name="Patagonia",
@@ -11,12 +11,12 @@ def main(**kwargs):
         intro_year=1960,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=DieselEngineUnit, weight=20, vehicle_length=7, capacity=35, rel_spriterow_index=0
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=DieselEngineUnit, weight=20, vehicle_length=7, capacity=35, rel_spriterow_index=1
     )
 
-    return consist_cabbage
+    return model_def

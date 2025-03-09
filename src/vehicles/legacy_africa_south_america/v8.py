@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="v8",
         base_numeric_id=9450,
         name="V8 2-C+C-2",
@@ -10,8 +10,8 @@ def main(**kwargs):
         intro_year=1949,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=ElectricEngineUnit, weight=160, vehicle_length=8, rel_spriterow_index=0
     )
 
-    return consist_cabbage
+    return model_def

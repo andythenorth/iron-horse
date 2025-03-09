@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):  # for rest of stats, look up Krauss Maffei Brazil
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="krauss",
         base_numeric_id=9300,
         name="Krauss",
@@ -13,8 +13,8 @@ def main(**kwargs):  # for rest of stats, look up Krauss Maffei Brazil
         intro_year=1963,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=DieselEngineUnit, weight=150, vehicle_length=8, rel_spriterow_index=0
     )
 
-    return consist_cabbage
+    return model_def

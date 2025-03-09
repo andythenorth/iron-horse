@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):  # roughly an SAR 91-000 class
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="bigfoot",
         base_numeric_id=10660,
         name="Bigfoot",
@@ -11,8 +11,8 @@ def main(**kwargs):  # roughly an SAR 91-000 class
         intro_year=1970,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=DieselEngineUnit, weight=50, vehicle_length=5, rel_spriterow_index=0
     )
 
-    return consist_cabbage
+    return model_def

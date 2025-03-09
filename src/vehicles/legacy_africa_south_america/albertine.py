@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="albertine",
         base_numeric_id=11080,
         name="4-4-2 Albertine",
@@ -12,12 +12,12 @@ def main(**kwargs):
         intro_year=1885,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=SteamEnginePoweredUnit, weight=45, vehicle_length=7, rel_spriterow_index=0
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=SteamEngineTenderUnit, weight=30, vehicle_length=4, rel_spriterow_index=1
     )
 
-    return consist_cabbage
+    return model_def

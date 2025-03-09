@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="hofman",
         base_numeric_id=10880,
         name="2-6-2+2-6-2 Hofman",
@@ -12,16 +12,16 @@ def main(**kwargs):
         intro_year=1940,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=SteamEngineTenderUnit, weight=15, vehicle_length=3, rel_spriterow_index=0
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=SteamEnginePoweredUnit, weight=30, vehicle_length=4, rel_spriterow_index=1
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=SteamEngineTenderUnit, weight=15, vehicle_length=3, rel_spriterow_index=2
     )
 
-    return consist_cabbage
+    return model_def

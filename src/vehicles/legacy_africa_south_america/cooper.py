@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):  # GE Shovelnose - meter gauge ish
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="cooper",
         base_numeric_id=10480,
         name="Cooper",
@@ -13,8 +13,8 @@ def main(**kwargs):  # GE Shovelnose - meter gauge ish
         intro_year=1949,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=DieselEngineUnit, weight=85, vehicle_length=7, rel_spriterow_index=0
     )
 
-    return consist_cabbage
+    return model_def

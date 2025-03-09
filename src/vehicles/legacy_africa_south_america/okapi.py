@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="okapi",
         base_numeric_id=11000,
         name="Okapi",
@@ -11,8 +11,8 @@ def main(**kwargs):
         intro_year=1958,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=DieselEngineUnit, weight=100, vehicle_length=7, rel_spriterow_index=0
     )
 
-    return consist_cabbage
+    return model_def

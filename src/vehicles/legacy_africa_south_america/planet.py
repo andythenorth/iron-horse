@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="planet",
         base_numeric_id=360,
         name="Planet",
@@ -11,8 +11,8 @@ def main(**kwargs):
         intro_year=1950,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=DieselEngineUnit, weight=40, vehicle_length=4, rel_spriterow_index=0
     )
 
-    return consist_cabbage
+    return model_def

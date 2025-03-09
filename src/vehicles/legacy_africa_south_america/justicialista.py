@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="justicialista",
         base_numeric_id=9290,
         name="Justicialista",
@@ -10,12 +10,12 @@ def main(**kwargs):
         intro_year=1955,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=DieselEngineUnit, weight=114, vehicle_length=8, rel_spriterow_index=0
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=DieselEngineUnit, weight=114, vehicle_length=8, rel_spriterow_index=1
     )
 
-    return consist_cabbage
+    return model_def

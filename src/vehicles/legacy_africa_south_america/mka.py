@@ -2,7 +2,7 @@
 
 
 def main(**kwargs):
-    consist_cabbage = ModelDefFoo(
+    model_def = ModelDefFoo(
         id="mka",
         base_numeric_id=10020,
         name="MKA",
@@ -20,7 +20,7 @@ def main(**kwargs):
         sprites_complete=False,
     )
 
-    consist_cabbage.add_unit(
+    model_def.add_unit(
         type=DieselEngineUnit,
         weight=55,
         vehicle_length=6,
@@ -28,7 +28,7 @@ def main(**kwargs):
         rel_spriterow_index=0,
     )
 
-    consist_cabbage.description = """"""
-    consist_cabbage.foamer_facts = """"""
+    model_def.description = """"""
+    model_def.foamer_facts = """"""
 
-    return consist_cabbage
+    return model_def
